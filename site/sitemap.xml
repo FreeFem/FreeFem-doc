@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>/</loc>
+     <lastmod>2018-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/types/</loc>
+     <lastmod>2018-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/global-variables/</loc>
+     <lastmod>2018-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/quadrature/</loc>
+     <lastmod>2018-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/operators/</loc>
+     <lastmod>2018-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/loops/</loc>
+     <lastmod>2018-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/io/</loc>
+     <lastmod>2018-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/functions/</loc>
+     <lastmod>2018-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/examples/</loc>
+     <lastmod>2018-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/TODO/</loc>
+     <lastmod>2018-02-08</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+</urlset>

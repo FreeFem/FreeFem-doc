@@ -1,0 +1,750 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.0">
+    
+    
+      
+        <title>Global variables - FreeFem++ documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.aa3de92b.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.792431c1.css">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-blue" data-md-color-accent="light-blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#cg" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="FreeFem++ documentation" class="md-header-nav__button md-logo">
+          
+            <img src="../images/favicon.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                FreeFem++ documentation
+              </span>
+              <span class="md-header-nav__topic">
+                Global variables
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../images/favicon.png" width="24" height="24">
+      
+    </span>
+    FreeFem++ documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../types/" title="Types" class="md-nav__link">
+      Types
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Global variables
+      </label>
+    
+    <a href="./" title="Global variables" class="md-nav__link md-nav__link--active">
+      Global variables
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cg" title="CG" class="md-nav__link">
+    CG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cholesky" title="Cholesky" class="md-nav__link">
+    Cholesky
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crout" title="Crout" class="md-nav__link">
+    Crout
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gmres" title="GMRES" class="md-nav__link">
+    GMRES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include" title="include" class="md-nav__link">
+    include
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load" title="load" class="md-nav__link">
+    load
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lu" title="LU" class="md-nav__link">
+    LU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#n" title="N" class="md-nav__link">
+    N
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p" title="P" class="md-nav__link">
+    P
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pi" title="pi" class="md-nav__link">
+    pi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sparsesolver" title="sparsesolver" class="md-nav__link">
+    sparsesolver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verbosity" title="verbosity" class="md-nav__link">
+    verbosity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version" title="version" class="md-nav__link">
+    version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x" title="x" class="md-nav__link">
+    x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#y" title="y" class="md-nav__link">
+    y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z" title="z" class="md-nav__link">
+    z
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../quadrature/" title="Quadrature formulae" class="md-nav__link">
+      Quadrature formulae
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../operators/" title="Operators" class="md-nav__link">
+      Operators
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../loops/" title="Loops" class="md-nav__link">
+      Loops
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../io/" title="I/O" class="md-nav__link">
+      I/O
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../functions/" title="Functions" class="md-nav__link">
+      Functions
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../examples/" title="Examples" class="md-nav__link">
+      Examples
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cg" title="CG" class="md-nav__link">
+    CG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cholesky" title="Cholesky" class="md-nav__link">
+    Cholesky
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crout" title="Crout" class="md-nav__link">
+    Crout
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gmres" title="GMRES" class="md-nav__link">
+    GMRES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include" title="include" class="md-nav__link">
+    include
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load" title="load" class="md-nav__link">
+    load
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lu" title="LU" class="md-nav__link">
+    LU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#n" title="N" class="md-nav__link">
+    N
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#p" title="P" class="md-nav__link">
+    P
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pi" title="pi" class="md-nav__link">
+    pi
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sparsesolver" title="sparsesolver" class="md-nav__link">
+    sparsesolver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verbosity" title="verbosity" class="md-nav__link">
+    verbosity
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version" title="version" class="md-nav__link">
+    version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x" title="x" class="md-nav__link">
+    x
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#y" title="y" class="md-nav__link">
+    y
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#z" title="z" class="md-nav__link">
+    z
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Global variables</h1>
+                
+                <h2 id="cg">CG<a class="headerlink" href="#cg" title="Permanent link">#</a></h2>
+<p>Conjugate gradient solver.</p>
+<blockquote>
+<p>Usable in problem and solve definition</p>
+</blockquote>
+<pre><code class="ffpp">problem Laplacian (U, V, solver=CG) = ...
+</code></pre>
+
+<blockquote>
+<p>Or in matrix construction</p>
+</blockquote>
+<pre><code class="ffpp">matrix A = vLaplacian(Uh, Uh, solver=CG);
+</code></pre>
+
+<h2 id="cholesky">Cholesky<a class="headerlink" href="#cholesky" title="Permanent link">#</a></h2>
+<p>Cholesky solver.</p>
+<h2 id="crout">Crout<a class="headerlink" href="#crout" title="Permanent link">#</a></h2>
+<p>Crout solver.</p>
+<h2 id="gmres">GMRES<a class="headerlink" href="#gmres" title="Permanent link">#</a></h2>
+<p>GMRES solver (Generalized minimal residual method).</p>
+<h2 id="include">include<a class="headerlink" href="#include" title="Permanent link">#</a></h2>
+<p>Include a module.</p>
+<pre><code class="ffpp">include &quot;iovtk&quot;
+</code></pre>
+
+<h2 id="load">load<a class="headerlink" href="#load" title="Permanent link">#</a></h2>
+<p>Load a script.</p>
+<pre><code class="ffpp">load &quot;getARGV.idp&quot;
+</code></pre>
+
+<h2 id="lu">LU<a class="headerlink" href="#lu" title="Permanent link">#</a></h2>
+<p>LU solver.</p>
+<h2 id="n">N<a class="headerlink" href="#n" title="Permanent link">#</a></h2>
+<p>Normal.</p>
+<pre><code class="ffpp">func Nx = N.x;
+func Ny = N.y;
+func Nz = N.z;
+</code></pre>
+
+<h2 id="p">P<a class="headerlink" href="#p" title="Permanent link">#</a></h2>
+<p>Current point.</p>
+<pre><code class="ffpp">real cx = P.x;
+real cy = P.y;
+real cz = P.z;
+</code></pre>
+
+<h2 id="pi">pi<a class="headerlink" href="#pi" title="Permanent link">#</a></h2>
+<p>Pi = 3.14159.</p>
+<pre><code class="ffpp">real Pi = pi;
+</code></pre>
+
+<p>This is a real value.</p>
+<h2 id="sparsesolver">sparsesolver<a class="headerlink" href="#sparsesolver" title="Permanent link">#</a></h2>
+<p>Sparse matrix solver.</p>
+<h2 id="verbosity">verbosity<a class="headerlink" href="#verbosity" title="Permanent link">#</a></h2>
+<p>Verbosity level.</p>
+<pre><code class="ffpp">int Verbosity = verbosity;
+verbosity = 0;
+</code></pre>
+
+<p>0 = nothing, 1 = few informations, 10 = a lot of informations, ...</p>
+<p>This is an integer value.</p>
+<h2 id="version">version<a class="headerlink" href="#version" title="Permanent link">#</a></h2>
+<p>FreeFem++ version.</p>
+<pre><code class="ffpp">cout &lt;&lt; version &lt;&lt; endl;
+</code></pre>
+
+<h2 id="x">x<a class="headerlink" href="#x" title="Permanent link">#</a></h2>
+<p>The $x$ coordinate at the current point.</p>
+<pre><code class="ffpp">real CurrentX = x;
+</code></pre>
+
+<p>This is a real value.</p>
+<h2 id="y">y<a class="headerlink" href="#y" title="Permanent link">#</a></h2>
+<p>The $y$ coordinate at the current point.</p>
+<pre><code class="ffpp">real CurrentY = y;
+</code></pre>
+
+<p>This is a real value.</p>
+<h2 id="z">z<a class="headerlink" href="#z" title="Permanent link">#</a></h2>
+<p>The $z$ coordinate at the current point.</p>
+<pre><code class="ffpp">real CurrentY = y;
+</code></pre>
+
+<p>This is a real value.</p>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../types/" title="Types" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Types
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../quadrature/" title="Quadrature formulae" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Quadrature formulae
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2017 - 2018 Airthium
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/Tanatloc/FreeFem-doc" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.9fb73e57.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+      
+        <script src="../mathjax-config.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>

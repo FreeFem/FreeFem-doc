@@ -1,0 +1,32 @@
+site_name: FreeFem++ documentation
+pages:
+  - Home: index.md
+  - Types: types.md
+  - Global variables: global-variables.md
+  - Quadrature formulae: quadrature.md
+  - Operators: operators.md
+  - Loops: loops.md
+  - I/O: io.md
+  - Functions: functions.md
+  - Examples: examples.md
+  - TODO: TODO.md
+theme:
+  name: 'material'
+  favicon: 'images/favicon.png'
+  logo: 'images/favicon.png'
+  palette:
+    primary: 'light blue'
+    accent: 'light blue'
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_HTMLorMML
+  - mathjax-config.js
+markdown_extensions:
+  - mdx_math
+  - pymdownx.tasklist
+  - toc:
+      permalink: '#'
+  - admonition
+extra:
+    social:
+      - type: 'github'
+        link: 'https://github.com/Tanatloc/FreeFem-doc'

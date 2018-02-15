@@ -1,0 +1,2649 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.0">
+    
+    
+      
+        <title>Functions - FreeFem++ documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.aa3de92b.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.792431c1.css">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-blue" data-md-color-accent="light-blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#acos" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="FreeFem++ documentation" class="md-header-nav__button md-logo">
+          
+            <img src="../images/favicon.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                FreeFem++ documentation
+              </span>
+              <span class="md-header-nav__topic">
+                Functions
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <img src="../images/favicon.png" width="24" height="24">
+      
+    </span>
+    FreeFem++ documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../types/" title="Types" class="md-nav__link">
+      Types
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../global-variables/" title="Global variables" class="md-nav__link">
+      Global variables
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../quadrature/" title="Quadrature formulae" class="md-nav__link">
+      Quadrature formulae
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../operators/" title="Operators" class="md-nav__link">
+      Operators
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../loops/" title="Loops" class="md-nav__link">
+      Loops
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../io/" title="I/O" class="md-nav__link">
+      I/O
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Functions
+      </label>
+    
+    <a href="./" title="Functions" class="md-nav__link md-nav__link--active">
+      Functions
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#acos" title="acos" class="md-nav__link">
+    acos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acosh" title="acosh" class="md-nav__link">
+    acosh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptmesh" title="adaptmesh" class="md-nav__link">
+    adaptmesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adj" title="adj" class="md-nav__link">
+    adj
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#affinecg" title="AffineCG" class="md-nav__link">
+    AffineCG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#affinegmres" title="AffineGMRES" class="md-nav__link">
+    AffineGMRES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asin" title="asin" class="md-nav__link">
+    asin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asinh" title="asinh" class="md-nav__link">
+    asinh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assert" title="assert" class="md-nav__link">
+    assert
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atan" title="atan" class="md-nav__link">
+    atan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atan2" title="atan2" class="md-nav__link">
+    atan2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atanh" title="atanh" class="md-nav__link">
+    atanh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bfgs" title="BFGS" class="md-nav__link">
+    BFGS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buildlayers" title="buildlayers" class="md-nav__link">
+    buildlayers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buildmesh" title="buildmesh" class="md-nav__link">
+    buildmesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ceil" title="ceil" class="md-nav__link">
+    ceil
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change" title="change" class="md-nav__link">
+    change
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkmovemesh" title="checkmovemesh" class="md-nav__link">
+    checkmovemesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clock" title="clock" class="md-nav__link">
+    clock
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmaes" title="cmaes" class="md-nav__link">
+    cmaes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conj" title="conj" class="md-nav__link">
+    conj
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convect" title="convect" class="md-nav__link">
+    convect
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cos" title="cos" class="md-nav__link">
+    cos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cosh" title="cosh" class="md-nav__link">
+    cosh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cube" title="cube" class="md-nav__link">
+    cube
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dfft" title="dfft" class="md-nav__link">
+    dfft
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diffnp" title="diffnp" class="md-nav__link">
+    diffnp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diffpos" title="diffpos" class="md-nav__link">
+    diffpos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dist" title="dist" class="md-nav__link">
+    dist
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eigenvalue" title="EigenValue" class="md-nav__link">
+    EigenValue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emptymesh" title="emptymesh" class="md-nav__link">
+    emptymesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erf" title="erf" class="md-nav__link">
+    erf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erfc" title="erfc" class="md-nav__link">
+    erfc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exec" title="exec" class="md-nav__link">
+    exec
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit" title="exit" class="md-nav__link">
+    exit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exp" title="exp" class="md-nav__link">
+    exp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fdim" title="fdim" class="md-nav__link">
+    fdim
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#floor" title="floor" class="md-nav__link">
+    floor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmax" title="fmax" class="md-nav__link">
+    fmax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmin" title="fmin" class="md-nav__link">
+    fmin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmod" title="fmod" class="md-nav__link">
+    fmod
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imag" title="imag" class="md-nav__link">
+    imag
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#int1d" title="int1d" class="md-nav__link">
+    int1d
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#int2d" title="int2d" class="md-nav__link">
+    int2d
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#int3d" title="int3d" class="md-nav__link">
+    int3d
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intalledges" title="intalledges" class="md-nav__link">
+    intalledges
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpolate" title="interpolate" class="md-nav__link">
+    interpolate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invdiffnp" title="invdiffnp" class="md-nav__link">
+    invdiffnp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invdiffpos" title="invdiffpos" class="md-nav__link">
+    invdiffpos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isoline" title="isoline" class="md-nav__link">
+    isoline
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#j0" title="j0" class="md-nav__link">
+    j0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#j1" title="j1" class="md-nav__link">
+    j1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jn" title="jn" class="md-nav__link">
+    jn
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jump" title="jump" class="md-nav__link">
+    jump
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linearcg" title="LinearCG" class="md-nav__link">
+    LinearCG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lineargmres" title="LinearGMRES" class="md-nav__link">
+    LinearGMRES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log" title="log" class="md-nav__link">
+    log
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log10" title="log10" class="md-nav__link">
+    log10
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#max" title="max" class="md-nav__link">
+    max
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mean" title="mean" class="md-nav__link">
+    mean
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medit" title="medit" class="md-nav__link">
+    medit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#min" title="min" class="md-nav__link">
+    min
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#movemesh" title="movemesh" class="md-nav__link">
+    movemesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#movemesh23" title="movemesh23" class="md-nav__link">
+    movemesh23
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nlcg" title="NLCG" class="md-nav__link">
+    NLCG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on" title="on" class="md-nav__link">
+    on
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plot" title="plot" class="md-nav__link">
+    plot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polar" title="polar" class="md-nav__link">
+    polar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pow" title="pow" class="md-nav__link">
+    pow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projection" title="projection" class="md-nav__link">
+    projection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readmesh" title="readmesh" class="md-nav__link">
+    readmesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readmesh3" title="readmesh3" class="md-nav__link">
+    readmesh3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#round" title="round" class="md-nav__link">
+    round
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#savemesh" title="savemesh" class="md-nav__link">
+    savemesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#savesol" title="savesol" class="md-nav__link">
+    savesol
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set" title="set" class="md-nav__link">
+    set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sin" title="sin" class="md-nav__link">
+    sin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sinh" title="sinh" class="md-nav__link">
+    sinh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sort" title="sort" class="md-nav__link">
+    sort
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#splitmesh" title="splitmesh" class="md-nav__link">
+    splitmesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#square" title="square" class="md-nav__link">
+    square
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tan" title="tan" class="md-nav__link">
+    tan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tanh" title="tanh" class="md-nav__link">
+    tanh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tetg" title="tetg" class="md-nav__link">
+    tetg
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tetgconvexhull" title="tetgconvexhull" class="md-nav__link">
+    tetgconvexhull
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tetgreconstruction" title="tetgreconstruction" class="md-nav__link">
+    tetgreconstruction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tetgtransfo" title="tetgtransfo" class="md-nav__link">
+    tetgtransfo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trunc" title="trunc" class="md-nav__link">
+    trunc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#y0" title="y0" class="md-nav__link">
+    y0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#y1" title="y1" class="md-nav__link">
+    y1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yn" title="yn" class="md-nav__link">
+    yn
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../examples/" title="Examples" class="md-nav__link">
+      Examples
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../TODO/" title="TODO" class="md-nav__link">
+      TODO
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#acos" title="acos" class="md-nav__link">
+    acos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acosh" title="acosh" class="md-nav__link">
+    acosh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adaptmesh" title="adaptmesh" class="md-nav__link">
+    adaptmesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adj" title="adj" class="md-nav__link">
+    adj
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#affinecg" title="AffineCG" class="md-nav__link">
+    AffineCG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#affinegmres" title="AffineGMRES" class="md-nav__link">
+    AffineGMRES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asin" title="asin" class="md-nav__link">
+    asin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asinh" title="asinh" class="md-nav__link">
+    asinh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assert" title="assert" class="md-nav__link">
+    assert
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atan" title="atan" class="md-nav__link">
+    atan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atan2" title="atan2" class="md-nav__link">
+    atan2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atanh" title="atanh" class="md-nav__link">
+    atanh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bfgs" title="BFGS" class="md-nav__link">
+    BFGS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buildlayers" title="buildlayers" class="md-nav__link">
+    buildlayers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buildmesh" title="buildmesh" class="md-nav__link">
+    buildmesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ceil" title="ceil" class="md-nav__link">
+    ceil
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change" title="change" class="md-nav__link">
+    change
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkmovemesh" title="checkmovemesh" class="md-nav__link">
+    checkmovemesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clock" title="clock" class="md-nav__link">
+    clock
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmaes" title="cmaes" class="md-nav__link">
+    cmaes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conj" title="conj" class="md-nav__link">
+    conj
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convect" title="convect" class="md-nav__link">
+    convect
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cos" title="cos" class="md-nav__link">
+    cos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cosh" title="cosh" class="md-nav__link">
+    cosh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cube" title="cube" class="md-nav__link">
+    cube
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dfft" title="dfft" class="md-nav__link">
+    dfft
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diffnp" title="diffnp" class="md-nav__link">
+    diffnp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diffpos" title="diffpos" class="md-nav__link">
+    diffpos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dist" title="dist" class="md-nav__link">
+    dist
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eigenvalue" title="EigenValue" class="md-nav__link">
+    EigenValue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emptymesh" title="emptymesh" class="md-nav__link">
+    emptymesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erf" title="erf" class="md-nav__link">
+    erf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erfc" title="erfc" class="md-nav__link">
+    erfc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exec" title="exec" class="md-nav__link">
+    exec
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit" title="exit" class="md-nav__link">
+    exit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exp" title="exp" class="md-nav__link">
+    exp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fdim" title="fdim" class="md-nav__link">
+    fdim
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#floor" title="floor" class="md-nav__link">
+    floor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmax" title="fmax" class="md-nav__link">
+    fmax
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmin" title="fmin" class="md-nav__link">
+    fmin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fmod" title="fmod" class="md-nav__link">
+    fmod
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imag" title="imag" class="md-nav__link">
+    imag
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#int1d" title="int1d" class="md-nav__link">
+    int1d
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#int2d" title="int2d" class="md-nav__link">
+    int2d
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#int3d" title="int3d" class="md-nav__link">
+    int3d
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intalledges" title="intalledges" class="md-nav__link">
+    intalledges
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpolate" title="interpolate" class="md-nav__link">
+    interpolate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invdiffnp" title="invdiffnp" class="md-nav__link">
+    invdiffnp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#invdiffpos" title="invdiffpos" class="md-nav__link">
+    invdiffpos
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#isoline" title="isoline" class="md-nav__link">
+    isoline
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#j0" title="j0" class="md-nav__link">
+    j0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#j1" title="j1" class="md-nav__link">
+    j1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jn" title="jn" class="md-nav__link">
+    jn
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jump" title="jump" class="md-nav__link">
+    jump
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linearcg" title="LinearCG" class="md-nav__link">
+    LinearCG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lineargmres" title="LinearGMRES" class="md-nav__link">
+    LinearGMRES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log" title="log" class="md-nav__link">
+    log
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log10" title="log10" class="md-nav__link">
+    log10
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#max" title="max" class="md-nav__link">
+    max
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mean" title="mean" class="md-nav__link">
+    mean
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#medit" title="medit" class="md-nav__link">
+    medit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#min" title="min" class="md-nav__link">
+    min
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#movemesh" title="movemesh" class="md-nav__link">
+    movemesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#movemesh23" title="movemesh23" class="md-nav__link">
+    movemesh23
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nlcg" title="NLCG" class="md-nav__link">
+    NLCG
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on" title="on" class="md-nav__link">
+    on
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plot" title="plot" class="md-nav__link">
+    plot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polar" title="polar" class="md-nav__link">
+    polar
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pow" title="pow" class="md-nav__link">
+    pow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projection" title="projection" class="md-nav__link">
+    projection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readmesh" title="readmesh" class="md-nav__link">
+    readmesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readmesh3" title="readmesh3" class="md-nav__link">
+    readmesh3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#round" title="round" class="md-nav__link">
+    round
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#savemesh" title="savemesh" class="md-nav__link">
+    savemesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#savesol" title="savesol" class="md-nav__link">
+    savesol
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set" title="set" class="md-nav__link">
+    set
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sin" title="sin" class="md-nav__link">
+    sin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sinh" title="sinh" class="md-nav__link">
+    sinh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sort" title="sort" class="md-nav__link">
+    sort
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#splitmesh" title="splitmesh" class="md-nav__link">
+    splitmesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#square" title="square" class="md-nav__link">
+    square
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tan" title="tan" class="md-nav__link">
+    tan
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tanh" title="tanh" class="md-nav__link">
+    tanh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tetg" title="tetg" class="md-nav__link">
+    tetg
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tetgconvexhull" title="tetgconvexhull" class="md-nav__link">
+    tetgconvexhull
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tetgreconstruction" title="tetgreconstruction" class="md-nav__link">
+    tetgreconstruction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tetgtransfo" title="tetgtransfo" class="md-nav__link">
+    tetgtransfo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trunc" title="trunc" class="md-nav__link">
+    trunc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#y0" title="y0" class="md-nav__link">
+    y0
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#y1" title="y1" class="md-nav__link">
+    y1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yn" title="yn" class="md-nav__link">
+    yn
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Functions</h1>
+                
+                <h2 id="acos">acos<a class="headerlink" href="#acos" title="Permanent link">#</a></h2>
+<p>$\arccos$ function.</p>
+<pre><code class="ffpp">real theta = acos(x);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>theta (real)</li>
+</ul>
+<p><img alt="arccos function" src="../images/arccos.svg" /></p>
+<h2 id="acosh">acosh<a class="headerlink" href="#acosh" title="Permanent link">#</a></h2>
+<p>$\DeclareMathOperator\arccosh{arccosh}$
+$\arccosh$ function.</p>
+<pre><code class="ffpp">real theta = acosh(x);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>theta (real)</li>
+</ul>
+<p><img alt="arccosh function" src="../images/arccosh.svg" /></p>
+<h2 id="adaptmesh">adaptmesh<a class="headerlink" href="#adaptmesh" title="Permanent link">#</a></h2>
+<p>Mesh adaptation function.</p>
+<pre><code class="ffpp">mesh Thnew = adaptamesh(Th, f, ...)
+</code></pre>
+
+<blockquote>
+<p>More complete example:</p>
+</blockquote>
+<pre><code class="ffpp">mesh Thnew = adaptmesh(Th, [fx, fy], hmin=1.e-3, hmax=1.e-2, iso=false)
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>Th (mesh or mesh3)<br/>
+ <strong>Mesh to refine</strong></li>
+<li>f (func), scalar or vectorial<br/>
+ <strong>Function to follow for the mesh adaptation</strong></li>
+<li><em>hmin=</em> minh (real)<br/>
+ <strong>Minimum edge size</strong></li>
+<li><em>hmax=</em> maxh (real)<br/>
+ <strong>Maximum edge size</strong></li>
+<li><em>err=</em> Err (real)<br/>
+ <strong>Error level (P1 interpolation)</strong></li>
+<li><em>errg=</em> Errg (real)<br/>
+ <strong>Relative geometrical error</strong></li>
+<li><em>nbvx=</em> Nbvx (int)<br/>
+ <strong>Maximum number of vertices</strong></li>
+<li><em>nbsmooth=</em> NbSmooth (int)<br/>
+ <strong>Number of smoothing iterations</strong></li>
+<li><em>nbjacoby=</em> NbJacoby (int)<br/>
+ <strong>Number of iterations for the smoothing procedure</strong></li>
+<li><em>ratio=</em> Ratio (real)<br/>
+ <strong>Ratio of the triangles</strong></li>
+<li><em>omega=</em> Omega (real)<br/>
+ <strong>Relaxation parameter for the smoothing procedure</strong></li>
+<li><em>iso=</em> Iso (bool)<br/>
+ <strong>Isotropic adaptation (if true)</strong></li>
+<li><em>abserror=</em> AbsError (bool)<br/>
+ <strong>Error (if true) - Relative error (if false)</strong></li>
+<li><em>cutoff=</em> CutOff (real)<br/>
+ <strong>Lower limit of the relative error evaluation</strong></li>
+<li><em>verbosity=</em> Verbosity (real)<br/>
+ <strong>Verbosity level</strong></li>
+<li><em>inquire=</em> Inquire (bool)<br/>
+ <strong>If true, inquire graphically</strong></li>
+<li><em>splitpbedge=</em> SplitPbEdge (bool)<br/>
+ <strong>If true, split all internal edges in half</strong></li>
+<li><em>maxsubdiv=</em> MaxSubdiv (int)<br/>
+ <strong>Bound the maximum subdivisions</strong></li>
+<li><em>rescaling=</em> Rescaling (bool)<br/>
+ <strong>Rescale the function in [0, 1]</strong></li>
+<li><em>keepbackvertices=</em> KeepBackVertices (bool)<br/>
+ <strong>If true, try to keep vertices of the original mesh</strong></li>
+<li><em>isMetric=</em> IsMetric (bool)<br/>
+ <strong>If ture, the metric is defined explicitly</strong></li>
+<li><em>power=</em> Power (int)<br/>
+ <strong>Exponent of the Hessian</strong></li>
+<li><em>thetamax=</em> ThetaMax (int)<br/>
+ <strong>Minium corner angle (in degree)</strong></li>
+<li><em>splitin2=</em> SplitIn2 (bool)<br/>
+ <strong>Split all triangles into 4 sub-triangles if true</strong></li>
+<li><em>metric=</em> Metric ([real[int], real[int], real[int]])<br/>
+ <strong>Array of 3 real arrays defining the metric</strong></li>
+<li><em>nomeshgeneration=</em> NoMeshGeneration (bool)<br/>
+ <strong>If true, the mesh is not generated</strong></li>
+<li><em>periodic=</em> Periodic<br/>
+ <strong>Build an adapted periodic mesh</strong></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Thnew (mesh or mesh3)</li>
+</ul>
+<h2 id="adj">adj<a class="headerlink" href="#adj" title="Permanent link">#</a></h2>
+<p>Adjacent triangle of the triangle $k$ by the edge $e$</p>
+<pre><code class="ffpp">int T = Th[k].adj(e);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>e (int)<br/>
+ <strong>Edge number</strong></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>T (int)<br/>
+ <strong>Triangle number</strong></li>
+</ul>
+<h2 id="affinecg">AffineCG<a class="headerlink" href="#affinecg" title="Permanent link">#</a></h2>
+<p>Affine conjugate gradient solver</p>
+<p>Used to solve a problem like $Ax=b$</p>
+<pre><code class="ffpp">int Conv = AffineCG(A, x, precon=Precon, nbiter=NbIter, eps=Eps, veps=VEps, stop=Stop);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>A (matrix)<br/>
+ <strong>Matrix of the problem $Ax=b$</strong></li>
+<li>x (real[int])<br/>
+ <strong>Solution vector</strong></li>
+<li><em>precon=</em> Precon (real[int])<br/>
+ <strong>Preconditionning function</strong></li>
+<li><em>nbiter=</em> NbIter (int)<br/>
+ <strong>Maximum number of iterations</strong></li>
+<li><em>eps=</em> Eps (real)<br/>
+ <strong>Convergence criterion</strong><br/>
+ If $\epsilon&gt;0$: test $||A(x)||_p \leq \epsilon||A(x_0)||_p$<br/>
+ If $\epsilon&lt;0$: test $||A(x)||_p^2 \leq |\epsilon|$</li>
+<li><em>veps=</em> VEps (real)<br/>
+ <strong>Same as eps, but return -eps</strong></li>
+<li><em>stop=</em> Stop (func)<br/>
+ <strong>Convergence criterion as a function</strong><br/>
+ Prototype is <code>func bool StopFunc (int Iter, real[int] U, real[int] g)</code><br/>
+ <code>u</code>: current solution, <code>g</code>: current gradient (not preconditionned)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Conv (int)<br/>
+ <strong>0: converged - !0: not converged</strong></li>
+</ul>
+<h2 id="affinegmres">AffineGMRES<a class="headerlink" href="#affinegmres" title="Permanent link">#</a></h2>
+<p>Affine GMRES solver</p>
+<p>Parameters and output are the same as <a href="#affinecg">AffineCG</a></p>
+<h2 id="asin">asin<a class="headerlink" href="#asin" title="Permanent link">#</a></h2>
+<p>$\arcsin$ function.</p>
+<pre><code class="ffpp">real theta = asin(x);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>theta (real)</li>
+</ul>
+<p><img alt="arcsin function" src="../images/arcsin.svg" /></p>
+<h2 id="asinh">asinh<a class="headerlink" href="#asinh" title="Permanent link">#</a></h2>
+<p>$\DeclareMathOperator\arcsinh{arcsinh}$
+$\arcsinh$ function.</p>
+<pre><code class="ffpp">real theta = asinh(x);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>theta (real)</li>
+</ul>
+<p><img alt="arcsinh function" src="../images/arcsinh.svg" /></p>
+<h2 id="assert">assert<a class="headerlink" href="#assert" title="Permanent link">#</a></h2>
+<p>Verify a condition is true (same as C), if not the program stops.</p>
+<pre><code class="ffpp">assert(x==0)
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>Bollean condition</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="atan">atan<a class="headerlink" href="#atan" title="Permanent link">#</a></h2>
+<p>$\arctan$ function.</p>
+<pre><code class="ffpp">real theta = atan(x);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>theta (real)</li>
+</ul>
+<p><img alt="arctan function" src="../images/arctan.svg" /></p>
+<h2 id="atan2">atan2<a class="headerlink" href="#atan2" title="Permanent link">#</a></h2>
+<p>$\displaystyle{\arctan\left(\frac{y}{x}\right)}$ function, returning the correct sign for $\theta$.</p>
+<pre><code class="ffpp">real theta = atan2(y, x)
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>theta (real)</li>
+</ul>
+<h2 id="atanh">atanh<a class="headerlink" href="#atanh" title="Permanent link">#</a></h2>
+<p>$\DeclareMathOperator\arctanh{arctanh}$
+$\arctanh$ function.</p>
+<pre><code class="ffpp">real theta = atanh(x);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>theta (real)</li>
+</ul>
+<p><img alt="arctanh function" src="../images/arctanh.svg" /></p>
+<h2 id="bfgs">BFGS<a class="headerlink" href="#bfgs" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<p><u>Parameter:</u></p>
+<p><u>Output:</u></p>
+<h2 id="buildlayers">buildlayers<a class="headerlink" href="#buildlayers" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<p><u>Parameter:</u></p>
+<p><u>Output:</u></p>
+<h2 id="buildmesh">buildmesh<a class="headerlink" href="#buildmesh" title="Permanent link">#</a></h2>
+<p>Build a 2D mesh using border elements.</p>
+<pre><code class="ffpp">mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixeborder=FixeBorder]);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>b1, b2, b3, b4 (border)<br/>
+ <strong>Geometry border, <code>b1(nn)</code> mean <code>b1</code> border discretize by <code>nn</code> vertices</strong></li>
+<li><em>nbvx=</em> Nbvx (int) <em>[Optional]</em><br/>
+ <strong>Maximum number of vertices</strong><br/>
+ Default: &gt;TODO</li>
+<li><em>fixeborder=</em> FixeBorder (bool) <em>[Optional]</em><br/>
+ <strong>If true, mesh genertator can not change the boundary mesh</strong><br/>
+ Default: <code>false</code></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Th (mesh)<br/>
+ <strong>Resulting mesh</strong></li>
+</ul>
+<h2 id="ceil">ceil<a class="headerlink" href="#ceil" title="Permanent link">#</a></h2>
+<p>Round fractions up of $x$.</p>
+<pre><code class="ffpp">int c = ceil(x);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>c (int)</li>
+</ul>
+<h2 id="change">change<a class="headerlink" href="#change" title="Permanent link">#</a></h2>
+<p>Change a property of a mesh.</p>
+<pre><code class="ffpp">int[int] L = [0, 1];
+Thnew = change(Th, label=L);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>
+<p>Th (mesh)<br/>
+ <strong>Original mesh</strong></p>
+</li>
+<li>
+<p><em>label=</em> L (int[int])<br/>
+ <strong>Pair of old and new label</strong></p>
+</li>
+<li><em>region=</em> R (int[int])<br/>
+ <strong>Pair of old and new region</strong></li>
+<li><em>flabel=</em> l (func int)<br/>
+ <strong>Function of int given the new label</strong></li>
+<li><em>fregion=</em> r (func int)</br>
+ <strong>Function of int given the new region</strong></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Thnew (mesh)
+ <strong>Mesh with chenged parameters</strong></li>
+</ul>
+<h2 id="checkmovemesh">checkmovemesh<a class="headerlink" href="#checkmovemesh" title="Permanent link">#</a></h2>
+<p>Check a <code>movemesh</code> without mesh generation.</p>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<p><u>Parameter:</u></p>
+<p><u>Output:</u></p>
+<h2 id="clock">clock<a class="headerlink" href="#clock" title="Permanent link">#</a></h2>
+<p>Get the clock in second.</p>
+<pre><code class="ffpp">real t = clock();
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>None</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>t (real)<br/>
+ <strong>Current CPU time</strong></li>
+</ul>
+<h2 id="cmaes">cmaes<a class="headerlink" href="#cmaes" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<p><u>Parameter:</u></p>
+<p><u>Output:</u></p>
+<h2 id="conj">conj<a class="headerlink" href="#conj" title="Permanent link">#</a></h2>
+<p>Caculate the conjuguate of a complex number.</p>
+<pre><code class="ffpp">complex C1 = 1 + 1i;
+complex C2 = conj(C1);
+</code></pre>
+
+<p><u>Parameter:</u></p>
+<ul>
+<li>C1 (complex)<br/>
+ <strong>Complex number</strong></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>C2 (complex)<br/>
+ <strong>Conjuguate of C1</strong></li>
+</ul>
+<h2 id="convect">convect<a class="headerlink" href="#convect" title="Permanent link">#</a></h2>
+<p>Characteristic Galerkin method.</p>
+<pre><code class="ffpp">convect([ux, uy], dt, c);
+</code></pre>
+
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<p><u>Parameter:</u></p>
+<p><u>Output:</u></p>
+<h2 id="cos">cos<a class="headerlink" href="#cos" title="Permanent link">#</a></h2>
+<p>$\cos$ function.</p>
+<pre><code class="ffpp">real x = cos(theta);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>theta (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><img alt="cos function" src="../images/cos.svg" /></p>
+<h2 id="cosh">cosh<a class="headerlink" href="#cosh" title="Permanent link">#</a></h2>
+<p>$\cosh$ function.</p>
+<pre><code class="ffpp">real x = cosh(theta);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>theta (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<h2 id="cube">cube<a class="headerlink" href="#cube" title="Permanent link">#</a></h2>
+<p>Construct a cubic mesh.</p>
+<p>Need:</p>
+<pre><code class="ffpp">include &quot;cube.idp&quot;
+</code></pre>
+
+<pre><code class="ffpp">mesh3 Th = cube(nnX, nnY, nnZ, [X(x), Y(y), Z(z)], [label=Label], [flags=Flags], [region=Region]);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>nnX (int)<br/>
+ <strong>Number of discretization point along $x$</strong></li>
+<li>nnY (int)<br/>
+ <strong>Number of discretization point along $y$</strong></li>
+<li>nnZ (int)<br/>
+  <strong>Number of discretization point along $z$</strong></li>
+<li>X(x) (func) <em>[Optional]</em><br/>
+  <strong>Affine function of $x$ to define the length</strong><br/>
+  Default: <code>x</code></li>
+<li>Y(y) (func) <em>[Optional]</em><br/>
+  <strong>Affine function of $y$ to define the width</strong><br/>
+  Default: <code>y</code></li>
+<li>Z(z) (func) <em>[Optional]</em><br/>
+  <strong>Affine function of $z$ to define the height</strong><br/>
+  Default: <code>z</code></li>
+<li><em>label=</em> Label (int[int]) <em>[Optional]</em><br/>
+  <strong>List of surface labels</strong><br/>
+  Default: <code>[1, 2, 3, 4, 5, 6]</code></li>
+<li><em>flags=</em> Flags (int) <em>[Optional]</em><br/>
+  <strong>Refer to <a href="#square">square</a></strong></li>
+<li><em>region=</em> Region (int) <em>[Optional]</em><br/>
+  <strong>Region number of the cube volume</strong>
+  Default: <code>0</code></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Th (mesh3)<br/>
+ <strong>Cube mesh</strong></li>
+</ul>
+<h2 id="dfft">dfft<a class="headerlink" href="#dfft" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="diffnp">diffnp<a class="headerlink" href="#diffnp" title="Permanent link">#</a></h2>
+<p>Arithmetic useful function.</p>
+<pre><code class="ffpp">diffnp(a, b) = (a&lt;0)&amp;(0&lt;b) ? (b-a) : 0;
+</code></pre>
+
+<h2 id="diffpos">diffpos<a class="headerlink" href="#diffpos" title="Permanent link">#</a></h2>
+<p>Arithmetic useful function.</p>
+<pre><code class="ffpp">diffpos(a, b) = max(b-a, 0);
+</code></pre>
+
+<h2 id="dist">dist<a class="headerlink" href="#dist" title="Permanent link">#</a></h2>
+<p>Arithmetic useful function.</p>
+<pre><code class="ffpp">dist(a, b, c) = sqrt(a^2 + b^2 + c^2);
+</code></pre>
+
+<h2 id="eigenvalue">EigenValue<a class="headerlink" href="#eigenvalue" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="emptymesh">emptymesh<a class="headerlink" href="#emptymesh" title="Permanent link">#</a></h2>
+<p>Build an empty mesh.</p>
+<p>Useful to handle Lagrange multipliers in mixed and Mortar methods.</p>
+<pre><code class="ffpp">mesh eTh = emptymesh(Th, ssd);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>Th (mesh<br/>
+ <strong>Mesh to empty</strong></li>
+<li>ssd (int[int])<br/>
+ <strong>&gt;TODO</strong></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>eTh (mesh)<br/>
+ <strong>Empty mesh</strong></li>
+</ul>
+<h2 id="erf">erf<a class="headerlink" href="#erf" title="Permanent link">#</a></h2>
+<p>The error function:
+<script type="math/tex; mode=display">
+erf(x) = \frac{2}{\sqrt{pi}}\int_{0}^{x}{\exp(-t^2)dt}
+</script>
+</p>
+<pre><code class="ffpp">real err = erf(x);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>err (real)</li>
+</ul>
+<h2 id="erfc">erfc<a class="headerlink" href="#erfc" title="Permanent link">#</a></h2>
+<p>Complementary of the <a href="#erf">error function</a>:
+<script type="math/tex; mode=display">
+erfc(x) = 1-erf(x)
+</script>
+</p>
+<pre><code class="fpp">real errc = erfc(x);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>x (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>err (real)</li>
+</ul>
+<h2 id="exec">exec<a class="headerlink" href="#exec" title="Permanent link">#</a></h2>
+<p>Execute an external command.</p>
+<pre><code class="ffpp">int v = exec(command);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>command (string)<br/>
+ <strong>Command to execute</strong></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>v (int)<br/>
+ <strong>Value returned by the command</strong></li>
+</ul>
+<h2 id="exit">exit<a class="headerlink" href="#exit" title="Permanent link">#</a></h2>
+<p>Exit function, equivalent to <code>return</code>.</p>
+<pre><code class="ffpp">exit(N);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>N (int)<br/>
+ <strong>Return value</strong></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="exp">exp<a class="headerlink" href="#exp" title="Permanent link">#</a></h2>
+<p>Exponential function.</p>
+<pre><code class="ffpp">real a = exp(b);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>b (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>a (real)</li>
+</ul>
+<h2 id="fdim">fdim<a class="headerlink" href="#fdim" title="Permanent link">#</a></h2>
+<p>Positive difference (<code>cmath</code> function).</p>
+<pre><code class="ffpp">real fd = fdim(a, b);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>a (real)</li>
+<li>b (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>fd (real)<br/>
+ <strong>If $x &gt; y$, return $x-y$</strong><br/>
+ <strong>If $x \leq y$, return $0$</strong></li>
+</ul>
+<h2 id="floor">floor<a class="headerlink" href="#floor" title="Permanent link">#</a></h2>
+<p>Floor function.</p>
+<pre><code class="ffpp">real a = floor(b);
+</code></pre>
+
+<p>Return the largest integer value not greater than <code>b</code>.</p>
+<p><u>Parameters:</u></p>
+<ul>
+<li>b (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>a (real)</li>
+</ul>
+<h2 id="fmax">fmax<a class="headerlink" href="#fmax" title="Permanent link">#</a></h2>
+<p>Maximum (<code>cmath</code> function).</p>
+<pre><code class="ffpp">real Max = fmax(a, b);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>a (real)</li>
+<li>b (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Max (real)</li>
+</ul>
+<h2 id="fmin">fmin<a class="headerlink" href="#fmin" title="Permanent link">#</a></h2>
+<p>Minimum (<code>cmath</code> function).</p>
+<pre><code class="ffpp">real Min = fmin(a, b);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>a (real)</li>
+<li>b (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Min (real)</li>
+</ul>
+<h2 id="fmod">fmod<a class="headerlink" href="#fmod" title="Permanent link">#</a></h2>
+<p>Remainder of $a/b$ (<code>cmath</code> function).</p>
+<pre><code class="ffpp">real Mod = fmin(a, b);
+</code></pre>
+
+<p><u>Parameters:</u></p>
+<ul>
+<li>a (real)</li>
+<li>b (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Min (real)</li>
+</ul>
+<p><u>Parameters:</u></p>
+<ul>
+<li>a (real)</li>
+<li>b (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Mod (real)</li>
+</ul>
+<h2 id="imag">imag<a class="headerlink" href="#imag" title="Permanent link">#</a></h2>
+<p>Imaginary part of a complex number.</p>
+<pre><code class="ffpp">complex c = 1. + 1i;
+real Im = imag(c);
+</code></pre>
+
+<h2 id="int1d">int1d<a class="headerlink" href="#int1d" title="Permanent link">#</a></h2>
+<p>1D integral.</p>
+<pre><code class="ffpp">int1d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(
+    ...
+)
+</code></pre>
+
+<p>Used in <a href="../types/#problem">problem</a>, <a href="../types/#solve">solve</a> or <a href="../types/#varf">varf</a> definition to impose a boundary condition only (FreeFem++ does not support 1D simulation).</p>
+<p><u>Parameters:</u></p>
+<ul>
+<li>Th (mesh)<br/>
+ <strong>Mesh where the integral is calculated</strong></li>
+<li>Gamma (int) <em>[Optional]</em><br/>
+ <strong>Label of the 1D border</strong><br/>
+ Default: all borders of the mesh</li>
+<li><em>qfe=</em> Qfe (keyword) _[Optional]<br/>
+ <strong>Quadrature formula, see <a href="../quadrature/#int1d">quadrature formulae</a></strong></li>
+<li><em>qforder=</em> Qforder (keyword) <em>[Optional]</em><br/>
+ <strong>Quadrature order, see <a href="../quadrature/#int1d">quadrature formulae</a></strong></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Non relevant</li>
+</ul>
+<div class="admonition note">
+<p>The content of <code>int1d</code> must be a linear or bilinear form.</p>
+</div>
+<h2 id="int2d">int2d<a class="headerlink" href="#int2d" title="Permanent link">#</a></h2>
+<p>2D integral.</p>
+<pre><code class="ffpp">int2d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(
+    ...
+)
+</code></pre>
+
+<p>Or</p>
+<pre><code class="ffpp">int2d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(
+    ...
+)
+</code></pre>
+
+<p>Used in <a href="../types/#problem">problem</a>, <a href="../types/#solve">solve</a> or <a href="../types/#varf">varf</a> definition to:
+ - Calculate integral in 2D simulation
+ - Impose a boundary condition in 3D simulation</p>
+<p><u>Parameters:</u></p>
+<ul>
+<li>Th (mesh)<br/>
+ <strong>Mesh where the integral is calculated</strong></li>
+<li>Region (int) <em>[Optional]</em><br/>
+ <strong>Label of the 2D region (2D simulation)</strong><br/>
+ Default: all regions of the mesh</li>
+<li>Gamma (int) <em>[Optional]</em><br/>
+ <strong>Label of the 2D border (3D simulation)</strong><br/>
+ Default: all borders of the mesh</li>
+<li><em>qfe=</em> Qfe (keyword) _[Optional]<br/>
+ <strong>Quadrature formula, see <a href="../quadrature/#int2d">quadrature formulae</a></strong></li>
+<li><em>qforder=</em> Qforder (keyword) <em>[Optional]</em><br/>
+ <strong>Quadrature order, see <a href="../quadrature/#int2d">quadrature formulae</a></strong></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Non relevant</li>
+</ul>
+<div class="admonition note">
+<p>The content of the <code>int2d</code> must be a linear or bilinear form.</p>
+</div>
+<h2 id="int3d">int3d<a class="headerlink" href="#int3d" title="Permanent link">#</a></h2>
+<p>3D integral.</p>
+<pre><code class="ffpp">int3d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(
+    ...
+)
+</code></pre>
+
+<p>Used in <a href="../types/#problem">problem</a>, <a href="../types/#solve">solve</a> or <a href="../types/#varf">varf</a> definition to calculate integral in 3D simulation.</p>
+<p><u>Parameters:</u></p>
+<ul>
+<li>Th (mesh)<br/>
+ <strong>Mesh where the integral is calculated</strong></li>
+<li>Region (int) <em>[Optional]</em><br/>
+ <strong>Label of the 3D region</strong><br/>
+ Default: all regions of the mesh</li>
+<li><em>qfe=</em> Qfe (keyword) _[Optional]<br/>
+ <strong>Quadrature formula, see <a href="../quadrature/#int3d">quadrature formulae</a></strong></li>
+<li><em>qforder=</em> Qforder (keyword) <em>[Optional]</em><br/>
+ <strong>Quadrature order, see <a href="../quadrature/#int3d">quadrature formulae</a></strong></li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>Non relevant</li>
+</ul>
+<div class="admonition note">
+<p>The content of the <code>int3d</code> must be a linear or bilinear form.</p>
+</div>
+<h2 id="intalledges">intalledges<a class="headerlink" href="#intalledges" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="interpolate">interpolate<a class="headerlink" href="#interpolate" title="Permanent link">#</a></h2>
+<p>Interpolation matrix.</p>
+<pre><code class="ffpp">matrix I = interpolate(Vh, Wh, inside=Inside, t=T, op=Op, U2Vc=U2VC);
+</code></pre>
+
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="invdiffnp">invdiffnp<a class="headerlink" href="#invdiffnp" title="Permanent link">#</a></h2>
+<p>Arithmetic useful function.</p>
+<pre><code class="ffpp">invdiffnp(a, b) = (a&lt;0)&amp;(0&lt;b) ? 1/(b-a) : 0
+</code></pre>
+
+<h2 id="invdiffpos">invdiffpos<a class="headerlink" href="#invdiffpos" title="Permanent link">#</a></h2>
+<p>Arithmetic useful function.</p>
+<pre><code class="ffpp">invdiffpos(a, b) = (a&lt;b) ? 1./(b-a) : 0
+</code></pre>
+
+<h2 id="isoline">isoline<a class="headerlink" href="#isoline" title="Permanent link">#</a></h2>
+<p>Need:</p>
+<pre><code class="ffpp">load &quot;isoline&quot;
+</code></pre>
+
+<pre><code class="ffpp">int N = isoline(Th, u, xy, iso=Iso, close=Close, smoothing=Smoothing, ratio=Ratio, eps=Eps, beginend=BeginEnd, file=File);
+</code></pre>
+
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="j0">j0<a class="headerlink" href="#j0" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="j1">j1<a class="headerlink" href="#j1" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="jn">jn<a class="headerlink" href="#jn" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="jump">jump<a class="headerlink" href="#jump" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="linearcg">LinearCG<a class="headerlink" href="#linearcg" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="lineargmres">LinearGMRES<a class="headerlink" href="#lineargmres" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="log">log<a class="headerlink" href="#log" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="log10">log10<a class="headerlink" href="#log10" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="max">max<a class="headerlink" href="#max" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="mean">mean<a class="headerlink" href="#mean" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="medit">medit<a class="headerlink" href="#medit" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="min">min<a class="headerlink" href="#min" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="movemesh">movemesh<a class="headerlink" href="#movemesh" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="movemesh23">movemesh23<a class="headerlink" href="#movemesh23" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="nlcg">NLCG<a class="headerlink" href="#nlcg" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="on">on<a class="headerlink" href="#on" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="plot">plot<a class="headerlink" href="#plot" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="polar">polar<a class="headerlink" href="#polar" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="pow">pow<a class="headerlink" href="#pow" title="Permanent link">#</a></h2>
+<p>Power function.</p>
+<pre><code class="ffpp">real p = pow(a, b);
+</code></pre>
+
+<p>$p=a^b$</p>
+<p><u>Parameters:</u></p>
+<ul>
+<li>a (real)</li>
+<li>b (real)</li>
+</ul>
+<p><u>Output:</u></p>
+<ul>
+<li>p (real)</li>
+</ul>
+<h2 id="projection">projection<a class="headerlink" href="#projection" title="Permanent link">#</a></h2>
+<p>Arithmetic useful function.</p>
+<pre><code class="ffpp">projection(a, b, x) = min(max(a, x), b);
+</code></pre>
+
+<h2 id="readmesh">readmesh<a class="headerlink" href="#readmesh" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="readmesh3">readmesh3<a class="headerlink" href="#readmesh3" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="round">round<a class="headerlink" href="#round" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="savemesh">savemesh<a class="headerlink" href="#savemesh" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="savesol">savesol<a class="headerlink" href="#savesol" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="set">set<a class="headerlink" href="#set" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="sin">sin<a class="headerlink" href="#sin" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="sinh">sinh<a class="headerlink" href="#sinh" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="sort">sort<a class="headerlink" href="#sort" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="splitmesh">splitmesh<a class="headerlink" href="#splitmesh" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="square">square<a class="headerlink" href="#square" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="tan">tan<a class="headerlink" href="#tan" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="tanh">tanh<a class="headerlink" href="#tanh" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="tetg">tetg<a class="headerlink" href="#tetg" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="tetgconvexhull">tetgconvexhull<a class="headerlink" href="#tetgconvexhull" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="tetgreconstruction">tetgreconstruction<a class="headerlink" href="#tetgreconstruction" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="tetgtransfo">tetgtransfo<a class="headerlink" href="#tetgtransfo" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="trunc">trunc<a class="headerlink" href="#trunc" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="y0">y0<a class="headerlink" href="#y0" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="y1">y1<a class="headerlink" href="#y1" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+<h2 id="yn">yn<a class="headerlink" href="#yn" title="Permanent link">#</a></h2>
+<blockquote>
+<p>TODO</p>
+</blockquote>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../io/" title="I/O" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                I/O
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../examples/" title="Examples" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Examples
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2017 - 2018 Airthium
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/Tanatloc/FreeFem-doc" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.9fb73e57.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+      
+        <script src="../mathjax-config.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
