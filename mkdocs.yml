@@ -29,4 +29,4 @@ markdown_extensions:
 extra:
     social:
       - type: 'github'
-        link: 'https://github.com/Tanatloc/FreeFem-doc'
+        link: 'https://github.com/FreeFem/FreeFem-doc'
