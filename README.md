@@ -3,7 +3,7 @@
 Documentation of [FreeFem++](http://www.freefem.org/).
 
 ## View the documentation
-<a href="https://tanatloc.github.io/FreeFem-doc/site/index.html" target="_blank">Documentation website</a>
+<a href="https://freefem.github.io/FreeFem-doc/site/index.html" target="_blank">Documentation website</a>
 
 
 ## How to contribute
