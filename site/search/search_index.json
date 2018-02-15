@@ -1,988 +1,988 @@
 {
     "docs": [
         {
-            "location": "/",
-            "text": "Welcome to FreeFem++ documentation\n#\n\n\nPlease check the \nTODO page\n#\n\n\nFreeFem++ is a partial differential equation solver. It has its own language. FreeFem++ scripts can solve multiphysics non linear systems in 2D and 3D.\n\n\nProblems involving PDE (2d, 3d) from several branches of physics such as fluid-structure interactions require interpolations of data on several meshes and their manipulation within one program. FreeFem++ includes a fast 2d-tree-based interpolation algorithm and a language for the manipulation of data on multiple meshes.\n\n\nFreeFem++ is written in C++ and the FreeFem++ language is a C++ idiom.\n\n\nFor more informations, visit the \nFreeFem++ website\n.",
+            "location": "/", 
+            "text": "Welcome to FreeFem++ documentation\n#\n\n\nPlease check the \nTODO page\n#\n\n\nFreeFem++ is a partial differential equation solver. It has its own language. FreeFem++ scripts can solve multiphysics non linear systems in 2D and 3D.\n\n\nProblems involving PDE (2d, 3d) from several branches of physics such as fluid-structure interactions require interpolations of data on several meshes and their manipulation within one program. FreeFem++ includes a fast 2d-tree-based interpolation algorithm and a language for the manipulation of data on multiple meshes.\n\n\nFreeFem++ is written in C++ and the FreeFem++ language is a C++ idiom.\n\n\nFor more informations, visit the \nFreeFem++ website\n.", 
             "title": "Home"
-        },
+        }, 
         {
-            "location": "/#welcome-to-freefem-documentation",
-            "text": "",
+            "location": "/#welcome-to-freefem-documentation", 
+            "text": "", 
             "title": "Welcome to FreeFem++ documentation"
-        },
+        }, 
         {
-            "location": "/#please-check-the-todo-page",
-            "text": "FreeFem++ is a partial differential equation solver. It has its own language. FreeFem++ scripts can solve multiphysics non linear systems in 2D and 3D.  Problems involving PDE (2d, 3d) from several branches of physics such as fluid-structure interactions require interpolations of data on several meshes and their manipulation within one program. FreeFem++ includes a fast 2d-tree-based interpolation algorithm and a language for the manipulation of data on multiple meshes.  FreeFem++ is written in C++ and the FreeFem++ language is a C++ idiom.  For more informations, visit the  FreeFem++ website .",
+            "location": "/#please-check-the-todo-page", 
+            "text": "FreeFem++ is a partial differential equation solver. It has its own language. FreeFem++ scripts can solve multiphysics non linear systems in 2D and 3D.  Problems involving PDE (2d, 3d) from several branches of physics such as fluid-structure interactions require interpolations of data on several meshes and their manipulation within one program. FreeFem++ includes a fast 2d-tree-based interpolation algorithm and a language for the manipulation of data on multiple meshes.  FreeFem++ is written in C++ and the FreeFem++ language is a C++ idiom.  For more informations, visit the  FreeFem++ website .", 
             "title": "Please check the TODO page"
-        },
+        }, 
         {
-            "location": "/types/",
-            "text": "Standard types\n#\n\n\nint\n#\n\n\nInteger value.\n\n\nint i = 0;\n\n\n\n\nbool\n#\n\n\nBoolean value.\n\n\nbool b = true;\n\n\n\n\nreal\n#\n\n\nReal value (C double precision).\n\n\nreal r = 0.;\n\n\n\n\ncomplex\n#\n\n\nComplex value (two C double precision).\n\n\ncomplex c = 0.+1i;\n\n\n\n\nThe imaginary number $i$ is defined as \n1i\n\n\nstring\n#\n\n\nString value.\n\n\nstring s = \"this is a string\";\n\n\n\n\nMesh design\n#\n\n\nborder\n#\n\n\nBorder type.\n\n\nborder b(t=0., 1.){x=cos(2.*pi*t); y=sin(2.*pi*t); label=1;};\n\n\n\n\nDefine the 2D geometrical border in parametric coordinates.\n\n\nmesh\n#\n\n\n2D Mesh type\n\n\nmesh Th;\n\n\n\n\nmesh3\n#\n\n\n3D mesh type\n\n\nmesh3 Th;\n\n\n\n\nFinite element space design\n#\n\n\nfespace\n#\n\n\nFinite element space type.\n\n\nfespace Uh(Th, P1);\nfespace UPh(Th, [P2, P2, P1]);\n\n\n\n\nA finite element space is based on a mesh (\nTh\n) with an element definition, scalar (\nP1\n) or vector (\n[P2, P2, P1]\n).\n\n\nAvailable finite element space:\n\n\nGeneric:\n\n\n\n\nP0 / P03d\n\n\nP0Edge\n\n\nP1 / P13d\n\n\nP1dc\n\n\nP1b / P1b3d\n\n\nP1bl / P1bl3d\n\n\nP1nc\n\n\nP2 / P23d\n\n\nP2b\n\n\nP2dc\n\n\nRT0 / RT03d\n\n\nRT0Ortho\n\n\nEdge03d\n\n\n\n\nUsing \nElement_P3\n:\n\n\n\n\nP3\n\n\n\n\nUsing \nElement_P3dc\n:\n\n\n\n\nP3d\n\n\n\n\nUsing \nElement_P4\n:\n\n\n\n\nP4\n\n\n\n\nUsing \nElement_P4dc\n:\n\n\n\n\nP4dc\n\n\n\n\nUsing \nElement_PkEdge\n:\n\n\n\n\nP1Edge\n\n\nP2Edge\n\n\nP3Edge\n\n\nP4Edge\n\n\nP5Edge\n\n\n\n\nUsing \nMorlay\n:\n\n\n\n\nP2Morley\n\n\n\n\nUsing \nHCT\n:\n\n\n\n\nHCT\n\n\n\n\nUsing \nBernardiRaugel\n:\n\n\n\n\nP2BR\n\n\n\n\nUsing \nElement_Mixte\n:\n\n\n\n\nRT1\n\n\nRT1Ortho\n\n\nBDM1\n\n\nBDM1Ortho\n\n\n\n\nUsing \nElement_Mixte3d\n:\n\n\n\n\nEdge13D\n\n\nEdge23D\n\n\n\n\nUsing \nElement_QF\n:\n\n\n\n\nFEQF\n\n\n\n\nA finite element variable is defined as follow:\n\n\nfespace Uh(Th, P1);\nUh u;\n\nfespace UPh(Th, [P2, P2, P1]);\nUPh [Ux, Uy, p];\n\n\n\n\nMacro design\n#\n\n\nmacro\n#\n\n\nMacro type.\n\n\nmacro grad(u) [dx(u), dy(u)] //\n\n\n\n\nMacro ends with \n//\n.\n\n\nYou can use the C concatenation operator ## inside a macro using #.\n\n\n\n\nIf Ux and Uy are defined:\n\n\n\n\nmacro Grad(U) [grad(U#x), grad(U#y)] //\n\n\n\n\nFunctions design\n#\n\n\nfunc\n#\n\n\nFunction type.\n\n\nFunction without parameters ($x$, $y$ and $z$ are implicitly considered):\n\n\nfunc f = x^2 + y^2;\n\n\n\n\nFunction with parameters:\n\n\nfunc real f (real var){\n    return x^2 + y^2 + var^2;\n}\n\n\n\n\nProblem design\n#\n\n\nproblem\n#\n\n\nProblem type.\n\n\nproblem Laplacian (u, uh) = ...\n\n\n\n\nFreeFem++ needs the variational form in the problem definition.\n\n\nIn order to solve the problem, just call:\n\n\nLaplacian;\n\n\n\n\nsolve\n#\n\n\nSolve type.\n\n\nIdentical to problem but automatically solved.\n\n\nvarf\n#\n\n\nVariational form type.\n\n\nvarf vLaplacian (u, uh) = ...\n\n\n\n\nThis is the other way to define a problem in order to directly manage matrix and right hang side.\n\n\nArray\n#\n\n\nArray can be defined using types: int, bool, real, complex, string, ...\n\n\nArray index\n#\n\n\nArray index can be int or string:\n\n\nreal[int] Ai = [1, 1, 0, 0];\nreal[string] As = [1, 1, 0, 0];\n\n\n\n\nArray size\n#\n\n\nThe size of an array is obtained using the keyword \nn\n:\n\n\nint ArraySize = Ai.n;\n\n\n\n\nDouble array\n#\n\n\nA double array (matrix) can be defined using two indexes:\n\n\nreal[int, int] Aii = [[1, 1], [0, 0]];\n\n\n\n\nThe two sizes are obtained using the keywords \nn\n and \nm\n:\n\n\nint ArraySize1 = Aii.n;\nint ArraySize2 = Aii.m;\n\n\n\n\nMatrix\n#\n\n\nMatrices can be defined using a variational form type:\n\n\nmatrix Laplacian = vLaplacian(Uh, Uh);\n\n\n\n\nMatrices are designed using templates, so they can be real or complex:\n\n\nmatrix<real> A = ...\nmarix<complex> Ai = ...\n\n\n\n\nThe diagonal of the matrix is obtained using:\n\n\nreal[int] Aii = A.diag;",
+            "location": "/types/", 
+            "text": "Standard types\n#\n\n\nint\n#\n\n\nInteger value.\n\n\nint i = 0;\n\n\n\n\nbool\n#\n\n\nBoolean value.\n\n\nbool b = true;\n\n\n\n\nreal\n#\n\n\nReal value (C double precision).\n\n\nreal r = 0.;\n\n\n\n\ncomplex\n#\n\n\nComplex value (two C double precision).\n\n\ncomplex c = 0.+1i;\n\n\n\n\nThe imaginary number $i$ is defined as \n1i\n\n\nstring\n#\n\n\nString value.\n\n\nstring s = \nthis is a string\n;\n\n\n\n\nMesh design\n#\n\n\nborder\n#\n\n\nBorder type.\n\n\nborder b(t=0., 1.){x=cos(2.*pi*t); y=sin(2.*pi*t); label=1;};\n\n\n\n\nDefine the 2D geometrical border in parametric coordinates.\n\n\nmesh\n#\n\n\n2D Mesh type\n\n\nmesh Th;\n\n\n\n\nmesh3\n#\n\n\n3D mesh type\n\n\nmesh3 Th;\n\n\n\n\nFinite element space design\n#\n\n\nfespace\n#\n\n\nFinite element space type.\n\n\nfespace Uh(Th, P1);\nfespace UPh(Th, [P2, P2, P1]);\n\n\n\n\nA finite element space is based on a mesh (\nTh\n) with an element definition, scalar (\nP1\n) or vector (\n[P2, P2, P1]\n).\n\n\nAvailable finite element space:\n\n\nGeneric:\n\n\n\n\nP0 / P03d\n\n\nP0Edge\n\n\nP1 / P13d\n\n\nP1dc\n\n\nP1b / P1b3d\n\n\nP1bl / P1bl3d\n\n\nP1nc\n\n\nP2 / P23d\n\n\nP2b\n\n\nP2dc\n\n\nRT0 / RT03d\n\n\nRT0Ortho\n\n\nEdge03d\n\n\n\n\nUsing \nElement_P3\n:\n\n\n\n\nP3\n\n\n\n\nUsing \nElement_P3dc\n:\n\n\n\n\nP3d\n\n\n\n\nUsing \nElement_P4\n:\n\n\n\n\nP4\n\n\n\n\nUsing \nElement_P4dc\n:\n\n\n\n\nP4dc\n\n\n\n\nUsing \nElement_PkEdge\n:\n\n\n\n\nP1Edge\n\n\nP2Edge\n\n\nP3Edge\n\n\nP4Edge\n\n\nP5Edge\n\n\n\n\nUsing \nMorlay\n:\n\n\n\n\nP2Morley\n\n\n\n\nUsing \nHCT\n:\n\n\n\n\nHCT\n\n\n\n\nUsing \nBernardiRaugel\n:\n\n\n\n\nP2BR\n\n\n\n\nUsing \nElement_Mixte\n:\n\n\n\n\nRT1\n\n\nRT1Ortho\n\n\nBDM1\n\n\nBDM1Ortho\n\n\n\n\nUsing \nElement_Mixte3d\n:\n\n\n\n\nEdge13D\n\n\nEdge23D\n\n\n\n\nUsing \nElement_QF\n:\n\n\n\n\nFEQF\n\n\n\n\nA finite element variable is defined as follow:\n\n\nfespace Uh(Th, P1);\nUh u;\n\nfespace UPh(Th, [P2, P2, P1]);\nUPh [Ux, Uy, p];\n\n\n\n\nMacro design\n#\n\n\nmacro\n#\n\n\nMacro type.\n\n\nmacro grad(u) [dx(u), dy(u)] //\n\n\n\n\nMacro ends with \n//\n.\n\n\nYou can use the C concatenation operator ## inside a macro using #.\n\n\n\n\nIf Ux and Uy are defined:\n\n\n\n\nmacro Grad(U) [grad(U#x), grad(U#y)] //\n\n\n\n\nFunctions design\n#\n\n\nfunc\n#\n\n\nFunction type.\n\n\nFunction without parameters ($x$, $y$ and $z$ are implicitly considered):\n\n\nfunc f = x^2 + y^2;\n\n\n\n\nFunction with parameters:\n\n\nfunc real f (real var){\n    return x^2 + y^2 + var^2;\n}\n\n\n\n\nProblem design\n#\n\n\nproblem\n#\n\n\nProblem type.\n\n\nproblem Laplacian (u, uh) = ...\n\n\n\n\nFreeFem++ needs the variational form in the problem definition.\n\n\nIn order to solve the problem, just call:\n\n\nLaplacian;\n\n\n\n\nsolve\n#\n\n\nSolve type.\n\n\nIdentical to problem but automatically solved.\n\n\nvarf\n#\n\n\nVariational form type.\n\n\nvarf vLaplacian (u, uh) = ...\n\n\n\n\nThis is the other way to define a problem in order to directly manage matrix and right hang side.\n\n\nArray\n#\n\n\nArray can be defined using types: int, bool, real, complex, string, ...\n\n\nArray index\n#\n\n\nArray index can be int or string:\n\n\nreal[int] Ai = [1, 1, 0, 0];\nreal[string] As = [1, 1, 0, 0];\n\n\n\n\nArray size\n#\n\n\nThe size of an array is obtained using the keyword \nn\n:\n\n\nint ArraySize = Ai.n;\n\n\n\n\nDouble array\n#\n\n\nA double array (matrix) can be defined using two indexes:\n\n\nreal[int, int] Aii = [[1, 1], [0, 0]];\n\n\n\n\nThe two sizes are obtained using the keywords \nn\n and \nm\n:\n\n\nint ArraySize1 = Aii.n;\nint ArraySize2 = Aii.m;\n\n\n\n\nMatrix\n#\n\n\nMatrices can be defined using a variational form type:\n\n\nmatrix Laplacian = vLaplacian(Uh, Uh);\n\n\n\n\nMatrices are designed using templates, so they can be real or complex:\n\n\nmatrix\nreal\n A = ...\nmarix\ncomplex\n Ai = ...\n\n\n\n\nThe diagonal of the matrix is obtained using:\n\n\nreal[int] Aii = A.diag;", 
             "title": "Types"
-        },
+        }, 
         {
-            "location": "/types/#standard-types",
-            "text": "",
+            "location": "/types/#standard-types", 
+            "text": "", 
             "title": "Standard types"
-        },
+        }, 
         {
-            "location": "/types/#int",
-            "text": "Integer value.  int i = 0;",
+            "location": "/types/#int", 
+            "text": "Integer value.  int i = 0;", 
             "title": "int"
-        },
+        }, 
         {
-            "location": "/types/#bool",
-            "text": "Boolean value.  bool b = true;",
+            "location": "/types/#bool", 
+            "text": "Boolean value.  bool b = true;", 
             "title": "bool"
-        },
+        }, 
         {
-            "location": "/types/#real",
-            "text": "Real value (C double precision).  real r = 0.;",
+            "location": "/types/#real", 
+            "text": "Real value (C double precision).  real r = 0.;", 
             "title": "real"
-        },
+        }, 
         {
-            "location": "/types/#complex",
-            "text": "Complex value (two C double precision).  complex c = 0.+1i;  The imaginary number $i$ is defined as  1i",
+            "location": "/types/#complex", 
+            "text": "Complex value (two C double precision).  complex c = 0.+1i;  The imaginary number $i$ is defined as  1i", 
             "title": "complex"
-        },
+        }, 
         {
-            "location": "/types/#string",
-            "text": "String value.  string s = \"this is a string\";",
+            "location": "/types/#string", 
+            "text": "String value.  string s =  this is a string ;", 
             "title": "string"
-        },
+        }, 
         {
-            "location": "/types/#mesh-design",
-            "text": "",
+            "location": "/types/#mesh-design", 
+            "text": "", 
             "title": "Mesh design"
-        },
+        }, 
         {
-            "location": "/types/#border",
-            "text": "Border type.  border b(t=0., 1.){x=cos(2.*pi*t); y=sin(2.*pi*t); label=1;};  Define the 2D geometrical border in parametric coordinates.",
+            "location": "/types/#border", 
+            "text": "Border type.  border b(t=0., 1.){x=cos(2.*pi*t); y=sin(2.*pi*t); label=1;};  Define the 2D geometrical border in parametric coordinates.", 
             "title": "border"
-        },
+        }, 
         {
-            "location": "/types/#mesh",
-            "text": "2D Mesh type  mesh Th;",
+            "location": "/types/#mesh", 
+            "text": "2D Mesh type  mesh Th;", 
             "title": "mesh"
-        },
+        }, 
         {
-            "location": "/types/#mesh3",
-            "text": "3D mesh type  mesh3 Th;",
+            "location": "/types/#mesh3", 
+            "text": "3D mesh type  mesh3 Th;", 
             "title": "mesh3"
-        },
+        }, 
         {
-            "location": "/types/#finite-element-space-design",
-            "text": "",
+            "location": "/types/#finite-element-space-design", 
+            "text": "", 
             "title": "Finite element space design"
-        },
+        }, 
         {
-            "location": "/types/#fespace",
-            "text": "Finite element space type.  fespace Uh(Th, P1);\nfespace UPh(Th, [P2, P2, P1]);  A finite element space is based on a mesh ( Th ) with an element definition, scalar ( P1 ) or vector ( [P2, P2, P1] ).  Available finite element space:  Generic:   P0 / P03d  P0Edge  P1 / P13d  P1dc  P1b / P1b3d  P1bl / P1bl3d  P1nc  P2 / P23d  P2b  P2dc  RT0 / RT03d  RT0Ortho  Edge03d   Using  Element_P3 :   P3   Using  Element_P3dc :   P3d   Using  Element_P4 :   P4   Using  Element_P4dc :   P4dc   Using  Element_PkEdge :   P1Edge  P2Edge  P3Edge  P4Edge  P5Edge   Using  Morlay :   P2Morley   Using  HCT :   HCT   Using  BernardiRaugel :   P2BR   Using  Element_Mixte :   RT1  RT1Ortho  BDM1  BDM1Ortho   Using  Element_Mixte3d :   Edge13D  Edge23D   Using  Element_QF :   FEQF   A finite element variable is defined as follow:  fespace Uh(Th, P1);\nUh u;\n\nfespace UPh(Th, [P2, P2, P1]);\nUPh [Ux, Uy, p];",
+            "location": "/types/#fespace", 
+            "text": "Finite element space type.  fespace Uh(Th, P1);\nfespace UPh(Th, [P2, P2, P1]);  A finite element space is based on a mesh ( Th ) with an element definition, scalar ( P1 ) or vector ( [P2, P2, P1] ).  Available finite element space:  Generic:   P0 / P03d  P0Edge  P1 / P13d  P1dc  P1b / P1b3d  P1bl / P1bl3d  P1nc  P2 / P23d  P2b  P2dc  RT0 / RT03d  RT0Ortho  Edge03d   Using  Element_P3 :   P3   Using  Element_P3dc :   P3d   Using  Element_P4 :   P4   Using  Element_P4dc :   P4dc   Using  Element_PkEdge :   P1Edge  P2Edge  P3Edge  P4Edge  P5Edge   Using  Morlay :   P2Morley   Using  HCT :   HCT   Using  BernardiRaugel :   P2BR   Using  Element_Mixte :   RT1  RT1Ortho  BDM1  BDM1Ortho   Using  Element_Mixte3d :   Edge13D  Edge23D   Using  Element_QF :   FEQF   A finite element variable is defined as follow:  fespace Uh(Th, P1);\nUh u;\n\nfespace UPh(Th, [P2, P2, P1]);\nUPh [Ux, Uy, p];", 
             "title": "fespace"
-        },
+        }, 
         {
-            "location": "/types/#macro-design",
-            "text": "",
+            "location": "/types/#macro-design", 
+            "text": "", 
             "title": "Macro design"
-        },
+        }, 
         {
-            "location": "/types/#macro",
-            "text": "Macro type.  macro grad(u) [dx(u), dy(u)] //  Macro ends with  // .  You can use the C concatenation operator ## inside a macro using #.   If Ux and Uy are defined:   macro Grad(U) [grad(U#x), grad(U#y)] //",
+            "location": "/types/#macro", 
+            "text": "Macro type.  macro grad(u) [dx(u), dy(u)] //  Macro ends with  // .  You can use the C concatenation operator ## inside a macro using #.   If Ux and Uy are defined:   macro Grad(U) [grad(U#x), grad(U#y)] //", 
             "title": "macro"
-        },
+        }, 
         {
-            "location": "/types/#functions-design",
-            "text": "",
+            "location": "/types/#functions-design", 
+            "text": "", 
             "title": "Functions design"
-        },
+        }, 
         {
-            "location": "/types/#func",
-            "text": "Function type.  Function without parameters ($x$, $y$ and $z$ are implicitly considered):  func f = x^2 + y^2;  Function with parameters:  func real f (real var){\n    return x^2 + y^2 + var^2;\n}",
+            "location": "/types/#func", 
+            "text": "Function type.  Function without parameters ($x$, $y$ and $z$ are implicitly considered):  func f = x^2 + y^2;  Function with parameters:  func real f (real var){\n    return x^2 + y^2 + var^2;\n}", 
             "title": "func"
-        },
+        }, 
         {
-            "location": "/types/#problem-design",
-            "text": "",
+            "location": "/types/#problem-design", 
+            "text": "", 
             "title": "Problem design"
-        },
+        }, 
         {
-            "location": "/types/#problem",
-            "text": "Problem type.  problem Laplacian (u, uh) = ...  FreeFem++ needs the variational form in the problem definition.  In order to solve the problem, just call:  Laplacian;",
+            "location": "/types/#problem", 
+            "text": "Problem type.  problem Laplacian (u, uh) = ...  FreeFem++ needs the variational form in the problem definition.  In order to solve the problem, just call:  Laplacian;", 
             "title": "problem"
-        },
+        }, 
         {
-            "location": "/types/#solve",
-            "text": "Solve type.  Identical to problem but automatically solved.",
+            "location": "/types/#solve", 
+            "text": "Solve type.  Identical to problem but automatically solved.", 
             "title": "solve"
-        },
+        }, 
         {
-            "location": "/types/#varf",
-            "text": "Variational form type.  varf vLaplacian (u, uh) = ...  This is the other way to define a problem in order to directly manage matrix and right hang side.",
+            "location": "/types/#varf", 
+            "text": "Variational form type.  varf vLaplacian (u, uh) = ...  This is the other way to define a problem in order to directly manage matrix and right hang side.", 
             "title": "varf"
-        },
+        }, 
         {
-            "location": "/types/#array",
-            "text": "Array can be defined using types: int, bool, real, complex, string, ...",
+            "location": "/types/#array", 
+            "text": "Array can be defined using types: int, bool, real, complex, string, ...", 
             "title": "Array"
-        },
+        }, 
         {
-            "location": "/types/#array-index",
-            "text": "Array index can be int or string:  real[int] Ai = [1, 1, 0, 0];\nreal[string] As = [1, 1, 0, 0];",
+            "location": "/types/#array-index", 
+            "text": "Array index can be int or string:  real[int] Ai = [1, 1, 0, 0];\nreal[string] As = [1, 1, 0, 0];", 
             "title": "Array index"
-        },
+        }, 
         {
-            "location": "/types/#array-size",
-            "text": "The size of an array is obtained using the keyword  n :  int ArraySize = Ai.n;",
+            "location": "/types/#array-size", 
+            "text": "The size of an array is obtained using the keyword  n :  int ArraySize = Ai.n;", 
             "title": "Array size"
-        },
+        }, 
         {
-            "location": "/types/#double-array",
-            "text": "A double array (matrix) can be defined using two indexes:  real[int, int] Aii = [[1, 1], [0, 0]];  The two sizes are obtained using the keywords  n  and  m :  int ArraySize1 = Aii.n;\nint ArraySize2 = Aii.m;",
+            "location": "/types/#double-array", 
+            "text": "A double array (matrix) can be defined using two indexes:  real[int, int] Aii = [[1, 1], [0, 0]];  The two sizes are obtained using the keywords  n  and  m :  int ArraySize1 = Aii.n;\nint ArraySize2 = Aii.m;", 
             "title": "Double array"
-        },
+        }, 
         {
-            "location": "/types/#matrix",
-            "text": "Matrices can be defined using a variational form type:  matrix Laplacian = vLaplacian(Uh, Uh);  Matrices are designed using templates, so they can be real or complex:  matrix<real> A = ...\nmarix<complex> Ai = ...  The diagonal of the matrix is obtained using:  real[int] Aii = A.diag;",
+            "location": "/types/#matrix", 
+            "text": "Matrices can be defined using a variational form type:  matrix Laplacian = vLaplacian(Uh, Uh);  Matrices are designed using templates, so they can be real or complex:  matrix real  A = ...\nmarix complex  Ai = ...  The diagonal of the matrix is obtained using:  real[int] Aii = A.diag;", 
             "title": "Matrix"
-        },
+        }, 
         {
-            "location": "/global-variables/",
-            "text": "CG\n#\n\n\nConjugate gradient solver.\n\n\n\n\nUsable in problem and solve definition\n\n\n\n\nproblem Laplacian (U, V, solver=CG) = ...\n\n\n\n\n\n\nOr in matrix construction\n\n\n\n\nmatrix A = vLaplacian(Uh, Uh, solver=CG);\n\n\n\n\nCholesky\n#\n\n\nCholesky solver.\n\n\nCrout\n#\n\n\nCrout solver.\n\n\nGMRES\n#\n\n\nGMRES solver (Generalized minimal residual method).\n\n\ninclude\n#\n\n\nInclude a module.\n\n\ninclude \"iovtk\"\n\n\n\n\nload\n#\n\n\nLoad a script.\n\n\nload \"getARGV.idp\"\n\n\n\n\nLU\n#\n\n\nLU solver.\n\n\nN\n#\n\n\nNormal.\n\n\nfunc Nx = N.x;\nfunc Ny = N.y;\nfunc Nz = N.z;\n\n\n\n\nP\n#\n\n\nCurrent point.\n\n\nreal cx = P.x;\nreal cy = P.y;\nreal cz = P.z;\n\n\n\n\npi\n#\n\n\nPi = 3.14159.\n\n\nreal Pi = pi;\n\n\n\n\nThis is a real value.\n\n\nsparsesolver\n#\n\n\nSparse matrix solver.\n\n\nverbosity\n#\n\n\nVerbosity level.\n\n\nint Verbosity = verbosity;\nverbosity = 0;\n\n\n\n\n0 = nothing, 1 = few informations, 10 = a lot of informations, ...\n\n\nThis is an integer value.\n\n\nversion\n#\n\n\nFreeFem++ version.\n\n\ncout << version << endl;\n\n\n\n\nx\n#\n\n\nThe $x$ coordinate at the current point.\n\n\nreal CurrentX = x;\n\n\n\n\nThis is a real value.\n\n\ny\n#\n\n\nThe $y$ coordinate at the current point.\n\n\nreal CurrentY = y;\n\n\n\n\nThis is a real value.\n\n\nz\n#\n\n\nThe $z$ coordinate at the current point.\n\n\nreal CurrentY = y;\n\n\n\n\nThis is a real value.",
+            "location": "/global-variables/", 
+            "text": "CG\n#\n\n\nConjugate gradient solver.\n\n\n\n\nUsable in problem and solve definition\n\n\n\n\nproblem Laplacian (U, V, solver=CG) = ...\n\n\n\n\n\n\nOr in matrix construction\n\n\n\n\nmatrix A = vLaplacian(Uh, Uh, solver=CG);\n\n\n\n\nCholesky\n#\n\n\nCholesky solver.\n\n\nCrout\n#\n\n\nCrout solver.\n\n\nGMRES\n#\n\n\nGMRES solver (Generalized minimal residual method).\n\n\ninclude\n#\n\n\nInclude a module.\n\n\ninclude \niovtk\n\n\n\n\n\nload\n#\n\n\nLoad a script.\n\n\nload \ngetARGV.idp\n\n\n\n\n\nLU\n#\n\n\nLU solver.\n\n\nN\n#\n\n\nNormal.\n\n\nfunc Nx = N.x;\nfunc Ny = N.y;\nfunc Nz = N.z;\n\n\n\n\nP\n#\n\n\nCurrent point.\n\n\nreal cx = P.x;\nreal cy = P.y;\nreal cz = P.z;\n\n\n\n\npi\n#\n\n\nPi = 3.14159.\n\n\nreal Pi = pi;\n\n\n\n\nThis is a real value.\n\n\nsparsesolver\n#\n\n\nSparse matrix solver.\n\n\nverbosity\n#\n\n\nVerbosity level.\n\n\nint Verbosity = verbosity;\nverbosity = 0;\n\n\n\n\n0 = nothing, 1 = few informations, 10 = a lot of informations, ...\n\n\nThis is an integer value.\n\n\nversion\n#\n\n\nFreeFem++ version.\n\n\ncout \n version \n endl;\n\n\n\n\nx\n#\n\n\nThe $x$ coordinate at the current point.\n\n\nreal CurrentX = x;\n\n\n\n\nThis is a real value.\n\n\ny\n#\n\n\nThe $y$ coordinate at the current point.\n\n\nreal CurrentY = y;\n\n\n\n\nThis is a real value.\n\n\nz\n#\n\n\nThe $z$ coordinate at the current point.\n\n\nreal CurrentY = y;\n\n\n\n\nThis is a real value.", 
             "title": "Global variables"
-        },
+        }, 
         {
-            "location": "/global-variables/#cg",
-            "text": "Conjugate gradient solver.   Usable in problem and solve definition   problem Laplacian (U, V, solver=CG) = ...   Or in matrix construction   matrix A = vLaplacian(Uh, Uh, solver=CG);",
+            "location": "/global-variables/#cg", 
+            "text": "Conjugate gradient solver.   Usable in problem and solve definition   problem Laplacian (U, V, solver=CG) = ...   Or in matrix construction   matrix A = vLaplacian(Uh, Uh, solver=CG);", 
             "title": "CG"
-        },
+        }, 
         {
-            "location": "/global-variables/#cholesky",
-            "text": "Cholesky solver.",
+            "location": "/global-variables/#cholesky", 
+            "text": "Cholesky solver.", 
             "title": "Cholesky"
-        },
+        }, 
         {
-            "location": "/global-variables/#crout",
-            "text": "Crout solver.",
+            "location": "/global-variables/#crout", 
+            "text": "Crout solver.", 
             "title": "Crout"
-        },
+        }, 
         {
-            "location": "/global-variables/#gmres",
-            "text": "GMRES solver (Generalized minimal residual method).",
+            "location": "/global-variables/#gmres", 
+            "text": "GMRES solver (Generalized minimal residual method).", 
             "title": "GMRES"
-        },
+        }, 
         {
-            "location": "/global-variables/#include",
-            "text": "Include a module.  include \"iovtk\"",
+            "location": "/global-variables/#include", 
+            "text": "Include a module.  include  iovtk", 
             "title": "include"
-        },
+        }, 
         {
-            "location": "/global-variables/#load",
-            "text": "Load a script.  load \"getARGV.idp\"",
+            "location": "/global-variables/#load", 
+            "text": "Load a script.  load  getARGV.idp", 
             "title": "load"
-        },
+        }, 
         {
-            "location": "/global-variables/#lu",
-            "text": "LU solver.",
+            "location": "/global-variables/#lu", 
+            "text": "LU solver.", 
             "title": "LU"
-        },
+        }, 
         {
-            "location": "/global-variables/#n",
-            "text": "Normal.  func Nx = N.x;\nfunc Ny = N.y;\nfunc Nz = N.z;",
+            "location": "/global-variables/#n", 
+            "text": "Normal.  func Nx = N.x;\nfunc Ny = N.y;\nfunc Nz = N.z;", 
             "title": "N"
-        },
+        }, 
         {
-            "location": "/global-variables/#p",
-            "text": "Current point.  real cx = P.x;\nreal cy = P.y;\nreal cz = P.z;",
+            "location": "/global-variables/#p", 
+            "text": "Current point.  real cx = P.x;\nreal cy = P.y;\nreal cz = P.z;", 
             "title": "P"
-        },
+        }, 
         {
-            "location": "/global-variables/#pi",
-            "text": "Pi = 3.14159.  real Pi = pi;  This is a real value.",
+            "location": "/global-variables/#pi", 
+            "text": "Pi = 3.14159.  real Pi = pi;  This is a real value.", 
             "title": "pi"
-        },
+        }, 
         {
-            "location": "/global-variables/#sparsesolver",
-            "text": "Sparse matrix solver.",
+            "location": "/global-variables/#sparsesolver", 
+            "text": "Sparse matrix solver.", 
             "title": "sparsesolver"
-        },
+        }, 
         {
-            "location": "/global-variables/#verbosity",
-            "text": "Verbosity level.  int Verbosity = verbosity;\nverbosity = 0;  0 = nothing, 1 = few informations, 10 = a lot of informations, ...  This is an integer value.",
+            "location": "/global-variables/#verbosity", 
+            "text": "Verbosity level.  int Verbosity = verbosity;\nverbosity = 0;  0 = nothing, 1 = few informations, 10 = a lot of informations, ...  This is an integer value.", 
             "title": "verbosity"
-        },
+        }, 
         {
-            "location": "/global-variables/#version",
-            "text": "FreeFem++ version.  cout << version << endl;",
+            "location": "/global-variables/#version", 
+            "text": "FreeFem++ version.  cout   version   endl;", 
             "title": "version"
-        },
+        }, 
         {
-            "location": "/global-variables/#x",
-            "text": "The $x$ coordinate at the current point.  real CurrentX = x;  This is a real value.",
+            "location": "/global-variables/#x", 
+            "text": "The $x$ coordinate at the current point.  real CurrentX = x;  This is a real value.", 
             "title": "x"
-        },
+        }, 
         {
-            "location": "/global-variables/#y",
-            "text": "The $y$ coordinate at the current point.  real CurrentY = y;  This is a real value.",
+            "location": "/global-variables/#y", 
+            "text": "The $y$ coordinate at the current point.  real CurrentY = y;  This is a real value.", 
             "title": "y"
-        },
+        }, 
         {
-            "location": "/global-variables/#z",
-            "text": "The $z$ coordinate at the current point.  real CurrentY = y;  This is a real value.",
+            "location": "/global-variables/#z", 
+            "text": "The $z$ coordinate at the current point.  real CurrentY = y;  This is a real value.", 
             "title": "z"
-        },
+        }, 
         {
-            "location": "/quadrature/",
-            "text": "int1d\n#\n\n\nqf1pE\n#\n\n\n\n\nTODO\n\n\n\n\nqf2pE\n#\n\n\n\n\nTODO\n\n\n\n\nqf3pE\n#\n\n\n\n\nTODO\n\n\n\n\nqf5pE\n#\n\n\n\n\nTODO\n\n\n\n\nqf1pElump\n#\n\n\n\n\nTODO\n\n\n\n\nint2d\n#\n\n\nqf1pT\n#\n\n\n\n\nTODO\n\n\n\n\nqf2pT\n#\n\n\n\n\nTODO\n\n\n\n\nqf5pT\n#\n\n\n\n\nTODO\n\n\n\n\nqf1pTlump\n#\n\n\n\n\nTODO\n\n\n\n\nqf2pT4P1\n#\n\n\n\n\nTODO\n\n\n\n\nqf7pT\n#\n\n\n\n\nTODO\n\n\n\n\nqf9pT\n#\n\n\n\n\nTODO\n\n\n\n\nint3d\n#\n\n\nqfV1\n#\n\n\n\n\nTODO\n\n\n\n\nqfV2\n#\n\n\n\n\nTODO\n\n\n\n\nqfV5\n#\n\n\n\n\nTODO\n\n\n\n\nqfV1lump\n#\n\n\n\n\nTODO",
+            "location": "/quadrature/", 
+            "text": "int1d\n#\n\n\nqf1pE\n#\n\n\n\n\nTODO\n\n\n\n\nqf2pE\n#\n\n\n\n\nTODO\n\n\n\n\nqf3pE\n#\n\n\n\n\nTODO\n\n\n\n\nqf5pE\n#\n\n\n\n\nTODO\n\n\n\n\nqf1pElump\n#\n\n\n\n\nTODO\n\n\n\n\nint2d\n#\n\n\nqf1pT\n#\n\n\n\n\nTODO\n\n\n\n\nqf2pT\n#\n\n\n\n\nTODO\n\n\n\n\nqf5pT\n#\n\n\n\n\nTODO\n\n\n\n\nqf1pTlump\n#\n\n\n\n\nTODO\n\n\n\n\nqf2pT4P1\n#\n\n\n\n\nTODO\n\n\n\n\nqf7pT\n#\n\n\n\n\nTODO\n\n\n\n\nqf9pT\n#\n\n\n\n\nTODO\n\n\n\n\nint3d\n#\n\n\nqfV1\n#\n\n\n\n\nTODO\n\n\n\n\nqfV2\n#\n\n\n\n\nTODO\n\n\n\n\nqfV5\n#\n\n\n\n\nTODO\n\n\n\n\nqfV1lump\n#\n\n\n\n\nTODO", 
             "title": "Quadrature formulae"
-        },
+        }, 
         {
-            "location": "/quadrature/#int1d",
-            "text": "",
+            "location": "/quadrature/#int1d", 
+            "text": "", 
             "title": "int1d"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf1pe",
-            "text": "TODO",
+            "location": "/quadrature/#qf1pe", 
+            "text": "TODO", 
             "title": "qf1pE"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf2pe",
-            "text": "TODO",
+            "location": "/quadrature/#qf2pe", 
+            "text": "TODO", 
             "title": "qf2pE"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf3pe",
-            "text": "TODO",
+            "location": "/quadrature/#qf3pe", 
+            "text": "TODO", 
             "title": "qf3pE"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf5pe",
-            "text": "TODO",
+            "location": "/quadrature/#qf5pe", 
+            "text": "TODO", 
             "title": "qf5pE"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf1pelump",
-            "text": "TODO",
+            "location": "/quadrature/#qf1pelump", 
+            "text": "TODO", 
             "title": "qf1pElump"
-        },
+        }, 
         {
-            "location": "/quadrature/#int2d",
-            "text": "",
+            "location": "/quadrature/#int2d", 
+            "text": "", 
             "title": "int2d"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf1pt",
-            "text": "TODO",
+            "location": "/quadrature/#qf1pt", 
+            "text": "TODO", 
             "title": "qf1pT"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf2pt",
-            "text": "TODO",
+            "location": "/quadrature/#qf2pt", 
+            "text": "TODO", 
             "title": "qf2pT"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf5pt",
-            "text": "TODO",
+            "location": "/quadrature/#qf5pt", 
+            "text": "TODO", 
             "title": "qf5pT"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf1ptlump",
-            "text": "TODO",
+            "location": "/quadrature/#qf1ptlump", 
+            "text": "TODO", 
             "title": "qf1pTlump"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf2pt4p1",
-            "text": "TODO",
+            "location": "/quadrature/#qf2pt4p1", 
+            "text": "TODO", 
             "title": "qf2pT4P1"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf7pt",
-            "text": "TODO",
+            "location": "/quadrature/#qf7pt", 
+            "text": "TODO", 
             "title": "qf7pT"
-        },
+        }, 
         {
-            "location": "/quadrature/#qf9pt",
-            "text": "TODO",
+            "location": "/quadrature/#qf9pt", 
+            "text": "TODO", 
             "title": "qf9pT"
-        },
+        }, 
         {
-            "location": "/quadrature/#int3d",
-            "text": "",
+            "location": "/quadrature/#int3d", 
+            "text": "", 
             "title": "int3d"
-        },
+        }, 
         {
-            "location": "/quadrature/#qfv1",
-            "text": "TODO",
+            "location": "/quadrature/#qfv1", 
+            "text": "TODO", 
             "title": "qfV1"
-        },
+        }, 
         {
-            "location": "/quadrature/#qfv2",
-            "text": "TODO",
+            "location": "/quadrature/#qfv2", 
+            "text": "TODO", 
             "title": "qfV2"
-        },
+        }, 
         {
-            "location": "/quadrature/#qfv5",
-            "text": "TODO",
+            "location": "/quadrature/#qfv5", 
+            "text": "TODO", 
             "title": "qfV5"
-        },
+        }, 
         {
-            "location": "/quadrature/#qfv1lump",
-            "text": "TODO",
+            "location": "/quadrature/#qfv1lump", 
+            "text": "TODO", 
             "title": "qfV1lump"
-        },
+        }, 
         {
-            "location": "/operators/",
-            "text": "+\n#\n\n\nAddition operator.\n\n\nreal a = 1. + 2.;\n\n\n\n\nWorks for int, real, complex, string, mesh, mesh3, array.\n\n\n-\n#\n\n\nSubstraction operator.\n\n\nreal a = 1. - 2.;\n\n\n\n\nWorks for int, real, complex, array.\n\n\n*\n#\n\n\nMultiplication operator.\n\n\nreal[int] b;\nmatrix A\nreal[int] x = A^-1*b;\n\n\n\n\nWorks for int, real, complex, array, matrix.\n\n\n/\n#\n\n\nDivision operator.\n\n\nreal a = 1. / 2.;\n\n\n\n\nWorks for int, real, complex.\n\n\n^\n#\n\n\nPower operator.\n\n\nreal a = 2.^2;\n\n\n\n\nWorks for int, real, complex, matrix.\n\n\nIn the case of matrix, \n^-1\n mean for the inverse matrix.\n\n\n'\n#\n\n\nTranspose operator.\n\n\nreal[int] a = b';\n\n\n\n\nWorks for array and matrix.\n\n\n:\n#\n\n\nTensor scalar product.\n\n\nA:B = \\sum_{i,j}{A_{ij}B_{ij}}",
+            "location": "/operators/", 
+            "text": "+\n#\n\n\nAddition operator.\n\n\nreal a = 1. + 2.;\n\n\n\n\nWorks for int, real, complex, string, mesh, mesh3, array.\n\n\n-\n#\n\n\nSubstraction operator.\n\n\nreal a = 1. - 2.;\n\n\n\n\nWorks for int, real, complex, array.\n\n\n*\n#\n\n\nMultiplication operator.\n\n\nreal[int] b;\nmatrix A\nreal[int] x = A^-1*b;\n\n\n\n\nWorks for int, real, complex, array, matrix.\n\n\n/\n#\n\n\nDivision operator.\n\n\nreal a = 1. / 2.;\n\n\n\n\nWorks for int, real, complex.\n\n\n^\n#\n\n\nPower operator.\n\n\nreal a = 2.^2;\n\n\n\n\nWorks for int, real, complex, matrix.\n\n\nIn the case of matrix, \n^-1\n mean for the inverse matrix.\n\n\n'\n#\n\n\nTranspose operator.\n\n\nreal[int] a = b';\n\n\n\n\nWorks for array and matrix.\n\n\n:\n#\n\n\nTensor scalar product.\n\n\nA:B = \\sum_{i,j}{A_{ij}B_{ij}}", 
             "title": "Operators"
-        },
+        }, 
         {
-            "location": "/operators/#_1",
-            "text": "Addition operator.  real a = 1. + 2.;  Works for int, real, complex, string, mesh, mesh3, array.",
+            "location": "/operators/#_1", 
+            "text": "Addition operator.  real a = 1. + 2.;  Works for int, real, complex, string, mesh, mesh3, array.", 
             "title": "+"
-        },
+        }, 
         {
-            "location": "/operators/#-",
-            "text": "Substraction operator.  real a = 1. - 2.;  Works for int, real, complex, array.",
+            "location": "/operators/#-", 
+            "text": "Substraction operator.  real a = 1. - 2.;  Works for int, real, complex, array.", 
             "title": "-"
-        },
+        }, 
         {
-            "location": "/operators/#_2",
-            "text": "Multiplication operator.  real[int] b;\nmatrix A\nreal[int] x = A^-1*b;  Works for int, real, complex, array, matrix.",
+            "location": "/operators/#_2", 
+            "text": "Multiplication operator.  real[int] b;\nmatrix A\nreal[int] x = A^-1*b;  Works for int, real, complex, array, matrix.", 
             "title": "*"
-        },
+        }, 
         {
-            "location": "/operators/#_3",
-            "text": "Division operator.  real a = 1. / 2.;  Works for int, real, complex.",
+            "location": "/operators/#_3", 
+            "text": "Division operator.  real a = 1. / 2.;  Works for int, real, complex.", 
             "title": "/"
-        },
+        }, 
         {
-            "location": "/operators/#_4",
-            "text": "Power operator.  real a = 2.^2;  Works for int, real, complex, matrix.  In the case of matrix,  ^-1  mean for the inverse matrix.",
+            "location": "/operators/#_4", 
+            "text": "Power operator.  real a = 2.^2;  Works for int, real, complex, matrix.  In the case of matrix,  ^-1  mean for the inverse matrix.", 
             "title": "^"
-        },
+        }, 
         {
-            "location": "/operators/#_5",
-            "text": "Transpose operator.  real[int] a = b';  Works for array and matrix.",
+            "location": "/operators/#_5", 
+            "text": "Transpose operator.  real[int] a = b';  Works for array and matrix.", 
             "title": "'"
-        },
+        }, 
         {
-            "location": "/operators/#_6",
-            "text": "Tensor scalar product. \nA:B = \\sum_{i,j}{A_{ij}B_{ij}}",
+            "location": "/operators/#_6", 
+            "text": "Tensor scalar product. \nA:B = \\sum_{i,j}{A_{ij}B_{ij}}", 
             "title": ":"
-        },
+        }, 
         {
-            "location": "/loops/",
-            "text": "break\n#\n\n\nBreak a loop.\n\n\nwhile (condition1){\n    ...\n    if (condition) break;\n    ...\n}\n\n\n\n\ncatch\n#\n\n\nCatch an error, see \ntry\n\n\ncontinue\n#\n\n\nContinue a loop.\n\n\nfor (int i = 0; i < N; ++i){\n    ...\n    if (condition) continue;\n    ...\n}\n\n\n\n\nelse\n#\n\n\nSee \nif\n.\n\n\nfor\n#\n\n\nFor loop.\n\n\nfor (int i = 0; i < N; ++i){\n    ...\n}\n\n\n\n\nif\n#\n\n\nIf condition.\n\n\nif (condition){\n    ...\n}\nelse{\n    ...\n}\n\n\n\n\ntry\n#\n\n\nTry a part of code.\n\n\ntry{\n    ...\n}\ncatch(...){\n    ...\n}\n\n\n\n\nwhile\n#\n\n\nWhile loop.\n\n\nwhile (condition){\n    ...\n}",
+            "location": "/loops/", 
+            "text": "break\n#\n\n\nBreak a loop.\n\n\nwhile (condition1){\n    ...\n    if (condition) break;\n    ...\n}\n\n\n\n\ncatch\n#\n\n\nCatch an error, see \ntry\n\n\ncontinue\n#\n\n\nContinue a loop.\n\n\nfor (int i = 0; i \n N; ++i){\n    ...\n    if (condition) continue;\n    ...\n}\n\n\n\n\nelse\n#\n\n\nSee \nif\n.\n\n\nfor\n#\n\n\nFor loop.\n\n\nfor (int i = 0; i \n N; ++i){\n    ...\n}\n\n\n\n\nif\n#\n\n\nIf condition.\n\n\nif (condition){\n    ...\n}\nelse{\n    ...\n}\n\n\n\n\ntry\n#\n\n\nTry a part of code.\n\n\ntry{\n    ...\n}\ncatch(...){\n    ...\n}\n\n\n\n\nwhile\n#\n\n\nWhile loop.\n\n\nwhile (condition){\n    ...\n}", 
             "title": "Loops"
-        },
+        }, 
         {
-            "location": "/loops/#break",
-            "text": "Break a loop.  while (condition1){\n    ...\n    if (condition) break;\n    ...\n}",
+            "location": "/loops/#break", 
+            "text": "Break a loop.  while (condition1){\n    ...\n    if (condition) break;\n    ...\n}", 
             "title": "break"
-        },
+        }, 
         {
-            "location": "/loops/#catch",
-            "text": "Catch an error, see  try",
+            "location": "/loops/#catch", 
+            "text": "Catch an error, see  try", 
             "title": "catch"
-        },
+        }, 
         {
-            "location": "/loops/#continue",
-            "text": "Continue a loop.  for (int i = 0; i < N; ++i){\n    ...\n    if (condition) continue;\n    ...\n}",
+            "location": "/loops/#continue", 
+            "text": "Continue a loop.  for (int i = 0; i   N; ++i){\n    ...\n    if (condition) continue;\n    ...\n}", 
             "title": "continue"
-        },
+        }, 
         {
-            "location": "/loops/#else",
-            "text": "See  if .",
+            "location": "/loops/#else", 
+            "text": "See  if .", 
             "title": "else"
-        },
+        }, 
         {
-            "location": "/loops/#for",
-            "text": "For loop.  for (int i = 0; i < N; ++i){\n    ...\n}",
+            "location": "/loops/#for", 
+            "text": "For loop.  for (int i = 0; i   N; ++i){\n    ...\n}", 
             "title": "for"
-        },
+        }, 
         {
-            "location": "/loops/#if",
-            "text": "If condition.  if (condition){\n    ...\n}\nelse{\n    ...\n}",
+            "location": "/loops/#if", 
+            "text": "If condition.  if (condition){\n    ...\n}\nelse{\n    ...\n}", 
             "title": "if"
-        },
+        }, 
         {
-            "location": "/loops/#try",
-            "text": "Try a part of code.  try{\n    ...\n}\ncatch(...){\n    ...\n}",
+            "location": "/loops/#try", 
+            "text": "Try a part of code.  try{\n    ...\n}\ncatch(...){\n    ...\n}", 
             "title": "try"
-        },
+        }, 
         {
-            "location": "/loops/#while",
-            "text": "While loop.  while (condition){\n    ...\n}",
+            "location": "/loops/#while", 
+            "text": "While loop.  while (condition){\n    ...\n}", 
             "title": "while"
-        },
+        }, 
         {
-            "location": "/io/",
-            "text": "append\n#\n\n\nAppend data to an existing file.\n\n\nofstream file(\"file.txt\", append);\n\n\n\n\nbinary\n#\n\n\nWrite a file in binary.\n\n\nofstream file(\"file.btxt\", binary);\n\n\n\n\ncin\n#\n\n\nStandard C++ input.\n\n\ncin >> var;\n\n\n\n\ncout\n#\n\n\nStandard C++ ouptut.\n\n\ncout << \"Some text\" << endl;\n\n\n\n\nflush\n#\n\n\nFlush the buffer of the file.\n\n\nfile.flush\n\n\n\n\ngetline\n#\n\n\nGet the current line.\n\n\nstring s;\ngetline(file, s);\n\n\n\n\nifstream\n#\n\n\nOpen a file in read mode.\n\n\nifstream file(\"file.txt\");\n\n\n\n\nofstream\n#\n\n\nOpen a file in write mode.\n\n\nofstream file(\"file.txt\");\n\n\n\n\nseekg\n#\n\n\nSet the file position.\n\n\nfile.seekg(Pos);\n\n\n\n\ntellg\n#\n\n\nGet the file position.\n\n\nint Pos = file.tellg();",
+            "location": "/io/", 
+            "text": "append\n#\n\n\nAppend data to an existing file.\n\n\nofstream file(\nfile.txt\n, append);\n\n\n\n\nbinary\n#\n\n\nWrite a file in binary.\n\n\nofstream file(\nfile.btxt\n, binary);\n\n\n\n\ncin\n#\n\n\nStandard C++ input.\n\n\ncin \n var;\n\n\n\n\ncout\n#\n\n\nStandard C++ ouptut.\n\n\ncout \n \nSome text\n \n endl;\n\n\n\n\nflush\n#\n\n\nFlush the buffer of the file.\n\n\nfile.flush\n\n\n\n\ngetline\n#\n\n\nGet the current line.\n\n\nstring s;\ngetline(file, s);\n\n\n\n\nifstream\n#\n\n\nOpen a file in read mode.\n\n\nifstream file(\nfile.txt\n);\n\n\n\n\nofstream\n#\n\n\nOpen a file in write mode.\n\n\nofstream file(\nfile.txt\n);\n\n\n\n\nseekg\n#\n\n\nSet the file position.\n\n\nfile.seekg(Pos);\n\n\n\n\ntellg\n#\n\n\nGet the file position.\n\n\nint Pos = file.tellg();", 
             "title": "I/O"
-        },
+        }, 
         {
-            "location": "/io/#append",
-            "text": "Append data to an existing file.  ofstream file(\"file.txt\", append);",
+            "location": "/io/#append", 
+            "text": "Append data to an existing file.  ofstream file( file.txt , append);", 
             "title": "append"
-        },
+        }, 
         {
-            "location": "/io/#binary",
-            "text": "Write a file in binary.  ofstream file(\"file.btxt\", binary);",
+            "location": "/io/#binary", 
+            "text": "Write a file in binary.  ofstream file( file.btxt , binary);", 
             "title": "binary"
-        },
+        }, 
         {
-            "location": "/io/#cin",
-            "text": "Standard C++ input.  cin >> var;",
+            "location": "/io/#cin", 
+            "text": "Standard C++ input.  cin   var;", 
             "title": "cin"
-        },
+        }, 
         {
-            "location": "/io/#cout",
-            "text": "Standard C++ ouptut.  cout << \"Some text\" << endl;",
+            "location": "/io/#cout", 
+            "text": "Standard C++ ouptut.  cout    Some text    endl;", 
             "title": "cout"
-        },
+        }, 
         {
-            "location": "/io/#flush",
-            "text": "Flush the buffer of the file.  file.flush",
+            "location": "/io/#flush", 
+            "text": "Flush the buffer of the file.  file.flush", 
             "title": "flush"
-        },
+        }, 
         {
-            "location": "/io/#getline",
-            "text": "Get the current line.  string s;\ngetline(file, s);",
+            "location": "/io/#getline", 
+            "text": "Get the current line.  string s;\ngetline(file, s);", 
             "title": "getline"
-        },
+        }, 
         {
-            "location": "/io/#ifstream",
-            "text": "Open a file in read mode.  ifstream file(\"file.txt\");",
+            "location": "/io/#ifstream", 
+            "text": "Open a file in read mode.  ifstream file( file.txt );", 
             "title": "ifstream"
-        },
+        }, 
         {
-            "location": "/io/#ofstream",
-            "text": "Open a file in write mode.  ofstream file(\"file.txt\");",
+            "location": "/io/#ofstream", 
+            "text": "Open a file in write mode.  ofstream file( file.txt );", 
             "title": "ofstream"
-        },
+        }, 
         {
-            "location": "/io/#seekg",
-            "text": "Set the file position.  file.seekg(Pos);",
+            "location": "/io/#seekg", 
+            "text": "Set the file position.  file.seekg(Pos);", 
             "title": "seekg"
-        },
+        }, 
         {
-            "location": "/io/#tellg",
-            "text": "Get the file position.  int Pos = file.tellg();",
+            "location": "/io/#tellg", 
+            "text": "Get the file position.  int Pos = file.tellg();", 
             "title": "tellg"
-        },
+        }, 
         {
-            "location": "/functions/",
-            "text": "acos\n#\n\n\n$\\arccos$ function.\n\n\nreal theta = acos(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\nacosh\n#\n\n\n$\\DeclareMathOperator\\arccosh{arccosh}$\n$\\arccosh$ function.\n\n\nreal theta = acosh(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\nadaptmesh\n#\n\n\nMesh adaptation function.\n\n\nmesh Thnew = adaptamesh(Th, f, ...)\n\n\n\n\n\n\nMore complete example:\n\n\n\n\nmesh Thnew = adaptmesh(Th, [fx, fy], hmin=1.e-3, hmax=1.e-2, iso=false)\n\n\n\n\nParameters:\n\n\n\n\nTh (mesh or mesh3)\n\n \nMesh to refine\n\n\nf (func), scalar or vectorial\n\n \nFunction to follow for the mesh adaptation\n\n\nhmin=\n minh (real)\n\n \nMinimum edge size\n\n\nhmax=\n maxh (real)\n\n \nMaximum edge size\n\n\nerr=\n Err (real)\n\n \nError level (P1 interpolation)\n\n\nerrg=\n Errg (real)\n\n \nRelative geometrical error\n\n\nnbvx=\n Nbvx (int)\n\n \nMaximum number of vertices\n\n\nnbsmooth=\n NbSmooth (int)\n\n \nNumber of smoothing iterations\n\n\nnbjacoby=\n NbJacoby (int)\n\n \nNumber of iterations for the smoothing procedure\n\n\nratio=\n Ratio (real)\n\n \nRatio of the triangles\n\n\nomega=\n Omega (real)\n\n \nRelaxation parameter for the smoothing procedure\n\n\niso=\n Iso (bool)\n\n \nIsotropic adaptation (if true)\n\n\nabserror=\n AbsError (bool)\n\n \nError (if true) - Relative error (if false)\n\n\ncutoff=\n CutOff (real)\n\n \nLower limit of the relative error evaluation\n\n\nverbosity=\n Verbosity (real)\n\n \nVerbosity level\n\n\ninquire=\n Inquire (bool)\n\n \nIf true, inquire graphically\n\n\nsplitpbedge=\n SplitPbEdge (bool)\n\n \nIf true, split all internal edges in half\n\n\nmaxsubdiv=\n MaxSubdiv (int)\n\n \nBound the maximum subdivisions\n\n\nrescaling=\n Rescaling (bool)\n\n \nRescale the function in [0, 1]\n\n\nkeepbackvertices=\n KeepBackVertices (bool)\n\n \nIf true, try to keep vertices of the original mesh\n\n\nisMetric=\n IsMetric (bool)\n\n \nIf ture, the metric is defined explicitly\n\n\npower=\n Power (int)\n\n \nExponent of the Hessian\n\n\nthetamax=\n ThetaMax (int)\n\n \nMinium corner angle (in degree)\n\n\nsplitin2=\n SplitIn2 (bool)\n\n \nSplit all triangles into 4 sub-triangles if true\n\n\nmetric=\n Metric ([real[int], real[int], real[int]])\n\n \nArray of 3 real arrays defining the metric\n\n\nnomeshgeneration=\n NoMeshGeneration (bool)\n\n \nIf true, the mesh is not generated\n\n\nperiodic=\n Periodic\n\n \nBuild an adapted periodic mesh\n\n\n\n\nOutput:\n\n\n\n\nThnew (mesh or mesh3)\n\n\n\n\nadj\n#\n\n\nAdjacent triangle of the triangle $k$ by the edge $e$\n\n\nint T = Th[k].adj(e);\n\n\n\n\nParameter:\n\n\n\n\ne (int)\n\n \nEdge number\n\n\n\n\nOutput:\n\n\n\n\nT (int)\n\n \nTriangle number\n\n\n\n\nAffineCG\n#\n\n\nAffine conjugate gradient solver\n\n\nUsed to solve a problem like $Ax=b$\n\n\nint Conv = AffineCG(A, x, precon=Precon, nbiter=NbIter, eps=Eps, veps=VEps, stop=Stop);\n\n\n\n\nParameter:\n\n\n\n\nA (matrix)\n\n \nMatrix of the problem $Ax=b$\n\n\nx (real[int])\n\n \nSolution vector\n\n\nprecon=\n Precon (real[int])\n\n \nPreconditionning function\n\n\nnbiter=\n NbIter (int)\n\n \nMaximum number of iterations\n\n\neps=\n Eps (real)\n\n \nConvergence criterion\n\n If $\\epsilon>0$: test $||A(x)||_p \\leq \\epsilon||A(x_0)||_p$\n\n If $\\epsilon<0$: test $||A(x)||_p^2 \\leq |\\epsilon|$\n\n\nveps=\n VEps (real)\n\n \nSame as eps, but return -eps\n\n\nstop=\n Stop (func)\n\n \nConvergence criterion as a function\n\n Prototype is \nfunc bool StopFunc (int Iter, real[int] U, real[int] g)\n\n \nu\n: current solution, \ng\n: current gradient (not preconditionned)\n\n\n\n\nOutput:\n\n\n\n\nConv (int)\n\n \n0: converged - !0: not converged\n\n\n\n\nAffineGMRES\n#\n\n\nAffine GMRES solver\n\n\nParameters and output are the same as \nAffineCG\n\n\nasin\n#\n\n\n$\\arcsin$ function.\n\n\nreal theta = asin(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\nasinh\n#\n\n\n$\\DeclareMathOperator\\arcsinh{arcsinh}$\n$\\arcsinh$ function.\n\n\nreal theta = asinh(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\nassert\n#\n\n\nVerify a condition is true (same as C), if not the program stops.\n\n\nassert(x==0)\n\n\n\n\nParameter:\n\n\n\n\nBollean condition\n\n\n\n\nOutput:\n\n\n\n\nNone\n\n\n\n\natan\n#\n\n\n$\\arctan$ function.\n\n\nreal theta = atan(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\natan2\n#\n\n\n$\\displaystyle{\\arctan\\left(\\frac{y}{x}\\right)}$ function, returning the correct sign for $\\theta$.\n\n\nreal theta = atan2(y, x)\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\natanh\n#\n\n\n$\\DeclareMathOperator\\arctanh{arctanh}$\n$\\arctanh$ function.\n\n\nreal theta = atanh(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\nBFGS\n#\n\n\n\n\nTODO\n\n\n\n\nParameter:\n\n\nOutput:\n\n\nbuildlayers\n#\n\n\n\n\nTODO\n\n\n\n\nParameter:\n\n\nOutput:\n\n\nbuildmesh\n#\n\n\nBuild a 2D mesh using border elements.\n\n\nmesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixeborder=FixeBorder]);\n\n\n\n\nParameters:\n\n\n\n\nb1, b2, b3, b4 (border)\n\n \nGeometry border, \nb1(nn)\n mean \nb1\n border discretize by \nnn\n vertices\n\n\nnbvx=\n Nbvx (int) \n[Optional]\n\n \nMaximum number of vertices\n\n Default: >TODO\n\n\nfixeborder=\n FixeBorder (bool) \n[Optional]\n\n \nIf true, mesh genertator can not change the boundary mesh\n\n Default: \nfalse\n\n\n\n\nOutput:\n\n\n\n\nTh (mesh)\n\n \nResulting mesh\n\n\n\n\nceil\n#\n\n\nRound fractions up of $x$.\n\n\nint c = ceil(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\nc (int)\n\n\n\n\nchange\n#\n\n\nChange a property of a mesh.\n\n\nint[int] L = [0, 1];\nThnew = change(Th, label=L);\n\n\n\n\nParameter:\n\n\n\n\n\n\nTh (mesh)\n\n \nOriginal mesh\n\n\n\n\n\n\nlabel=\n L (int[int])\n\n \nPair of old and new label\n\n\n\n\nregion=\n R (int[int])\n\n \nPair of old and new region\n\n\nflabel=\n l (func int)\n\n \nFunction of int given the new label\n\n\nfregion=\n r (func int)\n\n \nFunction of int given the new region\n\n\n\n\nOutput:\n\n\n\n\nThnew (mesh)\n \nMesh with chenged parameters\n\n\n\n\ncheckmovemesh\n#\n\n\nCheck a \nmovemesh\n without mesh generation.\n\n\n\n\nTODO\n\n\n\n\nParameter:\n\n\nOutput:\n\n\nclock\n#\n\n\nGet the clock in second.\n\n\nreal t = clock();\n\n\n\n\nParameter:\n\n\n\n\nNone\n\n\n\n\nOutput:\n\n\n\n\nt (real)\n\n \nCurrent CPU time\n\n\n\n\ncmaes\n#\n\n\n\n\nTODO\n\n\n\n\nParameter:\n\n\nOutput:\n\n\nconj\n#\n\n\nCaculate the conjuguate of a complex number.\n\n\ncomplex C1 = 1 + 1i;\ncomplex C2 = conj(C1);\n\n\n\n\nParameter:\n\n\n\n\nC1 (complex)\n\n \nComplex number\n\n\n\n\nOutput:\n\n\n\n\nC2 (complex)\n\n \nConjuguate of C1\n\n\n\n\nconvect\n#\n\n\nCharacteristic Galerkin method.\n\n\nconvect([ux, uy], dt, c);\n\n\n\n\n\n\nTODO\n\n\n\n\nParameter:\n\n\nOutput:\n\n\ncos\n#\n\n\n$\\cos$ function.\n\n\nreal x = cos(theta);\n\n\n\n\nParameters:\n\n\n\n\ntheta (real)\n\n\n\n\nOutput:\n\n\n\n\nx (real)\n\n\n\n\n\n\ncosh\n#\n\n\n$\\cosh$ function.\n\n\nreal x = cosh(theta);\n\n\n\n\nParameters:\n\n\n\n\ntheta (real)\n\n\n\n\nOutput:\n\n\n\n\nx (real)\n\n\n\n\ncube\n#\n\n\nConstruct a cubic mesh.\n\n\nNeed:\n\n\ninclude \"cube.idp\"\n\n\n\n\nmesh3 Th = cube(nnX, nnY, nnZ, [X(x), Y(y), Z(z)], [label=Label], [flags=Flags], [region=Region]);\n\n\n\n\nParameters:\n\n\n\n\nnnX (int)\n\n \nNumber of discretization point along $x$\n\n\nnnY (int)\n\n \nNumber of discretization point along $y$\n\n\nnnZ (int)\n\n  \nNumber of discretization point along $z$\n\n\nX(x) (func) \n[Optional]\n\n  \nAffine function of $x$ to define the length\n\n  Default: \nx\n\n\nY(y) (func) \n[Optional]\n\n  \nAffine function of $y$ to define the width\n\n  Default: \ny\n\n\nZ(z) (func) \n[Optional]\n\n  \nAffine function of $z$ to define the height\n\n  Default: \nz\n\n\nlabel=\n Label (int[int]) \n[Optional]\n\n  \nList of surface labels\n\n  Default: \n[1, 2, 3, 4, 5, 6]\n\n\nflags=\n Flags (int) \n[Optional]\n\n  \nRefer to \nsquare\n\n\nregion=\n Region (int) \n[Optional]\n\n  \nRegion number of the cube volume\n\n  Default: \n0\n\n\n\n\nOutput:\n\n\n\n\nTh (mesh3)\n\n \nCube mesh\n\n\n\n\ndfft\n#\n\n\n\n\nTODO\n\n\n\n\ndiffnp\n#\n\n\nArithmetic useful function.\n\n\ndiffnp(a, b) = (a<0)&(0<b) ? (b-a) : 0;\n\n\n\n\ndiffpos\n#\n\n\nArithmetic useful function.\n\n\ndiffpos(a, b) = max(b-a, 0);\n\n\n\n\ndist\n#\n\n\nArithmetic useful function.\n\n\ndist(a, b, c) = sqrt(a^2 + b^2 + c^2);\n\n\n\n\nEigenValue\n#\n\n\n\n\nTODO\n\n\n\n\nemptymesh\n#\n\n\nBuild an empty mesh.\n\n\nUseful to handle Lagrange multipliers in mixed and Mortar methods.\n\n\nmesh eTh = emptymesh(Th, ssd);\n\n\n\n\nParameters:\n\n\n\n\nTh (mesh\n\n \nMesh to empty\n\n\nssd (int[int])\n\n \n>TODO\n\n\n\n\nOutput:\n\n\n\n\neTh (mesh)\n\n \nEmpty mesh\n\n\n\n\nerf\n#\n\n\nThe error function:\n\n\nerf(x) = \\frac{2}{\\sqrt{pi}}\\int_{0}^{x}{\\exp(-t^2)dt}\n\n\n\n\n\nreal err = erf(x);\n\n\n\n\nParameters:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\nerr (real)\n\n\n\n\nerfc\n#\n\n\nComplementary of the \nerror function\n:\n\n\nerfc(x) = 1-erf(x)\n\n\n\n\n\nreal errc = erfc(x);\n\n\n\n\nParameters:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\nerr (real)\n\n\n\n\nexec\n#\n\n\nExecute an external command.\n\n\nint v = exec(command);\n\n\n\n\nParameters:\n\n\n\n\ncommand (string)\n\n \nCommand to execute\n\n\n\n\nOutput:\n\n\n\n\nv (int)\n\n \nValue returned by the command\n\n\n\n\nexit\n#\n\n\nExit function, equivalent to \nreturn\n.\n\n\nexit(N);\n\n\n\n\nParameters:\n\n\n\n\nN (int)\n\n \nReturn value\n\n\n\n\nOutput:\n\n\n\n\nNone\n\n\n\n\nexp\n#\n\n\nExponential function.\n\n\nreal a = exp(b);\n\n\n\n\nParameters:\n\n\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\na (real)\n\n\n\n\nfdim\n#\n\n\nPositive difference (\ncmath\n function).\n\n\nreal fd = fdim(a, b);\n\n\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\nfd (real)\n\n \nIf $x > y$, return $x-y$\n\n \nIf $x \\leq y$, return $0$\n\n\n\n\nfloor\n#\n\n\nFloor function.\n\n\nreal a = floor(b);\n\n\n\n\nReturn the largest integer value not greater than \nb\n.\n\n\nParameters:\n\n\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\na (real)\n\n\n\n\nfmax\n#\n\n\nMaximum (\ncmath\n function).\n\n\nreal Max = fmax(a, b);\n\n\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\nMax (real)\n\n\n\n\nfmin\n#\n\n\nMinimum (\ncmath\n function).\n\n\nreal Min = fmin(a, b);\n\n\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\nMin (real)\n\n\n\n\nfmod\n#\n\n\nRemainder of $a/b$ (\ncmath\n function).\n\n\nreal Mod = fmin(a, b);\n\n\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\nMin (real)\n\n\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\nMod (real)\n\n\n\n\nimag\n#\n\n\nImaginary part of a complex number.\n\n\ncomplex c = 1. + 1i;\nreal Im = imag(c);\n\n\n\n\nint1d\n#\n\n\n1D integral.\n\n\nint1d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)\n\n\n\n\nUsed in \nproblem\n, \nsolve\n or \nvarf\n definition to impose a boundary condition only (FreeFem++ does not support 1D simulation).\n\n\nParameters:\n\n\n\n\nTh (mesh)\n\n \nMesh where the integral is calculated\n\n\nGamma (int) \n[Optional]\n\n \nLabel of the 1D border\n\n Default: all borders of the mesh\n\n\nqfe=\n Qfe (keyword) _[Optional]\n\n \nQuadrature formula, see \nquadrature formulae\n\n\nqforder=\n Qforder (keyword) \n[Optional]\n\n \nQuadrature order, see \nquadrature formulae\n\n\n\n\nOutput:\n\n\n\n\nNon relevant\n\n\n\n\n\n\nThe content of \nint1d\n must be a linear or bilinear form.\n\n\n\n\nint2d\n#\n\n\n2D integral.\n\n\nint2d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)\n\n\n\n\nOr\n\n\nint2d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)\n\n\n\n\nUsed in \nproblem\n, \nsolve\n or \nvarf\n definition to:\n - Calculate integral in 2D simulation\n - Impose a boundary condition in 3D simulation\n\n\nParameters:\n\n\n\n\nTh (mesh)\n\n \nMesh where the integral is calculated\n\n\nRegion (int) \n[Optional]\n\n \nLabel of the 2D region (2D simulation)\n\n Default: all regions of the mesh\n\n\nGamma (int) \n[Optional]\n\n \nLabel of the 2D border (3D simulation)\n\n Default: all borders of the mesh\n\n\nqfe=\n Qfe (keyword) _[Optional]\n\n \nQuadrature formula, see \nquadrature formulae\n\n\nqforder=\n Qforder (keyword) \n[Optional]\n\n \nQuadrature order, see \nquadrature formulae\n\n\n\n\nOutput:\n\n\n\n\nNon relevant\n\n\n\n\n\n\nThe content of the \nint2d\n must be a linear or bilinear form.\n\n\n\n\nint3d\n#\n\n\n3D integral.\n\n\nint3d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)\n\n\n\n\nUsed in \nproblem\n, \nsolve\n or \nvarf\n definition to calculate integral in 3D simulation.\n\n\nParameters:\n\n\n\n\nTh (mesh)\n\n \nMesh where the integral is calculated\n\n\nRegion (int) \n[Optional]\n\n \nLabel of the 3D region\n\n Default: all regions of the mesh\n\n\nqfe=\n Qfe (keyword) _[Optional]\n\n \nQuadrature formula, see \nquadrature formulae\n\n\nqforder=\n Qforder (keyword) \n[Optional]\n\n \nQuadrature order, see \nquadrature formulae\n\n\n\n\nOutput:\n\n\n\n\nNon relevant\n\n\n\n\n\n\nThe content of the \nint3d\n must be a linear or bilinear form.\n\n\n\n\nintalledges\n#\n\n\n\n\nTODO\n\n\n\n\ninterpolate\n#\n\n\nInterpolation matrix.\n\n\nmatrix I = interpolate(Vh, Wh, inside=Inside, t=T, op=Op, U2Vc=U2VC);\n\n\n\n\n\n\nTODO\n\n\n\n\ninvdiffnp\n#\n\n\nArithmetic useful function.\n\n\ninvdiffnp(a, b) = (a<0)&(0<b) ? 1/(b-a) : 0\n\n\n\n\ninvdiffpos\n#\n\n\nArithmetic useful function.\n\n\ninvdiffpos(a, b) = (a<b) ? 1./(b-a) : 0\n\n\n\n\nisoline\n#\n\n\nNeed:\n\n\nload \"isoline\"\n\n\n\n\nint N = isoline(Th, u, xy, iso=Iso, close=Close, smoothing=Smoothing, ratio=Ratio, eps=Eps, beginend=BeginEnd, file=File);\n\n\n\n\n\n\nTODO\n\n\n\n\nj0\n#\n\n\n\n\nTODO\n\n\n\n\nj1\n#\n\n\n\n\nTODO\n\n\n\n\njn\n#\n\n\n\n\nTODO\n\n\n\n\njump\n#\n\n\n\n\nTODO\n\n\n\n\nLinearCG\n#\n\n\n\n\nTODO\n\n\n\n\nLinearGMRES\n#\n\n\n\n\nTODO\n\n\n\n\nlog\n#\n\n\n\n\nTODO\n\n\n\n\nlog10\n#\n\n\n\n\nTODO\n\n\n\n\nmax\n#\n\n\n\n\nTODO\n\n\n\n\nmean\n#\n\n\n\n\nTODO\n\n\n\n\nmedit\n#\n\n\n\n\nTODO\n\n\n\n\nmin\n#\n\n\n\n\nTODO\n\n\n\n\nmovemesh\n#\n\n\n\n\nTODO\n\n\n\n\nmovemesh23\n#\n\n\n\n\nTODO\n\n\n\n\nNLCG\n#\n\n\n\n\nTODO\n\n\n\n\non\n#\n\n\n\n\nTODO\n\n\n\n\nplot\n#\n\n\n\n\nTODO\n\n\n\n\npolar\n#\n\n\n\n\nTODO\n\n\n\n\npow\n#\n\n\nPower function.\n\n\nreal p = pow(a, b);\n\n\n\n\n$p=a^b$\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\np (real)\n\n\n\n\nprojection\n#\n\n\nArithmetic useful function.\n\n\nprojection(a, b, x) = min(max(a, x), b);\n\n\n\n\nreadmesh\n#\n\n\n\n\nTODO\n\n\n\n\nreadmesh3\n#\n\n\n\n\nTODO\n\n\n\n\nround\n#\n\n\n\n\nTODO\n\n\n\n\nsavemesh\n#\n\n\n\n\nTODO\n\n\n\n\nsavesol\n#\n\n\n\n\nTODO\n\n\n\n\nset\n#\n\n\n\n\nTODO\n\n\n\n\nsin\n#\n\n\n\n\nTODO\n\n\n\n\nsinh\n#\n\n\n\n\nTODO\n\n\n\n\nsort\n#\n\n\n\n\nTODO\n\n\n\n\nsplitmesh\n#\n\n\n\n\nTODO\n\n\n\n\nsquare\n#\n\n\n\n\nTODO\n\n\n\n\ntan\n#\n\n\n\n\nTODO\n\n\n\n\ntanh\n#\n\n\n\n\nTODO\n\n\n\n\ntetg\n#\n\n\n\n\nTODO\n\n\n\n\ntetgconvexhull\n#\n\n\n\n\nTODO\n\n\n\n\ntetgreconstruction\n#\n\n\n\n\nTODO\n\n\n\n\ntetgtransfo\n#\n\n\n\n\nTODO\n\n\n\n\ntrunc\n#\n\n\n\n\nTODO\n\n\n\n\ny0\n#\n\n\n\n\nTODO\n\n\n\n\ny1\n#\n\n\n\n\nTODO\n\n\n\n\nyn\n#\n\n\n\n\nTODO",
+            "location": "/functions/", 
+            "text": "acos\n#\n\n\n$\\arccos$ function.\n\n\nreal theta = acos(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\nacosh\n#\n\n\n$\\DeclareMathOperator\\arccosh{arccosh}$\n$\\arccosh$ function.\n\n\nreal theta = acosh(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\nadaptmesh\n#\n\n\nMesh adaptation function.\n\n\nmesh Thnew = adaptamesh(Th, f, ...)\n\n\n\n\n\n\nMore complete example:\n\n\n\n\nmesh Thnew = adaptmesh(Th, [fx, fy], hmin=1.e-3, hmax=1.e-2, iso=false)\n\n\n\n\nParameters:\n\n\n\n\nTh (mesh or mesh3)\n\n \nMesh to refine\n\n\nf (func), scalar or vectorial\n\n \nFunction to follow for the mesh adaptation\n\n\nhmin=\n minh (real)\n\n \nMinimum edge size\n\n\nhmax=\n maxh (real)\n\n \nMaximum edge size\n\n\nerr=\n Err (real)\n\n \nError level (P1 interpolation)\n\n\nerrg=\n Errg (real)\n\n \nRelative geometrical error\n\n\nnbvx=\n Nbvx (int)\n\n \nMaximum number of vertices\n\n\nnbsmooth=\n NbSmooth (int)\n\n \nNumber of smoothing iterations\n\n\nnbjacoby=\n NbJacoby (int)\n\n \nNumber of iterations for the smoothing procedure\n\n\nratio=\n Ratio (real)\n\n \nRatio of the triangles\n\n\nomega=\n Omega (real)\n\n \nRelaxation parameter for the smoothing procedure\n\n\niso=\n Iso (bool)\n\n \nIsotropic adaptation (if true)\n\n\nabserror=\n AbsError (bool)\n\n \nError (if true) - Relative error (if false)\n\n\ncutoff=\n CutOff (real)\n\n \nLower limit of the relative error evaluation\n\n\nverbosity=\n Verbosity (real)\n\n \nVerbosity level\n\n\ninquire=\n Inquire (bool)\n\n \nIf true, inquire graphically\n\n\nsplitpbedge=\n SplitPbEdge (bool)\n\n \nIf true, split all internal edges in half\n\n\nmaxsubdiv=\n MaxSubdiv (int)\n\n \nBound the maximum subdivisions\n\n\nrescaling=\n Rescaling (bool)\n\n \nRescale the function in [0, 1]\n\n\nkeepbackvertices=\n KeepBackVertices (bool)\n\n \nIf true, try to keep vertices of the original mesh\n\n\nisMetric=\n IsMetric (bool)\n\n \nIf ture, the metric is defined explicitly\n\n\npower=\n Power (int)\n\n \nExponent of the Hessian\n\n\nthetamax=\n ThetaMax (int)\n\n \nMinium corner angle (in degree)\n\n\nsplitin2=\n SplitIn2 (bool)\n\n \nSplit all triangles into 4 sub-triangles if true\n\n\nmetric=\n Metric ([real[int], real[int], real[int]])\n\n \nArray of 3 real arrays defining the metric\n\n\nnomeshgeneration=\n NoMeshGeneration (bool)\n\n \nIf true, the mesh is not generated\n\n\nperiodic=\n Periodic\n\n \nBuild an adapted periodic mesh\n\n\n\n\nOutput:\n\n\n\n\nThnew (mesh or mesh3)\n\n\n\n\nadj\n#\n\n\nAdjacent triangle of the triangle $k$ by the edge $e$\n\n\nint T = Th[k].adj(e);\n\n\n\n\nParameter:\n\n\n\n\ne (int)\n\n \nEdge number\n\n\n\n\nOutput:\n\n\n\n\nT (int)\n\n \nTriangle number\n\n\n\n\nAffineCG\n#\n\n\nAffine conjugate gradient solver\n\n\nUsed to solve a problem like $Ax=b$\n\n\nint Conv = AffineCG(A, x, precon=Precon, nbiter=NbIter, eps=Eps, veps=VEps, stop=Stop);\n\n\n\n\nParameter:\n\n\n\n\nA (matrix)\n\n \nMatrix of the problem $Ax=b$\n\n\nx (real[int])\n\n \nSolution vector\n\n\nprecon=\n Precon (real[int])\n\n \nPreconditionning function\n\n\nnbiter=\n NbIter (int)\n\n \nMaximum number of iterations\n\n\neps=\n Eps (real)\n\n \nConvergence criterion\n\n If $\\epsilon\n0$: test $||A(x)||_p \\leq \\epsilon||A(x_0)||_p$\n\n If $\\epsilon\n0$: test $||A(x)||_p^2 \\leq |\\epsilon|$\n\n\nveps=\n VEps (real)\n\n \nSame as eps, but return -eps\n\n\nstop=\n Stop (func)\n\n \nConvergence criterion as a function\n\n Prototype is \nfunc bool StopFunc (int Iter, real[int] U, real[int] g)\n\n \nu\n: current solution, \ng\n: current gradient (not preconditionned)\n\n\n\n\nOutput:\n\n\n\n\nConv (int)\n\n \n0: converged - !0: not converged\n\n\n\n\nAffineGMRES\n#\n\n\nAffine GMRES solver\n\n\nParameters and output are the same as \nAffineCG\n\n\nasin\n#\n\n\n$\\arcsin$ function.\n\n\nreal theta = asin(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\nasinh\n#\n\n\n$\\DeclareMathOperator\\arcsinh{arcsinh}$\n$\\arcsinh$ function.\n\n\nreal theta = asinh(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\nassert\n#\n\n\nVerify a condition is true (same as C), if not the program stops.\n\n\nassert(x==0)\n\n\n\n\nParameter:\n\n\n\n\nBollean condition\n\n\n\n\nOutput:\n\n\n\n\nNone\n\n\n\n\natan\n#\n\n\n$\\arctan$ function.\n\n\nreal theta = atan(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\natan2\n#\n\n\n$\\displaystyle{\\arctan\\left(\\frac{y}{x}\\right)}$ function, returning the correct sign for $\\theta$.\n\n\nreal theta = atan2(y, x)\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\natanh\n#\n\n\n$\\DeclareMathOperator\\arctanh{arctanh}$\n$\\arctanh$ function.\n\n\nreal theta = atanh(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\ntheta (real)\n\n\n\n\n\n\nBFGS\n#\n\n\n\n\nTODO\n\n\n\n\nParameter:\n\n\nOutput:\n\n\nbuildlayers\n#\n\n\n\n\nTODO\n\n\n\n\nParameter:\n\n\nOutput:\n\n\nbuildmesh\n#\n\n\nBuild a 2D mesh using border elements.\n\n\nmesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixeborder=FixeBorder]);\n\n\n\n\nParameters:\n\n\n\n\nb1, b2, b3, b4 (border)\n\n \nGeometry border, \nb1(nn)\n mean \nb1\n border discretize by \nnn\n vertices\n\n\nnbvx=\n Nbvx (int) \n[Optional]\n\n \nMaximum number of vertices\n\n Default: \nTODO\n\n\nfixeborder=\n FixeBorder (bool) \n[Optional]\n\n \nIf true, mesh genertator can not change the boundary mesh\n\n Default: \nfalse\n\n\n\n\nOutput:\n\n\n\n\nTh (mesh)\n\n \nResulting mesh\n\n\n\n\nceil\n#\n\n\nRound fractions up of $x$.\n\n\nint c = ceil(x);\n\n\n\n\nParameter:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\nc (int)\n\n\n\n\nchange\n#\n\n\nChange a property of a mesh.\n\n\nint[int] L = [0, 1];\nThnew = change(Th, label=L);\n\n\n\n\nParameter:\n\n\n\n\n\n\nTh (mesh)\n\n \nOriginal mesh\n\n\n\n\n\n\nlabel=\n L (int[int])\n\n \nPair of old and new label\n\n\n\n\nregion=\n R (int[int])\n\n \nPair of old and new region\n\n\nflabel=\n l (func int)\n\n \nFunction of int given the new label\n\n\nfregion=\n r (func int)\n\n \nFunction of int given the new region\n\n\n\n\nOutput:\n\n\n\n\nThnew (mesh)\n \nMesh with chenged parameters\n\n\n\n\ncheckmovemesh\n#\n\n\nCheck a \nmovemesh\n without mesh generation.\n\n\n\n\nTODO\n\n\n\n\nParameter:\n\n\nOutput:\n\n\nclock\n#\n\n\nGet the clock in second.\n\n\nreal t = clock();\n\n\n\n\nParameter:\n\n\n\n\nNone\n\n\n\n\nOutput:\n\n\n\n\nt (real)\n\n \nCurrent CPU time\n\n\n\n\ncmaes\n#\n\n\n\n\nTODO\n\n\n\n\nParameter:\n\n\nOutput:\n\n\nconj\n#\n\n\nCaculate the conjuguate of a complex number.\n\n\ncomplex C1 = 1 + 1i;\ncomplex C2 = conj(C1);\n\n\n\n\nParameter:\n\n\n\n\nC1 (complex)\n\n \nComplex number\n\n\n\n\nOutput:\n\n\n\n\nC2 (complex)\n\n \nConjuguate of C1\n\n\n\n\nconvect\n#\n\n\nCharacteristic Galerkin method.\n\n\nconvect([ux, uy], dt, c);\n\n\n\n\n\n\nTODO\n\n\n\n\nParameter:\n\n\nOutput:\n\n\ncos\n#\n\n\n$\\cos$ function.\n\n\nreal x = cos(theta);\n\n\n\n\nParameters:\n\n\n\n\ntheta (real)\n\n\n\n\nOutput:\n\n\n\n\nx (real)\n\n\n\n\n\n\ncosh\n#\n\n\n$\\cosh$ function.\n\n\nreal x = cosh(theta);\n\n\n\n\nParameters:\n\n\n\n\ntheta (real)\n\n\n\n\nOutput:\n\n\n\n\nx (real)\n\n\n\n\ncube\n#\n\n\nConstruct a cubic mesh.\n\n\nNeed:\n\n\ninclude \ncube.idp\n\n\n\n\n\nmesh3 Th = cube(nnX, nnY, nnZ, [X(x), Y(y), Z(z)], [label=Label], [flags=Flags], [region=Region]);\n\n\n\n\nParameters:\n\n\n\n\nnnX (int)\n\n \nNumber of discretization point along $x$\n\n\nnnY (int)\n\n \nNumber of discretization point along $y$\n\n\nnnZ (int)\n\n  \nNumber of discretization point along $z$\n\n\nX(x) (func) \n[Optional]\n\n  \nAffine function of $x$ to define the length\n\n  Default: \nx\n\n\nY(y) (func) \n[Optional]\n\n  \nAffine function of $y$ to define the width\n\n  Default: \ny\n\n\nZ(z) (func) \n[Optional]\n\n  \nAffine function of $z$ to define the height\n\n  Default: \nz\n\n\nlabel=\n Label (int[int]) \n[Optional]\n\n  \nList of surface labels\n\n  Default: \n[1, 2, 3, 4, 5, 6]\n\n\nflags=\n Flags (int) \n[Optional]\n\n  \nRefer to \nsquare\n\n\nregion=\n Region (int) \n[Optional]\n\n  \nRegion number of the cube volume\n\n  Default: \n0\n\n\n\n\nOutput:\n\n\n\n\nTh (mesh3)\n\n \nCube mesh\n\n\n\n\ndfft\n#\n\n\n\n\nTODO\n\n\n\n\ndiffnp\n#\n\n\nArithmetic useful function.\n\n\ndiffnp(a, b) = (a\n0)\n(0\nb) ? (b-a) : 0;\n\n\n\n\ndiffpos\n#\n\n\nArithmetic useful function.\n\n\ndiffpos(a, b) = max(b-a, 0);\n\n\n\n\ndist\n#\n\n\nArithmetic useful function.\n\n\ndist(a, b, c) = sqrt(a^2 + b^2 + c^2);\n\n\n\n\nEigenValue\n#\n\n\n\n\nTODO\n\n\n\n\nemptymesh\n#\n\n\nBuild an empty mesh.\n\n\nUseful to handle Lagrange multipliers in mixed and Mortar methods.\n\n\nmesh eTh = emptymesh(Th, ssd);\n\n\n\n\nParameters:\n\n\n\n\nTh (mesh\n\n \nMesh to empty\n\n\nssd (int[int])\n\n \nTODO\n\n\n\n\nOutput:\n\n\n\n\neTh (mesh)\n\n \nEmpty mesh\n\n\n\n\nerf\n#\n\n\nThe error function:\n\n\nerf(x) = \\frac{2}{\\sqrt{pi}}\\int_{0}^{x}{\\exp(-t^2)dt}\n\n\n\n\n\nreal err = erf(x);\n\n\n\n\nParameters:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\nerr (real)\n\n\n\n\nerfc\n#\n\n\nComplementary of the \nerror function\n:\n\n\nerfc(x) = 1-erf(x)\n\n\n\n\n\nreal errc = erfc(x);\n\n\n\n\nParameters:\n\n\n\n\nx (real)\n\n\n\n\nOutput:\n\n\n\n\nerr (real)\n\n\n\n\nexec\n#\n\n\nExecute an external command.\n\n\nint v = exec(command);\n\n\n\n\nParameters:\n\n\n\n\ncommand (string)\n\n \nCommand to execute\n\n\n\n\nOutput:\n\n\n\n\nv (int)\n\n \nValue returned by the command\n\n\n\n\nexit\n#\n\n\nExit function, equivalent to \nreturn\n.\n\n\nexit(N);\n\n\n\n\nParameters:\n\n\n\n\nN (int)\n\n \nReturn value\n\n\n\n\nOutput:\n\n\n\n\nNone\n\n\n\n\nexp\n#\n\n\nExponential function.\n\n\nreal a = exp(b);\n\n\n\n\nParameters:\n\n\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\na (real)\n\n\n\n\nfdim\n#\n\n\nPositive difference (\ncmath\n function).\n\n\nreal fd = fdim(a, b);\n\n\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\nfd (real)\n\n \nIf $x \n y$, return $x-y$\n\n \nIf $x \\leq y$, return $0$\n\n\n\n\nfloor\n#\n\n\nFloor function.\n\n\nreal a = floor(b);\n\n\n\n\nReturn the largest integer value not greater than \nb\n.\n\n\nParameters:\n\n\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\na (real)\n\n\n\n\nfmax\n#\n\n\nMaximum (\ncmath\n function).\n\n\nreal Max = fmax(a, b);\n\n\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\nMax (real)\n\n\n\n\nfmin\n#\n\n\nMinimum (\ncmath\n function).\n\n\nreal Min = fmin(a, b);\n\n\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\nMin (real)\n\n\n\n\nfmod\n#\n\n\nRemainder of $a/b$ (\ncmath\n function).\n\n\nreal Mod = fmin(a, b);\n\n\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\nMin (real)\n\n\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\nMod (real)\n\n\n\n\nimag\n#\n\n\nImaginary part of a complex number.\n\n\ncomplex c = 1. + 1i;\nreal Im = imag(c);\n\n\n\n\nint1d\n#\n\n\n1D integral.\n\n\nint1d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)\n\n\n\n\nUsed in \nproblem\n, \nsolve\n or \nvarf\n definition to impose a boundary condition only (FreeFem++ does not support 1D simulation).\n\n\nParameters:\n\n\n\n\nTh (mesh)\n\n \nMesh where the integral is calculated\n\n\nGamma (int) \n[Optional]\n\n \nLabel of the 1D border\n\n Default: all borders of the mesh\n\n\nqfe=\n Qfe (keyword) _[Optional]\n\n \nQuadrature formula, see \nquadrature formulae\n\n\nqforder=\n Qforder (keyword) \n[Optional]\n\n \nQuadrature order, see \nquadrature formulae\n\n\n\n\nOutput:\n\n\n\n\nNon relevant\n\n\n\n\n\n\nThe content of \nint1d\n must be a linear or bilinear form.\n\n\n\n\nint2d\n#\n\n\n2D integral.\n\n\nint2d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)\n\n\n\n\nOr\n\n\nint2d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)\n\n\n\n\nUsed in \nproblem\n, \nsolve\n or \nvarf\n definition to:\n - Calculate integral in 2D simulation\n - Impose a boundary condition in 3D simulation\n\n\nParameters:\n\n\n\n\nTh (mesh)\n\n \nMesh where the integral is calculated\n\n\nRegion (int) \n[Optional]\n\n \nLabel of the 2D region (2D simulation)\n\n Default: all regions of the mesh\n\n\nGamma (int) \n[Optional]\n\n \nLabel of the 2D border (3D simulation)\n\n Default: all borders of the mesh\n\n\nqfe=\n Qfe (keyword) _[Optional]\n\n \nQuadrature formula, see \nquadrature formulae\n\n\nqforder=\n Qforder (keyword) \n[Optional]\n\n \nQuadrature order, see \nquadrature formulae\n\n\n\n\nOutput:\n\n\n\n\nNon relevant\n\n\n\n\n\n\nThe content of the \nint2d\n must be a linear or bilinear form.\n\n\n\n\nint3d\n#\n\n\n3D integral.\n\n\nint3d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)\n\n\n\n\nUsed in \nproblem\n, \nsolve\n or \nvarf\n definition to calculate integral in 3D simulation.\n\n\nParameters:\n\n\n\n\nTh (mesh)\n\n \nMesh where the integral is calculated\n\n\nRegion (int) \n[Optional]\n\n \nLabel of the 3D region\n\n Default: all regions of the mesh\n\n\nqfe=\n Qfe (keyword) _[Optional]\n\n \nQuadrature formula, see \nquadrature formulae\n\n\nqforder=\n Qforder (keyword) \n[Optional]\n\n \nQuadrature order, see \nquadrature formulae\n\n\n\n\nOutput:\n\n\n\n\nNon relevant\n\n\n\n\n\n\nThe content of the \nint3d\n must be a linear or bilinear form.\n\n\n\n\nintalledges\n#\n\n\n\n\nTODO\n\n\n\n\ninterpolate\n#\n\n\nInterpolation matrix.\n\n\nmatrix I = interpolate(Vh, Wh, inside=Inside, t=T, op=Op, U2Vc=U2VC);\n\n\n\n\n\n\nTODO\n\n\n\n\ninvdiffnp\n#\n\n\nArithmetic useful function.\n\n\ninvdiffnp(a, b) = (a\n0)\n(0\nb) ? 1/(b-a) : 0\n\n\n\n\ninvdiffpos\n#\n\n\nArithmetic useful function.\n\n\ninvdiffpos(a, b) = (a\nb) ? 1./(b-a) : 0\n\n\n\n\nisoline\n#\n\n\nNeed:\n\n\nload \nisoline\n\n\n\n\n\nint N = isoline(Th, u, xy, iso=Iso, close=Close, smoothing=Smoothing, ratio=Ratio, eps=Eps, beginend=BeginEnd, file=File);\n\n\n\n\n\n\nTODO\n\n\n\n\nj0\n#\n\n\n\n\nTODO\n\n\n\n\nj1\n#\n\n\n\n\nTODO\n\n\n\n\njn\n#\n\n\n\n\nTODO\n\n\n\n\njump\n#\n\n\n\n\nTODO\n\n\n\n\nLinearCG\n#\n\n\n\n\nTODO\n\n\n\n\nLinearGMRES\n#\n\n\n\n\nTODO\n\n\n\n\nlog\n#\n\n\n\n\nTODO\n\n\n\n\nlog10\n#\n\n\n\n\nTODO\n\n\n\n\nmax\n#\n\n\n\n\nTODO\n\n\n\n\nmean\n#\n\n\n\n\nTODO\n\n\n\n\nmedit\n#\n\n\n\n\nTODO\n\n\n\n\nmin\n#\n\n\n\n\nTODO\n\n\n\n\nmovemesh\n#\n\n\n\n\nTODO\n\n\n\n\nmovemesh23\n#\n\n\n\n\nTODO\n\n\n\n\nNLCG\n#\n\n\n\n\nTODO\n\n\n\n\non\n#\n\n\n\n\nTODO\n\n\n\n\nplot\n#\n\n\n\n\nTODO\n\n\n\n\npolar\n#\n\n\n\n\nTODO\n\n\n\n\npow\n#\n\n\nPower function.\n\n\nreal p = pow(a, b);\n\n\n\n\n$p=a^b$\n\n\nParameters:\n\n\n\n\na (real)\n\n\nb (real)\n\n\n\n\nOutput:\n\n\n\n\np (real)\n\n\n\n\nprojection\n#\n\n\nArithmetic useful function.\n\n\nprojection(a, b, x) = min(max(a, x), b);\n\n\n\n\nreadmesh\n#\n\n\n\n\nTODO\n\n\n\n\nreadmesh3\n#\n\n\n\n\nTODO\n\n\n\n\nround\n#\n\n\n\n\nTODO\n\n\n\n\nsavemesh\n#\n\n\n\n\nTODO\n\n\n\n\nsavesol\n#\n\n\n\n\nTODO\n\n\n\n\nset\n#\n\n\n\n\nTODO\n\n\n\n\nsin\n#\n\n\n\n\nTODO\n\n\n\n\nsinh\n#\n\n\n\n\nTODO\n\n\n\n\nsort\n#\n\n\n\n\nTODO\n\n\n\n\nsplitmesh\n#\n\n\n\n\nTODO\n\n\n\n\nsquare\n#\n\n\n\n\nTODO\n\n\n\n\ntan\n#\n\n\n\n\nTODO\n\n\n\n\ntanh\n#\n\n\n\n\nTODO\n\n\n\n\ntetg\n#\n\n\n\n\nTODO\n\n\n\n\ntetgconvexhull\n#\n\n\n\n\nTODO\n\n\n\n\ntetgreconstruction\n#\n\n\n\n\nTODO\n\n\n\n\ntetgtransfo\n#\n\n\n\n\nTODO\n\n\n\n\ntrunc\n#\n\n\n\n\nTODO\n\n\n\n\ny0\n#\n\n\n\n\nTODO\n\n\n\n\ny1\n#\n\n\n\n\nTODO\n\n\n\n\nyn\n#\n\n\n\n\nTODO", 
             "title": "Functions"
-        },
+        }, 
         {
-            "location": "/functions/#acos",
-            "text": "$\\arccos$ function.  real theta = acos(x);  Parameter:   x (real)   Output:   theta (real)",
+            "location": "/functions/#acos", 
+            "text": "$\\arccos$ function.  real theta = acos(x);  Parameter:   x (real)   Output:   theta (real)", 
             "title": "acos"
-        },
+        }, 
         {
-            "location": "/functions/#acosh",
-            "text": "$\\DeclareMathOperator\\arccosh{arccosh}$\n$\\arccosh$ function.  real theta = acosh(x);  Parameter:   x (real)   Output:   theta (real)",
+            "location": "/functions/#acosh", 
+            "text": "$\\DeclareMathOperator\\arccosh{arccosh}$\n$\\arccosh$ function.  real theta = acosh(x);  Parameter:   x (real)   Output:   theta (real)", 
             "title": "acosh"
-        },
+        }, 
         {
-            "location": "/functions/#adaptmesh",
-            "text": "Mesh adaptation function.  mesh Thnew = adaptamesh(Th, f, ...)   More complete example:   mesh Thnew = adaptmesh(Th, [fx, fy], hmin=1.e-3, hmax=1.e-2, iso=false)  Parameters:   Th (mesh or mesh3) \n  Mesh to refine  f (func), scalar or vectorial \n  Function to follow for the mesh adaptation  hmin=  minh (real) \n  Minimum edge size  hmax=  maxh (real) \n  Maximum edge size  err=  Err (real) \n  Error level (P1 interpolation)  errg=  Errg (real) \n  Relative geometrical error  nbvx=  Nbvx (int) \n  Maximum number of vertices  nbsmooth=  NbSmooth (int) \n  Number of smoothing iterations  nbjacoby=  NbJacoby (int) \n  Number of iterations for the smoothing procedure  ratio=  Ratio (real) \n  Ratio of the triangles  omega=  Omega (real) \n  Relaxation parameter for the smoothing procedure  iso=  Iso (bool) \n  Isotropic adaptation (if true)  abserror=  AbsError (bool) \n  Error (if true) - Relative error (if false)  cutoff=  CutOff (real) \n  Lower limit of the relative error evaluation  verbosity=  Verbosity (real) \n  Verbosity level  inquire=  Inquire (bool) \n  If true, inquire graphically  splitpbedge=  SplitPbEdge (bool) \n  If true, split all internal edges in half  maxsubdiv=  MaxSubdiv (int) \n  Bound the maximum subdivisions  rescaling=  Rescaling (bool) \n  Rescale the function in [0, 1]  keepbackvertices=  KeepBackVertices (bool) \n  If true, try to keep vertices of the original mesh  isMetric=  IsMetric (bool) \n  If ture, the metric is defined explicitly  power=  Power (int) \n  Exponent of the Hessian  thetamax=  ThetaMax (int) \n  Minium corner angle (in degree)  splitin2=  SplitIn2 (bool) \n  Split all triangles into 4 sub-triangles if true  metric=  Metric ([real[int], real[int], real[int]]) \n  Array of 3 real arrays defining the metric  nomeshgeneration=  NoMeshGeneration (bool) \n  If true, the mesh is not generated  periodic=  Periodic \n  Build an adapted periodic mesh   Output:   Thnew (mesh or mesh3)",
+            "location": "/functions/#adaptmesh", 
+            "text": "Mesh adaptation function.  mesh Thnew = adaptamesh(Th, f, ...)   More complete example:   mesh Thnew = adaptmesh(Th, [fx, fy], hmin=1.e-3, hmax=1.e-2, iso=false)  Parameters:   Th (mesh or mesh3) \n  Mesh to refine  f (func), scalar or vectorial \n  Function to follow for the mesh adaptation  hmin=  minh (real) \n  Minimum edge size  hmax=  maxh (real) \n  Maximum edge size  err=  Err (real) \n  Error level (P1 interpolation)  errg=  Errg (real) \n  Relative geometrical error  nbvx=  Nbvx (int) \n  Maximum number of vertices  nbsmooth=  NbSmooth (int) \n  Number of smoothing iterations  nbjacoby=  NbJacoby (int) \n  Number of iterations for the smoothing procedure  ratio=  Ratio (real) \n  Ratio of the triangles  omega=  Omega (real) \n  Relaxation parameter for the smoothing procedure  iso=  Iso (bool) \n  Isotropic adaptation (if true)  abserror=  AbsError (bool) \n  Error (if true) - Relative error (if false)  cutoff=  CutOff (real) \n  Lower limit of the relative error evaluation  verbosity=  Verbosity (real) \n  Verbosity level  inquire=  Inquire (bool) \n  If true, inquire graphically  splitpbedge=  SplitPbEdge (bool) \n  If true, split all internal edges in half  maxsubdiv=  MaxSubdiv (int) \n  Bound the maximum subdivisions  rescaling=  Rescaling (bool) \n  Rescale the function in [0, 1]  keepbackvertices=  KeepBackVertices (bool) \n  If true, try to keep vertices of the original mesh  isMetric=  IsMetric (bool) \n  If ture, the metric is defined explicitly  power=  Power (int) \n  Exponent of the Hessian  thetamax=  ThetaMax (int) \n  Minium corner angle (in degree)  splitin2=  SplitIn2 (bool) \n  Split all triangles into 4 sub-triangles if true  metric=  Metric ([real[int], real[int], real[int]]) \n  Array of 3 real arrays defining the metric  nomeshgeneration=  NoMeshGeneration (bool) \n  If true, the mesh is not generated  periodic=  Periodic \n  Build an adapted periodic mesh   Output:   Thnew (mesh or mesh3)", 
             "title": "adaptmesh"
-        },
+        }, 
         {
-            "location": "/functions/#adj",
-            "text": "Adjacent triangle of the triangle $k$ by the edge $e$  int T = Th[k].adj(e);  Parameter:   e (int) \n  Edge number   Output:   T (int) \n  Triangle number",
+            "location": "/functions/#adj", 
+            "text": "Adjacent triangle of the triangle $k$ by the edge $e$  int T = Th[k].adj(e);  Parameter:   e (int) \n  Edge number   Output:   T (int) \n  Triangle number", 
             "title": "adj"
-        },
+        }, 
         {
-            "location": "/functions/#affinecg",
-            "text": "Affine conjugate gradient solver  Used to solve a problem like $Ax=b$  int Conv = AffineCG(A, x, precon=Precon, nbiter=NbIter, eps=Eps, veps=VEps, stop=Stop);  Parameter:   A (matrix) \n  Matrix of the problem $Ax=b$  x (real[int]) \n  Solution vector  precon=  Precon (real[int]) \n  Preconditionning function  nbiter=  NbIter (int) \n  Maximum number of iterations  eps=  Eps (real) \n  Convergence criterion \n If $\\epsilon>0$: test $||A(x)||_p \\leq \\epsilon||A(x_0)||_p$ \n If $\\epsilon<0$: test $||A(x)||_p^2 \\leq |\\epsilon|$  veps=  VEps (real) \n  Same as eps, but return -eps  stop=  Stop (func) \n  Convergence criterion as a function \n Prototype is  func bool StopFunc (int Iter, real[int] U, real[int] g) \n  u : current solution,  g : current gradient (not preconditionned)   Output:   Conv (int) \n  0: converged - !0: not converged",
+            "location": "/functions/#affinecg", 
+            "text": "Affine conjugate gradient solver  Used to solve a problem like $Ax=b$  int Conv = AffineCG(A, x, precon=Precon, nbiter=NbIter, eps=Eps, veps=VEps, stop=Stop);  Parameter:   A (matrix) \n  Matrix of the problem $Ax=b$  x (real[int]) \n  Solution vector  precon=  Precon (real[int]) \n  Preconditionning function  nbiter=  NbIter (int) \n  Maximum number of iterations  eps=  Eps (real) \n  Convergence criterion \n If $\\epsilon 0$: test $||A(x)||_p \\leq \\epsilon||A(x_0)||_p$ \n If $\\epsilon 0$: test $||A(x)||_p^2 \\leq |\\epsilon|$  veps=  VEps (real) \n  Same as eps, but return -eps  stop=  Stop (func) \n  Convergence criterion as a function \n Prototype is  func bool StopFunc (int Iter, real[int] U, real[int] g) \n  u : current solution,  g : current gradient (not preconditionned)   Output:   Conv (int) \n  0: converged - !0: not converged", 
             "title": "AffineCG"
-        },
+        }, 
         {
-            "location": "/functions/#affinegmres",
-            "text": "Affine GMRES solver  Parameters and output are the same as  AffineCG",
+            "location": "/functions/#affinegmres", 
+            "text": "Affine GMRES solver  Parameters and output are the same as  AffineCG", 
             "title": "AffineGMRES"
-        },
+        }, 
         {
-            "location": "/functions/#asin",
-            "text": "$\\arcsin$ function.  real theta = asin(x);  Parameter:   x (real)   Output:   theta (real)",
+            "location": "/functions/#asin", 
+            "text": "$\\arcsin$ function.  real theta = asin(x);  Parameter:   x (real)   Output:   theta (real)", 
             "title": "asin"
-        },
+        }, 
         {
-            "location": "/functions/#asinh",
-            "text": "$\\DeclareMathOperator\\arcsinh{arcsinh}$\n$\\arcsinh$ function.  real theta = asinh(x);  Parameter:   x (real)   Output:   theta (real)",
+            "location": "/functions/#asinh", 
+            "text": "$\\DeclareMathOperator\\arcsinh{arcsinh}$\n$\\arcsinh$ function.  real theta = asinh(x);  Parameter:   x (real)   Output:   theta (real)", 
             "title": "asinh"
-        },
+        }, 
         {
-            "location": "/functions/#assert",
-            "text": "Verify a condition is true (same as C), if not the program stops.  assert(x==0)  Parameter:   Bollean condition   Output:   None",
+            "location": "/functions/#assert", 
+            "text": "Verify a condition is true (same as C), if not the program stops.  assert(x==0)  Parameter:   Bollean condition   Output:   None", 
             "title": "assert"
-        },
+        }, 
         {
-            "location": "/functions/#atan",
-            "text": "$\\arctan$ function.  real theta = atan(x);  Parameter:   x (real)   Output:   theta (real)",
+            "location": "/functions/#atan", 
+            "text": "$\\arctan$ function.  real theta = atan(x);  Parameter:   x (real)   Output:   theta (real)", 
             "title": "atan"
-        },
+        }, 
         {
-            "location": "/functions/#atan2",
-            "text": "$\\displaystyle{\\arctan\\left(\\frac{y}{x}\\right)}$ function, returning the correct sign for $\\theta$.  real theta = atan2(y, x)  Parameter:   x (real)   Output:   theta (real)",
+            "location": "/functions/#atan2", 
+            "text": "$\\displaystyle{\\arctan\\left(\\frac{y}{x}\\right)}$ function, returning the correct sign for $\\theta$.  real theta = atan2(y, x)  Parameter:   x (real)   Output:   theta (real)", 
             "title": "atan2"
-        },
+        }, 
         {
-            "location": "/functions/#atanh",
-            "text": "$\\DeclareMathOperator\\arctanh{arctanh}$\n$\\arctanh$ function.  real theta = atanh(x);  Parameter:   x (real)   Output:   theta (real)",
+            "location": "/functions/#atanh", 
+            "text": "$\\DeclareMathOperator\\arctanh{arctanh}$\n$\\arctanh$ function.  real theta = atanh(x);  Parameter:   x (real)   Output:   theta (real)", 
             "title": "atanh"
-        },
+        }, 
         {
-            "location": "/functions/#bfgs",
-            "text": "TODO   Parameter:  Output:",
+            "location": "/functions/#bfgs", 
+            "text": "TODO   Parameter:  Output:", 
             "title": "BFGS"
-        },
+        }, 
         {
-            "location": "/functions/#buildlayers",
-            "text": "TODO   Parameter:  Output:",
+            "location": "/functions/#buildlayers", 
+            "text": "TODO   Parameter:  Output:", 
             "title": "buildlayers"
-        },
+        }, 
         {
-            "location": "/functions/#buildmesh",
-            "text": "Build a 2D mesh using border elements.  mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixeborder=FixeBorder]);  Parameters:   b1, b2, b3, b4 (border) \n  Geometry border,  b1(nn)  mean  b1  border discretize by  nn  vertices  nbvx=  Nbvx (int)  [Optional] \n  Maximum number of vertices \n Default: >TODO  fixeborder=  FixeBorder (bool)  [Optional] \n  If true, mesh genertator can not change the boundary mesh \n Default:  false   Output:   Th (mesh) \n  Resulting mesh",
+            "location": "/functions/#buildmesh", 
+            "text": "Build a 2D mesh using border elements.  mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixeborder=FixeBorder]);  Parameters:   b1, b2, b3, b4 (border) \n  Geometry border,  b1(nn)  mean  b1  border discretize by  nn  vertices  nbvx=  Nbvx (int)  [Optional] \n  Maximum number of vertices \n Default:  TODO  fixeborder=  FixeBorder (bool)  [Optional] \n  If true, mesh genertator can not change the boundary mesh \n Default:  false   Output:   Th (mesh) \n  Resulting mesh", 
             "title": "buildmesh"
-        },
+        }, 
         {
-            "location": "/functions/#ceil",
-            "text": "Round fractions up of $x$.  int c = ceil(x);  Parameter:   x (real)   Output:   c (int)",
+            "location": "/functions/#ceil", 
+            "text": "Round fractions up of $x$.  int c = ceil(x);  Parameter:   x (real)   Output:   c (int)", 
             "title": "ceil"
-        },
+        }, 
         {
-            "location": "/functions/#change",
-            "text": "Change a property of a mesh.  int[int] L = [0, 1];\nThnew = change(Th, label=L);  Parameter:    Th (mesh) \n  Original mesh    label=  L (int[int]) \n  Pair of old and new label   region=  R (int[int]) \n  Pair of old and new region  flabel=  l (func int) \n  Function of int given the new label  fregion=  r (func int) \n  Function of int given the new region   Output:   Thnew (mesh)\n  Mesh with chenged parameters",
+            "location": "/functions/#change", 
+            "text": "Change a property of a mesh.  int[int] L = [0, 1];\nThnew = change(Th, label=L);  Parameter:    Th (mesh) \n  Original mesh    label=  L (int[int]) \n  Pair of old and new label   region=  R (int[int]) \n  Pair of old and new region  flabel=  l (func int) \n  Function of int given the new label  fregion=  r (func int) \n  Function of int given the new region   Output:   Thnew (mesh)\n  Mesh with chenged parameters", 
             "title": "change"
-        },
+        }, 
         {
-            "location": "/functions/#checkmovemesh",
-            "text": "Check a  movemesh  without mesh generation.   TODO   Parameter:  Output:",
+            "location": "/functions/#checkmovemesh", 
+            "text": "Check a  movemesh  without mesh generation.   TODO   Parameter:  Output:", 
             "title": "checkmovemesh"
-        },
+        }, 
         {
-            "location": "/functions/#clock",
-            "text": "Get the clock in second.  real t = clock();  Parameter:   None   Output:   t (real) \n  Current CPU time",
+            "location": "/functions/#clock", 
+            "text": "Get the clock in second.  real t = clock();  Parameter:   None   Output:   t (real) \n  Current CPU time", 
             "title": "clock"
-        },
+        }, 
         {
-            "location": "/functions/#cmaes",
-            "text": "TODO   Parameter:  Output:",
+            "location": "/functions/#cmaes", 
+            "text": "TODO   Parameter:  Output:", 
             "title": "cmaes"
-        },
+        }, 
         {
-            "location": "/functions/#conj",
-            "text": "Caculate the conjuguate of a complex number.  complex C1 = 1 + 1i;\ncomplex C2 = conj(C1);  Parameter:   C1 (complex) \n  Complex number   Output:   C2 (complex) \n  Conjuguate of C1",
+            "location": "/functions/#conj", 
+            "text": "Caculate the conjuguate of a complex number.  complex C1 = 1 + 1i;\ncomplex C2 = conj(C1);  Parameter:   C1 (complex) \n  Complex number   Output:   C2 (complex) \n  Conjuguate of C1", 
             "title": "conj"
-        },
+        }, 
         {
-            "location": "/functions/#convect",
-            "text": "Characteristic Galerkin method.  convect([ux, uy], dt, c);   TODO   Parameter:  Output:",
+            "location": "/functions/#convect", 
+            "text": "Characteristic Galerkin method.  convect([ux, uy], dt, c);   TODO   Parameter:  Output:", 
             "title": "convect"
-        },
+        }, 
         {
-            "location": "/functions/#cos",
-            "text": "$\\cos$ function.  real x = cos(theta);  Parameters:   theta (real)   Output:   x (real)",
+            "location": "/functions/#cos", 
+            "text": "$\\cos$ function.  real x = cos(theta);  Parameters:   theta (real)   Output:   x (real)", 
             "title": "cos"
-        },
+        }, 
         {
-            "location": "/functions/#cosh",
-            "text": "$\\cosh$ function.  real x = cosh(theta);  Parameters:   theta (real)   Output:   x (real)",
+            "location": "/functions/#cosh", 
+            "text": "$\\cosh$ function.  real x = cosh(theta);  Parameters:   theta (real)   Output:   x (real)", 
             "title": "cosh"
-        },
+        }, 
         {
-            "location": "/functions/#cube",
-            "text": "Construct a cubic mesh.  Need:  include \"cube.idp\"  mesh3 Th = cube(nnX, nnY, nnZ, [X(x), Y(y), Z(z)], [label=Label], [flags=Flags], [region=Region]);  Parameters:   nnX (int) \n  Number of discretization point along $x$  nnY (int) \n  Number of discretization point along $y$  nnZ (int) \n   Number of discretization point along $z$  X(x) (func)  [Optional] \n   Affine function of $x$ to define the length \n  Default:  x  Y(y) (func)  [Optional] \n   Affine function of $y$ to define the width \n  Default:  y  Z(z) (func)  [Optional] \n   Affine function of $z$ to define the height \n  Default:  z  label=  Label (int[int])  [Optional] \n   List of surface labels \n  Default:  [1, 2, 3, 4, 5, 6]  flags=  Flags (int)  [Optional] \n   Refer to  square  region=  Region (int)  [Optional] \n   Region number of the cube volume \n  Default:  0   Output:   Th (mesh3) \n  Cube mesh",
+            "location": "/functions/#cube", 
+            "text": "Construct a cubic mesh.  Need:  include  cube.idp   mesh3 Th = cube(nnX, nnY, nnZ, [X(x), Y(y), Z(z)], [label=Label], [flags=Flags], [region=Region]);  Parameters:   nnX (int) \n  Number of discretization point along $x$  nnY (int) \n  Number of discretization point along $y$  nnZ (int) \n   Number of discretization point along $z$  X(x) (func)  [Optional] \n   Affine function of $x$ to define the length \n  Default:  x  Y(y) (func)  [Optional] \n   Affine function of $y$ to define the width \n  Default:  y  Z(z) (func)  [Optional] \n   Affine function of $z$ to define the height \n  Default:  z  label=  Label (int[int])  [Optional] \n   List of surface labels \n  Default:  [1, 2, 3, 4, 5, 6]  flags=  Flags (int)  [Optional] \n   Refer to  square  region=  Region (int)  [Optional] \n   Region number of the cube volume \n  Default:  0   Output:   Th (mesh3) \n  Cube mesh", 
             "title": "cube"
-        },
+        }, 
         {
-            "location": "/functions/#dfft",
-            "text": "TODO",
+            "location": "/functions/#dfft", 
+            "text": "TODO", 
             "title": "dfft"
-        },
+        }, 
         {
-            "location": "/functions/#diffnp",
-            "text": "Arithmetic useful function.  diffnp(a, b) = (a<0)&(0<b) ? (b-a) : 0;",
+            "location": "/functions/#diffnp", 
+            "text": "Arithmetic useful function.  diffnp(a, b) = (a 0) (0 b) ? (b-a) : 0;", 
             "title": "diffnp"
-        },
+        }, 
         {
-            "location": "/functions/#diffpos",
-            "text": "Arithmetic useful function.  diffpos(a, b) = max(b-a, 0);",
+            "location": "/functions/#diffpos", 
+            "text": "Arithmetic useful function.  diffpos(a, b) = max(b-a, 0);", 
             "title": "diffpos"
-        },
+        }, 
         {
-            "location": "/functions/#dist",
-            "text": "Arithmetic useful function.  dist(a, b, c) = sqrt(a^2 + b^2 + c^2);",
+            "location": "/functions/#dist", 
+            "text": "Arithmetic useful function.  dist(a, b, c) = sqrt(a^2 + b^2 + c^2);", 
             "title": "dist"
-        },
+        }, 
         {
-            "location": "/functions/#eigenvalue",
-            "text": "TODO",
+            "location": "/functions/#eigenvalue", 
+            "text": "TODO", 
             "title": "EigenValue"
-        },
+        }, 
         {
-            "location": "/functions/#emptymesh",
-            "text": "Build an empty mesh.  Useful to handle Lagrange multipliers in mixed and Mortar methods.  mesh eTh = emptymesh(Th, ssd);  Parameters:   Th (mesh \n  Mesh to empty  ssd (int[int]) \n  >TODO   Output:   eTh (mesh) \n  Empty mesh",
+            "location": "/functions/#emptymesh", 
+            "text": "Build an empty mesh.  Useful to handle Lagrange multipliers in mixed and Mortar methods.  mesh eTh = emptymesh(Th, ssd);  Parameters:   Th (mesh \n  Mesh to empty  ssd (int[int]) \n  TODO   Output:   eTh (mesh) \n  Empty mesh", 
             "title": "emptymesh"
-        },
+        }, 
         {
-            "location": "/functions/#erf",
-            "text": "The error function: \nerf(x) = \\frac{2}{\\sqrt{pi}}\\int_{0}^{x}{\\exp(-t^2)dt}   real err = erf(x);  Parameters:   x (real)   Output:   err (real)",
+            "location": "/functions/#erf", 
+            "text": "The error function: \nerf(x) = \\frac{2}{\\sqrt{pi}}\\int_{0}^{x}{\\exp(-t^2)dt}   real err = erf(x);  Parameters:   x (real)   Output:   err (real)", 
             "title": "erf"
-        },
+        }, 
         {
-            "location": "/functions/#erfc",
-            "text": "Complementary of the  error function : \nerfc(x) = 1-erf(x)   real errc = erfc(x);  Parameters:   x (real)   Output:   err (real)",
+            "location": "/functions/#erfc", 
+            "text": "Complementary of the  error function : \nerfc(x) = 1-erf(x)   real errc = erfc(x);  Parameters:   x (real)   Output:   err (real)", 
             "title": "erfc"
-        },
+        }, 
         {
-            "location": "/functions/#exec",
-            "text": "Execute an external command.  int v = exec(command);  Parameters:   command (string) \n  Command to execute   Output:   v (int) \n  Value returned by the command",
+            "location": "/functions/#exec", 
+            "text": "Execute an external command.  int v = exec(command);  Parameters:   command (string) \n  Command to execute   Output:   v (int) \n  Value returned by the command", 
             "title": "exec"
-        },
+        }, 
         {
-            "location": "/functions/#exit",
-            "text": "Exit function, equivalent to  return .  exit(N);  Parameters:   N (int) \n  Return value   Output:   None",
+            "location": "/functions/#exit", 
+            "text": "Exit function, equivalent to  return .  exit(N);  Parameters:   N (int) \n  Return value   Output:   None", 
             "title": "exit"
-        },
+        }, 
         {
-            "location": "/functions/#exp",
-            "text": "Exponential function.  real a = exp(b);  Parameters:   b (real)   Output:   a (real)",
+            "location": "/functions/#exp", 
+            "text": "Exponential function.  real a = exp(b);  Parameters:   b (real)   Output:   a (real)", 
             "title": "exp"
-        },
+        }, 
         {
-            "location": "/functions/#fdim",
-            "text": "Positive difference ( cmath  function).  real fd = fdim(a, b);  Parameters:   a (real)  b (real)   Output:   fd (real) \n  If $x > y$, return $x-y$ \n  If $x \\leq y$, return $0$",
+            "location": "/functions/#fdim", 
+            "text": "Positive difference ( cmath  function).  real fd = fdim(a, b);  Parameters:   a (real)  b (real)   Output:   fd (real) \n  If $x   y$, return $x-y$ \n  If $x \\leq y$, return $0$", 
             "title": "fdim"
-        },
+        }, 
         {
-            "location": "/functions/#floor",
-            "text": "Floor function.  real a = floor(b);  Return the largest integer value not greater than  b .  Parameters:   b (real)   Output:   a (real)",
+            "location": "/functions/#floor", 
+            "text": "Floor function.  real a = floor(b);  Return the largest integer value not greater than  b .  Parameters:   b (real)   Output:   a (real)", 
             "title": "floor"
-        },
+        }, 
         {
-            "location": "/functions/#fmax",
-            "text": "Maximum ( cmath  function).  real Max = fmax(a, b);  Parameters:   a (real)  b (real)   Output:   Max (real)",
+            "location": "/functions/#fmax", 
+            "text": "Maximum ( cmath  function).  real Max = fmax(a, b);  Parameters:   a (real)  b (real)   Output:   Max (real)", 
             "title": "fmax"
-        },
+        }, 
         {
-            "location": "/functions/#fmin",
-            "text": "Minimum ( cmath  function).  real Min = fmin(a, b);  Parameters:   a (real)  b (real)   Output:   Min (real)",
+            "location": "/functions/#fmin", 
+            "text": "Minimum ( cmath  function).  real Min = fmin(a, b);  Parameters:   a (real)  b (real)   Output:   Min (real)", 
             "title": "fmin"
-        },
+        }, 
         {
-            "location": "/functions/#fmod",
-            "text": "Remainder of $a/b$ ( cmath  function).  real Mod = fmin(a, b);  Parameters:   a (real)  b (real)   Output:   Min (real)   Parameters:   a (real)  b (real)   Output:   Mod (real)",
+            "location": "/functions/#fmod", 
+            "text": "Remainder of $a/b$ ( cmath  function).  real Mod = fmin(a, b);  Parameters:   a (real)  b (real)   Output:   Min (real)   Parameters:   a (real)  b (real)   Output:   Mod (real)", 
             "title": "fmod"
-        },
+        }, 
         {
-            "location": "/functions/#imag",
-            "text": "Imaginary part of a complex number.  complex c = 1. + 1i;\nreal Im = imag(c);",
+            "location": "/functions/#imag", 
+            "text": "Imaginary part of a complex number.  complex c = 1. + 1i;\nreal Im = imag(c);", 
             "title": "imag"
-        },
+        }, 
         {
-            "location": "/functions/#int1d",
-            "text": "1D integral.  int1d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)  Used in  problem ,  solve  or  varf  definition to impose a boundary condition only (FreeFem++ does not support 1D simulation).  Parameters:   Th (mesh) \n  Mesh where the integral is calculated  Gamma (int)  [Optional] \n  Label of the 1D border \n Default: all borders of the mesh  qfe=  Qfe (keyword) _[Optional] \n  Quadrature formula, see  quadrature formulae  qforder=  Qforder (keyword)  [Optional] \n  Quadrature order, see  quadrature formulae   Output:   Non relevant    The content of  int1d  must be a linear or bilinear form.",
+            "location": "/functions/#int1d", 
+            "text": "1D integral.  int1d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)  Used in  problem ,  solve  or  varf  definition to impose a boundary condition only (FreeFem++ does not support 1D simulation).  Parameters:   Th (mesh) \n  Mesh where the integral is calculated  Gamma (int)  [Optional] \n  Label of the 1D border \n Default: all borders of the mesh  qfe=  Qfe (keyword) _[Optional] \n  Quadrature formula, see  quadrature formulae  qforder=  Qforder (keyword)  [Optional] \n  Quadrature order, see  quadrature formulae   Output:   Non relevant    The content of  int1d  must be a linear or bilinear form.", 
             "title": "int1d"
-        },
+        }, 
         {
-            "location": "/functions/#int2d",
-            "text": "2D integral.  int2d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)  Or  int2d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)  Used in  problem ,  solve  or  varf  definition to:\n - Calculate integral in 2D simulation\n - Impose a boundary condition in 3D simulation  Parameters:   Th (mesh) \n  Mesh where the integral is calculated  Region (int)  [Optional] \n  Label of the 2D region (2D simulation) \n Default: all regions of the mesh  Gamma (int)  [Optional] \n  Label of the 2D border (3D simulation) \n Default: all borders of the mesh  qfe=  Qfe (keyword) _[Optional] \n  Quadrature formula, see  quadrature formulae  qforder=  Qforder (keyword)  [Optional] \n  Quadrature order, see  quadrature formulae   Output:   Non relevant    The content of the  int2d  must be a linear or bilinear form.",
+            "location": "/functions/#int2d", 
+            "text": "2D integral.  int2d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)  Or  int2d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)  Used in  problem ,  solve  or  varf  definition to:\n - Calculate integral in 2D simulation\n - Impose a boundary condition in 3D simulation  Parameters:   Th (mesh) \n  Mesh where the integral is calculated  Region (int)  [Optional] \n  Label of the 2D region (2D simulation) \n Default: all regions of the mesh  Gamma (int)  [Optional] \n  Label of the 2D border (3D simulation) \n Default: all borders of the mesh  qfe=  Qfe (keyword) _[Optional] \n  Quadrature formula, see  quadrature formulae  qforder=  Qforder (keyword)  [Optional] \n  Quadrature order, see  quadrature formulae   Output:   Non relevant    The content of the  int2d  must be a linear or bilinear form.", 
             "title": "int2d"
-        },
+        }, 
         {
-            "location": "/functions/#int3d",
-            "text": "3D integral.  int3d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)  Used in  problem ,  solve  or  varf  definition to calculate integral in 3D simulation.  Parameters:   Th (mesh) \n  Mesh where the integral is calculated  Region (int)  [Optional] \n  Label of the 3D region \n Default: all regions of the mesh  qfe=  Qfe (keyword) _[Optional] \n  Quadrature formula, see  quadrature formulae  qforder=  Qforder (keyword)  [Optional] \n  Quadrature order, see  quadrature formulae   Output:   Non relevant    The content of the  int3d  must be a linear or bilinear form.",
+            "location": "/functions/#int3d", 
+            "text": "3D integral.  int3d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(\n    ...\n)  Used in  problem ,  solve  or  varf  definition to calculate integral in 3D simulation.  Parameters:   Th (mesh) \n  Mesh where the integral is calculated  Region (int)  [Optional] \n  Label of the 3D region \n Default: all regions of the mesh  qfe=  Qfe (keyword) _[Optional] \n  Quadrature formula, see  quadrature formulae  qforder=  Qforder (keyword)  [Optional] \n  Quadrature order, see  quadrature formulae   Output:   Non relevant    The content of the  int3d  must be a linear or bilinear form.", 
             "title": "int3d"
-        },
+        }, 
         {
-            "location": "/functions/#intalledges",
-            "text": "TODO",
+            "location": "/functions/#intalledges", 
+            "text": "TODO", 
             "title": "intalledges"
-        },
+        }, 
         {
-            "location": "/functions/#interpolate",
-            "text": "Interpolation matrix.  matrix I = interpolate(Vh, Wh, inside=Inside, t=T, op=Op, U2Vc=U2VC);   TODO",
+            "location": "/functions/#interpolate", 
+            "text": "Interpolation matrix.  matrix I = interpolate(Vh, Wh, inside=Inside, t=T, op=Op, U2Vc=U2VC);   TODO", 
             "title": "interpolate"
-        },
+        }, 
         {
-            "location": "/functions/#invdiffnp",
-            "text": "Arithmetic useful function.  invdiffnp(a, b) = (a<0)&(0<b) ? 1/(b-a) : 0",
+            "location": "/functions/#invdiffnp", 
+            "text": "Arithmetic useful function.  invdiffnp(a, b) = (a 0) (0 b) ? 1/(b-a) : 0", 
             "title": "invdiffnp"
-        },
+        }, 
         {
-            "location": "/functions/#invdiffpos",
-            "text": "Arithmetic useful function.  invdiffpos(a, b) = (a<b) ? 1./(b-a) : 0",
+            "location": "/functions/#invdiffpos", 
+            "text": "Arithmetic useful function.  invdiffpos(a, b) = (a b) ? 1./(b-a) : 0", 
             "title": "invdiffpos"
-        },
+        }, 
         {
-            "location": "/functions/#isoline",
-            "text": "Need:  load \"isoline\"  int N = isoline(Th, u, xy, iso=Iso, close=Close, smoothing=Smoothing, ratio=Ratio, eps=Eps, beginend=BeginEnd, file=File);   TODO",
+            "location": "/functions/#isoline", 
+            "text": "Need:  load  isoline   int N = isoline(Th, u, xy, iso=Iso, close=Close, smoothing=Smoothing, ratio=Ratio, eps=Eps, beginend=BeginEnd, file=File);   TODO", 
             "title": "isoline"
-        },
+        }, 
         {
-            "location": "/functions/#j0",
-            "text": "TODO",
+            "location": "/functions/#j0", 
+            "text": "TODO", 
             "title": "j0"
-        },
+        }, 
         {
-            "location": "/functions/#j1",
-            "text": "TODO",
+            "location": "/functions/#j1", 
+            "text": "TODO", 
             "title": "j1"
-        },
+        }, 
         {
-            "location": "/functions/#jn",
-            "text": "TODO",
+            "location": "/functions/#jn", 
+            "text": "TODO", 
             "title": "jn"
-        },
+        }, 
         {
-            "location": "/functions/#jump",
-            "text": "TODO",
+            "location": "/functions/#jump", 
+            "text": "TODO", 
             "title": "jump"
-        },
+        }, 
         {
-            "location": "/functions/#linearcg",
-            "text": "TODO",
+            "location": "/functions/#linearcg", 
+            "text": "TODO", 
             "title": "LinearCG"
-        },
+        }, 
         {
-            "location": "/functions/#lineargmres",
-            "text": "TODO",
+            "location": "/functions/#lineargmres", 
+            "text": "TODO", 
             "title": "LinearGMRES"
-        },
+        }, 
         {
-            "location": "/functions/#log",
-            "text": "TODO",
+            "location": "/functions/#log", 
+            "text": "TODO", 
             "title": "log"
-        },
+        }, 
         {
-            "location": "/functions/#log10",
-            "text": "TODO",
+            "location": "/functions/#log10", 
+            "text": "TODO", 
             "title": "log10"
-        },
+        }, 
         {
-            "location": "/functions/#max",
-            "text": "TODO",
+            "location": "/functions/#max", 
+            "text": "TODO", 
             "title": "max"
-        },
+        }, 
         {
-            "location": "/functions/#mean",
-            "text": "TODO",
+            "location": "/functions/#mean", 
+            "text": "TODO", 
             "title": "mean"
-        },
+        }, 
         {
-            "location": "/functions/#medit",
-            "text": "TODO",
+            "location": "/functions/#medit", 
+            "text": "TODO", 
             "title": "medit"
-        },
+        }, 
         {
-            "location": "/functions/#min",
-            "text": "TODO",
+            "location": "/functions/#min", 
+            "text": "TODO", 
             "title": "min"
-        },
+        }, 
         {
-            "location": "/functions/#movemesh",
-            "text": "TODO",
+            "location": "/functions/#movemesh", 
+            "text": "TODO", 
             "title": "movemesh"
-        },
+        }, 
         {
-            "location": "/functions/#movemesh23",
-            "text": "TODO",
+            "location": "/functions/#movemesh23", 
+            "text": "TODO", 
             "title": "movemesh23"
-        },
+        }, 
         {
-            "location": "/functions/#nlcg",
-            "text": "TODO",
+            "location": "/functions/#nlcg", 
+            "text": "TODO", 
             "title": "NLCG"
-        },
+        }, 
         {
-            "location": "/functions/#on",
-            "text": "TODO",
+            "location": "/functions/#on", 
+            "text": "TODO", 
             "title": "on"
-        },
+        }, 
         {
-            "location": "/functions/#plot",
-            "text": "TODO",
+            "location": "/functions/#plot", 
+            "text": "TODO", 
             "title": "plot"
-        },
+        }, 
         {
-            "location": "/functions/#polar",
-            "text": "TODO",
+            "location": "/functions/#polar", 
+            "text": "TODO", 
             "title": "polar"
-        },
+        }, 
         {
-            "location": "/functions/#pow",
-            "text": "Power function.  real p = pow(a, b);  $p=a^b$  Parameters:   a (real)  b (real)   Output:   p (real)",
+            "location": "/functions/#pow", 
+            "text": "Power function.  real p = pow(a, b);  $p=a^b$  Parameters:   a (real)  b (real)   Output:   p (real)", 
             "title": "pow"
-        },
+        }, 
         {
-            "location": "/functions/#projection",
-            "text": "Arithmetic useful function.  projection(a, b, x) = min(max(a, x), b);",
+            "location": "/functions/#projection", 
+            "text": "Arithmetic useful function.  projection(a, b, x) = min(max(a, x), b);", 
             "title": "projection"
-        },
+        }, 
         {
-            "location": "/functions/#readmesh",
-            "text": "TODO",
+            "location": "/functions/#readmesh", 
+            "text": "TODO", 
             "title": "readmesh"
-        },
+        }, 
         {
-            "location": "/functions/#readmesh3",
-            "text": "TODO",
+            "location": "/functions/#readmesh3", 
+            "text": "TODO", 
             "title": "readmesh3"
-        },
+        }, 
         {
-            "location": "/functions/#round",
-            "text": "TODO",
+            "location": "/functions/#round", 
+            "text": "TODO", 
             "title": "round"
-        },
+        }, 
         {
-            "location": "/functions/#savemesh",
-            "text": "TODO",
+            "location": "/functions/#savemesh", 
+            "text": "TODO", 
             "title": "savemesh"
-        },
+        }, 
         {
-            "location": "/functions/#savesol",
-            "text": "TODO",
+            "location": "/functions/#savesol", 
+            "text": "TODO", 
             "title": "savesol"
-        },
+        }, 
         {
-            "location": "/functions/#set",
-            "text": "TODO",
+            "location": "/functions/#set", 
+            "text": "TODO", 
             "title": "set"
-        },
+        }, 
         {
-            "location": "/functions/#sin",
-            "text": "TODO",
+            "location": "/functions/#sin", 
+            "text": "TODO", 
             "title": "sin"
-        },
+        }, 
         {
-            "location": "/functions/#sinh",
-            "text": "TODO",
+            "location": "/functions/#sinh", 
+            "text": "TODO", 
             "title": "sinh"
-        },
+        }, 
         {
-            "location": "/functions/#sort",
-            "text": "TODO",
+            "location": "/functions/#sort", 
+            "text": "TODO", 
             "title": "sort"
-        },
+        }, 
         {
-            "location": "/functions/#splitmesh",
-            "text": "TODO",
+            "location": "/functions/#splitmesh", 
+            "text": "TODO", 
             "title": "splitmesh"
-        },
+        }, 
         {
-            "location": "/functions/#square",
-            "text": "TODO",
+            "location": "/functions/#square", 
+            "text": "TODO", 
             "title": "square"
-        },
+        }, 
         {
-            "location": "/functions/#tan",
-            "text": "TODO",
+            "location": "/functions/#tan", 
+            "text": "TODO", 
             "title": "tan"
-        },
+        }, 
         {
-            "location": "/functions/#tanh",
-            "text": "TODO",
+            "location": "/functions/#tanh", 
+            "text": "TODO", 
             "title": "tanh"
-        },
+        }, 
         {
-            "location": "/functions/#tetg",
-            "text": "TODO",
+            "location": "/functions/#tetg", 
+            "text": "TODO", 
             "title": "tetg"
-        },
+        }, 
         {
-            "location": "/functions/#tetgconvexhull",
-            "text": "TODO",
+            "location": "/functions/#tetgconvexhull", 
+            "text": "TODO", 
             "title": "tetgconvexhull"
-        },
+        }, 
         {
-            "location": "/functions/#tetgreconstruction",
-            "text": "TODO",
+            "location": "/functions/#tetgreconstruction", 
+            "text": "TODO", 
             "title": "tetgreconstruction"
-        },
+        }, 
         {
-            "location": "/functions/#tetgtransfo",
-            "text": "TODO",
+            "location": "/functions/#tetgtransfo", 
+            "text": "TODO", 
             "title": "tetgtransfo"
-        },
+        }, 
         {
-            "location": "/functions/#trunc",
-            "text": "TODO",
+            "location": "/functions/#trunc", 
+            "text": "TODO", 
             "title": "trunc"
-        },
+        }, 
         {
-            "location": "/functions/#y0",
-            "text": "TODO",
+            "location": "/functions/#y0", 
+            "text": "TODO", 
             "title": "y0"
-        },
+        }, 
         {
-            "location": "/functions/#y1",
-            "text": "TODO",
+            "location": "/functions/#y1", 
+            "text": "TODO", 
             "title": "y1"
-        },
+        }, 
         {
-            "location": "/functions/#yn",
-            "text": "TODO",
+            "location": "/functions/#yn", 
+            "text": "TODO", 
             "title": "yn"
-        },
+        }, 
         {
-            "location": "/examples/",
-            "text": "Useful macro\n#\n\n\nmacro grad(u) [dx(u), dy(u)] //\nmacro Grad(U) [grad(U#x), grad(U#y)] //\n\nmacro div(u, v) (dx(u) + dy(v)) //\nmacro Div(U) (dx(U#x) + dy(U#y)) //\n\n\n\n\nLaplacian\n#\n\n\nSolve the academic problem :\n\n\n\\left\\{\n\\begin{array}{rcll}\n    \\Delta u &=& f & \\text{ on }\\Omega\\\\\n    u &=& 0 & \\text{ on }\\Gamma\\\\\n\\end{array}\n\\right.\n\n\n\n\n\n// Mesh\nint nn = 10;\nmesh Th = square(nn, nn);\n\n// Fespace\nfespace Uh(Th, P1);\nUh u, uh;\n\n// Macro\nmacro grad(u) [dx(u), dy(u)] //\n\n// Problem\nproblem Laplacian (u, uh)\n    = int2d(Th)(\n          grad(u)' * grad(uh)\n    )\n    + int2d(Th)(\n          1. * uh\n    )\n    + on(1, 2, 3, 4, u=0)\n    ;\n\n// Solve\nLaplacian;\n\n// Plot\nplot(u, cmm=\"Laplacian\");\n\n\n\n\nLaplacian with \nvarf\n#\n\n\nSame problem as \nLaplacian\n but with varf usage.\n\n\n// Mesh\nint nn = 10;\nmesh Th = square(nn, nn);\n\n// Fespace\nfespace Uh(Th, P1);\nUh u;\n\n// Macro\nmacro grad(u) [dx(u), dy(u)] //\n\n// Varf\nvarf vLaplacian (u, uh)\n    = int2d(Th)(\n          grad(u)' * grad(uh)\n    )\n    + int2d(Th)(\n          1. * uh\n    )\n    + on(1, 2, 3, 4, u=0)\n    ;\n\n// Build matrix and vectors\nmatrix<real> A = vLaplacian(Uh, Uh);\nreal[int] b = vLaplacian(0, Uh);\n\n// Solve\nu[] = A^-1 * b;\n\n//Plot\nplot(u, cmm=\"Laplacian\");\n\n\n\n\nLinear elasticity\n#\n\n\n// Parameters\nint nn = 10;\nint L = 10.;\nint H = 1.;\n\nreal Rho = 800.;    //Density\nreal E = 200.e9;    //Young's modulus\nreal Nu = 0.3;      //Poisson's ratio\n\nreal fx = 0.;\nreal fy = -9.81 * Rho;\n\nreal g = 0.;\nreal UDx = 0.;\nreal UDy = 0.;\n\nreal T = 100.;\nreal dt = 1.e-1;\n\n// Mesh\nmesh Th = square(L*nn, H*nn, [L*x, H*y]);\nint[int] GammaD = [2];\nint[int] GammaN = [1, 3, 4];\n\n// Fespace\nfespace Vh(Th, [P1, P1]);\nVh [Ux, Uy];\nVh [Upx, Upy];\nVh [Vx, Vy];\n\n// Macro\nmacro div(U) (dx(U#x) + dy(U#y)) //\nmacro Epsilon(U) [[dx(U#x), 0.5*(dx(U#y) + dy(U#x))], [0.5*(dx(U#y) + dy(U#x)), dy(U#y)]] //\n\n// Problem\nreal Lambda = E / (2.*(1.+Nu));\nreal Mu = E*Nu / ((1.+Nu)*(1.-2.*Nu));\nproblem ElasticiteLineaire ([Ux, Uy], [Vx, Vy])\n    = int2d(Th)(\n          (Rho/dt) * [Ux, Uy]' * [Vx, Vy]\n        + Lambda * div(U) * div(V)\n        + 2.*Mu * (Epsilon(U) : Epsilon(V))\n    )\n    - int2d(Th)(\n          (Rho/dt) * [Upx, Upy]' * [Vx, Vy]\n        + [fx, fy]' * [Vx, Vy]\n    )\n    - int1d(Th, GammaN)(\n          g * [N.x, N.y]' * [Vx, Vy]\n    )\n    + on(GammaD, Ux=UDx, Uy=UDy)\n    ;\n\n// Initialization\n[Ux, Uy] = [0, 0];\n\n// Iterations\nint NbIter = T/dt;\nfor (int i = 0; i < NbIter; i++){\n    // Update\n    [Upx, Upy] = [Ux, Uy];\n\n    // Solve\n    ElasticiteLineaire;\n\n    // Movemesh\n    Th = movemesh(Th, [x+dt*(Ux-Upx), y+dt*(Uy-Upy)]);\n    [Ux, Uy] = [Ux, Uy];\n\n    // Plot\n    plot([Ux, Uy]);\n}",
+            "location": "/examples/", 
+            "text": "Useful macro\n#\n\n\nmacro grad(u) [dx(u), dy(u)] //\nmacro Grad(U) [grad(U#x), grad(U#y)] //\n\nmacro div(u, v) (dx(u) + dy(v)) //\nmacro Div(U) (dx(U#x) + dy(U#y)) //\n\n\n\n\nLaplacian\n#\n\n\nSolve the academic problem :\n\n\n\\left\\{\n\\begin{array}{rcll}\n    \\Delta u &=& f & \\text{ on }\\Omega\\\\\n    u &=& 0 & \\text{ on }\\Gamma\\\\\n\\end{array}\n\\right.\n\n\n\n\n\n// Mesh\nint nn = 10;\nmesh Th = square(nn, nn);\n\n// Fespace\nfespace Uh(Th, P1);\nUh u, uh;\n\n// Macro\nmacro grad(u) [dx(u), dy(u)] //\n\n// Problem\nproblem Laplacian (u, uh)\n    = int2d(Th)(\n          grad(u)' * grad(uh)\n    )\n    + int2d(Th)(\n          1. * uh\n    )\n    + on(1, 2, 3, 4, u=0)\n    ;\n\n// Solve\nLaplacian;\n\n// Plot\nplot(u, cmm=\nLaplacian\n);\n\n\n\n\nLaplacian with \nvarf\n#\n\n\nSame problem as \nLaplacian\n but with varf usage.\n\n\n// Mesh\nint nn = 10;\nmesh Th = square(nn, nn);\n\n// Fespace\nfespace Uh(Th, P1);\nUh u;\n\n// Macro\nmacro grad(u) [dx(u), dy(u)] //\n\n// Varf\nvarf vLaplacian (u, uh)\n    = int2d(Th)(\n          grad(u)' * grad(uh)\n    )\n    + int2d(Th)(\n          1. * uh\n    )\n    + on(1, 2, 3, 4, u=0)\n    ;\n\n// Build matrix and vectors\nmatrix\nreal\n A = vLaplacian(Uh, Uh);\nreal[int] b = vLaplacian(0, Uh);\n\n// Solve\nu[] = A^-1 * b;\n\n//Plot\nplot(u, cmm=\nLaplacian\n);\n\n\n\n\nLinear elasticity\n#\n\n\n// Parameters\nint nn = 10;\nint L = 10.;\nint H = 1.;\n\nreal Rho = 800.;    //Density\nreal E = 200.e9;    //Young's modulus\nreal Nu = 0.3;      //Poisson's ratio\n\nreal fx = 0.;\nreal fy = -9.81 * Rho;\n\nreal g = 0.;\nreal UDx = 0.;\nreal UDy = 0.;\n\nreal T = 100.;\nreal dt = 1.e-1;\n\n// Mesh\nmesh Th = square(L*nn, H*nn, [L*x, H*y]);\nint[int] GammaD = [2];\nint[int] GammaN = [1, 3, 4];\n\n// Fespace\nfespace Vh(Th, [P1, P1]);\nVh [Ux, Uy];\nVh [Upx, Upy];\nVh [Vx, Vy];\n\n// Macro\nmacro div(U) (dx(U#x) + dy(U#y)) //\nmacro Epsilon(U) [[dx(U#x), 0.5*(dx(U#y) + dy(U#x))], [0.5*(dx(U#y) + dy(U#x)), dy(U#y)]] //\n\n// Problem\nreal Lambda = E / (2.*(1.+Nu));\nreal Mu = E*Nu / ((1.+Nu)*(1.-2.*Nu));\nproblem ElasticiteLineaire ([Ux, Uy], [Vx, Vy])\n    = int2d(Th)(\n          (Rho/dt) * [Ux, Uy]' * [Vx, Vy]\n        + Lambda * div(U) * div(V)\n        + 2.*Mu * (Epsilon(U) : Epsilon(V))\n    )\n    - int2d(Th)(\n          (Rho/dt) * [Upx, Upy]' * [Vx, Vy]\n        + [fx, fy]' * [Vx, Vy]\n    )\n    - int1d(Th, GammaN)(\n          g * [N.x, N.y]' * [Vx, Vy]\n    )\n    + on(GammaD, Ux=UDx, Uy=UDy)\n    ;\n\n// Initialization\n[Ux, Uy] = [0, 0];\n\n// Iterations\nint NbIter = T/dt;\nfor (int i = 0; i \n NbIter; i++){\n    // Update\n    [Upx, Upy] = [Ux, Uy];\n\n    // Solve\n    ElasticiteLineaire;\n\n    // Movemesh\n    Th = movemesh(Th, [x+dt*(Ux-Upx), y+dt*(Uy-Upy)]);\n    [Ux, Uy] = [Ux, Uy];\n\n    // Plot\n    plot([Ux, Uy]);\n}", 
             "title": "Examples"
-        },
+        }, 
         {
-            "location": "/examples/#useful-macro",
-            "text": "macro grad(u) [dx(u), dy(u)] //\nmacro Grad(U) [grad(U#x), grad(U#y)] //\n\nmacro div(u, v) (dx(u) + dy(v)) //\nmacro Div(U) (dx(U#x) + dy(U#y)) //",
+            "location": "/examples/#useful-macro", 
+            "text": "macro grad(u) [dx(u), dy(u)] //\nmacro Grad(U) [grad(U#x), grad(U#y)] //\n\nmacro div(u, v) (dx(u) + dy(v)) //\nmacro Div(U) (dx(U#x) + dy(U#y)) //", 
             "title": "Useful macro"
-        },
+        }, 
         {
-            "location": "/examples/#laplacian",
-            "text": "Solve the academic problem : \n\\left\\{\n\\begin{array}{rcll}\n    \\Delta u &=& f & \\text{ on }\\Omega\\\\\n    u &=& 0 & \\text{ on }\\Gamma\\\\\n\\end{array}\n\\right.   // Mesh\nint nn = 10;\nmesh Th = square(nn, nn);\n\n// Fespace\nfespace Uh(Th, P1);\nUh u, uh;\n\n// Macro\nmacro grad(u) [dx(u), dy(u)] //\n\n// Problem\nproblem Laplacian (u, uh)\n    = int2d(Th)(\n          grad(u)' * grad(uh)\n    )\n    + int2d(Th)(\n          1. * uh\n    )\n    + on(1, 2, 3, 4, u=0)\n    ;\n\n// Solve\nLaplacian;\n\n// Plot\nplot(u, cmm=\"Laplacian\");",
+            "location": "/examples/#laplacian", 
+            "text": "Solve the academic problem : \n\\left\\{\n\\begin{array}{rcll}\n    \\Delta u &=& f & \\text{ on }\\Omega\\\\\n    u &=& 0 & \\text{ on }\\Gamma\\\\\n\\end{array}\n\\right.   // Mesh\nint nn = 10;\nmesh Th = square(nn, nn);\n\n// Fespace\nfespace Uh(Th, P1);\nUh u, uh;\n\n// Macro\nmacro grad(u) [dx(u), dy(u)] //\n\n// Problem\nproblem Laplacian (u, uh)\n    = int2d(Th)(\n          grad(u)' * grad(uh)\n    )\n    + int2d(Th)(\n          1. * uh\n    )\n    + on(1, 2, 3, 4, u=0)\n    ;\n\n// Solve\nLaplacian;\n\n// Plot\nplot(u, cmm= Laplacian );", 
             "title": "Laplacian"
-        },
+        }, 
         {
-            "location": "/examples/#laplacian-with-varf",
-            "text": "Same problem as  Laplacian  but with varf usage.  // Mesh\nint nn = 10;\nmesh Th = square(nn, nn);\n\n// Fespace\nfespace Uh(Th, P1);\nUh u;\n\n// Macro\nmacro grad(u) [dx(u), dy(u)] //\n\n// Varf\nvarf vLaplacian (u, uh)\n    = int2d(Th)(\n          grad(u)' * grad(uh)\n    )\n    + int2d(Th)(\n          1. * uh\n    )\n    + on(1, 2, 3, 4, u=0)\n    ;\n\n// Build matrix and vectors\nmatrix<real> A = vLaplacian(Uh, Uh);\nreal[int] b = vLaplacian(0, Uh);\n\n// Solve\nu[] = A^-1 * b;\n\n//Plot\nplot(u, cmm=\"Laplacian\");",
+            "location": "/examples/#laplacian-with-varf", 
+            "text": "Same problem as  Laplacian  but with varf usage.  // Mesh\nint nn = 10;\nmesh Th = square(nn, nn);\n\n// Fespace\nfespace Uh(Th, P1);\nUh u;\n\n// Macro\nmacro grad(u) [dx(u), dy(u)] //\n\n// Varf\nvarf vLaplacian (u, uh)\n    = int2d(Th)(\n          grad(u)' * grad(uh)\n    )\n    + int2d(Th)(\n          1. * uh\n    )\n    + on(1, 2, 3, 4, u=0)\n    ;\n\n// Build matrix and vectors\nmatrix real  A = vLaplacian(Uh, Uh);\nreal[int] b = vLaplacian(0, Uh);\n\n// Solve\nu[] = A^-1 * b;\n\n//Plot\nplot(u, cmm= Laplacian );", 
             "title": "Laplacian with varf"
-        },
+        }, 
         {
-            "location": "/examples/#linear-elasticity",
-            "text": "// Parameters\nint nn = 10;\nint L = 10.;\nint H = 1.;\n\nreal Rho = 800.;    //Density\nreal E = 200.e9;    //Young's modulus\nreal Nu = 0.3;      //Poisson's ratio\n\nreal fx = 0.;\nreal fy = -9.81 * Rho;\n\nreal g = 0.;\nreal UDx = 0.;\nreal UDy = 0.;\n\nreal T = 100.;\nreal dt = 1.e-1;\n\n// Mesh\nmesh Th = square(L*nn, H*nn, [L*x, H*y]);\nint[int] GammaD = [2];\nint[int] GammaN = [1, 3, 4];\n\n// Fespace\nfespace Vh(Th, [P1, P1]);\nVh [Ux, Uy];\nVh [Upx, Upy];\nVh [Vx, Vy];\n\n// Macro\nmacro div(U) (dx(U#x) + dy(U#y)) //\nmacro Epsilon(U) [[dx(U#x), 0.5*(dx(U#y) + dy(U#x))], [0.5*(dx(U#y) + dy(U#x)), dy(U#y)]] //\n\n// Problem\nreal Lambda = E / (2.*(1.+Nu));\nreal Mu = E*Nu / ((1.+Nu)*(1.-2.*Nu));\nproblem ElasticiteLineaire ([Ux, Uy], [Vx, Vy])\n    = int2d(Th)(\n          (Rho/dt) * [Ux, Uy]' * [Vx, Vy]\n        + Lambda * div(U) * div(V)\n        + 2.*Mu * (Epsilon(U) : Epsilon(V))\n    )\n    - int2d(Th)(\n          (Rho/dt) * [Upx, Upy]' * [Vx, Vy]\n        + [fx, fy]' * [Vx, Vy]\n    )\n    - int1d(Th, GammaN)(\n          g * [N.x, N.y]' * [Vx, Vy]\n    )\n    + on(GammaD, Ux=UDx, Uy=UDy)\n    ;\n\n// Initialization\n[Ux, Uy] = [0, 0];\n\n// Iterations\nint NbIter = T/dt;\nfor (int i = 0; i < NbIter; i++){\n    // Update\n    [Upx, Upy] = [Ux, Uy];\n\n    // Solve\n    ElasticiteLineaire;\n\n    // Movemesh\n    Th = movemesh(Th, [x+dt*(Ux-Upx), y+dt*(Uy-Upy)]);\n    [Ux, Uy] = [Ux, Uy];\n\n    // Plot\n    plot([Ux, Uy]);\n}",
+            "location": "/examples/#linear-elasticity", 
+            "text": "// Parameters\nint nn = 10;\nint L = 10.;\nint H = 1.;\n\nreal Rho = 800.;    //Density\nreal E = 200.e9;    //Young's modulus\nreal Nu = 0.3;      //Poisson's ratio\n\nreal fx = 0.;\nreal fy = -9.81 * Rho;\n\nreal g = 0.;\nreal UDx = 0.;\nreal UDy = 0.;\n\nreal T = 100.;\nreal dt = 1.e-1;\n\n// Mesh\nmesh Th = square(L*nn, H*nn, [L*x, H*y]);\nint[int] GammaD = [2];\nint[int] GammaN = [1, 3, 4];\n\n// Fespace\nfespace Vh(Th, [P1, P1]);\nVh [Ux, Uy];\nVh [Upx, Upy];\nVh [Vx, Vy];\n\n// Macro\nmacro div(U) (dx(U#x) + dy(U#y)) //\nmacro Epsilon(U) [[dx(U#x), 0.5*(dx(U#y) + dy(U#x))], [0.5*(dx(U#y) + dy(U#x)), dy(U#y)]] //\n\n// Problem\nreal Lambda = E / (2.*(1.+Nu));\nreal Mu = E*Nu / ((1.+Nu)*(1.-2.*Nu));\nproblem ElasticiteLineaire ([Ux, Uy], [Vx, Vy])\n    = int2d(Th)(\n          (Rho/dt) * [Ux, Uy]' * [Vx, Vy]\n        + Lambda * div(U) * div(V)\n        + 2.*Mu * (Epsilon(U) : Epsilon(V))\n    )\n    - int2d(Th)(\n          (Rho/dt) * [Upx, Upy]' * [Vx, Vy]\n        + [fx, fy]' * [Vx, Vy]\n    )\n    - int1d(Th, GammaN)(\n          g * [N.x, N.y]' * [Vx, Vy]\n    )\n    + on(GammaD, Ux=UDx, Uy=UDy)\n    ;\n\n// Initialization\n[Ux, Uy] = [0, 0];\n\n// Iterations\nint NbIter = T/dt;\nfor (int i = 0; i   NbIter; i++){\n    // Update\n    [Upx, Upy] = [Ux, Uy];\n\n    // Solve\n    ElasticiteLineaire;\n\n    // Movemesh\n    Th = movemesh(Th, [x+dt*(Ux-Upx), y+dt*(Uy-Upy)]);\n    [Ux, Uy] = [Ux, Uy];\n\n    // Plot\n    plot([Ux, Uy]);\n}", 
             "title": "Linear elasticity"
-        },
+        }, 
         {
-            "location": "/TODO/",
-            "text": "TODO\n#\n\n\nAdd [optional] tag to parameters.\n#\n\n\nSee \nint2d\n for example.\n\n\nFunctions to detail\n#\n\n\n\n\n \nBFGS\n\n\n \nbuildlayers\n\n\n \nbuildmesh\n\n\n \ncheckmovemesh\n\n\n \ncmaes\n\n\n \nconvect\n\n\n \ndfft\n\n\n \nEigenValue\n\n\n \nemptymesh\n\n\n \nfmax\n\n\n \nfmin\n\n\n \nfmod\n\n\n \ngetline\n\n\n \nint1d\n\n\n \nint2d\n\n\n \nint3d\n\n\n \nintalledges\n\n\n \ninterpolate\n\n\n \nisoline\n\n\n \nj0\n\n\n \nj1\n\n\n \njn\n\n\n \njump\n\n\n \nLinearCG\n\n\n \nLinearGMRES\n\n\n \nlog\n\n\n \nlog10\n\n\n \nmax\n\n\n \nmean\n\n\n \nmedit\n\n\n \nmin\n\n\n \nmovemesh\n\n\n \nmovemesh23\n\n\n \nNLCG\n\n\n \non\n\n\n \nplot\n\n\n \npolar\n\n\n \npow\n\n\n \nreadmesh\n\n\n \nreadmesh3\n\n\n \nround\n\n\n \nsavemesh\n\n\n \nsavesol\n\n\n \nset\n\n\n \nsin\n\n\n \nsinh\n\n\n \nsort\n\n\n \nsplitmesh\n\n\n \nsquare\n\n\n \ntan\n\n\n \ntanh\n\n\n \ntetg\n\n\n \ntetgconvexhull\n\n\n \ntetgreconstruction\n\n\n \ntetgtransfo\n\n\n \ntrunc\n\n\n \ny0\n\n\n \ny1\n\n\n \nyn\n\n\n\n\nFunction to add\n#\n\n\n\n\n distance\n\n\n gmshload\n\n\n mmg3d\n\n\n savevtk\n\n\n\n\nQuadrature formulae\n#\n\n\n\n\n \nqf1pE\n\n\n \nqf2pE\n\n\n \nqf3pE\n\n\n \nqf5pE\n\n\n \nqf1Elump\n\n\n \nqf1pT\n\n\n \nqf2pT\n\n\n \nqf5pT\n\n\n \nqf1pTlump\n\n\n \nqf2pT4P1\n\n\n \nqf7pT\n\n\n \nqf9pT\n\n\n \nqfV1\n\n\n \nqfV2\n\n\n \nqfV5\n\n\n \nqfV1lump",
+            "location": "/TODO/", 
+            "text": "TODO\n#\n\n\nAdd [optional] tag to parameters.\n#\n\n\nSee \nint2d\n for example.\n\n\nFunctions to detail\n#\n\n\n\n\n \nBFGS\n\n\n \nbuildlayers\n\n\n \nbuildmesh\n\n\n \ncheckmovemesh\n\n\n \ncmaes\n\n\n \nconvect\n\n\n \ndfft\n\n\n \nEigenValue\n\n\n \nemptymesh\n\n\n \nfmax\n\n\n \nfmin\n\n\n \nfmod\n\n\n \ngetline\n\n\n \nint1d\n\n\n \nint2d\n\n\n \nint3d\n\n\n \nintalledges\n\n\n \ninterpolate\n\n\n \nisoline\n\n\n \nj0\n\n\n \nj1\n\n\n \njn\n\n\n \njump\n\n\n \nLinearCG\n\n\n \nLinearGMRES\n\n\n \nlog\n\n\n \nlog10\n\n\n \nmax\n\n\n \nmean\n\n\n \nmedit\n\n\n \nmin\n\n\n \nmovemesh\n\n\n \nmovemesh23\n\n\n \nNLCG\n\n\n \non\n\n\n \nplot\n\n\n \npolar\n\n\n \npow\n\n\n \nreadmesh\n\n\n \nreadmesh3\n\n\n \nround\n\n\n \nsavemesh\n\n\n \nsavesol\n\n\n \nset\n\n\n \nsin\n\n\n \nsinh\n\n\n \nsort\n\n\n \nsplitmesh\n\n\n \nsquare\n\n\n \ntan\n\n\n \ntanh\n\n\n \ntetg\n\n\n \ntetgconvexhull\n\n\n \ntetgreconstruction\n\n\n \ntetgtransfo\n\n\n \ntrunc\n\n\n \ny0\n\n\n \ny1\n\n\n \nyn\n\n\n\n\nFunction to add\n#\n\n\n\n\n distance\n\n\n gmshload\n\n\n mmg3d\n\n\n savevtk\n\n\n\n\nQuadrature formulae\n#\n\n\n\n\n \nqf1pE\n\n\n \nqf2pE\n\n\n \nqf3pE\n\n\n \nqf5pE\n\n\n \nqf1Elump\n\n\n \nqf1pT\n\n\n \nqf2pT\n\n\n \nqf5pT\n\n\n \nqf1pTlump\n\n\n \nqf2pT4P1\n\n\n \nqf7pT\n\n\n \nqf9pT\n\n\n \nqfV1\n\n\n \nqfV2\n\n\n \nqfV5\n\n\n \nqfV1lump", 
             "title": "TODO"
-        },
+        }, 
         {
-            "location": "/TODO/#todo",
-            "text": "",
+            "location": "/TODO/#todo", 
+            "text": "", 
             "title": "TODO"
-        },
+        }, 
         {
-            "location": "/TODO/#add-optional-tag-to-parameters",
-            "text": "See  int2d  for example.",
+            "location": "/TODO/#add-optional-tag-to-parameters", 
+            "text": "See  int2d  for example.", 
             "title": "Add [optional] tag to parameters."
-        },
+        }, 
         {
-            "location": "/TODO/#functions-to-detail",
-            "text": "BFGS    buildlayers    buildmesh    checkmovemesh    cmaes    convect    dfft    EigenValue    emptymesh    fmax    fmin    fmod    getline    int1d    int2d    int3d    intalledges    interpolate    isoline    j0    j1    jn    jump    LinearCG    LinearGMRES    log    log10    max    mean    medit    min    movemesh    movemesh23    NLCG    on    plot    polar    pow    readmesh    readmesh3    round    savemesh    savesol    set    sin    sinh    sort    splitmesh    square    tan    tanh    tetg    tetgconvexhull    tetgreconstruction    tetgtransfo    trunc    y0    y1    yn",
+            "location": "/TODO/#functions-to-detail", 
+            "text": "BFGS    buildlayers    buildmesh    checkmovemesh    cmaes    convect    dfft    EigenValue    emptymesh    fmax    fmin    fmod    getline    int1d    int2d    int3d    intalledges    interpolate    isoline    j0    j1    jn    jump    LinearCG    LinearGMRES    log    log10    max    mean    medit    min    movemesh    movemesh23    NLCG    on    plot    polar    pow    readmesh    readmesh3    round    savemesh    savesol    set    sin    sinh    sort    splitmesh    square    tan    tanh    tetg    tetgconvexhull    tetgreconstruction    tetgtransfo    trunc    y0    y1    yn", 
             "title": "Functions to detail"
-        },
+        }, 
         {
-            "location": "/TODO/#function-to-add",
-            "text": "distance   gmshload   mmg3d   savevtk",
+            "location": "/TODO/#function-to-add", 
+            "text": "distance   gmshload   mmg3d   savevtk", 
             "title": "Function to add"
-        },
+        }, 
         {
-            "location": "/TODO/#quadrature-formulae",
-            "text": "qf1pE    qf2pE    qf3pE    qf5pE    qf1Elump    qf1pT    qf2pT    qf5pT    qf1pTlump    qf2pT4P1    qf7pT    qf9pT    qfV1    qfV2    qfV5    qfV1lump",
+            "location": "/TODO/#quadrature-formulae", 
+            "text": "qf1pE    qf2pE    qf3pE    qf5pE    qf1Elump    qf1pT    qf2pT    qf5pT    qf1pTlump    qf2pT4P1    qf7pT    qf9pT    qfV1    qfV2    qfV5    qfV1lump", 
             "title": "Quadrature formulae"
         }
     ]
