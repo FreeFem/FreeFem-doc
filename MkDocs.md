@@ -1,7 +1,5 @@
 # Install MkDocs with dependencies
 
-## Linux install (tested on Ubuntu 16.04)
-
 Install python:
 ```
 apt-get install python
@@ -32,7 +30,4 @@ Install math extension:
 pip install python-markdown-math
 ```
 
-That's it!
-
-## MkDocs usage
-Use `mkdocs serve` for the development server or `mkdocs build` to build the static web pages.
+That's it! Use `mkdocs serve` for the development server or `mkdocs build` to build the static web pages.

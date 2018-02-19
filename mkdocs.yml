@@ -1,16 +1,26 @@
 site_name: FreeFem++ documentation
 pages:
   - Home: index.md
-  - Types: types.md
-  - Global variables: global-variables.md
-  - Quadrature formulae: quadrature.md
-  - Operators: operators.md
-  - Loops: loops.md
-  - I/O: io.md
-  - Functions: functions.md
-  - Examples: examples.md
-  - TODO: TODO.md
+  - Documentation:
+    - Home: documentation/index.md
+  - Tutorials:
+    - Home: tutorial/index.md
+  - References:
+    - Home: reference/index.md
+    - Types: reference/types.md
+    - Global variables: reference/global-variables.md
+    - Quadrature formulae: reference/quadrature.md
+    - Operators: reference/operators.md
+    - Loops: reference/loops.md
+    - I/O: reference/io.md
+    - Functions: reference/functions.md
+    - Examples: reference/examples.md
+    - TODO: reference/TODO.md
+  - Examples:
+    - Home: examples/index.md
 theme:
+  feature:
+    tabs: true
   name: 'material'
   favicon: 'images/favicon.png'
   logo: 'images/favicon.png'
@@ -21,8 +31,11 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_HTMLorMML
   - mathjax-config.js
 markdown_extensions:
+  - codehilite:
+      guess_lang: false
   - mdx_math
   - pymdownx.tasklist
+  - pymdownx.inlinehilite
   - toc:
       permalink: '#'
   - admonition
@@ -30,3 +43,8 @@ extra:
     social:
       - type: 'github'
         link: 'https://github.com/FreeFem/FreeFem-doc'
+repo_name: 'FreeFem++ on Github'
+repo_url: 'https://github.com/FreeFem/FreeFem-doc'
+
+
+
