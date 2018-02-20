@@ -1,3 +1,11 @@
 .md-header, .md-tabs {
 	background-color: #384560 !important;
 }
+
+.md-typeset a, .md-nav__link--active, .md-nav__link:active {
+	color:#3f51b5
+}
+
+.md-typeset a:active, .md-typeset a:hover {
+	color: #536dfe;
+}
