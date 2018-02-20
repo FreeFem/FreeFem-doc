@@ -1,10 +1,10 @@
 site_name: FreeFem++
 pages:
   - Introduction:
-    - Introduction: index.md
-    - Download: download.md
-    - Installation: installation.md
-    - Lexers: lexers.md 
+    - Introduction: introduction/index.md
+    - Download: introduction/download.md
+    - Installation: introduction/installation.md
+    - Lexers: introduction/lexers.md 
   - Documentation:
     - Home: documentation/index.md
   - Language References:
