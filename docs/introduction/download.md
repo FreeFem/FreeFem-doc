@@ -18,3 +18,4 @@ Lexer type | Description
 Emacs | ff++-mode.el contributed by [Rafa Rodríguez Galván](rafael.rodriguez@uca.es>).
 Textmate 2 | Unzip Textmate2-ff++.zip and follow the explanations given in the How_To.rtf.
 Notepad++ | See the instructions in the PDF
+Gedit | ffpp.lang
