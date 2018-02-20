@@ -1,10 +1,20 @@
-# Welcome to FreeFem++ documentation
+# Download FreeFem++
 
-[FreeFem++](https://freefem.github.io/FreeFem-website/) is a partial differential equation solver for non-linear multi-physics systems in 2D and 3D.
+##Latest binary packages
+Operating System | FreeFem++ Version | Size | Date 
+:----------- |:-------------|:-----------|:-------
+[MacOS 10.12](http://www.freefem.org/ff++/ftp/FreeFem++-3.58-MacOS_10.12.pkg) | `3.58` | 506.9 Mb | Jan 25, 2018 18:10:21
+MacOS 10.11 | `3.58` | 506.9 Mb | Jan 25, 2018 18:10:21
+MacOS 10.10 | `3.56` | 502.8 Mb | Jul 21, 2017 09:13:56
+Windows 64bit (in test) | `3.56` | 83.2 Mb | Jul 21, 2017 09:11:10
+Windows 32bit | `3.46` | 66.4 Mb | May 09, 2017 16:11:18
 
-Problems involving partial differential equations from several branches of physics such as fluid-structure interactions require interpolations of data on several meshes and their manipulation within one program.
-FreeFem++ includes a fast interpolation algorithm and a language for the manipulation of data on multiple meshes.
+The latest releases are available on the [FreeFem++ GitHub Repository](https://github.com/Leaflet/Leaflet/releases)
 
-FreeFem++ is written in C++ and its language is a C++ idiom.
+##Syntax highlighters:
 
-<div style="text-align:center"><img src="images/Logo.png" /></div>
+Lexer type | Description
+:--------- | :---
+Emacs | ff++-mode.el contributed by [Rafa Rodríguez Galván](rafael.rodriguez@uca.es>).
+Textmate 2 | Unzip Textmate2-ff++.zip and follow the explanations given in the How_To.rtf.
+Notepad++ | See the instructions in the PDF
