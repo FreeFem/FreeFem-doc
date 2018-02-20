@@ -1,4 +1,4 @@
-site_name: FreeFem++ documentation
+site_name: FreeFem++
 pages:
   - Home: index.md
   - Documentation:
