@@ -9,8 +9,8 @@ Remark: All line beginning by # are shell command in terminal.
 2) Install  gcc from [http://hpc.sourceforge.net](http://hpc.sourceforge.net/)
 
 ```
-# curl -O http://prdownloads.sourceforge.net/hpc/gfortran-4.9-bin.tar.gz?download
-# sudo tar zxvf gfortran-4.9-bin.tar.gz -C /
+# curl -O http://prdownloads.sourceforge.net/hpc/gfortran-7.1-bin.tar.gz?download
+# sudo tar zxvf gfortran-7.1-bin.tar.gz -C /
 ```
 
 3) Install autoconf and automake from [macport](http://www.macports.org) or with [Homebrew](https://brew.sh)
