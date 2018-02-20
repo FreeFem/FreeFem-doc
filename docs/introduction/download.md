@@ -9,13 +9,13 @@ MacOS 10.10 | `3.56` | 502.8 Mb | Jul 21, 2017 09:13:56
 Windows 64bit (in test) | `3.56` | 83.2 Mb | Jul 21, 2017 09:11:10
 Windows 32bit | `3.46` | 66.4 Mb | May 09, 2017 16:11:18
 
-The latest releases are available on the [FreeFem++ GitHub Repository](https://github.com/Leaflet/Leaflet/releases)
+The source code is available on the [FreeFem++ GitHub Repository](https://github.com/Leaflet/Leaflet/releases).
 
-##Syntax highlighters:
+##Syntax highlighters
 
-Lexer type | Description
-:--------- | :---
-Emacs | ff++-mode.el contributed by [Rafa Rodríguez Galván](rafael.rodriguez@uca.es>).
-Textmate 2 | Unzip Textmate2-ff++.zip and follow the explanations given in the How_To.rtf.
-Notepad++ | See the instructions in the PDF
-Gedit | ffpp.lang
+Lexer type | Version| Description
+:--------- | :---- | :------
+Emacs | `1.0` | ff++-mode.el contributed by [Rafa Rodríguez Galván](rafael.rodriguez@uca.es>).
+Textmate 2 | `1.0` | Unzip Textmate2-ff++.zip and follow the explanations given in the How_To.rtf.
+Notepad++ | `1.0` | See the instructions in the PDF
+Gedit | `1.0` | ffpp.lang contributed by Simon Garnotel

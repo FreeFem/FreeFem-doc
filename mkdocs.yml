@@ -3,7 +3,6 @@ pages:
   - Introduction: index.md
   - Download: introduction/download.md
   - Installation: introduction/installation.md
-  - Lexers: introduction/lexers.md 
   - Documentation:
     - Home: documentation/index.md
   - Language References:
