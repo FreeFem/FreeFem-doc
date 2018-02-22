@@ -7,11 +7,11 @@ $$\begin{eqnarray}
 \label{eqn:Poisson}
 -\Delta u(x,y) &=& f(x,y)\quad \mbox{ for all }(x,y)\in\Omega,
  \\ \label{eqn:Dirichlet}
-  u(x,y) &=& 0\quad \mbox{ for all }(x,y)\mbox{ on }\partial\Omega,.
+  u(x,y) &=& 0\quad \mbox{ for all }(x,y)\mbox{ on }\p\Omega,.
 \end{eqnarray}$$
 
-Here $\partial\Omega$ is the boundary of the bounded open set $\Omega\subset \R^2$
-and  $ \Delta u = \frac{\partial^2 u}{\partial x^2 } + \frac{\partial^2 u}{\partial y^2}$.
+Here $\p\Omega$ is the boundary of the bounded open set $\Omega\subset \R^2$
+and  $\Delta u = \frac{\p^2 u}{\p x^2 } + \frac{\p^2 u}{\p y^2}$.
 
 The following is a Freefem++ program which computes $u$ when
 $f(x,y)=xy$  and $\Omega$ is the unit disk. The boundary
@@ -27,10 +27,6 @@ As illustrated in Fig. \ref{firstU},
 we can see the isovalue of $u$ by using \ttCC{@plot} (see line 13
 below).
 
-Figure 2.1: mesh Th by build(C(50)) |  Figure 2.2: isovalue by `plot(u)`
+Figure 2.1: mesh Th by `build(C(50))` |  Figure 2.2: isovalue by `plot(u)`
 :-------------------------:|:-------------------------:
-![arccos function](images/firstTh.svg)  |  ![arccos function](images/firstTh.svg)
-
-![arccos function](images/firstTh.svg)![arccos function](images/firstU.svg)
-
-\twoplot[height=5cm]{firstTh}{firstU}{mesh \texttt{Th} by \texttt{build(C(50))}}{isovalue by \texttt{plot(u)}}
+![arccos function](images/firstTh.svg)  |  ![arccos function](images/firstU.svg)
