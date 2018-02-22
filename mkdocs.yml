@@ -17,7 +17,7 @@ pages:
     - Examples: reference/examples.md
     - TODO: reference/TODO.md
   - Tutorials:
-    - Home: tutorial/index.md
+    - Getting started: tutorial/index.md
   - Examples:
     - Home: examples/index.md
 
