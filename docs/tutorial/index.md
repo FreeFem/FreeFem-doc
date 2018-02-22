@@ -34,27 +34,44 @@ Figure 2.1: mesh Th by `build(C(50))` |  Figure 2.2: isovalue by `plot(u)`
 ## Example 1
 
 ```freefem
-// defining the boundary
-border C(t=0,2*pi){x=cos(t); y=sin(t);}
-// the triangulated domain Th is on the left side of its boundary
-mesh Th = buildmesh (C(50));
-// the finite element space defined over Th is called here Vh
-fespace Vh(Th,P1);
-Vh u,v;// defines u and v as piecewise-P1 continuous functions
-func f= x*y;  // definition of a called f function
-real cpu=clock(); // get the clock in second
-solve Poisson(u,v,solver=LU) = // defines the PDE
-	int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) //  bilinear part
-	- int2d(Th)(f*v) // right hand side
-	+ on(C,u=0); // Dirichlet boundary condition
+// Define mesh boundary
+border C(t=0, 2*pi){x=cos(t); y=sin(t);}
+
+// The triangulated domain Th is on the left side of its boundary
+mesh Th = buildmesh(C(50));
+
+// The finite element space defined over Th is called here Vh
+fespace Vh(Th, P1);
+Vh u, v;// Define u and v as piecewise-P1 continuous functions
+
+// Define a function f
+func f= x*y;
+
+// Get the clock in second
+real cpu=clock();
+
+// Define the PDE
+solve Poisson(u, v, solver=LU)
+	= int2d(Th)(	// The bilinear part
+		  dx(u)*dx(v)
+		+ dy(u)*dy(v)
+	)
+	- int2d(Th)(	// The right hand side
+		  f*v
+	)
+	+ on(C, u=0);	// The Dirichlet boundary condition
+
+// Plot the result
 plot(u);
-cout << " CPU time = " << clock()-cpu << endl;
+
+// Display the total computational time
+cout << "CPU time = " << (clock()-cpu) << endl;
 ```
 
 Note that the qualifier `solver=LU` is not required and by default a
 multi-frontal `LU` would have been used. Note also that the lines
 containing `clock` are equally not required. Finally note how
-close to the mathematics FreeFem++ input language is. Line 8 and 9
+close to the mathematics FreeFem++ input language is. Lines 19 to 24
 correspond to the mathematical variational equation
 \[
     \int_{T_h}(\frac{\p u}{\p x}\frac{\p v}{\p x}
