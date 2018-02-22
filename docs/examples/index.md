@@ -79,7 +79,7 @@ real zmin = 0, zmax = 1;
 mesh3 Th = buildlayers(Th0, nn, zbound=[zmin, zmax],
 	reffacemid=rmid, reffaceup=rup, reffacelow=rdown);
 
-medit("c8x8x8",Th); // 3d mesh visualization with medit
+medit("c8x8x8", Th); // 3d mesh visualization with medit
 
 // Fespaces
 fespace Vh2(Th0, P2);
