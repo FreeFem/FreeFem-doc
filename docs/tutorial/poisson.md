@@ -186,13 +186,13 @@ In FreeFem++
 the **Poisson** problem can be  declared only as in
 
 ```freefem
-  Vh u,v; problem Poisson(u,v) =
+Vh u,v; problem Poisson(u,v) =
 ```
 
 and solved later as in
 
 ```freefem
-  Poisson; //   the problem is solved here
+Poisson; //the problem is solved here
 ```
 
 or declared and solved at the same time as in
