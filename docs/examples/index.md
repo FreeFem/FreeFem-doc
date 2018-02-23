@@ -1,4 +1,4 @@
-## Poisson Equation
+## Poisson's Equation
 
 ```freefem
 // Parameters

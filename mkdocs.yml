@@ -18,6 +18,8 @@ pages:
     - TODO: reference/TODO.md
   - Tutorials:
     - Getting started: tutorial/index.md
+    - Poisson's equation: tutorial/poisson.md
+    - Membrane: tutorial/membrane.md
   - Examples:
     - Home: examples/index.md
 
