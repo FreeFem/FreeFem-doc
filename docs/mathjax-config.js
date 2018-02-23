@@ -16,7 +16,9 @@ MathJax.Hub.Config({
     	Macros: {
         	R: '{\\mathbb R}',
         	p: '{\\partial}',
-		d: '{\\text d}'
+		d: '{\\text d}',
+		n: '{\\nabla}',
+		T: '{\\mathbb T}'
     	}
     }
 });

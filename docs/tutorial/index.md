@@ -1,5 +1,54 @@
 # Getting started
 
+## Finite Elements
+
+Currently FreeFem++ implements the following elements in 2d, (see section 6\ref{finite elements} for the full description)
+
+`P0` piecewise constant,  
+`P1` continuous piecewise linear,  
+`P2` continuous piecewise quadratic,  
+`P3` continuous piecewise cubic (need  `load "Element_P3"`).  
+`P4` continuous piecewise quartic (need  `load "Element_P4"`).  
+`RT0` Raviart-Thomas piecewise constant,  
+`RT1` Raviart-Thomas degree 1  piecewise constant (need  `load "Element_Mixte"`).  
+`BDM1` Brezzi-Douglas-Marini degree 1  piecewise constant (need  `load "Element_Mixte"`).     
+`RT0Ortho` Nedelec type 1 degree 0  piecewise constant.  
+`RT1Ortho` Nedelec type 1 degree 1  piecewise constant (need `load "Element_Mixte"`).  
+`BDM1Ortho` Brezzi-Douglas-Marini degree 1  piecewise constant (need `load "Element_Mixte"`).  
+`P1nc` piecewise linear non-conforming,  
+`P1dc` piecewise linear discontinuous,  
+`P2dc` piecewise quadratic discontinuous,  
+`P2h` quadratic homogene continuous (without `P1`).  
+`P3dc` piecewise cubic discontinuous (need `load "Element_P3dc"`).  
+`P4dc` piecewise quartic discontinuous (need `load "Element_P4dc"`).  
+`P1b` piecewise linear continuous plus bubble,  
+`P2b` piecewise quadratic continuous plus bubble.  
+`Morley` Morley finite element (need `load "Morley"`).  
+`HCT` Hsieh-Clough-Tocher $C^1$ finite element (need `load "Element_HCT"` version 3.40).  
+`P2BR` P2 Bernardi-Raugel finite element (need `load "BernadiRaugel.cpp"`).  
+`P0edge` a finite element constant per edge  
+`P1edge` to `P5edge`  a finite element polynomial  on edge (need `load "Element_PkEdge"`)  
+...
+
+Currently FreeFem++ implements the following elements in 3d, (see section \ref{finite elements} for the full description)
+
+`P03d` piecewise constant,
+`P13d` continuous piecewise linear,
+`P23d` continuous piecewise quadratic,
+`RT03d` Raviart-Thomas piecewise constant,
+`Edge03d`,`Edge13d`,`Edge23d` The Nedelec Edge element 0,1,2 
+`P1b3d` piecewise linear continuous plus bubble,
+...
+
+To get the full list, in a unix terminal, in directory **examples++-tutorial** do
+
+```
+FreeFem++ dumptable.edp
+grep TypeOfFE lestables
+```
+
+Note that other elements can be added fairly easily.
+
 ## Solving Poisson’s equation  
 _For a given function $f(x,y)$, find a function $u(x,y)$ satisfying_
 
@@ -30,8 +79,6 @@ below).
 Figure 2.1: mesh Th by `build(C(50))` |  Figure 2.2: isovalue by `plot(u)`
 :-------------------------:|:-------------------------:
 ![mesh TH](images/firstTh.svg)  |  ![isovalue](images/firstU.svg)
-
-## Example 1
 
 ```freefem
 // Define mesh boundary
@@ -236,7 +283,7 @@ $\displaystyle{\int_{\Omega}fv\, \d x\d y \longrightarrow}$ `:::freefem int2d(Th
 
 
 In FreeFem++ **bilinear terms and linear terms should not be under the same integral** indeed to construct the linear systems
- \freefempp finds out which integral contributes to the bilinear form by checking if both terms , the unknown (here `u`) and test functions (here `v`) are present.
+ FreeFem++ finds out which integral contributes to the bilinear form by checking if both terms , the unknown (here `u`) and test functions (here `v`) are present.
 
 **Step4: Solution and visualization**
 
@@ -306,3 +353,360 @@ unless another option is mentioned specifically  as in
 Vh u,v; problem Poisson(u,v,solver=CG) = int2d(...
 ```
 meaning that `Poisson` is declared only here and when it is called (by simply writing `Poisson;`) then (\ref{eqn:Equation}) will be solved by the Conjugate Gradient method.
+
+## Some Features of FreeFem++
+
+The language of FreeFem++ is typed, polymorphic and reentrant with macro generation (see
+\ref{macro}). Every variable must be typed and declared in a
+statement each statement separated from the next by a semicolon ";".
+The syntax is that of C++ by default augmented with something that is more akin
+to $TeX$.
+For the specialist, one key guideline is that FreeFem++ rarely generates an internal
+finite element  array;
+this was adopted for speed and
+consequently FreeFem++ could be hard to beat in terms of execution speed, except
+for the time lost in the interpretation of the language (which can be reduced by a systematic usage
+of `varf` and matrices instead of `problem`.
+
+
+
+## The Development Cycle: Edit--Run/Visualize--Revise
+
+An integrated environment is provided with FreeFem++ by A. Le Hyaric;
+Many examples and tutorials are also given along with this documentation and it is best
+to study them and learn by example.
+Explanations for some of these examples are given in this documentation in the next chapter. If you are a
+FEM beginner, you may also have to read a book on variational formulations.
+
+The development cycle will have the following steps:
+
+**Modeling:** From strong forms of PDE to weak forms, one must know the variational formulation
+to use FreeFem++; one should also have an eye on the reusability of the variational
+formulation so as to keep the same internal matrices; a typical example is the
+time dependent heat equation with an implicit time scheme: the internal matrix can be factorized
+only once and FreeFem++ can be taught to do so.
+
+**Programming:** Write the code in FreeFem++ language using a text editor such as the one
+provided in the integrated environment.
+
+**Run:** Run the code (here written in file mycode.edp).
+note that this can also be done in terminal mode by :
+
+`% FreeFem++ mycode.edp`
+
+
+**Visualization:** Use the keyword `plot` to display functions while FreeFem++ is running.
+Use the plot-parameter `wait=1` to stop the program at each plot. Use the
+plot-parameter `ps="toto.eps"` to generate a postscript file to archive the results.
+
+**Debugging:** A global variable "debug" (for example) can help as in
+`wait=true` to `wait=false`.
+
+```freefem
+bool debug = true;
+border a(t=0,2*pi){ x=cos(t); y=sin(t);label=1;}
+border b(t=0,2*pi){ x=0.8+0.3*cos(t); y=0.3*sin(t);label=2;}
+plot(a(50)+b(-30),wait=debug); // plot the borders  to see the intersection
+// so change (0.8 in 0.3 in b) then needs a mouse click
+mesh Th = buildmesh(a(50)+b(-30));
+plot(Th,wait=debug); // plot Th then needs a mouse click
+fespace Vh(Th,P2);
+Vh f = sin(pi*x)*cos(pi*y);
+plot(f,wait=debug);  // plot the function f
+Vh g = sin(pi*x + cos(pi*y));
+plot(g,wait=debug);  // plot the function g
+```
+Changing debug to false will make the plots flow continuously;  watching the flow of graphs
+on the screen (while drinking coffee) can then become a pleasant experience.
+
+Error messages are displayed in the console window. They are not always very explicit because of the
+template structure of the C++ code, (we did our best)!  Nevertheless they are displayed at the right place.
+For example, if you forget parenthesis as in
+
+```freefem
+bool debug = true;
+mesh Th = square(10,10);
+plot(Th);
+```
+
+then you will get the following message from FreeFem++,
+
+```freefem
+    2 : mesh Th = square(10,10);
+ Error line number 2, in file bb.edp, before  token ;
+parse error
+  current line = 2
+Compile error : parse error
+        line number :2, ;
+error Compile error : parse error
+        line number :2, ;
+ code = 1
+```
+
+If you use the same symbol twice as in
+
+```freefem
+real aaa =1;
+real aaa;
+```
+
+then you will get the message
+
+```freefem
+    2 : real aaa; The identifier aaa exists
+          the existing type is <Pd>
+          the new  type is <Pd>
+
+```
+
+If you find that the program isn't doing what you want you may also use `cout`
+to display in text format on the console window the value of variables, just as you would do in C++.
+
+The following example works:
+
+```freefem
+...;
+@fespace Vh...; Vh u;...
+cout<<u;...
+@matrix A=a(Vh,Vh);...
+cout<<A;
+```
+
+Another trick is to _comment in and out_ by using the "//" as in C++.
+For example
+
+```freefem
+real aaa =1;
+// real aaa;
+```
+
+## Membranes
+
+**Summary :** _Here we shall learn how to solve a Dirichlet and/or
+mixed Dirichlet Neumann problem for the Laplace operator with
+application to the equilibrium of a membrane under load.  We shall
+also check the accuracy of the method and interface with other graphics packages_
+
+An elastic membrane $\Omega$ is attached to a planar rigid support
+$\Gamma$, and a force $f(x) dx$ is exerted on each surface element
+$\d{x}=\d{x}_1 \d{x}_2$. The vertical membrane displacement,
+$\varphi(x)$, is  obtained by solving  Laplace's equation:
+
+$$
+     -\Delta \varphi =f ~\hbox{in}~ \Omega.
+$$
+
+As the membrane is fixed to its planar support, one has:
+$$ \varphi |_{\Gamma }=0.$$
+
+If the support wasn't planar but at an elevation $z(x_1,x_2)$ then
+the boundary conditions would be of non-homogeneous Dirichlet type.
+$$ \varphi|_{\Gamma}=z.$$
+
+If a part $\Gamma_2$ of the membrane border $\Gamma$ is not fixed to
+the support but is left hanging, then due to the membrane's rigidity the angle with the
+normal vector $n$ is zero; thus the boundary conditions are
+
+$$
+    \varphi|_{\Gamma_1}=z,~~~~\frac{\p\varphi}{\p n}|_{\Gamma_2}=0
+$$
+
+where $\Gamma_1=\Gamma-\Gamma_2$; recall that
+ $\frac{\p\varphi}{\p n}=\n\varphi\cdot n$.
+  Let us recall also that the Laplace operator
+$\Delta$ is defined by:
+
+$$
+    \Delta \varphi = {\p ^{2}\varphi \over \p x^{2}_{1} }
+    + {\p ^{2}\varphi \over \p x_{2}^{2} }.
+$$
+
+With such "mixed boundary conditions" the problem has a unique
+solution (**see (1987)**, Dautray-Lions (1988), Strang (1986) and
+Raviart-Thomas (1983)); the easiest proof is to notice that
+$\varphi$ is the state of least energy, i.e.
+
+ $$
+    E(\phi) =\min_{\varphi-z\in V} E(v) ,\quad \mbox{with} \quad E(v)=\int_\Omega(\frac12|\n v|^2-fv )
+ $$
+
+and where  $V$ is the subspace of the Sobolev space $H^1(\Omega)$ of
+functions which have zero trace on $\Gamma_1$.  
+Recall that ($x\in\R^d,~d=2$ here)
+
+$$
+    H^1(\Omega)=\{u\in L^2(\Omega)~:~\n u\in (L^2(\Omega))^d\}
+$$
+
+Calculus of variation shows that the minimum must satisfy, what is known as the weak form
+of the PDE or its
+variational formulation (also known here as the theorem of virtual work)
+
+$$
+    \int_\Omega \n\varphi\cdot\n w = \int_\Omega f w\quad\forall w\in V
+$$
+
+Next an integration by parts (Green's formula) will show that this is equivalent to
+the PDE when second derivatives exist.
+
+!!! warning
+	Unlike Freefem+ which had both weak and strong forms, FreeFem++ implements only weak formulations. It is not possible to go further in using this software if you don't know the weak form (i.e. variational formulation) of your problem: either you read a book, or ask help form a colleague or drop the matter. Now if you want to solve a system of PDE like $A(u,v)=0,~ B(u,v)=0$ don't close this manual, because in weak form it is
+	$$
+    	\int_\Omega(A(u,v)w_1+B(u,v)w_2)=0~~\forall w_1,w_2...
+	$$
+
+**Example**
+
+Let an ellipse have the length of the semimajor axis $a=2$, and unitary the semiminor axis
+Let the surface force be $f=1$. Programming this case with FreeFem++ gives:
+
+```freefem
+// file membrane.edp
+real theta=4.*pi/3.;
+real a=2.,b=1.; // The length of the semimajor axis and  semiminor axis
+func z=x;
+
+border Gamma1(t=0,theta)    { x = a * cos(t); y = b*sin(t); }
+border Gamma2(t=theta,2*pi) { x = a * cos(t); y = b*sin(t); }
+mesh Th=buildmesh(Gamma1(100)+Gamma2(50));
+
+fespace Vh(Th,P2); // P2 conforming triangular FEM
+Vh phi,w, f=1;
+
+solve Laplace(phi,w)=int2d(Th)(dx(phi)*dx(w) + dy(phi)*dy(w))
+                - int2d(Th)(f*w) + on(Gamma1,phi=z);
+plot(phi,wait=true, ps="membrane.eps"); //Plot phi
+plot(Th,wait=true, ps="membraneTh.eps"); //Plot Th
+
+savemesh(Th,"Th.msh");
+```
+
+Figure 3.1: Mesh and level lines of the membrane deformation. | Below the 3D version drawn by `gnuplot` from a file generated by FreeFem++  
+:-------------------------:|:-------------------------:
+![membrane Th](images/membraneTh.svg)  |  ![membrane level lines](images/membrane.svg)
+![GNU 3D membrane](images/gnumembrane.svg)  ||
+
+A triangulation is built by the keyword `buildmesh`. This keyword
+calls a triangulation subroutine based on the Delaunay test, which
+first triangulates with only the boundary points, then adds internal
+points by subdividing the edges. How fine  the triangulation becomes is controlled
+by the size of the closest boundary edges.
+
+The PDE is then discretized using the triangular second order finite
+element method on the triangulation; as was briefly indicated in the previous chapter,
+a linear system is derived from the discrete formulation whose size is the number of vertices plus the number of mid-edges in the triangulation. The system is solved by a multi-frontal Gauss LU factorization implemented in the package `UMFPACK`. The keyword plot will display both $\T_h$ and $\varphi$ (remove `Th` if $\varphi$ only is desired) and the qualifier `fill=true` replaces the default option (colored level lines) by a full color display.
+Results are on fig. 3.1.
+
+```freefem
+plot(phi,wait=true,fill=true); //Plot phi with full color display
+```
+
+Next we would like to check the results !
+
+One simple way is to adjust the parameters so as to know the solutions. For instance
+on the unit circle `a=1` , $\varphi_e=\sin(x^2+y^2-1)$ solves the problem when
+
+\[
+    z=0,~f=-4(\cos(x^2+y^2-1)-(x^2+y^2)\sin(x^2+y^2-1))
+\]
+
+except that on $\Gamma_2$ $\p_n\varphi=2$ instead of zero. So we will consider
+a non-homogeneous Neumann condition and solve
+
+$$
+    \int_\Omega(\n\varphi\cdot\n w = \int_\Omega f w+\int_{\Gamma_2}2w\quad\forall w\in V
+$$
+
+We will do that with two triangulations, compute the $L^2$ error:
+
+\[
+\epsilon = \int_\Omega|\varphi-\varphi_e|^2
+\]
+
+and print the error in both cases as well as the log of their ratio an indication of
+the rate of convergence.
+
+```freefem
+// file membranerror.edp
+verbosity =0; // to remove all default output
+real theta=4.*pi/3.;
+real a=1.,b=1.; // the length of the semimajor axis and  semiminor axis
+border Gamma1(t=0,theta)    { x = a * cos(t); y = b*sin(t); }
+border Gamma2(t=theta,2*pi) { x = a * cos(t); y = b*sin(t); }
+
+func f=-4*(cos(x^2+y^2-1) -(x^2+y^2)*sin(x^2+y^2-1));
+func phiexact=sin(x^2+y^2-1);
+
+real[int] L2error(2); // an array two values
+for(int n=0;n<2;n++)
+{
+  mesh Th=buildmesh(Gamma1(20*(n+1))+Gamma2(10*(n+1)));
+  fespace Vh(Th,P2);
+  Vh phi,w;
+
+  solve laplace(phi,w)=int2d(Th)(dx(phi)*dx(w) + dy(phi)*dy(w))
+    - int2d(Th)(f*w) - int1d(Th,Gamma2)(2*w)+ on(Gamma1,phi=0);
+  plot(Th,phi,wait=true,ps="membrane.eps"); //Plot Th and phi
+
+  L2error[n]= sqrt(int2d(Th)((phi-phiexact)^2));
+}
+
+for(int n=0;n<2;n++)
+ cout << " L2error " << n << " = "<<  L2error[n] <<endl;
+
+cout <<" convergence rate = "<< log(L2error[0]/L2error[1])/log(2.)  <<endl;
+```
+
+the output is
+
+```freefem
+L2error 0 = 0.00462991
+L2error 1 = 0.00117128
+convergence rate = 1.9829
+times: compile 0.02s, execution 6.94s
+```
+
+We find a rate of 1.93591, which is not close enough to the 3 predicted by the theory.
+The Geometry is always a polygon so we lose one order due to the geometry approximation in $O(h^2)$
+
+Now if you are not satisfied with the `.eps` plot generated by FreeFem++ and you want to use other graphic facilities, then you must store the solution in a file very much like in `C++`. It will be useless if you don't save the triangulation as well, consequently you must do
+
+```freefem
+{
+  ofstream ff("phi.txt");
+  ff << phi[];
+}
+savemesh(Th,"Th.msh");
+```
+
+For the triangulation the name is important: it is the extension that determines the format.
+
+Still that may not take you where you want. Here is an interface with gnuplot to produce the right part of fig. 3.2.
+
+```freefem
+// to build a gnuplot data file
+{
+  ofstream ff("graph.txt");
+   for (int i=0;i<Th.nt;i++)
+   {
+    for (int j=0; j <3; j++)
+     ff<<Th[i][j].x  << "    "<< Th[i][j].y<< "  "<<phi[][Vh(i,j)]<<endl;
+    
+    ff<<Th[i][0].x  << "    "<< Th[i][0].y<< "  "<<phi[][Vh(i,0)]<<"\n\n\n"
+   }
+}
+```
+
+We use the finite element numbering, where `Wh(i,j)` is the global index of
+$j^{Th}$  degrees of freedom of triangle number $i$.
+
+Then open `gnuplot` and do
+
+```freefem
+set palette rgbformulae 30,31,32
+splot "graph.txt" w l pal
+```
+
+This works with `P2` and `P1`, but not with `P1nc`
+because the 3 first degrees of freedom  of  `P2` or `P2` are on vertices
+and not with `P1nc`.
