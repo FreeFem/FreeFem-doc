@@ -25,6 +25,7 @@ pages:
     - Thermal Conduction: tutorial/thermal_conduction.md
     - Irrotational Fan Blade Flow and Thermal effects: tutorial/fan_blade_flow.md
     - Pure convection, The rotating hill: tutorial/rotating_hill.md
+    - The system of elasticity: tutorial/elasticity_system.md
   - Examples:
     - Home: examples/index.md
 
