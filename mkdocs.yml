@@ -20,6 +20,7 @@ pages:
     - Getting started: tutorial/index.md
     - Poisson's equation: tutorial/poisson.md
     - Membrane: tutorial/membrane.md
+    - Heat Exchanger: tutorial/heat_exchanger.md
   - Examples:
     - Home: examples/index.md
 
