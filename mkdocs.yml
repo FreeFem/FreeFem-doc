@@ -21,6 +21,7 @@ pages:
     - Poisson's equation: tutorial/poisson.md
     - Membrane: tutorial/membrane.md
     - Heat Exchanger: tutorial/heat_exchanger.md
+    - Acoustics: tutorial/acoustics.md
   - Examples:
     - Home: examples/index.md
 
