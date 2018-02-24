@@ -23,6 +23,7 @@ pages:
     - Heat Exchanger: tutorial/heat_exchanger.md
     - Acoustics: tutorial/acoustics.md
     - Thermal Conduction: tutorial/thermal_conduction.md
+    - Irrotational Fan Blade Flow and Thermal effects: tutorial/fan_blade_flow.md
   - Examples:
     - Home: examples/index.md
 
