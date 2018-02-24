@@ -22,6 +22,7 @@ pages:
     - Membrane: tutorial/membrane.md
     - Heat Exchanger: tutorial/heat_exchanger.md
     - Acoustics: tutorial/acoustics.md
+    - Thermal Conduction: tutorial/thermal_conduction.md
   - Examples:
     - Home: examples/index.md
 
