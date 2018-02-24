@@ -70,18 +70,8 @@ v=eV[0];
 plot(v,wait=1,ps="eigen.eps");
 ```
 
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=8cm]{sound0}~~~
-\includegraphics[width=8cm]{eigen}
 
-| Fig. 3.X: Amplitude of an acoustic signal coming from the left vertical wall.| First eigen state ($\lambda=(k/c)^2=19.4256$) close to $20$ of eigenvalue problem :$ -\Delta \varphi = \lambda \varphi$ and $ \frac{\partial \varphi}{\partial n} = 0$ on $\Gamma$}|
+| Fig. 3.3: Amplitude of an acoustic signal coming from the left vertical wall.| First eigen state ($\lambda=(k/c)^2=19.4256$) close to $20$ of eigenvalue problem :$ -\Delta \varphi = \lambda \varphi$ and $ \frac{\partial \varphi}{\partial n} = 0$ on $\Gamma$}|
 |:----:|:----:|
-|![Acoustics](images/acoustics.svg)|![Acoustics](images/acoustics_0.svg)|
-
-
-\caption{\label{figsound}Left:Amplitude of an acoustic signal coming from the left vertical wall.
-Right:  first eigen state ($\lambda=(k/c)^2=19.4256$) close to $20$ of eigenvalue problem :$ -\Delta \varphi = \lambda \varphi$ and $ \frac{\partial \varphi}{\partial n} = 0$ on $\Gamma$}
-\end{center}
-\end{figure}
+|![Acoustics](images/acoustics_0.svg)|![Acoustics](images/acoustics.svg)|
 
