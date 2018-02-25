@@ -31,6 +31,7 @@ pages:
     - Newton method for the steady Navier_Stokes equations: tutorial/newton_method_navier_stokes.md
     - A large fluid problem: tutorial/large_fluid_problem.md
     - An example with complex numbers: tutorial/complex_numbers.md
+    - Optimal control: tutorial/optimal_control.md
   - Examples:
     - Home: examples/index.md
 
