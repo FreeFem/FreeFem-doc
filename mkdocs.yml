@@ -34,6 +34,8 @@ pages:
     - Optimal control: tutorial/optimal_control.md
     - A flow with shocks: tutorial/flow_with_shocks.md
     - Classifications of the equations: tutorial/equations_classification.md
+    - Optimize time depend schema for heat equations: tutorial/heat_equation_optimization.md
+    - A transien Stokes solver in matrix form: tutorial/transient_stokes_solver_matrix.md
   - Examples:
     - Home: examples/index.md
 
