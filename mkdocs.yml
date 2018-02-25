@@ -33,6 +33,7 @@ pages:
     - An example with complex numbers: tutorial/complex_numbers.md
     - Optimal control: tutorial/optimal_control.md
     - A flow with shocks: tutorial/flow_with_shocks.md
+    - Classifications of the equations: tutorial/equations_classification.md
   - Examples:
     - Home: examples/index.md
 
