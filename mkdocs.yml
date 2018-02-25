@@ -32,6 +32,7 @@ pages:
     - A large fluid problem: tutorial/large_fluid_problem.md
     - An example with complex numbers: tutorial/complex_numbers.md
     - Optimal control: tutorial/optimal_control.md
+    - A flow with shocks: tutorial/flow_with_shocks.md
   - Examples:
     - Home: examples/index.md
 
