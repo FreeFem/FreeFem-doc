@@ -25,7 +25,7 @@ where $ V_0 = \{w\in H^1(\Omega)/ w_{|\Gamma_{24}}=0\}$.
 So the to code the method with the matrices $A=(A_{ij})$, $M=(M_{ij})$, and  the vectors 
 $ u^n, b^n, b',b", b_{cl}$ (notation if $w$ is a vector then $w_i$ is a component of the vector).
 
-\def\tgv{\Red{{\frac{1}{\varepsilon}}}}
+%%\def\tgv{\Red{{\frac{1}{\varepsilon}}}}%%
 
 $$ u^n = A^{-1} b^n, \quad
   \quad b' = b_0 + M u^{n-1}, 

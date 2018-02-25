@@ -1,8 +1,8 @@
-\subsection{Tutorial to write a transient Stokes solver in matrix form}
+# Tutorial to write a transient Stokes solver in matrix form
 
 Consider the following script to solve a time dependent Stokes problem in a cavity
 
-\bFF
+```freefem
 mesh Th=square(10,10);
 fespace Vh(Th,P2), Qh(Th,P1);
 Vh u,v,uu,vv, uold=0,vold=0;
@@ -20,12 +20,12 @@ for(m=0;m<M;m++){
 	stokes; uold=u; vold=v;
 }
 plot(p,[u,v],value=true, wait=true, cmm="t="+m*dt);
-\eFF
+```
 
 Every iteration is in fact of the form $ A[u,v,p] = B[uold,vold,pold] + b$ where $A,B$ are matrices and $b$ is a vector containing the boundary conditions.
 The $A,B,b$ are constructed by
 
-\bFF
+```freefem
 fespace Xh(Th,[P2,P2,P1]);
 varf aa ([u,v,p],[uu,vv,pp])
   = int2d(Th)(  (u*uu+v*vv)/dt + nu*(dx(u)*dx(uu) + dy(u)*dy(uu)
@@ -42,27 +42,31 @@ varf bcl ([uold,vold,pold],[uu,vv,pp]) = on(1,2,4,uold=0,vold=0) + on(3,uold=1,v
 matrix A= aa(Xh,Xh,solver=UMFPACK); 
 matrix B= bb(Xh,Xh);
 real[int] b=bcl(0,Xh); 
-\eFF
-Note that the boundary conditions are not specified in $bb$. Removing the comment ``//" would cause the compiler to multiply the diagonal terms corresponding to a Dirichlet degree of freedom by a very large term (tgv); if so $b$ would not be needed, on the condition that $uold=1$ on boundary 3 initially. Note also that b has a tgv on the Dirichlet nodes, by construction, and so does A.
+```
+
+Note that the boundary conditions are not specified in $bb$. Removing the comment "//" would cause the compiler to multiply the diagonal terms corresponding to a Dirichlet degree of freedom by a very large term (tgv); if so $b$ would not be needed, on the condition that $uold=1$ on boundary 3 initially. Note also that b has a tgv on the Dirichlet nodes, by construction, and so does A.
 
 The loop will them be 
-\bFF
+```freefem
 real[int] sol(Xh.ndof), aux(Xh.ndof);
 for(m=0;m<M;m++){
     aux=B*sol;  aux+=b;
     sol=A^-1*aux;
 }
-\eFF
-There is yet a difficulty with the initialization of `sol} and with the solution from `sol}.  For this we need a temporary vector in $X_h$ and here is a solution
-\bFF
+```
+
+There is yet a difficulty with the initialization of `sol` and with the solution from `sol`.  For this we need a temporary vector in $X_h$ and here is a solution
+
+```freefem
 Xh [w1,w2,wp]=[uold,vold,pp];  
-sol=w1[]; // cause also the copy of w2 and wp
+sol=w1[]; // Cause also the copy of w2 and wp
 for(m=0;m<M;m++){
     aux=B*sol;  aux+=b;
     sol=A^-1*aux;
 }
 w1[]=sol;  u=w1; v= w2; p=wp;
 plot(p,[u,v],value=true, wait=true, cmm="t="+m*dt);
-\eFF
-The freefem team agrees that the line `sol=w1[];} is mysterious as it copies also w2 and wp into sol. Structured data such as vectors of $X_h$ here cannot be written component by component. Hence `w1=u} is not allowed.
+```
+
+The freefem team agrees that the line `sol=w1[];` is mysterious as it copies also w2 and wp into sol. Structured data such as vectors of $X_h$ here cannot be written component by component. Hence `w1=u` is not allowed.
 
