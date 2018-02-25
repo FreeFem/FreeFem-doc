@@ -30,6 +30,7 @@ pages:
     - A projection Algorithm for the Navier-Stokes equations: tutorial/navier_stokes_projection.md
     - Newton method for the steady Navier_Stokes equations: tutorial/newton_method_navier_stokes.md
     - A large fluid problem: tutorial/large_fluid_problem.md
+    - An example with complex numbers: tutorial/complex_numbers.md
   - Examples:
     - Home: examples/index.md
 
