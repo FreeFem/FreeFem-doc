@@ -28,6 +28,7 @@ pages:
     - The system of elasticity: tutorial/elasticity_system.md
     - The system of Stokes for fluids: tutorial/stokes_for_fluid_system.md
     - A projection Algorithm for the Navier-Stokes equations: tutorial/navier_stokes_projection.md
+    - Newton method for the steady Navier_Stokes equations: tutorial/newton_method_navier_stokes.md
   - Examples:
     - Home: examples/index.md
 
