@@ -25,6 +25,10 @@ where $ V_0 = \{w\in H^1(\Omega)/ w_{|\Gamma_{24}}=0\}$.
 So the to code the method with the matrices $A=(A_{ij})$, $M=(M_{ij})$, and  the vectors 
 $ u^n, b^n, b',b", b_{cl}$ (notation if $w$ is a vector then $w_i$ is a component of the vector).
 
+$
+   \def\tgv{{\frac{1}{\varepsilon}}}
+$
+
 $$ u^n = A^{-1} b^n, \quad
   \quad b' = b_0 + M u^{n-1}, 
   \quad b"=  \tgv \; b_{cl} , 
@@ -35,7 +39,7 @@ $$ u^n = A^{-1} b^n, \quad
                        \label{eq tgv}
 $$
 
-Where with $ \tgv = \Red{\mathtt{tgv}} = \Red{10^{30}}$ :
+Where with $ \tgv = \mathtt{tgv} = 10^{30}$ :
 
 \begin{eqnarray*}
  A_{ij} &=& \left\{\begin{array}{cl}   \tgv  & \mbox{if } i  \in \Gamma_{24}, \mbox{and}\quad  j=i \\  
