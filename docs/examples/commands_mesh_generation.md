@@ -232,7 +232,7 @@ $q^{i_1},\, q^{i_2}$.
 |Fig. 5.7: Mesh by `:::freefem buildmesh(C(10))`||
 |:----|:----|
 |![Mesh Sample](images/mesh_sample.svg)|
-```
+
 In the left figure, we have the following.
 $n_v=14, n_t=16, n_s=10$
 $q^1=(-0.309016994375,\, 0.951056516295)$\\
@@ -244,7 +244,7 @@ The vertices of $T_{16}$ are $q^9,\, q^{10},\, q^{6}$.\\\\
 The edge of 1st side $L_1$ are $q^6,\, q^5$.\\
 $\vdots\qquad \vdots\qquad \vdots$\\
 The edge of 10th side $L_{10}$ are $q^{10},\, q^6$.|
-```
+
 
 \begin{figure}[htbp]
 \begin{minipage}{\textwidth}
