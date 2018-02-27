@@ -2,7 +2,12 @@
 
 **Summary :** _Here we will present two methods for upwinding for the simplest convection problem. We will learn about Characteristics-Galerkin and Discontinuous-Galerkin Finite Element Methods._
 
-Let $\Omega$ be the unit disk centered at 0; consider the rotation vector field $$ {u} = [u1,u2], \qquad u_1 = y,\quad u_2 = -x.$$
+Let $\Omega$ be the unit disk centered at 0; consider the rotation vector field
+
+$$
+{u} = [u1,u2], \qquad u_1 = y,\quad u_2 = -x
+$$
+
 Pure convection by $u$ is
 
 $$
@@ -31,10 +36,10 @@ The game consists in solving the equation until $T=2\pi$, that is for a full rev
 
 **Solution by a Characteristics-Galerkin Method**
 
-In FreeFem++ there is an operator called `:::freefem convect([u1,u2],dt,c)` which compute $ c\circ X$ with $X$ is the convect field defined by $ X(x)= x_{dt}$ and where  $x_\tau$ is particule path in the steady state velocity field $\mathbf{u}=[u1,u2]$ starting at point $x$ at time $\tau=0$, so $x_\tau$ is solution of the following ODE:
+In FreeFem++ there is an operator called `:::freefem convect([u1,u2], dt, c)` which compute $ c\circ X$ with $X$ is the convect field defined by $ X(x)= x_{dt}$ and where  $x_\tau$ is particule path in the steady state velocity field $\mathbf{u}=[u1,u2]$ starting at point $x$ at time $\tau=0$, so $x_\tau$ is solution of the following ODE:
 
 $$
-\dot{x}_\tau = u(x_\tau),~~~\vec x_{\tau=0}=x.
+\dot{x}_\tau = u(x_\tau), \mathbf{x}_{\tau=0}=x.
 $$
 
 When $\mathbf{u}$ is piecewise constant; this is possible because $x_\tau$ is then a polygonal curve which can be computed exactly and the solution exists always when $u$ is divergence free; convect returns  $c(x_{df})=C\circ X$.
@@ -125,16 +130,16 @@ plot(cc, wait=1, fill=1, ps="ConvectDG.eps", viso=viso);
 
 !!! note
 	New keywords: `:::freefem intalledges` to integrate on all edges of all triangles
+	
+	\begin{equation}
+	\mathtt{intalledges}(\mathtt{Th}) \equiv \sum_{T\in\mathtt{Th}}\int_{\p T }
+	\end{equation}
 
-\begin{equation}
-\mathtt{intalledges}(\mathtt{Th}) \equiv \sum_{T\in\mathtt{Th}}\int_{\p T }
-\end{equation}
-
-(so all internal edges are see two times), nTonEdge which is one if the triangle has a boundary edge and two otherwise, `jump` to implement $[c]$.
+(so all internal edges are see two times), nTonEdge which is one if the triangle has a boundary edge and two otherwise, `:::freefem jump` to implement $[c]$.
 
 Results of both methods are shown on Fig. 3.6 with identical levels for the level line; this is done with the plot-modifier viso.
 
-Notice also the macro where the parameter $u$ is not used (but the syntax needs one) and which ends with a //; it simply replaces the name `n` by `(N.x*v1+N.y*v2)`. As easily guessed `N.x,N.y` is the normal to the edge.
+Notice also the macro where the parameter $u$ is not used (but the syntax needs one) and which ends with a `:::freefem //`; it simply replaces the name `n` by `:::freefem (N.x*v1+N.y*v2)`. As easily guessed `:::freefem N.x,N.y` is the normal to the edge.
 
 |Fig. 3.6:The rotated hill after one revolution with Characteristics-Galerkin|and with Discontinuous $P_1$ Galerkin FEM.|
 |:----|:----|
@@ -190,7 +195,7 @@ for (t = 0.; t < 2.*pi; t += dt){
 }
 ```
 
-Notice the new keyword `set` to specify a solver in this framework; the modifier `init` is used to tell the solver that the matrix has not changed (init=true), and the name parameter are the same that in problem definition (see. \ref{def problem})
+Notice the new keyword `:::freefem set` to specify a solver in this framework; the modifier `:::freefem init` is used to tell the solver that the matrix has not changed (init=true), and the name parameter are the same that in problem definition (see. \ref{def problem})
 
 **Finite Volume Methods** can also be handled with FreeFem++ but it requires programming.
 
