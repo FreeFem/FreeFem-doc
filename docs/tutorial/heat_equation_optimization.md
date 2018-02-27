@@ -1,5 +1,4 @@
-# Optimize Time depend schema for Heat equation
-
+# Time dependent schema optimization for heat equations
 
 First, it is possible to define variational forms, and use this forms to build matrix and vector to make very fast script (4 times faster here) (see the example Heat.edp).
   
