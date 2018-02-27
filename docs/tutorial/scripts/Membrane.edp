@@ -26,8 +26,8 @@ solve Laplace(phi, w)
 	;
 
 // Plot
-plot(phi, wait=true, ps="membrane.eps"); //Plot phi
-plot(Th, wait=true, ps="membraneTh.eps"); //Plot Th
+plot(phi, wait=true, ps="Membrane.eps"); //Plot phi
+plot(Th, wait=true, ps="MembraneTh.eps"); //Plot Th
 
 // Save mesh
 savemesh(Th,"Th.msh");

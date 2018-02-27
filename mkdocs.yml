@@ -20,10 +20,10 @@ pages:
     - Getting started: tutorial/index.md
     - Poisson's equation: tutorial/poisson.md
     - Membrane: tutorial/membrane.md
-    - (TODO) Heat Exchanger: tutorial/heat_exchanger.md
-    - (TODO) Acoustics: tutorial/acoustics.md
-    - (TODO) Thermal Conduction: tutorial/thermal_conduction.md
-    - (TODO) Irrotational Fan Blade Flow and Thermal effects: tutorial/fan_blade_flow.md
+    - Heat Exchanger: tutorial/heat_exchanger.md
+    - Acoustics: tutorial/acoustics.md
+    - Thermal Conduction: tutorial/thermal_conduction.md
+    - Irrotational Fan Blade Flow and Thermal effects: tutorial/fan_blade_flow.md
     - (TODO) Pure convection, The rotating hill: tutorial/rotating_hill.md
     - (TODO) The system of elasticity: tutorial/elasticity_system.md
     - (TODO) The system of Stokes for fluids: tutorial/stokes_for_fluid_system.md

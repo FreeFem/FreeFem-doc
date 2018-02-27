@@ -4,10 +4,9 @@ The FreeFem++ language is [typed](../reference/types), polymorphic and reentrant
 
 Every variable must be typed and declared in a statement. Each statement are separated from the next by a semicolon `;`.
 
-The FreeFem++ syntax is an augmented C++ language with something that is more akin to $\TeX$.
->TODO: reformulate this sentence
+The FreeFem++ language is a C++ idiom with something that is more akin to $\TeX$.
 
-For the specialist, one key guideline is that FreeFem++ rarely generates an internal finite element  array, this was adopted for speed and consequently FreeFem++ could be hard to beat in terms of execution speed, except for the time lost in the interpretation of the language (which can be reduced by a systematic usage of `:::freefem varf` and `:::freefem matrix` instead of `:::freefem problem`).
+For the specialist, one key guideline is that FreeFem++ rarely generates an internal finite element array, this was adopted for speed and consequently FreeFem++ could be hard to beat in terms of execution speed, except for the time lost in the interpretation of the language (which can be reduced by a systematic usage of `:::freefem varf` and `:::freefem matrix` instead of `:::freefem problem`).
 
 ## The Development Cycle: Edit--Run/Visualize--Revise
 
@@ -35,7 +34,7 @@ FreeFem++ mycode.edp
 
 **Visualization:** Use the keyword `:::freefem plot` directly in `mycode.edp` to display functions while FreeFem++ is running. Use the plot-parameter `:::freefem wait=1` to stop the program at each plot.
 
-**Debugging:** A global variable `debug` (for example) can help as in `wait=true` to `wait=false`.
+**Debugging:** A global variable `debug` (for example) can help as in `:::freefem wait=true` to `:::freefem wait=false`.
 ```freefem
 bool debug = true;
 
@@ -53,14 +52,14 @@ fespace Vh(Th,P2);
 Vh f = sin(pi*x)*cos(pi*y);
 Vh g = sin(pi*x + cos(pi*y));
 
-plot(f, wait=debug);  //plot the function f
-plot(g, wait=debug);  //plot the function g
+plot(f, wait=debug); //plot the function f
+plot(g, wait=debug); //plot the function g
 ```
 Changing debug to false will make the plots flow continuously. Watching the flow of graphs on the screen (while drinking coffee) can then become a pleasant experience.
 
 ### Error management
 
-Error messages are displayed in the console window. They are not always very explicit because of the template structure of the C++ code (we did our best!).  Nevertheless they are displayed at the right place. For example, if you forget parenthesis as in:
+Error messages are displayed in the console window. They are not always very explicit because of the template structure of the C++ code (we did our best!). Nevertheless they are displayed at the right place. For example, if you forget parenthesis as in:
 ```freefem
 bool debug = true;
 mesh Th = square(10,10;
