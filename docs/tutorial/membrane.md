@@ -1,71 +1,53 @@
 ## Membrane
 
-**Summary :** _Here we shall learn how to solve a Dirichlet and/or
-mixed Dirichlet Neumann problem for the Laplace operator with
-application to the equilibrium of a membrane under load.  We shall
-also check the accuracy of the method and interface with other graphics packages_
+**Summary :** _Here we shall learn how to solve a Dirichlet and/or mixed Dirichlet Neumann problem for the Laplace operator with
+application to the equilibrium of a membrane under load.  We shall also check the accuracy of the method and interface with other graphics packages_
 
-An elastic membrane $\Omega$ is attached to a planar rigid support
-$\Gamma$, and a force $f(x) dx$ is exerted on each surface element
-$\d{x}=\d{x}_1 \d{x}_2$. The vertical membrane displacement,
-$\varphi(x)$, is  obtained by solving  Laplace's equation:
+An elastic membrane $\Omega$ is attached to a planar rigid support $\Gamma$, and a force $f(x) dx$ is exerted on each surface element $\d{x}=\d{x}_1 \d{x}_2$. The vertical membrane displacement, $\varphi(x)$, is  obtained by solving  Laplace's equation:
 
 $$
-     -\Delta \varphi =f ~\hbox{in}~ \Omega.
+-\Delta \varphi =f ~\hbox{in}~ \Omega.
 $$
 
 As the membrane is fixed to its planar support, one has:
 $$ \varphi |_{\Gamma }=0.$$
 
-If the support wasn't planar but at an elevation $z(x_1,x_2)$ then
-the boundary conditions would be of non-homogeneous Dirichlet type.
+If the support wasn't planar but have an elevation $z(x_1,x_2)$ then the boundary conditions would be of non-homogeneous Dirichlet type.
 $$ \varphi|_{\Gamma}=z.$$
 
-If a part $\Gamma_2$ of the membrane border $\Gamma$ is not fixed to
-the support but is left hanging, then due to the membrane's rigidity the angle with the
-normal vector $n$ is zero; thus the boundary conditions are
+If a part $\Gamma_2$ of the membrane border $\Gamma$ is not fixed to the support but is left hanging, then due to the membrane's rigidity the angle with the normal vector $n$ is zero; thus the boundary conditions are
 
 $$
-    \varphi|_{\Gamma_1}=z,~~~~\frac{\p\varphi}{\p n}|_{\Gamma_2}=0
+\varphi|_{\Gamma_1}=z,~~~~\frac{\p\varphi}{\p n}|_{\Gamma_2}=0
 $$
 
-where $\Gamma_1=\Gamma-\Gamma_2$; recall that
- $\frac{\p\varphi}{\p n}=\n\varphi\cdot n$.
-  Let us recall also that the Laplace operator
-$\Delta$ is defined by:
+where $\Gamma_1=\Gamma-\Gamma_2$; recall that  $\frac{\p\varphi}{\p n}=\n\varphi\cdot n$. Let us recall also that the Laplace operator $\Delta$ is defined by:
 
 $$
-    \Delta \varphi = {\p ^{2}\varphi \over \p x^{2}_{1} }
-    + {\p ^{2}\varphi \over \p x_{2}^{2} }.
+\Delta \varphi = {\p ^{2}\varphi \over \p x^{2}_{1} }
++ {\p ^{2}\varphi \over \p x_{2}^{2} }.
 $$
 
-With such "mixed boundary conditions" the problem has a unique
-solution (**see (1987)**, Dautray-Lions (1988), Strang (1986) and
-Raviart-Thomas (1983)); the easiest proof is to notice that
-$\varphi$ is the state of least energy, i.e.
+<!--- TODO check ref-->
+With such _"mixed boundary conditions"_ the problem has a unique solution (**see (1987)**, Dautray-Lions (1988), Strang (1986) and Raviart-Thomas (1983)). The easiest proof is to notice that $\varphi$ is the state of least energy, i.e.
 
  $$
-    E(\phi) =\min_{\varphi-z\in V} E(v) ,\quad \mbox{with} \quad E(v)=\int_\Omega(\frac12|\n v|^2-fv )
+E(\phi) =\min_{\varphi-z\in V} E(v) ,\quad \mbox{with} \quad E(v)=\int_\Omega(\frac12|\n v|^2-fv )
  $$
 
-and where  $V$ is the subspace of the Sobolev space $H^1(\Omega)$ of
-functions which have zero trace on $\Gamma_1$.  
-Recall that ($x\in\R^d,~d=2$ here)
+and where  $V$ is the subspace of the Sobolev space $H^1(\Omega)$ of functions which have zero trace on $\Gamma_1$. Recall that ($x\in\R^d,~d=2$ here)
 
 $$
-    H^1(\Omega)=\{u\in L^2(\Omega)~:~\n u\in (L^2(\Omega))^d\}
+H^1(\Omega)=\{u\in L^2(\Omega)~:~\n u\in (L^2(\Omega))^d\}
 $$
 
-Calculus of variation shows that the minimum must satisfy, what is known as the weak form
-of the PDE or its
-variational formulation (also known here as the theorem of virtual work)
+Calculus of variation shows that the minimum must satisfy, what is known as the weak form of the PDE or its variational formulation (also known here as the theorem of virtual work)
 
 $$
-    \int_\Omega \n\varphi\cdot\n w = \int_\Omega f w\quad\forall w\in V
+\int_\Omega \n\varphi\cdot\n w = \int_\Omega f w\quad\forall w\in V
 $$
 
-Next an integration by parts (Green's formula) will show that this is equivalent to
-the PDE when second derivatives exist.
+Next an integration by parts (Green's formula) will show that this is equivalent to the PDE when second derivatives exist.
 
 !!! warning
 	Unlike Freefem+ which had both weak and strong forms, FreeFem++ implements only weak formulations. It is not possible to go further in using this software if you don't know the weak form (i.e. variational formulation) of your problem: either you read a book, or ask help form a colleague or drop the matter. Now if you want to solve a system of PDE like $A(u,v)=0,~ B(u,v)=0$ don't close this manual, because in weak form it is
@@ -75,44 +57,57 @@ the PDE when second derivatives exist.
 
 **Example**
 
-Let an ellipse have the length of the semimajor axis $a=2$, and unitary the semiminor axis
-Let the surface force be $f=1$. Programming this case with FreeFem++ gives:
+Let an ellipse have the length of the semimajor axis $a=2$, and unitary the semiminor axis. Let the surface force be $f=1$. Programming this case with FreeFem++ gives:
 
 ```freefem
-// file membrane.edp
-real theta=4.*pi/3.;
-real a=2.,b=1.; // The length of the semimajor axis and  semiminor axis
-func z=x;
+// Parameters
+real theta = 4.*pi/3.;
+real a = 2.; //The length of the semimajor axis
+real b = 1.; //The length of the semiminor axis
+func z = x;
 
-border Gamma1(t=0,theta)    { x = a * cos(t); y = b*sin(t); }
-border Gamma2(t=theta,2*pi) { x = a * cos(t); y = b*sin(t); }
-mesh Th=buildmesh(Gamma1(100)+Gamma2(50));
+// Mesh
+border Gamma1(t=0., theta){x=a*cos(t); y=b*sin(t);}
+border Gamma2(t=theta, 2.*pi){x=a*cos(t); y=b*sin(t);}
+mesh Th = buildmesh(Gamma1(100) + Gamma2(50));
 
-fespace Vh(Th,P2); // P2 conforming triangular FEM
-Vh phi,w, f=1;
+// Fespace
+fespace Vh(Th, P2); //P2 conforming triangular FEM
+Vh phi, w, f=1;
 
-solve Laplace(phi,w)=int2d(Th)(dx(phi)*dx(w) + dy(phi)*dy(w))
-                - int2d(Th)(f*w) + on(Gamma1,phi=z);
-plot(phi,wait=true, ps="membrane.eps"); //Plot phi
-plot(Th,wait=true, ps="membraneTh.eps"); //Plot Th
+// Solve
+solve Laplace(phi, w)
+	= int2d(Th)(
+		  dx(phi)*dx(w)
+		+ dy(phi)*dy(w)
+	)
+        - int2d(Th)(
+        	  f*w
+	)
+	+ on(Gamma1, phi=z)
+	;
 
+// Plot
+plot(phi, wait=true, ps="membrane.eps"); //Plot phi
+plot(Th, wait=true, ps="membraneTh.eps"); //Plot Th
+
+// Save mesh
 savemesh(Th,"Th.msh");
 ```
 
-Figure 3.1: Mesh and level lines of the membrane deformation. | Below the 3D version drawn by `gnuplot` from a file generated by FreeFem++  
+Figure 3.1: Mesh and level lines of the membrane deformation. | Below the 3D version drawn by `gnuplot` from a file generated by FreeFem++
 :-------------------------:|:-------------------------:
 ![membrane Th](images/membraneTh.svg)  |  ![membrane level lines](images/membrane.svg)
 ![GNU 3D membrane](images/gnumembrane.svg)  ||
 
-A triangulation is built by the keyword `buildmesh`. This keyword
-calls a triangulation subroutine based on the Delaunay test, which
-first triangulates with only the boundary points, then adds internal
-points by subdividing the edges. How fine  the triangulation becomes is controlled
-by the size of the closest boundary edges.
+A triangulation is built by the keyword `:::freefem buildmesh`. This keyword calls a triangulation subroutine based on the Delaunay test, which first triangulates with only the boundary points, then adds internal points by subdividing the edges. How fine  the triangulation becomes is controlled by the size of the closest boundary edges.
 
-The PDE is then discretized using the triangular second order finite
-element method on the triangulation; as was briefly indicated in the previous chapter,
-a linear system is derived from the discrete formulation whose size is the number of vertices plus the number of mid-edges in the triangulation. The system is solved by a multi-frontal Gauss LU factorization implemented in the package `UMFPACK`. The keyword plot will display both $\T_h$ and $\varphi$ (remove `Th` if $\varphi$ only is desired) and the qualifier `fill=true` replaces the default option (colored level lines) by a full color display.
+The PDE is then discretized using the triangular second order finite element method on the triangulation; as was briefly indicated in the previous chapter, a linear system is derived from the discrete formulation whose size is the number of vertices plus the number of mid-edges in the triangulation.
+
+The system is solved by a multi-frontal Gauss LU factorization implemented in the package `:::freefem UMFPACK`.
+
+The keyword `:::freefem plot` will display both $\T_h$ and $\varphi$ (remove `Th` if $\varphi$ only is desired) and the qualifier `:::freefem fill=true` replaces the default option (colored level lines) by a full color display.
+
 Results are on fig. 3.1.
 
 ```freefem
@@ -121,58 +116,77 @@ plot(phi,wait=true,fill=true); //Plot phi with full color display
 
 Next we would like to check the results !
 
-One simple way is to adjust the parameters so as to know the solutions. For instance
-on the unit circle `a=1` , $\varphi_e=\sin(x^2+y^2-1)$ solves the problem when
+One simple way is to adjust the parameters so as to know the solutions. For instance on the unit circle `a=1`, $\varphi_e=\sin(x^2+y^2-1)$ solves the problem when
 
-\[
-    z=0,~f=-4(\cos(x^2+y^2-1)-(x^2+y^2)\sin(x^2+y^2-1))
-\]
+$
+z=0, f=-4(\cos(x^2+y^2-1)-(x^2+y^2)\sin(x^2+y^2-1))
+$
 
-except that on $\Gamma_2$ $\p_n\varphi=2$ instead of zero. So we will consider
-a non-homogeneous Neumann condition and solve
+except that on $\Gamma_2$ $\p_n\varphi=2$ instead of zero. So we will consider a non-homogeneous Neumann condition and solve
 
 $$
-    \int_\Omega(\n\varphi\cdot\n w = \int_\Omega f w+\int_{\Gamma_2}2w\quad\forall w\in V
+\int_\Omega(\n\varphi\cdot\n w = \int_\Omega f w+\int_{\Gamma_2}2w\quad\forall w\in V
 $$
 
 We will do that with two triangulations, compute the $L^2$ error:
 
-\[
+$
 \epsilon = \int_\Omega|\varphi-\varphi_e|^2
-\]
+$
 
-and print the error in both cases as well as the log of their ratio an indication of
-the rate of convergence.
+and print the error in both cases as well as the log of their ratio an indication of the rate of convergence.
 
 ```freefem
-// file membranerror.edp
-verbosity =0; // to remove all default output
-real theta=4.*pi/3.;
-real a=1.,b=1.; // the length of the semimajor axis and  semiminor axis
-border Gamma1(t=0,theta)    { x = a * cos(t); y = b*sin(t); }
-border Gamma2(t=theta,2*pi) { x = a * cos(t); y = b*sin(t); }
+//  Parameters
+verbosity = 0; //to remove all default output
+real theta = 4.*pi/3.;
+real a=1.; //the length of the semimajor axis
+real b=1.; //the length of the semiminor axis
+func f = -4*(cos(x^2+y^2-1) - (x^2+y^2)*sin(x^2+y^2-1));
+func phiexact = sin(x^2 + y^2 - 1);
 
-func f=-4*(cos(x^2+y^2-1) -(x^2+y^2)*sin(x^2+y^2-1));
-func phiexact=sin(x^2+y^2-1);
+// Mesh
+border Gamma1(t=0., theta){x=a*cos(t); y=b*sin(t);}
+border Gamma2(t=theta, 2.*pi){x=a*cos(t); y=b*sin(t);}
 
-real[int] L2error(2); // an array two values
-for(int n=0;n<2;n++)
-{
-  mesh Th=buildmesh(Gamma1(20*(n+1))+Gamma2(10*(n+1)));
-  fespace Vh(Th,P2);
-  Vh phi,w;
-
-  solve laplace(phi,w)=int2d(Th)(dx(phi)*dx(w) + dy(phi)*dy(w))
-    - int2d(Th)(f*w) - int1d(Th,Gamma2)(2*w)+ on(Gamma1,phi=0);
-  plot(Th,phi,wait=true,ps="membrane.eps"); //Plot Th and phi
-
-  L2error[n]= sqrt(int2d(Th)((phi-phiexact)^2));
+// Error loop
+real[int] L2error(2); //an array of two values
+for(int n = 0; n < 2; n++){
+	// Mesh
+	mesh Th = buildmesh(Gamma1(20*(n+1)) + Gamma2(10*(n+1)));
+	
+	// Fespace
+	fespace Vh(Th, P2);
+	Vh phi, w;
+	
+	// Solve
+	solve Laplace(phi, w)
+		= int2d(Th)(
+			  dx(phi)*dx(w)
+			+ dy(phi)*dy(w)
+		)
+		- int2d(Th)(
+			  f*w
+		)
+		- int1d(Th, Gamma2)(
+			  2*w
+		)
+		+ on(Gamma1,phi=0)
+		;
+	
+	// Plot
+	plot(Th, phi, wait=true, ps="membrane.eps");
+	
+	// Error
+	L2error[n] = sqrt(int2d(Th)((phi-phiexact)^2));
 }
 
-for(int n=0;n<2;n++)
- cout << " L2error " << n << " = "<<  L2error[n] <<endl;
+// Display loop
+for(int n = 0; n < 2; n++)
+	cout << "L2error " << n << " = " <<  L2error[n] << endl;
 
-cout <<" convergence rate = "<< log(L2error[0]/L2error[1])/log(2.)  <<endl;
+// Convergence rate
+cout << "convergence rate = "<< log(L2error[0]/L2error[1])/log(2.) << endl;
 ```
 
 the output is
@@ -185,7 +199,8 @@ times: compile 0.02s, execution 6.94s
 ```
 
 We find a rate of 1.93591, which is not close enough to the 3 predicted by the theory.
-The Geometry is always a polygon so we lose one order due to the geometry approximation in $O(h^2)$
+
+The Geometry is always a polygon so we lose one order due to the geometry approximation in $O(h^2)$.
 
 Now if you are not satisfied with the `.eps` plot generated by FreeFem++ and you want to use other graphic facilities, then you must store the solution in a file very much like in `C++`. It will be useless if you don't save the triangulation as well, consequently you must do
 
@@ -205,7 +220,7 @@ Still that may not take you where you want. Here is an interface with gnuplot to
 // to build a gnuplot data file
 {
   ofstream ff("graph.txt");
-   for (int i=0;i<Th.nt;i++)
+   for (int i=0;i<Th.nti++)
    {
     for (int j=0; j <3; j++)
      ff<<Th[i][j].x  << "    "<< Th[i][j].y<< "  "<<phi[][Vh(i,j)]<<endl;
@@ -215,16 +230,13 @@ Still that may not take you where you want. Here is an interface with gnuplot to
 }
 ```
 
-We use the finite element numbering, where `Wh(i,j)` is the global index of
-$j^{Th}$  degrees of freedom of triangle number $i$.
+We use the finite element numbering, where `Wh(i,j)` is the global index of $j^{Th}$  degrees of freedom of triangle number $i$.
 
 Then open `gnuplot` and do
 
-```freefem
+```gnuplot
 set palette rgbformulae 30,31,32
 splot "graph.txt" w l pal
 ```
 
-This works with `P2` and `P1`, but not with `P1nc`
-because the 3 first degrees of freedom  of  `P2` or `P2` are on vertices
-and not with `P1nc`.
+This works with `:::freefem P2` and `:::freefem P1`, but not with `:::freefem P1nc` because the 3 first degrees of freedom  of  `:::freefem P2` or `:::freefem P2` are on vertices and not with `:::freefem P1nc`.

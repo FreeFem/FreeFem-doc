@@ -1,7 +1,6 @@
 # Getting started
 
-The FreeFem++ language is typed, polymorphic and reentrant with macro generation.
->TODO: link to types, macro, ...
+The FreeFem++ language is [typed](../reference/types), polymorphic and reentrant with [macro generation](../reference/types#macro-design).
 
 Every variable must be typed and declared in a statement. Each statement are separated from the next by a semicolon `;`.
 
