@@ -36,7 +36,7 @@ for(int n = 0; n < 2; n++){
 		;
 	
 	// Plot
-	plot(Th, phi, wait=true, ps="membrane.eps");
+	plot(Th, phi, wait=true, ps="Membrane.eps");
 	
 	// Error
 	L2error[n] = sqrt(int2d(Th)((phi-phiexact)^2));
