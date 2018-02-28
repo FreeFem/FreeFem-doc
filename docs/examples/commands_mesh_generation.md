@@ -922,25 +922,27 @@ for (i=0;i<n;i++) // All degree of freedom
 
 # Splitmesh
 
-Another way to split mesh triangles is to use {\tt splitmesh}, for example:
+Another way to split mesh triangles is to use `:::freefem splitmesh`, for example:
+
 ```freefem
-{  //  new stuff 2004 splitmesh (version 1.37)
-  assert(version>=1.37);
-  border a(t=0,2*pi){ x=cos(t); y=sin(t);label=1;}
-  mesh Th=buildmesh(a(20));
-  plot(Th,wait=1,ps="nosplitmesh.eps"); // see figure \ref{fig nosplitmesh}
-  Th=splitmesh(Th,1+5*(square(x-0.5)+y*y));
-  plot(Th,wait=1,ps="splitmesh.eps"); // see figure \ref{fig splitmesh}
+{
+assert(version>=1.37);
+border a(t=0,2*pi){ x=cos(t); y=sin(t);label=1;}
+mesh Th=buildmesh(a(20));
+plot(Th,wait=1,ps="nosplitmesh.eps"); // See fig. 5.22
+Th=splitmesh(Th,1+5*(square(x-0.5)+y*y));
+plot(Th,wait=1,ps="splitmesh.eps"); // See fig. 5.23
 }
 ```
 
-\twoplot[height=6cm]{nosplitmesh}{splitmesh}{\label{fig nosplitmesh}initial mesh}{\label{fig splitmesh}all left mesh triangle is split  conformaly in `int(1+5*(square(x-0.5)+y*y)\^2} triangles.}
-
+|Fig. 5.22: Initial mesh|Fig. 5.23: all left mesh triangle is split  conformaly in `:::freefem int(1+5*(square(x-0.5)+y*y)\^2` triangles|
+|:----:|:----:|
+|![No split mesh](images/nosplitmesh.svg)|![No split mesh](images/nosplitmesh.svg)|
 
 # Meshing Examples
 
-\begin{example}[Two rectangles touching by a side]~
-\index{mesh!beam}
+**Example** Two rectangles touching by a side
+
 ```freefem
 border a(t=0,1){x=t;y=0;};
 border b(t=0,1){x=1;y=t;};
@@ -953,12 +955,11 @@ border g(t=0.2,0){x=0;y=1+t;};
 int n=1;
 mesh th = buildmesh(a(10*n)+b(10*n)+c(10*n)+d(10*n));
 mesh TH = buildmesh ( c1(10*n) + e(5*n) + f(10*n) + g(5*n) );
-plot(th,TH,ps="TouchSide.esp"); // Fig. \ref{TouchSide}
+plot(th,TH,ps="TouchSide.esp"); // Fig. 5.24
 ```
 
+**Example** NACA0012 Airfoil
 
-\begin{example}[NACA0012 Airfoil]~
-\index{mesh!NACA0012}
 ```freefem
 border upper(t=0,1) { x = t;
      y = 0.17735*sqrt(t)-0.075597*t
@@ -968,37 +969,36 @@ border lower(t=1,0) { x = t;
   -0.212836*(t^2)+0.17363*(t^3)-0.06254*(t^4)); }
 border c(t=0,2*pi) { x=0.8*cos(t)+0.5;  y=0.8*sin(t); }
 mesh Th = buildmesh(c(30)+upper(35)+lower(35));
-plot(Th,ps="NACA0012.eps",bw=1);  // Fig. \ref{NACA0012}
+plot(Th,ps="NACA0012.eps",bw=1);  // Fig. 5.25
 ```
 
+|Fig. 5.24: Two rectangles touching by a side|Fig. 5.25: NACA0012 Airfoil|
+|:----:|:----:|
+|![Rectangles touching by a side](images/TouchSide.svg)|![NACA0012 Airfoil](images/NACA0012.svg)|
 
-\twoplot[height=5cm]{TouchSide}{NACA0012}{Two rectangles touching by a side}
-{NACA0012 Airfoil}
+**Example** Cardioid
 
-\begin{example}[Cardioid]~
-\index{mesh!Cardioid}
 ```freefem
 real b = 1, a = b;
-border C(t=0,2*pi) { x=(a+b)*cos(t)-b*cos((a+b)*t/b);
-                        y=(a+b)*sin(t)-b*sin((a+b)*t/b); }
+border C(t=0,2*pi) {x=(a+b)*cos(t)-b*cos((a+b)*t/b); y=(a+b)*sin(t)-b*sin((a+b)*t/b);}
 mesh Th = buildmesh(C(50));
-plot(Th,ps="Cardioid.eps",bw=1); // Fig. \ref{Cardioid}
+plot(Th,ps="Cardioid.eps",bw=1); // Fig. 5.26
 ```
 
-\begin{example}[Cassini Egg]~
-\index{mesh!Cassini Egg}
+** Example** Cassini Egg
+
 ```freefem
-border C(t=0,2*pi) { x=(2*cos(2*t)+3)*cos(t);
-                      y=(2*cos(2*t)+3)*sin(t); }
+border C(t=0,2*pi) {x=(2*cos(2*t)+3)*cos(t); y=(2*cos(2*t)+3)*sin(t);}
 mesh Th = buildmesh(C(50));
-plot(Th,ps="Cassini.eps",bw=1); // Fig. \ref{Cassini}
+plot(Th,ps="Cassini.eps",bw=1); // Fig. 5.27
 ```
 
-\twoplot[height=5cm]{Cardioid}{Cassini}{Domain with Cardioid curve boundary}
-{Domain with Cassini Egg curve boundary}
+|Fig. 5.26: Domain with Cardioid curve boundary|Fig. 5.27: Domain with Cassini Egg curve boundary|
+|:----:|:----:|
+|![Cardiod](images/Cardioid.svg)|![Cassini](images/Cassini.svg)|
 
-\begin{example}[By cubic Bezier curve]~
-\index{mesh!Bezier curve}
+**Example** By cubic Bezier curve
+
 ```freefem
 // A cubic Bezier curve connecting two points with two control points
 func real bzi(real p0,real p1,real q1,real q2,real t)
@@ -1020,12 +1020,11 @@ border G4(t=0,1) { x=bzi(p21[0],p00[0],q30[0],q31[0],t);
                    y=bzi(p21[1],p00[1],q30[1],q31[1],t); }
 int m=5;
 mesh Th = buildmesh(G1(2*m)+G2(m)+G3(3*m)+G4(m));
-plot(Th,ps="Bezier.eps",bw=1);  // Fig \ref{Bezier}
+plot(Th,ps="Bezier.eps",bw=1);  // Fig. 5.28
 ```
 
+**Example** Section of Engine
 
-\begin{example}[Section of Engine]~
-\index{mesh!Section of Engine}
 ```freefem
 real a= 6., b= 1., c=0.5;
 border L1(t=0,1) { x= -a; y= 1+b - 2*(1+b)*t; }
@@ -1037,7 +1036,7 @@ border L6(t=0,1) { x= a*t;  y=c; }
 border L7(t=0,1) { x= a;  y=c + (1+ b-c )*t; }
 border L8(t=0,1) { x= a-2*a*t; y= 1+b*(x/a)*(x/a)*(3-2*abs(x)/a); }
 mesh Th = buildmesh(L1(8)+L2(26)+L3(8)+L4(20)+L5(8)+L6(30)+L7(8)+L8(30));
-plot(Th,ps="Engine.eps",bw=1); // Fig. \ref{Engine}
+plot(Th,ps="Engine.eps",bw=1); // Fig. 5.29
 ```
 
 
