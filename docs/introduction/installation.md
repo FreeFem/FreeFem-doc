@@ -96,7 +96,7 @@ autoreconf -i
 4) Configure
 
 ```bash
-./configure --enable-download --enable-optim
+./configure --enable-download --enable-optim --disable-pastix
 ```
 
 !!!info
@@ -159,7 +159,7 @@ pacman -S git openmpi gcc-fortran wget python
 	freeglut ghostscript m4 make patch gmm
 	blas lapack hdf5 gsl fftw arpack suitesparse
 	gnuplot autoconf automake bison flex gdb
-	valgrind cmake texlive-core
+	valgrind cmake texlive-most
 
 ```
 
@@ -179,7 +179,7 @@ autoreconf -i
 4) Configure
 
 ```bash
-./configure --enable-download --enable-optim
+./configure --enable-download --enable-optim --disable-pastix
 ```
 
 !!!info
