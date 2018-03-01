@@ -74,6 +74,9 @@ sudo apt-get install cpp freeglut3-dev g++ gcc gfortran \
 sudo apt-get install mpich
 ```
 
+!!!warning
+	In the latest distribution of Ubuntu, libgsl2-dev does not exists anymore
+
 2) Download FreeFem++ source from the repository
 
 ```bash
@@ -93,12 +96,13 @@ autoreconf -i
 2) Configure
 
 ```bash
-./configure --enable-download
+./configure --enable-download --enable-optim
 ```
 !!!info
 	To see all the options, type `./configure --help`
 
 3) Download the packages
+
 ```bash
 ./download/getall -a
 ```
