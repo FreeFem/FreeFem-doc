@@ -119,6 +119,9 @@ make petsc-slepc SUDO=sudo
 cd -
 ```
 
+!!! warning
+	Pastix seems to fail during the PETSc compilation. You can remove `--download-pastix` directly in the `Makefile` if a compilation error occurs.
+
 4) Reconfigure with petsc and slepc
 
 ```bash
@@ -130,6 +133,9 @@ cd -
 ```bash
 make
 ```
+
+!!!note
+	If your computer have many threads, you can run `make` in parallel using `make -j16` for 16 threads for example.
 
 !!!info 
 	Optionnally, check the compilation with `make check`
