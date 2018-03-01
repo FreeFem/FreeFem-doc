@@ -146,5 +146,20 @@ make
 sudo make install
 ```
 
+## Compilation on Arch
+
+!!! warning
+	As Arch is in rolling release, the following informations can be quickly exceeded !
+
+1) Install the following dependencies:
+
+```bash
+pacman -Syu
+pacman -S 
+```
+
 ## Compilation on Windows
 TODO (Good luck!)
+
+
+
