@@ -98,6 +98,7 @@ autoreconf -i
 ```bash
 ./configure --enable-download --enable-optim
 ```
+
 !!!info
 	To see all the options, type `./configure --help`
 
@@ -106,6 +107,7 @@ autoreconf -i
 ```bash
 ./download/getall -a
 ```
+
 !!!info
 	All the third party packages have their own licence
 
@@ -128,6 +130,7 @@ cd -
 ```bash
 make
 ```
+
 !!!info 
 	Optionnally, check the compilation with `make check`
 
