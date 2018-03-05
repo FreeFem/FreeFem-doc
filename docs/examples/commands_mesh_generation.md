@@ -1023,6 +1023,10 @@ mesh Th = buildmesh(G1(2*m)+G2(m)+G3(3*m)+G4(m));
 plot(Th,ps="Bezier.eps",bw=1);  // Fig. 5.28
 ```
 
+|Fig. 5.28: Boundary drawed by Bezier curves|
+|:----|
+|![Bezier](images/Bezier.svg)|
+
 **Example** Section of Engine
 
 ```freefem
@@ -1039,25 +1043,14 @@ mesh Th = buildmesh(L1(8)+L2(26)+L3(8)+L4(20)+L5(8)+L6(30)+L7(8)+L8(30));
 plot(Th,ps="Engine.eps",bw=1); // Fig. 5.29
 ```
 
+|Fig. 5.29: Section of Engine|
+|:----|
+|![Engine](images/Engine.svg)|
 
-\begin{figure}[hbt]
-\begin{multicols}{2}
-\begin{center}
-\includegraphics*[height=5cm]{Bezier}
-\caption{\label{Bezier} Boundary drawed by Bezier curves}
-\end{center}
-\begin{center}
-\vspace{3cm}~~\\
-\includegraphics*[height=2.8cm]{Engine}
-\caption{\label{Engine} Section of Engine}
-\end{center}
-\end{multicols}
+**Example** Domain with U-shape channel
 
-
-\begin{example}[Domain with U-shape channel]~
-\index{mesh!U-shape channel}
 ```freefem
-real d = 0.1; // width of U-shape
+real d = 0.1; // Width of U-shape
 border L1(t=0,1-d) { x=-1; y=-d-t; }
 border L2(t=0,1-d) { x=-1; y=1-t; }
 border B(t=0,2) { x=-1+t; y=-1; }
@@ -1068,13 +1061,17 @@ border R(t=0,2) { x=1; y=-1+t; }
 border T(t=0,2) { x=1-t; y=1; }
 int n = 5;
 mesh Th = buildmesh (L1(n/2)+L2(n/2)+B(n)+C1(n)+C2(3)+C3(n)+R(n)+T(n));
-plot(Th,ps="U-shape.eps",bw=1); // Fig \ref{U-shape}
+plot(Th,ps="U-shape.eps",bw=1); // Fig. 5.30
 ```
 
-\begin{example}[Domain with V-shape cut]~
-\index{mesh!V-shape cut}
+|Fig. 5.30: Domain with U-shape channel changed by `:::freefem d`|
+|:----|
+|![U-Shape](images/U-shape.svg)|
+
+**Example** Domain with V-shape cut
+
 ```freefem
-real dAg = 0.01; // angle of V-shape
+real dAg = 0.01; // Angle of V-shape
 border C(t=dAg,2*pi-dAg) { x=cos(t); y=sin(t); };
 real[int] pa(2), pb(2), pc(2);
 pa[0] = cos(dAg); pa[1] = sin(dAg);
@@ -1083,14 +1080,15 @@ pc[0] = 0; pc[1] = 0;
 border seg1(t=0,1) { x=(1-t)*pb[0]+t*pc[0]; y=(1-t)*pb[1]+t*pc[1]; };
 border seg2(t=0,1) { x=(1-t)*pc[0]+t*pa[0]; y=(1-t)*pc[1]+t*pa[1]; };
 mesh Th = buildmesh(seg1(20)+C(40)+seg2(20));
-plot(Th,ps="V-shape.eps",bw=1);  // Fig. \ref{V-shape}
+plot(Th,ps="V-shape.eps",bw=1);  // Fig. 5.31
 ```
 
-\twoplot[height=5cm]{U-shape}{V-shape}{Domain with U-shape channel changed by `d}}
-{Domain with V-shape cut changed by `dAg}}
+|Fig. 5.31: Domain with V-shape cut changed by `:::freefem dAg`|
+|:----|
+|![V-Shape](images/V-shape.svg)|
 
-\begin{example}[Smiling face]~
-\index{mesh!Smiling face}
+**Example** Smiling face
+
 ```freefem
 real d=0.1;
 int m=5;
@@ -1109,15 +1107,19 @@ border C4(t=0,1) { x=(1-d*t)*c*cos(st(-0.5)); y=(1-d*t)*c*sin(st(-0.5));}
 border C0(t=0,2*pi) { x=0.1*cos(t); y=0.1*sin(t); }
 mesh Th=buildmesh(F(10*m)+C1(2*m)+C2(3)+C3(2*m)+C4(3)
                   +C0(m)+E1(-2*m)+E2(-2*m));
-plot(Th,ps="SmileFace.eps",bw=1);  // see Fig. \ref{SmileFace}
-}```
+plot(Th,ps="SmileFace.eps",bw=1);  // see Fig. 5.33
+}
+```
 
+|Fig. 5.32: Smiling face (Mouth is changeable)|
+|:----:|
+|![Smiling Face](images/SmileFace.svg)|
 
-\begin{example}[3point bending]~
-\index{mesh!3point bending}
+**Example** 3point bending
+
 ```freefem
-// Square for Three-Point Bend Specimens fixed on \ttCC{Fix1, Fix2}
-// It will be loaded on \ttCC{Load}.
+// Square for Three-Point Bend Specimens fixed on Fix1, Fix2
+// It will be loaded on Load.
 real a=1, b=5, c=0.1;
 int n=5, m=b*n;
 border Left(t=0,2*a) { x=-b; y=a-t; }
@@ -1132,117 +1134,98 @@ border Load(t=0,2*c) { x=c-t; y=a; }
 border Top2(t=0,b-c) { x=-c-t; y=a; }
 mesh Th = buildmesh(Left(n)+Bot1(m/4)+Fix1(5)+Bot2(m/2)+Fix2(5)+Bot3(m/4)
                     +Right(n)+Top1(m/2)+Load(10)+Top2(m/2));
-plot(Th,ps="ThreePoint.eps",bw=1); // Fig. \ref{ThreePoint}
+plot(Th,ps="ThreePoint.eps",bw=1); // Fig. 5.33
 ```
 
+<center>
 
-\begin{figure}[hbt]
-\begin{multicols}{2}
-\begin{center}
-\includegraphics*[height=5cm]{SmileFace}
-\caption{\label{SmileFace} Smiling face (Mouth is changeable)}
-\end{center}
-\begin{center}
-\vspace{2cm}~~\\
-\includegraphics*[height=2.8cm]{ThreePoint}
-\caption{\label{ThreePoint} Domain for three-point bending test}
-\end{center}
-\end{multicols}
+|Fig. 5.33: Domain for three-point bending test|
+|:----|
+|![Three-point bending test](images/ThreePoint.svg)|
 
-
-%%%  3d
-
+</center>
 
 # How to change the label of elements and border elements of a mesh
 
-Changing the label of elements and border elements will be done using the keyword {\bf{change}}. The parameters for this
-command line are for a two dimensional and dimensional case:
-\begin{description}
-\item [`label =}] is a vector of integer that contains successive pair of the old label number to  the new label number .
-\item [`region =}] is a vector of integer that contains successive pair of the old region number to new region number.
-\item [`flabel =}]  is a integer function with given the new value of the label (version 3.21).
-\item [`fregion =}] is a integer function with given the new value of the region .
-\end{description}
-%and for a three dimensional case:
-%\begin{description}
-%\item [`region =}] is a vector of integer that contains the old region number at index $2i$ and the new region number at index  $2i+1$ of tetrahedra.
-%\item [`label =}] is a vector of integer that contains the old labels number at index $2i$ and the new labels number at index $2i+1$ of traingles.
-%\end{description}
+Changing the label of elements and border elements will be done using the keyword `:::freefem change`. The parameters for this command line are for a two dimensional and dimensional case:
 
-These vectors are composed of $n_{l}$ successive pair of number $O,N$  where $n_{l}$ is the number (label or region)
-that we want to change.
-For example, we have
+* `:::freefem label =` is a vector of integer that contains successive pair of the old label number to  the new label number.
+
+* `:::freefem region =` is a vector of integer that contains successive pair of the old region number to new region number.
+
+* `:::freefem flabel =`  is an integer function with given the new value of the label.
+
+* `:::freefem fregion=` is an integer function with given the new value of the region.
+
+These vectors are composed of $n_{l}$ successive pair of number $O,N$  where $n_{l}$ is the number (label or region) that we want to change. For example, we have :
+
 \begin{eqnarray}
 \label{eq.org.vector.change.label}
 \mathtt{label} &= &[ O_{1}, N_{1},  ..., O_{n_{l}},N_{n_{l}} ] \\
 \mathtt{region} & =& [ O_{1}, N_{1},  ..., O_{n_{l}},N_{n_{l}} ] 
 \end{eqnarray}
 
-%%%ALH-25/2/10-compilation error
-%%%where $O_{i}$ is the $i^\mathrm{nd}$ old number (label or region) to change in new number $N_{i}$.
+An example of using this function is given in `:::freefem glumesh2D.edp`:
 
-An example of using this function is given in "glumesh2D.edp":  \index{mesh!change}\index{change}\index{label!change}\index{region!change}\index{flabel!change}\index{fregion!change}
-\begin{example}[glumesh2D.edp]
-\label{changelabel}~
+**Example** glumesh2D.edp
+
 ```freefem
-
- 1:
- 2: mesh Th1=square(10,10);
- 3: mesh Th2=square(20,10,[x+1,y]);
- 4: verbosity=3;
- 5: int[int] r1=[2,0],  r2=[4,0];
- 6: plot(Th1,wait=1);
- 7: Th1=change(Th1,label=r1);//Change the label of Edges  2 in 0.
- 8: plot(Th1,wait=1);
- 9: Th2=change(Th2,label=r2);//Change the label of Edges  4 in 0.
-10: mesh Th=Th1+Th2;         //  ``gluing together'' of meshes Th1 and Th2
-11: cout << " nb lab = " << int1d(Th1,1,3,4)(1./lenEdge)+int1d(Th2,1,2,3)(1./lenEdge)
-12:          << " == " << int1d(Th,1,2,3,4)(1./lenEdge) <<" == " << ((10+20)+10)*2 << endl;
-13: plot(Th,wait=1);
-14: fespace Vh(Th,P1);
-15: macro Grad(u) [dx(u),dy(u)]; // definition of a macro
-16: Vh u,v;
-17: solve P(u,v)=int2d(Th)(Grad(u)'*Grad(v))-int2d(Th)(v)+on(1,3,u=0);
-18: plot(u,wait=1);
-
+mesh Th1=square(10,10);
+mesh Th2=square(20,10,[x+1,y]);
+verbosity=3;
+int[int] r1=[2,0],  r2=[4,0];
+plot(Th1,wait=1);
+Th1=change(Th1,label=r1); // Change the label of Edges  2 in 0.
+plot(Th1,wait=1);
+Th2=change(Th2,label=r2); // Change the label of Edges  4 in 0.
+mesh Th=Th1+Th2;         //  ``gluing together'' of meshes Th1 and Th2
+cout << " nb lab = " << int1d(Th1,1,3,4)(1./lenEdge)+int1d(Th2,1,2,3)(1./lenEdge)
+        << " == " << int1d(Th,1,2,3,4)(1./lenEdge) <<" == " << ((10+20)+10)*2 << endl;
+plot(Th,wait=1);
+fespace Vh(Th,P1);
+macro Grad(u) [dx(u),dy(u)]; // Definition of a macro
+Vh u,v;
+solve P(u,v)=int2d(Th)(Grad(u)'*Grad(v))-int2d(Th)(v)+on(1,3,u=0);
+plot(u,wait=1);
 ```
 
-
-\paragraph{``gluing'' different mesh}
-In line 10 of previous file, the method to ``gluing'' different mesh of the same dimension in FreeFem++ is using.
-This function is the operator "+" between meshes. \index{mesh!+}
+**"gluing" different mesh**
+In line 9 of the previous file, the method to "gluing" different mesh of the same dimension in FreeFem++ is using.
+This function is the operator "+" between meshes.
 The method implemented need that the point in adjacent mesh are the same.
-%%The method implemented need that the result's mesh of ``gluing'' meshes is conformal.
-
 
 # Mesh in three dimensions
 
-## cube
-From version (3.38-2), a new function `cube} like the function `square} in 2d is the simple way to build cubic object, in plugin `msh3} (need `load "msh3")}.
+## Cube
 
-The following code
+A new function `:::freefem cube` like the function `:::freefem square` in 2d is the simple way to build cubic object, in plugin `:::freefem msh3` (need `:::freefem load "msh3"`).
+
+The following code generates a $3\times 4 \times 5$ grid in the unit cube $[0, 1]^3$.
+
 ```freefem
 mesh3 Th=cube(3,4,5); 
 ```
-generates a $3\times 4 \times 5$ grid in the unit cube $[0, 1]^3$.\index{cube}
 
-By defaults the label (after version 3.56-2 and to correct otherwise add `label=l6} with `int[int] l6=[1,2,3,4,5,6];}) are : 
+By defaults the label (after version 3.56-2 and to correct otherwise add `:::freefem label=l6` with `:::freefem int[int] l6=[1,2,3,4,5,6];`) are : 
 
-\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
- \item face $y=0$; \item  face $x=1$, \item  face $y=1$, \item  face $x=0$, \item   face $z=0$, \item  face $z=1$,
-\end{enumerate}
+1. face $y=0$,
+2. face $x=1$,
+3. face $y=1$,
+4. face $x=0$,
+5. face $z=0$,
+6. face $z=1$
+
 and the region number is $0$. 
 
 A full examples of the this function to build a mesh of cube $]-1,1[^3$ with face label
-given by $(ix + 4*(iy+1) + 16*(iz+1) ) $ where $(ix,iy,iz)$ is coordinate of the barycenter of the current face. 
+given by $(ix + 4*(iy+1) + 16*(iz+1))$ where $(ix,iy,iz)$ is coordinate of the barycenter of the current face.
+
 ```freefem
 load "msh3"
 int[int] l6=[37,42,45,40,25,57];
 int r11=11;
 mesh3 Th=cube(4,5,6,[x*2-1,y*2-1,z*2-1],label=l6,flags =3,region=r11); 
-cout << " volume " << Th.measure << ", border area "<< Th.bordermeasure <<endl; // \index{mesh3!measure} \index{mesh3!bordermeasure}
-
-// Check label dans  region numbering 
+cout << " volume " << Th.measure << ", border area "<< Th.bordermeasure <<endl;
 int err =0; 
 for(int i=0; i<100; ++i)
 {
@@ -1268,81 +1251,60 @@ plot(Th,fill=0);
 cout << " nb err= " << err <<endl;
 assert(err==0); 
 ```
-\index{cube!flags=}\index{cube!label=}\index{cube!region=}
-the output of this script is:
-\begin{verbatim}
-  Enter: BuildCube: 3
-    kind = 3 n tet Cube = 6 / n slip 6 19
-  Cube  nv=210 nt=720 nbe=296
-  Out:  BuildCube
- volume 8, border area 24
- label=25 s 4 110 : 25
- label=37 s 4 101 : 37
- label=40 s 4 011 : 40
- label=42 s 4 211 : 42
- label=45 s 4 121 : 45
- label=57 s 4 112 : 57
- vol region 11: 8
- nb err= 0
+
+The output of this script is:
+
+```freefem
+ Enter: BuildCube: 3
+   kind = 3 n tet Cube = 6 / n slip 6 19
+ Cube  nv=210 nt=720 nbe=296
+ Out:  BuildCube
+volume 8, border area 24
+label=25 s 4 110 : 25
+label=37 s 4 101 : 37
+label=40 s 4 011 : 40
+label=42 s 4 211 : 42
+label=45 s 4 121 : 45
+label=57 s 4 112 : 57
+vol region 11: 8
+nb err= 0
 times: compile 0.005363s, execution 0.00218s,  mpirank:0
  CodeAlloc : nb ptr  2856,  size :352744 mpirank: 0
-\end{verbatim}
+```
 
-\begin{figure}[htbp]
-\begin{center}
-  \includegraphics[height=6cm]{func-cube}
-\end{center}
-  \caption{The mesh 3d  of  function `cube(4,5,6,flags =3)}
-  \label{fig:cube}} \index{cube}
+<center>
 
+|Fig. 5.34: The mesh 3d  of  function `:::freefem cube(4,5,6,flags =3)`|
+|:----|
+|![Function cube mesh](images/func-cube.jpg)|
+
+</center>
 
 ## Read/Write Statements for a Mesh in 3D
 
 In three dimensions, the file mesh format supported for input and output files by FreeFem++ are the extension .msh and .mesh.
 These formats are described in the chapter on Mesh Files in two dimensions.
 
-\paragraph{extension file .msh}
-The structure of the files with extension .msh in 3D is given in Table \ref{tab:mesh3DSample}.
+**Extension file .msh**
+The structure of the files with extension .msh in 3D is given in Table 5.2.
 In this structure, $n_v$ denotes the number of vertices, $n_{tet}$ the number of tetrahedra and $n_{tri}$ the number of triangles
 For each vertex $q^i,\, i=1,\cdots,n_v$, we denote by $(q^i_x,q^i_y,q^i_z)$ the $x$-coordinate, the $y$-coordinate and the $z$-coordinate.
 Each tetrahedra $T_k, k=1,\cdots,n_{tet}$ has four vertices $q^{k_1},\, q^{k_2},\,q^{k_3}, \,q^{k_4}$.
 The boundary consists of an union of triangles. Each triangle $be_j, j=1,\cdots,n_{tri}$ has three vertices $q^{j_1},\, q^{j_2},\,q^{j_3}$.
-%that are oriented counterclockwise par rapport \`{a} la normale sortante.
 
-\begin{table}[htbp]
-\hspace*{3cm}
-\begin{tabular}{|ccccc|}
-\hline
-$n_v$&  $n_{tet}$& $n_{tri}$ & &\\
-$q^1_x$& $q^1_y$& $q^1_z$ & Vertex label &\\
-$q^2_x$& $q^2_y$&  $q^2_z$ & Vertex label &\\
-$\vdots$  &$\vdots$ &$\vdots$ &$\vdots$ &\\
-$q^{n_v}_x$& $q^{n_v}_y$&  $q^{n_v}_z$ & Vertex label&\\
-$1_1$& $1_2$& $1_3$& $1_4$ & region label \\
-$2_1$& $2_2$& $2_3$& $2_4$ & region label  \\
-$\vdots$  &$\vdots$ &$\vdots$ &$\vdots$  &$\vdots$ \\
-$(n_{tet})_1$& $(n_{tet})_2$& $(n_{tet})_3  $& $(n_{tet})_4$ & region label \\
-$1_1$ & $1_2$& $1_3$& boundary label & \\
-$2_1$ & $2_2$& $2_3$& boundary label & \\
-$\vdots$&  $\vdots$ &$\vdots$ &$\vdots$ &\\
-$(n_tri)_{1}$ & $(n_{tri})_2$& $(n_{tri})_3$ & boundary label &\\
-\hline
-\end{tabular}
- \caption{The structure of mesh file format ``.msh'' in three dimensions.}
-\label{tab:mesh3DSample}
-\end{table}
+<center>
 
+|Table 5.2: The structure of mesh file format `:::freefem .msh` in three dimensions.|
+|:----:|
+|\begin{array}{htbp}n_v&  n_{tet}& n_{tri} & &\\q^1_x& q^1_y& q^1_z & Vertex label &\\ q^2_x& q^2_y&  q^2_z & Vertex label &\\ \vdots  &\vdots &\vdots &\vdots &\\ q^{n_v}_x&q^{n_v}_y&  q^{n_v}_z & Vertex label&\\ 1_1& 1_2& 1_3& 1_4 & region label \\ 2_1& 2_2& 2_3& 2_4 & region label  \\ \vdots  &\vdots &\vdots &\vdots  &\vdots \\ (n_{tet})_1& (n_{tet})_2& (n_{tet})_3  & (n_{tet})_4 & region label \\ 1_1 & 1_2& 1_3& boundary label & \\ 2_1 & 2_2& 2_3& boundary label & \\ \vdots&  \vdots &\vdots &\vdots &\\ (n_tri)_{1} & (n_{tri})_2& (n_{tri})_3 & boundary label &\\ \end{array}|
 
-\paragraph{extension file .mesh}
-\def\Int#1{ {\tt(I)} #1}
-\def\Vertex#1{{{\tt Vertex}#1}}
-\def\Loop#1#2{{\bf\Large(}\,#1\,{\bf\Large{,\,\,}}\,#2\,{\bf\Large)}}
+</center>
 
-The data structure for a three dimensional mesh is composed of the data structure presented in Section \ref{meshformatfile.mesh}
+**extension file .mesh**
+The data structure for a three dimensional mesh is composed of the data structure presented in Section \ref{meshformatfile.mesh} $\codered$
 and a data structure for tetrahedra. The tetrahedra of a three dimensional mesh are refereed using the following field:
-\small
-\begin{itemize}
-\item {\tt{Tetrahedra}}\\
+
+* `:::freefem Tetrahedra` $\codered$
   \Int{NbOfTetrahedrons} \\
     \Loop{\Loop{\Vertex{$_i^j$}}{j=1,4}\,,\,\Int{$Ref \phi_i^{tet}$} }{ i=1\,,\,NbOfTetrahedrons}
 \end{itemize}
@@ -1350,56 +1312,43 @@ This field is express with the notation of Section \ref{meshformatfile.mesh}.
 
 ## TeGen: A tetrahedral mesh generator
 
-\paragraph{TetGen}
+**TetGen**
 
-TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Applied Analysis and Stochastics of
-Berlin in Germany \cite{tetgen}. TetGen is a free for research and non-commercial uses. For any commercial
-licence utilization, a commercial licence is available upon request to Hang Si.
+TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Applied Analysis and Stochastics of Berlin in Germany $\codered$ \cite{tetgen}. TetGen is a free for research and non-commercial uses. For any commercial licence utilization, a commercial licence is available upon request to Hang Si.
 
-This software is a tetrahedral mesh generator of a three dimensional domain defined by its boundary.
-The input domain take into account a polyhedral or a piecewise linear complex.
-This tetrahedralization is a constrained Delaunay tetrahedralization.
+This software is a tetrahedral mesh generator of a three dimensional domain defined by its boundary. The input domain take into account a polyhedral or a piecewise linear complex. This tetrahedralization is a constrained Delaunay tetrahedralization.
 
-The method used in TetGen to control the quality of the mesh is a Delaunay refinement due to 
-Shewchuk \cite{tetgenshewchuk}. The quality measure of this algorithm is the Radius-Edge
-Ratio (see Section 1.3.1 \cite{tetgen} for more details). A theoretical bounds of this ratio of the algorithm
-of Shewchuk is obtained for a given complex of vertices, constrained segments and facets of surface mesh,
-with no input angle less than 90 degree. This theoretical bounds is 2.0.\\
+The method used in TetGen to control the quality of the mesh is a Delaunay refinement due to  Shewchuk $\codered$ \cite{tetgenshewchuk}. The quality measure of this algorithm is the Radius-Edge Ratio (see Section 1.3.1 $\codered$ \cite{tetgen} for more details). A theoretical bounds of this ratio of the algorithm of Shewchuk is obtained for a given complex of vertices, constrained segments and facets of surface mesh, with no input angle less than 90 degree. This theoretical bounds is 2.0.
 
-\index{tetg}
-The launch of Tetgen is done with the keyword `tetg}. The parameters of this command line is:
 
-\begin{description}
-%%\item [`reftet  =}] set the label of tetrahedra.
-\item [`label =}] is a vector of integer that contains the old labels number at index $2i$  and the new labels number at index $2i+1$ of Triangles.
-This parameters is initialized as label for the keyword change (\ref{eq.org.vector.change.label}).
-\index{tetg!switch=}
-\item [`switch  =}] A string expression. This string corresponds to the command line switch of Tetgen see Section 3.2 of \cite{tetgen}.
-\index{tetg!nbofholes=}
-\item [`nbofholes=}] Number of holes (default value \verb!size of holelist/3! (version 3.11) ).
-\index{tetg!holelist=}
-\item [`holelist =}] This array correspond to {\bf{holelist}} of tetgenio data structure \cite{tetgen}.
-A real vector of size $3\times `nbofholes}$. In TetGen, each hole is associated with a point inside this domain.
-This vector is $x_{1}^{h}, y_{1}^{h}, z_{1}^{h}, x_{2}^{h}, y_{2}^{h}, z_{2}^{h}, \cdots,$ where $x_{i}^{h},y_{i}^{h},z_{i}^{h}$
-is the associated point with the $i^{\mathrm{th}}$ hole.
-\index{tetg!nbofregions=}
-\item [`nbofregions =}] Number of regions (\verb!size of regionlist/5! (version 3.11) ). 
-\index{tetg!regionlist=}
-\item [`regionlist =}] This array corresponds to {\bf{regionlist}} of tetgenio data structure \cite{tetgen}.
-The attribute and the volume constraint of region are given in this real vector of size $5\times `nbofregions}$.
-The $i^{\mathrm{th}}$ region is described by five elements: $x-$coordinate, $y-$coordinate and $z-$coordinate of
-a point inside this domain ($x_{i},y_{i},z_{i}$); the attribute ($at_{i}$) and the maximum volume for tetrahedra ($mvol_{i}$) for this region.
-The `regionlist} vector is: $x_{1}, y_{1}, z_{1}, at_{1}, mvol_{1}, x_{2}, y_{2}, z_{2}, at_{2}, mvol_{2}, \cdots  $.
-\index{tetg!nboffacetcl=}
-\item [`nboffacetcl=}] Number of facets constraints \verb!size of facetcl/2! (version 3.11) ).
-\index{tetg!facetcl=}
-\item [`facetcl=}] This array corresponds to {\bf{facetconstraintlist}} of tetgenio data structure \cite{tetgen}.
+The launch of Tetgen is done with the keyword `:::freefem tetg`. The parameters of this command line is:
+
+
+* `:::freefem reftet  =` set the label of tetrahedra.
+
+* `:::freefem label =` is a vector of integer that contains the old labels number at index $2i$  and the new labels number at index $2i+1$ of Triangles.
+This parameters is initialized as label for the keyword change (\ref{eq.org.vector.change.label}) $\codered$.
+
+* `:::freefem switch  =` A string expression. This string corresponds to the command line switch of Tetgen see Section 3.2 of \cite{tetgen} $\codered$.
+
+* `:::freefem nbofholes=` Number of holes (default value: _"size of holelist / 3"_).
+
+* `:::freefem holelist =` This array correspond to `:::freefem holelist` of tetgenio data structure \cite{tetgen} $\codered$. A real vector of size `:::freefem 3 * nbofholes`. In TetGen, each hole is associated with a point inside this domain.
+This vector is $x_{1}^{h}, y_{1}^{h}, z_{1}^{h}, x_{2}^{h}, y_{2}^{h}, z_{2}^{h}, \cdots,$ where $x_{i}^{h},y_{i}^{h},z_{i}^{h}$ is the associated point with the $i^{\mathrm{th}}$ hole.
+
+* `:::freefem nbofregions =` Number of regions (default value: _"size of regionlist / 5"_). 
+
+* `:::freefem regionlist =` This array corresponds to `:::freefem regionlist` of tetgenio data structure \cite{tetgen} $\codered$.
+The attribute and the volume constraint of region are given in this real vector of size `:::freefem 5 * nbofregions`.
+The $i^{\mathrm{th}}$ region is described by five elements: $x-$coordinate, $y-$coordinate and $z-$coordinate of a point inside this domain ($x_{i},y_{i},z_{i}$); the attribute ($at_{i}$) and the maximum volume for tetrahedra ($mvol_{i}$) for this region.
+The `:::freefem regionlist` vector is: $x_{1}, y_{1}, z_{1}, at_{1}, mvol_{1}, x_{2}, y_{2}, z_{2}, at_{2}, mvol_{2}, \cdots  $.
+
+* `:::freefem nboffacetcl=` Number of facets constraints _"size of facetcl / 2"_).
+
+* `:::freefem facetcl=` This array corresponds to {\bf{facetconstraintlist}} of tetgenio data structure \cite{tetgen}.
 The $i^{th}$ facet constraint is defined by the facet marker $Ref_{i}^{fc}$ and the maximum area for faces $marea_{i}^{fc}$.
 The `facetcl} array is: $Ref_{1}^{fc}, marea_{1}^{fc}, Ref_{2}^{fc}, marea_{2}^{fc}, \cdots$.
 This parameters has no effect if switch `q} is not selected.
-%\item [`nbofsegcl=}] Number of segments constraints.
-%\item [`segcl =}] This array correspond to {\bf{segmentconstraintlist}} of tetgenio data structure \cite{tetgen}.
-\end{description}
 
 
 Principal switch parameters in TetGen:
