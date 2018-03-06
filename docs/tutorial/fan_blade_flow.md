@@ -138,7 +138,7 @@ for(i = 0; i < nbT; i++){
 	
 	How the convection terms are added without upwinding. Upwinding is necessary when the Pecley number $|u|L/\kappa$ is large (here is a typical length scale), The factor 10 in front of the convection terms is a quick way of multiplying the velocity by 10 (else it is too slow to see something).
 	
-	The solver is Gauss' LU factorization and when `init`$\neq 0$ the LU decomposition is reused so it is much faster after the first iteration.
+	The solver is Gauss' LU factorization and when `:::freefem init`$\neq 0$ the LU decomposition is reused so it is much faster after the first iteration.
 
 
 

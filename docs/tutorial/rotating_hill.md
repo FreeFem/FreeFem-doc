@@ -2,17 +2,19 @@
 
 **Summary :** _Here we will present two methods for upwinding for the simplest convection problem. We will learn about Characteristics-Galerkin and Discontinuous-Galerkin Finite Element Methods._
 
-Let $\Omega$ be the unit disk centered at 0; consider the rotation vector field
+Let $\Omega$ be the unit disk centered at $(0,0)$; consider the rotation vector field
 
 $$
-{u} = [u1,u2], \qquad u_1 = y,\quad u_2 = -x
+\mathbf{u} = [u1,u2], \qquad u_1 = y,\quad u_2 = -x
 $$
 
-Pure convection by $u$ is
+Pure convection by $\mathbf{u}$ is
 
 $$
-\p_t c  + {u}.\nabla c  = 0 \hbox{ in } \Omega\times(0,T)
-c (t=0) =  c ^0 \hbox{ in } \Omega.
+\begin{eqnarray}
+\p_t c  + \mathbf{u}.\nabla c  &= 0 &\hbox{ in } \Omega\times(0,T)\\
+c (t=0) &=  c ^0 &\hbox{ in } \Omega.
+\end{eqnarray}
 $$
 
 The exact solution $c(x_t,t)$ at time $t$ en point $x_t$ is given by
@@ -42,7 +44,7 @@ $$
 \dot{x}_\tau = u(x_\tau), \mathbf{x}_{\tau=0}=x.
 $$
 
-When $\mathbf{u}$ is piecewise constant; this is possible because $x_\tau$ is then a polygonal curve which can be computed exactly and the solution exists always when $u$ is divergence free; convect returns  $c(x_{df})=C\circ X$.
+When $\mathbf{u}$ is piecewise constant; this is possible because $x_\tau$ is then a polygonal curve which can be computed exactly and the solution exists always when $\mathbf{u}$ is divergence free; convect returns  $c(x_{df})=C\circ X$.
 
 ```freefem
 // Parameters
@@ -68,12 +70,12 @@ for (int m = 0; m < 2.*pi/dt; m++){
 ```
 
 !!! info
-	3D plots can be done by adding the qualifyer "dim=3" to the plot instruction.
+	3D plots can be done by adding the qualifyer `:::freefem dim=3` to the plot instruction.
 
 The method is very powerful but has two limitations:
 
 * a/ it is not conservative
-* b/ it may diverge in rare cases when $|u|$ is too small due to quadrature error.
+* b/ it may diverge in rare cases when $|\mathbf{u}|$ is too small due to quadrature error.
 
 **Solution by Discontinuous-Galerkin FEM**
 
@@ -88,10 +90,10 @@ $$
 where $E$ is the set of inner edges and $E_\Gamma^-$ is the set of boundary edges where $u\cdot n<0$ (in our case there is no such edges). Finally $[c]$ is the jump of $c$ across an edge with the convention that $c^+$ refers to the value on the right of the oriented edge.
 
 ```freefem
-// file convects.edp
 // Parameters
 real al=0.5;
 real dt = 0.05;
+
 // Mesh
 border C(t=0., 2.*pi) {x=cos(t); y=sin(t);};
 mesh Th = buildmesh(C(100));
@@ -123,6 +125,7 @@ for (real t = 0.; t < 2.*pi; t += dt){
 	plot(cc, fill=1, cmm="t="+t+", min="+cc[].min+", max="+ cc[].max);
 }
 
+// Plot
 real [int] viso = [-0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1., 1.1];
 plot(cc, wait=1, fill=1, ps="ConvectCG.eps", viso=viso);
 plot(cc, wait=1, fill=1, ps="ConvectDG.eps", viso=viso);
@@ -130,28 +133,28 @@ plot(cc, wait=1, fill=1, ps="ConvectDG.eps", viso=viso);
 
 !!! note
 	New keywords: `:::freefem intalledges` to integrate on all edges of all triangles
-	
+
 	\begin{equation}
 	\mathtt{intalledges}(\mathtt{Th}) \equiv \sum_{T\in\mathtt{Th}}\int_{\p T }
 	\end{equation}
 
 (so all internal edges are see two times), nTonEdge which is one if the triangle has a boundary edge and two otherwise, `:::freefem jump` to implement $[c]$.
 
-Results of both methods are shown on Fig. 3.6 with identical levels for the level line; this is done with the plot-modifier viso.
+Results of both methods are shown on [figure 1](#Fig1) with identical levels for the level line; this is done with the plot-modifier viso.
 
-Notice also the macro where the parameter $u$ is not used (but the syntax needs one) and which ends with a `:::freefem //`; it simply replaces the name `n` by `:::freefem (N.x*v1+N.y*v2)`. As easily guessed `:::freefem N.x,N.y` is the normal to the edge.
+Notice also the macro where the parameter $\mathbf{u}$ is not used (but the syntax needs one) and which ends with a `:::freefem //`; it simply replaces the name `:::freefem n` by `:::freefem (N.x*v1+N.y*v2)`. As easily guessed `:::freefem N.x,N.y` is the normal to the edge.
 
-|Fig. 3.6:The rotated hill after one revolution with Characteristics-Galerkin|and with Discontinuous $P_1$ Galerkin FEM.|
+|<a name="Fig1">Fig. 1:</a> The rotated hill after one revolution with Characteristics-Galerkin|and with Discontinuous $P_1$ Galerkin FEM.|
 |:----|:----|
 |![Convect CG](images/convectCG.svg)|![convectDG](images/convectDG.svg)|
 
 Now if you think that DG is too slow try this :
 
-$\codered$
 ```freefem
 // Parameters
 real al=0.5;
 real dt = 0.05;
+
 // Mesh
 border C(t=0., 2.*pi) {x=cos(t); y=sin(t);};
 mesh Th = buildmesh(C(100));
@@ -195,17 +198,16 @@ for (t = 0.; t < 2.*pi; t += dt){
 }
 ```
 
-Notice the new keyword `:::freefem set` to specify a solver in this framework; the modifier `:::freefem init` is used to tell the solver that the matrix has not changed (init=true), and the name parameter are the same that in problem definition (see. \ref{def problem})
+Notice the new keyword `:::freefem set` to specify a solver in this framework; the modifier `:::freefem init` is used to tell the solver that the matrix has not changed (`:::freefem init=true`), and the name parameter are the same that in problem definition ($\codered$ see. \ref{def problem})
 
 **Finite Volume Methods** can also be handled with FreeFem++ but it requires programming.
 
-For instance the $P_0-P_1$ Finite Volume Method of Dervieux et al associates to each $P_0$ function $c^1$ a $P_0$ function $c^0$ with constant value around each vertex $q^i$ equal to $c^1(q^i)$ on the cell $\sigma_i$ made by all the medians of all triangles having $q^i$ as vertex.
+For instance the $P_0-P_1$ Finite Volume Method of $\codered$(ref) Dervieux et al associates to each $P_0$ function $c^1$ a $P_0$ function $c^0$ with constant value around each vertex $q^i$ equal to $c^1(q^i)$ on the cell $\sigma_i$ made by all the medians of all triangles having $q^i$ as vertex.
 
 Then upwinding is done by taking left or right values at the median:
 
 $$
-\int_{\sigma_i}\frac 1{\delta t}({c^1}^{n+1}-{c^1}^n) + \int_{\p\sigma_i}u\cdot n c^-=0
-\forall i
+\int_{\sigma_i}\frac 1{\delta t}({c^1}^{n+1}-{c^1}^n) + \int_{\p\sigma_i}u\cdot n c^-=0, \forall i
 $$
 
 It can be programmed as :
@@ -258,7 +260,7 @@ int fvmP1P0(double q[3][2], // the 3 vertices of a triangle T
 {
 	for (int i = 0; i < 3; i++)
 		for(int j = 0; j < 3; j++) a[i][j] = 0;
-	
+
 	for(int i = 0; i < 3; i++){
 		int ip = (i+1)%3, ipp = (ip+1)%3;
 		double unL = -((q[ip][1] + q[i][1] - 2*q[ipp][1])*u[0]

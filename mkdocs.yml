@@ -24,10 +24,10 @@ pages:
     - Acoustics: tutorial/acoustics.md
     - Thermal Conduction: tutorial/thermal_conduction.md
     - Irrotational Fan Blade Flow and Thermal effects: tutorial/fan_blade_flow.md
-    - (TODO) Pure convection, The rotating hill: tutorial/rotating_hill.md
-    - (TODO) The system of elasticity: tutorial/elasticity_system.md
-    - (TODO) The system of Stokes for fluids: tutorial/stokes_for_fluid_system.md
-    - (TODO) A projection Algorithm for the Navier-Stokes equations: tutorial/navier_stokes_projection.md
+    - Pure convection, The rotating hill: tutorial/rotating_hill.md
+    - The system of elasticity: tutorial/elasticity_system.md
+    - The system of Stokes for fluids: tutorial/stokes_for_fluid_system.md
+    - A projection Algorithm for the Navier-Stokes equations: tutorial/navier_stokes_projection.md
     - (TODO) Newton method for the steady Navier_Stokes equations: tutorial/newton_method_navier_stokes.md
     - (TODO) A large fluid problem: tutorial/large_fluid_problem.md
     - (TODO) An example with complex numbers: tutorial/complex_numbers.md
@@ -76,6 +76,3 @@ extra:
 
 repo_name: 'FreeFem++ on Github'
 repo_url: 'https://github.com/FreeFem/FreeFem-doc'
-
-
-
