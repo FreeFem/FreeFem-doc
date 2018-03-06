@@ -1331,85 +1331,91 @@ This parameters is initialized as label for the keyword change (\ref{eq.org.vect
 
 * `:::freefem switch  =` A string expression. This string corresponds to the command line switch of Tetgen see Section 3.2 of \cite{tetgen} $\codered$.
 
-* `:::freefem nbofholes=` Number of holes (default value: _"size of holelist / 3"_).
+* `:::freefem nbofholes =` Number of holes (default value: "size of `:::freefem holelist` / 3").
 
 * `:::freefem holelist =` This array correspond to `:::freefem holelist` of tetgenio data structure \cite{tetgen} $\codered$. A real vector of size `:::freefem 3 * nbofholes`. In TetGen, each hole is associated with a point inside this domain.
 This vector is $x_{1}^{h}, y_{1}^{h}, z_{1}^{h}, x_{2}^{h}, y_{2}^{h}, z_{2}^{h}, \cdots,$ where $x_{i}^{h},y_{i}^{h},z_{i}^{h}$ is the associated point with the $i^{\mathrm{th}}$ hole.
 
-* `:::freefem nbofregions =` Number of regions (default value: _"size of regionlist / 5"_). 
+* `:::freefem nbofregions =` Number of regions (default value: "size of `:::freefem regionlist` / 5"). 
 
 * `:::freefem regionlist =` This array corresponds to `:::freefem regionlist` of tetgenio data structure \cite{tetgen} $\codered$.
 The attribute and the volume constraint of region are given in this real vector of size `:::freefem 5 * nbofregions`.
 The $i^{\mathrm{th}}$ region is described by five elements: $x-$coordinate, $y-$coordinate and $z-$coordinate of a point inside this domain ($x_{i},y_{i},z_{i}$); the attribute ($at_{i}$) and the maximum volume for tetrahedra ($mvol_{i}$) for this region.
 The `:::freefem regionlist` vector is: $x_{1}, y_{1}, z_{1}, at_{1}, mvol_{1}, x_{2}, y_{2}, z_{2}, at_{2}, mvol_{2}, \cdots  $.
 
-* `:::freefem nboffacetcl=` Number of facets constraints _"size of facetcl / 2"_).
+* `:::freefem nboffacetcl =` Number of facets constraints "size of `:::freefem facetcl` / 2").
 
-* `:::freefem facetcl=` This array corresponds to {\bf{facetconstraintlist}} of tetgenio data structure \cite{tetgen}.
+* `:::freefem facetcl =` This array corresponds to `:::freefem facetconstraintlist` of tetgenio data structure \cite{tetgen} $\codered$.
 The $i^{th}$ facet constraint is defined by the facet marker $Ref_{i}^{fc}$ and the maximum area for faces $marea_{i}^{fc}$.
-The `facetcl} array is: $Ref_{1}^{fc}, marea_{1}^{fc}, Ref_{2}^{fc}, marea_{2}^{fc}, \cdots$.
-This parameters has no effect if switch `q} is not selected.
-
+The `:::freefem facetcl` array is: $Ref_{1}^{fc}, marea_{1}^{fc}, Ref_{2}^{fc}, marea_{2}^{fc}, \cdots$.
+This parameters has no effect if switch `:::freefem q` is not selected.
 
 Principal switch parameters in TetGen:
-\begin{itemize}
-\item [`p}] Tetrahedralization of boundary.
-\item [`q}] Quality mesh generation. The bound of Radius-Edge Ratio will be given after the option q. By default, this value is 2.0.
-\item [`a}] Construct with the volumes constraints on tetrahedra. These volumes constraints are defined with the bound of the previous
-switch `q} or in the parameter `regionlist}.
-\item [`A}] Attributes reference to region given in the `regionlist}. The other regions have label 0.
-The option `AA} gives a different label at each region. This switch work with the option 'p'. If option 'r' is used, this switch has no effect.
-\index{tetgreconstruction}
-\item [`r}] Reconstructs and Refines a previously generated mesh. This character is only used with the command line `tetgreconstruction}.
-\item [`Y}] This switch allow to preserve the mesh on the exterior boundary.
+
+* `:::freefem p` Tetrahedralization of boundary.
+
+* `:::freefem q` Quality mesh generation. The bound of Radius-Edge Ratio will be given after the option `:::freefem q`. By default, this value is 2.0.
+
+* `:::freefem a` Construct with the volumes constraints on tetrahedra. These volumes constraints are defined with the bound of the previous
+switch `:::freefem q` or in the parameter `:::freefem regionlist`.
+
+* `:::freefem A` Attributes reference to region given in the `:::freefem regionlist`. The other regions have label 0.
+The option `AA` gives a different label at each region. This switch work with the option `:::freefem p`. If option `:::freefem r` is used, this switch has no effect.
+
+* `:::freefem r` Reconstructs and Refines a previously generated mesh. This character is only used with the command line `:::freefem tetgreconstruction`.
+
+* `:::freefem Y` This switch allow to preserve the mesh on the exterior boundary.
 This switch must be used to ensure conformal mesh between two adjacents mesh.
-\item [`YY}] This switch allow to preserve the mesh on the exterior and interior boundary.
-\item [`C}] The consistency of the result's mesh is testing by TetGen.
-\item [`CC}] The consistency of the result's mesh is testing by TetGen and also checks constrained delaunay mesh
-(if 'p' switch is selected) or the consistency of Conformal Delaunay (if 'q' switch is selected).
-\item [`V}] Give information of the work of TetGen. More information can be obtained in specified 'VV' or 'VVV'.
-\item [`Q}] Quiet: No terminal output except errors
-\item [`M}] The coplanar facets are not merging.
-\item [`T}] Set a tolerance for coplanar test. The default value is $1e-8$.
-\item [`d}] Itersections of facets are detected.
-\end{itemize}
+
+* `:::freefem YY` This switch allow to preserve the mesh on the exterior and interior boundary.
+
+* `:::freefem C` The consistency of the result's mesh is testing by TetGen.
+
+* `:::freefem CC` The consistency of the result's mesh is testing by TetGen and also checks constrained delaunay mesh
+(if `:::freefem p` switch is selected) or the consistency of Conformal Delaunay (if `:::freefem q` switch is selected).
+
+* `:::freefem V` Give information of the work of TetGen. More information can be obtained in specified `:::freefem VV` or `:::freefem VVV`.
+
+* `:::freefem Q` Quiet: No terminal output except errors
+
+* `:::freefem M` The coplanar facets are not merging.
+
+* `:::freefem T` Set a tolerance for coplanar test. The default value is $1e-8$.
+
+* `:::freefem d` Itersections of facets are detected.
+
 
 To obtain a tetrahedral mesh generator with tetgen, we need the surface mesh of three dimensional domain.
 We give now the command line in FreeFem++ to construct these meshes.
 
-\index{movemesh23}
-\paragraph{keyword: ``movemesh23''}
+**keyword: `:::freefem movemesh23`**
 
-\index{mesh3}
-A simple method to construct a surface is to place a two dimensional domain in a three dimensional space.
-This corresponding to move the domain by a displacement vector of this form $\Phi(x,y) = ( \Phi1(x,y), \Phi2(x,y), \Phi3(x,y) )$.
+A simple method to construct a surface is to place a two dimensional domain in a three dimensional space. This corresponding to move the domain by a displacement vector of this form $\Phi(x,y) = ( \Phi1(x,y), \Phi2(x,y), \Phi3(x,y) )$.
 The result of moving a two dimensional mesh Th2 by this three dimensional displacement is obtained using:
 
 ```freefem
-mesh3 Th3 = movemesh23(Th2,transfo=[$\Phi$1,$\Phi$2,$\Phi$3]);
+mesh3 Th3 = movemesh23(Th2,transfo=[Phi(1),Phi(2),Phi(3)]);
 ```
 
 The parameters of this command line are:
-\begin{description}
-\item [`transfo   =}] `[$\Phi$1, $\Phi$2, $\Phi$3]} set the displacement vector of transformation $\Phi(x,y) = [\Phi1(x,y), \Phi2(x,y), \Phi3(x,y) ]$.
-\index{movemesh23!transfo=}
-\item [`label   =}] set integer label of triangles
-\index{movemesh23!orientation=}
-\item [`orientation=}] set integer orientation of mesh.
-\index{movemesh23!ptmerge=}
-\item [`ptmerge =}] A real expression. When you transform a mesh, some points can be merged. This parameters is the criteria to define two merging points. By default, we use
+
+* `:::freefem transfo =` [$\Phi$1, $\Phi$2, $\Phi$3] set the displacement vector of transformation $\Phi(x,y) = [\Phi1(x,y), \Phi2(x,y), \Phi3(x,y)]$.
+
+* `:::freefem label =` set integer label of triangles.
+
+* `:::freefem orientation =` set integer orientation of mesh.
+
+* `:::freefem ptmerge =` A real expression. When you transform a mesh, some points can be merged. This parameter is the criteria to define two merging points. By default, we use
 $$
 ptmerge \: = \: 1e-7 \: \:Vol( B ),
 $$
 where $B$ is the smallest axis parallel boxes containing the discretized domain of $\Omega$ and $Vol(B)$ is the volume of this box.
-\end{description}
 
-We can do a ``gluing'' of surface meshes using the process given in Section \ref{sec.changelab.gluemesh}. An example to obtain a three dimensional
-mesh using the command line `tetg} and `movemesh23} is given in the file tetgencube.edp.
+We can do a "gluing" of surface meshes using the process given in Section \ref{sec.changelab.gluemesh} $\codered$. An example to obtain a three dimensional
+mesh using the command line `:::freefem tetg` and `:::freefem movemesh23` is given in the file `:::freefem tetgencube.edp`.
 
-\index{movemesh}
-\begin{example}[tetgencube.edp]
-\label{tetgenboxedp}~
+**Example `:::freefem tetgencube.edp`**
+
 ```freefem
 // file tetgencube.edp
 load "msh3"
@@ -1454,12 +1460,12 @@ mesh3 Th33b = movemesh23(Thsq3,transfo=[XX3min,YY3,ZZ3]);
 mesh3 Th33 = Th31h+Th31b+Th32h+Th32b+Th33h+Th33b; // "gluing" surface meshs to obtain the surface of cube
 savemesh(Th33,"Th33.mesh");
 
-// build a mesh of a axis parallel box with TetGen
+// Build a mesh of a axis parallel box with TetGen
 real[int] domain =[1.5,pi,0.75,145,0.0025];
-mesh3 Thfinal = tetg(Th33,switch="paAAQY",regionlist=domain);    // Tetrahelize the interior of the cube with tetgen
+mesh3 Thfinal = tetg(Th33,switch="paAAQY",regionlist=domain); // Tetrahelize the interior of the cube with tetgen
 savemesh(Thfinal,"Thfinal.mesh");
 
-// build a mesh of a half cylindrical shell of interior radius 1. and exterior radius 2 and heigh 1.5
+// Build a mesh of a half cylindrical shell of interior radius 1. and exterior radius 2 and heigh 1.5
 func mv2x = x*cos(y);
 func mv2y = x*sin(y);
 func mv2z = z;
@@ -1467,41 +1473,32 @@ mesh3 Thmv2 = movemesh3(Thfinal, transfo=[mv2x,mv2y,mv2z]);
 savemesh(Thmv2,"halfcylindricalshell.mesh")
 ```
 
-The command `movemesh} is describe in the following section.
+The command `:::freefem movemesh` is described in the following section.
 
-%% description des options de Tetgen dans ce cas.
+**The keyword `:::freefem tetgtransfo`**
 
-\paragraph{The keyword ``tetgtransfo''} \index{tetgtransfo}
+This keyword correspond to a composition of command line `:::freefem tetg` and `:::freefem movemesh23`
 
-This keyword correspond to a composition of command line `tetg} and `movemesh23}:
 ```freefem
-tetgtransfo( Th2, transfo= [$\Phi$1, $\Phi$2, $\Phi$3] ), $\cdots$ ) = tetg( Th3surf, $\cdots$ ),
+tetgtransfo(Th2, transfo= [Phi(1), Phi(2), Phi(3)]), ...) = tetg(Th3surf, ...),
 ```
 
-where Th3surf = `movemesh23}( Th2,tranfo=[$\Phi$1, $\Phi$2, $\Phi$3] ) and Th2 is the input two dimensional mesh of `tetgtransfo}.
+where `:::freefem Th3surf = movemesh23(Th2,tranfo=[Phi(1), Phi(2), Phi(3)])` and `:::freefem Th2` is the input two dimensional mesh of `:::freefem tetgtransfo`.
 
-\index{tetgtransfo!refface=}
-\index{tetgtransfo!switch=}
-\index{tetgtransfo!regionlist=}
-\index{tetgtransfo!nboffacetcl=}
-\index{tetgtransfo!facetcl=}
-\index{tetgtransfo!ptmerge=}
-The parameters of this command line are on the one hand the parameters: \\
-\hspace*{2cm} `label}, `switch}, `regionlist} `nboffacetcl} `facetcl}\\
-of keyword `tetg} and on the other hand the parameter `ptmerge} of keyword `movemesh23}.
+The parameters of this command line are on the one hand the parameters 
+`:::freefem label`, `:::freefem switch`, `:::freefem regionlist`, `:::freefem nboffacetcl`, `:::freefem facetcl` of keyword `:::freefem tetg` and on the other hand the parameter `:::freefem ptmerge` of keyword `:::freefem movemesh23`.
 
-\paragraph{Remark:} To use `tetgtransfo}, the result's mesh of `movemesh23} must be an closed surface and define one region only.
-Therefore, the parameter `regionlist} is defined for one region.
+!!!note
+	To use `:::freefem tetgtransfo`, the result's mesh of `:::freefem movemesh23` must be a closed surface and define one region only. Therefore, the parameter `:::freefem regionlist` is defined for one region.
+	An example of this keyword can be found in line  of file `:::freefem buildlayers.edp`
 
-An example of this keyword can be found in line  of file ``buildlayers.edp''
-
-\paragraph{The keyword "tetgconvexhull"}\index{tetgconvexhull}
+**The keyword `:::freefem tetgconvexhull`**
 
 FreeFem++, using tetgen, is able to build a tetrahedralization from a set of points. This
 tetrahedralization is a Delaunay mesh of the convex hull of the set of points.
 
-The coordinates of the points can be initialized in two ways. The first is a file that contains
-the coordinate of points $X_{i}=(x_{i}, y_{i}, z_{i})$. This files is organized as follows:
+The coordinates of the points can be initialized in two ways. The first is a file that contains the coordinate of points $X_{i}=(x_{i}, y_{i}, z_{i})$. This files is organized as follows:
+
 $$
 \begin{array}{ccc}
 n_{v} & & \\
@@ -1511,45 +1508,44 @@ x_{2} & y_{2} & z_{2} \\
 x_{n_v} & y_{n_v} & z_{n_v}
 \end{array}
 $$
+
 The second way is to give three arrays that correspond respectively to the
-$x-$coordinates, $y-$coordinates and $z-$coordinates.\\
+$x-$coordinates, $y-$coordinates and $z-$coordinates.
 
-The parameters of this command line are
-\begin{description}
-\item [`switch  =}] A string expression. This string corresponds to the command line {\it{switch}} of TetGen see Section 3.2 of \cite{tetgen}.
-\item [`reftet  =}] An integer expression. set the label of tetrahedra.
-\item [`label =}] An integer expression. set the label of triangles.
-\end{description}
+The parameters of this command line are :
 
-In the string switch, we can't used the option 'p' and 'q' of tetgen.
+* `:::freefem switch =` A string expression. This string corresponds to the command line `:::freefem switch` of TetGen see Section 3.2 of \cite{tetgen} $\codered$.
+
+* `:::freefem reftet =` An integer expression. Set the label of tetrahedra.
+
+* `:::freefem label =` An integer expression. Set the label of triangles.
+
+
+In the string switch, we can't used the option `:::freefem p` and `:::freefem q` of tetgen.
 
 ## Reconstruct/Refine a three dimensional mesh with TetGen
 
-Meshes in three dimension can be refined using TetGen with the command line `tetgreconstruction}.
+Meshes in three dimension can be refined using TetGen with the command line `:::freefem tetgreconstruction`.
 
 The parameter of this keyword are
-\begin{description}
-\item [`region=}] an integer array that allow to change the region number  of tetrahedra.
-This array is defined as the parameter `reftet} in the keyword `change}.
-\item [`label=}] an integer array that allow to change the label of boundary triangles.
-This array is defined as the parameter `label} in the keyword `change}.
-\item [`sizevolume=}] a reel function. This function allows to constraint volume size of tetrahedra in the domain. (see example \ref{ex:tetg-adap} to build 3d adapt mesh
-\index{adaptation})
-\end{description}
 
-The parameter `switch} `nbofregions}, `regionlist},
-`nboffacetcl} and `facetcl} of the command line which call TetGen (tetg)
-is used for `tetgrefine}.
+* `:::freefem region=` an integer array that allow to change the region number  of tetrahedra. This array is defined as the parameter `:::freefem reftet` in the keyword `:::freefem change`.
 
-In the parameter `switch=}, the character 'r' should be used without the character 'p'.
-For instance, see the manual of TetGen \cite{tetgen} for effect of 'r' to other character.
+* `:::freefem label=` an integer array that allow to change the label of boundary triangles. This array is defined as the parameter `:::freefem label` in the keyword `:::freefem change`.
 
-The parameter `regionlist} allows to define a new volume constraint in the region.
-The label in the `regionlist} will be the previous label of region.
-This parameter and `nbofregions} can't be used with parameter `sizevolume}.
+* `:::freefem sizevolume=` a reel function. This function allows to constraint volume size of tetrahedra in the domain. (see example \ref{ex:tetg-adap} $\codered$ to build 3d adapt mesh.
 
-Example:
-\begin{example}[refinesphere.edp]
+The parameters `:::freefem switch`, `:::freefem nbofregions`, `:::freefem regionlist`,
+`:::freefem nboffacetcl` and `:::freefem facetcl` of the command line which call TetGen (tetg) is used for `:::freefem tetgrefine`.
+
+In the parameter `:::freefem switch=`, the character `:::freefem r` should be used without the character `:::freefem p`.
+For instance, see the manual of TetGen \cite{tetgen} $\codered$ for effect of `:::freefem r` to other character.
+
+The parameter `:::freefem regionlist` allows to define a new volume constraint in the region. The label in the `:::freefem regionlist` will be the previous label of region.
+This parameter and `:::freefem nbofregions` can't be used with parameter `:::freefem sizevolume`.
+
+**Example `:::freefem refinesphere.edp`**
+
 ```freefem
 // file refinesphere.edp
 
@@ -1557,19 +1553,19 @@ load "msh3"
 load "tetgen"
 load "medit"
 
-mesh Th=square(10,20,[x*pi-pi/2,2*y*pi]);  //  $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
-//  a parametrization of a sphere
+mesh Th=square(10,20,[x*pi-pi/2,2*y*pi]); // $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
+// A parametrization of a sphere
 func f1 =cos(x)*cos(y);
 func f2 =cos(x)*sin(y);
 func f3 = sin(x);
-//  partiel derivative of the parametrization DF
+// Partiel derivative of the parametrization DF
 func f1x=sin(x)*cos(y);
 func f1y=-cos(x)*sin(y);
 func f2x=-sin(x)*sin(y);
 func f2y=cos(x)*cos(y);
 func f3x=cos(x);
 func f3y=0;
-// $  M = DF^t DF $
+// $ M = DF^t DF $
 func m11=f1x^2+f2x^2+f3x^2;
 func m21=f1x*f1y+f2x*f2y+f3x*f3y;
 func m22=f1y^2+f2y^2+f3y^2;
@@ -1584,7 +1580,7 @@ plot(Th,wait=1);
 
 verbosity=2;
 
-// construction of the surface of spheres
+// Construction of the surface of spheres
 real Rmin  = 1.;
 func f1min = Rmin*f1;
 func f2min = Rmin*f2;
@@ -1611,67 +1607,65 @@ medit(``anisotroperefine'',Th3sphrefine2);
 
 ```
 
-
-
-
 ## Moving mesh in three dimensions
 
-Meshes in three dimensions can be translated rotated and deformed using the command line movemesh as in the 2D case
-(see section movemesh in chapiter 5). If $\Omega$ is tetrahedrized as $T_{h}(\Omega)$, and $\Phi(x,y)=(\Phi1(x,y,z), \Phi1(x,y,z), \Phi3(x,y,z))$
-is a displacement vector then $\Phi(T_{h})$ is obtained by
+Meshes in three dimensions can be translated rotated and deformed using the command line movemesh as in the 2D case (see section `:::freefem movemesh` in chapiter 5 $\codered$). If $\Omega$ is tetrahedrized as $T_{h}(\Omega)$, and $\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))$ is a displacement vector then $\Phi(T_{h})$ is obtained by
 
 ```freefem
-mesh3 Th = movemesh( Th, [$\Phi$1, $\Phi$2, $\Phi$3], ... );
+mesh3 Th = movemesh(Th, [$\Phi$1, $\Phi$2, $\Phi$3], ...);
 ```
 
-The parameters of movemesh in three dimensions are
-\begin{description}
-%\item [`transfo =}] `[$\Phi$1,$\Phi$2, $\Phi$3]} set the displacement vector of 3D transformation $[\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z) ]$.
-\item [`region  =}] set integer label of tetrahedra. 0 by default.
-\item [`label =}] set the label of faces of border. This parameters is initialized as label for the keyword change (\ref{eq.org.vector.change.label}).
-\item [`facemerge =}] An integer expression. When you transform a mesh, some faces can be merged. This parameters equals to one if merge's faces is considered.
+The parameters of movemesh in three dimensions are :
+
+* `:::freefem region  =` set integer label of tetrahedra. 0 by default.
+
+* `:::freefem label =` set the label of faces of border. This parameters is initialized as label for the keyword `:::freefem change` (\ref{eq.org.vector.change.label}) $\codered$.
+
+* `:::freefem facemerge =` An integer expression. When you transform a mesh, some faces can be merged. This parameters equals to one if merge's faces is considered.
 Otherwise equals to zero. By default, this parameter is equals to 1.
-\item [`ptmerge =}] A real expression. When you transform a mesh, some points can be merged. This parameters is the criteria to define two merging points.
+
+* `:::freefem ptmerge =` A real expression. When you transform a mesh, some points can be merged. This parameters is the criteria to define two merging points.
 By default, we use
 $$
 ptmerge \: = \: 1e-7 \: \:Vol( B ),
 $$
 where $B$ is the smallest axis parallel boxes containing the discretion domain of $\Omega$ and $Vol(B)$ is the volume of this box.
-\item[`orientation=}]An integer expression ( 1 by by default) , to reverse or not the orientation of tet if not positive.  
-\end{description}
+
+* `:::freefem orientation =` An integer expression ( 1 by by default) , to reverse or not the orientation of tet if not positive.  
 
 
-%%\paragraph{Remark:} This command line can be used also to move a surface mesh into an other surface mesh.
-
-An example of this command can be found in the file ''Poisson3d.edp'' located in the directory examples++-3d.
-
+An example of this command can be found in the file `:::freefem Poisson3d.edp` located in the directory examples++-3d.
 
 ## Layer mesh
 
-In this section, we present the command line to obtain a Layer mesh: `buildlayermesh}.
+In this section, we present the command line to obtain a Layer mesh: `:::freefem buildlayermesh`.
 This mesh is obtained by extending a two dimensional mesh in the z-axis.
 
-The domain $\Omega_{3d}$ defined by the layer mesh is equal to $\Omega_{3d} = \Omega_{2d} \times [zmin, zmax]$
-where $\Omega_{2d}$ is the domain define by the two dimensional mesh, $zmin$ and $zmax$ are function
-of $\Omega_{2d}$ in $R$ that defines respectively the lower surface and upper surface of $\Omega_{3d}$.
+The domain $\Omega_{3d}$ defined by the layer mesh is equal to $\Omega_{3d} = \Omega_{2d} \times [zmin, zmax]$ where $\Omega_{2d}$ is the domain define by the two dimensional mesh, $zmin$ and $zmax$ are function of $\Omega_{2d}$ in $R$ that defines respectively the lower surface and upper surface of $\Omega_{3d}$.
 
-\begin{figure}
-\hspace*{4cm} \includegraphics[height=5cm]{buillayermesh}
-\caption{Example of Layer mesh in three dimension.}
-\label{fig-layermeshextend}
+<center>
 
+|Fig. 5.35: Example of Layer mesh in three dimensions.|
+|:----:|
+|![Layer Mesh 3D](images/buillayermesh.svg)|
+
+</center>
 
 For a vertex of a two dimensional mesh $V_{i}^{2d} = (x_{i},y_{i})$, we introduce the number of associated vertices in the $z-$axis $M_{i}+1$.
-We denote by $M$ the maximum of $M_{i}$ over the vertices of the two dimensional mesh. This value are called the number of layers
-(if $\forall i, \; M_{i}=M$ then there are $M$ layers in the mesh of $\Omega_{3d}$). $V_{i}^{2d}$ generated $M+1$ vertices which are defined by
+We denote by $M$ the maximum of $M_{i}$ over the vertices of the two dimensional mesh. This value are called the number of layers (if $\forall i, \; M_{i}=M$ then there are $M$ layers in the mesh of $\Omega_{3d}$). $V_{i}^{2d}$ generated $M+1$ vertices which are defined by :
+
 $$
 \forall j=0, \ldots, M, \qquad  V_{i,j}^{3d} = ( x_{i}, y_{i}, \theta_{i}(z_{i,j})  ),
 $$
+
 where $(z_{i,j})_{j=0,\ldots,M}$ are the $M+1$ equidistant points on the interval $[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d})]$:
+
 \begin{eqnarray*}
 z_{i,j} =  j \: \delta \alpha + zmin(V_{i}^{2d}), \qquad \delta \alpha= \frac{ zmax( V_{i}^{2d} ) - zmin( V_{i}^{2d}) }{M}.
 \end{eqnarray*}
-The function $\theta_{i}$, defined on  $[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]$, is given by
+
+The function $\theta_{i}$, defined on  $[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]$, is given by :
+
 $$
 \theta_{i}(z) = \left \{
 \begin{array}{cl}
@@ -1680,71 +1674,62 @@ $$
 \end{array}
 \right.
 $$
-with $(\theta_{i,j})_{j=0,\ldots,M_{i}}$ are the $M_{i}+1$ equidistant points on the interval $[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]$.\\
 
-Set a triangle $K=(V_{i1}^{2d}$, $V_{i2}^{2d}$, $V_{i3}^{2d})$ of the two dimensional mesh.
-$K$ is associated with a triangle on the upper surface (resp. on the lower surface) of layer mesh:
+with $(\theta_{i,j})_{j=0,\ldots,M_{i}}$ are the $M_{i}+1$ equidistant points on the interval $[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]$.
+
+Set a triangle $K=(V_{i1}^{2d}$, $V_{i2}^{2d}$, $V_{i3}^{2d})$ of the two dimensional mesh. $K$ is associated with a triangle on the upper surface (resp. on the lower surface) of layer mesh:
 $( V_{i1,M}^{3d}, V_{i2,M}^{3d}, V_{i3,M}^{3d} )$ (resp. $( V_{i1,0}^{3d}, V_{i2,0}^{3d}, V_{i3,0}^{3d})$).
 
-Also $K$ is associated with $M$ volume prismatic elements which are defined by
+Also $K$ is associated with $M$ volume prismatic elements which are defined by :
+
 $$
 \forall j=0,\ldots,M, \quad H_{j} = ( V_{i1,j}^{3d}, V_{i2,j}^{3d}, V_{i3,j}^{3d}, V_{i1,j+1}^{3d}, V_{i2,j+1}^{3d}, V_{i3,j+1}^{3d} ).
 $$
 
 Theses volume elements can have some merged point:
-\begin{itemize}
-\item 0 merged point : prism
-\item 1 merged points : pyramid
-\item 2 merged points : tetrahedra
-\item 3 merged points : no elements
-\end{itemize}
 
-The elements with merged points are called degenerate elements. To obtain a mesh with tetrahedra, we decompose
-the pyramid into two tetrahedra and the prism into three tetrahedra. These tetrahedra are obtained by cutting the quadrilateral
-face of pyramid and prism with the diagonal which have the vertex with the maximum index (see \cite{hdrHecht} for the reaspn of this choice).\\
+* 0 merged point : prism
+* 1 merged points : pyramid
+* 2 merged points : tetrahedra
+* 3 merged points : no elements
 
-The triangles on the middle surface obtained with the decomposition of the volume prismatic elements are the triangles generated by the edges
-on the border of the two dimensional mesh. The label of triangles on the border elements and tetrahedra are defined with the label of these
-associated elements.\\
+The elements with merged points are called degenerate elements. To obtain a mesh with tetrahedra, we decompose the pyramid into two tetrahedra and the prism into three tetrahedra. These tetrahedra are obtained by cutting the quadrilateral face of pyramid and prism with the diagonal which have the vertex with the maximum index (see \cite{hdrHecht} $\codered$ for the reason of this choice).
 
+The triangles on the middle surface obtained with the decomposition of the volume prismatic elements are the triangles generated by the edges on the border of the two dimensional mesh. The label of triangles on the border elements and tetrahedra are defined with the label of these associated elements.
 
-The arguments of `buildlayermesh} is a two dimensional mesh and the number of layers $M$.
+The arguments of `:::freefem buildlayermesh` is a two dimensional mesh and the number of layers $M$.
 
 The parameters of this command are:
-\begin{description}
-\item [`zbound  =}] [zmin,zmax] where zmin and zmax are functions expression. Theses functions define the lower surface mesh and upper mesh of surface mesh.
-\item [`coef    =}] A function expression between [0,1]. This parameter is used to introduce degenerate element in mesh.
+
+* `:::freefem zbound =` [zmin,zmax] where zmin and zmax are functions expression. Theses functions define the lower surface mesh and upper mesh of surface mesh.
+
+* `:::freefem coef =` A function expression between [0,1]. This parameter is used to introduce degenerate element in mesh.
 The number of associated points or vertex $V_{i}^{2d}$ is the integer part of $coef(V_{i}^{2d}) M$.
-\item [`region  =}] This vector is used to initialized the region of tetrahedra. This vector contain  successive pair of  the  2d region number at index $2i$ and the corresponding    3d region number at index $2i+1$, like (\ref{eq.org.vector.change.label}).
+
+* `:::freefem region =` This vector is used to initialized the region of tetrahedra. This vector contain successive pair of  the  2d region number at index $2i$ and the corresponding 3d region number at index $2i+1$, like (\ref{eq.org.vector.change.label}) $\codered$.
 become the
-\item [`labelmid =}] This vector is used to initialized the 3d labels number  of the vertical face or mid face form the 2d
-label number.   This vector contains  successive pair of the  2d label number
-at index $2i$ and the corresponding   3d label number at index $2i+1$, like (\ref{eq.org.vector.change.label}).
 
-\item [`labelup  =}] This vector is used to initialized the 3d label numbers  of the upper/top face form the 2d
-region number.   This vector contains  successive pair of the  2d region number
-at index $2i$ and the corresponding  3d label number at index $2i+1$, like (\ref{eq.org.vector.change.label}).
+* `:::freefem labelmid =` This vector is used to initialized the 3d labels number  of the vertical face or mid face form the 2d label number. This vector contains successive pair of the  2d label number at index $2i$ and the corresponding 3d label number at index $2i+1$, like (\ref{eq.org.vector.change.label}).
 
-\item [`labeldown =}] Same as the previous case but for the lower/down face label .
-\end{description}
+* `:::freefem labelup =` This vector is used to initialized the 3d label numbers  of the upper/top face form the 2d region number. This vector contains successive pair of the 2d region number at index $2i$ and the corresponding 3d label number at index $2i+1$, like (\ref{eq.org.vector.change.label}) $\codered$.
 
-Moreover, we also add post processing parameters that allow to moving the mesh. These parameters correspond to parameters
-`transfo}, `facemerge} and `ptmerge} of the command line `movemesh}.
+* `:::freefem labeldown =` Same as the previous case but for the lower/down face label.
 
-The vector `region}, `labelmid}, `labelup} and `labeldown} These vectors are composed of $n_{l}$ successive pairs of number $O_i,N_l$  where $n_{l}$ is the number (label or region)
-that we want to get.
 
-%%% Example a couper entre les differentes commandes
-An example of this command line is given in `buildlayermesh.edp}.
+Moreover, we also add post processing parameters that allow to moving the mesh. These parameters correspond to parameters `:::freefem transfo`, `:::freefem facemerge` and `:::freefem ptmerge` of the command line `:::freefem movemesh`.
 
-\begin{example}[cube.idp]\index{cube}
-\label{cube.idp}~
+The vector `:::freefem region`, `:::freefem labelmid`, `:::freefem labelup` and `:::freefem labeldown` These vectors are composed of $n_{l}$ successive pairs of number $O_i,N_l$  where $n_{l}$ is the number (label or region) that we want to get.
+
+An example of this command line is given in `:::freefem buildlayermesh.edp`.
+
+**Example `:::freefem cube.edp`**
+
 ```freefem
 load "medit"
 load "msh3"
 func mesh3 Cube(int[int] & NN,real[int,int] &BB ,int[int,int] & L)
 {
-  //  first  build the 6 faces of the hex.
+  // First  build the 6 faces of the hex.
   real x0=BB(0,0),x1=BB(0,1);
   real y0=BB(1,0),y1=BB(1,1);
   real z0=BB(2,0),z1=BB(2,1);
@@ -1762,7 +1747,8 @@ func mesh3 Cube(int[int] & NN,real[int,int] &BB ,int[int,int] & L)
 }
 ```
 
-The unit cube example:
+**The unit cube example:**
+
 ```freefem
  include "Cube.idp"
  int[int]  NN=[10,10,10]; //  the number of step in each  direction
@@ -1773,10 +1759,9 @@ mesh3 Th=Cube(NN,BB,L);
 medit("Th",Th); // see figure \ref{figs-cube}
 ```
 
+**The cone example (an axisymtric mesh on a triangle with degenerateness).**
+**Example `:::freefem cone.edp`**
 
-
-The cone example (an axisymtric mesh on a triangle with degenerateness).
-\begin{example}[cone.edp]\index{cone}~
 ```freefem
 load "msh3"
 load "medit"
@@ -1787,42 +1772,35 @@ border Hypo(t=1,0){x=HH*t;y=RR*t;label=1;};
 border Vert(t=0,RR){x=HH;y=t;label=2;};
 int nn=10;   real h= 1./nn;
 mesh Th2=buildmesh(  Taxe(HH*nn)+ Hypo(sqrt(HH*HH+RR*RR)*nn) + Vert(RR*nn) ) ;
-plot(Th2,wait=1); // the 2d mesh
+plot(Th2,wait=1); // The 2d mesh
 
 int MaxLayersT=(int(2*pi*RR/h)/4)*4;// number of layers
 real zminT = 0, zmaxT = 2*pi; // height $2*pi$
 func fx= y*cos(z); func fy= y*sin(z); func fz= x;
 int[int] r1T=[0,0], r2T=[0,0,2,2], r4T=[0,2];
-// trick  function:
-func deg= max(.01,y/max(x/HH,0.4) /RR); // the function defined the proportion
+// trick function:
+func deg= max(.01,y/max(x/HH,0.4) /RR); // The function defined the proportion
 // of number layer close to axis with reference MaxLayersT
 mesh3 Th3T=buildlayers(Th2,coef=  deg, MaxLayersT,
            zbound=[zminT,zmaxT],transfo=[fx,fy,fz],
            facemerge=0, region=r1T, labelmid=r2T);
-medit("cone",Th3T); // see figure \ref{figs-cone}
+medit("cone",Th3T); // See figure \ref{figs-cone}
 ```
 
+|Fig. 5.36: The mesh of a  cube made with `:::freefem cube.edp`|Fig. 5.37: the mesh of a cone made with `:::freefem cone.edp`|
+|:----:|:----:|
+|![Cube](images/cube.svg)|![Cone](images/cone.svg)|
 
+**Example `:::freefem buildlayermesh.edp`**
 
-\twoplot[height=8cm]{cube}{cone}{the mesh of a  cube made with cube.edp \label{figs-cube}}
-{the mesh of a cone made with cone.edp \label{figs-cone}}
-
-
-
-\index{buildlayers}
-\begin{example}[buildlayermesh.edp]
-\label{buildlayermesh}~
 ```freefem
-
 // file buildlayermesh.edp
-
 load "msh3"
 load "tetgen"
 
-
 // Test 1
 
-int C1=99, C2=98; // could be anything
+int C1=99, C2=98; // Could be anything
 border C01(t=0,pi){ x=t;  y=0;      label=1;}
 border C02(t=0,2*pi){ x=pi; y=t;  label=1;}
 border C03(t=0,pi){ x=pi-t;  y=2*pi;    label=1;}
@@ -1845,7 +1823,7 @@ mesh Th=buildmesh(    C01(10)+C02(10)+ C03(10)+C04(10)
 mesh Ths=buildmesh(    C01(10)+C02(10)+ C03(10)+C04(10)
                     + C11(5)+C12(5)+C13(5)+C14(5) );
 
-// construction of a box with one hole and two regions
+// Construction of a box with one hole and two regions
 func zmin=0.;
 func zmax=1.;
 int MaxLayer=10;
@@ -1855,15 +1833,15 @@ func YY = x*sin(y);
 func ZZ = z;
 
 int[int] r1=[0,41], r2=[98,98,  99,99, 1,56];
-int[int] r3=[4,12];    //  The triangles of uppper surface mesh
-// generated by the triangle in the 2D region of mesh Th of label 4 as label 12.
-int[int] r4=[4,45];    //  The triangles of lower surface mesh
-// generated by the triangle in the 2D region of mesh Th of label 4 as label 45.
+int[int] r3=[4,12];    // The triangles of uppper surface mesh
+// Generated by the triangle in the 2D region of mesh Th of label 4 as label 12.
+int[int] r4=[4,45];    // The triangles of lower surface mesh
+// Generated by the triangle in the 2D region of mesh Th of label 4 as label 45.
 
 mesh3 Th3=buildlayers( Th, MaxLayer, zbound=[zmin,zmax], region=r1,
                 labelmid=r2, labelup = r3, labeldown = r4 );
 savemesh(Th3,"box2region1hole.mesh");
-// construction of a sphere with TetGen
+// Construction of a sphere with TetGen
 func XX1 = cos(y)*sin(x);
 func YY1 = sin(y)*sin(x);
 func ZZ1 = cos(x);
@@ -1872,16 +1850,15 @@ cout << "test=" << test << endl;
 mesh3 Th3sph=tetgtransfo(Ths,transfo=[XX1,YY1,ZZ1],switch=test,nbofregions=1,
                            regionlist=domain);
 savemesh(Th3sph,"sphere2region.mesh");
-
 ```
-
 
 # Meshing examples
 
 
-\begin{example}[lac.edp]
-// file "lac.edp"
+**Example `:::freefem lac.edp`**
+
 ```freefem
+// file lac.edp
 load ``msh3''
 int nn=5;
 border cc(t=0,2*pi){x=cos(t);y=sin(t);label=1;}
@@ -1902,14 +1879,14 @@ savemesh(Th,''Th.meshb'');
 exec(``medit Th; Th.meshb'');
 ```
 
+**Example `:::freefem tetgenholeregion.edp`**
 
-\begin{example}[tetgenholeregion.edp]
 ```freefem
-// file ``tetgenholeregion.edp''
+// file tetgenholeregion.edp
 load "msh3''
 load "tetgen"
 
-mesh Th=square(10,20,[x*pi-pi/2,2*y*pi]);  //  $]\frac{-pi}{2},\frac{-pi}{2}[\times]0,2\pi[ $
+mesh Th=square(10,20,[x*pi-pi/2,2*y*pi]);  // $]\frac{-pi}{2},\frac{-pi}{2}[\times]0,2\pi[ $
 //  a parametrization of a sphere
 func f1 =cos(x)*cos(y);
 func f2 =cos(x)*sin(y);
@@ -1936,7 +1913,7 @@ plot(Th,wait=1);
 
 verbosity=2;
 
-// construction of the surface of spheres
+// Construction of the surface of spheres
 real Rmin  = 1.;
 func f1min = Rmin*f1;
 func f2min = Rmin*f2;
@@ -1977,11 +1954,9 @@ cout << "=============================" << endl;
 savemesh(Th3finhole,"spherewithahole.mesh");
 ```
 
-
 ## Build a 3d mesh of a cube with a balloon
 
-First the `MeshSurface.idp} file to build boundary mesh of a Hexaedra and of a Sphere.
-
+First the `:::freefem MeshSurface.idp` file to build boundary mesh of a Hexaedra and of a Sphere.
 
 ```freefem
 func mesh3 SurfaceHex(int[int] & N,real[int,int] &B ,int[int,int] & L,int orientation)
@@ -2009,7 +1984,6 @@ func mesh3 SurfaceHex(int[int] & N,real[int,int] &B ,int[int,int] & L,int orient
     mesh3 Th= Thx0+Thx1+Thy0+Thy1+Thz0+Thz1;
     return Th;
 }
-
 
 func mesh3 Sphere(real R,real h,int L,int orientation)
 {
@@ -2043,34 +2017,36 @@ func mesh3 Sphere(real R,real h,int L,int orientation)
   mesh3  ThS= movemesh23(Th,transfo=[f1*R,f2*R,f3*R],orientation=orientation,refface=ref);
   return ThS;
 }
-
 ```
 
-The test of the two functions and the call to `tetgen} mesh generator
+The test of the two functions and the call to `:::freefem tetgen` mesh generator
+
 ```freefem
- load "tetgen"
- include "MeshSurface.idp"
-    real hs = 0.1;  // mesh size on sphere
-    int[int]  N=[20,20,20];
-    real [int,int]  B=[[-1,1],[-1,1],[-1,1]];
-    int [int,int]  L=[[1,2],[3,4],[5,6]];
-    mesh3 ThH = SurfaceHex(N,B,L,1);
-    mesh3 ThS =Sphere(0.5,hs,7,1); // "gluing" surface meshs to tolat boundary meshes
+load "tetgen"
+include "MeshSurface.idp"
+   real hs = 0.1;  // mesh size on sphere
+   int[int]  N=[20,20,20];
+   real [int,int]  B=[[-1,1],[-1,1],[-1,1]];
+   int [int,int]  L=[[1,2],[3,4],[5,6]];
+   mesh3 ThH = SurfaceHex(N,B,L,1);
+   mesh3 ThS =Sphere(0.5,hs,7,1); // "gluing" surface meshs to tolat boundary meshes
 
-    mesh3 ThHS=ThH+ThS;
-    savemesh(ThHS,"Hex-Sphere.mesh");
-    exec("ffmedit Hex-Sphere.mesh;rm Hex-Sphere.mesh");// see \ref{figs-Hex-Sphere}
+   mesh3 ThHS=ThH+ThS;
+   savemesh(ThHS,"Hex-Sphere.mesh");
+   exec("ffmedit Hex-Sphere.mesh;rm Hex-Sphere.mesh");// see \ref{figs-Hex-Sphere}
 
-    real voltet=(hs^3)/6.;
-    cout << " voltet = " << voltet << endl;
-    real[int] domaine = [0,0,0,1,voltet,0,0,0.7,2,voltet];
+   real voltet=(hs^3)/6.;
+   cout << " voltet = " << voltet << endl;
+   real[int] domaine = [0,0,0,1,voltet,0,0,0.7,2,voltet];
 
-    mesh3 Th = tetg(ThHS,switch="pqaAAYYQ",nbofregions=2,regionlist=domaine);
-    medit("Cube-With-Ball",Th);// see \ref{Cube-With-Ball}
+   mesh3 Th = tetg(ThHS,switch="pqaAAYYQ",nbofregions=2,regionlist=domaine);
+   medit("Cube-With-Ball",Th);// see \ref{Cube-With-Ball}
 
 ```
-\twoplot[height=8cm]{Hex-Sphere}{Cube-With-Ball}{The surface mesh of the Hex with internal Sphere \label{figs-Hex-Sphere}}
-{The tet mesh of the cube with internal ball\label{figs-Cube-With-Ball}}
+
+|Fig. 5.38: The surface mesh of the Hex with internal Sphere|Fig. 5.39: The tet mesh of the cube with internal ball|
+|:----:|:----:|
+|![Hex Sphere](images/Hex-Sphere.svg)|![Cube with ball](images/Cube-with-Ball.svg)|
 
 # The output solution formats .sol and .solb
 
@@ -2078,35 +2054,24 @@ With the keyword savesol, we can store a scalar functions, a scalar FE functions
 a vector fields, a vector FE fields, a symmetric tensor and a symmetric FE tensor..
 Such format is used in medit.
 
-\paragraph{extension file .sol}
-\def\Int#1{ {\tt(I)} #1}
-\def\Loop#1#2{{\bf\Large(}\,#1\,{\bf\Large{,\,\,}}\,#2\,{\bf\Large)}}
+**Extension file `:::freefem .sol`**
+The first two lines of the file are :
 
-The first two lines of the file are
-\small
-\begin{itemize}
-\item {\tt MeshVersionFormatted 0}
-\end{itemize}
-\normalsize
+* `:::freefem MeshVersionFormatted 0`
 
-\small
-\begin{itemize}
-\item {\tt Dimension}
-  \Int{dim}
-\end{itemize}
+* `:::freefem Dimension` (I) dim
 
 The following fields begin with one of the following keyword:
-SolAtVertices, SolAtEdges, SolAtTriangles, SolAtQuadrilaterals,
-SolAtTetrahedra, SolAtPentahedra, SolAtHexahedra.
+`:::freefem SolAtVertices`, `:::freefem SolAtEdges`, `:::freefem SolAtTriangles`, `:::freefem SolAtQuadrilaterals`,
+`:::freefem SolAtTetrahedra`, `:::freefem SolAtPentahedra`, `:::freefem SolAtHexahedra`.
 
 In each field, we give then in the next line the number of elements in the solutions
-(SolAtVertices: number of vertices, SolAtTriangles: number of triangles, ...). In other lines, we give
- the number of solutions , the type of solution (1: scalar, 2: vector, 3: symmetric tensor).
- And finally,  we give the values of the solutions on the elements.
+(`:::freefem SolAtVertices`: number of vertices, `:::freefem SolAtTriangles`: number of triangles, ...). In other lines, we give the number of solutions, the type of solution (1: scalar, 2: vector, 3: symmetric tensor). And finally, we give the values of the solutions on the elements.
 
 The file must be ended with the keyword End.
 
-The real element of symmetric tensor
+The real element of symmetric tensor :
+
 \begin{eqnarray}
 \label{savesol.def.symtensor}
 ST^{3d}=\left(
@@ -2124,168 +2089,110 @@ ST_{yx}^{2d} & ST_{yy}^{2d}
 \end{array}
 \right)
 \end{eqnarray}
-stored in the extension .sol are respectively $ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}$
+
+stored in the extension `:::freefem .sol` are respectively $ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}$
 and  $ST_{xx}^{2d}, ST_{yx}^{2d}, ST_{yy}^{2d}$
 
-An example of field with the keyword SolAtTetrahedra:
-\small
-\begin{itemize}
-\item {\tt{SolAtTetrahedra}}\\
-  \Int{NbOfTetrahedrons}
-  {\tt \obeylines
-  $ \mathtt{ \quad nbsol \quad typesol^1 \quad ... \quad typesol^n }  $
-  $\left(\left(\left( \mathtt{U}_{ij}^k, \quad \forall i \in \{1,...,\mathtt{nbrealsol}^k\}\right), %
+An example of field with the keyword `:::freefem SolAtTetrahedra`:
+
+* `:::freefem SolAtTetrahedra`
+
+	(I) NbOfTetrahedrons
+
+	$ \mathtt{ \quad nbsol \quad typesol^1 \quad ... \quad typesol^n }  $
+	$\left(\left(\left( \mathtt{U}_{ij}^k, \quad \forall i \in \{1,...,\mathtt{nbrealsol}^k\}\right), %
 \quad \forall k \in \{1,...\mathtt{nbsol}\}\right) %
  \quad \forall j \in \{1,...,\mathtt{NbOfTetrahedrons}\}\right)$
- }
-\end{itemize}
-where
-\begin{itemize}
-\item {\tt  nbsol} is an integer equal to the number of solutions
-\item $\mathtt{  typesol^k}$, type of the solution  number $ k$, is
-  \begin{itemize}
-   \item $\mathtt{typesol^k = 1}$ the solution {\tt k} is scalar.
-   \item $\mathtt{typesol^k = 2}$ the solution {\tt k} is vectorial.
-   \item $\mathtt{typesol^k = 3}$ the solution {\tt k} is a symmetric tensor or symmetric matrix.
-   \end{itemize}
-\item  $\mathtt{  nbrealsol^k}$ number of real to discribe solution number $k$ is
-  \begin{itemize}
-   \item $\mathtt{nbrealsol^k = 1}$ the solution {\tt k} is scalar.
-   \item $\mathtt{nbrealsol^k = dim}$ the solution {\tt k} is vectorial ($dim$ is the dimension of the solution).
-   \item $\mathtt{nbrealsol^k = dim*(dim+1)/2}$ the solution {\tt k} is a symmetric tensor or symmetric matrix.
-   \end{itemize}
-\item  {\tt U$_{ij}^k$} is a real equal to the value of the component  $i$ of the solution  $k$ at tetrahedra $j$
-on the associated mesh.
-\end{itemize}
 
-This field is written with the notation of Section \ref{meshformatfile.mesh}.
-The format .solb is the same as format .sol but in binary (read/write is faster, storage is less).
+where
+
+* $\mathtt{nbsol}$ is an integer equal to the number of solutions
+
+* $\mathtt{typesol^k}$, type of the solution  number $k$, is
+	* $\mathtt{typesol^k = 1}$ the solution k is scalar.
+	* $\mathtt{typesol^k = 2}$ the solution k is vectorial.
+	* $\mathtt{typesol^k = 3}$ the solution k is a symmetric tensor or symmetric matrix.
+
+* $\mathtt{nbrealsol^k}$ number of real to describe solution number $k$ is
+	* $\mathtt{nbrealsol^k = 1}$ the solution k is scalar.
+	* $\mathtt{nbrealsol^k = dim}$ the solution k is vectorial ($dim$ is the dimension of the solution).
+	* $\mathtt{nbrealsol^k = dim*(dim+1)/2}$ the solution k is a symmetric tensor or symmetric matrix.
+
+* $U_{ij}^k$ is a real equal to the value of the component $i$ of the solution $k$ at tetrahedra $j$ on the associated mesh.
+
+
+This field is written with the notation of Section \ref{meshformatfile.mesh} $\codered$.
+The format `:::freefem .solb` is the same as format `:::freefem .sol` but in binary (read/write is faster, storage is less).
 
 A real scalar functions $f1$, a vector fields $\Phi=[\Phi1,\Phi2,\Phi3]$ and a symmetric tensor $ST^{3d}$
-(\ref{savesol.def.symtensor}) at the vertices of the three dimensional mesh Th3 is stored in the file "f1PhiTh3.sol" using
-\index{savesol!order=}
+(\ref{savesol.def.symtensor}) $\codered$ at the vertices of the three dimensional mesh `:::freefem Th3` is stored in the file `:::freefem f1PhiTh3.sol` using :
+
 ```freefem
-savesol("f1PhiST3dTh3.sol",Th3, $f1$, [$\Phi$1, $\Phi$2, $\Phi$3], VV3, order=1);
+savesol("f1PhiST3dTh3.sol",Th3, $f1$, [Phi(1), Phi(2), Phi(3), VV3, order=1);
 ```
-where $VV3=[ ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}]$.
+
+where $VV3=[ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}]$.
 For a two dimensional mesh Th, A real scalar functions $f2$, a vector fields $\Psi=[\Psi1,\Psi2]$ and a symmetric tensor $ST^{2d}$
-(\ref{savesol.def.symtensor}) at triangles is stored in the file "f2PsiST2dTh3.solb" using
+(\ref{savesol.def.symtensor}) $\codered$ at triangles is stored in the file `:::freefem f2PsiST2dTh3.solb` using :
+
 ```freefem
-savesol("f2PsiST2dTh3.solb",Th, $f2$, [$\Psi$1, $\Psi$2], VV2, order=0);
+savesol("f2PsiST2dTh3.solb",Th, f2, [Psi(1), Psi(2)], VV2, order=0);
 ```
+
 where $VV2=[ST_{xx}^{2d}, ST_{yx}^{2d}, ST_{yy}^{2d}]$
-The arguments of `savesol} functions are the name of a file, a mesh and solutions. These arguments must be given in this order.
+The arguments of `:::freefem savesol` functions are the name of a file, a mesh and solutions. These arguments must be given in this order.
 
-The parmameters of this keyword are
-\begin{description}
-%\item [`nbscalar =}] number of scalar solutions ($nbs$).
-%\item [`scalar   =}]  `[$f_{1}$, $f_{2}$, $f_{3}$, ..., $f_{nbs}$]} set the $nbs$ scalar solutions.
-%\item [`nbvector =}] number of vector solutions ($nbv$).
-%\item [`nbsymtensor =}] number of symmetric tensor solutions ($nbst$).
-%\item [`vector    =}] set the real element of $nbv$ vector solutions.
-%\item [`symtensor =}] set the real element of $nbst$ symmetric tensor solutions.
-\item [`order =}] 0 is the solution is given at the center of gravity of elements.
-1 is the solution is given at the vertices of elements.
-\end{description}
+The parameters of this keyword are :
 
-%%In two dimensional case for vector solutions $v^{j}=(v^{j}_{x},v^{j}_{y}), \quad j=1,\ldots nbv$, the parameter `vector} is equal to
-%%`[$v_{x}^{1}$, $v_{y}^{1}$, ..., $v_{x}^{nbv}$, $v_{y}^{nbv}$]}.
+* `:::freefem order =` 0 is the solution is given at the center of gravity of elements. 1 is the solution is given at the vertices of elements.
 
-%%In two dimensional case for symtensor solutions $st^{j}= \left (
-%%\begin{array}{ccc}
-%%st_{xx}^{j} & st_{xy}^{j} & st_{xz}^{j} \\
-%%st_{yx}^{j} & st_{yy}^{j} & st_{yz}^{j} \\
-%%st_{zx}^{j} & st_{zy}^{j} & st_{zz}^{j}
-%%\end{array}
-%%\right) \quad j=1,\ldots nbst$, the parameter `vector} is equal to
-%%`[ $st_{xx}^{1}$, $st_{yx}^{1}$, $st_{yy}^{1}$, ..., $st_{xx}^{nbst}$, $st_{yx}^{nbst}$, $st_{yy}^{nbst}$]}.
-%%\item [`symtensor =}] `[ $st_{xx}^{1}$, $st_{yx}^{1}$, $st_{yy}^{1}$, ..., $st_{xx}^{nbst}$, $st_{yx}^{nbst}$, $st_{yy}^{nbst}$]}
-%%set the real element of $nbst$ symmetric tensor solutions  $st^{j}=(st^{j}_{x},st^{j}_{y}), \quad j=1,\ldots nbst$.
-%%Three dimensional case:
-%%\item [`vector   =}] `[$f_{x}^{1}$, $f_{y}^{1}$, $f_{z}^{1}$, ..., $f_{x}^{nbv}$, $f_{y}^{nbv}$, $f_{z}^{nbv}$  ]}
-%%set the $nbv$ vector solutions.
-%%\item [`symtensor   =}] `[ $f_{xx}^{1}$, $f_{yx}^{1}$, $f_{yy}^{1}$, $f_{zx}^{1}$, $f_{zy}^{1}$, $f_{zz}^{1}$,
-%%..., $f_{xx}^{nbst}$, $f_{yx}^{nbst}$, $f_{yy}^{nbst}$, $f_{zx}^{nbst}$, $f_{zy}^{nbst}$, $f_{zz}^{nbst}$ ]}
-%%set the $nbst$ symmetric tensor solutions.
+In the file, solutions are stored in this order : scalar solutions, vector solutions and finally symmetric tensor solutions.
 
-In the file, solutions are stored in this order : scalar solutions, vector solutions and finally symmetric
-tensor solutions.
 
-# medit
+# Medit
 
-The keyword medit allows to dipslay a mesh alone or a mesh and one or several functions defined on the mesh using the Pascal Frey's freeware medit.
-Medit opens its own window and uses OpenGL extensively.
-Naturally to use this command  medit must be installed.
-%%This command allow to represent one solution.
+The keyword `:::freefem medit` allows to dipslay a mesh alone or a mesh and one or several functions defined on the mesh using the Pascal Frey's freeware medit. Medit opens its own window and uses OpenGL extensively. Naturally to use this command `:::freefem medit` must be installed.
 
-A vizualisation with medit of scalar solutions $f1$ and $f2$ continuous, piecewise linear and known at the vertices of the mesh Th is obtained using
+A vizualisation with medit of scalar solutions $f1$ and $f2$ continuous, piecewise linear and known at the vertices of the mesh Th is obtained using :
+
 ```freefem
-medit("sol1 sol2",Th, $f1$, $f2$, order=1);
+medit("sol1 sol2",Th, f1, f2, order=1);
 ```
-The first plot  named ``sol1'' display f1. The second plot names ``sol2'' display f2.
 
-The arguments of function `medit} are the name of the differents scenes (separated by a space) of medit, a mesh and solutions.
-Each solution is associated with one scene. The scalar, vector and symmetric tensor solutions are specified in the format described in the section dealing with the keyword `savesol}.
+The first plot  named `:::freefem sol1` display f1. The second plot names `:::freefem sol2` display f2.
 
-%%These arguments must be given in this order.
+The arguments of function `:::freefem medit` are the name of the differents scenes (separated by a space) of medit, a mesh and solutions.
+Each solution is associated with one scene. The scalar, vector and symmetric tensor solutions are specified in the format described in the section dealing with the keyword `:::freefem savesol`.
 
-The parameters of this command line are
-\begin{description}
-%%\item [`solution =}] An integer parameter. This parameter is equal to 0 if there is no solution to display and otherwise is equal to 1.
-\item [`order =}] 0 is the solution is given at the center of gravity of elements.
-1 is the solution is given at the vertices of elements.
-\index{medit!order=}
-\index{medit!meditff=}
-\item [`meditff =}] set the name of execute command of medit. By default, this string is medit.
-\index{medit!save=}
-\item [`save =}] set the name of a file .sol or .solb to save solutions.
-%%\item [`scalar =}] set the scalar solutions to display.
-%%two dimensional case:
-%%\item [`vector =}] set the vector field solution $v=(v_{x},v_{y})$. This parameter is equal to `[$v_{x}$,$v_{y}$]}.
-%%\item [`symtensor =}]  set the symmetric tensor solution
-%%$
-%%f= \left (
-%%\begin{array}{cc}
-%%f_{xx} & f_{xy} \\
-%%f_{yx} & f_{yy}
-%%\end{array}
-%%\right)
-%%$. This parmameter is equal to `[$f_{xx}$, $f_{yx}$, $f_{yy}$]}
-%%three dimensional case:
-%%\item [`vector =}] set the vector field solution $v=(v_{x},v_{y},v_{z})$. This parameter is equal to  `[$v_{x}$,$v_{y}$,$v_{z}$]}.
-%%\item [`symtensor =}] set the symmetric tensor solution
-%%$
-%%f= \left (
-%%\begin{array}{ccc}
-%%f_{xx} & f_{xy} & f_{xz}\\
-%%f_{yx} & f_{yy} & f_{yz} \\
-%%f_{zx} & f_{zy} & f_{zz}
-%%\end{array}
-%%\right)
-%%$. This parameter is equal to `[$f_{xx}$, $f_{yx}$, $f_{yy}$, $f_{zx}$, $f_{zy}$, $f_{zz}$]}
-\end{description}
+The parameters of this command line are :
+
+* `:::freefem order =` 0 is the solution is given at the center of gravity of elements. 1 is the solution is given at the vertices of elements.
+
+* `:::freefem meditff =` set the name of execute command of medit. By default, this string is medit.
+
+* `:::freefem save =` set the name of a file `:::freefem .sol` or `:::freefem .solb` to save solutions.
 
 This command line allows also to represent two differents meshes and solutions on them in the same windows.
 The nature of solutions must be the same. Hence, we can vizualize in the same window the different
 domains in a domain decomposition method for instance. A vizualisation with medit of scalar solutions $h1$ and $h2$
-at vertices of the mesh Th1 and Th2 respectively  are obtained using
+at vertices of the mesh Th1 and Th2 respectively  are obtained using :
+
 ```freefem
-medit("sol2domain",Th1, $h1$, Th2, $h2$, order=1);
+medit("sol2domain",Th1, h1, Th2, h2, order=1);
 ```
 
-\begin{example}[meditddm.edp]
+**Example `:::freefem meditddm.edp`**
+
 ```freefem
-// meditddm.edp
+// file meditddm.edp
 load "medit"
-
-
 // Initial Problem:
-//Resolution of the following EDP:
+// Resolution of the following EDP:
 //$- \Delta u_s = f$ on   $\Omega =\{ (x,y) |  1 \leq sqrt(x^2+y^2) \geq 2 \}$\hfilll
 //$- \Delta u_1 = f1$ on  $\Omega_{1}=\{ (x,y) |  0.5 \leq sqrt(x^2+y^2) \geq 1. \}$\hfilll
 //$u = 1$ on $\Gamma$  +  Null Neumman condition on $\Gamma_{1}$ and on $\Gamma_{2}$\hfilll
-//We find the solution $u$ in solving two EDP defined on domain $\Omega$ and $\Omega_{1}$\hfilll
-//This solution is visualize with medit
+// We find the solution $u$ in solving two EDP defined on domain $\Omega$ and $\Omega_{1}$\hfilll
+// This solution is visualize with medit
 
 verbosity=3;
 
@@ -2293,7 +2200,7 @@ border Gamma(t=0,2*pi){x=cos(t); y=sin(t); label=1;};
 border Gamma1(t=0,2*pi){x=2*cos(t); y=2*sin(t); label=2;};
 border Gamma2(t=0,2*pi){x=0.5*cos(t); y=0.5*sin(t); label=3;};
 
-// construction of mesh of domain $\Omega$
+// Construction of mesh of domain $\Omega$
 mesh Th=buildmesh(Gamma1(40)+Gamma(-40));
 
 fespace Vh(Th,P2);
@@ -2304,11 +2211,11 @@ macro Grad2(us) [dx(us),dy(us)]  // EOM
 problem Lap2dOmega(us,v,init=false)=int2d(Th)(Grad2(v)' *Grad2(us)) 
    - int2d(Th)(f*v)+on(1,us=1) ;
 
-//   Definition of EDP defined on the domain $\Omega$\hfilll
+// Definition of EDP defined on the domain $\Omega$\hfilll
 // $- \Delta u_s = f_1$ on $\Omega_{1}$,     $u_s = 1$ on $\Gamma_1$, $\frac{\partial u_s}{\partial n} =0 $ on $\Gamma_{2}$\hfilll
 Lap2dOmega;
 
-// construction of mesh of domain $\Omega_{1}$
+// Construction of mesh of domain $\Omega_{1}$
 mesh Th1=buildmesh(Gamma(40)+Gamma2(-40));
 
 fespace Vh1(Th1,P2);
@@ -2318,25 +2225,24 @@ macro Grad21(u1) [dx(u1),dy(u1)]  // EOM
 
 problem Lap2dOmega1(u1,v1,init=false)=int2d(Th1)(Grad21(v1)' *Grad21(u1)) 
             - int2d(Th1)(f1*v1)+on(1,u1=1) ;
-//   Resolution of EDP defined on the domain $\Omega_{1}$\hfilll
+// Resolution of EDP defined on the domain $\Omega_{1}$\hfilll
 // $- \Delta u_1 = f_1$ on $\Omega_{1}$,     $u-1 = 1$ on $\Gamma_1$, $\frac{\partial u_1}{\partial n} =0 $ on $\Gamma_{2}$\hfilll
 Lap2dOmega1;
 
-// vizualisation of solution of the initial problem
+// Vizualisation of solution of the initial problem
 medit("solution",Th,us,Th1,u1,order=1,save="testsavemedit.solb");	
 ```
 
+**Example `:::freefem StockesUzawa.edp`**
 
-\begin{example}[StockesUzawa.edp]
 ```freefem
-//  signe of pressure is correct
+// Signe of pressure is correct
 assert(version>1.18);
 real s0=clock();
 mesh Th=square(10,10);
 fespace Xh(Th,P2),Mh(Th,P1);
 Xh u1,u2,v1,v2;
 Mh p,q,ppp;
-
 
 varf bx(u1,q) = int2d(Th)( (dx(u1)*q));
 varf by(u1,q) = int2d(Th)( (dy(u1)*q));
@@ -2366,7 +2272,6 @@ func real[int] divup(real[int] & pp)
 };
 p=0;q=0;u1=0;v1=0;
 
-
 LinearCG(divup,p[],q[],eps=1.e-6,nbiter=50);
 
 divup(p[]);
@@ -2376,21 +2281,14 @@ medit("velocity pressure",Th,[u1,u2],p,order=1);
 ```
 
 
-
-%%% frey et al. software
-
-
 # Mshmet
 
-Mshmet is a software developped by P. Frey that allows to compute an anisotropic metric based on solutions (i.e. Hessian-based). This sofware can return also an isotropic metric. Moreover,  mshmet can construct also a metric suitable for level sets interface capturing. The solution can be defined on 2D or 3D structured/unstructured meshes. For example, the solution can be an error estimate of a FE solutions.
-
-%%Error estimate for 2d and 3d unstructured meshes.
-%%Compute anisotropic metric based on solution variations (i.e. Hessian-based).
-%%One option allows to construct a metric suitable for level set interface capturing.
+Mshmet is a software developped by P. Frey that allows to compute an anisotropic metric based on solutions (i.e. Hessian-based). This sofware can return also an isotropic metric. Moreover, `:::freefem mshmet` can construct also a metric suitable for level sets interface capturing. The solution can be defined on 2D or 3D structured/unstructured meshes. For example, the solution can be an error estimate of a FE solutions.
 
 Solutions for mshmet are given as an argument. The solution can be a func, a vector func, a symmetric tensor, a FE func, a FE vector func and a FE symmetric tensor. The symmetric tensor argument is defined as this type of data for datasol argument. This software accepts more than one solution.
 
-For example, the metric $M$ computed with mshmet  for the solution $u$ defined on the mesh $Th$ is obtained by writing.
+For example, the metric $M$ computed with `:::freefem mshmet` for the solution $u$ defined on the mesh $Th$ is obtained by writing :
+
 ```freefem
 fespace Vh(Th,P1);
 Vh u; // a scalar FE func
@@ -2398,54 +2296,48 @@ real[int] M = mshmet(Th,u);
 ```
 
 The parameters of the keyword mshmet are :
-\begin{itemize}\parskip=0cm
-%\item	`metric =  <3KN_IdE>} 
-\item	`normalization =  <b>} do a normalisation of all solution in $[0,1]$.
-\item	`aniso =  <b>} build aniso metric if 1 ( delault 0: iso) 
-\item	`levelset =  <b>} {build metric for level set method (default: false)}
-\item	`verbosity =  <l>}
-\item	`nbregul =  <l>} number of regularization's iteration of solutions given (default 0).
-\item	`hmin =  <d>}
-\item	`hmax =  <d>}
-\item	`err =  <d>} level of error. 
-\item	`width =  <d>} the width 
-\item `metric}= a vector of double. This vector contains an initial metric given to mshmet. The structure of the metric vector is described in the next paragraph.
 
-\item `loptions}=]a vector of integer of size 7. This vector contains the integer parameters of mshmet(for expert only).
-\begin{itemize} \item loptions(0): normalization (default 1).
-\item loptions(1): isotropic parameters (default 0). 1 for isotropic metric results otherwise 0.
-\item loptions(2): level set parameters (default 0). 1 for building level set metric otherwise 0.
-\item loptions(3): debug parameters (default 0). 1 for turning on debug mode otherwise 0.
-\item loptions(4): level of verbosity (default 10).
-\item loptions(5): number of regularization's iteration of solutions given (default 0). 
-\item loptions(6): previously metric parameter (default 0). 1 for using previous metric otherwise 0.
-\end{itemize}
+* `:::freefem normalization =` (b) do a normalisation of all solution in $[0,1]$.
+* `:::freefem aniso =` (b) build aniso metric if 1 (default 0: iso) 
+* `:::freefem levelset =` (b) build metric for level set method (default: false)
+* `:::freefem verbosity =` (l)
+* `:::freefem nbregul =` (l) number of regularization's iteration of solutions given (default 0).
+* `:::freefem hmin =` (d)
+* `:::freefem hmax =` (d)
+* `:::freefem err =` (d) level of error. 
+* `:::freefem width =` (d) the width 
+* `:::freefem metric =` a vector of double. This vector contains an initial metric given to mshmet. The structure of the metric vector is described in the next paragraph.
+* `:::freefem loptions =` a vector of integer of size 7. This vector contains the integer parameters of mshmet(for expert only).
 
-\item `doptions}= a vector of double of size 4. This vector contains the real parameters of mshmet (for expert only).
-\begin{itemize}
-\item doptions(0):  hmin : min size parameters  (default 0.01).
-\item doptions(1):  hmax : max size parameters (default 1.0).
-\item doptions(2):  eps : tolerance parameters ( default 0.01).
-\item doptions(2):  width : relative width for Level Set ($0<w<1$) ( default 0.05).
-\end{itemize}
-\end{itemize}
-The result of the keyword `mshmet} is a `real[int]} which contains the metric computed by  `mshmet}  at the different vertices $V_{i}$ of the mesh.
+	* loptions(0): normalization (default 1).
+	* loptions(1): isotropic parameters (default 0). 1 for isotropic metric results otherwise 0.
+	* loptions(2): level set parameters (default 0). 1 for building level set metric otherwise 0.
+	* loptions(3): debug parameters (default 0). 1 for turning on debug mode otherwise 0.
+	* loptions(4): level of verbosity (default 10).
+	* loptions(5): number of regularization's iteration of solutions given (default 0). 
+	* loptions(6): previously metric parameter (default 0). 1 for using previous metric otherwise 0.
+
+
+* `:::freefem doptions=` a vector of double of size 4. This vector contains the real parameters of mshmet (for expert only).
+
+	* doptions(0):  hmin : min size parameters  (default 0.01).
+	* doptions(1):  hmax : max size parameters (default 1.0).
+	* doptions(2):  eps : tolerance parameters (default 0.01).
+	* doptions(2):  width : relative width for Level Set ($0<w<1$) (default 0.05).
+
+The result of the keyword `:::freefem mshmet` is a `:::freefem real[int]` which contains the metric computed by  `:::freefem mshmet`  at the different vertices $V_{i}$ of the mesh.
 
 With $nv$ is the number of vertices, the structure of this vector is
-$$ M_{iso}= ( m(V_0), m(V_1), \ldots, m(V_{nv}) )^t$$  for a isotropic metric $m$. For a symmetric tensor metric
-$
-h=\left(
-\begin{array}{ccc}
+$$ M_{iso}= (m(V_0), m(V_1), \ldots, m(V_{nv}))^t$$  for a isotropic metric $m$. For a symmetric tensor metric $h=\left(\begin{array}{ccc}
 m_{1 1} & m_{1 2} & m_{1 3}\\
 m_{2 1} & m_{2 2} & m_{2 3} \\
 m_{3 1} & m_{3 2} & m_{3 3}
-\end{array}
-\right)$, the parameters `metric}  is $$M_{aniso}= ( H(V_{0}), \ldots, H(V_{nv}) )^t $$
-where $H(V_{i})$ is the vector of size 6 defined by \verb![m11,m21,m22,m31,m32,m33]!
+\end{array}\right)$, the parameters `:::freefem metric`  is : $$M_{aniso}= (H(V_{0}), \ldots, H(V_{nv}) )^t $$
+where $H(V_{i})$ is the vector of size 6 defined by $[m11,m21,m22,m31,m32,m33]$
 
 
-\begin{example}[mshmet.edp]
-\label{mshmet}~
+**Example `:::freefem mshmet.edp`**
+
 ```freefem
 load "mshmet"
 load "medit"
@@ -2489,106 +2381,83 @@ for(int ii=0; ii<Th3.nv; ii++)
 savesol("metrictest.bis.sol",Th3,usol);
 ```
 
-
-
-
 # FreeYams
 
-FreeYams is a surface mesh adaptation software which is developed by P. Frey. This software is a new version of yams. The adapted surface mesh is constructed with a geometric metric tensor field. This  field is based on the intrinsic properties of the discrete surface. Also this software allows to construct a simplification of a mesh. This decimation is  based on the Hausdorff distance between the initial and the current triangulation. Compared to the software yams, FreeYams  can be used also to produce anisotropic triangulations adapted to level set simulations. A technical report on FreeYams is not available yet but a documentation on yams exists at  http://www.ann.jussieu.fr/$\sim$frey/software.html \cite{tech.freeyams}.
+FreeYams is a surface mesh adaptation software which is developed by P. Frey. This software is a new version of yams. The adapted surface mesh is constructed with a geometric metric tensor field. This  field is based on the intrinsic properties of the discrete surface. Also this software allows to construct a simplification of a mesh. This decimation is  based on the Hausdorff distance between the initial and the current triangulation. Compared to the software yams, FreeYams  can be used also to produce anisotropic triangulations adapted to level set simulations. A technical report on freeYams documentation is available [here](https://www.ljll.math.upmc.fr/frey/software.html).
 
-To call FreeYams in FreeFem++, we used the keyword freeyams. The arguments of this function are the initial mesh and/or metric. The metric with freeyams are a function, a FE function, a symmetric tensor function, a symmetric tensor FE function or a vector of double. If the metric is vector of double, this data must be given in `metric} parameter. Otherwise, the metric is given in the argument.
+To call FreeYams in FreeFem++, we used the keyword `:::freefem freeyams`. The arguments of this function are the initial mesh and/or metric. The metric with freeyams are a function, a FE function, a symmetric tensor function, a symmetric tensor FE function or a vector of double. If the metric is vector of double, this data must be given in `:::freefem metric` parameter. Otherwise, the metric is given in the argument.
 
-For example, the  adapted mesh of $Thinit$ defined by the metric $u$ defined as FE function is obtained in writing.
+For example, the  adapted mesh of $Thinit$ defined by the metric $u$ defined as FE function is obtained in writing :
+
 ```freefem
 fespace Vh(Thinit,P1);
 Vh u;
 mesh3 Th=freeyams(Thinit,u);
 ```
+
 The symmetric tensor argument for freeyams keyword is defined as this type of data for datasol argument.
-%\let\oldparskip=\parskip
-\begin{itemize}
-\parskip=0pt
-\item	`aniso =  <b>}  aniso or iso metric  (default 0, iso)
-\item	`mem =  <l>}  memory of for freeyams in Mb (delaulf -1, freeyams choose)
-\item	`hmin =  <d>}  
-\item	`hmax =  <d>}
-\item	`gradation =  <d>}  
-\item	`option =  <l>}
-%\parskip=\oldparskip
-\begin{description}
 
- \item  [0] : mesh optimization (smoothing+swapping)
- \item  [1] :  decimation+enrichment adaptated to a metric map.  (default)
- \item [-1]: decimation adaptated to a metric map. 
- \item  [2] : decimation+enrichment with a Hausdorff-like method
- \item [-2]:  decimation  with a Hausdorff-like method
- \item  [4] : split triangles recursively. 
- \item  [9] : No-Shrinkage Vertex Smoothing
- \end{description}
-
-\item	`ridgeangle =  <d>}
-\item	`absolute =  <b>}
-\item	`verbosity =  <i>}
-
-
-\item `metric=} vector expression. This parameters contains the metric at the different vertices on the initial mesh. With $nv$ is the number of vertices, this vector is $$ M_{iso}= ( m(V_0), m(V_1), \ldots, m(V_{nv}) )^t$$  for a scalar metric $m$. For a symmetric tensor metric
-$
-h=\left(
-\begin{array}{ccc}
+* `:::freefem aniso =` (b) aniso or iso metric  (default 0, iso)
+* `:::freefem mem =` (l) memory of for freeyams in Mb (default -1, freeyams choose)
+* `:::freefem hmin =` (d)
+* `:::freefem hmax =` (d)
+* `:::freefem gradation =` (d)
+* `:::freefem option =` (l)
+	* 0 : mesh optimization (smoothing+swapping)
+	* 1 : decimation+enrichment adaptated to a metric map. (default)
+	* -1 : decimation adaptated to a metric map. 
+	* 2 : decimation+enrichment with a Hausdorff-like method
+	* -2 : decimation with a Hausdorff-like method
+	* 4 : split triangles recursively. 
+	* 9 : No-Shrinkage Vertex Smoothing
+* `:::freefem ridgeangle =` (d)
+* `:::freefem absolute =` (b)
+* `:::freefem verbosity =` (i)
+* `:::freefem metric=` vector expression. This parameters contains the metric at the different vertices on the initial mesh. With $nv$ is the number of vertices, this vector is $$ M_{iso}= ( m(V_0), m(V_1), \ldots, m(V_{nv}) )^t$$ for a scalar metric $m$. For a symmetric tensor metric $h=\left(\begin{array}{ccc}
 m_{1 1} & m_{1 2} & m_{1 3}\\
 m_{2 1} & m_{2 2} & m_{2 3} \\
 m_{3 1} & m_{3 2} & m_{3 3}
-\end{array}
-\right)$, the parameters `metric}  is $$M_{aniso}= ( H(V_{0}), \ldots, H(V_{nv}) )^t $$
-where $H(V_{i})$ is the vector of size 6 defined by \verb![m11,m21,m22,m31,m32,m33]!
-\item `loptions=} a vector of integer of size 13. This vectors contains the integer options of FreeYams. (just for the expert )
-\begin{itemize}
-\item loptions(0):  anisotropic parameter (default 0). If you give an anisotropic metric 1 otherwise 0.
-\item loptions(1):  Finite Element correction parameter (default 0). 1 for {\it{no}} Finite Element correction otherwise 0.
-\item loptions(2):  Split multiple connected points parameter (default 1). 1 for splitting multiple connected points otherwise 0.
-\item loptions(3):  maximum value of memory size in Mbytes (default -1: the size is given by freeyams). 	
-\item loptions(4):  set the value of the connected component which we want to obtain. (Remark: freeyams give an automatic value at each connected component).
-\item loptions(5):  level of verbosity
-\item loptions(6):  Create point on straight edge (no mapping) parameter  (default 0). 1 for creating point on straight edge otherwise 0.
-\item loptions(7):  validity check during smoothing parameter. This parameter is only used with No-Shrinkage Vertex Smoothing optimization (optimization option parameter 9). 1 for No validity checking during smoothing otherwise 0.
-\item loptions(8):  number of desired's vertices  (default -1).
-\item loptions(9):  number of iteration of  optimizations (default 30).
-\item loptions(10): no  detection parameter (default 0) . 1 for detecting the ridge on the mesh otherwise 0. The ridge definition is given in the parameter doptions(12).
-\item loptions(11): no vertex smoothing parameter (default 0). 1 for smoothing the vertices otherwise 0.
-\item loptions(12):  Optimization level parameter (default 0). 
-\begin{itemize}
+\end{array}\right)$, the parameters `:::freefem metric` is $$M_{aniso}= ( H(V_{0}), \ldots, H(V_{nv}) )^t $$
 
- \item\hspace*{0.3cm}  0 : mesh optimization (smoothing+swapping)
- \item\hspace*{0.3cm}  1 :  decimation+enrichment adaptated to a metric map. 
- \item\hspace*{0.3cm} -1: decimation adaptated to a metric map. 
- \item\hspace*{0.3cm}  2 : decimation+enrichment with a Hausdorff-like method
- \item\hspace*{0.3cm} -2:  decimation  with a Hausdorff-like method
- \item\hspace*{0.3cm}  4 : split triangles recursively. 
- \item\hspace*{0.3cm}  9 : No-Shrinkage Vertex Smoothing
- \end{itemize}
+where $H(V_{i})$ is the vector of size 6 defined by $![m11,m21,m22,m31,m32,m33]$
 
- \end{itemize}
-\item [`doptions}=] a vector of double of size 11. This vectors contains the real options of freeyams.
-\begin{itemize}
-%%doptions(0): 0  !! iso (default 0.0). ????
-\item doptions(0):  Set  the geometric approximation (Tangent plane deviation)  (default 0.01).
-\item doptions(1):  Set the lamda parameter (default -1. ).
-\item doptions(2):  Set the mu parmeter (default  -1. ).
-\item doptions(3):  Set the 	 gradation value  (Mesh density control)  (default 1.3).
-\item doptions(4):  Set the minimal size(hmin) (default -2.0: the size is automatically computed).  
-\item doptions(5):  Set the maximal size(hmax)	(default -2.0: the size is automatically computed). 
-\item doptions(6):  Set the tolerance of the control of Chordal deviation (default -2.0). 	
-\item doptions(7):  Set the quality of degradation  (default 0.599).
-\item doptions(8):  Set the declic parameter (default 2.0).
-\item doptions(9): Set the angular walton limitation parameter (default 45 degree).	
-\item doptions(10):  Set the angular ridge detection (default 45 degree). 
-\end{itemize}
+* `:::freefem loptions=` a vector of integer of size 13. This vectors contains the integer options of FreeYams. (just for the expert)
+	
+	* loptions(0):  anisotropic parameter (default 0). If you give an anisotropic metric 1 otherwise 0.
+	* loptions(1):  Finite Element correction parameter (default 0). 1 for _no_ Finite Element correction otherwise 0.
+	* loptions(2):  Split multiple connected points parameter (default 1). 1 for splitting multiple connected points otherwise 0.
+	* loptions(3):  maximum value of memory size in Mbytes (default -1: the size is given by freeyams). 	
+	* loptions(4):  set the value of the connected component which we want to obtain. (Remark: freeyams give an automatic value at each connected component).
+	* loptions(5):  level of verbosity
+	* loptions(6):  Create point on straight edge (no mapping) parameter  (default 0). 1 for creating point on straight edge otherwise 0.
+	* loptions(7):  validity check during smoothing parameter. This parameter is only used with No-Shrinkage Vertex Smoothing optimization (optimization option parameter 9). 1 for No validity checking during smoothing otherwise 0.
+	* loptions(8):  number of desired's vertices  (default -1).
+	* loptions(9):  number of iteration of  optimizations (default 30).
+	* loptions(10): no  detection parameter (default 0) . 1 for detecting the ridge on the mesh otherwise 0. The ridge definition is given in the parameter doptions(12).
+	* loptions(11): no vertex smoothing parameter (default 0). 1 for smoothing the vertices otherwise 0.
+	* loptions(12):  Optimization level parameter (default 0). 
+ 		*  0 : mesh optimization (smoothing+swapping)
+ 		*  1 :  decimation+enrichment adaptated to a metric map. 
+ 		* -1: decimation adaptated to a metric map. 
+ 		*  2 : decimation+enrichment with a Hausdorff-like method
+ 		* -2:  decimation  with a Hausdorff-like method
+ 		*  4 : split triangles recursively. 
+ 		*  9 : No-Shrinkage Vertex Smoothing
 
-\end{itemize}
+* `:::freefem doptions =` a vector of double of size 11. This vectors contains the real options of freeyams.
+	* doptions(0):  Set  the geometric approximation (Tangent plane deviation)  (default 0.01).
+	* doptions(1): Set the lamda parameter (default -1).
+	* doptions(2): Set the mu parmeter (default  -1).
+	* doptions(3): Set the gradation value (Mesh density control) (default 1.3).
+	* doptions(4): Set the minimal size(hmin) (default -2.0: the size is automatically computed).  
+	* doptions(5): Set the maximal size(hmax) (default -2.0: the size is automatically computed). 
+	* doptions(6): Set the tolerance of the control of Chordal deviation (default -2.0). 	
+	* doptions(7): Set the quality of degradation  (default 0.599).
+	* doptions(8): Set the declic parameter (default 2.0).
+	* doptions(9): Set the angular walton limitation parameter (default 45 degree).	
+	* doptions(10): Set the angular ridge detection (default 45 degree). 
 
-
-\begin{example}[freeyams.edp]
-\label{freeyams}~
+**Example `:::freefem freeyams.edp`**
 ```freefem
 load "msh3"
 load "medit"
@@ -2597,74 +2466,74 @@ int nn=20;
 mesh Th2=square(nn,nn);
 fespace Vh2(Th2,P2);
 Vh2 ux,uz,p2;
-int[int] rup=[0,2],  rdown=[0,1], rmid=[1,1,2,1,3,1,4,1];
+int[int] rup=[0,2], rdown=[0,1], rmid=[1,1,2,1,3,1,4,1];
 real zmin=0,zmax=1; 
-mesh3 Th=buildlayers(Th2,nn, zbound=[zmin,zmax],
-                          reffacemid=rmid, reffaceup = rup, reffacelow = rdown);
+mesh3 Th=buildlayers(Th2, nn, zbound=[zmin,zmax], reffacemid=rmid, reffaceup = rup, reffacelow = rdown);
 
 mesh3 Th3 = freeyams(Th);
 medit("maillagesurfacique",Th3,wait=1);
-
 ```
-
 
 # mmg3d
 
-Mmg3d is a 3D remeshing software developed by C. Dobrzynski and P. Frey 
+[Mmg3d[(http://www.mmgtools.org) is a 3D remeshing software developed by C. Dobrzynski and P. Frey.
 
-(http://www.math.u-bordeaux1.fr/$\sim$dobj/logiciels/mmg3d.php). To obtain a version of this library send an e-mail at : 
+This software allows to remesh an initial mesh made of tetrahedra. This initial mesh is adapted to a geometric metric tensor field or to a displacement vector (moving rigid body). The metric can be obtained with mshmet (see section \ref{sec:mshmet}).$\codered$
 
-cecile.dobrzynskimath.ubordeaux1.fr or pascal.freyupmc.fr.
+!!! note
+	* If no metric is given, an isotropic metric is computed by analyzing the size of the edges in the initial mesh.
+	* if a displacement is given, the vertices of the surface triangles are moved without verifying the geometrical structure of the new surface mesh.
 
-This software allows to remesh an initial mesh made of tetrahedra. This initial mesh is adapted to a geometric metric tensor field or to a displacement vector (moving rigid body). The metric can be obtained with mshmet (see section \ref{sec:mshmet}).\\
+The parameters of `:::freefem mmg3d` are :
 
-\begin{remark} : 
-\begin{description}
-\item[(a)] If no metric is given, an isotropic metric is computed by analyzing the size of the edges in the initial mesh.
-\item[(b)] if a displacement is given, the vertices of the surface triangles are moved without verifying the geometrical structure of the new surface mesh.
-\end{description}
-\end{remark}
-The parameters of  mmg3d are :
-\begin{itemize}\parskip=0cm
-%\item [`nvmax}=] integer expresion. It's correspond to the number of maximum vertices in the solution mesh.
-%\item [`ntrimax}=] integer expresion. It's correspond to the number of maximum triangles in the solution mesh.
-%\item [`ntetmax}=] integer expresion. It's correspond to the number of maximum triangles in the solution mesh.
-\item `options}= vector expression. This vector contains the option parameters of `mmg3d}. It is a vector of $6$ values, with the following meaning:
-\begin{description}
-\item[(0)]   optimization parameters : (default 1) \\
-                     \hspace*{0.3cm}  0 : mesh optimization. \\
-                     \hspace*{0.3cm}  1 : adaptation with metric (deletion and insertion vertices) and optimization. \\
-                     \hspace*{0.3cm} -1: adaptation with metric (deletion and insertion vertices) without optimization. \\
-                     \hspace*{0.3cm}  4 : split tetrahedra (be careful modify the surface). \\
-                     \hspace*{0.3cm}  9 : moving mesh with optimization. \\
-                     \hspace*{0.3cm} -9: moving mesh without optimization.
+* `:::freefem options =` vector expression. This vector contains the option parameters of `:::freefem mmg3d`. It is a vector of 6 values, with the following meaning:
 
-\item[(1)]  debug mode :  (default 0)\\
-		 \hspace*{0.3cm} 1 : turn on debug mode.\\
-		 \hspace*{0.3cm} 0 : otherwise.
+	* Optimization parameters : (default 1)
+
+		0 : mesh optimization.
+
+		1 : adaptation with metric (deletion and insertion vertices) and optimization.
+
+		-1 : adaptation with metric (deletion and insertion vertices) without optimization.
+
+		4 : split tetrahedra (be careful modify the surface).
+
+		9 : moving mesh with optimization.
+
+		-9 : moving mesh without optimization.
+
+	* Debug mode : (default 0)
+
+		1 : turn on debug mode.
+
+		0 : otherwise.
 		
-\item[(2)] Specify the size of bucket per dimension ( default 64)
+	* Specify the size of bucket per dimension (default 64)
 
-\item[(3)] swapping mode : (default 0)\\
-		\hspace*{0.3cm} 1 : no edge or face flipping. \\
-		\hspace*{0.3cm} 0 : otherwise.
+	* Swapping mode : (default 0)
 
-\item[(4)] insert points mode : (default 0)\\
-		\hspace*{0.3cm} 1 : no edge splitting or collapsing and no insert points. \\
-		\hspace*{0.3cm} 0 : otherwise.		
+		1 : no edge or face flipping.
+
+		0 : otherwise.
+
+	* Insert points mode : (default 0)
+
+		1 : no edge splitting or collapsing and no insert points.
+
+		0 : otherwise.		
 		
-\item[(5)] verbosity level (default 3)
-\end{description}
-\item `memory}= integer expression. Set the maximum memory size of new mesh in Mbytes. By default the number of maximum vertices, tetrahedra and triangles are respectively 500 000,  3000 000, 100000 which represent approximately a memory of 100 Mo.
-\item `metric}= vector expression. This vector contains the metric given at mmg3d. It is a vector of size $nv$ or 6 $nv$ respectively for an istropic and anisotropic metric where $nv$ is the number of vertices in the initial mesh. The structure of `metric} vector is described in the mshmet's section(section \ref{sec:mshmet}).
-\item `displacement}= `[$\Phi$1, $\Phi$2, $\Phi$3]} set the displacement vector of the initial mesh \\
-$\Phi(x,y) = [\Phi1(x,y), \Phi2(x,y), \Phi3(x,y) ]$.
-\item `displVect=} sets the vector displacement in a vector expression. This vector contains the displacement at each point of the initial mesh. It is a vector of size 3 $nv$.
-\end{itemize}
+	5. Verbosity level (default 3)
 
-An example using this function is given in "mmg3d.edp":
-\begin{example}[mmg3d.edp]
-\label{mmg3dsimple}~
+* `:::freefem memory=` integer expression. Set the maximum memory size of new mesh in Mbytes. By default the number of maximum vertices, tetrahedra and triangles are respectively 500 000,  3000 000, 100000 which represent approximately a memory of 100 Mo.
+
+* `:::freefem metric=` vector expression. This vector contains the metric given at `:::freefem mmg3d`. It is a vector of size $nv$ or 6 $nv$ respectively for an istropic and anisotropic metric where $nv$ is the number of vertices in the initial mesh. The structure of `:::freefem metric` vector is described in the mshmet's section(section \ref{sec:mshmet}) $\codered$.
+
+* `:::freefem displacement=` $[\Phi1, \Phi2, \Phi3]$ set the displacement vector of the initial mesh $\Phi(x,y) = [\Phi1(x,y), \Phi2(x,y), \Phi3(x,y)]$.
+
+* `:::freefem displVect=` sets the vector displacement in a vector expression. This vector contains the displacement at each point of the initial mesh. It is a vector of size 3 $nv$.
+
+**Example `:::freefem mmg3d.edp`**
+
 ```freefem
 // test mmg3d
 load "msh3"
@@ -2689,14 +2558,16 @@ medit("init",Th);
 medit("isometric",Th3);
 ```
 
+**Example `:::freefem fallingspheres.edp`**
 
-An example of a moving mesh is given in `fallingspheres.edp}":
-\begin{example}[fallingspheres.edp]
 ```freefem
-load "msh3"  load "tetgen"  load "medit"  load "mmg3d"                                                               
+load "msh3"
+load "tetgen"
+load "medit"
+load "mmg3d"                                                               
 include "MeshSurface.idp"
 
-// build mesh of a box (311)  wit 2 holes  (300,310)
+// Build mesh of a box (311) wit 2 holes (300,310)
 
 real hs = 0.8; 
 int[int]  N=[4/hs,8/hs,11.5/hs];
@@ -2706,7 +2577,7 @@ mesh3 ThH = SurfaceHex(N,B,L,1);
 mesh3 ThSg =Sphere(1,hs,300,-1); 
 mesh3 ThSd =Sphere(1,hs,310,-1);   ThSd=movemesh3(ThSd,transfo=[x,4+y,z]);
 mesh3 ThHS=ThH+ThSg+ThSd;// gluing surface meshes 
-medit("ThHS", ThHS); // see surface mesh
+medit("ThHS", ThHS); // See surface mesh
 
 real voltet=(hs^3)/6.;
 real[int] domaine = [0,0,-4,1,voltet];
@@ -2715,16 +2586,16 @@ mesh3 Th = tetg(ThHS,switch="pqaAAYYQ",nbofregions=1,regionlist=domaine, nbofhol
 medit("Box-With-two-Ball",Th);
 // End build mesh 
 
-int[int] opt=[9,0,64,0,0,3];   // options  of mmg3d see freeem++ doc 
+int[int] opt=[9,0,64,0,0,3]; // options of mmg3d see freeem++ doc 
 real[int] vit=[0,0,-0.3];
 func zero = 0.;
 func dep  = vit[2];
 
 fespace Vh(Th,P1); 
-macro Grad(u) [dx(u),dy(u),dz(u)] //
+macro Grad(u) [dx(u),dy(u),dz(u)]
 
-Vh uh,vh; //  to compute the displacemnt field 
-problem Lap(uh,vh,solver=CG) = int3d(Th)(Grad(uh)'*Grad(vh))  //') for emacs
+Vh uh,vh; // To compute the displacemnt field 
+problem Lap(uh,vh,solver=CG) = int3d(Th)(Grad(uh)'*Grad(vh))  // ') for emacs
 				  + on(310,300,uh=dep) +on(311,uh=0.); 
 
 for(int it=0; it<29; it++){ 
@@ -2735,22 +2606,18 @@ for(int it=0; it<29; it++){
  }
 ```
 
-
-
-%%%  fin 3d
-
 # A first 3d isotope mesh adaptation process
 
-\begin{example}[Laplace-Adapt-3d.edp]
-\label{ex:tetg-adap}~\hfill\break
+**Example `:::freefem Laplace-Adapt-3d.edp`**
+
 ```freefem
 load "msh3" load "tetgen" load "mshmet" load "medit"
-//build initial mesh
+// Build initial mesh
 int nn  = 6;
 int[int] l1111=[1,1,1,1],l01=[0,1],l11=[1,1];//label numbering to have all label to 1 
 mesh3 Th3=buildlayers(square(nn,nn,region=0,label=l1111),
       nn,  zbound=[0,1],  labelmid=l11,   labelup = l01,  labeldown = l01);
-Th3 = trunc(Th3,(x<0.5) | (y < 0.5) | (z < 0.5) ,label=1);// remove the $]0.5,1[^3 cube$
+Th3 = trunc(Th3,(x<0.5) | (y < 0.5) | (z < 0.5) ,label=1); // remove the $]0.5,1[^3 cube$
 //end of build initial mesh
 fespace Vh(Th3,P1);
 Vh u,v,usol,h;
@@ -2776,20 +2643,18 @@ for(int ii=0; ii<5; ii++)
   medit("U-adap-iso-"+ii,Th3,u,wait=1);}
 ```
 
-
 # Build a 2d mesh from a isoline
 
- The idea is get the discretization of a isoline to fluid meshes, this tool  can be useful to
- construct meshes from image. First, we give an example of the isovalue meshes $0.2$  of analytical function $ \sqrt{(x-1/2)^2 +(y-1/2)^2}$,
- on unit square. 
-\begin{example}[isoline.edp]
-\label{ex:isoline.edp}~\hfill\break
-```freefem
-load "isoline" // load the plugin "isoline"
+The idea is get the discretization of a isoline to fluid meshes, this tool can be useful to construct meshes from image. First, we give an example of the isovalue meshes $0.2$  of analytical function $ \sqrt{(x-1/2)^2 +(y-1/2)^2}$, on unit square. 
 
-real[int,int] xy(3,1); // to store the isoline points 
-int[int] be(1);// to store the begin , end couple of lines
-{// a block for memory management 
+**Example `:::freefem isoline.edp`**
+
+```freefem
+load "isoline" // Load the plugin "isoline"
+
+real[int,int] xy(3,1); // To store the isoline points 
+int[int] be(1);// To store the begin , end couple of lines
+{ // a block for memory management 
   mesh Th=square(10,10);//,[x*.5,y*0.5]);
   fespace Vh(Th,P1);
   Vh u= sqrt(square(x-0.5)+square(y-0.5));
@@ -2800,54 +2665,55 @@ int[int] be(1);// to store the begin , end couple of lines
   int nbc= isoline(Th,u,xy,close=1,iso=iso,beginend=be,smoothing=0.1);
 ```
 
-The isoline parameters are `Th} the mesh, the expression $u$ , the  bidimentionnal array `xy}
-to store the list coordinate of the points. The list of named parameter are:
-\begin{description}
-\item[iso=]  value of the isoline  to compute ($\bm{0}$ is the default value)
-\item[close=] close the iso line with the border (def. true), we add the part of the mesh border such the value
- is less than the iso value 
-\item[smoothing=] nb of smoothing process  is  the ${l} ^{r} {s} $ where
-$l$ is the length of the current  line component, $r$ the ratio, $s$ is smoothing  value. The smoothing default value is $\bm{0}$.
-\item[ratio=] the ratio ( $1$ by default). 
-\item[eps=] relative $\varepsilon$  (see code ??)  (def 1e-10 )
-\item[beginend=]  array to get begin, end couple of each of sub line  (resize automatically)
-\item[file=] to save the data  curve in data file for gnu plot
-\end{description}
+The isoline parameters are `:::freefem Th` the mesh, the expression $u$, the  bidimentionnal array `:::freefem xy` to store the list coordinate of the points. The list of named parameter are :
 
-In the array `xy} you get the list of vertices of the isoline,
-each connex line go from $i= i_0^c ,\dots, i_1^c-1$ with $i_0^c =be(2*c)$  $i_1^c =be(2*c+1)$, and
-  where $x_i= xy(0,i), y_i=yx( 1,i), l_i=xy(2,i) $. 
-Here  $l_i$ is the length of the line (the origin of the line is point  $i_0^c$).
+* `:::freefem iso =` value of the isoline to compute (0 is the default value)
 
-The  sense  of the  isoline is such that the upper part is at the left  size of the  isoline.
-So here : the minimum is a point $0.5,05$ so  the curve 1 turn in the clockwise  sense, 
-the order of each component are sort such the the number of point by component is decreasing .
+* `:::freefem close =` close the iso line with the border (def. true), we add the part of the mesh border such the value is less than the iso value 
+
+* `:::freefem smoothing =` nb of smoothing process  is  the ${l} ^{r} {s}$ where
+$l$ is the length of the current line component, $r$ the ratio, $s$ is smoothing value. The smoothing default value is 0.
+
+* `:::freefem ratio =` the ratio ($1$ by default). 
+
+* `:::freefem eps =` relative $\varepsilon$ (see code ??)  (def 1e-10 )$\codered$
+
+* `:::freefem beginend =` array to get begin, end couple of each of sub line (resize automatically)
+
+* `:::freefem file =` to save the data curve in data file for gnu plot
+
+In the array `:::freefem xy` you get the list of vertices of the isoline,
+each connex line go from $i= i_0^c ,\dots, i_1^c-1$ with $i_0^c =be(2*c)$  $i_1^c =be(2*c+1)$, and where $x_i= xy(0,i), y_i=yx( 1,i), l_i=xy(2,i)$. 
+Here $l_i$ is the length of the line (the origin of the line is point $i_0^c$).
+
+The sense of the isoline is such that the upper part is at the left size of the isoline.
+So here : the minimum is a point $0.5,05$ so the curve 1 turn in the clockwise sense, 
+the order of each component are sort such that the number of point by component is decreasing .
 
 ```freefem   
-  cout << " nb of the line  component   = " << nbc << endl; 
-  cout << " n = " << xy.m << endl; // number  of points 
-  cout << "be = " << be << endl; //  begin end of the each componant
+  cout << " nb of the line component   = " << nbc << endl; 
+  cout << " n = " << xy.m << endl; // Number of points 
+  cout << "be = " << be << endl; // Begin end of the each componant
 
   // show the lines component 
   for( int c=0;c<nbc; ++c) 
   {
-    int i0 = be[2*c], i1 = be[2*c+1]-1;//begin,end of the line component
+    int i0 = be[2*c], i1 = be[2*c+1]-1; // begin,end of the line component
     cout << " Curve " << c << endl; 
     for(int i=i0; i<= i1; ++i)
        cout << " x= " << xy(0,i) <<" y= " << xy(1,i) << " s= " 
              << xy(2,i) << endl; 
     plot([xy(0,i0:i1),xy(1,i0:i1)],wait=1,viso=viso,cmm = " curve "+c);
   }
-}// end of block for  memory management 
+} // End of block for  memory management 
 
 cout << " len of  last  curve = " << xy(2,xy.m-1) << endl;; 
 ```
 
-We also have a  new function to parametrize easly  a
-discret `Curve} defined by couple $be, xy$. \index{Curve}
+We also have a new function to parametrize easly a discret `:::freefem Curve` defined by couple $be, xy$.
 
 ```freefem
-border Curve0(t=0,1) // the extern boundary 
+border Curve0(t=0,1) // The external boundary 
 { int c =0; // component 0
   int i0 = be[2*c], i1 = be[2*c+1]-1;   
   P=Curve(xy,i0,i1,t); // Curve 0
@@ -2862,27 +2728,24 @@ border Curve1(t=0,1)
 } 
 
 plot(Curve1(100)); // show curve. 
-mesh Th= buildmesh(Curve1(-100));// because 
-plot(Th,wait=1);// 
+mesh Th= buildmesh(Curve1(-100)); // because 
+plot(Th,wait=1);
 ```
 
+Secondly, we use this idea to build meshes from image, we use the plugins `:::freefem ppm2rnm` to read `:::freefem pgm` gray scale image, and we extract the gray contour at level 0.25.  
 
-Secondly, we use this idea to build meshes from image, we use the plugins
-`ppm2rnm} to read `pgm} gray scale image, and we extract the 
-gray contour at level $0.25$.  
+**Example `:::freefem Leman-mesh.edp`**
 
-\begin{example}[Leman-mesh.edp]
-\label{ex:Leman-mesh.edp}~\hfill\break
 ```freefem
 load "ppm2rnm" load "isoline"
-string leman="lg.pgm"; //see figure \ref{fig:lg}
+string leman="lg.pgm"; // See figure \ref{fig:lg} $\codered$
 real AreaLac =  580.03; // in $Km^2$
 real hsize= 5; // mesh sir in pixel ..
 real[int,int] Curves(3,1);
 int[int] be(1);
-int nc;// nb of curve 
+int nc; // nb of curve 
 {  
-  real[int,int] ff1(leman); // read  image (figure \ref{fig:lg}) 
+  real[int,int] ff1(leman); // Read image (figure \ref{fig:lg}) 
   // and set to an rect.  array \index{ppm2rnm}
   int nx = ff1.n, ny=ff1.m; // grey value between 0 to 1 (dark)
   // build a Cartesian mesh such that the origin is qt the right place.
@@ -2890,10 +2753,10 @@ int nc;// nb of curve
    // warning  the numbering is of the vertices (x,y) is 
    // given by $  i = x/nx + nx* y/ny $
   fespace Vh(Th,P1);
-   Vh f1; f1[]=ff1; //  transforme array in finite element function.
+   Vh f1; f1[]=ff1; // Transform array in finite element function.
   nc=isoline(Th,f1,iso=0.25,close=1,Curves,beginend=be,smoothing=.1,ratio=0.5); 
 }
-// the longest isoline : the lac .. 
+// The longest isoline : the lac .. 
 int ic0=be(0), ic1=be(1)-1;		
 plot([Curves(0,ic0:ic1),Curves(1,ic0:ic1)], wait=1);
 int NC= Curves(2,ic1)/hsize;
@@ -2903,129 +2766,116 @@ plot(G(-NC),wait=1);
 mesh Th=buildmesh(G(-NC));
 plot(Th,wait=1);
 real scale = sqrt(AreaLac/Th.area);
-Th=movemesh(Th,[x*scale,y*scale]);//resize the mesh  
+Th=movemesh(Th,[x*scale,y*scale]); // Resize the mesh  
 cout << " Th.area = " << Th.area << " Km^2 " << " == " << AreaLac <<  "   Km^2 " << endl ;
-plot(Th,wait=1,ps="leman.eps");//  see figure \ref{fig:leman}
+plot(Th,wait=1,ps="leman.eps"); // see figure \ref{fig:leman} $\codered$
 ```
 
+|Fig. 5.4: The image of the leman lake meshes|Fig. 5.41: the mesh of the lake|
+|:----:|:----:|
+|![lake](images/lg.jpg)|![leman mesh](images/leman.svg)|
 
-\twoplot[width=8cm]{lg}{leman}{\label{fig:lg}The image of the leman lac meshes}{\label{fig:leman} the mesh of lac}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\setS{Finite Elements}} \index{finite element space}\label{finite elements}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-As stated in Section \ref{sec:example}.
+# Finite Elements
+
+As stated in Section \ref{sec:example}. $\codered$
 FEM approximates all functions $w$ as
 \[
 w(x,y)\simeq w_0\phi_0(x,y)+w_1\phi_1(x,y)+\cdots+w_{M-1}\phi_{M-1}(x,y)
 \]
 with finite element basis functions $\phi_k(x,y)$ and numbers $w_k$ ($k=0,\cdots,M-1$).
 The functions $\phi_k(x,y)$ are constructed from the triangle $T_{i_k}$, and called  _shape functions_.
+
 In FreeFem++ the finite element space
 $$
 V_h=\left\{w\left|\; w_0\phi_0+w_1\phi_1+\cdots+w_{M-1}\phi_{M-1},\,
 w_i\in \R\right.\right\}
 $$
- is easily created by
+ is easily created by :
+
 ```freefem
-     fespace IDspace(IDmesh,<IDFE>) ;
+fespace IDspace(IDmesh,<IDFE>);
 ```
-or with $\ell$ pairs of periodic boundary condition in 2d
+
+or with $\ell$ pairs of periodic boundary condition in 2d :
+
 ```freefem
-     fespace IDspace(IDmesh,<IDFE>,
-                      periodic=[[la$_1$,sa$_1$],[lb$_1$,sb$_1$],
-                                ...
-                                [la$_k$,sa$_k$],[lb$_k$,sb$_\ell$]]);
+fespace IDspace(IDmesh,<IDFE>,
+                 periodic=[[la$_1$,sa$_1$],[lb$_1$,sb$_1$],
+                           ...
+                           [la$_k$,sa$_k$],[lb$_k$,sb$_\ell$]]);
 ```
-and in 3d
+
+and in 3d :
+
 ```freefem
-     fespace IDspace(IDmesh,<IDFE>,
-                      periodic=[[la$_1$,sa$_1$,ta$_1$],[lb$_1$,sb$_1$,tb$_1$],
-                                ...
-                                [la$_k$,sa$_k$,ta$_k$],[lb$_k$,sb$_\ell$,tb$_\ell$]]);
+fespace IDspace(IDmesh,<IDFE>,
+                 periodic=[[la$_1$,sa$_1$,ta$_1$],[lb$_1$,sb$_1$,tb$_1$],
+                           ...
+                           [la$_k$,sa$_k$,ta$_k$],[lb$_k$,sb$_\ell$,tb$_\ell$]]);
 ```
 
 where
 
-\index{fespace}\index{periodic}
-\ttCC{IDspace} is the name of the space (e.g. \ttCC{Vh}),
-\\\\
-\ttCC{IDmesh} is the name of the associated mesh and  \ttCC{<IDFE>}
-is a identifier of finite element type.
-\\\\
-In 2D we have a pair of periodic boundary condition, \label{periodic BC}
-if \ttCC{[la$_i$,sa$_i$],[lb$_i$,sb$_i$]} is a pair of
-`int}, and the 2 labels \ttCC{la$_i$} and \ttCC{lb$_i$}
-refer to 2 pieces of boundary to be in equivalence.
+`:::freefem IDspace` is the name of the space (e.g. `:::freefem Vh`), `:::freefem IDmesh` is the name of the associated mesh and \<IDFE\> is an identifier of finite element type.
 
-If \ttCC{[la$_i$,sa$_i$],[lb$_i$,sb$_i$]} is a pair of `real},
-then \ttCC{sa$_i$} and \ttCC{sb$_i$}
+In 2D we have a pair of periodic boundary condition, if [la$_i$,sa$_i$],[lb$_i$,sb$_i$] is a pair of `:::freefem int`, and the 2 labels la$_i$ and lb$_i$ refer to 2 pieces of boundary to be in equivalence.
+If [la$_i$,sa$_i$],[lb$_i$,sb$_i$] is a pair of `:::freefem real`, then sa$_i$ and sb$_i$
 give two common abscissa on the two boundary curve, and two points are identified as one
 if the two abscissa are equal.
-\\\\
-In 2D, we have a pair of periodic boundary condition,% \label{periodic BC}
-if \ttCC{[la$_i$,sa$_i$,ta$_i$],[lb$_i$,sb$_i$,tb$_i$]} is a pair of
-`int}, the 2 labels \ttCC{la$_i$} and \ttCC{lb$_i$}
+
+In 2D, we have a pair of periodic boundary condition, if [la$_i$,sa$_i$,ta$_i$],[lb$_i$,sb$_i$,tb$_i$] is a pair of `:::freefem int`, the 2 labels la$_i$ and lb$_i$`
 define the 2 piece of boundary to be in equivalence.
-
-If \ttCC{[la$_i$,sa$_i$,ta$_i$],[lb$_i$,sb$_i$,tb$_i$]} is a pair of `real},
-then \ttCC{sa$_i$,ta$_i$} and \ttCC{sb$_i$,tb$_i$}
-give two common parameters on the two boundary surface, and two points are identified as one
-if the two parameters are equal.
+If [la$_i$,sa$_i$,ta$_i$],[lb$_i$,sb$_i$,tb$_i$] is a pair of `:::freefem real`,
+then sa$_i$,ta$_i$ and sb$_i$,tb$_i$ give two common parameters on the two boundary surface, and two points are identified as one if the two parameters are equal.
 
 
-\begin{remark} The 2D  mesh of the two identified borders must be the same, so
-to be sure,  use  the parameter  `fixedborder=true} in `buildmesh} command (see \ref{buildmesh fixedborder})
-like in example `periodic2bis.edp} (see \ref{exm:periodic4bis}).
-\end{remark}
+!!! note
+	The 2D  mesh of the two identified borders must be the same, so to be sure, use the parameter `:::freefem fixedborder=true` in `:::freefem buildmesh` command (see \ref{buildmesh fixedborder} $\codered$) like in example `:::freefem periodic2bis.edp` (see \ref{exm:periodic4bis} $\codered$).
 
-\medskip
- As of today, the known
-types of finite element are: \index{type of finite element}
-\begin{description}
-     \item[P0,P03d]  piecewise constant discontinuous finite element  (2d, 3d), the degrees of freedom are  the barycenter element value.
-     \index{P0|textbf}\index{fespace!P0}
+
+As of today, the known types of finite element are:
+
+* `:::freefem [P0,P03d]` piecewise constant discontinuous finite element  (2d, 3d), the degrees of freedom are  the barycenter element value.
     \begin{eqnarray}
     \label{eq:P0}
      P0_{h} = \left\{ v \in L^2(\Omega) \left|\; \textrm{for all }K \in \mathcal{T}_{h}\;\;\textrm{there is }\alpha_{K}\in \R :
         \;\; v_{|K} = \alpha_{K } \right.\right\}
      \end{eqnarray}
-     \item[P1,P13d]  piecewise linear  continuous finite element (2d, 3d), the degrees of freedom are the vertices values.
-     \index{P1|textbf}\index{fespace!P1}\index{fespace!P13d}
+
+* `:::freefem [P1,P13d]` piecewise linear continuous finite element (2d, 3d), the degrees of freedom are the vertices values.
      \begin{eqnarray}
      &&P1_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{1} \right.\right\} \label{eq:P1}
      \end{eqnarray}
-     \item[P1dc]  piecewise linear  discontinuous finite element
-     \index{P1dc|textbf}\index{fespace!P1dc}
+
+* `:::freefem [P1dc]` piecewise linear discontinuous finite element
      \begin{equation}
      P1dc_{h} = \left\{ v \in L^{2}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{1} \right.\right\} \label{eq:P1dc}
      \end{equation}
-     Warning, due to interpolation problem, the degree of freedom is not the vertices but three vectices  move
-     inside with $T(X)= G + .99  (X-G) $ where $G$ is the barycenter, (version 2.24-4).
-     \item[P1b,P1b3d]  piecewise linear  continuous finite element plus bubble (2d, 3d) \label{warP1dc}
-     \index{P1b|textbf}\index{fespace!P1b}\index{fespace!P1b3d}
 
-     \paragraph{The 2d case:}
+     !!! note $\codered$
+	Warning, due to interpolation problem, the degree of freedom is not the vertices but three vectices move inside with $T(X)= G + .99  (X-G)$ where $G$ is the barycenter.
+
+* `:::freefem [P1b,P1b3d]` piecewise linear continuous finite element plus bubble (2d, 3d) 
+    
+	**The 2d case:**
      \begin{equation}
      P1b_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{1} \oplus \mathrm{Span}\{  \lambda^{K}_{0} \lambda^{K}_{1} \lambda^{K}_{2} \} \right.\right\} \label{eq:P1b}
      \end{equation}
-     \paragraph{The 3d case:}
+
+	**The 3d case:**
       \begin{equation}
      P1b_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{1} \oplus \mathrm{Span}\{  \lambda^{K}_{0} \lambda^{K}_{1} \lambda^{K}_{2} \lambda^{K}_{3} \} \right.\right\} \label{eq:P1b-3d}
      \end{equation}
     where $\lambda ^{K}_{i}, i=0,..,d$ are the $d+1$ barycentric  coordinate functions of the element  $K$ (triangle or tetrahedron).
-    \item[P1bl,P1bl3d]  piecewise linear  continuous finite element plus linear bubble (2d, 3d) \label{warP1dc}
-     \index{P1bl|textbf}\index{fespace!P1bl}\index{fespace!P1bl3d}
-     the bulle is build by spliting the $K$ a barycenter in $d+1$ sub element. (need \ttCC{load "Element_P1bl"})
+
+* `:::freefem P1bl,P1bl3d` piecewise linear continuous finite element plus linear bubble (2d, 3d). The bulle is build by spliting the $K$ a barycenter in $d+1$ sub element. (need `:::freefem load "Element_P1bl"`)
      
-     \item[P2,P23d] piecewise $P_{2}$  continuous finite element (2d, 3d),
-     \index{P2|textbf}\index{fespace!P2}
+* `:::freefem [P2,P23d]` piecewise $P_{2}$  continuous finite element (2d, 3d),
      \begin{equation}
      P2_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{2} \right.\right\}
@@ -3033,24 +2883,21 @@ types of finite element are: \index{type of finite element}
      where
      $P_{2}$ is the set of polynomials of $\R^{2}$ of  degrees $\le 2$.
     
-     \item[P2b] piecewise $P_{2} $ continuous finite element  plus bubble,
-     \index{P2|textbf}\index{fespace!P2}
+* `:::freefem [P2b]` piecewise $P_{2} $ continuous finite element  plus bubble,
      \begin{equation}
      P2_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{2} \oplus \mathrm{Span}\{  \lambda^{K}_{0} \lambda^{K}_{1} \lambda^{K}_{2} \} \right.\right\}
      \end{equation}
 
-     \item[P2dc] piecewise $P_{2}$  discontinuous finite element,
-     \index{P2dc|textbf}\index{fespace!P2dc}
+* `:::freefem [P2dc]` piecewise $P_{2}$  discontinuous finite element,
      \begin{equation}
      P2dc_{h} = \left\{ v \in L^{2}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{2} \right.\right\}
      \end{equation}
     Warning, due to interpolation problem, the degree of freedom is not the six  P2 nodes  but six  nodes  move
-     inside with $T(X)= G + .99  (X-G) $ where $G$ is the barycenter, (version 2.24-4).
+     inside with $T(X)= G + .99  (X-G) $ where $G$ is the barycenter.
 
-      \item[P3] piecewise $P_{3}$  continuous finite element (2d)  (need \ttCC{load "Element_P3"})
-     \index{P3|textbf}\index{fespace!P3}
+ * `:::freefem [P3]` piecewise $P_{3}$ continuous finite element (2d) (need `:::freefem load "Element_P3"`)
      \begin{equation}
      P2_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{3} \right.\right\}
@@ -3058,8 +2905,7 @@ types of finite element are: \index{type of finite element}
      where
      $P_{3}$ is the set of polynomials of $\R^{2}$ of  degrees $\le 3$.
      
-      \item[P3dc] piecewise $P_{3}$  discontinuous finite element (2d)  (need \ttCC{load "Element_P3dc"})
-     \index{P3dc|textbf}\index{fespace!P3dc}
+ * `:::freefem [P3dc]` piecewise $P_{3}$  discontinuous finite element (2d) (need `:::freefem load "Element_P3dc"`)
      \begin{equation}
      P2_{h} = \left\{ v \in L^2(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{3} \right.\right\}
@@ -3067,41 +2913,35 @@ types of finite element are: \index{type of finite element}
      where
      $P_{3}$ is the set of polynomials of $\R^{2}$ of  degrees $\le 3$.
 
-      \item[P4] piecewise $P_{4}$  continuous finite element (2d)  (need \ttCC{load "Element_P4"})
-     \index{P4|textbf}\index{fespace!P4}
+ * `:::freefem [P4]` piecewise $P_{4}$  continuous finite element (2d)  (need `:::freefem load "Element_P4"`)
      \begin{equation}
      P2_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{4} \right.\right\}
      \end{equation}
      where
-     $P_{4}$ is the set of polynomials of $\R^{2}$ of  degrees $\le 4$.
+     $P_{4}$ is the set of polynomials of $\R^{2}$ of degrees $\le 4$.
      
-      \item[P4dc] piecewise $P_{4}$  discontinuous finite element (2d)  (need \ttCC{load "Element_P4dc"})
-     \index{P4dc|textbf}\index{fespace!P4dc}
+ * `:::freefem [P4dc]` piecewise $P_{4}$ discontinuous finite element (2d) (need `:::freefem load "Element_P4dc"`)
      \begin{equation}
      P2_{h} = \left\{ v \in L^2(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{3} \right.\right\}
      \end{equation}
      where
-     $P_{4}$ is the set of polynomials of $\R^{2}$ of  degrees $\le 3$.
+     $P_{4}$ is the set of polynomials of $\R^{2}$ of degrees $\le 3$.
 
-     \item[P0Edge] piecewise $P_{0}$  discontinuous finite element (2d)  contant on each edge  of the mesh.
-     \index{P0Edge|textbf}\index{fespace!P0Edge}
+* `:::freefem [P0Edge]` piecewise $P_{0}$ discontinuous finite element (2d) contant on each edge of the mesh.
 
-     \item[P1Edge] piecewise $P_{1}$  discontinuous finite element (2d)  (need \ttCC{load "Element_PkEdge"})  $P_1$ on each edge of the mesh.
-     \index{P1Edge|textbf}\index{fespace!P1Edge}
-     \item[P2Edge] piecewise $P_{2}$  discontinuous finite element (2d)  (need \ttCC{load "Element_PkEdge"})  $P_2$ on each edge of the mesh.
-     \index{P2Edge|textbf}\index{fespace!P2Edge}
-     \item[P3Edge] piecewise $P_{3}$  discontinuous finite element (2d)  (need \ttCC{load "Element_PkEdge"})  $P_3$ on each edge of the mesh.
-     \index{P1Edge|textbf}\index{fespace!P3Edge}
-     \item[P4Edge] piecewise $P_{4}$  discontinuous finite element (2d)  (need \ttCC{load "Element_PkEdge"})  $P_4$ on each edge of the mesh.
-     \index{P4Edge|textbf}\index{fespace!P4Edge}
-    \item[P5Edge] piecewise $P_{5}$  discontinuous finite element (2d)  (need \ttCC{load "Element_PkEdge"})  $P_5$ on each edge of the mesh.
-     \index{P5Edge|textbf}\index{fespace!P4Edge}
+* `:::freefem [P1Edge]` piecewise $P_{1}$ discontinuous finite element (2d) (need `:::freefem load "Element_PkEdge"`) $P_1$ on each edge of the mesh.
 
+* `:::freefem [P2Edge]` piecewise $P_{2}$ discontinuous finite element (2d) (need `:::freefem load "Element_PkEdge"`)  $P_2$ on each edge of the mesh.
 
-     \item[P2Morley] piecewise $P_{2}$  non conform finite element (2d)  (need \ttCC{load "Morley"})
-     \index{P2Morley|textbf}\index{fespace!P2Morley}\index{Morley}
+* `:::freefem [P3Edge]` piecewise $P_{3}$ discontinuous finite element (2d) (need `:::freefem load "Element_PkEdge"`) $P_3$ on each edge of the mesh.
+
+* `:::freefem [P4Edge]` piecewise $P_{4}$ discontinuous finite element (2d) (need `:::freefem load "Element_PkEdge"`) $P_4$ on each edge of the mesh.
+
+* `:::freefem [P5Edge]` piecewise $P_{5}$ discontinuous finite element (2d) (need `:::freefem load "Element_PkEdge"`)  $P_5$ on each edge of the mesh.
+
+* `:::freefem [P2Morley]` piecewise $P_{2}$ non conform finite element (2d) (need `:::freefem load "Morley"`)
      \begin{equation}
      P2_{h} = \left\{ v \in L^2(\Omega) \left|\; \forall K \in \mathcal{T}_{h}
         \quad v_{|K} \in P_{3}, 
@@ -3112,17 +2952,15 @@ types of finite element are: \index{type of finite element}
          \right.\right\}
      \end{equation}
      where
-     $P_{2}$ is the set of polynomials of $\R^{2}$ of  degrees $\le 2$.
+     $P_{2}$ is the set of polynomials of $\R^{2}$ of degrees $\le 2$.
 
-      Warning to build the interplant of a function $u$ (scalar) for this  finite element,
-       we need the function and 2 partial derivatives $(u,u_x, u_y)$,
-      so  this vectorial finite element with 3 components  $(u,u_x,u_y)$.
+      Warning to build the interplant of a function $u$ (scalar) for this finite element, we need the function and 2 partial derivatives $(u,u_x, u_y)$, so this vectorial finite element with 3 components  $(u,u_x,u_y)$.
       
-      See example `bilapMorley.edp} of \verb!examples++-load! for solving BiLaplacien problem : 
-      \index{BiLaplacien}
+      See example `:::freefem bilapMorley.edp` of \verb!examples++-load! $\codered$ for solving BiLaplacien problem : 
+
 ```freefem
          load "Morley" 
-         fespace Vh(Th,P2Morley);      // the Morley finite element space
+         fespace Vh(Th,P2Morley); // The Morley finite element space
          macro bilaplacien(u,v) ( dxx(u)*dxx(v)+dyy(u)*dyy(v)+2.*dxy(u)*dxy(v)) // fin macro 
          real f=1;
          Vh [u,ux,uy],[v,vx,vy];
@@ -3133,43 +2971,32 @@ types of finite element are: \index{type of finite element}
            + on(1,2,3,4,u=0,ux=0,uy=0)      
 ```
 
-      \item[HCT]  $P_3$ $C^1$ conform finite element (2d)  (need \ttCC{load "Element_HCT"})  one 3 sub triangles (version 3.40). 
-     \index{HCT|textbf}\index{fespace!HCT}
+ * `:::freefem [HCT]` $P_3$ $C^1$ conform finite element (2d) (need `:::freefem load "Element_HCT"`) one 3 sub triangles. 
      
-     Let call $\mathcal{T}^\triangle_{h}$ the sub mesh of $\mathcal{T}_{h}$ where all triangle are split in 3 at the
-     barycenter.
+     Let call $\mathcal{T}^\triangle_{h}$ the sub mesh of $\mathcal{T}_{h}$ where all triangle are split in 3 at the barycenter.
      \begin{equation}
        PHCT_{h} = \left\{ v \in C^1(\Omega) \left|\; \forall K \in \mathcal{T}^\triangle_{h}
         \quad v_{|K} \in P_{3} \right.\right\} 
      \end{equation}
      where
-     $P_{3}$ is the set of polynomials of $\R^{2}$ of  degrees $\le 3$. The degree of freedom are 
-     the value and derivative at vertices and normal derivative a middle edge point of initial meshes,and thank to \cite{HCT}.
+     $P_{3}$ is the set of polynomials of $\R^{2}$ of degrees $\le 3$. The degree of freedom are the value and derivative at vertices and normal derivative a middle edge point of initial meshes,and thank to \cite{HCT} $\codered$.
      
-         Warning to build the interplant of a function $u$ (scalar) for this  finite element,
-       we need the function and 2 partial derivatives $(u,u_x, u_y)$,
-      so  this vectorial finite element with 3 components  $(u,u_x,u_y)$ like in previous Finite Element.
+	Warning to build the interplant of a function $u$ (scalar) for this finite element, we need the function and 2 partial derivatives $(u,u_x, u_y)$, so this vectorial finite element with 3 components $(u,u_x,u_y)$ like in previous Finite Element.
         
-
-      \item[P2BR]  \index{P2BR|textbf}\index{fespace!P2BR}(need \ttCC{load "BernadiRaugel"})  the Bernadi Raugel Finite Element is a Vectorial   element (2d)  with 2 components,
- See Bernardi, C., Raugel, G.: Analysis of some finite elements for the Stokes problem. Math. Comp. 44, 71-79 (1985).
- It is  a 2d coupled FE, with 
- the Polynomial space is $ P_1^2$ + 3 normals bubbles edges function $(P_2)$
-and  the degre of freedom is 6 values at of the $2$ components at the  $3$ vertices
-and the $3$ flux on the $3$ edges  
-So the number  degrees of freedom is 9.      
+ * `:::freefem [P2BR]` (need `:::freefem load "BernadiRaugel"`) the Bernadi Raugel Finite Element is a Vectorial  element (2d) with 2 components, See Bernardi, C., Raugel, G.: Analysis of some finite elements for the Stokes problem. Math. Comp. 44, 71-79 (1985).
+It is a 2d coupled FE, with the Polynomial space is $ P_1^2$ + 3 normals bubbles edges function $(P_2)$ and the degre of freedom is 6 values at of the $2$ components at the $3$ vertices and the $3$ flux on the $3$ edges  
+So the number degrees of freedom is 9.      
       
-      \item[RT0,RT03d]  Raviart-Thomas finite element of degree $0$.
-     \index{RT0|textbf}\index{fespace!RT0}
+ * `:::freefem [RT0,RT03d]`  Raviart-Thomas finite element of degree $0$.
 
-     The 2d case:
+     **The 2d case:**
      \begin{equation}
          RT0_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in
          \mathcal{T}_{h} \quad  \mathbf{v}_{|K}(x,y) =
          \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y}  \right.\right\}
          \label{eq:RT0}
      \end{equation}
-     The 3d case:
+     **The 3d case:**
      \begin{equation}
          RT0_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in
          \mathcal{T}_{h} \quad  \mathbf{v}_{|K}(x,y,z) =
@@ -3184,30 +3011,26 @@ So the number  degrees of freedom is 9.
       \textrm{div } \mathbf{w}\in L^{2}(\Omega)
       \right.\right\}
       $$
-      and where
-      $\alpha^1_{K},\alpha^2_{K},\alpha^3_{K},\beta_{K} $ are real numbers.
+      and where $\alpha^1_{K},\alpha^2_{K},\alpha^3_{K},\beta_{K}$ are real numbers.
       
-   \item[RT0Ortho]  Raviart-Thomas Orthogonal, or Nedelec finite element type I of degree $0$ in dimension 2
-     \index{RT0Ortho|textbf}\index{fespace!RT0Ortho}
-     \begin{equation}
+* `:::freefem [RT0Ortho]` Raviart-Thomas Orthogonal, or Nedelec finite element type I of degree $0$ in dimension 2
+    \begin{equation}
          RT0Ortho{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in
          \mathcal{T}_{h} \quad  \mathbf{v}_{|K}(x,y) =
          \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x}  \right.\right\}
          \label{RT0Ortho}
      \end{equation}      
       
-     \item[Edge03d]  3d Nedelec finite element or Edge  Element of degree $0$.
-     \index{Edge03d|textbf}\index{fespace!Edge03d}
+* `:::freefem [Edge03d]` 3d Nedelec finite element or Edge Element of degree $0$.
 
-     The 3d case:
+     **The 3d case:**
      \begin{equation}
          Edge0_{h} = \left\{ \mathbf{v} \in H(\textrm{Curl}) \left|\; \forall K \in
          \mathcal{T}_{h} \quad  \mathbf{v}_{|K}(x,y,z) =
          \vectthree{\alpha^1_{K}}{\alpha^2_{K}}{\alpha^3_{K}} + \vectthree{\beta^1_{K}}{\beta^2_{K}}{\beta^3_{K}}\times\vectthree{x}{y}{z}  \right.\right\}
          \label{eq:Edge03d}
      \end{equation}
-      where by writing
-      $\textrm{curl}\mathbf{w}=\vectthree{\p w_2/\p x_3-\p w_3/\p x_2}{\p w_3/\p x_1-\p w_1/\p x_3}{\p w_1/\p x_2-\p w_2/\p x_1}$ with
+      where by writing $\textrm{curl}\mathbf{w}=\vectthree{\p w_2/\p x_3-\p w_3/\p x_2}{\p w_3/\p x_1-\p w_1/\p x_3}{\p w_1/\p x_2-\p w_2/\p x_1}$ with
       $ \mathbf{w}=(w_i)_{i=1}^d$,
       $$
       H(\textrm{curl})=\left\{\mathbf{w}\in L^{2}(\Omega)^d\left|
@@ -3215,26 +3038,25 @@ So the number  degrees of freedom is 9.
       \right.\right\}
       $$
       and
-      $\alpha^1_{K},\alpha^2_{K},\alpha^3_{K},\beta^1_{K},\beta^2_{K},\beta^3_{K} $ are real numbers.
-      \item[Edge13d] (need \ttCC{load "Element_Mixte3d"}, version 3.34) 3d Nedelec finite element or Edge  Element of degree $1$. \index{Edge13d|textbf}\index{fespace!Edge13d}
+      $\alpha^1_{K},\alpha^2_{K},\alpha^3_{K},\beta^1_{K},\beta^2_{K},\beta^3_{K}$ are real numbers.
 
-      \item[Edge23d]  (need \ttCC{load "Element_Mixte3d"}, version 3.34) 3d Nedelec finite element or Edge  Element of degree $2$. \index{Edge23d|textbf}\index{fespace!Edge23d}
+ * `:::freefem [Edge13d]` (need `:::freefem load "Element_Mixte3d"`) 3d Nedelec finite element or Edge Element of degree $1$.
 
+ * `:::freefem [Edge23d]` (need `:::freefem load "Element_Mixte3d"`) 3d Nedelec finite element or Edge Element of degree $2$.
       
-     \item[P1nc] \index{P1nc|textbf}\index{fespace!P1nc} piecewise linear   element continuous at
-     the middle of edge only in 2D (Crouzeix-Raviart Finite Element 2d).
+* `:::freefem [P1nc]` piecewise linear element continuous at the middle of edge only in 2D (Crouzeix-Raviart Finite Element 2d).
      
-         \item[P2pnc] \index{P2pnc|textbf}\index{fespace!P2pnc} piecewise quadratic plus  a bubble  P3    element with the 
-     continuity of  the 2 moments on each edge (version 3.59)   (need \ttCC{load "Element_P2pnc"}
+* `:::freefem [P2pnc]` piecewise quadratic plus a bubble P3 element with the continuity of the 2 moments on each edge (version 3.59) (need `:::freefem load "Element_P2pnc"`
  
-    \item[RT1] \index{RT1|textbf}\index{fespace!RT1} (need \ttCC{load "Element_Mixte"}, version 3.13)
+* `:::freefem [RT1]` (need `:::freefem load "Element_Mixte"`)
      \begin{equation}
          RT1_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in
          \mathcal{T}_{h} \quad  \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_1^2,P_0,  \mathbf{v}_{|K}(x,y) = 
          \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y}   \right.\right\}
          \label{eq:RT1}
      \end{equation}
-    \item[RT1Ortho] \index{RT1Ortho|textbf}\index{fespace!RT1Ortho} (need \ttCC{load "Element_Mixte"}, version 3.13, dimension 2)
+
+* `:::freefem [RT1Ortho]` (need `:::freefem load "Element_Mixte"`, version 3.13, dimension 2 $\codered$)
          \begin{equation}
          RT1_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in
          \mathcal{T}_{h},  \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_1^2,P_0,  \mathbf{v}_{|K}(x,y) = 
@@ -3242,24 +3064,23 @@ So the number  degrees of freedom is 9.
          \label{eq:RT1Ortho}
      \end{equation}
      
-       \item[RT2] \index{RT2|textbf}\index{fespace!RT2} (need \ttCC{load "Element_Mixte"}, version 3.59
+  * `:::freefem [RT2]` (need `:::freefem load "Element_Mixte"`)
      \begin{equation}
          RT2_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in
          \mathcal{T}_{h} \quad   \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_2^2, P_1,  \mathbf{v}_{|K}(x,y) = 
          \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y}   \right.\right\}
          \label{eq:RT2}
      \end{equation}
-   \item[RT2Ortho] \index{RT2Ortho|textbf}\index{fespace!RT2Ortho} (need \ttCC{load "Element_Mixte"}, version 3.59, dimension 2)
-         \begin{equation}
+
+* `:::freefem [RT2Ortho]` (need `:::freefem load "Element_Mixte"`, version 3.59, dimension 2 $\codered$)
+     \begin{equation}
          RT2_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in
          \mathcal{T}_{h} ,  \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_2^2, P_1,  \mathbf{v}_{|K}(x,y) = 
          \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x}   \right.\right\}
          \label{eq:RT1Ortho}
      \end{equation}
     
-
-
-    \item[BDM1] \index{BDM1|textbf}\index{fespace!BDM1} (need \ttCC{load "Element_Mixte"}, version 3.13, dimension 2) the Brezzi-Douglas-Marini finite element 
+* `:::freefem [BDM1]` (need `:::freefem load "Element_Mixte"`, version 3.13, dimension 2 $\codered$) the Brezzi-Douglas-Marini finite element 
      \begin{equation}
          BDM1_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in
          \mathcal{T}_{h} \quad   \mathbf{v}_{|K} \in P_1^2
@@ -3267,28 +3088,23 @@ So the number  degrees of freedom is 9.
          \label{eq:BDM1}
      \end{equation}
         
-    \item[BDM1Ortho] \index{BDM1Ortho|textbf}\index{fespace!BDM1Ortho} (need \ttCC{load "Element_Mixte"}, version 3.13, dimension 2) the Brezzi-Douglas-Marini Orthogonal also call
-    Nedelec of type II , finite element 
+* `:::freefem [BDM1Ortho]` (need `:::freefem load "Element_Mixte"`, version 3.13, dimension 2 $\codered$) the Brezzi-Douglas-Marini Orthogonal also call Nedelec of type II , finite element 
        \begin{equation}
          BDM1Ortho_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in
          \mathcal{T}_{h} \quad   \mathbf{v}_{|K} \in P_1^2
          \right.\right\}
          \label{eq:BDM1Ortho}
      \end{equation}
-   \item[FEQF]  \index{FEQF|textbf}\index{fespace!FEQF} (need \ttCC{load "Element_QF"}, version 3.45, dimension 2 or 3) the finite element to store 
-   function at default quadrature points (so the  quadrature is `qf5pT} in 2d and is   `qfV5} in 3d).
-   
-   for over quadrature you have the following correspondance  finite element, quadrature formula. 
-    \begin{itemize}
-      \item `FEQF1} $\mapsto$ `qf1pT}  , \index{FEQF1|textbf}\index{fespace!FEQF1}
-      \item `FEQF2} $\mapsto$ `qf2pT}  , \index{FEQF2|textbf}\index{fespace!FEQF2}
-      \item `FEQF5} $\mapsto$ `qf5pT}  , \index{FEQF5|textbf}\index{fespace!FEQF5}
-      \item `FEQF7} $\mapsto$ `qf7pT}  , \index{FEQF7|textbf}\index{fespace!FEQF7}
-      \item `FEQF9} $\mapsto$ `qf9pT}  , \index{FEQF9|textbf}\index{fespace!FEQF9}
-      \item `FEQF13d} $\mapsto$ `qfV1}  , \index{FEQF13d|textbf}\index{fespace!FEQF13d}
-      \item `FEQF23d} $\mapsto$ `qfV2}  , \index{FEQF23d|textbf}\index{fespace!FEQF23d}
-      \item `FEQF53d} $\mapsto$ `qfV5}   \index{FEQF53d|textbf}\index{fespace!FEQF53d}
-    \end{itemize}
-   You can use this element element of do optimization to store and reuse  function with long formula in non linear process in integral. 
-    
-     \end{description}
+
+* `:::freefem [FEQF]` (need `:::freefem load "Element_QF"`, $\codered$ version 3.45, dimension 2 or 3) the finite element to store function at default quadrature points (so the quadrature is `:::freefem qf5pT` in 2d and is `:::freefem qfV5` in 3d). For over quadrature you have the following correspondance finite element, quadrature formula. 
+
+	* `:::freefem FEQF1` $\mapsto$ `:::freefem qf1pT`,
+	* `:::freefem FEQF2` $\mapsto$ `:::freefem qf2pT`,
+	* `:::freefem FEQF5` $\mapsto$ `:::freefem qf5pT`,
+	* `:::freefem FEQF7` $\mapsto$ `:::freefem qf7pT`,
+	* `:::freefem FEQF9` $\mapsto$ `:::freefem qf9pT`,
+ 	* `:::freefem FEQF13d` $\mapsto$ `:::freefem qfV1`,
+	* `:::freefem FEQF23d` $\mapsto$ `:::freefem qfV2`,
+	* `:::freefem FEQF53d` $\mapsto$ `:::freefem qfV5`
+
+   You can use this element element of do optimization to store and reuse function with long formula in non linear process in integral. 
