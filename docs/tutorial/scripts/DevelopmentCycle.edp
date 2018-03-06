@@ -14,5 +14,5 @@ fespace Vh(Th,P2);
 Vh f = sin(pi*x)*cos(pi*y);
 Vh g = sin(pi*x + cos(pi*y));
 
-plot(f, wait=debug);  //plot the function f
-plot(g, wait=debug);  //plot the function g
+plot(f, wait=debug); //plot the function f
+plot(g, wait=debug); //plot the function g

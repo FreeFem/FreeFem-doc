@@ -29,7 +29,7 @@ Vh q=0;
 matrix dtM1x, dtM1y;
 
 // Macro
-macro  BuildMat()
+macro BuildMat()
 {	/* for memory managenemt */
 	varf vM(unused, v) = int2d(Th)(v);
 	varf vdx(u, v) = int2d(Th)(v*dx(u)*dt);

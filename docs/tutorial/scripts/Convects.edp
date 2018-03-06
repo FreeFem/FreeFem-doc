@@ -2,7 +2,7 @@
 real dt = 0.17;
 
 // Mesh
-border C(t=0., 2.*pi) {x=cos(t); y=sin(t);};
+border C(t=0., 2.*pi) {x=cos(t); y=sin(t);}
 mesh Th = buildmesh(C(100));
 
 // Fespace

@@ -80,7 +80,7 @@ error Compile error : parse error
 
 If you use the same symbol twice as in:
 ```freefem
-real aaa =1;
+real aaa = 1;
 real aaa;
 ```
 then you will get the message:
@@ -110,5 +110,3 @@ For example
 real aaa =1;
 // real aaa;
 ```
-
-

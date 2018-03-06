@@ -14,10 +14,17 @@ Vh v=exp(-10*((x-0.3)^2 +(y-0.3)^2)), vWall=0, rhs=0;
 
 // Problem
 //qf1pTlump means mass lumping is used
-problem  FVM(v,vh) = int2d(th,qft=qf1pTlump)(v*vh/dt)
-                  - int2d(th,qft=qf1pTlump)(vold*vh/dt)
-      + int1d(th,a)(((u1*N.x+u2*N.y)<0)*(u1*N.x+u2*N.y)*vWall*vh)
-+ rhs[] ;
+problem FVM (v, vh)
+	= int2d(th, qft=qf1pTlump)(
+		  v*vh/dt
+	)
+	- int2d(th, qft=qf1pTlump)(
+		  vold*vh/dt
+	)
+	+ int1d(th, a)(
+		  ((u1*N.x+u2*N.y)<0)*(u1*N.x+u2*N.y)*vWall*vh
+	)
+	+ rhs[] ;
 
 matrix A;
 MatUpWind0(A, th, vold, [u1, u2]);
@@ -29,5 +36,3 @@ for (int t = 0; t < 2.*pi ; t += dt){
 	FVM;
 	plot(v, wait=0);
 }
-
-

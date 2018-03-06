@@ -41,7 +41,7 @@ Uh u, uu, ff;
 solve muwave(v, w)
 	= int2d(Th)(
 		  v*w*(1+R)
-        - (dx(v)*dx(w) + dy(v)*dy(w))*(1 - 0.5i)
+		- (dx(v)*dx(w) + dy(v)*dy(w))*(1 - 0.5i)
 	)
 	+ on(1, v=0)
 	+ on(2, v=sin(pi*(y-c)/(c-d)))

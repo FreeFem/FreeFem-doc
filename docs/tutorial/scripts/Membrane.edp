@@ -19,8 +19,8 @@ solve Laplace(phi, w)
 		  dx(phi)*dx(w)
 		+ dy(phi)*dy(w)
 	)
-        - int2d(Th)(
-        	  f*w
+	- int2d(Th)(
+		  f*w
 	)
 	+ on(Gamma1, phi=z)
 	;

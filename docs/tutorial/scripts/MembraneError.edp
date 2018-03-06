@@ -15,11 +15,11 @@ real[int] L2error(2); //an array of two values
 for(int n = 0; n < 2; n++){
 	// Mesh
 	mesh Th = buildmesh(Gamma1(20*(n+1)) + Gamma2(10*(n+1)));
-	
+
 	// Fespace
 	fespace Vh(Th, P2);
 	Vh phi, w;
-	
+
 	// Solve
 	solve Laplace(phi, w)
 		= int2d(Th)(
@@ -34,17 +34,17 @@ for(int n = 0; n < 2; n++){
 		)
 		+ on(Gamma1,phi=0)
 		;
-	
+
 	// Plot
 	plot(Th, phi, wait=true, ps="Membrane.eps");
-	
+
 	// Error
 	L2error[n] = sqrt(int2d(Th)((phi-phiexact)^2));
 }
 
 // Display loop
 for(int n = 0; n < 2; n++)
-	cout << "L2error " << n << " = " <<  L2error[n] << endl;
+	cout << "L2error " << n << " = " << L2error[n] << endl;
 
 // Convergence rate
 cout << "convergence rate = "<< log(L2error[0]/L2error[1])/log(2.) << endl;

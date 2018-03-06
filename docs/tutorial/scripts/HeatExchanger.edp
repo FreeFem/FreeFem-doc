@@ -15,7 +15,7 @@ border C22(t=0., 1.){x=-1.; y=3.-6.*t; label=C2;}
 border C23(t=0., 1.){x=-1.-t; y=-3.; label=C2;}
 border C24(t=0., 1.){x=-2.; y=-3.+6.*t; label=C2;}
 
-plot(   C0(50) //to see the border of the domain
+plot(C0(50)	//to see the border of the domain
 	+ C11(5)+C12(20)+C13(5)+C14(20)
 	+ C21(-5)+C22(-20)+C23(-5)+C24(-20),
 	wait=true, ps="heatexb.eps");
@@ -45,6 +45,3 @@ solve a(u, v)
 
 // Plot
 plot(u, wait=true, value=true, fill=true, ps="HeatExchanger.eps");
-
-
-

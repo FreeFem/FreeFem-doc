@@ -64,7 +64,7 @@ which for the unknown $u$ is locally elliptic if ${\p\varphi\over\p x} < 0$ and 
 
 !!!example
 	Laplace's equation is elliptic:
-
+	
 	$$
 	\Delta\varphi \equiv {\p^2\varphi\over\p x^2_1}
 		+ {\p^2\varphi\over\p x^2_2}

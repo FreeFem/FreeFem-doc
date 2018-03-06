@@ -13,7 +13,7 @@ Vh w, ccold, v1 = y, v2 = -x, cc = exp(-10*((x-0.3)^2 +(y-0.3)^2));
 macro n() (N.x*v1 + N.y*v2) // Macro without parameter
 
 // Problem
-problem  Adual(cc, w)
+problem Adual(cc, w)
 	= int2d(Th)(
 		  (cc/dt+(v1*dx(cc)+v2*dy(cc)))*w
 	)
@@ -35,6 +35,3 @@ for (real t = 0.; t < 2.*pi; t += dt){
 real [int] viso = [-0.2, -0.1, 0., 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1., 1.1];
 plot(cc, wait=1, fill=1, ps="ConvectCG.eps", viso=viso);
 plot(cc, wait=1, fill=1, ps="ConvectDG.eps", viso=viso);
-
-
-
