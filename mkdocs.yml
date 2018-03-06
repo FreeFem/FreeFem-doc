@@ -4,7 +4,9 @@ pages:
   - Download: introduction/download.md
   - Installation: introduction/installation.md
   - Documentation:
-    - Home: documentation/index.md
+    - (TODO) Home: documentation/index.md
+    - (TODO) Mesh Generation: documentation/MeshGeneration.md
+    - Finite Element: documentation/FiniteElement.md
   - Language References:
     - Home: reference/index.md
     - Types: reference/types.md
@@ -38,7 +40,6 @@ pages:
     - A transient Stokes solver in matrix form: tutorial/TimeDependentStokes.md
   - Examples:
     - Home: examples/index.md
-    - (TODO) Commands for mesh generation: examples/commands_mesh_generation.md
 
 theme:
   feature:

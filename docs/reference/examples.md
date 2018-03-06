@@ -1,3 +1,5 @@
+See [tutorials](../tutorial) and [examples](../examples) for more detailed algorithms
+
 ## Useful macro
 
 ```freefem
@@ -150,18 +152,15 @@ int NbIter = T/dt;
 for (int i = 0; i < NbIter; i++){
 	// Update
 	[Upx, Upy] = [Ux, Uy];
-	
+
 	// Solve
 	ElasticiteLineaire;
-	
+
 	// Movemesh
 	Th = movemesh(Th, [x+dt*(Ux-Upx), y+dt*(Uy-Upy)]);
 	[Ux, Uy] = [Ux, Uy];
-	
+
 	// Plot
 	plot([Ux, Uy]);
 }
 ```
-
-
-
