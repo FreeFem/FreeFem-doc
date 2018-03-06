@@ -10,8 +10,8 @@ $
 When the solution wave is monochromatic (and that depend on the boundary and initial conditions), $u$ is of the form $u(x,t)=Re(v(x) e^{ik t})$ where $v$ is a solution of Helmholtz's equation:
 
 \begin{eqnarray}
-k^{2}v  + c^{2}\Delta v  =0 \hbox{ in } \Omega,
-\frac{\p v}{\p n}|_\Gamma=g.
+	k^{2}v + c^{2}\Delta v &= 0 &\hbox{ in } \Omega\\
+	\frac{\p v}{\p n}|_\Gamma &= g.
 \end{eqnarray}
 
 where $g$ is the source.
@@ -69,7 +69,7 @@ real sigma = 20; //value of the shift
 
 // Problem
 // OP = A - sigma B ; // The shifted matrix
-varf  op(u1, u2)
+varf op(u1, u2)
 	= int2d(Th)(
 		  dx(u1)*dx(u2)
 		+ dy(u1)*dy(u2)
@@ -89,8 +89,8 @@ matrix B = b(Vh, Vh, solver=CG, eps=1e-20);
 // Eigen values
 int nev=2; // Number of requested eigenvalues near sigma
 
-real[int] ev(nev); // To store the  nev eigenvalue
-Vh[int] eV(nev);   // To store the nev eigenvector
+real[int] ev(nev);	// To store the nev eigenvalue
+Vh[int] eV(nev);	// To store the nev eigenvector
 
 int k=EigenValue(OP, B, sym=true, sigma=sigma, value=ev, vector=eV,
 	tol=1e-10, maxit=0, ncv=0);
@@ -98,12 +98,8 @@ int k=EigenValue(OP, B, sym=true, sigma=sigma, value=ev, vector=eV,
 cout << ev(0) << " 2 eigen values " << ev(1) << endl;
 v = eV[0];
 plot(v, wait=true, ps="eigen.eps");
-
-
-
 ```
 
 | <a name="Fig1">Fig. 1</a>: Amplitude of an acoustic signal coming from the left vertical wall.| First eigen state ($\lambda=(k/c)^2=19.4256$) close to $20$ of eigenvalue problem :$ -\Delta \varphi = \lambda \varphi$ and $ \frac{\partial \varphi}{\partial n} = 0$ on $\Gamma$}|
 |:----:|:----:|
 |![Acoustics](images/acoustics_0.svg)|![Acoustics](images/acoustics.svg)|
-

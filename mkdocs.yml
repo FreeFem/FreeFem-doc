@@ -18,24 +18,24 @@ pages:
     - (TODO) TODO: reference/TODO.md
   - Tutorials:
     - Getting started: tutorial/index.md
-    - Poisson's equation: tutorial/poisson.md
-    - Membrane: tutorial/membrane.md
-    - Heat Exchanger: tutorial/heat_exchanger.md
-    - Acoustics: tutorial/acoustics.md
-    - Thermal Conduction: tutorial/thermal_conduction.md
-    - Irrotational Fan Blade Flow and Thermal effects: tutorial/fan_blade_flow.md
-    - Pure convection, The rotating hill: tutorial/rotating_hill.md
-    - The system of elasticity: tutorial/elasticity_system.md
-    - The system of Stokes for fluids: tutorial/stokes_for_fluid_system.md
-    - A projection Algorithm for the Navier-Stokes equations: tutorial/navier_stokes_projection.md
-    - (TODO) Newton method for the steady Navier_Stokes equations: tutorial/newton_method_navier_stokes.md
-    - (TODO) A large fluid problem: tutorial/large_fluid_problem.md
-    - (TODO) An example with complex numbers: tutorial/complex_numbers.md
-    - (TODO) Optimal control: tutorial/optimal_control.md
-    - (TODO) A flow with shocks: tutorial/flow_with_shocks.md
-    - (TODO) Classifications of the equations: tutorial/equations_classification.md
-    - (TODO) Time dependent schema optimization for heat equations: tutorial/heat_equation_optimization.md
-    - (TODO) A transient Stokes solver in matrix form: tutorial/transient_stokes_solver_matrix.md
+    - Poisson's equation: tutorial/Poisson.md
+    - (TODO) Classifications of the equations: tutorial/EquationsClassification.md
+    - Membrane: tutorial/Membrane.md
+    - Heat Exchanger: tutorial/HeatExchanger.md
+    - Acoustics: tutorial/Acoustics.md
+    - Thermal Conduction: tutorial/ThermalConduction.md
+    - Irrotational Fan Blade Flow and Thermal effects: tutorial/FanBlade.md
+    - Pure convection, The rotating hill: tutorial/RotatingHill.md
+    - The system of elasticity: tutorial/Elasticity.md
+    - The system of Stokes for fluids: tutorial/Stokes.md
+    - A projection Algorithm for the Navier-Stokes equations: tutorial/NavierStokesProjection.md
+    - Newton method for the steady Navier-Stokes equations: tutorial/NavierStokesNewton.md
+    - ($\codered$ ERROR) A large fluid problem: tutorial/large_fluid_problem.md
+    - An example with complex numbers: tutorial/ComplexNumbers.md
+    - Optimal control: tutorial/OptimalControl.md
+    - A flow with shocks: tutorial/FlowWithShocks.md
+    - Time dependent schema optimization for heat equations: tutorial/HeatEquationOptimization.md
+    - A transient Stokes solver in matrix form: tutorial/TimeDependentStokes.md
   - Examples:
     - Home: examples/index.md
     - (TODO) Commands for mesh generation: examples/commands_mesh_generation.md

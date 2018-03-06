@@ -1,3 +1,6 @@
+\codered
+This script does not run as expected
+
 # A Large Fluid Problem
 
 A friend of one of us in Auroville-India was building a ramp to access an air conditioned room. As I was visiting the construction site he told me that he expected to cool air escaping by the door to the room to slide down the ramp and refrigerate the feet of the coming visitors.  I told him "no way" and decided to check numerically.  The results are on the front page of this book.
@@ -164,5 +167,3 @@ for (iter=1;iter<=nbiter;iter++)
 }
 cout << "CPU " <<clock()-s0 << "s " << endl;
 ```
-
-

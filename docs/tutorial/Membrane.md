@@ -1,9 +1,9 @@
 ## Membrane
 
 **Summary :** _Here we shall learn how to solve a Dirichlet and/or mixed Dirichlet Neumann problem for the Laplace operator with
-application to the equilibrium of a membrane under load.  We shall also check the accuracy of the method and interface with other graphics packages_
+application to the equilibrium of a membrane under load. We shall also check the accuracy of the method and interface with other graphics packages_
 
-An elastic membrane $\Omega$ is attached to a planar rigid support $\Gamma$, and a force $f(x) dx$ is exerted on each surface element $\d{x}=\d{x}_1 \d{x}_2$. The vertical membrane displacement, $\varphi(x)$, is  obtained by solving  Laplace's equation:
+An elastic membrane $\Omega$ is attached to a planar rigid support $\Gamma$, and a force $f(x) dx$ is exerted on each surface element $\d{x}=\d{x}_1 \d{x}_2$. The vertical membrane displacement, $\varphi(x)$, is obtained by solving Laplace's equation:
 
 $$
 -\Delta \varphi =f ~\hbox{in}~ \Omega.
@@ -21,7 +21,7 @@ $$
 \varphi|_{\Gamma_1}=z,~~~~\frac{\p\varphi}{\p n}|_{\Gamma_2}=0
 $$
 
-where $\Gamma_1=\Gamma-\Gamma_2$; recall that  $\frac{\p\varphi}{\p n}=\n\varphi\cdot n$. Let us recall also that the Laplace operator $\Delta$ is defined by:
+where $\Gamma_1=\Gamma-\Gamma_2$; recall that $\frac{\p\varphi}{\p n}=\n\varphi\cdot n$. Let us recall also that the Laplace operator $\Delta$ is defined by:
 
 $$
 \Delta \varphi = {\p ^{2}\varphi \over \p x^{2}_{1} }
@@ -35,7 +35,7 @@ With such _"mixed boundary conditions"_ the problem has a unique solution (**see
 E(\phi) =\min_{\varphi-z\in V} E(v) ,\quad \mbox{with} \quad E(v)=\int_\Omega(\frac12|\n v|^2-fv )
  $$
 
-and where  $V$ is the subspace of the Sobolev space $H^1(\Omega)$ of functions which have zero trace on $\Gamma_1$. Recall that ($x\in\R^d,~d=2$ here)
+and where $V$ is the subspace of the Sobolev space $H^1(\Omega)$ of functions which have zero trace on $\Gamma_1$. Recall that ($x\in\R^d,~d=2$ here)
 
 $$
 H^1(\Omega)=\{u\in L^2(\Omega)~:~\n u\in (L^2(\Omega))^d\}
@@ -52,7 +52,7 @@ Next an integration by parts (Green's formula) will show that this is equivalent
 !!! warning
 	Unlike Freefem+ which had both weak and strong forms, FreeFem++ implements only weak formulations. It is not possible to go further in using this software if you don't know the weak form (i.e. variational formulation) of your problem: either you read a book, or ask help form a colleague or drop the matter. Now if you want to solve a system of PDE like $A(u,v)=0,~ B(u,v)=0$ don't close this manual, because in weak form it is
 	$$
-    	\int_\Omega(A(u,v)w_1+B(u,v)w_2)=0~~\forall w_1,w_2...
+	\int_\Omega(A(u,v)w_1+B(u,v)w_2)=0~~\forall w_1,w_2...
 	$$
 
 **Example**
@@ -81,8 +81,8 @@ solve Laplace(phi, w)
 		  dx(phi)*dx(w)
 		+ dy(phi)*dy(w)
 	)
-        - int2d(Th)(
-        	  f*w
+	- int2d(Th)(
+		  f*w
 	)
 	+ on(Gamma1, phi=z)
 	;
@@ -109,9 +109,9 @@ plot(phi,wait=true,fill=true); //Plot phi with full color display
 
 Results are on [figure 1](#Fig1)</a>.
 
-<a name="Fig1">Figure 1.1:</a> Mesh of the ellipse. | <a name="Fig1.2">Figure 1.2:</a>  Level lines of the membrane deformation.
+<a name="Fig1">Figure 1.1:</a> Mesh of the ellipse. | <a name="Fig1.2">Figure 1.2:</a> Level lines of the membrane deformation.
 :-------------------------:|:-------------------------:
-![membrane Th](images/membraneTh.svg)  |  ![membrane level lines](images/membrane.svg)
+![membrane Th](images/membraneTh.svg) | ![membrane level lines](images/membrane.svg)
 
 Next we would like to check the results !
 
@@ -153,11 +153,11 @@ real[int] L2error(2); //an array of two values
 for(int n = 0; n < 2; n++){
 	// Mesh
 	mesh Th = buildmesh(Gamma1(20*(n+1)) + Gamma2(10*(n+1)));
-	
+
 	// Fespace
 	fespace Vh(Th, P2);
 	Vh phi, w;
-	
+
 	// Solve
 	solve Laplace(phi, w)
 		= int2d(Th)(
@@ -172,17 +172,17 @@ for(int n = 0; n < 2; n++){
 		)
 		+ on(Gamma1,phi=0)
 		;
-	
+
 	// Plot
 	plot(Th, phi, wait=true, ps="membrane.eps");
-	
+
 	// Error
 	L2error[n] = sqrt(int2d(Th)((phi-phiexact)^2));
 }
 
 // Display loop
 for(int n = 0; n < 2; n++)
-	cout << "L2error " << n << " = " <<  L2error[n] << endl;
+	cout << "L2error " << n << " = " << L2error[n] << endl;
 
 // Convergence rate
 cout << "convergence rate = "<< log(L2error[0]/L2error[1])/log(2.) << endl;
@@ -225,8 +225,8 @@ Still that may not take you where you want. Here is an interface with gnuplot to
 	for (int i = 0; i < Th.nt; i++)
 	{
 		for (int j = 0; j < 3; j++)
-			ff << Th[i][j].x  << " "<< Th[i][j].y << " " << phi[][Vh(i,j)] << endl;
-		
+			ff << Th[i][j].x << " "<< Th[i][j].y << " " << phi[][Vh(i,j)] << endl;
+
 		ff << Th[i][0].x << " " << Th[i][0].y << " " << phi[][Vh(i,0)] << "\n\n\n"
 	}
 }

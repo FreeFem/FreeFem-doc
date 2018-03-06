@@ -3,16 +3,16 @@
 In the case of a flow invariant with respect to the third coordinate (two-dimensional flow), flows at low Reynolds number (for instance micro-organisms) satisfy,
 
 \begin{eqnarray}
-    -\Delta \mathbf{u} + \n p &= 0\\
-    \n\cdot \mathbf{u} &= 0
+	-\Delta \mathbf{u} + \n p &= 0\\
+	\n\cdot \mathbf{u} &= 0
 \end{eqnarray}
 
 where $\mathbf{u}=(u_1,u_2)$ is the fluid velocity and $p$ its pressure.
 
-The driven cavity is a standard test. It is a box full of liquid with its lid moving horizontally at speed one.  The pressure and the velocity must be discretized in compatible fintie element spaces for the LBB conditions to be satisfied:
+The driven cavity is a standard test. It is a box full of liquid with its lid moving horizontally at speed one. The pressure and the velocity must be discretized in compatible fintie element spaces for the LBB conditions to be satisfied:
 
 $$
-    \sup_{p\in P_h}\frac{(\mathbf{u},\n p)}{|p|}\geq \beta|\mathbf{u}|~~~\forall \mathbf{u}\in U_h
+\sup_{p\in P_h}\frac{(\mathbf{u},\n p)}{|p|}\geq \beta|\mathbf{u}|~~~\forall \mathbf{u}\in U_h
 $$
 
 ```freefem

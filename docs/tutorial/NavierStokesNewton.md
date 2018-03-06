@@ -1,3 +1,52 @@
+# Newton Method for the Steady Navier-Stokes equations
+
+The problem is find the velocity field $\mathbf{u}=(u_i)_{i=1}^d$ and the pressure $p$ of a Flow satisfying in the domain $\Omega \subset \mathbb{R}^d (d=2,3)$:
+
+\begin{eqnarray*}
+(\mathbf{u}\cdot\nabla) \mathbf{u}-\nu \Delta \mathbf{u}+\nabla p&=&0\\
+	\nabla\cdot \mathbf{u}&=&0
+\end{eqnarray*}
+
+where $\nu$ is the viscosity of the fluid, $\nabla = (\p_i )_{i=1}^d $, the dot product is $\cdot$, and $\Delta = \nabla\cdot\nabla$ with the some boundary conditions ( $\mathbf{u}$ is  given on $\Gamma$)
+
+The weak form is
+find $\mathbf{u}, p $ such than for $\forall \mathbf{v}$ (zero on $\Gamma$), and $\forall  q$
+
+\begin{equation}
+\int_\Omega  ((\mathbf{u}\cdot\nabla) \mathbf{u} ). \mathbf{v} + \nu \nabla \mathbf{u}:\nabla \mathbf{v}
+- p \nabla\cdot \mathbf{v} - q \nabla\cdot \mathbf{u} = 0
+\end{equation}
+
+The Newton Algorithm to solve nonlinear problem is
+
+Find $u\in V$ such that $F(u)=0$ where
+$ F : V \mapsto V $.
+
+1. choose $u_0\in \R^n $ , ;
+2. for ( $i =0$; $i$ < niter; $i = i+1$)
+	1. solve $DF(u_i) w_i = F(u_i)$;
+	2. $u_{i+1} = u_i - w_i$;
+
+break $|| w_i|| < \varepsilon$.
+
+
+Where $DF(u)$ is the differential of $F$ at point $u$, this is a linear application such that:
+
+$
+F(u+\delta) = F(u) + DF(u) \delta + o(\delta)
+$
+
+For Navier Stokes, $F$ and $DF$ are :
+
+\begin{eqnarray*}
+F(\mathbf{u},p) = \int_\Omega &&((\mathbf{u}\cdot\nabla) \mathbf{u} ). \mathbf{v} + \nu \nabla \mathbf{u}:\nabla \mathbf{v}
+ - p \nabla\cdot \mathbf{v} - q \nabla\cdot \mathbf{u}\\
+DF(\mathbf{u},p)(\mathbf{\delta u} ,\delta p) = \int_\Omega &&((\mathbf{\delta u}\cdot\nabla) \mathbf{u} ). \mathbf v + ((\mathbf{u}\cdot\nabla) \mathbf{\delta u} ). \mathbf{v} \\
+ &+& \nu \nabla \mathbf{\delta u}:\nabla \mathbf{v} - \delta p \nabla\cdot \mathbf{v} - q \nabla\cdot \mathbf{\delta u}
+\end{eqnarray*}
+
+So the Newton algorithm become
+```freefem
 // Parameters
 real R = 5.;
 real L = 15.;
@@ -39,7 +88,7 @@ Mh pp;
 // Macro
 macro Grad(u1,u2) [dx(u1), dy(u1), dx(u2),dy(u2)] //
 macro UgradV(u1,u2,v1,v2) [[u1,u2]'*[dx(v1),dy(v1)],
-														[u1,u2]'*[dx(v2),dy(v2)]] //
+						[u1,u2]'*[dx(v2),dy(v2)]] //
 macro div(u1,u2) (dx(u1) + dy(u2)) //
 
 // Initialization
@@ -112,3 +161,14 @@ while(1){
 		p = pp;
 	}
 }
+```
+
+!!!note
+	We use a trick to make continuation on the viscosity $\nu$, because the Newton method blowup owe start with the final viscosity $\nu$.
+
+	$nu$ is gradually increased to the desired value.
+
+|<a name="Fig1">Fig. 1</a>: Mesh and the velocity and pressure at Reynolds 200|
+|:----:|
+|![NSNewtonTh](images/NSNewtonTh.jpg)|
+|![NSNewtonUP](images/NSNewtonUP.jpg)|

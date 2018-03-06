@@ -12,8 +12,8 @@ Pure convection by $\mathbf{u}$ is
 
 $$
 \begin{eqnarray}
-\p_t c  + \mathbf{u}.\nabla c  &= 0 &\hbox{ in } \Omega\times(0,T)\\
-c (t=0) &=  c ^0 &\hbox{ in } \Omega.
+\p_t c + \mathbf{u}.\nabla c &= 0 &\hbox{ in } \Omega\times(0,T)\\
+c (t=0) &= c ^0 &\hbox{ in } \Omega.
 \end{eqnarray}
 $$
 
@@ -26,7 +26,7 @@ $$
 where $x_t$ is the particle path in the flow starting at point $x$ at time $0$. So $x_t$ are solutions of
 
 $$
-\dot{x_t} = u(x_t), \quad\ x_{t=0} =x , \quad\mbox{where}\quad  \dot{x_t} = \frac{\d ( t \mapsto x_t)}{\d t}
+\dot{x_t} = u(x_t), \quad\ x_{t=0} =x , \quad\mbox{where}\quad \dot{x_t} = \frac{\d ( t \mapsto x_t)}{\d t}
 $$
 
 The ODE are reversible and we want the solution at point $x$ at time $t$ ( not at point $x_t$) the initial point is $x_{-t}$, and we have
@@ -38,13 +38,13 @@ The game consists in solving the equation until $T=2\pi$, that is for a full rev
 
 **Solution by a Characteristics-Galerkin Method**
 
-In FreeFem++ there is an operator called `:::freefem convect([u1,u2], dt, c)` which compute $ c\circ X$ with $X$ is the convect field defined by $ X(x)= x_{dt}$ and where  $x_\tau$ is particule path in the steady state velocity field $\mathbf{u}=[u1,u2]$ starting at point $x$ at time $\tau=0$, so $x_\tau$ is solution of the following ODE:
+In FreeFem++ there is an operator called `:::freefem convect([u1,u2], dt, c)` which compute $ c\circ X$ with $X$ is the convect field defined by $ X(x)= x_{dt}$ and where $x_\tau$ is particule path in the steady state velocity field $\mathbf{u}=[u1,u2]$ starting at point $x$ at time $\tau=0$, so $x_\tau$ is solution of the following ODE:
 
 $$
 \dot{x}_\tau = u(x_\tau), \mathbf{x}_{\tau=0}=x.
 $$
 
-When $\mathbf{u}$ is piecewise constant; this is possible because $x_\tau$ is then a polygonal curve which can be computed exactly and the solution exists always when $\mathbf{u}$ is divergence free; convect returns  $c(x_{df})=C\circ X$.
+When $\mathbf{u}$ is piecewise constant; this is possible because $x_\tau$ is then a polygonal curve which can be computed exactly and the solution exists always when $\mathbf{u}$ is divergence free; convect returns $c(x_{df})=C\circ X$.
 
 ```freefem
 // Parameters
@@ -106,7 +106,7 @@ Vh w, ccold, v1 = y, v2 = -x, cc = exp(-10*((x-0.3)^2 +(y-0.3)^2));
 macro n() (N.x*v1 + N.y*v2) // Macro without parameter
 
 // Problem
-problem  Adual(cc, w)
+problem Adual(cc, w)
 	= int2d(Th)(
 		  (cc/dt+(v1*dx(cc)+v2*dy(cc)))*w
 	)
@@ -229,9 +229,9 @@ Vh v=exp(-10*((x-0.3)^2 +(y-0.3)^2)), vWall=0, rhs=0;
 
 // Problem
 //qf1pTlump means mass lumping is used
-problem  FVM(v,vh) = int2d(th,qft=qf1pTlump)(v*vh/dt)
-                  - int2d(th,qft=qf1pTlump)(vold*vh/dt)
-      + int1d(th,a)(((u1*N.x+u2*N.y)<0)*(u1*N.x+u2*N.y)*vWall*vh)
+problem FVM(v,vh) = int2d(th,qft=qf1pTlump)(v*vh/dt)
+	- int2d(th,qft=qf1pTlump)(vold*vh/dt)
+	+ int1d(th,a)(((u1*N.x+u2*N.y)<0)*(u1*N.x+u2*N.y)*vWall*vh)
 + rhs[] ;
 
 matrix A;

@@ -20,14 +20,14 @@ A possible algorithm, proposed by Chorin, is :
 \end{eqnarray}
 
 \begin{eqnarray}
-	-\Delta p^{m+1} &= -\nabla\cdot  \mathbf{u}^mo\mathbf{X}^m &\\
+	-\Delta p^{m+1} &= -\nabla\cdot \mathbf{u}^mo\mathbf{X}^m &\\
 	\p_n p^{m+1} &= 0 &\mbox{ on } \Gamma\\
 	p^{m+1} &= 0 &\mbox{ on } \Gamma_{out}
 \end{eqnarray}
 
 where $\mathbf{u}o\mathbf{X}(x) = \mathbf{u}(\mathbf{x}-\mathbf{u}(\mathbf{x})\delta t)$ since $\p _t \mathbf{u} + \mathbf{u}\cdot\nabla \mathbf{u} $ is approximated by the method of characteristics, as in the previous section.
 
-We use the Chorin's algorithm with free boundary condition  at outlet (i.e.  $p=0,\nu \p_n u = 0$),  to compute a correction, q, to the pressure.
+We use the Chorin's algorithm with free boundary condition at outlet (i.e. $p=0,\nu \p_n u = 0$), to compute a correction, q, to the pressure.
 
 \begin{eqnarray}
 	-\Delta q &= \n\cdot\mathbf{u}\\
@@ -40,7 +40,7 @@ and define
 	p^{m+1} &= p^m-q
 \end{eqnarray}
 
-where $\tilde{\mathbf{u}}$ is the $(\mathbf{u}^{m+1}, v^{m+1})$ of Chorin's algorithm, and  where $P$ is the  $L^2$ projection with mass lumping ( a sparse matrix).
+where $\tilde{\mathbf{u}}$ is the $(\mathbf{u}^{m+1}, v^{m+1})$ of Chorin's algorithm, and where $P$ is the $L^2$ projection with mass lumping ( a sparse matrix).
 
 **The backward facing step**
 
@@ -83,7 +83,7 @@ Vh q=0;
 matrix dtM1x, dtM1y;
 
 // Macro
-macro  BuildMat()
+macro BuildMat()
 {	/* for memory managenemt */
 	varf vM(unused, v) = int2d(Th)(v);
 	varf vdx(u, v) = int2d(Th)(v*dx(u)*dt);

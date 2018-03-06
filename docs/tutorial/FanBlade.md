@@ -1,6 +1,6 @@
 #Irrotational Fan Blade Flow and Thermal effects
 
-**Summary :** _Here we will learn how to deal with a multi-physics system of PDEs on a complex geometry, with multiple meshes within one problem.  We also learn how to manipulate the region indicator and see how smooth is the projection operator from one mesh to another._
+**Summary :** _Here we will learn how to deal with a multi-physics system of PDEs on a complex geometry, with multiple meshes within one problem. We also learn how to manipulate the region indicator and see how smooth is the projection operator from one mesh to another._
 
 **Incompressible flow**
 
@@ -9,7 +9,7 @@ Without viscosity and vorticity incompressible flows have a velocity given by:
 $$
 u=\left(\begin{matrix}{\p \psi \over \p x_{2} }\\ -{\p \psi
 \over \p x_{1}} \end{matrix}\right), \quad
-\hbox{  where $\psi  $ is solution of }\quad  \Delta \psi =0
+\hbox{ where $\psi $ is solution of }\quad \Delta \psi =0
 $$
 
 This equation expresses both incompressibility ($\nabla\cdot u=0$) and absence of vortex ($\nabla\times u =0$).
@@ -22,7 +22,7 @@ One can also prescribe the normal velocity at an artificial boundary, and this t
 
 **Airfoil**
 
-Let us consider a wing profile $S$ in a uniform flow. Infinity will be represented by a large circle  $C$ where the flow is assumed to be of uniform velocity; one way to model this problem is to write
+Let us consider a wing profile $S$ in a uniform flow. Infinity will be represented by a large circle $C$ where the flow is assumed to be of uniform velocity; one way to model this problem is to write
 \begin{eqnarray}&&
 \Delta \psi =0 ~\hbox{~in~}~ \Omega, \qquad
 \psi |_{S}=0, \quad
@@ -81,7 +81,7 @@ $$
 \p_t v -\n\cdot(\kappa\n v) + u\cdot\n v =0,~~v(t=0)=v_0, ~~\frac{\p v}{\p n}|_C=0
 $$
 
-But now the domain is outside AND inside $S$ and $\kappa$ takes a different value in air and in steel.  Furthermore there is convection of heat by the flow, hence the term $u\cdot\n v$ above.
+But now the domain is outside AND inside $S$ and $\kappa$ takes a different value in air and in steel. Furthermore there is convection of heat by the flow, hence the term $u\cdot\n v$ above.
 
 Consider the following, to be plugged at the end of the previous program :
 
@@ -135,10 +135,7 @@ for(i = 0; i < nbT; i++){
 
 !!!note
 	How steel and air are identified by the mesh parameter region which is defined when buildmesh is called and takes an integer value corresponding to each connected component of $\Omega$;
-	
+
 	How the convection terms are added without upwinding. Upwinding is necessary when the Pecley number $|u|L/\kappa$ is large (here is a typical length scale), The factor 10 in front of the convection terms is a quick way of multiplying the velocity by 10 (else it is too slow to see something).
-	
+
 	The solver is Gauss' LU factorization and when `:::freefem init`$\neq 0$ the LU decomposition is reused so it is much faster after the first iteration.
-
-
-

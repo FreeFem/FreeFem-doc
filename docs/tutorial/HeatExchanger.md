@@ -88,7 +88,7 @@ Note the following:
 
 * `C0` is oriented counterclockwise by $t$, while `C1` is oriented clockwise and `C2` is oriented counterclockwise. This is why `C1` is viewed as a hole by `:::freefem buildmesh`.
 
-* `C1` and `C2` are built by joining pieces of straight lines. To group them in the same logical unit to input the boundary conditions in a readable way we assigned a label on the boundaries.  As said earlier, borders have an internal number corresponding to their order in the program (check it by adding a `:::freefem cout << C22;` above). This is essential to understand how a mesh can be output to a file and re-read (see below).
+* `C1` and `C2` are built by joining pieces of straight lines. To group them in the same logical unit to input the boundary conditions in a readable way we assigned a label on the boundaries. As said earlier, borders have an internal number corresponding to their order in the program (check it by adding a `:::freefem cout << C22;` above). This is essential to understand how a mesh can be output to a file and re-read (see below).
 
 * As usual the mesh density is controlled by the number of vertices assigned to each boundary. It is not possible to change the (uniform) distribution of vertices but a piece of boundary can always be cut in two or more parts, for instance `C12` could be replaced by `C121+C122`:
 ```freefem
@@ -105,7 +105,7 @@ buildmesh(.../*+ C12(20) */ + C121(12) + C122(8) + ...);
 
 !!! note
 	**Exercise :** Use the symmetry of the problem with respect to the axes.
-	
+
 	Triangulate only one half of the domain, and set Dirichlet conditions on the vertical axis, and Neumann conditions on the horizontal axis.
 
 **Writing and reading triangulation files**
@@ -141,6 +141,3 @@ plot(us);
 ```
 
 Note that the names of the boundaries are lost but either their internal number (in the case of `C0`) or their label number (for `C1` and `C2`) are kept.
-
-
-

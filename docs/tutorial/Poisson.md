@@ -56,9 +56,9 @@ cout << "CPU time = " << (clock()-cpu) << endl;
 As illustrated in [figure 1.2](#Fig1.2), we can see the isovalue of $u$ by using Freefem++ `:::freefem plot` command (see line 29
 above).
 
-<a name="Fig1.1">Figure 1.1</a> - Mesh Th by `:::freefem buildmesh(C(50))`  |  <a name="Fig1.2">Figure 1.2</a> - isovalue by `:::freefem plot(u)`
+<a name="Fig1.1">Figure 1.1</a> - Mesh Th by `:::freefem buildmesh(C(50))` | <a name="Fig1.2">Figure 1.2</a> - isovalue by `:::freefem plot(u)`
 :-------------------------:|:-------------------------:
-![mesh TH](images/firstTh.svg)  |  ![isovalue](images/firstU.svg)
+![mesh TH](images/firstTh.svg) | ![isovalue](images/firstU.svg)
 
 !!! note
 	The qualifier `:::freefem solver=LU` (line 18) is not required and by default a multi-frontal `:::freefem LU` is used.
@@ -68,9 +68,9 @@ above).
 !!! success ""
 	Note how close to the mathematics FreeFem++ language is. Lines 19 to 24 correspond to the mathematical variational equation:
 	$$
-		  \int_{T_h}
+		 \int_{T_h}
 			(
-				  \frac{\p u}{\p x}\frac{\p v}{\p x}
+				 \frac{\p u}{\p x}\frac{\p v}{\p x}
 				+ \frac{\p u}{\p y}\frac{\p v}{\py}
 			)\d x \d y
 		= \int_{T_h}f v\d x\d y
@@ -128,9 +128,9 @@ at edges, vertices etc. Here `:::freefem fespace Vh(Th, P1)` defines $V_h$ to be
 
 As it is a linear vector space of finite dimension, basis can be found. The canonical basis is made of functions, called the _hat function_ $\phi_k$ which are continuous piecewise affine and are equal to 1 on one vertex and 0 on all others. A typical hat function is shown on [figure 2.2](#Fig2.2).
 
-<a name="Fig2.1">Figure 2.1</a>: `:::freefem mesh Th`  |  <a name="Fig2.2">Figure 2.2</a>: Graph of $\phi_1$ (left) and $\phi_6$
+<a name="Fig2.1">Figure 2.1</a>: `:::freefem mesh Th` | <a name="Fig2.2">Figure 2.2</a>: Graph of $\phi_1$ (left) and $\phi_6$
 :-------------------------:|:-------------------------:
-![mesh Th](images/meshTh_2.svg)  |  ![Typical hat functions](images/hat_functions.svg)
+![mesh Th](images/meshTh_2.svg) | ![Typical hat functions](images/hat_functions.svg)
 
 !!! info
 	The easiest way to define $\phi_k$ is by making use of the _barycentric coordinates_ $\lambda_i(x,y),~i=1,2,3$ of a point $q=(x,y)\in T$, defined by $\sum_i\lambda_i=1,~~~\sum_i\lambda_i\vec q^i=\vec q$ where $q^i,~i=1,2,3$ are the 3 vertices of $T$. Then it is easy to see that the restriction of $\phi_k$ on $T$ is precisely $\lambda_k$.

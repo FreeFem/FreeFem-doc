@@ -31,30 +31,29 @@ in a section $\Omega$ subject to forces ${\bf f}$ perpendicular to the
 axis are governed by
 
 $$
-  -\mu \Delta {\bf u} - (\mu+\lambda)  \nabla (\nabla .{\bf u})={\bf f}~~\hbox{in}~~\Omega,
+	-\mu \Delta {\bf u} - (\mu+\lambda) \nabla (\nabla .{\bf u})={\bf f}~~\hbox{in}~~\Omega,
 $$
 
-where $\lambda ,\mu  $ are the Lamé coefficients introduced above.
+where $\lambda$ ,$\mu$ are the Lamé coefficients introduced above.
 
-Remark, we do not used this equation because the associated  variationnal
-form does not give the right boundary condition, we simply use
+Remark, we do not used this equation because the associated variationnal form does not give the right boundary condition, we simply use
 
 $$
-  - div( \sigma ) = \mathbf{f}  \quad  \mbox{in}~~\Omega
+	- div( \sigma ) = \mathbf{f} \quad \mbox{in}~~\Omega
 $$
 
 where the corresponding variationnal form is:
 
 $$
- \int_{\Omega} \sigma(u) : \epsilon(\mathbf{v})\;dx - \int_{\Omega}  \mathbf{v} f \;dx =0;
+ \int_{\Omega} \sigma(u) : \epsilon(\mathbf{v})\;dx - \int_{\Omega} \mathbf{v} f \;dx =0;
 $$
 
-where $:$  denote the tensor scalar product,   i.e. $ a: b = \sum_{i,j}  a_{ij}b_{ij}$.
+where $:$ denote the tensor scalar product,  i.e. $ a: b = \sum_{i,j} a_{ij}b_{ij}$.
 
 So the variationnal form can be written as :
 
 $$
- \int_{\Omega} \lambda \nabla.u   \nabla.v  + 2 \mu \epsilon(\mathbf{u}):\epsilon(\mathbf{v}) \; dx - \int_{\Omega}  \mathbf{v} f  \;dx  =0;
+ \int_{\Omega} \lambda \nabla.u \nabla.v + 2 \mu \epsilon(\mathbf{u}):\epsilon(\mathbf{v}) \; dx - \int_{\Omega} \mathbf{v} f \;dx =0;
 $$
 
 !!! example
@@ -63,7 +62,7 @@ $$
 	The body force is the gravity force $\mathbf{f}$ and the boundary force $\mathbf{g}$ is zero on lower, upper and right sides. The left vertical sides of the beam is fixed. The boundary conditions are
 
 	\begin{eqnarray*}
-	\sigma . {\bf n}  &=& \mathbf{g} = 0    ~~\hbox{on}~~\Gamma_1, \Gamma_4, \Gamma_3, \\
+	\sigma . {\bf n} &=& \mathbf{g} = 0 ~~\hbox{on}~~\Gamma_1, \Gamma_4, \Gamma_3, \\
 	{\bf u} &=& \mathbf{0} ~~\hbox{on}~~\Gamma_2
 	\end{eqnarray*}
 
@@ -89,7 +88,7 @@ Vh uu, vv;
 // Macro
 real sqrt2=sqrt(2.);
 macro epsilon(u1,u2) [dx(u1),dy(u2),(dy(u1)+dx(u2))/sqrt2] //
-// The sqrt2 is because we want: epsilon(u1,u2)'* epsilon(v1,v2) $==  \epsilon(\bm{u}): \epsilon(\bm{v})$
+// The sqrt2 is because we want: epsilon(u1,u2)'* epsilon(v1,v2) $== \epsilon(\bm{u}): \epsilon(\bm{v})$
 macro div(u,v) ( dx(u)+dy(v) ) //
 
 // Problem
@@ -116,11 +115,11 @@ mesh th1 = movemesh(Th, [x+u*coef, y+v*coef]);
 plot(th1,wait=1,ps="lamedeform.eps");
 
 // Output
-real dxmin  = u[].min;
-real dymin  = v[].min;
+real dxmin = u[].min;
+real dymin = v[].min;
 
-cout << " - dep.  max   x  = "<< dxmin << " y=" << dymin << endl;
-cout << "   dep.  (20, 0)  = " << u(20, 0) << " " << v(20, 0) << endl;
+cout << " - dep. max x = "<< dxmin << " y=" << dymin << endl;
+cout << "   dep. (20, 0) = " << u(20, 0) << " " << v(20, 0) << endl;
 ```
 
 The numerical results are shown on [figure 1](#Fig1) and the output is:
@@ -134,7 +133,7 @@ The numerical results are shown on [figure 1](#Fig1) and the output is:
 times: compile 0.010219s, execution 1.5827s
 ```
 
-| <a name="Fig1">Fig. 1 :</a> Solution of Lamé's equations for elasticity for a 2D beam deflected by its own weight and clamped by its left vertical side. Result are shown with a amplification factor equal to  100. The size of the arrow is automatically bound, but the color gives the real length.|  
-|:----|
+| <a name="Fig1">Fig. 1 :</a> Solution of Lamé's equations for elasticity for a 2D beam deflected by its own weight and clamped by its left vertical side. Result are shown with a amplification factor equal to  100. The size of the arrow is automatically bound, but the color gives the real length.|
+|:----:|
 |![Lame's vector](images/lame_vector.svg)|
 |![Lame's deform](images/lame_deformation.svg)|
