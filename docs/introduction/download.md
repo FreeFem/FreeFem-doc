@@ -15,7 +15,7 @@ The source code is available on the [FreeFem++ GitHub Repository](https://github
 
 Lexer type | Version| Description
 :--------- | :---- | :------
-Emacs | `1.0` | ff++-mode.el contributed by [Rafa Rodríguez Galván](rafael.rodriguez@uca.es>).
+Emacs | `1.0` | ff++-mode.el contributed by [Rafa Rodríguez Galván](mailto:rafael.rodriguez@uca.es).
 Textmate 2 | `1.0` | Unzip Textmate2-ff++.zip and follow the explanations given in the How_To.rtf.
 Notepad++ | `1.0` | See the instructions in the PDF
 Gedit | `1.0` | ffpp.lang contributed by Simon Garnotel
