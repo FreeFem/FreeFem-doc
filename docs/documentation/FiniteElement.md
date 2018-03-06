@@ -1,5 +1,6 @@
 $$
-\newcommand{\vecttwo}{\left|\begin{array}{c}#1\\#2\end{array}\right.}
+\newcommand{\vecttwo}[2]{\left|\begin{array}{c}{#1}\\#2\end{array}\right.}
+\newcommand{\vectthree}[3]{\left|\begin{array}{c}{#1}\\#2\\#3\end{array}\right.}
 $$
 
 # Finite Elements
@@ -181,9 +182,9 @@ As of today, the known types of finite element are:
  * `:::freefem [HCT]` $P_3$ $C^1$ conform finite element (2d) (need `:::freefem load "Element_HCT"`) one 3 sub triangles.
 
 	Let call $\mathcal{T}^\triangle_{h}$ the sub mesh of $\mathcal{T}_{h}$ where all triangle are split in 3 at the barycenter.
-	\begin{equation}
+	\begin{equation*}
 		PHCT_{h} = \left\{ v \in C^1(\Omega) \left|\; \forall K \in \mathcal{T}^\triangle_{h}, \ v_{|K} \in P_{3} \right.\right\}
-	\end{equation}
+	\end{equation*}
 	where
 	$P_{3}$ is the set of polynomials of $\R^{2}$ of degrees $\le 3$. The degree of freedom are the value and derivative at vertices and normal derivative a middle edge point of initial meshes,and thank to \cite{HCT} $\codered$.
 
@@ -195,17 +196,17 @@ As of today, the known types of finite element are:
  * `:::freefem [RT0, RT03d]` Raviart-Thomas finite element of degree $0$.
 
 	**The 2d case:**
-	\begin{equation}
-	\label{eq:RT0}
-	RT0_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in	\mathcal{T}_{h} ,\ \mathbf{v}_{|K}(x,y) =
-		\vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y} \right.\right\}
-	\end{equation}
+	\begin{equation*}
+		\label{eq:RT0}
+		RT0_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in	\mathcal{T}_{h} ,\ \mathbf{v}_{|K}(x,y) =
+			\vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y} \right.\right\}
+	\end{equation*}
 	**The 3d case:**
-	\begin{equation}
+	\begin{equation*}
 		\label{eq:RT03d}
 		RT0_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in \mathcal{T}_{h},\ \mathbf{v}_{|K}(x,y,z) =
 			\vectthree{\alpha^1_{K}}{\alpha^2_{K}}{\alpha^3_{K}} + \beta_{K}\vectthree{x}{y}{z} \right.\right\}
-	\end{equation}
+	\end{equation*}
 	where by writing $\textrm{div }\mathbf{w}=\sum_{i=1}^d\p w_i/\p x_i$ with $\mathbf{w}=(w_i)_{i=1}^d$:
 	$$
 	H(\textrm{div})=\left\{\mathbf{w}\in L^{2}(\Omega)^d\left|\textrm{div } \mathbf{w}\in L^{2}(\Omega)\right.\right\}
@@ -213,31 +214,25 @@ As of today, the known types of finite element are:
 	and where $\alpha^1_{K}$, $\alpha^2_{K}$, $\alpha^3_{K}$, $\beta_{K}$ are real numbers.
 
 * `:::freefem [RT0Ortho]` Raviart-Thomas Orthogonal, or Nedelec finite element type I of degree $0$ in dimension 2
-    \begin{equation}
-         RT0Ortho{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in
-         \mathcal{T}_{h} \quad  \mathbf{v}_{|K}(x,y) =
-         \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x}  \right.\right\}
-         \label{RT0Ortho}
-     \end{equation}      
+	\begin{equation*}
+		\label{RT0Ortho}
+		RT0Ortho{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in \mathcal{T}_{h},\ \mathbf{v}_{|K}(x,y) =
+			\vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x} \right.\right\}
+	\end{equation*}
 
 * `:::freefem [Edge03d]` 3d Nedelec finite element or Edge Element of degree $0$.
 
-     **The 3d case:**
-     \begin{equation}
-         Edge0_{h} = \left\{ \mathbf{v} \in H(\textrm{Curl}) \left|\; \forall K \in
-         \mathcal{T}_{h} \quad  \mathbf{v}_{|K}(x,y,z) =
-         \vectthree{\alpha^1_{K}}{\alpha^2_{K}}{\alpha^3_{K}} + \vectthree{\beta^1_{K}}{\beta^2_{K}}{\beta^3_{K}}\times\vectthree{x}{y}{z}  \right.\right\}
-         \label{eq:Edge03d}
-     \end{equation}
-      where by writing $\textrm{curl}\mathbf{w}=\vectthree{\p w_2/\p x_3-\p w_3/\p x_2}{\p w_3/\p x_1-\p w_1/\p x_3}{\p w_1/\p x_2-\p w_2/\p x_1}$ with
-      $ \mathbf{w}=(w_i)_{i=1}^d$,
-      $$
-      H(\textrm{curl})=\left\{\mathbf{w}\in L^{2}(\Omega)^d\left|
-      \textrm{curl } \mathbf{w}\in L^{2}(\Omega)^d
-      \right.\right\}
-      $$
-      and
-      $\alpha^1_{K},\alpha^2_{K},\alpha^3_{K},\beta^1_{K},\beta^2_{K},\beta^3_{K}$ are real numbers.
+	**The 3d case:**
+	\begin{equation*}
+		\label{eq:Edge03d}
+		Edge0_{h} = \left\{ \mathbf{v} \in H(\textrm{Curl}) \left|\; \forall K \in\mathcal{T}_{h}, \ \mathbf{v}_{|K}(x,y,z) =
+			\vectthree{\alpha^1_{K}}{\alpha^2_{K}}{\alpha^3_{K}} + \vectthree{\beta^1_{K}}{\beta^2_{K}}{\beta^3_{K}}\times\vectthree{x}{y}{z} \right.\right\}
+	\end{equation*}
+	where by writing $\textrm{curl}\mathbf{w}=\vectthree{\p w_2/\p x_3-\p w_3/\p x_2}{\p w_3/\p x_1-\p w_1/\p x_3}{\p w_1/\p x_2-\p w_2/\p x_1}$ with $ \mathbf{w}=(w_i)_{i=1}^d$:
+	$$
+	H(\textrm{curl})=\left\{\mathbf{w}\in L^{2}(\Omega)^d\left|\textrm{curl } \mathbf{w}\in L^{2}(\Omega)^d\right.\right\}
+	$$
+	and $\alpha^1_{K},\alpha^2_{K},\alpha^3_{K},\beta^1_{K},\beta^2_{K},\beta^3_{K}$ are real numbers.
 
  * `:::freefem [Edge13d]` (need `:::freefem load "Element_Mixte3d"`) 3d Nedelec finite element or Edge Element of degree $1$.
 
@@ -248,52 +243,44 @@ As of today, the known types of finite element are:
 * `:::freefem [P2pnc]` piecewise quadratic plus a bubble P3 element with the continuity of the 2 moments on each edge (version 3.59) (need `:::freefem load "Element_P2pnc"`
 
 * `:::freefem [RT1]` (need `:::freefem load "Element_Mixte"`)
-     \begin{equation}
-         RT1_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in
-         \mathcal{T}_{h} \quad  \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_1^2,P_0,  \mathbf{v}_{|K}(x,y) =
-         \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y}   \right.\right\}
-         \label{eq:RT1}
-     \end{equation}
+	\begin{equation*}
+		\label{eq:RT1}
+		RT1_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in\mathcal{T}_{h}, \ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_1^2,P_0, \mathbf{v}_{|K}(x,y) =
+			\vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y} \right.\right\}
+	\end{equation*}
 
 * `:::freefem [RT1Ortho]` (need `:::freefem load "Element_Mixte"`, version 3.13, dimension 2 $\codered$)
-         \begin{equation}
-         RT1_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in
-         \mathcal{T}_{h},  \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_1^2,P_0,  \mathbf{v}_{|K}(x,y) =
-         \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x}   \right.\right\}
-         \label{eq:RT1Ortho}
-     \end{equation}
+	\begin{equation*}
+		\label{eq:RT1Ortho}
+		RT1_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in\mathcal{T}_{h},\ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_1^2,P_0, \mathbf{v}_{|K}(x,y) =
+			\vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x} \right.\right\}
+	\end{equation*}
 
-  * `:::freefem [RT2]` (need `:::freefem load "Element_Mixte"`)
-     \begin{equation}
-         RT2_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in
-         \mathcal{T}_{h} \quad   \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_2^2, P_1,  \mathbf{v}_{|K}(x,y) =
-         \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y}   \right.\right\}
-         \label{eq:RT2}
-     \end{equation}
+* `:::freefem [RT2]` (need `:::freefem load "Element_Mixte"`)
+	\begin{equation*}
+		\label{eq:RT2}
+		RT2_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in\mathcal{T}_{h},\ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_2^2, P_1, \mathbf{v}_{|K}(x,y) =
+			\vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y} \right.\right\}
+	\end{equation*}
 
 * `:::freefem [RT2Ortho]` (need `:::freefem load "Element_Mixte"`, version 3.59, dimension 2 $\codered$)
-     \begin{equation}
-         RT2_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in
-         \mathcal{T}_{h} ,  \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_2^2, P_1,  \mathbf{v}_{|K}(x,y) =
-         \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x}   \right.\right\}
-         \label{eq:RT1Ortho}
-     \end{equation}
+	\begin{equation*}
+		\label{eq:RT2Ortho}
+		RT2_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in\mathcal{T}_{h} ,\ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_2^2, P_1,\ \mathbf{v}_{|K}(x,y) =
+			\vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x} \right.\right\}
+	\end{equation*}
 
 * `:::freefem [BDM1]` (need `:::freefem load "Element_Mixte"`, version 3.13, dimension 2 $\codered$) the Brezzi-Douglas-Marini finite element
-     \begin{equation}
-         BDM1_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in
-         \mathcal{T}_{h} \quad   \mathbf{v}_{|K} \in P_1^2
-         \right.\right\}
-         \label{eq:BDM1}
-     \end{equation}
+	\begin{equation*}
+		\label{eq:BDM1}
+		BDM1_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in\mathcal{T}_{h},\ \mathbf{v}_{|K} \in P_1^2\right.\right\}
+	\end{equation*}
 
 * `:::freefem [BDM1Ortho]` (need `:::freefem load "Element_Mixte"`, version 3.13, dimension 2 $\codered$) the Brezzi-Douglas-Marini Orthogonal also call Nedelec of type II , finite element
-       \begin{equation}
-         BDM1Ortho_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in
-         \mathcal{T}_{h} \quad   \mathbf{v}_{|K} \in P_1^2
-         \right.\right\}
-         \label{eq:BDM1Ortho}
-     \end{equation}
+	\begin{equation*}
+		\label{eq:BDM1Ortho}
+		BDM1Ortho_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in\mathcal{T}_{h},\ \mathbf{v}_{|K} \in P_1^2\right.\right\}
+	\end{equation*}
 
 * `:::freefem [FEQF]` (need `:::freefem load "Element_QF"`, $\codered$ version 3.45, dimension 2 or 3) the finite element to store function at default quadrature points (so the quadrature is `:::freefem qf5pT` in 2d and is `:::freefem qfV5` in 3d). For over quadrature you have the following correspondance finite element, quadrature formula.
 
@@ -306,4 +293,4 @@ As of today, the known types of finite element are:
 	* `:::freefem FEQF23d` $\mapsto$ `:::freefem qfV2`,
 	* `:::freefem FEQF53d` $\mapsto$ `:::freefem qfV5`
 
-   You can use this element element of do optimization to store and reuse function with long formula in non linear process in integral.
+You can use this element element of do optimization to store and reuse function with long formula in non linear process in integral.
