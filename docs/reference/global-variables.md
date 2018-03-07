@@ -2,13 +2,19 @@
 
 Conjugate gradient solver.
 
-> Usable in problem and solve definition
+> Usable in [`:::freefem problem`](types/#problem) and [`:::freefem solve`](types/#solve) definition
 ```freefem
 problem Laplacian (U, V, solver=CG) = ...
 ```
-> Or in matrix construction
+
+> Or in [`:::freefem matrix`](types/#matrix) construction
 ```freefem
 matrix A = vLaplacian(Uh, Uh, solver=CG);
+```
+
+> Or in [`:::freefem set` function](functions/#set)
+```freefem
+set(A, solver=CG);
 ```
 
 ## Cholesky
@@ -102,6 +108,3 @@ The $z$ coordinate at the current point.
 real CurrentY = y;
 ```
 This is a real value.
-
-
-

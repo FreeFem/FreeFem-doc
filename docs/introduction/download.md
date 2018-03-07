@@ -1,7 +1,7 @@
 # Download FreeFem++
 
 ##Latest binary packages
-Operating System | FreeFem++ Version | Size | Date 
+Operating System | FreeFem++ Version | Size | Date
 :----------- |:-------------|:-----------|:-------
 [MacOS 10.12](http://www.freefem.org/ff++/ftp/FreeFem++-3.58-MacOS_10.12.pkg) | `3.58` | 506.9 Mb | Jan 25, 2018 18:10:21
 MacOS 10.11 | `3.58` | 506.9 Mb | Jan 25, 2018 18:10:21
@@ -18,4 +18,5 @@ Lexer type | Version| Description
 Emacs | `1.0` | ff++-mode.el contributed by [Rafa Rodríguez Galván](mailto:rafael.rodriguez@uca.es).
 Textmate 2 | `1.0` | Unzip Textmate2-ff++.zip and follow the explanations given in the How_To.rtf.
 Notepad++ | `1.0` | See the instructions in the PDF
-Gedit | `1.0` | ffpp.lang contributed by Simon Garnotel
+Gedit | `1.0` | [ffpp.lang](https://github.com/FreeFem/Freefem-parser-gedit)
+Atom | `0.1.1` | [language-freefem](https://github.com/FreeFem/FreeFem-parser-atom) or direct install in atom packages
