@@ -50,7 +50,7 @@ real theta = acosh(x);
 ## adaptmesh
 Mesh adaptation function.
 ```freefem
-mesh Thnew = adaptamesh(Th, [fx, fy], hmin=HMin, hmax=HMax, err=Err, errg=ErrG, nbvx=NbVx, nbsmooth=NbSmooth, nbjacoby=NbJacoby, ratio=Ratio, omega=Omega, io=Iso, abserror=AbsError, cutoff=CutOff, verbosity=Verbosity, inquie=Inquire, splitpbedge=SplitPbEdge, maxsubdiv=MaxSubdiv, rescaling=Rescaling, keepbackvertices=KeepBackVertices, isMetric=IsMetric, power=Power, thetamax=ThetaMax, splitin2=SplitIn2, metric=Metric, nommeshgeneration=NoMeshGeneration, periodic=Periodic);
+mesh Thnew = adaptamesh(Th, [fx, fy], hmin=HMin, hmax=HMax, err=Err, errg=ErrG, nbvx=NbVx, nbsmooth=NbSmooth, nbjacoby=NbJacoby, ratio=Ratio, omega=Omega, iso=Iso, abserror=AbsError, cutoff=CutOff, verbosity=Verbosity, inquire=Inquire, splitpbedge=SplitPbEdge, maxsubdiv=MaxSubdiv, rescaling=Rescaling, keepbackvertices=KeepBackVertices, isMetric=IsMetric, power=Power, thetamax=ThetaMax, splitin2=SplitIn2, metric=Metric, nomeshgeneration=NoMeshGeneration, periodic=Periodic);
 ```
 
 <u>Parameters:</u>
@@ -107,7 +107,7 @@ mesh Thnew = adaptamesh(Th, [fx, fy], hmin=HMin, hmax=HMax, err=Err, errg=ErrG, 
  Array of 3 real arrays defining the metric
  - _`:::freefem nomeshgeneration=`_ (`:::freefem bool`)<br/>
  If true, the mesh is not generated
- - _`:::freefem periodic=`_ $\codered$<br/>
+ - _`:::freefem periodic=`_ (`:::freefem real[int, int]`)<br/>
  Build an adapted periodic mesh
 
 <u>Output:</u>
