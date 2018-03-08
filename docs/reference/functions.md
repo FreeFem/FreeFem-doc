@@ -153,7 +153,7 @@ int Conv = AffineCG(A, x, precon=Precon, nbiter=NbIter, eps=Eps, veps=VEps, stop
  If $\varepsilon>0$: test $||A(x)||_p \leq \epsilon||A(x_0)||_p$<br/>
  If $\varepsilon<0$: test $||A(x)||_p^2 \leq |\epsilon|$
  - _`:::freefem veps=`_ (`:::freefem real`)<br/>
- Same as eps, but return -eps
+ Same as `eps`, but return `-eps`
  - _`:::freefem stop=`_ (`:::freefem func`)<br/>
  Convergence criterion as a function<br/>
  Prototype is `:::freefem func bool StopFunc (int Iter, real[int] U, real[int] g)`<br/>
@@ -284,7 +284,7 @@ $\codered$
 ## buildmesh
 Build a 2D mesh using border elements.
 ```freefem
-mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixeborder=FixeBorder]);
+mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixedborder=FixedBorder]);
 ```
 
 <u>Parameters:</u>
@@ -294,9 +294,10 @@ mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixeborder=
  - _`:::freefem nbvx=`_ (`:::freefem int`) _[Optional]_<br/>
  Maximum number of vertices<br/>
  Default: 9000
- - _`:::freefem fixeborder=`_ (`:::freefem bool`) _[Optional]_<br/>
- If true, mesh genertator can not change the boundary mesh<br/>
+ - _`:::freefem fixedborder=`_ (`:::freefem bool`) _[Optional]_<br/>
+ If true, mesh generator can not change the boundary mesh<br/>
  Default: `:::freefem false`
+ <!--- - _`:::freefem fixeborder=`_ (`:::freefem bool`) _[Deprecated]_ --->
 
 <u>Output:</u>
 
