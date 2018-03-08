@@ -244,7 +244,7 @@ real theta = atan2(y, x)
 
 <u>Output:</u>
 
- - `theta` (real)
+ - `theta` (`:::freefem real`)
 
 ## atanh
 $\DeclareMathOperator\arctanh{arctanh}$
