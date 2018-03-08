@@ -1,9 +1,93 @@
 # TODO
 
 ## Add [optional] tag to parameters.
+
+Progression:
+Unknown
+
 See [int2d](functions/#int2d) for example.
 
-## Functions to detail 
+## Types
+
+Progression:
+<div class="progress progress-80plus">
+    <div class="progress-bar" style="width:95.00%">
+    </div>
+	<span class="progress-label">95%</span>
+</div>
+
+- [ ] [matrix](types/#matrix)
+
+## Global variables
+
+Progression:
+<div class="progress progress-100plus">
+    <div class="progress-bar" style="width:100.00%">
+    </div>
+	<span class="progress-label">100%</span>
+</div>
+
+## Quadrature formulae
+
+Progression:
+<div class="progress progress-0">
+    <div class="progress-bar" style="width:0.00%">
+    </div>
+	<span class="progress-label">0%</span>
+</div>
+
+- [ ] [qf1pE](quadrature/#qf1pE)
+- [ ] [qf2pE](quadrature/#qf2pE)
+- [ ] [qf3pE](quadrature/#qf3pE)
+- [ ] [qf5pE](quadrature/#qf5pE)
+- [ ] [qf1Elump](quadrature/#qf1Elump)
+- [ ] [qf1pT](quadrature/#qf1pT)
+- [ ] [qf2pT](quadrature/#qf2pT)
+- [ ] [qf5pT](quadrature/#qf5pT)
+- [ ] [qf1pTlump](quadrature/#qf1pTlump)
+- [ ] [qf2pT4P1](quadrature/#qf2pT4P1)
+- [ ] [qf7pT](quadrature/#qf7pT)
+- [ ] [qf9pT](quadrature/#qf9pT)
+- [ ] [qfV1](quadrature/#qfV1)
+- [ ] [qfV2](quadrature/#qfV2)
+- [ ] [qfV5](quadrature/#qfV5)
+- [ ] [qfV1lump](quadrature/#qfV1lump)
+
+## Operators
+
+Progression:
+<div class="progress progress-100plus">
+    <div class="progress-bar" style="width:100.00%">
+    </div>
+	<span class="progress-label">100%</span>
+</div>
+
+## Loops
+
+Progression:
+<div class="progress progress-100plus">
+    <div class="progress-bar" style="width:100.00%">
+    </div>
+	<span class="progress-label">100%</span>
+</div>
+
+## I/O
+
+Progression:
+<div class="progress progress-100plus">
+    <div class="progress-bar" style="width:100.00%">
+    </div>
+	<span class="progress-label">100%</span>
+</div>
+
+## Functions
+
+Progression:
+<div class="progress progress-20plus">
+    <div class="progress-bar" style="width:37.00%">
+    </div>
+	<span class="progress-label">37%</span>
+</div>
 
  - [ ] [BFGS](functions/#bfgs)
  - [ ] [buildlayers](functions/#buildlayers)
@@ -56,32 +140,19 @@ See [int2d](functions/#int2d) for example.
  - [ ] [y0](functions/#y0)
  - [ ] [y1](functions/#y1)
  - [ ] [yn](functions/#yn)
+ - [ ] [distance](functions/#distance)
+ - [ ] [gmshload](functions/#gmshload)
+ - [ ] [gmshload](functions/#gmshload3)
+ - [ ] [mmg3d](functions/#mmg3d)
+ - [ ] [savevtk](functions/#savevtk)
 
-## Function to add
+## Examples
 
- - [ ] distance
- - [ ] gmshload
- - [ ] mmg3d
- - [ ] savevtk
+Progression:
+<div class="progress progress-100plus">
+    <div class="progress-bar" style="width:100.00%">
+    </div>
+	<span class="progress-label">100%</span>
+</div>
 
-## Quadrature formulae
-
- - [ ] [qf1pE](quadrature/#qf1pE)
- - [ ] [qf2pE](quadrature/#qf2pE)
- - [ ] [qf3pE](quadrature/#qf3pE)
- - [ ] [qf5pE](quadrature/#qf5pE)
- - [ ] [qf1Elump](quadrature/#qf1Elump)
- - [ ] [qf1pT](quadrature/#qf1pT)
- - [ ] [qf2pT](quadrature/#qf2pT)
- - [ ] [qf5pT](quadrature/#qf5pT)
- - [ ] [qf1pTlump](quadrature/#qf1pTlump)
- - [ ] [qf2pT4P1](quadrature/#qf2pT4P1)
- - [ ] [qf7pT](quadrature/#qf7pT)
- - [ ] [qf9pT](quadrature/#qf9pT)
- - [ ] [qfV1](quadrature/#qfV1)
- - [ ] [qfV2](quadrature/#qfV2)
- - [ ] [qfV5](quadrature/#qfV5)
- - [ ] [qfV1lump](quadrature/#qfV1lump)
-
-
-
+Will move to [tutorials](/tutorial) / [examples](/examples).

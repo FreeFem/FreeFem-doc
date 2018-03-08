@@ -9,3 +9,63 @@
 .md-typeset a:active, .md-typeset a:hover {
 	color: #536dfe;
 }
+
+.progress-label {
+	position: absolute;
+	text-align: center;
+	font-size:1rem;
+	font-weight: 700;
+	width: 100%;
+	margin: 0;
+	line-height: 1.2rem;
+	white-space: nowrap;
+	overflow: hidden;
+	z-index:2;
+	top:0;
+	left:0;
+}
+
+.progress-bar {
+	height: 1.2rem;
+	float: left;
+	background-color: #2979ff;
+	z-index:1;
+}
+
+.progress {
+	display: block;
+	width: 100%;
+	margin: 0.5rem 0;
+	height: 1.2rem;
+	background-color: #eeeeee;
+	position:relative;
+	z-index:0;
+}
+
+.progress-100plus .progress-bar {
+	background-color: #00e676;
+}
+
+.progress-80plus .progress-bar {
+	background-color: #fbc02d;
+}
+
+.progress-60plus .progress-bar {
+	background-color: #ff9100;
+}
+
+.progress-40plus .progress-bar {
+	background-color: #ff5252;
+}
+
+.progress-20plus .progress-bar {
+	background-color: #ff1744;
+}
+
+.progress-0plus .progress-bar {
+	background-color: #f50057;
+}
+
+.progress-0 .progress-label {
+	color: #f50057;
+}

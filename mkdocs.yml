@@ -17,7 +17,7 @@ pages:
     - I/O: reference/io.md
     - Functions: reference/functions.md
     - Examples: reference/examples.md
-    - (TODO) TODO: reference/TODO.md
+    - TODO: reference/TODO.md
   - Tutorials:
     - Getting started: tutorial/index.md
     - Poisson's equation: tutorial/Poisson.md
@@ -55,8 +55,6 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML
   - mathjax-config.js
 
-
-
 markdown_extensions:
   - codehilite:
       guess_lang: false
@@ -69,6 +67,7 @@ markdown_extensions:
       permalink: '#'
   - admonition
   - pymdownx.superfences
+  - pymdownx.progressbar
 
 extra:
     social:

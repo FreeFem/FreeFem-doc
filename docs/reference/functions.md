@@ -255,7 +255,7 @@ real theta = atanh(x);
 
 ## BFGS
 
->TODO
+$\codered$
 
 <u>Parameter:</u>
 
@@ -264,7 +264,7 @@ real theta = atanh(x);
 
 ## buildlayers
 
->TODO
+$\codered$
 
 <u>Parameter:</u>
 
@@ -283,7 +283,7 @@ mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixeborder=
  **Geometry border, `b1(nn)` mean `b1` border discretize by `nn` vertices**
  - _nbvx=_ Nbvx (int) _[Optional]_<br/>
  **Maximum number of vertices**<br/>
- Default: >TODO
+ Default: $\codered$
  - _fixeborder=_ FixeBorder (bool) _[Optional]_<br/>
  **If true, mesh genertator can not change the boundary mesh**<br/>
  Default: `false`
@@ -318,7 +318,7 @@ Thnew = change(Th, label=L);
 
  - Th (mesh)<br/>
  **Original mesh**
- 
+
  - _label=_ L (int[int])<br/>
  **Pair of old and new label**
  - _region=_ R (int[int])<br/>
@@ -336,7 +336,7 @@ Thnew = change(Th, label=L);
 ## checkmovemesh
 Check a `movemesh` without mesh generation.
 
->TODO
+$\codered$
 
 <u>Parameter:</u>
 
@@ -359,7 +359,7 @@ real t = clock();
 
 ## cmaes
 
->TODO
+$\codered$
 
 <u>Parameter:</u>
 
@@ -389,7 +389,7 @@ Characteristic Galerkin method.
 convect([ux, uy], dt, c);
 ```
 
->TODO
+$\codered$
 
 <u>Parameter:</u>
 
@@ -474,7 +474,7 @@ mesh3 Th = cube(nnX, nnY, nnZ, [X(x), Y(y), Z(z)], [label=Label], [flags=Flags],
 
 ## dfft
 
->TODO
+$\codered$
 
 ## diffnp
 Arithmetic useful function.
@@ -494,9 +494,61 @@ Arithmetic useful function.
 dist(a, b, c) = sqrt(a^2 + b^2 + c^2);
 ```
 
+## distance
+
+$\codered$
+
+## dx
+
+$\codered$
+
+## dxx
+
+$\codered$
+
+## dxy
+
+$\codered$
+
+## dxz
+
+$\codered$
+
+## dy
+
+$\codered$
+
+## dyx
+
+$\codered$
+
+## dyy
+
+$\codered$
+
+## dyz
+
+$\codered$
+
+## dz
+
+$\codered$
+
+## dzx
+
+$\codered$
+
+## dzy
+
+$\codered$
+
+## dzz
+
+$\codered$
+
 ## EigenValue
 
->TODO
+$\codered$
 
 ## emptymesh
 Build an empty mesh.
@@ -511,7 +563,7 @@ mesh eTh = emptymesh(Th, ssd);
  - Th (mesh<br/>
  **Mesh to empty**
  - ssd (int[int])<br/>
- **>TODO**
+ **$\codered$**
 
 <u>Output:</u>
 
@@ -683,6 +735,14 @@ real Mod = fmin(a, b);
 
  - Mod (real)
 
+## gmshload
+
+$\codered$
+
+## gmshload3
+
+$\codered$
+
 ## imag
 Imaginary part of a complex number.
 ```freefem
@@ -787,14 +847,14 @@ Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) 
 
 ## intalledges
 
->TODO
+$\codered$
 
 ## interpolate
 Interpolation matrix.
 ```freefem
 matrix I = interpolate(Vh, Wh, inside=Inside, t=T, op=Op, U2Vc=U2VC);
 ```
->TODO
+$\codered$
 
 ## invdiffnp
 Arithmetic useful function.
@@ -818,79 +878,83 @@ load "isoline"
 int N = isoline(Th, u, xy, iso=Iso, close=Close, smoothing=Smoothing, ratio=Ratio, eps=Eps, beginend=BeginEnd, file=File);
 ```
 
->TODO
+$\codered$
 
 ## j0
 
->TODO
+$\codered$
 
 ## j1
 
->TODO
+$\codered$
 
 ## jn
 
->TODO
+$\codered$
 
 ## jump
 
->TODO
+$\codered$
 
 ## LinearCG
 
->TODO
+$\codered$
 
 ## LinearGMRES
 
->TODO
+$\codered$
 
 ## log
 
->TODO
+$\codered$
 
 ## log10
 
->TODO
+$\codered$
 
 ## max
 
->TODO
+$\codered$
 
 ## mean
 
->TODO
+$\codered$
 
 ## medit
 
->TODO
+$\codered$
 
 ## min
 
->TODO
+$\codered$
+
+## mmg3d
+
+$\codered$
 
 ## movemesh
 
->TODO
+$\codered$
 
 ## movemesh23
 
->TODO
+$\codered$
 
 ## NLCG
 
->TODO
+$\codered$
 
 ## on
 
->TODO
+$\codered$
 
 ## plot
 
->TODO
+$\codered$
 
 ## polar
 
->TODO
+$\codered$
 
 ## pow
 Power function.
@@ -916,84 +980,88 @@ projection(a, b, x) = min(max(a, x), b);
 
 ## readmesh
 
->TODO
+$\codered$
 
 ## readmesh3
 
->TODO
+$\codered$
 
 ## round
 
->TODO
+$\codered$
 
 ## savemesh
 
->TODO
+$\codered$
 
 ## savesol
 
->TODO
+$\codered$
+
+## savevtk
+
+$\codered$
 
 ## set
 
->TODO
+$\codered$
 
 ## sin
 
->TODO
+$\codered$
 
 ## sinh
 
->TODO
+$\codered$
 
 ## sort
 
->TODO
+$\codered$
 
 ## splitmesh
 
->TODO
+$\codered$
 
 ## square
 
->TODO
+$\codered$
 
 ## tan
 
->TODO
+$\codered$
 
 ## tanh
 
->TODO
+$\codered$
 
 ## tetg
 
->TODO
+$\codered$
 
 ## tetgconvexhull
 
->TODO
+$\codered$
 
 ## tetgreconstruction
 
->TODO
+$\codered$
 
 ## tetgtransfo
 
->TODO
+$\codered$
 
 ## trunc
 
->TODO
+$\codered$
 
 ## y0
 
->TODO
+$\codered$
 
 ## y1
 
->TODO
+$\codered$
 
 ## yn
 
->TODO
+$\codered$

@@ -238,32 +238,77 @@ Laplacian;
 	$$
 
 !!!note "Reconstruction"
-	...$\codered$
+	The keyword `:::freefem init` controls the reconstruction of the internal problem matrix.
+
+	If `:::freefem init` is set to `:::freefem false` or `:::freefem 0`, the matrix is reconstructed et each problem calls (or after a mesh modification), else the previously constructed matrix is used.
+
+	```freefem
+	problem Laplacian(u, uh, init=1) = ...
+	```
 
 !!!note "Preconditioning"
-	...$\codered$
+	A preconditioner can be specified in the problem definition:
+
+	```freefem
+	problem Laplacian(u, uh, precon=P) = ...
+	```
+
+	The preconditioning function must have a prototype like:
+
+	```freefem
+	func real[int] P(real[int] &xx);
+	```
+
 
 !!!note "_Très grande valeur_"
-	...$\codered$
+	The "_Très grand valeur_" `:::freefem tgv` (or Terrible giant value) used to implement the Dirichlet conditions can be modified in the problem definition:
+
+	```freefem
+	problem Laplacian(u, uh, tgv=1e30) = ...
+	```
+
+	Refere to $\codered$ for a description of the Dirichlet condition implementation.
 
 !!!note "Pivot tolerance"
-	...$\codered$
+	The tolerance of the pivot in `:::freefem UMFPACK`, `:::freefem LU`, `:::freefem Crout`, `:::freefem Cholesky` factorization can be modified in the problem definition:
+
+	```freefem
+	problem Laplacian(u, uh, solver=LU, tolpivot=1e-20) = ...
+	```
 
 !!!note "`:::freefem UMFPACK`"
-	...$\codered$
+	Two specific parameters for the `:::freefem UMFPACK` can be modifed:
+
+	 * Tolerance of the pivot sym
+	 * strategy
+
+	```freefem
+ 	problem Laplacian(u, uh, solver=LU, tolpivotsym=1e-1, strategy=0) = ...
+ 	```
+
+	Refer to the [UMFPACK website](http://faculty.cse.tamu.edu/davis/research.html) for more informations.
+
+Usage of `:::freefem problem` is detailled in the [tutorial](../tutorial).
 
 ### solve
 Solve type.
 
 Identical to [problem](#problem) but automatically solved.
 
+Usage of `:::freefem solve` is detailled in the [tutorial](../tutorial).
+
 ### varf
 Variational form type.
+
 ```freefem
 varf vLaplacian (u, uh) = ...
 ```
+
+Directly define a variationnal form.
+
 This is the other way to define a problem in order to directly manage matrix and right hang side.
 
+Usage of `:::freefem varf` is detailled in the [tutorial](../tutorial).
 
 ## Array
 
@@ -348,34 +393,55 @@ real[int] Aii = A.diag;
 ```
 
 !!!note "Solver"
-	As in [problem](#problem), a solver can be specified when it is build from `:::freefem varf`:
+	See [`:::freefem problem`](#problem).
+
+	The default solver is [`:::freefem GMRES`](../global-variables/#GMRES).
 
 	```freefem
 	matrix A = vLaplacian(Uh, Uh, solver=sparsesolver);
 	```
-
-	The default solver is `:::freefem GMRES`.
+	or
+	```freefem
+	set(A , solver=sparsesolver);
+	```
 
 !!!note "Factorize"
-	$\codered$
+	If `:::freefem true`, the factorization is done for `:::freefem LU`, `:::freefem Cholesky` or `:::freefem Crout`.
+
+	```freefem
+	matrix A = vLaplacian(Uh, Uh, solver=LU, factorize=1);
+	```
+	or
+	```freefem
+	set(A , solver=LU, factorize=1);
+	```
 
 !!!note "Stop test"
-	$\codered$
-
-!!!note "Factorize"
-	$\codered$
+	See [`:::freefem problem`](#problem).
 
 !!!note "_Très grande valeur_"
-	...$\codered$
+	See [`:::freefem problem`](#problem).
 
 !!!note "Preconditioning"
-	...$\codered$
+	See [`:::freefem problem`](#problem).
 
 !!!note "Pivot tolerance"
-	...$\codered$
+	See [`:::freefem problem`](#problem).
 
 !!!note "`:::freefem UMFPACK`"
-	...$\codered$
+	See [`:::freefem problem`](#problem).
+
+!!!note "datafilename"
+	$\codered$
+
+!!!note "lparams"
+	$\codered$
+
+!!!note "dparams"
+	$\codered$
+
+!!!note "sparams"
+	$\codered$
 
 !!!tip
 	To modify the solver, the stop test,... after the matrix construction, use the [`:::freefem set` keyword](functions/#set).
