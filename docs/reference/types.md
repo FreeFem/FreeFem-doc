@@ -108,7 +108,6 @@ Using _Element_P3_:
 Using _Element_P3dc_:
 
  - `:::freefem P3dc`
- $\codered$ bad definition of P3dc in python lexer
 
 Using _Element_P4_:
 
