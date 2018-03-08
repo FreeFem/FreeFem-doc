@@ -19,7 +19,7 @@ The source code is available on the [FreeFem++ GitHub Repository](https://github
 
 Lexer type | Version| Description
 :--------- | :---- | :------
-Emacs | `1.0` | ff++-mode.el contributed by [Rafa Rodríguez Galván](mailto:rafael.rodriguez@uca.es). $\codered$
+Emacs | `0.3` | [freefem++-mode.el](https://github.com/FreeFem/freefem-parser-emacs)
 Textmate 2 | `1.0` | Unzip Textmate2-ff++.zip and follow the explanations given in the How_To.rtf. $\codered$
 Notepad++ | `1.0` | See the instructions in the PDF $\codered$
 Gedit | `1.0` | [ffpp.lang](https://github.com/FreeFem/Freefem-parser-gedit)
