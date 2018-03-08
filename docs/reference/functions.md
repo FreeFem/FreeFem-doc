@@ -1,3 +1,19 @@
+<!--
+## function
+
+```freefem
+example code
+```
+
+<u>Parameters:</u>
+
+-
+
+<u>Output:</u>
+
+-
+-->
+
 ## acos
 $\arccos$ function.
 ```freefem
@@ -6,11 +22,11 @@ real theta = acos(x);
 
 <u>Parameter:</u>
 
- - x (real)
+ - `x` (`:::freefem real`)
 
 <u>Output:</u>
 
- - theta (real)
+ - `theta` (`:::freefem real`)
 
 ![arccos function](images/arccos.svg)
 
@@ -23,86 +39,80 @@ real theta = acosh(x);
 
 <u>Parameter:</u>
 
-- x (real)
+- `x` (`:::freefem real`)
 
 <u>Output:</u>
 
-- theta (real)
+- `theta` (`:::freefem real`)
 
 ![arccosh function](images/arccosh.svg)
-
 
 ## adaptmesh
 Mesh adaptation function.
 ```freefem
-mesh Thnew = adaptamesh(Th, f, ...)
-```
-> More complete example:
-
-```freefem
-mesh Thnew = adaptmesh(Th, [fx, fy], hmin=1.e-3, hmax=1.e-2, iso=false)
+mesh Thnew = adaptamesh(Th, [fx, fy], hmin=HMin, hmax=HMax, err=Err, errg=ErrG, nbvx=NbVx, nbsmooth=NbSmooth, nbjacoby=NbJacoby, ratio=Ratio, omega=Omega, io=Iso, abserror=AbsError, cutoff=CutOff, verbosity=Verbosity, inquie=Inquire, splitpbedge=SplitPbEdge, maxsubdiv=MaxSubdiv, rescaling=Rescaling, keepbackvertices=KeepBackVertices, isMetric=IsMetric, power=Power, thetamax=ThetaMax, splitin2=SplitIn2, metric=Metric, nommeshgeneration=NoMeshGeneration, periodic=Periodic);
 ```
 
 <u>Parameters:</u>
 
- - Th (mesh or mesh3)<br/>
- **Mesh to refine**
- - f (func), scalar or vectorial<br/>
- **Function to follow for the mesh adaptation**
- - _hmin=_ minh (real)<br/>
- **Minimum edge size**
- - _hmax=_ maxh (real)<br/>
- **Maximum edge size**
- - _err=_ Err (real)<br/>
- **Error level (P1 interpolation)**
- - _errg=_ Errg (real)<br/>
- **Relative geometrical error**
- - _nbvx=_ Nbvx (int)<br/>
- **Maximum number of vertices**
- - _nbsmooth=_ NbSmooth (int)<br/>
- **Number of smoothing iterations**
- - _nbjacoby=_ NbJacoby (int)<br/>
- **Number of iterations for the smoothing procedure**
- - _ratio=_ Ratio (real)<br/>
- **Ratio of the triangles**
- - _omega=_ Omega (real)<br/>
- **Relaxation parameter for the smoothing procedure**
- - _iso=_ Iso (bool)<br/>
- **Isotropic adaptation (if true)**
- - _abserror=_ AbsError (bool)<br/>
- **Error (if true) - Relative error (if false)**
- - _cutoff=_ CutOff (real)<br/>
- **Lower limit of the relative error evaluation**
- - _verbosity=_ Verbosity (real)<br/>
- **Verbosity level**
- - _inquire=_ Inquire (bool)<br/>
- **If true, inquire graphically**
- - _splitpbedge=_ SplitPbEdge (bool)<br/>
- **If true, split all internal edges in half**
- - _maxsubdiv=_ MaxSubdiv (int)<br/>
- **Bound the maximum subdivisions**
- - _rescaling=_ Rescaling (bool)<br/>
- **Rescale the function in [0, 1]**
- - _keepbackvertices=_ KeepBackVertices (bool)<br/>
- **If true, try to keep vertices of the original mesh**
- - _isMetric=_ IsMetric (bool)<br/>
- **If ture, the metric is defined explicitly**
- - _power=_ Power (int)<br/>
- **Exponent of the Hessian**
- - _thetamax=_ ThetaMax (int)<br/>
- **Minium corner angle (in degree)**
- - _splitin2=_ SplitIn2 (bool)<br/>
- **Split all triangles into 4 sub-triangles if true**
- - _metric=_ Metric ([real[int], real[int], real[int]])<br/>
- **Array of 3 real arrays defining the metric**
- - _nomeshgeneration=_ NoMeshGeneration (bool)<br/>
- **If true, the mesh is not generated**
- - _periodic=_ Periodic<br/>
- **Build an adapted periodic mesh**
+ - `Th` (`:::freefem mesh` or `:::freefem mesh3`)<br/>
+ Mesh to refine
+ - `[fx, fy]` (`:::freefem func` or `:::freefem fespace` function), scalar or vectorial<br/>
+ Function to follow for the mesh adaptation
+ - _`:::freefem hmin=`_ (`:::freefem real`)<br/>
+ Minimum edge size
+ - _`:::freefem hmax=`_ (`:::freefem real`)<br/>
+ Maximum edge size
+ - _`:::freefem err=`_ (`:::freefem real`)<br/>
+ Error level (P1 interpolation)
+ - _`:::freefem errg=`_ (`:::freefem real`)<br/>
+ Relative geometrical error
+ - _`:::freefem nbvx=`_ (`:::freefem int`)<br/>
+ Maximum number of vertices
+ - _`:::freefem nbsmooth=`_ (`:::freefem int`)<br/>
+ Number of smoothing iterations
+ - _`:::freefem nbjacoby=`_ (`:::freefem int`)<br/>
+ Number of iterations for the smoothing procedure
+ - _`:::freefem ratio=`_ (`:::freefem real`)<br/>
+ Ratio of the triangles
+ - _`:::freefem omega=`_ (`:::freefem real`)<br/>
+ Relaxation parameter for the smoothing procedure
+ - _`:::freefem iso=`_ (`:::freefem bool`)<br/>
+ Isotropic adaptation (if true)
+ - _`:::freefem abserror=`_ (`:::freefem bool`)<br/>
+ Error (if true) - Relative error (if false)
+ - _`:::freefem cutoff=`_ (`:::freefem real`)<br/>
+ Lower limit of the relative error evaluation
+ - _`:::freefem verbosity=`_ (`:::freefem real`)<br/>
+ Verbosity level
+ - _`:::freefem inquire=`_ (`:::freefem bool`)<br/>
+ If true, inquire graphically
+ - _`:::freefem splitpbedge=`_ (`:::freefem bool`)<br/>
+ If true, split all internal edges in half
+ - _`:::freefem maxsubdiv=`_ (`:::freefem int`)<br/>
+ Bound the maximum subdivisions
+ - _`:::freefem rescaling=`_ (`:::freefem bool`)<br/>
+ Rescale the function in [0, 1]
+ - _`:::freefem keepbackvertices=`_ (`:::freefem bool`)<br/>
+ If true, try to keep vertices of the original mesh
+ - _`:::freefem isMetric=`_ (`:::freefem bool`)<br/>
+ If true, the metric is defined explicitly
+ - _`:::freefem power=`_ (`:::freefem int`)<br/>
+ Exponent of the Hessian
+ - _`:::freefem thetamax=`_ (`:::freefem int`)<br/>
+ Minimum corner angle (in degree)
+ - _`:::freefem splitin2=`_ (`:::freefem bool`)<br/>
+ Split all triangles into 4 sub-triangles if true
+ - _`:::freefem metric=`_ (`:::freefem [real[int], real[int], real[int]]`)<br/>
+ Array of 3 real arrays defining the metric
+ - _`:::freefem nomeshgeneration=`_ (`:::freefem bool`)<br/>
+ If true, the mesh is not generated
+ - _`:::freefem periodic=`_ $\codered$<br/>
+ Build an adapted periodic mesh
 
 <u>Output:</u>
 
- - Thnew (mesh or mesh3)
+ - `Thnew` (`:::freefem mesh` or `:::freefem mesh3`)
 
 ## adj
 Adjacent triangle of the triangle $k$ by the edge $e$
@@ -111,13 +121,13 @@ int T = Th[k].adj(e);
 ```
 <u>Parameter:</u>
 
- - e (int)<br/>
- **Edge number**
+ - `e` (`:::freefem int`)<br/>
+ Edge number
 
 <u>Output:</u>
 
- - T (int)<br/>
- **Triangle number**
+ - `T` (`:::freefem int`)<br/>
+ Triangle number
 
 ## AffineCG
 Affine conjugate gradient solver
@@ -130,29 +140,29 @@ int Conv = AffineCG(A, x, precon=Precon, nbiter=NbIter, eps=Eps, veps=VEps, stop
 
 <u>Parameter:</u>
 
- - A (matrix)<br/>
- **Matrix of the problem $Ax=b$**
- - x (real[int])<br/>
- **Solution vector**
- - _precon=_ Precon (real[int])<br/>
- **Preconditionning function**
- - _nbiter=_ NbIter (int)<br/>
- **Maximum number of iterations**
- - _eps=_ Eps (real)<br/>
- **Convergence criterion**<br/>
- If $\epsilon>0$: test $||A(x)||_p \leq \epsilon||A(x_0)||_p$<br/>
- If $\epsilon<0$: test $||A(x)||_p^2 \leq |\epsilon|$
- - _veps=_ VEps (real)<br/>
- **Same as eps, but return -eps**
- - _stop=_ Stop (func)<br/>
- **Convergence criterion as a function**<br/>
+ - `A` (`:::freefem matrix`)<br/>
+ Matrix of the problem $Ax=b$
+ - `x` (`:::freefem real[int]`)<br/>
+ Solution vector
+ - _`:::freefem precon=`_ (`:::freefem real[int]`)<br/>
+ Preconditionning function
+ - _`:::freefem nbiter=`_ (`:::freefem int`)<br/>
+ Maximum number of iterations
+ - _`:::freefem eps=`_ (`:::freefem real`)<br/>
+ Convergence criterion<br/>
+ If $\varepsilon>0$: test $||A(x)||_p \leq \epsilon||A(x_0)||_p$<br/>
+ If $\varepsilon<0$: test $||A(x)||_p^2 \leq |\epsilon|$
+ - _`:::freefem veps=`_ (`:::freefem real`)<br/>
+ Same as eps, but return -eps
+ - _`:::freefem stop=`_ (`:::freefem func`)<br/>
+ Convergence criterion as a function<br/>
  Prototype is `:::freefem func bool StopFunc (int Iter, real[int] U, real[int] g)`<br/>
  `u`: current solution, `g`: current gradient (not preconditionned)
 
 <u>Output:</u>
 
  - Conv (int)<br/>
- **0: converged - !0: not converged**
+ 0: converged - !0: not converged
 
 ## AffineGMRES
 Affine GMRES solver
@@ -167,11 +177,11 @@ real theta = asin(x);
 
 <u>Parameter:</u>
 
- - x (real)
+ - `x` (`:::freefem real`)
 
 <u>Output:</u>
 
- - theta (real)
+ - `theta` (`:::freefem real`)
 
 ![arcsin function](images/arcsin.svg)
 
@@ -184,11 +194,11 @@ real theta = asinh(x);
 
 <u>Parameter:</u>
 
- - x (real)
+ - `x` (`:::freefem real`)
 
 <u>Output:</u>
 
- - theta (real)
+ - `theta` (`:::freefem real`)
 
 ![arcsinh function](images/arcsinh.svg)
 
@@ -214,11 +224,11 @@ real theta = atan(x);
 
 <u>Parameter:</u>
 
- - x (real)
+ - `x` (`:::freefem real`)
 
 <u>Output:</u>
 
- - theta (real)
+ - `theta` (`:::freefem real`)
 
 ![arctan function](images/arctan.svg)
 
@@ -230,11 +240,11 @@ real theta = atan2(y, x)
 
 <u>Parameter:</u>
 
- - x (real)
+ - `x` (`:::freefem real`)
 
 <u>Output:</u>
 
- - theta (real)
+ - `theta` (real)
 
 ## atanh
 $\DeclareMathOperator\arctanh{arctanh}$
@@ -245,11 +255,11 @@ real theta = atanh(x);
 
 <u>Parameter:</u>
 
- - x (real)
+ - `x` (real)
 
 <u>Output:</u>
 
- - theta (real)
+ - `theta` (real)
 
 ![arctanh function](images/arctanh.svg)
 
@@ -279,19 +289,19 @@ mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixeborder=
 
 <u>Parameters:</u>
 
- - b1, b2, b3, b4 (border)<br/>
- **Geometry border, `b1(nn)` mean `b1` border discretize by `nn` vertices**
- - _nbvx=_ Nbvx (int) _[Optional]_<br/>
- **Maximum number of vertices**<br/>
- Default: $\codered$
- - _fixeborder=_ FixeBorder (bool) _[Optional]_<br/>
- **If true, mesh genertator can not change the boundary mesh**<br/>
- Default: `false`
+ - `b1`, `b2`, `b3`, `b4` (`:::freefem border`)<br/>
+ Geometry border, `b1(nn)` mean `b1` border discretize by `nn` vertices
+ - _`:::freefem nbvx=`_ (`:::freefem int`) _[Optional]_<br/>
+ Maximum number of vertices<br/>
+ Default: 9000
+ - _`:::freefem fixeborder=`_ (`:::freefem bool`) _[Optional]_<br/>
+ If true, mesh genertator can not change the boundary mesh<br/>
+ Default: `:::freefem false`
 
 <u>Output:</u>
 
- - Th (mesh)<br/>
- **Resulting mesh**
+ - `Th` (`:::freefem mesh`)<br/>
+ Resulting mesh
 
 ## ceil
 Round fractions up of $x$.
@@ -301,11 +311,11 @@ int c = ceil(x);
 
 <u>Parameter:</u>
 
- - x (real)
+ - `x` (`:::freefem real`)
 
 <u>Output:</u>
 
- - c (int)
+ - `c` (`:::freefem int`)
 
 ## change
 Change a property of a mesh.
@@ -316,25 +326,25 @@ Thnew = change(Th, label=L);
 
 <u>Parameter:</u>
 
- - Th (mesh)<br/>
- **Original mesh**
+ - `Th` (`:::freefem mesh`)<br/>
+ Original mesh
 
- - _label=_ L (int[int])<br/>
- **Pair of old and new label**
- - _region=_ R (int[int])<br/>
- **Pair of old and new region**
- - _flabel=_ l (func int)<br/>
- **Function of int given the new label**
- - _fregion=_ r (func int)</br>
- **Function of int given the new region**
+ - _`:::freefem label=`_ L (`:::freefem int[int]`)<br/>
+ Pair of old and new label
+ - _`:::freefem region=`_ R (`:::freefem int[int]`)<br/>
+ Pair of old and new region
+ - _`:::freefem flabel=`_ l (`:::freefem func int`)<br/>
+ Function of int given the new label
+ - _`:::freefem fregion=`_ r (`:::freefem func int`)</br>
+ Function of int given the new region
 
 <u>Output:</u>
 
- - Thnew (mesh)
- **Mesh with chenged parameters**
+ - `:::freefem Thnew` (`:::freefem mesh`)
+ Mesh with changed parameters
 
 ## checkmovemesh
-Check a `movemesh` without mesh generation.
+Check a [`:::freefem movemesh`](#movemesh) without mesh generation.
 
 $\codered$
 
@@ -354,8 +364,8 @@ real t = clock();
 
 <u>Output:</u>
 
- - t (real)<br/>
- **Current CPU time**
+ - `t` (`:::freefem real`)<br/>
+ Current CPU time
 
 ## cmaes
 
@@ -375,13 +385,13 @@ complex C2 = conj(C1);
 
 <u>Parameter:</u>
 
- - C1 (complex)<br/>
- **Complex number**
+ - `C1` (`:::freefem complex`)<br/>
+ Complex number
 
 <u>Output:</u>
 
- - C2 (complex)<br/>
- **Conjuguate of C1**
+ - `C2` (`:::freefem complex`)<br/>
+ Conjuguate of C1
 
 ## convect
 Characteristic Galerkin method.
@@ -405,11 +415,11 @@ real x = cos(theta);
 
 <u>Parameters:</u>
 
- - theta (real)
+ - `theta` (`:::freefem real`)
 
 <u>Output:</u>
 
- - x (real)
+ - `x` (`:::freefem real`)
 
 ![cos function](images/cos.svg)
 
@@ -423,11 +433,11 @@ real x = cosh(theta);
 
 <u>Parameters:</u>
 
- - theta (real)
+ - `theta` (`:::freefem real`)
 
 <u>Output:</u>
 
- - x (real)
+ - `x` (`:::freefem real`)
 
 ## cube
 Construct a cubic mesh.
@@ -443,34 +453,34 @@ mesh3 Th = cube(nnX, nnY, nnZ, [X(x), Y(y), Z(z)], [label=Label], [flags=Flags],
 
 <u>Parameters:</u>
 
- - nnX (int)<br/>
- **Number of discretization point along $x$**
- - nnY (int)<br/>
- **Number of discretization point along $y$**
- - nnZ (int)<br/>
-  **Number of discretization point along $z$**
-  - X(x) (func) _[Optional]_<br/>
-  **Affine function of $x$ to define the length**<br/>
+ - `nnX` (`:::freefem int`)<br/>
+ Number of discretization point along $x$
+ - `nnY` (`:::freefem int`)<br/>
+ Number of discretization point along $y$
+ - `nnZ` (`:::freefem int`)<br/>
+  Number of discretization point along $z$
+  - `X(x)` (`:::freefem func`) _[Optional]_<br/>
+  Affine function of $x$ to define the length<br/>
   Default: `x`
-  - Y(y) (func) _[Optional]_<br/>
-  **Affine function of $y$ to define the width**<br/>
+  - `Y(y)` (`:::freefem func`) _[Optional]_<br/>
+  Affine function of $y$ to define the width<br/>
   Default: `y`
-  - Z(z) (func) _[Optional]_<br/>
-  **Affine function of $z$ to define the height**<br/>
+  - `Z(z)` (`:::freefem func`) _[Optional]_<br/>
+  Affine function of $z$ to define the height<br/>
   Default: `z`
-  - _label=_ Label (int[int]) _[Optional]_<br/>
-  **List of surface labels**<br/>
+  - _`:::freefem label=`_ (`:::freefem int[int]`) _[Optional]_<br/>
+  List of surface labels<br/>
   Default: `[1, 2, 3, 4, 5, 6]`
-  - _flags=_ Flags (int) _[Optional]_<br/>
-  **Refer to [square](#square)**
-  - _region=_ Region (int) _[Optional]_<br/>
-  **Region number of the cube volume**
+  - _`:::freefem flags=`_ (`:::freefem int`) _[Optional]_<br/>
+  Refer to [square](#square)
+  - _`:::freefem region=`_ (`:::freefem int`) _[Optional]_<br/>
+  Region number of the cube volume
   Default: `0`
 
 <u>Output:</u>
 
- - Th (mesh3)<br/>
- **Cube mesh**
+ - `Th` (`:::freefem mesh3`)<br/>
+ Cube mesh
 
 ## dfft
 
@@ -495,6 +505,26 @@ dist(a, b, c) = sqrt(a^2 + b^2 + c^2);
 ```
 
 ## distance
+
+!!!warning
+	Need the dynamic load of `:::bash distance.cpp`
+	```freefem
+	load "distance"
+	```
+
+```freefem
+distance(Th, d, dist, [distmax=DistMax]);
+```
+
+<u>Parameters:</u>
+
+- `Th` (`:::freefem mesh`)
+- `d`
+- `dist` (`:::freefem real[int]`)
+
+<u>Output:</u>
+
+-
 
 $\codered$
 
@@ -560,15 +590,15 @@ mesh eTh = emptymesh(Th, ssd);
 
 <u>Parameters:</u>
 
- - Th (mesh<br/>
- **Mesh to empty**
- - ssd (int[int])<br/>
- **$\codered$**
+ - `Th` (`:::freefem mesh`)<br/>
+ Mesh to empty
+ - `ssd` (`:::freefem int[int]`)<br/>
+ $\codered$
 
 <u>Output:</u>
 
- - eTh (mesh)<br/>
- **Empty mesh**
+ - `eTh` (`:::freefem mesh`)<br/>
+ Empty mesh
 
 ## erf
 The error function:
@@ -581,11 +611,11 @@ real err = erf(x);
 
 <u>Parameters:</u>
 
- - x (real)
+ - `x` (`:::freefem real`)
 
 <u>Output:</u>
 
- - err (real)
+ - `err` (`:::freefem real`)
 
 ## erfc
 Complementary of the [error function](#erf):
@@ -598,11 +628,11 @@ real errc = erfc(x);
 
 <u>Parameters:</u>
 
- - x (real)
+ - `x` (`:::freefem real`)
 
 <u>Output:</u>
 
- - err (real)
+ - `err` (`:::freefem real`)
 
 ## exec
 Execute an external command.
@@ -612,13 +642,13 @@ int v = exec(command);
 
 <u>Parameters:</u>
 
- - command (string)<br/>
- **Command to execute**
+ - `command` (`:::freefem string`)<br/>
+ Command to execute
 
 <u>Output:</u>
 
- - v (int)<br/>
- **Value returned by the command**
+ - `v` (`:::freefem int`)<br/>
+ Value returned by the command
 
 ## exit
 Exit function, equivalent to `return`.
@@ -628,8 +658,8 @@ exit(N);
 
 <u>Parameters:</u>
 
- - N (int)<br/>
- **Return value**
+ - `N` (`:::freefem int`)<br/>
+ Return value
 
 <u>Output:</u>
 
@@ -643,11 +673,11 @@ real a = exp(b);
 
 <u>Parameters:</u>
 
- - b (real)
+ - `b` (`:::freefem real`)
 
 <u>Output:</u>
 
- - a (real)
+ - `a` (`:::freefem real`)
 
 ## fdim
 Positive difference (`cmath` function).
@@ -657,14 +687,14 @@ real fd = fdim(a, b);
 
 <u>Parameters:</u>
 
- - a (real)
- - b (real)
+ - `a` (`:::freefem real`)
+ - `b` (`:::freefem real`)
 
 <u>Output:</u>
 
- - fd (real)<br/>
- **If $x > y$, return $x-y$**<br/>
- **If $x \leq y$, return $0$**
+ - `fd` (`:::freefem real`)<br/>
+ If $x > y$, return $x-y$<br/>
+ If $x \leq y$, return $0$
 
 ## floor
 Floor function.
@@ -675,11 +705,11 @@ Return the largest integer value not greater than `b`.
 
 <u>Parameters:</u>
 
- - b (real)
+ - `b` (`:::freefem real`)
 
 <u>Output:</u>
 
- - a (real)
+ - `a` (`:::freefem real`)
 
 ## fmax
 Maximum (`cmath` function).
@@ -689,12 +719,12 @@ real Max = fmax(a, b);
 
 <u>Parameters:</u>
 
- - a (real)
- - b (real)
+ - `a` (`:::freefem real`)
+ - `b` (`:::freefem real`)
 
 <u>Output:</u>
 
- - Max (real)
+ - `Max` (`:::freefem real`)
 
 ## fmin
 Minimum (`cmath` function).
@@ -704,12 +734,12 @@ real Min = fmin(a, b);
 
 <u>Parameters:</u>
 
- - a (real)
- - b (real)
+ - `a` (`:::freefem real`)
+ - `b` (`:::freefem real`)
 
 <u>Output:</u>
 
- - Min (real)
+ - `Min` (`:::freefem real`)
 
 ## fmod
 Remainder of $a/b$ (`cmath` function).
@@ -719,21 +749,21 @@ real Mod = fmin(a, b);
 
 <u>Parameters:</u>
 
- - a (real)
- - b (real)
+ - `a` (`:::freefem real`)
+ - `b` (`:::freefem real`)
 
 <u>Output:</u>
 
- - Min (real)
+ - `Min` (`:::freefem real`)
 
 <u>Parameters:</u>
 
- - a (real)
- - b (real)
+ - `a` (`:::freefem real`)
+ - `b` (`:::freefem real`)
 
 <u>Output:</u>
 
- - Mod (real)
+ - `Mod` (`:::freefem real`)
 
 ## gmshload
 
@@ -757,26 +787,28 @@ int1d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(
 	...
 )
 ```
-Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) definition to impose a boundary condition only (FreeFem++ does not support 1D simulation).
+Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) definition to impose a boundary condition only (FreeFem++ does not support 1D simulation), or outside to calculate a quantity.
 
 <u>Parameters:</u>
 
- - Th (mesh)<br/>
- **Mesh where the integral is calculated**
- - Gamma (int) _[Optional]_<br/>
- **Label of the 1D border**<br/>
+ - `Th` (`:::freefem mesh`)<br/>
+ Mesh where the integral is calculated
+ - `Label` (`:::freefem int`) _[Optional]_<br/>
+ Label of the 1D border<br/>
  Default: all borders of the mesh
- - _qfe=_ Qfe (keyword) _[Optional]<br/>
- **Quadrature formula, see [quadrature formulae](quadrature/#int1d)**
- - _qforder=_ Qforder (keyword) _[Optional]_<br/>
- **Quadrature order, see [quadrature formulae](quadrature/#int1d)**
+ - _`:::freefem qfe=`_ ([quadrature formula](../quadrature)) _[Optional]_<br/>
+ Quadrature formula, see [quadrature formulae](quadrature/#int1d)
+ - _`:::freefem qforder=`_ ([quadrature formula](../quadrature)) _[Optional]_<br/>
+ Quadrature order, see [quadrature formulae](quadrature/#int1d)
 
 <u>Output:</u>
 
- - Non relevant
+ - Depending on the situation:<br/>
+ In a `:::freefem problem`, `:::freefem solve` or `:::freefem varf` definition: Non relevant.<br/>
+ Outside: `:::freefem real` (example: `:::freefem real l = int1d(Th, 1)(1.);`).
 
-!!!note ""
-    The content of `int1d` must be a linear or bilinear form.
+!!!warning ""
+    In a `:::freefem problem`, `:::freefem solve` or `:::freefem varf` definition, the content of `int1d` must be a linear or bilinear form.
 
 ## int2d
 2D integral.
@@ -794,28 +826,31 @@ int2d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(
 Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) definition to:
  - Calculate integral in 2D simulation
  - Impose a boundary condition in 3D simulation
+Or outside to calculate a quantity.
 
 <u>Parameters:</u>
 
- - Th (mesh)<br/>
- **Mesh where the integral is calculated**
- - Region (int) _[Optional]_<br/>
- **Label of the 2D region (2D simulation)**<br/>
+ - `Th` (`:::freefem mesh`)<br/>
+ Mesh where the integral is calculated
+ - `Region` (`:::freefem int`) _[Optional]_<br/>
+ Label of the 2D region (2D simulation)<br/>
  Default: all regions of the mesh
- - Gamma (int) _[Optional]_<br/>
- **Label of the 2D border (3D simulation)**<br/>
+ - `Label` (`:::freefem int`) _[Optional]_<br/>
+ Label of the 2D border (3D simulation)<br/>
  Default: all borders of the mesh
- - _qfe=_ Qfe (keyword) _[Optional]<br/>
- **Quadrature formula, see [quadrature formulae](quadrature/#int2d)**
- - _qforder=_ Qforder (keyword) _[Optional]_<br/>
- **Quadrature order, see [quadrature formulae](quadrature/#int2d)**
+ - _`:::freefem qfe=`_ ([quadrature formula](../quadrature)) _[Optional]<br/>
+ Quadrature formula, see [quadrature formulae](quadrature/#int2d)
+ - _`:::freefem qforder`=_ ([quadrature formula](../quadrature)) _[Optional]_<br/>
+ Quadrature order, see [quadrature formulae](quadrature/#int2d)
 
 <u>Output:</u>
 
- - Non relevant
+ - Depending on the situation:<br/>
+ In a `:::freefem problem`, `:::freefem solve` or `:::freefem varf` definition: Non relevant.<br/>
+ Outside: `:::freefem real` (example: `:::freefem real s = int2d(Th, 1)(1.);`).
 
-!!!note ""
-    The content of the `int2d` must be a linear or bilinear form.
+!!!warning ""
+	In a `:::freefem problem`, `:::freefem solve` or `:::freefem varf` definition, the content of the `:::freefem int2d` must be a linear or bilinear form.
 
 ## int3d
 3D integral.
@@ -824,26 +859,28 @@ int3d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(
 	...
 )
 ```
-Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) definition to calculate integral in 3D simulation.
+Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) definition to calculate integral in 3D simulation, or outside to calculate a quantity.
 
 <u>Parameters:</u>
 
- - Th (mesh)<br/>
- **Mesh where the integral is calculated**
- - Region (int) _[Optional]_<br/>
- **Label of the 3D region**<br/>
+ - `Th` (`:::freefem mesh`)<br/>
+ Mesh where the integral is calculated
+ - `Region` (`:::freefem int`) _[Optional]_<br/>
+ Label of the 3D region<br/>
  Default: all regions of the mesh
- - _qfe=_ Qfe (keyword) _[Optional]<br/>
- **Quadrature formula, see [quadrature formulae](quadrature/#int3d)**
- - _qforder=_ Qforder (keyword) _[Optional]_<br/>
- **Quadrature order, see [quadrature formulae](quadrature/#int3d)**
+ - _`:::freefem qfe`=_ ([quadrature formula](../quadrature)) _[Optional]<br/>
+ Quadrature formula, see [quadrature formulae](quadrature/#int3d)
+ - _`:::freefem qforder=`_ ([quadrature formula](../quadrature)) _[Optional]_<br/>
+ Quadrature order, see [quadrature formulae](quadrature/#int3d)
 
-<u>Output:</u>
+ <u>Output:</u>
 
- - Non relevant
+  - Depending on the situation:<br/>
+  In a `:::freefem problem`, `:::freefem solve` or `:::freefem varf` definition: Non relevant.<br/>
+  Outside: `:::freefem real` (example: `:::freefem real v = int3d(Th, 1)(1.);`).
 
-!!!note ""
-    The content of the `int3d` must be a linear or bilinear form.
+ !!!warning ""
+ 	In a `:::freefem problem`, `:::freefem solve` or `:::freefem varf` definition, the content of the `:::freefem int3d` must be a linear or bilinear form.
 
 ## intalledges
 
@@ -965,12 +1002,12 @@ $p=a^b$
 
 <u>Parameters:</u>
 
- - a (real)
- - b (real)
+ - `a` (`:::freefem real`)
+ - `b` (`:::freefem real`)
 
 <u>Output:</u>
 
- - p (real)
+ - `p` (`:::freefem real`)
 
 ## projection
 Arithmetic useful function.

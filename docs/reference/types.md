@@ -31,7 +31,6 @@ String value.
 string s = "this is a string";
 ```
 
-
 ## Mesh design
 
 ### border
@@ -153,7 +152,7 @@ Using _Element_QF_:
 
  - `:::freefem FEQF`
 
-A finite element variable is defined as follow:
+A finite element function is defined as follow:
 ```freefem
 fespace Uh(Th, P1);
 Uh u;
@@ -174,7 +173,7 @@ Macro ends with `//`.
 !!!note "Macro concatenation"
 	You can use the C concatenation operator ## inside a macro using #.
 
-	If `Ux` and `Uy` are defined as finite element variable, you can define:
+	If `Ux` and `Uy` are defined as finite element function, you can define:
 	```freefem
 	macro Grad(U) [grad(U#x), grad(U#y)] //
 	```
@@ -348,13 +347,13 @@ real ArrayMax = Aii.max;
 ```
 
 !!!tip
-	An array can be obtained from a finite element variable using:
+	An array can be obtained from a finite element function using:
 
 	```freefem
 	real[int] aU = U[];
 	```
 
-	where `:::freefem U` is a finite element variable.
+	where `:::freefem U` is a finite element function.
 
 
 ## Matrix

@@ -2,7 +2,7 @@
 
 ## Compilation on OSX (>=10.13)
 
-Remark: Blocks of code are shell commands in terminal. 
+Remark: Blocks of code are shell commands in terminal.
 
 1) Install Xcode, Xcode command line tools and Xcode Auxiliaire Tools from [Apple website](https://developer.apple.com/download/more/)
 
@@ -20,17 +20,17 @@ sudo port install  autoconf
 sudo port install  automatke
 ```
 
-4) install mactex  from  [ctan](http://mirrors.ctan.org/systems/mac/mactex/MacTeX.pkg) 
+4) install mactex  from  [ctan](http://mirrors.ctan.org/systems/mac/mactex/MacTeX.pkg)
 
 5) install [openmpi](https://www.open-mpi.org/software/) source code
 
 ```
 ./configure CC=/usr/local/bin/gcc CXX=/usr/local/bin/g++ F77=/usr/local/bin/gfortran FC=/usr/local/bin/gfortran
-make 
+make
 sudo make install
 ```
 
-6) Install [gsl](https://www.gnu.org/software/gsl) 
+6) Install [gsl](https://www.gnu.org/software/gsl)
 
 ```
 curl -O https://fr.mirror.babylon.network/gnu/gsl/gsl-2.4.tar.gz
@@ -38,11 +38,11 @@ tar zxvf gsl-2.4.tar.gz
 cd gsl-2.4
 ./configure CC=/usr/local/bin/gcc
 make
-sudo make install 
+sudo make install
 ```
 
 7) Install [git](https://git-scm.com/download/mac)
-    
+
 8) Download FreeFem++ source from the repository
 
 ```
@@ -87,7 +87,7 @@ git clone https://github.com/FreeFem/FreeFem-sources.git
 
 ```bash
 cd FreeFem-sources
-autoreconf -i 
+autoreconf -i
 ```
 
 !!!info
@@ -137,7 +137,7 @@ make
 !!!note
 	If your computer have many threads, you can run `make` in parallel using `make -j16` for 16 threads for example.
 
-!!!info 
+!!!info
 	Optionnally, check the compilation with `make check`
 
 9) Install
@@ -146,7 +146,7 @@ make
 sudo make install
 ```
 
-## Compilation on Arch
+## Compilation on Arch Linux
 
 !!! warning
 	As Arch is in rolling release, the following informations can be quickly exceeded !
@@ -173,7 +173,7 @@ git clone https://github.com/FreeFem/FreeFem-sources.git
 
 ```bash
 cd FreeFem-sources
-autoreconf -i 
+autoreconf -i
 ```
 
 4) Configure
@@ -216,7 +216,7 @@ make
 !!!note
 	If your computer have many threads, you can run `make` in parallel using `make -j16` for 16 threads for example.
 
-!!!info 
+!!!info
 	Optionnally, check the compilation with `make check`
 
 9) Install
@@ -225,8 +225,9 @@ make
 sudo make install
 ```
 
+## Compilation on Linux with Intel software tools
+
+Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-with-intel-software-tools-for-developers)
+
 ## Compilation on Windows
 TODO (Good luck!)
-
-
-
