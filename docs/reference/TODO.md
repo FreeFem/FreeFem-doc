@@ -27,10 +27,10 @@ Progression:
 </div>
 
 - [ ] [problem](types/#problem)
-- [ ] [Matrix](types/#Matrix)
-- [ ] [Matrix](types/#Matrix)
-- [ ] [Matrix](types/#Matrix)
-- [ ] [Matrix](types/#Matrix)
+- [ ] [matrix](types/#matrix)
+- [ ] [matrix](types/#matrix)
+- [ ] [matrix](types/#matrix)
+- [ ] [matrix](types/#matrix)
 
 ## Global variables
 
@@ -102,9 +102,9 @@ Progression:
 
 Progression:
 <div class="progress progress-40plus">
-	<div class="progress-bar" style="width:48%">
+	<div class="progress-bar" style="width:50%">
 	</div>
-	<span class="progress-label">48</span>
+	<span class="progress-label">50</span>
 </div>
 
 - [ ] [BFGS](functions/#BFGS)
@@ -155,10 +155,6 @@ Progression:
 - [ ] [square](functions/#square)
 - [ ] [tan](functions/#tan)
 - [ ] [tanh](functions/#tanh)
-- [ ] [tetg](functions/#tetg)
-- [ ] [tetgconvexhull](functions/#tetgconvexhull)
-- [ ] [tetgreconstruction](functions/#tetgreconstruction)
-- [ ] [tetgtransfo](functions/#tetgtransfo)
 - [ ] [trunc](functions/#trunc)
 - [ ] [y0](functions/#y0)
 - [ ] [y1](functions/#y1)
