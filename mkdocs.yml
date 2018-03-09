@@ -34,7 +34,7 @@ pages:
     - The system of Stokes for fluids: tutorial/Stokes.md
     - A projection Algorithm for the Navier-Stokes equations: tutorial/NavierStokesProjection.md
     - Newton method for the steady Navier-Stokes equations: tutorial/NavierStokesNewton.md
-    - ($\codered$ ERROR) A large fluid problem: tutorial/ALargeFluidProlem.md
+    - ($\codered$ ERROR) A large fluid problem: tutorial/ALargeFluidProblem.md
     - An example with complex numbers: tutorial/ComplexNumbers.md
     - Optimal control: tutorial/OptimalControl.md
     - A flow with shocks: tutorial/FlowWithShocks.md
