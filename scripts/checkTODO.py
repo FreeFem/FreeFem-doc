@@ -211,6 +211,7 @@ for i in range(0, len(referenceFilesList)):
 				if Item[0] == " ":
 					Item = Item[1:]
 				Link = referenceFilesList[i].replace(".md", "")
+				Link = Link.replace("reference/", "")
 				TODOs.append("- [ ] ["+Item+"]("+Link+"/#"+Item+")\n")
 				NumberOfTODO += 1
 		
