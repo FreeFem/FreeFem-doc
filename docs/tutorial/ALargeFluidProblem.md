@@ -1,4 +1,4 @@
-\codered
+$\codered$
 This script does not run as expected
 
 # A Large Fluid Problem
@@ -38,6 +38,7 @@ We use a time discretization which preserves positivity and uses the method of c
 
 In variational form and with appropriated boundary conditions the problem is :
 
+$\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$ $\codered$
 ```freefem
 real L=6;
 border aa(t=0,1){x=t; y=0 ;}
