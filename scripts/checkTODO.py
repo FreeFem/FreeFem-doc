@@ -141,6 +141,8 @@ def writeProgressBar(file, Progress):
 ## check TODO by lines
 def checkTODOByLines(_FilesList, _NamesList, _TODOFile):
 	TODOFile = open(docDirectory + _TODOFile, "w")
+	TODOFile.write("<!--- THIS FILE IS AUTOMATICALY GENERATED --->")
+	TODOFile.write("<!--- DO NOT EDIT --->")
 	TODOFile.write("# TODO\n\n")
 	for i in range(0, len(_FilesList)):
 		file = open(docDirectory + _FilesList[i], "r")
@@ -187,6 +189,8 @@ checkTODOByLines(introductionFilesList, introductionNamesList, introductionTODOF
 
 #reference (special TODO)
 TODOFile = open(docDirectory + referenceTODOFile, "w")
+TODOFile.write("<!--- THIS FILE IS AUTOMATICALY GENERATED --->")
+TODOFile.write("<!--- DO NOT EDIT --->")
 TODOFile.write("# TODO\n\n")
 TODOFile.write("## Add [optional] tag to parameters.\n\n")
 TODOFile.write("Progression:\n")
