@@ -531,7 +531,19 @@ $\codered$
 
 ## dx
 
-$\codered$
+$x$ derivative.
+
+```freefem
+Uh up = dx(u);
+```
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `up` (`:::freefem fespace` function)
 
 ## dxx
 
