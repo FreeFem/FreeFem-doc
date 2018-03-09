@@ -148,30 +148,39 @@ def checkTODOByLines(_FilesList, _NamesList, _TODOFile):
 		file = open(docDirectory + _FilesList[i], "r")
 		if file:
 			TODOFile.write("## "+_NamesList[i]+"\n\n")
-			
+
 			CurrentLine = 0
 			NumberOfTODO = 0
+			NumberOfError = 0
 			TODOs = []
 			for line in file:
 				CurrentLine += 1
 				if "$\\codered$" in line:
 					TODOs.append("- [ ] line "+str(CurrentLine)+"\n")
 					NumberOfTODO += 1
-			
+				elif "$\\codeerror$" in line:
+					TODOs.append("- [ ] line "+str(CurrentLine)+"\n")
+					TODOs.append("\n<span style=\"color:red; font-size:1.5em;\">This is a CodeError!</span>\n")
+					print "A CodeError is present: file "+_FilesList[i]
+					NumberOfError += 1
+
 			TODOFile.write("Progression:\n")
-			Progression = 100
-			if CurrentLine != 0:
-				Progression = 100 - (float(NumberOfTODO)/float(CurrentLine))*100
-			
+			if NumberOfError != 0:
+				Progression = 0
+			else:
+				Progression = 100
+				if CurrentLine != 0:
+					Progression = 100 - (float(NumberOfTODO)/float(CurrentLine))*100
+
 			Progression = int(Progression)
 			writeProgressBar(TODOFile, Progression)
-			
+
 			for TODO in TODOs:
 				TODOFile.write(TODO)
 			TODOFile.write("\n")
-			
+
 			file.close()
-	
+
 	TODOFile.close()
 
 ## check $\codered$
@@ -200,7 +209,7 @@ for i in range(0, len(referenceFilesList)):
 	file = open(docDirectory + referenceFilesList[i], "r")
 	if file:
 		TODOFile.write("## "+referenceNamesList[i]+"\n\n")
-		
+
 		CurrentItem = ""
 		NumberOfItems = 0
 		NumberOfTODO = 0
@@ -218,24 +227,21 @@ for i in range(0, len(referenceFilesList)):
 				Link = Link.replace("reference/", "")
 				TODOs.append("- [ ] ["+Item+"]("+Link+"/#"+Item+")\n")
 				NumberOfTODO += 1
-		
+
 		TODOFile.write("Progression:\n")
 		Progression = 100
 		if NumberOfItems != 0:
 			Progression = 100. - (float(NumberOfTODO)/float(NumberOfItems))*100.
 		Progression = int(Progression)
 		writeProgressBar(TODOFile, Progression)
-		
+
 		for TODO in TODOs:
 			TODOFile.write(TODO)
 		TODOFile.write("\n")
-		
+
 		file.close()
 
 TODOFile.close()
 
 #tutorial
 checkTODOByLines(tutorialFilesList, tutorialNamesList, tutorialTODOFile)
-
-
-

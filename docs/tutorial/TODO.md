@@ -1,4 +1,4 @@
-# TODO
+<!--- THIS FILE IS AUTOMATICALY GENERATED ---><!--- DO NOT EDIT ---># TODO
 
 ## Home
 
@@ -136,12 +136,15 @@ Progression:
 ## A large fluid problem
 
 Progression:
-<div class="progress progress-100plus">
-	<div class="progress-bar" style="width:100%">
+<div class="progress progress-0">
+	<div class="progress-bar" style="width:0%">
 	</div>
-	<span class="progress-label">100</span>
+	<span class="progress-label">0</span>
 </div>
 
+- [ ] line 1
+
+<span style="color:red; font-size:1.5em;">This is a CodeError!</span>
 
 ## An example with complex numbers
 
@@ -193,5 +196,3 @@ Progression:
 	</div>
 	<span class="progress-label">100</span>
 </div>
-
-

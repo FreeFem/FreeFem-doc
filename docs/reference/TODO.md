@@ -1,4 +1,4 @@
-# TODO
+<!--- THIS FILE IS AUTOMATICALY GENERATED ---><!--- DO NOT EDIT ---># TODO
 
 ## Add [optional] tag to parameters.
 
@@ -86,9 +86,9 @@ Progression:
 
 Progression:
 <div class="progress progress-20plus">
-	<div class="progress-bar" style="width:38%">
+	<div class="progress-bar" style="width:39%">
 	</div>
-	<span class="progress-label">38</span>
+	<span class="progress-label">39</span>
 </div>
 
 - [ ] [BFGS](functions/#BFGS)
@@ -98,7 +98,6 @@ Progression:
 - [ ] [convect](functions/#convect)
 - [ ] [dfft](functions/#dfft)
 - [ ] [distance](functions/#distance)
-- [ ] [dx](functions/#dx)
 - [ ] [dxx](functions/#dxx)
 - [ ] [dxy](functions/#dxy)
 - [ ] [dxz](functions/#dxz)
