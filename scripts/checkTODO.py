@@ -54,9 +54,9 @@ referenceFilesList = [
 	"reference/loops.md",
 	"reference/io.md",
 	"reference/functions.md",
-	"reference/examples.md"
+	"reference/ExternalLibraries.md"
 	]
-
+#"reference/examples.md"
 referenceNamesList = [
 	"Home",
 	"Types",
@@ -66,9 +66,9 @@ referenceNamesList = [
 	"Loops",
 	"I/O",
 	"Functions",
-	"Examples"
+	"External libraries"
 ]
-
+#"Examples"
 referenceTODOFile = "reference/TODO.md"
 
 #tutorial
@@ -141,8 +141,8 @@ def writeProgressBar(file, Progress):
 ## check TODO by lines
 def checkTODOByLines(_FilesList, _NamesList, _TODOFile):
 	TODOFile = open(docDirectory + _TODOFile, "w")
-	TODOFile.write("<!--- THIS FILE IS AUTOMATICALY GENERATED --->")
-	TODOFile.write("<!--- DO NOT EDIT --->")
+	TODOFile.write("<!--- THIS FILE IS AUTOMATICALY GENERATED --->\n")
+	TODOFile.write("<!--- DO NOT EDIT --->\n\n")
 	TODOFile.write("# TODO\n\n")
 	for i in range(0, len(_FilesList)):
 		file = open(docDirectory + _FilesList[i], "r")

@@ -368,15 +368,6 @@ real t = clock();
  - `t` (`:::freefem real`)<br/>
  Current CPU time
 
-## cmaes
-
-$\codered$
-
-<u>Parameter:</u>
-
-<u>Output:</u>
-
-
 ## conj
 Caculate the conjuguate of a complex number.
 ```freefem
@@ -536,6 +527,9 @@ $x$ derivative.
 ```freefem
 Uh up = dx(u);
 ```
+$$
+\frac{\partial u}{\partial x}
+$$
 
 <u>Parameters:</u>
 
@@ -547,47 +541,212 @@ Uh up = dx(u);
 
 ## dxx
 
-$\codered$
+$x$ double derivative.
+
+```freefem
+Uh upp = dxx(u);
+```
+$$
+\frac{\partial^2 u}{\partial x^2}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## dxy
 
-$\codered$
+$xy$ derivative.
+
+```freefem
+Uh upp = dxy(u);
+```
+$$
+\frac{\partial^2 u}{\partial x\partial y}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## dxz
 
-$\codered$
+$xz$ derivative.
+
+```freefem
+Uh upp = dxz(u);
+```
+$$
+\frac{\partial^2 u}{\partial x\partial z}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## dy
 
-$\codered$
+$y$ derivative.
+
+```freefem
+Uh up = dy(u);
+```
+$$
+\frac{\partial u}{\partial y}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## dyx
 
-$\codered$
+$yx$ derivative.
+
+```freefem
+Uh upp = dyx(u);
+```
+$$
+\frac{\partial^2 u}{\partial y\partial x}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## dyy
 
-$\codered$
+$y$ double derivative.
+
+```freefem
+Uh upp = dyy(u);
+```
+$$
+\frac{\partial^2 u}{\partial x^2}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## dyz
 
-$\codered$
+$yz$ derivative.
+
+```freefem
+Uh upp = dyz(u);
+```
+$$
+\frac{\partial^2 u}{\partial y\partial z}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## dz
 
-$\codered$
+$z$ derivative.
+
+```freefem
+Uh up = dz(u);
+```
+$$
+\frac{\partial u}{\partial z}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## dzx
 
-$\codered$
+$zx$ derivative.
+
+```freefem
+Uh upp = dzx(u);
+```
+$$
+\frac{\partial^2 u}{\partial z\partial x}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## dzy
 
-$\codered$
+$zy$ derivative.
+
+```freefem
+Uh upp = dzy(u);
+```
+$$
+\frac{\partial^2 u}{\partial z\partial y}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## dzz
 
-$\codered$
+$z$ double derivative.
+
+```freefem
+Uh upp = dzz(u);
+```
+$$
+\frac{\partial^2 u}{\partial z^2}
+$$
+
+<u>Parameters:</u>
+
+- `u` (`:::freefem fespace` function)
+
+<u>Output:</u>
+
+- `upp` (`:::freefem fespace` function)
 
 ## EigenValue
 
@@ -780,11 +939,53 @@ real Mod = fmin(a, b);
 
 ## gmshload
 
-$\codered$
+!!!warning
+	Need the dynamic load of `:::bash gmsh.cpp`
+	```freefem
+	load "gmsh"
+	```
+
+Load a mesh build with Gmsh.
+
+```freefem
+mesh Th = gmshload(MeshFile, [reftri=RefTri], [renum=Renum]);
+```
+
+<u>Parameters:</u>
+
+- `MeshFile` (`:::freefem string`)<br/>
+Mesh file name
+- _`:::freefem reftri=`_ ($\codered$)
+- _`:::freefem renum=`_ ($\codered$)
+
+<u>Output:</u>
+
+- `Th` (`:::freefem mesh`)
 
 ## gmshload3
 
-$\codered$
+!!!warning
+	Need the dynamic load of `:::bash gmsh.cpp`
+	```freefem
+	load "gmsh"
+	```
+
+Load a mesh build with Gmsh.
+
+```freefem
+mesh3 Th = gmshload(MeshFile, [reftet=RefTet], [renum=Renum]);
+```
+
+<u>Parameters:</u>
+
+- `MeshFile` (`:::freefem string`)<br/>
+Mesh file name
+- _`:::freefem reftet=`_ ($\codered$)
+- _`:::freefem renum=`_ ($\codered$)
+
+<u>Output:</u>
+
+- `Th` (`:::freefem mesh3`)
 
 ## imag
 Imaginary part of a complex number.
@@ -1081,22 +1282,6 @@ $\codered$
 $\codered$
 
 ## tanh
-
-$\codered$
-
-## tetg
-
-$\codered$
-
-## tetgconvexhull
-
-$\codered$
-
-## tetgreconstruction
-
-$\codered$
-
-## tetgtransfo
 
 $\codered$
 

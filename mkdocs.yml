@@ -5,9 +5,9 @@ pages:
   - Installation: introduction/installation.md
   - TODO: introduction/TODO.md
   - Documentation:
-    - (TODO) Home: documentation/index.md
-    - (TODO) Mesh Generation: documentation/MeshGeneration.md
-    - (TODO) Finite Element: documentation/FiniteElement.md
+    - Home: documentation/index.md
+    - Mesh Generation: documentation/MeshGeneration.md
+    - Finite Element: documentation/FiniteElement.md
     - TODO: documentation/TODO.md
   - Language References:
     - Home: reference/index.md
@@ -18,7 +18,7 @@ pages:
     - Loops: reference/loops.md
     - I/O: reference/io.md
     - Functions: reference/functions.md
-    - Examples: reference/examples.md
+    - External libraries: reference/ExternalLibraries.md
     - TODO: reference/TODO.md
   - Tutorials:
     - Getting started: tutorial/index.md

@@ -2,71 +2,68 @@
 
 ### qf1pE
 
->TODO
+$\codered$
 
 ### qf2pE
 
->TODO
+$\codered$
 
 ### qf3pE
 
->TODO
+$\codered$
 
 ### qf5pE
 
->TODO
+$\codered$
 
 ### qf1pElump
 
->TODO
+$\codered$
 
 ## int2d
 
 ### qf1pT
 
->TODO
+$\codered$
 
 ### qf2pT
 
->TODO
+$\codered$
 
 ### qf5pT
 
->TODO
+$\codered$
 
 ### qf1pTlump
 
->TODO
+$\codered$
 
 ### qf2pT4P1
 
->TODO
+$\codered$
 
 ### qf7pT
 
->TODO
+$\codered$
 
 ### qf9pT
 
->TODO
+$\codered$
 
 ## int3d
 
 ### qfV1
 
->TODO
+$\codered$
 
 ### qfV2
 
->TODO
+$\codered$
 
 ### qfV5
 
->TODO
+$\codered$
 
 ### qfV1lump
 
->TODO
-
-
-
+$\codered$

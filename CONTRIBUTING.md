@@ -9,6 +9,8 @@ All contributions are under LGPL licence
 
 There is some `$\codered$` tags in the files indicate bugs or missing parts.
 
+Execute scripts/checkTODO.py after modifications
+
 ## Via Github
 
 Just do a pull request !

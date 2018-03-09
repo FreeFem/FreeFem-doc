@@ -356,7 +356,7 @@ real ArrayMax = Aii.max;
 	where `:::freefem U` is a finite element function.
 
 
-## Matrix
+## matrix
 Matrices can be defined like vectors:
 
 ```freefem
