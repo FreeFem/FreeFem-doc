@@ -7,152 +7,165 @@ Unknown
 
 See [int2d](functions/#int2d) for example.
 
+## Home
+
+Progression:
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
+	</div>
+	<span class="progress-label">100</span>
+</div>
+
+
 ## Types
 
 Progression:
 <div class="progress progress-80plus">
-    <div class="progress-bar" style="width:95.00%">
-    </div>
-	<span class="progress-label">95%</span>
+	<div class="progress-bar" style="width:80%">
+	</div>
+	<span class="progress-label">80</span>
 </div>
 
-- [ ] [matrix](types/#matrix)
+- [ ] [problem](reference/types/#problem)
+- [ ] [Matrix](reference/types/#Matrix)
+- [ ] [Matrix](reference/types/#Matrix)
+- [ ] [Matrix](reference/types/#Matrix)
+- [ ] [Matrix](reference/types/#Matrix)
 
 ## Global variables
 
 Progression:
 <div class="progress progress-100plus">
-    <div class="progress-bar" style="width:100.00%">
-    </div>
-	<span class="progress-label">100%</span>
+	<div class="progress-bar" style="width:100%">
+	</div>
+	<span class="progress-label">100</span>
 </div>
+
 
 ## Quadrature formulae
 
 Progression:
-<div class="progress progress-0">
-    <div class="progress-bar" style="width:0.00%">
-    </div>
-	<span class="progress-label">0%</span>
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
+	</div>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] [qf1pE](quadrature/#qf1pE)
-- [ ] [qf2pE](quadrature/#qf2pE)
-- [ ] [qf3pE](quadrature/#qf3pE)
-- [ ] [qf5pE](quadrature/#qf5pE)
-- [ ] [qf1Elump](quadrature/#qf1Elump)
-- [ ] [qf1pT](quadrature/#qf1pT)
-- [ ] [qf2pT](quadrature/#qf2pT)
-- [ ] [qf5pT](quadrature/#qf5pT)
-- [ ] [qf1pTlump](quadrature/#qf1pTlump)
-- [ ] [qf2pT4P1](quadrature/#qf2pT4P1)
-- [ ] [qf7pT](quadrature/#qf7pT)
-- [ ] [qf9pT](quadrature/#qf9pT)
-- [ ] [qfV1](quadrature/#qfV1)
-- [ ] [qfV2](quadrature/#qfV2)
-- [ ] [qfV5](quadrature/#qfV5)
-- [ ] [qfV1lump](quadrature/#qfV1lump)
 
 ## Operators
 
 Progression:
 <div class="progress progress-100plus">
-    <div class="progress-bar" style="width:100.00%">
-    </div>
-	<span class="progress-label">100%</span>
+	<div class="progress-bar" style="width:100%">
+	</div>
+	<span class="progress-label">100</span>
 </div>
+
 
 ## Loops
 
 Progression:
 <div class="progress progress-100plus">
-    <div class="progress-bar" style="width:100.00%">
-    </div>
-	<span class="progress-label">100%</span>
+	<div class="progress-bar" style="width:100%">
+	</div>
+	<span class="progress-label">100</span>
 </div>
+
 
 ## I/O
 
 Progression:
 <div class="progress progress-100plus">
-    <div class="progress-bar" style="width:100.00%">
-    </div>
-	<span class="progress-label">100%</span>
+	<div class="progress-bar" style="width:100%">
+	</div>
+	<span class="progress-label">100</span>
 </div>
+
 
 ## Functions
 
 Progression:
 <div class="progress progress-20plus">
-    <div class="progress-bar" style="width:37.00%">
-    </div>
-	<span class="progress-label">37%</span>
+	<div class="progress-bar" style="width:38%">
+	</div>
+	<span class="progress-label">38</span>
 </div>
 
- - [ ] [BFGS](functions/#bfgs)
- - [ ] [buildlayers](functions/#buildlayers)
- - [ ] [buildmesh](functions/#buildmesh)
- - [ ] [checkmovemesh](functions/#checkmovemesh)
- - [ ] [cmaes](functions/#cmaes)
- - [ ] [convect](functions/#convect)
- - [ ] [dfft](functions/#dfft)
- - [ ] [EigenValue](functions/#eigenvalue)
- - [ ] [emptymesh](functions/#emptymesh)
- - [ ] [intalledges](functions/#intalledges)
- - [ ] [interpolate](functions/#interpolate)
- - [ ] [isoline](functions/#isoline)
- - [ ] [j0](functions/#j0)
- - [ ] [j1](functions/#j1)
- - [ ] [jn](functions/#jn)
- - [ ] [jump](functions/#jump)
- - [ ] [LinearCG](functions/#linearcg)
- - [ ] [LinearGMRES](functions/#lineargmres)
- - [ ] [log](functions/#log)
- - [ ] [log10](functions/#log10)
- - [ ] [max](functions/#max)
- - [ ] [mean](functions/#mean)
- - [ ] [medit](functions/#medit)
- - [ ] [min](functions/#min)
- - [ ] [movemesh](functions/#movemesh)
- - [ ] [movemesh23](functions/#movemesh23)
- - [ ] [NLCG](functions/#nlcg)
- - [ ] [on](functions/#on)
- - [ ] [plot](functions/#plot)
- - [ ] [polar](functions/#polar)
- - [ ] [readmesh](functions/#readmesh)
- - [ ] [readmesh3](functions/#readmesh3)
- - [ ] [round](functions/#round)
- - [ ] [savemesh](functions/#savemesh)
- - [ ] [savesol](functions/#savesol)
- - [ ] [set](functions/#set)
- - [ ] [sin](functions/#sin)
- - [ ] [sinh](functions/#sinh)
- - [ ] [sort](functions/#sort)
- - [ ] [splitmesh](functions/#splitmesh)
- - [ ] [square](functions/#square)
- - [ ] [tan](functions/#tan)
- - [ ] [tanh](functions/#tanh)
- - [ ] [tetg](functions/#tetg)
- - [ ] [tetgconvexhull](functions/#tetgconvexhull)
- - [ ] [tetgreconstruction](functions/#tetgreconstruction)
- - [ ] [tetgtransfo](functions/#tetgtransfo)
- - [ ] [trunc](functions/#trunc)
- - [ ] [y0](functions/#y0)
- - [ ] [y1](functions/#y1)
- - [ ] [yn](functions/#yn)
- - [ ] [distance](functions/#distance)
- - [ ] [gmshload](functions/#gmshload)
- - [ ] [gmshload](functions/#gmshload3)
- - [ ] [mmg3d](functions/#mmg3d)
- - [ ] [savevtk](functions/#savevtk)
+- [ ] [BFGS](reference/functions/#BFGS)
+- [ ] [buildlayers](reference/functions/#buildlayers)
+- [ ] [checkmovemesh](reference/functions/#checkmovemesh)
+- [ ] [cmaes](reference/functions/#cmaes)
+- [ ] [convect](reference/functions/#convect)
+- [ ] [dfft](reference/functions/#dfft)
+- [ ] [distance](reference/functions/#distance)
+- [ ] [dx](reference/functions/#dx)
+- [ ] [dxx](reference/functions/#dxx)
+- [ ] [dxy](reference/functions/#dxy)
+- [ ] [dxz](reference/functions/#dxz)
+- [ ] [dy](reference/functions/#dy)
+- [ ] [dyx](reference/functions/#dyx)
+- [ ] [dyy](reference/functions/#dyy)
+- [ ] [dyz](reference/functions/#dyz)
+- [ ] [dz](reference/functions/#dz)
+- [ ] [dzx](reference/functions/#dzx)
+- [ ] [dzy](reference/functions/#dzy)
+- [ ] [dzz](reference/functions/#dzz)
+- [ ] [EigenValue](reference/functions/#EigenValue)
+- [ ] [emptymesh](reference/functions/#emptymesh)
+- [ ] [gmshload](reference/functions/#gmshload)
+- [ ] [gmshload3](reference/functions/#gmshload3)
+- [ ] [intalledges](reference/functions/#intalledges)
+- [ ] [interpolate](reference/functions/#interpolate)
+- [ ] [isoline](reference/functions/#isoline)
+- [ ] [j0](reference/functions/#j0)
+- [ ] [j1](reference/functions/#j1)
+- [ ] [jn](reference/functions/#jn)
+- [ ] [jump](reference/functions/#jump)
+- [ ] [LinearCG](reference/functions/#LinearCG)
+- [ ] [LinearGMRES](reference/functions/#LinearGMRES)
+- [ ] [log](reference/functions/#log)
+- [ ] [log10](reference/functions/#log10)
+- [ ] [max](reference/functions/#max)
+- [ ] [mean](reference/functions/#mean)
+- [ ] [medit](reference/functions/#medit)
+- [ ] [min](reference/functions/#min)
+- [ ] [mmg3d](reference/functions/#mmg3d)
+- [ ] [ movemesh](reference/functions/# movemesh)
+- [ ] [movemesh23](reference/functions/#movemesh23)
+- [ ] [NLCG](reference/functions/#NLCG)
+- [ ] [on](reference/functions/#on)
+- [ ] [plot](reference/functions/#plot)
+- [ ] [polar](reference/functions/#polar)
+- [ ] [readmesh](reference/functions/#readmesh)
+- [ ] [readmesh3](reference/functions/#readmesh3)
+- [ ] [round](reference/functions/#round)
+- [ ] [savemesh](reference/functions/#savemesh)
+- [ ] [savesol](reference/functions/#savesol)
+- [ ] [savevtk](reference/functions/#savevtk)
+- [ ] [set](reference/functions/#set)
+- [ ] [sin](reference/functions/#sin)
+- [ ] [sinh](reference/functions/#sinh)
+- [ ] [sort](reference/functions/#sort)
+- [ ] [splitmesh](reference/functions/#splitmesh)
+- [ ] [square](reference/functions/#square)
+- [ ] [tan](reference/functions/#tan)
+- [ ] [tanh](reference/functions/#tanh)
+- [ ] [tetg](reference/functions/#tetg)
+- [ ] [tetgconvexhull](reference/functions/#tetgconvexhull)
+- [ ] [tetgreconstruction](reference/functions/#tetgreconstruction)
+- [ ] [tetgtransfo](reference/functions/#tetgtransfo)
+- [ ] [trunc](reference/functions/#trunc)
+- [ ] [y0](reference/functions/#y0)
+- [ ] [y1](reference/functions/#y1)
+- [ ] [yn](reference/functions/#yn)
 
 ## Examples
 
 Progression:
 <div class="progress progress-100plus">
-    <div class="progress-bar" style="width:100.00%">
-    </div>
-	<span class="progress-label">100%</span>
+	<div class="progress-bar" style="width:100%">
+	</div>
+	<span class="progress-label">100</span>
 </div>
 
-Will move to [tutorials](/tutorial) / [examples](/examples).
+
