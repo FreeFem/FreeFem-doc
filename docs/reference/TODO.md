@@ -101,42 +101,29 @@ Progression:
 ## Functions
 
 Progression:
-<div class="progress progress-40plus">
-	<div class="progress-bar" style="width:50%">
+<div class="progress progress-60plus">
+	<div class="progress-bar" style="width:63%">
 	</div>
-	<span class="progress-label">50</span>
+	<span class="progress-label">63</span>
 </div>
 
 - [ ] [BFGS](functions/#BFGS)
-- [ ] [buildlayers](functions/#buildlayers)
 - [ ] [checkmovemesh](functions/#checkmovemesh)
 - [ ] [convect](functions/#convect)
-- [ ] [dfft](functions/#dfft)
-- [ ] [distance](functions/#distance)
 - [ ] [EigenValue](functions/#EigenValue)
 - [ ] [emptymesh](functions/#emptymesh)
-- [ ] [gmshload](functions/#gmshload)
-- [ ] [gmshload](functions/#gmshload)
-- [ ] [gmshload3](functions/#gmshload3)
-- [ ] [gmshload3](functions/#gmshload3)
 - [ ] [intalledges](functions/#intalledges)
 - [ ] [interpolate](functions/#interpolate)
-- [ ] [isoline](functions/#isoline)
-- [ ] [j0](functions/#j0)
-- [ ] [j1](functions/#j1)
-- [ ] [jn](functions/#jn)
 - [ ] [jump](functions/#jump)
 - [ ] [LinearCG](functions/#LinearCG)
 - [ ] [LinearGMRES](functions/#LinearGMRES)
+- [ ] [lgamma](functions/#lgamma)
 - [ ] [log](functions/#log)
 - [ ] [log10](functions/#log10)
 - [ ] [max](functions/#max)
 - [ ] [mean](functions/#mean)
-- [ ] [medit](functions/#medit)
 - [ ] [min](functions/#min)
-- [ ] [mmg3d](functions/#mmg3d)
 - [ ] [ movemesh](functions/# movemesh)
-- [ ] [movemesh23](functions/#movemesh23)
 - [ ] [NLCG](functions/#NLCG)
 - [ ] [on](functions/#on)
 - [ ] [plot](functions/#plot)
@@ -145,8 +132,6 @@ Progression:
 - [ ] [readmesh3](functions/#readmesh3)
 - [ ] [round](functions/#round)
 - [ ] [savemesh](functions/#savemesh)
-- [ ] [savesol](functions/#savesol)
-- [ ] [savevtk](functions/#savevtk)
 - [ ] [set](functions/#set)
 - [ ] [sin](functions/#sin)
 - [ ] [sinh](functions/#sinh)
@@ -155,10 +140,8 @@ Progression:
 - [ ] [square](functions/#square)
 - [ ] [tan](functions/#tan)
 - [ ] [tanh](functions/#tanh)
+- [ ] [tgamma](functions/#tgamma)
 - [ ] [trunc](functions/#trunc)
-- [ ] [y0](functions/#y0)
-- [ ] [y1](functions/#y1)
-- [ ] [yn](functions/#yn)
 
 ## External libraries
 
@@ -611,6 +594,8 @@ Progression:
 - [ ] [freeyams](ExternalLibraries/#freeyams)
 - [ ] [funcTempate](ExternalLibraries/#funcTempate)
 - [ ] [gmshload](ExternalLibraries/#gmshload)
+- [ ] [gmshload](ExternalLibraries/#gmshload)
+- [ ] [gmshload3](ExternalLibraries/#gmshload3)
 - [ ] [gmshload3](ExternalLibraries/#gmshload3)
 - [ ] [savegmsh](ExternalLibraries/#savegmsh)
 - [ ] [gslpolysolvequadratic](ExternalLibraries/#gslpolysolvequadratic)

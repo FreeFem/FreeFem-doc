@@ -267,20 +267,6 @@ real theta = atanh(x);
 
 $\codered$
 
-<u>Parameter:</u>
-
-<u>Output:</u>
-
-
-## buildlayers
-
-$\codered$
-
-<u>Parameter:</u>
-
-<u>Output:</u>
-
-
 ## buildmesh
 Build a 2D mesh using border elements.
 ```freefem
@@ -474,10 +460,6 @@ mesh3 Th = cube(nnX, nnY, nnZ, [X(x), Y(y), Z(z)], [label=Label], [flags=Flags],
  - `Th` (`:::freefem mesh3`)<br/>
  Cube mesh
 
-## dfft
-
-$\codered$
-
 ## diffnp
 Arithmetic useful function.
 ```freefem
@@ -495,30 +477,6 @@ Arithmetic useful function.
 ```freefem
 dist(a, b, c) = sqrt(a^2 + b^2 + c^2);
 ```
-
-## distance
-
-!!!warning
-	Need the dynamic load of `:::bash distance.cpp`
-	```freefem
-	load "distance"
-	```
-
-```freefem
-distance(Th, d, dist, [distmax=DistMax]);
-```
-
-<u>Parameters:</u>
-
-- `Th` (`:::freefem mesh`)
-- `d`
-- `dist` (`:::freefem real[int]`)
-
-<u>Output:</u>
-
--
-
-$\codered$
 
 ## dx
 
@@ -937,56 +895,6 @@ real Mod = fmin(a, b);
 
  - `Mod` (`:::freefem real`)
 
-## gmshload
-
-!!!warning
-	Need the dynamic load of `:::bash gmsh.cpp`
-	```freefem
-	load "gmsh"
-	```
-
-Load a mesh build with Gmsh.
-
-```freefem
-mesh Th = gmshload(MeshFile, [reftri=RefTri], [renum=Renum]);
-```
-
-<u>Parameters:</u>
-
-- `MeshFile` (`:::freefem string`)<br/>
-Mesh file name
-- _`:::freefem reftri=`_ ($\codered$)
-- _`:::freefem renum=`_ ($\codered$)
-
-<u>Output:</u>
-
-- `Th` (`:::freefem mesh`)
-
-## gmshload3
-
-!!!warning
-	Need the dynamic load of `:::bash gmsh.cpp`
-	```freefem
-	load "gmsh"
-	```
-
-Load a mesh build with Gmsh.
-
-```freefem
-mesh3 Th = gmshload(MeshFile, [reftet=RefTet], [renum=Renum]);
-```
-
-<u>Parameters:</u>
-
-- `MeshFile` (`:::freefem string`)<br/>
-Mesh file name
-- _`:::freefem reftet=`_ ($\codered$)
-- _`:::freefem renum=`_ ($\codered$)
-
-<u>Output:</u>
-
-- `Th` (`:::freefem mesh3`)
-
 ## imag
 Imaginary part of a complex number.
 ```freefem
@@ -1119,29 +1027,51 @@ Arithmetic useful function.
 invdiffpos(a, b) = (a<b) ? 1./(b-a) : 0
 ```
 
-## isoline
-Need:
-```freefem
-load "isoline"
-```
-
-```freefem
-int N = isoline(Th, u, xy, iso=Iso, close=Close, smoothing=Smoothing, ratio=Ratio, eps=Eps, beginend=BeginEnd, file=File);
-```
-
-$\codered$
-
 ## j0
+Bessel function of first kind, order 0.
+```freefem
+real b = j0(x);
+```
 
-$\codered$
+<u>Parameters:</u>
+
+- `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+- `b` (`:::freefem real`)
 
 ## j1
+Bessel function of first kind, order 1.
+```freefem
+real b = j1(x);
+```
 
-$\codered$
+<u>Parameters:</u>
+
+- `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+- `b` (`:::freefem real`)
 
 ## jn
+Bessel function of first kind, order n.
+```freefem
+real b = jn(n, x);
+```
+$$
+J_n(x) = \sum_{p=0}^{\infty}\frac{(1)^p}{p!(n+p)!}\left(\frac{x}{2}\right)^{2p+n}
+$$
 
-$\codered$
+<u>Parameters:</u>
+
+- `n` (`:::freefem int`)
+- `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+- `b` (`:::freefem real`)
 
 ## jump
 
@@ -1152,6 +1082,10 @@ $\codered$
 $\codered$
 
 ## LinearGMRES
+
+$\codered$
+
+## lgamma
 
 $\codered$
 
@@ -1171,23 +1105,11 @@ $\codered$
 
 $\codered$
 
-## medit
-
-$\codered$
-
 ## min
 
 $\codered$
 
-## mmg3d
-
-$\codered$
-
 ## movemesh
-
-$\codered$
-
-## movemesh23
 
 $\codered$
 
@@ -1245,14 +1167,6 @@ $\codered$
 
 $\codered$
 
-## savesol
-
-$\codered$
-
-## savevtk
-
-$\codered$
-
 ## set
 
 $\codered$
@@ -1285,18 +1199,56 @@ $\codered$
 
 $\codered$
 
+## tgamma
+
+$\codered$
+
 ## trunc
 
 $\codered$
 
 ## y0
+Bessel function of second kind, order 0.
+```freefem
+real B = y0(x);
+```
 
-$\codered$
+<u>Parameters:</u>
+
+- `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+- `b` (`:::freefem real`)
 
 ## y1
+Bessel function of second kind, order 1.
+```freefem
+real B = y1(x);
+```
 
-$\codered$
+<u>Parameters:</u>
+
+- `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+- `b` (`:::freefem real`)
 
 ## yn
+Bessel function of second kind, order n.
+```freefem
+real B = yn(n, x);
+```
+$$
+Y_n(x) = \lim_{\lambda\rightarrow n}{\frac{J_{\lambda}(x)\cos(\lambda\pi)-J_{-\lambda}(x)}{\sin(\lambda\pi)}}
+$$
 
-$\codered$
+<u>Parameters:</u>
+
+- `n` (`:::freefem int`)
+- `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+- `b` (`:::freefem real`)

@@ -146,7 +146,26 @@ $\codered$
 
 ## distance
 
+Need
+```freefem
+load "distance"
+```
+
 ### distance
+
+```freefem
+distance(Th, d, dist, [distmax=DistMax]);
+```
+
+<u>Parameters:</u>
+
+- `Th` (`:::freefem mesh`)
+- `d`
+- `dist` (`:::freefem real[int]`)
+
+<u>Output:</u>
+
+-
 
 $\codered$
 
@@ -1826,13 +1845,48 @@ $\codered$
 
 ## gmsh
 
+Need
+```freefem
+load "gsmh"
+```
+
 ### gmshload
 
-$\codered$
+Load a 2D mesh build with Gmsh.
+
+```freefem
+mesh Th = gmshload(MeshFile, [reftri=RefTri], [renum=Renum]);
+```
+
+<u>Parameters:</u>
+
+- `MeshFile` (`:::freefem string`)<br/>
+Mesh file name
+- _`:::freefem reftri=`_ ($\codered$)
+- _`:::freefem renum=`_ ($\codered$)
+
+<u>Output:</u>
+
+- `Th` (`:::freefem mesh`)
 
 ### gmshload3
 
-$\codered$
+Load a 3D mesh build with Gmsh.
+
+```freefem
+mesh3 Th = gmshload(MeshFile, [reftet=RefTet], [renum=Renum]);
+```
+
+<u>Parameters:</u>
+
+- `MeshFile` (`:::freefem string`)<br/>
+Mesh file name
+- _`:::freefem reftet=`_ ($\codered$)
+- _`:::freefem renum=`_ ($\codered$)
+
+<u>Output:</u>
+
+- `Th` (`:::freefem mesh3`)
 
 ### savegmsh
 
@@ -1916,7 +1970,16 @@ $\codered$
 
 ## isoline
 
+Need
+```freefem
+load "isoline"
+```
+
 ### isoline
+
+```freefem
+int N = isoline(Th, u, xy, iso=Iso, close=Close, smoothing=Smoothing, ratio=Ratio, eps=Eps, beginend=BeginEnd, file=File);
+```
 
 $\codered$
 
