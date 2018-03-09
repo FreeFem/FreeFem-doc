@@ -185,7 +185,7 @@ Progression:
 
 - [ ] line 3
 
-## A transient Stokes solver in amtrix form
+## A transient Stokes solver in matrix form
 
 Progression:
 <div class="progress progress-100plus">

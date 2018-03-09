@@ -112,7 +112,7 @@ tutorialNamesList = [
 	"Optimal control",
 	"A flow with shocks",
 	"Time dependant schema optimization for heat equations",
-	"A transient Stokes solver in amtrix form"
+	"A transient Stokes solver in matrix form"
 	]
 tutorialTODOFile = "tutorial/TODO.md"
 
