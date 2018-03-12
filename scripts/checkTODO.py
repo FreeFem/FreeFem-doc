@@ -47,13 +47,13 @@ introductionTODOFile = "introduction/TODO.md"
 #reference
 referenceFilesList = [
 	"reference/index.md",
-	"reference/types.md",
-	"reference/global-variables.md",
-	"reference/quadrature.md",
-	"reference/operators.md",
-	"reference/loops.md",
-	"reference/io.md",
-	"reference/functions.md",
+	"reference/Types.md",
+	"reference/GlobalVariables.md",
+	"reference/QuadratureFormulae.md",
+	"reference/Operators.md",
+	"reference/Loops.md",
+	"reference/IO.md",
+	"reference/Functions.md",
 	"reference/ExternalLibraries.md"
 	]
 #"reference/examples.md"

@@ -124,7 +124,7 @@ $\codered$
 
 ## dfft
 
-Refere to the [FFTW documentation](http://www.fftw.org/) for more informations.
+Refer to the [FFTW documentation](http://www.fftw.org/) for more informations.
 
 ### plandfft
 

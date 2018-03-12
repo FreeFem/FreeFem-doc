@@ -11,13 +11,13 @@ pages:
     - TODO: documentation/TODO.md
   - Language References:
     - Home: reference/index.md
-    - Types: reference/types.md
-    - Global variables: reference/global-variables.md
-    - Quadrature formulae: reference/quadrature.md
-    - Operators: reference/operators.md
-    - Loops: reference/loops.md
-    - I/O: reference/io.md
-    - Functions: reference/functions.md
+    - Types: reference/Types.md
+    - Global variables: reference/GlobalVariables.md
+    - Quadrature formulae: reference/QuadratureFormulae.md
+    - Operators: reference/Operators.md
+    - Loops: reference/Loops.md
+    - I/O: reference/IO.md
+    - Functions: reference/Functions.md
     - External libraries: reference/ExternalLibraries.md
     - TODO: reference/TODO.md
   - Tutorials:

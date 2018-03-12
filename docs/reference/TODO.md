@@ -26,11 +26,11 @@ Progression:
 	<span class="progress-label">80</span>
 </div>
 
-- [ ] [problem](types/#problem)
-- [ ] [matrix](types/#matrix)
-- [ ] [matrix](types/#matrix)
-- [ ] [matrix](types/#matrix)
-- [ ] [matrix](types/#matrix)
+- [ ] [problem](Types/#problem)
+- [ ] [matrix](Types/#matrix)
+- [ ] [matrix](Types/#matrix)
+- [ ] [matrix](Types/#matrix)
+- [ ] [matrix](Types/#matrix)
 
 ## Global variables
 
@@ -45,28 +45,23 @@ Progression:
 ## Quadrature formulae
 
 Progression:
-<div class="progress progress-0plus">
-	<div class="progress-bar" style="width:15%">
+<div class="progress progress-40plus">
+	<div class="progress-bar" style="width:47%">
 	</div>
-	<span class="progress-label">15</span>
+	<span class="progress-label">47</span>
 </div>
 
-- [ ] [qf1pE](quadrature/#qf1pE)
-- [ ] [qf2pE](quadrature/#qf2pE)
-- [ ] [qf3pE](quadrature/#qf3pE)
-- [ ] [qf5pE](quadrature/#qf5pE)
-- [ ] [qf1pElump](quadrature/#qf1pElump)
-- [ ] [qf1pT](quadrature/#qf1pT)
-- [ ] [qf2pT](quadrature/#qf2pT)
-- [ ] [qf5pT](quadrature/#qf5pT)
-- [ ] [qf1pTlump](quadrature/#qf1pTlump)
-- [ ] [qf2pT4P1](quadrature/#qf2pT4P1)
-- [ ] [qf7pT](quadrature/#qf7pT)
-- [ ] [qf9pT](quadrature/#qf9pT)
-- [ ] [qfV1](quadrature/#qfV1)
-- [ ] [qfV2](quadrature/#qfV2)
-- [ ] [qfV5](quadrature/#qfV5)
-- [ ] [qfV1lump](quadrature/#qfV1lump)
+- [ ] [qf1pT](QuadratureFormulae/#qf1pT)
+- [ ] [qf2pT](QuadratureFormulae/#qf2pT)
+- [ ] [qf5pT](QuadratureFormulae/#qf5pT)
+- [ ] [qf1pTlump](QuadratureFormulae/#qf1pTlump)
+- [ ] [qf2pT4P1](QuadratureFormulae/#qf2pT4P1)
+- [ ] [qf7pT](QuadratureFormulae/#qf7pT)
+- [ ] [qf9pT](QuadratureFormulae/#qf9pT)
+- [ ] [qfV1](QuadratureFormulae/#qfV1)
+- [ ] [qfV2](QuadratureFormulae/#qfV2)
+- [ ] [qfV5](QuadratureFormulae/#qfV5)
+- [ ] [qfV1lump](QuadratureFormulae/#qfV1lump)
 
 ## Operators
 
@@ -107,41 +102,41 @@ Progression:
 	<span class="progress-label">63</span>
 </div>
 
-- [ ] [BFGS](functions/#BFGS)
-- [ ] [checkmovemesh](functions/#checkmovemesh)
-- [ ] [convect](functions/#convect)
-- [ ] [EigenValue](functions/#EigenValue)
-- [ ] [emptymesh](functions/#emptymesh)
-- [ ] [intalledges](functions/#intalledges)
-- [ ] [interpolate](functions/#interpolate)
-- [ ] [jump](functions/#jump)
-- [ ] [LinearCG](functions/#LinearCG)
-- [ ] [LinearGMRES](functions/#LinearGMRES)
-- [ ] [lgamma](functions/#lgamma)
-- [ ] [log](functions/#log)
-- [ ] [log10](functions/#log10)
-- [ ] [max](functions/#max)
-- [ ] [mean](functions/#mean)
-- [ ] [min](functions/#min)
-- [ ] [ movemesh](functions/# movemesh)
-- [ ] [NLCG](functions/#NLCG)
-- [ ] [on](functions/#on)
-- [ ] [plot](functions/#plot)
-- [ ] [polar](functions/#polar)
-- [ ] [readmesh](functions/#readmesh)
-- [ ] [readmesh3](functions/#readmesh3)
-- [ ] [round](functions/#round)
-- [ ] [savemesh](functions/#savemesh)
-- [ ] [set](functions/#set)
-- [ ] [sin](functions/#sin)
-- [ ] [sinh](functions/#sinh)
-- [ ] [sort](functions/#sort)
-- [ ] [splitmesh](functions/#splitmesh)
-- [ ] [square](functions/#square)
-- [ ] [tan](functions/#tan)
-- [ ] [tanh](functions/#tanh)
-- [ ] [tgamma](functions/#tgamma)
-- [ ] [trunc](functions/#trunc)
+- [ ] [BFGS](Functions/#BFGS)
+- [ ] [checkmovemesh](Functions/#checkmovemesh)
+- [ ] [convect](Functions/#convect)
+- [ ] [EigenValue](Functions/#EigenValue)
+- [ ] [emptymesh](Functions/#emptymesh)
+- [ ] [intalledges](Functions/#intalledges)
+- [ ] [interpolate](Functions/#interpolate)
+- [ ] [jump](Functions/#jump)
+- [ ] [LinearCG](Functions/#LinearCG)
+- [ ] [LinearGMRES](Functions/#LinearGMRES)
+- [ ] [lgamma](Functions/#lgamma)
+- [ ] [log](Functions/#log)
+- [ ] [log10](Functions/#log10)
+- [ ] [max](Functions/#max)
+- [ ] [mean](Functions/#mean)
+- [ ] [min](Functions/#min)
+- [ ] [ movemesh](Functions/# movemesh)
+- [ ] [NLCG](Functions/#NLCG)
+- [ ] [on](Functions/#on)
+- [ ] [plot](Functions/#plot)
+- [ ] [polar](Functions/#polar)
+- [ ] [readmesh](Functions/#readmesh)
+- [ ] [readmesh3](Functions/#readmesh3)
+- [ ] [round](Functions/#round)
+- [ ] [savemesh](Functions/#savemesh)
+- [ ] [set](Functions/#set)
+- [ ] [sin](Functions/#sin)
+- [ ] [sinh](Functions/#sinh)
+- [ ] [sort](Functions/#sort)
+- [ ] [splitmesh](Functions/#splitmesh)
+- [ ] [square](Functions/#square)
+- [ ] [tan](Functions/#tan)
+- [ ] [tanh](Functions/#tanh)
+- [ ] [tgamma](Functions/#tgamma)
+- [ ] [trunc](Functions/#trunc)
 
 ## External libraries
 

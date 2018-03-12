@@ -30,7 +30,7 @@ Crout solver.
 GMRES solver (Generalized minimal residual method).
 
 ## include
-Include a module.
+Include an [external library](ExternalLibraries).
 ```freefem
 include "iovtk"
 ```
