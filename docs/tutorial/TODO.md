@@ -87,14 +87,12 @@ Progression:
 
 Progression:
 <div class="progress progress-80plus">
-	<div class="progress-bar" style="width:98%">
+	<div class="progress-bar" style="width:99%">
 	</div>
-	<span class="progress-label">98</span>
+	<span class="progress-label">99</span>
 </div>
 
-- [ ] line 82
-- [ ] line 201
-- [ ] line 205
+- [ ] line 203
 
 ## The system of elasticity
 
@@ -183,13 +181,12 @@ Progression:
 ## Time dependant schema optimization for heat equations
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:99%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">99</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 3
 
 ## A transient Stokes solver in matrix form
 

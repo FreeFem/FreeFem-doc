@@ -1,126 +1,123 @@
-# Commands for Mesh Generation
+## Commands for Mesh Generation
 
 Let us begin with the two important keywords `:::freefem border` and `:::freefem buildmesh`.
 
 All examples in this section come from the files `:::freefem mesh.edp` and `:::freefem tablefunction.edp`.
 
-## Square
+### Square
 
 The command `:::freefem square` triangulates the unit square.
-The following generates a 4*5 grid in the unit square $[0,1]^2$. The labels of the boundaries
-are shown in Fig. 5.1.
+
+The following generates a $4 \times 5$ grid in the unit square $[0,1]^2$. The labels of the boundaries are shown in <a href="#Fig1">Fig. 1</a>.
 
 ```freefem
-mesh Th = square(4,5);
+mesh Th = square(4, 5);
 ```
 
-|Fig 5.1: Boundary labels of the mesh by `:::freefem square(10,10)`|
-|:----|
+|<a name=Fig1">Fig 1</a>: Boundary labels of the mesh by `:::freefem square(10,10)`|
+|:----:|
 |![Square](images/square.svg)|
 
-To construct a $n\times m$ grid in the rectangle \index{rectangle} $[x_0,x_1]\times [y_0,y_1]$, proceeds as follows:
+To construct a $n\times m$ grid in the rectangle $[x_0,x_1]\times [y_0,y_1]$, proceeds as follows:
 
 ```freefem
-real x0=1.2,x1=1.8;
-real y0=0,y1=1;
-int n=5,m=20;
-mesh Th=square(n,m,[x0+(x1-x0)*x,y0+(y1-y0)*y]);
-
+real x0 = 1.2;
+real x1 = 1.8;
+real y0 = 0;
+real y1 = 1;
+int n = 5;
+real m = 20;
+mesh Th = square(n, m, [x0+(x1-x0)*x, y0+(y1-y0)*y]);
 ```
 
 !!! note
-	Adding the  named  parameter `flags=icase` with icase:
+	Adding the named parameter `flags=icase` with icase:
 
-	0. will produce a mesh where all quads are split with diagonal $ x-y=cte$
-	1. will produce Union Jack flag type of mesh.
-	2. will produce a mesh where all quads are split with diagonal $ x+y=cte$ (v 3.8)
-	3. same as case 1  except in two corners such that no triangle with 3 vertices on boundary (v 3.8)
-	4. same as case 3  except in two corners such that no triangle with 3 vertices on boundary (v 3.8)
+	0. will produce a mesh where all quads are split with diagonal $x-y=constant$
+	1. will produce _Union Jack flag_ type of mesh.
+	2. will produce a mesh where all quads are split with diagonal $x+y=constant$
+	3. same as case 1 except in two corners such that no triangle with 3 vertices on boundary
+	4. same as case 3 except in two corners such that no triangle with 3 vertices on boundary
 
 	````freefem
-	mesh Th=square(n,m,[x0+(x1-x0)*x,y0+(y1-y0)*y],flags=icase);
+	mesh Th = square(n, m, [x0+(x1-x0)*x, y0+(y1-y0)*y], flags=icase);
 	````
 
 !!! note
-	Adding the  named  parameter `:::freefem label=labs` will change the 4 default label numbers to `:::freefem labs[i-1]`, for example `:::freefem int[int] labs=[11,12,13,14]`, and adding the  named parameter `:::freefem region=10` will change  the region number  to $10$, for instance (v 3.8).
+	Adding the named parameter `:::freefem label=labs` will change the 4 default label numbers to `:::freefem labs[i-1]`, for example `:::freefem int[int] labs=[11, 12, 13, 14]`, and adding the named parameter `:::freefem region=10` will change the region number to $10$, for instance (v 3.8).
 
-	To see all these flags at work,  try the file `examples++/square-mesh.edp` :
+	To see all these flags at work, try the file `examples++/square-mesh.edp`$\codered$ :
 
 	```freefem
-	for (int i=0;i<5;++i)
-  	{
-    	int[int] labs=[11,12,13,14];
-    	mesh Th=square(3,3,flags=i,label=labs,region=10);
-    	plot(Th,wait=1,cmm=" square flags = "+i );
-  	}
+	for (int i = 0; i < 5; ++i){
+		int[int] labs = [11, 12, 13, 14];
+		mesh Th = square(3, 3, flags=i, label=labs, region=10);
+		plot(Th, wait=1, cmm="square flags = "+i );
+	}
 	```
 
-## Border
+### Border
 
-Boundaries are defined piecewise by parametrized curves.
-The pieces can only intersect at their endpoints, but it is possible to
-join more than two endpoints. This can be used to structure the mesh
-if an area thouches a border and create new regions by dividing larger ones:
+Boundaries are defined piecewise by parametrized curves. The pieces can only intersect at their endpoints, but it is possible to join more than two endpoints. This can be used to structure the mesh if an area thouches a border and create new regions by dividing larger ones:
 
 ```freefem
 int upper = 1;
 int others = 2;
 int inner = 3;
 
-border C01(t=0,1){x = 0;         y = -1+t;        label = upper;}
-border C02(t=0,1){x = 1.5-1.5*t; y = -1;          label = upper;}
-border C03(t=0,1){x = 1.5;       y = -t;          label = upper;}
-border C04(t=0,1){x = 1+0.5*t;   y = 0;           label = others;}
-border C05(t=0,1){x = 0.5+0.5*t; y = 0;           label = others;}
-border C06(t=0,1){x = 0.5*t;     y = 0;           label = others;}
-border C11(t=0,1){x = 0.5;       y = -0.5*t;      label = inner;}
-border C12(t=0,1){x = 0.5+0.5*t; y = -0.5;        label = inner;}
-border C13(t=0,1){x = 1;         y = -0.5+0.5*t;  label = inner;}
+border C01(t=0, 1){x=0; y=-1+t; label=upper;}
+border C02(t=0, 1){x=1.5-1.5*t; y=-1; label=upper;}
+border C03(t=0, 1){x=1.5; y=-t; label=upper;}
+border C04(t=0, 1){x=1+0.5*t; y=0; label=others;}
+border C05(t=0, 1){x=0.5+0.5*t; y=0; label=others;}
+border C06(t=0, 1){x=0.5*t; y=0; label=others;}
+border C11(t=0, 1){x=0.5; y=-0.5*t; label=inner;}
+border C12(t=0, 1){x=0.5+0.5*t; y=-0.5; label=inner;}
+border C13(t=0, 1){x=1; y=-0.5+0.5*t; label=inner;}
 
 int n = 10;
-plot(C01(-n)+C02(-n)+C03(-n)+C04(-n)+C05(-n)+C06(-n)+
-      C11(n)+C12(n)+C13(n), wait=true);
+plot(C01(-n) + C02(-n) + C03(-n) + C04(-n) + C05(-n)
+	+ C06(-n) + C11(n) + C12(n) + C13(n), wait=true);
 
-mesh Th = buildmesh(C01(-n)+C02(-n)+C03(-n)+C04(-n)+C05(-n)+C06(-n)+
-      C11(n)+C12(n)+C13(n));
+mesh Th = buildmesh(C01(-n) + C02(-n) + C03(-n) + C04(-n) + C05(-n)
+	+ C06(-n) + C11(n) + C12(n) + C13(n));
 
-plot(Th, wait=true); // Fig. 5.3
+plot(Th, wait=true);
 
 cout << "Part 1 has region number " << Th(0.75, -0.25).region << endl;
 cout << "Part 2 has redion number " << Th(0.25, -0.25).region << endl;
 ```
 
-|Fig. 5.2: Multiple border ends intersect|Fig. 5.3: Generated mesh|
+Borders and mesh are respectively shown in <a href="#Fig2">Fig. 2</a> and <a href="#Fig3">Fig. 3</a>.
+
+|<a name="Fig2">Fig. 2</a>: Multiple border ends intersect|<a name="Fig3">Fig. 3</a>: Generated mesh|
 |:----:|:----:|
 |![Multiple border ends intersect](images/multiendborder.svg)|![Generated Mesh](images/multiendmesh.svg)|
 
-Triangulation keywords assume that the domain is defined as being on the _left_ (resp right) of its oriented parameterized boundary
+Triangulation keywords assume that the domain is defined as being on the _left_ (resp _right_) of its oriented parameterized boundary
 
 $$
-\Gamma_j=\{(x,y)\left|\; x=\varphi_x(t),\, y=\varphi_y(t),\, a_j\le t\le b_j\right.\}
+\Gamma_j = \{(x,y)\left|\; x=\varphi_x(t),\, y=\varphi_y(t),\, a_j\le t\le b_j\right.\}
 $$
 
-To check the orientation plot $t\mapsto (\varphi_x(t),\varphi_y(t)),\, t_0\le t\le t_1$.
-If it is as in Fig. 5.4, then the domain lies on the shaded area, otherwise it lies on the opposite side.
+To check the orientation plot $t\mapsto (\varphi_x(t),\varphi_y(t)),\, t_0\le t\le t_1$. If it is as in <a href="Fig4">Fig. 4</a>, then the domain lies on the shaded area, otherwise it lies on the opposite side.
 
-|Fig. 5.4: Orientation of the boundary defined by $(\phi_x(t),\phi_y(t))$|
-|:----|
+|<a name="Fig4">Fig. 4</a>: Orientation of the boundary defined by $(\phi_x(t),\phi_y(t))$|
+|:----:|
 |![Border](images/border.svg)|
 
 The general expression to define a triangulation with `:::freefem buildmesh` is
 
 ```freefem
-mesh Mesh_Name = buildmesh(Gamma1(m1)+...+GammaJ(mj),OptionalParameter);
+mesh Mesh_Name = buildmesh(Gamma1(m1)+...+GammaJ(mj), OptionalParameter);
 ```
 
-where $m_j$ are positive or negative numbers to indicate how many vertices should be on $\Gamma_j,\,
-\Gamma=\cup_{j=1}^J \Gamma_J$, and the optional parameter (separed with comma) can be
+where $m_j$ are positive or negative numbers to indicate how many vertices should be on $\Gamma_j,\, \Gamma=\cup_{j=1}^J \Gamma_J$, and the optional parameter (separed with comma) can be:
 
-* `:::freefem nbvx=<int value>`,  to set the maximal number of  vertices in the mesh.
-* `:::freefem fixedborder=<bool value>`, to say if the mesh generator can change the boundary mesh
-or not (by default the boundary mesh can change; beware that with periodic boundary conditions
-(see. \ref{periodic BC}), it can be dangerous.
+* `:::freefem nbvx=<int value>`, to set the maximal number of vertices in the mesh.
+* `:::freefem fixedborder=<bool value>`, to say if the mesh generator can change the boundary mesh or not (by default the boundary mesh can change; beware that with periodic boundary conditions (see. [Finite Element](FiniteElement)), it can be dangerous.
 
+<!--- END OF REVIEW, TO CONTINUE --->
 
 The orientation of boundaries can be changed by changing the sign of $m_j$.
 The following example shows how to change the orientation.
@@ -154,7 +151,7 @@ plot(Thwithhole,wait=1,ps="Thwithhole.eps"); // fig. 5.6
 	   // the two circle have the same radius = $0.3$
 	```
 
-## Multi-Border
+### Multi-Border
 
 Sometime it can be useful to make an array of border, but unfortunately it is incompatible with the FreeFem++ syntax.
 So to bypass this problem, the idea is small, if the number of segment of the discretization $n$ is a array, we make  a implicit loop on all the value of the array, and
@@ -202,7 +199,7 @@ mesh th= buildmesh(bb(nn)+cc(NC)) ;
 plot(th,wait=1);
 ```
 
-## Data Structures and Read/Write Statements for a Mesh
+### Data Structures and Read/Write Statements for a Mesh
 
 Users who want to read a triangulation made elsewhere should see the structure
 of the file generated below:
@@ -296,7 +293,7 @@ plot (th2,u);
 ```
 
 
-## Mesh Connectivity and data
+### Mesh Connectivity and data
 
 The following example explains methods to obtain mesh information.
 
@@ -462,7 +459,7 @@ in 2d and 3d where
 
 
 
-## The keyword "triangulate"
+### The keyword "triangulate"
 
 FreeFem++ is able to build a triangulation from a set of points. This
 triangulation is a Delaunay mesh of the convex hull of the set of points.
@@ -518,7 +515,7 @@ Vhxy xx=x,yy=y; // To set two arrays for the x's and y's
 mesh Th=triangulate(xx[],yy[]);
 ```
 
-# Boundary FEM Spaces Built as Empty Meshes
+## Boundary FEM Spaces Built as Empty Meshes
 
 To define a Finite Element space on a boundary,
 we came up with the idea of a mesh with no internal points (call empty mesh).
@@ -573,8 +570,8 @@ savemesh(Th,"emptymesh-2.msh");
 |:----:|:----:|
 |![Empty mesh 1](images/emptymesh-1.svg)|![Empty mesh 2](images/emptymesh-2.svg)|
 
-# Remeshing
-## Movemesh
+## Remeshing
+### Movemesh
 
 Meshes can be translated, rotated and deformed by ':::freefem movemesh`; this is useful for elasticity to watch the deformation due to the displacement
 $\vec\Phi(x,y)=(\Phi_1(x,y),\Phi_2(x,y))$ of shape. It is also useful to
@@ -661,7 +658,7 @@ for (int i=0;i<4;i++)
 ```
 
 
-# Regular Triangulation: `:::freefem hTriangle`
+## Regular Triangulation: `:::freefem hTriangle`
 
 For a set $S$, we define the diameter of $S$ by
 
@@ -689,7 +686,7 @@ Ph h = hTriangle;
 cout << "size of mesh = " << h[].max << endl;
 ```
 
-# Adaptmesh
+## Adaptmesh
 
 The function
 \[
@@ -783,7 +780,7 @@ so the linear system can be solved with the conjugate gradient method (parameter
 By `:::freefem adaptmesh`, the slope of the final solution is correctly computed near
 the point of intersection of $bc$ and $bd$ as in Fig. 5.16.
 
-This method is described in detail in $\codered$ \cite{bamg}. It has a number of
+This method is described in detail in [1](#refHecht1998). It has a number of
 default parameters which can be modified :
 
 Si `:::freefem f1,f2` sont des functions  et `:::freefem thold, Thnew` des maillages.
@@ -882,7 +879,7 @@ plot(Th,wait=1,ps="square-2.eps");
 |:----|:----|:----|
 |![Initial mesh](images/square-0.svg)|![First iteration](images/square-1.svg)|![Last iteration](images/square-2.svg)|
 
-# Trunc
+## Trunc
 
 Two operators have been introduce to remove triangles from a mesh or to divide them.
 Operator `:::freefem trunc` has two parameters :
@@ -920,7 +917,7 @@ for (i=0;i<n;i++) // All degree of freedom
 |:----|:----|
 |![Trunc0](images/trunc0.svg)|![Trunc6](images/trunc6.svg)|
 
-# Splitmesh
+## Splitmesh
 
 Another way to split mesh triangles is to use `:::freefem splitmesh`, for example:
 
@@ -939,7 +936,7 @@ plot(Th,wait=1,ps="splitmesh.eps"); // See fig. 5.23
 |:----:|:----:|
 |![No split mesh](images/nosplitmesh.svg)|![No split mesh](images/nosplitmesh.svg)|
 
-# Meshing Examples
+## Meshing Examples
 
 **Example** Two rectangles touching by a side
 
@@ -1145,7 +1142,7 @@ plot(Th,ps="ThreePoint.eps",bw=1); // Fig. 5.33
 
 </center>
 
-# How to change the label of elements and border elements of a mesh
+## How to change the label of elements and border elements of a mesh
 
 Changing the label of elements and border elements will be done using the keyword `:::freefem change`. The parameters for this command line are for a two dimensional and dimensional case:
 
@@ -1194,9 +1191,9 @@ In line 9 of the previous file, the method to "gluing" different mesh of the sam
 This function is the operator "+" between meshes.
 The method implemented need that the point in adjacent mesh are the same.
 
-# Mesh in three dimensions
+## Mesh in three dimensions
 
-## Cube
+### Cube
 
 A new function `:::freefem cube` like the function `:::freefem square` in 2d is the simple way to build cubic object, in plugin `:::freefem msh3` (need `:::freefem load "msh3"`).
 
@@ -1280,7 +1277,7 @@ times: compile 0.005363s, execution 0.00218s,  mpirank:0
 
 </center>
 
-## Read/Write Statements for a Mesh in 3D
+### Read/Write Statements for a Mesh in 3D
 
 In three dimensions, the file mesh format supported for input and output files by FreeFem++ are the extension .msh and .mesh.
 These formats are described in the chapter on Mesh Files in two dimensions.
@@ -1310,15 +1307,15 @@ and a data structure for tetrahedra. The tetrahedra of a three dimensional mesh 
 \end{itemize}
 This field is express with the notation of Section \ref{meshformatfile.mesh}.
 
-## TeGen: A tetrahedral mesh generator
+### TeGen: A tetrahedral mesh generator
 
 **TetGen**
 
-TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Applied Analysis and Stochastics of Berlin in Germany $\codered$ \cite{tetgen}. TetGen is a free for research and non-commercial uses. For any commercial licence utilization, a commercial licence is available upon request to Hang Si.
+TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Applied Analysis and Stochastics of Berlin in Germany [2](#refTetgen). TetGen is a free for research and non-commercial uses. For any commercial licence utilization, a commercial licence is available upon request to Hang Si.
 
 This software is a tetrahedral mesh generator of a three dimensional domain defined by its boundary. The input domain take into account a polyhedral or a piecewise linear complex. This tetrahedralization is a constrained Delaunay tetrahedralization.
 
-The method used in TetGen to control the quality of the mesh is a Delaunay refinement due to  Shewchuk $\codered$ \cite{tetgenshewchuk}. The quality measure of this algorithm is the Radius-Edge Ratio (see Section 1.3.1 $\codered$ \cite{tetgen} for more details). A theoretical bounds of this ratio of the algorithm of Shewchuk is obtained for a given complex of vertices, constrained segments and facets of surface mesh, with no input angle less than 90 degree. This theoretical bounds is 2.0.
+The method used in TetGen to control the quality of the mesh is a Delaunay refinement due to  Shewchuk [3](#refShewchuk). The quality measure of this algorithm is the Radius-Edge Ratio (see Section 1.3.1 [2](#refTetgen) for more details). A theoretical bounds of this ratio of the algorithm of Shewchuk is obtained for a given complex of vertices, constrained segments and facets of surface mesh, with no input angle less than 90 degree. This theoretical bounds is 2.0.
 
 
 The launch of Tetgen is done with the keyword `:::freefem tetg`. The parameters of this command line is:
@@ -1329,23 +1326,23 @@ The launch of Tetgen is done with the keyword `:::freefem tetg`. The parameters 
 * `:::freefem label =` is a vector of integer that contains the old labels number at index $2i$  and the new labels number at index $2i+1$ of Triangles.
 This parameters is initialized as label for the keyword change (\ref{eq.org.vector.change.label}) $\codered$.
 
-* `:::freefem switch  =` A string expression. This string corresponds to the command line switch of Tetgen see Section 3.2 of \cite{tetgen} $\codered$.
+* `:::freefem switch  =` A string expression. This string corresponds to the command line switch of Tetgen see Section 3.2 of [2](#refTetgen).
 
 * `:::freefem nbofholes =` Number of holes (default value: "size of `:::freefem holelist` / 3").
 
-* `:::freefem holelist =` This array correspond to `:::freefem holelist` of tetgenio data structure \cite{tetgen} $\codered$. A real vector of size `:::freefem 3 * nbofholes`. In TetGen, each hole is associated with a point inside this domain.
+* `:::freefem holelist =` This array correspond to `:::freefem holelist` of tetgenio data structure [2](#refTetgen). A real vector of size `:::freefem 3 * nbofholes`. In TetGen, each hole is associated with a point inside this domain.
 This vector is $x_{1}^{h}, y_{1}^{h}, z_{1}^{h}, x_{2}^{h}, y_{2}^{h}, z_{2}^{h}, \cdots,$ where $x_{i}^{h},y_{i}^{h},z_{i}^{h}$ is the associated point with the $i^{\mathrm{th}}$ hole.
 
 * `:::freefem nbofregions =` Number of regions (default value: "size of `:::freefem regionlist` / 5").
 
-* `:::freefem regionlist =` This array corresponds to `:::freefem regionlist` of tetgenio data structure \cite{tetgen} $\codered$.
+* `:::freefem regionlist =` This array corresponds to `:::freefem regionlist` of tetgenio data structure [2](#refTetgen).
 The attribute and the volume constraint of region are given in this real vector of size `:::freefem 5 * nbofregions`.
 The $i^{\mathrm{th}}$ region is described by five elements: $x-$coordinate, $y-$coordinate and $z-$coordinate of a point inside this domain ($x_{i},y_{i},z_{i}$); the attribute ($at_{i}$) and the maximum volume for tetrahedra ($mvol_{i}$) for this region.
 The `:::freefem regionlist` vector is: $x_{1}, y_{1}, z_{1}, at_{1}, mvol_{1}, x_{2}, y_{2}, z_{2}, at_{2}, mvol_{2}, \cdots  $.
 
 * `:::freefem nboffacetcl =` Number of facets constraints "size of `:::freefem facetcl` / 2").
 
-* `:::freefem facetcl =` This array corresponds to `:::freefem facetconstraintlist` of tetgenio data structure \cite{tetgen} $\codered$.
+* `:::freefem facetcl =` This array corresponds to `:::freefem facetconstraintlist` of tetgenio data structure [2](#refTetgen).
 The $i^{th}$ facet constraint is defined by the facet marker $Ref_{i}^{fc}$ and the maximum area for faces $marea_{i}^{fc}$.
 The `:::freefem facetcl` array is: $Ref_{1}^{fc}, marea_{1}^{fc}, Ref_{2}^{fc}, marea_{2}^{fc}, \cdots$.
 This parameters has no effect if switch `:::freefem q` is not selected.
@@ -1514,7 +1511,7 @@ $x-$coordinates, $y-$coordinates and $z-$coordinates.
 
 The parameters of this command line are :
 
-* `:::freefem switch =` A string expression. This string corresponds to the command line `:::freefem switch` of TetGen see Section 3.2 of \cite{tetgen} $\codered$.
+* `:::freefem switch =` A string expression. This string corresponds to the command line `:::freefem switch` of TetGen see Section 3.2 of [2](#refTetgen).
 
 * `:::freefem reftet =` An integer expression. Set the label of tetrahedra.
 
@@ -1523,7 +1520,7 @@ The parameters of this command line are :
 
 In the string switch, we can't used the option `:::freefem p` and `:::freefem q` of tetgen.
 
-## Reconstruct/Refine a three dimensional mesh with TetGen
+### Reconstruct/Refine a three dimensional mesh with TetGen
 
 Meshes in three dimension can be refined using TetGen with the command line `:::freefem tetgreconstruction`.
 
@@ -1539,7 +1536,7 @@ The parameters `:::freefem switch`, `:::freefem nbofregions`, `:::freefem region
 `:::freefem nboffacetcl` and `:::freefem facetcl` of the command line which call TetGen (tetg) is used for `:::freefem tetgrefine`.
 
 In the parameter `:::freefem switch=`, the character `:::freefem r` should be used without the character `:::freefem p`.
-For instance, see the manual of TetGen \cite{tetgen} $\codered$ for effect of `:::freefem r` to other character.
+For instance, see the manual of TetGen [2](#refTetgen) for effect of `:::freefem r` to other character.
 
 The parameter `:::freefem regionlist` allows to define a new volume constraint in the region. The label in the `:::freefem regionlist` will be the previous label of region.
 This parameter and `:::freefem nbofregions` can't be used with parameter `:::freefem sizevolume`.
@@ -1607,7 +1604,7 @@ medit(``anisotroperefine'',Th3sphrefine2);
 
 ```
 
-## Moving mesh in three dimensions
+### Moving mesh in three dimensions
 
 Meshes in three dimensions can be translated rotated and deformed using the command line movemesh as in the 2D case (see section `:::freefem movemesh` in chapiter 5 $\codered$). If $\Omega$ is tetrahedrized as $T_{h}(\Omega)$, and $\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))$ is a displacement vector then $\Phi(T_{h})$ is obtained by
 
@@ -1636,7 +1633,7 @@ where $B$ is the smallest axis parallel boxes containing the discretion domain o
 
 An example of this command can be found in the file `:::freefem Poisson3d.edp` located in the directory examples++-3d.
 
-## Layer mesh
+### Layer mesh
 
 In this section, we present the command line to obtain a Layer mesh: `:::freefem buildlayermesh`.
 This mesh is obtained by extending a two dimensional mesh in the z-axis.
@@ -1693,7 +1690,7 @@ Theses volume elements can have some merged point:
 * 2 merged points : tetrahedra
 * 3 merged points : no elements
 
-The elements with merged points are called degenerate elements. To obtain a mesh with tetrahedra, we decompose the pyramid into two tetrahedra and the prism into three tetrahedra. These tetrahedra are obtained by cutting the quadrilateral face of pyramid and prism with the diagonal which have the vertex with the maximum index (see \cite{hdrHecht} $\codered$ for the reason of this choice).
+The elements with merged points are called degenerate elements. To obtain a mesh with tetrahedra, we decompose the pyramid into two tetrahedra and the prism into three tetrahedra. These tetrahedra are obtained by cutting the quadrilateral face of pyramid and prism with the diagonal which have the vertex with the maximum index (see [4](#refHecht1992)} $\codered$ for the reason of this choice).
 
 The triangles on the middle surface obtained with the decomposition of the volume prismatic elements are the triangles generated by the edges on the border of the two dimensional mesh. The label of triangles on the border elements and tetrahedra are defined with the label of these associated elements.
 
@@ -1852,7 +1849,7 @@ mesh3 Th3sph=tetgtransfo(Ths,transfo=[XX1,YY1,ZZ1],switch=test,nbofregions=1,
 savemesh(Th3sph,"sphere2region.mesh");
 ```
 
-# Meshing examples
+## Meshing examples
 
 
 **Example `:::freefem lac.edp`**
@@ -1954,7 +1951,7 @@ cout << "=============================" << endl;
 savemesh(Th3finhole,"spherewithahole.mesh");
 ```
 
-## Build a 3d mesh of a cube with a balloon
+### Build a 3d mesh of a cube with a balloon
 
 First the `:::freefem MeshSurface.idp` file to build boundary mesh of a Hexaedra and of a Sphere.
 
@@ -2048,7 +2045,7 @@ include "MeshSurface.idp"
 |:----:|:----:|
 |![Hex Sphere](images/Hex-Sphere.svg)|![Cube with ball](images/Cube-with-Ball.svg)|
 
-# The output solution formats .sol and .solb
+## The output solution formats .sol and .solb
 
 With the keyword savesol, we can store a scalar functions, a scalar FE functions,
 a vector fields, a vector FE fields, a symmetric tensor and a symmetric FE tensor..
@@ -2149,7 +2146,7 @@ The parameters of this keyword are :
 In the file, solutions are stored in this order : scalar solutions, vector solutions and finally symmetric tensor solutions.
 
 
-# Medit
+## Medit
 
 The keyword `:::freefem medit` allows to dipslay a mesh alone or a mesh and one or several functions defined on the mesh using the Pascal Frey's freeware medit. Medit opens its own window and uses OpenGL extensively. Naturally to use this command `:::freefem medit` must be installed.
 
@@ -2281,7 +2278,7 @@ medit("velocity pressure",Th,[u1,u2],p,order=1);
 ```
 
 
-# Mshmet
+## Mshmet
 
 Mshmet is a software developped by P. Frey that allows to compute an anisotropic metric based on solutions (i.e. Hessian-based). This sofware can return also an isotropic metric. Moreover, `:::freefem mshmet` can construct also a metric suitable for level sets interface capturing. The solution can be defined on 2D or 3D structured/unstructured meshes. For example, the solution can be an error estimate of a FE solutions.
 
@@ -2381,7 +2378,7 @@ for(int ii=0; ii<Th3.nv; ii++)
 savesol("metrictest.bis.sol",Th3,usol);
 ```
 
-# FreeYams
+## FreeYams
 
 FreeYams is a surface mesh adaptation software which is developed by P. Frey. This software is a new version of yams. The adapted surface mesh is constructed with a geometric metric tensor field. This  field is based on the intrinsic properties of the discrete surface. Also this software allows to construct a simplification of a mesh. This decimation is  based on the Hausdorff distance between the initial and the current triangulation. Compared to the software yams, FreeYams  can be used also to produce anisotropic triangulations adapted to level set simulations. A technical report on freeYams documentation is available [here](https://www.ljll.math.upmc.fr/frey/software.html).
 
@@ -2474,7 +2471,7 @@ mesh3 Th3 = freeyams(Th);
 medit("maillagesurfacique",Th3,wait=1);
 ```
 
-# mmg3d
+## mmg3d
 
 [Mmg3d[(http://www.mmgtools.org) is a 3D remeshing software developed by C. Dobrzynski and P. Frey.
 
@@ -2606,7 +2603,7 @@ for(int it=0; it<29; it++){
  }
 ```
 
-# A first 3d isotope mesh adaptation process
+## A first 3d isotope mesh adaptation process
 
 **Example `:::freefem Laplace-Adapt-3d.edp`**
 
@@ -2643,7 +2640,7 @@ for(int ii=0; ii<5; ii++)
   medit("U-adap-iso-"+ii,Th3,u,wait=1);}
 ```
 
-# Build a 2d mesh from a isoline
+## Build a 2d mesh from a isoline
 
 The idea is get the discretization of a isoline to fluid meshes, this tool can be useful to construct meshes from image. First, we give an example of the isovalue meshes $0.2$  of analytical function $ \sqrt{(x-1/2)^2 +(y-1/2)^2}$, on unit square.
 
@@ -2774,3 +2771,13 @@ plot(Th,wait=1,ps="leman.eps"); // see figure \ref{fig:leman} $\codered$
 |Fig. 5.4: The image of the leman lake meshes|Fig. 5.41: the mesh of the lake|
 |:----:|:----:|
 |![lake](images/lg.jpg)|![leman mesh](images/leman.svg)|
+
+## References
+
+<a name="refHecht1998">HECHT, F. The mesh adapting software: bamg. INRIA report, 1998, vol. 250, p. 252.</a>
+
+<a name="refTetgen">SI, Hang. TetGen Users’ guide: A quality tetrahedral mesh generator and three-dimensional delaunay triangulator.</a>
+
+<a name="refShewchuk">SHEWCHUK, Jonathan Richard. Tetrahedral mesh generation by Delaunay refinement. In : Proceedings of the fourteenth annual symposium on Computational geometry. ACM, 1998. p. 86-95.</a>
+
+<a name="refHecht1992">HECHT, F. Outils et algorithmes pour la méthode des éléments finis. HdR, Université Pierre et Marie Curie, France, 1992.</a>

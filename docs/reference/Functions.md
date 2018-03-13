@@ -1189,6 +1189,8 @@ $\codered$
 
 ## square
 
+See [Mesh Generation chapter](../documentation/MeshGeneration/#square) for more informations.
+
 $\codered$
 
 ## tan
