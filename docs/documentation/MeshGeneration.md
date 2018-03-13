@@ -120,35 +120,36 @@ where $m_j$ are positive or negative numbers to indicate how many vertices shoul
 <!--- END OF REVIEW, TO CONTINUE --->
 
 The orientation of boundaries can be changed by changing the sign of $m_j$.
-The following example shows how to change the orientation.
-The example generates the unit disk with a small circular hole, and assign "1" to the unit disk ("2" to the circle inside).
-The boundary label must be non-zero, but it can also be omitted.
+
+The following example shows how to change the orientation. The example generates the unit disk with a small circular hole, and assign "1" to the unit disk ("2" to the circle inside). The boundary label **must be non-zero**, but it can also be omitted.
 
 ```freefem
-border a(t=0,2*pi){ x=cos(t); y=sin(t);label=1;}
-border b(t=0,2*pi){ x=0.3+0.3*cos(t); y=0.3*sin(t);label=2;}
-plot(a(50)+b(+30)); // To see a plot of the border mesh \index{plot!border}
-mesh Thwithouthole= buildmesh(a(50)+b(+30));
-mesh Thwithhole   = buildmesh(a(50)+b(-30));
-plot(Thwithouthole,wait=1,ps="Thwithouthole.eps"); //fig. 5.5
-plot(Thwithhole,wait=1,ps="Thwithhole.eps"); // fig. 5.6
+border a(t=0, 2*pi){x=cos(t); y=sin(t); label=1;}
+border b(t=0, 2*pi){x=0.3+0.3*cos(t); y=0.3*sin(t); label=2;}
+plot(a(50) + b(30)); //to see a plot of the border mesh
+mesh Thwithouthole = buildmesh(a(50) + b(30));
+mesh Thwithhole = buildmesh(a(50) + b(-30));
+plot(Thwithouthole, ps="Thwithouthole.eps");
+plot(Thwithhole, ps="Thwithhole.eps");
 ```
 
 !!! note
 	Notice that the orientation is changed by `:::freefem b(-30)` in 5th line. In 7th line, `:::freefem ps="fileName"` is used to generate a postscript file with identification shown on the figure.
 
-|Fig. 5.5: Mesh without hole |Fig. 5.6: Mesh with hole |
+|<a	name=Fig5">Fig. 5</a>: Mesh without hole |<a name="Fig6">Fig. 6</a>: Mesh with hole |
 |:----:|:----:|
 |![Mesh without hole](images/Th_without_hole.svg)|![Mesh with hole](images/Th_with_hole.svg)|
 
 !!! note
-	Borders are evaluated only at the time `:::freefem plot` or `:::freefem buildmesh` is called so the global variable are defined at this time andhere since $r$ is changed between the two border calls the following code will not work because the first border will be computed with r=0.3:
+	Borders are evaluated only at the time `:::freefem plot` or `:::freefem buildmesh` is called so the global variable are defined at this time and here since $r$ is changed between the two border calls the following code will not work because the first border will be computed with r=0.3:
 
 	```freefem
-	   real r=1;  border a(t=0,2*pi){ x=r*cos(t); y=r*sin(t);label=1;}
-	   r=0.3;     border b(t=0,2*pi){ x=r*cos(t); y=r*sin(t);label=1;}
-	   mesh Thwithhole = buildmesh(a(50)+b(-30)); // bug (a trap) because
-	   // the two circle have the same radius = $0.3$
+	real r=1;
+	border a(t=0, 2*pi){x=r*cos(t); y=r*sin(t); label=1;}
+	r=0.3;
+	border b(t=0, 2*pi){x=r*cos(t); y=r*sin(t); label=1;}
+	mesh Thwithhole = buildmesh(a(50) + b(-30)); // bug (a trap) because
+												 // the two circle have the same radius = $0.3$
 	```
 
 ### Multi-Border
