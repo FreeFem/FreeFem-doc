@@ -2,7 +2,7 @@
 
 Let us begin with the two important keywords `:::freefem border` and `:::freefem buildmesh`.
 
-All examples in this section come from the files `:::freefem mesh.edp` and `:::freefem tablefunction.edp`.
+All examples in this section come from the files `:::freefem mesh.edp` and `:::freefem tablefunction.edp`. $\codered$
 
 ### Square
 
@@ -117,8 +117,6 @@ where $m_j$ are positive or negative numbers to indicate how many vertices shoul
 * `:::freefem nbvx=<int value>`, to set the maximal number of vertices in the mesh.
 * `:::freefem fixedborder=<bool value>`, to say if the mesh generator can change the boundary mesh or not (by default the boundary mesh can change; beware that with periodic boundary conditions (see. [Finite Element](FiniteElement)), it can be dangerous.
 
-<!--- END OF REVIEW, TO CONTINUE --->
-
 The orientation of boundaries can be changed by changing the sign of $m_j$.
 
 The following example shows how to change the orientation. The example generates the unit disk with a small circular hole, and assign "1" to the unit disk ("2" to the circle inside). The boundary label **must be non-zero**, but it can also be omitted.
@@ -154,28 +152,28 @@ plot(Thwithhole, ps="Thwithhole.eps");
 
 ### Multi-Border
 
-Sometime it can be useful to make an array of border, but unfortunately it is incompatible with the FreeFem++ syntax.
-So to bypass this problem, the idea is small, if the number of segment of the discretization $n$ is a array, we make  a implicit loop on all the value of the array, and
-the index variable $i$ of the loop  is defined after  parameter definition, like in `:::freefem border a(t=0,2*pi;i)` ...
+Sometime it can be useful to make an array of border, but unfortunately it is incompatible with the FreeFem++ syntax. So to bypass this problem, the idea is small, if the number of segment of the discretization $n$ is a array, we make  a implicit loop on all the value of the array, and the index variable $i$ of the loop  is defined after  parameter definition, like in `:::freefem border a(t=0, 2*pi; i)` ...
 
 A first very small example:
 
 ```freefem
-1: border a(t=0,2*pi;i){ x=(i+1)*cos(t); y=(i+1)*sin(t);label=1;}
-2: int[int] nn=[10,20,30];
-3: plot(a(nn)); // Plot 3 circles with 10,20,30 points ..
+border a(t=0, 2*pi; i){x=(i+1)*cos(t); y=(i+1)*sin(t); label=1;}
+int[int] nn=[10, 20, 30];
+plot(a(nn)); //plot 3 circles with 10, 20, 30 points
 ```
 
-And  more complex exemple (taken from `:::freefem mesh.edp` example) to define a square with small circles:
+And  more complex exemple (taken from `:::freefem mesh.edp` example $\codered$) to define a square with small circles:
+
+<!--- END OF REVIEW, TO CONTINUE --->
 
 ```freefem
-// multi border syntax version 3.30 avril 2014 ...
-real[int] xx=[0,1,1,0],
-          yy=[0,0,1,1];
-// radius, centre of the 4 circles ..
-real[int] RC=[ 0.1, 0.05, 0.05, 0.1],
-          XC= [0.2,0.8,0.2,0.8],
-          YC= [0.2,0.8,0.8,0.2];
+$\codered$
+real[int] xx = [0, 1, 1, 0],
+		  yy = [0, 0, 1, 1];
+//radius, center of the 4 circles
+real[int] RC = [0.1, 0.05, 0.05, 0.1],
+		  XC = [0.2, 0.8, 0.2, 0.8],
+		  YC = [0.2, 0.8, 0.8, 0.2];
 int[int]  NC=[-10,-11,-12,13]; //list number of $\pm$ segments
 // of the 4 circles borders  
 
@@ -202,35 +200,31 @@ plot(th,wait=1);
 
 ### Data Structures and Read/Write Statements for a Mesh
 
-Users who want to read a triangulation made elsewhere should see the structure
-of the file generated below:
+Users who want to read a triangulation made elsewhere should see the structure of the file generated below:
 
 ```freefem
-border C(t=0,2*pi) { x=cos(t); y=sin(t); }
+border C(t=0, 2*pi){x=cos(t); y=sin(t);}
 mesh Th = buildmesh(C(10));
-savemesh("mesh_sample.msh");
+savemesh(Th, "mesh.msh");
 ```
 
-the mesh is shown on Fig. 5.7.
+the mesh is shown on <a href="#Fig7">Fig. 7</a>.
 
-The informations about `:::freefem Th` are saved in the file `:::freefem mesh_sample.msh`
-whose structure is shown on Table 5.1.
+The informations about `:::freefem Th` are saved in the file `:::freefem mesh_sample.msh`$\codered$ whose structure is shown on <a href=#Tab1">Table 1</a>.
 
 There $n_v$ denotes the number of vertices, $n_t$ number of triangles and $n_s$ the number of edges on boundary.
 
 For each vertex $q^i,\, i=1,\cdots,n_v$, denote by $(q^i_x,q^i_y)$ the $x$-coordinate and $y$-coordinate.
 
-Each triangle $T_k, k=1,\cdots,10$ has three vertices $q^{k_1},\, q^{k_2},\,q^{k_3}$
-that are oriented counterclockwise.
+Each triangle $T_k, k=1,\cdots,10$ has three vertices $q^{k_1},\, q^{k_2},\,q^{k_3}$ that are oriented counterclockwise.
 
-The boundary consists of 10 lines $L_i,\, i=1,\cdots,10$ whose end points are
-$q^{i_1},\, q^{i_2}$.
+The boundary consists of 10 lines $L_i,\, i=1,\cdots,10$ whose end points are $q^{i_1},\, q^{i_2}$.
 
-|Fig. 5.7: Mesh by `:::freefem buildmesh(C(10))`||
+|<a name="Fig7">Fig. 7</a>: Mesh by `:::freefem buildmesh(C(10))`||
 |:----|:----|
 |![Mesh Sample](images/mesh_sample.svg)|In the left figure, we have the following.<br>$n_v=14, n_t=16, n_s=10$<br>$q^1=(-0.309016994375, 0.951056516295)$<br>$\vdots\qquad \vdots\qquad \vdots$<br>$q^{14}=(-0.309016994375, -0.951056516295)$<br>The vertices of $T_1$ are $q^9, q^{12},\, q^{10}$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The vertices of $T_{16}$ are $q^9, q^{10}, q^{6}$.<br>The edge of 1st side $L_1$ are $q^6, q^5$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The edge of 10th side $L_{10}$ are $q^{10}, q^6$.|
 
-|Table. 5.1: The structure of `:::freefem mesh_sample.msh`||
+|<a name="Tab1">Table. 1</a>: The structure of `:::freefem mesh_sample.msh`||
 |:----|:----|
 |Content of the file|Explanation|
 |14 16 10<br>-0.309016994375 0.951056516295 1<br>0.309016994375 0.951056516295 1<br>$\cdots$  $\cdots$ $\vdots$<br>-0.309016994375 -0.951056516295 1|$n_v\qquad n_t\qquad n_e$<br>$q^1_x\qquad q^1_y\qquad$ boundary label=1<br>$q^2_x\qquad q^2_y\qquad$ boundary label=1<br><br>$q^{14}_x\qquad q^{14}_y\quad$ boundary label=1|
