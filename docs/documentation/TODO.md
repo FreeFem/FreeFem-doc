@@ -22,33 +22,27 @@ Progression:
 	<span class="progress-label">99</span>
 </div>
 
-- [ ] line 5
-- [ ] line 49
-- [ ] line 165
-- [ ] line 170
-- [ ] line 213
-- [ ] line 235
-- [ ] line 587
-- [ ] line 735
-- [ ] line 857
-- [ ] line 1296
-- [ ] line 1299
-- [ ] line 1322
-- [ ] line 1406
-- [ ] line 1528
-- [ ] line 1604
-- [ ] line 1614
-- [ ] line 1688
-- [ ] line 1701
-- [ ] line 1706
-- [ ] line 2116
-- [ ] line 2120
-- [ ] line 2128
-- [ ] line 2473
-- [ ] line 2521
-- [ ] line 2671
-- [ ] line 2733
-- [ ] line 2763
+- [ ] line 696
+- [ ] line 844
+- [ ] line 966
+- [ ] line 1405
+- [ ] line 1408
+- [ ] line 1431
+- [ ] line 1515
+- [ ] line 1637
+- [ ] line 1713
+- [ ] line 1723
+- [ ] line 1797
+- [ ] line 1810
+- [ ] line 1815
+- [ ] line 2225
+- [ ] line 2229
+- [ ] line 2237
+- [ ] line 2582
+- [ ] line 2630
+- [ ] line 2780
+- [ ] line 2842
+- [ ] line 2872
 
 ## Finite element
 
