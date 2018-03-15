@@ -21,9 +21,9 @@ Progression:
 
 Progression:
 <div class="progress progress-80plus">
-	<div class="progress-bar" style="width:80%">
+	<div class="progress-bar" style="width:81%">
 	</div>
-	<span class="progress-label">80</span>
+	<span class="progress-label">81</span>
 </div>
 
 - [ ] [problem](Types/#problem)
@@ -96,48 +96,14 @@ Progression:
 ## Functions
 
 Progression:
-<div class="progress progress-60plus">
-	<div class="progress-bar" style="width:62%">
+<div class="progress progress-80plus">
+	<div class="progress-bar" style="width:97%">
 	</div>
-	<span class="progress-label">62</span>
+	<span class="progress-label">97</span>
 </div>
 
 - [ ] [BFGS](Functions/#BFGS)
-- [ ] [chi](Functions/#chi)
-- [ ] [checkmovemesh](Functions/#checkmovemesh)
-- [ ] [convect](Functions/#convect)
 - [ ] [EigenValue](Functions/#EigenValue)
-- [ ] [emptymesh](Functions/#emptymesh)
-- [ ] [intalledges](Functions/#intalledges)
-- [ ] [interpolate](Functions/#interpolate)
-- [ ] [jump](Functions/#jump)
-- [ ] [LinearCG](Functions/#LinearCG)
-- [ ] [LinearGMRES](Functions/#LinearGMRES)
-- [ ] [lgamma](Functions/#lgamma)
-- [ ] [log](Functions/#log)
-- [ ] [log10](Functions/#log10)
-- [ ] [max](Functions/#max)
-- [ ] [mean](Functions/#mean)
-- [ ] [min](Functions/#min)
-- [ ] [ movemesh](Functions/# movemesh)
-- [ ] [NLCG](Functions/#NLCG)
-- [ ] [on](Functions/#on)
-- [ ] [plot](Functions/#plot)
-- [ ] [polar](Functions/#polar)
-- [ ] [readmesh](Functions/#readmesh)
-- [ ] [readmesh3](Functions/#readmesh3)
-- [ ] [round](Functions/#round)
-- [ ] [savemesh](Functions/#savemesh)
-- [ ] [set](Functions/#set)
-- [ ] [sin](Functions/#sin)
-- [ ] [sinh](Functions/#sinh)
-- [ ] [sort](Functions/#sort)
-- [ ] [splitmesh](Functions/#splitmesh)
-- [ ] [square](Functions/#square)
-- [ ] [tan](Functions/#tan)
-- [ ] [tanh](Functions/#tanh)
-- [ ] [tgamma](Functions/#tgamma)
-- [ ] [trunc](Functions/#trunc)
 
 ## External libraries
 
