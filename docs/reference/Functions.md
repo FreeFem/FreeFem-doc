@@ -14,6 +14,21 @@ example code
 -
 -->
 
+## abs
+Return the absolute value.
+
+```freefem
+real a = abs(b);
+```
+
+<u>Parameters:</u>
+
+ - `b` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `a` (`:::freefem real`)
+
 ## acos
 $\arccos$ function.
 ```freefem
@@ -169,6 +184,21 @@ Affine GMRES solver
 
 Parameters and output are the same as [AffineCG](#affinecg)
 
+## arg
+Return the argument of a complex number.
+
+```freefem
+real a = arg(c);
+```
+
+<u>Parameters:</u>
+
+ - `c` (`:::freefem complex`)
+
+<u>Output:</u>
+
+ - `r` (`:::freefem real`)
+
 ## asin
 $\arcsin$ function.
 ```freefem
@@ -255,13 +285,43 @@ real theta = atanh(x);
 
 <u>Parameter:</u>
 
- - `x` (real)
+ - `x` (`:::freefem real`)
 
 <u>Output:</u>
 
- - `theta` (real)
+ - `theta` (`:::freefem real`)
 
 ![arctanh function](images/arctanh.svg)
+
+## atoi
+Convert a string to an interger.
+
+```freefem
+int a = atoi(s);
+```
+
+<u>Parameter:</u>
+
+ - `s` (`:::freefem string`)
+
+<u>Output:</u>
+
+ - `a` (`:::freefem int`)
+
+## atof
+Convert a string to an real.
+
+```freefem
+real a = atof(s);
+```
+
+<u>Parameter:</u>
+
+- `s` (`:::freefem string`)
+
+<u>Output:</u>
+
+- `a` (`:::freefem real`)
 
 ## BFGS
 
@@ -431,6 +491,13 @@ Compute $c\circ \mathbf{X}$ with $\mathbf{X}(\mathbf{x}) = \mathbf{x}_{\tau}$ an
  - `cgm` (`:::freefem real`)<br/>
  Result
 
+## copysign
+C++ `:::cpp copysign` function.
+
+```freefem
+real s = copysign(a, b);
+```
+
 ## cos
 $\cos$ function.
 
@@ -522,6 +589,7 @@ diffpos(a, b) = max(b-a, 0);
 ## dist
 Arithmetic useful function.
 ```freefem
+dist(a, b) = sqrt(a^2 + b^2);
 dist(a, b, c) = sqrt(a^2 + b^2 + c^2);
 ```
 
@@ -1119,6 +1187,20 @@ Arithmetic useful function.
 invdiffpos(a, b) = (a<b) ? 1./(b-a) : 0
 ```
 
+## isInf
+The C++ `:::cpp isInf` function.
+
+```freefem
+int i = isInf(a);
+```
+
+## isNaN
+The C++ `:::cpp isNan` function.
+
+```freefem
+int i = isNaN(a);
+```
+
 ## j0
 Bessel function of first kind, order 0.
 ```freefem
@@ -1336,6 +1418,18 @@ mesh3 MovedTh = movemesh(Th, [Dx, Dy, Dz], [region=Region], [label=Label], [face
  - `MovedTh` (`:::freefem mesh` or `:::freefem mesh3`)<br/>
  Moved mesh
 
+## NaN
+C++ `:::cpp nan` function.
+
+```freefem
+real n = NaN([String]);
+```
+
+<u>Parameters:</u>
+
+ - `String` (`:::freefem string`)<br/>
+ Default: `""`
+
 ## NLCG
 Non-linear conjugate gradient.
 
@@ -1515,6 +1609,21 @@ mesh3 Th = readmesh3(MeshFileName);
 
  - `Th` (`:::freefem mesh3`)
 
+## real
+Return the real part of a complex number.
+
+```freefem
+real r = real(c);
+```
+
+<u>Parameters:</u>
+
+ - `c` (`:::freefem complex`)
+
+<u>Output:</u>
+
+ - `r` (`:::freefem real`)
+
 ## rint
 Integer value nearest to $x$ (real value).
 
@@ -1563,6 +1672,28 @@ savemesh(Th, MeshFileName);
 
 ## set
 Set a property to a matrix. See [matrix](Types/#matrix).
+
+## sign
+Sign of a value.
+
+```freefem
+int s = sign(a);
+```
+
+<u>Parameters:</u>
+
+ - `a` (`:::freefem real` or `:::freefem int`)
+
+<u>Output:</u>
+
+ - `s` (`:::freefem int`)
+
+## signbit
+C++ `:::cpp signbit` function
+
+```freefem
+int s = signbit(a);
+```
 
 ## sin
 $\sin$ function.
@@ -1630,6 +1761,22 @@ Th = splitmesh(Th0, f);
 
  - `Th` (`:::freefem mesh`)
 
+## sqrt
+Square root
+
+```freefem
+real s = sqrt(a);
+```
+
+<u>Parameter:</u>
+
+ - `a` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `s` (`:::freefem real`)
+
+
 ## square
 Build a structured square mesh.
 
@@ -1653,6 +1800,40 @@ mesh Th = square(nnX, nnY, [[L*x, H*y]], [flags=Flags]);
 <u>Output:</u>
 
  - `Th` (`:::freefem mesh`)
+
+## swap
+Swap values.
+
+```freefem
+swap(a, b);
+```
+
+<u>Parameters:</u>
+
+ - `a` (`:::freefem real`)
+ - `b` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - None
+
+## system
+Execute a system command.
+
+```freefem
+int Res = system(Command);
+```
+
+<u>Parameter:</u>
+
+ - `Command` (`:::freefem string`)<br/>
+ System command
+
+<u>Output:</u>
+
+ - `Res` (`:::freefem int`)<br/>
+ Value returned by the system command
+
 
 ## tan
 $\tan$ function.
