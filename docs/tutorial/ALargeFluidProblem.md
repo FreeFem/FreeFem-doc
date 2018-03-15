@@ -243,3 +243,11 @@ for (int iter = 1; iter <= nbiter; iter++){
 }
 cout << "Total Time = " << clock()-T0 << endl;
 ```
+
+|<a name="Fig1">Fig. 1</a>: Temperature at time steps 100, 200, 300, 400, 500. | <a name="Fig2">Fig. 2</a>: Velocity at time steps 100, 200, 300, 400, 500. |
+|:----:|:----:|
+|![Time step 100](images/ALargeFluidProblem_T_100.png)|![Time step 100](images/ALargeFluidProblem_U_100.png)|
+|![Time step 200](images/ALargeFluidProblem_T_200.png)|![Time step 100](images/ALargeFluidProblem_U_200.png)|
+|![Time step 300](images/ALargeFluidProblem_T_300.png)|![Time step 100](images/ALargeFluidProblem_U_300.png)|
+|![Time step 400](images/ALargeFluidProblem_T_400.png)|![Time step 100](images/ALargeFluidProblem_U_400.png)|
+|![Time step 500](images/ALargeFluidProblem_T_500.png)|![Time step 100](images/ALargeFluidProblem_U_500.png)|
