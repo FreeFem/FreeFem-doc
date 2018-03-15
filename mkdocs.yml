@@ -8,7 +8,7 @@ pages:
     - Home: documentation/index.md
     - Mesh Generation: documentation/MeshGeneration.md
     - Finite Element: documentation/FiniteElement.md
-    - Chapter 6: documentation/chapter6.md
+    - (TODO) Chapter 6: documentation/chapter6.md
     - TODO: documentation/TODO.md
   - Language References:
     - Home: reference/index.md

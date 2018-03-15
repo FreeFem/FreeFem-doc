@@ -960,7 +960,7 @@ Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) 
 
 <u>Parameters:</u>
 
- - `Th` (`:::freefem mesh2`)<br/>
+ - `Th` (`:::freefem mesh`)<br/>
  Mesh where the integral is calculated
  - `Label` (`:::freefem int`) _[Optional]_<br/>
  Label of the 1D border<br/>
@@ -999,7 +999,7 @@ Or outside to calculate a quantity.
 
 <u>Parameters:</u>
 
- - `Th` (`:::freefem mesh2` or `:::freefem mesh3`)<br/>
+ - `Th` (`:::freefem mesh` or `:::freefem mesh3`)<br/>
  Mesh where the integral is calculated
  - `Region` (`:::freefem int`) _[Optional]_<br/>
  Label of the 2D region (2D simulation)<br/>
@@ -1305,7 +1305,7 @@ Move a mesh.
 
 ```freefem
 mesh MovedTh = movemesh(Th, [Dx, Dy]);
-mesh3 MovedMesh = movemesh(Th, [Dx, Dy, Dz], [region=Region], [label=Label], [facemerge=FaceMerge], [ptmerge=PtMerge], [orientation=Orientation]);
+mesh3 MovedTh = movemesh(Th, [Dx, Dy, Dz], [region=Region], [label=Label], [facemerge=FaceMerge], [ptmerge=PtMerge], [orientation=Orientation]);
 ```
 
 <u>Parameters:</u>
@@ -1647,7 +1647,7 @@ mesh Th = square(nnX, nnY, [[L*x, H*y]], [flags=Flags]);
  Length along $x$
  - `H` (`:::freefem real`) _[Optional]_<br/>
  Height along $y$
- - `flags` (`:::freefem int`) _[Optional]_<br/>
+ - _`:::freefem flags=`_ (`:::freefem int`) _[Optional]_<br/>
  Structured mesh type, see [Mesh Generation chapter](../documentation/MeshGeneration/#square) for more informations
 
 <u>Output:</u>
