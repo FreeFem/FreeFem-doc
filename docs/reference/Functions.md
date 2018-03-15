@@ -331,17 +331,41 @@ Thnew = change(Th, label=L);
  Mesh with changed parameters
 
 ## chi
+Characteristic function of a mesh.
 
-$\codered$ caracteristic function of a mesh 
+```freefem
+int IsInMesh = chi(Th)(x, y);
+```
+
+<u>Parameters:</u>
+
+ - `Th` (`:::freefem mesh` or `:::freefem mesh3`)
+ - `x` (`:::freefem real`)<br/>
+ Position $x$
+ - `y` (`:::freefem real`)
+ Position $y$
+
+<u>Output:</u>
+
+ - `IsInMesh` (`:::freefem int`)<br/>
+ 1 if $(x,y)\in$ `Th`<br/>
+ 0 if $(x,y)\not\in$ `Th`
 
 ## checkmovemesh
 Check a [`:::freefem movemesh`](#movemesh) without mesh generation.
 
-$\codered$
+```freefem
+real minT = checkmovemesh(Th, [Dx, Dy]);
+```
 
 <u>Parameter:</u>
 
+Same as [`:::freefem movemesh`](#movemesh)
+
 <u>Output:</u>
+
+ - `minT` (`:::freefem real`)<br/>
+ Minimum triangle area
 
 ## clock
 Get the clock in second.
@@ -376,17 +400,36 @@ complex C2 = conj(C1);
  Conjuguate of C1
 
 ## convect
-Characteristic Galerkin method.
+Characteristics Galerkin method.
+
 ```freefem
-convect([ux, uy], dt, c);
+real cgm = convect([Ux, Uy], dt, c);
+real cgm = convect([Ux, Uy, Uz], dt, c);
 ```
 
-$\codered$
+Compute $c\circ \mathbf{X}$ with $\mathbf{X}(\mathbf{x}) = \mathbf{x}_{\tau}$ and $\mathbf{x}_{\tau}$ is the solution of:
+\begin{eqnarray}
+	\dot{\mathbf{x}}_{\tau} &=& \mathbf{u}(\mathbf{x}_{\tau})\\
+	\mathbf{x}_{\tau} &=& \mathbf{x}
+\end{eqnarray}
 
 <u>Parameter:</u>
 
+ - `ux` (`:::freefem fespace` function)<br/>
+ Velocity: $x$ component
+ - `uy` (`:::freefem fespace` function)<br/>
+ Velocity: $y$ component
+ - `uz` (`:::freefem fespace` function) **3D only**<br/>
+ Velocity: $z$ component
+ - `dt` (`:::freefem real`)<br/>
+ Time step
+ - `c` (`:::freefem fespace` function)<br/>
+ Function to convect
+
 <u>Output:</u>
 
+ - `cgm` (`:::freefem real`)<br/>
+ Result
 
 ## cos
 $\cos$ function.
@@ -727,7 +770,7 @@ mesh eTh = emptymesh(Th, ssd);
  - `Th` (`:::freefem mesh`)<br/>
  Mesh to empty
  - `ssd` (`:::freefem int[int]`)<br/>
- $\codered$
+ Pseudo subregion label
 
 <u>Output:</u>
 
@@ -917,7 +960,7 @@ Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) 
 
 <u>Parameters:</u>
 
- - `Th` (`:::freefem mesh`)<br/>
+ - `Th` (`:::freefem mesh2`)<br/>
  Mesh where the integral is calculated
  - `Label` (`:::freefem int`) _[Optional]_<br/>
  Label of the 1D border<br/>
@@ -956,7 +999,7 @@ Or outside to calculate a quantity.
 
 <u>Parameters:</u>
 
- - `Th` (`:::freefem mesh`)<br/>
+ - `Th` (`:::freefem mesh2` or `:::freefem mesh3`)<br/>
  Mesh where the integral is calculated
  - `Region` (`:::freefem int`) _[Optional]_<br/>
  Label of the 2D region (2D simulation)<br/>
@@ -989,7 +1032,7 @@ Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) 
 
 <u>Parameters:</u>
 
- - `Th` (`:::freefem mesh`)<br/>
+ - `Th` (`:::freefem mesh3`)<br/>
  Mesh where the integral is calculated
  - `Region` (`:::freefem int`) _[Optional]_<br/>
  Label of the 3D region<br/>
@@ -1005,19 +1048,64 @@ Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) 
   In a `:::freefem problem`, `:::freefem solve` or `:::freefem varf` definition: Non relevant.<br/>
   Outside: `:::freefem real` (example: `:::freefem real v = int3d(Th, 1)(1.);`).
 
- !!!warning ""
- 	In a `:::freefem problem`, `:::freefem solve` or `:::freefem varf` definition, the content of the `:::freefem int3d` must be a linear or bilinear form.
+!!!warning ""
+	In a `:::freefem problem`, `:::freefem solve` or `:::freefem varf` definition, the content of the `:::freefem int3d` must be a linear or bilinear form.
 
 ## intalledges
+Integral on all edges.
 
-$\codered$
+```freefem
+intalledges(Th, [Region])(
+	...
+)
+```
+
+<u>Parameters:</u>
+
+ - `Th` (`:::freefem mesh`)<br/>
+ Mesh where the integral is calculated
+ - `Region` (`:::freefem int`) _[Optional]_<br/>
+ Label of the region<br/>
+ Default: all regions of the mesh
+
+<u>Output:</u>
+
+ - Non relevant
+
+## intallfaces
+Intergal on all faces.
+
+Same as [`:::freefem intalledges`](#intalledges) for `:::freefem mesh3`.
 
 ## interpolate
-Interpolation matrix.
+Interpolation operator from a finite element space to another.
+
 ```freefem
-matrix I = interpolate(Vh, Wh, inside=Inside, t=T, op=Op, U2Vc=U2VC);
+matrix I = interpolate(Wh, Vh, [inside=Inside], [t=T], [op=Op], [U2Vc=U2VC]);
 ```
-$\codered$
+
+<u>Parameters:</u>
+
+ - `Wh` (`:::freefem fespace`)<br/>
+ Target finite element space
+ - `Vh` (`:::freefem fespace`)<br/>
+ Original finite element space
+ - _`:::freefem inside=`_ (`:::freefem bool`)<br/>
+ If true, create a zero extension outside the `Vh` domain
+ - _`:::freefem t=`_ (`:::freefem bool`)<br/>
+ If true, return the transposed matrix
+ - _`:::freefem op=`_ (`:::freefem int`)<br/>
+ 0: interpolate the function (default value)<br/>
+ 1: interpolate $\partial_x$
+ 2: interpolate $\partial_y$
+ 3: interpolate $\partial_z$
+ - _`:::freefem U2Vc=`_ (`:::freefem int[int]`)<br/>
+ Array of the same size of `Wh` describing which component of `Vh`is interpolated in `Wh`
+
+<u>Output:</u>
+
+ - `I` (`:::freefem matrix`)<br/>
+ Interpolation matrix operator
 
 ## invdiffnp
 Arithmetic useful function.
@@ -1078,60 +1166,285 @@ $$
 - `b` (`:::freefem real`)
 
 ## jump
+Jump function across an edge.
 
-$\codered$
+```freefem
+intalledges(
+	... jump(c) ...
+)
+```
+
+<u>Parameters:</u>
+
+ - `c` (`:::freefem fespace` function)<br/>
+ Discontinuous function
+
+<u>Output:</u>
+
+ - Non relevant
 
 ## LinearCG
+Linear CG solver
 
-$\codered$
+Parameters and output are the same as [AffineCG](#affinecg)
 
 ## LinearGMRES
+Linear GMRES solver
 
-$\codered$
+Parameters and output are the same as [AffineCG](#affinecg)
 
 ## lgamma
+Natural logarithm of the absolute value of the $\Gamma$ function of $x$.
 
-$\codered$
+```freefem
+real lg = lgamma(x);
+```
+
+<u>Parameters:</u>
+
+ - `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `lg` (`:::freefem real`)
 
 ## log
+Natural logarithm.
 
-$\codered$
+```freefem
+real l = log(x);
+```
+
+<u>Parameters:</u>
+
+ - `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `l` (`:::freefem real`)
 
 ## log10
+Common logarithm.
 
-$\codered$
+```freefem
+real l = log10(x);
+```
+
+<u>Parameters:</u>
+
+ - `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `l` (`:::freefem real`)
+
+## lrint
+Integer value nearest to $x$.
+
+```freefem
+int l = rint(a);
+```
+
+<u>Parameters:</u>
+
+ - `a` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `l` (`:::freefem int`)
+
+## lround
+Round a value, and return a integer value.
+
+```freefem
+int l = round(a);
+```
+
+<u>Parameters:</u>
+
+ - `a` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `l` (`:::freefem int`)
 
 ## max
+Maximum value of two values.
 
-$\codered$
+```freefem
+real m = max(a, b);
+```
 
-## mean
+<u>Parameters:</u>
 
-$\codered$
+ - `a` (`:::freefem real`)
+ - `b` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `b` (`:::freefem real`)
 
 ## min
+Minimum value of two values.
 
-$\codered$
+```freefem
+real m = min(a, b);
+```
+
+<u>Parameters:</u>
+
+ - `a` (`:::freefem real`)
+ - `b` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `b` (`:::freefem real`)
 
 ## movemesh
+Move a mesh.
 
-$\codered$
+```freefem
+mesh MovedTh = movemesh(Th, [Dx, Dy]);
+mesh3 MovedMesh = movemesh(Th, [Dx, Dy, Dz], [region=Region], [label=Label], [facemerge=FaceMerge], [ptmerge=PtMerge], [orientation=Orientation]);
+```
+
+<u>Parameters:</u>
+
+ - `Th` (`:::freefem mesh` of `:::freefem mesh3`)<br/>
+ Mesh to move
+ - `Dx` (`:::freefem fespace` function)<br/>
+ Displacement along $x$
+ - `Dy` (`:::freefem fespace` function)<br/>
+ Displacement along $y$
+ - `Dz` (`:::freefem fespace` function) **3D only**<br/>
+ Displacement along $z$
+ - _`:::freefem region=`_ (`:::freefem int`) _[Optional]_ **3D only**<br/>
+ Set label to tetrahedra
+ - _`:::freefem label=`_ (`:::freefem int[int]`) _[Optional]_ **3D only**<br/>
+ Set label of faces (see [change](#change) for more informations)
+ - _`:::freefem facemerge=`_ (`:::freefem int`) _[Optional]_ **3D only**<br/>
+ If equal to 1, some face can be merged during the mesh moving<br/>
+ Default: 1
+ - _`:::freefem ptmerge=`_ (`:::freefem real`) _[Optional]_ **3D only**<br/>
+ Criteria to define when two points merge
+ - _`:::freefem orientation=`_ (`:::freefem int`) _[Optional]_ **3D only**<br/>
+ If equal to 1, allow orientation reverse if tetrahedra is not positive<br/>
+ Default: 1
+
+<u>Output:</u>
+
+ - `MovedTh` (`:::freefem mesh` or `:::freefem mesh3`)<br/>
+ Moved mesh
 
 ## NLCG
+Non-linear conjugate gradient.
 
-$\codered$
+Parameters and output are the same as [AffineCG](#affinecg)
 
 ## on
+Dirichlet condition function.
+```freefem
+problem (u, v)
+	...
+	+ on(Label, u=uD)
+	...
+```
 
-$\codered$
+!!!warning ""
+	Used only in problem, solve and varf
+
+<u>Parameters:</u>
+
+ - `Label` (`:::freefem int` or `:::freefem border` in 2D)<br/>
+ Boundary reference where to impose the Dirichlet condition
+ - `uD` (`:::freefem fespace` function, `:::freefem func` or `:::freefem real` or `:::freefem int`)<br/>
+ Dirichlet condition (`u` is an unknwown of the problem)
+
+<u>Output:</u>
+
+ - Non relevant
 
 ## plot
+Plot meshes and results.
 
-$\codered$
+```freefem
+plot([Th], [u], [[Ux, Uy, Uz]], [wait=Wait], [ps=PS], [coef=Coef], [fill=Fill], cmm=[Cmm], [value=Value], [aspectratio=AspectRatio], [bb=Bb], [nbiso=NbIso], [nbarrow=NbArrow], [viso=VIso], [varrow=VArrow], [bw=Bw], [grey=Grey], [hsv=Hsv], [boundary=Boundary], [dim=Dim], [prev=Prev], [WindowIndex=WI]);
+```
+
+!!!info
+	Only one af `Th`, `u` or `[Ux, Uy]` / `[Ux, Uy, Uz]` is needed for the `:::freefem plot` command.
+
+<u>Parameters:</u>
+
+ - `Th` (`:::freefem mesh` or `:::freefem mesh3`)<br/>
+ Mesh to display
+ - `u` (`::freefem fespace` function)<br/>
+ Scalar `:::freefem fespace` function to display
+ - `[Ux, Uy]` / `[Ux, Uy, Uz]` (`:::freefem fespace` function array)<br/>
+ Vectorial `:::freefem fespace` function to display
+ - `[Ux, Uy]` (`:::freefem [real[int], real[int]]`)<br/>
+ Couple a real array to display a curve
+ - _`:::freefem wait=`_ (`:::freefem bool`)<br/>
+ If true, wait before continue
+ - _`:::freefem ps=`_ (`:::freefem string`)<br/>
+ Name of the file to save the plot (`.ps` or `.eps format`)
+ - _`:::freefem coef=`_ (`:::freefem real`)<br/>
+ Arrow size
+ - _`:::freefem fill=`_ (`:::freefem bool`)<br/>
+ If true, fill color between isovalue (usable with scalar `:::freefem fespace` function only)
+ - _`:::freefem cmm=`_ (`:::freefem string`)<br/>
+ Text comment in the graphic window
+ - _`:::freefem value=`_ (`:::freefem bool`)<br/>
+ If true, show the value scale
+ - _`:::freefem aspectratio=`_ (`:::freefem bool`)<br/>
+ If true, preserve the aspect ratio
+ - _`:::freefem bb=`_ (`:::freefem [real[int], real[int]]`)<br/>
+ Specify a bounding box using two corner points
+ - _`:::freefem nbiso=`_ (`:::freefem int`)<br/>
+ Number of isovalues
+ - _`:::freefem nbarrow=`_ (`:::freefem int`)<br/>
+ Number of color of arrows values
+ - _`:::freefem viso=`_ (`:::freefem real[int]`)<br/>
+ Specify an array of isovalues
+ - _`:::freefem varrow=`_ (`:::freefem real[int]`)<br/>
+ Specify an array of arrows values color
+ - _`:::freefem bw=`_ (`:::freefem bool`)<br/>
+ If true, the plot is in black and white
+ - _`:::freefem grey=`_ (`:::freefem bool`)<br/>
+ If true, the plot is in grey scale
+ - _`:::freefem hsv=`_ (`:::freefem real[int]`)<br/>
+ Array of $3\times n$ values defining HSV color model<br/>
+ $[h_1, s_1, v_1, ..., h_n, s_n, v_n]$
+ - _`:::freefem boundary=`_ (`:::freefem bool`)<br/>
+ If true, display the boundary of the domain
+ - _`:::freefem dim=`_ (`:::freefem int`)<br/>
+ Set the dimension of the plot: 2 or 3
+ - _`:::freefem prev=`_ (`:::freefem bool`)<br/>
+ Use the graphic state of the previous state
+ - _`:::freefem WindowIndex=`_ (`:::freefem int`)<br/>
+ Specify window index for multiple windows graphics
+
+<u>Output:</u>
+
+ - None
+
+See the [visualization](../documentation/Visualization) chapter for in-graphic commands.
 
 ## polar
+Polar coordinates.
 
-$\codered$
+```freefem
+complex p = polar(a, b);
+```
+
+<u>Parameters:</u>
+
+- `a` (`:::freefem real`)
+- `b` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `p` (`:::freefem complex`)
 
 ## pow
 Power function.
@@ -1151,67 +1464,265 @@ $p=a^b$
 
 ## projection
 Arithmetic useful function.
+
+```freefem
+real p = projection(a, b, x);
+```
+
+Projection is equaivalent to:
+
 ```freefem
 projection(a, b, x) = min(max(a, x), b);
 ```
 
-## readmesh
+<u>Parameters:</u>
 
-$\codered$
+ - `a` (`:::freefem real`)
+ - `b` (`:::freefem real`)
+ - `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `p` (`:::freefem real`)
+
+## readmesh
+Read a 2D mesh file at different formats (see [Mesh Generation](../documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh)).
+
+```freefem
+mesh Th = readmesh(MeshFileName);
+```
+
+<u>Parameters:</u>
+
+ - `MeshFileName` (`:::freefem string`)
+
+<u>Output:</u>
+
+ - `Th` (`:::freefem mesh`)
 
 ## readmesh3
+Read a 3D mesh file at different formats (see [Mesh Generation](../documentation/MeshGeneration/#readwrite-statements-for-a-mesh-in-3d)).
 
-$\codered$
+```freefem
+mesh3 Th = readmesh3(MeshFileName);
+```
+
+<u>Parameters:</u>
+
+ - `MeshFileName` (`:::freefem string`)
+
+<u>Output:</u>
+
+ - `Th` (`:::freefem mesh3`)
+
+## rint
+Integer value nearest to $x$ (real value).
+
+```freefem
+real r = rint(a);
+```
+
+<u>Parameters:</u>
+
+ - `a` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `r` (`:::freefem real`)
 
 ## round
+Round a value (real value).
 
-$\codered$
+```freefem
+real r = round(a);
+```
+
+<u>Parameters:</u>
+
+ - `a` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `r` (`:::freefem real`)
 
 ## savemesh
+Save a 2D or 3D mesh in different formats (see [Mesh Generation 2D](../documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh) and [Mesh Generation 3D](../documentation/MeshGeneration/#readwrite-statements-for-a-mesh-in-3d)).
 
-$\codered$
+```freefem
+savemesh(Th, MeshFileName);
+```
+
+<u>Parameters:</u>
+
+ - `Th` (`:::freefem mesh` or `:::freefem mesh3`)
+ - `MeshFileName` (`:::freefem string`)
+
+<u>Output:</u>
+
+ - None
 
 ## set
-
-$\codered$
+Set a property to a matrix. See [matrix](Types/#matrix).
 
 ## sin
+$\sin$ function.
+```freefem
+real x = sin(theta);
+```
 
-$\codered$
+<u>Parameter:</u>
+
+ - `theta` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `x` (`:::freefem real`)
+
+![sin function](images/sin.svg)
 
 ## sinh
+$\sinh$ function.
+```freefem
+real x = sinh(theta);
+```
 
-$\codered$
+<u>Parameter:</u>
+
+ - `theta` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `x` (`:::freefem real`)
+
+![sinh function](images/sinh.svg)
 
 ## sort
+Sort two array in parallel
 
-$\codered$
+```freefem
+sort(A, B);
+```
+
+<u>Parameter:</u>
+
+ - `A` (`:::freefem real[int]`)
+ - `B` (`:::freefem int[int]`)
+
+<u>Output:</u>
+
+ - None
+
+`A` is sorted in ascending order, `B` is sorted as `A`.
 
 ## splitmesh
+Split mesh triangles according to a function.
 
-$\codered$
+```freefem
+Th = splitmesh(Th0, f);
+```
+
+<u>Parameter:</u>
+
+ - `Th0` (`:::freefem mesh`)
+ - `f` (`:::freefem func` or `:::freefem fespace` function)
+
+<u>Output:</u>
+
+ - `Th` (`:::freefem mesh`)
 
 ## square
+Build a structured square mesh.
 
-See [Mesh Generation chapter](../documentation/MeshGeneration/#square) for more informations.
+```freefem
+mesh Th = square(nnX, nnY, [[L*x, H*y]], [flags=Flags]);
+```
 
-$\codered$
+<u>Parameter:</u>
+
+ - `nnX` (`:::freefem int`)<br/>
+ Discretization along $x$
+ - `nnY` (`:::freefem int`)<br/>
+ Discretization along $y$
+ - `L` (`:::freefem real`) _[Optional]_<br/>
+ Length along $x$
+ - `H` (`:::freefem real`) _[Optional]_<br/>
+ Height along $y$
+ - `flags` (`:::freefem int`) _[Optional]_<br/>
+ Structured mesh type, see [Mesh Generation chapter](../documentation/MeshGeneration/#square) for more informations
+
+<u>Output:</u>
+
+ - `Th` (`:::freefem mesh`)
 
 ## tan
+$\tan$ function.
+```freefem
+real x = tan(theta);
+```
 
-$\codered$
+<u>Parameter:</u>
+
+ - `theta` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `x` (`:::freefem real`)
+
+![tan function](images/tan.svg)
 
 ## tanh
+$\tanh$ function.
+```freefem
+real x = tanh(theta);
+```
 
-$\codered$
+<u>Parameter:</u>
+
+ - `theta` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `x` (`:::freefem real`)
+
+![tanh function](images/tanh.svg)
 
 ## tgamma
+Calculate the $\Gamma$ function of $x$.
 
-$\codered$
+```freefem
+real tg = tgamma(x);
+```
+
+<u>Parameter:</u>
+
+ - `x` (`:::freefem real`)
+
+<u>Output:</u>
+
+ - `tg` (`:::freefem real`)
 
 ## trunc
+Split triangle of a mesh.
 
-$\codered$
+```freefem
+mesh Th = trunc(Th0, R, [split=Split], [label=Label]);
+```
+
+<u>Parameter:</u>
+
+ - `Th0` (`:::freefem mesh`)
+ - `R` (`:::freefem bool` or `:::freefem int`)<br/>
+ Split triangles where `R` is true or different of 0
+ - _`:::freefem split=`_ (`:::freefem int`) _[Optional]_<br/>
+ Level of splitting<br/>
+ Default: 1
+ - _`:::freefem label=`_ (`:::freefem int`) _[Optional]_<br/>
+ Label number of new boundary item<br/>
+ Default: 1
+
+<u>Output:</u>
+
+ - `Th` (`:::freefem mesh`)
 
 ## y0
 Bessel function of second kind, order 0.

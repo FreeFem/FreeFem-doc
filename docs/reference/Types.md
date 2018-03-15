@@ -326,6 +326,12 @@ The size of an array is obtained using the keyword `n`:
 int ArraySize = Ai.n;
 ```
 
+### Array sort
+To sort an array:
+```freefem
+Ai.sort;
+```
+
 ### Double array
 A double array (matrix) can be defined using two indexes:
 
