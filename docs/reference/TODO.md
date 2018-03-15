@@ -97,12 +97,13 @@ Progression:
 
 Progression:
 <div class="progress progress-60plus">
-	<div class="progress-bar" style="width:63%">
+	<div class="progress-bar" style="width:62%">
 	</div>
-	<span class="progress-label">63</span>
+	<span class="progress-label">62</span>
 </div>
 
 - [ ] [BFGS](Functions/#BFGS)
+- [ ] [chi](Functions/#chi)
 - [ ] [checkmovemesh](Functions/#checkmovemesh)
 - [ ] [convect](Functions/#convect)
 - [ ] [EigenValue](Functions/#EigenValue)

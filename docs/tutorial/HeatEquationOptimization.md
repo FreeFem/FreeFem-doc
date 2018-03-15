@@ -1,6 +1,6 @@
 # Time dependent schema optimization for heat equations
 
-First, it is possible to define variational forms, and use this forms to build matrix and vector to make very fast script (4 times faster here) (see the example $\codered$ Heat.edp).
+First, it is possible to define variational forms, and use this forms to build matrix and vector to make very fast script (4 times faster here).
 
 For example solve the [ThermalConduction](ThermalConduction) problem, we must solve the temperature equation in $\Omega$ in a time interval (0,T).
 

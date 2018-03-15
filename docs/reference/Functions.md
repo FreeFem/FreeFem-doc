@@ -330,6 +330,10 @@ Thnew = change(Th, label=L);
  - `:::freefem Thnew` (`:::freefem mesh`)
  Mesh with changed parameters
 
+## chi
+
+$\codered$ caracteristic function of a mesh 
+
 ## checkmovemesh
 Check a [`:::freefem movemesh`](#movemesh) without mesh generation.
 
@@ -1188,6 +1192,8 @@ $\codered$
 $\codered$
 
 ## square
+
+See [Mesh Generation chapter](../documentation/MeshGeneration/#square) for more informations.
 
 $\codered$
 

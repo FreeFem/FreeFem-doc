@@ -1,6 +1,8 @@
 # Pure Convection : The Rotating Hill
 
-**Summary :** _Here we will present two methods for upwinding for the simplest convection problem. We will learn about Characteristics-Galerkin and Discontinuous-Galerkin Finite Element Methods._
+## **Summary:**
+
+_Here we will present two methods for upwinding for the simplest convection problem. We will learn about Characteristics-Galerkin and Discontinuous-Galerkin Finite Element Methods._
 
 Let $\Omega$ be the unit disk centered at $(0,0)$; consider the rotation vector field
 
@@ -36,7 +38,7 @@ c(x,t)=c^0(x_{-t},0)
 $$
 The game consists in solving the equation until $T=2\pi$, that is for a full revolution and to compare the final solution with the initial one; they should be equal.
 
-**Solution by a Characteristics-Galerkin Method**
+## **Solution by a Characteristics-Galerkin Method**
 
 In FreeFem++ there is an operator called `:::freefem convect([u1,u2], dt, c)` which compute $ c\circ X$ with $X$ is the convect field defined by $ X(x)= x_{dt}$ and where $x_\tau$ is particule path in the steady state velocity field $\mathbf{u}=[u1,u2]$ starting at point $x$ at time $\tau=0$, so $x_\tau$ is solution of the following ODE:
 
@@ -77,9 +79,9 @@ The method is very powerful but has two limitations:
 * a/ it is not conservative
 * b/ it may diverge in rare cases when $|\mathbf{u}|$ is too small due to quadrature error.
 
-**Solution by Discontinuous-Galerkin FEM**
+## **Solution by Discontinuous-Galerkin FEM**
 
-Discontinuous Galerkin methods take advantage of the discontinuities of $c$ at the edges to build upwinding. There are may formulations possible. We shall implement here the so-called dual-$P_1^{DC}$ formulation (see Ern\cite{ern}$\codered$):
+Discontinuous Galerkin methods take advantage of the discontinuities of $c$ at the edges to build upwinding. There are may formulations possible. We shall implement here the so-called dual-$P_1^{DC}$ formulation (see [Ern](#citeERN)):
 
 $$
 \int_\Omega(\frac{c^{n+1}-c^n}{\delta t} +u\cdot\n c)w
@@ -200,9 +202,9 @@ for (t = 0.; t < 2.*pi; t += dt){
 
 Notice the new keyword `:::freefem set` to specify a solver in this framework; the modifier `:::freefem init` is used to tell the solver that the matrix has not changed (`:::freefem init=true`), and the name parameter are the same that in problem definition ($\codered$ see. \ref{def problem})
 
-**Finite Volume Methods** can also be handled with FreeFem++ but it requires programming.
+## **Finite Volume Methods** can also be handled with FreeFem++ but it requires programming.
 
-For instance the $P_0-P_1$ Finite Volume Method of $\codered$(ref) Dervieux et al associates to each $P_0$ function $c^1$ a $P_0$ function $c^0$ with constant value around each vertex $q^i$ equal to $c^1(q^i)$ on the cell $\sigma_i$ made by all the medians of all triangles having $q^i$ as vertex.
+For instance the $P_0-P_1$ Finite Volume Method of Dervieux _et al_ associates to each $P_0$ function $c^1$ a $P_0$ function $c^0$ with constant value around each vertex $q^i$ equal to $c^1(q^i)$ on the cell $\sigma_i$ made by all the medians of all triangles having $q^i$ as vertex.
 
 Then upwinding is done by taking left or right values at the median:
 
@@ -286,3 +288,7 @@ int fvmP1P0(double q[3][2], // the 3 vertices of a triangle T
 ```
 
 It must be inserted into a larger .cpp file, shown in Appendix A, which is the load module linked to FreeFem++.
+
+## References
+
+<a name="citeERN">ERN, A. et GUERMOND, J. L. Discontinuous Galerkin methods for Friedrichs’ symmetric systems. I. General theory. SIAM J. Numer. Anal.</a>

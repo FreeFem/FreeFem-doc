@@ -2540,6 +2540,8 @@ Need
 load "gsmh"
 ```
 
+The `gmsh` software is available [here](http://gmsh.info/)
+
 ### gmshload
 
 Load a 2D mesh build with Gmsh.
