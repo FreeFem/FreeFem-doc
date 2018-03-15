@@ -900,6 +900,8 @@ where $h$ is the diameter of $D$ and $|D|$ its measure (a point in the segment $
 For a domain $\Omega_h=\sum_{k=1}^{n_t}T_k,\, \mathcal{T}_h=\{T_k\}$,
 we can calculate the integral over $\Gamma_h=\p\Omega_h$ by
 
+$\codered$
+
 \begin{eqnarray*}
 \int_{\Gamma_h}f(\vec{x})ds&=&`:::freefem int1d(Th)(f)`\\
 &=&`:::freefem int1d(Th,qfe=*)(f)`\\
