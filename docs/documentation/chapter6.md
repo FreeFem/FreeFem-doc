@@ -1,4 +1,4 @@
--$$
+$$
 \newcommand{\vecttwo}[2]{\left|\begin{array}{c}{#1}\\#2\end{array}\right.}
 \newcommand{\vectthree}[3]{\left|\begin{array}{c}{#1}\\#2\\#3\end{array}\right.}
 $$
@@ -910,60 +910,35 @@ $\codered$
 
 where * stands for the name of the quadrature formula or the precision (order) of the Gauss formula.
 
-%\begin{figure}[hbt]
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|c|}
-    \hline
-    \multicolumn{6}{|c|}{ Quadature formula on an edge}\\
-%    \hline
-%     \multicolumn{6}{c}{~}\\
-    \hline
-    $L$ & (`:::freefem qfe=`) & `:::freefem qforder=` &
-    point in $[q^iq^j](=t)$ & $\omega_\ell$~~~  & exact on $P_k, k=$ \\
-    \hline
-    \hline
-    1 & qf1pE&2&$1/2$ & $|q^iq^j|$ & 1 \\
-    \hline
-    2 & qf2pE&3& $(1\pm\sqrt{1/3})/2$ & $|q^iq^j|/2$ & 3 \\
-   \hline
-    3 & \textbf{qf3pE} &6&$(1\pm\sqrt{3/5})/2$ & $(5/18)|q^iq^j|$ & 5  \\
-    & & & $1/2$ & $(8/18)|q^iq^j|$ & \\
-    \hline
-    4 &{qf4pE} &8&$ (1 \pm  \frac{\sqrt{ 525  + 70 \sqrt{30}}}{35})/2
-  .    $ & $  \frac{18-\sqrt{30}}{72} |q^iq^j|$ & 7  \\
-     & & &$ (1 \pm  \frac{\sqrt{ 525  - 70 \sqrt{30}}}{35})/2
-  .    $ & $  \frac{18+\sqrt{30}}{72} |q^iq^j|$ &   \\
-    \hline
-    5 &{qf5pE} &10&$ (1 \pm  \frac{\sqrt{245+14\sqrt{70}}}{21})/2$  & $ \frac{322-13\sqrt{70}}{1800} |q^iq^j|$ & 9  \\
-    & & & $1/2$ & $\frac{64}{225}|q^iq^j|$ & \\
-    & & & $ (1 \pm  \frac{\sqrt{245-14\sqrt{70}}}{21})/2$ & $ \frac{322+13\sqrt{70}}{1800} |q^iq^j|$ &\\
-    \hline
-    2 &qf1pElump&2& $0$ & $|q^iq^j|/2$ & 1 \\
-    & &&$+1$ & $|q^iq^j|/2$ &  \\
-    \hline
-
-\end{tabular}
-%
-%
-%
-%\end{figure}
-\end{center}
-
+||||Quadature formula on an edge|||
+|:----:|:----:|:----:|:----:|:----:|:----:|
+|$L$|(`:::freefem qfe=`)|`:::freefem qforder=`|Point in $[q^iq^j](=t)$|$\omega_\ell$|Exact on $P_k, k=$|
+|1|`:::freefem qf1pE`|2|$1/2$|$\|q^iq^j\|$|1|
+|2|`:::freefem qf2pE`|3|$(1\pm\sqrt{1/3})/2$|$\|q^iq^j\|/2$|3|
+|3|`:::freefem qf3pE`|6|$(1\pm\sqrt{3/5})/2$<br>$1/2$|$(5/18)\|q^iq^j\|$<br>$(8/18)\|q^iq^j\|$|5|
+|4|`:::freefem qf4pE`|8|$(1\pm\frac{\sqrt{525+70\sqrt{30}}}{35})/2$<br>$(1\pm\frac{\sqrt{525-70\sqrt{30}}}{35})/2$|$\frac{18-\sqrt{30}}{72}\|q^iq^j\|$<br>$\frac{18+\sqrt{30}}{72}\|q^iq^j\|$|7|
+|5|`:::freefem qf5pE`|10|$(1\pm\frac{\sqrt{245+14\sqrt{70}}}{21})/2$<br>$1/2$<br>$(1\pm\frac{\sqrt{245-14\sqrt{70}}}{21})/2$|$\frac{322-13\sqrt{70}}{1800}\|q^iq^j\|$<br>$\frac{64}{225}\|q^iq^j\|$<br>$\frac{322+13\sqrt{70}}{1800}\|q^iq^j\|$|9|
+|2|`:::freefem qf1pElump`|2|$0$<br>$+1$|$\|q^iq^j\|/2$<br>$\|q^iq^j\|/2$|1|
 
 where $|q^iq^j|$ is the length of segment $\overline{q^iq^j}$.
-For a part $\Gamma_1$ of $\Gamma_h$ with the label ``1'', we can
-calculate the integral over $\Gamma_1$ by
+
+For a part $\Gamma_1$ of $\Gamma_h$ with the label "1", we can calculate the integral over $\Gamma_1$ by
+
+$\codered$
 \begin{eqnarray*}
 \int_{\Gamma_1}f(x,y)ds&=&`:::freefem int1d(Th,1)(f)`\\
 &=&`:::freefem int1d(Th,1,qfe=qf2pE)(f)`
 \end{eqnarray*}
+
 The integrals over $\Gamma_1,\, \Gamma_3$ are given by
+
+$\codered$
 \begin{eqnarray*}
 \int_{\Gamma_1\cup \Gamma_3}f(x,y)ds=`:::freefem int1d(Th,1,3)(f)`
 \end{eqnarray*}
 
-For each triangle $T_k=[q^{k_1}q^{k_2}q^{k_3}]$ , the point
-$P(x,y)$ in $T_k$ is expressed by the _area coordinate_ as $P(\xi,\eta)$:
+For each triangle $T_k=[q^{k_1}q^{k_2}q^{k_3}]$, the point $P(x,y)$ in $T_k$ is expressed by the _area coordinate_ as $P(\xi,\eta)$:
+
 \begin{eqnarray*}
 &&|T_k|=\frac12 \left|
 \begin{array}{ccc}
@@ -999,132 +974,67 @@ D_3=\left|
 \eta=\frac12 D_2/|T_k|\qquad \textrm{then }
 1-\xi-\eta=\frac12 D_3/|T_k|
 \end{eqnarray*}
-For a two dimensional  domain or a border of three dimensional  domain  $\Omega_h=\sum_{k=1}^{n_t}T_k,\, \mathcal{T}_h=\{T_k\}$,
-we can calculate the integral over $\Omega_h$ by
+
+For a two dimensional  domain or a border of three dimensional  domain  $\Omega_h=\sum_{k=1}^{n_t}T_k,\, \mathcal{T}_h=\{T_k\}$, we can calculate the integral over $\Omega_h$ by
+
+$\codered$
 \begin{eqnarray*}
 \int_{\Omega_h}f(x,y)&=&`:::freefem int2d(Th)(f)`\\
 &=&`:::freefem int2d(Th,qft=*)(f)`\\
 &=&`:::freefem int2d(Th,qforder=*)(f)`
 \end{eqnarray*}
+
 where * stands for the name of quadrature formula or the order of the Gauss formula.
 
-
-
-\begin{center}
-%\begin{figure}[hbt]
-\begin{tabular}{|c|c|c|c|c|c|}
-    \hline
-      \multicolumn{6}{|c|}{ Quadature formula on a triangle}\\
-     \hline
-    $L$ & `:::freefem qft=` & `:::freefem qforder=` &
-    point in $T_k$ & $\omega_\ell$~~~  & exact on $P_k, k=$ \\
-    \hline
-    \hline
-    1 & qf1pT&2&$\left(\frac{1}{3},\frac{1}{3}\right)$ & $|T_k|$ & 1 \\
-    \hline
-    3 & qf2pT&3& $\left(\frac{1}{2},\frac{1}{2}\right)$ & $|T_k|/3$ & 2 \\
-    & &&$\left(\frac{1}{2},0\right)$ & $|T_k|/3$ &  \\
-    & &&$\left(0,\frac{1}{2}\right)$ & $|T_k|/3$ &  \\
-    \hline
-    7 & \textbf{qf5pT}&6&$\left(\frac{1}{3},\frac{1}{3}\right)$ & $0.225|T_k|$ & 5 \\
-    & & & $\left(\frac{6-\sqrt{15}}{21},\frac{6-\sqrt{15}}{21}\right)$ & $
-    \frac{(155-\sqrt{15})|T_k|}{1200}$ & \\
-    & & & $\left(\frac{6-\sqrt{15}}{21},\frac{9+2\sqrt{15}}{21}\right)$ & $\frac{(155-\sqrt{15})|T_k|}{1200}$ &\\
-    & & & $\left(\frac{9+2\sqrt{15}}{21},\frac{6-\sqrt{15}}{21}\right)$ & $\frac{(155-\sqrt{15})|T_k|}{1200}$ &\\
-    & & & $\left(\frac{6+\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)$ & $\frac{(155+\sqrt{15})|T_k|}{1200}$ &\\
-    & & & $\left(\frac{6+\sqrt{15}}{21},\frac{9-2\sqrt{15}}{21}\right)$ & $\frac{(155+\sqrt{15})|T_k|}{1200}$ &\\
-    & & & $\left(\frac{9-2\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)$ & $\frac{(155+\sqrt{15})|T_k|}{1200}$ &\\
-    \hline
-    3 & qf1pTlump& & $\left(0,0\right)$ & $|T_k|/3$ & 1 \\
-    & &&$\left(1,0\right)$ & $|T_k|/3$ &  \\
-    & &&$\left(0,1\right)$ & $|T_k|/3$ &  \\
-    \hline
-    9 & qf2pT4P1& &$\left(\frac{1}{4},\frac{3}{4}\right)$ & $|T_k|/12$ & 1  \\
-      &         & &$\left(\frac{3}{4},\frac{1}{4}\right)$ & $|T_k|/12$ &   \\
-      &         & &$\left(0,\frac{1}{4}\right)$ & $|T_k|/12$ &   \\
-      &         & &$\left(0,\frac{3}{4}\right)$ & $|T_k|/12$ &   \\
-      &         & &$\left(\frac{1}{4},0\right)$ & $|T_k|/12$ &   \\
-      &         & &$\left(\frac{3}{4},0\right)$ & $|T_k|/12$ &   \\
-      &         & &$\left(\frac{1}{4},\frac{1}{4}\right)$ & $|T_k|/6$ &   \\
-      &         & &$\left(\frac{1}{4},\frac{1}{2}\right)$ & $|T_k|/6$ &   \\
-      &         & &$\left(\frac{1}{2},\frac{1}{4}\right)$ & $|T_k|/6$ &   \\
-    \hline
-    15 & qf7pT& 8 & see  \cite{0501496} for detail  & &7 \\
-       \hline
-    21 & qf9pT& 10 & see \cite{0501496} for detail  & &9 \\
-    \hline
-
-\end{tabular}
-
-
-
-
-
-%\end{figure}
-\end{center}
-
-\bigskip
-
+||||Quadature formula on a triangle|||
+|:----:|:----:|:----:|:----:|:----:|:----:|
+$L$|`:::freefem qft=`|`:::freefem qforder=`|Point in $T_k$|$\omega_\ell$|Exact on $P_k, k=$|
+|1|`:::freefem qf1pT`|2|$\left(\frac{1}{3},\frac{1}{3}\right)$|$\|T_k\|$|1
+|3|`:::freefem qf2pT`|3|$\left(\frac{1}{2},\frac{1}{2}\right)$<br>$\left(\frac{1}{2},0\right)$<br>$\left(0,\frac{1}{2}\right)$|$\|T_k\|/3$<br>$\|T_k\|/3$<br>$\|T_k\|/3$|2|
+|7|`:::freefem qf5pT`|6|$\left(\frac{1}{3},\frac{1}{3}\right)$<br>$\left(\frac{6-\sqrt{15}}{21},\frac{6-\sqrt{15}}{21}\right)$<br>$\left(\frac{6-\sqrt{15}}{21},\frac{9+2\sqrt{15}}{21}\right)$<br>$\left(\frac{9+2\sqrt{15}}{21},\frac{6-\sqrt{15}}{21}\right)$<br>$\left(\frac{6+\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)$<br>$\left(\frac{6+\sqrt{15}}{21},\frac{9-2\sqrt{15}}{21}\right)$<br>$\left(\frac{9-2\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)$|$0.225\|T_k\|$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$|5|
+|3|`:::freefem qf1pTlump`||$\left(0,0\right)$<br>$\left(1,0\right)$<br>$\left(0,1\right)$|$\|T_k\|/3$<br>$\|T_k\|/3$<br>$\|T_k\|/3$|1
+|9|`:::freefem qf2pT4P1`||$\left(\frac{1}{4},\frac{3}{4}\right)$<br>$\left(\frac{3}{4},\frac{1}{4}\right)$<br>$\left(0,\frac{1}{4}\right)$<br>$\left(0,\frac{3}{4}\right)$<br>$\left(\frac{1}{4},0\right)$<br>$\left(\frac{3}{4},0\right)$<br>$\left(\frac{1}{4},\frac{1}{4}\right)$<br>$\left(\frac{1}{4},\frac{1}{2}\right)$<br>$\left(\frac{1}{2},\frac{1}{4}\right)$|$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/6$<br>$\|T_k\|/6$<br>$\|T_k\|/6$|1|
+|15|`:::freefem qf7pT`|8|See \cite{0501496} $\codered$ for detail||7|
+|21|`:::freefem qf9pT`|10|See \cite{0501496} $\codered$ for detail||9|
 
 For a three dimensional  domain  $\Omega_h=\sum_{k=1}^{n_t}T_k,\, \mathcal{T}_h=\{T_k\}$,
 we can calculate the integral over $\Omega_h$ by
+
+$\codered$
 \begin{eqnarray*}
 \int_{\Omega_h}f(x,y)&=&`:::freefem int3d(Th)(f)`\\
 &=&`:::freefem int3d(Th,qfV=*)(f)`\\
 &=&`:::freefem int3d(Th,qforder=*)(f)`
 \end{eqnarray*}
+
 where * stands for the name of quadrature formula or the order of the Gauss formula.
 
-%\begin{figure}[hbt]
-\begin{center}
+||||Quadature formula on a tetrahedron|||
+|:----:|:----:|:----:|:----:|:----:|:----:|
+|$L$|`:::freefem qfV=`|`:::freefem qforder=`|Point in $T_k\in \R^3$|$\omega_\ell$|Exact on $P_k, k=$|
+|1|`:::freefem qfV1`|2|$\left(\frac{1}{4},\frac{1}{4},\frac{1}{4}\right)$|$\|T_k\|$|1|
+|4|`:::freefem qfV2`|3|$G4(0.58\ldots,0.13\ldots,0.13\ldots)$|$\|T_k\|/4$|2|
+|14|`:::freefem qfV5`|6|$G4(0.72\ldots,0.092\ldots,0.092\ldots)$<br>$G4(0.067\ldots,0.31\ldots,0.31\ldots)$<br>$G6(0.45\ldots,0.045\ldots,0.45\ldots)$|$0.073\ldots\|T_k\|$<br>$0.11\ldots\|T_k\|$<br>$0.042\ldots\|T_k\|$|5|
+|4|`:::freefem qfV1lump`||$G4(1,0,0)$|$\|T_k\|/4$|1|
 
-\begin{tabular}{|c|c|c|c|c|c|}
-    \hline
-      \multicolumn{6}{|c|}{ Quadature formula on a tetrahedron} \\
-    \hline
-    $L$ & `:::freefem qfV=` & `:::freefem qforder=` &
-    point in $T_k\in \R^3$ & $\omega_\ell$~~~  &exact on $P_k, k=$  \\
-    \hline
-    \hline
-    1 & qfV1&2&$\left(\frac{1}{4},\frac{1}{4},\frac{1}{4}\right)$ & $|T_k|$ & 1 \\
-    \hline
-    4 & qfV2&3& $ G4(0.58\ldots ,0.13\ldots ,0.13\ldots )$ & $|T_k|/4$ & 2 \\
-    \hline
-    14 & \textbf{qfV5}&6&$G4(0.72\ldots,0.092\ldots,0.092\ldots)$ & $ 0.073\ldots |T_k|$ & 5 \\
-    & &                 &$G4(0.067\ldots,0.31\ldots,0.31\ldots)$ & $ 0.11\ldots     |T_k|$ & \\
-    & &                 &$G6(0.45\ldots,0.045\ldots,0.45\ldots)$ & $ 0.042\ldots     |T_k|$ & \\
-
-    \hline
-    4 & qfV1lump& & $G4(1,0,0)$ & $|T_k|/4$ & 1 \\
-    \hline
-\end{tabular}
-\end{center}
-\medskip
-
- Where $G4 (a,b,b) $ such that $a+3b=1$ is the set of the four point in barycentric coordinate
- $$\{ (a,b,b,b), (b,a,b,b), (b,b,a,b),(b,b,b,a) \}$$ and where
- $G6 (a,b,b) $ such that $2a+2b=1$ is the set of the six points in barycentric coordinate
- $$\{ (a,a,b,b),(a,b,a,b),(a,b,b,a), (b,b,a,a),(b,a,b,a),(b,a,a,b) \}.$$
+Where $G4(a,b,b)$ such that $a+3b=1$ is the set of the four point in barycentric coordinate
+\begin{eqnarray}
+\{(a,b,b,b),(b,a,b,b),(b,b,a,b),(b,b,b,a)\}
+\end{eqnarray}
+and where $G6(a,b,b)$ such that $2a+2b=1$ is the set of the six points in barycentric coordinate
+\begin{eqnarray}
+\{(a,a,b,b),(a,b,a,b),(a,b,b,a),(b,b,a,a),(b,a,b,a),(b,a,a,b)\}
+\end{eqnarray}
 
 !!! note
-	 These tetrahedral quadrature formulae come from \url{http://www.cs.kuleuven.be/~nines/research/ecf/mtables.html}
-
-
-
-
-
-%\end{figure}
+	These tetrahedral quadrature formulae come from [http://www.cs.kuleuven.be/~nines/research/ecf/mtables.html](http://www.cs.kuleuven.be/~nines/research/ecf/mtables.html)
 
 !!! note
+	By default,  we use the formula which is exact for polynomials of degree $5$ on triangles or edges (in bold in three tables). $\codered$
 
- By default,  we use the formula which is exact for polynomials of degree $5$ on triangles or edges (in bold in three tables).
-
-
-This possible to add an own quadrature formulae with using plugin `:::freefem "qf11to25"` on segment  , triangle or Tetrahedron.
-The quadrature formulae  in $D$ dimension is a bidimentional  array of size $N_q\times (D+1)$
-such that the $D+1$ value of on row $i=0,...,N_p-1$  are $w^i,\hat{x}^i_1,...,\hat{x}^i_D$ where
-
-$w^i$ is the weight of the quadrature point, and $1-\sum_{k=1}^D \hat{x}^i_k ,\hat{x}^i_1,...,\hat{x}^i_D$
+This possible to add an own quadrature formulae with using plugin `:::freefem qf11to25` on segment, triangle or Tetrahedron.
+The quadrature formulae in $D$ dimension is a bidimentional array of size $N_q\times (D+1)$
+such that the $D+1$ value of on row $i=0,...,N_p-1$ are $w^i,\hat{x}^i_1,...,\hat{x}^i_D$ where $w^i$ is the weight of the quadrature point, and $1-\sum_{k=1}^D \hat{x}^i_k ,\hat{x}^i_1,...,\hat{x}^i_D$
 is the barycentric coordinate the quadrature point.
 
 ```freefem
@@ -1176,46 +1086,45 @@ load "qf11to25" // load plugin
   assert( abs(I2-I2l) < 1e-10);
 ```
 
-%\newpage
-the output is
+The output is
 
 ```freefem
 1.67 == 1.67
 0.335 == 0.335
 ```
 
-# Variational Form, Sparse Matrix, PDE Data Vector}
+# Variational Form, Sparse Matrix, PDE Data Vector
 
- In FreeFem++ it is possible to define variational forms, and use them to build matrices
-  and vectors and store them to speed-up the script (4 times faster here).
+In FreeFem++ it is possible to define variational forms, and use them to build matrices and vectors and store them to speed-up the script (4 times faster here).
 
-  For example let us solve the Thermal Conduction problem of section \ref{ss Thermal Conduction} $\codered$.
+For example let us solve the Thermal Conduction problem of section \ref{ss Thermal Conduction} $\codered$.
+The variational formulation is in $L^2(0,T;H^1(\Omega))$; we shall seek $u^n$ satisfying
 
- The variational formulation is  in $L^2(0,T;H^1(\Omega))$;
-  we shall seek $u^n$ satisfying
 \[
 \forall w \in V_{0}; \qquad   \int_\Omega \frac{u^n-u^{n-1}}{\delta t} w + \kappa\n u^n\n w) +\int_\Gamma\alpha(u^n-u_{ue})w=0
 \]
-where $ V_0 = \{w\in H^1(\Omega)/ w_{|\Gamma_{24}}=0\}$.
 
-So the to code the method with the matrices $A=(A_{ij})$, $M=(M_{ij})$, and  the vectors
-$ u^n, b^n, b',b", b_{cl}$
-( notation if $w$ is a vector then $w_i$ is a component of the vector).
-\def\tgv{{\frac{1}{\varepsilon}}}
+where $V_0 = \{w\in H^1(\Omega)/ w_{|\Gamma_{24}}=0\}$.
+
+So to code the method with the matrices $A=(A_{ij})$, $M=(M_{ij})$, and the vectors
+$ u^n, b^n, b',b", b_{cl}$ (notation if $w$ is a vector then $w_i$ is a component of the vector).
+
 \begin{equation} u^n = A^{-1} b^n, \quad
   \quad b' = b_0 + M u^{n-1},
-  \quad b"=  \tgv \; b_{cl} ,
+  \quad b"= \frac{1}{\varepsilon} \; b_{cl},
   \quad  b^n_i = \left\{
   \begin{array}{cl}   b"_i  & \mbox{if }\ i \in \Gamma_{24} \\
                        b'_i & \mbox{else if } \not\in \Gamma_{24} \end{array}\right.
                         \end{equation}
-Where with $ \tgv = \mathtt{tgv} = 10^{30}$ :
+
+Where with $\frac{1}{\varepsilon} = \mathtt{tgv} = 10^{30}$ :
+
 \begin{eqnarray}
- A_{ij} &=& \left\{\begin{array}{cl}   \tgv  & \mbox{if } i  \in \Gamma_{24}, \mbox{and}  j=i \\
+ A_{ij} &=& \left\{\begin{array}{cl} \frac{1}{\varepsilon} & \mbox{if } i  \in \Gamma_{24}, \mbox{and}  j=i \\
 \displaystyle
  \int_{\Omega} w_j w_i / dt + k (\nabla w_j. \nabla w_i ) + \int_{\Gamma_{13}} \alpha w_j w_i & \mbox{else if }  i  \not\in \Gamma_{24}, \mbox{or}  j\ne i
  \end{array}\right.  \\
- M_{ij} &=& \left\{\begin{array}{cl}   \tgv & \mbox{if } i  \in \Gamma_{24}, \mbox{and}  j=i  \\
+ M_{ij} &=& \left\{\begin{array}{cl} \frac{1}{\varepsilon} & \mbox{if } i  \in \Gamma_{24}, \mbox{and}  j=i  \\
 \displaystyle
  \int_{\Omega} w_j w_i / dt
  & \mbox{else if }i  \not\in \Gamma_{24}, \mbox{or}  j\ne i   \end{array}\right. \\
@@ -1223,9 +1132,8 @@ Where with $ \tgv = \mathtt{tgv} = 10^{30}$ :
  b_{cl} &=& u^{0}  \quad \mbox{the initial data}
 \end{eqnarray}
 
-
- ```freefem
-// file thermal-fast.edp  in examples++-tutorial
+```freefem
+// file thermal-fast.edp in examples++-tutorial $\codered$
 
 func fu0 =10+90*x/6;
 func k = 1.8*(y<0.5)+0.2;
@@ -1255,27 +1163,14 @@ matrix M= vMass(Vh,Vh);
 Now, to build the right hand size we need 4 vectors.
 
 ```freefem
-
 real[int]  b0  = vthermic0(0,Vh); // constant part of the RHS
 real[int]  bcn = vthermic(0,Vh); // tgv on Dirichlet boundary  node  ( !=0 )
-// we have for the node $i$ : $i\in \Gamma_{24}  \quad \Leftrightarrow \quad bcn[i] \ne 0 $
+// we have for the node $i$ : $i\in \Gamma_{24}  \quad \Leftrightarrow \quad bcn[i] \ne 0 $ $\codered$
 real[int]  bcl=tgv*u0[]; // the Dirichlet boundary condition part
-
-
 ```
 
 !!! note
-	 The boundary condition  is implemented
- by penalization and vector `:::freefem bcn` contains
- the contribution of the boundary condition $u_=1$ ,
-so to change the boundary condition,
-we have just to multiply the vector $bc[]$ by the current value $f$
- of the new boundary condition term by term
-with the operator `:::freefem .*`.
-\refSec{Uzawa} `:::freefem Examples++-tutorial/StokesUzawa.edp`  gives
- a real example of using all this features.
-
-
+	The boundary condition  is implemented by penalization and vector `:::freefem bcn` contains the contribution of the boundary condition $u_=1$, so to change the boundary condition, we have just to multiply the vector $bc[]$ by the current value $f$ of the new boundary condition term by term with the operator `:::freefem .*`. \refSec{Uzawa} `:::freefem Examples++-tutorial/StokesUzawa.edp` $\codered$ gives a real example of using all this features.
 
 And the new version of the algorithm is now:
 
@@ -1296,30 +1191,27 @@ plot(u,fill=true,wait=1,ps="thermic.eps");
 ```
 
 !!! note
+	The functions appearing in the variational form are formal and local to the `:::freefem varf` definition, the only important thing is the order in the parameter list, like in
 
- The functions appearing in the variational form are formal and local to the `:::freefem varf` definition,
-  the only important thing is the order in the parameter list, like in
+	```freefem
+	varf vb1([u1,u2],q) = int2d(Th)( (dy(u1)+dy(u2)) *q) + int2d(Th)(1*q);
+	varf vb2([v1,v2],p) = int2d(Th)( (dy(v1)+dy(v2)) *p) + int2d(Th)(1*p);
+	```
 
-```freefem
- varf vb1([u1,u2],q) = int2d(Th)( (dy(u1)+dy(u2)) *q) + int2d(Th)(1*q);
- varf vb2([v1,v2],p) = int2d(Th)( (dy(v1)+dy(v2)) *p) + int2d(Th)(1*p);
-```
-
-To build matrix $A$ from the bilinear part the variational form $a$ of type `:::freefem varf`  simply write:
+To build matrix $A$ from the bilinear part the variational form $a$ of type `:::freefem varf` simply write:
 
 ```freefem
-  A = a(Vh,Wh [, ...] );
- // where \hfilll
- //Vh is "fespace" for the unknow fields  with a correct number of component\hfilll
- //Wh is "fespace" for the test fields  with a correct number of component\hfilll
+A = a(Vh,Wh [, ...] );
+// where
+//Vh is "fespace" for the unknow fields  with a correct number of component
+//Wh is "fespace" for the test fields  with a correct number of component
 ```
 
-Possible named parameters in `:::freefem " [, ... ] "` are
-\begin{description}
-    \item[solver=]   `:::freefem LU`, `:::freefem CG`,
-    `:::freefem Crout`, `:::freefem Cholesky`, `:::freefem GMRES`, `:::freefem sparsesolver`, `:::freefem UMFPACK` ...
+Possible named parameters in `:::freefem [, ...]` are
 
-    The default solver is `:::freefem GMRES`.
+* `:::freefem solver=` `:::freefem LU`, `:::freefem CG`, `:::freefem Crout`, `:::freefem Cholesky`, `:::freefem GMRES`, `:::freefem sparsesolver`, `:::freefem UMFPACK` ...
+
+	The default solver is `:::freefem GMRES`.
 
     The storage mode of the matrix of the underlying linear system
     depends on
@@ -1329,56 +1221,49 @@ Possible named parameters in `:::freefem " [, ... ] "` are
     definite,  for `:::freefem CG`   the matrix is sparse symmetric positive,
     and for `:::freefem GMRES`, `:::freefem sparsesolver` or `:::freefem UMFPACK` the matrix is just  sparse.
 
-    \item[factorize =]  if true then do the matrix factorization for
+* `:::freefem factorize =` If true then do the matrix factorization for
     `:::freefem LU`, `:::freefem Cholesky` or `:::freefem Crout`, the default value is $false$.
 
-    \item[eps=]     a real expression. $\varepsilon$  sets the stopping test for
+* `:::freefem eps=` A real expression. $\varepsilon$  sets the stopping test for
     the iterative methods like `:::freefem CG`. Note that if $\varepsilon$
     is negative  then the stopping test is:
     $$  || A x - b || < |\varepsilon| $$
     if it is positive then the stopping test is
         $$  || A x - b || < \frac{|\varepsilon|}{|| A x_{0} - b ||} $$
 
-
-    \item[precon=]   name of a function (for example `:::freefem P`) to set the preconditioner.
+* `:::freefem precon=` Name of a function (for example `:::freefem P`) to set the preconditioner.
     The prototype for the function `:::freefem P` must be
 
-```freefem
-    func real[int]  P(real[int] & xx) ;
-```
+	```freefem
+	func real[int] P(real[int] & xx) ;
+	```
 
-      \item[tgv=]      Huge value ($10^{30}$) used to implement
+* `:::freefem tgv=` Huge value ($10^{30}$) used to implement
       Dirichlet boundary conditions.
 
-      \item[tolpivot=]   set the tolerance of the pivot in UMFPACK ($10^-1$)  and, LU, Crout, Cholesky
-      factorisation ($10^{-20}$).
+* `:::freefem tolpivot=` Set the tolerance of the pivot in `:::freefem UMFPACK` ($10^-1$) and, `:::freefem LU`, `:::freefem Crout`, `:::freefem Cholesky` factorisation ($10^{-20}$).
 
-      \item[tolpivotsym=]   set the tolerance of the pivot sym in UMFPACK
-      \item[strategy=]   set the integer UMFPACK strategy  ($0$ by default).
+* `:::freefem tolpivotsym=` Set the tolerance of the pivot sym in `:::freefem UMFPACK`
 
-\end{description}
-
+* `:::freefem strategy=` Set the integer UMFPACK strategy ($0$ by default).
 
 !!! note
+	The line of the matrix corresponding to the space `:::freefem Wh` and the column of the matrix corresponding to the space `:::freefem Vh`.
 
-The line of the matrix corresponding to the space `:::freefem Wh` and the
-column of the matrix corresponding to the space `:::freefem Vh`.
-
-
-To build the dual vector b (of type real[int])  from the linear part of the variational form $a$ do simply
+To build the dual vector b (of type real[int]) from the linear part of the variational form $a$ do simply
 
 ```freefem
-  real b(Vh.ndof);
-  b = a(0,Vh);
+real b(Vh.ndof);
+b = a(0,Vh);
 ```
 
-A first example to compute the area of each triangle $K$ of mesh $Th$,  just do:
+A first example to compute the area of each triangle $K$ of mesh $Th$, just do:
 
 ```freefem
-  fespace Nh(Th,P0); // the  space function constant / triangle
-   Nh areaK;
-   varf varea(unused,chiK) =  int2d(Th)(chiK);
-   etaK[]= varea(0,Ph);
+fespace Nh(Th,P0); // the  space function constant / triangle
+Nh areaK;
+varf varea(unused,chiK) =  int2d(Th)(chiK);
+etaK[]= varea(0,Ph);
 ```
 
 Effectively, the basic functions of space $Nh$, are the characteristic function
@@ -1389,22 +1274,21 @@ $$
  $$
 
 Now, we can use this to compute error indicators like in examples
-`:::freefem AdaptResidualErrorIndi\-cator.edp` in directory `:::freefem examples++-tutorial`.
+`:::freefem AdaptResidualErrorIndicator.edp` in directory `:::freefem examples++-tutorial` $\codered$.
 
 First to compute a continuous approximation to the function $h$ "density mesh size"  of the mesh $Th$.
 
-
 ```freefem
-  fespace Vh(Th,P1);
-   Vh h ;
-   real[int]  count(Th.nv);
-   varf vmeshsizen(u,v)=intalledges(Th,qfnbpE=1)(v);
-   varf vedgecount(u,v)=intalledges(Th,qfnbpE=1)(v/lenEdge);
- //	  computation of the mesh size
- // -----------------------------
-   count=vedgecount(0,Vh); // number of edge / vertex
-   h[]=vmeshsizen(0,Vh); // sum length edge / vertex
-   h[]=h[]./count; // mean lenght edge / vertex
+fespace Vh(Th,P1);
+Vh h ;
+real[int]  count(Th.nv);
+varf vmeshsizen(u,v)=intalledges(Th,qfnbpE=1)(v);
+varf vedgecount(u,v)=intalledges(Th,qfnbpE=1)(v/lenEdge);
+// Computation of the mesh size
+// -----------------------------
+count=vedgecount(0,Vh); // number of edge / vertex
+h[]=vmeshsizen(0,Vh); // sum length edge / vertex
+h[]=h[]./count; // mean lenght edge / vertex
 ```
 
 To compute error indicator for Poisson equation :
@@ -1415,34 +1299,31 @@ where $ h_K$ is size of the longest edge (`:::freefem hTriangle`), $h_e$ is the 
 normal.
 
 ```freefem
-  fespace Nh(Th,P0); // the  space function contant / triangle
-   Nh etak;
-  varf vetaK(unused,chiK) =
+fespace Nh(Th,P0); // the  space function contant / triangle
+Nh etak;
+varf vetaK(unused,chiK) =
        intalledges(Th)(chiK*lenEdge*square(jump(N.x*dx(u)+N.y*dy(u))))
       +int2d(Th)(chiK*square(hTriangle*(f+dxx(u)+dyy(u))) );
 
-   etak[]= vetaK(0,Ph);
+ etak[]= vetaK(0,Ph);
 ```
 
-We add automatic \x{expression optimization} by default, if this optimization creates problems,
-it can be removed with the keyword `:::freefem {optimize`} as in the following example : ,
+We add automatic expression optimization by default, if this optimization creates problems,
+it can be removed with the keyword `:::freefem optimize` as in the following example :
 
 ```freefem
-varf a(u1,u2)= int2d(Th,optimize=0)(  dx(u1)*dx(u2) + dy(u1)*dy(u2) )
-                    +  on(1,2,4,u1=0)  +  on(3,u1=1) ;
+varf a(u1,u2)= int2d(Th,optimize=0)(dx(u1)*dx(u2) + dy(u1)*dy(u2))
+                    + on(1,2,4,u1=0) + on(3,u1=1);
 ```
 
-or you can also  do optimisation and remove the check by setting  \verb!optimize=2! (version 3.38).
+or you can also  do optimisation and remove the check by setting `:::freefem optimize=2`.
 
-Remark, it is all possible to build interpolation matrix, like in
-
-the following example:
+Remark, it is all possible to build interpolation matrix, like in the following example:
 
 ```freefem
 mesh  TH = square(3,4);
 mesh  th = square(2,3);
 mesh  Th = square(4,4);
-
 
 fespace VH(TH,P1);
 fespace Vh(th,P1);
@@ -1452,69 +1333,63 @@ matrix B= interpolate(VH,Vh); // build interpolation matrix Vh->VH
 matrix BB= interpolate(Wh,Vh); // build interpolation matrix  Vh->Wh
 ```
 
-and after some operations on sparse matrices are
-available for example
+and after some operations on sparse matrices are available for example
 
 ```freefem
-  int N=10;
-  real [int,int] A(N,N); // a full matrix
-  real [int] a(N),b(N);
-  A =0;
-  for (int i=0;i<N;i++)
+int N=10;
+real [int,int] A(N,N); // a full matrix
+real [int] a(N),b(N);
+A =0;
+for (int i=0;i<N;i++)
     {
       A(i,i)=1+i;
-      if(i+1 < N)    A(i,i+1)=-i;
+      if(i+1 < N) A(i,i+1)=-i;
       a[i]=i;
     }
-  b=A*b;
-  cout << "xxxx\n";
-  matrix sparseA=A;
-  cout << sparseA << endl;
-  sparseA = 2*sparseA+sparseA';
-  sparseA = 4*sparseA+sparseA*5;
-  matrix sparseB=sparseA+sparseA+sparseA; ;
-  cout << "sparseB = " << sparseB(0,0) << endl;
+b=A*b;
+cout << "xxxx\n";
+matrix sparseA=A;
+cout << sparseA << endl;
+sparseA = 2*sparseA+sparseA';
+sparseA = 4*sparseA+sparseA*5;
+matrix sparseB=sparseA+sparseA+sparseA; ;
+cout << "sparseB = " << sparseB(0,0) << endl;
 ```
 
 # Interpolation matrix
 
-It is also possible to store the matrix of a linear interpolation operator from
- a finite element space $V_h$ to  another $W_h$ to  `:::freefem interpolate($W_h$,$V_h$,...)` a function.
-Note that the continuous finite functions are extended by continuity
- outside of the domain.
+It is also possible to store the matrix of a linear interpolation operator from a finite element space $V_h$ to another $W_h$ to `:::freefem interpolate`($W_h$,$V_h$,...) a function.
+Note that the continuous finite functions are extended by continuity outside of the domain.
 
 The named parameters of function `:::freefem interpolate` are:
-\begin{description}
-\item[`:::freefem inside=`] set true to create zero-extension.
-\item[`:::freefem t=`] set true to get the transposed matrix
-\item[`:::freefem op=`] set an integer written below
-\begin{description}
-\item[0] the default value and interpolate of the function
-\item[1] interpolate the $\p_x$
-\item[2] interpolate the $\p_y$
-\item[3] interpolate the $\p_z$
-\end{description}
-\item[`:::freefem U2Vc=`] set the which is the  component of $W_h$ come in $V_h$ in interpolate  process in a int array
-so the size of the array is number of component of $W_h$, if the put $-1$ then component is set to $0$, like in the following example:
+
+* `:::freefem inside=` set true to create zero-extension.
+* `:::freefem t=` set true to get the transposed matrix
+* `:::freefem op=` set an integer written below
+	- 0 the default value and interpolate of the function
+	- 1 interpolate the $\p_x$
+	- 2 interpolate the $\p_y$
+	- 3 interpolate the $\p_z$
+
+* `:::freefem U2Vc=` set the which is the component of $W_h$ come in $V_h$ in interpolate process in a int array so the size of the array is number of component of $W_h$, if the put $-1$ then component is set to $0$, like in the following example:
 (by default the component number is unchanged).
 
-```freefem
-fespace V4h(Th4,[P1,P1,P1,P1]);
-fespace V3h(Th,[P1,P1,P1]);
-int[int] u2vc=[1,3,-1];// -1 => put zero on the component
-matrix IV34= interpolate(V3h,V4h,inside=0,U2Vc=u2vc);// V3h <- V4h
-V4h [a1,a2,a3,a4]=[1,2,3,4];
-V3h [b1,b2,b3]=[10,20,30];
-b1[]=IV34*a1[];
-```
+	```freefem
+	fespace V4h(Th4,[P1,P1,P1,P1]);
+	fespace V3h(Th,[P1,P1,P1]);
+	int[int] u2vc=[1,3,-1];// -1 => put zero on the component
+	matrix IV34= interpolate(V3h,V4h,inside=0,U2Vc=u2vc);// V3h <- V4h
+	V4h [a1,a2,a3,a4]=[1,2,3,4];
+	V3h [b1,b2,b3]=[10,20,30];
+	b1[]=IV34*a1[];
+	```
 
-So here we have:
-\texttt{
-b1 == 2,  b2 == 4, b3 == 0}
+	So here we have:
+	```freefem
+	b1 == 2, b2 == 4, b3 == 0 ...
+	```
 
- .
- .
-\end{description}
+__Example__ 6.2 (mat_interpol.edp) $\codered$
 
 ```freefem
 // file mat\_interpol.edp
@@ -1545,8 +1420,6 @@ matrix IW4V= interpolate(Wh4,Vh);
 cout << " IV Wh4<-Vh  " << IW4  << endl;
 ```
 
-
-
  Build interpolation matrix $A$ at a array of  points $(xx[j],yy[j]),  i = 0, 2$ here
 $$  a_ij = dop(w^i_c (xx[j],yy[j]))$$
 where $w_i$ is the basic finite element  function, $c$ the component number, $dop$ the type
@@ -1562,12 +1435,12 @@ real[int] dd=[1,2];
 ww[]= Ixx*dd;
 ```
 
-\begin{example}[schwarz2.edp]~
-$\codered$
+__Example__ schwarz2.edp $\codered$
 
 The following shows how to implement with an interpolation matrix a domain decomposition algorithm based on Schwarz method with Robin conditions.
 
-Given a non-overlapping partition $\bar\Omega=\bar\Omega_0\cup\bar\Omega_1$ with $\Omega_0\cap\Omega_1=\emptyset$, $\Sigma:=\bar\Omega_0\cap\bar\Omega_1$ the algorithm is
+Given a non-overlapping partition $\bar\Omega=\bar\Omega_0\cup\bar\Omega_1$ with $\Omega_0\cap\Omega_1=\emptyset$, $\Sigma:=\bar\Omega_0\cap\bar\Omega_1$ the algorithm is :
+
 \begin{eqnarray*}&&
 -\Delta u_i= f \hbox{ in }\Omega_i,~i=0,1,~~\frac{\partial(u_1-u_0)}{\partial n} + \alpha (u_1-u_0)=0\hbox{ on }\Sigma.
 %\cr&&
@@ -1580,8 +1453,9 @@ The same in variational form is:
 \forall v\in H^1_0(\Omega), i,j=[0,1]\cup[1,0]
 \end{eqnarray*}
 To discretized with the $P^1$ triangular Lagrangian finite element space $V_h$ simply replace $H^1_0(\Omega)$ by $V_h(\Omega_0)\cup V_h(\Omega_1)$.
-Then difficulty is to compute $\int_{\Omega_j} \nabla u_j\cdot\nabla v$ when $v$ is a basis function of $V_h(\Omega_i)$, $i\ne j$.  It is done as follows (with $\Gamma=\partial\Omega$)
-%
+Then difficulty is to compute $\int_{\Omega_j} \nabla u_j\cdot\nabla v$ when $v$ is a basis function of $V_h(\Omega_i)$, $i\ne j$.
+
+It is done as follows (with $\Gamma=\partial\Omega$) :
 
 ```freefem
 // from file schwarz2.edp
@@ -1626,19 +1500,17 @@ for(int iter=0;iter<Niter;iter++)
 }
 ```
 
-
 # Finite elements connectivity
-Here, we show how to get  informations on a finite element space $W_h({\cal T}_n,*)$, where ``*'' may be P1, P2, P1nc, etc.
+Here, we show how to get  informations on a finite element space $W_h({\cal T}_n,*)$, where "*" may be P1, P2, P1nc, etc.
 
+* `:::freefem Wh.nt` gives the number of element of $W_h$
+* `:::freefem Wh.ndof` gives the number of degrees of freedom or unknown
+* `:::freefem Wh.ndofK` gives the number of degrees of freedom on one element
+* `:::freefem Wh(k,i)` gives the number of $i$th  degrees of freedom of element $k$.
 
-\begin{itemize}
-\item   `:::freefem Wh.nt`  gives the \x{number of element} of $W_h$
-\item   `:::freefem   Wh.ndof`  gives the \x{number of degrees of freedom} or unknown
-\item   `:::freefem   Wh.ndofK `  gives the number of degrees of freedom on one element
-\item   `:::freefem   Wh(k,i) `   gives the number of $i$th  degrees of freedom of element $k$.
-\end{itemize}
-See the following  example:
+See the following example:
 
+__Example__ 6.4 (FE.edp) $\codered$
 ```freefem
 // file FE.edp
 mesh Th=square(5,5);
@@ -1650,7 +1522,6 @@ cout << " nb of degree of freedom / ELEMENT : " << Wh.ndofK << endl;
  for (int i=0;i<kdf;i++)  cout << Wh(k,i) << " ";
  cout << endl;
 ```
-
 
 The output is:
 
