@@ -41,6 +41,7 @@ pages:
     - A flow with shocks: tutorial/FlowWithShocks.md
     - Time dependent schema optimization for heat equations: tutorial/HeatEquationOptimization.md
     - A transient Stokes solver in matrix form: tutorial/TimeDependentStokes.md
+    - Wifi Propagation: tutorial/WifiPropagation.md
     - TODO: tutorial/TODO.md
   - Examples:
     - Home: examples/index.md
