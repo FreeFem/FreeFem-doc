@@ -1,16 +1,20 @@
 # Wifi Propagation
 
-**Summary** : In this tutorial, we will study the wifi signal power in a flat.
+## Summary
 
-An awesome flat is especially designed for the experiment, with **2** walls :
+In this tutorial, we will study the wifi signal power in a flat. An awesome flat is especially designed for the experiment, with **2** walls :
 
-<a name="Fig1">Figure 1</a> - Flat |
-:-------------------------:|
-![house](images/wifi-propagation/house.png) |
+<center>
+
+|Figure 1 - Flat |
+|:-------------------------:|
+|![house](images/wifi-propagation/house.png)|
+
+</center>
 
 Even if the flat seems small enough to be covered by wifi everywhere, it is still interesting to study where the signal's power is the lowest. We will study where to put the hotspot to get the best coverage, and as we're a bit lazy we will only put it next to the left wall.
 
-# Physics
+## Physics
 
 In a nutshell, the Wifi is a electromagnetic wave that contains a signal : Internet data. Electromagnetic waves are well know by physicists and are ruled by the **4 Maxwell equations** which give you the solution for *E*, the electrical field, and *B*, the magnetic field, in space but also in time.
 
@@ -29,9 +33,9 @@ Indeed, the main point of this study is the impact of **walls** on the signal's 
 
 The wifi hotspot (simulated by a simple circle) will be the boundary condition, with a non null value for our electrical field.
 
-# Coding
+## Coding
 
-## The domain
+### The domain
 
 In order to create the domain of experimentation, we need to create `:::freefem border` objects, like this :
 
@@ -59,7 +63,7 @@ border c20(t=1, 0) {x=r+j*t; y=s+u; label=3;}
 border c30(t=1, 0) {x=r; y=s+u*t; label=3;}
 ```
 
-## Let's create a mesh
+### Let's create a mesh
 
 ```freefem
 int n=13;
@@ -72,9 +76,9 @@ plot(Sh, wait=1);
 
 So we are creating a `:::freefem mesh`, and plotting it :
 
-<a name="Fig2">Figure 2</a> - Mesh |
-:-------------------------:|
-![mesh](images/wifi-propagation/mesh.png) |
+|Figure 2 - Mesh |
+|:-------------------------:|
+|![mesh](images/wifi-propagation/mesh.png)|
 
 
 There is currently no wifi hotspot, and as we want to resolve the equation for a multiple number of position next to the left wall, let's do a `:::freefem for` loop:
@@ -93,33 +97,33 @@ for (bx = 1; bx <= 7; bx++){
 The border `C` is our hotspot and as you can see a simple circle. `Th` is our final mesh, with all borders and the hotspot. Let's resolve this equation !
 
 ```freefem
-    fespace Vh(Th, P1);
-    func real wall() {
-       if (Th(x,y).region == Th(0.5,0.5).region || Th(x,y).region == Th(7,20.5).region || Th(x,y).region == Th(30.5,2).region) { return 1; }
-       else { return 0; }
-    }
+fespace Vh(Th, P1);
+func real wall() {
+   if (Th(x,y).region == Th(0.5,0.5).region || Th(x,y).region == Th(7,20.5).region || Th(x,y).region == Th(30.5,2).region) { return 1; }
+   else { return 0; }
+}
 
-    Vh<complex> v,w;
+Vh<complex> v,w;
 
-    randinit(900);
-    Vh wallreflexion = randreal1();
-    Vh<complex> wallabsorption = randreal1()*0.5i;
-    Vh k = 6;
+randinit(900);
+Vh wallreflexion = randreal1();
+Vh<complex> wallabsorption = randreal1()*0.5i;
+Vh k = 6;
 
-    cout << "Reflexion of walls : " << wallreflexion << "\n";
-    cout << "Absorption of walls : " << wallabsorption << "\n";
+cout << "Reflexion of walls : " << wallreflexion << "\n";
+cout << "Absorption of walls : " << wallabsorption << "\n";
 
-    problem muwave(v,w) =
-		int2d(Th)(
-			  (v*w*k^2)/(1+(wallreflexion+wallabsorption)*wall())^2
-        	- (dx(v)*dx(w)+dy(v)*dy(w))
-		)
-		+ on(2, v=1)
-		;
+problem muwave(v,w) =
+	int2d(Th)(
+		  (v*w*k^2)/(1+(wallreflexion+wallabsorption)*wall())^2
+    	- (dx(v)*dx(w)+dy(v)*dy(w))
+	)
+	+ on(2, v=1)
+	;
 
-    muwave;
-    Vh vm = log(real(v)^2 + imag(v)^2);
-    plot(vm, wait=1, fill=true, value=0, nbiso=65);
+muwave;
+Vh vm = log(real(v)^2 + imag(v)^2);
+plot(vm, wait=1, fill=true, value=0, nbiso=65);
 }
 ```
 
@@ -127,21 +131,21 @@ A bit of understanding here :
 
 * The `:::freefem fespace` keyword defines a finite elements space, no need to know more here.
 * The function `wall` return 0 if in air and 1 if in a wall (x and y are global variables).
-* I decided to go with random numbers for the reflexion and the absorption but it is no big deal.
-* I define the problem with `:::freefem problem` and solve it by calling it.
+* For this example, random numbers are used for the reflexion and the absorption.
+* The problem is defined with `:::freefem problem` and we solve it by calling it.
 
 Finally, I plotted the $\log$ of the module of the solution `v` to see the signal's power, and here we are :
 
-<a name="Fig31">Figure 3.1</a> - Solution |
-:-------------------------:|
-![solution](images/wifi-propagation/point1.png) |
+|Figure 3.1 - Solution|
+|:-------------------------:|
+|![solution](images/wifi-propagation/point1.png)|
 
-Beautiful isn't it ? This is the first position for the hotspot, but there are 6 others, and the electrical field is evolving depending of the position. You can see others positions here :
+Beautiful isn't it ? This is the first position for the hotspot, but there are 6 others, and the electrical field is evolving depending on the position. You can see the other positions here :
 
-<a name="Fig32">Figure 3.2</a> - Point 2 | <a name="Fig33">Figure 3.3</a> - Point 3 | <a name="Fig34">Figure 3.4</a> - Point 4
-:-------------------------:|:-------------------------:|:-------------------------:
-![point2](images/wifi-propagation/point2.png) | ![point3](images/wifi-propagation/point3.png) | ![point4](images/wifi-propagation/point4.png)
+|Figure 3.2 - Point 2 | Figure 3.3 - Point 3 | Figure 3.4 - Point 4|
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|![point2](images/wifi-propagation/point2.png) | ![point3](images/wifi-propagation/point3.png) | ![point4](images/wifi-propagation/point4.png)|
 
-<a name="Fig35">Figure 3.5</a> - Point 5 | <a name="Fig36">Figure 3.6</a> - Point 6 | <a name="Fig37">Figure 3.7</a> - Point 7
-:-------------------------:|:-------------------------:|:-------------------------:
-![point5](images/wifi-propagation/point5.png) | ![point6](images/wifi-propagation/point6.png) | ![point7](images/wifi-propagation/point7.png)
+|Figure 3.5 - Point 5 | Figure 3.6 - Point 6 | Figure 3.7 - Point 7|
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|![point5](images/wifi-propagation/point5.png) | ![point6](images/wifi-propagation/point6.png) | ![point7](images/wifi-propagation/point7.png)|
