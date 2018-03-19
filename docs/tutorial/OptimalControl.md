@@ -109,12 +109,12 @@ In this example the sets $B,C,D,E$ are circles of boundaries $bb,cc,dd,ee$ and t
 
 The desired state $u_d$ is the solution of the PDE for $b=2,c=3,d=4$. The unknowns are packed into array $z$.
 
-!!note
+!!!note
  	It is necessary to recopy $Z$ into $z$ because one is a local variable while the other one is global.
 
 The program found $b=2.00125,c=3.00109,d=4.00551$.
 
-(figure 1)[Fig1] shows $u$ at convergence and the successive function evaluations of $J$.
+[figure 1](#Fig1) shows $u$ at convergence and the successive function evaluations of $J$.
 
 |<a name="Fig1">Fig. 1</a>: On top the level lines of $u$. At the bottom the successive evaluations of $J$ by BFGS (5 values above 500 have been removed for readability)|
 |:----:|
@@ -145,4 +145,4 @@ Then the derivatives are found by setting $\delta b=1, \delta c=\delta d=0$ and 
 \end{eqnarray}
 
 !!! note
-	As BFGS stores an $M\times M$ matrix where $M$ is the number of unknowns, it is dangerously expensive to use this method when the unknown $x$ is a Finite Element Function. One should use another optimizer such as the NonLinear Conjugate Gradient `:::freefem NLCG` (also a key word of FreeFem++).	$\codered$ See the file algo.edp in the examples directory.
+	As BFGS stores an $M\times M$ matrix where $M$ is the number of unknowns, it is dangerously expensive to use this method when the unknown $x$ is a Finite Element Function. One should use another optimizer such as the NonLinear Conjugate Gradient `:::freefem NLCG` (also a key word of FreeFem++).

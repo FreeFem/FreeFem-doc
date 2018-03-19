@@ -64,7 +64,7 @@ sudo make install
 ```bash
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install cpp freeglut3-dev g++ gcc gfortran \
-	ghostscript m4 make patch pkg-config wget python \
+	ghostscript m4 make patch pkg-config wget python unzip \
 	libopenblas-dev liblapack-dev libhdf5-dev libgsl2-dev \
 	libscotch-dev libfftw3-dev libarpack2-dev libsuitesparse-dev \
 	libmumps-seq-dev libnlopt-dev coinor-libipopt-dev libgmm++-dev libtet1.5-dev \

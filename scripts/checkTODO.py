@@ -91,7 +91,8 @@ tutorialFilesList = [
 	"tutorial/OptimalControl.md",
 	"tutorial/FlowWithShocks.md",
 	"tutorial/HeatEquationOptimization.md",
-	"tutorial/TimeDependentStokes.md"
+	"tutorial/TimeDependentStokes.md",
+	"tutorial/WifiPropagation.md"
 	]
 tutorialNamesList = [
 	"Home",
@@ -112,7 +113,8 @@ tutorialNamesList = [
 	"Optimal control",
 	"A flow with shocks",
 	"Time dependant schema optimization for heat equations",
-	"A transient Stokes solver in matrix form"
+	"A transient Stokes solver in matrix form",
+	"Wifi Propagation"
 	]
 tutorialTODOFile = "tutorial/TODO.md"
 

@@ -97,9 +97,9 @@ Progression:
 
 Progression:
 <div class="progress progress-80plus">
-	<div class="progress-bar" style="width:97%">
+	<div class="progress-bar" style="width:98%">
 	</div>
-	<span class="progress-label">97</span>
+	<span class="progress-label">98</span>
 </div>
 
 - [ ] [BFGS](Functions/#BFGS)

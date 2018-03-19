@@ -86,13 +86,12 @@ Progression:
 ## Pure convection, The rotating hill
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:99%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">99</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 203
 
 ## The system of elasticity
 
@@ -157,13 +156,12 @@ Progression:
 ## Optimal control
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:99%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">99</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 148
 
 ## A flow with shocks
 
@@ -186,6 +184,16 @@ Progression:
 
 
 ## A transient Stokes solver in matrix form
+
+Progression:
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
+	</div>
+	<span class="progress-label">100</span>
+</div>
+
+
+## Wifi Propagation
 
 Progression:
 <div class="progress progress-100plus">

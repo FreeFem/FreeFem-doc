@@ -200,7 +200,7 @@ for (t = 0.; t < 2.*pi; t += dt){
 }
 ```
 
-Notice the new keyword `:::freefem set` to specify a solver in this framework; the modifier `:::freefem init` is used to tell the solver that the matrix has not changed (`:::freefem init=true`), and the name parameter are the same that in problem definition ($\codered$ see. \ref{def problem})
+Notice the new keyword `:::freefem set` to specify a solver in this framework; the modifier `:::freefem init` is used to tell the solver that the matrix has not changed (`:::freefem init=true`), and the name parameter are the same that in problem definition (see [Problem](../documentation/FiniteElement/#problem))
 
 ## **Finite Volume Methods** can also be handled with FreeFem++ but it requires programming.
 
