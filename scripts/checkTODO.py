@@ -15,12 +15,14 @@ indexTODOFile = "TODO.md"
 documentationFilesList = [
 	"documentation/index.md",
 	"documentation/MeshGeneration.md",
-	"documentation/FiniteElement.md"
+	"documentation/FiniteElement.md",
+	"documentation/Visualization"
 	]
 documentationNamesList = [
 	"Home",
 	"Mesh generation",
-	"Finite element"
+	"Finite element",
+	"Visualization"
 	]
 documentationTODOFile = "documentation/TODO.md"
 
