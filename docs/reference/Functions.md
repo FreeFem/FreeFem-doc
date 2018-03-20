@@ -442,6 +442,10 @@ real t = clock();
  - `t` (`:::freefem real`)<br/>
  Current CPU time
 
+## complexEigenValue
+
+Same as [`:::freefem EigenValue`](#EigenValue) for complex problems.
+
 ## conj
 Caculate the conjuguate of a complex number.
 ```freefem
@@ -822,6 +826,11 @@ $$
 - `upp` (`:::freefem fespace` function)
 
 ## EigenValue
+Compute the generalized eigenvalue of $Au=\lambda Bu$.
+
+```freefem
+int Res = EigenValue()
+```
 
 $\codered$
 

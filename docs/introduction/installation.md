@@ -75,7 +75,7 @@ sudo apt-get install mpich
 ```
 
 !!!warning
-	In the latest distribution of Ubuntu, libgsl2-dev does not exists anymore
+	In the latest distribution of Ubuntu, `libgsl2-dev` does not exists anymore, use `libgsl-dev`
 
 2) Download FreeFem++ source from the repository
 

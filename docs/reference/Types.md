@@ -266,7 +266,7 @@ Laplacian;
 	problem Laplacian(u, uh, tgv=1e30) = ...
 	```
 
-	Refere to $\codered$ for a description of the Dirichlet condition implementation.
+	Refere to [Problem definition](../documentation/FiniteElement/#problem-definition) for a description of the Dirichlet condition implementation.
 
 !!!note "Pivot tolerance"
 	The tolerance of the pivot in `:::freefem UMFPACK`, `:::freefem LU`, `:::freefem Crout`, `:::freefem Cholesky` factorization can be modified in the problem definition:
@@ -437,16 +437,16 @@ real[int] Aii = A.diag;
 	See [`:::freefem problem`](#problem).
 
 !!!note "datafilename"
-	$\codered$
+	Name of the file containing solver parameters, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)
 
 !!!note "lparams"
-	$\codered$
+	Vector of integer parameters for the solver, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)
 
 !!!note "dparams"
-	$\codered$
+	Vector of real parameters for the solver, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)
 
 !!!note "sparams"
-	$\codered$
+	String parameters for the solver, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)
 
 !!!tip
 	To modify the solver, the stop test,... after the matrix construction, use the [`:::freefem set` keyword](functions/#set).

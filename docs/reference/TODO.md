@@ -20,17 +20,12 @@ Progression:
 ## Types
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:81%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">81</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] [problem](Types/#problem)
-- [ ] [matrix](Types/#matrix)
-- [ ] [matrix](Types/#matrix)
-- [ ] [matrix](Types/#matrix)
-- [ ] [matrix](Types/#matrix)
 
 ## Global variables
 
