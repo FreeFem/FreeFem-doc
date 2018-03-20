@@ -10,8 +10,6 @@ For the specialist, one key guideline is that FreeFem++ rarely generates an inte
 
 ## The Development Cycle: Edit--Run/Visualize--Revise
 
-An integrated environment is provided for FreeFem++ by A. Le Hyaric, namely [FreeFem++-cs](https://www.ljll.math.upmc.fr/lehyaric/ffcs/index.htm).
-
 Many examples and tutorials are given thereafter and in the [examples part](../examples). It is better to study them and learn by example.
 
 If you are a beginner in the finite element method, you may also have to read a book on variational formulations.
