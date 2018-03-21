@@ -457,7 +457,7 @@ the mesh `:::freefem Th` is a $4\times 4$-grid of $[-1,1]^2$ as in Fig. \ref{P0P
 
 |Fig. 6.1: $P_1$  and $P_2$ degrees of freedom on triangle $T_k$|
 |:----:|
-|![P1P2](images/P1P2.svg)|
+|![P1P2](images/P1P2.png)|
 
 </center>
 
@@ -494,7 +494,7 @@ into `:::freefem Vh(Th,P1)`.
 
 |Fig. 6.2: Test mesh `:::freefem Th` for projection|Fig. 6.3: Projection to `:::freefem Vh(Th,P0)`|
 |:----:|:----:|
-|![P0P1P2nc](images/P0P1P2P1nc.svg)|![peojP0](images/projP0.svg)|
+|![P0P1P2nc](images/P0P1P2P1nc.png)|![peojP0](images/projP0.png)|
 
 ## P2-element
 For each vertex or midpoint $q^i$. the basis function $\phi_i$ in `:::freefem Vh(Th,P2)`
@@ -533,7 +533,7 @@ See Fig. 6.5 $\codered$ for the projection of $f(x,y)=\sin(\pi x)\cos(\pi y)$ in
 
 |Fig. 6.4: projection to `:::freefem Vh(Th,P1)`|Fig. 6.5: projection to `:::freefem Vh(Th,P2)`|
 |:----:|:----:|
-|![projP1](images/projP1.svg)|![projP2](images/projP2.svg)|
+|![projP1](images/projP1.png)|![projP2](images/projP2.png)|
 
 # P1 Nonconforming Element
 
@@ -595,7 +595,7 @@ into `:::freefem Vh(Th,P1nc)`.
 
 |Fig. 6.6: Projection to `:::freefem Vh(Th,P1nc)`|Fig. 6.7: Projection to `:::freefem Vh(Th,P1b)`|
 |:----:|:----:|
-|![p1nc](images/projP1nc.svg)|![projP1b](images/projP1b.svg)|
+|![p1nc](images/projP1nc.png)|![projP1b](images/projP1b.png)|
 
 # Other FE-space
 
@@ -697,7 +697,7 @@ and $i_l=\{1,1,2,2,3,3\},\, j_l=\{1,2,1,2,1,2\}$ with the order of $l$.
 
 |Fig. 6.8: Normal vectors of each edge|
 |:----:|
-|![RT0](images/RT0.svg)|
+|![RT0](images/RT0.png)|
 
 </center>
 
@@ -729,7 +729,7 @@ $\codered$
 
 |Fig. 6.9: `:::freefem vh` Iso on mesh $2\times 2$|Fig. 6.10: `:::freefem vh` Iso on mesh $5\times 5$|
 |:----:|:----:|
-|![onoldmesh](images/onoldmesh.svg)|![onnewmesh](images/onnewmesh.svg)|
+|![onoldmesh](images/onoldmesh.png)|![onnewmesh](images/onnewmesh.png)|
 
 </center>
 
@@ -807,7 +807,7 @@ The method has 5 steps. First a quadtree is built containing all the vertices of
 
 |Fig. 6.11 To interpolate a function at $q^0$ the knowledge of the triangle which contains $q^0$ is needed.  The algorithm may start at $q^1\in T_k^0$ and stall on the boundary (thick line) because the line $q^0q^1$ is not inside $\Omega$. But if the holes are triangulated too (doted line) then the problem does not arise.|
 |:----|
-|![fastInterpolate](images/fastInterpolate.svg)|
+|![fastInterpolate](images/fastInterpolate.png)|
 
 </center>
 
@@ -859,7 +859,7 @@ Two problems need to be solved:
 
 	|Fig. 6.12: Extension of a continuous FE-function|Fig. 6.13: Extention of discontinuous FE-function|
 	|:----:|:----:|
-	|![us-ug](images/us-ug.svg)|![vs-vg](images/vs-vg.svg)|
+	|![us-ug](images/us-ug.png)|![vs-vg](images/vs-vg.png)|
 
 	</center>
 
