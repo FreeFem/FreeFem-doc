@@ -14,6 +14,8 @@ MathJax.Hub.Config({
             autoNumber: "AMS"
         },
     	Macros: {
+			codeerror: '{\\color{red}{ERROR}}',
+			codered: '{\\color{red}{TODO}}',
         	R: '{\\mathbb R}',
 			P: '{\\mathbb P}',
         	p: '{\\partial}',

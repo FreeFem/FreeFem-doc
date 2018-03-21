@@ -17,6 +17,8 @@ The parameters of the plot command can be meshes, real FE functions, arrays of 2
 !!! note
 	The length of an arrow is always bound to be in [5‰, 5%] of the screen size, to see something (else it will only look like porcupine).
 
+The `:::freefem plot` command parameters are listed int the [Reference part](../reference/Functions/#plot).
+
 The keyboard shortcuts are :
 
 * __enter__ try to show plot
@@ -155,6 +157,8 @@ As said above, `medit` is a freeware display package by Pascal Frey using OpenGL
 
 Now medit software is included in FreeFem++ under ffmedit name.
 
+The `:::freefem medit` command parameters are listed int the [Reference part](../reference/ExternalLibraries/#medit).
+
 |Fig. 7: medit plot|
 |:----:|
 |![medit2](images/medit2.svg)|
@@ -193,3 +197,6 @@ exec("ffmedit u");
 //clean files on unix-like OS
 exec("rm u.bb u.faces u.points");
 ```
+
+## Link with Paraview
+$\codered$
