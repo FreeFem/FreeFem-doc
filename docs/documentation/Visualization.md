@@ -84,10 +84,13 @@ plot([xx, yy], ps="likegnu.eps", wait=true);
 |:----:|:----:|
 |![Three](images/three.svg)|![Threeg](images/threeg.svg)|
 
+<center>
+
 |Fig. 3: Plots a cut of uh. Note that a refinement of the same can be obtained in combination with gnuplot|
 |:----:|
 |![likegnu](images/likegnu.svg)|
 
+</center>
 
 To change the color table and to choose the value of iso line you can do :
 
@@ -159,9 +162,13 @@ Now medit software is included in FreeFem++ under ffmedit name.
 
 The `:::freefem medit` command parameters are listed int the [Reference part](../reference/ExternalLibraries/#medit).
 
+<center>
+
 |Fig. 7: medit plot|
 |:----:|
 |![medit2](images/medit2.svg)|
+
+</center>
 
 With version 3.2 or later
 

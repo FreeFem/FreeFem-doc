@@ -91,8 +91,25 @@ $\codered$
 ## Curvature
 
 ### extractborder
+Extract a border of a mesh.
 
-$\codered$
+```freefem
+int Res = extractborder(Th, Label, Points);
+```
+
+<u>Parameters:</u>
+
+ - `Th` (`:::freefem mesh` or `:::freefem mesh3`)
+ - `Label` (`:::freefem int`)<br/>
+ Label of the border to extract
+ - `Points` (`:::freefem real[int, int]`)<br/>
+ Extracted points<br/>
+ Must be allocated as `:::freefem real[int, int] Points(3, 1);`
+
+<u>Output:</u>
+
+ - `Res` (`:::freefem real`)<br/>
+ Length of the extracted border
 
 ### curvature
 

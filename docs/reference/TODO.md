@@ -125,7 +125,6 @@ Progression:
 - [ ] [ClosePoints2](ExternalLibraries/#ClosePoints2)
 - [ ] [ClosePoint](ExternalLibraries/#ClosePoint)
 - [ ] [ClosePoints1](ExternalLibraries/#ClosePoints1)
-- [ ] [extractborder](ExternalLibraries/#extractborder)
 - [ ] [curvature](ExternalLibraries/#curvature)
 - [ ] [raxicurvature](ExternalLibraries/#raxicurvature)
 - [ ] [curves](ExternalLibraries/#curves)

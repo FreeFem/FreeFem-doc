@@ -230,4 +230,4 @@ sudo make install
 Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-with-intel-software-tools-for-developers)
 
 ## Compilation on Windows
-TODO (Good luck!)
+$\codered$ (Good luck!)

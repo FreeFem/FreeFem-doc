@@ -3,12 +3,11 @@ pages:
   - Introduction: index.md
   - Download: introduction/download.md
   - Installation: introduction/installation.md
-  #- TODO: introduction/TODO.md
+  - TODO: introduction/TODO.md
   - Documentation:
     - Home: documentation/index.md
     - Mesh Generation: documentation/MeshGeneration.md
     - Finite Element: documentation/FiniteElement.md
-    - (TODO) Chapter 6: documentation/chapter6.md
     - Visualization: documentation/Visualization.md
     - TODO: documentation/TODO.md
   - Language References:
