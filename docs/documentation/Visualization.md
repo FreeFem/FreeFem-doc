@@ -6,7 +6,7 @@ There are two ways of visualization in FreeFem++:
 
 * One, the default view, supports the drawing of meshes, isovalues of real FE-functions and of vector fields, all by the command `:::freefem plot` (see [Plot section](#plot) below). For publishing purpose, FreeFem++ can store these plots as postscript files.
 
-* Another method is to use external tools, for example, gnuplot (see [Gnuplot section](#gnuplot), [medit section](#medit)) using the command `:::freefem system` to launch them and/or to save the data in text files.
+* Another method is to use external tools, for example, gnuplot (see [Gnuplot section](#link-with-gnuplot), [medit section](#link-with-medit), [Paraview section](#link-with-paraview)) using the command `:::freefem system` to launch them and/or to save the data in text files.
 
 ## Plot
 
@@ -82,13 +82,13 @@ plot([xx, yy], ps="likegnu.eps", wait=true);
 
 |Fig. 1: mesh, isovalue, and vector|Fig. 2: Enlargement in grey of isovalue, and vector|
 |:----:|:----:|
-|![Three](images/three.svg)|![Threeg](images/threeg.svg)|
+|![Three](images/Visualization_Plot.png)|![Threeg](images/Visualization_Plot_Grey.png)|
 
 <center>
 
 |Fig. 3: Plots a cut of uh. Note that a refinement of the same can be obtained in combination with gnuplot|
 |:----:|
-|![likegnu](images/likegnu.svg)|
+|![likegnu](images/Visualization_Plot_Gnuplot.png)|
 
 </center>
 
@@ -128,7 +128,7 @@ real[int] colorhsv=[ // color hsv model
 
 |Fig. 4: hsv color cylinder|Fig. 5: isovalue with an other color table|
 |:----:|:----:|
-|![hsv](images/hsv.svg)|![threehsv](images/threehsv.svg)|
+|![hsv](images/Visualization_HSV_Space.png)|![threehsv](images/Visualization_HSV.png)|
 
 ## Link with gnuplot
 
@@ -152,13 +152,13 @@ exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output
 
 |Fig. 6: Plots a cut of uh with gnuplot|
 |:----:|
-|![gnuplot](images/gnuplot.svg)|
+|![gnuplot](images/Visualization_Gnuplot.png)|
 
 ## Link with medit
 
 As said above, `medit` is a freeware display package by Pascal Frey using OpenGL. Then you may run the following example.
 
-Now medit software is included in FreeFem++ under ffmedit name.
+Now `medit` software is included in FreeFem++ under `ffmedit` name.
 
 The `:::freefem medit` command parameters are listed int the [Reference part](../reference/ExternalLibraries/#medit).
 
@@ -166,7 +166,7 @@ The `:::freefem medit` command parameters are listed int the [Reference part](..
 
 |Fig. 7: medit plot|
 |:----:|
-|![medit2](images/medit2.svg)|
+|![medit2](images/Visualization_Medit.png)|
 
 </center>
 
@@ -206,4 +206,22 @@ exec("rm u.bb u.faces u.points");
 ```
 
 ## Link with Paraview
-$\codered$
+
+One can also export mesh or results in the `.vtk` format in order to post-processing data using [Paraview](https://www.paraview.org/).
+
+```freefem
+load "iovtk"
+
+mesh Th = square(10, 10, [2*x-1, 2*y-1]);
+
+fespace Vh(Th, P1);
+Vh u=2-x*x-y*y;
+
+int[int] Order = [1];
+string DataName = "u";
+savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
+```
+
+|Fig. 8: Paraview plot|
+|:----:|
+|![Paraview](images/Visualization_Paraview.png)|

@@ -14,7 +14,7 @@ mesh Th = square(4, 5);
 
 |<a name=Fig1">Fig 1</a>: Boundary labels of the mesh by `:::freefem square(10,10)`|
 |:----:|
-|![Square](images/square.svg)|
+|![Square](images/square.png)|
 
 To construct a $n\times m$ grid in the rectangle $[x_0,x_1]\times [y_0,y_1]$, proceeds as follows:
 
@@ -90,7 +90,7 @@ Borders and mesh are respectively shown in <a href="#Fig2">Fig. 2</a> and <a hre
 
 |<a name="Fig2">Fig. 2</a>: Multiple border ends intersect|<a name="Fig3">Fig. 3</a>: Generated mesh|
 |:----:|:----:|
-|![Multiple border ends intersect](images/multiendborder.svg)|![Generated Mesh](images/multiendmesh.svg)|
+|![Multiple border ends intersect](images/multiendborder.png)|![Generated Mesh](images/multiendmesh.png)|
 
 Triangulation keywords assume that the domain is defined as being on the _left_ (resp _right_) of its oriented parameterized boundary
 
@@ -102,7 +102,7 @@ To check the orientation plot $t\mapsto (\varphi_x(t),\varphi_y(t)),\, t_0\le t\
 
 |<a name="Fig4">Fig. 4</a>: Orientation of the boundary defined by $(\phi_x(t),\phi_y(t))$|
 |:----:|
-|![Border](images/border.svg)|
+|![Border](images/border.png)|
 
 The general expression to define a triangulation with `:::freefem buildmesh` is
 
@@ -134,7 +134,7 @@ plot(Thwithhole, ps="Thwithhole.eps");
 
 |<a	name=Fig5">Fig. 5</a>: Mesh without hole |<a name="Fig6">Fig. 6</a>: Mesh with hole |
 |:----:|:----:|
-|![Mesh without hole](images/Th_without_hole.svg)|![Mesh with hole](images/Th_with_hole.svg)|
+|![Mesh without hole](images/Th_without_hole.png)|![Mesh with hole](images/Th_with_hole.png)|
 
 !!! note
 	Borders are evaluated only at the time `:::freefem plot` or `:::freefem buildmesh` is called so the global variable are defined at this time and here since $r$ is changed between the two border calls the following code will not work because the first border will be computed with r=0.3:
@@ -217,7 +217,7 @@ The boundary consists of 10 lines $L_i,\, i=1,\cdots,10$ whose end points are $q
 
 |<a name="Fig7">Fig. 7</a>: Mesh by `:::freefem buildmesh(C(10))`||
 |:----|:----|
-|![Mesh Sample](images/mesh_sample.svg)|In the left figure, we have the following.<br>$n_v=14, n_t=16, n_s=10$<br>$q^1=(-0.309016994375, 0.951056516295)$<br>$\vdots\qquad \vdots\qquad \vdots$<br>$q^{14}=(-0.309016994375, -0.951056516295)$<br>The vertices of $T_1$ are $q^9, q^{12},\, q^{10}$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The vertices of $T_{16}$ are $q^9, q^{10}, q^{6}$.<br>The edge of 1st side $L_1$ are $q^6, q^5$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The edge of 10th side $L_{10}$ are $q^{10}, q^6$.|
+|![Mesh Sample](images/mesh_sample.png)|In the left figure, we have the following.<br>$n_v=14, n_t=16, n_s=10$<br>$q^1=(-0.309016994375, 0.951056516295)$<br>$\vdots\qquad \vdots\qquad \vdots$<br>$q^{14}=(-0.309016994375, -0.951056516295)$<br>The vertices of $T_1$ are $q^9, q^{12},\, q^{10}$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The vertices of $T_{16}$ are $q^9, q^{10}, q^{6}$.<br>The edge of 1st side $L_1$ are $q^6, q^5$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The edge of 10th side $L_{10}$ are $q^{10}, q^6$.|
 
 |<a name="Tab1">Table. 1</a>: The structure of `:::freefem mesh_sample.msh`||
 |:----|:----|
@@ -595,7 +595,7 @@ The coordinates of the points and the value of the table function are defined se
 
 |<a name="Fig8">Fig. 8</a>: Delaunay mesh of the convex hull of point set in file xy|<a name="Fig9">Fig. 9</a>: Isovalue of table function|
 |:----:|:----:|
-|![Th xy](images/Thxy.svg)|![xyf](images/xyf.svg)
+|![Th xy](images/Thxy.png)|![xyf](images/xyf.png)
 
 The third column of each line is left untouched by the `:::freefem triangulate` command. But you can use this third value to define a table function with rows of the form: `:::freefem x y f(x,y)`.
 
@@ -672,7 +672,7 @@ It is also possible to build an empty mesh of a pseudo subregion with `:::freefe
 
 |<a name="Fig10">Fig. 10</a>: The empty mesh with boundary|<a name="Fig11">Fig. 11</a>: An empty mesh defined from a pseudo region numbering of triangle|
 |:----:|:----:|
-|![Empty mesh 1](images/emptymesh-1.svg)|![Empty mesh 2](images/emptymesh-2.svg)|
+|![Empty mesh 1](images/emptymesh-1.png)|![Empty mesh 2](images/emptymesh-2.png)|
 
 ## Remeshing
 ### Movemesh
@@ -724,7 +724,7 @@ plot(Th,wait=1,fill=1,ps="movemesh.eps");// see figure \ref{movemesh}
 
 |Fig. 5.12: L-shape|Fig. 5.13: moved L-shape|
 |:----:|:----:|
-|![L-shape](images/L-shape.svg)|![moved L shaped](images/moved-L-shape.svg)|
+|![L-shape](images/L-shape.png)|![moved L shaped](images/moved-L-shape.png)|
 
 !!! note
 	Consider a function $u$ defined on a mesh `:::freefem Th`. A statement like `:::freefem Th=movemesh(Th...)` does not change $u$ and so the old mesh still exists. It will be destroyed when no function use it. A statement like $u=u$ redefines $u$ on the new mesh `:::freefem Th` with interpolation and therefore destroys the old `:::freefem Th` if $u$ was the only function using it.
@@ -820,7 +820,7 @@ for (int i=0;i<2;i++)
 
 |Fig. 5.14: 3D graphs for the initial mesh and 1st and 2nd mesh adaptation|
 |:----|
-|![Mesh adaptation](images/adaptmesh.svg)|
+|![Mesh adaptation](images/adaptmesh.png)|
 
 FreeFem++ uses a variable metric/Delaunay automatic meshing
 algorithm.
@@ -846,7 +846,7 @@ when $f=1$ and $\Omega$ is a L-shape domain.
 
 |Fig. 5.15: L-shape domain and its boundary name|Fig. 5.16: Final solution after 4-times adaptation|
 |:----|:----|
-|![L-shape2](images/L-shape2.svg)|![L Shape solution](images/lshapesol.svg)|
+|![L-shape2](images/L-shape2.png)|![L Shape solution](images/lshapesol.png)|
 
 **example** (Adapt.edp) The solution has the singularity $r^{3/2},\, r=|x-\gamma|$
 at the point $\gamma$ of the intersection of two lines $bc$ and $bd$ (see Fig. 5.15).
@@ -981,7 +981,7 @@ plot(Th,wait=1,ps="square-2.eps");
 
 |Fig. 5.17: Initial mesh|Fig. 5.18: First iteration|Fig. 5.19: Last iteration|
 |:----|:----|:----|
-|![Initial mesh](images/square-0.svg)|![First iteration](images/square-1.svg)|![Last iteration](images/square-2.svg)|
+|![Initial mesh](images/square-0.png)|![First iteration](images/square-1.png)|![Last iteration](images/square-2.png)|
 
 ## Trunc
 
@@ -1019,7 +1019,7 @@ for (i=0;i<n;i++) // All degree of freedom
 
 |Fig. 5.20: mesh of support the function P1  number 0, splitted in $5{\times}5$|Fig. 5.21: Mesh of support the function P1  number 6, splitted in $5{\times}5$|
 |:----|:----|
-|![Trunc0](images/trunc0.svg)|![Trunc6](images/trunc6.svg)|
+|![Trunc0](images/trunc0.png)|![Trunc6](images/trunc6.png)|
 
 ## Splitmesh
 
@@ -1038,7 +1038,7 @@ plot(Th,wait=1,ps="splitmesh.eps"); // See fig. 5.23
 
 |Fig. 5.22: Initial mesh|Fig. 5.23: all left mesh triangle is split  conformaly in `:::freefem int(1+5*(square(x-0.5)+y*y)\^2` triangles|
 |:----:|:----:|
-|![No split mesh](images/nosplitmesh.svg)|![No split mesh](images/nosplitmesh.svg)|
+|![No split mesh](images/nosplitmesh.png)|![No split mesh](images/nosplitmesh.png)|
 
 ## Meshing Examples
 
@@ -1075,7 +1075,7 @@ plot(Th,ps="NACA0012.eps",bw=1);  // Fig. 5.25
 
 |Fig. 5.24: Two rectangles touching by a side|Fig. 5.25: NACA0012 Airfoil|
 |:----:|:----:|
-|![Rectangles touching by a side](images/TouchSide.svg)|![NACA0012 Airfoil](images/NACA0012.svg)|
+|![Rectangles touching by a side](images/TouchSide.png)|![NACA0012 Airfoil](images/NACA0012.png)|
 
 **Example** Cardioid
 
@@ -1096,7 +1096,7 @@ plot(Th,ps="Cassini.eps",bw=1); // Fig. 5.27
 
 |Fig. 5.26: Domain with Cardioid curve boundary|Fig. 5.27: Domain with Cassini Egg curve boundary|
 |:----:|:----:|
-|![Cardiod](images/Cardioid.svg)|![Cassini](images/Cassini.svg)|
+|![Cardiod](images/Cardioid.png)|![Cassini](images/Cassini.png)|
 
 **Example** By cubic Bezier curve
 
@@ -1126,7 +1126,7 @@ plot(Th,ps="Bezier.eps",bw=1);  // Fig. 5.28
 
 |Fig. 5.28: Boundary drawed by Bezier curves|
 |:----|
-|![Bezier](images/Bezier.svg)|
+|![Bezier](images/Bezier.png)|
 
 **Example** Section of Engine
 
@@ -1146,7 +1146,7 @@ plot(Th,ps="Engine.eps",bw=1); // Fig. 5.29
 
 |Fig. 5.29: Section of Engine|
 |:----|
-|![Engine](images/Engine.svg)|
+|![Engine](images/Engine.png)|
 
 **Example** Domain with U-shape channel
 
@@ -1167,7 +1167,7 @@ plot(Th,ps="U-shape.eps",bw=1); // Fig. 5.30
 
 |Fig. 5.30: Domain with U-shape channel changed by `:::freefem d`|
 |:----|
-|![U-Shape](images/U-shape.svg)|
+|![U-Shape](images/U-shape.png)|
 
 **Example** Domain with V-shape cut
 
@@ -1186,7 +1186,7 @@ plot(Th,ps="V-shape.eps",bw=1);  // Fig. 5.31
 
 |Fig. 5.31: Domain with V-shape cut changed by `:::freefem dAg`|
 |:----|
-|![V-Shape](images/V-shape.svg)|
+|![V-Shape](images/V-shape.png)|
 
 **Example** Smiling face
 
@@ -1214,7 +1214,7 @@ plot(Th,ps="SmileFace.eps",bw=1);  // see Fig. 5.33
 
 |Fig. 5.32: Smiling face (Mouth is changeable)|
 |:----:|
-|![Smiling Face](images/SmileFace.svg)|
+|![Smiling Face](images/SmileFace.png)|
 
 **Example** 3point bending
 
@@ -1242,7 +1242,7 @@ plot(Th,ps="ThreePoint.eps",bw=1); // Fig. 5.33
 
 |Fig. 5.33: Domain for three-point bending test|
 |:----|
-|![Three-point bending test](images/ThreePoint.svg)|
+|![Three-point bending test](images/ThreePoint.png)|
 
 </center>
 
@@ -1748,7 +1748,7 @@ The domain $\Omega_{3d}$ defined by the layer mesh is equal to $\Omega_{3d} = \O
 
 |Fig. 5.35: Example of Layer mesh in three dimensions.|
 |:----:|
-|![Layer Mesh 3D](images/buillayermesh.svg)|
+|![Layer Mesh 3D](images/buillayermesh.png)|
 
 </center>
 
@@ -1890,7 +1890,7 @@ medit("cone",Th3T); // See figure \ref{figs-cone}
 
 |Fig. 5.36: The mesh of a  cube made with `:::freefem cube.edp`|Fig. 5.37: the mesh of a cone made with `:::freefem cone.edp`|
 |:----:|:----:|
-|![Cube](images/cube.svg)|![Cone](images/cone.svg)|
+|![Cube](images/cube.png)|![Cone](images/cone.png)|
 
 **Example `:::freefem buildlayermesh.edp`**
 
@@ -2147,7 +2147,7 @@ include "MeshSurface.idp"
 
 |Fig. 5.38: The surface mesh of the Hex with internal Sphere|Fig. 5.39: The tet mesh of the cube with internal ball|
 |:----:|:----:|
-|![Hex Sphere](images/Hex-Sphere.svg)|![Cube with ball](images/Cube-with-Ball.svg)|
+|![Hex Sphere](images/Hex-Sphere.png)|![Cube with ball](images/Cube-with-Ball.png)|
 
 ## The output solution formats .sol and .solb
 
@@ -2874,7 +2874,7 @@ plot(Th,wait=1,ps="leman.eps"); // see figure \ref{fig:leman} $\codered$
 
 |Fig. 5.4: The image of the leman lake meshes|Fig. 5.41: the mesh of the lake|
 |:----:|:----:|
-|![lake](images/lg.jpg)|![leman mesh](images/leman.svg)|
+|![lake](images/lg.jpg)|![leman mesh](images/leman.png)|
 
 ## References
 
