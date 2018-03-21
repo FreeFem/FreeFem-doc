@@ -130,6 +130,9 @@ real[int] colorhsv=[ // color hsv model
 |:----:|:----:|
 |![hsv](images/Visualization_HSV_Space.png)|![threehsv](images/Visualization_HSV.png)|
 
+!!!note
+	See [HSV.edp](../examples/#visualization-hsv) for the complete script.
+
 ## Link with gnuplot
 
 Example [Membrane](../tutorial/Membrane) shows how to generate a gnuplot from a FreeFem++ file. Let us present here another technique which has the advantage of being online, i.e. one doesn't need to quit FreeFem++ to generate a gnuplot.
@@ -153,6 +156,9 @@ exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output
 |Fig. 6: Plots a cut of uh with gnuplot|
 |:----:|
 |![gnuplot](images/Visualization_Gnuplot.png)|
+
+!!!note
+	See [Plot.edp](../examples/#visualization-plot) for the complete script.
 
 ## Link with medit
 
@@ -205,6 +211,9 @@ exec("ffmedit u");
 exec("rm u.bb u.faces u.points");
 ```
 
+!!!note
+	See [Medit.edp](../examples/#visualization-medit) for the complete script.
+
 ## Link with Paraview
 
 One can also export mesh or results in the `.vtk` format in order to post-processing data using [Paraview](https://www.paraview.org/).
@@ -225,3 +234,6 @@ savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
 |Fig. 8: Paraview plot|
 |:----:|
 |![Paraview](images/Visualization_Paraview.png)|
+
+!!!note
+	See [Paraview.edp](../examples/#visualization-paraview) for the complete script.
