@@ -16,7 +16,7 @@ documentationFilesList = [
 	"documentation/index.md",
 	"documentation/MeshGeneration.md",
 	"documentation/FiniteElement.md",
-	"documentation/Visualization"
+	"documentation/Visualization.md"
 	]
 documentationNamesList = [
 	"Home",

@@ -4,7 +4,7 @@ Results created by the finite element method can be a huge set of data, so it is
 
 There are two ways of visualization in FreeFem++:
 
-* One, the default view, supports the drawing of meshes, isovalues of real FE-functions and of vector fields, all by the command `:::freefem plot` (see [Pplot section](#plot) below). For publishing purpose, FreeFem++ can store these plots as postscript files.
+* One, the default view, supports the drawing of meshes, isovalues of real FE-functions and of vector fields, all by the command `:::freefem plot` (see [Plot section](#plot) below). For publishing purpose, FreeFem++ can store these plots as postscript files.
 
 * Another method is to use external tools, for example, gnuplot (see [Gnuplot section](#gnuplot), [medit section](#medit)) using the command `:::freefem system` to launch them and/or to save the data in text files.
 
@@ -78,11 +78,11 @@ for (int i = 0; i < 10; i++){
 plot([xx, yy], ps="likegnu.eps", wait=true);
 ```
 
-|Fig. 7.1: mesh, isovalue, and vector|Fig. 7.2: Enlargement in grey of isovalue, and vector|
+|Fig. 1: mesh, isovalue, and vector|Fig. 2: Enlargement in grey of isovalue, and vector|
 |:----:|:----:|
 |![Three](images/three.svg)|![Threeg](images/threeg.svg)|
 
-|Fig. 7.3: Plots a cut of uh. Note that a refinement of the same can be obtained in combination with gnuplot|
+|Fig. 3: Plots a cut of uh. Note that a refinement of the same can be obtained in combination with gnuplot|
 |:----:|
 |![likegnu](images/likegnu.svg)|
 
@@ -90,36 +90,38 @@ plot([xx, yy], ps="likegnu.eps", wait=true);
 To change the color table and to choose the value of iso line you can do :
 
 ```freefem
-$\codered$
 // from: \url{http://en.wikipedia.org/wiki/HSV_color_space}
-// The HSV (Hue, Saturation, Value) model,
-// defines a color space in terms of three constituent components:
-
-// HSV color space as a color wheel \ref{hsv} $\codered$
+// The HSV (Hue, Saturation, Value) model defines a color space
+// in terms of three constituent components:
+// HSV color space as a color wheel
 // Hue, the color type (such as red, blue, or yellow):
-// Ranges from 0-360 (but normalized to 0-100% in some applications Here)
-// Saturation, the "vibrancy" of the color: Ranges     from 0-100%
+// Ranges from 0-360 (but normalized to 0-100% in some applications like here)
+// Saturation, the "vibrancy" of the color: Ranges from 0-100%
 // The lower the saturation of a color, the more "grayness" is present
 // and the more faded the color will appear.
-// Value, the brightness of the color:
-// Ranges from 0-100%
+// Value, the brightness of the color: Ranges from 0-100%
 
-real[int] colorhsv=[  // color hsv model
-  4./6., 1 , 0.5, // dark blue
-  4./6., 1 , 1, // blue
-  5./6., 1 , 1, // magenta
-  1, 1. , 1, // red
-  1, 0.5 , 1 // light red
-   ];
+mesh Th = square(10, 10, [2*x-1, 2*y-1]);
+
+fespace Vh(Th, P1);
+Vh uh=2-x*x-y*y;
+
+real[int] colorhsv=[ // color hsv model
+	4./6., 1 , 0.5, // dark blue
+	4./6., 1 , 1, // blue
+	5./6., 1 , 1, // magenta
+	1, 1. , 1, // red
+	1, 0.5 , 1 // light red
+	];
  real[int] viso(31);
 
- for (int i=0;i<viso.n;i++)
-   viso[i]=i*0.1;
+ for (int i = 0; i < viso.n; i++)
+	viso[i] = i*0.1;
 
- plot(uh,viso=viso(0:viso.n-1),value=1,fill=1,wait=1,hsv=colorhsv);
+ plot(uh, viso=viso(0:viso.n-1), value=true, fill=true, wait=true, hsv=colorhsv);
 ```
 
-|Fig. 7.4: hsv color cylinder|Fig. 7.5: isovalue with an other color table|
+|Fig. 4: hsv color cylinder|Fig. 5: isovalue with an other color table|
 |:----:|:----:|
 |![hsv](images/hsv.svg)|![threehsv](images/threehsv.svg)|
 
@@ -143,7 +145,7 @@ Add to the previous example:
 exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output \"gnuplot.eps\" \n replot \n quit' | gnuplot");
 ```
 
-|Fig. 7.6: Plots a cut of uh with gnuplot|
+|Fig. 6: Plots a cut of uh with gnuplot|
 |:----:|
 |![gnuplot](images/gnuplot.svg)|
 
@@ -151,9 +153,9 @@ exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output
 
 As said above, `medit` is a freeware display package by Pascal Frey using OpenGL. Then you may run the following example.
 
-Remark: Now medit software is included in FreeFem++ under ffmedit name.
+Now medit software is included in FreeFem++ under ffmedit name.
 
-|Fig. 7.6: medit plot|
+|Fig. 7: medit plot|
 |:----:|
 |![medit2](images/medit2.svg)|
 
@@ -173,21 +175,21 @@ medit("u", Th, u);
 Before:
 
 ```freefem
-$\codered$
-mesh Th=square(10,10,[2*x-1,2*y-1]);
-fespace Vh(Th,P1);
+mesh Th = square(10, 10, [2*x-1, 2*y-1]);
+
+fespace Vh(Th, P1);
 Vh u=2-x*x-y*y;
-   savemesh(Th,"mm",[x,y,u*.5]); // save mm.points and mm.faces file
-// for medit
-   // build a mm.bb file
-  {
-   ofstream file("mm.bb");
-   file << "2 1 1 "<< u[].n << " 2 \n";
-   for (int j=0;j<u[].n ; j++)
-     file << u[][j] << endl;
-  }
-    // call medit command
-    exec("ffmedit mm");
-    // clean files on unix OS
-    exec("rm mm.bb mm.faces mm.points");
+
+savemesh(Th, "u", [x, y, u*.5]); //save u.points and u.faces file
+// build a u.bb file for medit
+{
+	ofstream file("u.bb");
+	file << "2 1 1 " << u[].n << " 2 \n";
+	for (int j = 0; j < u[].n; j++)
+		file << u[][j] << endl;
+}
+//call medit command
+exec("ffmedit u");
+//clean files on unix-like OS
+exec("rm u.bb u.faces u.points");
 ```
