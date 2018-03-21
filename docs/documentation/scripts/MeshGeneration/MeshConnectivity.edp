@@ -87,7 +87,7 @@ cout << "// New method to get boundary information and mesh adjacent" << endl;
 	// Vertice l in {0, 1} of boundary element k
 	int Vertex = Th.be(k)[l];
 	cout << "Vertex " << l << " of boundary element " << k << " = " << Vertex << endl;
-	// Triangle containg the obundary element k
+	// Triangle containg the boundary element k
 	int Triangle = Th.be(k).Element;
 	cout << "Triangle containing the boundary element " << k << " = " << Triangle << endl;
 	// Triangle egde nubmer containing the boundary element k

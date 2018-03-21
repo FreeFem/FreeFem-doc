@@ -12,9 +12,13 @@ The following generates a $4 \times 5$ grid in the unit square $[0,1]^2$. The l
 mesh Th = square(4, 5);
 ```
 
+<center>
+
 |<a name=Fig1">Fig 1</a>: Boundary labels of the mesh by `:::freefem square(10,10)`|
 |:----:|
-|![Square](images/square.png)|
+|![Square](images/MeshGeneration_Square.png)|
+
+</center>
 
 To construct a $n\times m$ grid in the rectangle $[x_0,x_1]\times [y_0,y_1]$, proceeds as follows:
 
@@ -56,7 +60,7 @@ mesh Th = square(n, m, [x0+(x1-x0)*x, y0+(y1-y0)*y]);
 
 ### Border
 
-Boundaries are defined piecewise by parametrized curves. The pieces can only intersect at their endpoints, but it is possible to join more than two endpoints. This can be used to structure the mesh if an area thouches a border and create new regions by dividing larger ones:
+Boundaries are defined piecewise by parametrized curves. The pieces can only intersect at their endpoints, but it is possible to join more than two endpoints. This can be used to structure the mesh if an area touches a border and create new regions by dividing larger ones:
 
 ```freefem
 int upper = 1;
@@ -90,7 +94,7 @@ Borders and mesh are respectively shown in <a href="#Fig2">Fig. 2</a> and <a hre
 
 |<a name="Fig2">Fig. 2</a>: Multiple border ends intersect|<a name="Fig3">Fig. 3</a>: Generated mesh|
 |:----:|:----:|
-|![Multiple border ends intersect](images/multiendborder.png)|![Generated Mesh](images/multiendmesh.png)|
+|![Multiple border ends intersect](images/MeshGeneration_Border1.png)|![Generated Mesh](images/MeshGeneration_Border2.png)|
 
 Triangulation keywords assume that the domain is defined as being on the _left_ (resp _right_) of its oriented parameterized boundary
 
@@ -102,7 +106,7 @@ To check the orientation plot $t\mapsto (\varphi_x(t),\varphi_y(t)),\, t_0\le t\
 
 |<a name="Fig4">Fig. 4</a>: Orientation of the boundary defined by $(\phi_x(t),\phi_y(t))$|
 |:----:|
-|![Border](images/border.png)|
+|![Border](images/MeshGeneration_Border3.png)|
 
 The general expression to define a triangulation with `:::freefem buildmesh` is
 
@@ -110,10 +114,10 @@ The general expression to define a triangulation with `:::freefem buildmesh` is
 mesh Mesh_Name = buildmesh(Gamma1(m1)+...+GammaJ(mj), OptionalParameter);
 ```
 
-where $m_j$ are positive or negative numbers to indicate how many vertices should be on $\Gamma_j,\, \Gamma=\cup_{j=1}^J \Gamma_J$, and the optional parameter (separed with comma) can be:
+where $m_j$ are positive or negative numbers to indicate how many vertices should be on $\Gamma_j,\, \Gamma=\cup_{j=1}^J \Gamma_J$, and the optional parameter (see also [References](../reference/Functions/#buildmesh)), separated with comma, can be:
 
-* `:::freefem nbvx=<int value>`, to set the maximal number of vertices in the mesh.
-* `:::freefem fixedborder=<bool value>`, to say if the mesh generator can change the boundary mesh or not (by default the boundary mesh can change; beware that with periodic boundary conditions (see. [Finite Element](FiniteElement)), it can be dangerous.
+* `:::freefem nbvx= int`, to set the maximal number of vertices in the mesh.
+* `:::freefem fixedborder= bool`, to say if the mesh generator can change the boundary mesh or not (by default the boundary mesh can change; beware that with periodic boundary conditions (see. [Finite Element](FiniteElement)), it can be dangerous.
 
 The orientation of boundaries can be changed by changing the sign of $m_j$.
 
@@ -134,7 +138,7 @@ plot(Thwithhole, ps="Thwithhole.eps");
 
 |<a	name=Fig5">Fig. 5</a>: Mesh without hole |<a name="Fig6">Fig. 6</a>: Mesh with hole |
 |:----:|:----:|
-|![Mesh without hole](images/Th_without_hole.png)|![Mesh with hole](images/Th_with_hole.png)|
+|![Mesh without hole](images/MeshGeneration_Border4.png)|![Mesh with hole](images/MeshGeneration_Border5.png)|
 
 !!! note
 	Borders are evaluated only at the time `:::freefem plot` or `:::freefem buildmesh` is called so the global variable are defined at this time and here since $r$ is changed between the two border calls the following code will not work because the first border will be computed with r=0.3:
@@ -160,7 +164,7 @@ int[int] nn = [10, 20, 30];
 plot(a(nn)); //plot 3 circles with 10, 20, 30 points
 ```
 
-And more complex exemple to define a square with small circles:
+And more complex example to define a square with small circles:
 
 ```freefem
 real[int] xx = [0, 1, 1, 0],
@@ -217,7 +221,7 @@ The boundary consists of 10 lines $L_i,\, i=1,\cdots,10$ whose end points are $q
 
 |<a name="Fig7">Fig. 7</a>: Mesh by `:::freefem buildmesh(C(10))`||
 |:----|:----|
-|![Mesh Sample](images/mesh_sample.png)|In the left figure, we have the following.<br>$n_v=14, n_t=16, n_s=10$<br>$q^1=(-0.309016994375, 0.951056516295)$<br>$\vdots\qquad \vdots\qquad \vdots$<br>$q^{14}=(-0.309016994375, -0.951056516295)$<br>The vertices of $T_1$ are $q^9, q^{12},\, q^{10}$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The vertices of $T_{16}$ are $q^9, q^{10}, q^{6}$.<br>The edge of 1st side $L_1$ are $q^6, q^5$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The edge of 10th side $L_{10}$ are $q^{10}, q^6$.|
+|![Mesh Sample](images/MeshGeneration_Data.png)|In the left figure, we have the following.<br>$n_v=14, n_t=16, n_s=10$<br>$q^1=(-0.309016994375, 0.951056516295)$<br>$\vdots\qquad \vdots\qquad \vdots$<br>$q^{14}=(-0.309016994375, -0.951056516295)$<br>The vertices of $T_1$ are $q^9, q^{12},\, q^{10}$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The vertices of $T_{16}$ are $q^9, q^{10}, q^{6}$.<br>The edge of 1st side $L_1$ are $q^6, q^5$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The edge of 10th side $L_{10}$ are $q^{10}, q^6$.|
 
 |<a name="Tab1">Table. 1</a>: The structure of `:::freefem mesh_sample.msh`||
 |:----|:----|
@@ -277,7 +281,7 @@ femp1 g;
 {
 	ifstream file("f.txt");
 	file >> g[] ;
-}//the file is equally automatically closesd
+}//the file is equally automatically closed
 
 // Plot
 plot(g);
@@ -408,7 +412,7 @@ cout << "// New method to get boundary information and mesh adjacent" << endl;
 	// Vertice l in {0, 1} of boundary element k
 	int Vertex = Th.be(k)[l];
 	cout << "Vertex " << l << " of boundary element " << k << " = " << Vertex << endl;
-	// Triangle containg the obundary element k
+	// Triangle containg the boundary element k
 	int Triangle = Th.be(k).Element;
 	cout << "Triangle containing the boundary element " << k << " = " << Triangle << endl;
 	// Triangle egde nubmer containing the boundary element k
@@ -595,7 +599,7 @@ The coordinates of the points and the value of the table function are defined se
 
 |<a name="Fig8">Fig. 8</a>: Delaunay mesh of the convex hull of point set in file xy|<a name="Fig9">Fig. 9</a>: Isovalue of table function|
 |:----:|:----:|
-|![Th xy](images/Thxy.png)|![xyf](images/xyf.png)
+|![Th xy](images/MeshGeneration_Triangulate1.png)|![xyf](images/MeshGeneration_Triangulate2.png)
 
 The third column of each line is left untouched by the `:::freefem triangulate` command. But you can use this third value to define a table function with rows of the form: `:::freefem x y f(x,y)`.
 
@@ -672,112 +676,119 @@ It is also possible to build an empty mesh of a pseudo subregion with `:::freefe
 
 |<a name="Fig10">Fig. 10</a>: The empty mesh with boundary|<a name="Fig11">Fig. 11</a>: An empty mesh defined from a pseudo region numbering of triangle|
 |:----:|:----:|
-|![Empty mesh 1](images/emptymesh-1.png)|![Empty mesh 2](images/emptymesh-2.png)|
+|![Empty mesh 1](images/MeshGeneration_EmptyMesh1.png)|![Empty mesh 2](images/MeshGeneration_EmptyMesh2.png)|
 
 ## Remeshing
 ### Movemesh
 <!--- END OF REVIEW -- TO CONTINUE --->
-Meshes can be translated, rotated and deformed by ':::freefem movemesh`; this is useful for elasticity to watch the deformation due to the displacement
-$\vec\Phi(x,y)=(\Phi_1(x,y),\Phi_2(x,y))$ of shape. It is also useful to
-handle free boundary  problems or optimal shape problems.
+Meshes can be translated, rotated and deformed by `:::freefem movemesh`; this is useful for elasticity to watch the deformation due to the displacement $\mathbf{\Phi}(x,y)=(\Phi_1(x,y),\Phi_2(x,y))$ of shape.
 
-If $\Omega$ is triangulated as $T_h(\Omega)$,
-and $\Phi$ is a displacement vector then $\Phi(T_h)$ is obtained by
+It is also useful to handle free boundary problems or optimal shape problems.
+
+If $\Omega$ is triangulated as $T_h(\Omega)$, and $\mathbf{\Phi}$ is a displacement vector then $\mathbf{\Phi}(T_h)$ is obtained by
 
 ```freefem
-mesh  Th=movemesh(Th,[Phi1,Phi2]);
+mesh Th = movemesh(Th,[Phi1, Phi2]);
 ```
 
-Sometimes the transformed mesh is invalid because some triangle
-have flip over (now has negative area). To spot such problems one may check the
-minimum triangle area in the transformed mesh with
-':::freefem checkmovemesh` before any real transformation.
+Sometimes the transformed mesh is invalid because some triangle have flip over (now has negative area). To spot such problems one may check the minimum triangle area in the transformed mesh with `:::freefem checkmovemesh` before any real transformation.
 
-$\codered$
-$\Phi_1(x,y)=x+k*\sin(y*\pi)/10)$, $\Phi_2(x,y)=y+k*\cos(y\pi)/10)$ for a big number $k>1$.
+For example:
+\begin{eqnarray}
+	\Phi_1(x,y) &=& x+k*\sin(y*\pi)/10)\\
+	\Phi_2(x,y) &=& y+k*\cos(y\pi)/10)
+\end{eqnarray}
+for a big number $k>1$.
 
 ```freefem
-verbosity=4;
-border a(t=0,1){x=t;y=0;label=1;};
-border b(t=0,0.5){x=1;y=t;label=1;};
-border c(t=0,0.5){x=1-t;y=0.5;label=1;};
-border d(t=0.5,1){x=0.5;y=t;label=1;};
-border e(t=0.5,1){x=1-t;y=1;label=1;};
-border f(t=0,1){x=0;y=1-t;label=1;};
-func uu= sin(y*pi)/10;
-func vv= cos(x*pi)/10;
+verbosity = 4;
 
-mesh Th = buildmesh ( a(6) + b(4) + c(4) +d(4) + e(4) + f(6));
-plot(Th,wait=1,fill=1,ps="Lshape.eps");// see figure \ref{lshape}
-real coef=1;
-real minT0= checkmovemesh(Th,[x,y]); // the min triangle area
-while(1) // find a correct move mesh
-{
-  real minT=checkmovemesh(Th,[x+coef*uu,y+coef*vv]);//the min triangle area
-  if (minT > minT0/5) break ; // if big enough
-  coef/=1.5;
+// Parameters
+real coef = 1;
+
+// Mesh
+border a(t=0, 1){x=t; y=0; label=1;};
+border b(t=0, 0.5){x=1; y=t; label=1;};
+border c(t=0, 0.5){x=1-t; y=0.5; label=1;};
+border d(t=0.5, 1){x=0.5; y=t; label=1;};
+border e(t=0.5, 1){x=1-t; y=1; label=1;};
+border f(t=0, 1){x=0; y=1-t; label=1;};
+mesh Th = buildmesh(a(6) + b(4) + c(4) + d(4) + e(4) + f(6));
+plot(Th, wait=true, fill=true, ps="Lshape.eps");
+
+// Function
+func uu = sin(y*pi)/10;
+func vv = cos(x*pi)/10;
+
+// Checkmovemesh
+real minT0 = checkmovemesh(Th, [x, y]); //return the min triangle area
+while(1){ // find a correct move mesh
+	real minT = checkmovemesh(Th, [x+coef*uu, y+coef*vv]);
+	if (minT > minT0/5) break; //if big enough
+	coef /= 1.5;
 }
 
-Th=movemesh(Th,[x+coef*uu,y+coef*vv]);
-plot(Th,wait=1,fill=1,ps="movemesh.eps");// see figure \ref{movemesh}
+// Movemesh
+Th = movemesh(Th, [x+coef*uu, y+coef*vv]);
+plot(Th, wait=true, fill=true, ps="MovedMesh.eps");
 ```
 
-|Fig. 5.12: L-shape|Fig. 5.13: moved L-shape|
+|<a name="Fig12">Fig. 12</a>: L-shape|<a name=Fig13">Fig. 13</a>: moved L-shape|
 |:----:|:----:|
-|![L-shape](images/L-shape.png)|![moved L shaped](images/moved-L-shape.png)|
+|![L-shape](images/MeshGeneration_MoveMesh1.png)|![moved L shaped](images/MeshGeneration_MoveMesh2.png)|
 
 !!! note
 	Consider a function $u$ defined on a mesh `:::freefem Th`. A statement like `:::freefem Th=movemesh(Th...)` does not change $u$ and so the old mesh still exists. It will be destroyed when no function use it. A statement like $u=u$ redefines $u$ on the new mesh `:::freefem Th` with interpolation and therefore destroys the old `:::freefem Th` if $u$ was the only function using it.
 
-Now, we give an example of moving mesh with a lagrangian function $u$ defined on the moving mesh.
+Now, we give an example of moving mesh with a Lagrangian function $u$ defined on the moving mesh.
 
 ```freefem
-// Simple movemesh example
-mesh Th=square(10,10);
-fespace Vh(Th,P1);
-real t=0;
-// ---
-// The problem is how to build data without interpolation
-// So the data u is moving with the mesh as you can see in the plot
-// ---
+// Parameters
+int nn = 10;
+real dt = 0.1;
+
+// Mesh
+mesh Th = square(nn, nn);
+
+// Fespace
+fespace Vh(Th, P1);
 Vh u=y;
-for (int i=0;i<4;i++)
-{
- t=i*0.1;
- Vh f= x*t;
- real minarea=checkmovemesh(Th,[x,y+f]);
- if (minarea >0 ) // movemesh will be ok
-   Th=movemesh(Th,[x,y+f]);
 
- cout << " Min area  " << minarea << endl;
+// Loop
+real t=0;
+for (int i = 0; i < 4; i++){
+	t = i*dt;
+	Vh f=x*t;
+	real minarea = checkmovemesh(Th, [x, y+f]);
+	if (minarea > 0) //movemesh will be ok
+	Th = movemesh(Th, [x, y+f]);
 
- real[int] tmp(u[].n);
- tmp=u[];  // save the value
- u=0;        // to change the FEspace and mesh associated with u
- u[]=tmp;  // set the value of u without any mesh update
- plot(Th,u,wait=1);
-};
+	cout << " Min area = " << minarea << endl;
+
+	real[int] tmp(u[].n);
+	tmp = u[]; //save the value
+	u = 0;//to change the FEspace and mesh associated with u
+	u[] = tmp;//set the value of u without any mesh update
+	plot(Th, u, wait=true);
+}
 // In this program, since u is only defined on the last mesh, all the
 // previous meshes are deleted from memory.
 ```
-
 
 ## Regular Triangulation: `:::freefem hTriangle`
 
 For a set $S$, we define the diameter of $S$ by
 
-\[
+$$
 \textrm{diam}(S)=\sup\{|\mathbf{x}-\mathbf{y}|; \; \mathbf{x},\, \mathbf{y}\in S\}
-\]
+$$
 
-The sequence $\{\mathcal{T}_h\}_{h\downarrow 0}$ of $\Omega$ is called
-_regular_ if they satisfy the following:
+The sequence $\{\mathcal{T}_h\}_{h\rightarrow 0}$ of $\Omega$ is called _regular_ if they satisfy the following:
 
-
-1. \[\lim_{h\downarrow 0}\max\{\textrm{diam}(T_k)|\; T_k\in \mathcal{T}_h\}=0\]
+1. \[\lim_{h\rightarrow 0}\max\{\textrm{diam}(T_k)|\; T_k\in \mathcal{T}_h\}=0\]
 
 2. There is a number $\sigma>0$ independent of $h$ such that
-\[\frac{\rho(T_k)}{\textrm{diam}(T_k)}\ge \sigma\qquad \textrm{for all }T_k\in \mathcal{T}_h\]
+	\[\frac{\rho(T_k)}{\textrm{diam}(T_k)}\ge \sigma\qquad \textrm{for all }T_k\in \mathcal{T}_h\]
 	where $\rho(T_k)$ are the diameter of the inscribed circle of $T_k$.
 
 We put $h(\mathcal{T}_h)=\max\{\textrm{diam}(T_k)|\; T_k\in \mathcal{T}_h\}$,
@@ -785,7 +796,7 @@ which is obtained by
 
 ```freefem
 mesh Th = ......;
-fespace Ph(Th,P0);
+fespace Ph(Th, P0);
 Ph h = hTriangle;
 cout << "size of mesh = " << h[].max << endl;
 ```
@@ -793,37 +804,39 @@ cout << "size of mesh = " << h[].max << endl;
 ## Adaptmesh
 
 The function
-\[
-f(x,y) = 10.0x^3+y^3+\tan^{-1}[\varepsilon/(\sin(5.0y)-2.0x)]
-\qquad \varepsilon =  0.0001
-\]
-sharply varies in value and the initial mesh given by one of the commands of Section \ref{sec:InitialMesh}
-cannot reflect its sharp variations.
+$$
+f(x,y) = 10.0x^3+y^3+\tan^{-1}[\varepsilon/(\sin(5.0y)-2.0x)],\ \varepsilon = 0.0001
+$$
+sharply varies in value and the initial mesh given by one of the commands of [Mesh Generation section](##commands-for-mesh-generation) cannot reflect its sharp variations.
 
 ```freefem
-real eps =  0.0001;
-real h=1;
-real hmin=0.05;
-func f = 10.0*x^3+y^3+h*atan2(eps,sin(5.0*y)-2.0*x);
+// Parameters
+real eps = 0.0001;
+real h = 1;
+real hmin = 0.05;
+func f = 10.0*x^3 + y^3 + h*atan2(eps, sin(5.0*y)-2.0*x);
 
-mesh Th=square(5,5,[-1+2*x,-1+2*y]);
+// Mesh
+mesh Th = square(5, 5, [-1+2*x, -1+2*y]);
+
+// Fespace
 fespace Vh(Th,P1);
-Vh fh=f;
+Vh fh = f;
 plot(fh);
-for (int i=0;i<2;i++)
- {
-   Th=adaptmesh(Th,fh);
-   fh=f;  // old mesh is deleted
-   plot(Th,fh,wait=1);
- }
+
+// Adaptmesh
+for (int i = 0; i < 2; i++){
+	Th = adaptmesh(Th, fh);
+	fh = f; //old mesh is deleted
+	plot(Th, fh, wait=true);
+}
 ```
 
-|Fig. 5.14: 3D graphs for the initial mesh and 1st and 2nd mesh adaptation|
+|<a name="Fig14">Fig. 14</a>: 3D graphs for the initial mesh and 1st and 2nd mesh adaptation|
 |:----|
-|![Mesh adaptation](images/adaptmesh.png)|
+|![Mesh adaptation](images/MeshGeneration_AdaptMesh1.png)|
 
-FreeFem++ uses a variable metric/Delaunay automatic meshing
-algorithm.
+FreeFem++ uses a variable metric/Delaunay automatic meshing algorithm.
 
 The command:
 
@@ -833,418 +846,438 @@ mesh ATh = adaptmesh(Th, f);
 create the new mesh `:::freefem ATh` adapted to the Hessian
 
 $$
-D^2f=(\p^2 f/\p x^2,\, \p^2 f/\p x\p y,
-\p^2 f/\p y^2)
+D^2f=(\p^2 f/\p x^2,\, \p^2 f/\p x\p y, \p^2 f/\p y^2)
 $$
 
 of a function (formula or FE-function).
-Mesh adaptation is a very powerful tool when the solution of a problem
-varies locally and sharply.
 
-Here we solve the problem $\codered$ (\ref{eqn:Poisson})-(\ref{eqn:Dirichlet}),
-when $f=1$ and $\Omega$ is a L-shape domain.
+Mesh adaptation is a very powerful tool when the solution of a problem varies locally and sharply.
 
-|Fig. 5.15: L-shape domain and its boundary name|Fig. 5.16: Final solution after 4-times adaptation|
+Here we solve the [Poisson's problem](../tutorial/), when $f=1$ and $\Omega$ is a L-shape domain.
+
+|<a name="Fig15">Fig. 15</a>: L-shape domain and its boundary name|<a name="Fig16">Fig. 16</a>: Final solution after 4-times adaptation|
 |:----|:----|
-|![L-shape2](images/L-shape2.png)|![L Shape solution](images/lshapesol.png)|
+|![L-shape2](images/MeshGeneration_AdaptMesh2.png)|![L Shape solution](images/MeshGeneration_AdaptMesh3.png)|
 
-**example** (Adapt.edp) The solution has the singularity $r^{3/2},\, r=|x-\gamma|$
-at the point $\gamma$ of the intersection of two lines $bc$ and $bd$ (see Fig. 5.15).
+!!!question "Example"
+	The solution has the singularity $r^{3/2},\, r=|x-\gamma|$ at the point $\gamma$ of the intersection of two lines $bc$ and $bd$ (see <a href="#Fig15">Fig. 15</a>).
 
 ```freefem
-border ba(t=0,1.0){x=t;   y=0;  label=1;};
-border bb(t=0,0.5){x=1;   y=t;  label=1;};
-border bc(t=0,0.5){x=1-t; y=0.5;label=1;};
-border bd(t=0.5,1){x=0.5; y=t;  label=1;};
-border be(t=0.5,1){x=1-t; y=1;  label=1;};
-border bf(t=0.0,1){x=0;   y=1-t;label=1;};
-mesh Th = buildmesh ( ba(6)+bb(4)+bc(4)+bd(4)+be(4)+bf(6) );
-fespace Vh(Th,P1); // set FE space
-Vh u,v;            // set unknown and test function
+// Parameters
+real error = 0.1;
+
+// Mesh
+border ba(t=0, 1){x=t; y=0; label=1;}
+border bb(t=0, 0.5){x=1; y=t; label=1;}
+border bc(t=0, 0.5){x=1-t; y=0.5; label=1;}
+border bd(t=0.5, 1){x=0.5; y=t; label=1;}
+border be(t=0.5, 1){x=1-t; y=1; label=1;}
+border bf(t=0, 1){x=0; y=1-t; label=1;}
+mesh Th = buildmesh(ba(6) + bb(4) + bc(4) + bd(4) + be(4) + bf(6));
+
+// Fespace
+fespace Vh(Th, P1);
+Vh u, v;
+
+// Function
 func f = 1;
-real error=0.1;    // Level of error
-problem Poisson(u,v,solver=CG,eps=1.0e-6) =
-    int2d(Th)(  dx(u)*dx(v) + dy(u)*dy(v))
-  - int2d(Th) ( f*v )
-  + on(1,u=0)  ;
-for (int i=0;i< 4;i++)
-{
-  Poisson;
-  Th=adaptmesh(Th,u,err=error);
-  error = error/2;
-} ;
+
+// Problem
+problem Poisson(u, v, solver=CG, eps=1.e-6)
+	= int2d(Th)(
+		  dx(u)*dx(v)
+		+ dy(u)*dy(v)
+	)
+	- int2d(Th)(
+		  f*v
+	)
+	+ on(1, u=0);
+
+// Adaptmesh loop
+for (int i = 0; i < 4; i++){
+	Poisson;
+	Th = adaptmesh(Th, u, err=error);
+	error = error/2;
+}
+
+// Plot
 plot(u);
 ```
 
-To speed up the adaptation
-the default parameter `:::freefem err` of `:::freefem adaptmesh` is changed by hand; it specifies the required precision, so as to make the new mesh finer or coarser.
+To speed up the adaptation, the default parameter `:::freefem err` of `:::freefem adaptmesh` is changed by hand; it specifies the required precision, so as to make the new mesh finer or coarser.
 
-The problem is coercive and symmetric,
-so the linear system can be solved with the conjugate gradient method (parameter `:::freefem solver=CG`) with the stopping criteria on the residual, here `:::freefem eps=1.0e-6`).
+The problem is coercive and symmetric, so the linear system can be solved with the conjugate gradient method (parameter `:::freefem solver=CG`) with the stopping criteria on the residual, here `:::freefem eps=1.e-6`).
+
 By `:::freefem adaptmesh`, the slope of the final solution is correctly computed near
-the point of intersection of $bc$ and $bd$ as in Fig. 5.16.
+the point of intersection of $bc$ and $bd$ as in <a href="Fig16">Fig. 16</a>.
 
-This method is described in detail in [Hecht1998](#refHecht1998). It has a number of
-default parameters which can be modified :
+This method is described in detail in [Hecht1998](#refHecht1998). It has a number of default parameters which can be modified.
 
-Si `:::freefem f1,f2` sont des functions  et `:::freefem thold, Thnew` des maillages.
+If `:::freefem f1,f2` are functions and `:::freefem thold, Thnew` are meshes:
 
 ```freefem
-    Thnew = adaptmesh(Thold, f1  ...  );
-    Thnew = adaptmesh(Thold, f1,f2  ...  ]);
-    Thnew = adaptmesh(Thold, [f1,f2]  ...  );
+	Thnew = adaptmesh(Thold, f1 ... );
+	Thnew = adaptmesh(Thold, f1,f2 ... ]);
+	Thnew = adaptmesh(Thold, [f1,f2] ... );
 ```
 
-The additional parameters of adaptmesh are not written here, hence the  "..."
+The additional parameters of `:::freefem adaptmesh` are:
 
-* `:::freefem hmin=` Minimum edge size (`:::freefem val` is a real. Its default is related to the size of the domain to be meshed and the precision of the mesh generator).
+See [Reference part](../reference/Functions/#adaptmesh) for more inforamtions
 
-* `:::freefem hmax=` Maximum edge size (`:::freefem val` is a real. It defaults to the diameter of the domain to be meshed)
+* `:::freefem hmin=` Minimum edge size. Its default is related to the size of the domain to be meshed and the precision of the mesh generator.
 
-* `:::freefem err=` $P_1$ interpolation error level (0.01 is the default).  
+* `:::freefem hmax=` Maximum edge size. It defaults to the diameter of the domain to be meshed.
 
-* `:::freefem errg=` Relative geometrical error. By default this error is 0.01, and in any case it must be lower than $1/\sqrt{2}$.  Meshes created with this option may have some edges smaller than the `:::freefem -hmin` due to geometrical constraints.  
+* `:::freefem err=` $P_1$ interpolation error level (0.01 is the default).
+
+* `:::freefem errg=` Relative geometrical error. By default this error is 0.01, and in any case it must be lower than $1/\sqrt{2}$. Meshes created with this option may have some edges smaller than the `:::freefem -hmin` due to geometrical constraints.
 
 * `:::freefem nbvx=` Maximum number of vertices generated by the mesh generator (9000 is the default).
 
 * `:::freefem nbsmooth=` number of iterations of the smoothing procedure (5 is the default).
 
-* `nbjacoby=` number of iterations in a smoothing procedure during the metric construction, 0 means no smoothing (6 is the default).
+* `nbjacoby=` number of iterations in a smoothing procedure during the metric construction, 0 means no smoothing, 6 is the default.
 
-* `:::freefem ratio=` ratio for a prescribed smoothing on the metric. If the value is 0 or less than 1.1 no smoothing is done on the metric (1.8 is the default).
+* `:::freefem ratio=` ratio for a prescribed smoothing on the metric. If the value is 0 or less than 1.1 no smoothing is done on the metric. 1.8 is the default.
 
-	If `:::freefem ratio > 1.1`, the speed of mesh size variations is bounded by $log(\mathtt{ratio})$.  Note: As `:::freefem ratio` gets closer to 1, the number of generated vertices increases. This may be useful to control the thickness of refined regions near shocks or boundary layers .  
+	If `:::freefem ratio > 1.1`, the speed of mesh size variations is bounded by $log(\mathtt{ratio})$.
+	!!!note
+		Note: As `:::freefem ratio` gets closer to 1, the number of generated vertices increases. This may be useful to control the thickness of refined regions near shocks or boundary layers.
 
-* `:::freefem omega=` relaxation parameter for the smoothing procedure (1.0 is the default).
+* `:::freefem omega=` relaxation parameter for the smoothing procedure. 1.0 is the default.
 
-* `:::freefem iso=` If true, forces the metric to be isotropic (false is the default).  
+* `:::freefem iso=` If true, forces the metric to be isotropic. `false` is the default.
 
-* `:::freefem abserror=` If false, the metric is evaluated using the criterium of equi-repartion of relative error (false is the default). In this case the metric is defined by
-\begin{equation}
-  \mathcal{M} = \left({1\over\mathtt{err}\,\, \mathtt{coef}^2} \quad {
-  |\mathcal{H}| \over max(\mathtt{CutOff},|\eta|)}\right)^p
-  \label{eq err rel}
-\end{equation}
-	otherwise, the metric is evaluated using the criterium of equi-distribution of errors. In this case the metric is defined by
-\begin{equation}
-  \mathcal{M} = \left({1\over \mathtt{err}\,\,\mathtt{coef}^2} \quad
-  {|{\mathcal{H}|} \over
-  {\sup(\eta)-\inf(\eta)}}\right)^p.\label{eq err abs}
-\end{equation}
+* `:::freefem abserror=` If false, the metric is evaluated using the criteria of equi-repartion of relative error. `false` is the default. In this case the metric is defined by
+	\begin{equation}
+		\mathcal{M} = \left({1\over\mathtt{err}\,\, \mathtt{coef}^2} \quad {
+		|\mathcal{H}| \over max(\mathtt{CutOff},|\eta|)}\right)^p
+		\label{eq err rel}
+	\end{equation}
+	otherwise, the metric is evaluated using the criteria of equi-distribution of errors. In this case the metric is defined by
+	\begin{equation}
+		\mathcal{M} = \left({1\over \mathtt{err}\,\,\mathtt{coef}^2} \quad
+		{|{\mathcal{H}|} \over
+		{\sup(\eta)-\inf(\eta)}}\right)^p.\label{eq err abs}
+	\end{equation}
 
-* `:::freefem cutoff=` lower limit for the relative error evaluation (1.0e-6 is the default).
+* `:::freefem cutoff=` lower limit for the relative error evaluation. 1.0e-6 is the default.
 
-* `:::freefem verbosity=` informational messages level (can be chosen between 0 and $\infty$). Also changes the value of the global variable verbosity (obsolete).  
+* `:::freefem verbosity=` informational messages level (can be chosen between 0 and $\infty$). Also changes the value of the global variable verbosity (obsolete).
 
-* `:::freefem inquire=` To inquire graphically about the mesh (false is the default).
+* `:::freefem inquire=` To inquire graphically about the mesh. `false` is the default.
 
-* `:::freefem splitpbedge=` If true, splits all internal edges in half with two boundary vertices (true is the
-default).
+* `:::freefem splitpbedge=` If true, splits all internal edges in half with two boundary vertices. `true` is the
+default.
 
-* `:::freefem maxsubdiv=` Changes the metric such that the maximum subdivision of a background edge is bound by `:::freefem val` (always limited by 10, and 10 is also the default).
+* `:::freefem maxsubdiv=` Changes the metric such that the maximum subdivision of a background edge is bound by `:::freefem val`. Always limited by 10, and 10 is also the default.
 
-* `:::freefem rescaling=` if true, the function with respect to which the mesh is adapted is rescaled to be between 0 and 1 (true is the default).
+* `:::freefem rescaling=` if true, the function with respect to which the mesh is adapted is rescaled to be between 0 and 1. `true` is the default.
 
-* `:::freefem keepbackvertices=` if true, tries to keep as many vertices from the original mesh as possible (true is the default).
+* `:::freefem keepbackvertices=` if true, tries to keep as many vertices from the original mesh as possible. `true` is the default.
 
-* `:::freefem isMetric=` if true, the metric is defined explicitly (false is the default).  If the 3 functions $m_{11}, m_{12}, m_{22}$ are given, they directly define a symmetric matrix field whose Hessian is computed to define a metric. If only one function is given, then it represents the isotropic mesh size at every point.
+* `:::freefem isMetric=` if true, the metric is defined explicitly. `false` is the default. If the 3 functions $m_{11}, m_{12}, m_{22}$ are given, they directly define a symmetric matrix field whose Hessian is computed to define a metric. If only one function is given, then it represents the isotropic mesh size at every point.
 
-	For example, if the partial derivatives `:::freefem fxx` ($=\p^2 f/\p x^2$), `:::freefem fxy` ($=\p^2 f/\p x\p y$), `:::freefem fyy` ($=\p^2 f/\p y^2$) are given, we can set `:::freefem Th=adaptmesh(Th,fxx,fxy,fyy,IsMetric=1,nbvx=10000,hmin=hmin);`
+	For example, if the partial derivatives `:::freefem fxx` ($=\p^2 f/\p x^2$), `:::freefem fxy` ($=\p^2 f/\p x\p y$), `:::freefem fyy` ($=\p^2 f/\p y^2$) are given, we can set `:::freefem Th = adaptmesh(Th, fxx, fxy, fyy, IsMetric=1, nbvx=10000, hmin=hmin);`
 
-* `:::freefem power=` exponent power of the Hessian used to compute the metric (1 is the default).
+* `:::freefem power=` exponent power of the Hessian used to compute the metric. 1 is the default.
 
-* `:::freefem thetamax=` minimum corner angle of in degrees (default is $10^\circ$) where the corner is $ABC$ and the angle is the angle of the two vectors ${AB}, {BC}$, ($0$ imply no corner, $90$ imply perp. corner, ...).
+* `:::freefem thetamax=` minimum corner angle of in degrees. Default is $10^\circ$ where the corner is $ABC$ and the angle is the angle of the two vectors ${AB}, {BC}$, ($0$ imply no corner, $90$ imply perpendicular corner, ...).
 
 * `:::freefem splitin2=` boolean value. If true, splits all triangles of the final mesh into 4 sub-triangles.
 
-* `:::freefem metric=` an array of 3 real arrays to set or get metric data information. The size of these three arrays must be the number of vertices. So if `:::freefem m11,m12,m22` are three P1 finite elements related to the mesh to adapt, you can write: `:::freefem metric=[m11[],m12[],m22[]]` (see file `:::freefem convect-apt.edp` for a full
-example)
+* `:::freefem metric=` an array of 3 real arrays to set or get metric data information. The size of these three arrays must be the number of vertices. So if `:::freefem m11,m12,m22` are three P1 finite elements related to the mesh to adapt, you can write: `:::freefem metric=[m11[],m12[],m22[]]` (see file `:::freefem convect-apt.edp` for a full example)
 
-* `:::freefem nomeshgeneration=` If true, no adapted mesh is generated (useful to compute
-only a metric).
+* `:::freefem nomeshgeneration=` If true, no adapted mesh is generated (useful to compute only a metric).
 
-* `:::freefem periodic=` Writing `:::freefem periodic=[[4,y],[2,y],[1,x],[3,x]];` builds an adapted periodic mesh. The sample build a biperiodic mesh of a square. (see periodic finite element spaces $\codered$ \ref{periodic BC}, and see `:::freefem sphere.edp` for a  full example)
+* `:::freefem periodic=` Writing `:::freefem periodic=[[4,y],[2,y],[1,x],[3,x]];` builds an adapted periodic mesh. The sample build a biperiodic mesh of a square. (see [periodic finite element spaces](FiniteElement), and see $\codered$ `:::freefem sphere.edp` for a full example)
 
-We can use the command `:::freefem adaptmesh` to build uniform mesh with a contant mesh size. So to build a mesh with a constant mesh size equal to $\frac{1}{30}$ try:
+We can use the command `:::freefem adaptmesh` to build uniform mesh with a constant mesh size. So to build a mesh with a constant mesh size equal to $\frac{1}{30}$ try:
 
 ```freefem
-// file uniformmesh.edp
-mesh Th=square(2,2); // To have initial mesh
-plot(Th,wait=1,ps="square-0.eps");
-Th= adaptmesh(Th,1./3As writing
-0.,IsMetric=1,nbvx=10000);
-plot(Th,wait=1,ps="square-1.eps");
-Th= adaptmesh(Th,1./30.,IsMetric=1,nbvx=10000); // More the one time du to
-Th= adaptmesh(Th,1./30.,IsMetric=1,nbvx=10000); // Adaptation bound `maxsubdiv=`
-plot(Th,wait=1,ps="square-2.eps");
+mesh Th=square(2, 2); //the initial mesh
+plot(Th, wait=true, ps="square-0.eps");
+
+Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000);
+plot(Th, wait=true, ps="square-1.eps");
+
+Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); //More the one time du to
+Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); //Adaptation bound `maxsubdiv=`
+plot(Th, wait=true, ps="square-2.eps");
 ```
 
-|Fig. 5.17: Initial mesh|Fig. 5.18: First iteration|Fig. 5.19: Last iteration|
+|<a name="Fig17">Fig. 17</a>: Initial mesh|<a name="Fig18">Fig. 18</a>: First iteration|Fig. 5.19: Last iteration|
 |:----|:----|:----|
-|![Initial mesh](images/square-0.png)|![First iteration](images/square-1.png)|![Last iteration](images/square-2.png)|
+|![Initial mesh](images/MeshGeneration_AdaptMesh4.png)|![First iteration](images/MeshGeneration_AdaptMesh5.png)|![Last iteration](images/MeshGeneration_AdaptMesh6.png)|
 
 ## Trunc
 
-Two operators have been introduce to remove triangles from a mesh or to divide them.
-Operator `:::freefem trunc` has two parameters :
+Two operators have been introduce to remove triangles from a mesh or to divide them. Operator `:::freefem trunc` has two parameters :
 
-  * `:::freefem label=` sets the label number of new boundary item (one by default)
-  * `:::freefem split=` sets the level $n$ of triangle splitting. Each triangle is splitted in  $n\times n$ (one by default).
+* `:::freefem label=` sets the label number of new boundary item, one by default.
+* `:::freefem split=` sets the level $n$ of triangle splitting. Each triangle is splitted in $n\times n$, one by default.
 
-To create the mesh `:::freefem Th3`
-where alls  triangles of a mesh `:::freefem Th`  are splitted in $3{\times}3$, just write:
+To create the mesh `:::freefem Th3` where all triangles of a mesh `:::freefem Th` are splitted in $3{\times}3$, just write:
 
 ```freefem
-  mesh Th3 = trunc(Th,1,split=3);
+mesh Th3 = trunc(Th, 1, split=3);
 ```
 
-The  `:::freefem truncmesh.edp` example construct all "trunc" mesh to the support of the basic function  of the space `:::freefem Vh` (cf. `:::freefem abs(u)>0`), split all the  triangles in $5{\times} 5$, and put a label number to $2$ on new boundary.
+The following example construct all "trunced" mesh to the support of the basic function of the space `:::freefem Vh` (cf. `:::freefem abs(u)>0`), split all the triangles in $5{\times} 5$, and put a label number to $2$ on new boundary.
 
 ```freefem
-mesh Th=square(3,3);
-fespace Vh(Th,P1);
-Vh u;
-int i,n=u.n;
-u=0;
-for (i=0;i<n;i++) // All degree of freedom
- {
-  u[][i]=1;       // The basic function i
-  plot(u,wait=1);
-  mesh Sh1=trunc(Th,abs(u)>1.e-10,split=5,label=2);
-  plot(Th,Sh1,wait=1,ps="trunc"+i+".eps");// plot the mesh of
-  // the function's support
-  u[][i]=0; // reset
- }
+// Mesh
+mesh Th = square(3, 3);
+
+// Fespace
+fespace Vh(Th, P1);
+Vh u=0;
+
+// Loop on all degrees of freedom
+int n=u.n;
+for (int i = 0; i < n; i++){
+	u[][i] = 1; // The basis function i
+	plot(u, wait=true);
+	mesh Sh1 = trunc(Th, abs(u)>1.e-10, split=5, label=2);
+	plot(Th, Sh1, wait=true, ps="trunc"+i+".eps");
+	u[][i] = 0; // reset
+}
 ```
 
-|Fig. 5.20: mesh of support the function P1  number 0, splitted in $5{\times}5$|Fig. 5.21: Mesh of support the function P1  number 6, splitted in $5{\times}5$|
+|<a name="Fig20">Fig. 20</a>: mesh of support the function P1 number 0, splitted in $5{\times}5$|<a name="Fig21">Fig. 21</a>: Mesh of support the function P1 number 6, splitted in $5{\times}5$|
 |:----|:----|
-|![Trunc0](images/trunc0.png)|![Trunc6](images/trunc6.png)|
+|![Trunc0](images/MeshGeneration_Trunc1.png)|![Trunc6](images/MeshGeneration_Trunc2.png)|
 
 ## Splitmesh
 
 Another way to split mesh triangles is to use `:::freefem splitmesh`, for example:
 
 ```freefem
-{
-assert(version>=1.37);
-border a(t=0,2*pi){ x=cos(t); y=sin(t);label=1;}
-mesh Th=buildmesh(a(20));
-plot(Th,wait=1,ps="nosplitmesh.eps"); // See fig. 5.22
-Th=splitmesh(Th,1+5*(square(x-0.5)+y*y));
-plot(Th,wait=1,ps="splitmesh.eps"); // See fig. 5.23
-}
+// Mesh
+border a(t=0, 2*pi){x=cos(t); y=sin(t); label=1;}
+mesh Th = buildmesh(a(20));
+plot(Th, wait=true, ps="NotSplittedMesh.eps");
+
+// Splitmesh
+Th = splitmesh(Th, 1 + 5*(square(x-0.5) + y*y));
+plot(Th, wait=true, ps="SplittedMesh.eps");
 ```
 
-|Fig. 5.22: Initial mesh|Fig. 5.23: all left mesh triangle is split  conformaly in `:::freefem int(1+5*(square(x-0.5)+y*y)\^2` triangles|
+|<a name="Fig22">Fig. 22</a>: Initial mesh|<a name="Fig23">Fig. 23</a>: all left mesh triangle is split conformaly in `:::freefem int(1+5*(square(x-0.5)+y*y)\^2` triangles|
 |:----:|:----:|
-|![No split mesh](images/nosplitmesh.png)|![No split mesh](images/nosplitmesh.png)|
+|![No split mesh](images/MeshGeneration_SplitMesh1.png)|![split mesh](images/MeshGeneration_SplitMesh2.png)|
 
 ## Meshing Examples
 
-**Example** Two rectangles touching by a side
+!!!question "Two rectangles touching by a side"
+	```freefem
+	border a(t=0, 1){x=t; y=0;};
+	border b(t=0, 1){x=1; y=t;};
+	border c(t=1, 0){x=t; y=1;};
+	border d(t=1, 0){x=0; y=t;};
+	border c1(t=0, 1){x=t; y=1;};
+	border e(t=0, 0.2){x=1; y=1+t;};
+	border f(t=1, 0){x=t; y=1.2;};
+	border g(t=0.2, 0){x=0; y=1+t;};
+	int n=1;
+	mesh th = buildmesh(a(10*n) + b(10*n) + c(10*n) + d(10*n));
+	mesh TH = buildmesh(c1(10*n) + e(5*n) + f(10*n) + g(5*n));
+	plot(th, TH, ps="TouchSide.esp");
+	```
 
-```freefem
-border a(t=0,1){x=t;y=0;};
-border b(t=0,1){x=1;y=t;};
-border c(t=1,0){x=t ;y=1;};
-border d(t=1,0){x = 0; y=t;};
-border c1(t=0,1){x=t ;y=1;};
-border e(t=0,0.2){x=1;y=1+t;};
-border f(t=1,0){x=t ;y=1.2;};
-border g(t=0.2,0){x=0;y=1+t;};
-int n=1;
-mesh th = buildmesh(a(10*n)+b(10*n)+c(10*n)+d(10*n));
-mesh TH = buildmesh ( c1(10*n) + e(5*n) + f(10*n) + g(5*n) );
-plot(th,TH,ps="TouchSide.esp"); // Fig. 5.24
-```
+!!!question "NACA0012 Airfoil"
+	```freefem
+	border upper(t=0, 1){
+		x=t;
+		y=0.17735*sqrt(t) - 0.075597*t - 0.212836*(t^2) + 0.17363*(t^3) - 0.06254*(t^4);
+	}
+	border lower(t=1, 0){
+		x = t;
+		y=-(0.17735*sqrt(t) -0.075597*t - 0.212836*(t^2) + 0.17363*(t^3) - 0.06254*(t^4));
+	}
+	border c(t=0, 2*pi){x=0.8*cos(t) + 0.5; y=0.8*sin(t);}
+	mesh Th = buildmesh(c(30) + upper(35) + lower(35));
+	plot(Th, ps="NACA0012.eps", bw=true);
+	```
 
-**Example** NACA0012 Airfoil
-
-```freefem
-border upper(t=0,1) { x = t;
-     y = 0.17735*sqrt(t)-0.075597*t
-  - 0.212836*(t^2)+0.17363*(t^3)-0.06254*(t^4); }
-border lower(t=1,0) { x = t;
-     y= -(0.17735*sqrt(t)-0.075597*t
-  -0.212836*(t^2)+0.17363*(t^3)-0.06254*(t^4)); }
-border c(t=0,2*pi) { x=0.8*cos(t)+0.5;  y=0.8*sin(t); }
-mesh Th = buildmesh(c(30)+upper(35)+lower(35));
-plot(Th,ps="NACA0012.eps",bw=1);  // Fig. 5.25
-```
-
-|Fig. 5.24: Two rectangles touching by a side|Fig. 5.25: NACA0012 Airfoil|
+|<a name="Fig24">Fig. 24</a>: Two rectangles touching by a side|<a name="Fig25">Fig. 25</a>: NACA0012 Airfoil|
 |:----:|:----:|
-|![Rectangles touching by a side](images/TouchSide.png)|![NACA0012 Airfoil](images/NACA0012.png)|
+|![Rectangles touching by a side](images/MeshGeneration_Example_NACA0012_1.png)|![NACA0012 Airfoil](images/MeshGeneration_Example_NACA0012_2.png)|
 
-**Example** Cardioid
+!!!question "Cardioid"
+	```freefem
+	real b = 1, a = b;
 
-```freefem
-real b = 1, a = b;
-border C(t=0,2*pi) {x=(a+b)*cos(t)-b*cos((a+b)*t/b); y=(a+b)*sin(t)-b*sin((a+b)*t/b);}
-mesh Th = buildmesh(C(50));
-plot(Th,ps="Cardioid.eps",bw=1); // Fig. 5.26
-```
+	border C(t=0, 2*pi){x=(a+b)*cos(t)-b*cos((a+b)*t/b); y=(a+b)*sin(t)-b*sin((a+b)*t/b);}
+	mesh Th = buildmesh(C(50));
+	plot(Th, ps="Cardioid.eps", bw=true);
+	```
 
-** Example** Cassini Egg
-
-```freefem
-border C(t=0,2*pi) {x=(2*cos(2*t)+3)*cos(t); y=(2*cos(2*t)+3)*sin(t);}
-mesh Th = buildmesh(C(50));
-plot(Th,ps="Cassini.eps",bw=1); // Fig. 5.27
-```
+!!!question "Cassini Egg"
+	```freefem
+	border C(t=0, 2*pi) {x=(2*cos(2*t)+3)*cos(t); y=(2*cos(2*t)+3)*sin(t);}
+	mesh Th = buildmesh(C(50));
+	plot(Th, ps="Cassini.eps", bw=true);
+	```
 
 |Fig. 5.26: Domain with Cardioid curve boundary|Fig. 5.27: Domain with Cassini Egg curve boundary|
 |:----:|:----:|
-|![Cardiod](images/Cardioid.png)|![Cassini](images/Cassini.png)|
+|![Cardiod](images/MeshGeneration_Example_Cardioid1.png)|![Cassini](images/MeshGeneration_Example_Cardioid2.png)|
 
-**Example** By cubic Bezier curve
+!!!question "By cubic Bezier curve"
+	```freefem
+	// A cubic Bezier curve connecting two points with two control points
+	func real bzi(real p0, real p1, real q1, real q2, real t){
+		return p0*(1-t)^3 + q1*3*(1-t)^2*t + q2*3*(1-t)*t^2 + p1*t^3;
+	}
 
-```freefem
-// A cubic Bezier curve connecting two points with two control points
-func real bzi(real p0,real p1,real q1,real q2,real t)
-{
-  return p0*(1-t)^3+q1*3*(1-t)^2*t+q2*3*(1-t)*t^2+p1*t^3;
-}
+	real[int] p00 = [0, 1], p01 = [0, -1], q00 = [-2, 0.1], q01 = [-2, -0.5];
+	real[int] p11 = [1,-0.9], q10 = [0.1, -0.95], q11=[0.5, -1];
+	real[int] p21 = [2, 0.7], q20 = [3, -0.4], q21 = [4, 0.5];
+	real[int] q30 = [0.5, 1.1], q31 = [1.5, 1.2];
+	border G1(t=0, 1){
+		x=bzi(p00[0], p01[0], q00[0], q01[0], t);
+		y=bzi(p00[1], p01[1], q00[1], q01[1], t);
+	}
+	border G2(t=0, 1){
+		x=bzi(p01[0], p11[0], q10[0], q11[0], t);
+		y=bzi(p01[1], p11[1], q10[1], q11[1], t);
+	}
+	border G3(t=0, 1){
+		x=bzi(p11[0], p21[0], q20[0], q21[0], t);
+		y=bzi(p11[1], p21[1], q20[1], q21[1], t);
+	}
+	border G4(t=0, 1){
+		x=bzi(p21[0], p00[0], q30[0], q31[0], t);
+		y=bzi(p21[1], p00[1], q30[1], q31[1], t);
+	}
+	int m = 5;
+	mesh Th = buildmesh(G1(2*m) + G2(m) + G3(3*m) + G4(m));
+	plot(Th, ps="Bezier.eps", bw=true);
+	```
 
-real[int] p00=[0,1], p01=[0,-1], q00=[-2,0.1], q01=[-2,-0.5];
-real[int] p11=[1,-0.9], q10=[0.1,-0.95], q11=[0.5,-1];
-real[int] p21=[2,0.7], q20=[3,-0.4], q21=[4,0.5];
-real[int] q30=[0.5,1.1], q31=[1.5,1.2];
-border G1(t=0,1) { x=bzi(p00[0],p01[0],q00[0],q01[0],t);
-                   y=bzi(p00[1],p01[1],q00[1],q01[1],t); }
-border G2(t=0,1) { x=bzi(p01[0],p11[0],q10[0],q11[0],t);
-                   y=bzi(p01[1],p11[1],q10[1],q11[1],t); }
-border G3(t=0,1) { x=bzi(p11[0],p21[0],q20[0],q21[0],t);
-                   y=bzi(p11[1],p21[1],q20[1],q21[1],t); }
-border G4(t=0,1) { x=bzi(p21[0],p00[0],q30[0],q31[0],t);
-                   y=bzi(p21[1],p00[1],q30[1],q31[1],t); }
-int m=5;
-mesh Th = buildmesh(G1(2*m)+G2(m)+G3(3*m)+G4(m));
-plot(Th,ps="Bezier.eps",bw=1);  // Fig. 5.28
-```
+	|<a name="Fig28">Fig. 28</a>: Boundary drawn by Bezier curves|
+	|:----:|
+	|![Bezier](images/MeshGeneration_Example_Bezier.png)|
 
-|Fig. 5.28: Boundary drawed by Bezier curves|
-|:----|
-|![Bezier](images/Bezier.png)|
+!!!question "Section of Engine"
+	```freefem
+	real a = 6., b = 1., c = 0.5;
 
-**Example** Section of Engine
+	border L1(t=0, 1){x=-a; y=1+b-2*(1+b)*t;}
+	border L2(t=0, 1){x=-a+2*a*t; y=-1-b*(x/a)*(x/a)*(3-2*abs(x)/a );}
+	border L3(t=0, 1){x=a; y=-1-b+(1+b)*t; }
+	border L4(t=0, 1){x=a-a*t; y=0;}
+	border L5(t=0, pi){x=-c*sin(t)/2; y=c/2-c*cos(t)/2;}
+	border L6(t=0, 1){x=a*t; y=c;}
+	border L7(t=0, 1){x=a; y=c+(1+b-c)*t;}
+	border L8(t=0, 1){x=a-2*a*t; y=1+b*(x/a)*(x/a)*(3-2*abs(x)/a);}
+	mesh Th = buildmesh(L1(8) + L2(26) + L3(8) + L4(20) + L5(8) + L6(30) + L7(8) + L8(30));
+	plot(Th, ps="Engine.eps", bw=true);
+	```
 
-```freefem
-real a= 6., b= 1., c=0.5;
-border L1(t=0,1) { x= -a; y= 1+b - 2*(1+b)*t; }
-border L2(t=0,1) { x= -a+2*a*t; y= -1-b*(x/a)*(x/a)*(3-2*abs(x)/a );}
-border L3(t=0,1) { x= a; y=-1-b + (1+ b )*t; }
-border L4(t=0,1) { x= a - a*t;   y=0; }
-border L5(t=0,pi) { x= -c*sin(t)/2; y=c/2-c*cos(t)/2; }
-border L6(t=0,1) { x= a*t;  y=c; }
-border L7(t=0,1) { x= a;  y=c + (1+ b-c )*t; }
-border L8(t=0,1) { x= a-2*a*t; y= 1+b*(x/a)*(x/a)*(3-2*abs(x)/a); }
-mesh Th = buildmesh(L1(8)+L2(26)+L3(8)+L4(20)+L5(8)+L6(30)+L7(8)+L8(30));
-plot(Th,ps="Engine.eps",bw=1); // Fig. 5.29
-```
+	|<a name="Fig29">Fig. 29</a>: Section of Engine|
+	|:----|
+	|![Engine](images/MeshGeneration_Example_Engine.png)|
 
-|Fig. 5.29: Section of Engine|
-|:----|
-|![Engine](images/Engine.png)|
+!!!question "Domain with U-shape channel"
+	```freefem
+	real d = 0.1; //width of U-shape
+	border L1(t=0, 1-d){x=-1; y=-d-t;}
+	border L2(t=0, 1-d){x=-1; y=1-t;}
+	border B(t=0, 2){x=-1+t; y=-1;}
+	border C1(t=0, 1){x=t-1; y=d;}
+	border C2(t=0, 2*d){x=0; y=d-t;}
+	border C3(t=0, 1){x=-t; y=-d;}
+	border R(t=0, 2){x=1; y=-1+t;}
+	border T(t=0, 2){x=1-t; y=1;}
+	int n = 5;
+	mesh Th = buildmesh(L1(n/2) + L2(n/2) + B(n) + C1(n) + C2(3) + C3(n) + R(n) + T(n));
+	plot(Th, ps="U-shape.eps", bw=true);
+	```
 
-**Example** Domain with U-shape channel
+	|<a name="Fig30">Fig. 30</a>: Domain with U-shape channel changed by `:::freefem d`|
+	|:----|
+	|![U-Shape](images/MeshGeneration_Example_UShape.png)|
 
-```freefem
-real d = 0.1; // Width of U-shape
-border L1(t=0,1-d) { x=-1; y=-d-t; }
-border L2(t=0,1-d) { x=-1; y=1-t; }
-border B(t=0,2) { x=-1+t; y=-1; }
-border C1(t=0,1) { x=t-1; y=d; }
-border C2(t=0,2*d) { x=0; y=d-t; }
-border C3(t=0,1) { x=-t; y=-d; }
-border R(t=0,2) { x=1; y=-1+t; }
-border T(t=0,2) { x=1-t; y=1; }
-int n = 5;
-mesh Th = buildmesh (L1(n/2)+L2(n/2)+B(n)+C1(n)+C2(3)+C3(n)+R(n)+T(n));
-plot(Th,ps="U-shape.eps",bw=1); // Fig. 5.30
-```
+!!!question "Domain with V-shape cut"
+	```freefem
+	real dAg = 0.02; //angle of V-shape
+	border C(t=dAg, 2*pi-dAg){x=cos(t); y=sin(t);};
+	real[int] pa(2), pb(2), pc(2);
+	pa[0] = cos(dAg);
+	pa[1] = sin(dAg);
+	pb[0] = cos(2*pi-dAg);
+	pb[1] = sin(2*pi-dAg);
+	pc[0] = 0;
+	pc[1] = 0;
+	border seg1(t=0, 1){x=(1-t)*pb[0]+t*pc[0]; y=(1-t)*pb[1]+t*pc[1];};
+	border seg2(t=0, 1){x=(1-t)*pc[0]+t*pa[0]; y=(1-t)*pc[1]+t*pa[1];};
+	mesh Th = buildmesh(seg1(20) + C(40) + seg2(20));
+	plot(Th, ps="V-shape.eps", bw=true);
+	```
 
-|Fig. 5.30: Domain with U-shape channel changed by `:::freefem d`|
-|:----|
-|![U-Shape](images/U-shape.png)|
+	|<a name="Fig31">Fig. 31</a>: Domain with V-shape cut changed by `:::freefem dAg`|
+	|:----|
+	|![V-Shape](images/MeshGeneration_Example_VShape.png)|
 
-**Example** Domain with V-shape cut
+!!!question "Smiling face"
+	```freefem
+	real d=0.1;
+	int m = 5;
+	real a = 1.5, b = 2, c = 0.7, e = 0.01;
 
-```freefem
-real dAg = 0.01; // Angle of V-shape
-border C(t=dAg,2*pi-dAg) { x=cos(t); y=sin(t); };
-real[int] pa(2), pb(2), pc(2);
-pa[0] = cos(dAg); pa[1] = sin(dAg);
-pb[0] = cos(2*pi-dAg); pb[1] = sin(2*pi-dAg);
-pc[0] = 0; pc[1] = 0;
-border seg1(t=0,1) { x=(1-t)*pb[0]+t*pc[0]; y=(1-t)*pb[1]+t*pc[1]; };
-border seg2(t=0,1) { x=(1-t)*pc[0]+t*pa[0]; y=(1-t)*pc[1]+t*pa[1]; };
-mesh Th = buildmesh(seg1(20)+C(40)+seg2(20));
-plot(Th,ps="V-shape.eps",bw=1);  // Fig. 5.31
-```
+	border F(t=0, 2*pi){x=a*cos(t); y=b*sin(t);}
+	border E1(t=0, 2*pi){x=0.2*cos(t)-0.5; y=0.2*sin(t)+0.5;}
+	border E2(t=0, 2*pi){x=0.2*cos(t)+0.5; y=0.2*sin(t)+0.5;}
+	func real st(real t){
+		return sin(pi*t) - pi/2;
+	}
+	border C1(t=-0.5, 0.5){x=(1-d)*c*cos(st(t)); y=(1-d)*c*sin(st(t));}
+	border C2(t=0, 1){x=((1-d)+d*t)*c*cos(st(0.5)); y=((1-d)+d*t)*c*sin(st(0.5));}
+	border C3(t=0.5, -0.5){x=c*cos(st(t)); y=c*sin(st(t));}
+	border C4(t=0, 1){x=(1-d*t)*c*cos(st(-0.5)); y=(1-d*t)*c*sin(st(-0.5));}
+	border C0(t=0, 2*pi){x=0.1*cos(t); y=0.1*sin(t);}
 
-|Fig. 5.31: Domain with V-shape cut changed by `:::freefem dAg`|
-|:----|
-|![V-Shape](images/V-shape.png)|
+	mesh Th=buildmesh(F(10*m) + C1(2*m) + C2(3) + C3(2*m) + C4(3)
+		+ C0(m) + E1(-2*m) + E2(-2*m));
+	plot(Th, ps="SmileFace.eps", bw=true);
+	```
 
-**Example** Smiling face
+	|<a name="Fig32">Fig. 32</a>: Smiling face (Mouth is changeable)|
+	|:----:|
+	|![Smiling Face](images/MeshGeneration_Example_SmilingFace.png)|
 
-```freefem
-real d=0.1;
-int m=5;
-real a=1.5, b=2, c=0.7, e=0.01;
-border F(t=0,2*pi) { x=a*cos(t); y=b*sin(t); }
-border E1(t=0,2*pi) { x=0.2*cos(t)-0.5; y=0.2*sin(t)+0.5; }
-border E2(t=0,2*pi) { x=0.2*cos(t)+0.5; y=0.2*sin(t)+0.5; }
-func real st(real t) {
-   return sin(pi*t)-pi/2;
-}
-border C1(t=-0.5,0.5) { x=(1-d)*c*cos(st(t)); y=(1-d)*c*sin(st(t)); }
-border C2(t=0,1){x=((1-d)+d*t)*c*cos(st(0.5));y=((1-d)+d*t)*c*sin(st(0.5));}
-border C3(t=0.5,-0.5) { x=c*cos(st(t)); y=c*sin(st(t)); }
-border C4(t=0,1) { x=(1-d*t)*c*cos(st(-0.5)); y=(1-d*t)*c*sin(st(-0.5));}
+!!!question "3 points bending"
+	```freefem
+	// Square for Three-Point Bend Specimens fixed on Fix1, Fix2
+	// It will be loaded on Load.
+	real a = 1, b = 5, c = 0.1;
+	int n = 5, m = b*n;
+	border Left(t=0, 2*a){x=-b; y=a-t;}
+	border Bot1(t=0, b/2-c){x=-b+t; y=-a;}
+	border Fix1(t=0, 2*c){x=-b/2-c+t; y=-a;}
+	border Bot2(t=0, b-2*c){x=-b/2+c+t; y=-a;}
+	border Fix2(t=0, 2*c){x=b/2-c+t; y=-a;}
+	border Bot3(t=0, b/2-c){x=b/2+c+t; y=-a;}
+	border Right(t=0, 2*a){x=b; y=-a+t;}
+	border Top1(t=0, b-c){x=b-t; y=a;}
+	border Load(t=0, 2*c){x=c-t; y=a;}
+	border Top2(t=0, b-c){x=-c-t; y=a;}
 
-border C0(t=0,2*pi) { x=0.1*cos(t); y=0.1*sin(t); }
-mesh Th=buildmesh(F(10*m)+C1(2*m)+C2(3)+C3(2*m)+C4(3)
-                  +C0(m)+E1(-2*m)+E2(-2*m));
-plot(Th,ps="SmileFace.eps",bw=1);  // see Fig. 5.33
-}
-```
+	mesh Th = buildmesh(Left(n) + Bot1(m/4) + Fix1(5) + Bot2(m/2)
+		+ Fix2(5) + Bot3(m/4) + Right(n) + Top1(m/2) + Load(10) + Top2(m/2));
+	plot(Th, ps="ThreePoint.eps", bw=true);
+	```
 
-|Fig. 5.32: Smiling face (Mouth is changeable)|
-|:----:|
-|![Smiling Face](images/SmileFace.png)|
+	<center>
 
-**Example** 3point bending
+	|<a name="Fig33">Fig. 33</a>: Domain for three-point bending test|
+	|:----|
+	|![Three-point bending test](images/MeshGeneration_Example_ThreePoints.png)|
 
-```freefem
-// Square for Three-Point Bend Specimens fixed on Fix1, Fix2
-// It will be loaded on Load.
-real a=1, b=5, c=0.1;
-int n=5, m=b*n;
-border Left(t=0,2*a) { x=-b; y=a-t; }
-border Bot1(t=0,b/2-c) { x=-b+t; y=-a; }
-border Fix1(t=0,2*c) { x=-b/2-c+t; y=-a; }
-border Bot2(t=0,b-2*c) { x=-b/2+c+t; y=-a; }
-border Fix2(t=0,2*c) { x=b/2-c+t; y=-a; }
-border Bot3(t=0,b/2-c) { x=b/2+c+t; y=-a; }
-border Right(t=0,2*a) { x=b; y=-a+t; }
-border Top1(t=0,b-c) { x=b-t; y=a; }
-border Load(t=0,2*c) { x=c-t; y=a; }
-border Top2(t=0,b-c) { x=-c-t; y=a; }
-mesh Th = buildmesh(Left(n)+Bot1(m/4)+Fix1(5)+Bot2(m/2)+Fix2(5)+Bot3(m/4)
-                    +Right(n)+Top1(m/2)+Load(10)+Top2(m/2));
-plot(Th,ps="ThreePoint.eps",bw=1); // Fig. 5.33
-```
-
-<center>
-
-|Fig. 5.33: Domain for three-point bending test|
-|:----|
-|![Three-point bending test](images/ThreePoint.png)|
-
-</center>
+	</center>
 
 ## How to change the label of elements and border elements of a mesh
 
@@ -1377,7 +1410,7 @@ times: compile 0.005363s, execution 0.00218s,  mpirank:0
 
 |Fig. 5.34: The mesh 3d  of  function `:::freefem cube(4,5,6,flags =3)`|
 |:----|
-|![Function cube mesh](images/func-cube.jpg)|
+|![Function cube mesh](images/MeshGeneration_Cube.jpg)|
 
 </center>
 
@@ -1748,7 +1781,7 @@ The domain $\Omega_{3d}$ defined by the layer mesh is equal to $\Omega_{3d} = \O
 
 |Fig. 5.35: Example of Layer mesh in three dimensions.|
 |:----:|
-|![Layer Mesh 3D](images/buillayermesh.png)|
+|![Layer Mesh 3D](images/MeshGeneration_LayerMesh.png)|
 
 </center>
 
@@ -1890,7 +1923,7 @@ medit("cone",Th3T); // See figure \ref{figs-cone}
 
 |Fig. 5.36: The mesh of a  cube made with `:::freefem cube.edp`|Fig. 5.37: the mesh of a cone made with `:::freefem cone.edp`|
 |:----:|:----:|
-|![Cube](images/cube.png)|![Cone](images/cone.png)|
+|![Cube](images/MeshGeneration_LayerMesh_Example1.png)|![Cone](images/MeshGeneration_LayerMesh_Example2.png)|
 
 **Example `:::freefem buildlayermesh.edp`**
 
@@ -2147,7 +2180,7 @@ include "MeshSurface.idp"
 
 |Fig. 5.38: The surface mesh of the Hex with internal Sphere|Fig. 5.39: The tet mesh of the cube with internal ball|
 |:----:|:----:|
-|![Hex Sphere](images/Hex-Sphere.png)|![Cube with ball](images/Cube-with-Ball.png)|
+|![Hex Sphere](images/MeshGeneration_CubeSphere1.png)|![Cube with ball](images/MeshGeneration_CubeSphere2.png)|
 
 ## The output solution formats .sol and .solb
 
@@ -2520,7 +2553,7 @@ m_{2 1} & m_{2 2} & m_{2 3} \\
 m_{3 1} & m_{3 2} & m_{3 3}
 \end{array}\right)$, the parameters `:::freefem metric` is $$M_{aniso}= ( H(V_{0}), \ldots, H(V_{nv}) )^t $$
 
-where $H(V_{i})$ is the vector of size 6 defined by $![m11,m21,m22,m31,m32,m33]$
+where $H(V_{i})$ is the vector of size 6 defined by $[m11,m21,m22,m31,m32,m33]$
 
 * `:::freefem loptions=` a vector of integer of size 13. This vectors contains the integer options of FreeYams. (just for the expert)
 
@@ -2874,7 +2907,7 @@ plot(Th,wait=1,ps="leman.eps"); // see figure \ref{fig:leman} $\codered$
 
 |Fig. 5.4: The image of the leman lake meshes|Fig. 5.41: the mesh of the lake|
 |:----:|:----:|
-|![lake](images/lg.jpg)|![leman mesh](images/leman.png)|
+|![lake](images/MeshGeneration_Isoline1.jpg)|![leman mesh](images/MeshGeneration_Isoline2.png)|
 
 ## References
 

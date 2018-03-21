@@ -30,7 +30,7 @@ femp1 g;
 {
 	ifstream file("f.txt");
 	file >> g[] ;
-}//the file is equally automatically closesd
+}//the file is equally automatically closed
 
 // Plot
 plot(g);
