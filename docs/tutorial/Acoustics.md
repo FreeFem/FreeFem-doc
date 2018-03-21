@@ -102,4 +102,4 @@ plot(v, wait=true, ps="eigen.eps");
 
 | <a name="Fig1">Fig. 1</a>: Amplitude of an acoustic signal coming from the left vertical wall.| First eigen state ($\lambda=(k/c)^2=19.4256$) close to $20$ of eigenvalue problem :$ -\Delta \varphi = \lambda \varphi$ and $ \frac{\partial \varphi}{\partial n} = 0$ on $\Gamma$}|
 |:----:|:----:|
-|![Acoustics](images/acoustics_0.svg)|![Acoustics](images/acoustics.svg)|
+|![Acoustics](images/acoustics_0.png)|![Acoustics](images/acoustics.png)|

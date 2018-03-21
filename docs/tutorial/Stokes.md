@@ -59,4 +59,4 @@ Results are shown on [figure 1](#Fig1).
 
 |<a name="Fig1">Fig. 1:</a> Solution of Stokes' equations for the driven cavity problem, showing the velocity field and the pressure level lines.|
 |:----:|
-|![Stokes](images/stokes.svg)|
+|![Stokes](images/stokes.png)|

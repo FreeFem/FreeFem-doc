@@ -98,6 +98,6 @@ Results are shown on [figure 1](#Fig1).
 
 |<a name="Fig1">Fig. 1</a>: A microwave oven: real (top) and imaginary (middle) parts of wave  and temperature (bottom).|
 |:----:|
-|![real microwave](images/real_microwave.svg)|
-|![imaginary microwave](images/imaginary_microwave.svg)|
-|![temperature microwave](images/temperature_microwave.svg)|
+|![real microwave](images/real_microwave.png)|
+|![imaginary microwave](images/imaginary_microwave.png)|
+|![temperature microwave](images/temperature_microwave.png)|

@@ -87,7 +87,7 @@ Results are shown on [figure 1](#Fig1).
 
 |<a name="Fig1">Fig. 1</a>: Temperature at $T=4.9$|Decay of temperature versus time at $x=3, y=0.5$|
 |:----:|:----:|
-|![Temperature](images/thermic.svg)|![Temperature decay](images/thermicvst.svg)|
+|![Temperature](images/thermic.png)|![Temperature decay](images/thermicvst.png)|
 
 ## Axisymmetry: 3D Rod with circular section
 

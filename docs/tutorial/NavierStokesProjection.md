@@ -182,6 +182,6 @@ We show in [figure 1](#Fig1) the numerical results obtained for a Reynolds numbe
 
 |<a name="Fig1">Fig. 1:</a> Rannacher's projection algorithm: result on an adapted mesh (top) showing the pressure (middle) and the horizontal velocity $\mathbf{u}$ at Reynolds 400.|
 |:----:|
-|![Navier Strokes projection Th](images/navier_stokes_projection_Th.svg)|
-|![Navier Strokes projection P](images/navier_stokes_projection_P.svg)|
-|![Navier Strokes projection U](images/navier_stokes_projection_U.svg)|
+|![Navier Strokes projection Th](images/navier_stokes_projection_Th.png)|
+|![Navier Strokes projection P](images/navier_stokes_projection_P.png)|
+|![Navier Strokes projection U](images/navier_stokes_projection_U.png)|

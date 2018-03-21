@@ -58,7 +58,7 @@ above).
 
 <a name="Fig1.1">Figure 1.1</a> - Mesh Th by `:::freefem buildmesh(C(50))` | <a name="Fig1.2">Figure 1.2</a> - isovalue by `:::freefem plot(u)`
 :-------------------------:|:-------------------------:
-![mesh TH](images/firstTh.svg) | ![isovalue](images/firstU.svg)
+![mesh TH](images/firstTh.png) | ![isovalue](images/firstU.png)
 
 !!! note
 	The qualifier `:::freefem solver=LU` (line 18) is not required and by default a multi-frontal `:::freefem LU` is used.
@@ -130,7 +130,7 @@ As it is a linear vector space of finite dimension, basis can be found. The cano
 
 <a name="Fig2.1">Figure 2.1</a>: `:::freefem mesh Th` | <a name="Fig2.2">Figure 2.2</a>: Graph of $\phi_1$ (left) and $\phi_6$
 :-------------------------:|:-------------------------:
-![mesh Th](images/meshTh_2.svg) | ![Typical hat functions](images/hat_functions.svg)
+![mesh Th](images/meshTh_2.png) | ![Typical hat functions](images/hat_functions.png)
 
 !!! info
 	The easiest way to define $\phi_k$ is by making use of the _barycentric coordinates_ $\lambda_i(x,y),~i=1,2,3$ of a point $q=(x,y)\in T$, defined by $\sum_i\lambda_i=1,~~~\sum_i\lambda_i\vec q^i=\vec q$ where $q^i,~i=1,2,3$ are the 3 vertices of $T$. Then it is easy to see that the restriction of $\phi_k$ on $T$ is precisely $\lambda_k$.

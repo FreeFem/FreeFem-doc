@@ -118,7 +118,7 @@ The program found $b=2.00125,c=3.00109,d=4.00551$.
 
 |<a name="Fig1">Fig. 1</a>: On top the level lines of $u$. At the bottom the successive evaluations of $J$ by BFGS (5 values above 500 have been removed for readability)|
 |:----:|
-|![u BFGS](images/u-bfgs.svg)|
+|![u BFGS](images/u-bfgs.png)|
 |![j BFGS](images/OptimalControl_J.png)|
 
 Note that an _adjoint state_ could have been used. Define $p$ by

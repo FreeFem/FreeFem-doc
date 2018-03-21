@@ -135,5 +135,5 @@ times: compile 0.010219s, execution 1.5827s
 
 | <a name="Fig1">Fig. 1 :</a> Solution of Lamé's equations for elasticity for a 2D beam deflected by its own weight and clamped by its left vertical side. Result are shown with a amplification factor equal to  100. The size of the arrow is automatically bound, but the color gives the real length.|
 |:----:|
-|![Lame's vector](images/lame_vector.svg)|
-|![Lame's deform](images/lame_deformation.svg)|
+|![Lame's vector](images/lame_vector.png)|
+|![Lame's deform](images/lame_deformation.png)|

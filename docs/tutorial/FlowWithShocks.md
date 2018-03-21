@@ -132,4 +132,4 @@ for(int k = 0; k < 3; k++){
 
 |<a name="Fig1">Fig. 1</a>: Pressure for a Euler flow around a disk at Mach 2 computed by \eqref{eulalgo}|
 |:----|
-|![Mach 2](images/mach_2r.svg)|
+|![Mach 2](images/mach_2r.png)|

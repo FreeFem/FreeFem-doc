@@ -71,7 +71,7 @@ A zoom of the streamlines are shown on [figure 1](#Fig1).
 
 |<a name="Fig1">Fig. 1:</a> Zoom around the NACA0012 airfoil showing the streamlines (curve $\psi=$ constant). To obtain such a plot use the interactive graphic command: "+" and p.|Temperature distribution at time T=25 (now the maximum is at 90 instead of 120). Note that an incidence angle has been added here (see Chapter 9).|
 |:----|:----|
-|![Potential](images/potential.svg)|![Potential heat](images/potential_heat.svg)|
+|![Potential](images/potential.png)|![Potential heat](images/potential_heat.png)|
 
 ## Heat Convection around the airfoil
 

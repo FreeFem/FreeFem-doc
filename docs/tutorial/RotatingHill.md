@@ -148,7 +148,7 @@ Notice also the macro where the parameter $\mathbf{u}$ is not used (but the synt
 
 |<a name="Fig1">Fig. 1:</a> The rotated hill after one revolution with Characteristics-Galerkin|and with Discontinuous $P_1$ Galerkin FEM.|
 |:----|:----|
-|![Convect CG](images/convectCG.svg)|![convectDG](images/convectDG.svg)|
+|![Convect CG](images/convectCG.png)|![convectDG](images/convectDG.png)|
 
 Now if you think that DG is too slow try this :
 

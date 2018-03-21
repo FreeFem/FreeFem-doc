@@ -101,7 +101,7 @@ buildmesh(.../*+ C12(20) */ + C121(12) + C122(8) + ...);
 
 | Figure 1 - The heat exchanger ||
 | :----: | :----: |
-|![Heat Exchanger Th](images/heat_exchangerTh.svg)|![Heat Exchanger](images/heat_exchanger.svg)|
+|![Heat Exchanger Th](images/heat_exchangerTh.png)|![Heat Exchanger](images/heat_exchanger.png)|
 
 !!! note
 	**Exercise :** Use the symmetry of the problem with respect to the axes.
