@@ -266,7 +266,6 @@ Progression:
 - [ ] [checkbemesh](ExternalLibraries/#checkbemesh)
 - [ ] [buildlayers](ExternalLibraries/#buildlayers)
 - [ ] [bcube](ExternalLibraries/#bcube)
-- [ ] [cube](ExternalLibraries/#cube)
 - [ ] [trunc](ExternalLibraries/#trunc)
 - [ ] [gluemesh](ExternalLibraries/#gluemesh)
 - [ ] [extract](ExternalLibraries/#extract)

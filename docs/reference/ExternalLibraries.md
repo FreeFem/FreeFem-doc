@@ -2863,8 +2863,42 @@ $\codered$
 $\codered$
 
 ### cube
+Construct a cubic mesh.
 
-$\codered$
+```freefem
+mesh3 Th = cube(nnX, nnY, nnZ, [X(x), Y(y), Z(z)], [label=Label], [flags=Flags], [region=Region]);
+```
+
+<u>Parameters:</u>
+
+ - `nnX` (`:::freefem int`)<br/>
+ Number of discretization point along $x$
+ - `nnY` (`:::freefem int`)<br/>
+ Number of discretization point along $y$
+ - `nnZ` (`:::freefem int`)<br/>
+  Number of discretization point along $z$
+  - `X(x)` (`:::freefem func`) _[Optional]_<br/>
+  Affine function of $x$ to define the length<br/>
+  Default: `x`
+  - `Y(y)` (`:::freefem func`) _[Optional]_<br/>
+  Affine function of $y$ to define the width<br/>
+  Default: `y`
+  - `Z(z)` (`:::freefem func`) _[Optional]_<br/>
+  Affine function of $z$ to define the height<br/>
+  Default: `z`
+  - _`:::freefem label=`_ (`:::freefem int[int]`) _[Optional]_<br/>
+  List of surface labels<br/>
+  Default: `[1, 2, 3, 4, 5, 6]`
+  - _`:::freefem flags=`_ (`:::freefem int`) _[Optional]_<br/>
+  Refer to [square](#square)
+  - _`:::freefem region=`_ (`:::freefem int`) _[Optional]_<br/>
+  Region number of the cube volume
+  Default: `0`
+
+<u>Output:</u>
+
+ - `Th` (`:::freefem mesh3`)<br/>
+ Cube mesh
 
 ### trunc
 
@@ -3111,6 +3145,11 @@ $\codered$
 $\codered$
 
 ### tetg
+Build a 3D mesh from a surface.
+
+```freefem
+mesh3 Th = tetg(Th0, [reftet=RefTet], [label=Label], [switch=Switch], [nbofholes=NbOfHoles], [holelist=HoleList], [nbofregions=NbOfRegions], [regionlist=RegionList], [nboffacetcl=NbOfFaceTcl], [facetcl=FaceTcl])
+```
 
 $\codered$
 

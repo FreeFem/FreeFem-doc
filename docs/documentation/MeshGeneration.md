@@ -680,7 +680,7 @@ It is also possible to build an empty mesh of a pseudo subregion with `:::freefe
 
 ## Remeshing
 ### Movemesh
-<!--- END OF REVIEW -- TO CONTINUE --->
+
 Meshes can be translated, rotated and deformed by `:::freefem movemesh`; this is useful for elasticity to watch the deformation due to the displacement $\mathbf{\Phi}(x,y)=(\Phi_1(x,y),\Phi_2(x,y))$ of shape.
 
 It is also useful to handle free boundary problems or optimal shape problems.
@@ -1007,7 +1007,7 @@ Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); //Adaptation bound `maxsubdi
 plot(Th, wait=true, ps="square-2.eps");
 ```
 
-|<a name="Fig17">Fig. 17</a>: Initial mesh|<a name="Fig18">Fig. 18</a>: First iteration|Fig. 5.19: Last iteration|
+|<a name="Fig17">Fig. 17</a>: Initial mesh|<a name="Fig18">Fig. 18</a>: First iteration|<a name="Fig19">Fig. 19</a>: Last iteration|
 |:----|:----|:----|
 |![Initial mesh](images/MeshGeneration_AdaptMesh4.png)|![First iteration](images/MeshGeneration_AdaptMesh5.png)|![Last iteration](images/MeshGeneration_AdaptMesh6.png)|
 
@@ -1121,7 +1121,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	plot(Th, ps="Cassini.eps", bw=true);
 	```
 
-|Fig. 5.26: Domain with Cardioid curve boundary|Fig. 5.27: Domain with Cassini Egg curve boundary|
+|<a name="Fig26">Fig. 26</a>: Domain with Cardioid curve boundary|<a name="Fig27">Fig. 27</a>: Domain with Cassini Egg curve boundary|
 |:----:|:----:|
 |![Cardiod](images/MeshGeneration_Example_Cardioid1.png)|![Cassini](images/MeshGeneration_Example_Cardioid2.png)|
 
@@ -1281,52 +1281,68 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 ## How to change the label of elements and border elements of a mesh
 
-Changing the label of elements and border elements will be done using the keyword `:::freefem change`. The parameters for this command line are for a two dimensional and dimensional case:
+Changing the label of elements and border elements will be done using the keyword `:::freefem change`. The parameters for this command line are for a two dimensional and three dimensional case:
 
-* `:::freefem label =` is a vector of integer that contains successive pair of the old label number to  the new label number.
+* `:::freefem label =` is a vector of integer that contains successive pair of the old label number to the new label number.
 
 * `:::freefem region =` is a vector of integer that contains successive pair of the old region number to new region number.
 
-* `:::freefem flabel =`  is an integer function with given the new value of the label.
+* `:::freefem flabel =` is an integer function with given the new value of the label.
 
 * `:::freefem fregion=` is an integer function with given the new value of the region.
 
-These vectors are composed of $n_{l}$ successive pair of number $O,N$  where $n_{l}$ is the number (label or region) that we want to change. For example, we have :
+These vectors are composed of $n_{l}$ successive pair of number $O,N$ where $n_{l}$ is the number (label or region) that we want to change. For example, we have :
 
 \begin{eqnarray}
 \label{eq.org.vector.change.label}
-\mathtt{label} &= &[ O_{1}, N_{1},  ..., O_{n_{l}},N_{n_{l}} ] \\
-\mathtt{region} & =& [ O_{1}, N_{1},  ..., O_{n_{l}},N_{n_{l}} ]
+\mathtt{label} &= &[ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ] \\
+\mathtt{region} & =& [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ]
 \end{eqnarray}
 
-An example of using this function is given in `:::freefem glumesh2D.edp`:
-
-**Example** glumesh2D.edp
+An example of using this function is given here:
 
 ```freefem
-mesh Th1=square(10,10);
-mesh Th2=square(20,10,[x+1,y]);
 verbosity=3;
-int[int] r1=[2,0],  r2=[4,0];
-plot(Th1,wait=1);
-Th1=change(Th1,label=r1); // Change the label of Edges  2 in 0.
-plot(Th1,wait=1);
-Th2=change(Th2,label=r2); // Change the label of Edges  4 in 0.
-mesh Th=Th1+Th2;         //  ``gluing together'' of meshes Th1 and Th2
-cout << " nb lab = " << int1d(Th1,1,3,4)(1./lenEdge)+int1d(Th2,1,2,3)(1./lenEdge)
-        << " == " << int1d(Th,1,2,3,4)(1./lenEdge) <<" == " << ((10+20)+10)*2 << endl;
-plot(Th,wait=1);
-fespace Vh(Th,P1);
-macro Grad(u) [dx(u),dy(u)]; // Definition of a macro
-Vh u,v;
-solve P(u,v)=int2d(Th)(Grad(u)'*Grad(v))-int2d(Th)(v)+on(1,3,u=0);
-plot(u,wait=1);
+
+// Mesh
+mesh Th1 = square(10, 10);
+mesh Th2 = square(20, 10, [x+1, y]);
+
+int[int] r1=[2,0];
+plot(Th1, wait=true);
+
+Th1 = change(Th1, label=r1); //change the label of Edges 2 in 0.
+plot(Th1, wait=true);
+
+int[int] r2=[4,0];
+Th2 = change(Th2, label=r2); //change the label of Edges 4 in 0.
+plot(Th2, wait=true);
+
+mesh Th = Th1 + Th2; //'gluing together' of meshes Th1 and Th2
+cout << "nb lab = " << int1d(Th1,1,3,4)(1./lenEdge)+int1d(Th2,1,2,3)(1./lenEdge)
+	 << " == " << int1d(Th,1,2,3,4)(1./lenEdge) << " == " << ((10+20)+10)*2 << endl;
+plot(Th, wait=true);
+
+fespace Vh(Th, P1);
+Vh u, v;
+
+macro Grad(u) [dx(u),dy(u)] // Definition of a macro
+
+solve P(u, v)
+	= int2d(Th)(
+		  Grad(u)'*Grad(v)
+	)
+	-int2d(Th)(
+		  v
+	)
+	+ on(1, 3, u=0)
+	;
+
+plot(u, wait=1);
 ```
 
 **"gluing" different mesh**
-In line 9 of the previous file, the method to "gluing" different mesh of the same dimension in FreeFem++ is using.
-This function is the operator "+" between meshes.
-The method implemented need that the point in adjacent mesh are the same.
+In line 17 of the previous file, the method to "gluing" different mesh of the same dimension in FreeFem++ is using. This function is the operator "+" between meshes. The method implemented need that the point in adjacent mesh are the same.
 
 ## Mesh in three dimensions
 
@@ -1337,10 +1353,10 @@ A new function `:::freefem cube` like the function `:::freefem square` in 2d is 
 The following code generates a $3\times 4 \times 5$ grid in the unit cube $[0, 1]^3$.
 
 ```freefem
-mesh3 Th=cube(3,4,5);
+mesh3 Th = cube(3, 4, 5);
 ```
 
-By defaults the label (after version 3.56-2 and to correct otherwise add `:::freefem label=l6` with `:::freefem int[int] l6=[1,2,3,4,5,6];`) are :
+By defaults the label are :
 
 1. face $y=0$,
 2. face $x=1$,
@@ -1351,64 +1367,63 @@ By defaults the label (after version 3.56-2 and to correct otherwise add `:::fre
 
 and the region number is $0$.
 
-A full examples of the this function to build a mesh of cube $]-1,1[^3$ with face label
-given by $(ix + 4*(iy+1) + 16*(iz+1))$ where $(ix,iy,iz)$ is coordinate of the barycenter of the current face.
+A full examples of the this function to build a mesh of cube $]-1,1[^3$ with face label given by $(ix + 4*(iy+1) + 16*(iz+1))$ where $(ix, iy, iz)$ is coordinate of the barycenter of the current face.
 
 ```freefem
 load "msh3"
-int[int] l6=[37,42,45,40,25,57];
-int r11=11;
-mesh3 Th=cube(4,5,6,[x*2-1,y*2-1,z*2-1],label=l6,flags =3,region=r11);
-cout << " volume " << Th.measure << ", border area "<< Th.bordermeasure <<endl;
-int err =0;
-for(int i=0; i<100; ++i)
-{
-    real s =int2d(Th,i)(1.);
-    real sx=int2d(Th,i)(x);
-    real sy=int2d(Th,i)(y);
-    real sz=int2d(Th,i)(z);
 
-    if( s )
-    {
-     int ix = (sx/s+1.5), iy=(sy/s+1.5), iz=(sz/s+1.5),
-              ii=(ix + 4*(iy+1) + 16*(iz+1) ) ;    
-      //  value of ix,iy,iz =>  face min 0 ,  face max 2  , no face 1
-      cout <<" label="<< i << " s " << s << " " << ix << iy << iz
-           << " : " << ii << endl;
-      if( i != ii ) err++;
-    }
-}   
-real volr11 = int3d(Th,r11)(1.) ;
-cout << " vol region " << 11 << ": " << volr11 << endl;
-if( (volr11 - Th.measure )>1e-8) err++;
-plot(Th,fill=0);
-cout << " nb err= " << err <<endl;
+int[int] l6 = [37, 42, 45, 40, 25, 57];
+int r11 = 11;
+mesh3 Th = cube(4, 5, 6, [x*2-1, y*2-1, z*2-1], label=l6, flags =3, region=r11);
+
+cout << "Volume = " << Th.measure << ", border area = " << Th.bordermeasure << endl;
+
+int err = 0;
+for(int i = 0; i < 100; ++i){
+	real s = int2d(Th,i)(1.);
+	real sx = int2d(Th,i)(x);
+	real sy = int2d(Th,i)(y);
+	real sz = int2d(Th,i)(z);
+
+	if(s){
+		int ix = (sx/s+1.5);
+		int iy = (sy/s+1.5);
+		int iz = (sz/s+1.5);
+		int ii = (ix + 4*(iy+1) + 16*(iz+1) );
+		//value of ix,iy,iz => face min 0, face max 2, no face 1
+		cout << "Label = " << i << ", s = " << s << " " << ix << iy << iz << " : " << ii << endl;
+		if( i != ii ) err++;
+	}
+}
+real volr11 = int3d(Th,r11)(1.);
+cout << "Volume region = " << 11 << ": " << volr11 << endl;
+if((volr11 - Th.measure )>1e-8) err++;
+plot(Th, fill=false);
+cout << "Nb err = " << err << endl;
 assert(err==0);
 ```
 
 The output of this script is:
 
 ```freefem
- Enter: BuildCube: 3
-   kind = 3 n tet Cube = 6 / n slip 6 19
- Cube  nv=210 nt=720 nbe=296
- Out:  BuildCube
-volume 8, border area 24
-label=25 s 4 110 : 25
-label=37 s 4 101 : 37
-label=40 s 4 011 : 40
-label=42 s 4 211 : 42
-label=45 s 4 121 : 45
-label=57 s 4 112 : 57
-vol region 11: 8
-nb err= 0
-times: compile 0.005363s, execution 0.00218s,  mpirank:0
- CodeAlloc : nb ptr  2856,  size :352744 mpirank: 0
+Enter: BuildCube: 3
+  kind = 3 n tet Cube = 6 / n slip 6 19
+Cube  nv=210 nt=720 nbe=296
+Out:  BuildCube
+Volume = 8, border area = 24
+Label = 25, s = 4 110 : 25
+Label = 37, s = 4 101 : 37
+Label = 40, s = 4 011 : 40
+Label = 42, s = 4 211 : 42
+Label = 45, s = 4 121 : 45
+Label = 57, s = 4 112 : 57
+Volume region = 11: 8
+Nb err = 0
 ```
 
 <center>
 
-|Fig. 5.34: The mesh 3d  of  function `:::freefem cube(4,5,6,flags =3)`|
+|<a name="Fig34">Fig. 34</a>: The mesh 3d of function `:::freefem cube(4, 5, 6, flags=3)`|
 |:----|
 |![Function cube mesh](images/MeshGeneration_Cube.jpg)|
 
@@ -1416,73 +1431,78 @@ times: compile 0.005363s, execution 0.00218s,  mpirank:0
 
 ### Read/Write Statements for a Mesh in 3D
 
-In three dimensions, the file mesh format supported for input and output files by FreeFem++ are the extension .msh and .mesh.
-These formats are described in the chapter on Mesh Files in two dimensions.
+In three dimensions, the file mesh format supported for input and output files by FreeFem++ are the extension .msh and .mesh. These formats are described in the [Mesh Format section](Developers/#mesh-format).
 
 **Extension file .msh**
-The structure of the files with extension .msh in 3D is given in Table 5.2.
-In this structure, $n_v$ denotes the number of vertices, $n_{tet}$ the number of tetrahedra and $n_{tri}$ the number of triangles
+The structure of the files with extension .msh in 3D is given in <a href="Tab2">Table 2.</a>.
+
+In this structure, $n_v$ denotes the number of vertices, $n_{tet}$ the number of tetrahedra and $n_{tri}$ the number of triangles.
+
 For each vertex $q^i,\, i=1,\cdots,n_v$, we denote by $(q^i_x,q^i_y,q^i_z)$ the $x$-coordinate, the $y$-coordinate and the $z$-coordinate.
+
 Each tetrahedra $T_k, k=1,\cdots,n_{tet}$ has four vertices $q^{k_1},\, q^{k_2},\,q^{k_3}, \,q^{k_4}$.
+
 The boundary consists of an union of triangles. Each triangle $be_j, j=1,\cdots,n_{tri}$ has three vertices $q^{j_1},\, q^{j_2},\,q^{j_3}$.
 
 <center>
 
-|Table 5.2: The structure of mesh file format `:::freefem .msh` in three dimensions.|
+|<a name="Tab2">Table 2</a>: The structure of mesh file format `:::freefem .msh` in three dimensions.|
 |:----:|
-|\begin{array}{htbp}n_v&  n_{tet}& n_{tri} & &\\q^1_x& q^1_y& q^1_z & Vertex label &\\ q^2_x& q^2_y&  q^2_z & Vertex label &\\ \vdots  &\vdots &\vdots &\vdots &\\ q^{n_v}_x&q^{n_v}_y&  q^{n_v}_z & Vertex label&\\ 1_1& 1_2& 1_3& 1_4 & region label \\ 2_1& 2_2& 2_3& 2_4 & region label  \\ \vdots  &\vdots &\vdots &\vdots  &\vdots \\ (n_{tet})_1& (n_{tet})_2& (n_{tet})_3  & (n_{tet})_4 & region label \\ 1_1 & 1_2& 1_3& boundary label & \\ 2_1 & 2_2& 2_3& boundary label & \\ \vdots&  \vdots &\vdots &\vdots &\\ (n_tri)_{1} & (n_{tri})_2& (n_{tri})_3 & boundary label &\\ \end{array}|
+|\begin{array}{htbp}n_v& n_{tet}& n_{tri} & &\\q^1_x& q^1_y& q^1_z & Vertex label &\\ q^2_x& q^2_y& q^2_z & Vertex label &\\ \vdots &\vdots &\vdots &\vdots &\\ q^{n_v}_x&q^{n_v}_y& q^{n_v}_z & Vertex label&\\ 1_1& 1_2& 1_3& 1_4 & region label \\ 2_1& 2_2& 2_3& 2_4 & region label \\ \vdots &\vdots &\vdots &\vdots &\vdots \\ (n_{tet})_1& (n_{tet})_2& (n_{tet})_3 & (n_{tet})_4 & region label \\ 1_1 & 1_2& 1_3& boundary label & \\ 2_1 & 2_2& 2_3& boundary label & \\ \vdots& \vdots &\vdots &\vdots &\\ (n_tri)_{1} & (n_{tri})_2& (n_{tri})_3 & boundary label &\\ \end{array}|
 
 </center>
 
 **extension file .mesh**
-The data structure for a three dimensional mesh is composed of the data structure presented in Section \ref{meshformatfile.mesh} $\codered$
-and a data structure for tetrahedra. The tetrahedra of a three dimensional mesh are refereed using the following field:
+The data structure for a three dimensional mesh is composed of the data structure presented in [Mesh Format section](Developers/#mesh-format) and a data structure for tetrahedra. The tetrahedra of a three dimensional mesh are refereed using the following field:
 
-* `:::freefem Tetrahedra` $\codered$
-  \Int{NbOfTetrahedrons} \\
-    \Loop{\Loop{\Vertex{$_i^j$}}{j=1,4}\,,\,\Int{$Ref \phi_i^{tet}$} }{ i=1\,,\,NbOfTetrahedrons}
-\end{itemize}
-This field is express with the notation of Section \ref{meshformatfile.mesh}.
+```
+Tetrahedra
+NbTetrahedra
+Vertex1 Vertex2 Vertex3 Vertex4 Label
+...
+Vertex1 Vertex2 Vertex3 Vertex4 Label
+```
 
-### TeGen: A tetrahedral mesh generator
+This field is express with the notation of [Mesh Format section](Developers/#mesh-format).
+
+### TetGen: A tetrahedral mesh generator
 
 **TetGen**
 
-TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Applied Analysis and Stochastics of Berlin in Germany [Hang2006](#refHang2006). TetGen is a free for research and non-commercial uses. For any commercial licence utilization, a commercial licence is available upon request to Hang Si.
+TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Applied Analysis and Stochastics of Berlin in Germany [Hang2006](#refHang2006). TetGen is a free for research and non-commercial uses. For any commercial license utilization, a commercial license is available upon request to Hang Si.
 
 This software is a tetrahedral mesh generator of a three dimensional domain defined by its boundary. The input domain take into account a polyhedral or a piecewise linear complex. This tetrahedralization is a constrained Delaunay tetrahedralization.
 
-The method used in TetGen to control the quality of the mesh is a Delaunay refinement due to  Shewchuk [Shewchuk1998](#refShewchuk1998). The quality measure of this algorithm is the Radius-Edge Ratio (see Section 1.3.1 [Hang2006](#refHang2006) for more details). A theoretical bounds of this ratio of the algorithm of Shewchuk is obtained for a given complex of vertices, constrained segments and facets of surface mesh, with no input angle less than 90 degree. This theoretical bounds is 2.0.
+The method used in TetGen to control the quality of the mesh is a Delaunay refinement due to Shewchuk [Shewchuk1998](#refShewchuk1998). The quality measure of this algorithm is the Radius-Edge Ratio (see Section 1.3.1 [Hang2006](#refHang2006) for more details). A theoretical bounds of this ratio of the algorithm of Shewchuk is obtained for a given complex of vertices, constrained segments and facets of surface mesh, with no input angle less than 90 degree. This theoretical bounds is 2.0.
 
 
 The launch of Tetgen is done with the keyword `:::freefem tetg`. The parameters of this command line is:
 
+* `:::freefem reftet=` set the label of tetrahedra.
 
-* `:::freefem reftet  =` set the label of tetrahedra.
+* `:::freefem label=` is a vector of integer that contains the old labels number at index $2i$ and the new labels number at index $2i+1$ of Triangles. This parameters is initialized as label for the keyword [change](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
 
-* `:::freefem label =` is a vector of integer that contains the old labels number at index $2i$  and the new labels number at index $2i+1$ of Triangles.
-This parameters is initialized as label for the keyword change (\ref{eq.org.vector.change.label}) $\codered$.
+* `:::freefem switch=` A string expression. This string corresponds to the command line switch of Tetgen see Section 3.2 of [Hang2006](#refHang2006).
 
-* `:::freefem switch  =` A string expression. This string corresponds to the command line switch of Tetgen see Section 3.2 of [Hang2006](#refHang2006).
+* `:::freefem nbofholes=` Number of holes (default value: "size of `:::freefem holelist` / 3").
 
-* `:::freefem nbofholes =` Number of holes (default value: "size of `:::freefem holelist` / 3").
+* `:::freefem holelist=` This array correspond to `:::freefem holelist` of tetgenio data structure [Hang2006](#refHang2006). A real vector of size `:::freefem 3 * nbofholes`. In TetGen, each hole is associated with a point inside this domain. This vector is $x_{1}^{h}, y_{1}^{h}, z_{1}^{h}, x_{2}^{h}, y_{2}^{h}, z_{2}^{h}, \cdots,$ where $x_{i}^{h},y_{i}^{h},z_{i}^{h}$ is the associated point with the $i^{\mathrm{th}}$ hole.
 
-* `:::freefem holelist =` This array correspond to `:::freefem holelist` of tetgenio data structure [Hang2006](#refHang2006). A real vector of size `:::freefem 3 * nbofholes`. In TetGen, each hole is associated with a point inside this domain.
-This vector is $x_{1}^{h}, y_{1}^{h}, z_{1}^{h}, x_{2}^{h}, y_{2}^{h}, z_{2}^{h}, \cdots,$ where $x_{i}^{h},y_{i}^{h},z_{i}^{h}$ is the associated point with the $i^{\mathrm{th}}$ hole.
+* `:::freefem nbofregions=` Number of regions (default value: "size of `:::freefem regionlist` / 5").
 
-* `:::freefem nbofregions =` Number of regions (default value: "size of `:::freefem regionlist` / 5").
+* `:::freefem regionlist=` This array corresponds to `:::freefem regionlist` of tetgenio data structure [Hang2006](#refHang2006).
 
-* `:::freefem regionlist =` This array corresponds to `:::freefem regionlist` of tetgenio data structure [Hang2006](#refHang2006).
-The attribute and the volume constraint of region are given in this real vector of size `:::freefem 5 * nbofregions`.
-The $i^{\mathrm{th}}$ region is described by five elements: $x-$coordinate, $y-$coordinate and $z-$coordinate of a point inside this domain ($x_{i},y_{i},z_{i}$); the attribute ($at_{i}$) and the maximum volume for tetrahedra ($mvol_{i}$) for this region.
-The `:::freefem regionlist` vector is: $x_{1}, y_{1}, z_{1}, at_{1}, mvol_{1}, x_{2}, y_{2}, z_{2}, at_{2}, mvol_{2}, \cdots  $.
+	The attribute and the volume constraint of region are given in this real vector of size `:::freefem 5 * nbofregions`. The $i^{\mathrm{th}}$ region is described by five elements: $x-$coordinate, $y-$coordinate and $z-$coordinate of a point inside this domain ($x_{i},y_{i},z_{i}$); the attribute ($at_{i}$) and the maximum volume for tetrahedra ($mvol_{i}$) for this region.
 
-* `:::freefem nboffacetcl =` Number of facets constraints "size of `:::freefem facetcl` / 2").
+	The `:::freefem regionlist` vector is: $x_{1}, y_{1}, z_{1}, at_{1}, mvol_{1}, x_{2}, y_{2}, z_{2}, at_{2}, mvol_{2}, \cdots$.
 
-* `:::freefem facetcl =` This array corresponds to `:::freefem facetconstraintlist` of tetgenio data structure [Hang2006](#refHang2006).
-The $i^{th}$ facet constraint is defined by the facet marker $Ref_{i}^{fc}$ and the maximum area for faces $marea_{i}^{fc}$.
-The `:::freefem facetcl` array is: $Ref_{1}^{fc}, marea_{1}^{fc}, Ref_{2}^{fc}, marea_{2}^{fc}, \cdots$.
-This parameters has no effect if switch `:::freefem q` is not selected.
+* `:::freefem nboffacetcl=` Number of facets constraints "size of `:::freefem facetcl` / 2").
+
+* `:::freefem facetcl=` This array corresponds to `:::freefem facetconstraintlist` of tetgenio data structure [Hang2006](#refHang2006).
+
+	The $i^{th}$ facet constraint is defined by the facet marker $Ref_{i}^{fc}$ and the maximum area for faces $marea_{i}^{fc}$. The `:::freefem facetcl` array is: $Ref_{1}^{fc}, marea_{1}^{fc}, Ref_{2}^{fc}, marea_{2}^{fc}, \cdots$.
+
+	This parameters has no effect if switch `:::freefem q` is not selected.
 
 Principal switch parameters in TetGen:
 
@@ -1494,19 +1514,20 @@ Principal switch parameters in TetGen:
 switch `:::freefem q` or in the parameter `:::freefem regionlist`.
 
 * `:::freefem A` Attributes reference to region given in the `:::freefem regionlist`. The other regions have label 0.
-The option `AA` gives a different label at each region. This switch work with the option `:::freefem p`. If option `:::freefem r` is used, this switch has no effect.
+
+	The option `AA` gives a different label at each region. This switch work with the option `:::freefem p`. If option `:::freefem r` is used, this switch has no effect.
 
 * `:::freefem r` Reconstructs and Refines a previously generated mesh. This character is only used with the command line `:::freefem tetgreconstruction`.
 
 * `:::freefem Y` This switch allow to preserve the mesh on the exterior boundary.
-This switch must be used to ensure conformal mesh between two adjacents mesh.
+
+	This switch must be used to ensure conformal mesh between two adjacent mesh.
 
 * `:::freefem YY` This switch allow to preserve the mesh on the exterior and interior boundary.
 
 * `:::freefem C` The consistency of the result's mesh is testing by TetGen.
 
-* `:::freefem CC` The consistency of the result's mesh is testing by TetGen and also checks constrained delaunay mesh
-(if `:::freefem p` switch is selected) or the consistency of Conformal Delaunay (if `:::freefem q` switch is selected).
+* `:::freefem CC` The consistency of the result's mesh is testing by TetGen and also checks constrained delaunay mesh (if `:::freefem p` switch is selected) or the consistency of Conformal Delaunay (if `:::freefem q` switch is selected).
 
 * `:::freefem V` Give information of the work of TetGen. More information can be obtained in specified `:::freefem VV` or `:::freefem VVV`.
 
@@ -1516,120 +1537,126 @@ This switch must be used to ensure conformal mesh between two adjacents mesh.
 
 * `:::freefem T` Set a tolerance for coplanar test. The default value is $1e-8$.
 
-* `:::freefem d` Itersections of facets are detected.
+* `:::freefem d` Intersections of facets are detected.
 
 
-To obtain a tetrahedral mesh generator with tetgen, we need the surface mesh of three dimensional domain.
-We give now the command line in FreeFem++ to construct these meshes.
+To obtain a tetrahedral mesh generator with tetgen, we need the surface mesh of three dimensional domain. We give now the command line in FreeFem++ to construct these meshes.
 
 **keyword: `:::freefem movemesh23`**
 
-A simple method to construct a surface is to place a two dimensional domain in a three dimensional space. This corresponding to move the domain by a displacement vector of this form $\Phi(x,y) = ( \Phi1(x,y), \Phi2(x,y), \Phi3(x,y) )$.
+A simple method to construct a surface is to place a two dimensional domain in a three dimensional space. This corresponding to move the domain by a displacement vector of this form $\mathbf{\Phi(x,y)} = (\Phi1(x,y), \Phi2(x,y), \Phi3(x,y))$.
+
 The result of moving a two dimensional mesh Th2 by this three dimensional displacement is obtained using:
 
 ```freefem
-mesh3 Th3 = movemesh23(Th2,transfo=[Phi(1),Phi(2),Phi(3)]);
+mesh3 Th3 = movemesh23(Th2, transfo=[Phi(1), Phi(2), Phi(3)]);
 ```
 
 The parameters of this command line are:
 
-* `:::freefem transfo =` [$\Phi$1, $\Phi$2, $\Phi$3] set the displacement vector of transformation $\Phi(x,y) = [\Phi1(x,y), \Phi2(x,y), \Phi3(x,y)]$.
+* `:::freefem transfo=` [$\Phi$1, $\Phi$2, $\Phi$3] set the displacement vector of transformation $\mathbf{\Phi(x,y)} = [\Phi1(x,y), \Phi2(x,y), \Phi3(x,y)]$.
 
-* `:::freefem label =` set integer label of triangles.
+* `:::freefem label=` set integer label of triangles.
 
-* `:::freefem orientation =` set integer orientation of mesh.
+* `:::freefem orientation=` set integer orientation of mesh.
 
-* `:::freefem ptmerge =` A real expression. When you transform a mesh, some points can be merged. This parameter is the criteria to define two merging points. By default, we use
-$$
-ptmerge \: = \: 1e-7 \: \:Vol( B ),
-$$
-where $B$ is the smallest axis parallel boxes containing the discretized domain of $\Omega$ and $Vol(B)$ is the volume of this box.
+* `:::freefem ptmerge=` A real expression. When you transform a mesh, some points can be merged. This parameter is the criteria to define two merging points. By default, we use
+	$$
+	ptmerge \: = \: 1e-7 \: \:Vol( B ),
+	$$
+	where $B$ is the smallest axis parallel boxes containing the discretized domain of $\Omega$ and $Vol(B)$ is the volume of this box.
 
-We can do a "gluing" of surface meshes using the process given in Section \ref{sec.changelab.gluemesh} $\codered$. An example to obtain a three dimensional
-mesh using the command line `:::freefem tetg` and `:::freefem movemesh23` is given in the file `:::freefem tetgencube.edp`.
-
-**Example `:::freefem tetgencube.edp`**
+We can do a "gluing" of surface meshes using the process given in [Change section](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh). An example to obtain a three dimensional mesh using the command line `:::freefem tetg` and `:::freefem movemesh23` is given bellow.
 
 ```freefem
-// file tetgencube.edp
 load "msh3"
 load "tetgen"
 
-real x0,x1,y0,y1;
-x0=1.; x1=2.; y0=0.; y1=2*pi;
-mesh Thsq1 = square(5,35,[x0+(x1-x0)*x,y0+(y1-y0)*y]);
+// Parameters
+real x10 = 1.;
+real x11 = 2.;
+real y10 = 0.;
+real y11 = 2.*pi;
 
 func ZZ1min = 0;
 func ZZ1max = 1.5;
 func XX1 = x;
 func YY1 = y;
 
-mesh3 Th31h = movemesh23(Thsq1,transfo=[XX1,YY1,ZZ1max]);
-mesh3 Th31b = movemesh23(Thsq1,transfo=[XX1,YY1,ZZ1min]);
-
-/////////////////////////////////
-x0=1.; x1=2.; y0=0.; y1=1.5;
-mesh Thsq2 = square(5,8,[x0+(x1-x0)*x,y0+(y1-y0)*y]);
+real x20 = 1.;
+real x21 = 2.;
+real y20=0.;
+real y21=1.5;
 
 func ZZ2 = y;
 func XX2 = x;
 func YY2min = 0.;
 func YY2max = 2*pi;
 
-mesh3 Th32h = movemesh23(Thsq2,transfo=[XX2,YY2max,ZZ2]);
-mesh3 Th32b = movemesh23(Thsq2,transfo=[XX2,YY2min,ZZ2]);
+real x30=0.;
+real x31=2*pi;
+real y30=0.;
+real y31=1.5;
 
-/////////////////////////////////
-x0=0.; x1=2*pi; y0=0.; y1=1.5;
-mesh Thsq3 = square(35,8,[x0+(x1-x0)*x,y0+(y1-y0)*y]);
 func XX3min = 1.;
 func XX3max = 2.;
 func YY3 = x;
 func ZZ3 = y;
 
-mesh3 Th33h = movemesh23(Thsq3,transfo=[XX3max,YY3,ZZ3]);
-mesh3 Th33b = movemesh23(Thsq3,transfo=[XX3min,YY3,ZZ3]);
+// Mesh
+mesh Thsq1 = square(5, 35, [x10+(x11-x10)*x, y10+(y11-y10)*y]);
+mesh Thsq2 = square(5, 8, [x20+(x21-x20)*x, y20+(y21-y20)*y]);
+mesh Thsq3 = square(35, 8, [x30+(x31-x30)*x, y30+(y31-y30)*y]);
 
-////////////////////////////////
-mesh3 Th33 = Th31h+Th31b+Th32h+Th32b+Th33h+Th33b; // "gluing" surface meshs to obtain the surface of cube
-savemesh(Th33,"Th33.mesh");
+// Mesh 2D to 3D surface
+mesh3 Th31h = movemesh23(Thsq1, transfo=[XX1, YY1, ZZ1max]);
+mesh3 Th31b = movemesh23(Thsq1, transfo=[XX1, YY1, ZZ1min]);
 
-// Build a mesh of a axis parallel box with TetGen
-real[int] domain =[1.5,pi,0.75,145,0.0025];
-mesh3 Thfinal = tetg(Th33,switch="paAAQY",regionlist=domain); // Tetrahelize the interior of the cube with tetgen
-savemesh(Thfinal,"Thfinal.mesh");
+mesh3 Th32h = movemesh23(Thsq2, transfo=[XX2, YY2max, ZZ2]);
+mesh3 Th32b = movemesh23(Thsq2, transfo=[XX2, YY2min, ZZ2]);
 
-// Build a mesh of a half cylindrical shell of interior radius 1. and exterior radius 2 and heigh 1.5
+mesh3 Th33h = movemesh23(Thsq3, transfo=[XX3max, YY3, ZZ3]);
+mesh3 Th33b = movemesh23(Thsq3, transfo=[XX3min, YY3, ZZ3]);
+
+// Gluing surfaces
+mesh3 Th33 = Th31h + Th31b + Th32h + Th32b + Th33h + Th33b;
+plot(Th33, cmm="Th33");
+
+// Tetrahelize the interior of the cube with tetgen
+real[int] domain =[1.5, pi, 0.75, 145, 0.0025];
+mesh3 Thfinal = tetg(Th33, switch="paAAQY", regionlist=domain);
+plot(Thfinal, cmm="Thfinal");
+
+// Build a mesh of a half cylindrical shell of interior radius 1, and exterior radius 2 and heigh 1.5
 func mv2x = x*cos(y);
 func mv2y = x*sin(y);
 func mv2z = z;
-mesh3 Thmv2 = movemesh3(Thfinal, transfo=[mv2x,mv2y,mv2z]);
-savemesh(Thmv2,"halfcylindricalshell.mesh")
+mesh3 Thmv2 = movemesh3(Thfinal, transfo=[mv2x, mv2y, mv2z]);
+plot(Thmv2, cmm="Thmv2");
 ```
 
-The command `:::freefem movemesh` is described in the following section.
+The command `:::freefem movemesh3` is described in the following section.
 
 **The keyword `:::freefem tetgtransfo`**
 
-This keyword correspond to a composition of command line `:::freefem tetg` and `:::freefem movemesh23`
+This keyword correspond to a composition of command line `:::freefem tetg` and `:::freefem movemesh23`.
 
 ```freefem
-tetgtransfo(Th2, transfo= [Phi(1), Phi(2), Phi(3)]), ...) = tetg(Th3surf, ...),
+tetgtransfo(Th2, transfo=[Phi(1), Phi(2), Phi(3)]), ...) = tetg(Th3surf, ...),
 ```
 
-where `:::freefem Th3surf = movemesh23(Th2,tranfo=[Phi(1), Phi(2), Phi(3)])` and `:::freefem Th2` is the input two dimensional mesh of `:::freefem tetgtransfo`.
+where `:::freefem Th3surf = movemesh23(Th2, tranfo=[Phi(1), Phi(2), Phi(3)])` and `:::freefem Th2` is the input two dimensional mesh of `:::freefem tetgtransfo`.
 
-The parameters of this command line are on the one hand the parameters
-`:::freefem label`, `:::freefem switch`, `:::freefem regionlist`, `:::freefem nboffacetcl`, `:::freefem facetcl` of keyword `:::freefem tetg` and on the other hand the parameter `:::freefem ptmerge` of keyword `:::freefem movemesh23`.
+The parameters of this command line are on the one hand the parameters `:::freefem label`, `:::freefem switch`, `:::freefem regionlist`, `:::freefem nboffacetcl`, `:::freefem facetcl` of keyword `:::freefem tetg` and on the other hand the parameter `:::freefem ptmerge` of keyword `:::freefem movemesh23`.
 
 !!!note
 	To use `:::freefem tetgtransfo`, the result's mesh of `:::freefem movemesh23` must be a closed surface and define one region only. Therefore, the parameter `:::freefem regionlist` is defined for one region.
-	An example of this keyword can be found in line  of file `:::freefem buildlayers.edp`
+
+	An example of this keyword can be found in line of file `buildlayersmesh.edp`$\codered$
 
 **The keyword `:::freefem tetgconvexhull`**
 
-FreeFem++, using tetgen, is able to build a tetrahedralization from a set of points. This
-tetrahedralization is a Delaunay mesh of the convex hull of the set of points.
+FreeFem++, using tetgen, is able to build a tetrahedralization from a set of points. This tetrahedralization is a Delaunay mesh of the convex hull of the set of points.
 
 The coordinates of the points can be initialized in two ways. The first is a file that contains the coordinate of points $X_{i}=(x_{i}, y_{i}, z_{i})$. This files is organized as follows:
 
@@ -1643,19 +1670,17 @@ x_{n_v} & y_{n_v} & z_{n_v}
 \end{array}
 $$
 
-The second way is to give three arrays that correspond respectively to the
-$x-$coordinates, $y-$coordinates and $z-$coordinates.
+The second way is to give three arrays that correspond respectively to the $x-$coordinates, $y-$coordinates and $z-$coordinates.
 
 The parameters of this command line are :
 
-* `:::freefem switch =` A string expression. This string corresponds to the command line `:::freefem switch` of TetGen see Section 3.2 of [Hang2006](#refHang2006).
+* `:::freefem switch=` A string expression. This string corresponds to the command line `:::freefem switch` of TetGen see Section 3.2 of [Hang2006](#refHang2006).
 
-* `:::freefem reftet =` An integer expression. Set the label of tetrahedra.
+* `:::freefem reftet=` An integer expression. Set the label of tetrahedra.
 
-* `:::freefem label =` An integer expression. Set the label of triangles.
+* `:::freefem label=` An integer expression. Set the label of triangles.
 
-
-In the string switch, we can't used the option `:::freefem p` and `:::freefem q` of tetgen.
+In the string `:::freefem switch`, we can't used the option `:::freefem p` and `:::freefem q` of Tetgen.
 
 ### Reconstruct/Refine a three dimensional mesh with TetGen
 
@@ -1663,87 +1688,89 @@ Meshes in three dimension can be refined using TetGen with the command line `:::
 
 The parameter of this keyword are
 
-* `:::freefem region=` an integer array that allow to change the region number  of tetrahedra. This array is defined as the parameter `:::freefem reftet` in the keyword `:::freefem change`.
+* `:::freefem region=` an integer array that allow to change the region number of tetrahedra. This array is defined as the parameter `:::freefem reftet` in the keyword `:::freefem change`.
 
 * `:::freefem label=` an integer array that allow to change the label of boundary triangles. This array is defined as the parameter `:::freefem label` in the keyword `:::freefem change`.
 
-* `:::freefem sizevolume=` a reel function. This function allows to constraint volume size of tetrahedra in the domain. (see example \ref{ex:tetg-adap} $\codered$ to build 3d adapt mesh.
+* `:::freefem sizevolume=` a reel function. This function allows to constraint volume size of tetrahedra in the domain. (see example \ref{ex:tetg-adap} $\codered$ to build 3d adapted mesh).
 
-The parameters `:::freefem switch`, `:::freefem nbofregions`, `:::freefem regionlist`,
-`:::freefem nboffacetcl` and `:::freefem facetcl` of the command line which call TetGen (tetg) is used for `:::freefem tetgrefine`.
+The parameters `:::freefem switch`, `:::freefem nbofregions`, `:::freefem regionlist`, `:::freefem nboffacetcl` and `:::freefem facetcl` of the command line which call TetGen (`:::freefem tetg`) is used for `:::freefem tetgrefine`.
 
 In the parameter `:::freefem switch=`, the character `:::freefem r` should be used without the character `:::freefem p`.
+
 For instance, see the manual of TetGen [Hang2006](#refHang2006) for effect of `:::freefem r` to other character.
 
 The parameter `:::freefem regionlist` allows to define a new volume constraint in the region. The label in the `:::freefem regionlist` will be the previous label of region.
+
 This parameter and `:::freefem nbofregions` can't be used with parameter `:::freefem sizevolume`.
 
 **Example `:::freefem refinesphere.edp`**
 
 ```freefem
-// file refinesphere.edp
-
 load "msh3"
 load "tetgen"
 load "medit"
 
-mesh Th=square(10,20,[x*pi-pi/2,2*y*pi]); // $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
+mesh Th = square(10, 20, [x*pi-pi/2, 2*y*pi]); // $]-pi/2, pi/2[X]0, 2pi[ $
+
 // A parametrization of a sphere
-func f1 =cos(x)*cos(y);
-func f2 =cos(x)*sin(y);
+func f1 = cos(x)*cos(y);
+func f2 = cos(x)*sin(y);
 func f3 = sin(x);
-// Partiel derivative of the parametrization DF
-func f1x=sin(x)*cos(y);
-func f1y=-cos(x)*sin(y);
-func f2x=-sin(x)*sin(y);
-func f2y=cos(x)*cos(y);
-func f3x=cos(x);
-func f3y=0;
-// $ M = DF^t DF $
-func m11=f1x^2+f2x^2+f3x^2;
-func m21=f1x*f1y+f2x*f2y+f3x*f3y;
-func m22=f1y^2+f2y^2+f3y^2;
+// Partial derivative of the parametrization DF
+func f1x = sin(x)*cos(y);
+func f1y = -cos(x)*sin(y);
+func f2x = -sin(x)*sin(y);
+func f2y = cos(x)*cos(y);
+func f3x = cos(x);
+func f3y = 0;
+// M = DF^t DF
+func m11 = f1x^2 + f2x^2 + f3x^2;
+func m21 = f1x*f1y + f2x*f2y + f3x*f3y;
+func m22 = f1y^2 + f2y^2 + f3y^2;
 
-func perio=[[4,y],[2,y],[1,x],[3,x]];
-real hh=0.1;
-real vv= 1/square(hh);
-verbosity=2;
-Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-plot(Th,wait=1);
-
-verbosity=2;
+// Mesh adaptation
+func perio = [[4, y], [2, y], [1, x], [3, x]];
+real hh = 0.1;
+real vv = 1/square(hh);
+verbosity = 2;
+Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
+Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
+plot(Th, wait=true);
 
 // Construction of the surface of spheres
-real Rmin  = 1.;
+real Rmin = 1.;
 func f1min = Rmin*f1;
 func f2min = Rmin*f2;
 func f3min = Rmin*f3;
 
-mesh3 Th3=movemesh23(Th,transfo=[f1min,f2min,f3min]);
+mesh3 Th3 = movemesh23(Th, transfo=[f1min, f2min, f3min]);
 
-real[int] domain = [0.,0.,0.,145,0.01];
-mesh3 Th3sph=tetg(Th3,switch="paAAQYY",nbofregions=1,regionlist=domain);
+// Contruct the volume
+real[int] domain = [0., 0., 0., 145, 0.01];
+mesh3 Th3sph = tetg(Th3, switch="paAAQYY", nbofregions=1, regionlist=domain);
 
-int[int] newlabel = [145,18];
-real[int] domainrefine = [0.,0.,0.,145,0.0001];
-mesh3 Th3sphrefine=tetgreconstruction(Th3sph,switch="raAQ",reftet=newlabel,
-nbofregions=1,regionlist=domain,refinesizeofvolume=0.0001);
+// Refine
+int[int] newlabel = [145, 18];
+real[int] domainrefine = [0., 0., 0., 145, 0.0001];
+mesh3 Th3sphrefine = tetgreconstruction(Th3sph, switch="raAQ", reftet=newlabel,
+	nbofregions=1, regionlist=domain, sizeofvolume=0.0001);
 
-int[int] newlabel2 = [145,53];
-func fsize = 0.01/(( 1 + 5*sqrt( (x-0.5)^2+(y-0.5)^2+(z-0.5)^2) )^3);
-mesh3 Th3sphrefine2=tetgreconstruction(Th3sph,switch="raAQ",reftet=newlabel2,
-sizeofvolume=fsize);
+// Re-Refine
+int[int] newlabel2 = [145, 53];
+func fsize = 0.01/((1 + 5*sqrt((x-0.5)^2+(y-0.5)^2+(z-0.5)^2))^3);
+mesh3 Th3sphrefine2 = tetgreconstruction(Th3sph, switch="raAQ", reftet=newlabel2,
+	sizeofvolume=fsize);
 
-medit(``sphere'',Th3sph);
-medit(``isotroperefine'' ,Th3sphrefine);
-medit(``anisotroperefine'',Th3sphrefine2);
-
+// Medit
+medit("sphere", Th3sph);
+medit("isotroperefine", Th3sphrefine);
+medit("anisotroperefine", Th3sphrefine2);
 ```
 
 ### Moving mesh in three dimensions
 
-Meshes in three dimensions can be translated rotated and deformed using the command line movemesh as in the 2D case (see section `:::freefem movemesh` in chapiter 5 $\codered$). If $\Omega$ is tetrahedrized as $T_{h}(\Omega)$, and $\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))$ is a displacement vector then $\Phi(T_{h})$ is obtained by
+Meshes in three dimensions can be translated, rotated and deformed using the command line `:::freefem movemesh` as in the 2D case (see [section `:::freefem movemesh`](#movemesh)). If $\Omega$ is tetrahedrized as $T_{h}(\Omega)$, and $\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))$ is a displacement vector then $\Phi(T_{h})$ is obtained by
 
 ```freefem
 mesh3 Th = movemesh(Th, [$\Phi$1, $\Phi$2, $\Phi$3], ...);
@@ -1751,54 +1778,52 @@ mesh3 Th = movemesh(Th, [$\Phi$1, $\Phi$2, $\Phi$3], ...);
 
 The parameters of movemesh in three dimensions are :
 
-* `:::freefem region  =` set integer label of tetrahedra. 0 by default.
+* `:::freefem region=` set integer label of tetrahedra. 0 by default.
 
-* `:::freefem label =` set the label of faces of border. This parameters is initialized as label for the keyword `:::freefem change` (\ref{eq.org.vector.change.label}) $\codered$.
+* `:::freefem label=` set the label of faces of border. This parameters is initialized as label for the keyword [`:::freefem change`](http://127.0.0.1:8000/documentation/MeshGeneration/#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
 
-* `:::freefem facemerge =` An integer expression. When you transform a mesh, some faces can be merged. This parameters equals to one if merge's faces is considered.
-Otherwise equals to zero. By default, this parameter is equals to 1.
+* `:::freefem facemerge=` An integer expression. When you transform a mesh, some faces can be merged. This parameters equals to one if merge's faces is considered. Otherwise equals to zero. By default, this parameter is equals to 1.
 
 * `:::freefem ptmerge =` A real expression. When you transform a mesh, some points can be merged. This parameters is the criteria to define two merging points.
-By default, we use
-$$
-ptmerge \: = \: 1e-7 \: \:Vol( B ),
-$$
-where $B$ is the smallest axis parallel boxes containing the discretion domain of $\Omega$ and $Vol(B)$ is the volume of this box.
+	By default, we use
+	$$
+	ptmerge \: = \: 1e-7 \: \:Vol( B ),
+	$$
+	where $B$ is the smallest axis parallel boxes containing the discretion domain of $\Omega$ and $Vol(B)$ is the volume of this box.
 
-* `:::freefem orientation =` An integer expression ( 1 by by default) , to reverse or not the orientation of tet if not positive.  
+* `:::freefem orientation =` An integer expression (1 by by default), to reverse or not the orientation of tetrahedra if not positive.
 
-
-An example of this command can be found in the file `:::freefem Poisson3d.edp` located in the directory examples++-3d.
+An example of this command can be found in the file `:::freefem Poisson3d.edp` located in the directory examples++-3d.$\codered$
 
 ### Layer mesh
 
-In this section, we present the command line to obtain a Layer mesh: `:::freefem buildlayermesh`.
-This mesh is obtained by extending a two dimensional mesh in the z-axis.
+In this section, we present the command line to obtain a Layer mesh: `:::freefem buildlayer`. This mesh is obtained by extending a two dimensional mesh in the $z$-axis.
 
-The domain $\Omega_{3d}$ defined by the layer mesh is equal to $\Omega_{3d} = \Omega_{2d} \times [zmin, zmax]$ where $\Omega_{2d}$ is the domain define by the two dimensional mesh, $zmin$ and $zmax$ are function of $\Omega_{2d}$ in $R$ that defines respectively the lower surface and upper surface of $\Omega_{3d}$.
+The domain $\Omega_{3d}$ defined by the layer mesh is equal to $\Omega_{3d} = \Omega_{2d} \times [zmin, zmax]$ where $\Omega_{2d}$ is the domain define by the two dimensional mesh. $zmin$ and $zmax$ are function of $\Omega_{2d}$ in $\R$ that defines respectively the lower surface and upper surface of $\Omega_{3d}$.
 
 <center>
 
-|Fig. 5.35: Example of Layer mesh in three dimensions.|
+|<a name="Fig35">Fig. 35</a>: Example of Layer mesh in three dimensions.|
 |:----:|
 |![Layer Mesh 3D](images/MeshGeneration_LayerMesh.png)|
 
 </center>
 
 For a vertex of a two dimensional mesh $V_{i}^{2d} = (x_{i},y_{i})$, we introduce the number of associated vertices in the $z-$axis $M_{i}+1$.
-We denote by $M$ the maximum of $M_{i}$ over the vertices of the two dimensional mesh. This value are called the number of layers (if $\forall i, \; M_{i}=M$ then there are $M$ layers in the mesh of $\Omega_{3d}$). $V_{i}^{2d}$ generated $M+1$ vertices which are defined by :
+
+We denote by $M$ the maximum of $M_{i}$ over the vertices of the two dimensional mesh. This value is called the number of layers (if $\forall i, \; M_{i}=M$ then there are $M$ layers in the mesh of $\Omega_{3d}$). $V_{i}^{2d}$ generated $M+1$ vertices which are defined by :
 
 $$
-\forall j=0, \ldots, M, \qquad  V_{i,j}^{3d} = ( x_{i}, y_{i}, \theta_{i}(z_{i,j})  ),
+\forall j=0, \ldots, M, \qquad V_{i,j}^{3d} = ( x_{i}, y_{i}, \theta_{i}(z_{i,j}) ),
 $$
 
 where $(z_{i,j})_{j=0,\ldots,M}$ are the $M+1$ equidistant points on the interval $[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d})]$:
 
 \begin{eqnarray*}
-z_{i,j} =  j \: \delta \alpha + zmin(V_{i}^{2d}), \qquad \delta \alpha= \frac{ zmax( V_{i}^{2d} ) - zmin( V_{i}^{2d}) }{M}.
+z_{i,j} = j \: \delta \alpha + zmin(V_{i}^{2d}), \qquad \delta \alpha= \frac{ zmax( V_{i}^{2d} ) - zmin( V_{i}^{2d}) }{M}.
 \end{eqnarray*}
 
-The function $\theta_{i}$, defined on  $[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]$, is given by :
+The function $\theta_{i}$, defined on $[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]$, is given by :
 
 $$
 \theta_{i}(z) = \left \{
@@ -1812,6 +1837,7 @@ $$
 with $(\theta_{i,j})_{j=0,\ldots,M_{i}}$ are the $M_{i}+1$ equidistant points on the interval $[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]$.
 
 Set a triangle $K=(V_{i1}^{2d}$, $V_{i2}^{2d}$, $V_{i3}^{2d})$ of the two dimensional mesh. $K$ is associated with a triangle on the upper surface (resp. on the lower surface) of layer mesh:
+
 $( V_{i1,M}^{3d}, V_{i2,M}^{3d}, V_{i3,M}^{3d} )$ (resp. $( V_{i1,0}^{3d}, V_{i2,0}^{3d}, V_{i3,0}^{3d})$).
 
 Also $K$ is associated with $M$ volume prismatic elements which are defined by :
@@ -1827,35 +1853,40 @@ Theses volume elements can have some merged point:
 * 2 merged points : tetrahedra
 * 3 merged points : no elements
 
-The elements with merged points are called degenerate elements. To obtain a mesh with tetrahedra, we decompose the pyramid into two tetrahedra and the prism into three tetrahedra. These tetrahedra are obtained by cutting the quadrilateral face of pyramid and prism with the diagonal which have the vertex with the maximum index (see [Hecht1992](#refHecht1992)} $\codered$ for the reason of this choice).
+The elements with merged points are called degenerate elements. To obtain a mesh with tetrahedra, we decompose the pyramid into two tetrahedra and the prism into three tetrahedra. These tetrahedra are obtained by cutting the quadrilateral face of pyramid and prism with the diagonal which have the vertex with the maximum index (see [Hecht1992](#refHecht1992)} for the reason of this choice).
 
 The triangles on the middle surface obtained with the decomposition of the volume prismatic elements are the triangles generated by the edges on the border of the two dimensional mesh. The label of triangles on the border elements and tetrahedra are defined with the label of these associated elements.
 
-The arguments of `:::freefem buildlayermesh` is a two dimensional mesh and the number of layers $M$.
+The arguments of `:::freefem buildlayer` is a two dimensional mesh and the number of layers $M$.
 
 The parameters of this command are:
 
-* `:::freefem zbound =` [zmin,zmax] where zmin and zmax are functions expression. Theses functions define the lower surface mesh and upper mesh of surface mesh.
+* `:::freefem zbound=` $[zmin,zmax]$ where $zmin$ and $zmax$ are functions expression. Theses functions define the lower surface mesh and upper mesh of surface mesh.
 
-* `:::freefem coef =` A function expression between [0,1]. This parameter is used to introduce degenerate element in mesh.
-The number of associated points or vertex $V_{i}^{2d}$ is the integer part of $coef(V_{i}^{2d}) M$.
+* `:::freefem coef=` A function expression between [0,1]. This parameter is used to introduce degenerate element in mesh.
 
-* `:::freefem region =` This vector is used to initialized the region of tetrahedra. This vector contain successive pair of  the  2d region number at index $2i$ and the corresponding 3d region number at index $2i+1$, like (\ref{eq.org.vector.change.label}) $\codered$.
-become the
+	The number of associated points or vertex $V_{i}^{2d}$ is the integer part of $coef(V_{i}^{2d}) M$.
 
-* `:::freefem labelmid =` This vector is used to initialized the 3d labels number  of the vertical face or mid face form the 2d label number. This vector contains successive pair of the  2d label number at index $2i$ and the corresponding 3d label number at index $2i+1$, like (\ref{eq.org.vector.change.label}).
+* `:::freefem region=` This vector is used to initialized the region of tetrahedra.
 
-* `:::freefem labelup =` This vector is used to initialized the 3d label numbers  of the upper/top face form the 2d region number. This vector contains successive pair of the 2d region number at index $2i$ and the corresponding 3d label number at index $2i+1$, like (\ref{eq.org.vector.change.label}) $\codered$.
+	This vector contain successive pair of the 2d region number at index $2i$ and the corresponding 3d region number at index $2i+1$, like [`:::freefem change`](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
 
-* `:::freefem labeldown =` Same as the previous case but for the lower/down face label.
+* `:::freefem labelmid=` This vector is used to initialized the 3d labels number of the vertical face or mid face form the 2d label number.
 
+	This vector contains successive pair of the 2d label number at index $2i$ and the corresponding 3d label number at index $2i+1$, like [`:::freefem change`](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
+
+* `:::freefem labelup=` This vector is used to initialized the 3d label numbers of the upper/top face form the 2d region number.
+
+	This vector contains successive pair of the 2d region number at index $2i$ and the corresponding 3d label number at index $2i+1$, like [`:::freefem change`](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
+
+* `:::freefem labeldown=` Same as the previous case but for the lower/down face label.
 
 Moreover, we also add post processing parameters that allow to moving the mesh. These parameters correspond to parameters `:::freefem transfo`, `:::freefem facemerge` and `:::freefem ptmerge` of the command line `:::freefem movemesh`.
 
-The vector `:::freefem region`, `:::freefem labelmid`, `:::freefem labelup` and `:::freefem labeldown` These vectors are composed of $n_{l}$ successive pairs of number $O_i,N_l$  where $n_{l}$ is the number (label or region) that we want to get.
+The vector `:::freefem region`, `:::freefem labelmid`, `:::freefem labelup` and `:::freefem labeldown` These vectors are composed of $n_{l}$ successive pairs of number $O_i,N_l$ where $n_{l}$ is the number (label or region) that we want to get.
 
-An example of this command line is given in `:::freefem buildlayermesh.edp`.
-
+An example of this command line is given in `:::freefem buildlayermesh.edp`.$\codered$
+<!--- END OF REVIEW -- TO CONTINUE --->
 **Example `:::freefem cube.edp`**
 
 ```freefem
