@@ -28,11 +28,9 @@ AD is
 +\frac{\p n_x}{\p x}\delta x\right)(x,y)\delta y.
 \]
 
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[height=3cm]{soapfilm}
-\end{center}
-\end{figure}
+|htbp|
+|:----:|
+|![htbp](images/soapfilm.png)|
 
 Similarly, for the edges AB and DC we have
 
@@ -68,7 +66,7 @@ Using the Laplace operator $\Delta = \p^2 /\p x^2 + \p^2 /\p y^2$, we can find t
 \end{equation}
 
 where $f=p/\mu$, $\Omega =\{(x,y);\;x^{2}+y^{2}<1\}$.
-Poisson's equation (\ref{eqn:Poisson}) appears
+Poisson's equation (\ref{eqn:Poisson} 2.1 $\codered$) appears
 also in __electrostatics__ taking the form of $f=\rho /\epsilon $ where
 $\rho $ is the charge density, $\epsilon $ the dielectric constant and $u$
 is named as electrostatic potential. The soap film is glued to the ring $%
@@ -80,7 +78,7 @@ u=0\quad \mbox{on }\p \Omega
 
 If the force is gravity, for simplify, we assume that $f=-1$.
 
-_Example_ [a\_tutorial.edp]~
+ __Example__ a\_tutorial.edp
 
 ```freefem
 border a(t=0,2*pi){ x = cos(t); y = sin(t);label=1;};
@@ -91,10 +89,10 @@ fespace femp1(disk,P1);
 femp1 u,v;
 func f = -1;
 problem laplace(u,v) =
-    int2d(disk)( dx(u)*dx(v) + dy(u)*dy(v) )     //  bilinear form
-  - int2d(disk)( f*v )                          //  linear form
-  + on(1,u=0) ;                                // boundary condition
-func ue = (x^2+y^2-1)/4;   // ue: exact solution
+    int2d(disk)( dx(u)*dx(v) + dy(u)*dy(v) ) // bilinear form
+  - int2d(disk)( f*v ) // linear form
+  + on(1,u=0) ; // boundary condition
+func ue = (x^2+y^2-1)/4; // ue: exact solution
 laplace;
 femp1 err = u - ue;
 
@@ -111,26 +109,20 @@ plot(disk,wait=1);
 laplace;
 
 plot (u,value=true,wait=true);
-err = u - ue;  // become FE-function on adapted mesh
+err = u - ue; // become FE-function on adapted mesh
 plot(err,value=true,wait=true);
 cout << "error L2=" << sqrt(int2d(disk)( err^2) )<< endl;
 cout << "error H10=" << sqrt(int2d(disk)((dx(u)-x/2)^2)
                              + int2d(disk)((dy(u)-y/2)^2))<< endl;
 ```
 
-\begin{figure}[htbp]
-\begin{minipage}{\textwidth}
-\begin{minipage}{0.4\textwidth}
-\includegraphics[width=\textwidth]{aTutorial}%
-\caption{isovalue of $u$}
-\end{minipage}
-\hspace{0.5mm}
-\begin{minipage}{0.6\textwidth}
-\includegraphics[width=\textwidth]{soapfilm3d}%
-\caption{a side view of $u$}
-\end{minipage}
-\end{minipage}
-\end{figure}
+|Fig. 9.1: isovalue of $u$|
+|:----:|
+|![aTutorial](images/aTutorial.png)|
+
+|Fig 9.2: A side view of $u$|
+|:----:|
+|![soapfilm3d](images/soapfilm3d.png)|
 
 In 19th line, the $L^2$-error estimation between the exact solution $u_e$,
 $$
@@ -140,11 +132,9 @@ and from 20th line to 21th line, the $H^1$-error seminorm estimation
 $$
 |u_h - u_e|_{1,\Omega}=\left(\int_{\Omega}|\nabla u_h-\nabla u_e|^2\, \d x\d y\right)^{1/2}
 $$
-are done on the initial mesh. The results are
-$\|u_h - u_e\|_{0,\Omega}=0.000384045,\, |u_h - u_e|_{1,\Omega}=0.0375506$.
+are done on the initial mesh. The results are $\|u_h - u_e\|_{0,\Omega}=0.000384045,\, |u_h - u_e|_{1,\Omega}=0.0375506$.
 
-After the adaptation, we hava
-$\|u_h - u_e\|_{0,\Omega}=0.000109043,\, |u_h - u_e|_{1,\Omega}=0.0188411$.
+After the adaptation, we have $\|u_h - u_e\|_{0,\Omega}=0.000109043,\, |u_h - u_e|_{1,\Omega}=0.0188411$.
 So the numerical solution is improved by adaptation of mesh.
 
 
@@ -157,7 +147,7 @@ Then the electric field $\vec E$ satisfies
 \mathrm{div}\vec E=\rho/\epsilon,\quad \mathrm{curl}\vec E=0
 \end{eqnarray}
 
-where $\rho$ is the charge density and $\epsilon$ is called the permittivity of free space. From the second equation in (\ref{eqn:Maxwell0}), we can introduce
+where $\rho$ is the charge density and $\epsilon$ is called the permittivity of free space. From the second equation in (\ref{eqn:Maxwell0} 9.3 $\codered$), we can introduce
 the electrostatic potential such that $\vec E=-\nabla \phi$.
 Then we have Poisson's equation $-\Delta \phi=f$, $f=-\rho/\epsilon$.
 We now obtain the equipotential line which is the level curve of $\phi$,
@@ -180,17 +170,16 @@ Here $g$ is any function of $x$ equal to $\varphi_i$ on $C_i$ and to
 0 on $C_0$. The boundary equation is a reduced form for:
 
 \begin{equation}
-\varphi =\varphi _{i}\;\text{on }C_{i},\;i=1...N,\varphi =0\;\text{on\ }%
-C_{0}.
+\varphi =\varphi_{i}\;\text{on }C_{i},\;i=1...N,\varphi =0\;\text{on }C_{0}.
 \end{equation}
 
-_Example_ ~
-First we give the geometrical informations; $C_0=\{(x,y);\; x^2+y^2=5^2\}$,
+__Example__
+_First we give the geometrical informations; $C_0=\{(x,y);\; x^2+y^2=5^2\}$,
 $C_1=\{(x,y):\; \frac{1}{0.3^2}(x-2)^2+\frac{1}{3^2}y^2=1\}$,
 $C_2=\{(x,y):\; \frac{1}{0.3^2}(x+2)^2+\frac{1}{3^2}y^2=1\}$.
 Let $\Omega$ be the disk enclosed by $C_0$ with the elliptical holes enclosed
 by $C_1$ and $C_2$. Note that $C_0$ is described counterclockwise, whereas the
-elliptical holes are described clockwise, because the boundary must be oriented so that the computational domain is to its left.
+elliptical holes are described clockwise, because the boundary must be oriented so that the computational domain is to its left._
 
 ```freefem
 // a circle with center at (0 ,0) and radius 5
@@ -199,27 +188,27 @@ border C1(t=0,2*pi) { x = 2+0.3 * cos(t); y = 3*sin(t); }
 border C2(t=0,2*pi) { x = -2+0.3 * cos(t); y = 3*sin(t); }
 
 mesh Th = buildmesh(C0(60)+C1(-50)+C2(-50));
-plot(Th,ps="electroMesh"); // figure \ref{electroMesh}
-fespace Vh(Th,P1);     // P1 FE-space
-Vh uh,vh;              // unknown and test function.
-problem Electro(uh,vh) =  //  definition of the problem
-    int2d(Th)( dx(uh)*dx(vh) + dy(uh)*dy(vh) ) //  bilinear
-    + on(C0,uh=0)       //  boundary condition on $C_0$
-    + on(C1,uh=1)       //  +1 volt on $C_1$
-    + on(C2,uh=-1) ;    //  -1 volt on $C_2$
+plot(Th,ps="electroMesh"); // figure \ref{electroMesh} $\codered$
+fespace Vh(Th,P1); // P1 FE-space
+Vh uh,vh; // unknown and test function.
+problem Electro(uh,vh) = // definition of the problem
+    int2d(Th)( dx(uh)*dx(vh) + dy(uh)*dy(vh) ) // bilinear
+    + on(C0,uh=0) // boundary condition on $C_0$
+    + on(C1,uh=1) // +1 volt on $C_1$
+    + on(C2,uh=-1) ; // -1 volt on $C_2$
 
-Electro; // solve the problem, see figure \ref{electro} for the solution
-plot(uh,ps="electro.eps",wait=true); // figure \ref{electro}
+Electro; // solve the problem, see figure \ref{electro} $\codered$ for the solution
+plot(uh,ps="electro.eps",wait=true); // figure \ref{electro} $\codered$
 ```
 
-\twoplot[height=5cm]{electroMesh}{electro}{Disk with two elliptical holes}
-{Equipotential lines, where $C_1$ is located in right hand side}
+|Fig. 9.3: Disk with two elliptical holes|Fig. 9.4: Equipotential lines, where $C_1$ is located in right hand side|
+|:----:|:----:|
+|![electroMesh](images/electroMesh.png)|![electro](images/electro.png)|
 
 ### Aerodynamics
 
 Let us consider a wing profile $S$ in a uniform flow.
-Infinity will be represented
-by a large circle $\Gamma_{\infty}$.
+Infinity will be represented by a large circle $\Gamma_{\infty}$.
 As previously, we must solve
 
 \begin{equation}
@@ -228,21 +217,18 @@ As previously, we must solve
 \varphi|_{\Gamma_{\infty}}=u_{\infty 1x}-u_{\infty2x}
 \end{equation}
 
-where $\Omega$ is the area occupied by the
-fluid, $u_{\infty}$ is the air speed at infinity, $c$
-is a constant to be determined so that
-$\p_n\varphi$ is continuous at the trailing edge
-$P$ of $S$ (so-called Kutta-Joukowski condition).
-Lift is proportional to $c$.
+where $\Omega$ is the area occupied by the fluid, $u_{\infty}$ is the air speed at infinity, $c$
+is a constant to be determined so that $\p_n\varphi$ is continuous at the trailing edge
+$P$ of $S$ (so-called Kutta-Joukowski condition). Lift is proportional to $c$.
 To find $c$ we use a superposition method. As all equations in
-(\ref{eqn:NACA-5-5}) are
+(\ref{eqn:NACA-5-5} 9.6 $\codered$) are
 linear, the solution $\varphi_c$ is a linear function of $c$
 
 \begin{equation}
 \varphi_c = \varphi_0 + c\varphi_1,
 \end{equation}
 
-where $\varphi_0$ is a solution of (\ref{eqn:NACA-5-5}) with $c = 0$ and
+where $\varphi_0$ is a solution of (\ref{eqn:NACA-5-5} 9.6 $\codered$) with $c = 0$ and
 $\varphi_1$ is a solution with $c = 1$ and
 zero speed at infinity.
 With these two fields computed, we shall determine $c$
@@ -268,7 +254,6 @@ infinity. One finds $c$ by solving:
 \begin{eqnarray}
 -\Delta\varphi_0 = 0 ~~\textrm{in }\Omega,\qquad
 \varphi_0|_{\Gamma_1} = y - 0.1x, \quad \varphi_0|_{\Gamma_2} = 0,\\
-
 -\Delta\varphi_1 = 0 ~~\textrm{in }\Omega, \qquad
 \varphi_1|_{\Gamma_1} = 0, \quad \varphi_1|_{\Gamma_2} = 1.
 \end{eqnarray}
@@ -295,7 +280,7 @@ c = -\frac{\varphi_0(0.99, 0.01) + \varphi_0(0.99,-0.01)}
 {(\varphi_1(0.99, 0.01) + \varphi_1(0.99,-0.01) - 2)} .
 \end{equation}
 
-_Example_
+__Example__
 
 ```freefem
 // Computation of the potential flow around a NACA0012 airfoil.
@@ -316,24 +301,24 @@ border c(t=0,2*pi) { x=0.8*cos(t)+0.5;  y=0.8*sin(t); }
 wait = true;
 mesh Zoom = buildmesh(c(30)+upper(35)+lower(35));
 mesh Th = buildmesh(a(30)+upper(35)+lower(35));
-fespace Vh(Th,P2);     // P1 FE space
-Vh psi0,psi1,vh;              // unknown and test function.
+fespace Vh(Th,P2); // P1 FE space
+Vh psi0,psi1,vh; // unknown and test function.
 fespace ZVh(Zoom,P2);
 
-solve Joukowski0(psi0,vh) =     //  definition of the problem
-    int2d(Th)( dx(psi0)*dx(vh) + dy(psi0)*dy(vh) ) //  bilinear form
-  + on(a,psi0=y-0.1*x)                      //  boundary condition form
+solve Joukowski0(psi0,vh) = // definition of the problem
+    int2d(Th)( dx(psi0)*dx(vh) + dy(psi0)*dy(vh) ) // bilinear form
+  + on(a,psi0=y-0.1*x) // boundary condition form
   + on(upper,lower,psi0=0);
 plot(psi0);
 
-solve Joukowski1(psi1,vh) =     //  definition of the problem
-    int2d(Th)( dx(psi1)*dx(vh) + dy(psi1)*dy(vh) ) //  bilinear form
-  + on(a,psi1=0)                      //  boundary condition form
+solve Joukowski1(psi1,vh) = // definition of the problem
+    int2d(Th)( dx(psi1)*dx(vh) + dy(psi1)*dy(vh) ) // bilinear form
+  + on(a,psi1=0) // boundary condition form
   + on(upper,lower,psi1=1);
 
 plot(psi1);
 
-    // continuity of pressure at trailing edge
+ // continuity of pressure at trailing edge
 real beta = psi0(0.99,0.01)+psi0(0.99,-0.01);
 beta = -beta / (psi1(0.99,0.01)+ psi1(0.99,-0.01)-2);
 
@@ -347,20 +332,19 @@ ZVh Zcp=cp;
 plot(Zcp,nbiso=40);
 ```
 
-\twoplot[height=5cm]{naca1}{naca2}
-{isovalue of $cp = -(\p_x\psi)^2 - (\p_y\psi)^2$}
-{Zooming of $cp$}
+|Fig. 9.5: isovalue of $cp = -(\p_x\psi)^2 - (\p_y\psi)^2$|Fig. 9.6: Zooming of $cp$|
+|:----:|:----:|
+|![naca1](images/naca1.png)|![naca2](images/naca2.png)|
 
 ### Error estimation
 
 There are famous estimation between the numerical result $u_h$ and the
-exact solution $u$ of the problem \ref{eqn:Poisson} and \ref{eqn:Dirichlet}:
+exact solution $u$ of the problem \ref{eqn:Poisson} 2.1 $\codered$ and \ref{eqn:Dirichlet} 2.2 $\codered$:
 If triangulations $\{\mathcal{T}_h\}_{h\downarrow 0}$ is regular
-(see \refSec{Regular Triangulation}), then we have the estimates
+(see \refSec{Regular Triangulation} 5.4 $\codered$), then we have the estimates
 
 \begin{eqnarray}
 |\nabla u - \nabla u_h|_{0,\Omega}&\le& C_1h\\
-
 \|u - u_h\|_{0,\Omega}&\le& C_2h^2
 \end{eqnarray}
 
@@ -368,9 +352,9 @@ with constants $C_1,\, C_2$ independent of $h$,
 if $u$ is in $H^2(\Omega)$. It is known that $u\in H^2(\Omega)$
 if $\Omega$ is convex.
 
-In this section we check (\ref{eqn:H1err}) and (\ref{eqn:L2err}).
+In this section we check (\ref{eqn:H1err} 9.14 $\codered$) and (\ref{eqn:L2err} 9.15 $\codered$).
 We will pick up numericall error if we use the numerical derivative,
-so we will use the following for (\ref{eqn:H1err}).
+so we will use the following for (\ref{eqn:H1err} 9.14 $\codered$).
 
 \begin{eqnarray*}
 \int_{\Omega}|\nabla u - \nabla u_h|^2\, \d x\d y
@@ -382,43 +366,43 @@ so we will use the following for (\ref{eqn:H1err}).
 The constants $C_1,\, C_2$ are depend on $\mathcal{T}_h$ and $f$,
 so we will find them by FreeFem++.
 In general, we cannot get the solution $u$ as a elementary functions
-(see Section \ref{sec:TwoVarFunctions}) even if spetical functions are added.
+(see Section \ref{sec:TwoVarFunctions} 4.8 $\codered$) even if spetical functions are added.
 Instead of the exact solution, here we use the approximate solution $u_0$  in
 $V_h(\mathcal{T}_h,P_2),\, h\sim 0$.
 
-_Example_ ~
+ __Example 9.4__
 
 ```freefem
- 1 : mesh Th0 = square(100,100);
- 2 : fespace V0h(Th0,P2);
- 3 : V0h u0,v0;
- 4 : func f = x*y; // sin(pi*x)*cos(pi*y);
- 5 :
- 6 : solve Poisson0(u0,v0) =
- 7 :     int2d(Th0)( dx(u0)*dx(v0) + dy(u0)*dy(v0) )     //  bilinear form
- 8 :   - int2d(Th0)( f*v0 )                          //  linear form
- 9 :   + on(1,2,3,4,u0=0) ;                // boundary condition
-10 :
-11 : plot(u0);
-12 :
-13 : real[int] errL2(10), errH1(10);
-14 :
-15 : for (int i=1; i<=10; i++) {
-16 :    mesh Th = square(5+i*3,5+i*3);
-17 :    fespace Vh(Th,P1);
-18 :    fespace Ph(Th,P0);
-19 :    Ph h = hTriangle;  // get the size of all triangles
-20 :    Vh u,v;
-21 :    solve Poisson(u,v) =
-22 :         int2d(Th)( dx(u)*dx(v) + dy(u)*dy(v) )     //  bilinear form
-23 :         - int2d(Th)( f*v )                          //  linear form
-24 :         + on(1,2,3,4,u=0) ;                // boundary condition
-25 :    V0h uu = u;
-26 :    errL2[i-1] = sqrt( int2d(Th0)((uu - u0)^2) )/h[].max^2;
-27 :    errH1[i-1] = sqrt( int2d(Th0)( f*(u0-2*uu+uu) ) )/h[].max;
-28 : }
-29 : cout << "C1 = " << errL2.max <<"("<<errL2.min<<")"<< endl;
-30 : cout << "C2 = " << errH1.max <<"("<<errH1.min<<")"<< endl;
+mesh Th0 = square(100,100);
+fespace V0h(Th0,P2);
+V0h u0,v0;
+func f = x*y; // sin(pi*x)*cos(pi*y);
+
+solve Poisson0(u0,v0) =
+    int2d(Th0)( dx(u0)*dx(v0) + dy(u0)*dy(v0) ) // bilinear form
+  - int2d(Th0)( f*v0 ) // linear form
+  + on(1,2,3,4,u0=0) ; // boundary condition
+
+plot(u0);
+
+real[int] errL2(10), errH1(10);
+
+for (int i=1; i<=10; i++) {
+   mesh Th = square(5+i*3,5+i*3);
+   fespace Vh(Th,P1);
+   fespace Ph(Th,P0);
+   Ph h = hTriangle; // get the size of all triangles
+   Vh u,v;
+   solve Poisson(u,v) =
+        int2d(Th)( dx(u)*dx(v) + dy(u)*dy(v) ) // bilinear form
+        - int2d(Th)( f*v ) // linear form
+        + on(1,2,3,4,u=0) ; // boundary condition
+   V0h uu = u;
+   errL2[i-1] = sqrt( int2d(Th0)((uu - u0)^2) )/h[].max^2;
+   errH1[i-1] = sqrt( int2d(Th0)( f*(u0-2*uu+uu) ) )/h[].max;
+}
+cout << "C1 = " << errL2.max <<"("<<errL2.min<<")"<< endl;
+cout << "C2 = " << errH1.max <<"("<<errH1.min<<")"<< endl;
 ```
 
 We can guess that $C_1=0.0179253(0.0173266)$ and
@@ -436,33 +420,35 @@ $u(x,0)=u(x,2\pi)$ for all $x$.
 These boundary conditions are achieved from the definition
 of the periodic finite element space.
 
-_Example_ [periodic.edp]~
+ __Example 9.5__ periodic.edp
 
 ```freefem
 mesh Th=square(10,10,[2*x*pi,2*y*pi]);
-// defined the \bgroup\tt fespace\egroup with periodic condition
-//    label :  2 and 4 are left and right   side with y the curve abscissa
-//             1 and 2 are bottom and upper side with x the curve abscissa
+// defined the fespace with periodic condition
+// label :  2 and 4 are left and right side with y the curve abscissa
+// 1 and 2 are bottom and upper side with x the curve abscissa
 fespace Vh(Th,P2,periodic=[[2,y],[4,y],[1,x],[3,x]]);
- Vh uh,vh;              // unknown and test function.
- func f=sin(x+pi/4.)*cos(y+pi/4.);      //  right hand side function
+ Vh uh,vh; // unknown and test function.
+ func f=sin(x+pi/4.)*cos(y+pi/4.); // right hand side function
 
- problem laplace(uh,vh) =                      //  definion of the problem
-    int2d(Th)( dx(uh)*dx(vh) + dy(uh)*dy(vh) ) //  bilinear form
-  + int2d(Th)( -f*vh )                         //  linear form
+ problem laplace(uh,vh) = // definion of the problem
+    int2d(Th)( dx(uh)*dx(vh) + dy(uh)*dy(vh) ) // bilinear form
+  + int2d(Th)( -f*vh ) // linear form
 ;
 
   laplace; // solve the problem plot(uh); // to see the result
   plot(uh,ps="period.eps",value=true);
 ```
 
-\plot[height=6cm]{period}{The isovalue of solution $u$ with periodic boundary condition}
+|Fig. 9.7: The isovalue of solution $u$ with periodic boundary condition|
+|:----:|
+|![period](images/period.png)|
 
 The periodic condition does not necessarily require
-parallel boundaries. Example \ref{exm:periodic4}
+parallel boundaries. Example \ref{exm:periodic4} 9.6 $\codered$
  give such example.
 
-_Example_ [periodic4.edp]~
+ __Example 9.6__ periodic4.edp
 
 ```freefem
 real r=0.25;
@@ -477,15 +463,15 @@ mesh Th= buildmesh(a(n)+b(n)+c(n)+d(n)+e(n));
 plot(Th,wait=1);
 real r2=1.732;
 func abs=sqrt(x^2+y^2);
-//  warning for periodic condition: \hfilll
-//  side a and c \hfilll
-//  on side a (label 1) $ x \in [0,1] $ or $ x-y\in [-1,1] $ \hfilll
-//  on side c (label 3) $ x \in [-1,0]$ or $ x-y\in[-1,1] $\hfilll
+// warning for periodic condition:
+// side a and c
+// on side a (label 1) $ x \in [0,1] $ or $ x-y\in [-1,1] $
+// on side c (label 3) $ x \in [-1,0]$ or $ x-y\in[-1,1] $
 // so the common abscissa can be respectively $x$ and $x+1$
 // or you can can try curviline abscissa $x-y$ and $x-y$
-//  1 first way \hfilll
-// fespace Vh(Th,P2,periodic=[[2,1+x],[4,x],[1,x],[3,1+x]]);  \hfilll
-// 2 second way \hfilll
+// 1 first way
+// fespace Vh(Th,P2,periodic=[[2,1+x],[4,x],[1,x],[3,1+x]]);
+// 2 second way
  fespace Vh(Th,P2,periodic=[[2,x+y],[4,x+y],[1,x-y],[3,x-y]]);
 
  Vh uh,vh;
@@ -500,19 +486,21 @@ func abs=sqrt(x^2+y^2);
  plot(uh,wait=1,ps="perio4.eps");
 ```
 
-\plot[height=6cm]{perio4}{The isovalue of solution $u$ for
-$ \Delta u = ((y+x)^{2}+1)((y-x)^{2}+1) - k$, in $\Omega$ and $\p_{n} u =0 $ on hole,and with two periodic boundary condition on external border}
+|Fig. 9.8: The isovalue of solution $u$ for $\Delta u = ((y+x)^{2}+1)((y-x)^{2}+1) - k$, in $\Omega$ and $\p_{n} u =0$ on hole, and with two periodic boundary condition on external border|
+|:----:|
+|![perio4](images/perio4.png)|
 
 An other example with no equal border, just to see if the code works.
-_Example_ [periodic4bis.edp]~
+
+ __Example 9.7__ periodic4bis.edp
 
 ```freefem
 // irregular boundary condition.
-//  to build border AB
+// to build border AB
 macro LINEBORDER(A,B,lab) border A#B(t=0,1){real t1=1.-t;
    x=A#x*t1+B#x*t;y=A#y*t1+B#y*t;label=lab;}//EOM
 // compute  ||AB||  a=(ax,ay) et B =(bx,by)
-macro dist(ax,ay,bx,by) sqrt(square((ax)-(bx))+ square((ay)-(by)))  // EOM
+macro dist(ax,ay,bx,by) sqrt(square((ax)-(bx))+ square((ay)-(by))) // EOM
 macro Grad(u) [dx(u),dy(u)]//EOM
 
 
@@ -532,10 +520,10 @@ real l1=dist(Ax,Ay,Bx,By);
 real l2=dist(Bx,By,Cx,Cy);
 real l3=dist(Cx,Cy,Dx,Dy);
 real l4=dist(Dx,Dy,Ax,Ay);
-func s1=dist(Ax,Ay,x,y)/l1;  // absisse on AB  = ||AX||/||AB||
-func s2=dist(Bx,By,x,y)/l2;  // absisse on BC  = ||BX||/||BC||
-func s3=dist(Cx,Cy,x,y)/l3;  // absisse on CD  = ||CX||/||CD||
-func s4=dist(Dx,Dy,x,y)/l4;  // absisse on DA  = ||DX||/||DA||
+func s1=dist(Ax,Ay,x,y)/l1; // absisse on AB  = ||AX||/||AB||
+func s2=dist(Bx,By,x,y)/l2; // absisse on BC  = ||BX||/||BC||
+func s3=dist(Cx,Cy,x,y)/l3; // absisse on CD  = ||CX||/||CD||
+func s4=dist(Dx,Dy,x,y)/l4; // absisse on DA  = ||DX||/||DA||
 
 mesh Th=buildmesh(AB(n)+BC(n)+CD(n)+DA(n),fixedborder=1);//
 
@@ -552,7 +540,7 @@ solve Poission(u,v)=int2d(Th)(Grad(u)'*Grad(v)+ 1e-10*u*v)
 plot(u,wait=1,value=1);
 ```
 
-_Example_ [Period-Poisson-cube-ballon.edp]~
+ __Example 9.8__ Period-Poisson-cube-ballon.edp
 
 ```freefem
 verbosity=1;
@@ -562,16 +550,15 @@ load "medit"
 
 bool buildTh=0;
 mesh3 Th;
-try { //  a way to build one time the mesh an read if the file exist.
+try { // a way to build one time the mesh an read if the file exist.
   Th=readmesh3("Th-hex-sph.mesh");
  }
 catch(...) { buildTh=1;}
 if( buildTh ){
   ...
- put the code example page // \ref{cube-ballon}\pageref{cube-ballon}
+ put the code example page // \ref{cube-ballon} $\codered$\pageref{cube-ballon}
   without the first line
  }
-
 
 fespace Ph(Th,P0);
 verbosity=50;
@@ -599,7 +586,11 @@ plot(uh,wait=1, nbiso=6);
 medit("   uh ",Th, uh);
 ```
 
-\twoplot[height=7cm]{cube-bal-perio}{cube-bal-perio-medit}{view of the surface isovalue of periodic solution $uh$ }{~\hfill\break view a the cut of the solution $uh$  with ffmedit}
+$\codered$ bug image
+
+|Fig. 9.9: View of the surface isovalue of periodic solution $uh$|Fig. 9.10: View a the cut of the solution $uh$  with ffmedit|
+|:----:|:----:|
+|![cube-bal-perio](images/cube-bal-perio.png)|![cube-bal-perio-medit](images/cube-bal-perio-medit.png)|
 
 ### Poisson Problems with mixed boundary condition
 
@@ -612,29 +603,21 @@ u&=&g\quad \textrm{on }\Gamma_D,\quad
 \p u/\p n=0\quad \textrm{on }\Gamma_N
 \end{eqnarray}
 
-where $\Gamma_D$ is a part of the boundary $\Gamma$ and
-$\Gamma_N=\Gamma\setminus \overline{\Gamma_D}$.
-The solution $u$ has the singularity at the points
-$\{\gamma_1,\gamma_2\}=\overline{\Gamma_D}\cap\overline{\Gamma_N}$.
-When $\Omega=\{(x,y);\; -1<x<1,\, 0<y<1\}$,
-$\Gamma_N=\{(x,y);\; -1\le x<0,\, y=0\}$,\,
-$\Gamma_D=\p \Omega\setminus \Gamma_N$,
-the singularity will appear at $\gamma_1=(0,0),\, \gamma_2(-1,0)$,
-and $u$ has the expression
+where $\Gamma_D$ is a part of the boundary $\Gamma$ and $\Gamma_N=\Gamma\setminus \overline{\Gamma_D}$.
+The solution $u$ has the singularity at the points $\{\gamma_1,\gamma_2\}=\overline{\Gamma_D}\cap\overline{\Gamma_N}$.
+When $\Omega=\{(x,y);\; -1<x<1,\, 0<y<1\}$, $\Gamma_N=\{(x,y);\; -1\le x<0,\, y=0\}$, $\Gamma_D=\p \Omega\setminus \Gamma_N$,
+the singularity will appear at $\gamma_1=(0,0),\, \gamma_2(-1,0)$, and $u$ has the expression
 $$
 u=K_iu_S + u_R,\, u_R\in H^2(\textrm{near }\gamma_i),\, i=1,2
 $$
 with a constants $K_i$.
 Here $u_S = r_j^{1/2}\sin(\theta_j/2)$ by the local polar coordinate
-$(r_j,\theta_j$ at $\gamma_j$ such that
-$(r_1,\theta_1)=(r,\theta)$.
+$(r_j,\theta_j$ at $\gamma_j$ such that $(r_1,\theta_1)=(r,\theta)$.
 Instead of poler coordinate system $(r,\theta)$, we use that
-$r=`:::freefem sqrt( x\^2+y\^2 )`$ and $\theta = `:::freefem atan2(y,x)`$
+$r=$`:::freefem sqrt`($x^2+y^2$) and $\theta =$`:::freefem atan2`($y,x$)
 in FreeFem++.
 
-_Example_ Assume that $f=-2\times 30(x^2+y^2)$ and
-$g=u_e=10(x^2+y^2)^{1/4}\sin\left ([\tan^{-1}(y/x)]/2\right)
-+30(x^2y^2)$, where $u_e$S is the exact solution.
+ __Example 9.9__ Assume that $f=-2\times 30(x^2+y^2)$ and $g=u_e=10(x^2+y^2)^{1/4}\sin\left([\tan^{-1}(y/x)]/2\right)+30(x^2y^2)$, where $u_e$S is the exact solution.
 
 ```freefem
 border N(t=0,1) { x=-1+t; y=0; label=1; };
@@ -655,9 +638,9 @@ real K=10.;
 func ue = K*us + 30*(x^2*y^2);
 
 solve Poisson0(u0,v0) =
-    int2d(T0h)( dx(u0)*dx(v0) + dy(u0)*dy(v0) )     //  bilinear form
-  - int2d(T0h)( f*v0 )                          //  linear form
-  + on(2,u0=ue) ;                                // boundary condition
+    int2d(T0h)( dx(u0)*dx(v0) + dy(u0)*dy(v0) ) // bilinear form
+  - int2d(T0h)( f*v0 ) // linear form
+  + on(2,u0=ue) ; // boundary condition
 
 // adaptation by the singular term
 mesh Th = adaptmesh(T0h,us);
@@ -669,9 +652,9 @@ for (int i=0;i< 5;i++)
 fespace Vh(Th, P1);
 Vh u, v;
 solve Poisson(u,v) =
-    int2d(Th)( dx(u)*dx(v) + dy(u)*dy(v) )     //  bilinear form
-  - int2d(Th)( f*v )                          //  linear form
-  + on(2,u=ue) ;                                // boundary condition
+    int2d(Th)( dx(u)*dx(v) + dy(u)*dy(v) ) // bilinear form
+  - int2d(Th)( f*v ) // linear form
+  + on(2,u=ue) ; // boundary condition
 
 /* plot the solution */
 plot(Th,ps="adaptDNmix.ps");
@@ -695,8 +678,8 @@ In 42th line, `:::freefem H1e`=$\|u_e\|_{1,\Omega}$ is calculated.
 In last 2 lines, the relative errors are calculated, that is,
 
 \begin{eqnarray*}
-\|u^0_h-u_e\|_{1,\Omega}/`:::freefem H1e`&=&0.120421\\
-\|u^a_h-u_e\|_{1,\Omega}/`:::freefem H1e`&=&0.0150581
+\|u^0_h-u_e\|_{1,\Omega}/H1e&=&0.120421\\
+\|u^a_h-u_e\|_{1,\Omega}/H1e&=&0.0150581
 \end{eqnarray*}
 
 where $u^0_h$ is the numerical solution in `:::freefem T0h` and
@@ -737,15 +720,17 @@ The variationnal formulation is,
 \end{eqnarray}
 
 where the functionnal space are:
-$$\mathbb{P}= L^2(\Omega),\qquad \mathbb{V}= H(div)=\{ \mathbf{v} \in L^2(\Omega)^2, \nabla. \mathbf{v} \in L^2(\Omega) \}$$
- and
-$$\mathbb{V}_0 = \{  \mathbf{v}\in \mathbb{V} ; \quad  \mathbf{v}. n = 0 \quad \mathrm{on }\;\; \Gamma_N \}.$$
+
+$$\mathbb{P}= L^2(\Omega),\qquad\mathbb{V}= H(div)=\{\mathbf{v}\in L^2(\Omega)^2,\nabla.\mathbf{v}\in L^2(\Omega)\}$$
+
+and
+
+$$\mathbb{V}_0 = \{\mathbf{v}\in \mathbb{V};\quad\mathbf{v}. n = 0 \quad\mathrm{on }\;\;\Gamma_N\}.$$
 
 To write, the FreeFem++ example, we have just to choose the finites elements spaces.
-here $\mathbb{V}$ space is discretize with Raviart-Thomas finite element  `:::freefem RT0` and $\mathbb{P}$ is discretize by
-constant finite element `:::freefem P0`.
+here $\mathbb{V}$ space is discretize with Raviart-Thomas finite element `:::freefem RT0` and $\mathbb{P}$ is discretize by constant finite element `:::freefem P0`.
 
-_Example_ [LaplaceRT.edp]~
+ __Example 9.10__ LaplaceRT.edp
 
 ```freefem
 mesh Th=square(10,10);
@@ -763,11 +748,11 @@ problem laplaceMixte([u1,u2,p],[v1,v2,q],
                       tgv=1e30,dimKrylov=150)
       =
      int2d(Th)( p*q*1e-15 // this term is here to be sur
-      //  that all sub matrix are inversible (LU requirement)
+ // that all sub matrix are inversible (LU requirement)
               + u1*v1 + u2*v2 + p*(dx(v1)+dy(v2)) + (dx(u1)+dy(u2))*q )
   + int2d(Th) ( q)
-  - int1d(Th,1,2,3)( gd*(v1*N.x +v2*N.y))   //  on  $\Gamma_D$
-  + on(4,u1=g1n,u2=g2n);  // on $\Gamma_N$
+  - int1d(Th,1,2,3)( gd*(v1*N.x +v2*N.y)) // on  $\Gamma_D$
+  + on(4,u1=g1n,u2=g2n); // on $\Gamma_N$
 
  laplaceMixte;
 
@@ -780,12 +765,12 @@ problem laplaceMixte([u1,u2,p],[v1,v2,q],
 We do metric mesh adaption and compute the classical
 residual error indicator $\eta_{T}$ on the element $T$ for the Poisson problem.
 
-_Example_ [adaptindicatorP2.edp]~
+ __Example 9.11__ adaptindicatorP2.edp
 
 First, we solve the same problem as in a previous example.
 
 ```freefem
-border ba(t=0,1.0){x=t;   y=0;  label=1;}; // see Fig,\ref{L-shape2}
+border ba(t=0,1.0){x=t;   y=0;  label=1;}; // see Fig,\ref{L-shape2} $\codered$
 border bb(t=0,0.5){x=1;   y=t;  label=2;};
 border bc(t=0,0.5){x=1-t; y=0.5;label=3;};
 border bd(t=0.5,1){x=0.5; y=t;  label=4;};
@@ -811,6 +796,7 @@ problem Probem1(u,v,solver=CG,eps=1.0e-6) =
 Now, the local error indicator $\eta_{T}$ is:
 \def\Th{\mathcal{T}_{h}}
 \def\AK{\mathcal{E}_{K}}
+$\codered$
 
 $$\eta_{T} =\left(  h_{T}^{2} || f + \Delta u_{{h}} ||_{L^{2}(T)}^{2} +\sum_{e\in \AK} h_{e} \,||\, [ \frac{\p u_{h}}{\p n_{k}}] \,||^{2}_{L^{2}(e)} \right)^{\frac{1}{2}}
    $$
@@ -848,46 +834,43 @@ for (int i=0;i< 4;i++)
 } ;
 ```
 
-If the method is correct, we expect to look the graphics by an almost constant function $\eta$ on your computer as in Fig. \ref{fig:rhoP2}.
+If the method is correct, we expect to look the graphics by an almost constant function $\eta$ on your computer as in Fig. \ref{fig:rhoP2} 9.11 $\codered$.
 
-\begin{figure}[hbt]
-\begin{center}
-\includegraphics[height=8cm]{rhoP2} \includegraphics[height=8cm]{ThrhoP2}
-\end{center}
-\caption{Density of the error indicator with isotropic $P_{2}$ metric }
-\end{figure}
+|Fig. 9.11: Density of the error indicator with isotropic $P_{2}$ metric|
+|:----:|
+|![rhoP2](images/rhoP2.png)|
+|![ThrhoP2](images/ThrhoP2.png)|
 
 ### Adaptation using residual error indicator
 
-In the previous example we compute the error indicator,  now
-we use it, to adapt the mesh.
-
+In the previous example we compute the error indicator, now we use it, to adapt the mesh.
 The new mesh size is given by the following formulae:
-$$h_{n+1}(x)= \frac{h_{n}(x)}{f_{n}(\eta_K(x))} $$
+
+$$h_{n+1}(x)=\frac{h_{n}(x)}{f_{n}(\eta_K(x))}$$
+
 where $\eta_n(x)$ is the level of error at point $x$ given by the local
-error indicator, $h_n$ is the previous ``mesh size'' field, and $f_n$ is a user
+error indicator, $h_n$ is the previous "mesh size" field, and $f_n$ is a user
 function define by
-$f_n = min(3,max(1/3,\eta_n / \eta_n^* ))$
- where $ \eta_n^* =mean(\eta_n) c $, and $c$ is an user
+$f_n = min(3,max(1/3,\eta_n / \eta_n^* ))$ where $\eta_n^* =mean(\eta_n) c $, and $c$ is an user
  coefficient generally close to one.
 
-_Example_ [AdaptResidualErrorIndicator.edp]~
+ __Example 9.12__ AdaptResidualErrorIndicator.edp
 
-First a macro `:::freefem MeshSizecomputation` to get a $P_1$  mesh size as the average of edge length.
+First a macro `:::freefem MeshSizecomputation` to get a $P_1$ mesh size as the average of edge length.
 
 ```freefem
-// macro the get the current mesh size \hfilll
-// parameter \hfilll
-//  in:  Th the mesh\hfilll
-//       Vh P1 fespace on Th\hfilll
-//  out : \hfilll
-// h: the Vh finite element finite set to the current mesh size \hfilll
+// macro the get the current mesh size
+// parameter
+// in: Th the mesh
+// Vh P1 fespace on Th
+// out :
+// h: the Vh finite element finite set to the current mesh size
 macro MeshSizecomputation(Th,Vh,h)
 {  /* Th mesh \
 	 Vh P1 finite element space
-	 h   the P1 mesh size value */
-	real[int]  count(Th.nv);
-	/* mesh size  (lenEdge =  integral(e) 1 ds)  */
+	 h the P1 mesh size value */
+	real[int] count(Th.nv);
+	/* mesh size (lenEdge =  integral(e) 1 ds)  */
 	varf vmeshsizen(u,v)=intalledges(Th,qfnbpE=1)(v);
 	/* number of edge / par vertex */
 	varf vedgecount(u,v)=intalledges(Th,qfnbpE=1)(v/lenEdge);
@@ -900,20 +883,20 @@ macro MeshSizecomputation(Th,Vh,h)
 	cout << " count min = "<< count.min << " " << count.max << endl;
 	h[]=h[]./count;
     cout << " -- bound meshsize = " <<h[].min << " " << h[].max << endl;
-} // end of macro MeshSizecomputation\hfilll
+} // end of macro MeshSizecomputation
 ```
 
 A second macro to remesh according to the new mesh size.
 
 ```freefem
-// macro to remesh according the de residual indicator \hfilll
-// in: \hfilll
-//     Th the mesh\hfilll
-//     Ph P0 fespace on Th\hfilll
-//     Vh P1 fespace on Th\hfilll
-//     vindicator the varf of to evaluate the indicator to ${}^2$ \hfilll
-//     coef on etameam ..\hfilll
-// ------\hfilll
+// macro to remesh according the de residual indicator
+// in:
+// Th the mesh
+// Ph P0 fespace on Th
+// Vh P1 fespace on Th
+// vindicator the varf of to evaluate the indicator to ${}^2$
+// coef on etameam ..
+// ------
 
 macro ReMeshIndicator(Th,Ph,Vh,vindicator,coef)
 {
@@ -952,8 +935,8 @@ We skip the mesh construction, see the previous example,
 fespace Vh(Th,P1); // for the mesh size and solution
 fespace Ph(Th,P0); // for the error indicator
 
-real hinit=0.2; //  initial mesh size
-Vh   h=hinit; // the FE function for the mesh size
+real hinit=0.2; // initial mesh size
+Vh h=hinit; // the FE function for the mesh size
 // to build a mesh with a given mesh size  : meshsize
 Th=adaptmesh(Th,h,IsMetric=1,splitpbedge=1,nbvx=10000);
 plot(Th,wait=1,ps="RRI-Th-init.eps");
@@ -981,37 +964,34 @@ for (int i=0;i< 10;i++)
 }
 ```
 
-\begin{figure}[hbt]
-\begin{center}
-\includegraphics[height=8cm]{arei-etak} \includegraphics[height=8cm]{arei-Thu}
-\end{center}
-\caption{the error indicator with isotropic $P_{1}$ ,  the mesh and isovalue of the solution  }
-\end{figure}
+|Fig. 9.12: The error indicator with isotropic $P_{1}$, the mesh and isovalue of the solution|
+|:----:|
+|![arei-etak](images/arei-etak.png)|
+|![arei-Thu](images/arei-Thu.png)|
 
 ## Elasticity
 
 Consider an elastic plate with undeformed shape $\Omega\times ]-h,h[$
 in $\R^3$, $\Omega\subset\R^2$.
 By the deformation of the plate,
-we assume that a point $P(x_1,x_2,x_3)$ moves to
-${\cal P}(\xi_1,\xi_2,\xi_3)$.
+we assume that a point $P(x_1,x_2,x_3)$ moves to ${\cal P}(\xi_1,\xi_2,\xi_3)$.
 The vector $\vec{u}=(u_1,u_2,u_3)=(\xi_1-x_1,\xi_2-x_2,\xi_3-x_3)$ is called the
-\key{displacement vector}.
-By the deformation,
-the line segment
-$\overline{\mathbf{x},\mathbf{x}+\tau\Delta\mathbf{x}}$ moves approximately to
-$\overline{\mathbf{x}+u(\mathbf{x}),\mathbf{x}+\tau\Delta\mathbf{x}
-+u(\mathbf{x}+\tau\Delta\mathbf{x})}$ for small $\tau$,
+_displacement vector_.
+
+By the deformation, the line segment $\overline{\mathbf{x},\mathbf{x}+\tau\Delta\mathbf{x}}$ moves approximately to $\overline{\mathbf{x}+u(\mathbf{x}),\mathbf{x}+\tau\Delta\mathbf{x} +u(\mathbf{x}+\tau\Delta\mathbf{x})}$ for small $\tau$,
 where
 $\mathbf{x}=(x_1,x_2,x_3),\, \Delta\mathbf{x}
 =(\Delta x_1,\Delta x_2,\Delta x_3)$.
+
 We now calculate the ratio between two segments
+
 \[
 \eta(\tau)=\tau^{-1}|\Delta\mathbf{x}|^{-1}
 \left(|u(\mathbf{x}+\tau\Delta\mathbf{x})
 -u(\mathbf{x})+\tau\Delta\mathbf{x}|-\tau|\Delta\mathbf{x}|\right)
 \]
-then we have (see e.g. \cite[p.32]{Necas})
+
+then we have (see e.g. \cite[p.32]{Necas} $\codered$)
 
 \begin{eqnarray*}
 \lim_{\tau\to 0}\eta(\tau)=(1+2e_{ij}\nu_i\nu_j)^{1/2}-1,
@@ -1019,8 +999,7 @@ then we have (see e.g. \cite[p.32]{Necas})
 \frac{\p u_j}{\p x_i}\right)
 \end{eqnarray*}
 
-where $\nu_i=\Delta x_i|\Delta\mathbf{x}|^{-1}$. If the deformation is
-_small_, then we may consider that
+where $\nu_i=\Delta x_i|\Delta\mathbf{x}|^{-1}$. If the deformation is _small_, then we may consider that
 
 \[
 (\p u_k/\p x_i)(\p u_k/\p x_i)\approx 0
@@ -1035,18 +1014,14 @@ and the following is called _small strain tensor_
 
 The tensor $e_{ij}$ is called _finite strain tensor_.
 
-Consider the small plane $\Delta \Pi(\mathbf{x})$
-centered at $\mathbf{x}$ with the
-unit normal direction $\vec n=(n_1,n_2,n_3)$, then the surface
-on $\Delta \Pi(\mathbf{x})$ at $\mathbf{x}$ is
+Consider the small plane $\Delta \Pi(\mathbf{x})$ centered at $\mathbf{x}$ with the unit normal direction $\vec n=(n_1,n_2,n_3)$, then the surface on $\Delta \Pi(\mathbf{x})$ at $\mathbf{x}$ is
 
 \[
 (\sigma_{1j}(\mathbf{x})n_j, \sigma_{2j}(\mathbf{x})n_j, \sigma_{3j}(\mathbf{x})n_j)
 \]
 
-where $\sigma_{ij}(\mathbf{x})$ is called \key{stress tensor} at $\mathbf{x}$.
-Hooke's law is the assumption of a linear relation between $\sigma_{ij}$
-and $\varepsilon_{ij}$ such as
+where $\sigma_{ij}(\mathbf{x})$ is called _stress tensor_ at $\mathbf{x}$.
+Hooke's law is the assumption of a linear relation between $\sigma_{ij}$ and $\varepsilon_{ij}$ such as
 
 \[
 \sigma_{ij}(\mathbf{x})=c_{ijkl}(\mathbf{x})\varepsilon_{ij}(\mathbf{x})
@@ -1055,10 +1030,10 @@ and $\varepsilon_{ij}$ such as
 with the symmetry $c_{ijkl}=c_{jikl}, c_{ijkl}=c_{ijlk}, c_{ijkl}=c_{klij}$.
 
 If Hooke's tensor $c_{ijkl}(\mathbf{x})$ do not depend on the choice of
-coordinate system, the material is called \key{isotropic} at $\mathbf{x}$.
+coordinate system, the material is called _isotropic_ at $\mathbf{x}$.
 If $c_{ijkl}$ is constant, the material is called _homogeneous_.
-In homogeneous isotropic case, there is _Lam\'{e_ constants}
-$\lambda, \mu$ (see e.g. \cite[p.43]{Necas}) satisfying
+In homogeneous isotropic case, there is _Lamé constants_
+$\lambda, \mu$ (see e.g. \cite[p.43]{Necas} $\codered$) satisfying
 
 \begin{eqnarray}
 \sigma_{ij}=\lambda\delta_{ij}\textrm{div}u+2\mu \varepsilon_{ij}
@@ -1081,39 +1056,42 @@ u_i=0~~\textrm{on }\Gamma_D\times ]-h,h[,\quad i=1,2,3
 
 We now explain the plain elasticity.
 
-\item[Plain strain:]
-On the end of plate, the contact condition $u_3=0,\, g_3=$ is satisfied.
-In this case, we can suppose that $f_3=g_3=u_3=0$ and
-$\vec u(x_1,x_2,x_3)=\overline{u}(x_1,x_2)$ for all $-h<x_3<h$.
-\item[Plain stress:]
-The cylinder is assumed to be very thin and subjected to no load on the
-ends $x_3=\pm h$, that is,
+* __Plain strain:__
 
-\[
-\sigma_{3i}=0,\quad x_3=\pm h,\quad i~1,2,3
-\]
+	On the end of plate, the contact condition $u_3=0,\, g_3=$ is satisfied.
+	In this case, we can suppose that $f_3=g_3=u_3=0$ and $\vec u(x_1,x_2,x_3)=\overline{u}(x_1,x_2)$ for all $-h<x_3<h$.
 
-The assumption leads that $\sigma_{3i}=0$ in $\Omega\times ]-h,h[$
-and $\vec u(x_1,x_2,x_3)=\overline{u}(x_1,x_2)$ for all $-h<x_3<h$.
-\item[Generalized plain stress:]
-The cylinder is subjected to no load at $x_3=\pm h$.
-Introducing the mean values with respect to thickness,
+* __Plain stress:__
 
-\[
-\overline{u}_i(x_1,x_2)=\frac{1}{2h}
-\int_{-h}^h u(x_1,x_2,x_3)dx_3
-\]
+	The cylinder is assumed to be very thin and subjected to no load on the
+	ends $x_3=\pm h$, that is,
 
-and we derive $\overline{u}_3\equiv 0$. Similarly we define the mean
-values $\overline{f},\overline{g}$ of the body force and surface force
-as well as the mean values $\overline{\varepsilon}_{ij}$ and
-$\overline{\sigma}_{ij}$ of the components of stress and strain, respectively.
-\end{description}
+	\[
+	\sigma_{3i}=0,\quad x_3=\pm h,\quad i~1,2,3
+	\]
+
+	The assumption leads that $\sigma_{3i}=0$ in $\Omega\times ]-h,h[$
+	and $\vec u(x_1,x_2,x_3)=\overline{u}(x_1,x_2)$ for all $-h<x_3<h$.
+
+* __Generalized plain stress:__
+
+	The cylinder is subjected to no load at $x_3=\pm h$.
+	Introducing the mean values with respect to thickness,
+
+	\[
+	\overline{u}_i(x_1,x_2)=\frac{1}{2h}
+	\int_{-h}^h u(x_1,x_2,x_3)dx_3
+	\]
+
+	and we derive $\overline{u}_3\equiv 0$. Similarly we define the mean
+	values $\overline{f},\overline{g}$ of the body force and surface force
+	as well as the mean values $\overline{\varepsilon}_{ij}$ and
+	$\overline{\sigma}_{ij}$ of the components of stress and strain, respectively.
 
 In what follows we omit the overlines of
 $\overline{u}, \overline{f},\overline{g}, \overline{\varepsilon}_{ij}$ and
 $\overline{\varepsilon}_{ij}$.
-Then we obtain similar equation of equilibrium given in (\ref{eqn:elasticity})
+Then we obtain similar equation of equilibrium given in (\ref{eqn:elasticity} 9.21 $\codered$)
 replacing $\Omega\times ]-h,h[$ with $\Omega$ and changing $i=1,2$.
 In the case of plane stress,
 $\sigma_{ij}=\lambda^* \delta_{ij}\textrm{div}u+2\mu\varepsilon_{ij},
@@ -1121,30 +1099,29 @@ $\sigma_{ij}=\lambda^* \delta_{ij}\textrm{div}u+2\mu\varepsilon_{ij},
 
 The equations of elasticity are naturally written in variational form
 for the displacement vector $u(x)\in V$ as
-\Blue{$$
+
+$$
 \int_\Omega [2\mu\epsilon_{ij}(\vec u)\epsilon_{ij}(\vec v)
 +\lambda \epsilon_{ii}(\vec{u})\epsilon_{jj}(\vec v)]
 =\int_\Omega \vec f\cdot \vec v +\int_\Gamma \vec g\cdot \vec v,%\`{u}
 \forall \vec v\in V
-$$}
+$$
+
 where $V$ is the linear closed subspace of $H^1(\Omega)^2$.
 
-_Example_ [Beam.edp]
+ __Example 9.13__ Beam.edp
 
 Consider elastic plate with the undeformed rectangle shape
-$]0,10[\times ]0,2[$.
-The body force is the gravity force $\vec f$ and the
-boundary force $\vec g$ is zero on lower and upper side.
-On the two vertical sides of the beam are fixed.
+$]0,10[\times ]0,2[$. The body force is the gravity force $\vec f$ and the boundary force $\vec g$ is zero on lower and upper side. On the two vertical sides of the beam are fixed.
 
 ```freefem
-//   a weighting beam sitting on a
+// a weighting beam sitting on a
 
 int bottombeam = 2;
-border a(t=2,0)  { x=0; y=t ;label=1;};        //  left beam
-border b(t=0,10) { x=t; y=0 ;label=bottombeam;};        //  bottom of beam
-border c(t=0,2)  { x=10; y=t ;label=1;};       //  rigth beam
-border d(t=0,10) { x=10-t; y=2; label=3;};     //  top beam
+border a(t=2,0)  { x=0; y=t ;label=1;}; // left beam
+border b(t=0,10) { x=t; y=0 ;label=bottombeam;}; // bottom of beam
+border c(t=0,2)  { x=10; y=t ;label=1;}; // rigth beam
+border d(t=0,10) { x=10-t; y=2; label=3;}; // top beam
 real E = 21.5;
 real sigma = 0.29;
 real mu = E/(2*(1+sigma));
@@ -1155,7 +1132,7 @@ fespace Vh(th,[P1,P1]);
 Vh [uu,vv], [w,s];
 cout << "lambda,mu,gravity ="<<lambda<< " " << mu << " " << gravity << endl;
 // deformation of a beam under its own weight
-real sqrt2=sqrt(2.);// see lame.edp example \ref{lame.edp}
+real sqrt2=sqrt(2.);// see lame.edp example \ref{lame.edp} $\codered$
 macro epsilon(u1,u2)  [dx(u1),dy(u2),(dy(u1)+dx(u2))/sqrt2] // EOM
 macro div(u,v) ( dx(u)+dy(v) ) // EOM
 
@@ -1174,13 +1151,9 @@ mesh th1 = movemesh(th, [x+uu, y+vv]);
 plot(th1,wait=1);
 ```
 
-_Example_ [beam-3d.edp]
+ __Example 9.14__ beam-3d.edp
 
-Consider elastic box with the undeformed parallelepiped shape
-$]0,5[\times ]0,1[\times]0,1[$.
-The body force is the gravity force $\vec f$ and the
-boundary force $\vec g$ is zero on all face except
-one the one vertical left face where the beam is fixed.
+Consider elastic box with the undeformed parallelepiped shape $]0,5[\times ]0,1[\times]0,1[$. The body force is the gravity force $\vec f$ and the boundary force $\vec g$ is zero on all face except one the one vertical left face where the beam is fixed.
 
 ```freefem
 include "cube.idp"
@@ -1217,24 +1190,18 @@ real coef= 0.1/dmax;
 int[int] ref2=[1,0,2,0];
 mesh3 Thm=movemesh3(Th,transfo=[x+u1*coef,y+u2*coef,z+u3*coef],label=ref2);
 Thm=change(Thm,label=ref2);
-plot(Th,Thm, wait=1,cmm="coef amplification = "+coef );// see fig \ref{fig-beam-3d}
+plot(Th,Thm, wait=1,cmm="coef amplification = "+coef );// see fig \ref{fig-beam-3d} $\codered$
 ```
 
 %%%ALH-25/2/10-compilation error $\codered$
 %%%\plot[height=8cm]{beam-3d}{3d Beam deformed and undeformed box   } $\codered$
 
 ### Fracture Mechanics
-Consider the plate with the crack whose undeformed shape is
-a curve $\Sigma$ with the two edges $\gamma_1,\, \gamma_2$.
-We assume the stress tensor $\sigma_{ij}$ is the state of
-plate stress regarding $(x,y)\in \Omega_{\Sigma}=\Omega\setminus \Sigma$.
-Here $\Omega$ stands for the undeformed shape of elastic plate
-without crack.
-If the part $\Gamma_N$ of the boundary $\p\Omega$ is fixed
-and a load ${\cal L}=(\vec f,\vec g)\in
-L^2(\Omega)^2\times L^2(\Gamma_N)^2$  is given,
-then the displacement $\vec u$ is the minimizer of the potential energy
-functional
+Consider the plate with the crack whose undeformed shape is a curve $\Sigma$ with the two edges $\gamma_1,\, \gamma_2$.
+We assume the stress tensor $\sigma_{ij}$ is the state of plate stress regarding $(x,y)\in \Omega_{\Sigma}=\Omega\setminus \Sigma$.
+Here $\Omega$ stands for the undeformed shape of elastic plate without crack.
+If the part $\Gamma_N$ of the boundary $\p\Omega$ is fixed and a load ${\cal L}=(\vec f,\vec g)\in
+L^2(\Omega)^2\times L^2(\Gamma_N)^2$ is given, then the displacement $\vec u$ is the minimizer of the potential energy functional
 
 \[
 {\cal E}(\vec v;{\cal L},\Omega_{\Sigma})
@@ -1248,7 +1215,7 @@ over the functional space $V(\Omega_{\Sigma})$,
 \[
 V(\Omega_{\Sigma})
 =\left\{ \vec v\in H^1(\Omega_{\Sigma})^2;\;
-\vec v=0\quad \hbox{\rm on }
+\vec v=0\quad \hbox{ on }
 \Gamma_D=\p\Omega\setminus\overline{\Gamma_N}\right\},
 \]
 
@@ -1258,7 +1225,7 @@ where $w(x,\vec v)=\sigma_{ij}(\vec v)\varepsilon_{ij}(\vec v)/2$,
 \sigma_{ij}(\vec v)=C_{ijkl}(x)\varepsilon_{kl}(\vec v),\quad
 \varepsilon_{ij}(\vec v)=(\p v_i/\p x_j+
 \p v_j/\p x_i)/2,
-\qquad (C_{ijkl}:\quad \hbox{\rm Hooke's tensor}).
+\qquad (C_{ijkl}:\quad \hbox{Hooke's tensor}).
 \]
 
 If the elasticity is homogeneous isotropic, then the
@@ -1300,14 +1267,14 @@ and the sliding mode (mode II), respectively.
 
 For simplicity, we consider the following simple crack
 
-<!-- \[
+$$
 \Omega=\{(x,y):\; -1<x<1, -1<y<1\},\qquad
 \Sigma=\{(x,y):\; -1\le x\le 0, y=0\}
-\] -->
+$$
 
 with only one crack tip $\gamma=(0,0)$.
 Unfortunately, FreeFem++ cannot treat crack, so we use the modification
-of the domain with U-shape channel (see Fig. \ref{U-shape})
+of the domain with U-shape channel (see Fig. \ref{U-shape} 5.30 $\codered$)
 with $d=0.0001$. The undeformed crack $\Sigma$ is approximated by
 
 \begin{eqnarray*}
@@ -1315,27 +1282,22 @@ with $d=0.0001$. The undeformed crack $\Sigma$ is approximated by
 &&\cup\{(x,y):\; -10*d\le x\le 0, -d+0.1*x\le y\le d-0.1*x\}
 \end{eqnarray*}
 
-and $\Gamma_D=`:::freefem R`$ in Fig. \ref{U-shape}.
+and $\Gamma_D=$`:::freefem R` $\codered$ (franck: vérifier que le R soit bien du code freefem) in Fig. \ref{U-shape} 5.30 $\codered$.
 In this example, we use three technique:
 
-\item
-Fast Finite Element Interpolator from the mesh `:::freefem Th`
-to `:::freefem Zoom` for the scale-up of
+* Fast Finite Element Interpolator from the mesh `:::freefem Th` to `:::freefem Zoom` for the scale-up of
 near $\gamma$.
-\item
-After obtaining the displacement vector $\vec u=(u,v)$, we shall watch
-the deformation of the crack near $\gamma$ as follows,
 
-```freefem
-mesh Plate = movemesh(Zoom,[x+u,y+v]);
-plot(Plate);
-```
+* After obtaining the displacement vector $\vec u=(u,v)$, we shall watch the deformation of the crack near $\gamma$ as follows,
 
-\item
-Adaptivity is an important technique here, because a large singularity occurs at
-$\gamma$
-as shown in (\ref{eqn:SIF}).
-\end{itemize}
+	```freefem
+	mesh Plate = movemesh(Zoom,[x+u,y+v]);
+	plot(Plate);
+	```
+
+
+* Adaptivity is an important technique here, because a large singularity occurs at $\gamma$ as shown in (\ref{eqn:SIF} 9.23 $\codered$).
+
 The first example creates mode I deformation by the opposed surface force
 on `:::freefem B` and `:::freefem T`
 in the vertical direction of $\Sigma$, and
@@ -1353,9 +1315,9 @@ where $\sigma_1$ and $\sigma_2$ are the principal stresses.
 In opening mode, the photoelasticity make symmetric pattern concentrated at
 $\gamma$.
 
-_Example_ [Crack Opening, $K_2(\gamma)=0$]
+ __Example 9.15__ (Crack Opening, $K_2(\gamma)=0$) CrackOpen.edp
 
-```freefem{CrackOpen.edp}
+```freefem
 real d = 0.0001;
 int n = 5;
 real cb=1, ca=1, tip=0.0;
@@ -1389,7 +1351,7 @@ solve Problem([u,v],[w,s])  =
              + lambda*(dx(u)+dy(v))*(dx(w)+dy(s))/2
              )
     -int1d(Th,T)(0.1*(4-x)*s)+int1d(Th,B)(0.1*(4-x)*s)
-    +on(R,u=0)+on(R,v=0);                // fixed
+    +on(R,u=0)+on(R,v=0); // fixed
 ;
 
 zVh Sx, Sy, Sxy, N;
@@ -1401,11 +1363,11 @@ for (int i=1; i<=5; i++)
   Sxy = mu*(dy(u) + dx(v));
   N = 0.1*1*sqrt((Sx-Sy)^2+4*Sxy^2); //principal stress difference
   if (i==1) {
-     plot(Plate,ps="1stCOD.eps",bw=1); // Fig. \ref{1stMode1}
-     plot(N,ps="1stPhoto.eps",bw=1);   // Fig. \ref{1stMode1}
+     plot(Plate,ps="1stCOD.eps",bw=1); // Fig. \ref{1stMode1} $\codered$
+     plot(N,ps="1stPhoto.eps",bw=1); // Fig. \ref{1stMode1} $\codered$
   } else if (i==5) {
-     plot(Plate,ps="LastCOD.eps",bw=1); // Fig. \ref{LastMode1}
-     plot(N,ps="LastPhoto.eps",bw=1);   // Fig. \ref{LastMode1}
+     plot(Plate,ps="LastCOD.eps",bw=1); // Fig. \ref{LastMode1} $\codered$
+     plot(N,ps="LastPhoto.eps",bw=1); // Fig. \ref{LastMode1} $\codered$
      break;
   }
   Th=adaptmesh(Th,[u,v]);
@@ -1413,18 +1375,9 @@ for (int i=1; i<=5; i++)
 }
 ```
 
-\begin{figure}[hbt]
-\begin{multicols}{2}
-\begin{center}
-\includegraphics*[height=3cm]{1stCOD}\includegraphics*[height=3cm]{1stPhoto}
-    \caption{ Crack open displacement (COD) and Principal stress difference in the first mesh}
-\end{center}
-\begin{center}
-\includegraphics*[height=3cm]{LastCOD}\includegraphics*[height=3cm]{LastPhoto}
-    \caption{ COD and Principal stress difference in the last adaptive mesh}
-\end{center}
-\end{multicols}
-\end{figure}
+|Fig. 9.13: Crack open displacement (COD) and Principal stress difference in the first mesh|Fig. 9.14: COD and Principal stress difference in the last adaptive mesh|
+|:----:|:----:|
+|![1stCOD](images/1stCOD.png)![1stPhoto](images/1stPhoto.png)|![lastCOD](images/lastCOD.png)![LastPhoto](images/LastPhoto.png)|
 
 It is difficult to create mode II deformation by the opposed shear force
 on `:::freefem B` and `:::freefem T` that is observed in a laboratory.
@@ -1437,10 +1390,9 @@ f_1(x,y)=H(y-0.001)*H(0.1-y)-H(-y-0.001)*H(y+0.1)
 
 where $H(t)=1$ if $t>0$; $= 0$ if $t<0$.
 
-_Example_ [Crack Sliding, $K_2(\gamma)=0$]
+ __Example 9.16__ Crack Sliding, $K_2(\gamma)=0$ (use the same mesh Th)
 
 ```freefem
-(use the same mesh Th)
 cb=0.01; ca=0.01;
 mesh Zoom = buildmesh (L1(n/2)+L2(n/2)+B(n)+C1(n)
                          +C21(3)+C22(3)+C3(n)+R(n)+T(n));
@@ -1454,7 +1406,7 @@ solve Problem([u,v],[w,s])  =
              + lambda*(dx(u)+dy(v))*(dx(w)+dy(s))/2
              )
     -int2d(Th)(fx*w)
-    +on(R,u=0)+on(R,v=0);        // fixed
+    +on(R,u=0)+on(R,v=0); // fixed
 ;
 
 for (int i=1; i<=3; i++)
@@ -1465,11 +1417,11 @@ for (int i=1; i<=3; i++)
   Sxy = mu*(dy(u) + dx(v));
   N = 0.1*1*sqrt((Sx-Sy)^2+4*Sxy^2); //principal stress difference
   if (i==1) {
-     plot(Plate,ps="1stCOD2.eps",bw=1); // Fig. \ref{LastMode2}
-     plot(N,ps="1stPhoto2.eps",bw=1);   // Fig. \ref{1stMode2}
+     plot(Plate,ps="1stCOD2.eps",bw=1); // Fig. \ref{LastMode2} $\codered$
+     plot(N,ps="1stPhoto2.eps",bw=1); // Fig. \ref{1stMode2} $\codered$
   } else if (i==3) {
-     plot(Plate,ps="LastCOD2.eps",bw=1); // Fig. \ref{LastMode2}
-     plot(N,ps="LastPhoto2.eps",bw=1);   // Fig. \ref{LastMode2}
+     plot(Plate,ps="LastCOD2.eps",bw=1); // Fig. \ref{LastMode2} $\codered$
+     plot(N,ps="LastPhoto2.eps",bw=1); // Fig. \ref{LastMode2} $\codered$
      break;
   }
   Th=adaptmesh(Th,[u,v]);
@@ -1477,18 +1429,9 @@ for (int i=1; i<=3; i++)
 }
 ```
 
-\begin{figure}[hbt]
-\begin{multicols}{2}
-\begin{center}
-\includegraphics*[height=3cm]{1stCOD2}\includegraphics*[height=3cm]{1stPhoto2}
-    \caption{ (COD) and Principal stress difference in the first mesh}
-\end{center}
-\begin{center}
-\includegraphics*[height=3cm]{LastCOD2}\includegraphics*[height=3cm]{LastPhoto2}
-    \caption{ COD and Principal stress difference in the last adaptive mesh}
-\end{center}
-\end{multicols}
-\end{figure}
+|Fig. 9.15: (COD) and Principal stress difference in the first mesh|Fig. 9.16: COD and Principal stress difference in the last adaptive mesh|
+|:----:|:----:|
+|![1stCOD](images/1stCOD2.png)![1stPhoto](images/1stPhoto2.png)|![lastCOD](images/lastCOD2.png)![LastPhoto](images/LastPhoto2.png)|
 
 ## Nonlinear Static Problems
 
@@ -1512,34 +1455,34 @@ First we introduce the two variational form `:::freefem vdJ` and `:::freefem vhJ
 compute respectively $ \nabla J$ and $ \nabla^2 J$
 
 ```freefem
-//   method of Newton-Raphson to solve dJ(u)=0; \hfilll
-//    $$ u^{n+1} = u^n - (\frac{\p dJ}{\p u_i})^{-1}*dJ(u^n) $$ \hfilll
-//   --------------------------------------------- \hfilll
+// method of Newton-Raphson to solve dJ(u)=0; $\codered$
+// $$ u^{n+1} = u^n - (\frac{\p dJ}{\p u_i})^{-1}*dJ(u^n) $$
+// ---------------------------------------------
   Ph dalpha ; //to store  $2 f''( |\nabla u|^2) $  optimisation
 
 
-  // the variational form of evaluate dJ = $ \nabla J$ \hfilll
-  // -------------------------------------- \hfilll
-  //  dJ =  f'()*( dx(u)*dx(vh) + dy(u)*dy(vh) \hfilll
+ // the variational form of evaluate dJ = $ \nabla J$
+ // --------------------------------------
+ // dJ =  f'()*( dx(u)*dx(vh) + dy(u)*dy(vh)
   varf vdJ(uh,vh) =  int2d(Th)( alpha*( dx(u)*dx(vh) + dy(u)*dy(vh) ) - b*vh)
   + on(1,2,3,4, uh=0);
 
 
-  // the variational form of evaluate ddJ   $= \nabla^2 J$ \hfilll
-  // hJ(uh,vh) =    f'()*( dx(uh)*dx(vh) + dy(uh)*dy(vh) \hfilll
-  //            + 2*f''()( dx(u)*dx(uh) + dy(u)*dy(uh) ) * (dx(u)*dx(vh) + dy(u)*dy(vh)) \hfilll
+ // the variational form of evaluate ddJ   $= \nabla^2 J$
+ // hJ(uh,vh) =    f'()*( dx(uh)*dx(vh) + dy(uh)*dy(vh)
+ // + 2*f''()( dx(u)*dx(uh) + dy(u)*dy(uh) ) * (dx(u)*dx(vh) + dy(u)*dy(vh))
   varf vhJ(uh,vh) = int2d(Th)( alpha*( dx(uh)*dx(vh) + dy(uh)*dy(vh) )
    +  dalpha*( dx(u)*dx(vh) + dy(u)*dy(vh)  )*( dx(u)*dx(uh) + dy(u)*dy(uh) ) )
    + on(1,2,3,4, uh=0);
 
- // the Newton algorithm \hfilll
+ // the Newton algorithm
   Vh v,w;
   u=0;
   for (int i=0;i<100;i++)
    {
     alpha =     df( dx(u)*dx(u) + dy(u)*dy(u) ) ; // optimization
     dalpha = 2*ddf( dx(u)*dx(u) + dy(u)*dy(u) ) ; // optimization
-    v[]= vdJ(0,Vh);  // $ v = \nabla J(u) $
+    v[]= vdJ(0,Vh); // $ v = \nabla J(u) $
     real res= v[]'*v[]; // the dot product
     cout << i <<  " residu^2 = " <<  res  << endl;
     if( res< 1e-12) break;
@@ -1550,12 +1493,11 @@ compute respectively $ \nabla J$ and $ \nabla^2 J$
    plot (u,wait=1,cmm="solution with Newton-Raphson");
 ```
 
-Remark: This example is in `:::freefem Newton.edp` file of `:::freefem examples++-tutorial` directory.
+Remark: This example is in `:::freefem Newton.edp` file of `:::freefem examples++-tutorial` $\codered$ directory.
 
 ## Eigenvalue Problems
 
-This section depends on your installation of FreeFem++; you need to have compiled (see `:::freefem README\_arpack`),
-ARPACK.
+This section depends on your installation of FreeFem++; you need to have compiled (see `:::freefem README\_arpack` $\codered$), ARPACK.
 This tool is available in FreeFem++ if the word eigenvalue appears in line Load:, like:
 
 ```freefem
@@ -1568,8 +1510,8 @@ This tool is based on the `:::freefem arpack++` \footnote{\url{http://www.caam.r
 the object-oriented version of ARPACK eigenvalue package \cite{arpack} $\codered$.
 
 The function EigenValue computes the generalized eigenvalue
-of  $ A u = \lambda B u $. The Shift-invert method is used by default, with sigma =$\sigma$ the shift of the method.
-The matrix  $ OP$ is defined with $ A - \sigma B $.
+of  $A u = \lambda B u$. The Shift-invert method is used by default, with sigma =$\sigma$ the shift of the method.
+The matrix $OP$ is defined with $A - \sigma B$.
 The return value is the number of converged eigenvalues (can be greater than the number of requested eigenvalues nev=)
 
 ```freefem
@@ -1595,135 +1537,135 @@ func real[int] FB(real[int] & u) { real[int] Au=B*u;return Au;}
 
 If you want finer control over the method employed in ARPACK, you can specify which mode ARPACK will work with (mode= , see ARPACK documentation). The operators necessary for the chosen mode can be passed through the optional parameters A=, A1= , B=, B1= (see below).
 
-\item mode=1: Regular mode for solving $ A u = \lambda u $
+* mode=1: Regular mode for solving $A u = \lambda u$
 
-```freefem
-int k=EigenValue(n,A=FOP,mode=1,nev= );
-```
+	```freefem
+	int k=EigenValue(n,A=FOP,mode=1,nev= );
+	```
 
-where the function FOP defines the matrix product of A
+	where the function FOP defines the matrix product of A
 
-\item mode=2: Regular inverse mode for solving $ A u = \lambda B u $
+* mode=2: Regular inverse mode for solving $A u = \lambda B u$
 
-```freefem
-int k=EigenValue(n,A=FOP,B=FB,B1=FB1,mode=2, nev= );
-```
+	```freefem
+	int k=EigenValue(n,A=FOP,B=FB,B1=FB1,mode=2, nev= );
+	```
 
-where the functions FOP, FB and FB1 define respectively the matrix product of $A$, $B$ and $B^{-1}$
+	where the functions FOP, FB and FB1 define respectively the matrix product of $A$, $B$ and $B^{-1}$
 
-\item mode=3: Shift-invert mode for solving $ A u = \lambda B u $
+* mode=3: Shift-invert mode for solving $A u = \lambda B u$
 
-```freefem
-int k=EigenValue(n,A1=FOP1,B=FB,mode=3,sigma=sigma, nev= );
-```
+	```freefem
+	int k=EigenValue(n,A1=FOP1,B=FB,mode=3,sigma=sigma, nev= );
+	```
 
-where the functions FOP1 and FB define respectively the matrix product of $OP^{-1} = (A - \sigma B)^{-1} $ and $B$
+	where the functions FOP1 and FB define respectively the matrix product of $OP^{-1} = (A - \sigma B)^{-1}$ and $B$
 
-\end{itemize}
-
-You can also specify which subset of eigenvalues you want to compute (which= ). The default value is which="LM", for eigenvalues with largest magnitude. "SM" is for smallest magnitude, "LA" for largest algebraic value, "SA" for smallest algebraic value, and "BE" for both ends of the spectrum.\\
+You can also specify which subset of eigenvalues you want to compute (which= ). The default value is which="LM", for eigenvalues with largest magnitude. "SM" is for smallest magnitude, "LA" for largest algebraic value, "SA" for smallest algebraic value, and "BE" for both ends of the spectrum.
 
 Remark: For complex problems, you need to use the keyword `:::freefem complexEigenValue` instead of `:::freefem EigenValue` when passing operators through functions.
 
 !!! note
-{Boundary condition and Eigenvalue Problems}
+	Boundary condition and Eigenvalue Problems
 
- The locking (Dirichlet ) boundary condition is make with exact penalization
- so   we put 1e30=tgv on the diagonal term of the locked degree of freedom (see equation  (\ref{eq tgv})).
-  So take Dirichlet boundary condition just on $A$
-  and not on  $B$.
-  because we solve $ w=OP^-1*B*v$.
+	The locking (Dirichlet) boundary condition is make with exact penalization so we put 1e30=tgv on the diagonal term of the locked degree of freedom (see equation (\ref{eq tgv} $\codered$)). So take Dirichlet boundary condition just on $A$ and not on $B$. because we solve $ w=OP^-1*B*v$.
 
-  If you put locking  (Dirichlet )  boundary condition on $B$ matrix  (with key work `:::freefem on`)
-you get small spurious modes $(10^{-30})$, due to boundary condition, but if you forget the locking boundary condition on $B$ matrix  (no key work "on")
-you get huge spurious $(10^{30})$  modes associated to these boundary conditons.
-We compute only small mode, so we get the good one in this case.
+	If you put locking (Dirichlet ) boundary condition on $B$ matrix (with key work `:::freefem on`) you get small spurious modes $(10^{-30})$, due to boundary condition, but if you forget the locking boundary condition on $B$ matrix (no key work "on") you get huge spurious $(10^{30})$ modes associated to these boundary conditons. We compute only small mode, so we get the good one in this case.
 
+* `:::freefem sym=`
+	The problem is symmetric (all the eigen value are real)
 
+* `:::freefem nev=`
+	The number desired eigenvalues (nev)  close to the shift.
 
+* `:::freefem value=`
+	The array to store the real part of the eigenvalues
 
-          \item[`:::freefem sym=`]
-          the problem is symmetric (all the eigen value are real)
-          \item[`:::freefem nev=`]
-          the number desired eigenvalues (nev)  close to the shift.
-        \item[`:::freefem value=`]
-        the array to store the real part of the eigenvalues
-         \item[`:::freefem ivalue=`]
-         the array to store the imag. part of the eigenvalues
-         \item[`:::freefem vector=`]
-         the FE function array to store the eigenvectors
-         \item[`:::freefem rawvector=`]
-          an array of type `:::freefem real[int,int] ` to store eigenvectors by column. (up to version 2-17).
+* `:::freefem ivalue=`
+	The array to store the imag. part of the eigenvalues
 
- For real non symmetric problems, complex eigenvectors are given as two consecutive vectors, so if eigenvalue $k$ and $k+1$ are complex conjugate eigenvalues, the $k$th vector will contain the real part and the $k+1$th vector the imaginary part of the corresponding complex conjugate eigenvectors.
+* `:::freefem vector=`
+	The FE function array to store the eigenvectors
 
-         \item[`:::freefem tol=`]
-         the relative accuracy to which eigenvalues are to be determined;
-         \item[`:::freefem sigma=`]    the shift value;
-         \item[`:::freefem maxit=`]    the maximum number of iterations allowed;
-         \item[`:::freefem ncv=`]     the number of Arnoldi vectors generated at each iteration of ARPACK;
-         \item[`:::freefem mode=`]     the computational mode used by ARPACK (see above);
-         \item[`:::freefem which=`]     the requested subset of eigenvalues (see above).
- \end{description}
+* `:::freefem rawvector=`
+	An array of type `:::freefem real[int,int]` to store eigenvectors by column. (up to version 2-17).$\codered$
 
-_Example_ [lapEignenValue.edp]
+ 	For real non symmetric problems, complex eigenvectors are given as two consecutive vectors, so if eigenvalue $k$ and $k+1$ are complex conjugate eigenvalues, the $k$th vector will contain the real part and the $k+1$th vector the imaginary part of the corresponding complex conjugate eigenvectors.
 
-In the first example, we compute   the eigenvalues and the eigenvectors of the
- Dirichlet problem on square $\Omega=]0,\pi[^2$.
+* `:::freefem tol=`
+	The relative accuracy to which eigenvalues are to be determined;
 
-The problem is to find:   $\lambda$, and $\nabla u_{\lambda}$  in $\mathbb{R}{\times} H^1_0(\Omega)$
-$$ \int_\Omega \nabla u_{\lambda} \nabla v = \lambda \int_\Omega u v \quad  \forall v \in H^1_0(\Omega)$$
+* `:::freefem sigma=`
+	The shift value;
 
-The exact
-eigenvalues are $\lambda_{n,m} =(n^2+m^2), (n,m)\in {\mathbb{N}_*}^2$ with
-the associated eigenvectors are  $  u_{{m,n}}=sin(nx)*sin(my)$.
+* `:::freefem maxit=`
+	The maximum number of iterations allowed;
+
+* `:::freefem ncv=`
+	The number of Arnoldi vectors generated at each iteration of ARPACK;
+
+* `:::freefem mode=`
+	The computational mode used by ARPACK (see above);
+
+* `:::freefem which=`
+The requested subset of eigenvalues (see above).
+
+ __Example 9.17__ lapEignenValue.edp
+
+In the first example, we compute the eigenvalues and the eigenvectors of the Dirichlet problem on square $\Omega=]0,\pi[^2$.
+
+The problem is to find: $\lambda$, and $\nabla u_{\lambda}$ in $\mathbb{R}{\times} H^1_0(\Omega)$
+$$ \int_\Omega \nabla u_{\lambda} \nabla v = \lambda \int_\Omega u v \quad \forall v \in H^1_0(\Omega)$$
+
+The exact eigenvalues are $\lambda_{n,m} =(n^2+m^2), (n,m)\in {\mathbb{N}_*}^2$ with
+the associated eigenvectors are $u_{{m,n}}=sin(nx)*sin(my)$.
 
 We use the generalized inverse shift mode of the `:::freefem arpack++` library, to find
 20 eigenvalues and eigenvectors close to the shift value $\sigma=20$.
 
 ```freefem
-//  Computation of the eigen value and eigen vector of the \hfilll
-//  Dirichlet problem on square $]0,\pi[^2$ \hfilll
-// ----------------------------------------\hfilll
-// we use the inverse shift mode \hfilll
-// the shift is given with the real sigma\hfilll
-// -------------------------------------\hfilll
-//  find $\lambda$ and $u_\lambda\in H^1_0(\Omega)$ such that: \hfilll
-// \hfilll$\displaystyle  \int_{\Omega}  \nabla u_{\lambda} \nabla v = \lambda \int_{\Omega} u_{\lambda}   v , \forall v \in H^1_0(\Omega) $\hfilll
+// Computation of the eigen value and eigen vector of the
+// Dirichlet problem on square $]0,\pi[^2$
+// ----------------------------------------
+// we use the inverse shift mode
+// the shift is given with the real sigma
+// -------------------------------------
+// find $\lambda$ and $u_\lambda\in H^1_0(\Omega)$ such that:
+// $\displaystyle  \int_{\Omega}  \nabla u_{\lambda} \nabla v = \lambda \int_{\Omega} u_{\lambda}   v , \forall v \in H^1_0(\Omega) $
 verbosity=10;
 mesh Th=square(20,20,[pi*x,pi*y]);
 fespace Vh(Th,P2);
 Vh u1,u2;
 
-real sigma = 20;  // value of the shift
+real sigma = 20; // value of the shift
 
-// OP = A - sigma B ;  //  the shifted matrix
+// OP = A - sigma B ; // the shifted matrix
 varf op(u1,u2)= int2d(Th)(  dx(u1)*dx(u2) + dy(u1)*dy(u2) - sigma* u1*u2 )
-                    +  on(1,2,3,4,u1=0) ;  // Boundary condition
+                    +  on(1,2,3,4,u1=0) ; // Boundary condition
 
-varf b([u1],[u2]) = int2d(Th)(  u1*u2 );//no Boundary condition see note \ref{note BC EV}
-matrix OP= op(Vh,Vh,solver=Crout,factorize=1);  // crout solver because the matrix in not positive
+varf b([u1],[u2]) = int2d(Th)(  u1*u2 );//no Boundary condition see note \ref{note BC EV} $\codered$
+matrix OP= op(Vh,Vh,solver=Crout,factorize=1); // crout solver because the matrix in not positive
 matrix B= b(Vh,Vh,solver=CG,eps=1e-20);
 
 // important remark:
 // the boundary condition is make with exact penalization:
-//     we put 1e30=tgv on the diagonal term of the lock degree of freedom.
-//  So take Dirichlet boundary condition just on $a$ variational form
+// we put 1e30=tgv on the diagonal term of the lock degree of freedom.
+// So take Dirichlet boundary condition just on $a$ variational form
 // and not on  $b$ variational form.
 // because we solve $ w=OP^-1*B*v $
 
-int nev=20;  // number of computed eigen value close to sigma
+int nev=20; // number of computed eigen value close to sigma
 
 real[int] ev(nev); // to store the nev eigenvalue
-Vh[int] eV(nev);   // to store the nev eigenvector
+Vh[int] eV(nev); // to store the nev eigenvector
 
 int k=EigenValue(OP,B,sym=true,sigma=sigma,value=ev,vector=eV,
                    tol=1e-10,maxit=0,ncv=0);
 
-//   tol= the tolerance \hfilll
-//   maxit= the maximum iteration see arpack doc.\hfilll
-//   ncv   see arpack doc. \url{http://www.caam.rice.edu/software/ARPACK/}\hfilll
-//  the return value is number of converged eigen value.\hfilll
+// tol= the tolerance
+// maxit= the maximum iteration see arpack doc.
+// ncv see arpack doc. \url{http://www.caam.rice.edu/software/ARPACK/} $\codered$
+// the return value is number of converged eigen value.
 
 for (int i=0;i<k;i++)
 {
@@ -1799,7 +1741,13 @@ Eigenvalues:
  ---- 19 34.0492 err= -0.0536275 ---
 ```
 
-\twoplot[height=8cm]{eigen11}{eigen12}{Isovalue of 11th eigenvector $u_{4,3}-u_{3,4}$}{Isovalue of 12th eigenvector $u_{4,3}+u_{3,4}$}
+|Fig. 9.17: Isovalue of 11th eigenvector $u_{4,3}-u_{3,4}$|
+|:----:|
+|![eigen11](images/eigen11.png)|
+
+|Fig. 9.18: Isovalue of 12th eigenvector $u_{4,3}+u_{3,4}$|
+|:----:|
+|![eigen12](images/eigen12.png)|
 
 ## Evolution Problems
 
@@ -1812,7 +1760,7 @@ FreeFem++ also solves evolution problems such as the heat equation:
 \end{eqnarray}
 
 with a positive viscosity coefficient $\mu$ and homogeneous Neumann boundary conditions.
-We solve (\ref{prb:heat}) by FEM in space and finite differences in time.
+We solve (\ref{prb:heat} 9.26 $\codered$) by FEM in space and finite differences in time.
 We use the definition of the partial derivative of the solution in the time
 derivative,
 
@@ -1827,7 +1775,7 @@ which indicates that $u^m(x,y)=u(x,y,m\tau )$ will satisfy approximatively
 \frac{\p u}{\p t}(x,y,m\tau )\simeq \frac{u^m(x,y)-u^{m-1}(x,y)}{\tau }
 \]
 
-The time discretization of heat equation (\ref{eqn:heat}) is as follows:
+The time discretization of heat equation (\ref{eqn:heat} 9.27 $\codered$) is as follows:
 
 \begin{eqnarray}
 &&\frac{u^{m+1}-u^{m}}{\tau }-\mu\Delta u^{m+1}=f^{m+1}
@@ -1837,13 +1785,13 @@ The time discretization of heat equation (\ref{eqn:heat}) is as follows:
 \textrm{for all }m=0,\cdots,[T/\tau ],\nonumber
 \end{eqnarray}
 
-which is so-called \key{backward Euler method} for (\ref{eqn:heat}).
+which is so-called _backward Euler method_ for (\ref{eqn:heat} 9.27 $\codered$).
 To obtain the variational formulation, multiply with the test function $v$ both sides of the equation:
 
 \begin{equation*}
 \int_{\Omega }\{u^{m+1}v-\tau \Delta u^{m+1}v\}
 =\int_{\Omega }\{u^m+\tau f^{m+1}\}v\, .
-\end{equation*}%
+\end{equation*}
 
 By the divergence theorem, we have
 
@@ -1862,7 +1810,7 @@ By the boundary condition $\p u^{m+1}/\p n=0$, it follows that
 Using the identity just above, we can calculate the finite element
 approximation $u_h^m$ of $u^m$ in a step-by-step manner with respect to $t$.
 
-_Example_
+ __Example 9.18__
 
 We now solve the following example with the exact solution $u(x,y,t)=tx^4$.
 
@@ -1873,7 +1821,7 @@ We now solve the following example with the exact solution $u(x,y,t)=tx^4$.
 \end{eqnarray*}
 
 ```freefem
-// heat equation  $\p_t u = -\mu \Delta u = x^4 - \mu 12tx^2$
+// heat equation  $\p_t u = -\mu \Delta u = x^4 - \mu 12tx^2$ $\codered$
 mesh Th=square(16,16);
 fespace Vh(Th,P1);
 
@@ -1885,7 +1833,7 @@ problem dHeat(u,v) =
     + on(1,2,3,4,u=g);
 
 real t = 0; // start from t=0
-uu = 0;     // u(x,y,0)=0
+uu = 0; // u(x,y,0)=0
 for (int m=0;m<=3/dt;m++)
 {
    t=t+dt;
@@ -1899,18 +1847,14 @@ for (int m=0;m<=3/dt;m++)
 ```
 
 In the last statement, the $L^2$-error
-$\left(\int_{\Omega}\left| u-tx^4\right|^2\right)^{1/2}$ is calculated at
-$t=m\tau , \tau =0.1$. At $t=0.1$, the error is 0.000213269.
-The errors increase with $m$ and 0.00628589 at $t=3$.
+$\left(\int_{\Omega}\left| u-tx^4\right|^2\right)^{1/2}$ is calculated at $t=m\tau, \tau =0.1$. At $t=0.1$, the error is 0.000213269. The errors increase with $m$ and 0.00628589 at $t=3$.
 
-The iteration of the backward Euler (\ref{eqn:BackEuler}) is made by
-__for loop__ (see \refSec{Loops}).
+The iteration of the backward Euler (\ref{eqn:BackEuler} 9.28 $\codered$) is made by
+__for loop__ (see \refSec{Loops} section 4.11 $\codered$).
 
 
 !!! note
-
-The stiffness matrix in the loop is used over and over again.
-FreeFem++ support reuses of stiffness matrix.
+	The stiffness matrix in the loop is used over and over again. FreeFem++ support reuses of stiffness matrix.
 
 ### Mathematical Theory on Time Difference Approximations.
 
@@ -1928,12 +1872,9 @@ u(0)&=&u^0\nonumber
 \end{eqnarray}
 
 where $V'$ is the dual space of $V$.
-Then, there is an unique solution
-$u\in L^{\infty}(0,T;H)\cap L^2(0,T;V)$.
+Then, there is an unique solution $u\in L^{\infty}(0,T;H)\cap L^2(0,T;V)$.
 
-Let us denote the time step by $\tau>0$, $N_T=[T/\tau]$.
-For the discretization, we put $u^n = u(n\tau)$
-and consider the time difference for each $\theta\in [0,1]$
+Let us denote the time step by $\tau>0$, $N_T=[T/\tau]$. For the discretization, we put $u^n = u(n\tau)$ and consider the time difference for each $\theta\in [0,1]$
 
 \begin{eqnarray}
 \frac{1}{\tau}\left( u_h^{n+1}-u_h^n,\phi_i\right)
@@ -1943,7 +1884,7 @@ u_h^{n+\theta}=\theta u_h^{n+1}+(1-\theta)u_h^n,\quad
 f^{n+\theta}=\theta f^{n+1}+(1-\theta)f^n\nonumber
 \end{eqnarray}
 
-Formula (\ref{eqn:t-method}) is the _forward Euler scheme_ if
+Formula (\ref{eqn:t-method} 9.30 $\codered$) is the _forward Euler scheme_ if
 $\theta=0$, _Crank-Nicolson scheme_ if $\theta=1/2$,
 the _backward Euler scheme_ if $\theta=1$.
 
@@ -1962,12 +1903,11 @@ M=(m_{ij}),\quad m_{ij}=(\phi_j,\phi_i),\qquad
 A=(a_{ij}),\quad a_{ij}=a(\phi_j,\phi_i)\nonumber
 \end{eqnarray}
 
-Refer \cite[pp.70--75]{TA94} for solvability of (\ref{eqn:Evolution-1}).
-The stability of (\ref{eqn:Evolution-1}) is in \cite[Theorem 2.13]{TA94}:
+Refer \cite[pp.70--75]{TA94} for solvability of (\ref{eqn:Evolution-1} 9.31 $\codered$).
+The stability of (\ref{eqn:Evolution-1} 9.31 $\codered$) is in \cite[Theorem 2.13]{TA94}:
 
-\begin{quotation}
 Let $\{\mathcal{T}_h\}_{h\downarrow 0}$ be regular triangulations
-(see \refSec{Regular Triangulation}).
+(see \refSec{Regular Triangulation} section 5.4).
 Then there is a number $c_0>0$ independent of $h$ such that,
 
 \begin{eqnarray}
@@ -1983,20 +1923,18 @@ Then there is a number $c_0>0$ independent of $h$ such that,
 \end{eqnarray}
 
 if the following are satisfied:
-\begin{enumerate}
-  \item When $\theta\in [0,1/2)$, then we can take a time step $\tau$ in
-such a way that
 
-\begin{eqnarray}
-\tau <\frac{2(1-\delta)}{(1-2\theta)c_0^2}h^2
-\end{eqnarray}
+1. When $\theta\in [0,1/2)$ $\codered$, then we can take a time step $\tau$ in such a way that
 
-for arbitrary $\delta\in (0,1)$.
-  \item When $1/2\le \theta\le 1$, we can take $\tau$ arbitrary.
-\end{enumerate}
-\end{quotation}
+	\begin{eqnarray}
+	\tau <\frac{2(1-\delta)}{(1-2\theta)c_0^2}h^2
+	\end{eqnarray}
 
-_Example_ ~
+	for arbitrary $\delta\in (0,1)$.
+
+2. When $1/2\le \theta\le 1$, we can take $\tau$ arbitrary.
+
+ __Example 9.19__
 
 ```freefem
 mesh Th=square(12,12);
@@ -2022,7 +1960,7 @@ problem aTau(u,v) =
 
 while (theta <= 1.0) {
   real t = 0, T=3; // from t=0 to T
-  oldU = 0;     // u(x,y,0)=0
+  oldU = 0; // u(x,y,0)=0
   out <<theta<<",";
   for (int n=0;n<T/tau;n++) {
       t = t+tau;
@@ -2039,27 +1977,24 @@ while (theta <= 1.0) {
 }
 ```
 
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[height=6cm]{err02}
-\end{center}
-\caption{$\max_{x\in \Omega}|u_h^n(\theta)-u_{ex}(n\tau)|/\max_{x\in \Omega}|u_{ex}(n\tau)|$ at $n=0,1,\cdots,29$
-}
-\end{figure}
+$\codered$ figure compilation issue due to vertical bars in formula:
 
-We can see in Fig. \ref{fig:err02} that $u_h^n(\theta)$ become unstable at $\theta=0.4$, and figures are omitted in the case $\theta<0.4$.
+|Fig. 9.19: $\max_{x\in\Omega}|u_h^n(\theta)-u_{ex}(n\tau)|/\max_{x\in\Omega}|u_{ex}(n\tau)|$ at $n=0,1,\cdots,29$|
+|:----:|
+|![err02](images/err02.png)|
+
+We can see in Fig. \ref{fig:err02} 9.19 $\codered$ that $u_h^n(\theta)$ become unstable at $\theta=0.4$, and figures are omitted in the case $\theta<0.4$.
 
 ### Convection
 
 The hyperbolic equation
 
 \begin{eqnarray}
-\p_t u +\vec{\alpha} \cdot \nabla u=f;~~ %% FH   pb sign 2008 $\codered$
+\p_t u +\vec{\alpha} \cdot \nabla u=f;~~ %% FH pb sign 2008 $\codered$
 \textrm{for a vector-valued function }\vec{\alpha},~
 \end{eqnarray}
 
-appears frequently in scientific problems, for example in the
-Navier-Stokes equations, in the Convection-Diffusion equation, etc.
+appears frequently in scientific problems, for example in the Navier-Stokes equations, in the Convection-Diffusion equation, etc.
 
 In the case of 1-dimensional space, we can easily find the general solution
 $(x,t)\mapsto u(x,t)=u^0(x-\alpha t)$ of the following equation, if $\alpha$ is constant,
@@ -2068,34 +2003,24 @@ $(x,t)\mapsto u(x,t)=u^0(x-\alpha t)$ of the following equation, if $\alpha$ is 
 \p_t u +\alpha\p_x u=0,\qquad u(x,0)=u^0(x),
 \end{eqnarray}
 
-because $\p_t u +\alpha\p_x u=-\alpha\dot{u}^0+a\dot{u}^0=0$,
-where $\dot{u}^0=du^0(x)/dx$.
-Even if $\alpha$ is not constant, the construction worsk on similar principles.
-One begins with the ordinary differential equation
-(with the convention that $\alpha$
-is prolonged by zero apart from $(0,L)\times (0,T)$):
+because $\p_t u +\alpha\p_x u=-\alpha\dot{u}^0+a\dot{u}^0=0$, where $\dot{u}^0=du^0(x)/dx$.
+Even if $\alpha$ is not constant, the construction works on similar principles. One begins with the ordinary differential equation (with the convention that $\alpha$ is prolonged by zero apart from $(0,L)\times (0,T)$):
 
 \[
-\dot{X}(\tau )=+\alpha(X(\tau ),\tau ),~~~\tau \in (0,t)\quad X(t)=x%% FH   pb sign 2008 $\codered$
-\]%
+\dot{X}(\tau )=+\alpha(X(\tau ),\tau ),~~~\tau \in (0,t)\quad X(t)=x
+\]
+% FH pb sign 2008 $\codered$
 
-In this equation $\tau$ is the variable and $x,t$ are parameters,
-and we denote the solution by $X_{x,t}(\tau )$.
-Then it is noticed that $(x,t)\rightarrow v(X(\tau ),\tau )$ in
-$\tau=t$ satisfies the equation
+In this equation $\tau$ is the variable and $x,t$ are parameters, and we denote the solution by $X_{x,t}(\tau )$. Then it is noticed that $(x,t)\rightarrow v(X(\tau),\tau)$ in $\tau=t$ satisfies the equation
 
 \[
 \p _{t}v+\alpha\p _{x}v=\p _{t}X\dot{v}+a\p _{x}X\dot{v}%
 =0
 \]
 
-and by the definition $\p _{t}X=\dot{X}=+\alpha$ and %% FH   pb sign 2008 $\codered$
-$\p_{x}X=\p _{x}x$ in $\tau=t$, because
-if $\tau =t$ we have $X(\tau )=x$.
-The general solution of (\ref{eqn:conv0}) is thus the value of the boundary condition in $X_{x, t}(0)$,
-that is to say $u(x,t)=u^{0}(X_{x,t}(0))$ where $X_{x,t}(0)$ is on the
-$x$ axis, $u(x,t)=u^{0}(X_{x,t}(0))$ if $X_{x,t}(0)$ is on the axis of
-$t$.
+and by the definition $\p _{t}X=\dot{X}=+\alpha$ and %% FH pb sign 2008 $\codered$
+$\p_{x}X=\p _{x}x$ in $\tau=t$, because if $\tau =t$ we have $X(\tau )=x$.
+The general solution of (\ref{eqn:conv0} 9.35 $\codered$) is thus the value of the boundary condition in $X_{x, t}(0)$, that is to say $u(x,t)=u^{0}(X_{x,t}(0))$ where $X_{x,t}(0)$ is on the $x$ axis, $u(x,t)=u^{0}(X_{x,t}(0))$ if $X_{x,t}(0)$ is on the axis of $t$.
 
 In higher dimension $\Omega \subset R^{d},~d=2,3$, the equation for the
 convection is written
@@ -2105,8 +2030,7 @@ convection is written
 \]
 
 where  $\vec{a}(x,t)\in R^{d}$.
-FreeFem++ implements the Characteristic-Galerkin method for convection operators. Recall that the equation (\ref{eqn:conv})
-can be discretized as
+FreeFem++ implements the Characteristic-Galerkin method for convection operators. Recall that the equation (\ref{eqn:conv} 9.34 $\codered$) can be discretized as
 
 \[
 \frac{Du}{Dt} = f\;\;\textrm{i.e. }\frac{du}{dt}\left( {X(t),t} \right) = f\left(X( t ),t \right)\textrm{  where  }\frac{dX}{dt}( t ) = \vec \alpha( {X(t),t})
@@ -2127,7 +2051,7 @@ of the ordinary differential equation
 \frac{d\vec{X}}{dt}(t) = \vec{\alpha}^m(\vec{X}(t)),\, \vec{X}((m + 1)\tau ) = x.
 \]
 
-where $\vec{\alpha}^m(x)=(\alpha_1(x,m\tau ),\alpha_2(x,m\tau ))$.
+where $\vec{\alpha}^m(x)=(\alpha_1(x,m\tau ),\alpha_2(x,m\tau))$.
 Because, by Taylor's expansion, we have
 
 \begin{eqnarray}
@@ -2142,7 +2066,7 @@ u^m(\vec{X}((m+1)\tau )) -
 where $X_i(t)$ are the i-th component of $\vec{X}(t)$,
 $u^m(x)=u(x,m\tau )$
 and we used the chain rule and $x=\vec{X}((m+1)\tau )$.
-From (\ref{eqn:conv1}), it follows that
+From (\ref{eqn:conv1} 9.37 $\codered$), it follows that
 
 \begin{eqnarray}
 u^m(X^m(x))=u^m(x)-\tau \vec{\alpha}^m(x)\cdot \nabla u^m(x)+o(\tau ).
@@ -2157,66 +2081,58 @@ u^m(x-\vec{\alpha}\tau )=u^m(x)-\tau \vec{\alpha}^m(x)\cdot \nabla u^m(x)+o(\tau
 
 Putting
 
-\[
-`:::freefem convect`\left( {\vec{\alpha},-\tau ,u^m } \right)
-\approx u^m \left(x - \vec{\alpha}^m\tau  \right),%% FH 2008 sign $\codered$
-\]
+`:::freefem convect` $\left( {\vec{\alpha},-\tau ,u^m } \right)\approx u^m \left(x - \vec{\alpha}^m\tau  \right)$
+
+,%% FH 2008 sign $\codered$
 
 we can get the approximation
 
-\[
-u^m \left( {X^m( x )} \right) \approx
-{`:::freefem convect`}\left( {[a_1^m ,a_2^m],-\tau ,u^m } \right)\;\;
-\textrm{by }X^m \approx x \mapsto x- \tau [a_1^m(x) ,a_2^m(x)]  ).%% FH 2008 sign $\codered$
-\]
 
-A classical convection problem is that of the "rotating bell"
-(quoted from \cite{Lucquin} $\codered$[p.16]).
-Let $\Omega$ be the unit disk centered at 0,
-with its center rotating with speed
-$\alpha_1 = y,\, \alpha_2 = -x$
-We consider the problem (\ref{eqn:conv}) with $f=0$ and the initial condition
-$u(x,0)=u^0(x)$, that is, from (\ref{eqn:Charac})
+$u^m \left( {X^m( x )} \right) \approx$ `:::freefem convect` $\left( {[a_1^m ,a_2^m],-\tau ,u^m } \right)\;\;\textrm{by }X^m \approx x \mapsto x- \tau [a_1^m(x) ,a_2^m(x)]$
 
-\begin{eqnarray*}
-u^{m + 1}(x) = u^m(X^m(x))\approx `:::freefem convect`(\vec{\alpha},-\tau ,u^m).%% FH 2008 sign $\codered$
-\end{eqnarray*}
+%% FH 2008 sign $\codered$
 
-The exact solution is $u(x, t) = u(\vec{X}(t))$
-where $\vec{X}$ equals $x$
-rotated around the origin by an angle $\theta = -t$ (rotate in clockwise).
-So, if $u^0$ in a 3D perspective
-looks like a bell, then $u$ will have exactly the same shape, but rotated by the
-same amount.
-The program consists in solving the equation until $T = 2\pi$, that is for a full
-revolution and to compare the final solution with the initial one; they should
-be equal.
+A classical convection problem is that of the "rotating bell" (quoted from \cite{Lucquin} $\codered$[p.16]).
+Let $\Omega$ be the unit disk centered at 0, with its center rotating with speed $\alpha_1 = y,\, \alpha_2 = -x$. We consider the problem (\ref{eqn:conv} 9.34 $\codered$) with $f=0$ and the initial condition
+$u(x,0)=u^0(x)$, that is, from (\ref{eqn:Charac} 9.36 $\codered$)
 
-_Example_ [convect.edp]
+
+$u^{m + 1}(x) = u^m(X^m(x))\approx$ `:::freefem convect`$(\vec{\alpha},-\tau ,u^m)$
+
+% FH 2008 sign $\codered$
+
+The exact solution is $u(x, t) = u(\vec{X}(t))$ where $\vec{X}$ equals $x$ rotated around the origin by an angle $\theta = -t$ (rotate in clockwise). So, if $u^0$ in a 3D perspective looks like a bell, then $u$ will have exactly the same shape, but rotated by the same amount. The program consists in solving the equation until $T = 2\pi$, that is for a full revolution and to compare the final solution with the initial one; they should be equal.
+
+ __Example 9.20__ convect.edp
 
 ```freefem
 border C(t=0, 2*pi) { x=cos(t);  y=sin(t); }; // the unit circle
-mesh Th = buildmesh(C(70));   // triangulates the disk
+mesh Th = buildmesh(C(70)); // triangulates the disk
 fespace Vh(Th,P1);
-Vh u0 = exp(-10*((x-0.3)^2 +(y-0.3)^2));    // give $u^0$
+Vh u0 = exp(-10*((x-0.3)^2 +(y-0.3)^2)); // give $u^0$
 
-real dt = 0.17,t=0;       // time step
-Vh a1 = -y, a2 = x;                   // rotation velocity
+real dt = 0.17,t=0; // time step
+Vh a1 = -y, a2 = x; // rotation velocity
 Vh u; // $u^{m+1}$
 for (int m=0; m<2*pi/dt ; m++) {
     t += dt;
-    u=convect([a1,a2],-dt,u0);  // $u^{m+1}=u^m(X^m(x))$
-    u0=u;                      // m++
+    u=convect([a1,a2],-dt,u0); // $u^{m+1}=u^m(X^m(x))$
+    u0=u; // m++
     plot(u,cmm=" t="+t + ", min=" + u[].min + ", max=" +  u[].max,wait=0);
 };
 ```
 
 !!! note
 
-The scheme `:::freefem convect` is unconditionally stable, then
-the bell become lower and lower (the maximum of $u^{37}$ is $0.406$ as shown in Fig. \ref{BellLast}).
+	The scheme `:::freefem convect` is unconditionally stable, then the bell become lower and lower (the maximum of $u^{37}$ is $0.406$ as shown in Fig. \ref{BellLast} 9.21 $\codered$).
 
-\twoplot[height=5cm]{BellInit}{BellLast}{$u^0=e^{-10((x-0.3)^2 +(y-0.3)^2)}$}{The bell at $t=6.29$}
+|Fig. 9.20: $u^0=e^{-10((x-0.3)^2 +(y-0.3)^2)}$|
+|:----:|
+|![BellInit](images/BellInit.png)|
+
+|Fig. 9.21: The bell at $t=6.29$|
+|:----:|
+|![BellLast](images/BellLast.png)|
 
 ### 2D Black-Scholes equation for an European Put option
 
@@ -2235,30 +2151,19 @@ subject to, in the case of a put
 u\left( {x , y ,T} \right) = \left( {K - \max \left( {x ,y } \right)} \right)^ +  .
 \end{eqnarray}
 
-Boundary conditions for this problem may not be so easy to device.
-As in the one dimensional case the PDE contains boundary conditions on the axis
-$x_1 = 0$ and on the axis $x_2 = 0$, namely two one dimensional Black-Scholes equations driven
-respectively by the data $u\left( {0, + \infty ,T} \right)$
-and $u\left( { + \infty ,0,T} \right)$.
-These will be automatically accounted for because they are embedded in the PDE.
-So if we do nothing in the variational form (i.e. if we take a Neumann boundary condition at
-these two axis in the strong form) there will be no disturbance to these.
-At infinity in one of the variable, as in 1D, it makes sense to impose $u=0$.
-We take
+Boundary conditions for this problem may not be so easy to device. As in the one dimensional case the PDE contains boundary conditions on the axis $x_1 = 0$ and on the axis $x_2 = 0$, namely two one dimensional Black-Scholes equations driven respectively by the data $u\left( {0, + \infty ,T} \right)$ and $u\left( { + \infty ,0,T} \right)$. These will be automatically accounted for because they are embedded in the PDE. So if we do nothing in the variational form (i.e. if we take a Neumann boundary condition at these two axis in the strong form) there will be no disturbance to these. At infinity in one of the variable, as in 1D, it makes sense to impose $u=0$. We take
 
 \begin{eqnarray}
 \sigma _1  = 0.3,\;\;\sigma _2  = 0.3,\;\;\rho  = 0.3,\;\;r = 0.05,\;\;K = 40,\;\;T = 0.5
 \end{eqnarray}
 
-An implicit Euler scheme is used and a mesh adaptation is done every 10 time steps.
-To have an unconditionally stable scheme, the first order terms are treated by the
-Characteristic Galerkin method, which, roughly, approximates
+An implicit Euler scheme is used and a mesh adaptation is done every 10 time steps. To have an unconditionally stable scheme, the first order terms are treated by the Characteristic Galerkin method, which, roughly, approximates
 
 \begin{eqnarray}
 \frac{{\p u}}{{\p t}} + a_1 \frac{{\p u}}{{\p x}} + a_2 \frac{{\p u}}{{\p y}} \approx \frac{1}{{\tau }}\left( {u^{n + 1} \left( x \right) - u^n \left( {x - \vec \alpha\tau } \right)} \right)
 \end{eqnarray}
 
-_Example_ ~ [BlackSchol.edp]
+ __Example 9.21__ BlackSchol.edp
 
 ```freefem
 // file BlackScholes2D.edp
@@ -2291,9 +2196,15 @@ for (int n=0; n*dt <= 1.0; n++)
 plot(u,wait=1,value=1);
 ```
 
-Results are shown on Fig. \ref{blackScholesE}).
+Results are shown on Fig. \ref{blackScholesE} 9.21 $\codered$).
 
-\twoplot[height=8cm]{BSth}{BSval}{The adapted triangulation}{The level line of the European basquet put option}
+|Fig. 9.22: The adapted triangulation|
+|:----:|
+|![BSth](images/BSth.png)|
+
+|Fig. 9.23: The level line of the European basquet put option|
+|:----:|
+|![BSval](images/BSval.png)|
 
 ## Navier-Stokes Equation
 
@@ -2308,11 +2219,9 @@ The Stokes equations are: for a given $\vec{f}\in L^2(\Omega)^2$,
  \end{array}\right\}\quad \hbox{ in }\Omega
 \end{equation}
 
-where $\vec{u}=(u_1,u_2)$ is the velocity vector and $p$ the pressure.
-For simplicity, let us choose Dirichlet boundary conditions
-on the velocity,  $\vec{u}=\vec{u}_{\Gamma}$ on $\Gamma$.
+where $\vec{u}=(u_1,u_2)$ is the velocity vector and $p$ the pressure. For simplicity, let us choose Dirichlet boundary conditions on the velocity, $\vec{u}=\vec{u}_{\Gamma}$ on $\Gamma$.
 
-In Temam [Theorem 2.2], there ia a weak form of (\ref{eqn:Stokes}):
+In Temam [Theorem 2.2], there ia a weak form of (\ref{eqn:Stokes} 9.43 $\codered$):
 Find $\vec{v}=(v_1,v_2)\in \vec{V}(\Omega)$
 
 \[
@@ -2326,14 +2235,12 @@ which satisfy
 \quad \textrm{for all }v\in V
 \]
 
-Here it is used the existence
-$p\in H^1(\Omega)$ such that $\vec{u}=\nabla p$, if
+Here it is used the existence $p\in H^1(\Omega)$ such that $\vec{u}=\nabla p$, if
 
 \[
 \int_{\Omega}\vec{u}\cdot \vec{v}=0\quad \textrm{for all }\vec{v}\in
 V
 \]
-
 
 Another weak form is derived as follows: We put
 
@@ -2342,9 +2249,8 @@ Another weak form is derived as follows: We put
 W=\left\{q\in L^2(\Omega)\left|\; \int_{\Omega}q=0\right.\right\}
 \end{eqnarray*}
 
-By multiplying the first equation in (\ref{eqn:Stokes}) with $v\in V$ and the
-second with $q\in W$, subsequent integration over $\Omega$, and an
-application of Green's formula, we have
+By multiplying the first equation in (\ref{eqn:Stokes} 9.43 $\codered$) with $v\in V$ and the
+second with $q\in W$, subsequent integration over $\Omega$, and an application of Green's formula, we have
 
 \begin{eqnarray*}
 \int_{\Omega}\nabla\vec{u}\cdot \nabla\vec{v}-\int_{\Omega}\textrm{div}\vec{v}\, p
@@ -2352,7 +2258,7 @@ application of Green's formula, we have
 \int_{\Omega}\textrm{div}\vec{u}\, q&=&0
 \end{eqnarray*}
 
-This yields the weak form of (\ref{eqn:Stokes}):
+This yields the weak form of (\ref{eqn:Stokes} 9.43 $\codered$):
 Find $(\vec{u},p)\in \vec{V}\times W$ such that
 
 \begin{eqnarray}
@@ -2365,7 +2271,6 @@ for all $(\vec{v},q)\in V\times W$, where
 \begin{eqnarray}
 a(\vec{u},\vec{v})&=&\int_{\Omega}\nabla \vec{u}\cdot \nabla\vec{v}
 =\sum_{i=1}^2\int_{\Omega}\nabla u_i\cdot \nabla v_i\\
-
 b(\vec{u},q)&=&-\int_{\Omega}\textrm{div}\vec{u}\, q
 \end{eqnarray}
 
@@ -2392,33 +2297,37 @@ Find $(\vec{u}_{h},p_{h}) \in \vec{V}_{h} \times W_{h}$ such that
 
 !!! note
 
-Assume that:
-\begin{enumerate}
-  \item There is a constant $\alpha_h>0$ such that
-  \[
-  a(\vec{v}_h,\vec{v}_h)\ge \alpha\| \vec{v}_h\|_{1,\Omega}^2\quad \textrm{for all }\vec{v}_h\in Z_h
-  \]
-  where
-  \[
-  Z_h=\{\vec{v}_h\in \vec{V}_h|\; b(\vec{w}_h,q_h)=0\quad \textrm{for all }q_h\in W_h\}
-  \]
-  \item There is a constant $\beta_h>0$ such that
-  \[
-  \sup_{\vec{v}_h\in \vec{V}_h}\frac{b(\vec{v}_h,q_h)}{\| \vec{v}_h\|_{1,\Omega}}
-  \ge \beta_h\| q_h\|_{0,\Omega}\quad \textrm{for all }q_h\in W_h
-  \]
-\end{enumerate}
-  Then we have an unique solution $(\vec{u}_h,p_h)$ of (\ref{eqn:vfStokes})
-  satisfying
+	Assume that:
 
-  \[
-  \| \vec{u}-\vec{u}_h\|_{1,\Omega}+\| p-p_h\|_{0,\Omega}
-  \le C\left(
-  \inf_{\vec{v}_h\in \vec{V}_h}\| u-v_h\|_{1,\Omega}
-  +\inf_{q_h\in W_h}\| p-q_h\|_{0,\Omega}\right)
-  \]
+	1. There is a constant $\alpha_h>0$ such that
 
-  with a constant $C>0$ (see e.g. \cite[Theorem 10.4]{RT93}).
+		\[
+		a(\vec{v}_h,\vec{v}_h)\ge \alpha\| \vec{v}_h\|_{1,\Omega}^2\quad \textrm{for all }\vec{v}_h\in Z_h
+		\]
+
+		where
+
+		\[
+		Z_h=\{\vec{v}_h\in \vec{V}_h|\; b(\vec{w}_h,q_h)=0\quad \textrm{for all }q_h\in W_h\}
+		\]
+
+	2. There is a constant $\beta_h>0$ such that
+
+		\[
+		\sup_{\vec{v}_h\in \vec{V}_h}\frac{b(\vec{v}_h,q_h)}{\| \vec{v}_h\|_{1,\Omega}}
+		\ge \beta_h\| q_h\|_{0,\Omega}\quad \textrm{for all }q_h\in W_h
+		\]
+
+	Then we have an unique solution $(\vec{u}_h,p_h)$ of (\ref{eqn:vfStokes} 9.48 $\codered$) satisfying
+
+	\[
+	\| \vec{u}-\vec{u}_h\|_{1,\Omega}+\| p-p_h\|_{0,\Omega}
+	\le C\left(
+	\inf_{\vec{v}_h\in \vec{V}_h}\| u-v_h\|_{1,\Omega}
+	+\inf_{q_h\in W_h}\| p-q_h\|_{0,\Omega}\right)
+	\]
+
+	with a constant $C>0$ (see e.g. \cite[Theorem 10.4]{RT93} $\codered$).
 
 Let us denote that
 
@@ -2431,7 +2340,7 @@ By_{ij}=-\int_{\Omega}\p \phi_j/\p y\, \varphi_i\nonumber\\
 &&\qquad i=1,\cdots,M_W;j=1,\cdots,M_V\nonumber
 \end{eqnarray}
 
-then (\ref{eqn:vfStokes}) is written by
+then (\ref{eqn:vfStokes} 9.48 $\codered$) is written by
 
 \begin{eqnarray}
 \left(
@@ -2485,7 +2394,7 @@ By^T
 \right\}
 \end{eqnarray*}
 
-__Penalty method:__ This method consists of replacing (\ref{eqn:vfStokes}) by a more regular problem: Find
+__Penalty method:__ This method consists of replacing (\ref{eqn:vfStokes} 9.48 $\codered$) by a more regular problem: Find
 $(\vec{v}_h^{\epsilon},p_h^{\epsilon})\in \vec{V}_h\times \tilde{W}_{h}$ satisfying
 
 \begin{equation}
@@ -2529,32 +2438,26 @@ B&-\epsilon I
 
 !!! note
 
-We can eliminate $p_h^\epsilon=(1/\epsilon)BU_h^{\epsilon}$ to obtain
+	We can eliminate $p_h^\epsilon=(1/\epsilon)BU_h^{\epsilon}$ to obtain
 
-\begin{eqnarray}
-(A+(1/\epsilon)B^*B)\vec{U}_h^{\epsilon}=\vec{F}_h^{\epsilon}
-\end{eqnarray}
+	\begin{eqnarray}
+	(A+(1/\epsilon)B^*B)\vec{U}_h^{\epsilon}=\vec{F}_h^{\epsilon}
+	\end{eqnarray}
 
-Since the matrix $A+(1/\epsilon)B^*B$ is symmetric, positive-definite, and sparse, (\ref{eqn:StiffPvfStokes}) can be solved by known technique.
-There is a constant $C>0$ independent of $\epsilon$ such that
+	Since the matrix $A+(1/\epsilon)B^*B$ is symmetric, positive-definite, and sparse, (\ref{eqn:StiffPvfStokes} 9.52 $\codered$) can be solved by known technique. There is a constant $C>0$ independent of $\epsilon$ such that
 
-\[
-\|\vec{u}_h-\vec{u}_h^\epsilon\|_{1,\Omega}+
-\|p_h-p_h^{\epsilon}\|_{0,\Omega}\le C\epsilon
-\]
+	\[
+	\|\vec{u}_h-\vec{u}_h^\epsilon\|_{1,\Omega}+
+	\|p_h-p_h^{\epsilon}\|_{0,\Omega}\le C\epsilon
+	\]
 
-(see e.g. \cite[17.2]{RT93})
+	(see e.g. \cite[17.2]{RT93})
 
-_Example_ [Cavity.edp]
+ __Example 9.22__ Cavity.edp
 
-The driven cavity flow problem is solved first at zero Reynolds number
-(Stokes flow) and then at Reynolds 100.  The
-velocity pressure formulation is used first and then the calculation
-is repeated with the stream function vorticity formulation.
+The driven cavity flow problem is solved first at zero Reynolds number (Stokes flow) and then at Reynolds 100. The velocity pressure formulation is used first and then the calculation is repeated with the stream function vorticity formulation.
 
-We solve the driven cavity problem by the penalty method (\ref{eqn:PvfStokes})  where
- $\vec{u}_{\Gamma}\cdot \vec{n}=0$ and $\vec{u}_{\Gamma}\cdot \vec{s}
-=1$ on the top boundary and zero elsewhere ( $\vec{n}$ is the unit normal to $\Gamma$, and $\vec{s}$ the unit tangent to $\Gamma$).
+We solve the driven cavity problem by the penalty method (\ref{eqn:PvfStokes} 9.51 $\codered$) where $\vec{u}_{\Gamma}\cdot \vec{n}=0$ and $\vec{u}_{\Gamma}\cdot \vec{s}=1$ on the top boundary and zero elsewhere ($\vec{n}$ is the unit normal to $\Gamma$, and $\vec{s}$ the unit tangent to $\Gamma$).
 
 The mesh is constructed by
 
@@ -2564,31 +2467,27 @@ mesh Th=square(8,8);
 
 We use a classical Taylor-Hood element technic to solve the problem:
 
-The velocity is approximated with the $P_{2}$ FE ( $X_{h}$ space), and the
-the pressure is approximated with the $P_{1}$ FE ( $M_{h}$ space),
+The velocity is approximated with the $P_{2}$ FE ( $X_{h}$ space), and the pressure is approximated with the $P_{1}$ FE ( $M_{h}$ space), where
 
-where
+$$X_{h} = \left\{ \vec{v} \in H^{1}(]0,1[^2) \left|\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{2}\right.\right\}$$
 
-$$X_{h} = \left\{ \vec{v} \in H^{1}(]0,1[^2) \left|\; \forall K \in \mathcal{T}_{h}
-\quad v_{|K} \in
-P_{2} \right.\right\}$$ and
-$$M_{h} = \left\{ v \in H^{1}(]0,1[^2) \left|\; \forall K \in \mathcal{T}_{h}
-\quad v_{|K} \in
-P_{1} \right.\right\}$$
+and
+
+$$M_{h} = \left\{ v \in H^{1}(]0,1[^2) \left|\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{1} \right.\right\}$$
 
 The FE spaces and functions are constructed by
 
 ```freefem
-fespace Xh(Th,P2); //  definition of the velocity component space
-fespace Mh(Th,P1);  //  definition of the pressure space
+fespace Xh(Th,P2); // definition of the velocity component space
+fespace Mh(Th,P1); // definition of the pressure space
 Xh u2,v2;
 Xh u1,v1;
 Mh p,q;
 ```
 
 The Stokes operator is implemented as a system-solve for the velocity
-$(u1,u2)$ and the pressure $p$.  The test function for the velocity is $(v1,v2)$
-and $q$ for the pressure, so the variational form (\ref{eqn:vfStokes}) in freefem
+$(u1,u2)$ and the pressure $p$. The test function for the velocity is $(v1,v2)$
+and $q$ for the pressure, so the variational form (\ref{eqn:vfStokes} 9.48 $\codered$) in freefem
 language is:
 
 ```freefem
@@ -2605,8 +2504,8 @@ solve Stokes (u1,u2,p,v1,v2,q,solver=Crout) =
 
 Each unknown has its own boundary conditions.
 
-If the streamlines are required, they can be
-computed by finding $\psi$ such that rot$\psi=u$ or better,
+If the streamlines are required, they can be computed by finding $\psi$ such that rot$\psi=u$ or better,
+
 $$-\Delta\psi=\nabla\times u$$
 
 ```freefem
@@ -2620,14 +2519,11 @@ solve streamlines(psi,phi) =
 
 Now the Navier-Stokes equations are solved
 
-\eq{
-    {\p {u}\over\p t} +u\cdot\nabla u-\nu \Delta u+\nabla p=0,~~~ \nabla\cdot u=0
-}
+$${\p {u}\over\p t} +u\cdot\nabla u-\nu \Delta u+\nabla p=0,~~~ \nabla\cdot u=0$$
 
 with the same boundary conditions and with initial conditions $u=0$.
 
-This is implemented by using the convection operator `:::freefem convect` for the term
-${\p u\over\p t} +u\cdot\nabla u$, giving a discretization in time
+This is implemented by using the convection operator `:::freefem convect` for the term ${\p u\over\p t} +u\cdot\nabla u$, giving a discretization in time
 
 \begin{equation}
 \begin{array}{cl}
@@ -2636,8 +2532,7 @@ ${\p u\over\p t} +u\cdot\nabla u$, giving a discretization in time
  \end{array}
 \end{equation}
 
-The term $u^n\circ X^n(x)\approx u^n(x-u^n(x)\tau )$ will be
-computed by the operator "convect", so we obtain
+The term $u^n\circ X^n(x)\approx u^n(x-u^n(x)\tau )$ will be computed by the operator `:::freefem convect`, so we obtain
 
 ```freefem
 int i=0;
@@ -2667,7 +2562,7 @@ for (i=0;i<=10;i++)
    up1=u1;
    up2=u2;
    NS;
-   if ( !(i % 10))  // plot every 10 iteration
+   if ( !(i % 10)) // plot every 10 iteration
     plot(coef=0.2,cmm=" [u1,u2] and p  ",p,[u1,u2]);
  } ;
 ```
@@ -2678,35 +2573,34 @@ Notice that the stiffness matrices are reused (keyword `:::freefem init=i`)
 
 We solve Stokes problem without penalty.
 The classical iterative method of Uzawa is described by the algorithm
-(see e.g.\cite[17.3]{RT93}, \cite[13]{GP79} or \cite[13]{RG84}  ):
+(see e.g.\cite[17.3]{RT93}, \cite[13]{GP79} or \cite[13]{RG84} $\codered$):
 
-  \item[Initialize:] Let $p_h^0$ be an arbitrary chosen element of
-  $L^2(\Omega)$.
-  \item[Calculate $\vec{u}_h$:] Once $p_h^n$ is known, $\vec{v}_h^n$ is the solution of
+* __Initialize:__ Let $p_h^0$ be an arbitrary chosen element of $L^2(\Omega)$.
+
+* __Calculate $\vec{u}_h$:__ Once $p_h^n$ is known, $\vec{v}_h^n$ is the solution of
+
   \[
   \vec{u}_h^n = A^{-1}(\vec{f}_h-\vec{B}^*p_h^n)
   \]
-  \item[Advance $p_h$:] Let $p_h^{n+1}$ be defined by
-  \[
-  p_h^{n+1}=p_h^n+\rho_n\vec{B}\vec{u}_h^n
-  \]
-\end{description}
 
-There is a constant $\alpha>0$ such that $\alpha\le \rho_n\le 2$ for each $n$,
-then $\vec{u}_h^n$ converges to the solution $\vec{u}_h$, and then
-$B\vec{v}_h^n\to 0$ as $n\to \infty$ from the _Advance $p_h$_.
-This method in general converges quite slowly.
+* __Advance $p_h$:__ Let $p_h^{n+1}$ be defined by
 
-First we define mesh, and the Taylor-Hood   approximation.
-So $X_{h}$  is the velocity space, and $M_{h}$ is the pressure space.
+	\[
+	p_h^{n+1}=p_h^n+\rho_n\vec{B}\vec{u}_h^n
+	\]
 
-_Example_ [StokesUzawa.edp]~
+There is a constant $\alpha>0$ such that $\alpha\le \rho_n\le 2$ for each $n$, then $\vec{u}_h^n$ converges to the solution $\vec{u}_h$, and then $B\vec{v}_h^n\to 0$ as $n\to \infty$ from the _Advance $p_h$_. This method in general converges quite slowly.
+
+First we define mesh, and the Taylor-Hood approximation.
+So $X_{h}$ is the velocity space, and $M_{h}$ is the pressure space.
+
+ __Example 9.23__ StokesUzawa.edp
 
 ```freefem
 mesh Th=square(10,10);
 fespace Xh(Th,P2),Mh(Th,P1);
 Xh u1,u2,v1,v2;
-Mh p,q,ppp;  //  ppp is a working pressure
+Mh p,q,ppp; // ppp is a working pressure
 ```
 
 ```freefem
@@ -2714,31 +2608,31 @@ varf bx(u1,q) = int2d(Th)( -(dx(u1)*q));
 varf by(u1,q) = int2d(Th)( -(dy(u1)*q));
 varf a(u1,u2)= int2d(Th)(  dx(u1)*dx(u2) + dy(u1)*dy(u2) )
                     +  on(3,u1=1)  +  on(1,2,4,u1=0) ;
-//  remark:  put the `:::freefem on(3,u1=1)` before  `:::freefem on(1,2,4,u1=0)`
-//  because we want zero on intersection %
+// remark:  put the `:::freefem on(3,u1=1)` before  `:::freefem on(1,2,4,u1=0)`
+// because we want zero on intersection %
 
 matrix A= a(Xh,Xh,solver=CG);
-matrix Bx= bx(Xh,Mh);  // $\vec{B}=(Bx\quad By)$
+matrix Bx= bx(Xh,Mh); // $\vec{B}=(Bx\quad By)$
 matrix By= by(Xh,Mh);
 
-Xh bc1; bc1[] = a(0,Xh);  //  boundary condition contribution on u1
-Xh bc2; bc2   = O ;       //  no boundary condition contribution on u2
+Xh bc1; bc1[] = a(0,Xh); // boundary condition contribution on u1
+Xh bc2; bc2   = O ; // no boundary condition contribution on u2
 Xh b;
 ```
 
 $p_h^n\to \vec{B}A^{-1}(-\vec{B}^*p_h^n)=-\textrm{div}\vec{u}_h$
-is realized as the function _`:::freefem divup`_.
+is realized as the function `:::freefem divup`.
 
 ```freefem
 func real[int] divup(real[int] & pp)
 {
-   //  compute u1(pp)
+ // compute u1(pp)
    b[]  = Bx'*pp; b[] *=-1; b[] += bc1[] ;    u1[] = A^-1*b[];
-   //  compute u2(pp)
+ // compute u2(pp)
    b[]  = By'*pp; b[] *=-1; b[] += bc2[] ;    u2[] = A^-1*b[];
-   //  $\vec{u}^n=A^{-1}(Bx^Tp^n\quad By^Tp^n)^T$ \hfilll
-   ppp[] =   Bx*u1[];   // $  ppp= Bx u_{1} $
-   ppp[] +=  By*u2[];   // $   \quad   +  By u_{2} $
+ // $\vec{u}^n=A^{-1}(Bx^Tp^n\quad By^Tp^n)^T$
+   ppp[] =   Bx*u1[]; // $  ppp= Bx u_{1} $
+   ppp[] +=  By*u2[]; // $   \quad   +  By u_{2} $
    return ppp[] ;
 };
 ```
@@ -2748,7 +2642,7 @@ func real[int] divup(real[int] & pp)
 ```freefem
 p=0;q=0; // $p_h^0 = 0$
 LinearCG(divup,p[],eps=1.e-6,nbiter=50); // $p_h^{n+1}=p_h^n+\vec{B}\vec{u}_h^n$
-// if $n> 50$ or $|p_h^{n+1}-p_h^n|\le 10^{-6}$, then the loop end. \hfilll
+// if $n> 50$ or $|p_h^{n+1}-p_h^n|\le 10^{-6}$, then the loop end.
 divup(p[]); // compute the final solution
 
 plot([u1,u2],p,wait=1,value=true,coef=0.1);
@@ -2756,18 +2650,13 @@ plot([u1,u2],p,wait=1,value=true,coef=0.1);
 
 ### NSUzawaCahouetChabart.edp
 
- In this example we solve the Navier-Stokes equation past a cylinder
- with the Uzawa algorithm preconditioned by the Cahouet-Chabart method (see \cite{RG03} $\codered$ for all the details).
+In this example we solve the Navier-Stokes equation past a cylinder with the Uzawa algorithm preconditioned by the Cahouet-Chabart method (see \cite{RG03} 36 $\codered$ for all the details).
 
- The idea of the preconditioner is that in a periodic domain, all
- differential operators commute and the Uzawa algorithm comes to solving the
- linear operator  $ \nabla. ( (\alpha Id + \nu \Delta)^{-1} \nabla$,
- where $ Id $ is the identity operator.
- So the preconditioner suggested is $ \alpha \Delta^{-1} + \nu Id$.
+The idea of the preconditioner is that in a periodic domain, all differential operators commute and the Uzawa algorithm comes to solving the linear operator $\nabla. ( (\alpha Id + \nu \Delta)^{-1} \nabla$, where $ Id $ is the identity operator. So the preconditioner suggested is $\alpha \Delta^{-1} + \nu Id$.
 
 To implement this, we do
 
-_Example_ [NSUzawaCahouetChabart.edp]~
+ __Example 9.24__ NSUzawaCahouetChabart.edp
 
 ```freefem
 real D=0.1, H=0.41;
@@ -2837,7 +2726,7 @@ varf vrhs2(v2,v1)  = int2d(Th) (convect([u1,u2],-dt,u2)*v1*alpha)+vonu2;
 The functions to define Uzawa and the preconditioner part.
 
 ```freefem
-func  real[int]   JUzawa(real[int] & pp)
+func real[int]   JUzawa(real[int] & pp)
 {
 	real[int] b1=brhs1; b1 += B1*pp;
 	real[int] b2=brhs2; b2 += B2*pp;
@@ -2849,7 +2738,7 @@ func  real[int]   JUzawa(real[int] & pp)
 	return pp;
 }
 
-func  real[int]   Precon(real[int] & p)
+func real[int]   Precon(real[int] & p)
  {
     real[int] pa= pAA^-1*p;
     real[int] pm= pAM^-1*p;
@@ -2886,20 +2775,16 @@ the first residual, take an absolute stop test ( negative here)
      t += dt;
      if( dt < 1e-10*T) break;
  }
- plot(w,fill=1,wait=0, nbiso=40,ps="NScahouetChabart"); // see fig. \ref{Fig NScahouetChabart}
+ plot(w,fill=1,wait=0, nbiso=40,ps="NScahouetChabart"); // see fig. \ref{Fig NScahouetChabart} $\codered$
 
  cout << " u1 max " << u1[].linfty
       << " u2 max " << u2[].linfty
       << " p max = " << p[].max << endl;
 ```
 
-\begin{figure}[http]
-\begin{center}
-\includegraphics[width=16cm]{NScahouetChabart}
-\caption{The vorticity at Reynolds number 100 a time 2s with the
-Cahouet-Chabart method.}
-\end{center}
-\end{figure}
+|Fig. 9.24: The vorticity at Reynolds number 100 a time 2s with the Cahouet-Chabart method.|
+|:----:|
+|![NScahouetChabart](images/NScahouetChabart.png)|
 
 ## Variational inequality
 
@@ -2913,14 +2798,11 @@ $$
 $$
 where $f$ and $g$ are given function.
 
-The solution is a projection on the convex $\mathcal{C}$ of $f^\star$
-for the scalar product $((v,w)) = \int_\Omega \nabla v . \nabla w$ of
-$  H^1_0(\Omega)$
-where $ {f^\star} $ is solution of $ ((f^\star, v )) = \int_\Omega f v, \forall v \in H^1_0(\Omega)$.
-The projection on a convex satisfy clearly
-$\forall v \in \mathcal{C}, \quad   (( u -v ,  u - \tilde{f}  )) \leq 0   $,
-and after expanding, we get the classical inequality
-$$\forall v \in \mathcal{C}, \quad   \int_\Omega \nabla(u -v) \nabla u  \leq  \int_\Omega   (u-v) f .   $$
+The solution is a projection on the convex $\mathcal{C}$ of $f^\star$ for the scalar product $((v,w)) = \int_\Omega \nabla v . \nabla w$ of $H^1_0(\Omega)$ where ${f^\star} $ is solution of $ ((f^\star, v )) = \int_\Omega f v, \forall v \in H^1_0(\Omega)$.
+
+The projection on a convex satisfy clearly $\forall v \in \mathcal{C}, \quad (( u -v ,  u - \tilde{f}  )) \leq 0$, and after expanding, we get the classical inequality
+
+$$\forall v \in \mathcal{C}, \quad \int_\Omega \nabla(u -v) \nabla u  \leq  \int_\Omega (u-v) f .$$
 
 We can also rewrite the problem as a saddle point problem
 
@@ -2940,64 +2822,61 @@ This saddle point problem is equivalent to find $ u, \lambda $ such that:
  \end{array}\right.
 \end{equation}
 
-A algorithm to solve the previous problem is:
+An algorithm to solve the previous problem is:
 
-\item k=0, and choose, $\lambda_0$ belong $ H^{-1}(\Omega)$
-\item loop on $ k = 0, .....$
- \begin{enumerate}
-\item set $ \mathcal{I}_{k} = \{ x \in \Omega / \lambda_{k} + c * ( u_{k+1} - g)  \leq 0 \} $
-\item  $ V_{g,k+1} = \{ v\in H^1_0(\Omega) / v = g $   on ${I}_{k} \}$,
-\item  $ V_{0,k+1} = \{ v\in H^1_0(\Omega) / v = 0$ on ${I}_{k} \}$,
- \item Find  $ u_{k+1} \in V_{g,k+1} $ and  $\lambda_{k+1} \in H^{-1}(\Omega)$ such that
- $$
- \left\{\begin{array}{cc}
- \displaystyle  \int_\Omega \nabla u_{k+1}. \nabla v_{k+1}   \,d\omega = \int_\Omega f v_{k+1}  , &\forall v_{k+1} \in V_{0,k+1} \cr
- \displaystyle  <\lambda_{k+1},v>  =  \int_\Omega \nabla u_{k+1}. \nabla v  -  f v \,d\omega &
-  \end{array}\right.
- $$
- where $<,>$ is the duality bracket between $ H^{1}_0(\Omega)$ and  $ H^{-1}(\Omega)$, and $c$
-is a penalty constant (large enough).
-\end{enumerate}
+1. k=0, and choose, $\lambda_0$ belong $H^{-1}(\Omega)$
 
-\end{enumerate}
+2. Loop on $k = 0, .....$
 
-You can find all the mathematics about this algorithm in \cite{ItoKunisch} $\codered$.
+	* set $\mathcal{I}_{k} = \{ x \in \Omega / \lambda_{k} + c * ( u_{k+1} - g)  \leq 0 \}$
+	* $V_{g,k+1} = \{ v\in H^1_0(\Omega) / v = g$ on ${I}_{k} \}$,
+	* $V_{0,k+1} = \{ v\in H^1_0(\Omega) / v = 0$ on ${I}_{k} \}$,
+	* Find $u_{k+1} \in V_{g,k+1}$ and  $\lambda_{k+1} \in H^{-1}(\Omega)$ such that
 
-Now how to do that in FreeFem++
+		$$
+		\left\{\begin{array}{cc}
+		\displaystyle  \int_\Omega \nabla u_{k+1}. \nabla v_{k+1}   \,d\omega = \int_\Omega f v_{k+1}  , &\forall v_{k+1} \in V_{0,k+1} \cr
+		\displaystyle  <\lambda_{k+1},v>  =  \int_\Omega \nabla u_{k+1}. \nabla v  -  f v \,d\omega &
+		 \end{array}\right.
+		$$
 
-The full example is:
+		where $<,>$ is the duality bracket between $H^{1}_0(\Omega)$ and  $H^{-1}(\Omega)$, and $c$ is a penalty constant (large enough).
 
-_Example_ [VI.edp]{}{}~
+You can find all the mathematics about this algorithm in \cite{ItoKunisch} 38 $\codered$.
+
+Now how to do that in FreeFem++. The full example is:
+
+ __Example 9.25__ VI.edp
 
 ```freefem
 mesh Th=square(20,20);
 real eps=1e-5;
-fespace Vh(Th,P1);     // P1 FE space
+fespace Vh(Th,P1); // P1 FE space
 int n = Vh.ndof; // number of Degree of freedom
-Vh uh,uhp;              // solution and previous one
-Vh Ik; //  to def the set where the containt is reached.
+Vh uh,uhp; // solution and previous one
+Vh Ik; // to def the set where the containt is reached.
 real[int] rhs(n); // to store the right and side of the equation
-real c=1000;  // the penalty parameter of the algoritm
-func f=1;         //  right hand side function
-func fd=0;         // Dirichlet   boundary condition function
-Vh g=0.05;  // the discret function g
+real c=1000; // the penalty parameter of the algoritm
+func f=1; // right hand side function
+func fd=0; // Dirichlet boundary condition function
+Vh g=0.05; // the discret function g
 
 real[int] Aii(n),Aiin(n); // to store the diagonal of the matrix 2 version
 
 real tgv = 1e30; // a huge value for exact penalization
 // of boundary condition
-//  the variatonal form of the problem: \hfilll
-varf a(uh,vh) =                    //  definition of the problem
-    int2d(Th)( dx(uh)*dx(vh) + dy(uh)*dy(vh) ) //  bilinear form
-  - int2d(Th)( f*vh )                          //  linear form
-  + on(1,2,3,4,uh=fd) ;                      //  boundary condition form
+// the variatonal form of the problem:
+varf a(uh,vh) = // definition of the problem
+    int2d(Th)( dx(uh)*dx(vh) + dy(uh)*dy(vh) ) // bilinear form
+  - int2d(Th)( f*vh ) // linear form
+  + on(1,2,3,4,uh=fd) ; // boundary condition form
 
 
-// two version of the matrix of the problem  \hfilll
+// two version of the matrix of the problem
 matrix A=a(Vh,Vh,tgv=tgv,solver=CG); // one changing
 matrix AA=a(Vh,Vh,solver:GC); // one for computing residual
 
- //  the mass Matrix construction: \hfilll
+ // the mass Matrix construction:
 varf vM(uh,vh) = int2d(Th)(uh*vh);
 matrix M=vM(Vh,Vh); // to do a fast computing of $L^2$ norm : sqrt( u'*(w=M*u))
 
@@ -3009,24 +2888,24 @@ uhp=-tgv; // previous value is
 Vh lambda=0;
 for(int iter=0;iter<100;++iter)
 {
-  real[int] b(n) ; b=rhs;  //  get a copy of the Right hand side
-  real[int] Ak(n); //  the complementary of Ik ( !Ik = (Ik-1))
-  // Today the operator Ik- 1. is not implement so we do:
-  Ak= 1.; Ak  -= Ik[];  // build Ak  = ! Ik
-  //  adding new locking condition on b and on the diagonal if (Ik ==1 )
+  real[int] b(n) ; b=rhs; // get a copy of the Right hand side
+  real[int] Ak(n); // the complementary of Ik ( !Ik = (Ik-1))
+ // Today the operator Ik- 1. is not implement so we do:
+  Ak= 1.; Ak  -= Ik[]; // build Ak  = ! Ik
+ // adding new locking condition on b and on the diagonal if (Ik ==1 )
   b = Ik[] .* g[];      b *= tgv;     b  -=  Ak .* rhs;
-  Aiin = Ik[] *  tgv;      Aiin  +=  Ak  .* Aii;  //set Aii= tgv  $ i \in Ik $
-  A.diag = Aiin; //  set the matrix diagonal  (appear in version 1.46-1)
+  Aiin = Ik[] *  tgv;      Aiin  +=  Ak  .* Aii; //set Aii= tgv  $ i \in Ik $
+  A.diag = Aiin; // set the matrix diagonal  (appear in version 1.46-1)
   set(A,solver=CG); // important to change preconditioning for solving
-  uh[] = A^-1* b;   //  solve the problem with more locking condition
-  lambda[] = AA * uh[]; //  compute the residual ( fast with matrix)
+  uh[] = A^-1* b; // solve the problem with more locking condition
+  lambda[] = AA * uh[]; // compute the residual ( fast with matrix)
   lambda[] += rhs; // remark rhs = $-\int f v $
 
-  Ik = ( lambda + c*( g- uh)) < 0.;  // the new of locking value
+  Ik = ( lambda + c*( g- uh)) < 0.; // the new of locking value
 
    plot(Ik, wait=1,cmm=" lock set ",value=1,ps="VI-lock.eps",fill=1 );
    plot(uh,wait=1,cmm="uh",ps="VI-uh.eps");
-   // trick to compute  $L^2$ norm of the variation (fast method)
+ // trick to compute  $L^2$ norm of the variation (fast method)
       real[int] diff(n),Mdiff(n);
       diff= uh[]-uhp[];
       Mdiff = M*diff;
@@ -3054,32 +2933,34 @@ to solve the boundary problem of the Shur complement.
 ### Schwarz Overlap Scheme
 
 To solve
-\eq{ -\Delta u =f,\; \hin\Omega=\Omega_1\cup\Omega_2\quad u|_\Gamma=0}
+
+$$-\Delta u =f,\;\mbox{in}\;\Omega=\Omega_1\cup\Omega_2\quad u|_\Gamma=0$$
+
 the Schwarz algorithm runs like this
-\Blue{
+
 \begin{eqnarray*}
-   -\Delta u^{n+1}_1&=&f\hin\Omega_1\quad
+   -\Delta u^{n+1}_1&=&f\;\mbox{in}\;\Omega_1\quad
     u^{n+1}_1|_{\Gamma_1}=u^n_2\\
-    -\Delta u^{n+1}_2&=&f\hin\Omega_2\quad
+    -\Delta u^{n+1}_2&=&f\;\mbox{in}\;\Omega_2\quad
     u^{n+1}_2|_{\Gamma_2}=u^n_1
-\end{eqnarray*}}
+\end{eqnarray*}
+
 where $\Gamma_i$ is the boundary of $\Omega_i$ and on the
 condition that $\Omega_1\cap\Omega_2\neq\emptyset$ and that $u_i$
 are zero at iteration 1.
-\\\\
+
 Here we take $\Omega_1$ to be a quadrangle, $\Omega_2$ a disk and
 we apply the algorithm starting from zero.
-\begin{figure}[hbt]
-\HLINE{\hss
-\includegraphics[width=6cm]{schwarz-th} \hss}
-\caption{ The 2 overlapping mesh `:::freefem TH` and `:::freefem th`  }
-\end{figure}
 
-_Example_ [Schwarz-overlap.edp]~
+|Fig. 9.25: The 2 overlapping mesh `:::freefem TH` and `:::freefem th`|
+|:----:|
+|![schwarz-th](images/schwarz-th.png)|
 
- ```freefem
-int inside = 2;  //  inside boundary
-int outside = 1; //  outside boundary
+ __Example 9.26__ Schwarz-overlap.edp
+
+```freefem
+int inside = 2; // inside boundary
+int outside = 1; // outside boundary
 border a(t=1,2){x=t;y=0;label=outside;};
 border b(t=0,1){x=2;y=t;label=outside;};
 border c(t=2,0){x=t ;y=1;label=outside;};
@@ -3089,7 +2970,7 @@ border e1(t=pi/2, 2*pi){ x= cos(t); y = sin(t);label=outside;};
 int n=4;
 mesh th = buildmesh( a(5*n) + b(5*n) + c(10*n) + d(5*n));
 mesh TH = buildmesh( e(5*n) + e1(25*n) );
-plot(th,TH,wait=1);  //  to see the 2 meshes
+plot(th,TH,wait=1); // to see the 2 meshes
 ```
 
 The space and problem definition is :
@@ -3119,43 +3000,45 @@ for ( i=0 ;i< 10; i++)
 };
 ```
 
-\begin{figure}[hbt]
-\HLINE{\hss
-\includegraphics[width=6cm]{schwarz-u0}
-\hss
-\includegraphics[width=6cm]{schwarz-u} }
-\caption{  Isovalues of the solution at iteration 0 and iteration 9}
-\end{figure}
+|Fig. 9.26: Isovalues of the solution at iteration 0 and iteration 9|
+|:----:|
+|![schwarz-u0](images/schwarz-u0.png)|
+|![schwarz-u](images/schwarz-u.png)|
 
 ### Schwarz non Overlap Scheme
 
 To solve
-\eq{ -\Delta u =f \hin\Omega=\Omega_1\cup\Omega_2\quad u|_\Gamma=0,}
+
+$$-\Delta u =f\;\mbox{in}\;\Omega=\Omega_1\cup\Omega_2\quad u|_\Gamma=0,$$
+
 the Schwarz algorithm for domain decomposition without overlapping runs like this
 
-\begin{figure}[hbt]
-\HLINE{\hss
-\includegraphics[width=6cm]{schwarz-no-th} \hss}
-\caption{ The two none overlapping mesh `:::freefem TH` and `:::freefem th`  }
-\end{figure}
+|Fig. 9.27: The two none overlapping mesh `:::freefem TH` and `:::freefem th`|
+|:----:|
+|![schwarz-no-th](images/schwarz-no-th.png)|
 
-Let introduce  $\Gamma_i$ is common the boundary of $\Omega_1$ and
-$\Omega_2$ and    $\Gamma_e^i= \p \Omega_i \setminus \Gamma_i$.
+Let introduce $\Gamma_i$ is common the boundary of $\Omega_1$ and
+$\Omega_2$ and $\Gamma_e^i= \p \Omega_i \setminus \Gamma_i$.
 
-The problem find  $\lambda$ such that $ (u_1|_{\Gamma_i}=u_2|_{\Gamma_i}) $
-where  $u_i$ is solution of the following Laplace problem:
-\eq{
-    -\Delta u_i=f\hin\Omega_i\quad
+The problem find $\lambda$ such that $(u_1|_{\Gamma_i}=u_2|_{\Gamma_i})$
+where $u_i$ is solution of the following Laplace problem:
+
+$$
+    -\Delta u_i=f\;\mbox{in}\;\Omega_i\quad
     u_i|_{\Gamma_i}=\lambda \quad
     u_i|_{\Gamma_e^i} = 0
- }
+$$
 
 To solve this problem we just make a loop
-with upgrading$\lambda$ with
-$$\lambda = \lambda {\pm} \frac{(u_1-u_2)}{2}$$
+with upgrading $\lambda$ with
+
+$$
+\lambda = \lambda {\pm} \frac{(u_1-u_2)}{2}
+$$
+
 where the sign $+$ or $-$ of ${\pm}$ is choose to have convergence.
 
-_Example_ [Schwarz-no-overlap.edp]~
+ __Example 9.27__ Schwarz-no-overlap.edp
 
 ```freefem
 // schwarz1 without overlapping
@@ -3186,8 +3069,6 @@ problem pb(u,v,init=i,solver=Cholesky) =
   + int2d(th)( -v)
   + int1d(th,inside)(-lambda*v) +    on(outside,u = 0 ) ;
 
-
-
 for ( i=0 ;i< 10; i++)
 {
    PB;
@@ -3199,37 +3080,33 @@ for ( i=0 ;i< 10; i++)
 plot(U,u,ps="schwarz-no-u.eps");
 ```
 
-\begin{figure}[hbt]
-\HLINE{\hss
-\includegraphics[width=6cm]{schwarz-no-u0}
-\hss
-\includegraphics[width=6cm]{schwarz-no-u} }
-\caption{  Isovalues of the solution at iteration 0 and iteration 9 without overlapping }
-\end{figure}
+|Fig. 9.26: Isovalues of the solution at iteration 0 and iteration 9 without overlapping|
+|:----:|
+|![schwarz-no-u0](images/schwarz-no-u0.png)|
+|![schwarz-no-u](images/schwarz-no-u.png)|
 
 ### Schwarz-gc.edp
 
-To solve
-\eq{ -\Delta u =f \hin\Omega=\Omega_1\cup\Omega_2\quad u|_\Gamma=0,}
+To solve $-\Delta u =f \;\mbox{in}\;\Omega=\Omega_1\cup\Omega_2\quad u|_\Gamma=0,$
 the Schwarz algorithm for domain decomposition without overlapping runs like this
 
-Let introduce  $\Gamma_i$ is common the boundary of $\Omega_1$ and
-$\Omega_2$ and    $\Gamma_e^i= \p \Omega_i \setminus  \Gamma_i$.
+Let introduce $\Gamma_i$ is common the boundary of $\Omega_1$ and
+$\Omega_2$ and $\Gamma_e^i= \p \Omega_i \setminus  \Gamma_i$.
 
-The problem find  $\lambda$ such that $ (u_1|_{\Gamma_i}=u_2|_{\Gamma_i}) $
-where  $u_i$ is solution of the following Laplace problem:
-\eq{
-    -\Delta u_i=f\hin\Omega_i\quad
+The problem find $\lambda$ such that $(u_1|_{\Gamma_i}=u_2|_{\Gamma_i})$
+where $u_i$ is solution of the following Laplace problem:
+
+$$
+    -\Delta u_i=f\;\mbox{in}\;\Omega_i\quad
     u_i|_{\Gamma_i}=\lambda \quad
     u_i|_{\Gamma_e^i} = 0
- }
+$$
 
-The version of this example uses the Shur complement. The problem on the border
-is solved by a conjugate gradient method.
+The version of this example uses the Shur complement. The problem on the border is solved by a conjugate gradient method.
 
 First, we construct the two domain
 
-_Example_ [Schwarz-gc.edp]~
+ __Example 9.28__ Schwarz-gc.edp
 
 ```freefem
 // Schwarz without overlapping (Shur complement for Neumann to Dirichet)
@@ -3245,7 +3122,7 @@ border GammaInside(t=1,0){x = 1-t; y = t;label=inside;};
 
 border GammaArc(t=pi/2, 2*pi){ x= cos(t); y = sin(t);label=outside;};
 int n=4;
-//  build the mesh of $\Omega_1$ and $\Omega_2$
+// build the mesh of $\Omega_1$ and $\Omega_2$
 mesh Th1 = buildmesh( Gamma1(5*n) + Gamma2(5*n) + GammaInside(5*n) + Gamma3(5*n));
 mesh Th2 = buildmesh ( GammaInside(-5*n) + GammaArc(25*n) );
 plot(Th1,Th2);
@@ -3256,20 +3133,17 @@ fespace Vh1(Th1,P1),      Vh2(Th2,P1);
 
 !!! note
 
-It is impossible to
-define a function just on a part of boundary, so the $\ lambda $
-function must be defined on the all domain $\Omega_1$
-such as
+	It is impossible to define a function just on a part of boundary, so the $\lambda$ function must be defined on the all domain $\Omega_1$ such as
 
-```freefem
-Vh1 lambda=0;  // take $\lambda \in V_{h1}$
-```
+	```freefem
+	Vh1 lambda=0; // take $\lambda \in V_{h1}$ $\codered$
+	```
 
 The two Poisson problem:
 
 ```freefem
 Vh1 u1,v1;              Vh2 u2,v2;
-int i=0;  // for factorization optimization
+int i=0; // for factorization optimization
 problem Pb2(u2,v2,init=i,solver=Cholesky) =
     int2d(Th2)( dx(u2)*dx(v2)+dy(u2)*dy(v2) )
   + int2d(Th2)( -v2)
@@ -3280,8 +3154,8 @@ problem Pb1(u1,v1,init=i,solver=Cholesky) =
   + int1d(Th1,inside)(+lambda*v1) +    on(outside,u1 = 0 ) ;
 ```
 
-or, we define a border matrix , because the
- $\ lambda $ function is none zero inside the domain $\Omega_1$:
+or, we define a border matrix, because the
+ $\lambda$ function is none zero inside the domain $\Omega_1$:
 
 ```freefem
 varf b(u2,v2,solver=CG) =int1d(Th1,inside)(u2*v2);
@@ -3289,7 +3163,8 @@ matrix B= b(Vh1,Vh1,solver=CG);
 ```
 
 The boundary problem function,
-  $$
+
+$$
   \lambda \longrightarrow  \int_{\Gamma_i }(u_1-u_2) v_{1}
 $$
 
@@ -3298,7 +3173,7 @@ func real[int] BoundaryProblem(real[int] &l)
 {
    lambda[]=l; // make FE function form l
    Pb1;     Pb2;
-   i++;  //  no refactorization i !=0
+   i++; // no refactorization i !=0
    v1=-(u1-u2);
    lambda[]=B*v1[];
    return lambda[] ;
@@ -3307,15 +3182,14 @@ func real[int] BoundaryProblem(real[int] &l)
 
 !!! note
 
-The difference between the two notations `:::freefem v1` and `:::freefem v1[]`  is:
- `:::freefem v1` is the finite element function and `:::freefem v1[]`
-is the vector in the canonical basis of the   finite element function  `:::freefem v1` .
+	The difference between the two notations `:::freefem v1` and `:::freefem v1[]` is:
+	`:::freefem v1` is the finite element function and `:::freefem v1[]` is the vector in the canonical basis of the finite element function `:::freefem v1`.
 
 ```freefem
 Vh1 p=0,q=0;
-//  solve the problem with Conjugate Gradient
+// solve the problem with Conjugate Gradient
 LinearCG(BoundaryProblem,p[],eps=1.e-6,nbiter=100);
-//  compute the final solution, because CG works with increment
+// compute the final solution, because CG works with increment
 BoundaryProblem(p[]); // solve again to have right u1,u2
 
 cout << " -- CPU time schwarz-gc:" <<  clock()-cpu << endl;
@@ -3326,45 +3200,40 @@ plot(u1,u2); // plot
 % a faire FH
 %  construction de epsi
 %  un sous domaine
-%  les matrices blocks. $\codered$
+%  les matrices blocks.
+$\codered$
 
 ## Fluid/Structures Coupled Problem
 
-This problem involves the Lam\'{e} system of elasticity
+This problem involves the Lamé system of elasticity
 and the Stokes system for viscous fluids with velocity $\vec u$ and pressure $p$:
 
-\begin{eqnarray*}\Blue
+\begin{eqnarray*}
 -\Delta \vec u +\vec\nabla p = 0, \,
-%\`{u}
-\nabla\cdot \vec u = 0,\hbox{~~in ~}\Omega,\,
-\vec u=\vec u_\Gamma \hbox{~~on~~}\Gamma=\p\Omega
-\end{eqnarray*}\Black
+\nabla\cdot \vec u = 0,\;\hbox{in}\;\Omega,\,
+\vec u=\vec u_\Gamma\;\hbox{on}\;\Gamma=\p\Omega
+\end{eqnarray*}
 
 where $u_\Gamma$ is the velocity of the boundaries. The
 force that the fluid applies to the boundaries is the normal stress
+
 $$
 \vec h =(\nabla\vec u +\nabla\vec u^T)\vec n -p\vec n
 $$
 
-Elastic solids subject to forces deform: a point in the solid,
-at (x,y)
-goes to (X,Y) after.  When the displacement vector
-$\vec v=(v_1,v_2) = (X-x, Y-y)$  is small, Hooke's
-law relates the stress tensor $\sigma$ inside the solid to the
-deformation tensor $\epsilon$:
+Elastic solids subject to forces deform: a point in the solid, at (x,y) goes to (X,Y) after. When the displacement vector $\vec v=(v_1,v_2) = (X-x, Y-y)$ is small, Hooke's law relates the stress tensor $\sigma$ inside the solid to the deformation tensor $\epsilon$:
 
- $$ \sigma_{ij} = \lambda \delta_{ij} \nabla.\vec v + 2\mu\epsilon_{ij},
+$$
+\sigma_{ij} = \lambda \delta_{ij} \nabla.\vec v + 2\mu\epsilon_{ij},
 \,
 \epsilon_{ij} = {1\over 2}({\p v_i\over\p x_j} +
-{\p v_j\over\p x_i} )$$
+{\p v_j\over\p x_i} )
+$$
 
-where $\delta$ is the Kronecker symbol
-and where $\lambda, \mu$ are two constants describing the material mechanical
-properties in terms of the modulus of
-elasticity, and Young's modulus.
+where $\delta$ is the Kronecker symbol and where $\lambda, \mu$ are two constants describing the material mechanical properties in terms of the modulus of elasticity, and Young's modulus.
 
-The equations of elasticity are naturally written in variational form
-for the displacement vector $v(x)\in V$ as
+The equations of elasticity are naturally written in variational form for the displacement vector $v(x)\in V$ as
+
 $$
 \int_\Omega [2\mu\epsilon_{ij}(\vec v)\epsilon_{ij}(\vec w)
 +\lambda \epsilon_{ii}(v)\epsilon_{jj}(\vec w)]
@@ -3372,35 +3241,25 @@ $$
 \forall \vec w\in V
 $$
 
-The data are the gravity force $\vec g$ and the
-boundary stress $\vec h$.
+The data are the gravity force $\vec g$ and the boundary stress $\vec h$.
 
-_Example_ [fluidStruct.edp]
+ __Example 9.29__ fluidStruct.edp
 
-In our example the Lam\'{e} system and the Stokes system are coupled by a
-common boundary on which
-the fluid stress creates a displacement of the boundary and hence
-changes the shape of the domain where the Stokes problem is integrated.
-The geometry is that of a vertical driven cavity with an elastic lid.
-The lid is a beam with weight so it will
-be deformed by its own weight and by the normal stress due to the fluid reaction.
-The cavity is the $10 \times 10$ square and the lid is a rectangle of height $l=2$.
+In our example the Lamé system and the Stokes system are coupled by a common boundary on which the fluid stress creates a displacement of the boundary and hence changes the shape of the domain where the Stokes problem is integrated. The geometry is that of a vertical driven cavity with an elastic lid. The lid is a beam with weight so it will be deformed by its own weight and by the normal stress due to the fluid reaction. The cavity is the $10 \times 10$ square and the lid is a rectangle of height $l=2$.
 
-A beam sits on a box full of fluid rotating because the left vertical side has velocity one.
-The beam is bent by its own weight, but the pressure of the fluid modifies the bending.
+A beam sits on a box full of fluid rotating because the left vertical side has velocity one. The beam is bent by its own weight, but the pressure of the fluid modifies the bending.
 
-The bending displacement of the beam is given by (uu,vv) whose solution is
-given as follows.
+The bending displacement of the beam is given by (uu,vv) whose solution is given as follows.
 
 ```freefem
-//  Fluid-structure interaction for a weighting beam sitting on a
+// Fluid-structure interaction for a weighting beam sitting on a
 // square cavity filled with a fluid.
 
 int bottombeam = 2; // label of bottombeam
-border a(t=2,0)  { x=0; y=t ;label=1;};        //  left beam
-border b(t=0,10) { x=t; y=0 ;label=bottombeam;};        //  bottom of beam
-border c(t=0,2)  { x=10; y=t ;label=1;};       //  rigth beam
-border d(t=0,10) { x=10-t; y=2; label=3;};     //  top beam
+border a(t=2,0)  { x=0; y=t ;label=1;}; // left beam
+border b(t=0,10) { x=t; y=0 ;label=bottombeam;}; // bottom of beam
+border c(t=0,2)  { x=10; y=t ;label=1;}; // rigth beam
+border d(t=0,10) { x=10-t; y=2; label=3;}; // top beam
 real E = 21.5;
 real sigma = 0.29;
 real mu = E/(2*(1+sigma));
@@ -3431,17 +3290,17 @@ but the beam has deformed the box (see border h):
 
 ```freefem
 //Stokes on square b,e,f,g driven cavite on left side g
-border e(t=0,10) { x=t; y=-10; label= 1; };      //  bottom
-border f(t=0,10) { x=10; y=-10+t ; label= 1; };   //  right
-border g(t=0,10) { x=0; y=-t ;label= 2;};       //  left
+border e(t=0,10) { x=t; y=-10; label= 1; }; // bottom
+border f(t=0,10) { x=10; y=-10+t ; label= 1; }; // right
+border g(t=0,10) { x=0; y=-t ;label= 2;}; // left
 border h(t=0,10) { x=t; y=vv(t,0)*( t>=0.001 )*(t <= 9.999);
-                    label=3;};   //  top of cavity deformed
+                    label=3;}; // top of cavity deformed
 
 mesh sh = buildmesh(h(-20)+f(10)+e(10)+g(10));
 plot(sh,wait=1);
 ```
 
- We use the Uzawa conjugate gradient to solve the Stokes problem like in example \refSec{Uzawa}
+ We use the Uzawa conjugate gradient to solve the Stokes problem like in example \refSec{Uzawa} $\codered$
 
 ```freefem
 fespace Xh(sh,P2),Mh(sh,P1);
@@ -3478,7 +3337,7 @@ func real[int] divup(real[int] & pp)
 };
 ```
 
-do a loop on the two problem
+do a loop on the two problems
 
 ```freefem
 for(step=0;step<2;++step)
@@ -3526,44 +3385,26 @@ Finally we deform the beam
  } // end of loop
 ```
 
-\begin{figure}
-\hbox to \hsize {\hss\includegraphics[width=6.7cm]{fluidstruct1}\hss
-\hbox to 6cm {\vbox{\vglue 1cm
-\includegraphics[width=6cm,angle=0]{fluidstruct2}
-\vglue 1cm
-\includegraphics[width=6cm,angle=0]{fluidstruct3}
-\vglue 1cm
-}}\hss
-}
-\begin{center}
-\caption{ Fluid velocity and pressure (left) and displacement vector (center)
-of the structure and displaced geometry (right) in the fluid-structure interaction
-of a soft side and a driven cavity}
-\end{center}
-\end{figure}
+|Fig. 9.29: Fluid velocity and pressure (left) $\codered$ and displacement vector (center) $\codered$ of the structure and displaced geometry (right) $\codered$ in the fluid-structure interaction of a soft side and a driven cavity|
+|:----:|
+|![fluidstruct1](images/fluidstruct1.png)|
+|![fluidstruct2](images/fluidstruct2.png)|
+|![fluidstruct3](images/fluidstruct3.png)|
 
 ## Transmission Problem
 
-Consider an elastic plate whose displacement change vertically,
-which is made up of three plates of different materials,
-welded on each other.
-Let $\Omega_i,\, i=1,2,3$ be the domain occupied by $i$-th material
-with tension $\mu_i$ (see \refSec{Soap Film}).
-The computational domain $\Omega$ is the interior of
-$\overline{\Omega_1}\cup \overline{\Omega_2}\cup \overline{\Omega_3}$.
-The vertical displacement $u(x,y)$ is obtained from
+Consider an elastic plate whose displacement change vertically, which is made up of three plates of different materials, welded on each other.
+Let $\Omega_i,\, i=1,2,3$ be the domain occupied by $i$-th material with tension $\mu_i$ (see \refSec{Soap Film} $\codered$).
+The computational domain $\Omega$ is the interior of $\overline{\Omega_1}\cup \overline{\Omega_2}\cup \overline{\Omega_3}$. The vertical displacement $u(x,y)$ is obtained from
 
 \begin{eqnarray}
 -\mu_i\Delta u&=&f~\textrm{in }\Omega_i\\
-
 \mu_i\p_n u|_{\Gamma_{i}}&=&-\mu_j\p_n u|_{\Gamma_{j}}
 \quad \textrm{on }\overline{\Omega_{i}}\cap\overline{\Omega_{j}}
 \qquad \textrm{if }1\le i< j\le 3
 \end{eqnarray}
 
-where $\p_n u|_{\Gamma_{i}}$ denotes the value of
-the normal derivative $\p_n u$ on the boundary $\Gamma_i$ of
-the domain $\Omega_i$.
+where $\p_n u|_{\Gamma_{i}}$ denotes the value of the normal derivative $\p_n u$ on the boundary $\Gamma_i$ of the domain $\Omega_i$.
 
 By introducing the characteristic function $\chi_i$ of $\Omega_i$, that is,
 
@@ -3572,7 +3413,7 @@ By introducing the characteristic function $\chi_i$ of $\Omega_i$, that is,
 \chi_i(x)=0\quad\textrm{if }x\not\in \Omega_i
 \end{equation}
 
-we can easily rewrite (\ref{eqn:transm-1}) and (\ref{eqn:transm-2})
+we can easily rewrite (\ref{eqn:transm-1} 9.55 $\codered$) and (\ref{eqn:transm-2} 9.56 $\codered$)
 to the weak form. Here we assume that $u=0$ on $\Gamma=\p\Omega$.
 
 problem Transmission: For a given function $f$, find $u$ such that
@@ -3583,20 +3424,15 @@ a(u,v)=\int_{\Omega}\mu \nabla u\cdot \nabla v,\quad
 \ell(f,v)=\int_{\Omega}fv\nonumber
 \end{eqnarray}
 
-where $\mu=\mu_1\chi_1+\mu_2\chi_2+\mu_3\chi_3$.
-Here we notice that $\mu$ become the discontinuous function.
+where $\mu=\mu_1\chi_1+\mu_2\chi_2+\mu_3\chi_3$. Here we notice that $\mu$ become the discontinuous function.
 
-With dissipation, and at the thermal equilibrium, the temperature equation
-is:
+With dissipation, and at the thermal equilibrium, the temperature equation is: $\codered$
 
-This example explains the definition and manipulation of _region_, i.e.
- subdomains of the whole domain.
-
-Consider this L-shaped domain with 3 diagonals as internal boundaries, defining
-4 subdomains:
+This example explains the definition and manipulation of _region_, i.e. subdomains of the whole domain.
+Consider this L-shaped domain with 3 diagonals as internal boundaries, defining 4 subdomains:
 
 ```freefem
-//   example using region keyword
+// example using region keyword
 // construct a mesh with 4 regions (sub-domains)
 border a(t=0,1){x=t;y=0;};
 border b(t=0,0.5){x=1;y=t;};
@@ -3604,33 +3440,37 @@ border c(t=0,0.5){x=1-t;y=0.5;};
 border d(t=0.5,1){x=0.5;y=t;};
 border e(t=0.5,1){x=1-t;y=1;};
 border f(t=0,1){x=0;y=1-t;};
-//  internal boundary
+// internal boundary
 border i1(t=0,0.5){x=t;y=1-t;};
 border i2(t=0,0.5){x=t;y=t;};
 border i3(t=0,0.5){x=1-t;y=t;};
 
 mesh th = buildmesh (a(6) + b(4) + c(4) +d(4) + e(4) +
     f(6)+i1(6)+i2(6)+i3(6));
-fespace Ph(th,P0);  // constant discontinuous functions / element
-fespace Vh(th,P1);  // $P_1$ continuous functions / element
+fespace Ph(th,P0); // constant discontinuous functions / element
+fespace Vh(th,P1); // $P_1$ continuous functions / element
 
-Ph reg=region; //  defined the $P_0$ function associated to region number
+Ph reg=region; // defined the $P_0$ function associated to region number
 plot(reg,fill=1,wait=1,value=1);
 ```
 
-\twoplot[height=8cm]{region}{region_nu}{the function `:::freefem reg`}{the function `:::freefem nu` }
+|Fig. 9.30: The function `:::freefem reg`|
+|:----:|
+|![region](images/region.png)|
 
- `:::freefem region`  is a keyword of FreeFem++ which is in fact a variable depending of
-the current position (is not a function today, use `:::freefem Ph reg=region;` to set a function).  This variable value returned is the number of the
-subdomain of the current position.  This number is defined by "buildmesh" which scans while building the mesh all
-its connected component.  So to get the number of a region containing a particular point
-one does:
+|Fig. 9.31: The function `:::freefem nu`|
+|:----:|
+|![region_nu](images/region_nu.png)|
+
+`:::freefem region` is a keyword of FreeFem++ which is in fact a variable depending of the current position (is not a function today, use `:::freefem Ph reg=region;` to set a function). This variable value returned is the number of the subdomain of the current position. This number is defined by `:::freefem buildmesh` which scans while building the mesh all its connected component.
+
+So to get the number of a region containing a particular point one does:
 
 ```freefem
 int nupper=reg(0.4,0.9); // get the region number of point (0.4,0.9)
-int nlower=reg(0.9,0.1);  // get the region number of point (0.4,0.1)
+int nlower=reg(0.9,0.1); // get the region number of point (0.4,0.1)
 cout << " nlower " <<  nlower << ", nupper = " << nupper<< endl;
-//  defined the characteristics functions of upper and lower region
+// defined the characteristics functions of upper and lower region
 Ph nu=1+5*(region==nlower) + 10*(region==nupper);
 plot(nu,fill=1,wait=1);
 ```
@@ -3649,94 +3489,100 @@ problem lap(u,v) =   int2d(th)( nu*( dx(u)*dx(v)*dy(u)*dy(v) ))
 plot(u);
 ```
 
-\plot[height=8cm]{region_u}{the isovalue of the solution $u$}
+|Fig. 9.32: The isovalue of the solution $u$|
+|:----:|
+|![region_u](images/region_u.png)|
 
 ## Free Boundary Problem
 
 The domain $\Omega$ is defined with:
 
 ```freefem
-real L=10;        //longueur du domaine
-real h=2.1;      // hauteur du bord gauche
-real h1=0.35;    // hauteur du bord droite
+real L=10; //longueur du domaine
+real h=2.1; // hauteur du bord gauche
+real h1=0.35; // hauteur du bord droite
 
-//  maillage d'un tapeze
-border a(t=0,L){x=t;y=0;};       // bottom:  $\Gamma_a$ \hfill
-border b(t=0,h1){x=L;y=t;};      // right:  $\Gamma_b$ \hfill
-border f(t=L,0){x=t;y=t*(h1-h)/L+h;}; //  free surface:  $\Gamma_f$ \hfill
-border d(t=h,0){x=0;y=t;};      // left:  $\Gamma_d$ \hfill
+// maillage d'un tapeze
+border a(t=0,L){x=t;y=0;}; // bottom:  $\Gamma_a$ \hfill
+border b(t=0,h1){x=L;y=t;}; // right:  $\Gamma_b$ \hfill
+border f(t=L,0){x=t;y=t*(h1-h)/L+h;}; // free surface:  $\Gamma_f$ \hfill
+border d(t=h,0){x=0;y=t;}; // left:  $\Gamma_d$ \hfill
 
 int n=4;
 mesh Th=buildmesh (a(10*n)+b(6*n)+f(8*n)+d(3*n));
 plot(Th,ps="dTh.eps");
 ```
 
-\begin{figure}[hbt]
-\includegraphics[width=15cm]{dTh}
-\caption{The mesh of the domain $\Omega$}
-\end{figure}
+|Fig. 9.33: The mesh of the domain $\Omega$|
+|:----:|
+|![dTh](images/dTh.png)|
 
 The free boundary problem is:
-
 Find $u$ and $\Omega$ such that:
 
- $$ \left\{\begin{array}{cl}
- \displaystyle - \Delta u = 0  & \mbox{in } \Omega\\
- \displaystyle      u = y         &\mbox{on } \Gamma_b \\
- \displaystyle      {\p u  \over \p n} = 0   &\mbox{on } \Gamma_d \cup \Gamma_a \\
- \displaystyle    {\p u  \over \p n} = { q\over K} n_x
-          \mbox{\ and \ } {u = y}  &\mbox{on\ } \Gamma_ f
-\end{array}\right. $$
+$$
+\left\{\begin{array}{cl}
+\displaystyle - \Delta u = 0  & \mbox{in } \Omega\\
+\displaystyle u = y         &\mbox{on } \Gamma_b \\
+\displaystyle      {\p u  \over \p n} = 0   &\mbox{on } \Gamma_d \cup \Gamma_a \\
+\displaystyle    {\p u  \over \p n} = { q\over K} n_x
+          \mbox{and} {u = y}  &\mbox{on} \Gamma_ f
+\end{array}\right.
+$$
 
 We use a fixed point method;
 $\Omega^0 = \Omega$
 
 in two step, fist we solve the classical following problem:
-$$ \left\{\begin{array}{rll}
- \displaystyle - \Delta u &= 0  & \mbox{in } \Omega^n\\
- \displaystyle      u &= y         &\mbox{on } \Gamma^n_b \\
- \displaystyle      {\p u  \over \p n} &= 0   &\mbox{on } \Gamma^n_d \cup \Gamma^n_a\\
- \displaystyle    u &= y        &\mbox{on\ } \Gamma^n_ f
-\end{array}\right. $$
+
+$$
+\left\{\begin{array}{rll}
+\displaystyle - \Delta u &= 0  & \mbox{in } \Omega^n\\
+\displaystyle u &= y         &\mbox{on } \Gamma^n_b \\
+\displaystyle      {\p u  \over \p n} &= 0   &\mbox{on } \Gamma^n_d \cup \Gamma^n_a\\
+\displaystyle u &= y        &\mbox{on} \Gamma^n_ f
+\end{array}\right.
+$$
 
 The variational formulation is:
 
-find $u$ on $V=H^1(\Omega^n)$, such than  $u=y$ on $\Gamma^n_b$ and $\Gamma^n_f$
+find $u$ on $V=H^1(\Omega^n)$, such than $u=y$ on $\Gamma^n_b$ and $\Gamma^n_f$
+
 $$
  \int_{\Omega^n}  \nabla u \nabla u' = 0,  \quad \forall u' \in V  \mbox{ with }  u' =0 \mbox{ on }
 \Gamma^n_b \cup \Gamma^n_f
 $$
 
 and secondly to construct a domain deformation $\mathcal{F}(x,y)=[x,y-v(x,y)]$
-
 where $v$ is solution of the following problem:
 
- $$ \left\{\begin{array}{rll}
- \displaystyle - \Delta v &= 0  & \mbox{in } \Omega^n\\
- \displaystyle      v  &= 0         &\mbox{on } \Gamma^n_a \\
- \displaystyle      {\p v \over \p n} &= 0   &\mbox{on } \Gamma^n_b \cup \Gamma^n_d \\
- \displaystyle    {\p v  \over \p n}  &=  \displaystyle {\p u  \over \p n} - { q\over K} n_x
-            &\mbox{on\ } \Gamma^n_ f
+ $$
+\left\{\begin{array}{rll}
+\displaystyle - \Delta v &= 0  & \mbox{in } \Omega^n\\
+\displaystyle v  &= 0         &\mbox{on } \Gamma^n_a \\
+\displaystyle      {\p v \over \p n} &= 0   &\mbox{on } \Gamma^n_b \cup \Gamma^n_d \\
+\displaystyle    {\p v  \over \p n}  &=  \displaystyle {\p u  \over \p n} - { q\over K} n_x
+            &\mbox{on } \Gamma^n_ f
 \end{array}\right. $$
 
 The variational formulation is:
 
-find $v$ on $V$, such than  $v=0$ on $\Gamma^n_a$
+find $v$ on $V$, such than $v=0$ on $\Gamma^n_a$
+
 $$
  \int_{\Omega^n}  \nabla v \nabla v' = \int_{\Gamma_f^n}  ({\p u  \over \p n} - { q\over K} n_x )v',  \quad \forall v' \in V  \mbox{ with }  v' =0 \mbox{ on }
 \Gamma^n_a
 $$
 
-Finally the new domain
-$\Omega^{n+1} = \mathcal{F}(\Omega^n)$
+Finally the new domain $\Omega^{n+1} = \mathcal{F}(\Omega^n)$
 
-_Example_ [freeboundary.edp]
+ __Example 9.30__ freeboundary.edp
 
-The FreeFem++ :implementation is:
+The FreeFem++ implementation is:
 
 ```freefem
-real q=0.02;      //flux entrant
-real K=0.5;           //permeabilit\'{e}
+real q=0.02; //flux entrant
+real K=0.5; //permeabilit\'{e}
 
 fespace Vh(Th,P1);
 int j=0;
@@ -3766,7 +3612,7 @@ while(errv>1e-6)
   real mintcc = checkmovemesh(Th,[x,y])/5.;
   real mint = checkmovemesh(Th,[x,y-v*coef]);
 
-  if (mint<mintcc ||  j%10==0) {  // mesh to bad => remeshing
+  if (mint<mintcc ||  j%10==0) { // mesh to bad => remeshing
     Th=adaptmesh(Th,u,err=erradap ) ;
     mintcc = checkmovemesh(Th,[x,y])/5.;
   }
@@ -3789,16 +3635,15 @@ plot(Th,ps="d_Thf.eps");
 plot(u,wait=1,ps="d_u.eps");
 ```
 
-\begin{figure}[hbt]
-\includegraphics[width=15cm]{d_u}
-\caption{The final solution on the new domain $\Omega^{72}$}
-\end{figure}
-\begin{figure}[hbt]
-\includegraphics[width=15cm]{d_Thf}
-\caption{The adapted mesh of the domain $\Omega^{72}$}
-\end{figure}
+|Fig. 9.34: The final solution on the new domain $\Omega^{72}$|
+|:----:|
+|![d_u](images/d_u.png)|
 
-\textBlack## Non linear Elasticity (nolinear-elas.edp)
+|Fig. 9.35: The adapted mesh of the domain $\Omega^{72}$|
+|:----:|
+|![d_Thf](images/d_Thf.png)|
+
+## Non linear Elasticity (nolinear-elas.edp)
 
 The nonlinear elasticity problem is: find the displacement $(u_{1},u_{2})$  minimizing  $J$
 $$ \min J(u_{1},u_{2}) = \int_{\Omega} f(F2) -  \int_{\Gamma_{p}} P_{a} \,  u_{2} $$
@@ -3874,39 +3719,39 @@ And it is easy to make automatic differentiation.
 \end{figure}
 
 ```freefem
-//  non linear elasticity model
+// non linear elasticity model
 
-//  for hyper elasticity problem
-//  -----------------------------
+// for hyper elasticity problem
+// -----------------------------
 macro f(u) ((u)*0.5) // end of macro
 macro df(u) (0.5) // end of macro
 macro ddf(u) (0) // end of macro
 
-//  -- du caouchouc --- (see the notes of Herve Le Dret.)
+// -- du caouchouc --- (see the notes of Herve Le Dret.)
 // -------------------------------
-real mu = 0.012e5; //  $kg/cm^2$
-real lambda =  0.4e5; //  $kg/cm^2$
-//   \hfilll
-//   $  \sigma = 2 \mu E + \lambda tr(E) Id $\hfilll
-//   $   A(u,v)= \sigma(u):E(v) $\hfilll
-//   \hfilll
-//   ( a b )\hfilll
-//   ( b c )\hfilll
-//\hfilll
-//  tr*Id : (a,b,c) -> (a+c,0,a+c) \hfilll
-// so the associed matrix is:\hfilll
-//   ( 1 0 1 )\hfilll
-//   ( 0 0 0 )\hfilll
-//   ( 1 0 1 ) \hfilll
+real mu = 0.012e5; // $kg/cm^2$
+real lambda =  0.4e5; // $kg/cm^2$
+//
+// $  \sigma = 2 \mu E + \lambda tr(E) Id $
+// $   A(u,v)= \sigma(u):E(v) $
+//
+// ( a b )
+// ( b c )
+//
+// tr*Id : (a,b,c) -> (a+c,0,a+c)
+// so the associed matrix is:
+// ( 1 0 1 )
+// ( 0 0 0 )
+// ( 1 0 1 )
 // ------------------v
 real a11= 2*mu +  lambda  ;
-real a22= mu ; //  because $[0,2*t12,0]' A [0,2*s12,0]  =$
+real a22= mu ; // because $[0,2*t12,0]' A [0,2*s12,0]  =$
 // $= 2*mu*(t12*s12+t21*s21) = 4*mu*t12*s12$
 real a33= 2*mu +   lambda ;
 real a12= 0 ;
 real a13= lambda ;
 real a23= 0 ;
-//  symetric part
+// symetric part
 real a21= a12 ;
 real a31= a13 ;
 real a32= a23 ;
@@ -3914,8 +3759,8 @@ real a32= a23 ;
 // the matrix A.
 func A = [ [ a11,a12,a13],[ a21,a22,a23],[ a31,a32,a33] ];
 
-real Pa=1e2; //  a pressure of 100 Pa
-// ----------------\hfilll
+real Pa=1e2; // a pressure of 100 Pa
+// ----------------
 
 int n=30,m=10;
 mesh Th= square(n,m,[x,.3*y]); // label: 1 bottom, 2 right, 3 up, 4 left;
@@ -3931,7 +3776,7 @@ Wh e2,fe2,dfe2,ddfe2; // optimisation
 Wh ett,ezz,err,erz; // optimisation
 
 Vh [uu,vv], [w,s],[un,vn];
-[un,vn]=[0,0];//  intialisation
+[un,vn]=[0,0];// intialisation
 [uu,vv]=[0,0];
 
 varf vmass([uu,vv],[w,s],solver=CG) =  int2d(Th)( uu*w + vv*s );
@@ -3958,10 +3803,10 @@ for (int i=0;i<10;i++)
   cout << "  e2 max " <<e2[].max << " , min" << e2[].min << endl;
   cout << " de2 max "<< dfe2[].max << " , min" << dfe2[].min << endl;
   cout << "dde2 max "<< ddfe2[].max << " , min" << ddfe2[].min << endl;
-  NonLin; //  compute $[uu,vv] = (D^2 J(un))^{-1}(D J(un))$
+  NonLin; // compute $[uu,vv] = (D^2 J(un))^{-1}(D J(un))$
 
   w[]   = M*uu[];
-  real res = sqrt(w[]' * uu[]); //  norme  $L^2 of [uu,vv]$
+  real res = sqrt(w[]' * uu[]); // norme  $L^2 of [uu,vv]$
   u1 = uu;
   v1 = vv;
   cout << " L^2 residual = " << res << endl;
@@ -3975,7 +3820,7 @@ for (int i=0;i<10;i++)
 
 plot([un,vn],wait=1);
 mesh th1 = movemesh(Th, [x+un, y+vn]);
-plot(th1,wait=1); //  see figure \ref{fig nl-elas}
+plot(th1,wait=1); // see figure \ref{fig nl-elas} $\codered$
 ```
 
 ## Compressible Neo-Hookean Materials: Computational Solutions
@@ -4359,7 +4204,7 @@ Here $k_0=\omega/c$ is the wavenumber, $\alpha$ is the penalty term added to fig
 
 We now assume axial symmetry of our electromagnetic fields and insert an imaginary unity in front of the $H_{\phi}$ to allow all field components to be real numbers and also to account for the phase shift of this component $\vec{H}(\rho,\phi,z)=\left\{H_{\rho}(\rho,z),iH_{\phi}(\rho,z),H_z(\rho,z)\right\}\times e^{im\phi}$.
 
-We write the wave equation (\ref{eq:wave}) explicitly in cylindrical coordinates, thus obtaining a set of three differential equations for the domain $\Omega$ given by the resonator's cross section and some space outside:
+We write the wave equation (\ref{eq:wave} $\codered$) explicitly in cylindrical coordinates, thus obtaining a set of three differential equations for the domain $\Omega$ given by the resonator's cross section and some space outside:
 
 \begin{eqnarray}
 A_1\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}&=&0\\ \nonumber
@@ -4371,7 +4216,7 @@ A_3\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}&=&0
 
 ## Weak formulation
 
-In general, to obtain the integral or ``weak'' statements equivalent to system (\ref{eq:system}) and boundary conditions we form a scalar dot product between an arbitrary magnetic field test function $\vec{H}^t=\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}$ and the components of our vectorial equation $A_1,A_2,A_3$, and integrate over the resonator's cross section domain $\Omega$ (and its boundary for the boundary conditions):
+In general, to obtain the integral or "weak" statements equivalent to system (\ref{eq:system} $\codered$) and boundary conditions we form a scalar dot product between an arbitrary magnetic field test function $\vec{H}^t=\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}$ and the components of our vectorial equation $A_1,A_2,A_3$, and integrate over the resonator's cross section domain $\Omega$ (and its boundary for the boundary conditions):
 
 \begin{equation}
 \int\limits_{\Omega}(H^t_{\rho}A_1+H^t_{\phi}A_2+H^t_{z}A_3)d\Omega
@@ -4384,7 +4229,7 @@ We can reduce the order of partial derivatives in this integral by using the Gre
 -\int\limits_{\Omega}\frac{\partial H_z^t}{\partial \rho}\frac{\partial H_z}{\partial \rho }d\Omega+\oint H_z^t\frac{\partial H_z}{\partial \rho}n_{\rho}d\Gamma
 \end{equation}
 
-Thus converting equations (\ref{eq:system}) we obtain a large expression for the weak form (see [1])
+Thus converting equations (\ref{eq:system} $\codered$) we obtain a large expression for the weak form (see [1])
 
 ### A dielectric sphere example with FreeFem++
 
