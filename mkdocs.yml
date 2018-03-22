@@ -3,6 +3,7 @@ pages:
   - Introduction: index.md
   - Download: introduction/download.md
   - Installation: introduction/installation.md
+  - How to contribute?: introduction/Contributing.md
   - TODO: introduction/TODO.md
   - Documentation:
     - Home: documentation/index.md

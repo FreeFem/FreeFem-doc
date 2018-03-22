@@ -6,10 +6,11 @@
 ## Home
 
 Progression:
-<div class="progress progress-100plus">
-	<div class="progress-bar" style="width:100%">
+<div class="progress progress-80plus">
+	<div class="progress-bar" style="width:99%">
 	</div>
-	<span class="progress-label">100</span>
+	<span class="progress-label">99</span>
 </div>
 
+- [ ] line 65
 
