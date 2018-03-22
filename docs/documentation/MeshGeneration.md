@@ -1663,7 +1663,7 @@ The coordinates of the points can be initialized in two ways. The first is a fil
 $$
 \begin{array}{ccc}
 n_{v} & & \\
-x_{1} & y_{1} & z_{1}  \\
+x_{1} & y_{1} & z_{1} \\
 x_{2} & y_{2} & z_{2} \\
 \vdots &\vdots & \vdots \\
 x_{n_v} & y_{n_v} & z_{n_v}
@@ -1886,137 +1886,153 @@ Moreover, we also add post processing parameters that allow to moving the mesh. 
 The vector `:::freefem region`, `:::freefem labelmid`, `:::freefem labelup` and `:::freefem labeldown` These vectors are composed of $n_{l}$ successive pairs of number $O_i,N_l$ where $n_{l}$ is the number (label or region) that we want to get.
 
 An example of this command line is given in `:::freefem buildlayermesh.edp`.$\codered$
-<!--- END OF REVIEW -- TO CONTINUE --->
-**Example `:::freefem cube.edp`**
 
-```freefem
-load "medit"
-load "msh3"
-func mesh3 Cube(int[int] & NN,real[int,int] &BB ,int[int,int] & L)
-{
-  // First  build the 6 faces of the hex.
-  real x0=BB(0,0),x1=BB(0,1);
-  real y0=BB(1,0),y1=BB(1,1);
-  real z0=BB(2,0),z1=BB(2,1);
+!!!question "Cube"
+	`Cube.idp`
+	```freefem
+	load "medit"
+	load "msh3"
 
-  int nx=NN[0],ny=NN[1],nz=NN[2];
-  mesh Thx = square(nx,ny,[x0+(x1-x0)*x,y0+(y1-y0)*y]);
+	func mesh3 Cube (int[int] &NN, real[int, int] &BB, int[int, int] &L){
+		real x0 = BB(0,0), x1 = BB(0,1);
+		real y0 = BB(1,0), y1 = BB(1,1);
+		real z0 = BB(2,0), z1 = BB(2,1);
 
-  int[int] rup=[0,L(2,1)],  rdown=[0,L(2,0)],
-    rmid=[1,L(1,0),  2,L(0,1),  3, L(1,1),  4, L(0,0) ];
-  mesh3 Th=buildlayers(Thx,nz,   zbound=[z0,z1],
-                       labelmid=rmid,   labelup = rup,
-                       labeldown = rdown);
+		int nx = NN[0], ny = NN[1], nz = NN[2];
 
-  return Th;
-}
-```
+		// 2D mesh
+		mesh Thx = square(nx, ny, [x0+(x1-x0)*x, y0+(y1-y0)*y]);
 
-**The unit cube example:**
+		// 3D mesh
+		int[int] rup = [0, L(2,1)], rdown=[0, L(2,0)];
+		int[int] rmid=[1, L(1,0), 2, L(0,1), 3, L(1,1), 4, L(0,0)];
+		mesh3 Th = buildlayers(Thx, nz, zbound=[z0,z1],
+			labelmid=rmid, labelup = rup, labeldown = rdown);
 
-```freefem
- include "Cube.idp"
- int[int]  NN=[10,10,10]; //  the number of step in each  direction
- real [int,int]  BB=[[0,1],[0,1],[0,1]]; // bounding box
- int [int,int]  L=[[1,2],[3,4],[5,6]]; // the label of the 6 face left,right,
-//  front, back, down, right
-mesh3 Th=Cube(NN,BB,L);
-medit("Th",Th); // see figure \ref{figs-cube}
-```
+		return Th;
+	}
+	```
 
-**The cone example (an axisymtric mesh on a triangle with degenerateness).**
-**Example `:::freefem cone.edp`**
+!!!question "Unit cube"
+	```freefem
+	include "Cube.idp"
 
-```freefem
-load "msh3"
-load "medit"
-// cone using buildlayers with a triangle
-real RR=1,HH=1;
-border Taxe(t=0,HH){x=t;y=0;label=0;};
-border Hypo(t=1,0){x=HH*t;y=RR*t;label=1;};
-border Vert(t=0,RR){x=HH;y=t;label=2;};
-int nn=10;   real h= 1./nn;
-mesh Th2=buildmesh(  Taxe(HH*nn)+ Hypo(sqrt(HH*HH+RR*RR)*nn) + Vert(RR*nn) ) ;
-plot(Th2,wait=1); // The 2d mesh
+	int[int] NN = [10,10,10]; //the number of step in each direction
+	real [int, int] BB = [[0,1],[0,1],[0,1]]; //the bounding box
+	int [int, int] L = [[1,2],[3,4],[5,6]]; //the label of the 6 face left,right, front, back, down, right
+	mesh3 Th = Cube(NN, BB, L);
+	medit("Th", Th);
+	```
 
-int MaxLayersT=(int(2*pi*RR/h)/4)*4;// number of layers
-real zminT = 0, zmaxT = 2*pi; // height $2*pi$
-func fx= y*cos(z); func fy= y*sin(z); func fz= x;
-int[int] r1T=[0,0], r2T=[0,0,2,2], r4T=[0,2];
-// trick function:
-func deg= max(.01,y/max(x/HH,0.4) /RR); // The function defined the proportion
-// of number layer close to axis with reference MaxLayersT
-mesh3 Th3T=buildlayers(Th2,coef=  deg, MaxLayersT,
-           zbound=[zminT,zmaxT],transfo=[fx,fy,fz],
-           facemerge=0, region=r1T, labelmid=r2T);
-medit("cone",Th3T); // See figure \ref{figs-cone}
-```
+!!!question "Cone"
+	An axisymtric mesh on a triangle with degenerateness
+	```freefem
+	load "msh3"
+	load "medit"
 
-|Fig. 5.36: The mesh of a  cube made with `:::freefem cube.edp`|Fig. 5.37: the mesh of a cone made with `:::freefem cone.edp`|
+	// Parameters
+	real RR = 1;
+	real HH = 1;
+
+	int nn=10;
+
+	// 2D mesh
+	border Taxe(t=0, HH){x=t; y=0; label=0;}
+	border Hypo(t=1, 0){x=HH*t; y=RR*t; label=1;}
+	border Vert(t=0, RR){x=HH; y=t; label=2;}
+	mesh Th2 = buildmesh(Taxe(HH*nn) + Hypo(sqrt(HH*HH+RR*RR)*nn) + Vert(RR*nn));
+	plot(Th2, wait=true);
+
+	// 3D mesh
+	real h = 1./nn;
+	int MaxLayersT = (int(2*pi*RR/h)/4)*4;//number of layers
+	real zminT = 0;
+	real zmaxT = 2*pi; //height 2*pi
+	func fx = y*cos(z);
+	func fy = y*sin(z);
+	func fz = x;
+	int[int] r1T = [0,0], r2T = [0,0,2,2], r4T = [0,2];
+	//trick function:
+	//The function defined the proportion
+	//of number layer close to axis with reference MaxLayersT
+	func deg = max(.01, y/max(x/HH, 0.4)/RR);
+	mesh3 Th3T = buildlayers(Th2, coef=deg, MaxLayersT,
+		zbound=[zminT, zmaxT], transfo=[fx, fy, fz],
+		facemerge=0, region=r1T, labelmid=r2T);
+	medit("cone", Th3T);
+	```
+
+|<a name="Fig36">Fig. 36</a>: The mesh of a cube made with `:::freefem cube.edp`|<a name="Fig37">Fig. 37</a>: the mesh of a cone made with `:::freefem cone.edp`|
 |:----:|:----:|
 |![Cube](images/MeshGeneration_LayerMesh_Example1.png)|![Cone](images/MeshGeneration_LayerMesh_Example2.png)|
 
-**Example `:::freefem buildlayermesh.edp`**
+!!!question "Buildlayer mesh"
+	```freefem
+	load "msh3"
+	load "tetgen"
+	load "medit"
 
-```freefem
-// file buildlayermesh.edp
-load "msh3"
-load "tetgen"
+	// Parameters
+	int C1 = 99;
+	int C2 = 98;
 
-// Test 1
+	// 2D mesh
+	border C01(t=0, pi){x=t; y=0; label=1;}
+	border C02(t=0, 2*pi){ x=pi; y=t; label=1;}
+	border C03(t=0, pi){ x=pi-t; y=2*pi; label=1;}
+	border C04(t=0, 2*pi){ x=0; y=2*pi-t; label=1;}
 
-int C1=99, C2=98; // Could be anything
-border C01(t=0,pi){ x=t;  y=0;      label=1;}
-border C02(t=0,2*pi){ x=pi; y=t;  label=1;}
-border C03(t=0,pi){ x=pi-t;  y=2*pi;    label=1;}
-border C04(t=0,2*pi){ x=0;    y=2*pi-t; label=1;}
+	border C11(t=0, 0.7){x=0.5+t; y=2.5; label=C1;}
+	border C12(t=0, 2){x=1.2; y=2.5+t; label=C1;}
+	border C13(t=0, 0.7){x=1.2-t; y=4.5; label=C1;}
+	border C14(t=0, 2){x=0.5; y=4.5-t; label=C1;}
 
-border C11(t=0,0.7){ x=0.5+t;  y=2.5;      label=C1;}
-border C12(t=0,2){ x=1.2;    y=2.5+t;  label=C1;}
-border C13(t=0,0.7){ x=1.2-t;  y=4.5;     label=C1;}
-border C14(t=0,2){ x=0.5;    y=4.5-t; label=C1;}
+	border C21(t=0, 0.7){x=2.3+t; y=2.5; label=C2;}
+	border C22(t=0, 2){x=3; y=2.5+t; label=C2;}
+	border C23(t=0, 0.7){x=3-t; y=4.5; label=C2;}
+	border C24(t=0, 2){x=2.3; y=4.5-t; label=C2;}
 
-border C21(t=0,0.7){ x= 2.3+t;     y=2.5;  label=C2;}
-border C22(t=0,2){        x=3;   y=2.5+t;  label=C2;}
-border C23(t=0,0.7){   x=3-t;     y=4.5;  label=C2;}
-border C24(t=0,2){       x=2.3;   y=4.5-t; label=C2;}
+	mesh Th = buildmesh(C01(10) + C02(10) + C03(10) + C04(10)
+		+ C11(5) + C12(5) + C13(5) + C14(5)
+		+ C21(-5) + C22(-5) + C23(-5) + C24(-5));
 
-mesh Th=buildmesh(    C01(10)+C02(10)+ C03(10)+C04(10)
-                    + C11(5)+C12(5)+C13(5)+C14(5)
-                    + C21(-5)+C22(-5)+C23(-5)+C24(-5));
+	mesh Ths = buildmesh(C01(10) + C02(10) + C03(10) + C04(10)
+		+ C11(5) + C12(5) + C13(5) + C14(5));
 
-mesh Ths=buildmesh(    C01(10)+C02(10)+ C03(10)+C04(10)
-                    + C11(5)+C12(5)+C13(5)+C14(5) );
+	// Construction of a box with one hole and two regions
+	func zmin = 0.;
+	func zmax = 1.;
+	int MaxLayer = 10;
 
-// Construction of a box with one hole and two regions
-func zmin=0.;
-func zmax=1.;
-int MaxLayer=10;
+	func XX = x*cos(y);
+	func YY = x*sin(y);
+	func ZZ = z;
 
-func XX = x*cos(y);
-func YY = x*sin(y);
-func ZZ = z;
+	int[int] r1 = [0, 41], r2 = [98, 98, 99, 99, 1, 56];
+	int[int] r3 = [4, 12];//the triangles of uppper surface mesh
+						  //generated by the triangle in the 2D region
+						  //of mesh Th of label 4 as label 12
+	int[int] r4 = [4, 45];//the triangles of lower surface mesh
+						  //generated by the triangle in the 2D region
+						  //of mesh Th of label 4 as label 45.
 
-int[int] r1=[0,41], r2=[98,98,  99,99, 1,56];
-int[int] r3=[4,12];    // The triangles of uppper surface mesh
-// Generated by the triangle in the 2D region of mesh Th of label 4 as label 12.
-int[int] r4=[4,45];    // The triangles of lower surface mesh
-// Generated by the triangle in the 2D region of mesh Th of label 4 as label 45.
+	mesh3 Th3 = buildlayers(Th, MaxLayer, zbound=[zmin, zmax], region=r1,
+		labelmid=r2, labelup=r3, labeldown=r4);
+	medit("box 2 regions 1 hole", Th3);
 
-mesh3 Th3=buildlayers( Th, MaxLayer, zbound=[zmin,zmax], region=r1,
-                labelmid=r2, labelup = r3, labeldown = r4 );
-savemesh(Th3,"box2region1hole.mesh");
-// Construction of a sphere with TetGen
-func XX1 = cos(y)*sin(x);
-func YY1 = sin(y)*sin(x);
-func ZZ1 = cos(x);
-string test="paACQ";
-cout << "test=" << test << endl;
-mesh3 Th3sph=tetgtransfo(Ths,transfo=[XX1,YY1,ZZ1],switch=test,nbofregions=1,
-                           regionlist=domain);
-savemesh(Th3sph,"sphere2region.mesh");
-```
+	// Construction of a sphere with TetGen
+	func XX1 = cos(y)*sin(x);
+	func YY1 = sin(y)*sin(x);
+	func ZZ1 = cos(x);
 
+	real[int] domain = [0., 0., 0., 0, 0.001];
+	string test = "paACQ";
+	cout << "test = " << test << endl;
+	mesh3 Th3sph = tetgtransfo(Ths, transfo=[XX1, YY1, ZZ1],
+		switch=test, nbofregions=1, regionlist=domain);
+	medit("sphere 2 regions", Th3sph);
+	```
+$\codered$ End of review here!
 ## Meshing examples
 
 

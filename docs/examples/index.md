@@ -57,11 +57,11 @@ for (int i = 0; i < NAdapt; i++){
 }
 ```
 
-Solution on adapted mesh and associated mesh   |  |
+Solution on adapted mesh and associated mesh | |
 :-------------------------:|:-------------------------:
-![poisson Associated mesh](images/poisson_associated_mesh.jpg)  |  ![poisson adapted mesh](images/poisson_adapted_mesh.jpg)
+![poisson Associated mesh](images/poisson_associated_mesh.jpg) | ![poisson adapted mesh](images/poisson_adapted_mesh.jpg)
 
-## Stoke Equation on Cube
+## Stoke Equation on a cube
 
 ```freefem
 load "msh3"
@@ -108,7 +108,7 @@ solve vStokes ([u1, u2, u3, p], [v1, v2, v3, q])
 	;
 
 // Plot
-plot(p, wait=1, nbiso=5);  // 3d visualization of pressure isolines
+plot(p, wait=1, nbiso=5); // 3d visualization of pressure isolines
 
 // See 10 plan of the velocity in 2D
 for(int i = 1; i < 10; i++){
@@ -123,12 +123,98 @@ for(int i = 1; i < 10; i++){
 }
 ```
 
-Solution and associated mesh  |
+Solution and associated mesh |
 :-------------------------:|
-![Stokes 3D](images/Stokes3d.jpg)  |
-![Stokes 3d mesh](images/Stokes3d-Th.jpg)  |
+![Stokes 3D](images/Stokes3d.jpg) |
+![Stokes 3d mesh](images/Stokes3d-Th.jpg) |
 
-## Visualization - Plot
+## Mehs Generation
+
+### Mesh Generation - Mesh adaptation
+
+```freefem
+// Parameters
+real eps = 0.0001;
+real h = 1;
+real hmin = 0.05;
+func f = 10.0*x^3 + y^3 + h*atan2(eps, sin(5.0*y)-2.0*x);
+
+// Mesh
+mesh Th = square(5, 5, [-1+2*x, -1+2*y]);
+
+// Fespace
+fespace Vh(Th,P1);
+Vh fh = f;
+plot(fh);
+
+// Adaptmesh
+for (int i = 0; i < 2; i++){
+	Th = adaptmesh(Th, fh);
+	fh = f; //old mesh is deleted
+	plot(Th, fh, wait=true);
+}
+```
+
+### Mesh Generation - Mesh adaptation on the Poisson's problem
+```freefem
+// Parameters
+real error = 0.1;
+
+// Mesh
+border ba(t=0, 1){x=t; y=0; label=1;}
+border bb(t=0, 0.5){x=1; y=t; label=1;}
+border bc(t=0, 0.5){x=1-t; y=0.5; label=1;}
+border bd(t=0.5, 1){x=0.5; y=t; label=1;}
+border be(t=0.5, 1){x=1-t; y=1; label=1;}
+border bf(t=0, 1){x=0; y=1-t; label=1;}
+mesh Th = buildmesh(ba(6) + bb(4) + bc(4) + bd(4) + be(4) + bf(6));
+
+// Fespace
+fespace Vh(Th, P1);
+Vh u, v;
+
+// Function
+func f = 1;
+
+// Problem
+problem Poisson(u, v, solver=CG, eps=1.e-6)
+	= int2d(Th)(
+		  dx(u)*dx(v)
+		+ dy(u)*dy(v)
+	)
+	- int2d(Th)(
+		  f*v
+	)
+	+ on(1, u=0);
+
+// Adaptmesh loop
+for (int i = 0; i < 4; i++){
+	Poisson;
+	Th = adaptmesh(Th, u, err=error);
+	error = error/2;
+}
+
+// Plot
+plot(u);
+```
+
+### Mesh Generation - Uniforme mesh adaptation
+
+```freefem
+mesh Th=square(2, 2); //the initial mesh
+plot(Th, wait=true);
+
+Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000);
+plot(Th, wait=true);
+
+Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); //More the one time du to
+Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); //Adaptation bound `maxsubdiv=`
+plot(Th, wait=true);
+```
+
+## Visualization
+
+### Visualization - Plot
 
 ```freefem
 mesh Th = square(5,5);
@@ -136,11 +222,11 @@ fespace Vh(Th, P1);
 
 //plot scalar and vectorial FE function
 Vh uh=x*x+y*y, vh=-y^2+x^2;
-plot(Th, uh, [uh, vh], value=true, ps="three.eps", wait=true);
+plot(Th, uh, [uh, vh], value=true, wait=true);
 
 //zoom on box defined by the two corner points [0.1,0.2] and [0.5,0.6]
 plot(uh, [uh, vh], bb=[[0.1, 0.2], [0.5, 0.6]],
-	wait=true, grey=true, fill=true, value=true, ps="threeg.eps");
+	wait=true, grey=true, fill=true, value=true);
 
 //compute a cut
 int n = 10;
@@ -151,7 +237,7 @@ for (int i = 0; i < n; i++){
 	xx[i] = i;
 	yy[i] = uh; //value of uh at point (i/10., i/10.)
 }
-plot([xx, yy], ps="likegnu.eps", wait=true);
+plot([xx, yy], wait=true);
 
 {// file for gnuplot
 	ofstream gnu("plot.gp");
@@ -164,7 +250,7 @@ plot([xx, yy], ps="likegnu.eps", wait=true);
 exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output \"gnuplot.eps\" \n replot \n quit' | gnuplot");
 ```
 
-## Visualization - HSV
+### Visualization - HSV
 
 ```freefem
 // from: \url{http://en.wikipedia.org/wiki/HSV_color_space}
@@ -198,7 +284,7 @@ real[int] colorhsv=[ // color hsv model
  plot(uh, viso=viso(0:viso.n-1), value=true, fill=true, wait=true, hsv=colorhsv);
 ```
 
-## Visualization - Medit
+### Visualization - Medit
 
 ```freefem
 load "medit"
@@ -225,7 +311,7 @@ exec("ffmedit u");
 exec("rm u.bb u.faces u.points");
 ```
 
-## Visualization - Paraview
+### Visualization - Paraview
 
 ```freefem
 load "iovtk"
