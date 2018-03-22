@@ -22,16 +22,7 @@ Progression:
 	<span class="progress-label">99</span>
 </div>
 
-- [ ] line 998
-- [ ] line 2095
-- [ ] line 2365
-- [ ] line 2369
-- [ ] line 2377
-- [ ] line 2722
-- [ ] line 2770
-- [ ] line 2920
-- [ ] line 2982
-- [ ] line 3012
+- [ ] line 2597
 
 ## Finite element
 
