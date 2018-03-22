@@ -38,11 +38,13 @@ examplesTODOFile = "examples/TODO.md"
 #introduction
 introductionFilesList = [
 	"introduction/download.md",
-	"introduction/installation.md"
+	"introduction/installation.md",
+	"introduction/Contributing.md"
 	]
 introductionNamesList = [
 	"Download",
-	"Installation"
+	"Installation",
+	"How to contribute?"
 	]
 introductionTODOFile = "introduction/TODO.md"
 
@@ -153,28 +155,34 @@ def checkTODOByLines(_FilesList, _NamesList, _TODOFile):
 		if file:
 			TODOFile.write("## "+_NamesList[i]+"\n\n")
 
+			EmptyLine = 0
 			CurrentLine = 0
 			NumberOfTODO = 0
 			NumberOfError = 0
 			TODOs = []
 			for line in file:
-				CurrentLine += 1
-				if "$\\codered$" in line:
-					TODOs.append("- [ ] line "+str(CurrentLine)+"\n")
-					NumberOfTODO += 1
-				elif "$\\codeerror$" in line:
-					TODOs.append("- [ ] line "+str(CurrentLine)+"\n")
-					TODOs.append("\n<span style=\"color:red; font-size:1.5em;\">This is a CodeError!</span>\n")
-					print "A CodeError is present: file "+_FilesList[i]
-					NumberOfError += 1
+				line = line.replace("\n", "")
+				if not line:
+					EmptyLine += 1
+					CurrentLine += 1
+				else:
+					CurrentLine += 1
+					if "$\\codered$" in line:
+						TODOs.append("- [ ] line "+str(CurrentLine)+"\n")
+						NumberOfTODO += 1
+					elif "$\\codeerror$" in line:
+						TODOs.append("- [ ] line "+str(CurrentLine)+"\n")
+						TODOs.append("\n<span style=\"color:red; font-size:1.5em;\">This is a CodeError!</span>\n")
+						print "A CodeError is present: file "+_FilesList[i]
+						NumberOfError += 1
 
 			TODOFile.write("Progression:\n")
 			if NumberOfError != 0:
 				Progression = 0
 			else:
 				Progression = 100
-				if CurrentLine != 0:
-					Progression = 100 - (float(NumberOfTODO)/float(CurrentLine))*100
+				if (CurrentLine-EmptyLine) > 0:
+					Progression = 100 - (float(NumberOfTODO)/float(CurrentLine-EmptyLine))*100
 
 			Progression = int(Progression)
 			writeProgressBar(TODOFile, Progression)
@@ -199,6 +207,16 @@ checkTODOByLines(examplesFilesList, examplesNamesList, examplesTODOFile)
 
 #introduction
 checkTODOByLines(introductionFilesList, introductionNamesList, introductionTODOFile)
+TODOFile = open(docDirectory + introductionTODOFile, "a")
+TODOFile.write("\n## Documentation\n");
+TODOFile.write("[TODO](../documentation/TODO)\n")
+TODOFile.write("\n## Language references\n");
+TODOFile.write("[TODO](../reference/TODO)\n")
+TODOFile.write("\n## Tutorials\n");
+TODOFile.write("[TODO](../tutorial/TODO)\n")
+TODOFile.write("\n## Examples\n");
+TODOFile.write("[TODO](../examples/TODO)\n")
+TODOFile.close();
 
 #reference (special TODO)
 TODOFile = open(docDirectory + referenceTODOFile, "w")

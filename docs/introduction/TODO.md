@@ -24,3 +24,26 @@ Progression:
 
 - [ ] line 233
 
+## How to contribute?
+
+Progression:
+<div class="progress progress-40plus">
+	<div class="progress-bar" style="width:50%">
+	</div>
+	<span class="progress-label">50</span>
+</div>
+
+- [ ] line 3
+
+
+## Documentation
+[TODO](../documentation/TODO)
+
+## Language references
+[TODO](../reference/TODO)
+
+## Tutorials
+[TODO](../tutorial/TODO)
+
+## Examples
+[TODO](../examples/TODO)
