@@ -1744,28 +1744,45 @@ real s = sqrt(a);
 
 
 ## square
-Build a structured square mesh.
 
-```freefem
-mesh Th = square(nnX, nnY, [[L*x, H*y]], [flags=Flags]);
-```
+1.
+ Square of a number.
 
-<u>Parameter:</u>
+ ```freefem
+ real S = square(a);
+ ```
 
- - `nnX` (`:::freefem int`)<br/>
- Discretization along $x$
- - `nnY` (`:::freefem int`)<br/>
- Discretization along $y$
- - `L` (`:::freefem real`) _[Optional]_<br/>
- Length along $x$
- - `H` (`:::freefem real`) _[Optional]_<br/>
- Height along $y$
- - _`:::freefem flags=`_ (`:::freefem int`) _[Optional]_<br/>
- Structured mesh type, see [Mesh Generation chapter](../documentation/MeshGeneration/#square) for more informations
+ <u>Parameter:</u>
 
-<u>Output:</u>
+  - `a` (`:::freefem real`)
 
- - `Th` (`:::freefem mesh`)
+ <u>Output:</u>
+
+  - `S` (`:::freefem real`)
+
+2.
+ Build a structured square mesh.
+
+ ```freefem
+ mesh Th = square(nnX, nnY, [[L*x, H*y]], [flags=Flags]);
+ ```
+
+ <u>Parameter:</u>
+
+  - `nnX` (`:::freefem int`)<br/>
+  Discretization along $x$
+  - `nnY` (`:::freefem int`)<br/>
+  Discretization along $y$
+  - `L` (`:::freefem real`) _[Optional]_<br/>
+  Length along $x$
+  - `H` (`:::freefem real`) _[Optional]_<br/>
+  Height along $y$
+  - _`:::freefem flags=`_ (`:::freefem int`) _[Optional]_<br/>
+  Structured mesh type, see [Mesh Generation chapter](../documentation/MeshGeneration/#square) for more informations
+
+ <u>Output:</u>
+
+  - `Th` (`:::freefem mesh`)
 
 ## swap
 Swap values.

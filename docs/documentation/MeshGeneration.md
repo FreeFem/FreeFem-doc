@@ -223,12 +223,15 @@ The boundary consists of 10 lines $L_i,\, i=1,\cdots,10$ whose end points are $q
 |:----|:----|
 |![Mesh Sample](images/MeshGeneration_Data.png)|In the left figure, we have the following.<br>$n_v=14, n_t=16, n_s=10$<br>$q^1=(-0.309016994375, 0.951056516295)$<br>$\vdots\qquad \vdots\qquad \vdots$<br>$q^{14}=(-0.309016994375, -0.951056516295)$<br>The vertices of $T_1$ are $q^9, q^{12},\, q^{10}$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The vertices of $T_{16}$ are $q^9, q^{10}, q^{6}$.<br>The edge of 1st side $L_1$ are $q^6, q^5$.<br>$\vdots\qquad \vdots\qquad \vdots$<br>The edge of 10th side $L_{10}$ are $q^{10}, q^6$.|
 
-|<a name="Tab1">Table. 1</a>: The structure of `:::freefem mesh_sample.msh`||
-|:----|:----|
-|Content of the file|Explanation|
-|14 16 10<br>-0.309016994375 0.951056516295 1<br>0.309016994375 0.951056516295 1<br>$\cdots$ $\cdots$ $\vdots$<br>-0.309016994375 -0.951056516295 1|$n_v\qquad n_t\qquad n_e$<br>$q^1_x\qquad q^1_y\qquad$ boundary label=1<br>$q^2_x\qquad q^2_y\qquad$ boundary label=1<br><br>$q^{14}_x\qquad q^{14}_y\quad$ boundary label=1|
-|9 12 10 0<br>5 9 6 0<br>$\cdots$<br>9 10 6 0|$1_1\qquad 1_2\qquad 1_3\qquad$ region label=0<br>$2_1\qquad 2_2\qquad 2_3\qquad$ region label=0<br><br>$16_1\quad 16_2\qquad 16_3\qquad$ region label=0|
-|6 5 1<br>5 2 1<br>$\cdots$<br>10 6 1|$1_1\qquad 1_2\qquad$ boundary label=1<br>$2_1\qquad 2_2\qquad$ boundary label=1<br><br>$10_1\quad 10_2\qquad$ boundary label=1|
+<center>
+	|<a name="Tab1">Tab. 1</a>: The structure of `:::freefem mesh_sample.msh`||
+	|:----|:----|
+	|Content of the file|Explanation|
+	|14 16 10<br>-0.309016994375 0.951056516295 1<br>0.309016994375 0.951056516295 1<br>$\cdots$ $\cdots$ $\vdots$<br>-0.309016994375 -0.951056516295 1|$n_v\qquad n_t\qquad n_e$<br>$q^1_x\qquad q^1_y\qquad$ boundary label=1<br>$q^2_x\qquad q^2_y\qquad$ boundary label=1<br><br>$q^{14}_x\qquad q^{14}_y\quad$ boundary label=1|
+	|9 12 10 0<br>5 9 6 0<br>$\cdots$<br>9 10 6 0|$1_1\qquad 1_2\qquad 1_3\qquad$ region label=0<br>$2_1\qquad 2_2\qquad 2_3\qquad$ region label=0<br><br>$16_1\quad 16_2\qquad 16_3\qquad$ region label=0|
+	|6 5 1<br>5 2 1<br>$\cdots$<br>10 6 1|$1_1\qquad 1_2\qquad$ boundary label=1<br>$2_1\qquad 2_2\qquad$ boundary label=1<br><br>$10_1\quad 10_2\qquad$ boundary label=1|
+
+</center>
 
 In FreeFem++ there are many mesh file formats available for communication with other tools such as `emc2`, `modulef`, ... (see [Mesh format chapter](MeshFormat)), The extension of a file implies its format. More details can be found on the file format .msh in the article by F. Hecht "bamg : a bidimensional anisotropic mesh generator" [Hecht1998](#refHecht19982).
 
@@ -1086,6 +1089,14 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	plot(th, TH, ps="TouchSide.esp");
 	```
 
+	<center>
+
+	|<a name="Fig24">Fig. 24</a>: Two rectangles touching by a side|
+	|:----:|
+	|![Rectangles touching by a side](images/MeshGeneration_Example_NACA0012_1.png)|
+
+	</center>
+
 !!!question "NACA0012 Airfoil"
 	```freefem
 	border upper(t=0, 1){
@@ -1101,9 +1112,13 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	plot(Th, ps="NACA0012.eps", bw=true);
 	```
 
-|<a name="Fig24">Fig. 24</a>: Two rectangles touching by a side|<a name="Fig25">Fig. 25</a>: NACA0012 Airfoil|
-|:----:|:----:|
-|![Rectangles touching by a side](images/MeshGeneration_Example_NACA0012_1.png)|![NACA0012 Airfoil](images/MeshGeneration_Example_NACA0012_2.png)|
+	<center>
+
+	|<a name="Fig25">Fig. 25</a>: NACA0012 Airfoil|
+	|:----:|
+	|![NACA0012 Airfoil](images/MeshGeneration_Example_NACA0012_2.png)|
+
+	</center>
 
 !!!question "Cardioid"
 	```freefem
@@ -1114,6 +1129,14 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	plot(Th, ps="Cardioid.eps", bw=true);
 	```
 
+	<center>
+
+	|<a name="Fig26">Fig. 26</a>: Domain with Cardioid curve boundary|
+	|:----:|
+	|![Cardiod](images/MeshGeneration_Example_Cardioid1.png)|
+
+	</center>
+
 !!!question "Cassini Egg"
 	```freefem
 	border C(t=0, 2*pi) {x=(2*cos(2*t)+3)*cos(t); y=(2*cos(2*t)+3)*sin(t);}
@@ -1121,9 +1144,13 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	plot(Th, ps="Cassini.eps", bw=true);
 	```
 
-|<a name="Fig26">Fig. 26</a>: Domain with Cardioid curve boundary|<a name="Fig27">Fig. 27</a>: Domain with Cassini Egg curve boundary|
-|:----:|:----:|
-|![Cardiod](images/MeshGeneration_Example_Cardioid1.png)|![Cassini](images/MeshGeneration_Example_Cardioid2.png)|
+	<center>
+
+	|<a name="Fig27">Fig. 27</a>: Domain with Cassini Egg curve boundary|
+	|:----:|
+	|![Cassini](images/MeshGeneration_Example_Cardioid2.png)|
+
+	</center>
 
 !!!question "By cubic Bezier curve"
 	```freefem
@@ -1157,9 +1184,13 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	plot(Th, ps="Bezier.eps", bw=true);
 	```
 
+	<center>
+
 	|<a name="Fig28">Fig. 28</a>: Boundary drawn by Bezier curves|
 	|:----:|
 	|![Bezier](images/MeshGeneration_Example_Bezier.png)|
+
+	</center>
 
 !!!question "Section of Engine"
 	```freefem
@@ -1177,9 +1208,13 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	plot(Th, ps="Engine.eps", bw=true);
 	```
 
+	<center>
+
 	|<a name="Fig29">Fig. 29</a>: Section of Engine|
 	|:----|
 	|![Engine](images/MeshGeneration_Example_Engine.png)|
+
+	</center>
 
 !!!question "Domain with U-shape channel"
 	```freefem
@@ -1197,9 +1232,13 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	plot(Th, ps="U-shape.eps", bw=true);
 	```
 
+	<center>
+
 	|<a name="Fig30">Fig. 30</a>: Domain with U-shape channel changed by `:::freefem d`|
 	|:----|
 	|![U-Shape](images/MeshGeneration_Example_UShape.png)|
+
+	</center>
 
 !!!question "Domain with V-shape cut"
 	```freefem
@@ -1218,9 +1257,13 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	plot(Th, ps="V-shape.eps", bw=true);
 	```
 
+	<center>
+
 	|<a name="Fig31">Fig. 31</a>: Domain with V-shape cut changed by `:::freefem dAg`|
 	|:----|
 	|![V-Shape](images/MeshGeneration_Example_VShape.png)|
+
+	</center>
 
 !!!question "Smiling face"
 	```freefem
@@ -1245,9 +1288,13 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	plot(Th, ps="SmileFace.eps", bw=true);
 	```
 
+	<center>
+
 	|<a name="Fig32">Fig. 32</a>: Smiling face (Mouth is changeable)|
 	|:----:|
 	|![Smiling Face](images/MeshGeneration_Example_SmilingFace.png)|
+
+	</center>
 
 !!!question "3 points bending"
 	```freefem
@@ -1652,7 +1699,7 @@ The parameters of this command line are on the one hand the parameters `:::freef
 !!!note
 	To use `:::freefem tetgtransfo`, the result's mesh of `:::freefem movemesh23` must be a closed surface and define one region only. Therefore, the parameter `:::freefem regionlist` is defined for one region.
 
-	An example of this keyword can be found in line of file `buildlayersmesh.edp`$\codered$
+	An example of this keyword can be found in line 61 of the [Build layer mesh example](../examples/#example-build-layer-mesh).
 
 **The keyword `:::freefem tetgconvexhull`**
 
@@ -1692,7 +1739,7 @@ The parameter of this keyword are
 
 * `:::freefem label=` an integer array that allow to change the label of boundary triangles. This array is defined as the parameter `:::freefem label` in the keyword `:::freefem change`.
 
-* `:::freefem sizevolume=` a reel function. This function allows to constraint volume size of tetrahedra in the domain. (see example \ref{ex:tetg-adap} $\codered$ to build 3d adapted mesh).
+* `:::freefem sizevolume=` a reel function. This function allows to constraint volume size of tetrahedra in the domain. (see [Isotrope mesh adaption section](#a-first-3d-isotrope-mesh-adaptation-process) to build a 3d adapted mesh).
 
 The parameters `:::freefem switch`, `:::freefem nbofregions`, `:::freefem regionlist`, `:::freefem nboffacetcl` and `:::freefem facetcl` of the command line which call TetGen (`:::freefem tetg`) is used for `:::freefem tetgrefine`.
 
@@ -1793,7 +1840,7 @@ The parameters of movemesh in three dimensions are :
 
 * `:::freefem orientation =` An integer expression (1 by by default), to reverse or not the orientation of tetrahedra if not positive.
 
-An example of this command can be found in the file `:::freefem Poisson3d.edp` located in the directory examples++-3d.$\codered$
+An example of this command can be found in the [Poisson's equation 3D example](../examples/#poissons-equation-3d).
 
 ### Layer mesh
 
@@ -1885,7 +1932,7 @@ Moreover, we also add post processing parameters that allow to moving the mesh. 
 
 The vector `:::freefem region`, `:::freefem labelmid`, `:::freefem labelup` and `:::freefem labeldown` These vectors are composed of $n_{l}$ successive pairs of number $O_i,N_l$ where $n_{l}$ is the number (label or region) that we want to get.
 
-An example of this command line is given in `:::freefem buildlayermesh.edp`.$\codered$
+An example of this command is given in the [Build layer mesh example](../examples/#example-build-layer-mesh).
 
 !!!question "Cube"
 	`Cube.idp`
@@ -1923,6 +1970,14 @@ An example of this command line is given in `:::freefem buildlayermesh.edp`.$\co
 	mesh3 Th = Cube(NN, BB, L);
 	medit("Th", Th);
 	```
+
+	<center>
+
+	|<a name="Fig36">Fig. 36</a>: The mesh of a cube made with `:::freefem cube.edp`|
+	|:----:|
+	|![Cube](images/MeshGeneration_LayerMesh_Example1.png)|
+
+	</center>
 
 !!!question "Cone"
 	An axisymtric mesh on a triangle with degenerateness
@@ -1962,9 +2017,13 @@ An example of this command line is given in `:::freefem buildlayermesh.edp`.$\co
 	medit("cone", Th3T);
 	```
 
-|<a name="Fig36">Fig. 36</a>: The mesh of a cube made with `:::freefem cube.edp`|<a name="Fig37">Fig. 37</a>: the mesh of a cone made with `:::freefem cone.edp`|
-|:----:|:----:|
-|![Cube](images/MeshGeneration_LayerMesh_Example1.png)|![Cone](images/MeshGeneration_LayerMesh_Example2.png)|
+	<center>
+
+	|<a name="Fig37">Fig. 37</a>: the mesh of a cone made with `:::freefem cone.edp`|
+	|:----:|
+	|![Cone](images/MeshGeneration_LayerMesh_Example2.png)|
+
+	</center>
 
 !!!question "Buildlayer mesh"
 	```freefem
@@ -2787,7 +2846,7 @@ for(int it=0; it<29; it++){
  }
 ```
 
-## A first 3d isotope mesh adaptation process
+## A first 3d isotrope mesh adaptation process
 
 **Example `:::freefem Laplace-Adapt-3d.edp`**
 

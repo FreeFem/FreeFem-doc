@@ -61,6 +61,85 @@ Solution on adapted mesh and associated mesh | |
 :-------------------------:|:-------------------------:
 ![poisson Associated mesh](images/poisson_associated_mesh.jpg) | ![poisson adapted mesh](images/poisson_adapted_mesh.jpg)
 
+## Poisson's equation 3D
+$\codered$
+```freefem
+// build de mesh of a Sphere
+// --------------------------
+load "tetgen"
+load "medit"
+
+mesh Th=square(10,20,[x*pi-pi/2,2*y*pi]);  //  $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
+//  a parametrization of a sphere
+func f1 =cos(x)*cos(y);
+func f2 =cos(x)*sin(y);
+func f3 = sin(x);
+//  de  partiel derivative of the parametrization DF
+func f1x=sin(x)*cos(y);   
+func f1y=-cos(x)*sin(y);
+func f2x=-sin(x)*sin(y);
+func f2y=cos(x)*cos(y);
+func f3x=cos(x);
+func f3y=0;
+// $  M = DF^t DF $
+func m11=f1x^2+f2x^2+f3x^2;
+func m21=f1x*f1y+f2x*f2y+f3x*f3y;
+func m22=f1y^2+f2y^2+f3y^2;
+
+func perio=[[4,y],[2,y],[1,x],[3,x]];  
+real hh=0.1;
+real vv= 1/square(hh);
+verbosity=2;
+Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+plot(Th,wait=1);
+
+verbosity=2;
+real[int] domaine =[0.,0.,0.,1,0.01];
+mesh3 Th3=tetgtransfo(Th,transfo=[f1,f2,f3],nbofregions=1,regionlist=domaine);
+//savemesh(Th3,"sphere.meshb");
+medit("sphere",Th3);
+
+// FFCS - check 3D plots
+plot(Th3,cmm="sphere");
+
+fespace Vh(Th3,P23d);
+func ue =   2*x*x + 3*y*y + 4*z*z+ 5*x*y+6*x*z+1;
+func f= -18. ;
+Vh uhe = ue; // bug ..
+cout << " uhe min:  " << uhe[].min << " max:" << uhe[].max << endl;
+cout << uhe(0.,0.,0.) << endl;
+
+
+//savesol("f3.sol",Th3,ue,ue,[f,ue,f],order=1);
+//int bb=meditmeshsol("sol",Th3,solution=1,scalar=uhe);
+
+
+border cc(t=0,2*pi){x=cos(t);y=sin(t);label=1;}
+mesh Th2=buildmesh(cc(50));
+fespace Vh2(Th2,P2);
+
+Vh u,v;
+
+macro Grad3(u) [dx(u),dy(u),dz(u)]  // EOM
+
+problem Lap3d(u,v,solver=CG)=int3d(Th3)(Grad3(v)' *Grad3(u)) - int3d(Th3)(f*v) + on(0,1,u=ue);
+Lap3d;
+cout << " u min::   " << u[]. min << "  max: " << u[].max << endl;
+real err= int3d(Th3)( square(u-ue) );
+cout << int3d(Th3)(1.) << " = " << Th3.measure << endl;
+Vh d= ue-u;
+cout <<  " err = " << err <<  " diff l^\intfy = " << d[].linfty << endl;
+Vh2 u2=u,u2e=ue;
+plot(u2,wait=1);
+plot(u2,u2e,wait=1);
+
+// FFCS - check 3D plots
+plot(u);
+
+assert(err < 1e-9);
+```
+
 ## Stoke Equation on a cube
 
 ```freefem
@@ -130,7 +209,7 @@ Solution and associated mesh |
 
 ## Mehs Generation
 
-### Mesh Generation - Mesh adaptation
+### Mesh adaptation
 
 ```freefem
 // Parameters
@@ -155,7 +234,7 @@ for (int i = 0; i < 2; i++){
 }
 ```
 
-### Mesh Generation - Mesh adaptation on the Poisson's problem
+### Mesh adaptation on the Poisson's problem
 ```freefem
 // Parameters
 real error = 0.1;
@@ -198,7 +277,7 @@ for (int i = 0; i < 4; i++){
 plot(u);
 ```
 
-### Mesh Generation - Uniforme mesh adaptation
+### Uniforme mesh adaptation
 
 ```freefem
 mesh Th=square(2, 2); //the initial mesh
@@ -212,9 +291,289 @@ Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); //Adaptation bound `maxsubdi
 plot(Th, wait=true);
 ```
 
+### Borders
+
+```freefem
+{
+	int upper = 1;
+	int others = 2;
+	int inner = 3;
+
+	border C01(t=0, 1){x=0; y=-1+t; label=upper;}
+	border C02(t=0, 1){x=1.5-1.5*t; y=-1; label=upper;}
+	border C03(t=0, 1){x=1.5; y=-t; label=upper;}
+	border C04(t=0, 1){x=1+0.5*t; y=0; label=others;}
+	border C05(t=0, 1){x=0.5+0.5*t; y=0; label=others;}
+	border C06(t=0, 1){x=0.5*t; y=0; label=others;}
+	border C11(t=0, 1){x=0.5; y=-0.5*t; label=inner;}
+	border C12(t=0, 1){x=0.5+0.5*t; y=-0.5; label=inner;}
+	border C13(t=0, 1){x=1; y=-0.5+0.5*t; label=inner;}
+
+	int n = 10;
+	plot(C01(-n) + C02(-n) + C03(-n) + C04(-n) + C05(-n)
+		+ C06(-n) + C11(n) + C12(n) + C13(n), wait=true);
+
+	mesh Th = buildmesh(C01(-n) + C02(-n) + C03(-n) + C04(-n) + C05(-n)
+		+ C06(-n) + C11(n) + C12(n) + C13(n));
+
+	plot(Th, wait=true);
+
+	cout << "Part 1 has region number " << Th(0.75, -0.25).region << endl;
+	cout << "Part 2 has redion number " << Th(0.25, -0.25).region << endl;
+}
+
+{
+	border a(t=0, 2*pi){x=cos(t); y=sin(t); label=1;}
+	border b(t=0, 2*pi){x=0.3+0.3*cos(t); y=0.3*sin(t); label=2;}
+	plot(a(50) + b(30)); //to see a plot of the border mesh
+	mesh Thwithouthole = buildmesh(a(50) + b(30));
+	mesh Thwithhole = buildmesh(a(50) + b(-30));
+	plot(Thwithouthole);
+	plot(Thwithhole);
+}
+
+{
+	real r=1;
+	border a(t=0, 2*pi){x=r*cos(t); y=r*sin(t); label=1;}
+	r=0.3;
+	border b(t=0, 2*pi){x=r*cos(t); y=r*sin(t); label=1;}
+//	mesh Thwithhole = buildmesh(a(50) + b(-30)); // bug (a trap) because
+		                                         // the two circle have the same radius = $0.3$
+}
+```
+
+### Change
+
+```freefem
+verbosity=3;
+
+// Mesh
+mesh Th1 = square(10, 10);
+mesh Th2 = square(20, 10, [x+1, y]);
+
+int[int] r1=[2,0];
+plot(Th1, wait=true);
+
+Th1 = change(Th1, label=r1); //change the label of Edges 2 in 0.
+plot(Th1, wait=true);
+
+int[int] r2=[4,0];
+Th2 = change(Th2, label=r2); //change the label of Edges 4 in 0.
+plot(Th2, wait=true);
+
+mesh Th = Th1 + Th2; //'gluing together' of meshes Th1 and Th2
+cout << "nb lab = " << int1d(Th1,1,3,4)(1./lenEdge)+int1d(Th2,1,2,3)(1./lenEdge)
+	 << " == " << int1d(Th,1,2,3,4)(1./lenEdge) << " == " << ((10+20)+10)*2 << endl;
+plot(Th, wait=true);
+
+fespace Vh(Th, P1);
+Vh u, v;
+
+macro Grad(u) [dx(u),dy(u)] // Definition of a macro
+
+solve P(u, v)
+	= int2d(Th)(
+		  Grad(u)'*Grad(v)
+	)
+	-int2d(Th)(
+		  v
+	)
+	+ on(1, 3, u=0)
+	;
+
+plot(u, wait=1);
+```
+
+### Cube
+
+```freefem
+load "msh3"
+
+int[int] l6 = [37, 42, 45, 40, 25, 57];
+int r11 = 11;
+mesh3 Th = cube(4, 5, 6, [x*2-1, y*2-1, z*2-1], label=l6, flags =3, region=r11);
+
+cout << "Volume = " << Th.measure << ", border area = " << Th.bordermeasure << endl;
+
+int err = 0;
+for(int i = 0; i < 100; ++i){
+	real s = int2d(Th,i)(1.);
+	real sx = int2d(Th,i)(x);
+	real sy = int2d(Th,i)(y);
+	real sz = int2d(Th,i)(z);
+
+	if(s){
+		int ix = (sx/s+1.5);
+		int iy = (sy/s+1.5);
+		int iz = (sz/s+1.5);
+		int ii = (ix + 4*(iy+1) + 16*(iz+1) );
+		//value of ix,iy,iz => face min 0, face max 2, no face 1
+		cout << "Label = " << i << ", s = " << s << " " << ix << iy << iz << " : " << ii << endl;
+		if( i != ii ) err++;
+	}
+}
+real volr11 = int3d(Th,r11)(1.);
+cout << "Volume region = " << 11 << ": " << volr11 << endl;
+if((volr11 - Th.measure )>1e-8) err++;
+plot(Th, fill=false);
+cout << "Nb err = " << err << endl;
+assert(err==0);
+```
+
+### Empty mesh
+
+```freefem
+{
+	border a(t=0, 2*pi){x=cos(t); y=sin(t); label=1;}
+	mesh Th = buildmesh(a(20));
+	Th = emptymesh(Th);
+	plot(Th);
+}
+{
+	mesh Th = square(10, 10);
+	int[int] ssd(Th.nt);
+	//build the pseudo region numbering
+	for(int i = 0; i < ssd.n; i++){
+		int iq = i/2; //because 2 triangles per quad
+		int ix = iq%10;
+		int iy = iq/10;
+		ssd[i] = 1 + (ix>=5) + (iy>=5)*2;
+	}
+	//build emtpy with all edge $e=T1 \cap T2$ and $ssd[T1] \neq ssd[T2]$
+	Th = emptymesh(Th, ssd);
+	//plot
+	plot(Th);
+	savemesh(Th, "emptymesh.msh");
+}
+```
+
+### Example: 3 points
+
+```freefem
+// Square for Three-Point Bend Specimens fixed on Fix1, Fix2
+// It will be loaded on Load.
+real a = 1, b = 5, c = 0.1;
+int n = 5, m = b*n;
+border Left(t=0, 2*a){x=-b; y=a-t;}
+border Bot1(t=0, b/2-c){x=-b+t; y=-a;}
+border Fix1(t=0, 2*c){x=-b/2-c+t; y=-a;}
+border Bot2(t=0, b-2*c){x=-b/2+c+t; y=-a;}
+border Fix2(t=0, 2*c){x=b/2-c+t; y=-a;}
+border Bot3(t=0, b/2-c){x=b/2+c+t; y=-a;}
+border Right(t=0, 2*a){x=b; y=-a+t;}
+border Top1(t=0, b-c){x=b-t; y=a;}
+border Load(t=0, 2*c){x=c-t; y=a;}
+border Top2(t=0, b-c){x=-c-t; y=a;}
+
+mesh Th = buildmesh(Left(n) + Bot1(m/4) + Fix1(5) + Bot2(m/2)
+	+ Fix2(5) + Bot3(m/4) + Right(n) + Top1(m/2) + Load(10) + Top2(m/2));
+plot(Th, bw=true);
+```
+
+### Example: Bezier
+
+```freefem
+// A cubic Bezier curve connecting two points with two control points
+func real bzi(real p0, real p1, real q1, real q2, real t){
+	return p0*(1-t)^3 + q1*3*(1-t)^2*t + q2*3*(1-t)*t^2 + p1*t^3;
+}
+
+real[int] p00 = [0, 1], p01 = [0, -1], q00 = [-2, 0.1], q01 = [-2, -0.5];
+real[int] p11 = [1,-0.9], q10 = [0.1, -0.95], q11=[0.5, -1];
+real[int] p21 = [2, 0.7], q20 = [3, -0.4], q21 = [4, 0.5];
+real[int] q30 = [0.5, 1.1], q31 = [1.5, 1.2];
+border G1(t=0, 1){
+	x=bzi(p00[0], p01[0], q00[0], q01[0], t);
+	y=bzi(p00[1], p01[1], q00[1], q01[1], t);
+}
+border G2(t=0, 1){
+	x=bzi(p01[0], p11[0], q10[0], q11[0], t);
+	y=bzi(p01[1], p11[1], q10[1], q11[1], t);
+}
+border G3(t=0, 1){
+	x=bzi(p11[0], p21[0], q20[0], q21[0], t);
+	y=bzi(p11[1], p21[1], q20[1], q21[1], t);
+}
+border G4(t=0, 1){
+	x=bzi(p21[0], p00[0], q30[0], q31[0], t);
+	y=bzi(p21[1], p00[1], q30[1], q31[1], t);
+}
+int m = 5;
+mesh Th = buildmesh(G1(2*m) + G2(m) + G3(3*m) + G4(m));
+plot(Th, bw=true);
+```
+
+### Example: Build layer mesh
+
+```freefem
+load "msh3"
+load "tetgen"
+load "medit"
+
+// Parameters
+int C1 = 99;
+int C2 = 98;
+
+// 2D mesh
+border C01(t=0, pi){x=t; y=0; label=1;}
+border C02(t=0, 2*pi){ x=pi; y=t; label=1;}
+border C03(t=0, pi){ x=pi-t; y=2*pi; label=1;}
+border C04(t=0, 2*pi){ x=0; y=2*pi-t; label=1;}
+
+border C11(t=0, 0.7){x=0.5+t; y=2.5; label=C1;}
+border C12(t=0, 2){x=1.2; y=2.5+t; label=C1;}
+border C13(t=0, 0.7){x=1.2-t; y=4.5; label=C1;}
+border C14(t=0, 2){x=0.5; y=4.5-t; label=C1;}
+
+border C21(t=0, 0.7){x=2.3+t; y=2.5; label=C2;}
+border C22(t=0, 2){x=3; y=2.5+t; label=C2;}
+border C23(t=0, 0.7){x=3-t; y=4.5; label=C2;}
+border C24(t=0, 2){x=2.3; y=4.5-t; label=C2;}
+
+mesh Th = buildmesh(C01(10) + C02(10) + C03(10) + C04(10)
+	+ C11(5) + C12(5) + C13(5) + C14(5)
+	+ C21(-5) + C22(-5) + C23(-5) + C24(-5));
+
+mesh Ths = buildmesh(C01(10) + C02(10) + C03(10) + C04(10)
+	+ C11(5) + C12(5) + C13(5) + C14(5));
+
+// Construction of a box with one hole and two regions
+func zmin = 0.;
+func zmax = 1.;
+int MaxLayer = 10;
+
+func XX = x*cos(y);
+func YY = x*sin(y);
+func ZZ = z;
+
+int[int] r1 = [0, 41], r2 = [98, 98, 99, 99, 1, 56];
+int[int] r3 = [4, 12];//the triangles of uppper surface mesh
+					  //generated by the triangle in the 2D region
+					  //of mesh Th of label 4 as label 12
+int[int] r4 = [4, 45];//the triangles of lower surface mesh
+					  //generated by the triangle in the 2D region
+					  //of mesh Th of label 4 as label 45.
+
+mesh3 Th3 = buildlayers(Th, MaxLayer, zbound=[zmin, zmax], region=r1,
+	labelmid=r2, labelup=r3, labeldown=r4);
+medit("box 2 regions 1 hole", Th3);
+
+// Construction of a sphere with TetGen
+func XX1 = cos(y)*sin(x);
+func YY1 = sin(y)*sin(x);
+func ZZ1 = cos(x);
+
+real[int] domain = [0., 0., 0., 0, 0.001];
+string test = "paACQ";
+cout << "test = " << test << endl;
+mesh3 Th3sph = tetgtransfo(Ths, transfo=[XX1, YY1, ZZ1],
+	switch=test, nbofregions=1, regionlist=domain);
+medit("sphere 2 regions", Th3sph);
+```
+
 ## Visualization
 
-### Visualization - Plot
+### Plot
 
 ```freefem
 mesh Th = square(5,5);
@@ -250,7 +609,7 @@ plot([xx, yy], wait=true);
 exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output \"gnuplot.eps\" \n replot \n quit' | gnuplot");
 ```
 
-### Visualization - HSV
+### HSV
 
 ```freefem
 // from: \url{http://en.wikipedia.org/wiki/HSV_color_space}
@@ -284,7 +643,7 @@ real[int] colorhsv=[ // color hsv model
  plot(uh, viso=viso(0:viso.n-1), value=true, fill=true, wait=true, hsv=colorhsv);
 ```
 
-### Visualization - Medit
+### Medit
 
 ```freefem
 load "medit"
@@ -311,7 +670,7 @@ exec("ffmedit u");
 exec("rm u.bb u.faces u.points");
 ```
 
-### Visualization - Paraview
+### Paraview
 
 ```freefem
 load "iovtk"
