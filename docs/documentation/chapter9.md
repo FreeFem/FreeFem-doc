@@ -3646,33 +3646,41 @@ plot(u,wait=1,ps="d_u.eps");
 ## Non linear Elasticity (nolinear-elas.edp)
 
 The nonlinear elasticity problem is: find the displacement $(u_{1},u_{2})$  minimizing  $J$
-$$ \min J(u_{1},u_{2}) = \int_{\Omega} f(F2) -  \int_{\Gamma_{p}} P_{a} \,  u_{2} $$
+
+$$\min J(u_{1},u_{2}) = \int_{\Omega} f(F2) -  \int_{\Gamma_{p}} P_{a} \,  u_{2}$$
+
 where  $F2(u_{1},u_{2}) =  A(E[u_{1},u_{2}],E[u_{1},u_{2}])$ and $A(X,Y)$ is bilinear sym. positive form with respect two matrix $X,Y$.
 where $f$ is a given $\mathcal{C}^2$  function, and $E[u_{1},u_{2}] = (E_{ij})_{i=1,2,\,j=1,2}$ is the Green-Saint Venant deformation tensor defined with:
-$$  E_{ij} = 0.5 \big( ( \p_i u_j + \p_j u_i ) + \sum_k \p_i u_k {\times} \p_j u_k \big) $$
 
-Denote $\mathbf{u}=(u_{1},u_{2})$, $\mathbf{v}=(v_{1},v_{2})$, $\mathbf{w}=(w_{1},w_{2})$.
+$$E_{ij} = 0.5 \big( ( \p_i u_j + \p_j u_i ) + \sum_k \p_i u_k {\times} \p_j u_k \big)$$
+
+Denote $\mathbf{u}=(u_{1},u_{2})$, $\mathbf{v}=(v_{1},v_{2})$, $\mathbf{w}=(w_{1},w_{2})$. $\codered$ MISSING VECTORS (AND BELOW TOO) ?
 
 So, the differential of $J$ is
-  $$ DJ(\bm{u})(\bm{v}) =  \int DF2(\bm{u})(\bm{v}) \;f'(F2(\bm{u}))) -  \int_{\Gamma_{p}} P_{a}  v_{2}  $$
-  where  $ DF2(\bm{u})(\bm{v}) = 2 \; A(\;DE[\mathbf{u}](\mathbf{v})\;,\;E[\mathbf{u}]\;) $ and  $DE$ is the first differential of $E$.
+
+$$ DJ(\mathbf{u})(\mathbf{v}) = \int DF2(\mathbf{u})(\mathbf{v}) \;f'(F2(\mathbf{u}))) - \int_{\Gamma_{p}} P_{a}  v_{2}$$
+
+where $DF2(\mathbf{u})(\mathbf{v}) = 2 \; A(DE[\mathbf{u}](\mathbf{v}),E[\mathbf{u}])$ and $DE$ is the first differential of $E$.
 
 The second order differential is
 
 \begin{eqnarray*}
- D^2 J(\mathbf{u})((\mathbf{v}),(\mathbf{w}))  &=& \displaystyle\int DF2(\bm{u})(\bm{v}) \; DF2(\bm{u})(\bm{w}) \; f''(F2(\mathbf{u}))) \\
- & +&  \displaystyle\int \; D^2F2(\bm{u})(\bm{v},\bm{w}) \; f'(F2(\mathbf{u})))
+ D^2 J(\mathbf{u})((\mathbf{v}),(\mathbf{w}))  &=& \displaystyle\int DF2(\mathbf{u})(\mathbf{v}) \; DF2(\mathbf{u})(\mathbf{w}) \; f''(F2(\mathbf{u}))) \\
+ & +&  \displaystyle\int \; D^2F2(\mathbf{u})(\mathbf{v},\mathbf{w}) \; f'(F2(\mathbf{u})))
 \end{eqnarray*}
 
- where
-  $$
-  D^2F2(\bm{u})(\bm{v},\bm{w}) = 2 \; A(\;D^2E[\mathbf{u}](\bm{v},\bm{w})\;,\;E[\bm{u}]\;) + 2 \; A(\;DE[\bm{u}](\bm{v})\;,DE[\bm{u}](\bm{w})\;) .$$
- and $D^{2}E$ is the second differential of $E$.
+where
 
-So all notations can be define with `:::freefem macro`s:
+$$
+D^2F2(\mathbf{u})(\mathbf{v},\mathbf{w}) = 2 \; A(\;D^2E[\mathbf{u}](\mathbf{v},\mathbf{w})\;,\;E[\mathbf{u}]\;) + 2 \; A(\;DE[\mathbf{u}](\mathbf{v})\;,DE[\mathbf{u}](\mathbf{w})\;) .
+$$
+
+and $D^{2}E$ is the second differential of $E$.
+
+So all notations can be define with `:::freefem macros`: $\codered$ macroS ou marco ??
 
 ```freefem
-macro EL(u,v) [dx(u),(dx(v)+dy(u)),dy(v)] // is $[\epsilon_{11},2\epsilon_{12},\epsilon_{22}]$
+macro EL(u,v) [dx(u),(dx(v)+dy(u)),dy(v)] // is $[\epsilon_{11},2\epsilon_{12},\epsilon_{22}]$ $\codered$
 
 macro ENL(u,v) [
 (dx(u)*dx(u)+dx(v)*dx(v))*0.5,
@@ -3697,30 +3705,23 @@ macro ddF2(u,v,uu,vv,uuu,vvv) (
 The Newton Method is
 
 choose $ n=0$,and $u_O,v_O$ the initial displacement
-\begin{itemize}
-\item loop: \\
-\item  \hspace{1cm}    find $(du,dv)$ :  solution of
-$$ D^2J(u_n,v_n)((w,s),(du,dv)) =  DJ(u_n,v_n)(w,s) , \quad \forall w,s $$
-\item  \hspace{1cm}      $un =un - du,\quad vn =vn - dv$
-\item  \hspace{1cm}      until $(du,dv)$ small is enough
-\end{itemize}
 
-\color{black}The way to implement this algorithm in FreeFem++ is
-use a macro tool to implement  $A$ and $F2$, $f$, $f'$,$f''$.
+* loop:
+	- find $(du,dv)$ :  solution of
+		$$ D^2J(u_n,v_n)((w,s),(du,dv)) =  DJ(u_n,v_n)(w,s) , \quad \forall w,s $$
+	- $un =un - du,\quad vn =vn - dv$
+	- until $(du,dv)$ small is enough
 
-A macro is like in `:::freefem ccp` preprocessor of \Cpp, but this begin by
-`:::freefem macro` and the end of the macro definition is before the comment $//$.
-In this case the macro is very useful because the type of parameter can be change.
-And it is easy to make automatic differentiation.
+The way to implement this algorithm in FreeFem++ is use a macro tool to implement $A$ and $F2$, $f$, $f'$,$f''$.
 
-\begin{figure}[hbt]
-\begin{center}\includegraphics[width=10cm]{nl-elas}\end{center}
-\caption{ The deformed domain}
-\end{figure}
+A macro is like in `:::freefem ccp` preprocessor of C++, but this begin by `:::freefem macro` and the end of the macro definition is before the comment $//$. In this case the macro is very useful because the type of parameter can be change. And it is easy to make automatic differentiation.
+
+|Fig. 9.36: The deformed domain|
+|:----:|
+|![nl-elas](images/nl-elas.png)|
 
 ```freefem
 // non linear elasticity model
-
 // for hyper elasticity problem
 // -----------------------------
 macro f(u) ((u)*0.5) // end of macro
@@ -3825,7 +3826,7 @@ plot(th1,wait=1); // see figure \ref{fig nl-elas} $\codered$
 
 ## Compressible Neo-Hookean Materials: Computational Solutions
 
-Author : Alex Sadovsky mailsashas@gmail.com
+Author : Alex Sadovsky mailsashas@gmail.com $\codered$
 
 \def\bR{{\bf R}}
 \def\bP{{\bf P}}
@@ -3915,14 +3916,10 @@ $$
 which allows an integral over $\Omega$ involving the Cauchy stress
 $\bT$ to be rewritten as an integral of the Kirchhoff stress $\kappa =
 J \bT$ over $\Omega_{0}$.
-\subsubsection*{Recommended References}
 
-For an exposition of nonlinear elasticity and of the underlying
-linear- and tensor algebra, see \cite{Ogden} $\codered$.  For an advanced
-mathematical analysis of the Finite Element Method, see
-\cite{Raviart-Thomas} $\codered$.  An explanation of the Finite Element
-formulation of a nonlinear elastostatic boundary value problem, see
-{\small \url{http://www.engin.brown.edu/courses/en222/Notes/FEMfinitestrain/FEMfinitestrain.htm}}.
+### Recommended References
+
+For an exposition of nonlinear elasticity and of the underlying linear- and tensor algebra, see \cite{Ogden} $\codered$. For an advanced mathematical analysis of the Finite Element Method, see \cite{Raviart-Thomas} $\codered$. An explanation of the Finite Element formulation of a nonlinear elastostatic boundary value problem, see  [http://www.engin.brown.edu/courses/en222/Notes/FEMfinitestrain/FEMfinitestrain.htm](http://www.engin.brown.edu/courses/en222/Notes/FEMfinitestrain/FEMfinitestrain.htm).
 
 ### A Neo-Hookean Compressible Material
 
@@ -4233,4 +4230,4 @@ Thus converting equations (\ref{eq:system} $\codered$) we obtain a large express
 
 ### A dielectric sphere example with FreeFem++
 
-We now compute the fundamental mode frequency for a fused silica sphere. The sphere is 36 micrometer in diameter, the refractive index is 1.46, the boundary condition is the magnetic wall (which can actually be omitted as it holds automatically). The example can be found in `:::freefem examples++-eigenvalue/WGM-sphere.edp` in the distribution.
+We now compute the fundamental mode frequency for a fused silica sphere. The sphere is 36 micrometer in diameter, the refractive index is 1.46, the boundary condition is the magnetic wall (which can actually be omitted as it holds automatically). The example can be found in `:::freefem examples++-eigenvalue/WGM-sphere.edp` $\codered$ in the distribution.
