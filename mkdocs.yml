@@ -10,7 +10,6 @@ pages:
     - Mesh Generation: documentation/MeshGeneration.md
     - Finite Element: documentation/FiniteElement.md
     - Visualization: documentation/Visualization.md
-    - (TODO) Chapter 9: documentation/chapter9.md
     - TODO: documentation/TODO.md
   - Language References:
     - Home: reference/index.md
@@ -48,6 +47,23 @@ pages:
   - Examples:
     - Home: examples/index.md
     - TODO: examples/TODO.md
+  - Models:
+    - Home: models/index.md
+    - Static problems: models/StaticProblems.md
+    - Elasticity: models/Elasticity.md
+    - Non-linear statis problems: models/NonLinearStaticProblems.md
+    - Eigenvalue problems: models/EigenValueProblems.md
+    - Navier-Stokes equations: models/NavierStokesEquations.md
+    - Variational inequality: models/VariationalInequality.md
+    - Domain decomposition: models/DomainDecomposition.md
+    - Fluid-Structure coupled problem: models/FluidStructureCoupledProblem.md
+    - Transmission problem: models/TransmissionProblem.md
+    - Free boundary problem: models/FreeBoundaryProblem.md
+    - Non-linear elasticity: models/NonLinearElasticity.md
+    - Compressible Neo-Hookean materials: models/CompressibleNeoHookeanMaterials.md
+    - Whispering gallery modes: models/WhisperingGalleryModes.md
+    - Weak formulation: models/WeakFormulation.md
+    - TODO: models/TODO.md
 
 theme:
   feature:

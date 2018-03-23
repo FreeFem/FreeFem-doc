@@ -11,6 +11,19 @@ indexNamesList = [
 	]
 indexTODOFile = "TODO.md"
 
+#introduction
+introductionFilesList = [
+	"introduction/download.md",
+	"introduction/installation.md",
+	"introduction/Contributing.md"
+	]
+introductionNamesList = [
+	"Download",
+	"Installation",
+	"How to contribute?"
+	]
+introductionTODOFile = "introduction/TODO.md"
+
 #documentation
 documentationFilesList = [
 	"documentation/index.md",
@@ -26,28 +39,6 @@ documentationNamesList = [
 	]
 documentationTODOFile = "documentation/TODO.md"
 
-#examples
-examplesFilesList = [
-	"examples/index.md"
-	]
-examplesNamesList = [
-	"Home"
-	]
-examplesTODOFile = "examples/TODO.md"
-
-#introduction
-introductionFilesList = [
-	"introduction/download.md",
-	"introduction/installation.md",
-	"introduction/Contributing.md"
-	]
-introductionNamesList = [
-	"Download",
-	"Installation",
-	"How to contribute?"
-	]
-introductionTODOFile = "introduction/TODO.md"
-
 #reference
 referenceFilesList = [
 	"reference/index.md",
@@ -60,7 +51,6 @@ referenceFilesList = [
 	"reference/Functions.md",
 	"reference/ExternalLibraries.md"
 	]
-#"reference/examples.md"
 referenceNamesList = [
 	"Home",
 	"Types",
@@ -72,7 +62,6 @@ referenceNamesList = [
 	"Functions",
 	"External libraries"
 ]
-#"Examples"
 referenceTODOFile = "reference/TODO.md"
 
 #tutorial
@@ -121,6 +110,52 @@ tutorialNamesList = [
 	"Wifi Propagation"
 	]
 tutorialTODOFile = "tutorial/TODO.md"
+
+#examples
+examplesFilesList = [
+	"examples/index.md"
+	]
+examplesNamesList = [
+	"Home"
+	]
+examplesTODOFile = "examples/TODO.md"
+
+#models
+modelsFilesList = [
+	"models/index.md",
+    "models/StaticProblems.md",
+    "models/Elasticity.md",
+    "models/NonLinearStaticProblems.md",
+    "models/EigenValueProblems.md",
+    "models/NavierStokesEquations.md",
+    "models/VariationalInequality.md",
+    "models/DomainDecomposition.md",
+    "models/FluidStructureCoupledProblem.md",
+    "models/TransmissionProblem.md",
+    "models/FreeBoundaryProblem.md",
+    "models/NonLinearElasticity.md",
+    "models/CompressibleNeoHookeanMaterials.md",
+    "models/WhisperingGalleryModes.md",
+    "models/WeakFormulation.md"
+]
+modelsNamesList = [
+	"Home",
+    "Static problems",
+    "Elasticity",
+    "Non-linear statis problems",
+    "Eigenvalue problems",
+    "Navier-Stokes equations",
+    "Variational inequality",
+    "Domain decomposition",
+    "Fluid-Structure coupled problem",
+    "Transmission problem",
+    "Free boundary problem",
+    "Non-linear elasticity",
+    "Compressible Neo-Hookean materials",
+    "Whispering gallery modes",
+    "Weak formulation"
+]
+modelsTODOFile = "models/TODO.md"
 
 ## progressbar func
 def writeProgressBar(file, Progress):
@@ -195,15 +230,9 @@ def checkTODOByLines(_FilesList, _NamesList, _TODOFile):
 
 	TODOFile.close()
 
-## check $\codered$
+## check $\codered$ and $\codeerror$
 #index
 checkTODOByLines(indexFilesList, indexNamesList, indexTODOFile)
-
-#documentation
-checkTODOByLines(documentationFilesList, documentationNamesList, documentationTODOFile)
-
-#examples
-checkTODOByLines(examplesFilesList, examplesNamesList, examplesTODOFile)
 
 #introduction
 checkTODOByLines(introductionFilesList, introductionNamesList, introductionTODOFile)
@@ -217,6 +246,9 @@ TODOFile.write("[TODO](../tutorial/TODO)\n")
 TODOFile.write("\n## Examples\n");
 TODOFile.write("[TODO](../examples/TODO)\n")
 TODOFile.close();
+
+#documentation
+checkTODOByLines(documentationFilesList, documentationNamesList, documentationTODOFile)
 
 #reference (special TODO)
 TODOFile = open(docDirectory + referenceTODOFile, "w")
@@ -267,3 +299,9 @@ TODOFile.close()
 
 #tutorial
 checkTODOByLines(tutorialFilesList, tutorialNamesList, tutorialTODOFile)
+
+#examples
+checkTODOByLines(examplesFilesList, examplesNamesList, examplesTODOFile)
+
+#models
+checkTODOByLines(modelsFilesList, modelsNamesList, modelsTODOFile)
