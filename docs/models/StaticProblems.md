@@ -1,6 +1,6 @@
-## Static Problems
+# Static Problems
 
-### Soap Film
+## Soap Film
 Our starting point here will be the mathematical model to find the shape of __soap film__ which is glued to the ring on the $xy-$plane
 
 \begin{equation*}
@@ -45,7 +45,7 @@ Assuming small displacements, we have
 Letting $\delta x\to dx,\, \delta y\to dy$, we have the equilibrium of the vertical displacement of soap film on ABCD by $p$
 
 \[
-\mu dx dy\p^2 u/\p x^2 +  \mu dx dy\p^2 u/\p y^2
+\mu dx dy\p^2 u/\p x^2 + \mu dx dy\p^2 u/\p y^2
 + p dx dy = 0.
 \]
 
@@ -67,163 +67,171 @@ u=0\quad \mbox{on }\p \Omega
 
 If the force is gravity, for simplify, we assume that $f=-1$.
 
- __Example__ a\_tutorial.edp
-
 ```freefem
-border a(t=0,2*pi){ x = cos(t); y = sin(t);label=1;};
-
-mesh disk = buildmesh(a(50));
-plot(disk);
-fespace femp1(disk,P1);
-femp1 u,v;
+// Parameters
+int nn = 50;
 func f = -1;
-problem laplace(u,v) =
-    int2d(disk)( dx(u)*dx(v) + dy(u)*dy(v) ) // bilinear form
-  - int2d(disk)( f*v ) // linear form
-  + on(1,u=0) ; // boundary condition
-func ue = (x^2+y^2-1)/4; // ue: exact solution
+func ue = (x^2+y^2-1)/4; //ue: exact solution
+
+// Mesh
+border a(t=0, 2*pi){x=cos(t); y=sin(t); label=1;}
+mesh disk = buildmesh(a(nn));
+plot(disk);
+
+// Fespace
+fespace femp1(disk, P1);
+femp1 u, v;
+
+// Problem
+problem laplace (u, v)
+	= int2d(disk)( //bilinear form
+		  dx(u)*dx(v)
+		+ dy(u)*dy(v)
+	)
+	- int2d(disk)( //linear form
+		  f*v
+	)
+	+ on(1, u=0) //boundary condition
+	;
+
+// Solve
 laplace;
+
+// Plot
+plot (u, value=true, wait=true);
+
+// Error
 femp1 err = u - ue;
+plot(err, value=true, wait=true);
 
-plot (u,ps="aTutorial.eps",value=true,wait=true);
-plot(err,value=true,wait=true);
+cout << "error L2 = " << sqrt( int2d(disk)(err^2) )<< endl;
+cout << "error H10 = " << sqrt( int2d(disk)((dx(u)-x/2)^2) + int2d(disk)((dy(u)-y/2)^2) )<< endl;
 
-cout << "error L2=" << sqrt(int2d(disk)( err^2) )<< endl;
-cout << "error H10=" << sqrt( int2d(disk)((dx(u)-x/2)^2)
-                              + int2d(disk)((dy(u)-y/2)^2))<< endl;
+/// Re-run with a mesh adaptation ///
 
-disk = adaptmesh(disk,u,err=0.01);
-plot(disk,wait=1);
+// Mesh adaptation
+disk = adaptmesh(disk, u, err=0.01);
+plot(disk, wait=true);
 
+// Solve
 laplace;
+plot (u, value=true, wait=true);
 
-plot (u,value=true,wait=true);
-err = u - ue; // become FE-function on adapted mesh
-plot(err,value=true,wait=true);
-cout << "error L2=" << sqrt(int2d(disk)( err^2) )<< endl;
-cout << "error H10=" << sqrt(int2d(disk)((dx(u)-x/2)^2)
-                             + int2d(disk)((dy(u)-y/2)^2))<< endl;
+// Error
+err = u - ue; //become FE-function on adapted mesh
+plot(err, value=true, wait=true);
+
+cout << "error L2 = " << sqrt( int2d(disk)(err^2) )<< endl;
+cout << "error H10 = " << sqrt( int2d(disk)((dx(u)-x/2)^2) + int2d(disk)((dy(u)-y/2)^2) )<< endl;
 ```
 
-|Fig. 9.1: isovalue of $u$|
-|:----:|
-|![aTutorial](images/aTutorial.png)|
+|<a name="Fig1">Fig. 1</a>: isovalue of $u$|<a name="Fig2">Fig 2</a>: A side view of $u$|
+|:----:|:----:|
+|![SoapFilmSol](images/StaticProblems_SoapFilmSol.png)|![SoapFilm3D](images/StaticProblems_SoapFilm3D.png)|
 
-|Fig 9.2: A side view of $u$|
-|:----:|
-|![soapfilm3d](images/soapfilm3d.png)|
-
-In 19th line, the $L^2$-error estimation between the exact solution $u_e$,
+In the 37th line, the $L^2$-error estimation between the exact solution $u_e$,
 $$
 \|u_h - u_e\|_{0,\Omega}=\left(\int_{\Omega}|u_h-u_e|^2\, \d x\d y\right)^{1/2}
 $$
-and from 20th line to 21th line, the $H^1$-error seminorm estimation
+and in the following line, the $H^1$-error seminorm estimation
 $$
 |u_h - u_e|_{1,\Omega}=\left(\int_{\Omega}|\nabla u_h-\nabla u_e|^2\, \d x\d y\right)^{1/2}
 $$
 are done on the initial mesh. The results are $\|u_h - u_e\|_{0,\Omega}=0.000384045,\, |u_h - u_e|_{1,\Omega}=0.0375506$.
 
-After the adaptation, we have $\|u_h - u_e\|_{0,\Omega}=0.000109043,\, |u_h - u_e|_{1,\Omega}=0.0188411$.
-So the numerical solution is improved by adaptation of mesh.
+After the adaptation, we have $\|u_h - u_e\|_{0,\Omega}=0.000109043,\, |u_h - u_e|_{1,\Omega}=0.0188411$. So the numerical solution is improved by adaptation of mesh.
 
 
-### Electrostatics
+## Electrostatics
 
-We assume that there is no current and a time independent charge distribution.
-Then the electric field $\vec E$ satisfies
+We assume that there is no current and a time independent charge distribution. Then the electric field $\mathbf{E}$ satisfies
 
 \begin{eqnarray}
-\mathrm{div}\vec E=\rho/\epsilon,\quad \mathrm{curl}\vec E=0
+	\mathrm{div}\mathbf{E} &=& \rho/\epsilon\\
+	\mathrm{curl}\mathbf{E} &=& 0
+	\label{eqn::Maxwell}
 \end{eqnarray}
 
-where $\rho$ is the charge density and $\epsilon$ is called the permittivity of free space. From the second equation in (\ref{eqn:Maxwell0} 9.3 $\codered$), we can introduce
-the electrostatic potential such that $\vec E=-\nabla \phi$.
-Then we have Poisson's equation $-\Delta \phi=f$, $f=-\rho/\epsilon$.
-We now obtain the equipotential line which is the level curve of $\phi$,
-when there are no charges except conductors $\{C_i\}_{1,\cdots,K}$.
-Let us assume $K$ conductors $C_1,\cdots,C_K$ within an enclosure $C_0$.
-Each one is held
-at an electrostatic potential $\varphi_i$. We assume that the enclosure $C0$ is
-held at
-potential 0.
-In order to know $\varphi(x)$ at any point $x$ of the domain $\Omega$, we must
-solve
+where $\rho$ is the charge density and $\epsilon$ is called the permittivity of free space.
+
+From the equation \eqref{eqn::Maxwell} We can introduce the electrostatic potential such that $\mathbf{E}=-\nabla \phi$. Then we have Poisson's equation $-\Delta \phi=f$, $f=-\rho/\epsilon$.
+
+We now obtain the equipotential line which is the level curve of $\phi$, when there are no charges except conductors $\{C_i\}_{1,\cdots,K}$. Let us assume $K$ conductors $C_1,\cdots,C_K$ within an enclosure $C_0$.
+
+Each one is held at an electrostatic potential $\varphi_i$. We assume that the enclosure $C0$ is held at potential 0. In order to know $\varphi(x)$ at any point $x$ of the domain $\Omega$, we must solve
 
 \begin{equation}
--\Delta \varphi =0\quad \textrm{in  }\Omega ,
+-\Delta \varphi =0\quad \textrm{ in }\Omega ,
 \end{equation}
 
-where $\Omega$ is the interior of $C_0$ minus the conductors $C_i$, and
-$\Gamma$ is the boundary of $\Omega$, that is $\sum_{i=0}^N C_i$.
-Here $g$ is any function of $x$ equal to $\varphi_i$ on $C_i$ and to
-0 on $C_0$. The boundary equation is a reduced form for:
+where $\Omega$ is the interior of $C_0$ minus the conductors $C_i$, and $\Gamma$ is the boundary of $\Omega$, that is $\sum_{i=0}^N C_i$.
+
+Here $g$ is any function of $x$ equal to $\varphi_i$ on $C_i$ and to 0 on $C_0$. The boundary equation is a reduced form for:
 
 \begin{equation}
 \varphi =\varphi_{i}\;\text{on }C_{i},\;i=1...N,\varphi =0\;\text{on }C_{0}.
 \end{equation}
 
-__Example__
-_First we give the geometrical informations; $C_0=\{(x,y);\; x^2+y^2=5^2\}$,
-$C_1=\{(x,y):\; \frac{1}{0.3^2}(x-2)^2+\frac{1}{3^2}y^2=1\}$,
-$C_2=\{(x,y):\; \frac{1}{0.3^2}(x+2)^2+\frac{1}{3^2}y^2=1\}$.
-Let $\Omega$ be the disk enclosed by $C_0$ with the elliptical holes enclosed
-by $C_1$ and $C_2$. Note that $C_0$ is described counterclockwise, whereas the
-elliptical holes are described clockwise, because the boundary must be oriented so that the computational domain is to its left._
+First we give the geometrical informations; $C_0=\{(x,y);\; x^2+y^2=5^2\}$, $C_1=\{(x,y):\;\frac{1}{0.3^2}(x-2)^2+\frac{1}{3^2}y^2=1\}$, $C_2=\{(x,y):\; \frac{1}{0.3^2}(x+2)^2+\frac{1}{3^2}y^2=1\}$.
+
+Let $\Omega$ be the disk enclosed by $C_0$ with the elliptical holes enclosed by $C_1$ and $C_2$. Note that $C_0$ is described counterclockwise, whereas the elliptical holes are described clockwise, because the boundary must be oriented so that the computational domain is to its left.
 
 ```freefem
-// a circle with center at (0 ,0) and radius 5
-border C0(t=0,2*pi) { x = 5 * cos(t); y = 5 * sin(t); }
-border C1(t=0,2*pi) { x = 2+0.3 * cos(t); y = 3*sin(t); }
-border C2(t=0,2*pi) { x = -2+0.3 * cos(t); y = 3*sin(t); }
 
-mesh Th = buildmesh(C0(60)+C1(-50)+C2(-50));
-plot(Th,ps="electroMesh"); // figure \ref{electroMesh} $\codered$
-fespace Vh(Th,P1); // P1 FE-space
-Vh uh,vh; // unknown and test function.
-problem Electro(uh,vh) = // definition of the problem
-    int2d(Th)( dx(uh)*dx(vh) + dy(uh)*dy(vh) ) // bilinear
-    + on(C0,uh=0) // boundary condition on $C_0$
-    + on(C1,uh=1) // +1 volt on $C_1$
-    + on(C2,uh=-1) ; // -1 volt on $C_2$
+// Mesh
+border C0(t=0, 2*pi){x=5*cos(t); y=5*sin(t);}
+border C1(t=0, 2*pi){x=2+0.3*cos(t); y=3*sin(t);}
+border C2(t=0, 2*pi){x=-2+0.3*cos(t); y=3*sin(t);}
 
-Electro; // solve the problem, see figure \ref{electro} $\codered$ for the solution
-plot(uh,ps="electro.eps",wait=true); // figure \ref{electro} $\codered$
+mesh Th = buildmesh(C0(60) + C1(-50) + C2(-50));
+plot(Th);
+
+// Fespace
+fespace Vh(Th, P1);
+Vh uh, vh;
+
+// Problem
+problem Electro (uh, vh)
+	= int2d(Th)( //bilinear
+		  dx(uh)*dx(vh)
+		+ dy(uh)*dy(vh)
+	)
+	+ on(C0, uh=0) //boundary condition on C_0
+	+ on(C1, uh=1) //+1 volt on C_1
+	+ on(C2, uh=-1) //-1 volt on C_2
+	;
+
+// Solve
+Electro;
+plot(uh);
 ```
 
-|Fig. 9.3: Disk with two elliptical holes|Fig. 9.4: Equipotential lines, where $C_1$ is located in right hand side|
+|<a name="Fig3">Fig. 3</a>: Disk with two elliptical holes|Fig. 9.4: Equipotential lines, where $C_1$ is located in right hand side|
 |:----:|:----:|
-|![electroMesh](images/electroMesh.png)|![electro](images/electro.png)|
+|![ElectrostaticsMesh](images/StaticProblems_ElectrostaticsMesh.png)|![Electrostatics](images/StaticProblems_Electrostatics.png)|
 
-### Aerodynamics
+## Aerodynamics
 
-Let us consider a wing profile $S$ in a uniform flow.
-Infinity will be represented by a large circle $\Gamma_{\infty}$.
-As previously, we must solve
+Let us consider a wing profile $S$ in a uniform flow. Infinity will be represented by a large circle $\Gamma_{\infty}$. As previously, we must solve
 
 \begin{equation}
 \Delta \varphi=0\quad\textrm{in }\Omega,
 \quad \varphi|_S=c,\quad
 \varphi|_{\Gamma_{\infty}}=u_{\infty 1x}-u_{\infty2x}
+\label{eqn:NACA-5-5}
 \end{equation}
 
-where $\Omega$ is the area occupied by the fluid, $u_{\infty}$ is the air speed at infinity, $c$
-is a constant to be determined so that $\p_n\varphi$ is continuous at the trailing edge
-$P$ of $S$ (so-called Kutta-Joukowski condition). Lift is proportional to $c$.
-To find $c$ we use a superposition method. As all equations in
-(\ref{eqn:NACA-5-5} 9.6 $\codered$) are
-linear, the solution $\varphi_c$ is a linear function of $c$
+where $\Omega$ is the area occupied by the fluid, $u_{\infty}$ is the air speed at infinity, $c$ is a constant to be determined so that $\p_n\varphi$ is continuous at the trailing edge $P$ of $S$ (so-called Kutta-Joukowski condition). Lift is proportional to $c$.
+
+To find $c$ we use a superposition method. As all equations in \eqref{eqn:NACA-5-5} are linear, the solution $\varphi_c$ is a linear function of $c$
 
 \begin{equation}
 \varphi_c = \varphi_0 + c\varphi_1,
 \end{equation}
 
-where $\varphi_0$ is a solution of (\ref{eqn:NACA-5-5} 9.6 $\codered$) with $c = 0$ and
-$\varphi_1$ is a solution with $c = 1$ and
-zero speed at infinity.
-With these two fields computed, we shall determine $c$
-by requiring the continuity of $\p \varphi /\p n$ at the trailing edge.
-An equation for the upper surface of a NACA0012 (this is a classical wing
-profile in aerodynamics; the rear of the wing is called the trailing edge) is:
+where $\varphi_0$ is a solution of \eqref{eqn:NACA-5-5} with $c = 0$ and $\varphi_1$ is a solution with $c = 1$ and zero speed at infinity.
+
+With these two fields computed, we shall determine $c$ by requiring the continuity of $\p \varphi /\p n$ at the trailing edge. An equation for the upper surface of a NACA0012 (this is a classical wing profile in aerodynamics; the rear of the wing is called the trailing edge) is:
 
 \begin{equation}
  y = 0.17735\sqrt{x} - 0.075597x - 0.212836x^2 +
@@ -233,12 +241,11 @@ profile in aerodynamics; the rear of the wing is called the trailing edge) is:
 Taking an incidence angle $\alpha$ such that $\tan \alpha = 0.1$, we must solve
 
 \begin{equation}
--\Delta\varphi  = 0\qquad \textrm{in }\Omega, \qquad
+-\Delta\varphi = 0\qquad \textrm{in }\Omega, \qquad
 \varphi|_{\Gamma_1} = y - 0.1x,\quad \varphi |_{\Gamma_2} = c,
 \end{equation}
 
-where $\Gamma_2$ is the wing profile and $\Gamma_1$ is an approximation of
-infinity. One finds $c$ by solving:
+where $\Gamma_2$ is the wing profile and $\Gamma_1$ is an approximation of infinity. One finds $c$ by solving:
 
 \begin{eqnarray}
 -\Delta\varphi_0 = 0 ~~\textrm{in }\Omega,\qquad
@@ -247,15 +254,9 @@ infinity. One finds $c$ by solving:
 \varphi_1|_{\Gamma_1} = 0, \quad \varphi_1|_{\Gamma_2} = 1.
 \end{eqnarray}
 
-The solution $\varphi  = \varphi_0+c\varphi_1$ allows us to find $c$
-by writing that $\p_n\varphi$  has no jump
-at the trailing edge $P = (1, 0)$.
-We have $\p n\varphi  -(\varphi (P^+)-\varphi (P))/\delta$ where $P^+$
-is the point just above $P$ in the direction normal to the profile at a distance
-$\delta$. Thus the jump of $\p_n\varphi$  is
-$(\varphi_0|_{P^+} +c(\varphi_1|_{P^+} -1))+(\varphi_0|_{P^-} +c(\varphi_1|_{P^-} -1))$
-divided by $\delta$ because the normal changes sign between the lower and upper
-surfaces. Thus
+The solution $\varphi = \varphi_0+c\varphi_1$ allows us to find $c$ by writing that $\p_n\varphi$ has no jump at the trailing edge $P = (1, 0)$.
+
+We have $\p n\varphi -(\varphi (P^+)-\varphi (P))/\delta$ where $P^+$ is the point just above $P$ in the direction normal to the profile at a distance $\delta$. Thus the jump of $\p_n\varphi$ is $(\varphi_0|_{P^+} +c(\varphi_1|_{P^+} -1))+(\varphi_0|_{P^-} +c(\varphi_1|_{P^-} -1))$ divided by $\delta$ because the normal changes sign between the lower and upper surfaces. Thus
 
 \begin{equation}
 c = -\frac{\varphi_0|_{P^+} + \varphi_0|_{P^-}}
@@ -269,81 +270,85 @@ c = -\frac{\varphi_0(0.99, 0.01) + \varphi_0(0.99,-0.01)}
 {(\varphi_1(0.99, 0.01) + \varphi_1(0.99,-0.01) - 2)} .
 \end{equation}
 
-__Example__
-
 ```freefem
-// Computation of the potential flow around a NACA0012 airfoil.
-// The method of decomposition is used to apply the Joukowski condition
-// The solution is seeked in the form psi0 + beta psi1 and beta is
-// adjusted so that the pressure is continuous at the trailing edge
+// Mesh
+border a(t=0, 2*pi){x=5*cos(t); y=5*sin(t);}
+border upper(t=0, 1) {
+	x=t;
+	y=0.17735*sqrt(t)-0.075597*t - 0.212836*(t^2) + 0.17363*(t^3) - 0.06254*(t^4);
+}
+border lower(t=1, 0) {
+x=t;
+y=-(0.17735*sqrt(t) - 0.075597*t - 0.212836*(t^2) + 0.17363*(t^3) - 0.06254*(t^4));
+}
+border c(t=0, 2*pi){x=0.8*cos(t)+0.5; y=0.8*sin(t);}
 
-border a(t=0,2*pi) { x=5*cos(t);  y=5*sin(t); };// approximates infinity
+mesh Zoom = buildmesh(c(30) + upper(35) + lower(35));
+mesh Th = buildmesh(a(30) + upper(35) + lower(35));
 
-border upper(t=0,1) { x = t;
-     y = 0.17735*sqrt(t)-0.075597*t
-  - 0.212836*(t^2)+0.17363*(t^3)-0.06254*(t^4); }
-border lower(t=1,0) { x = t;
-     y= -(0.17735*sqrt(t)-0.075597*t
-  -0.212836*(t^2)+0.17363*(t^3)-0.06254*(t^4)); }
-border c(t=0,2*pi) { x=0.8*cos(t)+0.5;  y=0.8*sin(t); }
+// Fespace
+fespace Vh(Th, P2);
+Vh psi0, psi1, vh;
 
-wait = true;
-mesh Zoom = buildmesh(c(30)+upper(35)+lower(35));
-mesh Th = buildmesh(a(30)+upper(35)+lower(35));
-fespace Vh(Th,P2); // P1 FE space
-Vh psi0,psi1,vh; // unknown and test function.
-fespace ZVh(Zoom,P2);
+fespace ZVh(Zoom, P2);
 
-solve Joukowski0(psi0,vh) = // definition of the problem
-    int2d(Th)( dx(psi0)*dx(vh) + dy(psi0)*dy(vh) ) // bilinear form
-  + on(a,psi0=y-0.1*x) // boundary condition form
-  + on(upper,lower,psi0=0);
+// Problem
+solve Joukowski0(psi0, vh)
+	= int2d(Th)(
+		  dx(psi0)*dx(vh)
+		+ dy(psi0)*dy(vh)
+	)
+	+ on(a, psi0=y-0.1*x)
+	+ on(upper, lower, psi0=0)
+	;
+
 plot(psi0);
 
-solve Joukowski1(psi1,vh) = // definition of the problem
-    int2d(Th)( dx(psi1)*dx(vh) + dy(psi1)*dy(vh) ) // bilinear form
-  + on(a,psi1=0) // boundary condition form
-  + on(upper,lower,psi1=1);
+solve Joukowski1(psi1,vh)
+	= int2d(Th)(
+		  dx(psi1)*dx(vh)
+		+ dy(psi1)*dy(vh)
+	)
+	+ on(a, psi1=0)
+	+ on(upper, lower, psi1=1);
 
 plot(psi1);
 
- // continuity of pressure at trailing edge
-real beta = psi0(0.99,0.01)+psi0(0.99,-0.01);
-beta = -beta / (psi1(0.99,0.01)+ psi1(0.99,-0.01)-2);
+//continuity of pressure at trailing edge
+real beta = psi0(0.99,0.01) + psi0(0.99,-0.01);
+beta = -beta / (psi1(0.99,0.01) + psi1(0.99,-0.01)-2);
 
-Vh psi = beta*psi1+psi0;
+Vh psi = beta*psi1 + psi0;
 plot(psi);
-ZVh Zpsi=psi;
-plot(Zpsi,bw=true);
+
+ZVh Zpsi = psi;
+plot(Zpsi, bw=true);
+
 ZVh cp = -dx(psi)^2 - dy(psi)^2;
 plot(cp);
-ZVh Zcp=cp;
-plot(Zcp,nbiso=40);
+
+ZVh Zcp = cp;
+plot(Zcp, nbiso=40);
 ```
 
-|Fig. 9.5: isovalue of $cp = -(\p_x\psi)^2 - (\p_y\psi)^2$|Fig. 9.6: Zooming of $cp$|
+|<a name="Fig5">Fig. 5</a>: isovalue of $cp = -(\p_x\psi)^2 - (\p_y\psi)^2$|<a name="Fig6">Fig. 6</a>: Zooming of $cp$|
 |:----:|:----:|
-|![naca1](images/naca1.png)|![naca2](images/naca2.png)|
+|![Aerodynamics1](images/StaticProblems_Aerodynamics1.png)|![Aerodynamics2](images/StaticProblems_Aerodynamics2.png)|
 
-### Error estimation
+## Error estimation
 
-There are famous estimation between the numerical result $u_h$ and the
-exact solution $u$ of the problem \ref{eqn:Poisson} 2.1 $\codered$ and \ref{eqn:Dirichlet} 2.2 $\codered$:
-If triangulations $\{\mathcal{T}_h\}_{h\downarrow 0}$ is regular
-(see \refSec{Regular Triangulation} 5.4 $\codered$), then we have the estimates
+There are famous estimation between the numerical result $u_h$ and the exact solution $u$ of the [Poisson's problem](../tutorial/Poisson):
+
+If triangulations $\{\mathcal{T}_h\}_{h\downarrow 0}$ is regular (see[Regular Triangulation](../documentation/MeshGeneration/#regular-triangulation-htriangle)), then we have the estimates
 
 \begin{eqnarray}
-|\nabla u - \nabla u_h|_{0,\Omega}&\le& C_1h\\
-\|u - u_h\|_{0,\Omega}&\le& C_2h^2
+	|\nabla u - \nabla u_h|_{0,\Omega} &\le& C_1h \label{eqn::ErrorEstimatation1}\\
+	\|u - u_h\|_{0,\Omega} &\le& C_2h^2 \label{eqn::ErrorEstimatation2}
 \end{eqnarray}
 
-with constants $C_1,\, C_2$ independent of $h$,
-if $u$ is in $H^2(\Omega)$. It is known that $u\in H^2(\Omega)$
-if $\Omega$ is convex.
+with constants $C_1,\, C_2$ independent of $h$, if $u$ is in $H^2(\Omega)$. It is known that $u\in H^2(\Omega)$ if $\Omega$ is convex.
 
-In this section we check (\ref{eqn:H1err} 9.14 $\codered$) and (\ref{eqn:L2err} 9.15 $\codered$).
-We will pick up numericall error if we use the numerical derivative,
-so we will use the following for (\ref{eqn:H1err} 9.14 $\codered$).
+In this section we check \eqref{eqn::ErrorEstimatation1} and \eqref{eqn::ErrorEstimatation2}. We will pick up numericall error if we use the numerical derivative, so we will use the following for \eqref{eqn::ErrorEstimatation1}.
 
 \begin{eqnarray*}
 \int_{\Omega}|\nabla u - \nabla u_h|^2\, \d x\d y
@@ -352,319 +357,421 @@ so we will use the following for (\ref{eqn:H1err} 9.14 $\codered$).
 &=&\int_{\Omega}f(u-2u_h)\, \d x\d y+\int_{\Omega}fu_h\, \d x\d y
 \end{eqnarray*}
 
-The constants $C_1,\, C_2$ are depend on $\mathcal{T}_h$ and $f$,
-so we will find them by FreeFem++.
-In general, we cannot get the solution $u$ as a elementary functions
-(see Section \ref{sec:TwoVarFunctions} 4.8 $\codered$) even if spetical functions are added.
-Instead of the exact solution, here we use the approximate solution $u_0$  in
-$V_h(\mathcal{T}_h,P_2),\, h\sim 0$.
+The constants $C_1,\, C_2$ are depend on $\mathcal{T}_h$ and $f$, so we will find them by FreeFem++.
 
- __Example 9.4__
+In general, we cannot get the solution $u$ as a elementary functions even if spetical functions are added. Instead of the exact solution, here we use the approximate solution $u_0$ in $V_h(\mathcal{T}_h,P_2),\, h\sim 0$.
 
 ```freefem
-mesh Th0 = square(100,100);
-fespace V0h(Th0,P2);
-V0h u0,v0;
-func f = x*y; // sin(pi*x)*cos(pi*y);
+// Parameters
+func f = x*y;
 
-solve Poisson0(u0,v0) =
-    int2d(Th0)( dx(u0)*dx(v0) + dy(u0)*dy(v0) ) // bilinear form
-  - int2d(Th0)( f*v0 ) // linear form
-  + on(1,2,3,4,u0=0) ; // boundary condition
+//Mesh
+mesh Th0 = square(100, 100);
 
+// Fespace
+fespace V0h(Th0, P2);
+V0h u0, v0;
+
+// Problem
+solve Poisson0 (u0, v0)
+	= int2d(Th0)(
+		  dx(u0)*dx(v0)
+		+ dy(u0)*dy(v0)
+	)
+	- int2d(Th0)(
+		  f*v0
+	)
+	+ on(1, 2, 3, 4, u0=0)
+	;
 plot(u0);
 
+// Error loop
 real[int] errL2(10), errH1(10);
+for (int i = 1; i <= 10; i++){
+	// Mesh
+	mesh Th = square(5+i*3,5+i*3);
 
-for (int i=1; i<=10; i++) {
-   mesh Th = square(5+i*3,5+i*3);
-   fespace Vh(Th,P1);
-   fespace Ph(Th,P0);
-   Ph h = hTriangle; // get the size of all triangles
-   Vh u,v;
-   solve Poisson(u,v) =
-        int2d(Th)( dx(u)*dx(v) + dy(u)*dy(v) ) // bilinear form
-        - int2d(Th)( f*v ) // linear form
-        + on(1,2,3,4,u=0) ; // boundary condition
-   V0h uu = u;
-   errL2[i-1] = sqrt( int2d(Th0)((uu - u0)^2) )/h[].max^2;
-   errH1[i-1] = sqrt( int2d(Th0)( f*(u0-2*uu+uu) ) )/h[].max;
+	// Fespace
+	fespace Vh(Th, P1);
+	Vh u, v;
+	fespace Ph(Th, P0);
+	Ph h = hTriangle; //get the size of all triangles
+
+	// Problem
+	solve Poisson (u, v)
+		= int2d(Th)(
+			  dx(u)*dx(v)
+			+ dy(u)*dy(v)
+		)
+		- int2d(Th)(
+			  f*v
+		)
+		+ on(1, 2, 3, 4, u=0)
+		;
+
+	// Error
+	V0h uu = u; //interpolate solution on first mesh
+	errL2[i-1] = sqrt( int2d(Th0)((uu - u0)^2) )/h[].max^2;
+	errH1[i-1] = sqrt( int2d(Th0)(f*(u0 - 2*uu + uu)) )/h[].max;
 }
-cout << "C1 = " << errL2.max <<"("<<errL2.min<<")"<< endl;
-cout << "C2 = " << errH1.max <<"("<<errH1.min<<")"<< endl;
+
+// Display
+cout << "C1 = " << errL2.max << "("<<errL2.min<<")" << endl;
+cout << "C2 = " << errH1.max << "("<<errH1.min<<")" << endl;
 ```
 
-We can guess that $C_1=0.0179253(0.0173266)$ and
-$C_2=0.0729566(0.0707543)$, where the numbers inside the parentheses
+We can guess that $C_1=0.0179253(0.0173266)$ and $C_2=0.0729566(0.0707543)$, where the numbers inside the parentheses
 are minimum in calculation.
 
-### Periodic Boundary Conditions
+## Periodic Boundary Conditions
 
 We now solve the Poisson equation
-$$ -\Delta u= sin(x+\pi/4.)*cos(y+\pi/4.)$$ on
-the square $]0,2\pi[^2$
-under bi-periodic boundary condition
-$u(0,y)=u(2\pi,y)$ for all $y$ and
-$u(x,0)=u(x,2\pi)$ for all $x$.
-These boundary conditions are achieved from the definition
-of the periodic finite element space.
+$$ -\Delta u = sin(x+\pi/4.)*cos(y+\pi/4.)$$
+on the square $]0,2\pi[^2$ under bi-periodic boundary condition $u(0,y)=u(2\pi,y)$ for all $y$ and $u(x,0)=u(x,2\pi)$ for all $x$.
 
- __Example 9.5__ periodic.edp
+These boundary conditions are achieved from the definition of the periodic finite element space.
 
 ```freefem
-mesh Th=square(10,10,[2*x*pi,2*y*pi]);
-// defined the fespace with periodic condition
-// label :  2 and 4 are left and right side with y the curve abscissa
-// 1 and 2 are bottom and upper side with x the curve abscissa
-fespace Vh(Th,P2,periodic=[[2,y],[4,y],[1,x],[3,x]]);
- Vh uh,vh; // unknown and test function.
- func f=sin(x+pi/4.)*cos(y+pi/4.); // right hand side function
+// Parameters
+func f = sin(x+pi/4.)*cos(y+pi/4.); //right hand side
 
- problem laplace(uh,vh) = // definion of the problem
-    int2d(Th)( dx(uh)*dx(vh) + dy(uh)*dy(vh) ) // bilinear form
-  + int2d(Th)( -f*vh ) // linear form
-;
+// Mesh
+mesh Th = square(10, 10, [2*x*pi, 2*y*pi]);
 
-  laplace; // solve the problem plot(uh); // to see the result
-  plot(uh,ps="period.eps",value=true);
+// Fespace
+//defined the fespace with periodic condition
+//label: 2 and 4 are left and right side with y the curve abscissa
+//		 1 and 2 are bottom and upper side with x the curve abscissa
+fespace Vh(Th, P2, periodic=[[2, y], [4, y], [1, x], [3, x]]);
+Vh uh, vh;
+
+// Problem
+problem laplace (uh, vh)
+	= int2d(Th)(
+		  dx(uh)*dx(vh)
+		+ dy(uh)*dy(vh)
+	)
+	+ int2d(Th)(
+		- f*vh
+	)
+	;
+
+// Solve
+laplace;
+
+// Plot
+plot(uh, value=true);
 ```
 
-|Fig. 9.7: The isovalue of solution $u$ with periodic boundary condition|
+|<a name="Fig7">Fig. 7</a>: The isovalue of solution $u$ with periodic boundary condition|
 |:----:|
-|![period](images/period.png)|
+|![PeriodicBoundaryConditions](images/StaticProblem_PeriodicBoundaryConditions.png)|
 
-The periodic condition does not necessarily require
-parallel boundaries. Example \ref{exm:periodic4} 9.6 $\codered$
- give such example.
+The periodic condition does not necessarily require parallel boundaries. The following example give such example.
 
- __Example 9.6__ periodic4.edp
+!!!question "Periodic boundary conditions - non-parallel"
+	```freefem
+	// Parameters
+	int n = 10;
+	real r = 0.25;
+	real r2 = 1.732;
+	func f = (y+x+1)*(y+x-1)*(y-x+1)*(y-x-1);
 
-```freefem
-real r=0.25;
-// a diamond with a hole
-border a(t=0,1){x=-t+1; y=t;label=1;};
-border b(t=0,1){ x=-t; y=1-t;label=2;};
-border c(t=0,1){ x=t-1; y=-t;label=3;};
-border d(t=0,1){ x=t; y=-1+t;label=4;};
-border e(t=0,2*pi){ x=r*cos(t); y=-r*sin(t);label=0;};
-int n = 10;
-mesh Th= buildmesh(a(n)+b(n)+c(n)+d(n)+e(n));
-plot(Th,wait=1);
-real r2=1.732;
-func abs=sqrt(x^2+y^2);
-// warning for periodic condition:
-// side a and c
-// on side a (label 1) $ x \in [0,1] $ or $ x-y\in [-1,1] $
-// on side c (label 3) $ x \in [-1,0]$ or $ x-y\in[-1,1] $
-// so the common abscissa can be respectively $x$ and $x+1$
-// or you can can try curviline abscissa $x-y$ and $x-y$
-// 1 first way
-// fespace Vh(Th,P2,periodic=[[2,1+x],[4,x],[1,x],[3,1+x]]);
-// 2 second way
- fespace Vh(Th,P2,periodic=[[2,x+y],[4,x+y],[1,x-y],[3,x-y]]);
+	// Mesh
+	border a(t=0, 1){x=-t+1; y=t; label=1;};
+	border b(t=0, 1){x=-t; y=1-t; label=2;};
+	border c(t=0, 1){x=t-1; y=-t; label=3;};
+	border d(t=0, 1){x=t; y=-1+t; label=4;};
+	border e(t=0, 2*pi){x=r*cos(t); y=-r*sin(t); label=0;};
+	mesh Th = buildmesh(a(n) + b(n) + c(n) + d(n) + e(n));
+	plot(Th, wait=true);
 
- Vh uh,vh;
+	// Fespace
+	//warning for periodic condition:
+	//side a and c
+	//on side a (label 1) $ x \in [0,1] $ or $ x-y\in [-1,1] $
+	//on side c (label 3) $ x \in [-1,0]$ or $ x-y\in[-1,1] $
+	//so the common abscissa can be respectively $x$ and $x+1$
+	//or you can can try curviline abscissa $x-y$ and $x-y$
+	//1 first way
+	//fespace Vh(Th, P2, periodic=[[2, 1+x], [4, x], [1, x], [3, 1+x]]);
+	//2 second way
+	fespace Vh(Th, P2, periodic=[[2, x+y], [4, x+y], [1, x-y], [3, x-y]]);
+	Vh uh, vh;
 
- func f=(y+x+1)*(y+x-1)*(y-x+1)*(y-x-1);
- real intf = int2d(Th)(f);
- real mTh = int2d(Th)(1);
- real k =  intf/mTh;
- problem laplace(uh,vh) =
-    int2d(Th)( dx(uh)*dx(vh) + dy(uh)*dy(vh) ) + int2d(Th)( (k-f)*vh ) ;
- laplace;
- plot(uh,wait=1,ps="perio4.eps");
-```
+	// Problem
+	real intf = int2d(Th)(f);
+	real mTh = int2d(Th)(1);
+	real k =  intf / mTh;
+	problem laplace (uh, vh)
+		= int2d(Th)(
+			  dx(uh)*dx(vh)
+			+ dy(uh)*dy(vh)
+			)
+		+ int2d(Th)(
+			  (k-f)*vh
+		)
+		;
 
-|Fig. 9.8: The isovalue of solution $u$ for $\Delta u = ((y+x)^{2}+1)((y-x)^{2}+1) - k$, in $\Omega$ and $\p_{n} u =0$ on hole, and with two periodic boundary condition on external border|
-|:----:|
-|![perio4](images/perio4.png)|
+	// Solve
+	laplace;
+
+	// Plot
+	plot(uh, wait=true);
+	```
+
+	|<a name="Fig8">Fig. 8</a>: The isovalue of solution $u$ for $\Delta u = ((y+x)^{2}+1)((y-x)^{2}+1) - k$, in $\Omega$ and $\p_{n} u =0$ on hole, and with two periodic boundary condition on external border|
+	|:----:|
+	|![PeriodicBoundaryConditions2](images/StaticProblems_PeriodicBoundaryConditions2.png)|
 
 An other example with no equal border, just to see if the code works.
 
- __Example 9.7__ periodic4bis.edp
+!!! question "Periodic boundary conditions - non-equal border"
+	```freefem
+	// Macro
+	//irregular boundary condition to build border AB
+	macro LINEBORDER(A, B, lab)
+		border A#B(t=0,1){
+			real t1=1.-t;
+			x=A#x*t1+B#x*t;
+			y=A#y*t1+B#y*t;
+			label=lab;
+	} //EOM
+	// compute ||AB|| A=(ax,ay) et B =(bx,by)
+	macro dist(ax, ay, bx, by) sqrt(square((ax)-(bx)) + square((ay)-(by))) //EOM
+	macro Grad(u) [dx(u), dy(u)] //EOM
 
-```freefem
-// irregular boundary condition.
-// to build border AB
-macro LINEBORDER(A,B,lab) border A#B(t=0,1){real t1=1.-t;
-   x=A#x*t1+B#x*t;y=A#y*t1+B#y*t;label=lab;}//EOM
-// compute  ||AB||  a=(ax,ay) et B =(bx,by)
-macro dist(ax,ay,bx,by) sqrt(square((ax)-(bx))+ square((ay)-(by))) // EOM
-macro Grad(u) [dx(u),dy(u)]//EOM
+	// Parameters
+	int n = 10;
+	real Ax = 0.9, Ay = 1;
+	real Bx = 2, By = 1;
+	real Cx = 2.5, Cy = 2.5;
+	real Dx = 1, Dy = 2;
+	real gx = (Ax+Bx+Cx+Dx)/4.;
+	real gy = (Ay+By+Cy+Dy)/4.;
 
+	// Mesh
+	LINEBORDER(A,B,1)
+	LINEBORDER(B,C,2)
+	LINEBORDER(C,D,3)
+	LINEBORDER(D,A,4)
+	mesh Th=buildmesh(AB(n)+BC(n)+CD(n)+DA(n),fixedborder=1);
 
-real Ax=0.9,Ay=1;              real Bx=2,By=1;
-real Cx=2.5,Cy=2.5;            real Dx=1,Dy=2;
-real gx = (Ax+Bx+Cx+Dx)/4.;    real gy = (Ay+By+Cy+Dy)/4.;
+	// Fespace
+	real l1 = dist(Ax,Ay,Bx,By);
+	real l2 = dist(Bx,By,Cx,Cy);
+	real l3 = dist(Cx,Cy,Dx,Dy);
+	real l4 = dist(Dx,Dy,Ax,Ay);
+	func s1 = dist(Ax,Ay,x,y)/l1; //absisse on AB = ||AX||/||AB||
+	func s2 = dist(Bx,By,x,y)/l2; //absisse on BC = ||BX||/||BC||
+	func s3 = dist(Cx,Cy,x,y)/l3; //absisse on CD = ||CX||/||CD||
+	func s4 = dist(Dx,Dy,x,y)/l4; //absisse on DA = ||DX||/||DA||
+	verbosity = 6; //to see the abscisse value of the periodic condition
+	fespace Vh(Th, P1, periodic=[[1, s1], [3, s3], [2, s2], [4, s4]]);
+	verbosity = 1; //reset verbosity
+	Vh u, v;
 
+	real cc = 0;
+	cc = int2d(Th)((x-gx)*(y-gy)-cc)/Th.area;
+	cout << "compatibility = " << int2d(Th)((x-gx)*(y-gy)-cc) <<endl;
 
-LINEBORDER(A,B,1)
-LINEBORDER(B,C,2)
-LINEBORDER(C,D,3)
-LINEBORDER(D,A,4)
+	// Problem
+	solve Poisson (u, v)
+		= int2d(Th)(
+			  Grad(u)'*Grad(v)
+			+ 1e-10*u*v
+		)
+		-int2d(Th)(
+			  10*v*((x-gx)*(y-gy)-cc)
+		)
+		;
 
-int n=10;
+	// Plot
+	plot(u, value=true);
+	```
 
-real l1=dist(Ax,Ay,Bx,By);
-real l2=dist(Bx,By,Cx,Cy);
-real l3=dist(Cx,Cy,Dx,Dy);
-real l4=dist(Dx,Dy,Ax,Ay);
-func s1=dist(Ax,Ay,x,y)/l1; // absisse on AB  = ||AX||/||AB||
-func s2=dist(Bx,By,x,y)/l2; // absisse on BC  = ||BX||/||BC||
-func s3=dist(Cx,Cy,x,y)/l3; // absisse on CD  = ||CX||/||CD||
-func s4=dist(Dx,Dy,x,y)/l4; // absisse on DA  = ||DX||/||DA||
+!!!question "Periodic boundry conditions - Poisson cube-balloon"
+	```freefem
+	load "msh3"
+	load "tetgen"
+	load "medit"
 
-mesh Th=buildmesh(AB(n)+BC(n)+CD(n)+DA(n),fixedborder=1);//
+	// Parameters
+	real hs = 0.1; //mesh size on sphere
+	int[int] N = [20, 20, 20];
+	real [int,int] B = [[-1, 1], [-1, 1], [-1, 1]];
+	int [int,int] L = [[1, 2], [3, 4], [5, 6]];
 
-verbosity=6;// to see the abscisse value pour the periodic condition.
-fespace Vh(Th,P1,periodic=[[1,s1],[3,s3],[2,s2],[4,s4]]);
-verbosity=1;
-Vh u,v;
-real cc=0;
-cc= int2d(Th)((x-gx)*(y-gy)-cc)/Th.area;
-cout << " compatibility =" << int2d(Th)((x-gx)*(y-gy)-cc) <<endl;
+	real x0 = 0.3, y0 = 0.4, z0 = 06;
+	func f = sin(x*2*pi+x0)*sin(y*2*pi+y0)*sin(z*2*pi+z0);
 
-solve Poission(u,v)=int2d(Th)(Grad(u)'*Grad(v)+ 1e-10*u*v)
-  -int2d(Th)(10*v*((x-gx)*(y-gy)-cc));
-plot(u,wait=1,value=1);
-```
+	// Mesh
+	bool buildTh = 0;
+	mesh3 Th;
+	try { //a way to build one time the mesh or read it if the file exist
+		Th = readmesh3("Th-hex-sph.mesh");
+	}
+	catch (...){
+		buildTh = 1;
+	}
 
- __Example 9.8__ Period-Poisson-cube-ballon.edp
+	if (buildTh){
+		include "MeshSurface.idp"
 
-```freefem
-verbosity=1;
-load "msh3"
-load "tetgen"
-load "medit"
+		// Surface Mesh
+		mesh3 ThH = SurfaceHex(N, B, L, 1);
+		mesh3 ThS = Sphere(0.5, hs, 7, 1);
 
-bool buildTh=0;
-mesh3 Th;
-try { // a way to build one time the mesh an read if the file exist.
-  Th=readmesh3("Th-hex-sph.mesh");
- }
-catch(...) { buildTh=1;}
-if( buildTh ){
-  ...
- put the code example page // \ref{cube-ballon} $\codered$\pageref{cube-ballon}
-  without the first line
- }
+		mesh3 ThHS = ThH + ThS;
 
-fespace Ph(Th,P0);
-verbosity=50;
-fespace Vh(Th,P1,periodic=[[3,x,z],[4,x,z],[1,y,z],[2,y,z],[5,x,y],[6,x,y]]);// back and front
-verbosity=1;
-Ph reg=region;
+		real voltet = (hs^3)/6.;
+		real[int] domain = [0, 0, 0, 1, voltet, 0, 0, 0.7, 2, voltet];
+		Th = tetg(ThHS, switch="pqaAAYYQ", nbofregions=2, regionlist=domain);
 
-cout << "  centre = " << reg(0,0,0) << endl;
-cout << " exterieur = " << reg(0,0,0.7) << endl;
+		savemesh(Th, "Th-hex-sph.mesh");
+	}
 
-macro Grad(u) [dx(u),dy(u),dz(u)] // EOM
+	// Fespace
+	fespace Ph(Th, P0);
+	Ph reg = region;
+	cout << " centre = " << reg(0,0,0) << endl;
+	cout << " exterieur = " << reg(0,0,0.7) << endl;
 
-Vh uh,vh;
-real x0=0.3,y0=0.4,z0=06;
-func f= sin(x*2*pi+x0)*sin(y*2*pi+y0)*sin(z*2*pi+z0);
-real gn = 1.;
-real cf= 1;
-problem P(uh,vh)=
-     int3d(Th,1)( Grad(uh)'*Grad(vh)*100)
-  +  int3d(Th,2)( Grad(uh)'*Grad(vh)*2)
-  + int3d(Th) (vh*f)
-  ;
-  P;
-plot(uh,wait=1, nbiso=6);
-medit("   uh ",Th, uh);
-```
+	verbosity = 50;
+	fespace Vh(Th, P1, periodic=[[3, x, z], [4, x, z], [1, y, z], [2, y, z], [5, x, y], [6, x, y]]);
+	verbosity = 1;
+	Vh uh,vh;
 
-$\codered$ bug image
+	// Macro
+	macro Grad(u) [dx(u),dy(u),dz(u)] // EOM
 
-|Fig. 9.9: View of the surface isovalue of periodic solution $uh$|Fig. 9.10: View a the cut of the solution $uh$  with ffmedit|
+	// Problem
+	problem Poisson (uh, vh)
+		= int3d(Th, 1)(
+			  Grad(uh)'*Grad(vh)*100
+		)
+		+ int3d(Th, 2)(
+			  Grad(uh)'*Grad(vh)*2
+		)
+		+ int3d(Th)(
+			  vh*f
+		)
+	;
+
+	// Solve
+	Poisson;
+
+	// Plot
+	plot(uh, wait=true, nbiso=6);
+	medit("uh", Th, uh);
+	```
+
+|<a name="Fig9">Fig. 9</a>: View of the surface isovalue of periodic solution $uh$|<a name="Fig10">Fig. 10</a>: View a the cut of the solution $uh$ with ffmedit|
 |:----:|:----:|
-|![cube-bal-perio](images/cube-bal-perio.png)|![cube-bal-perio-medit](images/cube-bal-perio-medit.png)|
+|![PeriodicBoundaryConditionsPoisson1](images/StaticProblems_PeriodicBoundaryConditionsPoisson1.png)|![PeriodicBoundaryConditionsPoisson2](images/StaticProblems_PeriodicBoundaryConditionsPoisson2.png)|
 
-### Poisson Problems with mixed boundary condition
+## Poisson Problems with mixed boundary condition
 
-Here we consider the Poisson equation with mixed boundary
-conditons: For given functions $f$ and $g$, find $u$ such that
+Here we consider the Poisson equation with mixed boundary conditions: For given functions $f$ and $g$, find $u$ such that
 
 \begin{eqnarray}
--\Delta u &=& f\qquad \textrm{in }\Omega\nonumber\\
-u&=&g\quad \textrm{on }\Gamma_D,\quad
-\p u/\p n=0\quad \textrm{on }\Gamma_N
+	-\Delta u &=& f & \textrm{ in }\Omega\\
+	u &=& g &\textrm{ on }\Gamma_D\\
+	\p u/\p n &=& 0 &\textrm{ on }\Gamma_N
 \end{eqnarray}
 
 where $\Gamma_D$ is a part of the boundary $\Gamma$ and $\Gamma_N=\Gamma\setminus \overline{\Gamma_D}$.
+
 The solution $u$ has the singularity at the points $\{\gamma_1,\gamma_2\}=\overline{\Gamma_D}\cap\overline{\Gamma_N}$.
+
 When $\Omega=\{(x,y);\; -1<x<1,\, 0<y<1\}$, $\Gamma_N=\{(x,y);\; -1\le x<0,\, y=0\}$, $\Gamma_D=\p \Omega\setminus \Gamma_N$,
 the singularity will appear at $\gamma_1=(0,0),\, \gamma_2(-1,0)$, and $u$ has the expression
 $$
 u=K_iu_S + u_R,\, u_R\in H^2(\textrm{near }\gamma_i),\, i=1,2
 $$
 with a constants $K_i$.
-Here $u_S = r_j^{1/2}\sin(\theta_j/2)$ by the local polar coordinate
-$(r_j,\theta_j$ at $\gamma_j$ such that $(r_1,\theta_1)=(r,\theta)$.
-Instead of poler coordinate system $(r,\theta)$, we use that
-$r=$`:::freefem sqrt`($x^2+y^2$) and $\theta =$`:::freefem atan2`($y,x$)
-in FreeFem++.
 
- __Example 9.9__ Assume that $f=-2\times 30(x^2+y^2)$ and $g=u_e=10(x^2+y^2)^{1/4}\sin\left([\tan^{-1}(y/x)]/2\right)+30(x^2y^2)$, where $u_e$S is the exact solution.
+Here $u_S = r_j^{1/2}\sin(\theta_j/2)$ by the local polar coordinate $(r_j,\theta_j$ at $\gamma_j$ such that $(r_1,\theta_1)=(r,\theta)$.
+
+Instead of polar coordinate system $(r,\theta)$, we use that $r=$`:::freefem sqrt`($x^2+y^2$) and $\theta =$`:::freefem atan2`($y,x$) in FreeFem++.
+
+Assume that $f=-2\times 30(x^2+y^2)$ and $g=u_e=10(x^2+y^2)^{1/4}\sin\left([\tan^{-1}(y/x)]/2\right)+30(x^2y^2)$, where $u_e$S is the exact solution.
 
 ```freefem
-border N(t=0,1) { x=-1+t; y=0; label=1; };
-border D1(t=0,1){ x=t;  y=0; label=2;};
-border D2(t=0,1){ x=1; y=t; label=2; };
-border D3(t=0,2){ x=1-t; y=1; label=2;};
-border D4(t=0,1) { x=-1; y=1-t; label=2; };
-
-mesh T0h = buildmesh(N(10)+D1(10)+D2(10)+D3(20)+D4(10));
-plot(T0h,wait=true);
-fespace V0h(T0h,P1);
-V0h u0, v0;
-
-func f=-2*30*(x^2+y^2); // given function
-// the singular term of the solution is K*us (K: constant)
+// Parameters
+func f = -2*30*(x^2+y^2); //given function
+//the singular term of the solution is K*us (K: constant)
 func us = sin(atan2(y,x)/2)*sqrt( sqrt(x^2+y^2) );
-real K=10.;
+real K = 10.;
 func ue = K*us + 30*(x^2*y^2);
 
-solve Poisson0(u0,v0) =
-    int2d(T0h)( dx(u0)*dx(v0) + dy(u0)*dy(v0) ) // bilinear form
-  - int2d(T0h)( f*v0 ) // linear form
-  + on(2,u0=ue) ; // boundary condition
+// Mesh
+border N(t=0, 1){x=-1+t; y=0; label=1;};
+border D1(t=0, 1){x=t; y=0; label=2;};
+border D2(t=0, 1){x=1; y=t; label=2;};
+border D3(t=0, 2){x=1-t; y=1; label=2;};
+border D4(t=0, 1){x=-1; y=1-t; label=2;};
 
-// adaptation by the singular term
-mesh Th = adaptmesh(T0h,us);
-for (int i=0;i< 5;i++)
-{
-  mesh Th=adaptmesh(Th,us);
-} ;
+mesh T0h = buildmesh(N(10) + D1(10) + D2(10) + D3(20) + D4(10));
+plot(T0h, wait=true);
 
+// Fespace
+fespace V0h(T0h, P1);
+V0h u0, v0;
+
+//Problem
+solve Poisson0 (u0, v0)
+	= int2d(T0h)(
+		  dx(u0)*dx(v0)
+		+ dy(u0)*dy(v0)
+	)
+	- int2d(T0h)(
+		  f*v0
+	)
+	+ on(2, u0=ue)
+	;
+
+// Mesh adaptation by the singular term
+mesh Th = adaptmesh(T0h, us);
+for (int i = 0; i < 5; i++)
+	mesh Th = adaptmesh(Th, us);
+
+// Fespace
 fespace Vh(Th, P1);
 Vh u, v;
-solve Poisson(u,v) =
-    int2d(Th)( dx(u)*dx(v) + dy(u)*dy(v) ) // bilinear form
-  - int2d(Th)( f*v ) // linear form
-  + on(2,u=ue) ; // boundary condition
 
-/* plot the solution */
-plot(Th,ps="adaptDNmix.ps");
-plot(u,wait=true);
+// Problem
+solve Poisson (u, v)
+	= int2d(Th)(
+		  dx(u)*dx(v)
+		+ dy(u)*dy(v)
+	)
+	- int2d(Th)(
+		  f*v
+	)
+	+ on(2, u=ue)
+	;
 
+// Plot
+plot(Th);
+plot(u, wait=true);
+
+// Error in H1 norm
 Vh uue = ue;
-real H1e = sqrt( int2d(Th)( dx(uue)^2 + dy(uue)^2 + uue^2 ) );
-
-/* calculate the H1 Sobolev norm */
+real H1e = sqrt( int2d(Th)(dx(uue)^2 + dy(uue)^2 + uue^2) );
 Vh err0 = u0 - ue;
 Vh err = u - ue;
-Vh H1err0 = int2d(Th)( dx(err0)^2+dy(err0)^2+err0^2 );
-Vh H1err = int2d(Th)( dx(err)^2+dy(err)^2+err^2 );
-cout <<"Relative error in first mesh "<< int2d(Th)(H1err0)/H1e<<endl;
-cout <<"Relative error in adaptive mesh "<< int2d(Th)(H1err)/H1e<<endl;
+Vh H1err0 = int2d(Th)(dx(err0)^2 + dy(err0)^2 + err0^2);
+Vh H1err = int2d(Th)(dx(err)^2 + dy(err)^2 + err^2);
+cout << "Relative error in first mesh = "<< int2d(Th)(H1err0)/H1e << endl;
+cout << "Relative error in adaptive mesh = "<< int2d(Th)(H1err)/H1e << endl;
 ```
 
-From 24th line to 28th, adaptation of meshes are done using the
-base of singular term.
-In 42th line, `:::freefem H1e`=$\|u_e\|_{1,\Omega}$ is calculated.
-In last 2 lines, the relative errors are calculated, that is,
+From line 35 to 37, mesh adaptations are done using the base of singular term.
+
+In line 61, `:::freefem H1e`=$\|u_e\|_{1,\Omega}$ is calculated.
+
+In lines 64 and 65, the relative errors are calculated, that is,
 
 \begin{eqnarray*}
 \|u^0_h-u_e\|_{1,\Omega}/H1e&=&0.120421\\
@@ -674,7 +781,9 @@ In last 2 lines, the relative errors are calculated, that is,
 where $u^0_h$ is the numerical solution in `:::freefem T0h` and
 $u^a_h$ is `:::freefem u` in this program.
 
-### Poisson with mixted finite element
+$\codered$ End of review
+
+## Poisson with mixted finite element
 
 Here we consider the Poisson equation with mixed boundary value
 problems:
@@ -749,7 +858,7 @@ problem laplaceMixte([u1,u2,p],[v1,v2,q],
  plot(p,fill=1,wait=1,ps="laRTp.eps",value=true);
 ```
 
-### Metric Adaptation and residual error indicator
+## Metric Adaptation and residual error indicator
 
 We do metric mesh adaption and compute the classical
 residual error indicator $\eta_{T}$ on the element $T$ for the Poisson problem.
@@ -830,7 +939,7 @@ If the method is correct, we expect to look the graphics by an almost constant f
 |![rhoP2](images/rhoP2.png)|
 |![ThrhoP2](images/ThrhoP2.png)|
 
-### Adaptation using residual error indicator
+## Adaptation using residual error indicator
 
 In the previous example we compute the error indicator, now we use it, to adapt the mesh.
 The new mesh size is given by the following formulae:

@@ -17,29 +17,15 @@ Progression:
 
 Progression:
 <div class="progress progress-80plus">
-	<div class="progress-bar" style="width:97%">
+	<div class="progress-bar" style="width:99%">
 	</div>
-	<span class="progress-label">97</span>
+	<span class="progress-label">99</span>
 </div>
 
-- [ ] line 65
-- [ ] line 146
-- [ ] line 187
-- [ ] line 196
-- [ ] line 197
-- [ ] line 220
-- [ ] line 227
-- [ ] line 338
-- [ ] line 340
-- [ ] line 351
-- [ ] line 353
-- [ ] line 365
-- [ ] line 444
-- [ ] line 555
-- [ ] line 585
-- [ ] line 769
-- [ ] line 795
-- [ ] line 833
+- [ ] line 784
+- [ ] line 871
+- [ ] line 897
+- [ ] line 935
 
 ## Elasticity
 
