@@ -51,7 +51,7 @@ pages:
     - Home: models/index.md
     - Static problems: models/StaticProblems.md
     - Elasticity: models/Elasticity.md
-    - Non-linear statis problems: models/NonLinearStaticProblems.md
+    - Non-linear static problems: models/NonLinearStaticProblems.md
     - Eigenvalue problems: models/EigenValueProblems.md
     - Navier-Stokes equations: models/NavierStokesEquations.md
     - Variational inequality: models/VariationalInequality.md

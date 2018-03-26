@@ -1,19 +1,3 @@
-Here we propose to solve the following non-linear academic problem of minimization of a functional $$J(u) = \int_\Omega \frac{1}{2} f(|\nabla u|^2) - u*b $$ where $u$ is function of $H^1_0(\Omega)$ and $f$ defined by
-$$
-f(x) = a*x + x-ln(1+x),\ f'(x) = a+\frac{x}{1+x},\ f''(x) = \frac{1}{(1+x)^2}
-$$
-
-## Newton-Raphson algorithm
-
-Now, we solve the Euler problem $ \nabla J (u) = 0$
-with Newton-Raphson algorithm, that is,
-$$
-u^{n+1} = u^n - ( \nabla^2 J (u^{n}))^{-1}*\nabla J(u^n)
-$$
-
-<!--- ** --->
-
-```freefem
 // Parameters
 real a = 0.001;
 func b = 1.;
@@ -89,4 +73,3 @@ for (int i = 0; i < 100; i++){
 
 // Plot
 plot (u, wait=true, cmm="Solution with Newton-Raphson");
-```
