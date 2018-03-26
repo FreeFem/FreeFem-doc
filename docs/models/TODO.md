@@ -26,43 +26,22 @@ Progression:
 ## Elasticity
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:94%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">94</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 24
-- [ ] line 66
-- [ ] line 124
-- [ ] line 165
-- [ ] line 223
-- [ ] line 226
-- [ ] line 227
-- [ ] line 263
-- [ ] line 307
-- [ ] line 315
-- [ ] line 329
-- [ ] line 396
-- [ ] line 397
-- [ ] line 399
-- [ ] line 400
-- [ ] line 450
-- [ ] line 451
-- [ ] line 453
-- [ ] line 454
 
 ## Non-linear statis problems
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:96%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">96</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 24
-- [ ] line 62
 
 ## Eigenvalue problems
 
