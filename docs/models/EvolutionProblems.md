@@ -371,7 +371,7 @@ Putting
 
 we can get the approximation
 
-$u^m \left( {X^m( x )} \right) \approx$ `:::freefem convect` $\left( {[a_1^m ,a_2^m],-\tau ,u^m } \right)\;\;\textrm{by }X^m \approx x \mapsto x- \tau [a_1^m(x) ,a_2^m(x)]$
+$u^m \left( {X^m( x )} \right) \approx$ `:::freefem convect` $\left( {[a_1^m ,a_2^m],-\tau ,u^m } \right)$ by $X^m \approx x \mapsto x- \tau [a_1^m(x) ,a_2^m(x)]$
 
 A classical convection problem is that of the "rotating bell" (quoted from [LUCQUIN1998](#LUCQUIN1998), p.16).
 
@@ -381,52 +381,65 @@ $u^{m + 1}(x) = u^m(X^m(x))\approx$ `:::freefem convect`$(\mathbf{\alpha},-\tau 
 
 The exact solution is $u(x, t) = u(\mathbf{X}(t))$ where $\mathbf{X}$ equals $x$ rotated around the origin by an angle $\theta = -t$ (rotate in clockwise). So, if $u^0$ in a 3D perspective looks like a bell, then $u$ will have exactly the same shape, but rotated by the same amount. The program consists in solving the equation until $T = 2\pi$, that is for a full revolution and to compare the final solution with the initial one; they should be equal.
 
- __Example 9.20__ convect.edp
+!!!question "Convect"
+	```freefem
+	// Parameters
+	real dt = 0.17;
 
-```freefem
-border C(t=0, 2*pi) { x=cos(t);  y=sin(t); }; // the unit circle
-mesh Th = buildmesh(C(70)); // triangulates the disk
-fespace Vh(Th,P1);
-Vh u0 = exp(-10*((x-0.3)^2 +(y-0.3)^2)); // give $u^0$
+	// Mesh
+	border C(t=0, 2*pi){x=cos(t); y=sin(t);}
+	mesh Th = buildmesh(C(70));
 
-real dt = 0.17,t=0; // time step
-Vh a1 = -y, a2 = x; // rotation velocity
-Vh u; // $u^{m+1}$
-for (int m=0; m<2*pi/dt ; m++) {
-    t += dt;
-    u=convect([a1,a2],-dt,u0); // $u^{m+1}=u^m(X^m(x))$
-    u0=u; // m++
-    plot(u,cmm=" t="+t + ", min=" + u[].min + ", max=" +  u[].max,wait=0);
-};
-```
+	// Fespace
+	fespace Vh(Th, P1);
+	Vh u0;
+	Vh a1 = -y, a2 = x; //rotation velocity
+	Vh u;
 
-!!! note
+	// Initialization
+	u = exp(-10*((x-0.3)^2 +(y-0.3)^2));
 
-	The scheme `:::freefem convect` is unconditionally stable, then the bell become lower and lower (the maximum of $u^{37}$ is $0.406$ as shown in Fig. \ref{BellLast} 9.21 $\codered$).
+	// Time loop
+	real t = 0.;
+	for (int m = 0; m < 2*pi/dt; m++){
+		// Update
+		t += dt;
+		u0 = u;
 
-|Fig. 9.20: $u^0=e^{-10((x-0.3)^2 +(y-0.3)^2)}$|
-|:----:|
-|![BellInit](images/BellInit.png)|
+		// Convect
+		u = convect([a1, a2], -dt, u0); //u^{m+1}=u^m(X^m(x))
 
-|Fig. 9.21: The bell at $t=6.29$|
-|:----:|
-|![BellLast](images/BellLast.png)|
+		// Plot
+		plot(u, cmm=" t="+t+", min="+u[].min+", max="+u[].max);
+	}
+	```
+
+	!!! note
+		The scheme `:::freefem convect` is unconditionally stable, then the bell become lower and lower (the maximum of $u^{37}$ is $0.406$ as shown in [Fig. 21](#Fig21)).
+
+	|<a name="Fig20">Fig. 20</a>: $u^0=e^{-10((x-0.3)^2 +(y-0.3)^2)}$|
+	|:----:|
+	|![Convect](images/EvolutionProblem_Convect.png)|
+
+	|<a name="Fig21">Fig. 21</a>: The bell at $t=6.29$|
+	|:----:|
+	|![Convect2](images/EvolutionProblem_Convect2.png)|
 
 ### 2D Black-Scholes equation for an European Put option
 
-In mathematical finance, an option on two assets is modeled by a Black-Scholes equations in two space
-variables, (see for example Wilmott et al\cite{wilmott} $\codered$ or Achdou et al \cite{achdou} $\codered$).
+In mathematical finance, an option on two assets is modeled by a Black-Scholes equations in two space variables, (see for example [WILMOTT1995](#WILMOTT1995) or [ACHDOU2005](#ACHDOU2005)).
 
 \begin{eqnarray}
  &&\p _t u + \frac{{\left( {\sigma _1 x } \right)^2 }}{2}\frac{{\p ^2 u}}{{\p x^2 }} + \frac{{\left( {\sigma _2 y } \right)^2 }}{2}\frac{{\p ^2 u}}{{\p y^2 }} \\
- &&{\rm{      }} + \rho x y \frac{{\p ^2 u}}{{\p x \p y }} + rS_1 \frac{{\p u}}{{\p x }} + rS_2 \frac{{\p u}}{{\p y }} - rP = 0 \nonumber
+ &&{\rm{ }} + \rho x y \frac{{\p ^2 u}}{{\p x \p y }} + rS_1 \frac{{\p u}}{{\p x }} + rS_2 \frac{{\p u}}{{\p y }} - rP = 0 \nonumber
 \end{eqnarray}
 
-which is to be integrated in $\left( {0,T} \right) \times \R^ +   \times \R^ +$
-subject to, in the case of a put
+<!--- __ --->
+
+which is to be integrated in $\left( {0,T} \right) \times \R^ + \times \R^ +$ subject to, in the case of a put
 
 \begin{eqnarray}
-u\left( {x , y ,T} \right) = \left( {K - \max \left( {x ,y } \right)} \right)^ +  .
+u\left( {x , y ,T} \right) = \left( {K - \max \left( {x ,y } \right)} \right)^ +
 \end{eqnarray}
 
 Boundary conditions for this problem may not be so easy to device. As in the one dimensional case the PDE contains boundary conditions on the axis $x_1 = 0$ and on the axis $x_2 = 0$, namely two one dimensional Black-Scholes equations driven respectively by the data $u\left( {0, + \infty ,T} \right)$ and $u\left( { + \infty ,0,T} \right)$. These will be automatically accounted for because they are embedded in the PDE. So if we do nothing in the variational form (i.e. if we take a Neumann boundary condition at these two axis in the strong form) there will be no disturbance to these. At infinity in one of the variable, as in 1D, it makes sense to impose $u=0$. We take
@@ -435,57 +448,90 @@ Boundary conditions for this problem may not be so easy to device. As in the one
 \sigma _1  = 0.3,\;\;\sigma _2  = 0.3,\;\;\rho  = 0.3,\;\;r = 0.05,\;\;K = 40,\;\;T = 0.5
 \end{eqnarray}
 
+<!--- __ --->
+
 An implicit Euler scheme is used and a mesh adaptation is done every 10 time steps. To have an unconditionally stable scheme, the first order terms are treated by the Characteristic Galerkin method, which, roughly, approximates
 
 \begin{eqnarray}
 \frac{{\p u}}{{\p t}} + a_1 \frac{{\p u}}{{\p x}} + a_2 \frac{{\p u}}{{\p y}} \approx \frac{1}{{\tau }}\left( {u^{n + 1} \left( x \right) - u^n \left( {x - \mathbf{\alpha}\tau } \right)} \right)
 \end{eqnarray}
 
- __Example 9.21__ BlackSchol.edp
+!!!question "Black-Scholes"
+	```freefem
+	// Parameters
+	int m = 30;
+	int L = 80;
+	int LL = 80;
+	int j = 100;
+	real sigx = 0.3;
+	real sigy = 0.3;
+	real rho = 0.3;
+	real r = 0.05;
+	real K = 40;
+	real dt = 0.01;
 
-```freefem
-// file BlackScholes2D.edp
-int m=30,L=80,LL=80, j=100;
-real sigx=0.3, sigy=0.3, rho=0.3, r=0.05, K=40, dt=0.01;
-mesh th=square(m,m,[L*x,LL*y]);
-fespace Vh(th,P1);
+	// Mesh
+	mesh th = square(m, m, [L*x, LL*y]);
 
-Vh u=max(K-max(x,y),0.);
-Vh xveloc, yveloc, v,uold;
+	// Fespace
+	fespace Vh(th, P1);
+	Vh u = max(K-max(x,y),0.);
+	Vh xveloc, yveloc, v, uold;
 
-for (int n=0; n*dt <= 1.0; n++)
-{
-  if(j>20)  { th = adaptmesh(th,u,verbosity=1,abserror=1,nbjacoby=2,
-              err=0.001, nbvx=5000, omega=1.8, ratio=1.8, nbsmooth=3,
-              splitpbedge=1, maxsubdiv=5,rescaling=1) ;
-     j=0;
-     xveloc = -x*r+x*sigx^2+x*rho*sigx*sigy/2;
-     yveloc = -y*r+y*sigy^2+y*rho*sigx*sigy/2;
-     u=u;
-    };
-  uold=u;
-  solve eq1(u,v,init=j,solver=LU) = int2d(th)( u*v*(r+1/dt)
-        + dx(u)*dx(v)*(x*sigx)^2/2 + dy(u)*dy(v)*(y*sigy)^2/2
-        + (dy(u)*dx(v) + dx(u)*dy(v))*rho*sigx*sigy*x*y/2)
-        - int2d(th)( v*convect([xveloc,yveloc],dt,w)/dt) + on(2,3,u=0);
+	// Time loop
+	for (int n = 0; n*dt <= 1.0; n++){
+		// Mesh adaptation
+		if (j > 20){
+			th = adaptmesh(th, u, verbosity=1, abserror=1, nbjacoby=2,
+				err=0.001, nbvx=5000, omega=1.8, ratio=1.8, nbsmooth=3,
+				splitpbedge=1, maxsubdiv=5, rescaling=1);
+			j = 0;
+			xveloc = -x*r + x*sigx^2 + x*rho*sigx*sigy/2;
+			yveloc = -y*r + y*sigy^2 + y*rho*sigx*sigy/2;
+			u = u;
+		}
 
-  j=j+1;
-};
-plot(u,wait=1,value=1);
-```
+		// Update
+		uold = u;
 
-Results are shown on Fig. \ref{blackScholesE} 9.21 $\codered$).
+		// Solve
+		solve eq1(u, v, init=j, solver=LU)
+			= int2d(th)(
+				  u*v*(r+1/dt)
+				+ dx(u)*dx(v)*(x*sigx)^2/2
+				+ dy(u)*dy(v)*(y*sigy)^2/2
+				+ (dy(u)*dx(v) + dx(u)*dy(v))*rho*sigx*sigy*x*y/2
+			)
+			- int2d(th)(
+				  v*convect([xveloc, yveloc], dt, uold)/dt
+			)
+			+ on(2, 3, u=0)
+			;
 
-|Fig. 9.22: The adapted triangulation|
-|:----:|
-|![BSth](images/BSth.png)|
+		// Update
+		j = j+1;
+	};
 
-|Fig. 9.23: The level line of the European basquet put option|
-|:----:|
-|![BSval](images/BSval.png)|
+	// Plot
+	plot(u, wait=true, value=true);
+	```
+
+	Results are shown on <a href="Fig21">Fig. 21</a>.
+
+	|<a name="Fig22">Fig. 22</a>: The adapted triangulation|
+	|:----:|
+	|![BlackSholes](images/EvolutionProblems_BlackSholes.png)|
+
+	|<a name="Fig23">Fig. 23</a>: The level line of the European basquet put option|
+	|:----:|
+	|![BlackSholes2](images/EvolutionProblems_BlackSholes2.png)|
 
 ## References
 
 <a name="TABATA1994">[TABATA1994]</a> TABATA, M. Numerical solutions of partial differential equations II. Iwanami Applied Math, 1994.
 
-[LUCQUIN1998] PIRONNEAU, O. et LUCQUIN-DESREUX, B. Introduction to scientific computing. Wiley, 1998.
+<a name="LUCQUIN1998">[LUCQUIN1998]</a> PIRONNEAU, O. et LUCQUIN-DESREUX, B. Introduction to scientific computing. Wiley, 1998.
+
+<a name="WILMOTT1995">[WILMOTT1995]</a> WILMOTT, Paul, HOWISON, Sam, et DEWYNNE, Jeff. A student introduction to mathematical finance. 1995.
+
+<a name="ACHDOU2005">[ACHDOU2005]</a> ACHDOU, Yves et PIRONNEAU, Olivier. Computational methods for option pricing. Siam, 2005.

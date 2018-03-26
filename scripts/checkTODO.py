@@ -123,39 +123,39 @@ examplesTODOFile = "examples/TODO.md"
 #models
 modelsFilesList = [
 	"models/index.md",
-    "models/StaticProblems.md",
-    "models/Elasticity.md",
-    "models/NonLinearStaticProblems.md",
-    "models/EigenValueProblems.md",
-	"models/EvolutionProblems.md"
-    "models/NavierStokesEquations.md",
-    "models/VariationalInequality.md",
-    "models/DomainDecomposition.md",
-    "models/FluidStructureCoupledProblem.md",
-    "models/TransmissionProblem.md",
-    "models/FreeBoundaryProblem.md",
-    "models/NonLinearElasticity.md",
-    "models/CompressibleNeoHookeanMaterials.md",
-    "models/WhisperingGalleryModes.md",
-    "models/WeakFormulation.md"
+	"models/StaticProblems.md",
+	"models/Elasticity.md",
+	"models/NonLinearStaticProblems.md",
+	"models/EigenValueProblems.md",
+	"models/EvolutionProblems.md",
+	"models/NavierStokesEquations.md",
+	"models/VariationalInequality.md",
+	"models/DomainDecomposition.md",
+	"models/FluidStructureCoupledProblem.md",
+	"models/TransmissionProblem.md",
+	"models/FreeBoundaryProblem.md",
+	"models/NonLinearElasticity.md",
+	"models/CompressibleNeoHookeanMaterials.md",
+	"models/WhisperingGalleryModes.md",
+	"models/WeakFormulation.md"
 ]
 modelsNamesList = [
 	"Home",
-    "Static problems",
-    "Elasticity",
-    "Non-linear statis problems",
-    "Eigenvalue problems",
+	"Static problems",
+	"Elasticity",
+	"Non-linear statis problems",
+	"Eigenvalue problems",
 	"Evolution problems",
-    "Navier-Stokes equations",
-    "Variational inequality",
-    "Domain decomposition",
-    "Fluid-Structure coupled problem",
-    "Transmission problem",
-    "Free boundary problem",
-    "Non-linear elasticity",
-    "Compressible Neo-Hookean materials",
-    "Whispering gallery modes",
-    "Weak formulation"
+	"Navier-Stokes equations",
+	"Variational inequality",
+	"Domain decomposition",
+	"Fluid-Structure coupled problem",
+	"Transmission problem",
+	"Free boundary problem",
+	"Non-linear elasticity",
+	"Compressible Neo-Hookean materials",
+	"Whispering gallery modes",
+	"Weak formulation"
 ]
 modelsTODOFile = "models/TODO.md"
 
