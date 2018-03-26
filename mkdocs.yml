@@ -11,6 +11,7 @@ pages:
     - Finite Element: documentation/FiniteElement.md
     - Visualization: documentation/Visualization.md
     - (TODO) Chapter 9: documentation/chapter9.md
+    - (TODO) Chapter 10: documentation/chapter10.md
     - TODO: documentation/TODO.md
   - Language References:
     - Home: reference/index.md
