@@ -27,13 +27,12 @@ Progression:
 ## How to contribute?
 
 Progression:
-<div class="progress progress-40plus">
-	<div class="progress-bar" style="width:50%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">50</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 3
 
 
 ## Documentation
