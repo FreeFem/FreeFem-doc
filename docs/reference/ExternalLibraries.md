@@ -2667,7 +2667,37 @@ $\codered$
 
 ### savevtk
 
-$\codered$
+Save mesh or solution in vtk/vtu format.
+
+```freefem
+savetk(FileName, Th, [Ux, Uy, Uz], p, [dataname=DataName], [withsurfacemesh=WithSurfaceMesh], [order=Order], [floatmesh=FloatMesh], [floatsol=FloatSol], [bin=Bin], [swap=Swap]);
+```
+
+<u>Parameters</u>:
+
+ - `FileName` (`::freefem string`)<br/>
+ File name: `*.vtk` or `*.vtu`
+ - `Th` (`:::freefem mesh` or `:::freefem mesh3`)
+ - `[Ux, Uy, Uz], p` (`:::freefem fespace` function of vector of `:::freefem fespace` functions)<br/>
+ Solutions to save, as much as wanted
+ - `:::frefem dataname=` (`:::freefem string`)<br/>
+ Name of solutions, seprated by a space
+ - `:::freefem withsurfacemesh=` (`:::freefem bool`)<br/>
+ $\codered$
+ - `:::freefem order=` (`:::freefem int[int]`)</br>
+ Order of solutions. Available: 0 or 1
+ - `:::freefem floatmesh=` (`:::freefem bool`)<br/>
+ $\codered$
+ - `:::freefem floatsol=` (`:::freefem bool`)<br/>
+ $\codered$
+ - `:::freefem bin=` (`:::freefem bool`)<br/>
+ If true, save file in binary format
+ - `:::freefem swap` (`:::freefem bool`)</br>
+ $\codered$
+
+<u>Output</u>:
+
+ - None
 
 ### vtkload
 

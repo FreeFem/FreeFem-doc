@@ -1,5 +1,3 @@
-# Static Problems
-
 ## Soap Film
 Our starting point here will be the mathematical model to find the shape of __soap film__ which is glued to the ring on the $xy-$plane
 

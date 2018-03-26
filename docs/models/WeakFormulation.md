@@ -1,10 +1,7 @@
-
-## Weak formulation
-
 In general, to obtain the integral or "weak" statements equivalent to system (\ref{eq:system} $\codered$) and boundary conditions we form a scalar dot product between an arbitrary magnetic field test function $\vec{H}^t=\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}$ and the components of our vectorial equation $A_1,A_2,A_3$, and integrate over the resonator's cross section domain $\Omega$ (and its boundary for the boundary conditions):
 
 \begin{equation}
-\int\limits_{\Omega}(H^t_{\rho}A_1+H^t_{\phi}A_2+H^t_{z}A_3)d\Omega
+	\int\limits_{\Omega}(H^t_{\rho}A_1+H^t_{\phi}A_2+H^t_{z}A_3)d\Omega
 \end{equation}
 
 We can reduce the order of partial derivatives in this integral by using the Green's formula for integration by parts. For example:

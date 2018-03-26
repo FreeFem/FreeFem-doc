@@ -127,6 +127,7 @@ modelsFilesList = [
     "models/Elasticity.md",
     "models/NonLinearStaticProblems.md",
     "models/EigenValueProblems.md",
+	"models/EvolutionProblems.md"
     "models/NavierStokesEquations.md",
     "models/VariationalInequality.md",
     "models/DomainDecomposition.md",
@@ -144,6 +145,7 @@ modelsNamesList = [
     "Elasticity",
     "Non-linear statis problems",
     "Eigenvalue problems",
+	"Evolution problems",
     "Navier-Stokes equations",
     "Variational inequality",
     "Domain decomposition",
@@ -245,6 +247,8 @@ TODOFile.write("\n## Tutorials\n");
 TODOFile.write("[TODO](../tutorial/TODO)\n")
 TODOFile.write("\n## Examples\n");
 TODOFile.write("[TODO](../examples/TODO)\n")
+TODOFile.write("\n## Models\n");
+TODOFile.write("[TODO](../models/TODO)\n")
 TODOFile.close();
 
 #documentation

@@ -1,44 +1,42 @@
+## Stokes and Navier-Stokes
 
-## Navier-Stokes Equation
-
-### Stokes and Navier-Stokes
-
-The Stokes equations are: for a given $\vec{f}\in L^2(\Omega)^2$,
+The Stokes equations are: for a given $\mathbf{f}\in L^2(\Omega)^2$,
 
 \begin{equation}
     \left.\begin{array}{cl}
- -\Delta \vec{u}+\nabla p & =\vec{f} \\
- \nabla\cdot \vec{u} &=0
+ -\Delta \mathbf{u}+\nabla p & =\mathbf{f} \\
+ \nabla\cdot \mathbf{u} &=0
  \end{array}\right\}\quad \hbox{ in }\Omega
 \end{equation}
 
-where $\vec{u}=(u_1,u_2)$ is the velocity vector and $p$ the pressure. For simplicity, let us choose Dirichlet boundary conditions on the velocity, $\vec{u}=\vec{u}_{\Gamma}$ on $\Gamma$.
+where $\mathbf{u}=(u_1,u_2)$ is the velocity vector and $p$ the pressure. For simplicity, let us choose Dirichlet boundary conditions on the velocity, $\mathbf{u}=\mathbf{u}_{\Gamma}$ on $\Gamma$.
 
 In Temam [Theorem 2.2], there ia a weak form of (\ref{eqn:Stokes} 9.43 $\codered$):
-Find $\vec{v}=(v_1,v_2)\in \vec{V}(\Omega)$
+
+Find $\mathbf{v}=(v_1,v_2)\in \mathbf{V}(\Omega)$
 
 \[
-\vec{V}(\Omega)=\{\vec{w}\in H^1_0(\Omega)^2|\; \textrm{div}\vec{w}=0\}
+\mathbf{V}(\Omega)=\{\mathbf{w}\in H^1_0(\Omega)^2|\; \textrm{div}\mathbf{w}=0\}
 \]
 
 which satisfy
 
 \[
-\sum_{i=1}^2\int_{\Omega}\nabla u_i\cdot \nabla v_i=\int_{\Omega}\vec{f}\cdot \vec{w}
+\sum_{i=1}^2\int_{\Omega}\nabla u_i\cdot \nabla v_i=\int_{\Omega}\mathbf{f}\cdot \mathbf{w}
 \quad \textrm{for all }v\in V
 \]
 
-Here it is used the existence $p\in H^1(\Omega)$ such that $\vec{u}=\nabla p$, if
+Here it is used the existence $p\in H^1(\Omega)$ such that $\mathbf{u}=\nabla p$, if
 
 \[
-\int_{\Omega}\vec{u}\cdot \vec{v}=0\quad \textrm{for all }\vec{v}\in
+\int_{\Omega}\mathbf{u}\cdot \mathbf{v}=0\quad \textrm{for all }\mathbf{v}\in
 V
 \]
 
 Another weak form is derived as follows: We put
 
 \begin{eqnarray*}
-\vec{V}=H^1_0(\Omega)^2;\quad
+\mathbf{V}=H^1_0(\Omega)^2;\quad
 W=\left\{q\in L^2(\Omega)\left|\; \int_{\Omega}q=0\right.\right\}
 \end{eqnarray*}
 
@@ -46,44 +44,44 @@ By multiplying the first equation in (\ref{eqn:Stokes} 9.43 $\codered$) with $v\
 second with $q\in W$, subsequent integration over $\Omega$, and an application of Green's formula, we have
 
 \begin{eqnarray*}
-\int_{\Omega}\nabla\vec{u}\cdot \nabla\vec{v}-\int_{\Omega}\textrm{div}\vec{v}\, p
-&=&\int_{\Omega}\vec{f}\cdot\vec{v}\\
-\int_{\Omega}\textrm{div}\vec{u}\, q&=&0
+\int_{\Omega}\nabla\mathbf{u}\cdot \nabla\mathbf{v}-\int_{\Omega}\textrm{div}\mathbf{v}\, p
+&=&\int_{\Omega}\mathbf{f}\cdot\mathbf{v}\\
+\int_{\Omega}\textrm{div}\mathbf{u}\, q&=&0
 \end{eqnarray*}
 
 This yields the weak form of (\ref{eqn:Stokes} 9.43 $\codered$):
-Find $(\vec{u},p)\in \vec{V}\times W$ such that
+Find $(\mathbf{u},p)\in \mathbf{V}\times W$ such that
 
 \begin{eqnarray}
-a(\vec{u},\vec{v})+b(\vec{v},p)&=&(\vec{f},\vec{v})\\
-b(\vec{u},q)&=&0
+a(\mathbf{u},\mathbf{v})+b(\mathbf{v},p)&=&(\mathbf{f},\mathbf{v})\\
+b(\mathbf{u},q)&=&0
 \end{eqnarray}
 
-for all $(\vec{v},q)\in V\times W$, where
+for all $(\mathbf{v},q)\in V\times W$, where
 
 \begin{eqnarray}
-a(\vec{u},\vec{v})&=&\int_{\Omega}\nabla \vec{u}\cdot \nabla\vec{v}
+a(\mathbf{u},\mathbf{v})&=&\int_{\Omega}\nabla \mathbf{u}\cdot \nabla\mathbf{v}
 =\sum_{i=1}^2\int_{\Omega}\nabla u_i\cdot \nabla v_i\\
-b(\vec{u},q)&=&-\int_{\Omega}\textrm{div}\vec{u}\, q
+b(\mathbf{u},q)&=&-\int_{\Omega}\textrm{div}\mathbf{u}\, q
 \end{eqnarray}
 
-Now, we consider finite element spaces $\vec{V}_h\subset \vec{V}$ and $W_h\subset W$,
+Now, we consider finite element spaces $\mathbf{V}_h\subset \mathbf{V}$ and $W_h\subset W$,
 and we assume the following basis functions
 
 \begin{eqnarray*}
-&&\vec{V}_h=V_h\times V_h,\quad
+&&\mathbf{V}_h=V_h\times V_h,\quad
 V_h=\{v_h|\; v_h=v_1\phi_1+\cdots +v_{M_V}\phi_{M_V}\},\\
 &&W_h=\{q_h|\; q_h=q_1\varphi_1+\cdots +q_{M_W}\varphi_{M_W}\}
 \end{eqnarray*}
 
 The discrete weak form is:
-Find $(\vec{u}_{h},p_{h}) \in \vec{V}_{h} \times W_{h}$ such that
+Find $(\mathbf{u}_{h},p_{h}) \in \mathbf{V}_{h} \times W_{h}$ such that
 
 \begin{equation}
     \begin{array}{cll}
-   a(\vec{u}_h,\vec{v}_h)+b(\vec{v}_h,p)  &= (\vec{f},\vec{v}_h) ,
-      &\forall \vec{v}_{h} \in \vec{V}_{h} \\
-    b(\vec{u}_h,q_h)&= 0,
+   a(\mathbf{u}_h,\mathbf{v}_h)+b(\mathbf{v}_h,p)  &= (\mathbf{f},\mathbf{v}_h) ,
+      &\forall \mathbf{v}_{h} \in \mathbf{V}_{h} \\
+    b(\mathbf{u}_h,q_h)&= 0,
      &\forall q_{h} \in W_{h}
     \end{array}
 \end{equation}
@@ -95,28 +93,28 @@ Find $(\vec{u}_{h},p_{h}) \in \vec{V}_{h} \times W_{h}$ such that
 	1. There is a constant $\alpha_h>0$ such that
 
 		\[
-		a(\vec{v}_h,\vec{v}_h)\ge \alpha\| \vec{v}_h\|_{1,\Omega}^2\quad \textrm{for all }\vec{v}_h\in Z_h
+		a(\mathbf{v}_h,\mathbf{v}_h)\ge \alpha\| \mathbf{v}_h\|_{1,\Omega}^2\quad \textrm{for all }\mathbf{v}_h\in Z_h
 		\]
 
 		where
 
 		\[
-		Z_h=\{\vec{v}_h\in \vec{V}_h|\; b(\vec{w}_h,q_h)=0\quad \textrm{for all }q_h\in W_h\}
+		Z_h=\{\mathbf{v}_h\in \mathbf{V}_h|\; b(\mathbf{w}_h,q_h)=0\quad \textrm{for all }q_h\in W_h\}
 		\]
 
 	2. There is a constant $\beta_h>0$ such that
 
 		\[
-		\sup_{\vec{v}_h\in \vec{V}_h}\frac{b(\vec{v}_h,q_h)}{\| \vec{v}_h\|_{1,\Omega}}
+		\sup_{\mathbf{v}_h\in \mathbf{V}_h}\frac{b(\mathbf{v}_h,q_h)}{\| \mathbf{v}_h\|_{1,\Omega}}
 		\ge \beta_h\| q_h\|_{0,\Omega}\quad \textrm{for all }q_h\in W_h
 		\]
 
-	Then we have an unique solution $(\vec{u}_h,p_h)$ of (\ref{eqn:vfStokes} 9.48 $\codered$) satisfying
+	Then we have an unique solution $(\mathbf{u}_h,p_h)$ of (\ref{eqn:vfStokes} 9.48 $\codered$) satisfying
 
 	\[
-	\| \vec{u}-\vec{u}_h\|_{1,\Omega}+\| p-p_h\|_{0,\Omega}
+	\| \mathbf{u}-\mathbf{u}_h\|_{1,\Omega}+\| p-p_h\|_{0,\Omega}
 	\le C\left(
-	\inf_{\vec{v}_h\in \vec{V}_h}\| u-v_h\|_{1,\Omega}
+	\inf_{\mathbf{v}_h\in \mathbf{V}_h}\| u-v_h\|_{1,\Omega}
 	+\inf_{q_h\in W_h}\| p-q_h\|_{0,\Omega}\right)
 	\]
 
@@ -126,8 +124,8 @@ Let us denote that
 
 \begin{eqnarray}
 A&=&(A_{ij}),\, A_{ij}=\int_{\Omega}\nabla \phi_j\cdot \nabla \phi_i\qquad
-i,j=1,\cdots,M_{\vec{V}}\\
-\vec{B}&=&(Bx_{ij},By_{ij}),\,
+i,j=1,\cdots,M_{\mathbf{V}}\\
+\mathbf{B}&=&(Bx_{ij},By_{ij}),\,
 Bx_{ij}=-\int_{\Omega}\p \phi_j/\p x\, \varphi_i\qquad
 By_{ij}=-\int_{\Omega}\p \phi_j/\p y\, \varphi_i\nonumber\\
 &&\qquad i=1,\cdots,M_W;j=1,\cdots,M_V\nonumber
@@ -138,48 +136,48 @@ then (\ref{eqn:vfStokes} 9.48 $\codered$) is written by
 \begin{eqnarray}
 \left(
 \begin{array}{cc}
-\vec{A}&\vec{\vec{B}}^*\\
-\vec{B}&0
+\mathbf{A}&\mathbf{\mathbf{B}}^*\\
+\mathbf{B}&0
 \end{array}
 \right)
 \left(
 \begin{array}{cc}
-\vec{U}_h\\
+\mathbf{U}_h\\
 \{p_h\}
 \end{array}
 \right)
 =
 \left(
 \begin{array}{cc}
-\vec{F}_h\\
+\mathbf{F}_h\\
 0
 \end{array}
 \right)
 \end{eqnarray}
 where
 \begin{eqnarray*}
-&&\vec{A}=\left(
+&&\mathbf{A}=\left(
 \begin{array}{cc}
 A&0\\
 0&A
 \end{array}
 \right)
 \qquad
-\vec{B}^*=\left\{
+\mathbf{B}^*=\left\{
 \begin{array}{c}
 Bx^T\\
 By^T
 \end{array}
 \right\}
 \qquad
-\vec{U}_h=\left\{
+\mathbf{U}_h=\left\{
 \begin{array}{c}
 \{u_{1,h}\}\\
 \{u_{2,h}\}
 \end{array}
 \right\}
 \qquad
-\vec{F}_h=\left\{
+\mathbf{F}_h=\left\{
 \begin{array}{c}
 \{\textstyle{\int_{\Omega}f_1\phi_i}\}\\
 \{\textstyle{\int_{\Omega}f_2\phi_i}\}
@@ -188,13 +186,13 @@ By^T
 \end{eqnarray*}
 
 __Penalty method:__ This method consists of replacing (\ref{eqn:vfStokes} 9.48 $\codered$) by a more regular problem: Find
-$(\vec{v}_h^{\epsilon},p_h^{\epsilon})\in \vec{V}_h\times \tilde{W}_{h}$ satisfying
+$(\mathbf{v}_h^{\epsilon},p_h^{\epsilon})\in \mathbf{V}_h\times \tilde{W}_{h}$ satisfying
 
 \begin{equation}
     \begin{array}{cll}
-   a(\vec{u}_h^\epsilon,\vec{v}_h)+b(\vec{v}_h,p_h^{\epsilon})  &= (\vec{f},\vec{v}_h) ,
-      &\forall \vec{v}_{h} \in \vec{V}_{h} \\
-    b(\vec{u}_h^{\epsilon},q_h)-\epsilon(p_h^{\epsilon},q_h)&= 0,
+   a(\mathbf{u}_h^\epsilon,\mathbf{v}_h)+b(\mathbf{v}_h,p_h^{\epsilon})  &= (\mathbf{f},\mathbf{v}_h) ,
+      &\forall \mathbf{v}_{h} \in \mathbf{V}_{h} \\
+    b(\mathbf{u}_h^{\epsilon},q_h)-\epsilon(p_h^{\epsilon},q_h)&= 0,
      &\forall q_{h} \in \tilde{W}_{h}
     \end{array}
 \end{equation}
@@ -202,7 +200,7 @@ $(\vec{v}_h^{\epsilon},p_h^{\epsilon})\in \vec{V}_h\times \tilde{W}_{h}$ satisfy
 where $\tilde{W}_h\subset L^2(\Omega)$. Formally, we have
 
 \[
-\textrm{div}\vec{u}_h^{\epsilon}=\epsilon p_h^{\epsilon}
+\textrm{div}\mathbf{u}_h^{\epsilon}=\epsilon p_h^{\epsilon}
 \]
 
 and the corresponding algebraic problem
@@ -210,20 +208,20 @@ and the corresponding algebraic problem
 \begin{eqnarray*}
 \left(
 \begin{array}{cc}
-\vec{A}&B^*\\
+\mathbf{A}&B^*\\
 B&-\epsilon I
 \end{array}
 \right)
 \left(
 \begin{array}{cc}
-\vec{U}_h^{\epsilon}\\
+\mathbf{U}_h^{\epsilon}\\
 \{p_h^{\epsilon}\}
 \end{array}
 \right)
 =
 \left(
 \begin{array}{cc}
-\vec{F}_h\\
+\mathbf{F}_h\\
 0
 \end{array}
 \right)
@@ -234,13 +232,13 @@ B&-\epsilon I
 	We can eliminate $p_h^\epsilon=(1/\epsilon)BU_h^{\epsilon}$ to obtain
 
 	\begin{eqnarray}
-	(A+(1/\epsilon)B^*B)\vec{U}_h^{\epsilon}=\vec{F}_h^{\epsilon}
+	(A+(1/\epsilon)B^*B)\mathbf{U}_h^{\epsilon}=\mathbf{F}_h^{\epsilon}
 	\end{eqnarray}
 
 	Since the matrix $A+(1/\epsilon)B^*B$ is symmetric, positive-definite, and sparse, (\ref{eqn:StiffPvfStokes} 9.52 $\codered$) can be solved by known technique. There is a constant $C>0$ independent of $\epsilon$ such that
 
 	\[
-	\|\vec{u}_h-\vec{u}_h^\epsilon\|_{1,\Omega}+
+	\|\mathbf{u}_h-\mathbf{u}_h^\epsilon\|_{1,\Omega}+
 	\|p_h-p_h^{\epsilon}\|_{0,\Omega}\le C\epsilon
 	\]
 
@@ -250,7 +248,7 @@ B&-\epsilon I
 
 The driven cavity flow problem is solved first at zero Reynolds number (Stokes flow) and then at Reynolds 100. The velocity pressure formulation is used first and then the calculation is repeated with the stream function vorticity formulation.
 
-We solve the driven cavity problem by the penalty method (\ref{eqn:PvfStokes} 9.51 $\codered$) where $\vec{u}_{\Gamma}\cdot \vec{n}=0$ and $\vec{u}_{\Gamma}\cdot \vec{s}=1$ on the top boundary and zero elsewhere ($\vec{n}$ is the unit normal to $\Gamma$, and $\vec{s}$ the unit tangent to $\Gamma$).
+We solve the driven cavity problem by the penalty method (\ref{eqn:PvfStokes} 9.51 $\codered$) where $\mathbf{u}_{\Gamma}\cdot \mathbf{n}=0$ and $\mathbf{u}_{\Gamma}\cdot \mathbf{s}=1$ on the top boundary and zero elsewhere ($\mathbf{n}$ is the unit normal to $\Gamma$, and $\mathbf{s}$ the unit tangent to $\Gamma$).
 
 The mesh is constructed by
 
@@ -262,7 +260,7 @@ We use a classical Taylor-Hood element technic to solve the problem:
 
 The velocity is approximated with the $P_{2}$ FE ( $X_{h}$ space), and the pressure is approximated with the $P_{1}$ FE ( $M_{h}$ space), where
 
-$$X_{h} = \left\{ \vec{v} \in H^{1}(]0,1[^2) \left|\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{2}\right.\right\}$$
+$$X_{h} = \left\{ \mathbf{v} \in H^{1}(]0,1[^2) \left|\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{2}\right.\right\}$$
 
 and
 
@@ -370,19 +368,19 @@ The classical iterative method of Uzawa is described by the algorithm
 
 * __Initialize:__ Let $p_h^0$ be an arbitrary chosen element of $L^2(\Omega)$.
 
-* __Calculate $\vec{u}_h$:__ Once $p_h^n$ is known, $\vec{v}_h^n$ is the solution of
+* __Calculate $\mathbf{u}_h$:__ Once $p_h^n$ is known, $\mathbf{v}_h^n$ is the solution of
 
   \[
-  \vec{u}_h^n = A^{-1}(\vec{f}_h-\vec{B}^*p_h^n)
+  \mathbf{u}_h^n = A^{-1}(\mathbf{f}_h-\mathbf{B}^*p_h^n)
   \]
 
 * __Advance $p_h$:__ Let $p_h^{n+1}$ be defined by
 
 	\[
-	p_h^{n+1}=p_h^n+\rho_n\vec{B}\vec{u}_h^n
+	p_h^{n+1}=p_h^n+\rho_n\mathbf{B}\mathbf{u}_h^n
 	\]
 
-There is a constant $\alpha>0$ such that $\alpha\le \rho_n\le 2$ for each $n$, then $\vec{u}_h^n$ converges to the solution $\vec{u}_h$, and then $B\vec{v}_h^n\to 0$ as $n\to \infty$ from the _Advance $p_h$_. This method in general converges quite slowly.
+There is a constant $\alpha>0$ such that $\alpha\le \rho_n\le 2$ for each $n$, then $\mathbf{u}_h^n$ converges to the solution $\mathbf{u}_h$, and then $B\mathbf{v}_h^n\to 0$ as $n\to \infty$ from the _Advance $p_h$_. This method in general converges quite slowly.
 
 First we define mesh, and the Taylor-Hood approximation.
 So $X_{h}$ is the velocity space, and $M_{h}$ is the pressure space.
@@ -405,7 +403,7 @@ varf a(u1,u2)= int2d(Th)(  dx(u1)*dx(u2) + dy(u1)*dy(u2) )
 // because we want zero on intersection %
 
 matrix A= a(Xh,Xh,solver=CG);
-matrix Bx= bx(Xh,Mh); // $\vec{B}=(Bx\quad By)$
+matrix Bx= bx(Xh,Mh); // $\mathbf{B}=(Bx\quad By)$
 matrix By= by(Xh,Mh);
 
 Xh bc1; bc1[] = a(0,Xh); // boundary condition contribution on u1
@@ -413,7 +411,7 @@ Xh bc2; bc2   = O ; // no boundary condition contribution on u2
 Xh b;
 ```
 
-$p_h^n\to \vec{B}A^{-1}(-\vec{B}^*p_h^n)=-\textrm{div}\vec{u}_h$
+$p_h^n\to \mathbf{B}A^{-1}(-\mathbf{B}^*p_h^n)=-\textrm{div}\mathbf{u}_h$
 is realized as the function `:::freefem divup`.
 
 ```freefem
@@ -423,7 +421,7 @@ func real[int] divup(real[int] & pp)
    b[]  = Bx'*pp; b[] *=-1; b[] += bc1[] ;    u1[] = A^-1*b[];
  // compute u2(pp)
    b[]  = By'*pp; b[] *=-1; b[] += bc2[] ;    u2[] = A^-1*b[];
- // $\vec{u}^n=A^{-1}(Bx^Tp^n\quad By^Tp^n)^T$
+ // $\mathbf{u}^n=A^{-1}(Bx^Tp^n\quad By^Tp^n)^T$
    ppp[] =   Bx*u1[]; // $  ppp= Bx u_{1} $
    ppp[] +=  By*u2[]; // $   \quad   +  By u_{2} $
    return ppp[] ;
@@ -434,7 +432,7 @@ func real[int] divup(real[int] & pp)
 
 ```freefem
 p=0;q=0; // $p_h^0 = 0$
-LinearCG(divup,p[],eps=1.e-6,nbiter=50); // $p_h^{n+1}=p_h^n+\vec{B}\vec{u}_h^n$
+LinearCG(divup,p[],eps=1.e-6,nbiter=50); // $p_h^{n+1}=p_h^n+\mathbf{B}\mathbf{u}_h^n$
 // if $n> 50$ or $|p_h^{n+1}-p_h^n|\le 10^{-6}$, then the loop end.
 divup(p[]); // compute the final solution
 

@@ -54,6 +54,7 @@ pages:
     - Elasticity: models/Elasticity.md
     - Non-linear static problems: models/NonLinearStaticProblems.md
     - Eigenvalue problems: models/EigenValueProblems.md
+    - Evolution problems: models/EvolutionProblems.md
     - Navier-Stokes equations: models/NavierStokesEquations.md
     - Variational inequality: models/VariationalInequality.md
     - Domain decomposition: models/DomainDecomposition.md
