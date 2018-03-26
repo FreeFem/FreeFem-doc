@@ -339,7 +339,7 @@ plot(Zcp, nbiso=40);
 
 There are famous estimation between the numerical result $u_h$ and the exact solution $u$ of the [Poisson's problem](../tutorial/Poisson):
 
-If triangulations $\{\mathcal{T}_h\}_{h\downarrow 0}$ is regular (see[Regular Triangulation](../documentation/MeshGeneration/#regular-triangulation-htriangle)), then we have the estimates
+If triangulations $\{\mathcal{T}_h\}_{h\downarrow 0}$ is regular (see [Regular Triangulation](../documentation/MeshGeneration/#regular-triangulation-htriangle)), then we have the estimates
 
 \begin{eqnarray}
 	|\nabla u - \nabla u_h|_{0,\Omega} &\le& C_1h \label{eqn::ErrorEstimatation1}\\
@@ -465,11 +465,11 @@ plot(uh, value=true);
 
 |<a name="Fig7">Fig. 7</a>: The isovalue of solution $u$ with periodic boundary condition|
 |:----:|
-|![PeriodicBoundaryConditions](images/StaticProblem_PeriodicBoundaryConditions.png)|
+|![PeriodicBoundaryConditions](images/StaticProblems_PeriodicBoundaryConditions.png)|
 
 The periodic condition does not necessarily require parallel boundaries. The following example give such example.
 
-!!!question "Periodic boundary conditions - non-parallel"
+!!!question "Periodic boundary conditions - non-parallel boundaries"
 	```freefem
 	// Parameters
 	int n = 10;
@@ -781,210 +781,233 @@ In lines 64 and 65, the relative errors are calculated, that is,
 where $u^0_h$ is the numerical solution in `:::freefem T0h` and
 $u^a_h$ is `:::freefem u` in this program.
 
-$\codered$ End of review
+## Poisson with mixed finite element
 
-## Poisson with mixted finite element
+Here we consider the Poisson equation with mixed boundary value problems:
 
-Here we consider the Poisson equation with mixed boundary value
-problems:
 For given functions $f$ , $g_d$, $g_n$, find $p$ such that
 
 \begin{eqnarray}
--\Delta p &=& 1 \qquad \textrm{in }\Omega\nonumber\\
-p&=&g_d\quad \textrm{on }\Gamma_D,\quad
-\p p/\p n=g_n\quad \textrm{on }\Gamma_N
+	-\Delta p &=& 1 & \textrm{ in }\Omega\\
+	p &=& g_d & \textrm{ on }\Gamma_D\\
+	\p p/\p n &=& g_n & \textrm{ on }\Gamma_N
 \end{eqnarray}
 
-where $\Gamma_D$ is a part of the boundary $\Gamma$ and
-$\Gamma_N=\Gamma\setminus \overline{\Gamma_D}$.
+where $\Gamma_D$ is a part of the boundary $\Gamma$ and $\Gamma_N=\Gamma\setminus \overline{\Gamma_D}$.
 
-The mixte formulation is: find $p$ and $\mathbf{u}$ such that
+The mixed formulation is: find $p$ and $\mathbf{u}$ such that
 
 \begin{eqnarray}
-\nabla p +  \mathbf{u}  &=& \mathbf{0} \qquad \textrm{in }\Omega\nonumber\\
-\nabla. \mathbf{u} &=& f \qquad \textrm{in }\Omega\nonumber\\
-p&=&g_d\quad \textrm{on }\Gamma_D,\quad
-\p u. n= \mathbf{g}_n.n \quad \textrm{on }\Gamma_N
+	\nabla p + \mathbf{u} &=& \mathbf{0} & \textrm{ in }\Omega\\
+	\nabla. \mathbf{u} &=& f & \textrm{ in }\Omega\\
+	p &=& g_d & \textrm{ on }\Gamma_D\\
+	\p u. n &=& \mathbf{g}_n.n & \textrm{ on }\Gamma_N
 \end{eqnarray}
 
 where $\mathbf{g}_n$ is a vector such that $\mathbf{g}_n.n = g_n$.
 
-The variationnal formulation is,
+The variational formulation is,
 
 \begin{eqnarray}
-  \forall \mathbf{v} \in \mathbb{V}_0 ,  \quad  &\int_\Omega p \nabla.v +  \mathbf{v} \mathbf{v}  &= \int_{\Gamma_d} g_d \mathbf{v}.n \nonumber\\
-   \forall {q} \in  \mathbb{P}   \quad  &  \int_\Omega q \nabla.u &= \int_\Omega q f \nonumber\\
-   & \p u. n &= \mathbf{g}_n.n \quad \textrm{on }\Gamma_N
+	\forall \mathbf{v} \in \mathbb{V}_0: & \int_\Omega p \nabla.v + \mathbf{v} \mathbf{v} &= \int_{\Gamma_d} g_d \mathbf{v}.n\\
+	\forall {q} \in \mathbb{P}: & \int_\Omega q \nabla.u &= \int_\Omega q f\nonumber\\
+	& \p u. n &= \mathbf{g}_n.n \quad \textrm{on }\Gamma_N
 \end{eqnarray}
 
-where the functionnal space are:
+where the functional space are:
 
-$$\mathbb{P}= L^2(\Omega),\qquad\mathbb{V}= H(div)=\{\mathbf{v}\in L^2(\Omega)^2,\nabla.\mathbf{v}\in L^2(\Omega)\}$$
+$$
+\mathbb{P}= L^2(\Omega),
+\qquad\mathbb{V}= H(div)=\{\mathbf{v}\in L^2(\Omega)^2,\nabla.\mathbf{v}\in L^2(\Omega)\}
+$$
 
 and
 
-$$\mathbb{V}_0 = \{\mathbf{v}\in \mathbb{V};\quad\mathbf{v}. n = 0 \quad\mathrm{on }\;\;\Gamma_N\}.$$
+$$
+\mathbb{V}_0 = \{\mathbf{v}\in \mathbb{V};\quad\mathbf{v}. n = 0 \quad\mathrm{on }\;\;\Gamma_N\}
+$$
 
-To write, the FreeFem++ example, we have just to choose the finites elements spaces.
-here $\mathbb{V}$ space is discretize with Raviart-Thomas finite element `:::freefem RT0` and $\mathbb{P}$ is discretize by constant finite element `:::freefem P0`.
+To write the FreeFem++ example, we have just to choose the finites elements spaces.
+
+Here $\mathbb{V}$ space is discretize with Raviart-Thomas finite element `:::freefem RT0` and $\mathbb{P}$ is discretize by constant finite element `:::freefem P0`.
 
  __Example 9.10__ LaplaceRT.edp
 
 ```freefem
-mesh Th=square(10,10);
-fespace Vh(Th,RT0);
-fespace Ph(Th,P0);
+// Parameters
 func gd = 1.;
 func g1n = 1.;
 func g2n = 1.;
 
-Vh [u1,u2],[v1,v2];
-Ph p,q;
+// Mesh
+mesh Th = square(10, 10);
 
-problem laplaceMixte([u1,u2,p],[v1,v2,q],
-                      solver=GMRES,eps=1.0e-10,
-                      tgv=1e30,dimKrylov=150)
-      =
-     int2d(Th)( p*q*1e-15 // this term is here to be sur
- // that all sub matrix are inversible (LU requirement)
-              + u1*v1 + u2*v2 + p*(dx(v1)+dy(v2)) + (dx(u1)+dy(u2))*q )
-  + int2d(Th) ( q)
-  - int1d(Th,1,2,3)( gd*(v1*N.x +v2*N.y)) // on  $\Gamma_D$
-  + on(4,u1=g1n,u2=g2n); // on $\Gamma_N$
+// Fespace
+fespace Vh(Th, RT0);
+Vh [u1, u2];
+Vh [v1, v2];
 
- laplaceMixte;
+fespace Ph(Th, P0);
+Ph p, q;
 
- plot([u1,u2],coef=0.1,wait=1,ps="lapRTuv.eps",value=true);
- plot(p,fill=1,wait=1,ps="laRTp.eps",value=true);
+// Problem
+problem laplaceMixte ([u1, u2, p], [v1, v2, q], solver=GMRES, eps=1.0e-10, tgv=1e30, dimKrylov=150)
+	= int2d(Th)(
+		  p*q*1e-15 //this term is here to be sure
+					// that all sub matrix are inversible (LU requirement)
+		+ u1*v1
+		+ u2*v2
+		+ p*(dx(v1)+dy(v2))
+		+ (dx(u1)+dy(u2))*q
+	)
+	+ int2d(Th) (
+		  q
+	)
+	- int1d(Th, 1, 2, 3)(
+		  gd*(v1*N.x +v2*N.y)
+	)
+	+ on(4, u1=g1n, u2=g2n)
+	;
+
+// Solve
+laplaceMixte;
+
+// Plot
+plot([u1, u2], coef=0.1, wait=true, value=true);
+plot(p, fill=1, wait=true, value=true);
 ```
 
 ## Metric Adaptation and residual error indicator
 
-We do metric mesh adaption and compute the classical
-residual error indicator $\eta_{T}$ on the element $T$ for the Poisson problem.
-
- __Example 9.11__ adaptindicatorP2.edp
+We do metric mesh adaption and compute the classical residual error indicator $\eta_{T}$ on the element $T$ for the Poisson problem.
 
 First, we solve the same problem as in a previous example.
 
 ```freefem
-border ba(t=0,1.0){x=t;   y=0;  label=1;}; // see Fig,\ref{L-shape2} $\codered$
-border bb(t=0,0.5){x=1;   y=t;  label=2;};
-border bc(t=0,0.5){x=1-t; y=0.5;label=3;};
-border bd(t=0.5,1){x=0.5; y=t;  label=4;};
-border be(t=0.5,1){x=1-t; y=1;  label=5;};
-border bf(t=0.0,1){x=0;   y=1-t;label=6;};
-mesh Th = buildmesh (ba(6) + bb(4) + bc(4) +bd(4) + be(4) + bf(6));
-savemesh(Th,"th.msh");
-fespace Vh(Th,P2);
-fespace Nh(Th,P0);
-Vh u,v;
-Nh rho;
+// Parameters
 real[int] viso(21);
-for (int i=0;i<viso.n;i++)
-  viso[i]=10.^(+(i-16.)/2.);
-real error=0.01;
-func f=(x-y);
-problem Probem1(u,v,solver=CG,eps=1.0e-6) =
-    int2d(Th,qforder=5)( u*v*1.0e-10+  dx(u)*dx(v) + dy(u)*dy(v))
-  + int2d(Th,qforder=5)( -f*v);
-/*************
+for (int i = 0; i < viso.n; i++)
+	viso[i] = 10.^(+(i-16.)/2.);
+real error = 0.01;
+func f = (x-y);
+
+// Mesh
+border ba(t=0, 1.0){x=t; y=0; label=1;}
+border bb(t=0, 0.5){x=1; y=t; label=2;}
+border bc(t=0, 0.5){x=1-t; y=0.5; label=3;}
+border bd(t=0.5, 1){x=0.5; y=t; label=4;}
+border be(t=0.5, 1){x=1-t; y=1; label=5;}
+border bf(t=0.0, 1){x=0; y=1-t; label=6;}
+mesh Th = buildmesh(ba(6) + bb(4) + bc(4) + bd(4) + be(4) + bf(6));
+
+// Fespace
+fespace Vh(Th, P2);
+Vh u, v;
+
+fespace Nh(Th, P0);
+Nh rho;
+
+// Problem
+problem Probem1 (u, v, solver=CG, eps=1.0e-6)
+	= int2d(Th, qforder=5)(
+		  u*v*1.0e-10
+		+ dx(u)*dx(v)
+		+ dy(u)*dy(v)
+	)
+	+ int2d(Th, qforder=5)(
+		- f*v
+	)
+	;
 ```
 
 Now, the local error indicator $\eta_{T}$ is:
-\def\Th{\mathcal{T}_{h}}
-\def\AK{\mathcal{E}_{K}}
-$\codered$
 
-$$\eta_{T} =\left(  h_{T}^{2} || f + \Delta u_{{h}} ||_{L^{2}(T)}^{2} +\sum_{e\in \AK} h_{e} \,||\, [ \frac{\p u_{h}}{\p n_{k}}] \,||^{2}_{L^{2}(e)} \right)^{\frac{1}{2}}
-   $$
-where $h_{T}$ is the longest's edge of  $T$, ${\cal E}_T$ is the set of $T$ edge not on
-$\Gamma=\p \Omega$, $n_{T}$ is the outside unit normal to $K$, $h_{e}$ is the length of edge $e$,
-$[ g ]$ is the jump of the function $g$ across edge (left value minus right value).
+$$
+\eta_{T} =\left( h_{T}^{2} || f + \Delta u_{{h}} ||_{L^{2}(T)}^{2} +\sum_{e\in \mathcal{E}_{K}} h_{e} \,||\, [ \frac{\p u_{h}}{\p n_{k}}] \,||^{2}_{L^{2}(e)} \right)^{\frac{1}{2}}
+$$
 
-Of course, we can use a variational form to compute $\eta_{T}^{2}$,
-with test function constant function in each triangle.
+where $h_{T}$ is the longest edge of $T$, ${\cal E}_T$ is the set of $T$ edge not on $\Gamma=\p \Omega$, $n_{T}$ is the outside unit normal to $K$, $h_{e}$ is the length of edge $e$, $[ g ]$ is the jump of the function $g$ across edge (left value minus right value).
+
+Of course, we can use a variational form to compute $\eta_{T}^{2}$, with test function constant function in each triangle.
 
 ```freefem
-*************/
+// Error
+varf indicator2 (uu, chiK)
+	= intalledges(Th)(
+		  chiK*lenEdge*square(jump(N.x*dx(u) + N.y*dy(u)))
+	)
+	+ int2d(Th)(
+		  chiK*square(hTriangle*(f + dxx(u) + dyy(u)))
+	)
+	;
 
-varf indicator2(uu,chiK) =
-     intalledges(Th)(chiK*lenEdge*square(jump(N.x*dx(u)+N.y*dy(u))))
-    +int2d(Th)(chiK*square(hTriangle*(f+dxx(u)+dyy(u))) );
-for (int i=0;i< 4;i++)
-{
-  Probem1;
-   cout << u[].min << " " << u[].max << endl;
-   plot(u,wait=1);
-   cout << " indicator2 " << endl;
+// Mesh adaptation loop
+for (int i = 0; i < 4; i++){
+	// Solve
+	Probem1;
+	cout << u[].min << " " << u[].max << endl;
+	plot(u, wait=true);
 
-   rho[] = indicator2(0,Nh);
-   rho=sqrt(rho);
-   cout << "rho =   min " << rho[].min << " max=" << rho[].max << endl;
-   plot(rho,fill=1,wait=1,cmm="indicator density ",ps="rhoP2.eps",
-                                   value=1,viso=viso,nbiso=viso.n);
-   plot(Th,wait=1,cmm="Mesh ",ps="ThrhoP2.eps");
-   Th=adaptmesh(Th,[dx(u),dy(u)],err=error,anisomax=1);
-   plot(Th,wait=1);
-   u=u;
-   rho=rho;
-  error = error/2;
-} ;
+	// Error
+	rho[] = indicator2(0, Nh);
+	rho = sqrt(rho);
+	cout << "rho = min " << rho[].min << " max=" << rho[].max << endl;
+	plot(rho, fill=true, wait=true, cmm="indicator density", value=true, viso=viso, nbiso=viso.n);
+
+	// Mesh adaptation
+	plot(Th, wait=true, cmm="Mesh (before adaptation)");
+	Th = adaptmesh(Th, [dx(u), dy(u)], err=error, anisomax=1);
+	plot(Th, wait=true, cmm="Mesh (after adaptation)");
+	u = u;
+	rho = rho;
+	error = error/2;
+}
 ```
 
-If the method is correct, we expect to look the graphics by an almost constant function $\eta$ on your computer as in Fig. \ref{fig:rhoP2} 9.11 $\codered$.
+If the method is correct, we expect to look the graphics by an almost constant function $\eta$ on your computer as in [Fig. 11](#Fig11).
 
-|Fig. 9.11: Density of the error indicator with isotropic $P_{2}$ metric|
+|<a name="Fig11">Fig. 11</a>: Density of the error indicator with isotropic $P_{2}$ metric|
 |:----:|
-|![rhoP2](images/rhoP2.png)|
-|![ThrhoP2](images/ThrhoP2.png)|
+|![MetricAdaptation](images/StaticProblems_MetricAdaptation.png)|
+|![MetricAdaptation2](images/StaticProblems_MetricAdaptation2.png)|
 
 ## Adaptation using residual error indicator
 
-In the previous example we compute the error indicator, now we use it, to adapt the mesh.
-The new mesh size is given by the following formulae:
+In the previous example we compute the error indicator, now we use it, to adapt the mesh. The new mesh size is given by the following formulae:
 
-$$h_{n+1}(x)=\frac{h_{n}(x)}{f_{n}(\eta_K(x))}$$
+$$
+h_{n+1}(x) = \frac{h_{n}(x)}{f_{n}(\eta_K(x))}
+$$
 
-where $\eta_n(x)$ is the level of error at point $x$ given by the local
-error indicator, $h_n$ is the previous "mesh size" field, and $f_n$ is a user
-function define by
-$f_n = min(3,max(1/3,\eta_n / \eta_n^* ))$ where $\eta_n^* =mean(\eta_n) c $, and $c$ is an user
- coefficient generally close to one.
+where $\eta_n(x)$ is the level of error at point $x$ given by the local error indicator, $h_n$ is the previous "mesh size" field, and $f_n$ is a user function define by $f_n = min(3,max(1/3,\eta_n / \eta_n^* ))$ where $\eta_n^* =mean(\eta_n) c $, and $c$ is an user coefficient generally close to one.
 
- __Example 9.12__ AdaptResidualErrorIndicator.edp
-
-First a macro `:::freefem MeshSizecomputation` to get a $P_1$ mesh size as the average of edge length.
+First a macro `:::freefem MeshSizecomputation` is defined to get a $P_1$ mesh size as the average of edge length.
 
 ```freefem
-// macro the get the current mesh size
-// parameter
-// in: Th the mesh
+// macro the get the current mesh size parameter
+// in:
+// Th the mesh
 // Vh P1 fespace on Th
 // out :
 // h: the Vh finite element finite set to the current mesh size
-macro MeshSizecomputation(Th,Vh,h)
-{  /* Th mesh \
-	 Vh P1 finite element space
-	 h the P1 mesh size value */
+macro MeshSizecomputation (Th, Vh, h)
+{
 	real[int] count(Th.nv);
-	/* mesh size (lenEdge =  integral(e) 1 ds)  */
-	varf vmeshsizen(u,v)=intalledges(Th,qfnbpE=1)(v);
-	/* number of edge / par vertex */
-	varf vedgecount(u,v)=intalledges(Th,qfnbpE=1)(v/lenEdge);
-   /*
-	  computation of the mesh size
-	  ----------------------------- */
-	count=vedgecount(0,Vh);
-	h[]=0.;
-	h[]=vmeshsizen(0,Vh);
-	cout << " count min = "<< count.min << " " << count.max << endl;
-	h[]=h[]./count;
-    cout << " -- bound meshsize = " <<h[].min << " " << h[].max << endl;
-} // end of macro MeshSizecomputation
+	/*mesh size (lenEdge = integral(e) 1 ds)*/
+	varf vmeshsizen (u, v) = intalledges(Th, qfnbpE=1)(v);
+	/*number of edges per vertex*/
+	varf vedgecount (u, v) = intalledges(Th, qfnbpE=1)(v/lenEdge);
+	/*mesh size*/
+	count = vedgecount(0, Vh);
+	h[] = 0.;
+	h[] = vmeshsizen(0, Vh);
+	cout << "count min = " << count.min << " max = " << count.max << endl;
+	h[] = h[]./count;
+	cout << "-- bound meshsize = " << h[].min << " " << h[].max << endl;
+} //
 ```
 
-A second macro to remesh according to the new mesh size.
+A second macro to re-mesh according to the new mesh size.
 
 ```freefem
 // macro to remesh according the de residual indicator
@@ -992,77 +1015,98 @@ A second macro to remesh according to the new mesh size.
 // Th the mesh
 // Ph P0 fespace on Th
 // Vh P1 fespace on Th
-// vindicator the varf of to evaluate the indicator to ${}^2$
-// coef on etameam ..
-// ------
-
-macro ReMeshIndicator(Th,Ph,Vh,vindicator,coef)
+// vindicator the varf to evaluate the indicator
+// coef on etameam
+macro ReMeshIndicator (Th, Ph, Vh, vindicator, coef)
 {
 	Vh h=0;
-	/*evalutate the mesh size  */
-	MeshSizecomputation(Th,Vh,h);
+	/*evaluate the mesh size*/
+	MeshSizecomputation(Th, Vh, h);
 	Ph etak;
-	etak[]=vindicator(0,Ph);
-	etak[]=sqrt(etak[]);
+	etak[] = vindicator(0, Ph);
+	etak[] = sqrt(etak[]);
 	real etastar= coef*(etak[].sum/etak[].n);
-	cout << " etastar = " << etastar << " sum=" << etak[].sum << " " << endl;
+	cout << "etastar = " << etastar << " sum = " << etak[].sum << " " << endl;
 
-	/* here etaK is discontinous
-	   we use the P1 L2 projection with mass lumping . */
+	/*etaK is discontinous*/
+	/*we use P1 L2 projection with mass lumping*/
+	Vh fn, sigma;
+	varf veta(unused, v) = int2d(Th)(etak*v);
+	varf vun(unused, v) = int2d(Th)(1*v);
+	fn[] = veta(0, Vh);
+	sigma[] = vun(0, Vh);
+	fn[] = fn[]./ sigma[];
+	fn = max(min(fn/etastar,3.),0.3333);
 
-	Vh fn,sigma;
-	varf veta(unused,v)=int2d(Th)(etak*v);
-	varf vun(unused,v)=int2d(Th)(1*v);
-	fn[]  = veta(0,Vh);
-	sigma[]= vun(0,Vh);
-	fn[]= fn[]./ sigma[];
-	fn =  max(min(fn/etastar,3.),0.3333) ;
-
-	/* new mesh size */
-	h = h / fn ;
-	/* plot(h,wait=1); */
-	/*  build the new mesh */
-	Th=adaptmesh(Th,IsMetric=1,h,splitpbedge=1,nbvx=10000);
-}
+	/*new mesh size*/
+	h = h / fn;
+	/*build the mesh*/
+	Th = adaptmesh(Th, IsMetric=1, h, splitpbedge=1, nbvx=10000);
+} //
 ```
 
-We skip the mesh construction, see the previous example,
-
 ```freefem
-// FE space definition ---
-fespace Vh(Th,P1); // for the mesh size and solution
-fespace Ph(Th,P0); // for the error indicator
-
-real hinit=0.2; // initial mesh size
-Vh h=hinit; // the FE function for the mesh size
-// to build a mesh with a given mesh size  : meshsize
-Th=adaptmesh(Th,h,IsMetric=1,splitpbedge=1,nbvx=10000);
-plot(Th,wait=1,ps="RRI-Th-init.eps");
-Vh u,v;
-
+// Parameters
+real hinit = 0.2; //initial mesh size
 func f=(x-y);
 
-problem Poisson(u,v) =
-    int2d(Th,qforder=5)( u*v*1.0e-10+  dx(u)*dx(v) + dy(u)*dy(v))
-  - int2d(Th,qforder=5)( f*v);
+// Mesh
+border ba(t=0, 1.0){x=t; y=0; label=1;}
+border bb(t=0, 0.5){x=1; y=t; label=2;}
+border bc(t=0, 0.5){x=1-t; y=0.5; label=3;}
+border bd(t=0.5, 1){x=0.5; y=t; label=4;}
+border be(t=0.5, 1){x=1-t; y=1; label=5;}
+border bf(t=0.0, 1){x=0; y=1-t; label=6;}
+mesh Th = buildmesh(ba(6) + bb(4) + bc(4) + bd(4) + be(4) + bf(6));
 
- varf indicator2(unused,chiK) =
-     intalledges(Th)(chiK*lenEdge*square(jump(N.x*dx(u)+N.y*dy(u))))
-    +int2d(Th)(chiK*square(hTriangle*(f+dxx(u)+dyy(u))) );
+// Fespace
+fespace Vh(Th, P1); //for the mesh size and solution
+Vh h = hinit; //the FE function for the mesh size
+Vh u, v;
 
-for (int i=0;i< 10;i++)
-{
-	u=u;
+fespace Ph(Th, P0); //for the error indicator
+
+//Build a mesh with the given mesh size hinit
+Th = adaptmesh(Th, h, IsMetric=1, splitpbedge=1, nbvx=10000);
+plot(Th, wait=1);
+
+// Problem
+problem Poisson (u, v)
+	= int2d(Th, qforder=5)(
+		  u*v*1.0e-10
+		+ dx(u)*dx(v)
+		+ dy(u)*dy(v)
+	)
+	- int2d(Th, qforder=5)(
+		  f*v
+	)
+	;
+
+ varf indicator2 (unused, chiK)
+	= intalledges(Th)(
+		  chiK*lenEdge*square(jump(N.x*dx(u) + N.y*dy(u)))
+	)
+	+ int2d(Th)(
+		  chiK*square(hTriangle*(f + dxx(u) + dyy(u)))
+	)
+	;
+
+// Mesh adaptation loop
+for (int i = 0; i < 10; i++){
+	u = u;
+
+	// Solve
 	Poisson;
-	plot(Th,u,wait=1);
-	real cc=0.8;
-	if(i>5) cc=1;
-	ReMeshIndicator(Th,Ph,Vh,indicator2,cc);
-	plot(Th,wait=1);
+	plot(Th, u, wait=true);
+
+	real cc = 0.8;
+	if (i > 5) cc=1;
+	ReMeshIndicator(Th, Ph, Vh, indicator2, cc);
+	plot(Th, wait=true);
 }
 ```
 
 |Fig. 9.12: The error indicator with isotropic $P_{1}$, the mesh and isovalue of the solution|
 |:----:|
-|![arei-etak](images/arei-etak.png)|
-|![arei-Thu](images/arei-Thu.png)|
+|![AdaptationResidualError](images/StaticProblems_AdaptationResidualError.png)|
+|![AdaptationResidualError2](images/StaticProblems_AdaptationResidualError2.png)|

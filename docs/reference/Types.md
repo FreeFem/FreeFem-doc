@@ -287,6 +287,9 @@ Laplacian;
 
 	Refer to the [UMFPACK website](http://faculty.cse.tamu.edu/davis/research.html) for more informations.
 
+!!!note "`:::freefem dimKrylov`"
+	$\codered$
+
 Usage of `:::freefem problem` is detailled in the [tutorial](../tutorial).
 
 ### solve
@@ -435,6 +438,9 @@ real[int] Aii = A.diag;
 
 !!!note "`:::freefem UMFPACK`"
 	See [`:::freefem problem`](#problem).
+
+!!!note "`:::freefem dimKrylov`"
+		$\codered$
 
 !!!note "datafilename"
 	Name of the file containing solver parameters, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)
