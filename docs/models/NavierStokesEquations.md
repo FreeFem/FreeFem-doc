@@ -3,15 +3,16 @@
 The Stokes equations are: for a given $\mathbf{f}\in L^2(\Omega)^2$,
 
 \begin{equation}
-    \left.\begin{array}{cl}
- -\Delta \mathbf{u}+\nabla p & =\mathbf{f} \\
- \nabla\cdot \mathbf{u} &=0
- \end{array}\right\}\quad \hbox{ in }\Omega
+	\left.\begin{array}{cl}
+		\label{eqn::Stokes}
+		-\Delta \mathbf{u}+\nabla p & =\mathbf{f} \\
+		\nabla\cdot \mathbf{u} &=0
+	\end{array}\right\}\quad \hbox{ in }\Omega
 \end{equation}
 
 where $\mathbf{u}=(u_1,u_2)$ is the velocity vector and $p$ the pressure. For simplicity, let us choose Dirichlet boundary conditions on the velocity, $\mathbf{u}=\mathbf{u}_{\Gamma}$ on $\Gamma$.
 
-In Temam [Theorem 2.2], there ia a weak form of (\ref{eqn:Stokes} 9.43 $\codered$):
+In Temam [Theorem 2.2], there ia a weak form of \eqref{eqn::Stokes}:
 
 Find $\mathbf{v}=(v_1,v_2)\in \mathbf{V}(\Omega)$
 
