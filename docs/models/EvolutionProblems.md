@@ -119,7 +119,7 @@ Using the identity just above, we can calculate the finite element approximation
 	!!! note
 		The stiffness matrix in the loop is used over and over again. FreeFem++ support reuses of stiffness matrix.
 
-### Mathematical Theory on Time Difference Approximations.
+## Mathematical Theory on Time Difference Approximations.
 
 In this section, we show the advantage of implicit schemes. Let $V, H$ be separable Hilbert space and $V$ is dense in $H$. Let $a$ be a continuous bilinear form over $V \times V$ with coercivity and symmetry.
 
@@ -272,7 +272,7 @@ if the following are satisfied:
 
 	We can see in <a href="Fig19">Fig. 19</a> that $u_h^n(\theta)$ become unstable at $\theta=0.4$, and figures are omitted in the case $\theta<0.4$.
 
-### Convection
+## Convection
 
 The hyperbolic equation
 
@@ -425,7 +425,7 @@ The exact solution is $u(x, t) = u(\mathbf{X}(t))$ where $\mathbf{X}$ equals $x$
 	|:----:|
 	|![Convect2](images/EvolutionProblem_Convect2.png)|
 
-### 2D Black-Scholes equation for an European Put option
+## 2D Black-Scholes equation for an European Put option
 
 In mathematical finance, an option on two assets is modeled by a Black-Scholes equations in two space variables, (see for example [WILMOTT1995](#WILMOTT1995) or [ACHDOU2005](#ACHDOU2005)).
 

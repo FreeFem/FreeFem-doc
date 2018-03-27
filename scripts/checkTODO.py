@@ -136,8 +136,7 @@ modelsFilesList = [
 	"models/FreeBoundaryProblem.md",
 	"models/NonLinearElasticity.md",
 	"models/CompressibleNeoHookeanMaterials.md",
-	"models/WhisperingGalleryModes.md",
-	"models/WeakFormulation.md"
+	"models/WhisperingGalleryModes.md"
 ]
 modelsNamesList = [
 	"Home",
@@ -154,8 +153,7 @@ modelsNamesList = [
 	"Free boundary problem",
 	"Non-linear elasticity",
 	"Compressible Neo-Hookean materials",
-	"Whispering gallery modes",
-	"Weak formulation"
+	"Whispering gallery modes"
 ]
 modelsTODOFile = "models/TODO.md"
 

@@ -1,8 +1,6 @@
+_Written by Alex Sadovsky_
 
-## Compressible Neo-Hookean Materials: Computational Solutions
-
-Author : Alex Sadovsky mailsashas@gmail.com $\codered$
-
+$$
 \def\bR{{\bf R}}
 \def\bP{{\bf P}}
 \def\bZ{{\bf Z}}
@@ -49,16 +47,9 @@ Author : Alex Sadovsky mailsashas@gmail.com $\codered$
 \def\th{\theta}
 \def\sgn{\mbox{sgn}}
 \def\qed{\; Q.E.D.\\}
-
-\def\eqn{\begin{equation}}
-\def\nqe{\end{equation}}
-
-\def\eqnar{\begin{eqnarray}}
 \def\ranqe{\end{eqnarray}}
-
 \def\ol{\overline}
 \def\ul{\underline}
-
 \def\bB{{\bf B}}
 \def\bC{{\bf C}}
 \def\bD{{\bf D}}
@@ -69,60 +60,54 @@ Author : Alex Sadovsky mailsashas@gmail.com $\codered$
 \def\bS{{\bf S}}
 \def\bT{{\bf T}}
 \def\bsig{{\bf \sigma}}
+$$
 
-### Notation
+## Notation
 
-In what follows, the symbols $\vec{u}, \bF, \bB, \bC, \stress$
-denote, respectively, the displacement field, the deformation
-gradient, the left Cauchy-Green strain tensor $\bB = \bF \bF^T$, the
-right Cauchy-Green strain tensor $\bC =\bF^T \bF$, and the Cauchy stress
-tensor.  We also introduce the symbols $I_1 := \tr \bC$ and $J := \det
-\bF$.  Use will be made of the identity
-\eqn
+In what follows, the symbols $\vec{u}, \bF, \bB, \bC, \stress$ denote, respectively, the displacement field, the deformation gradient, the left Cauchy-Green strain tensor $\bB = \bF \bF^T$, the right Cauchy-Green strain tensor $\bC =\bF^T \bF$, and the Cauchy stress tensor.
+
+We also introduce the symbols $I_1 := \tr \bC$ and $J := \det\bF$. Use will be made of the identity
+\begin{equation}
 {\PD{}J \over \PD{}\bC} = J \bC^{-1}
-\nqe
-The symbol $\Id$ denotes the identity tensor.  The symbol $\Omega_{0}$
-denotes the reference configuration of the body to be deformed.  The
-unit volume in the reference (resp., deformed) configuration is
-denoted $dV$ (resp., $dV_{0}$); these two are related by
+\end{equation}
+
+The symbol $\Id$ denotes the identity tensor. The symbol $\Omega_{0}$ denotes the reference configuration of the body to be deformed. The unit volume in the reference (resp., deformed) configuration is denoted $dV$ (resp., $dV_{0}$); these two are related by
 $$
 dV = J dV_{0},
 $$
-which allows an integral over $\Omega$ involving the Cauchy stress
-$\bT$ to be rewritten as an integral of the Kirchhoff stress $\kappa =
-J \bT$ over $\Omega_{0}$.
+which allows an integral over $\Omega$ involving the Cauchy stress $\bT$ to be rewritten as an integral of the Kirchhoff stress $\kappa = J \bT$ over $\Omega_{0}$.
 
-### Recommended References
+## Recommended References
 
-For an exposition of nonlinear elasticity and of the underlying linear- and tensor algebra, see \cite{Ogden} $\codered$. For an advanced mathematical analysis of the Finite Element Method, see \cite{Raviart-Thomas} $\codered$. An explanation of the Finite Element formulation of a nonlinear elastostatic boundary value problem, see  [http://www.engin.brown.edu/courses/en222/Notes/FEMfinitestrain/FEMfinitestrain.htm](http://www.engin.brown.edu/courses/en222/Notes/FEMfinitestrain/FEMfinitestrain.htm).
+For an exposition of nonlinear elasticity and of the underlying linear- and tensor algebra, see [OGDEN1984](#OGDEN1984). For an advanced mathematical analysis of the Finite Element Method, see [RAVIART1998](#RAVIART1998).
 
-### A Neo-Hookean Compressible Material
+## A Neo-Hookean Compressible Material
 
 _Constitutive Theory and Tangent Stress Measures_
 
 The strain energy density function is given by
-\eqn
+\begin{equation}
 W = {\mu \over 2}(I_1 - \tr \Id - 2 \ln J)
-\nqe
-(see \cite{Horgan-Saccomandi} $\codered$, formula (12)).
+\end{equation}
+(see [HORGAN2004](#HORGAN2004), formula (12)).
 
 The corresponding 2nd Piola-Kirchoff stress tensor is given by
-\eqn
+\begin{equation}
 \bS_{n} := {\PD{} W \over \PD{}\bE} (\bF_{n})
 =
 \mu (\Id - \bC^{-1})
-\nqe
+\end{equation}
 The Kirchhoff stress, then, is
-\eqn
+\begin{equation}
 \kappa
 = \bF \bS \bF^{T}
 = \mu (\bB  - \Id)
-\nqe
+\end{equation}
 The tangent Kirchhoff stress tensor at $\bF_{n}$ acting on
 $
 \delta \bF_{n+1}
 $ is, consequently,
-\eqn
+\begin{equation}
 {\PD{} \kappa \over \PD{} \bF} (\bF_{n}) \delta \bF_{n+1}
 =
 \mu
@@ -131,7 +116,7 @@ $ is, consequently,
 +
 \delta \bF_{n+1} (\bF_{n})^T
 \right]
-\nqe
+\end{equation}
 
 _The Weak Form of the BVP in the Absence of Body (External) Forces_
 
@@ -170,7 +155,7 @@ $$
 \vec{u}_{n+1} = \vec{u}_{n} + \delta \vec{u}_{n+1}
 $$
 by solving the weak formulation
-\eqn
+\begin{equation}
 \arr{lll}
 0
 & = &
@@ -252,7 +237,7 @@ by solving the weak formulation
 \rra
 \quad
 \mbox{for all test functions $\vec{w}$,}
-\nqe
+\end{equation}
 where we have taken
 $$
 \delta \bF_{n+1} = \Grad \otimes \delta \vec{u}_{n+1}
@@ -263,18 +248,18 @@ here bears no variational context.  By $\delta$ we mean simply an
 increment in the sense of Newton's Method.  The role of a variational virtual displacement here
 is played by $\vec{w}$.
 
-### An Approach to Implementation in FreeFem++
+## An Approach to Implementation in FreeFem++
 
 The associated file is  `:::freefem examples++-tutorial/nl-elast-neo-Hookean.edp`.
 
 Introducing the code-like notation, where a string in $< >$'s is to be
 read as one symbol, the individual components of the tensor
-\eqn
+\begin{equation}
 <TanK>
  :=
 {\PD{} \kappa \over \PD{} \bF}[\bF_{n}]
 \delta \bF_{n+1}
-\nqe
+\end{equation}
 will be implemented as the macros $<TanK11>, <TanK12>, \ldots$.
 
 The individual components of the tensor quantities
@@ -300,7 +285,7 @@ $$
 \bF_{n}^{-1},
 $$
 will be implemented as the macros
-\eqn
+\begin{equation}
 
 \arr{l}
 <d1Aux11>, <d1Aux12>, \quad \ldots \quad, <d1Aux22>,\\
@@ -308,19 +293,19 @@ will be implemented as the macros
 <d3Aux11>, <d3Aux12>, \quad \ldots \quad, <d3Aux22>\\
 <d4Aux11>, <d4Aux12>, \quad \ldots \quad, <d4Aux22>\\
 \rra,
-\nqe
+\end{equation}
 respectively.
 
 In the above notation, the tangent Kirchhoff stress term becomes
-\eqn
+\begin{equation}
 {\PD{} \kappa \over \PD{} \bF} (\bF_{n})
 \: \delta \bF_{n+1}
 =
 \mu
 \: \bD_{1}
-\nqe
+\end{equation}
 while the weak BVP formulation acquires the form
-\eqn
+\begin{equation}
 \arr{lll}
 0 & = &
 \int_{\Omega_0}
@@ -352,4 +337,12 @@ while the weak BVP formulation acquires the form
 \rra
 \quad
 \mbox{for all test functions $\vec{w}$}
-\nqe
+\end{equation}
+
+## References
+
+<a name="OGDEN1984">[OGDEN1984]</a> OGDEN, Ray W. Non-linear elastic deformations. 1984.
+
+<a name="RAVIART1998">[RAVIART1998]</a> RAVIART, Pierre-Arnaud, THOMAS, Jean-Marie, CIARLET, Philippe G., et al. Introduction à l'analyse numérique des équations aux dérivées partielles. Paris : Dunod, 1998.
+
+<a name="HORGAN2004">[HORGAN2004]</a> HORGAN, Cornelius O. et SACCOMANDI, Giuseppe. Constitutive models for compressible nonlinearly elastic materials with limiting chain extensibility. Journal of Elasticity, 2004, vol. 77, no 2, p. 123-138.

@@ -60,14 +60,16 @@ If you want finer control over the method employed in `ARPACK`, you can specify 
 
 	where the functions FOP1 and FB define respectively the matrix product of $OP^{-1} = (A - \sigma B)^{-1}$ and $B$
 
-You can also specify which subset of eigenvalues you want to compute (`:::freefem which=`). The default value is `:::freefem which="LM"`, for eigenvalues with largest magnitude. `"SM"` is for smallest magnitude, `"LA"` for largest algebraic value, `"SA"` for smallest algebraic value, and `"BE"` for both ends of the spectrum.
+You can also specify which subset of eigenvalues you want to compute (`:::freefem which=`). The default value is `:::freefem which="LM"`, for eigenvalues with largest magnitude. `:::freefem "SM"` is for smallest magnitude, `:::freefem "LA"` for largest algebraic value, `:::freefem "SA"` for smallest algebraic value, and `:::freefem "BE"` for both ends of the spectrum.
 
 Remark: For complex problems, you need to use the keyword `:::freefem complexEigenValue` instead of `:::freefem EigenValue` when passing operators through functions.
 
 !!! note
 	Boundary condition and Eigenvalue Problems
 
-	The locking (Dirichlet) boundary condition is make with exact penalization so we put `:::freefem 1e30=tgv` on the diagonal term of the locked degree of freedom (see [Finite Element chapter](../documentation/FiniteElement/#variational-form-sparse-matrix-pde-data-vector)). So take Dirichlet boundary condition just on $A$ and not on $B$. because we solve $ w=OP^-1*B*v$.
+	The locking (Dirichlet) boundary condition is make with exact penalization so we put `:::freefem 1e30=tgv` on the diagonal term of the locked degree of freedom (see [Finite Element chapter](../documentation/FiniteElement/#variational-form-sparse-matrix-pde-data-vector)). So take Dirichlet boundary condition just on $A$ and not on $B$ because we solve $w=OP^{-1}*B*v$.
+
+	<!--- ** --->
 
 	If you put locking (Dirichlet) boundary condition on $B$ matrix (with key work `:::freefem on`) you get small spurious modes $(10^{-30})$, due to boundary condition, but if you forget the locking boundary condition on $B$ matrix (no keywork `:::freefem on`) you get huge spurious $(10^{30})$ modes associated to these boundary conditons. We compute only small mode, so we get the good one in this case.
 

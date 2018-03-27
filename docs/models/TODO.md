@@ -66,50 +66,44 @@ Progression:
 ## Navier-Stokes equations
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:97%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">97</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 14
-- [ ] line 43
-- [ ] line 52
-- [ ] line 112
-- [ ] line 121
-- [ ] line 134
-- [ ] line 188
-- [ ] line 238
-- [ ] line 251
-- [ ] line 281
-- [ ] line 367
-- [ ] line 444
-- [ ] line 569
 
 ## Variational inequality
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:99%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">99</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 58
 
 ## Domain decomposition
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:99%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">99</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 217
-- [ ] line 282
 
 ## Fluid-Structure coupled problem
+
+Progression:
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
+	</div>
+	<span class="progress-label">100</span>
+</div>
+
+
+## Transmission problem
 
 Progression:
 <div class="progress progress-80plus">
@@ -118,21 +112,7 @@ Progression:
 	<span class="progress-label">98</span>
 </div>
 
-- [ ] line 99
-- [ ] line 184
-
-## Transmission problem
-
-Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:96%">
-	</div>
-	<span class="progress-label">96</span>
-</div>
-
-- [ ] line 5
-- [ ] line 24
-- [ ] line 37
+- [ ] line 39
 
 ## Free boundary problem
 
@@ -147,16 +127,12 @@ Progression:
 ## Non-linear elasticity
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:97%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">97</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 13
-- [ ] line 36
-- [ ] line 39
-- [ ] line 180
 
 ## Compressible Neo-Hookean materials
 
@@ -167,32 +143,16 @@ Progression:
 	<span class="progress-label">99</span>
 </div>
 
-- [ ] line 4
-- [ ] line 97
-- [ ] line 107
+- [ ] line 96
+- [ ] line 106
 
 ## Whispering gallery modes
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:90%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">90</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 6
-- [ ] line 24
-
-## Weak formulation
-
-Progression:
-<div class="progress progress-60plus">
-	<div class="progress-bar" style="width:75%">
-	</div>
-	<span class="progress-label">75</span>
-</div>
-
-- [ ] line 1
-- [ ] line 14
-- [ ] line 18
 

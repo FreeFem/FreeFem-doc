@@ -237,3 +237,7 @@ savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
 
 !!!note
 	See [Paraview.edp](../examples/#visualization-paraview) for the complete script.
+
+## Link with Matlab<sup>&copy;</sup>
+
+Thanks to a [Matlab plugin](http://fr.mathworks.com/matlabcentral/fileexchange/26833-freefem-to-matlab), mesh and data can be readed.

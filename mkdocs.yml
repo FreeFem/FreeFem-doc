@@ -62,9 +62,8 @@ pages:
     - Transmission problem: models/TransmissionProblem.md
     - Free boundary problem: models/FreeBoundaryProblem.md
     - Non-linear elasticity: models/NonLinearElasticity.md
-    - Compressible Neo-Hookean materials: models/CompressibleNeoHookeanMaterials.md
+    - (TODO) Compressible Neo-Hookean materials: models/CompressibleNeoHookeanMaterials.md
     - Whispering gallery modes: models/WhisperingGalleryModes.md
-    - Weak formulation: models/WeakFormulation.md
     - TODO: models/TODO.md
 
 theme:
