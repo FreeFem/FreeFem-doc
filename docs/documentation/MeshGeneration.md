@@ -173,7 +173,7 @@ real[int] xx = [0, 1, 1, 0],
 real[int] RC = [0.1, 0.05, 0.05, 0.1],
 		  XC = [0.2, 0.8, 0.2, 0.8],
 		  YC = [0.2, 0.8, 0.8, 0.2];
-int[int]  NC = [-10,-11,-12,13]; //list number of $\pm$ segments of the 4 circles borders
+int[int] NC = [-10,-11,-12,13]; //list number of $\pm$ segments of the 4 circles borders
 
 border bb(t=0, 1; i)
 {
