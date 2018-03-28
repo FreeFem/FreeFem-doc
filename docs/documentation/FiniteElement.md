@@ -107,7 +107,7 @@ As of today, the known types of finite element are:
 	!!! warning
 		Due to interpolation problem, the degree of freedom is not the six P2 nodes but six nodes move	inside with $T(X)= G + .99 (X-G) $ where $G$ is the barycenter.
 
-* `:::freefem P2h` quadratic homogene continuous (without `P1`).
+* `:::freefem [P2h]` quadratic homogeneous continuous (without `:::freefem P1`).
 
 * `:::freefem [P3]` piecewise $P_{3}$ continuous finite element (2d) (need `:::freefem load "Element_P3"`)
 	\begin{equation*}
@@ -318,19 +318,19 @@ You can use this element element of do optimization to store and reuse function 
 With the 2D finite element spaces
 
 $$
-X_{h} = \{ v \in H^{1}(]0,1[^2) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{1} \}
+X_{h} = \left\{ v \in H^{1}(]0,1[^2) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{1} \right\}
 $$
 
 $$
-X_{ph} = \{ v \in X_{h} |\; v(\vecttwo{0}{.} ) = v(\vecttwo{1}{.}) , v(\vecttwo{.}{0} ) = v(\vecttwo{.}{1} ) \}
+X_{ph} = \left\{ v \in X_{h} |\; v\left(\vecttwo{0}{.}\right) = v\left(\vecttwo{1}{.}\right) , v\left(\vecttwo{.}{0}\right) = v\left(\vecttwo{.}{1}\right) \right\}
 $$
 
 $$
-M_{h} = \{ v \in H^{1}(]0,1[^2) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{2} \}
+M_{h} = \left\{ v \in H^{1}(]0,1[^2) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{2} \right\}
 $$
 
 $$
-R_{h} = \{ \mathbf{v} \in H^{1}(]0,1[^2)^{2} |\; \forall K \in \mathcal{T}_{h}\quad \mathbf{v}_{|K}(x,y) = \vecttwo{\alpha_{K}}{\beta_{K}} + \gamma_{K}\vecttwo{x}{y} \}
+R_{h} = \left\{ \mathbf{v} \in H^{1}(]0,1[^2)^{2} |\; \forall K \in \mathcal{T}_{h}\quad \mathbf{v}_{|K}(x,y) = \vecttwo{\alpha_{K}}{\beta_{K}} + \gamma_{K}\vecttwo{x}{y} \right\}
 $$
 
 when $\mathcal{T}_h$ is a mesh $10\times 10$ of the unit square $]0,1[^2$, we only write in FreeFem++ :
@@ -372,7 +372,7 @@ X_{h} = \{ v \in H^{1}(]0,1[^3) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \i
 $$
 
 $$
-X_{ph} = \{ v \in X_{h} |\; v(\vecttwo{0}{.} ) = v(\vecttwo{1}{.}) , v(\vecttwo{.}{0} ) = v(\vecttwo{.}{1} ) \}
+X_{ph} = \left\{ v \in X_{h} |\; v\left(\vecttwo{0}{.}\right) = v\left(\vecttwo{1}{.}\right) , v\left(\vecttwo{.}{0}\right) = v\left(\vecttwo{.}{1}\right) \right\}
 $$
 
 $$
@@ -380,7 +380,7 @@ M_{h} = \{ v \in H^{1}(]0,1[^2) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \i
 $$
 
 $$
-R_{h} = \{ \mathbf{v} \in H^{1}(]0,1[^2)^{2} |\; \forall K \in \mathcal{T}_{h}\quad \mathbf{v}_{|K}(x,y) = \vecttwo{\alpha_{K}}{\beta_{K}} + \gamma_{K}\vecttwo{x}{y} \}
+R_{h} = \left\{ \mathbf{v} \in H^{1}(]0,1[^2)^{2} |\; \forall K \in \mathcal{T}_{h}\quad \mathbf{v}_{|K}(x,y) = \vecttwo{\alpha_{K}}{\beta_{K}} + \gamma_{K}\vecttwo{x}{y} \right\}
 $$
 
 when $\mathcal{T}_h$ is a mesh $10\times 10\times 10$ of the unit cubic $]0,1[^2$, we write in FreeFem++ :
@@ -436,7 +436,7 @@ $$
 	}
 	```
 
-	<!-- The full example is in `:::freefem examples++-3d/periodic-3d.edp` $\codered$ -->
+	The full example is in `:::freefem examples++-3d/periodic-3d.edp` $\codered$
 
 ## Lagrangian Finite Elements
 
@@ -869,7 +869,7 @@ For FreeFem++, a problem must be given in variational form, so we need a bilinea
 
 ```freefem
 problem P (u, v)
-	= a(u,v) - $\ell$(f,v)
+	= a(u,v) - l(f,v)
 	+ (boundary condition)
 	;
 ```
@@ -980,7 +980,7 @@ problem Pw (u, v)
 
 where `:::freefem Th` is a mesh of the bidimensional domain $\Omega$, and `:::freefem gd` and `:::freefem gn` are respectively the boundary label of boundary $\Gamma_d$ and $\Gamma_n$.
 
-And the three dimensional problem \eqref{eq:v-poisson} becomes
+And the three dimensional problem \eqref{eqn::v-poisson} becomes
 
 ```freefem
 macro Grad(u) [dx(u), dy(u), dz(u) ]//
@@ -1282,7 +1282,6 @@ $\int_{\Omega_h}f(x,y)$ =`:::freefem int2d(Th)(f)`
 =`:::freefem int2d(Th, qft=*)(f)`
 
 =`:::freefem int2d(Th, qforder=*)(f)`
-\end{eqnarray*}
 
 where * stands for the name of quadrature formula or the order of the Gauss formula.
 
@@ -1294,8 +1293,8 @@ $L$|`:::freefem qft=`|`:::freefem qforder=`|Point in $T_k$|$\omega_\ell$|Exact o
 |7|`:::freefem qf5pT`|6|$\left(\frac{1}{3},\frac{1}{3}\right)$<br>$\left(\frac{6-\sqrt{15}}{21},\frac{6-\sqrt{15}}{21}\right)$<br>$\left(\frac{6-\sqrt{15}}{21},\frac{9+2\sqrt{15}}{21}\right)$<br>$\left(\frac{9+2\sqrt{15}}{21},\frac{6-\sqrt{15}}{21}\right)$<br>$\left(\frac{6+\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)$<br>$\left(\frac{6+\sqrt{15}}{21},\frac{9-2\sqrt{15}}{21}\right)$<br>$\left(\frac{9-2\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)$|$0.225\|T_k\|$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$|5|
 |3|`:::freefem qf1pTlump`||$\left(0,0\right)$<br>$\left(1,0\right)$<br>$\left(0,1\right)$|$\|T_k\|/3$<br>$\|T_k\|/3$<br>$\|T_k\|/3$|1
 |9|`:::freefem qf2pT4P1`||$\left(\frac{1}{4},\frac{3}{4}\right)$<br>$\left(\frac{3}{4},\frac{1}{4}\right)$<br>$\left(0,\frac{1}{4}\right)$<br>$\left(0,\frac{3}{4}\right)$<br>$\left(\frac{1}{4},0\right)$<br>$\left(\frac{3}{4},0\right)$<br>$\left(\frac{1}{4},\frac{1}{4}\right)$<br>$\left(\frac{1}{4},\frac{1}{2}\right)$<br>$\left(\frac{1}{2},\frac{1}{4}\right)$|$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/6$<br>$\|T_k\|/6$<br>$\|T_k\|/6$|1|
-|15|`:::freefem qf7pT`|8|See \cite{0501496} $\codered$ for detail||7|
-|21|`:::freefem qf9pT`|10|See \cite{0501496} $\codered$ for detail||9|
+|15|`:::freefem qf7pT`|8|See [TAYLOR2005](#TAYLOR2005) for detail||7|
+|21|`:::freefem qf9pT`|10|See [TAYLOR2005](#TAYLOR2005) for detail||9|
 
 For a three dimensional domain $\Omega_h=\sum_{k=1}^{n_t}T_k,\, \mathcal{T}_h=\{T_k\}$,
 we can calculate the integral over $\Omega_h$ by
@@ -1550,7 +1549,7 @@ Possible named parameters in `:::freefem , [...]` are
 	The storage mode of the matrix of the underlying linear system depends on the type of solver chosen; for `:::freefem LU` the matrix is sky-line non symmetric, for `:::freefem Crout` the matrix is sky-line symmetric, for `:::freefem Cholesky` the matrix is sky-line symmetric positive definite, for `:::freefem CG` the matrix is sparse symmetric positive, and for `:::freefem GMRES`, `:::freefem sparsesolver` or `:::freefem UMFPACK` the matrix is just sparse.
 
 * `:::freefem factorize =` If true then do the matrix factorization for
-	`:::freefem LU`, `:::freefem Cholesky` or `:::freefem Crout`, the default value is $false$.
+	`:::freefem LU`, `:::freefem Cholesky` or `:::freefem Crout`, the default value is `:::freefem false`.
 
 * `:::freefem eps=` A real expression. $\varepsilon$ sets the stopping test for the iterative methods like `:::freefem CG`. Note that if $\varepsilon$ is negative then the stopping test is:
 	$$
@@ -1784,73 +1783,142 @@ The named parameters of function `:::freefem interpolate` are:
 	ww[] = Ixx*dd;
 	```
 
-__Example__ schwarz2.edp $\codered$
+!!!question "Schwarz"
+	The following shows how to implement with an interpolation matrix a domain decomposition algorithm based on Schwarz method with Robin conditions.
 
-The following shows how to implement with an interpolation matrix a domain decomposition algorithm based on Schwarz method with Robin conditions.
+	Given a non-overlapping partition $\bar\Omega=\bar\Omega_0\cup\bar\Omega_1$ with $\Omega_0\cap\Omega_1=\emptyset$, $\Sigma:=\bar\Omega_0\cap\bar\Omega_1$ the algorithm is :
 
-Given a non-overlapping partition $\bar\Omega=\bar\Omega_0\cup\bar\Omega_1$ with $\Omega_0\cap\Omega_1=\emptyset$, $\Sigma:=\bar\Omega_0\cap\bar\Omega_1$ the algorithm is :
+	\begin{eqnarray*}&&
+	-\Delta u_i= f \hbox{ in }\Omega_i,~i=0,1,~~\frac{\partial(u_1-u_0)}{\partial n} + \alpha (u_1-u_0)=0\hbox{ on }\Sigma.
+	%\cr&&
+	\end{eqnarray*}
+	The same in variational form is:
+	\begin{eqnarray*}&
+	\int_{\Omega_i}\nabla u_i\cdot\nabla v &+ \int_\Sigma\alpha u_i v = \int_{\Omega_i}f v
+	\cr&&
+	- \int_{\Omega_j}(\nabla u_j\cdot\nabla v-f v) + \int_\Sigma\alpha u_j v,~~
+	\forall v\in H^1_0(\Omega), i,j=[0,1]\cup[1,0]
+	\end{eqnarray*}
+	To discretized with the $P^1$ triangular Lagrangian finite element space $V_h$ simply replace $H^1_0(\Omega)$ by $V_h(\Omega_0)\cup V_h(\Omega_1)$.
 
-\begin{eqnarray*}&&
--\Delta u_i= f \hbox{ in }\Omega_i,~i=0,1,~~\frac{\partial(u_1-u_0)}{\partial n} + \alpha (u_1-u_0)=0\hbox{ on }\Sigma.
-%\cr&&
-\end{eqnarray*}
-The same in variational form is:
-\begin{eqnarray*}&
-\int_{\Omega_i}\nabla u_i\cdot\nabla v &+ \int_\Sigma\alpha u_i v  = \int_{\Omega_i}f v
-\cr&&
-- \int_{\Omega_j}(\nabla u_j\cdot\nabla v-f v) + \int_\Sigma\alpha u_j v,~~
-\forall v\in H^1_0(\Omega), i,j=[0,1]\cup[1,0]
-\end{eqnarray*}
-To discretized with the $P^1$ triangular Lagrangian finite element space $V_h$ simply replace $H^1_0(\Omega)$ by $V_h(\Omega_0)\cup V_h(\Omega_1)$.
-Then difficulty is to compute $\int_{\Omega_j} \nabla u_j\cdot\nabla v$ when $v$ is a basis function of $V_h(\Omega_i)$, $i\ne j$.
+	Then difficulty is to compute $\int_{\Omega_j} \nabla u_j\cdot\nabla v$ when $v$ is a basis function of $V_h(\Omega_i)$, $i\ne j$.
 
-It is done as follows (with $\Gamma=\partial\Omega$) :
+	It is done as follows (with $\Gamma=\partial\Omega$) :
 
-```freefem
-// from file schwarz2.edp
-fespace Vh0(Th[0],P1),Vh1(Th[1],P1);
-Vh0 u0=0;Vh1 u1=0;
+	```freefem
+	// Parameters
+	int n = 30;
+	int Gamma = 1;
+	int Sigma = 2;
 
-macro grad(u) [dx(u),dy(u)] //
-varf a(u,v)=int2d(Th[i])(grad(u)'*grad(v))+int1d(Th[i],Interface)(alpha*u*v)
-           +on(Gamma,u=0);
-varf b(u,v)=int2d(Th[i])(f*v)+on(Gamma,u=0);
-varf du1dn(u,v)=-int2d(Th[1])(grad(u1)'*grad(v)-f*v)+int1d(Th[1],Sigma)(alpha*u1*v)
-           +on(Gamma,u=0);
-varf du0dn(u,v)=-int2d(Th[0])(grad(u0)'*grad(v)-f*v)+int1d(Th[0],Sigma)(alpha*u0*v)
-           +on(Gamma,u=0);
+	func f = 1.;
+	real alpha = 1.;
 
-matrix I01=interpolate(Vh1,Vh0);
-matrix I10=interpolate(Vh0,Vh1);
+	int Niter = 50;
 
-matrix[int] A(2);
- A[0]=a(Vh0,Vh0);
- A[1]=a(Vh1,Vh1);
+	// Mesh
+	mesh[int] Th(2);
+	int[int] reg(2);
 
-for(int iter=0;iter<Niter;iter++)
-{
- 	 // Solve on Th[0]
-	{
-		real[int] b0=b(0,Vh0);
-		real[int] Du1dn=du1dn(0,Vh1);
-		real[int] Tdu1dn(Vh0.ndof); Tdu1dn=I01'*Du1dn;
-		b0+=Tdu1dn;
-		u0[]=A[0]^-1*b0;
+	border a0(t=0, 1){x=t; y=0; label=Gamma;}
+	border a1(t=1, 2){x=t; y=0; label=Gamma;}
+	border b1(t=0, 1){x=2; y=t; label=Gamma;}
+	border c1(t=2, 1){x=t; y=1; label=Gamma;}
+	border c0(t=1, 0){x=t; y=1; label=Gamma;}
+	border b0(t=1, 0){x=0; y=t; label=Gamma;}
+	border d(t=0, 1){x=1; y=t; label=Sigma;}
+	plot(a0(n) + a1(n) + b1(n) + c1(n) + c0(n) + b0(n) + d(n));
+	mesh TH = buildmesh(a0(n) + a1(n) + b1(n) + c1(n) + c0(n) + b0(n) + d(n));
+
+	reg(0) = TH(0.5, 0.5).region;
+	reg(1) = TH(1.5, 0.5).region;
+
+	for(int i = 0; i < 2; i++) Th[i] = trunc(TH, region==reg(i));
+
+	// Fespace
+	fespace Vh0(Th[0], P1);
+	Vh0 u0 = 0;
+
+	fespace Vh1(Th[1], P1);
+	Vh1 u1 = 0;
+
+	// Macro
+	macro grad(u) [dx(u), dy(u)] //
+
+	// Problem
+	int i;
+	varf a (u, v)
+		= int2d(Th[i])(
+			  grad(u)'*grad(v)
+		)
+		+ int1d(Th[i], Sigma)(
+			  alpha*u*v
+		)
+		+ on(Gamma, u=0)
+		;
+
+	varf b (u, v)
+		= int2d(Th[i])(
+			  f*v
+		)
+		+ on(Gamma, u=0)
+		;
+
+	varf du1dn (u, v)
+		=-int2d(Th[1])(
+			  grad(u1)'*grad(v)
+			- f*v
+		)
+		+ int1d(Th[1], Sigma)(
+			  alpha*u1*v
+		)
+		+on(Gamma, u=0)
+		;
+
+	varf du0dn (u, v)
+		=-int2d(Th[0])(
+			  grad(u0)'*grad(v)
+			- f*v
+		)
+		+ int1d(Th[0], Sigma)(
+			  alpha*u0*v
+		)
+		+on(Gamma, u=0)
+		;
+
+	matrix I01 = interpolate(Vh1, Vh0);
+	matrix I10 = interpolate(Vh0, Vh1);
+
+	matrix[int] A(2);
+	i = 0; A[i] = a(Vh0, Vh0);
+	i = 1; A[i] = a(Vh1, Vh1);
+
+	// Solving loop
+	for(int iter = 0; iter < Niter; iter++){
+		// Solve on Th[0]
+		{
+			i = 0;
+			real[int] b0 = b(0, Vh0);
+			real[int] Du1dn = du1dn(0, Vh1);
+			real[int] Tdu1dn(Vh0.ndof); Tdu1dn = I01'*Du1dn;
+			b0 += Tdu1dn;
+			u0[] = A[0]^-1*b0;
+		}
+		// Solve on Th[1]
+		{
+			i = 1;
+			real[int] b1 = b(0, Vh1);
+			real[int] Du0dn = du0dn(0, Vh0);
+			real[int] Tdu0dn(Vh1.ndof); Tdu0dn = I10'*Du0dn;
+			b1 += Tdu0dn;
+			u1[] = A[1]^-1*b1;
+		}
+		plot(u0, u1, cmm="iter="+iter);
 	}
- 	 // Solve on Th[1]
-	{
-		real[int] b1=b(0,Vh1);
-		real[int] Du0dn=du0dn(0,Vh0);
-		real[int] Tdu0dn(Vh1.ndof); Tdu0dn=I10'*Du0dn;
-		b1+=Tdu0dn;
-		u1[]=A[1]^-1*b1;
-	}
-	plot(u0,u1,cmm="iter="+iter);
-}
-```
+	```
 
 ## Finite elements connectivity
-Here, we show how to get  informations on a finite element space $W_h({\cal T}_n,*)$, where "*" may be P1, P2, P1nc, etc.
+Here, we show how to get  informations on a finite element space $W_h({\cal T}_n,*)$, where "*" may be `:::freefem P1, P2, P1nc`, etc.
 
 * `:::freefem Wh.nt` gives the number of element of $W_h$
 * `:::freefem Wh.ndof` gives the number of degrees of freedom or unknown
@@ -1859,29 +1927,32 @@ Here, we show how to get  informations on a finite element space $W_h({\cal T}_n
 
 See the following example:
 
-__Example__ 6.4 (FE.edp) $\codered$
-```freefem
-// file FE.edp
-mesh Th=square(5,5);
-fespace Wh(Th,P2);
-cout << " nb of degree of freedom           : " << Wh.ndof << endl;
-cout << " nb of degree of freedom / ELEMENT : " << Wh.ndofK << endl;
- int k= 2, kdf= Wh.ndofK ;; // element 2
- cout << " df of element " << k << ":" ;
- for (int i=0;i<kdf;i++)  cout << Wh(k,i) << " ";
- cout << endl;
-```
+!!!question "Finite element connectivity"
+	```freefem
+	// Mesh
+	mesh Th = square(5, 5);
 
-The output is:
+	// Fespace
+	fespace Wh(Th, P2);
 
-```freefem
- Nb Of Nodes = 121
- Nb of DF = 121
- FESpace:Gibbs: old skyline = 5841  new skyline = 1377
- nb of degree of freedom           : 121
- nb of degree of freedom / ELEMENT : 6
- df of element 2:78 95 83 87 79 92
-```
+	cout << "Number of degree of freedom = " << Wh.ndof << endl;
+	cout << "Number of degree of freedom / ELEMENT = " << Wh.ndofK << endl;
+
+	int k = 2, kdf = Wh.ndofK; //element 2
+	cout << "Degree of freedom of element " << k << ":" << endl;
+	for (int i = 0; i < kdf; i++)
+		cout << Wh(k,i) << " ";
+	cout << endl;
+	```
+
+	The output is:
+
+	```freefem
+	Number of degree of freedom = 121
+	Number of degree of freedom / ELEMENT = 6
+	Degree of freedom of element 2:
+	78 95 83 87 79 92
+	```
 
 ## References
 
@@ -1892,3 +1963,5 @@ The output is:
 <a name="THOMASSET2012">[THOMASSET2012]</a> THOMASSET, François. Implementation of finite element methods for Navier-Stokes equations. Springer Science & Business Media, 2012.
 
 <a name="CROUZEIX1984">[CROUZEIX1984]</a> CROUZEIX, Michel et MIGNOT, Alain L. Analyse numérique des équations différentielles. Masson, 1984.
+
+<a name="TAYLOR2005"></a>[TAYLOR2005] TAYLOR, Mark A., WINGATE, Beth A., et BOS, Len P. Several new quadrature formulas for polynomial integration in the triangle. arXiv preprint math/0501496, 2005.
