@@ -34,10 +34,6 @@ Transmission problem: For a given function $f$, find $u$ such that
 
 where $\mu=\mu_1\chi_1+\mu_2\chi_2+\mu_3\chi_3$. Here we notice that $\mu$ become the discontinuous function.
 
-With dissipation, and at the thermal equilibrium, the temperature equation is:
-
-$\codered$ missing in the originial doc!
-
 This example explains the definition and manipulation of _region_, i.e. sub-domains of the whole domain. Consider this L-shaped domain with 3 diagonals as internal boundaries, defining 4 sub-domains:
 
 ```freefem

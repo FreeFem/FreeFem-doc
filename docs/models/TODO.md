@@ -106,13 +106,12 @@ Progression:
 ## Transmission problem
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:98%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">98</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 39
 
 ## Free boundary problem
 
@@ -137,14 +136,12 @@ Progression:
 ## Compressible Neo-Hookean materials
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:99%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">99</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 96
-- [ ] line 106
 
 ## Whispering gallery modes
 
