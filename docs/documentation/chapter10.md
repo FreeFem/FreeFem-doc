@@ -1,4 +1,4 @@
-# MPI Parallel version
+MPI Parallel version
 
 A first attempt of parallelization of FreeFem++ is made here with __`:::freefem mpi`__. An extended interface with MPI has been added to FreeFem++ version 3.5,  (see the MPI documentation for the functionality of the language at [http://www.mpi-forum.org/docs/mpi21-report.pdf](http://www.mpi-forum.org/docs/mpi21-report.pdf).
 
@@ -16,7 +16,7 @@ The following keywords and concepts are used:
 
 * `:::freefem mpisize` The total number of  _processes_,
 * `:::freefem mpirank` the id-number of my current process in ${0,..., mpisize-1}$,
-* `:::freefem mpiUndefined` The \verb!MPI_Undefined! constant,
+* `:::freefem mpiUndefined` The \verb!MPI_Undefined! constant, $\codered$ CORRIGER LES VERB!
 * `:::freefem mpiAnySource` The \verb!MPI_ANY_SOURCE! constant,
 * `:::freefem mpiCommWorld` The \verb!MPI_COMM_WORLD! constant,
 * [ ... ] and all the keywords of `:::freefem MPI_Op` for the _reduce_ operator:
@@ -203,18 +203,6 @@ This is a explanation of the two script  `:::freefem examples++-mpi/MPIGMRES[2]D
 
 Thank you to F. Nataf.
 
-$\codered$
-
-\def\vh{{v_h}}
-\def\uh^#1{{u_h^{#1}}}
-\def\Nh{{\mathcal{N}_h}}
-\def\Nhg{{\mathcal{N}^\Gamma_h}}
-\def\Nhgi_#1{{\mathcal{N}^{\Gamma_i}_{h#1}}}
-\def\Th{{\mathcal{T}_h}}
-\def\Vh{{V_h}}
-\def\VOh{{V_{0h}}}
-\newcommand{\1}{\mathrm{1\!\!I}}
-
 To solve the following Poisson problem
 on domain $\Omega$ with boundary $\Gamma$ in $L^2(\Omega)$ :
 
@@ -240,23 +228,23 @@ Let $\ell=0$ the iterator and a initial guest $u^0$ respecting the boundary cond
 \label{eq:pu1}&u^{\ell+1} = \sum_{i=1}^{N_p} \pi_i u_i^\ell &
 \end{eqnarray}
 
-After discretization with the Lagrange finite element method, with a compatible mesh $\Th_i$ of $\Omega_i$, i. e., the exist a global mesh $\Th$ such that  $\Th_i$ is include in $\Th$.
+After discretization with the Lagrange finite element method, with a compatible mesh ${\mathcal{T}_h}_i$ of $\Omega_i$, i. e., the exist a global mesh ${\mathcal{T}_h}$ such that  ${\mathcal{T}_h}_i$ is include in ${\mathcal{T}_h}$.
 
 Let us denote:
 
-* $\Vh_i$ the finite element space corresponding to domain $\Omega_i$,
-* $\Nh_i$ is the set of the degree of freedom $\sigma_i^k$,
-* $\Nhgi_{i}$ is the set of the degree of freedom of $\Vh_i$ on the boundary $\Gamma_i$ of $\Omega_i$,
-* $\sigma_i^k(\vh)$ is the value the degree of freedom $k$,
-* $\VOh_i= \{ \vh \in \Vh_i :\forall  k \in  \Nhgi_{i}, \quad \sigma_i^k(\vh)=0 \}$,
+* ${V_h}_i$ the finite element space corresponding to domain $\Omega_i$,
+* ${\mathcal{N}_h}_i$ is the set of the degree of freedom $\sigma_i^k$,
+* ${\mathcal{N}^{\Gamma_i}_{hi}}$ is the set of the degree of freedom of ${V_h}_i$ on the boundary $\Gamma_i$ of $\Omega_i$,
+* $\sigma_i^k({v_h})$ is the value the degree of freedom $k$,
+* ${V_{0h}}_i= \{ {v_h} \in {V_h}_i :\forall k \in {\mathcal{N}^{\Gamma_i}_{hi}}, \quad \sigma_i^k({v_h})=0 \}$,
 * The conditional expression $a\;?\;b:c$ is defined like in `:::freefem C` of `:::freefem C++` language by
 
 	$$
 	a?b: c \equiv
 	\left\{
 	\begin{array}{l}
-	\mbox{if  $a$ is true  then return $b$}\\
-	\mbox{else return $c$}  \\
+	\mbox{if $a$ is true then return $b$}\\
+	\mbox{else return $c$}\\
 	\end{array}
 	\right..
 	$$
@@ -266,18 +254,18 @@ Let us denote:
 
 We have to defined to operator to build the previous algorithm:
 
-We denote $\uh^{\ell}_{|i}$ the restriction of $ u_h^\ell$ on $\Vh_i$, so the discrete problem on $\Omega_i$ of problem (\ref{eq:lapl} $\codered$) is find $\uh^{\ell}_{i}\in \Vh_i$ such that:
+We denote ${u_h^{\ell}}_{|i}$ the restriction of $u_h^\ell$ on ${V_h}_i$, so the discrete problem on $\Omega_i$ of problem (10.1 \ref{eq:lapl} $\codered$) is find ${u_h^{\ell}}_{i}\in {V_h}_i$ such that:
 
 $\codered$ COMPILATION ERROR
-%% FFCS: this does not compile because of \uh^ and \Nhgi_. Just wait
+%% FFCS: this does not compile because of \uh^ and {\mathcal{N}^\Gamma_h}i_. Just wait
 %% for a working version.
 %%%\begin{equation}
-%%%\forall \vh_i\in V_{0i}: \int_{\Omega_i} \nabla \vh_i . \nabla \uh^{\ell}_{i} = \int_{\Omega_i} f  \vh_i ,\quad \forall  k \in \Nhgi_{i}\;:\;  \sigma_i^k(\uh^\ell_i) =  (k\in \Gamma) \; ? \; g_i^k : \sigma_i^k(\uh^{\ell}_{|i})
+%%%\forall {v_h}_i\in V_{0i}: \int_{\Omega_i} \nabla {v_h}_i . \nabla \uh^{\ell}_{i} = \int_{\Omega_i} f  {v_h}_i ,\quad \forall  k \in {\mathcal{N}^{\Gamma_i}_{hi}}\;:\;  \sigma_i^k(\uh^\ell_i) =  (k\in \Gamma) \; ? \; g_i^k : \sigma_i^k(\uh^{\ell}_{|i})
 %%%\end{equation}
 
-where $g_i^k$ is the value of $g$ associated to the degree of freedom $k\in \Nhgi_{i}$.
+where $g_i^k$ is the value of $g$ associated to the degree of freedom $k\in {\mathcal{N}^{\Gamma_i}_{hi}}$.
 
-In FreeFem++, it can be written has with `:::freefem U` is the vector corresponding to $\uh^{\ell}_{|i}$ and the vector `:::freefem U1` is the vector corresponding to $\uh^\ell_{i}$ is the solution of:
+In FreeFem++, it can be written has with `:::freefem U` is the vector corresponding to ${u_h^{\ell}}_{|i}$ and the vector `:::freefem U1` is the vector corresponding to ${u_h^{\ell}}_{i}$ is the solution of:
 
 ```freefem
 real[int] U1(Ui.n);
@@ -299,7 +287,7 @@ real[int] Bi=vPb(0,Whi);
 
 where the FreeFem++ label of $\Gamma$ is 1 and the label of $\Gamma_i\setminus \Gamma$ is $10$.
 
-To build the transfer/update part corresponding to (\ref{eq:pu1} $\codered$) equation on process $i$, let us call `:::freefem njpart` the number the neighborhood of domain of $\Omega_i$ (i.e: $\pi_j$ is none $0$ of $\Omega_i$), we store in an array `:::freefem jpart` of size `:::freefem njpart` all this  neighborhood.
+To build the transfer/update part corresponding to (10.2 \ref{eq:pu1} $\codered$) equation on process $i$, let us call `:::freefem njpart` the number the neighborhood of domain of $\Omega_i$ (i.e: $\pi_j$ is none $0$ of $\Omega_i$), we store in an array `:::freefem jpart` of size `:::freefem njpart` all this  neighborhood.
 Let us introduce two array of matrix, `:::freefem Smj[j]` to defined the vector to send from $i$ to $j$ a neighborhood process, and the matrix $rMj[j]$ to after to reduce owith neighborhood $j$ domain.
 
 So the tranfert and update part compute $v_i= \pi_i u_i + \sum_{j\in J_i} \pi_j u_j$ and can be write the
@@ -322,14 +310,14 @@ func bool Update(real[int] &ui, real[int] &vi)
 where the buffer are defined by:
 
 ```freefem
-InitU(njpart,Whij,Thij,aThij,Usend)  // defined the send buffer
-InitU(njpart,Whij,Thij,aThij,Vrecv)  //  defined the revc buffer
+InitU(njpart,Whij,Thij,aThij,Usend) // defined the send buffer
+InitU(njpart,Whij,Thij,aThij,Vrecv) // defined the revc buffer
 ```
 
 with the following macro definition:
 
 ```freefem
-macro InitU(n,Vh,Th,aTh,U) Vh[int] U(n); for(int j=0;j<n;++j) {Th=aTh[j];  U[j]=0;}//
+macro InitU(n,Vh,Th,aTh,U) Vh[int] U(n); for(int j=0;j<n;++j) {Th=aTh[j];  U[j]=0;}
 ```
 
 __ First `:::freefem gmres` algorithm:__  you can easily accelerate the fixe point algorithm by using a parallel `:::freefem GMRES` algorithm after the introduction the following affine $\mathcal{A}_i$ operator
@@ -403,7 +391,7 @@ func bool CoarseSolve(real[int]& V,real[int]& U,mpiComm& comm)
 }
 ```
 
-The New precondtionner
+The New preconditionner
 
 ```freefem
 func real[int] PDJC(real[int]& U) //
@@ -419,7 +407,7 @@ func real[int] PDJC(real[int]& U) //
   V = -V; //  -C2*Uo
   U  += Ai*V; // U =  (I-A C2) Uo
   real[int] b= onG ? 0. :  U;
-  U =  Ai^-1*b;	//  ( C1( I -A C2) Uo
+  U =  Ai^-1*b;	// ( C1( I -A C2) Uo
   V = U -V; //
   Update(V,U);
   return U;
@@ -453,25 +441,26 @@ else // algo Shwarz for demo ...
 
 We  have all ingredient to solve in parallel if we have et the partitions of the unity.
 To build this partition we do:
-the initial step on process $1$ to build a coarse mesh, $\Th^*$ of the full domain, and build the partition $\pi$  function constant equal to $i$ on each sub domain $\mathcal{O}_i, i =1 ,.., N_p$, of the grid with the `:::freefem Metis` graph partitioner \cite{metis} $\codered$ and on each process $i$ in $1..,N_p$ do
+the initial step on process $1$ to build a coarse mesh, ${\mathcal{T}_h}^*$ of the full domain, and build the partition $\pi$  function constant equal to $i$ on each sub domain $\mathcal{O}_i, i =1 ,.., N_p$, of the grid with the `:::freefem Metis` graph partitioner \cite{metis} $\codered$ and on each process $i$ in $1..,N_p$ do
 
-\item Broadcast from process $1$, the mesh $\Th^*$ (call `:::freefem Thii` in FreeFem++ script), and $\pi$ function,
+1. Broadcast from process $1$, the mesh ${\mathcal{T}_h}^*$ (call `:::freefem Thii` in FreeFem++ script), and $\pi$ function,
 
-\item remark that the characteristic function  $\1_{\mathcal{O}_i}$ of domain $\mathcal{O}_i$,   is defined  by $(\pi=i) ? 1 : 0$,
+2. remark that the characteristic function  $\mathrm{1\!\!I}_{\mathcal{O}_i}$ of domain $\mathcal{O}_i$, is defined by $(\pi=i)?1:0$,
 
-\item let us call $\Pi^2_P$ (resp. $\Pi^2_V$) the $L^2$ on $P_h^*$ the space of the constant finite element function per element on $\Th^*$ (resp. $V_h^*$ the space of the affine continuous finite element per element on $\Th^*$). and build in parallel the  $\pi_i$ and $\Omega_i$, such that $\mathcal{O}_i\ \subset \Omega_i$ where $\mathcal{O}_i= supp ((\Pi^2_V \Pi^2_C)^m \1_{O_i})$, and $m$ is a the overlaps size on the coarse mesh (generally one), (this is done in function \verb!AddLayers(Thii,suppii[],nlayer,phii[]);! We choose a function $\pi^*_i = (\Pi^2_1 \Pi^2_0)^m \1_{\mathcal{O}_i}$
+3. Let us call $\Pi^2_P$ (resp. $\Pi^2_V$) the $L^2$ on $P_h^*$ the space of the constant finite element function per element on ${\mathcal{T}_h}^*$ (resp. $V_h^*$ the space of the affine continuous finite element per element on ${\mathcal{T}_h}^*$). and build in parallel the  $\pi_i$ and $\Omega_i$, such that $\mathcal{O}_i\ \subset \Omega_i$ where $\mathcal{O}_i= supp ((\Pi^2_V \Pi^2_C)^m \mathrm{1\!\!I}_{O_i})$, and $m$ is a the overlaps size on the coarse mesh (generally one), (this is done in function \verb!AddLayers(Thii,suppii[],nlayer,phii[]);! We choose a function $\pi^*_i = (\Pi^2_1 \Pi^2_0)^m \mathrm{1\!\!I}_{\mathcal{O}_i}$
  so the partition of the unity is simply defined by
 
 \begin{equation}
   \pi_i = \frac{\pi_i^*}{\sum_{j=1}^{N_p} \pi_j^*}
 \end{equation}
 
-The set $J_i$ of  neighborhood of the domain $\Omega_i$, and the local version on $V_{hi}$ can be defined  the array `:::freefem jpart` and `:::freefem njpart` with:
+The set $J_i$ of neighborhood of the domain $\Omega_i$, and the local version on $V_{hi}$ can be defined the array `:::freefem jpart` and `:::freefem njpart` with:
 
 \def\piff,#1{$\pi^*_#1$}
+$\codered$
 
 ```freefem
-Vhi pii=\piff,i ;  Vhi[int] pij(npij);// local partition of 1 = pii + $\sum_j$ pij[j]
+Vhi pii=\piff,i ; Vhi[int] pij(npij); // local partition of 1 = pii + $\sum_j$ pij[j]
 int[int] jpart(npart); int njpart=0;
 Vhi sumphi =  \piff,i  ;
 for (int i=0;i<npart;++i)
@@ -485,7 +474,7 @@ for (int i=0;i<npart;++i)
       jpart.resize(njpart);
  ```
 
-\item We call $\Th^*_{ij}$ the sub mesh part of $\Th_i$ where $\pi_j$ are none zero. and thanks to the function `:::freefem trunc` to build this array,
+ 4. We call ${\mathcal{T}_h}^*_{ij}$ the sub mesh part of ${\mathcal{T}_h}_i$ where $\pi_j$ are none zero. and thanks to the function `:::freefem trunc` to build this array,
 
 ```freefem
 for(int jp=0;jp<njpart;++jp)
@@ -494,8 +483,8 @@ for(int jp=0;jp<njpart;++jp)
 
 $\codered$
 
-%\item we exchange all sub mesh $\Th_{ij}$ of the process $i$ to to all process $j$
-%and we call the mesh on process $i$ the mesh $\Th_{ji}$, this part is the most tricky
+%\item we exchange all sub mesh ${\mathcal{T}_h}_{ij}$ of the process $i$ to to all process $j$
+%and we call the mesh on process $i$ the mesh ${\mathcal{T}_h}_{ji}$, this part is the most tricky
 %part because we send / receive large  complex data form all to all, with no real order.
 %The only way do  that in MPI is to
 %make asynchronous  Isend / Irecv with a wait at end otherwise we break all MPI buffer.
@@ -517,9 +506,9 @@ $\codered$
 %     ISendRecvAny(comm,jpart,aThij,Thij)
 ```
 
-\item At this step we have all on the coarse mesh, so we can build the fine final mesh by splitting all meshes : \verb!Thi, Thij[j],Thij[j]! with FreeFem++ `:::freefem trunc` mesh function which do restriction and slipping.
+5. At this step we have all on the coarse mesh, so we can build the fine final mesh by splitting all meshes : \verb!Thi, Thij[j],Thij[j]! with FreeFem++ `:::freefem trunc` mesh function which do restriction and slipping.
 
-\item The construction of the send/recv matrices \verb!sMj! and \verb!rMj! : can done with this code:
+6. The construction of the send/recv matrices \verb!sMj! and \verb!rMj! : can done with this code:
 
 ```freefem
 mesh3 Thij=Thi; // variable meshes
@@ -534,9 +523,7 @@ matrix[int] sMj(njpart), rMj(njpart); // M send/rend case..
       rMj[jp] = interpolate(Whij,Whi,t=1); }} // Whij -> Whi
 ```
 
-\end{enumerate}
-
-To buil a not to bad application, I have add code tout change variable from parametre value with the following code
+To buil a not too bad application, I have add code tout change variable from parametre value with the following code
 
 ```freefem
 include "getARGV.idp"
@@ -561,4 +548,5 @@ func bool plotMPIall(mesh &Th,real[int] & u,string cm)
 { PLOTMPIALL(mesh,Pk, Th, u,{cmm=cm,nbiso=20,fill=1,dim=3,value=1}); return 1;}
 ```
 
-remark the \verb!{cmm=cm,  ... =1}! in the macro argument is a way to quote macro argument so the argument is \verb!cmm=cm, ... =1!.
+!!! note
+	The `:::freefem cmm=cm,  ... =1` in the macro argument is a way to quote macro argument so the argument is `:::freefem cmm=cm, ... =1`.
