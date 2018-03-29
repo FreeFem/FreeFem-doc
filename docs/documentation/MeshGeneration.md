@@ -102,7 +102,7 @@ $$
 \Gamma_j = \{(x,y)\left|\; x=\varphi_x(t),\, y=\varphi_y(t),\, a_j\le t\le b_j\right.\}
 $$
 
-To check the orientation plot $t\mapsto (\varphi_x(t),\varphi_y(t)),\, t_0\le t\le t_1$. If it is as in <a href="Fig4">Fig. 4</a>, then the domain lies on the shaded area, otherwise it lies on the opposite side.
+To check the orientation plot $t\mapsto (\varphi_x(t),\varphi_y(t)),\, t_0\le t\le t_1$. If it is as in <a href="#Fig4">Fig. 4</a>, then the domain lies on the shaded area, otherwise it lies on the opposite side.
 
 |<a name="Fig4">Fig. 4</a>: Orientation of the boundary defined by $(\phi_x(t),\phi_y(t))$|
 |:----:|
