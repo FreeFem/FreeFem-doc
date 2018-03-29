@@ -37,7 +37,6 @@ Progression:
 - [ ] line 439
 - [ ] line 959
 - [ ] line 1011
-- [ ] line 1331
 - [ ] line 1603
 
 ## Visualization
@@ -50,7 +49,7 @@ Progression:
 </div>
 
 
-## Chapter 10
+## Parallelization
 
 Progression:
 <div class="progress progress-80plus">
@@ -59,19 +58,20 @@ Progression:
 	<span class="progress-label">97</span>
 </div>
 
-- [ ] line 19
-- [ ] line 104
-- [ ] line 125
-- [ ] line 128
-- [ ] line 202
-- [ ] line 223
-- [ ] line 257
-- [ ] line 259
-- [ ] line 290
-- [ ] line 444
-- [ ] line 460
-- [ ] line 484
-- [ ] line 540
+- [ ] line 54
+- [ ] line 97
+- [ ] line 133
+- [ ] line 155
+- [ ] line 157
+- [ ] line 236
+- [ ] line 240
+- [ ] line 299
+- [ ] line 301
+- [ ] line 332
+- [ ] line 486
+- [ ] line 502
+- [ ] line 526
+- [ ] line 582
 
 ## Chapter 11
 
