@@ -14,7 +14,7 @@ The following keywords and concepts are used:
 ### MPI Constants
 
 * `:::freefem mpisize` The total number of _processes_,
-* `:::freefem mpirank` the id-number of my current process in ${0,..., \verb!mpisize!-1}$,
+* `:::freefem mpirank` the id-number of my current process in `{0, ..., mpisize-1}`,
 * `:::freefem mpiUndefined` The `:::cpp MPI_Undefined` constant,
 * `:::freefem mpiAnySource` The `:::cpp MPI_ANY_SOURCE` constant,
 * `:::freefem mpiCommWorld` The `:::cpp MPI_COMM_WORLD` constant,
@@ -306,7 +306,9 @@ We have to defined to operator to build the previous algorithm:
 We denote ${u_h^{\ell}}_{|i}$ the restriction of $u_h^\ell$ on ${V_h}_i$, so the discrete problem on $\Omega_i$ of problem \eqref{eq:lapl} is find ${u_h^{\ell}}_{i}\in {V_h}_i$ such that:
 
 \begin{equation}
-\forall {v_h}_i\in V_{0i}: \int_{\Omega_i} \nabla {v_h}_i . \nabla u_h^{\ell}_{i} = \int_{\Omega_i} f {v_h}_i ,\quad \forall k \in {\mathcal{N}^{\Gamma_i}_{hi}}\;:\; \sigma_i^k(u_h^\ell_i) = (k\in \Gamma) \; ? \; g_i^k : \sigma_i^k(u_h^{\ell}_{|i})
+\forall {v_h}_i\in V_{0i}:
+\int_{\Omega_i} \nabla {v_h}_i \cdot \nabla {u_h}^{\ell}_{i}
+= \int_{\Omega_i} f {v_h}_i ,\quad \forall k \in {\mathcal{N}^{\Gamma_i}_{hi}}\;:\; \sigma_i^k({u_h}^\ell_i) = (k\in \Gamma) \; ? \; g_i^k : \sigma_i^k({u_h}^{\ell}_{|i})
 \end{equation}
 
 where $g_i^k$ is the value of $g$ associated to the degree of freedom $k\in {\mathcal{N}^{\Gamma_i}_{hi}}$.

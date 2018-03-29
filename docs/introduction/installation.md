@@ -2,7 +2,46 @@
 
 ## Easy installation
 
-$\codered$
+First, open the following web page of [__`FreeFem++`__](http://www.freefem.org/).
+
+Choose your platform: Linux, MacOS or Windows in the download section.
+
+!!!note
+	Binary packages are available for Microsoft Windows, Apple MacOS X and some Linux distributions.
+
+Install by double-click on the appropriate file. Under Linux and MacOS the install directory is one of the following `/usr/local/bin`, `/usr/local/share/freefem++`, `/usr/local/lib/ff++`
+
+### Windows binary installation
+
+First download the windows installation executable, then double click on it to install __`FreeFem++`__.
+
+In most cases just answer yes (or type return) to all questions.
+
+Otherwise in the Additional Task windows, check the box ”Add application directory to your system path.” This is required otherwise the program `ffglut.exe` will not be found.
+
+By now you should have two new icons on your desktop:
+
+ * `FreeFem++ (VERSION).exe`, the __`FreeFem++`__ application.
+ * `FreeFem++ (VERSION) Examples`, a link to the __`FreeFem++`__ folder of examples.
+
+where `(VERSION)` is the version of the files (for example 3.59).
+
+By default, the installed files are in `C:\Programs Files\FreeFem++`.
+
+In this directory, you have all the `.dll` files and other applications: `FreeFem++-nw.exe`, `ffglut.exe`, ...
+
+The syntax for the command-line tools are the same as those of `FreeFem.exe`.
+
+### MacOS X binary installation
+
+Download the MacOS X binary version file, extract all the files with a double click on the icon of the file, go the the directory and put the `FreeFem+.app` application in the `/Applications` directory.
+
+If you want a terminal access to __`FreeFem++`__ just copy the file `FreeFem++` in a directory of your `$PATH` shell environment variable.
+
+If you want to automatically launch the `FreeFem++.app`, double click on a `.edp` file icon.
+
+Under the finder pick a `.edp`, select menu File -> Get Info and change Open with: (choose `FreeFem++.app`) and click
+on button change All.
 
 ## Compilation
 

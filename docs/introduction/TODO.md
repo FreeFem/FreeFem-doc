@@ -22,8 +22,7 @@ Progression:
 	<span class="progress-label">99</span>
 </div>
 
-- [ ] line 5
-- [ ] line 240
+- [ ] line 279
 
 ## How to contribute?
 
