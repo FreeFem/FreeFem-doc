@@ -6,7 +6,7 @@ Remark: Blocks of code are shell commands in terminal.
 
 1) Install Xcode, Xcode command line tools and Xcode Auxiliaire Tools from [Apple website](https://developer.apple.com/download/more/)
 
-2) Install  gcc from [http://hpc.sourceforge.net](http://hpc.sourceforge.net/)
+2) Install gcc from [http://hpc.sourceforge.net](http://hpc.sourceforge.net/)
 
 ```
 curl -O http://prdownloads.sourceforge.net/hpc/gfortran-7.1-bin.tar.gz?download
@@ -16,11 +16,11 @@ sudo tar zxvf gfortran-7.1-bin.tar.gz -C /
 3) Install autoconf and automake from [macport](http://www.macports.org) or with [Homebrew](https://brew.sh)
 
 ```
-sudo port install  autoconf
-sudo port install  automatke
+sudo port install autoconf
+sudo port install automake
 ```
 
-4) install mactex  from  [ctan](http://mirrors.ctan.org/systems/mac/mactex/MacTeX.pkg)
+4) install mactex from [ctan](http://mirrors.ctan.org/systems/mac/mactex/MacTeX.pkg)
 
 5) install [openmpi](https://www.open-mpi.org/software/) source code
 

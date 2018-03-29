@@ -30,7 +30,7 @@ documentationFilesList = [
 	"documentation/MeshGeneration.md",
 	"documentation/FiniteElement.md",
 	"documentation/Visualization.md",
-	"documentation/chapter10.md",
+	"documentation/Parallelization.md",
 	"documentation/chapter11.md"
 	]
 documentationNamesList = [
@@ -38,7 +38,7 @@ documentationNamesList = [
 	"Mesh generation",
 	"Finite element",
 	"Visualization",
-	"Chapter 10",
+	"Parallelization",
 	"Chapter 11"
 	]
 documentationTODOFile = "documentation/TODO.md"

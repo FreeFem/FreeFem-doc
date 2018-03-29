@@ -1063,25 +1063,25 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 	- `:::freefem int3d(Th)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T } K\,v\,w $
 
-	- `:::freefem int3d(Th,1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w $
+	- `:::freefem int3d(Th, 1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w $
 
-	- `:::freefem int3d(Th,levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi<0} K\,v\,w$
+	- `:::freefem int3d(Th, levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi<0} K\,v\,w$
 
-	- `:::freefem int3d(Th,l,levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi<0} K\,v\,w$
+	- `:::freefem int3d(Th, l, levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi<0} K\,v\,w$
 
-	- `:::freefem int2d(Th,2,5)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5})} K\,v\,w $
+	- `:::freefem int2d(Th, 2, 5)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5})} K\,v\,w $
 
-	- `:::freefem int2d(Th,1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w$
+	- `:::freefem int2d(Th, 1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w$
 
-	- `:::freefem int2d(Th,2,5)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap (\Gamma_2 \cup \Gamma_{5})} K\,v\,w$
+	- `:::freefem int2d(Th, 2, 5)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap (\Gamma_2 \cup \Gamma_{5})} K\,v\,w$
 
-	- `:::freefem int2d(Th,levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi=0} K\,v\,w$
+	- `:::freefem int2d(Th, levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi=0} K\,v\,w$
 
-	- `:::freefem int2d(Th,l,levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi=0} K\,v\,w$
+	- `:::freefem int2d(Th, l, levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi=0} K\,v\,w$
 
 	- `:::freefem intallfaces(Th)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{\p T } K\,v\,w$
 
-	- `:::freefem intallfaces(Th,1)(K*v*w) = ` $\displaystyle\sum_{{T\in\mathtt{Th},T\subset \Omega_{1}}}\int_{\p T } K\,v\,w$
+	- `:::freefem intallfaces(Th, 1)(K*v*w) = ` $\displaystyle\sum_{{T\in\mathtt{Th},T\subset \Omega_{1}}}\int_{\p T } K\,v\,w$
 
 	- They contribute to the sparse matrix of type `:::freefem matrix` which, whether declared explicitly or not is contructed by FreeFem++.
 
@@ -1089,25 +1089,25 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 	- `:::freefem int2d(Th)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T } K\,v\,w$
 
-	- `:::freefem int2d(Th,1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w$
+	- `:::freefem int2d(Th, 1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w$
 
-	- `:::freefem int2d(Th,levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi<0} K\,v\,w$
+	- `:::freefem int2d(Th, levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi<0} K\,v\,w$
 
-	- `:::freefem int2d(Th,l,levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi<0} K\,v\,w$
+	- `:::freefem int2d(Th, l, levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi<0} K\,v\,w$
 
- 	- `:::freefem int1d(Th,2,5)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5})} K\,v\,w$
+ 	- `:::freefem int1d(Th, 2, 5)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5})} K\,v\,w$
 
-	- `:::freefem int1d(Th,1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w$
+	- `:::freefem int1d(Th, 1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w$
 
- 	- `:::freefem int1d(Th,2,5)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5})} K\,v\,w$
+ 	- `:::freefem int1d(Th, 2, 5)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5})} K\,v\,w$
 
-	- `:::freefem int1d(Th,levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi=0} K\,v\,w$
+	- `:::freefem int1d(Th, levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi=0} K\,v\,w$
 
-	- `:::freefem int1d(Th,l,levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi=0} K\,v\,w$
+	- `:::freefem int1d(Th, l, levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi=0} K\,v\,w$
 
 	- `:::freefem intalledges(Th)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{\p T } K\,v\,w$
 
-	- `:::freefem intalledges(Th,1)(K*v*w) = ` $\displaystyle\sum_{{T\in\mathtt{Th},T\subset \Omega_{1}}}\int_{\p T } K\,v\,w$
+	- `:::freefem intalledges(Th, 1)(K*v*w) = ` $\displaystyle\sum_{{T\in\mathtt{Th},T\subset \Omega_{1}}}\int_{\p T } K\,v\,w$
 
 	- They contribute to the sparse matrix of type `:::freefem matrix` which, whether declared explicitly or not is contructed by FreeFem++.
 
@@ -1115,17 +1115,17 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 	- `:::freefem int3d(Th)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T} K\,w$
 
-	- `:::freefem int3d(Th,l)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\in\Omega_l}\int_{T} K\,w$
+	- `:::freefem int3d(Th, l)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\in\Omega_l}\int_{T} K\,w$
 
-	- `:::freefem int3d(Th,levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi<0} K\,w$
+	- `:::freefem int3d(Th, levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi<0} K\,w$
 
-	- `:::freefem int3d(Th,l,levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset\Omega_{l}}\int_{T,\phi<0} K\,w$
+	- `:::freefem int3d(Th, l, levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset\Omega_{l}}\int_{T,\phi<0} K\,w$
 
-	- `:::freefem int2d(Th,2,5)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5}) } K \,w$
+	- `:::freefem int2d(Th, 2, 5)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5}) } K \,w$
 
-	- `:::freefem int2d(Th,levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi=0} K\,w$
+	- `:::freefem int2d(Th, levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi=0} K\,w$
 
-	- `:::freefem int2d(Th,l,levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi=0} K\,w$
+	- `:::freefem int2d(Th, l, levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi=0} K\,w$
 
 	- `:::freefem intallfaces(Th)(f*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{\p T } f\,w$
 
@@ -1135,17 +1135,17 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 	- `:::freefem int2d(Th)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T} K\,w$
 
-	- `:::freefem int2d(Th,l)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\in\Omega_l}\int_{T} K\,w$
+	- `:::freefem int2d(Th, l)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\in\Omega_l}\int_{T} K\,w$
 
-	- `:::freefem int2d(Th,levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi<0} K\,w$
+	- `:::freefem int2d(Th, levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi<0} K\,w$
 
-	- `:::freefem int2d(Th,l,levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset\Omega_{l}}\int_{T,\phi<0} K\,w$
+	- `:::freefem int2d(Th, l, levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset\Omega_{l}}\int_{T,\phi<0} K\,w$
 
-	- `:::freefem int1d(Th,2,5)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5}) } K \,w$
+	- `:::freefem int1d(Th, 2, 5)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5}) } K \,w$
 
-	- `:::freefem int1d(Th,levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi=0} K\,w$
+	- `:::freefem int1d(Th, levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi=0} K\,w$
 
-	- `:::freefem int1d(Th,l,levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset\Omega_{l}}\int_{T,\phi=0} K\,w$
+	- `:::freefem int1d(Th, l, levelset=phi)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset\Omega_{l}}\int_{T,\phi=0} K\,w$
 
 	- `:::freefem intalledges(Th)(f*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{\p T } f\,w$
 
@@ -1160,15 +1160,15 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 		!!! note
 			if $\mathrm{tgv} < 0$ then we put to $0$ all term of the line $i$ in the matrix, except diagonal term $a_{ii}=1$, and $b[i] = "(\Pi_h g)[i]"$.
 
-	- An "on" vectorial form (for Dirichlet) : `:::freefem on(1,u1=g1,u2=g2)`
+	- An "on" vectorial form (for Dirichlet) : `:::freefem on(1, u1=g1, u2=g2)`
 
 		If you have vectorial finite element like `:::freefem RT0`, the 2 components are coupled, and so you have : $b[i] = "(\Pi_h (g1,g2))[i]" \times tgv $, where $\Pi_h$ is the vectorial finite element interpolant.
 
-	- A linear form on $\Gamma$ (for Neumann in 2d) `:::freefem -int1d(Th)(f*w)` or `:::freefem -int1d(Th,3)(f*w)`
+	- A linear form on $\Gamma$ (for Neumann in 2d) `:::freefem -int1d(Th)(f*w)` or `:::freefem -int1d(Th, 3)(f*w)`
 
 	- A bilinear form on $\Gamma$ or $\Gamma_{2}$ (for Robin in 2d) `:::freefem int1d(Th)(K*v*w)` or `:::freefem int1d(Th,2)(K*v*w)`
 
-	- A linear form on $\Gamma$ (for Neumann in 3d) `:::freefem -int2d(Th)(f*w)` or `:::freefem -int2d(Th,3)(f*w)`
+	- A linear form on $\Gamma$ (for Neumann in 3d) `:::freefem -int2d(Th)(f*w)` or `:::freefem -int2d(Th, 3)(f*w)`
 
 	- A bilinear form on $\Gamma$ or $\Gamma_{2}$ (for Robin in 3d) `:::freefem int2d(Th)(K*v*w)` or `:::freefem int2d(Th,2)(K*v*w)`
 
@@ -1220,7 +1220,7 @@ where * stands for the name of the quadrature formula or the precision (order) o
 |$L$|(`:::freefem qfe=`)|`:::freefem qforder=`|Point in $[q^iq^j](=t)$|$\omega_\ell$|Exact on $P_k, k=$|
 |1|`:::freefem qf1pE`|2|$1/2$|$\|q^iq^j\|$|1|
 |2|`:::freefem qf2pE`|3|$(1\pm\sqrt{1/3})/2$|$\|q^iq^j\|/2$|3|
-|3|`:::freefem qf3pE`|6|$(1\pm\sqrt{3/5})/2$<br>$1/2$|$(5/18)\|q^iq^j\|$<br>$(8/18)\|q^iq^j\|$|5|
+|3|__`:::freefem qf3pE`__|6|$(1\pm\sqrt{3/5})/2$<br>$1/2$|$(5/18)\|q^iq^j\|$<br>$(8/18)\|q^iq^j\|$|5|
 |4|`:::freefem qf4pE`|8|$(1\pm\frac{\sqrt{525+70\sqrt{30}}}{35})/2$<br>$(1\pm\frac{\sqrt{525-70\sqrt{30}}}{35})/2$|$\frac{18-\sqrt{30}}{72}\|q^iq^j\|$<br>$\frac{18+\sqrt{30}}{72}\|q^iq^j\|$|7|
 |5|`:::freefem qf5pE`|10|$(1\pm\frac{\sqrt{245+14\sqrt{70}}}{21})/2$<br>$1/2$<br>$(1\pm\frac{\sqrt{245-14\sqrt{70}}}{21})/2$|$\frac{322-13\sqrt{70}}{1800}\|q^iq^j\|$<br>$\frac{64}{225}\|q^iq^j\|$<br>$\frac{322+13\sqrt{70}}{1800}\|q^iq^j\|$|9|
 |2|`:::freefem qf1pElump`|2|$0$<br>$+1$|$\|q^iq^j\|/2$<br>$\|q^iq^j\|/2$|1|
@@ -1290,7 +1290,7 @@ where * stands for the name of quadrature formula or the order of the Gauss form
 $L$|`:::freefem qft=`|`:::freefem qforder=`|Point in $T_k$|$\omega_\ell$|Exact on $P_k, k=$|
 |1|`:::freefem qf1pT`|2|$\left(\frac{1}{3},\frac{1}{3}\right)$|$\|T_k\|$|1
 |3|`:::freefem qf2pT`|3|$\left(\frac{1}{2},\frac{1}{2}\right)$<br>$\left(\frac{1}{2},0\right)$<br>$\left(0,\frac{1}{2}\right)$|$\|T_k\|/3$<br>$\|T_k\|/3$<br>$\|T_k\|/3$|2|
-|7|`:::freefem qf5pT`|6|$\left(\frac{1}{3},\frac{1}{3}\right)$<br>$\left(\frac{6-\sqrt{15}}{21},\frac{6-\sqrt{15}}{21}\right)$<br>$\left(\frac{6-\sqrt{15}}{21},\frac{9+2\sqrt{15}}{21}\right)$<br>$\left(\frac{9+2\sqrt{15}}{21},\frac{6-\sqrt{15}}{21}\right)$<br>$\left(\frac{6+\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)$<br>$\left(\frac{6+\sqrt{15}}{21},\frac{9-2\sqrt{15}}{21}\right)$<br>$\left(\frac{9-2\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)$|$0.225\|T_k\|$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$|5|
+|7|__`:::freefem qf5pT`__|6|$\left(\frac{1}{3},\frac{1}{3}\right)$<br>$\left(\frac{6-\sqrt{15}}{21},\frac{6-\sqrt{15}}{21}\right)$<br>$\left(\frac{6-\sqrt{15}}{21},\frac{9+2\sqrt{15}}{21}\right)$<br>$\left(\frac{9+2\sqrt{15}}{21},\frac{6-\sqrt{15}}{21}\right)$<br>$\left(\frac{6+\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)$<br>$\left(\frac{6+\sqrt{15}}{21},\frac{9-2\sqrt{15}}{21}\right)$<br>$\left(\frac{9-2\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)$|$0.225\|T_k\|$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155-\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$<br>$\frac{(155+\sqrt{15})\|T_k\|}{1200}$|5|
 |3|`:::freefem qf1pTlump`||$\left(0,0\right)$<br>$\left(1,0\right)$<br>$\left(0,1\right)$|$\|T_k\|/3$<br>$\|T_k\|/3$<br>$\|T_k\|/3$|1
 |9|`:::freefem qf2pT4P1`||$\left(\frac{1}{4},\frac{3}{4}\right)$<br>$\left(\frac{3}{4},\frac{1}{4}\right)$<br>$\left(0,\frac{1}{4}\right)$<br>$\left(0,\frac{3}{4}\right)$<br>$\left(\frac{1}{4},0\right)$<br>$\left(\frac{3}{4},0\right)$<br>$\left(\frac{1}{4},\frac{1}{4}\right)$<br>$\left(\frac{1}{4},\frac{1}{2}\right)$<br>$\left(\frac{1}{2},\frac{1}{4}\right)$|$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/12$<br>$\|T_k\|/6$<br>$\|T_k\|/6$<br>$\|T_k\|/6$|1|
 |15|`:::freefem qf7pT`|8|See [TAYLOR2005](#TAYLOR2005) for detail||7|
@@ -1312,7 +1312,7 @@ where * stands for the name of quadrature formula or the order of the Gauss form
 |$L$|`:::freefem qfV=`|`:::freefem qforder=`|Point in $T_k\in \R^3$|$\omega_\ell$|Exact on $P_k, k=$|
 |1|`:::freefem qfV1`|2|$\left(\frac{1}{4},\frac{1}{4},\frac{1}{4}\right)$|$\|T_k\|$|1|
 |4|`:::freefem qfV2`|3|$G4(0.58\ldots,0.13\ldots,0.13\ldots)$|$\|T_k\|/4$|2|
-|14|`:::freefem qfV5`|6|$G4(0.72\ldots,0.092\ldots,0.092\ldots)$<br>$G4(0.067\ldots,0.31\ldots,0.31\ldots)$<br>$G6(0.45\ldots,0.045\ldots,0.45\ldots)$|$0.073\ldots\|T_k\|$<br>$0.11\ldots\|T_k\|$<br>$0.042\ldots\|T_k\|$|5|
+|14|__`:::freefem qfV5`__|6|$G4(0.72\ldots,0.092\ldots,0.092\ldots)$<br>$G4(0.067\ldots,0.31\ldots,0.31\ldots)$<br>$G6(0.45\ldots,0.045\ldots,0.45\ldots)$|$0.073\ldots\|T_k\|$<br>$0.11\ldots\|T_k\|$<br>$0.042\ldots\|T_k\|$|5|
 |4|`:::freefem qfV1lump`||$G4(1,0,0)$|$\|T_k\|/4$|1|
 
 Where $G4(a,b,b)$ such that $a+3b=1$ is the set of the four point in barycentric coordinate
@@ -1328,7 +1328,7 @@ and where $G6(a,b,b)$ such that $2a+2b=1$ is the set of the six points in baryce
 	These tetrahedral quadrature formulae come from [http://www.cs.kuleuven.be/~nines/research/ecf/mtables.html](http://www.cs.kuleuven.be/~nines/research/ecf/mtables.html)
 
 !!! note
-	By default, we use the formula which is exact for polynomials of degree $5$ on triangles or edges (in bold in three tables). $\codered$
+	By default, we use the formula which is exact for polynomials of degree $5$ on triangles or edges (in bold in three tables).
 
 This possible to add an own quadrature formulae with using plugin `:::freefem qf11to25` on segment, triangle or Tetrahedron.
 

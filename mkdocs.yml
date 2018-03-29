@@ -10,7 +10,7 @@ pages:
     - Mesh Generation: documentation/MeshGeneration.md
     - Finite Element: documentation/FiniteElement.md
     - Visualization: documentation/Visualization.md
-    - (TODO) Chapter 10: documentation/chapter10.md
+    - Parallelization: documentation/Parallelization.md
     - (TODO) Chapter 11: documentation/chapter11.md
     - TODO: documentation/TODO.md
   - Language References:

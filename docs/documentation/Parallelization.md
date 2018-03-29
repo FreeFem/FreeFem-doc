@@ -1,9 +1,8 @@
-MPI Parallel version
+A first attempt of parallelization of FreeFem++ is made here with __`:::freefem mpi`__. An extended interface with MPI has been added to FreeFem++ version 3.5, (see the [MPI documentation](http://mpi-forum.org/docs/) for the functionality of the language).
 
-A first attempt of parallelization of FreeFem++ is made here with __`:::freefem mpi`__. An extended interface with MPI has been added to FreeFem++ version 3.5,  (see the MPI documentation for the functionality of the language at [http://www.mpi-forum.org/docs/mpi21-report.pdf](http://www.mpi-forum.org/docs/mpi21-report.pdf).
+## MPI
 
-
-## MPI Keywords
+### MPI Keywords
 
 The following keywords and concepts are used:
 
@@ -12,120 +11,153 @@ The following keywords and concepts are used:
 * `:::freefem mpiRequest` to defined a request to wait for the end of the communication
 
 
-## MPI Constants
+### MPI Constants
 
-* `:::freefem mpisize` The total number of  _processes_,
+* `:::freefem mpisize` The total number of _processes_,
 * `:::freefem mpirank` the id-number of my current process in ${0,..., mpisize-1}$,
-* `:::freefem mpiUndefined` The \verb!MPI_Undefined! constant, $\codered$ CORRIGER LES VERB!
-* `:::freefem mpiAnySource` The \verb!MPI_ANY_SOURCE! constant,
-* `:::freefem mpiCommWorld` The \verb!MPI_COMM_WORLD! constant,
+* `:::freefem mpiUndefined` The `:::cpp MPI_Undefined` constant,
+* `:::freefem mpiAnySource` The `:::cpp MPI_ANY_SOURCE` constant,
+* `:::freefem mpiCommWorld` The `:::cpp MPI_COMM_WORLD` constant,
 * [ ... ] and all the keywords of `:::freefem MPI_Op` for the _reduce_ operator:
 	`:::freefem mpiMAX`, `:::freefem mpiMIN`, `:::freefem mpiSUM`, `:::freefem mpiPROD`, `:::freefem mpiLAND`, `:::freefem mpiLOR`, `:::freefem mpiLXOR`, `:::freefem mpiBAND`, `:::freefem mpiBXOR`.
 
-## MPI Constructor
+### MPI Constructor
 
 ```freefem
-int[int] proc1=[1,2,3],proc2=[0,4];
-mpiGroup grp(procs); // set `:::freefem MPI\_Group` to proc 1,2,3 in `:::freefem MPI\_COMM\_WORLD`
-mpiGroup grp1(comm,proc1); // set `:::freefem MPI\_Group` to proc 1,2,3 in comm
-mpiGroup grp2(grp,proc2); // set `:::freefem MPI\_Group` to  grp union proc1
+// Parameters
+int[int] proc1 = [1, 2], proc2 = [0, 3];
+int color = 1;
+int key = 1;
 
-mpiComm  comm=mpiCommWorld; //  set a `:::freefem MPI\_Comm` to `:::freefem MPI\_COMM\_WORLD`
-mpiComm  ncomm(mpiCommWorld,grp); // set the `:::freefem MPI\_Comm` form grp
-// `:::freefem MPI\_COMM\_WORLD`
-mpiComm  ncomm(comm,color,key); // \verb!MPI_Comm_split(MPI_Comm comm,!
-// \verb! int color, int key, MPI_Comm *ncomm)!
-mpiComm  nicomm(processor(local_comm,local_leader),
-                processor(peer_comm,peer_leader),tag);
-// build \verb! MPI_INTERCOMM_CREATE(local_comm, local_leader, peer_comm,!
-// \verb! remote_leader, tag, &nicomm)!
-mpiComm  ncomm(intercomm,hight) ; // build using
-// \verb!MPI_Intercomm_merge( intercomm, high, &ncomm)!
-mpiRequest rq; // defined  an \verb!MPI_Request!
-mpiRequest[int] arq(10); // defined an array of 10 \verb!MPI_Request!
+// MPI ranks
+cout << "MPI rank = " << mpirank << endl;
+
+// MPI
+mpiComm comm(mpiCommWorld, 0, 0); //set a MPI_Comm to MPI_COMM_WORLD
+
+mpiGroup grp(proc1); //set MPI_Group to proc 1,2 in MPI_COMM_WORLD
+mpiGroup grp1(comm, proc1); //set MPI_Group to proc 1,2 in comm
+mpiGroup grp2(grp, proc2); //set MPI_Group to grp union proc2
+
+mpiComm ncomm1(mpiCommWorld, grp); //set the MPI_Comm form grp
+
+// MPI_COMM_WORLD
+mpiComm ncomm2(comm, color, key); //MPI_Comm_split(MPI_Comm comm, int color, int key, MPI_Comm *ncomm)
+mpiComm nicomm(processor(localcomm, localleader),
+				processor(peercomm, peerleader), tag);
+//build MPI_INTERCOMM_CREATE(local_comm, local_leader, peer_comm, remote_leader, tag, &nicomm)
+
+mpiComm ncomm3(intercomm, hight); //build using MPI_Intercomm_merge(intercomm, high, &ncomm)
+mpiRequest rq; //defined an MPI_Request
+mpiRequest[int] arq(10); //defined an array of 10 MPI_Request
 ```
+$\codered$ script bug
 
-## MPI Functions
+### MPI Functions
 
 ```freefem
-mpiSize(comm) ; // return the size of comm (int)
-mpiRank(comm) ; // return the rank  in comm (int)
+mpiComm Comm(mpiCommWorld, 0, 0);
 
-processor(i) // return  processor  i with no Resquest in \verb!MPI_COMM_WORLD!
-processor(mpiAnySource) // return processor `:::freefem any source`
-// with no Resquest in \verb!MPI_COMM_WORLD!
-processor(i,comm) // return processor i with  no Resquest in comm
-processor(comm,i) // return processor i with  no Resquest in comm
-processor(i,rq,comm) // return  processor i with Resquest rq  in comm
-processor(i,rq) // return  processor i with Resquest rq in
-// \verb!MPI_COMM_WORLD!
-processorblock(i) // return  processor i  in \verb!MPI_COMM_WORLD!
-// in block mode for synchronously communication
-processorblock(mpiAnySource) // return processor  `:::freefem any source`
-// in \verb!MPI_COMM_WORLD!  in block mode for synchronously communication
-processorblock(i,comm) // return processor i in in comm  in block mode
+int MPICommSize = mpiSize(Comm);
+int MPIRank = mpiRank(Comm);
 
-mpiBarrier(comm) ; // do a  `:::freefem MPI\_Barrier` on communicator `:::freefem comm`,
-mpiWait(rq); // wait on of Request,
-mpiWaitAll(arq); // wait add of Request array,
-mpiWtime() ; //  return MPIWtime in second (real),
-mpiWtick() ; // return MPIWTick in second (real),
+if (MPIRank == 0) cout << "MPI Comm size = " << MPICommSize << endl;
+cout << "MPI rank in Comm = " << mpiRank(Comm) << endl;
+
+mpiRequest Req;
+mpiRequest[int] ReqArray(10);
+
+for (int i = 0; i < MPICommSize; i++){
+	 //return processor i with no Resquest in MPI_COMM_WORLD
+	processor(i);
+	//return processor any source with no Resquest in MPI_COMM_WORLD
+	processor(mpiAnySource);
+	//return processor i with no Resquest in Comm
+	processor(i, Comm);
+	//return processor i with no Resquest in Comm
+	processor(Comm, i);
+	//return processor i with Resquest rq in Comm
+	/* processor(i, Req, Comm);
+	//return processor i with Resquest rq in MPI_COMM_WORLD
+	processor(i, Req); */
+	//return processor i in MPI_COMM_WORLD in block mode for synchronously communication
+	processorblock(i);
+	//return processor any source in MPI_COMM_WORLD in block mode for synchronously communication
+	processorblock(mpiAnySource);
+	//return processor i in in Comm in block mode
+	processorblock(i, Comm);
+}
+
+mpiBarrier(Comm); //do a MPI_Barrier on communicator Comm
+mpiWaitAny(ReqArray); //wait add of Request array,
+mpiWait(Req); //wait on a Request
+real t = mpiWtime(); //return MPIWtime in second
+real tick = mpiWtick(); //return MPIWTick in second
 ```
+$\codered$ How to display processor?
 
-where a `:::freefem processor` is just  a integer rank, pointer to a \verb!MPI_comm! and pointer to a \verb!MPI_Request!, and `:::freefem processorblock` with a special \verb!MPI_Request!.
+where a `:::freefem processor` is just a integer rank, pointer to a `:::cpp MPI_comm` and pointer to a `:::cpp MPI_Request`, and `:::freefem processorblock` with a special `:::cppMPI_Request`.
 
-## MPI Communicator operator
+### MPI Communicator operator
 
 ```freefem
-int status;// to get the MPI status of send / recv
-processor(10) << a << b; // send a,b asynchronously to the process 1,
-processor(10) >> a >> b;//receive a,b synchronously from the process 10,
-broadcast(processor(10,comm),a); // broadcast from processor
-// of com  to other comm processor
-status=Send( processor(10,comm) , a);// send synchronously
+int status; //to get the MPI status of send / recv
+real a, b;
 
-//to the process 10 the data a
-status=Recv( processor(10,comm) , a);// receive synchronously
-// from the process 10 the data a;
-status=Isend( processor(10,comm) , a);// send asynchronously to
-// the process 10 , the data a without request
-status=Isend( processor(10,rq,comm) , a) ; // send asynchronously to to
-// the process 10, the data a with request
-status=Irecv( processor(10,rq) , a) ; // receive synchronously from
-// the process 10, the data a;
- status=Irecv( processor(10) , a) ; // Error
-// Error asynchronously without request.
-broadcast(processor(comm,a)); //  Broadcast to all process of `:::freefem comm`
+mpiComm comm(mpiCommWorld, 0, 0);
+mpiRequest req;
+
+//send a,b asynchronously to the process 1
+processor(1) << a << b;
+//receive a,b synchronously from the process 10
+processor(10) >> a >> b;
+
+//broadcast from processor of comm to other comm processor
+broadcast(processor(10, comm), a);
+//send synchronously to the process 10 the data a
+status = Send(processor(10, comm), a);
+//receive synchronously from the process 10 the data a
+status = Recv(processor(10, comm), a);
+
+//send asynchronously to the process 10 the data a without request
+status = Isend(processor(10, comm), a);
+//send asynchronously to the process 10 the data a with request
+status = Isend(processor(10, req, comm), a);
+//receive asynchronously from the process 10 the data a
+status = Irecv(processor(10, req), a);
+//Error asynchronously without request.
+status = Irecv(processor(10), a);
+//Broadcast to all process comm
+broadcast(processor(comm, a));
 ```
+$\codered$ script bug
 
 where the data type of `:::freefem a` can be of type of `:::freefem int`,`:::freefem real`, `:::freefem complex`, `:::freefem int[int]`, `:::freefem double[int]`, `:::freefem complex[int]`, `:::freefem int[int,int]`, `:::freefem double[int,int]`, `:::freefem complex[int,int]`, `:::freefem mesh`, `:::freefem mesh3`, `:::freefem mesh[int]`, `:::freefem mesh3[int]`, `:::freefem matrix`, `:::freefem matrix<complex>`
 
-% because in this case  the communication are multiple (header + data).
-$\codered$
-
 ```freefem
-processor(10,rq) << a ; // send asynchronously to the process 10
-// the data a  with request
-processor(10,rq) >> a ; // receive asynchronously  from the process 10
-//the data a with request
+//send asynchronously to the process 10 the data a with request
+processor(10, req) << a ;
+//receive asynchronously from the process 10 the data a with request
+processor(10, req) >> a ;
 ```
 
-If \verb!a,b! are arrays or full matrices of int, real, or complex, we can use the following MPI functions:
+If `:::freefem a, b` are arrays or full matrices of `:::freefem int`, `:::freefem real`, or `:::freefem complex`, we can use the following MPI functions:
 
 ```freefem
-mpiAlltoall(a,b[,comm]);
-mpiAllgather(a,b[,comm]);
-mpiGather(a,b,processor(..) );
-mpiScatter(a,b,processor(..));
-mpiReduce(a,b,processor(..),mpiMAX);
-mpiAllReduce(a,b,comm, mpiMAX);
-mpiReduceScatter(a,b,comm, mpiMAX);
+mpiAlltoall(a, b, [comm]);
+mpiAllgather(a, b, [comm]);
+mpiGather(a, b, processor(...));
+mpiScatter(a, b, processor(...));
+mpiReduce(a, b, processor(...), mpiMAX);
+mpiAllReduce(a, b, comm, mpiMAX);
+mpiReduceScatter(a, b, comm, mpiMAX);
 ```
+$\codered$ mpiReduceScatter is commented in parallelempi.cpp
 
 See the `:::freefem examples++-mpi/essai.edp` $\codered$ to test of all this functionality and thank you to Guy-Antoine Atenekeng Kahou for his help to code this interface.
 
-## Schwarz example in parallel
-This example is a rewritting of example `:::freefem schwarz-overlap` in section \ref{schwarz-overlap} $\codered$.
+### Schwarz example in parallel
+This example is a rewritting of example [Schwarz overlapping](../models/DomainDecomposition/#schwarz-overlapping).
 
 ```freefem
 [examples++-mpi] Hecht%lamboot
@@ -197,7 +229,7 @@ if (mpirank==0)
     plot(u,U,ps="uU.eps");
 ```
 
-### True parallel Schwarz example
+#### True parallel Schwarz example
 
 This is a explanation of the two script  `:::freefem examples++-mpi/MPIGMRES[2]D.edp` $\codered$, a Schwarz parallel with a complexity almost independent of the number of process (with a coarse grid preconditioner).
 
