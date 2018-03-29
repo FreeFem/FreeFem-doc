@@ -1,6 +1,12 @@
 # Installation guide
 
-## Compilation on OSX (>=10.13)
+## Easy installation
+
+$\codered$
+
+## Compilation
+
+### Compilation on OSX (>=10.13)
 
 Remark: Blocks of code are shell commands in terminal.
 
@@ -43,24 +49,25 @@ sudo make install
 
 7) Install [git](https://git-scm.com/download/mac)
 
-8) Download FreeFem++ source from the repository
+8) Download __`FreeFem++`__ source from the repository
 
 ```
 git clone https://github.com/FreeFem/FreeFem-sources.git
 ```
 
-9) Compile FreeFem++. Don't Forget to update the MacOSX sdk version with your own in the command below:
+9) Compile __`FreeFem++`__. Don't Forget to update the MacOSX sdk version with your own in the command below:
 
-```
+```bash
 cd FreeFem-sources
 ./configure '-with-suffix=macos-10.13' '-without-fltk' '--enable-download' '--enable-optim' 'MPIRUN=/usr/local/bin/mpirun' '--enable-m64' '--without-x' 'CC=clang -isysroot /Applications/Xcode.app//Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk' 'CFLAGS=-mmacosx-version-min=10.13' 'CXXFLAGS=-mmacosx-version-min=10.13 -std=c++11' 'CXX=clang++ -isysroot /Applications/Xcode.app//Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk' 'F77=/usr/local/bin/gfortran' 'FC=/usr/local/bin/gfortran' 'MPICXX=/usr/local/bin/mpic++' 'MPICC=/usr/local/bin/mpicc' 'MPIFC=/usr/local/bin/mpif90' 'MPIF77=/usr/local/bin/mpif90' '--enable-maintainer-mode'
 make
 sudo make install
 ```
 
-## Compilation on Ubuntu
+### Compilation on Ubuntu
 
 1) Install the following dependencies
+
 ```bash
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install cpp freeglut3-dev g++ gcc gfortran \
@@ -77,7 +84,7 @@ sudo apt-get install mpich
 !!!warning
 	In the latest distribution of Ubuntu, `libgsl2-dev` does not exists anymore, use `libgsl-dev`
 
-2) Download FreeFem++ source from the repository
+2) Download __`FreeFem++`__ source from the repository
 
 ```bash
 git clone https://github.com/FreeFem/FreeFem-sources.git
@@ -146,7 +153,7 @@ make
 sudo make install
 ```
 
-## Compilation on Arch Linux
+### Compilation on Arch Linux
 
 !!! warning
 	As Arch is in rolling release, the following informations can be quickly exceeded !
@@ -163,7 +170,7 @@ pacman -S git openmpi gcc-fortran wget python
 
 ```
 
-2) Download FreeFem++ source from the repository
+2) Download __`FreeFem++`__ source from the repository
 
 ```bash
 git clone https://github.com/FreeFem/FreeFem-sources.git
@@ -225,9 +232,62 @@ make
 sudo make install
 ```
 
-## Compilation on Linux with Intel software tools
+### Compilation on Linux with Intel software tools
 
 Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-with-intel-software-tools-for-developers)
 
-## Compilation on Windows
+### Compilation on Windows
 $\codered$ (Good luck!)
+
+## Environnement variables and init file
+
+__`FreeFem++`__ reads a user’s init file named `freefem++.pref` to initialize global variables: `:::freefem verbosity`, `:::freefem includepath`, `:::freefem loadpath`.
+
+!!!note
+	The variable `:::freefem verbosity` changes the level of internal printing (0, nothing unless there are syntax errors, 1 few, 10 lots, etc. ...), the default value is 2.
+
+	The include files are searched from the `:::freefem includepath` list and the load files are searched from `:::freefem loadpath` list.
+
+The syntax of the file is:
+
+```bash
+verbosity = 5
+loadpath += "/Library/FreeFem++/lib"
+loadpath += "/Users/hecht/Library/FreeFem++/lib"
+includepath += "/Library/FreeFem++/edp"
+includepath += "/Users/hecht/Library/FreeFem++/edp"
+# a comment
+load += "funcTemplate"
+load += "myfunction"
+load += "MUMPS_seq"
+```
+
+The possible paths for this file are
+
+ * under Unix and MacOs
+ ```bash
+ /etc/freefem++.pref
+ $(HOME)/.freefem++.pref
+ freefem++.pref
+ ```
+* under windows
+ ```bash
+ freefem++.pref
+ ```
+
+We can also use shell environment variable to change verbosity and the search rule before the init files.
+```bash
+export FF_VERBOSITY=50
+export FF_INCLUDEPATH="dir;;dir2"
+export FF_LOADPATH="dir;;dir3"
+```
+
+!!!note
+	The separator between directories must be ”;” and not ”:” because ”:” is used under Windows.
+
+!!!note
+	To show the list of init of FreeFem++ , do
+	```bash
+	export FF_VERBOSITY=100;
+	./FreeFem++-nw
+	```
