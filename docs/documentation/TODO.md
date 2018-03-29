@@ -6,13 +6,12 @@
 ## Home
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:87%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">87</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 3
 
 ## Mesh generation
 
@@ -28,16 +27,12 @@ Progression:
 ## Finite element
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:99%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">99</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 439
-- [ ] line 959
-- [ ] line 1011
-- [ ] line 1603
 
 ## Visualization
 
@@ -53,25 +48,17 @@ Progression:
 
 Progression:
 <div class="progress progress-80plus">
-	<div class="progress-bar" style="width:97%">
+	<div class="progress-bar" style="width:98%">
 	</div>
-	<span class="progress-label">97</span>
+	<span class="progress-label">98</span>
 </div>
 
 - [ ] line 54
-- [ ] line 97
-- [ ] line 133
-- [ ] line 155
-- [ ] line 157
-- [ ] line 236
-- [ ] line 240
-- [ ] line 299
-- [ ] line 301
-- [ ] line 332
-- [ ] line 486
-- [ ] line 502
-- [ ] line 526
-- [ ] line 582
+- [ ] line 132
+- [ ] line 154
+- [ ] line 156
+- [ ] line 237
+- [ ] line 241
 
 ## Chapter 11
 

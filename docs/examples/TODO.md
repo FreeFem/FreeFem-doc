@@ -14,4 +14,8 @@ Progression:
 
 - [ ] line 65
 - [ ] line 575
+- [ ] line 622
+- [ ] line 670
+- [ ] line 723
+- [ ] line 1196
 

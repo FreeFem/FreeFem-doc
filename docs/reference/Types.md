@@ -288,7 +288,7 @@ Laplacian;
 	Refer to the [UMFPACK website](http://faculty.cse.tamu.edu/davis/research.html) for more informations.
 
 !!!note "`:::freefem dimKrylov`"
-	$\codered$
+	Dimension of the Krylov space
 
 Usage of `:::freefem problem` is detailled in the [tutorial](../tutorial).
 
@@ -440,7 +440,7 @@ real[int] Aii = A.diag;
 	See [`:::freefem problem`](#problem).
 
 !!!note "`:::freefem dimKrylov`"
-		$\codered$
+	See [`:::freefem problem`](#problem).
 
 !!!note "datafilename"
 	Name of the file containing solver parameters, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)

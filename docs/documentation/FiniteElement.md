@@ -13,7 +13,7 @@ In FreeFem++ the finite element space
 $$
 V_h=\left\{w\left|\; w_0\phi_0+w_1\phi_1+\cdots+w_{M-1}\phi_{M-1},\, w_i\in \R\right.\right\}
 $$
- is easily created by :
+is easily created by :
 
 ```freefem
 fespace IDspace(IDmesh,<IDFE>);
@@ -436,7 +436,7 @@ $$
 	}
 	```
 
-	The full example is in `:::freefem examples++-3d/periodic-3d.edp` $\codered$
+	The full example is in [Examples](../examples/periodic-3d).
 
 ## Lagrangian Finite Elements
 
@@ -956,7 +956,7 @@ Except in the case of Neumann conditions everywhere, the problem \eqref{eqn::v-p
 	\end{equation}
 	where $\varepsilon$ is a small parameter ($ \sim \kappa\; 10^{-10} |\Omega|^{\frac2d} $).
 
-	Remark that if the solution is of order $\frac{1}{\varepsilon}$ then the compatibility condition is unsatisfied, otherwise we get the solution such that $\int_\Omega u = 0 $, you can also add a Lagrange multiplier to solver the real mathematical problem like in the `:::freefem examples++-tutorial/Laplace-lagrange-mult.edp` $\codered$! example.
+	Remark that if the solution is of order $\frac{1}{\varepsilon}$ then the compatibility condition is unsatisfied, otherwise we get the solution such that $\int_\Omega u = 0 $, you can also add a Lagrange multiplier to solver the real mathematical problem like in the [Lagrange multipliers example](../examples/lagrange-multipliers).
 
 In FreeFem++, the bidimensional problem \eqref{eqn::v-poisson} becomes :
 
@@ -1008,7 +1008,7 @@ where `:::freefem Th` is a mesh of the three dimensional domain $\Omega$, and `:
 The parameters are FE functions real or complex, the number $n$ of parameters is even ($n=2*k$), the $k$ first function parameters are unknown, and the $k$ last are test functions.
 
 !!! note
-	 If the functions are a part of vectoriel FE then you must give all the functions of the vectorial FE in the same order (see laplaceMixte problem $\codered$ for example).
+	 If the functions are a part of vectoriel FE then you must give all the functions of the vectorial FE in the same order (see [Poisson problem with mixed finite element](.models/StaticProblems/#poisson-with-mixed-finite-element) for example).
 
 !!! note
 	 Don't mix complex and real parameters FE function.
@@ -1600,7 +1600,7 @@ $$
 \mathtt{etaK}[i] = \int {1}_{|K_i} = \int_{K_i} 1;
 $$
 
-Now, we can use this to compute error indicators like in examples `:::freefem AdaptResidualErrorIndicator.edp` in directory `:::freefem examples++-tutorial` $\codered$.
+Now, we can use this to compute error indicators like in example [Adaptation using residual error indicator](../models/StaticProblems/#adaptation-using-residual-error-indicator).
 
 First to compute a continuous approximation to the function $h$ "density mesh size" of the mesh $Th$.
 
