@@ -159,92 +159,99 @@ See the `:::freefem examples++-mpi/essai.edp` $\codered$ to test of all this fun
 ### Schwarz example in parallel
 This example is a rewritting of example [Schwarz overlapping](../models/DomainDecomposition/#schwarz-overlapping).
 
-```freefem
-[examples++-mpi] Hecht%lamboot
-LAM 6.5.9/MPI 2 C++/ROMIO - Indiana University
-[examples++-mpi] hecht% mpirun -np 2 FreeFem++-mpi schwarz-c.edp
+```bash
+ff-mpirun -np 2 SchwarzParallel.edp
 ```
 
 ```freefem
-//  a new coding version c, methode de schwarz in parallele
-// with 2 proc.
-//  -------------------------------
-// F.Hecht december 2003
-// ----------------------------------
-//  to test the broadcast instruction
-//  and array of mesh
-//  add add the stop test
-//  ---------------------------------
+if (mpisize != 2){
+	cout << " sorry, number of processors !=2 " << endl;
+ 	exit(1);
+}
 
-if ( mpisize != 2 ) {
-    cout << " sorry, number of processors !=2 " << endl;
-     exit(1);}
-verbosity=3;
+// Parameters
+verbosity = 0;
 int interior = 2;
 int exterior = 1;
-border a(t=1,2){x=t;y=0;label=exterior;};
-border b(t=0,1){x=2;y=t;label=exterior;};
-border c(t=2,0){x=t ;y=1;label=exterior;};
-border d(t=1,0){x = 1-t; y = t;label=interior;};
-border e(t=0, pi/2){ x= cos(t); y = sin(t);label=interior;};
-border e1(t=pi/2, 2*pi){ x= cos(t); y = sin(t);label=exterior;};
-int n=4;
-mesh[int]  Th(mpisize);
+int n = 4;
+
+// Mesh
+border a(t=1, 2){x=t; y=0; label=exterior;}
+border b(t=0, 1){x=2; y=t; label=exterior;}
+border c(t=2, 0){x=t; y=1; label=exterior;}
+border d(t=1, 0){x=1-t; y=t; label=interior;}
+border e(t=0, pi/2){x=cos(t); y=sin(t); label=interior;}
+border e1(t=pi/2, 2*pi){x=cos(t); y=sin(t); label=exterior;}
+mesh[int] Th(mpisize);
 if (mpirank == 0)
- Th[0] = buildmesh( a(5*n) + b(5*n) + c(10*n) + d(5*n));
+	Th[0] = buildmesh(a(5*n) + b(5*n) + c(10*n) + d(5*n));
 else
- Th[1] = buildmesh ( e(5*n) + e1(25*n) );
+	Th[1] = buildmesh(e(5*n) + e1(25*n));
 
-broadcast(processor(0),Th[0]);
-broadcast(processor(1),Th[1]);
+broadcast(processor(0), Th[0]);
+broadcast(processor(1), Th[1]);
 
-fespace Vh(Th[mpirank],P1);
-fespace Vhother(Th[1-mpirank],P1);
+// Fespace
+fespace Vh(Th[mpirank], P1);
+Vh u = 0, v;
 
-Vh u=0,v;
-Vhother U=0;
-int i=0;
+fespace Vhother(Th[1-mpirank], P1);
+Vhother U = 0;
 
-problem pb(u,v,init=i,solver=Cholesky) =
-    int2d(Th[mpirank])( dx(u)*dx(v)+dy(u)*dy(v) )
-  - int2d(Th[mpirank])( v)
-  + on(interior,u = U)  +  on(exterior,u= 0 ) ;
+//Problem
+int i = 0;
+problem pb (u, v, init=i, solver=Cholesky)
+	= int2d(Th[mpirank])(
+		  dx(u)*dx(v)
+		+ dy(u)*dy(v)
+	)
+	- int2d(Th[mpirank])(
+		  v
+	)
+	+ on(interior, u=U)
+	+ on(exterior, u= 0 )
+	;
 
-for ( i=0 ;i< 20; i++)
-{
-  cout << mpirank << " looP " << i << endl;
-   pb;
-   //  send u  to the other proc, receive in U
-   processor(1-mpirank) << u[];   processor(1-mpirank) >> U[];
-   real err0,err1;
-   err0 = int1d(Th[mpirank],interior)(square(U-u)) ;
-   // send err0  to the other proc, receive in err1
-   processor(1-mpirank)<<err0;   processor(1-mpirank)>>err1;
-   real err= sqrt(err0+err1);
-   cout <<" err = " << err << " err0 = " << err0
-         << ", err1 = " << err1 << endl;
-   if(err<1e-3) break;
-};
-if (mpirank==0)
-    plot(u,U,ps="uU.eps");
+// Loop
+for (i = 0; i < 20; i++){
+	cout << mpirank << " - Loop " << i << endl;
+
+	// Solve
+	pb;
+	//send u to the other proc, receive in U
+	processor(1-mpirank) << u[]; processor(1-mpirank) >> U[];
+
+	// Error
+	real err0, err1;
+	err0 = int1d(Th[mpirank],interior)(square(U - u));
+	// send err0 to the other proc, receive in err1
+	processor(1-mpirank) << err0; processor(1-mpirank) >> err1;
+	real err = sqrt(err0 + err1);
+	cout << " err = " << err << " - err0 = " << err0 << " - err1 = " << err1 << endl;
+	if (err < 1e-3) break;
+}
+if (mpirank == 0)
+	plot(u, U);
 ```
+$\codered$ script bug
 
 #### True parallel Schwarz example
 
-This is a explanation of the two script  `:::freefem examples++-mpi/MPIGMRES[2]D.edp` $\codered$, a Schwarz parallel with a complexity almost independent of the number of process (with a coarse grid preconditioner).
+This is a explanation of the two script `:::freefem examples++-mpi/MPIGMRES[2]D.edp` $\codered$, a Schwarz parallel with a complexity almost independent of the number of process (with a coarse grid preconditioner).
 
 Thank you to F. Nataf.
 
-To solve the following Poisson problem
-on domain $\Omega$ with boundary $\Gamma$ in $L^2(\Omega)$ :
+To solve the following Poisson problem on domain $\Omega$ with boundary $\Gamma$ in $L^2(\Omega)$ :
 
 $$
- -\Delta u = f,  \mbox{ in } \Omega,\mbox{ and } u= g \mbox{ on } \Gamma,
+-\Delta u = f, \mbox{ in } \Omega,\mbox{ and } u= g \mbox{ on } \Gamma,
 $$
 
 where $f$ and $g$ are two given functions of $L^2(\Omega)$ and of $H^{\frac12}(\Gamma)$,
 
 Lets introduce $(\pi_i)_{i=1,.., N_p}$ a regular partition of the unity of $\Omega$, q-e-d:
+
+<!--- __ --->
 
 $$
 \pi_i \in \mathcal{C}^0(\Omega) : \quad \pi_i\ge 0 \mbox{ and } \sum_{i=1}^{N_p} \pi_i =1 .
@@ -252,15 +259,18 @@ $$
 
 Denote $\Omega_i$ the sub domain which is the support of $\pi_i$ function and also denote $\Gamma_i$ the boundary of $\Omega_i$.
 
-The parallel Schwarz method is $\codered$
+The parallel Schwarz method is:
+
 Let $\ell=0$ the iterator and a initial guest $u^0$ respecting the boundary condition (i.e. $u^0_{|\Gamma} = g$).
 
 \begin{eqnarray}
-\label{eq:lapl} \forall i = 1 .., N_p: & \displaystyle   -\Delta u_i^\ell = f, \mbox{ in }	 \Omega_i ,&\mbox{ and } u_i^\ell= u^\ell \mbox{ on }  \Gamma_i \setminus \Gamma,\; u_i^\ell=g \mbox{ on }  \Gamma_i \cap  \Gamma     \\
-\label{eq:pu1}&u^{\ell+1} = \sum_{i=1}^{N_p} \pi_i u_i^\ell &
+	\label{eq:lapl}
+	\forall i = 1 .., N_p: & \displaystyle -\Delta u_i^\ell = f, \mbox{ in } \Omega_i ,&\mbox{ and } u_i^\ell= u^\ell \mbox{ on } \Gamma_i \setminus \Gamma,\; u_i^\ell=g \mbox{ on } \Gamma_i \cap \Gamma\\
+	\label{eq:pu1}
+	&u^{\ell+1} = \sum_{i=1}^{N_p} \pi_i u_i^\ell &
 \end{eqnarray}
 
-After discretization with the Lagrange finite element method, with a compatible mesh ${\mathcal{T}_h}_i$ of $\Omega_i$, i. e., the exist a global mesh ${\mathcal{T}_h}$ such that  ${\mathcal{T}_h}_i$ is include in ${\mathcal{T}_h}$.
+After discretization with the Lagrange finite element method, with a compatible mesh ${\mathcal{T}_h}_i$ of $\Omega_i$, i. e., the exist a global mesh ${\mathcal{T}_h}$ such that ${\mathcal{T}_h}_i$ is include in ${\mathcal{T}_h}$.
 
 Let us denote:
 
@@ -269,7 +279,7 @@ Let us denote:
 * ${\mathcal{N}^{\Gamma_i}_{hi}}$ is the set of the degree of freedom of ${V_h}_i$ on the boundary $\Gamma_i$ of $\Omega_i$,
 * $\sigma_i^k({v_h})$ is the value the degree of freedom $k$,
 * ${V_{0h}}_i= \{ {v_h} \in {V_h}_i :\forall k \in {\mathcal{N}^{\Gamma_i}_{hi}}, \quad \sigma_i^k({v_h})=0 \}$,
-* The conditional expression $a\;?\;b:c$ is defined like in `:::freefem C` of `:::freefem C++` language by
+* The conditional expression $a\;?\;b:c$ is defined like in `:::c C` of `:::cpp C++` language by
 
 	$$
 	a?b: c \equiv
@@ -282,7 +292,7 @@ Let us denote:
 	$$
 
 !!! note
-	We never use finite element space associated to the full domain $\Omega$ because it to expensive.
+	We never use finite element space associated to the full domain $\Omega$ because it is too expensive.
 
 We have to defined to operator to build the previous algorithm:
 
@@ -292,7 +302,7 @@ $\codered$ COMPILATION ERROR
 %% FFCS: this does not compile because of \uh^ and {\mathcal{N}^\Gamma_h}i_. Just wait
 %% for a working version.
 %%%\begin{equation}
-%%%\forall {v_h}_i\in V_{0i}: \int_{\Omega_i} \nabla {v_h}_i . \nabla \uh^{\ell}_{i} = \int_{\Omega_i} f  {v_h}_i ,\quad \forall  k \in {\mathcal{N}^{\Gamma_i}_{hi}}\;:\;  \sigma_i^k(\uh^\ell_i) =  (k\in \Gamma) \; ? \; g_i^k : \sigma_i^k(\uh^{\ell}_{|i})
+%%%\forall {v_h}_i\in V_{0i}: \int_{\Omega_i} \nabla {v_h}_i . \nabla \uh^{\ell}_{i} = \int_{\Omega_i} f {v_h}_i ,\quad \forall k \in {\mathcal{N}^{\Gamma_i}_{hi}}\;:\; \sigma_i^k(\uh^\ell_i) = (k\in \Gamma) \; ? \; g_i^k : \sigma_i^k(\uh^{\ell}_{|i})
 %%%\end{equation}
 
 where $g_i^k$ is the value of $g$ associated to the degree of freedom $k\in {\mathcal{N}^{\Gamma_i}_{hi}}$.
@@ -302,7 +312,7 @@ In FreeFem++, it can be written has with `:::freefem U` is the vector correspond
 ```freefem
 real[int] U1(Ui.n);
 real[int] b= onG .* U;
-b  = onG ? b : Bi ;
+b = onG ? b : Bi ;
 U1 = Ai^-1*b;
 ```
 
