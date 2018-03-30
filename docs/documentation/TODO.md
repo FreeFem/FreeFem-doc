@@ -13,6 +13,17 @@ Progression:
 </div>
 
 
+## Notations
+
+Progression:
+<div class="progress progress-80plus">
+	<div class="progress-bar" style="width:98%">
+	</div>
+	<span class="progress-label">98</span>
+</div>
+
+- [ ] line 31
+
 ## Mesh generation
 
 Progression:
@@ -130,4 +141,17 @@ Progression:
 - [ ] line 1164
 - [ ] line 1166
 - [ ] line 1334
+
+## Developers
+
+Progression:
+<div class="progress progress-80plus">
+	<div class="progress-bar" style="width:99%">
+	</div>
+	<span class="progress-label">99</span>
+</div>
+
+- [ ] line 663
+- [ ] line 671
+- [ ] line 806
 

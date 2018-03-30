@@ -27,19 +27,23 @@ introductionTODOFile = "introduction/TODO.md"
 #documentation
 documentationFilesList = [
 	"documentation/index.md",
+	"documentation/Notations.md",
 	"documentation/MeshGeneration.md",
 	"documentation/FiniteElement.md",
 	"documentation/Visualization.md",
 	"documentation/Parallelization.md",
-	"documentation/chapter11.md"
+	"documentation/chapter11.md",
+	"documentation/Developers.md"
 	]
 documentationNamesList = [
 	"Home",
+	"Notations",
 	"Mesh generation",
 	"Finite element",
 	"Visualization",
 	"Parallelization",
-	"Chapter 11"
+	"Chapter 11",
+	"Developers"
 	]
 documentationTODOFile = "documentation/TODO.md"
 

@@ -7,6 +7,7 @@ pages:
   - TODO: introduction/TODO.md
   - Documentation:
     - Home: documentation/index.md
+    - Some Notations: documentation/Notations.md
     - Mesh Generation: documentation/MeshGeneration.md
     - Finite Element: documentation/FiniteElement.md
     - Visualization: documentation/Visualization.md
