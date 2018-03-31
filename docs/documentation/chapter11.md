@@ -26,50 +26,131 @@ To use parallel solver in FreeFem++, we need to load the dynamic library corresp
 
 If the libraries are not loaded, the default sparse solver will be loaded (default sparse solver is UMFPACK). The table 11.1 \ref{lib.sparse.solver} $\codered$ gives this new value for the different libraries.
 
-||Default sparse solver|
-|Libraries|
- & \multicolumn{2}{|c|}{default sparse solver } \\
-Libraries & real & complex \\
-MUMPS\_FreeFem & mumps & mumps\\
-real\_SuperLU\_DIST\_FreeFem & SuperLU\_DIST & previous solver \\
-complex\_SuperLU\_DIST\_FreeFem & previous solver & SuperLU\_DIST \\
-real\_pastix\_FreeFem & pastix & previous solver \\
-complex\_pastix\_FreeFem &previous solver & pastix \\
-hips\_FreeFem & hips & previous solver \\
-hypre\_FreeFem & hypre & previous solver \\
-parms\_FreeFem & parms & previous solver \\
+<table>
+	<thead>
+		<tr>
+			<th colspan="3">Table 11.1 : Default sparse solver for real and complex arithmetics when we load a parallel sparse solver library</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="2" style="vertical-align: middle !important; font-weight: bold">Libraries</td>
+			<td colspan="2" align="center" style="font-weight: bold">Default sparse solver</td>
+		</tr>
+		<tr>
+			<td align="center" style="font-weight: bold">real</td>
+			<td align="center" style="font-weight: bold">complex</td>
+		</tr>
+		<tr>
+			<td>MUMPS_FreeFem</td>
+			<td align="center">mumps</td>
+			<td align="center">mumps</td>
+		</tr>
+		<tr>
+			<td>real_SuperLU_DIST_FreeFem</td>
+			<td align="center">SuperLU_DIST</td>
+			<td align="center">previous solver</td>
+		</tr>
+		<tr>
+			<td>complex_SuperLU_DIST_FreeFem</td>
+			<td align="center">previous solver</td>
+			<td align="center">SuperLU_DIST</td>
+		</tr>
+		<tr>
+			<td>real_pastix_FreeFem</td>
+			<td align="center">pastix</td>
+			<td align="center">previous solver</td>
+		</tr>
+		<tr>
+			<td>complex_pastix_FreeFem</td>
+			<td align="center">previous solver</td>
+			<td align="center">pastix</td>
+		</tr>
+		<tr>
+			<td>hips_FreeFem</td>
+			<td align="center">hips</td>
+			<td align="center">previous solver</td>
+		</tr>
+		<tr>
+			<td>hypre_FreeFem</td>
+			<td align="center">hypre</td>
+			<td align="center">previous solver</td>
+		</tr>
+		<tr>
+			<td>parms_FreeFem</td>
+			<td align="center">parms</td>
+			<td align="center">previous solver</td>
+		</tr>
+	</tbody>
+</table>
 
-\end{tabular}
-\caption{Default sparse solver for real and complex arithmetics when we load a parallel sparse solver library }
-\end{table}
+We also add functions (see Table 11.2 \ref{func.sparse.solver} $\codered$) with no parameter to change the default sparse solver in the .edp file. To use these functions, we need to load the library corresponding to the solver. An example of using different parallel sparse solvers for the same problem is given in testdirectsolvers.edp (directory example$++-$mpi $\codered$).
 
-We also add functions (see Table \ref{func.sparse.solver} $\codered$) with no parameter to change the default sparse solver in the .edp file. To use these functions, we need to load the library corresponding to the solver. An example of using different parallel sparse solvers for the same problem is given in testdirectsolvers.edp (directory example$++-$mpi).
+<table>
+	<thead>
+		<tr>
+			<th colspan="3">Table 11.2 : Functions that allow to change the default sparse solver for real and complex arithmetics and the result of these functions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="2" style="vertical-align: bottom !important; font-weight: bold">Function</td>
+			<td colspan="2" align="center" style="font-weight: bold">default sparse solver</td>
+		</tr>
+		<tr>
+			<td align="center" style="font-weight: bold">real</td>
+			<td align="center" style="font-weight: bold">complex</td>
+		</tr>
+		<tr>
+			<td>defaulttoMUMPS()</td>
+			<td align="center">mumps</td>
+			<td align="center">mumps</td>
+		</tr>
+		<tr>
+			<td>realdefaulttoSuperLUdist()</td>
+			<td align="center">SuperLU_DIST</td>
+			<td align="center">previous solver</td>
+		</tr>
+		<tr>
+			<td>complexdefaulttoSuperLUdist()</td>
+			<td align="center">previous solver</td>
+			<td align="center">SuperLU_DIST</td>
+		</tr>
+		<tr>
+			<td>realdefaultopastix()</td>
+			<td align="center">pastix</td>
+			<td align="center">previous solver</td>
+		</tr>
+		<tr>
+			<td>complexdefaulttopastix()</td>
+			<td align="center">previous solver</td>
+			<td align="center">pastix</td>
+		</tr>
+		<tr>
+			<td>defaulttohips()</td>
+			<td align="center">hips</td>
+			<td align="center">previous solver</td>
+		</tr>
+		<tr>
+			<td>defaulttohypre()</td>
+			<td align="center">hypre</td>
+			<td align="center">previous solver</td>
+		</tr>
+		<tr>
+			<td>defaulttoparms()</td>
+			<td align="center">parms</td>
+			<td align="center">previous solver</td>
+		</tr>
+	</tbody>
+</table>
 
-\begin{table}[ht!]
-\begin{tabular}{|l|c|c|}
- & \multicolumn{2}{|c|}{default sparse solver} \\
-function & real & complex \\
-defaulttoMUMPS() & mumps & mumps\\
-realdefaulttoSuperLUdist() & SuperLU\_DIST & previous solver \\
-complexdefaulttoSuperLUdist() & previous solver & SuperLU\_DIST \\
-realdefaultopastix() & pastix & previous solver \\
-complexdefaulttopastix() &previous solver & pastix \\
-defaulttohips() & hips & previous solver \\
-defaulttohypre() & hypre & previous solver \\
-defaulttoparms() & parms & previous solver \\
-
-\end{tabular}
-\caption{Functions that allow to change the default sparse solver for real and complex arithmetics and the result of these functions }
-\end{table}
-
-\begin{example}[testdirectsolvers.edp]
-~
+__Example testdirectsolvers.edp__
 
 ```freefem
 load "../src/solver/MUMPS_FreeFem"
 // default solver : real-> MUMPS, complex -> MUMPS
 load "../src/solver/real_SuperLU_DIST_FreeFem"
-// default solver : real-> SuperLU\_DIST, complex -> MUMPS
+// default solver : real-> SuperLU_DIST, complex -> MUMPS
 load "../src/solver/real_pastix_FreeFem"
 // default solver : real-> pastix, complex -> MUMPS
 
@@ -98,9 +179,9 @@ load "../src/solver/real_pastix_FreeFem"
  }
 }
 
-// solving with SuperLU\_DIST
+// solving with SuperLU_DIST
 realdefaulttoSuperLUdist();
-// default solver : real-> SuperLU\_DIST, complex -> MUMPS
+// default solver : real-> SuperLU_DIST, complex -> MUMPS
 {
  matrix A =
  [[ 1, 2, 2, 1, 1],
@@ -153,8 +234,7 @@ defaulttoMUMPS();
 }
 ```
 
-\end{example}
-
+$\codered$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %A faire :: \\
 % M\"{\i}?`ï¿½thode Freefem++ r\"{\i}?`ï¿½solution de solveur : comment les options des parallels solveurs dans freefem++
@@ -164,248 +244,192 @@ defaulttoMUMPS();
 
 ## Sparse direct solver
 
-In this section, we present the sparse direct solvers interfaced with FreeFem++ .
+In this section, we present the sparse direct solvers interfaced with FreeFem++.
 
 ### MUMPS solver
 
+MUltifrontal Massively Parallel Solver (MUMPS) is a free library \cite{mumpspubl1,mumpspubl2,mumpspubl3} $\codered$. This package solves linear system of the form $A \: x = b$ where $A$ is a square sparse matrix with a direct method. The square matrix considered in MUMPS can be either unsymmetric, symmetric positive definite or general symmetric.
+The method implemented in MUMPS is a direct method based on a multifrontal approach \cite{mumpspubl1} $\codered$. It constructs a direct factorization $A \:= \: L\:U$, $A\: = \: L^t \: D \: L$ depending of the symmetry of the matrix $A$. MUMPS uses the following libraries : BLAS\cite{blas1,blas2} $\codered$, BLACS and ScaLAPACK\cite{scalapackuserguide} $\codered$.
 
-MUltifrontal Massively Parallel Solver (MUMPS) is a free library \cite{mumpspubl1,mumpspubl2,mumpspubl3} $\codered$. This package solves linear system of the form $A \: x = b$ where
-$A$ is a square sparse matrix with a direct method. The square matrix considered in MUMPS can be either unsymmetric, symmetric positive definite or general symmetric.
-The method implemented in MUMPS is a direct method based on a multifrontal approach \cite{mumpspubl1} $\codered$. It constructs a direct factorization
-$A \:= \: L\:U$, $A\: = \: L^t \: D \: L$ depending of the symmetry of the matrix $A$. MUMPS uses the following libraries : BLAS\cite{blas1,blas2} $\codered$, BLACS and ScaLAPACK\cite{scalapackuserguide} $\codered$.
+!!! note
+	MUMPS does not solve linear system with a rectangular matrix.
 
-\begin{remark} MUMPS does not solve linear system with a rectangular matrix.\\
-\end{remark}
 
 
 __Installation of MUMPS__
+
 To used MUMPS in FreeFem++, you have to install the MUMPS package into your computer.
-MUMPS is written in Fortran 90. The parallel version is constructed using MPI \cite{mpi} $\codered$ for message passing and BLAS \cite{blas1,blas2} $\codered$,
-BLACS and ScaLAPACK\cite{scalapackuserguide} $\codered$. Therefore, a fortran compiler is needed, and MPI, BLAS, BLACS and ScaLAPACK . An installation
-procedure to obtain this package is given in the file README\_COMPILE in the directory src/solver of FreeFem++.
+MUMPS is written in Fortran 90. The parallel version is constructed using MPI \cite{mpi} $\codered$ for message passing and BLAS \cite{blas1,blas2} $\codered$, BLACS and ScaLAPACK\cite{scalapackuserguide} $\codered$. Therefore, a fortran compiler is needed, and MPI, BLAS, BLACS and ScaLAPACK. An installation procedure to obtain this package is given in the file README\_COMPILE in the directory src/solver $\codered$ of FreeFem++.
 
+__Creating Library of MUMPS interface for FreeFem++:__
 
-
-__Creating Library of MUMPS interface for FreeFem++:__ The MUMPS interface for FreeFem++ is given in file MUMPS\_freefem.cpp (directory src/solver/ ).
+The MUMPS interface for FreeFem++ is given in file MUMPS\_freefem.cpp (directory src/solver/ $\codered$).
 This interface works with the release 3.8.3 and 3.8.4 of MUMPS. To used MUMPS in FreeFem++, we need the library corresponding to this interface.
-A description to obtain this library is given in the file README\_COMPILE in the directory src/solver of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc to yours
-system: comment Section 1, comment line corresponding to libraries BLAS, BLACS, ScaLAPACK, Metis, scotch in Section 2 and comment in Section 3
-the paragraph corresponding to MUMPS solver. And then type __make mumps__ in a terminal window.
-
-
-
-%%
-%%__Creating Library of MUMPS interface for FreeFem++:__
-%%To used MUMPS inside FreeFem++, you have to install MUMPS package in first. We need a fortran 90 compiler and MPI to do this installation.
-%%An installation procedure to obtain this package is given in the file README\_COMPILE in the directory src/solver of FreeFem++.
-%%After this, go to the directory src/solver/ of FreeFem++.
-%%
-%%
-%%
-%%__Compile MUMPS :__
-%%To used MUMPS in Freefem++, we need a fortran compiler and MPI. An installation procedure to obtain this package is given in the file README\_COMPILE in the directory src/solver of FreeFem++.
-%%The different libraries needs by MUMPS is download and compiled by the Freefem$++$ during compile step.
-%% a changer en fonction de l'avancement de freefem++
-%%
+A description to obtain this library is given in the file README\_COMPILE in the directory src/solver $\codered$ of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc to yours system: comment Section 1, comment line corresponding to libraries BLAS, BLACS, ScaLAPACK, Metis, scotch in Section 2 and comment in Section 3 $\codered$ the paragraph corresponding to MUMPS solver. And then type __make mumps__ in a terminal window.
 
 Now we give a short description of MUMPS parameters before describing the method to call MUMPS in FreeFem++.
 
+__MUMPS parameters:__
 
-{\bf{MUMPS parameters:} } There are four input parameters in MUMPS (see \cite{mumpsuserguide} $\codered$). Two integers SYM and PAR, a vector of integer of size 40 INCTL and a vector of real of size 15 CNTL.
-The first parameter gives the type of the matrix: 0 for unsymmetric matrix, 1 for symmetric positive matrix and 2 for general symmetric. The second parameter defined
-if the host processor work during the factorization and solves steps : PAR=1 host processor working and PAR=0 host processor not working.
-The parameter INCTL and CNTL is the control parameter of MUMPS. The vectors ICNTL and CNTL in MUMPS becomes with index 1 like vector in fortran. A short description of all parameters of ICNTL and CNTL is given in ffmumps\_fileparam.txt. For more details see the users' guide \cite{mumpsuserguide} $\codered$.
+There are four input parameters in MUMPS (see \cite{mumpsuserguide} $\codered$). Two integers SYM and PAR, a vector of integer of size 40 INCTL and a vector of real of size 15 CNTL. The first parameter gives the type of the matrix: 0 for unsymmetric matrix, 1 for symmetric positive matrix and 2 for general symmetric. The second parameter defined if the host processor work during the factorization and solves steps : PAR=1 host processor working and PAR=0 host processor not working.
+The parameter INCTL and CNTL is the control parameter of MUMPS. The vectors ICNTL and CNTL in MUMPS becomes with index 1 like vector in fortran. A short description of all parameters of ICNTL and CNTL is given in ffmumps\_fileparam.txt $\codered$. For more details see the users' guide \cite{mumpsuserguide} $\codered$.
 
-We describe now some elements of the main parameters of ICNTL for MUMPS. \\
+We describe now some elements of the main parameters of ICNTL for MUMPS.
 
-\hspace*{0.5cm}__Input matrix parameter__ The input matrix is controlled by parameters ICNTL(5) and ICNTL(18). The matrix format (resp. matrix pattern and matrix entries)
-are controlled by INCTL(5) (resp. INCTL(18)). The different values of ICNTL(5) are 0 for assembled format and 1 for element format.
-%They con are respectively matrix format (0: assembled format and 1: elemental format) and matrix pattern and matrix entries.
-In the current release of Freefem$++$, we consider that FE matrix or matrix is storage in assembled format. Therefore, INCTL(5) is treated as 0 value.
-The main option for ICNTL(18): INCLTL(18)=0 centrally on the host processor, ICNTL(18)=3 distributed the input matrix pattern and the entries
-(recommended option for distributed matrix by developer of MUMPS). For other values of ICNTL(18) see the user's guide of MUMPS. These values can be used also in FreeFem++.
+* __Input matrix parameter__
+	The input matrix is controlled by parameters ICNTL(5) and ICNTL(18). The matrix format (resp. matrix pattern and matrix entries) are controlled by INCTL(5) (resp. INCTL(18)). The different values of ICNTL(5) are 0 for assembled format and 1 for element format. In the current release of Freefem$++$, we consider that FE matrix or matrix is storage in assembled format. Therefore, INCTL(5) is treated as 0 value. The main option for ICNTL(18): INCLTL(18)=0 centrally on the host processor, ICNTL(18)=3 distributed the input matrix pattern and the entries (recommended option for distributed matrix by developer of MUMPS). For other values of ICNTL(18) see the user's guide of MUMPS. These values can be used also in FreeFem++.
 
-The default option implemented in FreeFem++ are ICNTL(5)=0 and ICNTL(18)=0.\\
+	The default option implemented in FreeFem++ are ICNTL(5)=0 and ICNTL(18)=0.
 
-\hspace*{0.5cm}__Preprocessing parameter__ The preprocessed matrix $A_{p}$ that will be effectively factored is defined by
-$$
-A_{p} = P \: D_r \: A \: Q_c \ D_c P^t
-$$
-where $P$ is the permutation matrix, $Q_c$ is the column permutation, $D_r$ and $D_c$ are diagonal matrix for respectively row and column scaling.
-The ordering strategy to obtain $P$ is controlled by parameter ICNTL(7). The permutation of zero free diagonal $Q_c$ is controlled by parameter ICNTL(6).
-The row and column scaling is controlled by parameter ICNTL(18). These option are connected and also strongly related with ICNTL(12) (see documentation of mumps
-for more details \cite{mumpsuserguide} $\codered$). The parameters permr, scaler, and scalec in FreeFem++ allow to give permutation matrix($P$), row scaling ($D_r$) and column scaling ($D_c$) of the user respectively.
+* __Preprocessing parameter__
+	The preprocessed matrix $A_{p}$ that will be effectively factored is defined by
+	$$
+	A_{p} = P \: D_r \: A \: Q_c \ D_c P^t
+	$$
+	where $P$ is the permutation matrix, $Q_c$ is the column permutation, $D_r$ and $D_c$ are diagonal matrix for respectively row and column scaling. The ordering strategy to obtain $P$ is controlled by parameter ICNTL(7). The permutation of zero free diagonal $Q_c$ is controlled by parameter ICNTL(6). The row and column scaling is controlled by parameter ICNTL(18). These option are connected and also strongly related with ICNTL(12) (see documentation of mumps for more details \cite{mumpsuserguide} $\codered$). The parameters permr, scaler, and scalec in FreeFem++ allow to give permutation matrix($P$), row scaling ($D_r$) and column scaling ($D_c$) of the user respectively.
 
-%%Automatic choice decision strategy for these parameters is given by MUMPS.
-%% All ordering strategy required is download and compile automatically by Freefem++ during installation phase of Freefem++.
+__Calling MUMPS in FreeFem++__
 
-%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%
-
-
-\paragraph{Calling MUMPS in FreeFem++}
-
-To call MUMPS in FreeFem++, we need to load the dynamic library MUMPS\_freefem.dylib (MacOSX), MUMPS\_freefem.so (Unix) or MUMPS\_freefem.dll (Windows).
+To call MUMPS in FreeFem++, we need to load the dynamic library MUMPS\_freefem.dylib (MacOSX), MUMPS\_freefem.so (Unix) or MUMPS\_freefem.dll (Windows) $\codered$.
 This is done in typing load "MUMPS\_freefem" in the .edp file. We give now the two methods to give the option of MUMPS solver in FreeFem++.
 
-\vspace*{0.5cm}
+* __Solver parameters is defined in .edp file:__
+	In this method, we need to give the parameters `:::freefem lparams` and `:::freefem dparams`. These parameters are defined for MUMPS by :
+	$\codered$
+	\begin{center}
+	\begin{tabular}{ll}
+	&lparams[0] = SYM, \\
+	&lparams[1] = PAR, \\
+	$\forall i=1,\ldots,40, \quad$ & lparams[$i$+1] = ICNTL($i$).\\
+	\\
+	$\forall i=1,\ldots,15, \quad$ & dparams[$i-1$] = CNTL($i$).
+	\end{tabular}
+	\end{center}
 
-\hspace*{0.5cm}__Solver parameters is defined in .edp file:__
-In this method, we need to give the parameters `:::freefem lparams` and `:::freefem dparams`. These parameters are defined for MUMPS by \\
-\begin{center}
-\begin{tabular}{ll}
-&lparams[0] = SYM, \\
-&lparams[1] = PAR, \\
-$\forall i=1,\ldots,40, \quad$ & lparams[$i$+1] = ICNTL($i$).\\
-\\
-$\forall i=1,\ldots,15, \quad$ & dparams[$i-1$] = CNTL($i$).
-\end{tabular}
-\end{center}
+* __Reading solver parameters on a file:__
 
-\vspace*{0.5cm}
+	The structure of data file for MUMPS in FreeFem++ is : first line parameter SYM and second line parameter PAR and in the following line the different value of vectors ICNTL and CNTL. An example of this parameter file is given in `:::freefem ffmumpsfileparam.txt`.
 
-\hspace*{0.5cm}__Reading solver parameters on a file:__
-The structure of data file for MUMPS in FreeFem++ is : first line parameter SYM and second line parameter PAR and in the following line the different value of vectors ICNTL and CNTL. An example of this parameter file is given in `:::freefem ffmumpsfileparam.txt`. \\
-
-
-```freefem
-0 /* SYM :: 0 for non symmetric matrix, 1 for symmetric definite positive matrix and 2 general symmetric matrix*/
-1 /* PAR :: 0 host not working during factorization and solves steps, 1 host working during factorization and solves steps*/
- -1 /* ICNTL(1) :: output stream for error message */
- -1 /* ICNTL(2) :: output for diagnostic printing, statics and warning message */
- -1 /* ICNTL(3) :: for global information */
- 0 /* ICNTL(4) :: Level of printing for error, warning and diagnostic message */
- 0 /* ICNTL(5) :: matrix format : 0 assembled format, 1 elemental format. */
- 7 /* ICNTL(6) :: control option for permuting and/or scaling the matrix in analysis phase */
- 3 /* ICNTL(7) :: pivot order strategy : AMD, AMF, metis, pord scotch*/
- 77 /* ICNTL(8) :: Row and Column scaling strategy */
- 1 /* ICNTL(9) :: 0 solve Ax = b, 1 solve the transposed system A^t x = b : parameter is not considered in the current release of freefem++*/
- 0 /* ICNTL(10) :: number of steps of iterative refinement */
- 0 /* ICNTL(11) :: statics related to linear system depending on ICNTL(9) */
- 1 /* ICNTL(12) :: constrained ordering strategy for general symmetric matrix */
- 0 /* ICNTL(13) :: method to control splitting of the root frontal matrix */
- 20 /* ICNTL(14) :: percentage increase in the estimated working space (default 20\%)*/
- 0 /* ICNTL(15) :: not used in this release of MUMPS */
- 0 /* ICNTL(16) :: not used in this release of MUMPS */
- 0 /* ICNTL(17) :: not used in this release of MUMPS */
- 3 /* ICNTL(18) :: method for given : matrix pattern and matrix entries : */
- 0 /* ICNTL(19) :: method to return the Schur complement matrix */
- 0 /* ICNTL(20) :: right hand side form ( 0 dense form, 1 sparse form) : parameter will be set to 0 for freefem++ */
- 0 /* ICNTL(21) :: 0, 1 kept distributed solution : parameter is not considered in the current release of freefem++ */
- 0 /* ICNTL(22) :: controls the in-core/out-of-core (OOC) facility */
- 0 /* ICNTL(23) :: maximum size of the working memory in Megabyte than MUMPS can allocate per working processor */
- 0 /* ICNTL(24) :: control the detection of null pivot */
- 0 /* ICNTL(25) :: control the computation of a null space basis */
- 0 /* ICNTL(26) :: This parameter is only significant with Schur option (ICNTL(19) not zero). : parameter is not considered in the current release of freefem++ */
- -8 /* ICNTL(27) (Experimental parameter subject to change in next release of MUMPS) :: control the blocking factor for multiple righthand side during the solution phase : parameter is not considered in the current release of freefem++ */
- 0 /* ICNTL(28) :: not used in this release of MUMPS*/
- 0 /* ICNTL(29) :: not used in this release of MUMPS*/
- 0 /* ICNTL(30) :: not used in this release of MUMPS*/
- 0 /* ICNTL(31) :: not used in this release of MUMPS*/
- 0 /* ICNTL(32) :: not used in this release of MUMPS*/
- 0 /* ICNTL(33) :: not used in this release of MUMPS*/
- 0 /* ICNTL(34) :: not used in this release of MUMPS*/
- 0 /* ICNTL(35) :: not used in this release of MUMPS*/
- 0 /* ICNTL(36) :: not used in this release of MUMPS*/
- 0 /* ICNTL(37) :: not used in this release of MUMPS*/
- 0 /* ICNTL(38) :: not used in this release of MUMPS*/
- 1 /* ICNTL(39) :: not used in this release of MUMPS*/
- 0 /* ICNTL(40) :: not used in this release of MUMPS*/
- 0.01 /* CNTL(1) :: relative threshold for numerical pivoting */
- 1e-8 /* CNTL(2) :: stopping criteria for iterative refinement */
- -1 /* CNTL(3) :: threshold for null pivot detection */
- -1 /* CNTL(4) :: determine the threshold for partial pivoting */
- 0.0 /* CNTL(5) :: fixation for null pivots */
- 0 /* CNTL(6) :: not used in this release of MUMPS */
- 0 /* CNTL(7) :: not used in this release of MUMPS */
- 0 /* CNTL(8) :: not used in this release of MUMPS */
- 0 /* CNTL(9) :: not used in this release of MUMPS */
- 0 /* CNTL(10) :: not used in this release of MUMPS */
- 0 /* CNTL(11) :: not used in this release of MUMPS */
- 0 /* CNTL(12) :: not used in this release of MUMPS */
- 0 /* CNTL(13) :: not used in this release of MUMPS */
- 0 /* CNTL(14) :: not used in this release of MUMPS */
- 0 /* CNTL(15) :: not used in this release of MUMPS */
-```
-
+	```freefem
+	0 /* SYM :: 0 for non symmetric matrix, 1 for symmetric definite positive matrix and 2 general symmetric matrix*/
+	1 /* PAR :: 0 host not working during factorization and solves steps, 1 host working during factorization and solves steps*/
+	 -1 /* ICNTL(1) :: output stream for error message */
+	 -1 /* ICNTL(2) :: output for diagnostic printing, statics and warning message */
+	 -1 /* ICNTL(3) :: for global information */
+	 0 /* ICNTL(4) :: Level of printing for error, warning and diagnostic message */
+	 0 /* ICNTL(5) :: matrix format : 0 assembled format, 1 elemental format. */
+	 7 /* ICNTL(6) :: control option for permuting and/or scaling the matrix in analysis phase */
+	 3 /* ICNTL(7) :: pivot order strategy : AMD, AMF, metis, pord scotch*/
+	 77 /* ICNTL(8) :: Row and Column scaling strategy */
+	 1 /* ICNTL(9) :: 0 solve Ax = b, 1 solve the transposed system A^t x = b : parameter is not considered in the current release of freefem++*/
+	 0 /* ICNTL(10) :: number of steps of iterative refinement */
+	 0 /* ICNTL(11) :: statics related to linear system depending on ICNTL(9) */
+	 1 /* ICNTL(12) :: constrained ordering strategy for general symmetric matrix */
+	 0 /* ICNTL(13) :: method to control splitting of the root frontal matrix */
+	 20 /* ICNTL(14) :: percentage increase in the estimated working space (default 20\%)*/
+	 0 /* ICNTL(15) :: not used in this release of MUMPS */
+	 0 /* ICNTL(16) :: not used in this release of MUMPS */
+	 0 /* ICNTL(17) :: not used in this release of MUMPS */
+	 3 /* ICNTL(18) :: method for given : matrix pattern and matrix entries : */
+	 0 /* ICNTL(19) :: method to return the Schur complement matrix */
+	 0 /* ICNTL(20) :: right hand side form ( 0 dense form, 1 sparse form) : parameter will be set to 0 for freefem++ */
+	 0 /* ICNTL(21) :: 0, 1 kept distributed solution : parameter is not considered in the current release of freefem++ */
+	 0 /* ICNTL(22) :: controls the in-core/out-of-core (OOC) facility */
+	 0 /* ICNTL(23) :: maximum size of the working memory in Megabyte than MUMPS can allocate per working processor */
+	 0 /* ICNTL(24) :: control the detection of null pivot */
+	 0 /* ICNTL(25) :: control the computation of a null space basis */
+	 0 /* ICNTL(26) :: This parameter is only significant with Schur option (ICNTL(19) not zero). : parameter is not considered in the current release of freefem++ */
+	 -8 /* ICNTL(27) (Experimental parameter subject to change in next release of MUMPS) :: control the blocking factor for multiple righthand side during the solution phase : parameter is not considered in the current release of freefem++ */
+	 0 /* ICNTL(28) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(29) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(30) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(31) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(32) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(33) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(34) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(35) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(36) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(37) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(38) :: not used in this release of MUMPS*/
+	 1 /* ICNTL(39) :: not used in this release of MUMPS*/
+	 0 /* ICNTL(40) :: not used in this release of MUMPS*/
+	 0.01 /* CNTL(1) :: relative threshold for numerical pivoting */
+	 1e-8 /* CNTL(2) :: stopping criteria for iterative refinement */
+	 -1 /* CNTL(3) :: threshold for null pivot detection */
+	 -1 /* CNTL(4) :: determine the threshold for partial pivoting */
+	 0.0 /* CNTL(5) :: fixation for null pivots */
+	 0 /* CNTL(6) :: not used in this release of MUMPS */
+	 0 /* CNTL(7) :: not used in this release of MUMPS */
+	 0 /* CNTL(8) :: not used in this release of MUMPS */
+	 0 /* CNTL(9) :: not used in this release of MUMPS */
+	 0 /* CNTL(10) :: not used in this release of MUMPS */
+	 0 /* CNTL(11) :: not used in this release of MUMPS */
+	 0 /* CNTL(12) :: not used in this release of MUMPS */
+	 0 /* CNTL(13) :: not used in this release of MUMPS */
+	 0 /* CNTL(14) :: not used in this release of MUMPS */
+	 0 /* CNTL(15) :: not used in this release of MUMPS */
+	```
 
 If no solver parameter is given, we used default option of MUMPS solver.
 
-__example__
-A simple example of calling MUMPS in FreeFem++ with this two methods is given in the file testsolver\_MUMPS.edp in the directory examples++-mpi.
+__Example__
 
+A simple example of calling MUMPS in FreeFem++ with this two methods is given in the file testsolver_MUMPS.edp $\codered$ in the directory examples++-mpi.
 
 ### SuperLU distributed solver
 
+The package SuperLU_DIST \cite{slu2,slu1} $\codered$ solves linear systems using LU factorization. It is a free scientific library under BSD license. The web site of this project is http://crd.lbl.gov/~xiaoye/SuperLU. This library provides functions to handle square or rectangular matrix in real and complex arithmetics. The method implemented in SuperLU_DIST is a supernodal method \cite{slu1} $\codered$. New release of this package includes a parallel symbolic factorization \cite{slu2} $\codered$. This scientific library is written in C and MPI for communications.
 
-The package SuperLU\_DIST \cite{slu2,slu1} $\codered$ solves linear systems using LU factorization. It is a free scientific library under BSD license. The web site of this project is
-http://crd.lbl.gov/$\sim$xiaoye/SuperLU. This library provides functions to handle square or rectangular matrix in real and complex arithmetics. The method implemented
-in SuperLU\_DIST is a supernodal method \cite{slu1} $\codered$. New release of this package includes a parallel symbolic factorization \cite{slu2} $\codered$. This scientific library is written
-in C and MPI for communications.
+__Installation of SuperLU_DIST:__
 
+To use SuperLU_DIST in FreeFem++, you have to install SuperLU_DIST package. We need MPI and ParMetis library to do this compilation. An installation procedure to obtain this package is given in the file README\_COMPILE in the directory src/solver/ of the FreeFem++ package.
 
+__Creating Library of SuperLU_DIST interface for FreeFem++:__
 
-__Installation of SuperLU\_DIST:__
-To use SuperLU\_DIST in FreeFem++, you have to install SuperLU\_DIST package. We need MPI and ParMetis library to do this compilation. An installation procedure to obtain this package is given in the file README\_COMPILE in the directory src/solver/ of the FreeFem++ package.
-%To used SuperLU distributed, we first need to compile this libraries. The file *.a and *.h must be copied in the tree of freefem$++$ respectively in directory /download/lib/ and directory /download/include/.
-%To compile SuperLU Distributed during the compilation of freefem$++$, we must used the option --enable-download at the configure step. %% futur release
+The FreeFem++ interface to SuperLU_DIST for real (resp. complex) arithmetics is given in file real_SuperLU_DIST_FreeFem.cpp (resp. complex_SuperLU_DIST_FreeFem.cpp). These files are in the directory src/solver/. These interfaces are compatible with the release 3.2.1 of SuperLU_DIST. To use SuperLU_DIST in FreeFem++, we need libraries corresponding to these interfaces. A description to obtain these libraries is given in the file README_COMPILE in the directory src/solver of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc in your system : comment Section 1, comment line corresponding to libraries BLAS, Metis, ParMetis in Section 2 and comment in Section 3 the paragraph corresponding to SuperLU_DIST solver. And just type __make rsludist__ (resp. __make csludist__) in the terminal to obtain the dynamic library of interface for real (resp. complex) arithmetics.
 
+Now we give a short description of SuperLU_DIST parameters before describing the method to call SuperLU_DIST in FreeFem++.
 
+__SuperLU_DIST parameters:__
 
-__Creating Library of SuperLU\_DIST interface for FreeFem++:__
-The FreeFem++ interface to SuperLU\_DIST for real (resp. complex) arithmetics is given in file \\
-real\_SuperLU\_DIST\_FreeFem.cpp (resp. complex\_SuperLU\_DIST\_FreeFem.cpp). These files are in the directory src/solver/. These interfaces are compatible with the release 3.2.1 of SuperLU\_DIST. To use SuperLU\_DIST in FreeFem++, we need libraries corresponding to these interfaces. A description to obtain these libraries is given in the file README\_COMPILE in the directory
-src/solver of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc in your system : comment Section 1, comment line corresponding to libraries BLAS, Metis, ParMetis in Section 2 and comment in Section 3 the paragraph corresponding to SuperLU\_DIST solver. And just type __make rsludist__ (resp. __make csludist__) in the terminal to obtain the dynamic library of interface for real (resp. complex) arithmetics.
+We describe now some parameters of SuperLU_DIST. The SuperLU_DIST library use a 2D-logical process group. This process grid is specifies by $nprow$ (process row) and $npcol$ (process column) such that $N_{p} = nprow \: npcol$ where $N_{p}$ is the number of all process allocated for SuperLU_DIST.
 
+The input matrix parameters is controlled by "matrix= " in sparams for internal parameter or in the third line of parameters file. The different value are
 
-Now we give a short description of SuperLU\_DIST parameters before describing the method to call SuperLU\_DIST in FreeFem++.
+* `:::freefem matrix = assembled` global matrix are available on all process
+* `:::freefem matrix = distributedglobal` The global matrix is distributed among all the process
+* `:::freefem matrix = distributed` The input matrix is distributed (not yet implemented)
 
+The option arguments of SuperLU_DIST are described in the section Users-callable routine of \cite{sluuserguide} $\codered$. The parameter Fact and TRANS are specified in FreeFem++ interfaces to SuperLU_DIST during the different steps. For this reason, the value given by the user for this option is not considered.
 
-__SuperLU\_DIST parameters: __
-
-We describe now some parameters of SuperLU\_DIST. The SuperLU\_DIST library use a 2D-logical process group. This process grid is specifies by $nprow$ (process row) and $npcol$ (process column) such that $N_{p} = nprow \: npcol$ where $N_{p}$ is the number of all process allocated for SuperLU\_DIST.
-
-The input matrix parameters is controlled by "matrix= " in sparams for internal parameter or in the third line of parameters file. The different value are\\
-\begin{tabular}{ll}
-matrix = assembled & global matrix are available on all process \\
-matrix = distributedglobal & the global matrix is distributed among all the process \\
- matrix = distributed & the input matrix is distributed (not yet implemented) \\
-\end{tabular}
-
-The option arguments of SuperLU\_DIST are described in the section Users-callable routine of \cite{sluuserguide} $\codered$. The parameter Fact and TRANS are specified in FreeFem++ interfaces to SuperLU\_DIST during the different steps. For this reason, the value given by the user for this option is not considered.
-
-The factorization LU is calculated in SuperLU\_DIST on the matrix $A_p$.
+The factorization LU is calculated in SuperLU_DIST on the matrix $A_p$.
 $$
 A_{p} = P_{c} \: P_r \: D_r \: A \: D_{c} \: P_{c}^{t}
 $$
 where $P_c$ and $P_r$ is the row and column permutation matrix respectively, $D_r$ and $D_c$ are diagonal matrix for respectively row and column scaling.
 The option argument RowPerm (resp. ColPerm) control the row (resp. column) permutation matrix. $D_r$ and $D_c$ is controlled by the parameter DiagScale.
 The parameter permr, permc, scaler, and scalec in FreeFem++ is provided to give row permutation, column permutation, row scaling and column scaling of the user respectively.
-The other parameters for LU factorization are ParSymFact and ReplaceTinyPivot. The parallel symbolic factorization works only on a power of two processes and
-need the ParMetis ordering \cite{parmetis} $\codered$. The default option argument of SuperLU\_DIST are given in the file ffsuperlu\_dist\_fileparam.txt.
+The other parameters for LU factorization are ParSymFact and ReplaceTinyPivot. The parallel symbolic factorization works only on a power of two processes and need the ParMetis ordering \cite{parmetis} $\codered$. The default option argument of SuperLU_DIST are given in the file ffsuperlu_dist_fileparam.txt.
 
+__Calling SuperLU_DIST in FreeFem++__
 
-\paragraph{Calling SuperLU\_DIST in FreeFem++}
+To call SuperLU_DIST in FreeFem++, we need to load the library dynamic correspond to interface.
+This done by the following line __load "real_superlu _DIST_FreeFem"__ (resp. __load "complex_superlu_DIST_FreeFem"__) for real (resp. complex) arithmetics in the file .edp.
 
-To call SuperLU\_DIST in FreeFem++, we need to load the library dynamic correspond to interface.
-This done by the following line __load "real\_superlu \_DIST\_FreeFem"__ (resp. __load "complex\_superlu\_DIST\_FreeFem"__) for real (resp. complex) arithmetics in the file .edp.
+__Solver parameters is defined in .edp file:__
 
-\vspace*{0.5cm}
-
-\paragraph{Solver parameters is defined in .edp file:}
-To call SuperLU\_DIST with internal parameter, we used the parameters sparams. The value of parameters of SuperLU\_DIST in sparams is defined by\\
+To call SuperLU_DIST with internal parameter, we used the parameters sparams. The value of parameters of SuperLU_DIST in sparams is defined by
+$\codered$
 \begin{tabular}{ll}
 sparams&="nprow=1, npcol=1, matrix= distributedgloba, Fact= DOFACT, Equil=NO, \\
 	 & ParSymbFact=NO, ColPerm= MMD\_AT\_PLUS\_A, RowPerm= LargeDiag, \\
 	 & DiagPivotThresh=1.0, IterRefine=DOUBLE, Trans=NOTRANS, \\
 	 & ReplaceTinyPivot=NO, SolveInitialized=NO, PrintStat=NO, DiagScale=NOEQUIL "
 \end{tabular}
-This value correspond to the parameter in the file ffsuperlu\_dist\_fileparam.txt. If one parameter is not specify by the user, we take the default value of SuperLU\_DIST.
+This value correspond to the parameter in the file ffsuperlu_dist_fileparam.txt. If one parameter is not specify by the user, we take the default value of SuperLU_DIST.
 
-\vspace*{0.5cm}
-\paragraph{Reading solver parameters on a file:}
-The structure of data file for SuperLU\_DIST in FreeFem++ is given in the file
-ffsuperlu\_dist\_fileparam.txt (default value of the FreeFem++ interface).
+__Reading solver parameters on a file:__
+The structure of data file for SuperLU_DIST in FreeFem++ is given in the file ffsuperlu_dist_fileparam.txt (default value of the FreeFem++ interface).
 
 ```freefem
 1 /* nprow : integer value */
@@ -426,45 +450,35 @@ NO /* PrintStat : NO, YES*/
 NOEQUIL /* DiagScale : NOEQUIL, ROW, COL, BOTH*/
 ```
 
+If no solver parameter is given, we used default option of SuperLU_DIST solver.
 
-If no solver parameter is given, we used default option of SuperLU\_DIST solver.
+__Example__
 
-\begin{example}
-A simple example of calling SuperLU\_DIST in FreeFem++ with this two methods is given in the file testsolver\_superLU\_DIST.edp in the directory examples++-mpi.
-\end{example}
+A simple example of calling SuperLU_DIST in FreeFem++ with this two methods is given in the file testsolver_superLU_DIST.edp in the directory examples++-mpi.
 
 ### Pastix solver
 
-
 Pastix (Parallel Sparse matrix package) is a free scientific library under CECILL-C license. This package solves sparse linear system with a direct and block ILU(k) iterative methods. This solver can be applied to a real or complex matrix with a symmetric pattern \cite{pastix} $\codered$.
 
-
 __Installation of Pastix:__
-To used Pastix in FreeFem++, you have to install pastix package in first. To compile this package, we need a fortran 90 compiler, scotch \cite{scotch} $\codered$ or Metis \cite{metis} $\codered$
-ordering library and MPI. An installation procedure to obtain this package is given in the file .src/solver/ README\_COMPILE in the section pastix of the FreeFem++ package.
-%or in the webpage .
 
-
+To used Pastix in FreeFem++, you have to install pastix package in first. To compile this package, we need a fortran 90 compiler, scotch \cite{scotch} $\codered$ or Metis \cite{metis} $\codered$ ordering library and MPI. An installation procedure to obtain this package is given in the file .src/solver/ README_COMPILE in the section pastix of the FreeFem++ package.
 
 __Creating Library of pastix interface for FreeFem++:__
-The FreeFem++ interface to pastix is given in file real\_pastix\_FreeFem.cpp (resp. complex\_pastix\_FreeFem.cpp) for real (resp.complex) arithmetics. This interface is compatible with the release 2200 of pastix and is designed for a global matrix. We have also implemented interface for distributed matrices. To use pastix in FreeFem++, we need the library corresponding
-to this interface. A description to obtain this library is given in the file README\_COMPILE in the directory src/solver of FreeFem++. We recall here the procedure. Go to the
-directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc to yours system : comment Section 1, comment line corresponding to libraries BLAS, METIS and
-SCOTCH in Section 2 and comment in Section 3 the paragraph corresponding to pastix solver. And just type __make rpastix__ (resp. __make cpastix__) in the terminal to obtain the dynamic library of interface for real (resp. complex) arithmetics.
 
+The FreeFem++ interface to pastix is given in file real_pastix_FreeFem.cpp (resp. complex_pastix_FreeFem.cpp) for real (resp.complex) arithmetics. This interface is compatible with the release 2200 of pastix and is designed for a global matrix. We have also implemented interface for distributed matrices. To use pastix in FreeFem++, we need the library corresponding to this interface. A description to obtain this library is given in the file README_COMPILE in the directory src/solver of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc to yours system : comment Section 1, comment line corresponding to libraries BLAS, METIS and SCOTCH in Section 2 and comment in Section 3 the paragraph corresponding to pastix solver. And just type __make rpastix__ (resp. __make cpastix__) in the terminal to obtain the dynamic library of interface for real (resp. complex) arithmetics.
 
 Now we give a short description of pastix parameters before describing the method to call pastix in FreeFem++.
 
-
 __Pastix parameters: __
-The input {`:::freefem matrix`} parameter of FreeFem++ depend on pastix interface. {`:::freefem matrix`}=assembled for non distributed matrix. It is the same parameter for SuperLU\_DIST. There are four parameters in Pastix : iparm, dparm, perm and invp. These parameters are respectively the integer parameters (vector of size 64),
-real parameters (vector of size 64), permutation matrix and inverse permutation matrix respectively. iparm and dparm vectors are described in \cite{pastixrefcard} $\codered$.
+
+The input `:::freefem matrix` parameter of FreeFem++ depend on pastix interface. `:::freefem matrix = assembled` for non distributed matrix. It is the same parameter for SuperLU_DIST. There are four parameters in Pastix : iparm, dparm, perm and invp. These parameters are respectively the integer parameters (vector of size 64), real parameters (vector of size 64), permutation matrix and inverse permutation matrix respectively. iparm and dparm vectors are described in \cite{pastixrefcard} $\codered$.
 The parameters permr and permc in FreeFem++ are provided to give permutation matrix and inverse permutation matrix of the user respectively.
 
+__Solver parameters defined in .edp file:__
 
-\vspace*{0.5cm}
-\paragraph{Solver parameters defined in .edp file:}
-To call Pastix in FreeFem++ in this case, we need to specify the parameters __lparams__ and __dparams__. These parameters are defined by \\
+To call Pastix in FreeFem++ in this case, we need to specify the parameters __lparams__ and __dparams__. These parameters are defined by :
+$\codered$
 \begin{center}
 \begin{tabular}{ll}
 $\forall i=0,\ldots,63, \quad$ & lparams[$i$] = iparm[$i$].\\
@@ -473,8 +487,9 @@ $\forall i=0,\ldots,63, \quad$ & dparams[$i$] = dparm[$i$].
 \end{tabular}
 \end{center}
 
-\vspace*{0.5cm}
-\paragraph{Reading solver parameters on a file:}
+
+__Reading solver parameters on a file:__
+
 The structure of data file for pastix parameters in FreeFem++ is : first line structure parameters of the matrix and in the following line the value of vectors iparm and dparm in this order.
 
 ```freefem
@@ -491,110 +506,98 @@ dparm[1]
 dparm[63]
 ```
 
-An example of this file parameter is given in ffpastix\_iparm\_dparm.txt with a description of these parameters. This file is obtained with the example file iparm.txt and
-dparm.txt including in the pastix package. \\
+An example of this file parameter is given in ffpastix_iparm_dparm.txt with a description of these parameters. This file is obtained with the example file iparm.txt and dparm.txt including in the pastix package.
 
 If no solver parameter is given, we use the default option of pastix solver.
 
 __Example:__
-A simple example of calling pastix in FreeFem++ with this two methods is given in the file testsolver\_pastix.edp in the directory examples++-mpi.\\
+A simple example of calling pastix in FreeFem++ with this two methods is given in the file testsolver_pastix.edp in the directory examples++-mpi.
 
+In Table 11.3 \ref{recap.direct.solveur} $\codered$, we recall the different matrix considering in the different direct solvers.
 
+<table>
+	<thead>
+		<tr>
+			<th colspan="7">Table 11.3 : Type of matrix used by the different direct sparse solver</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="2" style="vertical-align: bottom !important; font-weight: bold">direct solver</td>
+			<td colspan="3" align="center" style="font-weight: bold">square matrix</td>
+			<td colspan="3" align="center" style="font-weight: bold">rectangular matrix</td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold">sym</td>
+			<td align="center" style="font-weight: bold">sym pattern</td>
+			<td align="center" style="font-weight: bold">unsym</td>
+			<td align="center" style="font-weight: bold">sym</td>
+			<td align="center" style="font-weight: bold">sym pattern</td>
+			<td align="center" style="font-weight: bold">unsym</td>
+		</tr>
+		<tr>
+			<td>SuperLU_DIST</td>
+			<td align="center">yes</td>
+			<td align="center">yes</td>
+			<td align="center">yes</td>
+			<td align="center">yes</td>
+			<td align="center">yes</td>
+			<td align="center">yes</td>
+		</tr>
+		<tr>
+			<td>MUMPS</td>
+			<td align="center">yes</td>
+			<td align="center">yes</td>
+			<td align="center">yes</td>
+			<td align="center">no</td>
+			<td align="center">no</td>
+			<td align="center">no</td>
+		</tr>
+		<tr>
+			<td>pastix</td>
+			<td align="center">yes</td>
+			<td align="center">yes</td>
+			<td align="center">no</td>
+			<td align="center">no</td>
+			<td align="center">no</td>
+			<td align="center">no</td>
+		</tr>
+	</tbody>
+</table>
 
-In Table \ref{recap.direct.solveur} $\codered$, we recall the different matrix considering in the different direct solvers.
-
-\begin{table}
-\begin{tabular}{|l|ccc|ccc|}
- & \multicolumn{3}{c}{square matrix} & \multicolumn{3}{|c|}{rectangular matrix} \\
-direct solver & sym & sym pattern & unsym & sym & sym pattern & unsym \\
-SuperLU\_DIST & yes & yes & yes & yes & yes &yes \\
-MUMPS & yes & yes & yes & no & no &no \\
-pastix & yes & yes & no & no & no &no \\
-\end{tabular}
-\caption{Type of matrix used by the different direct sparse solver }
-\end{table}
 
 ## Parallel sparse iterative solver
 
-
-Concerning \textbf{ iterative solvers}, we have chosen
-\textit{pARMS} \cite{spARMS} $\codered$ , \textit{HIPS} \cite{HIPS} $\codered$ and \textit{Hypre}
-\cite{HYPRE} $\codered$.
+Concerning __iterative solvers__, we have chosen _pARMS_ \cite{spARMS} $\codered$, _HIPS_ \cite{HIPS} $\codered$ and _Hypre_ \cite{HYPRE} $\codered$.
 Each software implements a different type of parallel preconditioner.
-So, \textit{pARMS} implements algebraic domain decomposition preconditioner type
-such as additive Schwartz \cite{CAI89} $\codered$
- and interface method \cite{LISAAD} $\codered$; while HIPS implement hierarchical
-incomplete factorization \cite{A:LaBRI::sisc06} $\codered$
- and finally HYPRE implements multilevel preconditioner are AMG(Algebraic
-MultiGrid)
-\cite{A:AMG::sisc00} $\codered$ and parallel approximated inverse \cite{A:PASA::sisc00} $\codered$.
-\\\\
+So, _pARMS_ implements algebraic domain decomposition preconditioner type such as additive Schwartz \cite{CAI89} $\codered$ and interface method \cite{LISAAD} $\codered$; while HIPS implement hierarchical incomplete factorization \cite{A:LaBRI::sisc06} $\codered$ and finally HYPRE implements multilevel preconditioner are AMG(Algebraic MultiGrid) \cite{A:AMG::sisc00} $\codered$ and parallel approximated inverse \cite{A:PASA::sisc00} $\codered$.
+
 To use one of these programs in FreeFem++, you have to install it independently
-of FreeFem++.
-It is also necessary to install the MPI communication library which is essential
-for communication
-between the processors and, in some cases, software partitioning graphs like
+of FreeFem++. It is also necessary to install the MPI communication library which is essential
+for communication between the processors and, in some cases, software partitioning graphs like
 METIS \cite{metis} $\codered$ or Scotch \cite{scotch} $\codered$.
 
 All this preconditioners are used with Krylov subspace methods accelerators.
-Krylov subspace methods are iterative methods
-which consist in finding a solution $x$ of linear system $Ax=b$ inside the
-affine space $x_0+K_m$ by imposing that $b-Ax \bot \mathcal{L}_m$, where $K_m$
-is Krylov subspace of dimension $m$ defined by $K_m=\{r_0, Ar_0,
-A^2r_0,...,A^{m-1}r_0\}$ and $\mathcal{L}_m$ is another subspace of dimension
-$m$ which depends on type of Krylov subspace. For example in GMRES,
-$\mathcal{L}_m=AK_m$.
-\\\\
-We realized an interface which is easy to use, so that the call of these
-different softwares in FreeFem++ is done in the same way.
-You just have to load the solver and then specify the parameters to apply to
-the specific solvers. In the rest of this chapter,
-when we talk about Krylov subspace methods we mean one among GMRES, CG and
-BICGSTAB.
+Krylov subspace methods are iterative methods which consist in finding a solution $x$ of linear system $Ax=b$ inside the affine space $x_0+K_m$ by imposing that $b-Ax \bot \mathcal{L}_m$, where $K_m$ is Krylov subspace of dimension $m$ defined by $K_m=\{r_0, Ar_0, A^2r_0,...,A^{m-1}r_0\}$ and $\mathcal{L}_m$ is another subspace of dimension $m$ which depends on type of Krylov subspace. For example in GMRES, $\mathcal{L}_m=AK_m$.
+
+We realized an interface which is easy to use, so that the call of these different softwares in FreeFem++ is done in the same way. You just have to load the solver and then specify the parameters to apply to the specific solvers. In the rest of this chapter, when we talk about Krylov subspace methods we mean one among GMRES, CG and BICGSTAB.
 
 ### pARMS solver
 
-\textbf{pARMS} ( \textit{parallel Algebraic Multilevel Solver})
-is a software developed by Youssef Saad and al at University of
- Minnesota \cite{spARMS} $\codered$.
-This software is specialized in the resolution of large sparse non symmetric
-linear systems of equation. Solvers developed in pARMS is the Krylov subspace
-type.
-It consists of variants of GMRES like FGMRES(Flexible GMRES) , DGMRES(Deflated
-GMRES) \cite{SAAD03} $\codered$ and BICGSTAB.
-pARMS also implements parallel preconditioner like RAS (Restricted Additive
-Schwarz)\cite{CAI89} $\codered$
-and Schur Complement type preconditioner \cite{LISAAD} $\codered$.
+_pARMS_ (parallel Algebraic Multilevel Solver) is a software developed by Youssef Saad and al at University of Minnesota \cite{spARMS} $\codered$.
+This software is specialized in the resolution of large sparse non symmetric linear systems of equation. Solvers developed in pARMS is the Krylov subspace type.
+It consists of variants of GMRES like FGMRES(Flexible GMRES) , DGMRES(Deflated GMRES) \cite{SAAD03} $\codered$ and BICGSTAB. pARMS also implements parallel preconditioner like RAS (Restricted Additive Schwarz)\cite{CAI89} $\codered$ and Schur Complement type preconditioner \cite{LISAAD} $\codered$.
 
+All these parallel preconditioners are based on the principle of domain decomposition. Thus, the matrix $A$ is partitioned into sub matrices $A_i$($i=1,...,p$) where p represents the number of partitions one needs. The union of $A_i$ forms the original matrix. The solution of the overall system is obtained by solving the local systems on $A_i$ (see \cite{Smith96} $\codered$).
+Therefore, a distinction is made between iterations on $A$ and the local iterations on $A_i$.
+To solve the local problem on $A_i$ there are several preconditioners as __ilut__ (Incomplete LU with threshold), __iluk__ (Incomplete LU with level of fill in) and __ARMS__ (Algebraic Recursive Multilevel Solver). But to use pAMRS in FreeFem++ you have first to install pAMRS.
 
+__Installation of pARMS__
 
-All these parallel preconditioners are based on the principle of domain
-decomposition.
-Thus, the matrix $A$ is partitioned into sub matrices $A_i$($i=1,...,p$) where
-p represents the number of partitions one needs.
-The union of $A_i$ forms the original matrix.
-The solution of the overall system is obtained by solving the local systems on
-$A_i$ (see \cite{Smith96} $\codered$).
-Therefore, a distinction is made between iterations on $A$ and the local
-iterations on $A_i$.
-To solve the local problem on $A_i$ there are several preconditioners as
-\textbf{ilut} (Incomplete LU with threshold),
-\textbf{iluk}(Incomplete LU with level of fill in) and \textbf{ARMS}( Algebraic
-Recursive Multilevel Solver). But to use pAMRS in
-FreeFem++ you have first to install pAMRS.
+To install pARMS, you must first download the pARMS package at \cite{spARMS} $\codered$. Once the download is complete, you must unpack package pARMS and follow the installation procedure described in file README to create the library __libparms.a__.
 
-\paragraph*{Installation of pARMS}
-To install pARMS, you must first download the pARMS package at \cite{spARMS} $\codered$.
-Once the download is complete, you must unpack package pARMS and follow the
-installation procedure
-described in file README to create the library \textbf{libparms.a}.
-
-\paragraph*{Using pARMS as interface to FreeFem++}
-Before calling pARMS solver inside FreeFem++, you must
-compile file $parms\_FreeFem.cpp$ to create a dynamic library
-$parms\_FreeFem.so$.
-To do this, move to the directory $src/solver$ of FreeFem++, edit the file
-$makefile\-parms.inc$ to specify the following variables:\\
+__Using pARMS as interface to FreeFem++__
+Before calling pARMS solver inside FreeFem++, you must compile file $parms\_FreeFem.cpp$ to create a dynamic library $parms\_FreeFem.so$. To do this, move to the directory $src/solver$ of FreeFem++, edit the file $makefile\-parms.inc$ to specify the following variables:
 
 \begin{tabular}{ll}
  %\begin{tabular*}
@@ -609,67 +612,60 @@ $PARMS\_DIR$ : & Directory of pARMS \\
 \textbf{$LIBBLAS$} : & Blas library\\
 \end{tabular}
 
-After that, in the command line type \textbf{make parms} to create
-$parms\_FreeFem.so$.
-\\
+After that, in the command line type `:::bash make parms` to create $parms\_FreeFem.so$.
+
 As usual in FreeFem++, we will show by examples how to call pARMS in FreeFem++.
 There are three ways of doing this:
-\paragraph*{Example 1: Default parameters }
+
+__Example 1: Default parameters__
 This example comes from user guide of FreeFem++ \cite{ufreefem} $\codered$ at page 12.
-\begin{example}~
 
 ```freefem
- 1: load parms_freefem // Tell FreeFem that you will use pARMS
- 2: border C(t=0,2*pi){x=cos(t); y=sin(t);label=1;}
- 3: mesh Th = buildmesh (C(50));
- 4: fespace Vh(Th,P2);
- 5: Vh u,v;
- 6: func f= x*y;
- 7: problem Poisson(u,v,solver=sparsesolver) = // bilinear part will use
- 8: int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) // a sparse solver, in this case pARMS
- 9: - int2d(Th)( f*v) // right hand side
-10: + on(1,u=0) ; // Dirichlet boundary condition
-11:
-12: real cpu=clock();
-13: Poisson; // SOLVE THE PDE
-14: plot(u);
-15: cout << " CPU time = " << clock()-cpu << endl;
+load parms_freefem // Tell FreeFem that you will use pARMS
+border C(t=0,2*pi){x=cos(t); y=sin(t);label=1;}
+mesh Th = buildmesh (C(50));
+fespace Vh(Th,P2);
+Vh u,v;
+func f= x*y;
+problem Poisson(u,v,solver=sparsesolver) = // bilinear part will use
+int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) // a sparse solver, in this case pARMS
+- int2d(Th)( f*v) // right hand side
++ on(1,u=0); // Dirichlet boundary condition
+
+real cpu=clock();
+Poisson; // SOLVE THE PDE
+plot(u);
+cout << " CPU time = " << clock()-cpu << endl;
 ```
 
-\end{example}
-
 In line 1 of example \ref{exm:first} $\codered$ we load in memory the pARMS dynamic library
-with interface FreeFem++.
-After this, in line 7 we specify that the bilinear form will be solved by the
-last sparse linear solver
-load in memory which, in this case, is pARMS.
+with interface FreeFem++. After this, in line 7 we specify that the bilinear form will be solved by the
+last sparse linear solver load in memory which, in this case, is pARMS.
 
+The parameter used in pARMS in this case is the default one since the user does not have to provide any parameter.
 
-The parameter used in pARMS in this case is the default one since the user does
-not have to provide any parameter.
+Here are some default parameters:
 
- Here are some default parameters:\\
-\textbf{solver}=FGMRES, \textbf{Krylov dimension}=30, \textbf{Maximum of
-Krylov}=1000,
-\textbf{Tolerance for convergence}=$1e-08$.(see book of Saad \cite{SAAD03} $\codered$ to
-understand all this parameters.) \\
-\textbf{preconditionner}=Restricted Additif Schwarz \cite{CAI89} $\codered$, \textbf{Inner
-Krylov dimension}=5,
-\textbf{Maximum of inner Krylov dimension}=5, \textbf{Inner
-preconditionner}=ILUK.
-\\\\
+* solver=FGMRES,
+* Krylov dimension=30,
+* Maximum of Krylov=1000,
+* Tolerance for convergence=$1e-08$.(see book of Saad \cite{SAAD03} $\codered$ to
+understand all this parameters.)
+* preconditionner=Restricted Additif Schwarz \cite{CAI89} $\codered$,
+* Inner Krylov dimension=5,
+* Maximum of inner Krylov dimension=5,
+* Inner preconditionner=ILUK.
+
 To specify the parameters to apply to the solver, the user can either give an
-integer
-vector for \textbf{integer parameters} and real vectors for \textbf{real
-parameters} or provide a \textbf{file} which contains those parameters.
-\paragraph*{Example 2: User specifies parameters inside two
-vectors}
-Lets us consider Navier Stokes example \ref{exm:segond} $\codered$ . In this example we
-solve linear systems coming from discretization
-of Navier Stokes equation with pARMS. Parameters of solver is specified by
-user.
+integer vector for __integer parameters__ and real vectors for __real
+parameters__ or provide a __file__ which contains those parameters.
 
-\begin{example}[Stokes.edp]
+__Example 2: User specifies parameters inside two vectors__
+
+Lets us consider Navier Stokes example \ref{exm:segond} $\codered$ . In this example we
+solve linear systems coming from discretization of Navier Stokes equation with pARMS. Parameters of solver is specified by user.
+
+__Example 11.4 Stokes.edp__
 
 ```freefem
 include "manual.edp"
@@ -677,227 +673,351 @@ include "includes.edp";
 include "mesh_with_cylinder.edp";
 include "bc_poiseuille_in_square.edp";
 include "fe_functions.edp";
-0: load parms_FreeFem
-1: int[int] iparm(16); real[int] dparm(6);
-2: int ,ii;
-3: for(ii=0;ii<16;ii++){iparm[ii]=-1;} for(ii=0;ii<6;ii++) dparm[ii]=-1.0;
-4: fespace Vh(Th,[P2,P2,P1]);
-5: iparm[0]=0;
-6: varf Stokes ([u,v,p],[ush,vsh,psh],\textbf{solver=sparsesolver}) =
+load parms_FreeFem
+int[int] iparm(16); real[int] dparm(6);
+int ,ii;
+for(ii=0;ii<16;ii++){iparm[ii]=-1;} for(ii=0;ii<6;ii++) dparm[ii]=-1.0;
+fespace Vh(Th,[P2,P2,P1]);
+iparm[0]=0;
+varf Stokes ([u,v,p],[ush,vsh,psh],\textbf{solver=sparsesolver}) =
  int2d(Th)( nu*( dx(u)*dx(ush) + dy(u)*dy(ush) + dx(v)*dx(vsh) + dy(v)*dy(vsh) )
  - p*psh*(1.e-6) 			 // p epsilon
  - p*(dx(ush)+dy(vsh)) //+ dx(p)*ush + dy(p)*vsh
  - (dx(u)+dy(v))*psh 	 // psh div(u)
  )
  + on(cylinder,infwall,supwall,u=0.,v=0.)+on(inlet,u=uc,v=0); // Bdy conditions
-7: matrix AA=Stokes(VVh,VVh);
-8: set(AA,solver=sparsesolver,lparams=iparm,dparams=dparm); //Set pARMS as linear solver
-9: real[int] bb= Stokes(0,VVh); real[int] sol(AA.n);
-10: sol= AA^-1 * bb;
+matrix AA=Stokes(VVh,VVh);
+set(AA,solver=sparsesolver,lparams=iparm,dparams=dparm); //Set pARMS as linear solver
+real[int] bb= Stokes(0,VVh); real[int] sol(AA.n);
+sol= AA^-1 * bb;
 ```
 
-\end{example}
-We need two vectors to specify the parameters of the linear solver. In line 1 of
-example \ref{exm:segond} $\codered$
-we have declared these vectors(\textbf{int[int] iparm(16); real[int] dparm(6);})
-. In line 3 we have initialized these vectors by
-negative values. We do this because all parameters values in pARMS are positive
-and if you do not change the negative values of
-one entry of this vector, the default value will be set.
-In tables (table \ref{lpparm} $\codered$ and \ref{pardoubleparm} $\codered$) , we have the meaning of
-differents entries of these vectors.
+We need two vectors to specify the parameters of the linear solver. In line 1 of example \ref{exm:segond} $\codered$ we have declared these vectors(`:::freefem int[int] iparm(16); real[int] dparm(6);`). In line 3 we have initialized these vectors by negative values. We do this because all parameters values in pARMS are positive and if you do not change the negative values of one entry of this vector, the default value will be set. In tables (table 11.4 \ref{lpparm} $\codered$ and 11.5 \ref{pardoubleparm} $\codered$), we have the meaning of differents entries of these vectors.
 
-\begin{table}[hbtp]
-\begin{center}
-\begin{tabular}{|l|l|}
-\textbf{Entries of iparm } & \textbf{Significations of each entries} \\
-\multirow{2}{*}{iparm[0] } & Krylov subspace methods. \\ & Differents values
-for this parameters are specify on table \ref{kryparms} $\codered$\\
-\multirow{2}{*}{iparm[1] } & Preconditionner. \\ & Differents
-preconditionners for this parameters are specify on table \ref{precond} $\codered$ \\
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.4 : Meaning of __lparams__ corresponding variables for example
+			\ref{exm:segond} $\codered$</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="font-weight: bold">Entries of iparm</td>
+			<td style="font-weight: bold">Significations of each entries</td>
+		</tr>
+	    <tr>
+	        <td>iparm[0]</td>
+	        <td>Krylov subspace methods.<br>Differents valuesfor this parameters are specify on table \ref{kryparms} $\codered$</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[1]</td>
+	        <td>Preconditionner.<br>Differentspreconditionners for this parameters are specify on table \ref{precond} $\codered$</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[2]</td>
+	        <td>Krylov subspace dimension in outer iteration: default value 30</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[3]</td>
+	        <td>Maximum of iterations in outer iteration: default value 1000</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[4]</td>
+	        <td>Number of level in arms when used.</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[5]</td>
+	        <td>Krylov subspace dimension in inner iteration: default value 3</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[6]</td>
+	        <td>Maximum of iterations in inner iteration: default value 3</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[7]</td>
+	        <td>Symmetric(=1 for symmetric) or unsymmetric matrix:<br>default value 0(unsymmetric matrix)</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[8]</td>
+	        <td>Overlap size between different subdomain: default value 0(no overlap)</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[9]</td>
+	        <td>Scale the input matrix or not: Default value 1 (Matrix should bescale)</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[10]</td>
+	        <td>Block size in arms when used: default value 20</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[11]</td>
+	        <td>lfil0 (ilut, iluk, and arms) : default value 20</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[12]</td>
+	        <td>lfil for Schur complement const : default value 20</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[13]</td>
+	        <td>lfil for Schur complement const : default value 20</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[14]</td>
+	        <td>Multicoloring or not in ILU when used : default value 1</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[15]</td>
+	        <td>Inner iteration : default value 0</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[16]</td>
+	        <td>Print message when solving:default 0(no messageprint).<br>0: no message is print,<br>1: Convergence informations like number of iteration and residual ,<br>2: Timing for a different step like preconditioner<br>3 : Print all informations.</td>
+	    </tr>
+	</tbody>
+</table>
 
- iparm[2] & Krylov subspace dimension in outer iteration: default value 30 \\
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.5 : Significations of __dparams__ corresponding variables for example \ref{exm:segond} $\codered$</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td style="font-weight: bold">Entries of dparm</td>
+	        <td style="font-weight: bold">Significations of each entries</td>
+	    </tr>
+	    <tr>
+	        <td>dparm[0]</td>
+	        <td>precision for outer iteration : default value 1e-08</td>
+	    </tr>
+	    <tr>
+	        <td>dparm[1]</td>
+	        <td>precision for inner iteration: default value 1e-2</td>
+	    </tr>
+	    <tr>
+	        <td>dparm[2]</td>
+	        <td>tolerance used for diagonal domain: : default value 0.1</td>
+	    </tr>
+	    <tr>
+	        <td>dparm[3]</td>
+	        <td>drop tolerance droptol0 (ilut, iluk, and arms) : default value 1e-2</td>
+	    </tr>
+	    <tr>
+	        <td>dparm[4]</td>
+	        <td>droptol for Schur complement const: default value 1e-2</td>
+	    </tr>
+	    <tr>
+	        <td>dparm[5]</td>
+	        <td>droptol for Schur complement const: default value 1e-2</td>
+	    </tr>
+	</tbody>
+</table>
 
-iparm[3] & Maximum of iterations in outer iteration: default value 1000 \\
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.6 : Krylov Solvers in pARMS</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td style="font-weight: bold">Values of iparm[0]</td>
+	        <td style="font-weight: bold">Krylov subspace methods</td>
+	    </tr>
+	    <tr>
+	        <td>0</td>
+	        <td>FGMRES (Flexible GMRES)</td>
+	    </tr>
+	    <tr>
+	        <td>1</td>
+	        <td>DGMRES (Deflated GMRES)</td>
+	    </tr>
+	    <tr>
+	        <td>2</td>
+	        <td>BICGSTAB</td>
+	    </tr>
+	</tbody>
+</table>
 
-iparm[4] & Number of level in arms when used. \\
-iparm[5] & Krylov subspace dimension in inner iteration: default value 3 \\
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.7 : Preconditionners in pARMS</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td style="font-weight: bold">Values of iparm[1]</td>
+	        <td style="font-weight: bold">Preconditionners type</td>
+	    </tr>
+	    <tr>
+	        <td>0</td>
+	        <td>additive Schwartz preconditioner with ilu0 as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>1</td>
+	        <td>additive Schwartz preconditioner with iluk as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>2</td>
+	        <td>additive Schwartz preconditioner with ilut as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>3</td>
+	        <td>additive Schwartz preconditioner with arms as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>4</td>
+	        <td>Left Schur complement preconditioner with ilu0 as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>5</td>
+	        <td>Left Schur complement preconditioner with ilut as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>6</td>
+	        <td>Left Schur complement preconditioner with iluk as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>7</td>
+	        <td>Left Schur complement preconditioner with arms as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>8</td>
+	        <td>Right Schur complement preconditioner with ilu0 as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>9</td>
+	        <td>Right Schur complement preconditioner with ilut as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>10</td>
+	        <td>Right Schur complement preconditioner with iluk as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>11</td>
+	        <td>Right Schur complement preconditioner with arms as local preconditioner</td>
+	    </tr>
+	    <tr>
+	        <td>12</td>
+	        <td>sch_gilu0, Schur complement preconditioner with global ilu0</td>
+	    </tr>
+	    <tr>
+	        <td>13</td>
+	        <td>SchurSymmetric GS preconditioner</td>
+	    </tr>
+	</tbody>
+</table>
 
-iparm[6] & Maximum of iterations in inner iteration: default value 3 \\
-\multirow{2}{*}{iparm[7]} & Symmetric(=1 for symmetric) or unsymmetric matrix:
-\\ & default value 0(unsymmetric matrix) \\
-iparm[8] & Overlap size between different subdomain: default value 0(no overlap)
- \\
-iparm[9] & Scale the input matrix or not: Default value 1 (Matrix should be
-scale) \\
-iparm[10] & Block size in arms when used: default value 20 \\
-iparm[11] & lfil0 (ilut, iluk, and arms) : default value 20 \\
-iparm[12] & lfil for Schur complement const : default value 20 \\
-iparm[13] & lfil for Schur complement const : default value 20 \\
-iparm[14] & Multicoloring or not in ILU when used : default value 1 \\
-iparm[15] & Inner iteration : default value 0 \\
-\multirow{3}{*} {iparm[16]} & Print message when solving:default 0(no message
-print). \\
-& 0: no message is print, \\
-& 1: Convergence informations like number of iteration and residual ,\\
-& 2: Timing for a different step like preconditioner \\
-& 3 : Print all informations. \\
-\end{tabular}
+We run example 11.4 \ref{exm:segond} $\codered$ on cluster paradent of Grid5000 and report results in table 11.8 \ref{parmResult} $\codered$.
 
-\end{center}
-\caption{Meaning of \textbf{lparams} corresponding variables for example
-\ref{exm:segond} $\codered$ }
+<table>
+	<thead>
+		<tr>
+			<th colspan="5">Table 11.8 : Convergence and time for solving linear system from example
+			\ref{exm:segond} 11.4 $\codered$</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td colspan="2" align="center" style="font-weight: bold">n=471281</td>
+	        <td colspan="2" align="center" style="font-weight: bold">nnz=$13\times10^6$</td>
+	        <td colspan="2" align="center" style="font-weight: bold">Te=571,29</td>
+	    </tr>
+	    <tr>
+	        <td rowspan="2" align="center" style="vertical-align: bottom !important">np</td>
+	        <td colspan="2" align="center">add(iluk)</td>
+	        <td colspan="2" align="center">schur(iluk)</td>
+	    </tr>
+	    <tr>
+	        <td align="center">nit</td>
+	        <td align="center">time</td>
+	        <td align="center">nit</td>
+	        <td align="center">time</td>
+	    </tr>
+	    <tr>
+	        <td align="center">4</td>
+	        <td align="center">230</td>
+	        <td align="center">637.57</td>
+	        <td align="center">21</td>
+	        <td align="center">557.8</td>
+	    </tr>
+	    <tr>
+	        <td align="center">8</td>
+	        <td align="center">240</td>
+	        <td align="center">364.12</td>
+	        <td align="center">22</td>
+	        <td align="center">302.25</td>
+	    </tr>
+	    <tr>
+	        <td align="center">16</td>
+	        <td align="center">247</td>
+	        <td align="center">212.07</td>
+	        <td align="center">24</td>
+	        <td align="center">167.5</td>
+	    </tr>
+	    <tr>
+	        <td align="center">32</td>
+	        <td align="center">261</td>
+	        <td align="center">111.16</td>
+	        <td align="center">25</td>
+	        <td align="center">81.5</td>
+	    </tr>
+	</tbody>
+</table>
 
-\end{table}
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.9 : Legend of table 11.8</th>
+		</tr>
+	</thead>
+	<tbody>
+    <tr>
+        <td>n</td>
+        <td>matrix size</td>
+    </tr>
+    <tr>
+        <td>nnz</td>
+        <td>number of non null entries inside matrix</td>
+    </tr>
+    <tr>
+        <td>nit</td>
+        <td>number of iteration for convergence</td>
+    </tr>
+    <tr>
+        <td>time</td>
+        <td>Time for convergence</td>
+    </tr>
+    <tr>
+        <td>Te</td>
+        <td>Time for constructing finite element matrix</td>
+    </tr>
+    <tr>
+        <td>np</td>
+        <td>number of processor</td>
+    </tr>
+</table>
 
-\begin{table}[hbtp]
-\begin{center}
-\begin{tabular}{|l|l|}
-\textbf{Entries of dparm} & \textbf{Significations of each entries} \\
-dparm[0] & precision for outer iteration : default value 1e-08\\
-dparm[1] & precision for inner iteration: default value 1e-2\\
-dparm[2] & tolerance used for diagonal domain: : default value 0.1\\
-dparm[3] & drop tolerance droptol0 (ilut, iluk, and arms) : default value 1e-2\\
-
-dparm[4] & droptol for Schur complement const: default value 1e-2\\
-dparm[5] & droptol for Schur complement const: default value 1e-2 \\
-\end{tabular}
-\end{center}
-\caption{Significations of \textbf{dparams} corresponding variables for example
-\ref{exm:segond} $\codered$ }
-
-\end{table}
-
-\begin{table}[hbtp]
-\begin{center}
- \begin{tabular}{|l|l|}
-Values of iparm[0] & Krylov subspace methods \\
-0 &	FGMRES (Flexible GMRES) \\
-1 & DGMRES (Deflated GMRES) \\
-2 & BICGSTAB \\
- \end{tabular}
-\end{center}
-\caption{Krylov Solvers in pARMS}
-
-\end{table}
-
-\begin{table}[hbtp]
-\begin{tabular}{|l|l|}
-Values of iparm[1] & Preconditionners \\
-\multirow{2}{*}{0} & Preconditioners type is \\ & \textit{additive Schwartz
-preconditioner with ilu0 as local preconditioner},\\
-\multirow{2}{*}{1} & preconditioner type is \\ & \textit{additive Schwartz
-preconditioner with iluk as local preconditioner},\\
-\multirow{2}{*}{2} & preconditioner type is \\ & \textit{additive Schwartz
-preconditioner with ilut as local preconditioner},\\
-\multirow{2}{*}{3} & preconditioner type is \\ & \textit{additive Schwartz
-preconditioner with arms as local preconditioner},\\
-\multirow{2}{*}{4} & preconditioner type is \\ & \textit{Left Schur complement
-preconditioner with ilu0 as local preconditioner},\\
-\multirow{2}{*}{5} & preconditioner type is \\ & \textit{Left Schur complement
-preconditioner with ilut as local preconditioner},\\
-\multirow{2}{*}{6} & preconditioner type is \\ & \textit{Left Schur complement
-preconditioner with iluk as local preconditioner},\\
-\multirow{2}{*}{7} & preconditioner type is \\ & \textit{Left Schur complement
-preconditioner with arms as local preconditioner},\\
-\multirow{2}{*}{8} & preconditioner type is \\ & \textit{Right Schur complement
-preconditioner with ilu0 as local preconditioner},\\
-\multirow{2}{*}{9} & preconditioner type is \\ & \textit{Right Schur complement
-preconditioner with ilut as local preconditioner},\\
-\multirow{2}{*}{10} & preconditioner type is \\ & \textit{Right Schur
-complement preconditioner with iluk as local preconditioner},\\
-\multirow{2}{*}{11} & preconditioner type is \\ & \textit{Right Schur
-complement preconditioner with arms as local preconditioner},\\
-\multirow{2}{*}{12} & preconditioner type is \\ & \textit{ sch\_gilu0 },
-Schur complement preconditioner with global ilu0\\
-\multirow{2}{*}{13} & preconditioner type is \\ & \textit{Schur\-Symmetric
-GS preconditioner} \\
-\end{tabular}
-\caption{Preconditionners in pARMS}
-
-\end{table}
-
-We run example \ref{exm:segond} $\codered$ on cluster paradent of Grid5000 and report
-results in table \ref{parmResult} $\codered$.
-
-\begin{table}
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|}
-
-\multicolumn{2}{|c||}{\textbf{n= 471281}} &
-\multicolumn{2}{|c||}{\textbf{nnz=$13\times10^6$}} &
-\multicolumn{1}{|c|}{\textbf{Te=571,29}}\\
-\multirow{1}{*}{np} & \multicolumn{2}{|c|}{add(iluk)} &
-\multicolumn{2}{|c|}{schur(iluk)}
-\\ \cline{2-5}
-&
-nit & time & nit & time \\
-4 & 230 & 637.57 &21 & 557.8 \\
-8 & 240 & 364.12 & 22 & 302.25 \\
-16 & 247 & 212.07 & 24 & 167.5 \\
-32 & 261 & 111.16 & 25 & 81.5 \\
-\end{tabular}
-\end{center}
-\caption{Convergence and time for solving linear system from example
-\ref{exm:segond} $\codered$ }
-
-\end{table}
-
-\begin{table}
-\begin{center}
-
-\begin{tabular}{|l|l|}
-
-n & matrix size \\
-nnz & number of non null entries inside matrix \\
-nit & number of iteration for convergence \\
-time & Time for convergence \\
-Te & Time for constructing finite element matrix \\
-np & number of processor \\
-\end{tabular}
-\caption{Legend of table \ref{parmResult} $\codered$ }
-
-\end{center}
-\end{table}
-
-
-In this example, we fix the matrix size (in term of finite element, we fix the
-mesh) and increase the number of processors
-used to solve the linear system. We saw that, when the number of processors
-increases, the time for solving the linear equation decreases, even if the
-number of iteration increases. This proves that, using pARMS as solver of linear
-systems coming from discretization of partial differential equation in FreeFem++
-can decrease drastically the total time of simulation.
+In this example, we fix the matrix size (in term of finite element, we fix the mesh) and increase the number of processors used to solve the linear system. We saw that, when the number of processors increases, the time for solving the linear equation decreases, even if the number of iteration increases. This proves that, using pARMS as solver of linear systems coming from discretization of partial differential equation in FreeFem++ can decrease drastically the total time of simulation.
 
 ### Interfacing with HIPS
-\textbf{HIPS} ( \textit{Hierarchical Iterative Parallel Solver}) is a scientific
-library
-that provides an efficient parallel iterative solver for very large sparse
-linear systems.
-HIPS is available as free software under the CeCILL-C licence.
-The interface that we realized is compatible with release \textbf{1.2 beta.rc4}
- of HIPS.
 
-HIPS implements two solver classes which are the iteratives class ( GMRES, PCG)
-and the Direct class.
-Concerning preconditionners, HIPS implements a type of multilevel ILU.
-For further informations on those preconditionners see \cite{A:LaBRI::sisc06,
-A:LaBRI::HRR07}.
-\paragraph*{Installation of HIPS}
-To install HIPS, first download the HIPS package at \cite{HIPS} $\codered$, unpack it and
-go to the HIPS source directory.
-The installation of HIPS is machine dependence.
-For example, to install HIPS on a linux cluster copy the file
-\textbf{$Makefile\_Inc\_Examples/makefile.inc.gnu$} on the root
- directory of HIPS with the name \textbf{makefile.inc}. After this,
-edit \textbf{makefile.inc} to set values of different variables and type
-\textbf{make all}.
+__HIPS__ (_Hierarchical Iterative Parallel Solver_) is a scientific library that provides an efficient parallel iterative solver for very large sparse linear systems. HIPS is available as free software under the CeCILL-C licence. The interface that we realized is compatible with release __1.2 beta.rc4__ $\codered$ of HIPS.
 
-\paragraph*{Using HIPS as the interface to FreeFem++}
-Before calling the HIPS solver inside FreeFem++, you must
-compile file $hips\_FreeFem.cpp$ to create dynamic library $hips\_FreeFem.so$.
-To do this, move to the directory $src/solver$ of FreeFem++ and edit the file
-$makefile.inc$ to specify the following variables:\\
+HIPS implements two solver classes which are the iteratives class (GMRES, PCG) and the Direct class. Concerning preconditionners, HIPS implements a type of multilevel ILU. For further informations on those preconditionners see \cite{A:LaBRI::sisc06,
+A:LaBRI::HRR07} $\codered$.
+
+__Installation of HIPS__
+
+To install HIPS, first download the HIPS package at \cite{HIPS} $\codered$, unpack it and go to the HIPS source directory. The installation of HIPS is machine dependence. For example, to install HIPS on a linux cluster copy the file __$Makefile\_Inc\_Examples/makefile.inc.gnu$__ $\codered$ on the root directory of HIPS with the name __makefile.inc__. After this, edit __makefile.inc__ to set values of different variables and type `:::bash make all`.
+
+__Using HIPS as the interface to FreeFem++__
+
+Before calling the HIPS solver inside FreeFem++, you must compile file $hips\_FreeFem.cpp$ to create dynamic library $hips\_FreeFem.so$. To do this, move to the directory $src/solver$ of FreeFem++ and edit the file
+$makefile.inc$ to specify the following variables: $\codered$
 
 \begin{tabular}{ll}
  %\begin{tabular*}
@@ -917,86 +1037,73 @@ utilities library\\
 \end{tabular}
 
 After specifies all the variables, in the command line in the directory
-$src/solver$ type \textbf{make hips} to create $hips\_FreeFem.so$.
-\\
-Like with pARMS, the calling of HIPS in FreeFem++ can be done in three different
-manners.
-We will present only one example where the user specifies the parameters through
-keywords `:::freefem lparams` and `:::freefem dparams`.
+$src/solver$ type \textbf{make hips} to create $hips\_FreeFem.so$. Like with pARMS, the calling of HIPS in FreeFem++ can be done in three different manners. We will present only one example where the user specifies the parameters through keywords `:::freefem lparams` and `:::freefem dparams`.
 
-\paragraph*{Laplacian 3D solve with HIPS}
-Let us consider the 3D Laplacian example inside FreeFem++ package where after
-discretization we want to solve the linear equation with Hips. Example
-\ref{hips:laplacian} $\codered$ is Laplacian3D using Hips as linear solver. We first load
-Hips solver at line 2. From line 4 to 15 we specify the parameters for the Hips
-solver and in line 46 of example \ref{hips:laplacian} $\codered$ we set these parameters in
-the linear solver.
+__Laplacian 3D solve with HIPS__
 
-In Table \ref{hipslabel} $\codered$ results of running example \ref{hips:laplacian} $\codered$ on
-Cluster Paradent of Grid5000 are reported. We can see in this running example
-the efficiency of parallelism.
-\begin{example}[Laplacian3D.edp]
+Let us consider the 3D Laplacian example inside FreeFem++ package where after discretization we want to solve the linear equation with Hips. Example \ref{hips:laplacian} $\codered$ is Laplacian3D using Hips as linear solver. We first load Hips solver at line 2. From line 4 to 15 we specify the parameters for the Hips solver and in line 46 of example \ref{hips:laplacian} $\codered$ we set these parameters in the linear solver.
+
+In Table \ref{hipslabel} $\codered$ results of running example \ref{hips:laplacian} $\codered$ on Cluster Paradent of Grid5000 are reported. We can see in this running example the efficiency of parallelism.
+
+__Example Laplacian3D.edp__
 
 ```freefem
-1: load "msh3"
-2: load "hips_FreeFem" //load library
-3: int nn=10,iii;
-4: int[int] iparm(14);
-5: real[int] dparm(6);
-6: for(iii=0;iii<14;iii++)iparm[iii]=-1;
-7: for(iii=0;iii<6;iii++) dparm[iii]=-1;
-8: iparm[0]=0; //use iterative solver
-9: iparm[1]=1; //PCG as Krylov method
-10:iparm[4]=0; //Matrix are symmetric
-11:iparm[5]=1; //Pattern are also symmetric
-12: iparm[9]=1; //Scale matrix
-13:dparm[0]=1e-13;//Tolerance to convergence
-14: dparm[1]=5e-4; //Threshold in ILUT
-15: dparm[2]=5e-4; //Threshold for Schur preconditionner
-16: mesh Th2=square(nn,nn);
-17: fespace Vh2(Th2,P2);
-18: Vh2 ux,uz,p2;
-19: int[int] rup=[0,2], rdown=[0,1], rmid=[1,1,2,1,3,1,4,1];
-20:real zmin=0,zmax=1;
-21: mesh3 Th=buildlayers(Th2,nn,
+load "msh3"
+load "hips_FreeFem" //load library
+int nn=10,iii;
+int[int] iparm(14);
+real[int] dparm(6);
+for(iii=0;iii<14;iii++)iparm[iii]=-1;
+for(iii=0;iii<6;iii++) dparm[iii]=-1;
+iparm[0]=0; //use iterative solver
+iparm[1]=1; //PCG as Krylov method
+iparm[4]=0; //Matrix are symmetric
+iparm[5]=1; //Pattern are also symmetric
+iparm[9]=1; //Scale matrix
+dparm[0]=1e-13;//Tolerance to convergence
+dparm[1]=5e-4; //Threshold in ILUT
+dparm[2]=5e-4; //Threshold for Schur preconditionner
+mesh Th2=square(nn,nn);
+ fespace Vh2(Th2,P2);
+ Vh2 ux,uz,p2;
+ int[int] rup=[0,2], rdown=[0,1], rmid=[1,1,2,1,3,1,4,1];
+real zmin=0,zmax=1;
+mesh3 Th=buildlayers(Th2,nn,
  zbound=[zmin,zmax],
  reffacemid=rmid,
  reffaceup = rup,
  reffacelow = rdown);
-22: savemesh(Th,"copie.mesh");
-23: mesh3 Th3("copie.mesh");
-24: fespace Vh(Th,P2);
-25: func ue = 2*x*x + 3*y*y + 4*z*z + 5*x*y+6*x*z+1;
-26: func uex= 4*x+ 5*y+6*z;
-27: func uey= 6*y + 5*x;
-28: func uez= 8*z +6*x;
-29: func f= -18. ;
-30: Vh uhe = ue; //
-31: cout << " uhe min: " << uhe[].min << " max:" << uhe[].max << endl;
-32: Vh u,v;
-33: macro Grad3(u) [dx(u),dy(u),dz(u)] // EOM
-34: varf va(u,v)= int3d(Th)(Grad3(v)' *Grad3(u)) //') for emacs
+savemesh(Th,"copie.mesh");
+mesh3 Th3("copie.mesh");
+fespace Vh(Th,P2);
+func ue = 2*x*x + 3*y*y + 4*z*z + 5*x*y+6*x*z+1;
+func uex= 4*x+ 5*y+6*z;
+func uey= 6*y + 5*x;
+func uez= 8*z +6*x;
+func f= -18. ;
+Vh uhe = ue; //
+cout << " uhe min: " << uhe[].min << " max:" << uhe[].max << endl;
+Vh u,v;
+macro Grad3(u) [dx(u),dy(u),dz(u)] // EOM
+varf va(u,v)= int3d(Th)(Grad3(v)' *Grad3(u)) //') for emacs
  + int2d(Th,2)(u*v)
  - int3d(Th)(f*v)
  - int2d(Th,2) ( ue*v + (uex*N.x +uey*N.y +uez*N.z)*v )
  + on(1,u=ue);
-35: real cpu=clock();
-36: matrix Aa;
-37: Aa=va(Vh,Vh);
-38: varf l(unused,v)=int3d(Th)(f*v);
-39: Vh F; F[]=va(0,Vh);
-40: if(mpirank==0){
+real cpu=clock();
+matrix Aa;
+Aa=va(Vh,Vh);
+varf l(unused,v)=int3d(Th)(f*v);
+Vh F; F[]=va(0,Vh);
+if(mpirank==0){
  cout << "Taille " << Aa.n << endl;
  cout << "Non zeros " << Aa.nbcoef << endl;
 }
-41: if(mpirank==0)
-42: cout << "CPU TIME FOR FORMING MATRIX = " << clock()-cpu << endl;
-43: set(Aa,solver=sparsesolver,dparams=dparm, lparams=iparm); //Set hips as linear solver
-44: u[]=Aa^-1*F[];
+if(mpirank==0)
+cout << "CPU TIME FOR FORMING MATRIX = " << clock()-cpu << endl;
+set(Aa,solver=sparsesolver,dparams=dparm, lparams=iparm); //Set hips as linear solver
+u[]=Aa^-1*F[];
 ```
-
-\end{example}
-
 
 \begin{table}
 \begin{center}
@@ -1016,6 +1123,45 @@ np & nit & time \\
 \end{table}
 Legend of table \ref{hipslabel} $\codered$ are give in table \ref{legtableparm} $\codered$.
 
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.9 : Legend of table 11.8</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td>$n=4 \times 10^6$</td>
+	        <td>$nnz=118 \times 10^6$</td>
+	        <td>Te=221.34</td>
+	    </tr>
+	    <tr>
+	        <td class="align-center">np</td>
+	        <td class="align-center">nit</td>
+	        <td class="align-center">time</td>
+	    </tr>
+	    <tr>
+	        <td class="align-center">8</td>
+	        <td class="align-center">190</td>
+	        <td class="align-center">120.34</td>
+	    </tr>
+	    <tr>
+	        <td class="align-center">16</td>
+	        <td class="align-center">189</td>
+	        <td class="align-center">61.08</td>
+	    </tr>
+	    <tr>
+	        <td class="align-center">32</td>
+	        <td class="align-center">186</td>
+	        <td class="align-center">31.70</td>
+	    </tr>
+	    <tr>
+	        <td class="align-center">64</td>
+	        <td class="align-center">183</td>
+	        <td class="align-center">23.44</td>
+	    </tr>
+	</tbody>
+</table>
 
 \begin{table}[hbtp]
 \begin{center}
