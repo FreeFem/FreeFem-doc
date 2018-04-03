@@ -134,7 +134,7 @@ U_1_nbv_ns(double) ... U_(type_k)_nbv_ns(double)
  * `ns` means the number of solutions
  * `type_k` mean the type of solution `k`:
 	 - 1: the solution is scalar (1 value per vertex)
-	 - 2: the solution is verctorial (2 value sper vertex)
+	 - 2: the solution is vectorial (2 values per vertex)
 	 - 3: the solution is a $2\times 2$ symmetric matrix (3 values per vertex)
 	 - 4: the solution is a $2\times 2$ matrix (4 values per vertex)
  * `nbv` means the number of vertices
@@ -176,7 +176,7 @@ The mesh is only composed of triangles and can be defined with the help of the f
 
  * `nbt` the number of triangles
  * `nbv` the number of vertices
- * `nu(1:3, 1:nbt)` an integer array giving the three vertex numbers couterclockwise for each triangle
+ * `nu(1:3, 1:nbt)` an integer array giving the three vertex numbers counterclockwise for each triangle
  * `c(1:2, 1:nbv)` a real array giving tje two coordinates of each vertex
  * `refs(1:nbv)` an integer array giving the reference numbers of the vertices
  * `reft(1:nbt)` an integer array giving the reference numbers of the triangles
@@ -256,7 +256,7 @@ where if `k(j) = 3` when the element `j` is a triangle and `k(j) = 4` when the t
 
 ### sol and solb files
 
-With the keyword `:::freefem savesol`, we can store a scalar functions, a scalar finite element functions, a vector fields, a vector fniite element fields, a symmetric tensor and a symmetric finite element tensor.
+With the keyword `:::freefem savesol`, we can store a scalar functions, a scalar finite element functions, a vector fields, a vector finite element fields, a symmetric tensor and a symmetric finite element tensor.
 
 Such format is used in `:::freefem medit`.
 
@@ -378,7 +378,7 @@ where $P_{p}$ is a set of $npPi$ points,
 
 In the formula \eqref{eq-interpo}, the list $p_{k},\, j_{k},\, i_{k}$ depend just on the type of finite element (not on the element), but the coefficient $\alpha_{k}$ can be depending on the element.
 
-!!!question "Classical scalr Lagrange finite element"
+!!!question "Classical scalar Lagrange finite element"
 	With the classical scalar Lagrange finite element, we have $\mathtt{kPi}=\mathtt{npPi}=\mathtt{NbOfNode}$ and
 
 	* $P_{p}$ is the point of the nodal points
@@ -485,9 +485,9 @@ int TypeOfFE_RTortho::Data[] = {
 }; //for each component j=0, N-1 it give the sub FE associated
 ```
 
-where the support is a number $0,1,2$ for vertex support, $3,4,5$ for edge support, and finaly $6$ for element support.
+where the support is a number $0,1,2$ for vertex support, $3,4,5$ for edge support, and finally $6$ for element support.
 
-The function to defined the function $\boldsymbol{\omega}^{K}_{i}$, this function return the value of all the basics function or this derivatives in array `val`, computed at point `PHat` on the reference triangle corresponding to point `R2 P=K(Phat);` on the current triangle `K`.
+The function to defined the function $\boldsymbol{\omega}^{K}_{i}$, this function return the value of all the basics function or this derivatives in array `val`, computed at point `Phat` on the reference triangle corresponding to point `R2 P=K(Phat);` on the current triangle `K`.
 
 The index $i,j,k$ of the array $val(i,j,k)$ correspond to:
 
@@ -499,7 +499,7 @@ The index $i,j,k$ of the array $val(i,j,k)$ correspond to:
 		For optimization, this value is computed only if `whatd[k]` is true, and the numbering is defined with
 
 		```cpp
-		@enum operatortype {
+		enum operatortype {
 			op_id = 0,
 			op_dx = 1, op_dy = 2,
 			op_dxx = 3,op_dyy = 4,
@@ -530,7 +530,7 @@ void TypeOfFE_RTortho::FB(const bool *whatd, const Mesh &Th, const Triangle & K,
 	R a2 = K.EdgeOrientation(2) * a;
 
 	if (whatd[op_id]){ //value of the function
-		@assert(val.K() > op_id);
+		assert(val.K() > op_id);
 		RN_ f0(val('.', 0,0)); //value first component
 		RN_ f1(val('.', 1,0)); //value second component
 		f1[0] = (P.x - A.x)*a0;
@@ -593,7 +593,7 @@ __With dynamic link__ it is very simple (see section [Dynamical link](#dynamical
 ```
 
 Try with `./load.link` command in `examples++-load/` and see `BernardiRaugel.cpp` or `Morley.cpp` new finite element examples.
-
+$\codered$
 
 __Otherwise with static link__ (for expert only), add
 
@@ -656,7 +656,7 @@ make
 For codewarrior compilation add the file in the project an remove the flag in panal PPC linker FreeFm++ Setting Dead-strip Static Initializition Code Flag.
 $\codecheck$
 
-## Dynammical link
+## Dynamical link
 
 Now, it's possible to add built-in functionnalites in __`FreeFem++`__ under the three environnents Linux, Windows and MacOS X 10.3 or newer.
 
@@ -681,8 +681,7 @@ Now, assume that you are in a shell window (a `cygwin` window under Windows) in 
 
 __Compilation of your module:__
 
-The script `ff-c++` compiles and makes the link with __`FreeFem++`__, but be careful, the script has no way to known if you try to compile for a pure Windows environment or for a cygwin environment so to build the load module under cygwin you must add
-the `-cygwin` parameter.
+The script `ff-c++` compiles and makes the link with __`FreeFem++`__, but be careful, the script has no way to known if you try to compile for a pure Windows environment or for a cygwin environment so to build the load module under cygwin you must add the `-cygwin` parameter.
 
 ### A first example `myfunction.cpp`
 
@@ -733,7 +732,7 @@ class OneOperator0s : public OneOperator {
 		func f; //the pointeur to the fnction myfunction
 		E_F0_F(func ff) : f(ff) {}
 		//the operator evaluation in FreeFem++
-		AnyType operator()(Stack stack) const {@return SetAny<R>(f(stack));}
+		AnyType operator()(Stack stack) const {return SetAny<R>(f(stack));}
 	};
 	typedef R (*func)(Stack);
 	func f;
@@ -803,471 +802,157 @@ Ok: Normal End
 
 Under Windows, launch __`FreeFem++`__ with the mouse (or ctrl O) on the example.
 
-$\codered$
-<!---
-\subsection{Example: Discrete Fast Fourier Transform } \index{DFFT}\index{FFT}
+### Example: Discrete Fast Fourier Transform
 
-This will add FFT to \freefempp, taken from
- \url{http://www.fftw.org/}. To download and install under \texttt{download/include}
- just go in \texttt{download/fftw} and try\texttt{make}.
+This will add FFT to __`FreeFem++`__, taken from \url{http://www.fftw.org/}. To download and install under `download/include` just go in `download/fftw` and try `make`.$\codered$
 
- \medskip
- The 1D dfft (fast discret fourier transform)  for a  simple array  $f$ of size $n$
- is defined by the following formula
- $$
-    \mathtt{dfft}(f,\varepsilon)_{k} = \sum_{j=0}^{n-1} f_i e^{\varepsilon  2\pi i kj/n}
- $$
+The 1D dfft (fast discret fourier transform) for a simple array $f$ of size $n$ is defined by the following formula
+$$
+\mathtt{dfft}(f,\varepsilon)_{k} = \sum_{j=0}^{n-1} f_i e^{\varepsilon 2\pi i kj/n}
+$$
 
- The 2D DFFT for an array of size $N=n\times m$ is
-$$   \mathtt{dfft}(f,m,\varepsilon)_{k+nl} = \sum_{j'=0}^{m-1} \sum_{j=0}^{n-1} f_{i+nj} e^{\varepsilon  2\pi i (kj/n+lj'/m) }
- $$
- Remark: the value  $n$ is given  by $ size(f)/m$, and the numbering is  row-major order.
+The 2D DFFT for an array of size $N=n\times m$ is
+$$
+\mathtt{dfft}(f,m,\varepsilon)_{k+nl} = \sum_{j'=0}^{m-1} \sum_{j=0}^{n-1} f_{i+nj} e^{\varepsilon 2\pi i (kj/n+lj'/m) }
+$$
+!!!note
+	The value $n$ is given by $ size(f)/m$, and the numbering is row-major order.
 
 
- So the classical discrete DFFT is  $\hat{f}=\mathtt{dfft}(f,-1)/\sqrt{n}$ and the
- reverse dFFT  $f=\mathtt{dfft}(\hat{f},1)/\sqrt{n}$
+So the classical discrete DFFT is $\hat{f}=\mathtt{dfft}(f,-1)/\sqrt{n}$ and the reverse dFFT $f=\mathtt{dfft}(\hat{f},1)/\sqrt{n}$
 
- \medskip
+!!!note
+	The 2D Laplace operator is
+	$$
+	f(x,y) = 1/\sqrt{N} \sum_{j'=0}^{m-1} \sum_{j=0}^{n-1} \hat{f}_{i+nj} e^{\varepsilon 2\pi i (x j+ yj') }
+	$$
+	and we have
+	$$
+	f_{k+nl} = f(k/n,l/m)
+	$$
+	So
+	$$
+	\widehat{\Delta f_{kl}} = -( (2\pi)^2 ( (\tilde{k})^2+(\tilde{l})^2)) \widehat{ f_{kl}} \\
+	$$
+	where $ \tilde{k} = k $ if $ k \leq n/2 $ else $ \tilde{k} = k-n$ and $\tilde{l} = l $ if $ l \leq m/2 $ else $ \tilde{l} = l-m$.
 
- Remark: the 2D Laplace operator is
- $$ f(x,y) = 1/\sqrt{N}  \sum_{j'=0}^{m-1} \sum_{j=0}^{n-1} \hat{f}_{i+nj} e^{\varepsilon  2\pi i (x j+ yj') } $$
- and we have
- $$ f_{k+nl} = f(k/n,l/m)$$
+	And to have a real function we need all modes to be symmetric around zero, so $n$ and $m$ must be odd.
 
+__Compile to build a new library__
 
- So
- $$
-     \widehat{\Delta f_{kl}} = -(  (2\pi)^2 ( (\tilde{k})^2+(\tilde{l})^2)) \widehat{ f_{kl}} \\
- $$
- where $ \tilde{k} = k $ if $ k \leq n/2 $ else $ \tilde{k} = k-n$ and
- $ \tilde{l} = l $ if $ l \leq m/2 $ else $ \tilde{l} = l-m$.
-
- And to have a real function we need all  modes to be symmetric around zero, so $n$ and $m$
- must be odd.
-\\\\
-{\bf  Compile to build a new library}
-
-{\scriptsize
-\begin{verbatim}
-%  ff-c++  dfft.cpp ../download/install/lib/libfftw3.a -I../download/install/include
+```bash
+ff-c++ dfft.cpp ../download/install/lib/libfftw3.a -I../download/install/include
 export MACOSX_DEPLOYMENT_TARGET=10.3
 g++ -c -Iinclude -I../download/install/include dfft.cpp
 g++ -bundle -undefined dynamic_lookup dfft.o -o ./dfft.dylib ../download/install/lib/libfftw3.a
-\end{verbatim}
-}
+```
 
-\index{norm}
-To test ,
-\bFF
--- FreeFem++ v 1.4800028 (date Mon Oct 10 16:53:28 EEST 2005)
- file : dfft.edp
- Load: lg_fem cadna lg_mesh eigenvalue  UMFPACK
-    1 : // Example of dynamic function load
-    2 : // --------------------------------
-    3 : // $Id: freefem++doc.tex,v 1.110 2010/06/04 11:27:24 hecht Exp $
-    4 : //   Discret Fast Fourier Transform
-    5 : // -------------------------------
-    6 :  @load "dfft" lood: init dfft
+To test, try `dfft.edp`. $\codered$
 
-load: dlopen(dfft.dylib) = 0x2b0c700
+### Load Module for Dervieux' P0-P1 Finite Volume Method
 
-    7 :
-    8 : @int nx=32,ny=16,N=nx*ny;
-    9 : // warning the Fourier space is not exactly the unite square due to periodic conditions
-   10 : @mesh Th=@square(nx-1,ny-1,[(nx-1)*x/nx,(ny-1)*y/ny]);
-   11 : // warring  the numbering is of the vertices (x,y) is
-   12 : // given by $  i = x/nx + nx* y/ny $
-   13 :
-   14 : @fespace Vh(Th,P1);
-   15 :
-   16 : @func f1 = cos(2*x*2*pi)*cos(3*y*2*pi);
-   17 : Vh<complex> u=f1,v;
-   18 : Vh w=f1;
-   19 :
-   20 :
-   21 : Vh  ur,ui;
-   22 : //  in dfft the matrix n,m is in row-major order ann array n,m is
-   23 : // store j + m* i ( the transpose of the square numbering )
-   24 :  v[]=dfft(u[],ny,-1);
-   25 :  u[]=dfft(v[],ny,+1);
-   26 :  u[] /= @complex(N);
-   27 :  v = f1-u;
-   28 : @cout << " diff = "<< v[].max << " " <<  v[].min << endl;
-   29 : @assert( norm(v[].max) < 1e-10 &&  norm(v[].min) < 1e-10) ;
-   30 :  // -------  a more hard example ----\hfilll
-   31 :  // Lapacien en FFT \hfilll
-   32 :  // $ -\Delta u = f $ with biperiodic condition \hfilll
-   33 : @func f = cos(3*2*pi*x)*cos(2*2*pi*y); //
-   34 : @func ue =  +(1./(square(2*pi)*13.))*cos(3*2*pi*x)*cos(2*2*pi*y);  //
-   35 : Vh<@complex> ff = f;
-   36 : Vh<@complex> fhat;
-   37 : fhat[] = dfft(ff[],ny,-1);
-   38 :
-   39 : Vh<@complex> wij;
-   40 : // warning in fact we take mode between -nx/2, nx/2 and -ny/2,ny/2
-   41 : //  thank to the operator ?: \label{?:}
-   42 : wij = @square(2.*pi)*(square(( x<0.5?x*nx:(x-1)*nx))
-            + square((y<0.5?y*ny:(y-1)*ny)));
-   43 : wij[][0] = 1e-5; // to remove div / 0
-   44 : fhat[] = fhat[]./ wij[];  //
-   45 : u[]=dfft(fhat[],ny,1);
-   46 : u[] /= @complex(N);
-   47 : ur = @real(u); // the solution
-   48 : w = @real(ue); // the exact solution
-   49 : @plot(w,ur,value=1 ,cmm=" ue   ", wait=1);
-   50 : w[] -= ur[]; // array sub
-   51 : @real err= abs(w[].max)+abs(w[].min) ;
-   52 : @cout << " err = " << err << endl;
-   53 : @assert( err  < 1e-6);
-   54 :  sizestack + 1024 =3544  ( 2520 )
+The associed edp file is `examples++-load/convect_dervieux.edp`. $\codered$
 
-----------CheckPtr:-----init execution ------ NbUndelPtr  2815  Alloc: 111320  NbPtr 6368
- -- square mesh : nb vertices  =512 ,  nb triangles = 930 ,  nb boundary edges 92
-   Nb of edges on Mortars  = 0
-   Nb of edges on Boundary = 92, neb = 92
- Nb Of Nodes = 512
- Nb of DF = 512
-0x2d383d8 -1 16 512 n: 16 m:32
- dfft 0x402bc08 = 0x4028208 n = 16 32 sign = -1
- --- --- ---0x2d3ae08 1 16 512 n: 16 m:32
- dfft 0x4028208 = 0x402bc08 n = 16 32 sign = 1
- --- --- --- diff = (8.88178e-16,3.5651e-16) (-6.66134e-16,-3.38216e-16)
-0x2d3cfb8 -1 16 512 n: 16 m:32
- dfft 0x402de08 = 0x402bc08 n = 16 32 sign = -1
- --- --- ---0x2d37ff8 1 16 512 n: 16 m:32
- dfft 0x4028208 = 0x402de08 n = 16 32 sign = 1
- --- --- --- err = 3.6104e-12
-times: compile 0.13s, execution 2.05s
-----------CheckPtr:-----end execution -- ------ NbUndelPtr  2815  Alloc: 111320  NbPtr 26950
- CodeAlloc : nb ptr  1693,  size :76084
-Bien: On a fini Normalement
-                CheckPtr:Nb of undelete pointer is 2748 last 114
-                CheckPtr:Max Memory used    228.531 kbytes  Memory undelete 105020
-\eFF
+See `mat_dervieux.cpp`. $\codered$
 
-\subsection{Load Module for Dervieux' P0-P1 Finite Volume Method}
-the associed edp file is  \texttt{examples++-load/convect\_dervieux.edp}
+### More on Adding a new finite element
 
-\bFF
-//  Implementation of P1-P0 FVM-FEM
-// ---------------------------------------------------------------------
-// $Id: freefem++doc.tex,v 1.110 2010/06/04 11:27:24 hecht Exp $
-// compile and link with ff-c++  mat\_dervieux.cpp  (i.e. the file name without .cpp)
-#include  <iostream>
-#include  <cfloat>
-#include  <cmath>
-using namespace std;
-#include "error.hpp"
-#include "AFunction.hpp"
-#include "rgraph.hpp"
-#include "RNM.hpp"
-// remove problem of include
-#undef  HAVE_LIBUMFPACK
-#undef HAVE_CADNA
-#include "MatriceCreuse_tpl.hpp"
-#include "MeshPoint.hpp"
-#include "lgfem.hpp"
-#include "lgsolver.hpp"
-#include "problem.hpp"
+First read the [Adding a new finite element section](#adding-a-new-finite-element), we add two new finite elements examples in the directory `examples++-load`. $\codered$
+
+#### The Bernardi-Raugel Element
+
+The Bernardi-Raugel finite element is meant to solve the Navier Stokes equations in $u,p$ formulation; the velocity space $P^{br}_K$ is minimal to prove the inf-sup condition with piecewise constant pressure by triangle.
+
+The finite element space $V_h$ is
+$$
+V_h= \{u\in H^1(\Omega)^2 ; \quad \forall K \in T_h, u_{|K} \in P^{br}_K \}
+$$
+where
+$$
+P^{br}_K = span \{ \lambda^K_i e_k \}_{i=1,2,3, k= 1,2} \cup \{ \lambda^K_i\lambda^K_{i+1} n^K_{i+2}\}_{i=1,2,3}
+$$
+with notation $4=1, 5=2$ and where $\lambda^K_i$ are the barycentric coordinates of the triangle $K$, $(e_k)_{k=1,2}$ the canonical basis of $\R^2$ and $n^K_k$ the outer normal of triangle $K$ opposite to vertex $k$.
+
+<!--- __ --->
+
+See `BernardiRaugel.cpp`. $\codered$
+
+A way to check the finite element
+
+```freefem
+load "BernardiRaugel"
+
+// Macro
+//a macro the compute numerical derivative
+macro DD(f, hx, hy) ( (f(x1+hx, y1+hy) - f(x1-hx, y1-hy))/(2*(hx+hy)) ) //
+
+// Mesh
+mesh Th = square(1, 1, [10*(x+y/3), 10*(y-x/3)]);
+
+// Parameters
+real x1 = 0.7, y1 = 0.9, h = 1e-7;
+int it1 = Th(x1, y1).nuTriangle;
+
+// Fespace
+fespace Vh(Th, P2BR);
+Vh [a1, a2], [b1, b2], [c1, c2];
 
 
-@class MatrixUpWind0 :  @public E_F0mps { @public:
-  @typedef Matrice_Creuse<R> * Result;
-  Expression emat,expTh,expc,expu1,expu2;
-  MatrixUpWind0(@const basicAC_F0 & args)
-  {
-    args.SetNameParam();
-    emat =args[0]; // the matrix expression
-    expTh= to<pmesh>(args[1]);  // a the expression to get the mesh
-    expc = CastTo<double>(args[2]); // the expression to get c  (must be a double)
-    //  a array expression [ a, b]
-    @const E_Array * a= dynamic_cast<const E_Array*>((Expression) args[3]);
-    @if (a->size() != 2) CompileError("syntax:  MatrixUpWind0(Th,rhi,[u1,u2])");
-    @int err =0;
-    expu1= CastTo<@double>((*a)[0]); // fist exp of the array (must be a  double)
-    expu2= CastTo<@double>((*a)[1]); // second exp of the array (must be a  double)
-  }
-
-  ~MatrixUpWind0(){
-  }
-
-  @static ArrayOfaType  typeargs()
-  { @return  ArrayOfaType(atype<Matrice_Creuse<R>*>(),
-    atype<pmesh>(),atype<double>(),atype<E_Array>());}
-  @static  E_F0 * f(@const basicAC_F0 & args){ return new MatrixUpWind0(args);}
-
-  AnyType @operator()(Stack s) @const ;
-
-};
-
-@int   fvmP1P0(@double q[3][2], @double u[2],@double c[3], @double a[3][3], @double where[3] )
-{                               // computes matrix a on a triangle for the Dervieux FVM
-  @for(int i=0;i<3;i++) for(int j=0;j<3;j++) a[i][j]=0;
-
-    @for(int i=0;i<3;i++){
-        @int ip = (i+1)%3, ipp =(ip+1)%3;
-        @double unL =-((q[ip][1]+q[i][1]-2*q[ipp][1])*u[0]
-                -(q[ip][0]+q[i][0]-2*q[ipp][0])*u[1])/6;
-        @if(unL>0) { a[i][i] += unL; a[ip][i]-=unL;}
-            @else{ a[i][ip] += unL; a[ip][ip]-=unL;}
-        @if(where[i]&&where[ip]){        // this is a boundary edge
-            unL=((q[ip][1]-q[i][1])*u[0] -(q[ip][0]-q[i][0])*u[1])/2;
-            if(unL>0) { a[i][i]+=unL; a[ip][ip]+=unL;}
-        }
-    }
-  @return 1;
-}
-
-// the evaluation routine
-AnyType MatrixUpWind0::operator()(Stack stack) @const
-{
-  Matrice_Creuse<R> * sparse_mat =GetAny<Matrice_Creuse<R>* >((*emat)(stack));
-  MatriceMorse<R> * amorse =0;
-  MeshPoint *mp(MeshPointStack(stack)) , mps=*mp;
-  Mesh * pTh = GetAny<pmesh>((*expTh)(stack));
-  ffassert(pTh);
-  Mesh & Th (*pTh);
-  {
-    map< pair<int,int>, R> Aij;
-    KN<double> cc(Th.nv);
-    @double infini=DBL_MAX;
-    cc=infini;
-    @for (int it=0;it<Th.nt;it++)
-      @for (int iv=0;iv<3;iv++)
-    {
-      @int i=Th(it,iv);
-      @if ( cc[i]==infini) { // if nuset the set
-        mp->setP(&Th,it,iv);
-        cc[i]=GetAny<double>((*expc)(stack));
-      }
-    }
-
-    @for (int k=0;k<Th.nt;k++)
-      {
-    @const Triangle & K(Th[k]);
-   @const Vertex & A(K[0]), &B(K[1]),&C(K[2]);
-    R2 Pt(1./3.,1./3.);
-    R u[2];
-    MeshPointStack(stack)->set(Th,K(Pt),Pt,K,K.lab);
-    u[0] = GetAny< R>( (*expu1)(stack) ) ;
-    u[1] = GetAny< R>( (*expu2)(stack) ) ;
-
-    @int ii[3] ={  Th(A), Th(B),Th(C)};
-    @double q[3][2]= { { A.x,A.y} ,{B.x,B.y},{C.x,C.y} } ;  // coordinates of 3 vertices (input)
-    @double c[3]={cc[ii[0]],cc[ii[1]],cc[ii[2]]};
-    @double a[3][3], where[3]={A.lab,B.lab,C.lab};
-    @if (fvmP1P0(q,u,c,a,where) )
-      {
-        @for (int i=0;i<3;i++)
-          @for (int j=0;j<3;j++)
-        @if (fabs(a[i][j]) >= 1e-30)
-          { Aij[make_pair(ii[i],ii[j])]+=a[i][j];
-            }
-      }
-      }
-    amorse=  @new MatriceMorse<R>(Th.nv,Th.nv,Aij,false);
-  }
-  sparse_mat->pUh=0;
-  sparse_mat->pVh=0;
-  sparse_mat->A.master(amorse);
-  sparse_mat->typemat=(amorse->n == amorse->m) ? TypeSolveMat(TypeSolveMat::GMRES) : TypeSolveMat(TypeSolveMat::NONESQUARE); //  none square matrice (morse)
-  *mp=mps;
-
-  @if(verbosity>3) { @cout << "  End Build MatrixUpWind : " << endl;}
-
- @return sparse_mat;
-}
-
-@void init()
-   {
-     @cout << " lood: init Mat Chacon " << endl;
-     Global.Add("MatUpWind0","(", new OneOperatorCode<MatrixUpWind0 >( ));
-   }
-
-@LOADFUNC(init);
-
-\eFF
-\subsection{More on Adding a new finite element}
-
-First read the section \ref{AddnewFE} of the appendix, we add two
-new finite elements examples in the directory \texttt{examples++-load}.
-
-\paragraph{The Bernardi-Raugel Element}
- The Bernardi-Raugel finite element is meant to solve the Navier Stokes equations in
- $ u,p$ formulation;  the velocity space $P^{br}_K$ is minimal to prove the inf-sup condition
- with piecewise constant pressure by triangle.
-
- The finite element space $V_h$ is
- $$V_h= \{u\in H^1(\Omega)^2 ; \quad \forall K \in T_h,  u_{|K} \in P^{br}_K \} $$
- where
- $$ P^{br}_K = span \{ \lambda^K_i e_k \}_{i=1,2,3, k= 1,2} \cup \{  \lambda^K_i\lambda^K_{i+1} n^K_{i+2}\}_{i=1,2,3} $$
- with notation $4=1, 5=2$ and where
- $\lambda^K_i$ are the barycentric coordinates of the triangle $K$, $(e_k)_{k=1,2}$ the canonical basis  of $\R^2$
- and $n^K_k$ the outer  normal of triangle $K$ opposite to vertex $k$.
-
-\index{fespace!P2BR}
- \bFF
-// The  P2BR finite element : the Bernadi Raugel Finite Element\hfilll
-// F. Hecht, decembre 2005\hfilll
-// -------------\hfilll
-// See Bernardi, C., Raugel, G.: Analysis of some finite elements for the Stokes problem. Math. Comp. 44, 71-79 (1985).\hfilll
-//  It is  a 2d coupled FE \hfilll
-// the Polynomial space is $ P1^2$ + 3 normals bubbles edges function $(P_2)$\hfilll
-// the degree of freedom is 6 values at of the 2 componants at the  3 vertices\hfilll
-// and the 3 flux on the 3 edges  \hfilll
-//   So 9 degrees of freedom and  N= 2. \hfilll
-
-// -----------------------  related files: \hfilll
-//  to check  and validate  :  testFE.edp \hfilll
-//  to get a real example   :  NSP2BRP0.edp\hfilll
-// ------------------------------------------------------------\hfilll
-
-// -----------------------
-#include "error.hpp"
-#include "AFunction.hpp"
-#include "rgraph.hpp"
-using namespace std;
-#include "RNM.hpp"
-#include "fem.hpp"
-#include "FESpace.hpp"
-#include "AddNewFE.h"
-
-@namespace  Fem2D {
-
-  @class TypeOfFE_P2BRLagrange : public  TypeOfFE { public:
-    @static @int Data[];
-
-    TypeOfFE_P2BRLagrange(): TypeOfFE(6+3+0,
-				      2,
-				      Data,
-				      4,
-				      1,
-				      6+3*(2+2), // nb coef to build interpolation
-				      9, // np point to build interpolation
-				      0)
-    {
- ....  //  to long see the source
-     }
-    @void FB(const bool * whatd, const Mesh & Th,const Triangle & K,const R2 &P, RNMK_ & val) const;
-    @void TypeOfFE_P2BRLagrange::Pi_h_alpha(const baseFElement & K,KN_<double> & v) const;
-  } ;
-  //                     on what     nu df on node node of df
- @int TypeOfFE_P2BRLagrange::Data[]={
-   0,0, 1,1, 2,2,  3,4,5,
-   0,1, 0,1, 0,1,  0,0,0,
-   0,0, 1,1, 2,2,  3,4,5,
-   0,0, 0,0, 0,0,  0,0,0,
-   0,1, 2,3, 4,5,  6,7,8,
-   0,0
-};
-
-@void TypeOfFE_P2BRLagrange::Pi_h_alpha(const baseFElement & K,KN_<double> & v) const
-  {
-    @const Triangle & T(K.T);
-    @int k=0;
-    // coef pour les 3 sommets  fois le 2 composantes
-    @for (int i=0;i<6;i++)
-      v[k++]=1;
-    //   integration sur les aretes
-    @for (int i=0;i<3;i++)
-      {
-
-        R2 N(T.Edge(i).perp());
-	N  *= T.EdgeOrientation(i)*0.5 ;
-        v[k++]= N.x;
-        v[k++]= N.y;
-        v[k++]= N.x;
-        v[k++]= N.y;
-      }
-  }
-
-  @void TypeOfFE_P2BRLagrange::FB(const bool * whatd,const Mesh & ,const Triangle & K,const R2 & P,RNMK_ & val) const
-  {
- ....  //  to long see the source
-  }
-//  ----   cooking to add the finite elemet to freefem table --------
-// a static variable to def the finite element
-  static TypeOfFE_P2BRLagrange P2LagrangeP2BR;
-  //  now adding   FE in FreeFem++  table
-  static AddNewFE P2BR("P2BR",&P2LagrangeP2BR);
-// --- end cooking
-} // end FEM2d namespace
-
-
- \eFF
-
- A way to check the finite element
-
- \bFF
-@load "BernadiRaugel"
-// a macro the compute numerical derivative
-@macro DD(f,hx,hy) ( (f(x1+hx,y1+hy)-f(x1-hx,y1-hy))/(2*(hx+hy))) //
-@mesh Th=@square(1,1,[10*(x+y/3),10*(y-x/3)]);
-
-@real x1=0.7,y1=0.9, h=1e-7;
-@int it1=Th(x1,y1).nuTriangle;
-
-@fespace Vh(Th,P2BR);
-
-Vh [a1,a2],[b1,b2],[c1,c2];
-
-
-@for (int i=0;i<Vh.ndofK;++i)
+for (int i = 0; i < Vh.ndofK; ++i)
 	cout << i << " " << Vh(0,i) << endl;
-@for (int i=0;i<Vh.ndofK;++i)
+
+for (int i = 0; i < Vh.ndofK; ++i)
 {
-  a1[]=0;
-  @int j=Vh(it1,i);
-  a1[][j]=1; // a bascis functions
-  @plot([a1,a2], wait=1);
+	a1[] = 0;
+	int j = Vh(it1, i);
+	a1[][j] = 1;
+	plot([a1, a2], wait=1);
+	[b1, b2] = [a1, a2]; //do the interpolation
 
-  [b1,b2]=[a1,a2]; // do the interpolation
+	c1[] = a1[] - b1[];
+	cout << " ---------" << i << " " << c1[].max << " " << c1[].min << endl;
+	cout << " a = " << a1[] <<endl;
+	cout << " b = " << b1[] <<endl;
+	assert(c1[].max < 1e-9 && c1[].min > -1e-9); //check if the interpolation is correct
 
-  c1[] = a1[] - b1[];
-
-  @cout << " ---------" << i << " " << c1[].max << " " << c1[].min << endl;
-  @cout << " a = " << a1[] <<endl;
-  @cout << " b = " << b1[] <<endl;
-  @assert(c1[].max < 1e-9 && c1[].min > -1e-9); // check if the interpolation is correct
-
- //  check the derivative and numerical derivative
-
-  @cout << " dx(a1)(x1,y1) = " << dx(a1)(x1,y1) << " == " << DD(a1,h,0) << endl;
-  @assert( abs(dx(a1)(x1,y1)-DD(a1,h,0) ) < 1e-5);
-  @assert( abs(dx(a2)(x1,y1)-DD(a2,h,0) ) < 1e-5);
-  @assert( abs(dy(a1)(x1,y1)-DD(a1,0,h) ) < 1e-5);
-  @assert( abs(dy(a2)(x1,y1)-DD(a2,0,h) ) < 1e-5);
-
+	// check the derivative and numerical derivative
+	cout << " dx(a1)(x1, y1) = " << dx(a1)(x1, y1) << " == " << DD(a1, h, 0) << endl;
+	assert( abs(dx(a1)(x1, y1) - DD(a1, h, 0) ) < 1e-5);
+	assert( abs(dx(a2)(x1, y1) - DD(a2, h, 0) ) < 1e-5);
+	assert( abs(dy(a1)(x1, y1) - DD(a1, 0, h) ) < 1e-5);
+	assert( abs(dy(a2)(x1, y1) - DD(a2, 0, h) ) < 1e-5);
 }
- \eFF
+```
 
- A real example using this finite element, just a small modification
- of the \texttt{NSP2P1.edp} examples, just the begenning is change to
-\bFF
-@load "BernadiRaugel"
+A real example using this finite element, just a small modification of the `NSP2P1.edp` $\codered$ examples, just the begenning is change to
 
-@real s0=clock();
-@mesh Th=square(10,10);
-@fespace Vh2(Th,P2BR);
-@fespace Vh(Th,P0);
-Vh2 [u1,u2],[up1,up2];
-Vh2 [v1,v2];
-\eFF
+```freefem
+load "BernardiRaugel"
 
-And the plot instruction is also changed  because the pressure is constant, and  we cannot  plot isovalues of peacewise constant functions.
+real s0 = clock();
+mesh Th = square(10, 10);
+fespace Vh2(Th, P2BR);
+fespace Vh(Th, P0);
+Vh2 [u1, u2], [up1, up2];
+Vh2 [v1, v2];
+```
 
-\paragraph{The Morley Element}
-See the example \texttt{bilapMorley.edp}.
+And the plot instruction is also changed because the pressure is constant, and we cannot plot isovalues of peacewise constant functions.
 
-\subsection{Add a new sparse solver}
-Warning the sparse solver interface as been completely rewritten in version 3.2 ,
-so the section is obsolete, the example in are correct/
+$\codeerror$ PR needed: BernaRdiRaugel.cpp
 
-Only a fast sketch of the code is given here; for details see the .cpp code
-from \texttt{SuperLU.cpp} or \texttt{NewSolve.cpp}.
+#### The Morley Element
+See the example `bilapMorley.edp` $\codered$.
+
+<!---
+### Add a new sparse solver
+
+Warning the sparse solver interface as been completely rewritten in version 3.2, so the section is obsolete, the example in are correct/ $\codered$
+
+Only a fast sketch of the code is given here; for details see the .cpp code from `SuperLU.cpp` or `NewSolve.cpp`.
 
 First the include files:
-\bFF
+```cpp
 #@include  <iostream>
 @using @namespace std;
 
@@ -1279,12 +964,12 @@ First the include files:
 #@include "MatriceCreuse_tpl.hpp"
 #@include "slu_ddefs.h"
 #@include "slu_zdefs.h"
-\eFF
+```
 
 
-A small template driver
-to unified the \texttt{double} and \texttt{Complex} version.
-\bFF
+A small template driver to unified the `:::cpp double` and `:::cpp complex` version.
+
+```cpp
 @template <class R> @struct SuperLUDriver
 {
 
@@ -1300,89 +985,82 @@ to unified the \texttt{double} and \texttt{Complex} version.
 {
 ....  @Complex version
 };
+```
 
-\eFF
+To get Matrix value, we have just to remark that the Morse Matrice the storage, is the `SLU_NR` format is the compressed row storage, this is the transpose of the compressed column storage.
 
-To get  Matrix value, we have just to remark that  the Morse Matrice the storage,
-is  the   \texttt{SLU\_NR} format is the compressed row storage, this is
-the transpose of the compressed column storage.
+So if `AA` is a MatriceMorse you have with SuperLU notation.
+```cpp
+	n=AA.n;
+	m=AA.m;
+	nnz=AA.nbcoef;
+	a=AA.a;
+	asub=AA.cl;
+	xa=AA.lg;
+	options.Trans = TRANS;
 
-\index{m}
-\index{n}
-\index{nbcoef}
-So if \texttt{AA} is a MatriceMorse you have with SuperLU notation.
-\bFF
-     n=AA.n;
-     m=AA.m;
-     nnz=AA.nbcoef;
-     a=AA.a;
-     asub=AA.cl;
-     xa=AA.lg;
-     options.Trans = TRANS;
+	Dtype_t R_SLU = SuperLUDriver<R>::R_SLU_T();
+	Create_CompCol_Matrix(&A, m, n, nnz, a, asub, xa, SLU_NC, R_SLU, SLU_GE);
+```
 
-     Dtype_t R_SLU = SuperLUDriver<R>::R_SLU_T();
-     Create_CompCol_Matrix(&A, m, n, nnz, a, asub, xa, SLU_NC, R_SLU, SLU_GE);
-\eFF
+To get vector infomation, to solver the linear solver $x = A^{-1} b$
 
-To get vector infomation, to solver the linear solver
-$ x = A^{-1} b $
-\bFF
-   @void Solver(@const MatriceMorse<R> &AA,KN_<R> &x,@const KN_<R> &b) @const
- {
- ....
-    Create_Dense_Matrix(&B, m, 1, b, m, SLU_DN, R_SLU, SLU_GE);
-    Create_Dense_Matrix(&X, m, 1, x, m, SLU_DN, R_SLU, SLU_GE);
- ....
+```cpp
+	@void Solver(@const MatriceMorse<R> &AA,KN_<R> &x,@const KN_<R> &b) @const
+	{
+	....
+	Create_Dense_Matrix(&B, m, 1, b, m, SLU_DN, R_SLU, SLU_GE);
+	Create_Dense_Matrix(&X, m, 1, x, m, SLU_DN, R_SLU, SLU_GE);
+	....
  }
-\eFF
+```
 
-The two \texttt{BuildSolverSuperLU} function, to change the default
-sparse solver variable
+The two `BuildSolverSuperLU` functions, to change the default sparse solver variable
 
-\ttCC{DefSparseSolver<@double>::solver }
+`:::cpp DefSparseSolver<@double>::solver`
 
-\bFF
+```cpp
 MatriceMorse<double>::VirtualSolver *
 BuildSolverSuperLU(DCL_ARG_SPARSE_SOLVER(double,A))
 {
-    @if(verbosity>9)
-    @cout << " BuildSolverSuperLU<double>" << endl;
-    @return new SolveSuperLU<double>(*A,ds.strategy,ds.tgv,ds.epsilon,ds.tol_pivot,ds.tol_pivot_sym,ds.sparams,ds.perm_r,ds.perm_c);
+	@if(verbosity>9)
+	@cout << " BuildSolverSuperLU<double>" << endl;
+	@return new SolveSuperLU<double>(*A,ds.strategy,ds.tgv,ds.epsilon,ds.tol_pivot,ds.tol_pivot_sym,ds.sparams,ds.perm_r,ds.perm_c);
 }
 
 MatriceMorse<Complex>::VirtualSolver *
 BuildSolverSuperLU(DCL_ARG_SPARSE_SOLVER(Complex,A))
 {
-  @if(verbosity>9)
-    @cout << " BuildSolverSuperLU<Complex>" << endl;
-  @return new SolveSuperLU<Complex>(*A,ds.strategy,ds.tgv,ds.epsilon,ds.tol_pivot,ds.tol_pivot_sym,ds.sparams,ds.perm_r,ds.perm_c);
+	@if(verbosity>9)
+		@cout << " BuildSolverSuperLU<Complex>" << endl;
+	@return new SolveSuperLU<Complex>(*A,ds.strategy,ds.tgv,ds.epsilon,ds.tol_pivot,ds.tol_pivot_sym,ds.sparams,ds.perm_r,ds.perm_c);
 }
+```
 
+The link to __`FreeFem++`__
 
-\eFF
-
-The link to \freefempp
-
-
-\bFF
+```cpp
 @class Init { @public:
     Init();
 };
-\eFF
-  To set the  2 default sparse solver double and complex:
-\bFF
+```
+
+To set the 2 default sparse solver double and complex:
+
+```cpp
 DefSparseSolver<@double>::SparseMatSolver SparseMatSolver_R ; ;
 DefSparseSolver<Complex>::SparseMatSolver SparseMatSolver_C;
-\eFF
+```cpp
 
-To save  the default solver type
+To save the default solver type
 
-\bFF
-TypeSolveMat::TSolveMat  TypeSolveMatdefaultvalue=TypeSolveMat::defaultvalue;
-\eFF
+```cpp
+TypeSolveMat::TSolveMat TypeSolveMatdefaultvalue=TypeSolveMat::defaultvalue;
+```
 
 To reset to the default solver, call this function:
-\bFF
+
+```cpp
 @bool SetDefault()
 {
    @if(verbosity>1)
@@ -1391,10 +1069,11 @@ To reset to the default solver, call this function:
     DefSparseSolver<Complex>::solver =SparseMatSolver_C;
     TypeSolveMat::defaultvalue =TypeSolveMat::SparseSolver;
 }
-\eFF
+```
 
 To set the default solver to superLU, call this function:
-\bFF
+
+```cpp
 @bool SetSuperLU()
 {
     @if(verbosity>1)
@@ -1403,14 +1082,11 @@ To set the default solver to superLU, call this function:
     DefSparseSolver<Complex>::solver =BuildSolverSuperLU;
     TypeSolveMat::defaultvalue =TypeSolveMatdefaultvalue;
 }
-\eFF
+```
 
-\index{defaultsolver}
-\index{defaulttoSuperLU}
-To add new function/name \texttt{defaultsolver,defaulttoSuperLU}in \freefempp,
-and set the default  solver to the new solver., just do:
+To add new function/name `:::freefem defaultsolver,defaulttoSuperLU` in __`FreeFem++`__, and set the default solver to the new solver, just do:
 
-\bFF
+```cpp
 void init()
 {
 
@@ -1429,41 +1105,39 @@ void init()
 }
 
 LOADFUNC(init);
+```
 
-\eFF
+To compile `superlu.cpp`, just do:
 
-To compile superlu.cpp, just do:
+ * download the SuperLu 3.0 package and do
 
-\begin{enumerate}
-\item download the SuperLu 3.0 package and do
-\begin{verbatim}
-curl   http://crd.lbl.gov/~xiaoye/SuperLU/superlu_3.0.tar.gz  -o superlu_3.0.tar.gz
-tar xvfz superlu_3.0.tar.gz
+	`curl http://crd.lbl.gov/~xiaoye/SuperLU/superlu_3.0.tar.gz -o superlu_3.0.tar.gz`
+
+	`tar xvfz superlu_3.0.tar.gz`
+
 go SuperLU_3.0 directory
-$EDITOR  make.inc
+```cpp
+$EDITOR make.inc
 make
-\end{verbatim}
+```
 
-\item  In directoy include do
-to have a correct version of \texttt{SuperLu} header due to mistake
-in case of inclusion of \ttCC{double} and \ttCC{Complex} version in the same file.
-\begin{verbatim}
-tar xvfz ../SuperLU_3.0-include-ff.tar.gz
-\end{verbatim}
-I will give a correct one
-to compile with freefm++.
+ * In directoy include do to have a correct version of `SuperLu` header due to mistake in case of inclusion of `:::cpp double` and `:::cpp complex` version in the same file.
+ 	```bash
+	tar xvfz ../SuperLU_3.0-include-ff.tar.gz
+	```
+	I will give a correct one to compile with freefm++.
 
-To compile  the \freefempp load file  of SuperLu with freefem do:
+To compile the __`FreeFem++`__ load file of SuperLu with freefem do:
 some find like :
-\begin{verbatim}
-ff-c++ SuperLU.cpp  -L$HOME/work/LinearSolver/SuperLU_3.0/ -lsuperlu_3.0
-\end{verbatim}
+```bash
+ff-c++ SuperLU.cpp -L$HOME/work/LinearSolver/SuperLU_3.0/ -lsuperlu_3.0
+```
 
 And to test the simple example:
 
-\index{defaulttoGMRES}
 A example:
-\bFF
+
+```freefem
 @load "SuperLU"
 verbosity=2;
 @for(int i=0;i<3;++i)
@@ -1501,16 +1175,14 @@ verbosity=2;
   @if(i==0)defaulttoGMRES();
   @if(i==1)defaultsolver();
 }
-\eFF
+```
 
 To Test do for exemple:
-\begin{verbatim}
+```bash
 FreeFem++ SuperLu.edp
-\end{verbatim}
-
-
-\end{enumerate}
+```
 --->
+
 ## References
 
 <a name="HECHT2002">[HECHT2002]</a> HECHT, Frédéric. C++ Tools to construct our user-level language. ESAIM: Mathematical Modelling and Numerical Analysis, 2002, vol. 36, no 5, p. 809-836.

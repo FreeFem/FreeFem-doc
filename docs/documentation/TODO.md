@@ -75,83 +75,93 @@ Progression:
 
 Progression:
 <div class="progress progress-80plus">
-	<div class="progress-bar" style="width:95%">
+	<div class="progress-bar" style="width:96%">
 	</div>
-	<span class="progress-label">95</span>
+	<span class="progress-label">96</span>
 </div>
 
 - [ ] line 27
-- [ ] line 46
-- [ ] line 172
-- [ ] line 174
-- [ ] line 175
-- [ ] line 183
-- [ ] line 184
-- [ ] line 214
-- [ ] line 217
+- [ ] line 87
 - [ ] line 237
-- [ ] line 341
-- [ ] line 343
-- [ ] line 375
-- [ ] line 385
-- [ ] line 439
-- [ ] line 443
+- [ ] line 251
+- [ ] line 252
+- [ ] line 262
+- [ ] line 266
+- [ ] line 268
+- [ ] line 274
+- [ ] line 275
+- [ ] line 289
+- [ ] line 293
+- [ ] line 298
+- [ ] line 377
+- [ ] line 381
+- [ ] line 403
+- [ ] line 412
+- [ ] line 422
 - [ ] line 461
-- [ ] line 504
-- [ ] line 521
-- [ ] line 522
-- [ ] line 525
-- [ ] line 526
-- [ ] line 527
-- [ ] line 530
-- [ ] line 537
-- [ ] line 559
-- [ ] line 564
-- [ ] line 566
-- [ ] line 567
-- [ ] line 577
+- [ ] line 465
+- [ ] line 475
+- [ ] line 481
+- [ ] line 516
+- [ ] line 571
+- [ ] line 573
+- [ ] line 578
 - [ ] line 587
-- [ ] line 618
+- [ ] line 589
+- [ ] line 591
+- [ ] line 597
+- [ ] line 621
 - [ ] line 641
+- [ ] line 652
 - [ ] line 654
-- [ ] line 656
-- [ ] line 667
+- [ ] line 665
+- [ ] line 695
 - [ ] line 701
-- [ ] line 707
+- [ ] line 711
 - [ ] line 715
-- [ ] line 717
-- [ ] line 749
-- [ ] line 767
-- [ ] line 820
-- [ ] line 821
-- [ ] line 842
-- [ ] line 858
-- [ ] line 887
-- [ ] line 930
-- [ ] line 932
-- [ ] line 935
-- [ ] line 1014
-- [ ] line 1017
-- [ ] line 1091
-- [ ] line 1114
-- [ ] line 1119
-- [ ] line 1152
-- [ ] line 1153
-- [ ] line 1163
-- [ ] line 1164
-- [ ] line 1166
-- [ ] line 1334
+- [ ] line 783
+- [ ] line 914
+- [ ] line 920
+- [ ] line 1008
+- [ ] line 1011
+- [ ] line 1015
+- [ ] line 1020
+- [ ] line 1044
+- [ ] line 1046
+- [ ] line 1121
+- [ ] line 1124
+- [ ] line 1237
+- [ ] line 1260
+- [ ] line 1265
+- [ ] line 1298
+- [ ] line 1299
+- [ ] line 1309
+- [ ] line 1310
+- [ ] line 1312
+- [ ] line 1480
 
 ## Developers
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:99%">
+<div class="progress progress-0">
+	<div class="progress-bar" style="width:0%">
 	</div>
-	<span class="progress-label">99</span>
+	<span class="progress-label">0</span>
 </div>
 
+- [ ] line 596
 - [ ] line 663
 - [ ] line 671
-- [ ] line 806
+- [ ] line 807
+- [ ] line 850
+- [ ] line 854
+- [ ] line 856
+- [ ] line 860
+- [ ] line 878
+- [ ] line 927
+- [ ] line 942
+
+<span style="color:red; font-size:1.5em;">This is a CodeError!</span>
+- [ ] line 945
+- [ ] line 950
 
