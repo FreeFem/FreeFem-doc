@@ -13,6 +13,7 @@ pages:
     - Visualization: documentation/Visualization.md
     - Parallelization: documentation/Parallelization.md
     - (TODO) Chapter 11: documentation/chapter11.md
+    - Plugins: documentation/Plugins.md
     - Developers: documentation/Developers.md
     - TODO: documentation/TODO.md
   - Language References:

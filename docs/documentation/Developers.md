@@ -939,7 +939,7 @@ Vh2 [v1, v2];
 
 And the plot instruction is also changed because the pressure is constant, and we cannot plot isovalues of peacewise constant functions.
 
-$\codeerror$ PR needed: BernaRdiRaugel.cpp
+$\codered$ PR needed: BernaRdiRaugel.cpp
 
 #### The Morley Element
 See the example `bilapMorley.edp` $\codered$.

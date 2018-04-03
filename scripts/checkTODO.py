@@ -33,6 +33,7 @@ documentationFilesList = [
 	"documentation/Visualization.md",
 	"documentation/Parallelization.md",
 	"documentation/chapter11.md",
+	"documentation/Plugins.md",
 	"documentation/Developers.md"
 	]
 documentationNamesList = [
@@ -43,6 +44,7 @@ documentationNamesList = [
 	"Visualization",
 	"Parallelization",
 	"Chapter 11",
+	"Plugins",
 	"Developers"
 	]
 documentationTODOFile = "documentation/TODO.md"
@@ -215,7 +217,7 @@ def checkTODOByLines(_FilesList, _NamesList, _TODOFile):
 						NumberOfTODO += 1
 					elif "$\\codeerror$" in line:
 						TODOs.append("- [ ] line "+str(CurrentLine)+"\n")
-						TODOs.append("\n<span style=\"color:red; font-size:1.5em;\">This is a CodeError!</span>\n")
+						TODOs.append("\n<span style=\"color:red; font-size:1.5em;\">This is a CodeError!</span>\n\n")
 						print "A CodeError is present: file "+_FilesList[i]
 						NumberOfError += 1
 

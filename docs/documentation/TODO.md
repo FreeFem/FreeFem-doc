@@ -140,13 +140,23 @@ Progression:
 - [ ] line 1312
 - [ ] line 1480
 
+## Plugins
+
+Progression:
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
+	</div>
+	<span class="progress-label">100</span>
+</div>
+
+
 ## Developers
 
 Progression:
-<div class="progress progress-0">
-	<div class="progress-bar" style="width:0%">
+<div class="progress progress-80plus">
+	<div class="progress-bar" style="width:98%">
 	</div>
-	<span class="progress-label">0</span>
+	<span class="progress-label">98</span>
 </div>
 
 - [ ] line 596
@@ -160,8 +170,6 @@ Progression:
 - [ ] line 878
 - [ ] line 927
 - [ ] line 942
-
-<span style="color:red; font-size:1.5em;">This is a CodeError!</span>
 - [ ] line 945
 - [ ] line 950
 
