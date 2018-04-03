@@ -295,16 +295,11 @@ This is done in typing load "MUMPS\_freefem" in the .edp file. We give now the t
 
 * __Solver parameters is defined in .edp file:__
 	In this method, we need to give the parameters `:::freefem lparams` and `:::freefem dparams`. These parameters are defined for MUMPS by :
-	$\codered$
-	\begin{center}
-	\begin{tabular}{ll}
-	&lparams[0] = SYM, \\
-	&lparams[1] = PAR, \\
-	$\forall i=1,\ldots,40, \quad$ & lparams[$i$+1] = ICNTL($i$).\\
-	\\
-	$\forall i=1,\ldots,15, \quad$ & dparams[$i-1$] = CNTL($i$).
-	\end{tabular}
-	\end{center}
+
+	`:::freefem lparams[0] = SYM`,<br>
+	`:::freefem lparams[1] = PAR`,<br>
+	$\forall i$ = 1,...,40, `:::freefem lparams[i+1] = ICNTL(i)`<br>
+	$\forall i$ = 1,...,15, `:::freefem dparams[i-1] = CNTL(i)`
 
 * __Reading solver parameters on a file:__
 
@@ -386,7 +381,7 @@ To use SuperLU_DIST in FreeFem++, you have to install SuperLU_DIST package. We n
 
 __Creating Library of SuperLU_DIST interface for FreeFem++:__
 
-The FreeFem++ interface to SuperLU_DIST for real (resp. complex) arithmetics is given in file real_SuperLU_DIST_FreeFem.cpp (resp. complex_SuperLU_DIST_FreeFem.cpp). These files are in the directory src/solver/. These interfaces are compatible with the release 3.2.1 of SuperLU_DIST. To use SuperLU_DIST in FreeFem++, we need libraries corresponding to these interfaces. A description to obtain these libraries is given in the file README_COMPILE in the directory src/solver of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc in your system : comment Section 1, comment line corresponding to libraries BLAS, Metis, ParMetis in Section 2 and comment in Section 3 the paragraph corresponding to SuperLU_DIST solver. And just type __make rsludist__ (resp. __make csludist__) in the terminal to obtain the dynamic library of interface for real (resp. complex) arithmetics.
+The FreeFem++ interface to SuperLU_DIST for real (resp. complex) arithmetics is given in file real_SuperLU_DIST_FreeFem.cpp (resp. complex_SuperLU_DIST_FreeFem.cpp). These files are in the directory src/solver/. These interfaces are compatible with the release 3.2.1 of SuperLU_DIST. To use SuperLU_DIST in FreeFem++, we need libraries corresponding to these interfaces. A description to obtain these libraries is given in the file README_COMPILE in the directory src/solver of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc in your system : comment Section 1, comment line corresponding to libraries BLAS, Metis, ParMetis in Section 2 and comment in Section 3 the paragraph corresponding to SuperLU_DIST solver. And just type `:::bash make rsludist` (resp. `:::bash make csludist`) in the terminal to obtain the dynamic library of interface for real (resp. complex) arithmetics.
 
 Now we give a short description of SuperLU_DIST parameters before describing the method to call SuperLU_DIST in FreeFem++.
 
@@ -414,18 +409,28 @@ The other parameters for LU factorization are ParSymFact and ReplaceTinyPivot. T
 __Calling SuperLU_DIST in FreeFem++__
 
 To call SuperLU_DIST in FreeFem++, we need to load the library dynamic correspond to interface.
-This done by the following line __load "real_superlu _DIST_FreeFem"__ (resp. __load "complex_superlu_DIST_FreeFem"__) for real (resp. complex) arithmetics in the file .edp.
+This done by the following line `:::freefem load "real_superlu _DIST_FreeFem"` (resp. `:::freefem load "complex_superlu_DIST_FreeFem"`) for real (resp. complex) arithmetics in the file .edp.
 
 __Solver parameters is defined in .edp file:__
 
-To call SuperLU_DIST with internal parameter, we used the parameters sparams. The value of parameters of SuperLU_DIST in sparams is defined by
-$\codered$
-\begin{tabular}{ll}
-sparams&="nprow=1, npcol=1, matrix= distributedgloba, Fact= DOFACT, Equil=NO, \\
-	 & ParSymbFact=NO, ColPerm= MMD\_AT\_PLUS\_A, RowPerm= LargeDiag, \\
-	 & DiagPivotThresh=1.0, IterRefine=DOUBLE, Trans=NOTRANS, \\
-	 & ReplaceTinyPivot=NO, SolveInitialized=NO, PrintStat=NO, DiagScale=NOEQUIL "
-\end{tabular}
+To call SuperLU_DIST with internal parameter, we used the parameters sparams. The value of parameters of SuperLU_DIST in sparams is defined by :
+
+* nprow=1,
+* npcol=1,
+* matrix= distributedgloba,
+* Fact= DOFACT,
+* Equil=NO,
+* ParSymbFact=NO,
+* ColPerm= MMD\_AT\_PLUS\_A,
+* RowPerm= LargeDiag,
+* DiagPivotThresh=1.0,
+* IterRefine=DOUBLE,
+* Trans=NOTRANS,
+* ReplaceTinyPivot=NO,
+* SolveInitialized=NO,
+* PrintStat=NO,
+* DiagScale=NOEQUIL
+
 This value correspond to the parameter in the file ffsuperlu_dist_fileparam.txt. If one parameter is not specify by the user, we take the default value of SuperLU_DIST.
 
 __Reading solver parameters on a file:__
@@ -479,6 +484,7 @@ __Solver parameters defined in .edp file:__
 
 To call Pastix in FreeFem++ in this case, we need to specify the parameters __lparams__ and __dparams__. These parameters are defined by :
 $\codered$
+
 \begin{center}
 \begin{tabular}{ll}
 $\forall i=0,\ldots,63, \quad$ & lparams[$i$] = iparm[$i$].\\
@@ -1037,13 +1043,13 @@ utilities library\\
 \end{tabular}
 
 After specifies all the variables, in the command line in the directory
-$src/solver$ type \textbf{make hips} to create $hips\_FreeFem.so$. Like with pARMS, the calling of HIPS in FreeFem++ can be done in three different manners. We will present only one example where the user specifies the parameters through keywords `:::freefem lparams` and `:::freefem dparams`.
+$src/solver$ type `:::freefem make hips` to create $hips\_FreeFem.so$. Like with pARMS, the calling of HIPS in FreeFem++ can be done in three different manners. We will present only one example where the user specifies the parameters through keywords `:::freefem lparams` and `:::freefem dparams`.
 
 __Laplacian 3D solve with HIPS__
 
 Let us consider the 3D Laplacian example inside FreeFem++ package where after discretization we want to solve the linear equation with Hips. Example \ref{hips:laplacian} $\codered$ is Laplacian3D using Hips as linear solver. We first load Hips solver at line 2. From line 4 to 15 we specify the parameters for the Hips solver and in line 46 of example \ref{hips:laplacian} $\codered$ we set these parameters in the linear solver.
 
-In Table \ref{hipslabel} $\codered$ results of running example \ref{hips:laplacian} $\codered$ on Cluster Paradent of Grid5000 are reported. We can see in this running example the efficiency of parallelism.
+In Table 1.10 \ref{hipslabel} $\codered$ results of running example 1.1 5\ref{hips:laplacian} $\codered$ on Cluster Paradent of Grid5000 are reported. We can see in this running example the efficiency of parallelism.
 
 __Example Laplacian3D.edp__
 
@@ -1105,28 +1111,10 @@ set(Aa,solver=sparsesolver,dparams=dparm, lparams=iparm); //Set hips as linear s
 u[]=Aa^-1*F[];
 ```
 
-\begin{table}
-\begin{center}
-\begin{tabular}{|c|c|c|}
-\textbf{$n=4 \times 10^6$} & \textbf{$nnz=118 \times 10^6$} & \textbf{Te=221.34}
-\\
-np & nit & time \\
-8 & 190 & 120.34 \\
-16 & 189 & 61.08 \\
-32 & 186 & 31.70 \\
-64 & 183 & 23.44 \\
-\end{tabular}
-\end{center}
-\caption{Iterations and Timing of solving linear system from example
-\ref{hips:laplacian} $\codered$}
-
-\end{table}
-Legend of table \ref{hipslabel} $\codered$ are give in table \ref{legtableparm} $\codered$.
-
 <table>
 	<thead>
 		<tr>
-			<th colspan="2">Table 11.9 : Legend of table 11.8</th>
+			<th colspan="3">Table 11.10 : Legend of table 11.10 are give in table 11.9 \ref{legtableparm} $\codered$</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -1200,78 +1188,141 @@ iparm[14] & HIPS\_DOMSIZE Subdomain size \\
 
 \end{table}
 
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.11 : Significations of lparams corresponding to HIPS interface</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td style="font-weight: bold">Entries of iparm</td>
+	        <td style="font-weight: bold">Significations of each entries</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[0]</td>
+	        <td>Strategy use for solving (Iterative=0 or Hybrid=1 or Direct=2). Defaults values are : Iterative</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[1]</td>
+	        <td>Krylov methods. If iparm[0]=0, give type of Krylov methods: 0 for GMRES, 1 for PCG</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[2]</td>
+	        <td>Maximum of iterations in outer iteration: default value 1000</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[3]</td>
+	        <td>Krylov subspace dimension in outer iteration: default value 40</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[4]</td>
+	        <td>Symmetric(=0 for symmetric) and 1 for unsymmetricmatrix: default value 1 (unsymmetric matrix)</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[5]</td>
+	        <td>Pattern of matrix are symmetric or not: default value 0</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[6]</td>
+	        <td>Partition type of input matrix: default value 0</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[7]</td>
+	        <td>Number of level that use the HIPS locally consistentfill-in: Default value 2</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[8]</td>
+	        <td>Numbering in indices array will start at 0 or 1: Default value 0</td>
+	    </tr>
 
+	    <tr>
+	        <td>iparm[9]</td>
+	        <td>Scale matrix. Default value 1</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[10]</td>
+	        <td>Reordering use inside subdomains for reducingfill-in: Only use for iterative. Default value 1</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[11]</td>
+	        <td>Number of unknowns per node in the matrix non-zeropattern graph: Default value 1</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[12]</td>
+	        <td>This value is used to set the number of time the normalization is applied to the matrix: Default 2.</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[13]</td>
+	        <td>Level of informations printed during solving: Default 5.</td>
+	    </tr>
+	    <tr>
+	        <td>iparm[14]</td>
+	        <td>HIPS_DOMSIZE Subdomain size</td>
+	    </tr>
+	</tbody>
+</table>
 
-\begin{table}[hbtp]
-\begin{center}
-\begin{tabular}{|l|l|}
-%\begin{table}[hb]
-dparm[0] & $HIPS\_PREC$: Relative residual norm: Default=1e-9 \\
-\multirow{2}{*}\textbf{ dparm[1] }& $HIPS\_DROPTOL0$: Numerical threshold in
-ILUT for interior domain \\
-& (important : set 0.0 in HYBRID: Default=0.005)\\
-\multirow{2}{*}{dparm[2]} & $HIPS\_DROPTOL1$ : Numerical threshold in ILUT
-for\\
-& Schur preconditioner: Default=0.005\\
-\multirow{2}{*} \textbf{dparm[3] } & $HIPS\_DROPTOLE$ : Numerical threshold for
-coupling between the \\
-& interior level and Schur: Default 0.005\\
-
-\multirow{2}{*} \textbf{dparm[4] } & $HIPS\_AMALG$ : Numerical threshold for
-coupling between the \\
-& interior level and Schur: Default=0.005\\
-
-\multirow{2}{*} \textbf{dparm[5] } & $HIPS\_DROPSCHUR$ : Numerical threshold
-for coupling between the \\
-& interior level and Schur: Default=0.005\\
-
- \end{tabular}
-\end{center}
-\caption{Significations of \textbf{dparams} corresponding to HIPS interface }
-
-\end{table}
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.12 : Significations of dparams corresponding to HIPS interface</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td>dparm[0]</td>
+	        <td>$HIPS\_PREC$: Relative residual norm: Default=1e-9</td>
+	    </tr>
+	    <tr>
+	        <td>dparm[1]</td>
+	        <td>$HIPS\_DROPTOL0$: Numerical threshold in ILUT for interior domain (important : set 0.0 in HYBRID: Default=0.005)</td>
+	    </tr>
+	    <tr>
+	        <td>dparm[2]</td>
+	        <td>$HIPS\_DROPTOL1$ : Numerical threshold in ILUT for Schur preconditioner: Default=0.005</td>
+	    </tr>
+	    <tr>
+	        <td></td>
+	        <td></td>
+	    </tr>
+	    <tr>
+	        <td>dparm[3]</td>
+	        <td>$HIPS\_DROPTOLE$ : Numerical threshold for coupling between the interior level and Schur: Default 0.005</td>
+	    </tr>
+	    <tr>
+	        <td>dparm[4]</td>
+	        <td>$HIPS\_AMALG$ : Numerical threshold for coupling between the interior level and Schur: Default=0.005</td>
+	    </tr>
+	    <tr>
+	        <td>dparm[5]</td>
+	        <td>$HIPS\_DROPSCHUR$ : Numerical threshold for coupling between the interior level and Schur: Default=0.005</td>
+	    </tr>
+	</tbody>
+</table>
 
 ### Interfacing with HYPRE
-\textbf{HYPRE} ( \textit{High Level Preconditioner}) is a suite of parallel
-preconditioner developed at
- Lawrence Livermore National Lab \cite{HYPRE} $\codered$ .
 
-There are two main classes of preconditioners developed in HYPRE: AMG
-(Algebraic MultiGrid) and Parasails (Parallel Sparse Approximate
-Inverse).
+__HYPRE__ (High Level Preconditioner) is a suite of parallel preconditioner developed at Lawrence Livermore National Lab \cite{HYPRE} $\codered$ .
+
+There are two main classes of preconditioners developed in HYPRE: AMG (Algebraic MultiGrid) and Parasails (Parallel Sparse Approximate Inverse).
 
 Now, suppose we want to solve $Ax=b$.
-At the heart of AMG there is a series of progressively coarser(smaller)
-representations of the matrix $A$. Given an approximation
-$\hat{x}$ to the solution $x$, consider solving the residual equation $Ae=r$ to
-find the error $e$, where $r=b-A\hat{x}$.
-A fundamental principle of AMG is that it is an algebraically smooth error. To
-reduce the algebraically smooth errors further, they
-need to be represented by a smaller defect equation (coarse grid residual
-equation) $A_ce_c=r_c$, which is cheaper to solve.
-After solving this coarse equation, the solution is then interpolated in fine
-grid represented here by matrix $A$. The quality of
-AMG depends on the choice of coarsening and interpolating operators.
+At the heart of AMG there is a series of progressively coarser(smaller) representations of the matrix $A$. Given an approximation $\hat{x}$ to the solution $x$, consider solving the residual equation $Ae=r$ to find the error $e$, where $r=b-A\hat{x}$. A fundamental principle of AMG is that it is an algebraically smooth error. To reduce the algebraically smooth errors further, they need to be represented by a smaller defect equation (coarse grid residual equation) $A_ce_c=r_c$, which is cheaper to solve. After solving this coarse equation, the solution is then interpolated in fine grid represented here by matrix $A$. The quality of AMG depends on the choice of coarsening and interpolating operators.
 
-The \textit{sparse approximate inverse } approximates the inverse of a matrix
-$A$ by a sparse matrix $M$. A technical idea to
-construct matrix $M$ is to minimize the Frobenuis norm of the residual matrix
-$I-MA$. For more details on this preconditioner
-technics see \cite{chow} $\codered$.
+The _sparse approximate inverse_ approximates the inverse of a matrix $A$ by a sparse matrix $M$. A technical idea to construct matrix $M$ is to minimize the Frobenuis norm of the residual matrix $I-MA$. For more details on this preconditioner technics see \cite{chow} $\codered$.
 
 HYPRE implement three Krylov subspace solvers: GMRES, PCG and BiCGStab.
 
-\paragraph{Installation of HYPRE}
-To install HYPRE, first download the HYPRE package at \cite{HYPRE} $\codered$, unpack it
-and go to the HYPRE/src source directory and do
-\textbf{./configure} to configure Hypre. After this just type \textit{make all}
-to create \textbf{libHYPRE.a}.
-\paragraph*{Using HYPRE as interface to FreeFem++}
-Before calling HYPRE solver inside FreeFem++, you must
-compile the file $hypre\_FreeFem.cpp$ to create dynamic library
-$hypre\_FreeFem.so$.
-To do this, move to the directory $src/solver$ of FreeFem++, edit the file
-$makefile.inc$ to specify the following variables:\\
+__Installation of HYPRE__
+
+To install HYPRE, first download the HYPRE package at \cite{HYPRE} $\codered$, unpack it and go to the HYPRE/src source directory and do `:::bash ./configure` to configure Hypre. After this just type `:::bash make all` to create __libHYPRE.a__.
+
+__Using HYPRE as interface to FreeFem++__
+
+Before calling HYPRE solver inside FreeFem++, you must compile the file $hypre\_FreeFem.cpp$ to create dynamic library $hypre\_FreeFem.so$.
+To do this, move to the directory $src/solver$ of FreeFem++, edit the file $makefile.inc$ to specify the following variables:
+
 \begin{tabular}{ll}
  %\begin{tabular*}
 \textbf{$HYPRE\_DIR$} : & Directory of HYPRE \\
