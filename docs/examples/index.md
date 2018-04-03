@@ -57,94 +57,101 @@ for (int i = 0; i < NAdapt; i++){
 }
 ```
 
-Solution on adapted mesh and associated mesh | |
-:-------------------------:|:-------------------------:
-![poisson Associated mesh](images/poisson_associated_mesh.jpg) | ![poisson adapted mesh](images/poisson_adapted_mesh.jpg)
+Adapted mesh|
+:----:|
+![poisson Associated mesh](images/poisson_associated_mesh.jpg)|
+
+Solution on adapted mesh|
+:----:|
+![poisson adapted mesh](images/poisson_adapted_mesh.jpg)|
 
 ## Poisson's equation 3D
-$\codered$
+
 ```freefem
-// build de mesh of a Sphere
-// --------------------------
 load "tetgen"
-load "medit"
 
-mesh Th=square(10,20,[x*pi-pi/2,2*y*pi]);  //  $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
-//  a parametrization of a sphere
-func f1 =cos(x)*cos(y);
-func f2 =cos(x)*sin(y);
+// Parameters
+real hh = 0.1;
+func ue = 2.*x*x + 3.*y*y + 4.*z*z + 5.*x*y + 6.*x*z + 1.;
+func f= -18.;
+
+// Mesh
+mesh Th = square(10, 20, [x*pi-pi/2, 2*y*pi]); // ]-pi/2, pi/2[X]0,2pi[
+func f1 = cos(x)*cos(y);
+func f2 = cos(x)*sin(y);
 func f3 = sin(x);
-//  de  partiel derivative of the parametrization DF
-func f1x=sin(x)*cos(y);   
-func f1y=-cos(x)*sin(y);
-func f2x=-sin(x)*sin(y);
-func f2y=cos(x)*cos(y);
-func f3x=cos(x);
-func f3y=0;
-// $  M = DF^t DF $
-func m11=f1x^2+f2x^2+f3x^2;
-func m21=f1x*f1y+f2x*f2y+f3x*f3y;
-func m22=f1y^2+f2y^2+f3y^2;
+func f1x = sin(x)*cos(y);
+func f1y = -cos(x)*sin(y);
+func f2x = -sin(x)*sin(y);
+func f2y = cos(x)*cos(y);
+func f3x = cos(x);
+func f3y = 0;
+func m11 = f1x^2 + f2x^2 + f3x^2;
+func m21 = f1x*f1y + f2x*f2y + f3x*f3y;
+func m22 = f1y^2 + f2y^2 + f3y^2;
+func perio = [[4, y], [2, y], [1, x], [3, x]];
+real vv = 1/square(hh);
+Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
+Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
+plot(Th);
 
-func perio=[[4,y],[2,y],[1,x],[3,x]];  
-real hh=0.1;
-real vv= 1/square(hh);
-verbosity=2;
-Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-plot(Th,wait=1);
+real[int] domain = [0., 0., 0., 1, 0.01];
+mesh3 Th3 = tetgtransfo(Th, transfo=[f1, f2, f3], nbofregions=1, regionlist=domain);
+plot(Th3);
 
-verbosity=2;
-real[int] domaine =[0.,0.,0.,1,0.01];
-mesh3 Th3=tetgtransfo(Th,transfo=[f1,f2,f3],nbofregions=1,regionlist=domaine);
-//savemesh(Th3,"sphere.meshb");
-medit("sphere",Th3);
+border cc(t=0, 2*pi){x=cos(t); y=sin(t); label=1;}
+mesh Th2 = buildmesh(cc(50));
 
-// FFCS - check 3D plots
-plot(Th3,cmm="sphere");
-
-fespace Vh(Th3,P23d);
-func ue =   2*x*x + 3*y*y + 4*z*z+ 5*x*y+6*x*z+1;
-func f= -18. ;
-Vh uhe = ue; // bug ..
-cout << " uhe min:  " << uhe[].min << " max:" << uhe[].max << endl;
+// Fespace
+fespace Vh(Th3, P23d);
+Vh u, v;
+Vh uhe = ue;
+cout << "uhe min: " << uhe[].min << " - max: " << uhe[].max << endl;
 cout << uhe(0.,0.,0.) << endl;
 
+fespace Vh2(Th2, P2);
+Vh2 u2, u2e;
 
-//savesol("f3.sol",Th3,ue,ue,[f,ue,f],order=1);
-//int bb=meditmeshsol("sol",Th3,solution=1,scalar=uhe);
+// Macro
+macro Grad3(u) [dx(u), dy(u), dz(u)] //
 
+// Problem
+problem Lap3d (u, v, solver=CG)
+	= int3d(Th3)(
+		  Grad3(v)' * Grad3(u)
+	)
+	- int3d(Th3)(
+		  f * v
+	)
+	+ on(0, 1, u=ue)
+	;
 
-border cc(t=0,2*pi){x=cos(t);y=sin(t);label=1;}
-mesh Th2=buildmesh(cc(50));
-fespace Vh2(Th2,P2);
-
-Vh u,v;
-
-macro Grad3(u) [dx(u),dy(u),dz(u)]  // EOM
-
-problem Lap3d(u,v,solver=CG)=int3d(Th3)(Grad3(v)' *Grad3(u)) - int3d(Th3)(f*v) + on(0,1,u=ue);
+// Solve
 Lap3d;
-cout << " u min::   " << u[]. min << "  max: " << u[].max << endl;
-real err= int3d(Th3)( square(u-ue) );
+cout << "u min: " << u[]. min << " - max: " << u[].max << endl;
+
+// Error
+real err = int3d(Th3)(square(u-ue));
 cout << int3d(Th3)(1.) << " = " << Th3.measure << endl;
-Vh d= ue-u;
-cout <<  " err = " << err <<  " diff l^\intfy = " << d[].linfty << endl;
-Vh2 u2=u,u2e=ue;
-plot(u2,wait=1);
-plot(u2,u2e,wait=1);
+Vh d = ue - u;
+cout << " err = " << err << " - diff l^intfy = " << d[].linfty << endl;
 
-// FFCS - check 3D plots
-plot(u);
-
-assert(err < 1e-9);
+// Plot
+u2 = u;
+u2e = ue;
+plot(u2, wait=true);
+plot(u2, u2e,wait=true);
 ```
+
+Iso-surfaces of the solution |
+:----:|
+![Poisson3D](images/poisson_3d.jpg)|
 
 ## Stoke Equation on a cube
 
 ```freefem
 load "msh3"
-load "medit"	// dynamically loaded tools for 3D
+load "medit" //dynamically loaded tools for 3D
 
 // Parameters
 int nn = 8;
@@ -158,7 +165,7 @@ real zmin = 0, zmax = 1;
 mesh3 Th = buildlayers(Th0, nn, zbound=[zmin, zmax],
 	reffacemid=rmid, reffaceup=rup, reffacelow=rdown);
 
-medit("c8x8x8", Th); // 3d mesh visualization with medit
+medit("c8x8x8", Th); //3d mesh visualization with medit
 
 // Fespaces
 fespace Vh2(Th0, P2);
@@ -187,9 +194,9 @@ solve vStokes ([u1, u2, u3, p], [v1, v2, v3, q])
 	;
 
 // Plot
-plot(p, wait=1, nbiso=5); // 3d visualization of pressure isolines
+plot(p, wait=1, nbiso=5); //3d visualization of pressure isolines
 
-// See 10 plan of the velocity in 2D
+//See 10 plan of the velocity in 2D
 for(int i = 1; i < 10; i++){
 	// Cut plane
 	real yy = i/10.;
@@ -203,11 +210,11 @@ for(int i = 1; i < 10; i++){
 ```
 
 Solution and associated mesh |
-:-------------------------:|
+:----:|
 ![Stokes 3D](images/Stokes3d.jpg) |
 ![Stokes 3d mesh](images/Stokes3d-Th.jpg) |
 
-## Mehs Generation
+## Mesh Generation
 
 ### Mesh adaptation
 
@@ -234,7 +241,16 @@ for (int i = 0; i < 2; i++){
 }
 ```
 
+Initial mesh|
+:-----:|
+![MeshAdaptation1](images/MeshAdaptation1.jpg)|
+
+Adapted mesh|
+:-----:|
+![MeshAdaptation2](images/MeshAdaptation2.jpg)|
+
 ### Mesh adaptation on the Poisson's problem
+
 ```freefem
 // Parameters
 real error = 0.1;
@@ -277,10 +293,22 @@ for (int i = 0; i < 4; i++){
 plot(u);
 ```
 
-### Uniforme mesh adaptation
+Initial mesh|
+:-----:|
+![MeshAdaptationPoisson1](images/MeshAdaptationPoisson1.jpg)|
+
+Adapted mesh|
+:-----:|
+![MeshAdaptationPoisson2](images/MeshAdaptationPoisson2.jpg)|
+
+Solution on adapted mesh|
+:-----:|
+![MeshAdaptationPoissonU](images/MeshAdaptationPoissonU.jpg)|
+
+### Uniform mesh adaptation
 
 ```freefem
-mesh Th=square(2, 2); //the initial mesh
+mesh Th = square(2, 2); //the initial mesh
 plot(Th, wait=true);
 
 Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000);
@@ -290,6 +318,14 @@ Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); //More the one time du to
 Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); //Adaptation bound `maxsubdiv=`
 plot(Th, wait=true);
 ```
+
+Initial mesh|
+:-----:|
+![UniformMeshAdaptation1](images/UniformMeshAdaptation1.jpg)|
+
+Adapted mesh|
+:-----:|
+![UniformMeshAdaptation2](images/UniformMeshAdaptation2.jpg)|
 
 ### Borders
 
@@ -342,6 +378,18 @@ plot(Th, wait=true);
 }
 ```
 
+Mesh with two regions|
+:-----:|
+![Borders1](images/Borders1.jpg)|
+
+Mesh without a hole|
+:-----:|
+![Borders2](images/Borders2.jpg)|
+
+Mesh with a hole|
+:-----:|
+![Borders3](images/Borders3.jpg)|
+
 ### Change
 
 ```freefem
@@ -384,6 +432,10 @@ solve P(u, v)
 plot(u, wait=1);
 ```
 
+Result|
+:-----:|
+![Change](images/Change.jpg)|
+
 ### Cube
 
 ```freefem
@@ -420,6 +472,10 @@ cout << "Nb err = " << err << endl;
 assert(err==0);
 ```
 
+Cube|
+:-----:|
+![Cube](images/Cube.jpg)|
+
 ### Empty mesh
 
 ```freefem
@@ -443,9 +499,16 @@ assert(err==0);
 	Th = emptymesh(Th, ssd);
 	//plot
 	plot(Th);
-	savemesh(Th, "emptymesh.msh");
 }
 ```
+
+Empty square|
+:-----:|
+![EmptyMesh1](images/EmptyMesh1.jpg)|
+
+Empty diamond|
+:-----:|
+![EmptyMesh2](images/EmptyMesh2.jpg)|
 
 ### Example: 3 points
 
@@ -469,6 +532,10 @@ mesh Th = buildmesh(Left(n) + Bot1(m/4) + Fix1(5) + Bot2(m/2)
 	+ Fix2(5) + Bot3(m/4) + Right(n) + Top1(m/2) + Load(10) + Top2(m/2));
 plot(Th, bw=true);
 ```
+
+3 Points|
+:-----:|
+![3Points](images/3Points.jpg)|
 
 ### Example: Bezier
 
@@ -502,6 +569,10 @@ int m = 5;
 mesh Th = buildmesh(G1(2*m) + G2(m) + G3(3*m) + G4(m));
 plot(Th, bw=true);
 ```
+
+Bezier|
+:-----:|
+![Bezier](images/Bezier.jpg)|
 
 ### Example: Build layer mesh
 
@@ -571,156 +642,179 @@ mesh3 Th3sph = tetgtransfo(Ths, transfo=[XX1, YY1, ZZ1],
 medit("sphere 2 regions", Th3sph);
 ```
 
+Box with a hole|
+:-----:|
+![BuildLayerMesh1](images/BuildLayerMesh1.jpg)|
+
+Sphere|
+:-----:|
+![BuildLayerMesh2](images/BuildLayerMesh2.jpg)|
+
 ### Sphere
-$\codered$
+
 ```freefem
-mesh Th=square(10,20,[x*pi-pi/2,2*y*pi]);  //  $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
-//  a paratrization of a sphere
-func f1 =cos(x)*cos(y);
-func f2 =cos(x)*sin(y);
+// Parameter
+real hh = 0.1;
+
+// Mesh 2D
+mesh Th = square(10, 20, [x*pi-pi/2, 2*y*pi]); //]-pi/2, pi/2[X]0, 2pi[
+//a parametrization of a sphere
+func f1 = cos(x)*cos(y);
+func f2 = cos(x)*sin(y);
 func f3 = sin(x);
-//  de  partiel derivatrive of the parametrization DF
-func f1x=sin(x)*cos(y);   
-func f1y=-cos(x)*sin(y);
-func f2x=-sin(x)*sin(y);
-func f2y=cos(x)*cos(y);
-func f3x=cos(x);
-func f3y=0;
-// $  M = DF^t DF $
-func m11=f1x^2+f2x^2+f3x^2;
-func m21=f1x*f1y+f2x*f2y+f3x*f3y;
-func m22=f1y^2+f2y^2+f3y^2;
+//partial derivatrive of the parametrization DF
+func f1x = sin(x)*cos(y);
+func f1y = -cos(x)*sin(y);
+func f2x = -sin(x)*sin(y);
+func f2y = cos(x)*cos(y);
+func f3x = cos(x);
+func f3y = 0;
+//M = DF^t DF
+func m11 = f1x^2 + f2x^2 + f3x^2;
+func m21 = f1x*f1y + f2x*f2y + f3x*f3y;
+func m22 = f1y^2 + f2y^2 + f3y^2;
 
-func perio=[[4,y],[2,y],[1,x],[3,x]];  // to store the periodic condition
+//periodic condition
+func perio = [[4, y], [2, y], [1, x], [3, x]];
 
-// the intial mesh
-savemesh(Th,"sphere",[f1,f2,f3]);
+// Mesh adaptation
+real vv = 1/square(hh);
+Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, inquire=1, periodic=perio);
+Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
+Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
+Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
 
-real hh=0.1;
-real vv= 1/square(hh);
-verbosity=2;
-Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,inquire=1,periodic=perio);
-plot(Th,wait=1);
-Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-plot(Th,wait=1);
-Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-plot(Th,wait=1);
-Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-load "msh3" load "medit"
-//savemesh(Th,"sphere-a",[f1,f2,f3]);
-plot(Th,wait=1);
-mesh3 Th3= movemesh23(Th,transfo=[f1,f2,f3]);
-plot(Th3,wait=1);
-medit("sphere-a",Th3);// bug un color of u ... FH
-
-//exec("ffmedit sphere-a");
+// Sphere
+mesh3 Th3 = movemesh23(Th, transfo=[f1, f2, f3]);
+plot(Th3);
 ```
+
+Initial mesh|
+:-----:|
+![Sphere1](images/Sphere1.jpg)|
+
+Sphere|
+:-----:|
+![Sphere2](images/Sphere2.jpg)|
 
 ## Finite Element
 
 ### Periodic 3D
-$\codered$
+
 ```freefem
 load "msh3"
 load "medit"
-searchMethod=1; // more safe seach algo .. (FH for PICHON ??)
-verbosity=1;
-real a=1, d=0.5, h=0.5;
-border b1(t=0.5,-0.5) {x=a*t; y=-a/2; label=1;};
-border b2(t=0.5,-0.5) {x=a/2; y=a*t; label=2;};
-border b3(t=0.5,-0.5) {x=a*t; y=a/2; label=3;};
-border b4(t=0.5,-0.5) {x=-a/2; y=a*t; label=4;};
-border i1(t=0,2*pi) {x=d/2*cos(t); y=-d/2*sin(t); label=7;};
-int nnb=7, nni=10;
-mesh Th=buildmesh(b1(-nnb)+b3(nnb)+b2(-nnb)+b4(nnb)+i1(nni));//, fixedborder=true);
-//Th=adaptmesh(Th,0.1,IsMetric=1,periodic=[[1,x],[3,x],[2,y],[4,y]]);
-int nz=3;
-{ // for cleanning  memory..
-int[int] old2new(0:Th.nv-1);
-fespace Vh2(Th,P1);
-Vh2 sorder=x+y;
-sort(sorder[],old2new);
-int[int]  new2old=old2new^-1;   // inverse the permuation
-//for(int i=0;i< Th.nv;++i) // so by hand.
-//  new2old[old2new[i]]=i;
-Th= change(Th,renumv=new2old);
-sorder[]=0:Th.nv-1;
+
+// Parameters
+searchMethod=1; //more safe seach algo
+real a = 1, d = 0.5, h = 0.5;
+int nnb = 7, nni = 10;
+int nz = 3;
+func zmin = 0;
+func zmax = h;
+
+// Mesh 2D
+border b1(t=0.5, -0.5){x=a*t; y=-a/2; label=1;}
+border b2(t=0.5, -0.5){x=a/2; y=a*t; label=2;}
+border b3(t=0.5, -0.5){x=a*t; y=a/2; label=3;}
+border b4(t=0.5, -0.5){x=-a/2; y=a*t; label=4;}
+border i1(t=0, 2.*pi){x=d/2*cos(t); y=-d/2*sin(t); label=7;}
+mesh Th = buildmesh(b1(-nnb) + b3(nnb) + b2(-nnb) + b4(nnb) + i1(nni));
+
+{ //for correct cleaning of the memory
+	int[int] old2new(0:Th.nv-1);
+	fespace Vh2(Th, P1);
+	Vh2 sorder = x + y;
+	sort(sorder[], old2new);
+	int[int] new2old = old2new^-1; //inverse the permuation
+	Th = change(Th, renumv=new2old);
+	sorder[] = 0:Th.nv-1;
 }
 {
-  fespace Vh2(Th,P1);
-  Vh2 nu;
-  nu[]=0:Th.nv-1;
-  plot(nu,cmm="nu=",wait=1);
+	fespace Vh2(Th, P1);
+	Vh2 nu;
+	nu[] = 0:Th.nv-1;
+	plot(nu, cmm="nu=", wait=true);
 }
-int[int] rup=[0,5], rlow=[0,6], rmid=[1,1,2,2,3,3,4,4,7,7], rtet=[0,41];
-func zmin=0;
-func zmax=h;
-mesh3 Th3=buildlayers(Th, nz, zbound=[zmin,zmax],
-reftet=rtet,reffacemid=rmid, reffaceup=rup, reffacelow=rlow);
-for(int i=1;i<=6;++i)
-  cout << " int " << i << " :  " << int2d(Th3,i)(1.) << " " << int2d(Th3,i)(1./area) << endl;
-savemesh(Th3,"Th3.mesh");
-plot(Th3,wait=1);
-medit("Th3",Th3);
 
-fespace Vh(Th3,P2, periodic=[[1,x,z],[3,x,z],[2,y,z],[4,y,z],[5,x,y],[6,x,y]]);
+// Mesh 3D
+int[int] rup = [0, 5], rlow = [0, 6], rmid = [1, 1, 2, 2, 3, 3, 4, 4, 7, 7], rtet = [0, 41];
+mesh3 Th3 = buildlayers(Th, nz, zbound=[zmin, zmax],
+	reftet=rtet, reffacemid=rmid, reffaceup=rup, reffacelow=rlow);
+for(int i = 1; i <= 6; ++i)
+	cout << " int " << i << " : " << int2d(Th3,i)(1.) << " " << int2d(Th3,i)(1./area) << endl;
+
+plot(Th3, wait=true);
+medit("Th3", Th3);
+
+fespace Vh(Th3, P2, periodic=[[1, x, z], [3, x, z], [2, y, z], [4, y, z], [5, x, y], [6, x, y]]);
 ```
+
+Periodic mesh|
+:-----:|
+![Periodic](images/Periodic.jpg)|
 
 ### Lagrange multipliers
-$\codered$
+
 ```freefem
-/*
-   solving   Laplace operator with Neumann boundary condition
-   with 1D lagrange multiplier
+// Parameters
+func f = 1 + x - y;
 
-   The variational form is
-   find (u,l) such that
+// Mesh
+mesh Th = square(10, 10);
 
-   $\forall (v,m)   a(u,v) + b(u,m) + b(v,l) = L(v) $
-   where $b(u,m) = int u*m dx$
-
-*/
- mesh Th=square(10,10);
- fespace Vh(Th,P1);     // P1 FE space
+// Fespace
+fespace Vh(Th, P1);
 int n = Vh.ndof;
 int n1 = n+1;
+Vh uh, vh;
 
- Vh uh,vh;              // unknown and test function.
- func f=1+x-y;                 //  right hand side function
+// Problem
+varf va (uh, vh)
+	= int2d(Th)(
+		  dx(uh)*dx(vh)
+		+ dy(uh)*dy(vh)
+	)
+	;
 
-varf va(uh,vh) =                    //  definition of  the problem
-    int2d(Th)( dx(uh)*dx(vh) + dy(uh)*dy(vh) ) //  bilinear form
-;
-varf vL(uh,vh)=  int2d(Th)( f*vh )  ;
-varf vb(uh,vh)= int2d(Th)(1.*vh);
+varf vL (uh, vh) = int2d(Th)(f*vh);
+varf vb (uh, vh) = int2d(Th)(1.*vh);
 
-matrix A=va(Vh,Vh);
+matrix A = va(Vh, Vh);
+real[int] b = vL(0, Vh);
+real[int] B = vb(0, Vh);
 
-real[int] b(n);
-b = vL(0,Vh);
+//block matrix
+matrix AA = [ [ A, B ], [ B', 0 ] ];
+set(AA, solver=sparsesolver);
 
-real[int]  B = vb(0,Vh); 	
-// the block matrix
+real[int] bb(n+1), xx(n+1), b1(1), l(1);
+b1 = 0;
+//build the block right hand size
+bb = [b, b1];
 
-matrix AA = [ [ A ,  B ] ,
-              [ B', 0 ] ] ;
+// Solve
+xx = AA^-1 * bb;
 
-real[int]  bb(n+1),xx(n+1),b1(1),l(1);
-b1=0;
-// build the block rhs
-bb = [ b, b1];
-set(AA,solver=sparsesolver);
-xx = AA^-1*bb; // solve the linear system
+//set values
+[uh[],l] = xx;
 
-[uh[],l] = xx;  // set the value
-cout << " l = " << l(0) <<  " ,  b(u,1)  =" << B'*uh[]  << endl;  
-plot(uh,wait=1);
+// Display
+cout << " l = " << l(0) << " , b(u, 1) =" << B'*uh[] << endl;
+
+// Plot
+plot(uh);
 ```
+
+Result|
+:-----:|
+![LagrangeMultipliers](images/LagrangeMultipliers.jpg)|
 
 ## Parallelization
 
 ### MPI-GMRES 2D
 $\codered$
+<!---
 ```freefem
 // NBPROC 10
 // ff-mpirun -np 4 MPIGMRES2D.edp -glut ffglut  -n 11 -k 1  -d 1 -ns -gmres 1
@@ -1191,9 +1285,11 @@ if(sff != "")
 
   }
 ```
+--->
 
 ### MPI-GMRES 3D
 $\codered$
+<!---
 ```freefem
 // NBPROC 10
 // ff-mpirun -np 4 MPIGMRES2D.edp -glut ffglut  -n 11 -k 1  -d 1 -ns -gmres 1
@@ -1669,6 +1765,7 @@ if(sff != "")
 
   }
 ```
+--->
 
 ## Visualization
 
@@ -1708,6 +1805,18 @@ plot([xx, yy], wait=true);
 exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output \"gnuplot.eps\" \n replot \n quit' | gnuplot");
 ```
 
+First plot|
+:-----:|
+![Plot1](images/Plot1.jpg)|
+
+Second plot|
+:-----:|
+![Plot2](images/Plot2.jpg)|
+
+Gnuplot|
+:-----:|
+![Plot3](images/Plot3.png)|
+
 ### HSV
 
 ```freefem
@@ -1742,6 +1851,10 @@ real[int] colorhsv=[ // color hsv model
  plot(uh, viso=viso(0:viso.n-1), value=true, fill=true, wait=true, hsv=colorhsv);
 ```
 
+Result|
+:-----:|
+![HSV](images/HSV.jpg)|
+
 ### Medit
 
 ```freefem
@@ -1769,6 +1882,14 @@ exec("ffmedit u");
 exec("rm u.bb u.faces u.points");
 ```
 
+2D plot|
+:-----:|
+![Medit1](images/Medit1.jpg)|
+
+Plot with elevation|
+:-----:|
+![Medit2](images/Medit2.jpg)|
+
 ### Paraview
 
 ```freefem
@@ -1783,3 +1904,7 @@ int[int] Order = [1];
 string DataName = "u";
 savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
 ```
+
+Result|
+:-----:|
+![Paraview](images/Paraview.jpg)|

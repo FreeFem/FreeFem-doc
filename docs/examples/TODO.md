@@ -12,10 +12,6 @@ Progression:
 	<span class="progress-label">99</span>
 </div>
 
-- [ ] line 65
-- [ ] line 575
-- [ ] line 622
-- [ ] line 670
-- [ ] line 723
-- [ ] line 1196
+- [ ] line 812
+- [ ] line 1287
 
