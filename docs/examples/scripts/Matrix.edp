@@ -1,0 +1,14 @@
+@matrix M=[
+[ Asd[0] ,0      ,0      ,0      ,Csd[0] ],
+[ 0      ,Asd[1] ,0      ,0      ,Csd[1] ],
+[ 0      ,0      ,Asd[2] ,0      ,Csd[2] ],
+[ 0      ,0      ,0      ,Asd[3] ,Csd[3] ],
+[ Csd[0]',Csd[1]',Csd[2]',Csd[3]',DD     ]
+];
+
+//  to now  to pack the right hand side
+@real[int] bb =[rhssd[0][], rhssd[1][],rhssd[2][],rhssd[3][],rhsl[] ];
+@set(M,solver=@sparsesolver);
+xx = M^-1 * bb;
+[usd[0][],usd[1][],usd[2][],usd[3][],lh[]] = xx; // to dispatch
+// the solution on each part.

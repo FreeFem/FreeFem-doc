@@ -11,13 +11,23 @@ ofstream file("file.btxt", binary);
 ```
 
 ## cin
-Standard C++ input.
+Standard C++ input device (default: keyboard).
+
 ```freefem
 cin >> var;
 ```
 
 ## cout
-Standard C++ ouptut.
+Standard C++ output device (default: console).
+
+```freefem
+cout << "Some text" << endl;
+```
+
+## endl
+
+End of line.
+
 ```freefem
 cout << "Some text" << endl;
 ```
@@ -41,11 +51,17 @@ Open a file in read mode.
 ifstream file("file.txt");
 ```
 
+!!!note
+	A file is closed at the end of a block.
+
 ## ofstream
 Open a file in write mode.
 ```freefem
 ofstream file("file.txt");
 ```
+
+!!!note
+	A file is closed at the end of a block.
 
 ## seekg
 Set the file position.
@@ -58,6 +74,3 @@ Get the file position.
 ```freefem
 int Pos = file.tellg();
 ```
-
-
-

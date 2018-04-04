@@ -16,13 +16,12 @@ Progression:
 ## Notations
 
 Progression:
-<div class="progress progress-80plus">
-	<div class="progress-bar" style="width:98%">
+<div class="progress progress-100plus">
+	<div class="progress-bar" style="width:100%">
 	</div>
-	<span class="progress-label">98</span>
+	<span class="progress-label">100</span>
 </div>
 
-- [ ] line 31
 
 ## Mesh generation
 
@@ -75,70 +74,57 @@ Progression:
 
 Progression:
 <div class="progress progress-80plus">
-	<div class="progress-bar" style="width:96%">
+	<div class="progress-bar" style="width:94%">
 	</div>
-	<span class="progress-label">96</span>
+	<span class="progress-label">94</span>
 </div>
 
-- [ ] line 27
-- [ ] line 87
-- [ ] line 237
-- [ ] line 251
+- [ ] line 28
+- [ ] line 88
+- [ ] line 238
 - [ ] line 252
-- [ ] line 262
-- [ ] line 266
-- [ ] line 268
-- [ ] line 274
+- [ ] line 253
+- [ ] line 263
+- [ ] line 267
+- [ ] line 269
 - [ ] line 275
-- [ ] line 289
-- [ ] line 293
-- [ ] line 298
+- [ ] line 276
+- [ ] line 290
+- [ ] line 294
+- [ ] line 373
 - [ ] line 377
 - [ ] line 381
-- [ ] line 403
-- [ ] line 412
-- [ ] line 422
-- [ ] line 461
-- [ ] line 465
-- [ ] line 475
+- [ ] line 385
+- [ ] line 399
+- [ ] line 408
+- [ ] line 435
+- [ ] line 463
+- [ ] line 467
+- [ ] line 471
 - [ ] line 481
-- [ ] line 516
-- [ ] line 571
-- [ ] line 573
-- [ ] line 578
-- [ ] line 587
-- [ ] line 589
-- [ ] line 591
-- [ ] line 597
-- [ ] line 621
-- [ ] line 641
-- [ ] line 652
+- [ ] line 487
+- [ ] line 517
+- [ ] line 519
+- [ ] line 574
+- [ ] line 576
+- [ ] line 581
+- [ ] line 590
+- [ ] line 592
+- [ ] line 594
+- [ ] line 600
+- [ ] line 603
+- [ ] line 623
+- [ ] line 643
 - [ ] line 654
-- [ ] line 665
-- [ ] line 695
-- [ ] line 701
-- [ ] line 711
-- [ ] line 715
-- [ ] line 783
-- [ ] line 914
-- [ ] line 920
-- [ ] line 1008
-- [ ] line 1011
-- [ ] line 1015
-- [ ] line 1020
-- [ ] line 1044
-- [ ] line 1046
-- [ ] line 1121
-- [ ] line 1124
-- [ ] line 1237
-- [ ] line 1260
-- [ ] line 1265
-- [ ] line 1298
-- [ ] line 1299
-- [ ] line 1309
-- [ ] line 1310
-- [ ] line 1312
-- [ ] line 1480
+- [ ] line 656
+- [ ] line 667
+- [ ] line 697
+- [ ] line 703
+- [ ] line 713
+- [ ] line 717
+- [ ] line 785
+- [ ] line 916
+- [ ] line 922
 
 ## Plugins
 
