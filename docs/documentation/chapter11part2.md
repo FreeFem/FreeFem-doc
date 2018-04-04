@@ -2,37 +2,32 @@
 
 __HIPS__ (_Hierarchical Iterative Parallel Solver_) is a scientific library that provides an efficient parallel iterative solver for very large sparse linear systems. HIPS is available as free software under the CeCILL-C licence. The interface that we realized is compatible with release __1.2 beta.rc4__ $\codered$ of HIPS.
 
-HIPS implements two solver classes which are the iteratives class (GMRES, PCG) and the Direct class. Concerning preconditionners, HIPS implements a type of multilevel ILU. For further informations on those preconditionners see \cite{A:LaBRI::sisc06,
-A:LaBRI::HRR07} $\codered$.
+HIPS implements two solver classes which are the iteratives class (GMRES, PCG) and the Direct class. Concerning preconditionners, HIPS implements a type of multilevel ILU. For further informations on those preconditionners see \cite{A:LaBRI::sisc06,A:LaBRI::HRR07} $\codered$.
 
 __Installation of HIPS__
 
-To install HIPS, first download the HIPS package at \cite{HIPS} $\codered$, unpack it and go to the HIPS source directory. The installation of HIPS is machine dependence. For example, to install HIPS on a linux cluster copy the file __$Makefile\_Inc\_Examples/makefile.inc.gnu$__ $\codered$ on the root directory of HIPS with the name __makefile.inc__. After this, edit __makefile.inc__ to set values of different variables and type `:::bash make all`.
+To install HIPS, first download the HIPS package at \cite{HIPS} $\codered$, unpack it and go to the HIPS source directory. The installation of HIPS is machine dependence. For example, to install HIPS on a linux cluster copy the file __Makefile\_Inc\_Examples/makefile.inc.gnu__ $\codered$ on the root directory of HIPS with the name __makefile.inc__. After this, edit __makefile.inc__ to set values of different variables and type `:::bash make all`.
 
 __Using HIPS as the interface to FreeFem++__
 
-Before calling the HIPS solver inside FreeFem++, you must compile file $hips\_FreeFem.cpp$ to create dynamic library $hips\_FreeFem.so$. To do this, move to the directory $src/solver$ of FreeFem++ and edit the file
-$makefile.inc$ to specify the following variables: $\codered$
+Before calling the HIPS solver inside FreeFem++, you must compile file hips\_FreeFem.cpp to create dynamic library hips\_FreeFem.so. To do this, move to the directory src/solver of FreeFem++ and edit the file makefile.inc to specify the following variables: $\codered$
 
-\begin{tabular}{ll}
- %\begin{tabular*}
-\textbf{$HIPS\_DIR$} : & Directory of HIPS \\
-\textbf{$HIPS\_INCLUDE$}: & -I\$($HIPS\_DIR$)/SRC/INCLUDE : Directory for HIPS
-headers\\
-\textbf{$LIB\_DIR$} : & -L\$($HIPS\_DIR$)/LIB : Librairies directory \\
-\textbf{$LIBHIPSSEQUENTIAL$} : & \$($HIPS\_DIR$)/LIB/libhipssequential.a: HIPS
-utilities library\\
-\textbf{$LIBHIPS$} : & \$($HIPS\_DIR$)/LIB/libhips.a: HIPS library\\
-\textbf{$FREEFEM$} : & FreeFem++ directory \\
-\textbf{$FREEFEM\_INCLUDE$} : & FreeFem headers for sparse linear solver\\
-\textbf{$METIS$} : & METIS directory \\
-\textbf{$METIS\_LIB$} : & METIS library \\
-\textbf{$MPI$} : & MPI directory \\
-\textbf{$MPI\_INCLUDE$} : & MPI headers \\
-\end{tabular}
+```freefem
+HIPS_DIR :  Directory of HIPS
+HIPS_INCLUDE : -I$(HIPS_DIR)/SRC/INCLUDE : Directory for HIPS headers $\codered$
+LIB_DIR : -L$(HIPS_DIR)/LIB : Librairies directory $\codered$
+LIBHIPSSEQUENTIAL : $(HIPS_DIR)/LIB/libhipssequential.a: HIPS utilities library
+LIBHIPS : $(HIPS_DIR)/LIB/libhips.a: HIPS library
+FREEFEM : FreeFem++ directory
+FREEFEM_INCLUDE : FreeFem headers for sparse linear solver
+METIS : METIS directory
+METIS_LIB : METIS library
+MPI : MPI directory
+MPI_INCLUDE : MPI headers
+```
 
 After specifies all the variables, in the command line in the directory
-$src/solver$ type `:::freefem make hips` to create $hips\_FreeFem.so$. Like with pARMS, the calling of HIPS in FreeFem++ can be done in three different manners. We will present only one example where the user specifies the parameters through keywords `:::freefem lparams` and `:::freefem dparams`.
+$src/solver$ type `:::freefem make hips` to create hips\_FreeFem.so. Like with pARMS, the calling of HIPS in FreeFem++ can be done in three different manners. We will present only one example where the user specifies the parameters through keywords `:::freefem lparams` and `:::freefem dparams`.
 
 __Laplacian 3D solve with HIPS__
 
@@ -108,74 +103,37 @@ u[]=Aa^-1*F[];
 	</thead>
 	<tbody>
 	    <tr>
-	        <td>$n=4 \times 10^6$</td>
-	        <td>$nnz=118 \times 10^6$</td>
-	        <td>Te=221.34</td>
+	        <td align='center'>$n=4 \times 10^6$</td>
+	        <td align='center'>$nnz=118 \times 10^6$</td>
+	        <td align='center'>Te=221.34</td>
 	    </tr>
 	    <tr>
-	        <td class="align-center">np</td>
-	        <td class="align-center">nit</td>
-	        <td class="align-center">time</td>
+	        <td align='center'>np</td>
+	        <td align='center'>nit</td>
+	        <td align='center'>time</td>
 	    </tr>
 	    <tr>
-	        <td class="align-center">8</td>
-	        <td class="align-center">190</td>
-	        <td class="align-center">120.34</td>
+	        <td align='center'>8</td>
+	        <td align='center'>190</td>
+	        <td align='center'>120.34</td>
 	    </tr>
 	    <tr>
-	        <td class="align-center">16</td>
-	        <td class="align-center">189</td>
-	        <td class="align-center">61.08</td>
+	        <td align='center'>16</td>
+	        <td align='center'>189</td>
+	        <td align='center'>61.08</td>
 	    </tr>
 	    <tr>
-	        <td class="align-center">32</td>
-	        <td class="align-center">186</td>
-	        <td class="align-center">31.70</td>
+	        <td align='center'>32</td>
+	        <td align='center'>186</td>
+	        <td align='center'>31.70</td>
 	    </tr>
 	    <tr>
-	        <td class="align-center">64</td>
-	        <td class="align-center">183</td>
-	        <td class="align-center">23.44</td>
+	        <td align='center'>64</td>
+	        <td align='center'>183</td>
+	        <td align='center'>23.44</td>
 	    </tr>
 	</tbody>
 </table>
-
-\begin{table}[hbtp]
-\begin{center}
-\begin{tabular}{|l|l|}
-\textbf{Entries of iparm } & \textbf{Significations of each entries} \\
-\multirow{2}{*}{iparm[0] } & Strategy use for solving \\ &
- ( Iterative=0 or Hybrid=1 or Direct=2 ). Defaults values are : Iterative \\
-
-\multirow{2}{*}{iparm[1] } & Krylov methods. \\ & If iparm[0]=0, give type of
-Krylov methods: 0 for GMRES, 1 for PCG \\
-iparm[2] & Maximum of iterations in outer iteration: default value 1000 \\
-
-iparm[3] & Krylov subspace dimension in outer iteration: default value 40 \\
-
-
-\multirow{2}{*}{iparm[4]} & Symmetric(=0 for symmetric) and 1 for unsymmetric
-matrix: \\ & default value 1(unsymmetric matrix) \\
-iparm[5] & Pattern of matrix are symmetric or not: default value 0 \\
-iparm[6] & Partition type of input matrix: dafault value 0 \\
-\multirow{2}{*}{iparm[7]} & Number of level that use the HIPS locally consistent
-fill-in:\\ & Default value 2 \\
-\multirow{2}{*}{iparm[8]} & Numbering in indices array will start at 0 or 1:\\
-& Default value 0 \\
-iparm[9] & Scale matrix. Default value 1 \\
-\multirow{2}{*}{iparm[10]} & Reordering use inside subdomains for reducing
-fill-in:\\ & Only use for iterative. Default value 1 \\
-\multirow{2}{*}{iparm[11]} & Number of unknowns per node in the matrix non-zero
-pattern graph: \\ & Default value 1 \\
-\multirow{2}{*}{iparm[12]} & This value is used to set the number of time the
-\\ & normalization is applied to the matrix: Default 2. \\
-iparm[13] & Level of informations printed during solving: Default 5. \\
-iparm[14] & HIPS\_DOMSIZE Subdomain size \\
-\end{tabular}
-\end{center}
-\caption{Significations of \textbf{lparams} corresponding to HIPS interface }
-
-\end{table}
 
 <table>
 	<thead>
@@ -261,15 +219,15 @@ iparm[14] & HIPS\_DOMSIZE Subdomain size \\
 	<tbody>
 	    <tr>
 	        <td>dparm[0]</td>
-	        <td>$HIPS\_PREC$: Relative residual norm: Default=1e-9</td>
+	        <td>HIPS_PREC: Relative residual norm: Default=1e-9</td>
 	    </tr>
 	    <tr>
 	        <td>dparm[1]</td>
-	        <td>$HIPS\_DROPTOL0$: Numerical threshold in ILUT for interior domain (important : set 0.0 in HYBRID: Default=0.005)</td>
+	        <td>HIPS_DROPTOL0: Numerical threshold in ILUT for interior domain (important : set 0.0 in HYBRID: Default=0.005)</td>
 	    </tr>
 	    <tr>
 	        <td>dparm[2]</td>
-	        <td>$HIPS\_DROPTOL1$ : Numerical threshold in ILUT for Schur preconditioner: Default=0.005</td>
+	        <td>HIPS_DROPTOL1 : Numerical threshold in ILUT for Schur preconditioner: Default=0.005</td>
 	    </tr>
 	    <tr>
 	        <td></td>
@@ -277,15 +235,15 @@ iparm[14] & HIPS\_DOMSIZE Subdomain size \\
 	    </tr>
 	    <tr>
 	        <td>dparm[3]</td>
-	        <td>$HIPS\_DROPTOLE$ : Numerical threshold for coupling between the interior level and Schur: Default 0.005</td>
+	        <td>HIPS_DROPTOLE : Numerical threshold for coupling between the interior level and Schur: Default 0.005</td>
 	    </tr>
 	    <tr>
 	        <td>dparm[4]</td>
-	        <td>$HIPS\_AMALG$ : Numerical threshold for coupling between the interior level and Schur: Default=0.005</td>
+	        <td>HIPS_AMALG : Numerical threshold for coupling between the interior level and Schur: Default=0.005</td>
 	    </tr>
 	    <tr>
 	        <td>dparm[5]</td>
-	        <td>$HIPS\_DROPSCHUR$ : Numerical threshold for coupling between the interior level and Schur: Default=0.005</td>
+	        <td>HIPS_DROPSCHUR : Numerical threshold for coupling between the interior level and Schur: Default=0.005</td>
 	    </tr>
 	</tbody>
 </table>
@@ -309,174 +267,239 @@ To install HYPRE, first download the HYPRE package at \cite{HYPRE} $\codered$, u
 
 __Using HYPRE as interface to FreeFem++__
 
-Before calling HYPRE solver inside FreeFem++, you must compile the file $hypre\_FreeFem.cpp$ to create dynamic library $hypre\_FreeFem.so$.
-To do this, move to the directory $src/solver$ of FreeFem++, edit the file $makefile.inc$ to specify the following variables:
-
-\begin{tabular}{ll}
- %\begin{tabular*}
-\textbf{$HYPRE\_DIR$} : & Directory of HYPRE \\
-\multirow{2}{*} \textbf{$HYPRE\_INCLUDE$} = &
--I\$($HYPRE\_DIR$)src/hypre/include/ :\\
-& Directory for header of HYPRE\\
-\textbf{$HYPRE\_LIB$} = & -L\$($HIPS\_DIR$)/src/lib/ -lHYPRE : Hypre Library \\
-\textbf{$FREEFEM$} : & FreeFem++ directory \\
-\textbf{$FREEFEM\_INCLUDE$} : & FreeFem header for sparse linear solver\\
-\textbf{$METIS$} : & METIS directory \\
-\textbf{$METIS\_LIB$} : & METIS library \\
-\textbf{$MPI$} : & MPI directory \\
-\textbf{$MPI\_INCLUDE$} : & MPI headers \\
-\end{tabular}
-
-
-Like with pARMS, the calling of HIPS in FreeFem++ can be done in three manners.
-We will present only one example where the user specifies its parameters through
-keywords `:::freefem lparams` and `:::freefem dparams`.
-
-\paragraph*{Laplacian 3D solve with HYPRE}
-Let us consider again the 3D Laplacian example inside FreeFem++ package where
-after discretization we want to solve the linear equation with Hypre. Example
-\ref{hypre:laplacian} $\codered$ is the Laplacian3D using Hypre as linear solver.
-Example \ref{hypre:laplacian} $\codered$ is the same as \ref{hips:laplacian} $\codered$, so we just
-show here the lines where we set some Hypre parameters.
-
-We first load the Hypre solver at line 2. From line 4 to 15 we specifies the
-parameters to set to Hypre solver and in line 43
-we set parameters to Hypre solver.
-
- It should be noted that the meaning
-of the entries of these vectors is different from those of Hips .
-In the case of HYPRE, the meaning of differents entries of vectors
-\textbf{iparm} and \textbf{dparm} are given in tables \ref{communipramsHypre} $\codered$ to
-\ref{AMGHypre} $\codered$.\\
-
-In Table \ref{hyprelabel} $\codered$ the results of running example \ref{hypre:laplacian} $\codered$
-on Cluster Paradent of Grid5000 are reported. We can see in this running
-example the efficiency of parallelism, in particular when AMG are use as
-preconditioner.
-\begin{example}[Laplacian3D.edp]
+Before calling HYPRE solver inside FreeFem++, you must compile the file hypre\_FreeFem.cpp to create dynamic library hypre\_FreeFem.so.
+To do this, move to the directory src/solver of FreeFem++, edit the file makefile.inc to specify the following variables:
 
 ```freefem
-1: load "msh3"
-2: load "hipre_FreeFem" //load librairie
-3: int nn=10,iii;
-4: int[int] iparm(20);
-5: real[int] dparm(6);
-6: for(iii=0;iii<20;iii++)iparm[iii]=-1;
-7: for(iii=0;iii<6;iii++) dparm[iii]=-1;
-8: iparm[0]=2; //PCG as krylov method
-9: iparm[1]=0; //AMG as preconditionner 2: if ParaSails
-10:iparm[7]=7; //Interpolation
-11:iparm[9]=6; //AMG Coarsen type
-12: iparm[10]=1; //Measure type
-13: iparm[16]=2; //Additive schwarz as smoother
-13:dparm[0]=1e-13;//Tolerance to convergence
-14: dparm[1]=5e-4; //Threshold
-15: dparm[2]=5e-4; //truncation factor
-.
-.
-.
-43: set(Aa,solver=sparsesolver,dparams=dparm, lparams=iparm);
+HYPRE_DIR : Directory of HYPRE
+HYPRE_INCLUDE = -I$(HYPRE_DIR)src/hypre/include/ : Directory for header of HYPRE
+HYPRE_LIB = -L$(HIPS_DIR)/src/lib/ -lHYPRE : Hypre Library
+FREEFEM : FreeFem++ directory
+FREEFEM_INCLUDE : FreeFem header for sparse linear solver
+METIS : METIS directory
+METIS_LIB : METIS library
+MPI : MPI directory
+MPI_INCLUDE : MPI headers
 ```
 
-\end{example}
+Like with pARMS, the calling of HIPS in FreeFem++ can be done in three manners.
+We will present only one example where the user specifies its parameters through keywords `:::freefem lparams` and `:::freefem dparams`.
 
+__Laplacian 3D solve with HYPRE__
 
+Let us consider again the 3D Laplacian example inside FreeFem++ package where after discretization we want to solve the linear equation with Hypre. Example \ref{hypre:laplacian} $\codered$ is the Laplacian3D using Hypre as linear solver. Example \ref{hypre:laplacian} $\codered$ is the same as \ref{hips:laplacian} $\codered$, so we just show here the lines where we set some Hypre parameters.
 
-\begin{table}[hbtp]
- \begin{tabular}{|l|l|}
-\multirow{2}{*}{iparms[0]} & Solver identification: \\
-& 0: BiCGStab, 1: GMRES, 2: PCG. By \textbf{default=1}\\
-\multirow{2}{*}{iparms[1]} & Preconditioner identification: \\
-& 0: BOOMER AMG, 1: PILUT, 2: Parasails, 3: Schwartz \textbf{Default=0}\\
-iparms[2] & Maximum of iteration: \textbf{Default=1000} \\
-iparms[3] & Krylov subspace dim: \textbf{Default= 40} \\
-iparms[4] & Solver print info level: \textbf{Default=2} \\
-iparms[5] & Solver log : \textbf{Default=1} \\
-iparms[6] & Solver stopping criteria only for BiCGStab : \textbf{Default=1}
-\\
-dparms[0] & Tolerance for convergence : \textbf{$Default=1.0e-11$} \\
- \end{tabular}
-\caption{Definitions of common entries of \textbf{iparms} and \textbf{dparms}
-vectors for every preconditioner in HYPRE}
+We first load the Hypre solver at line 2. From line 4 to 15 we specifies the parameters to set to Hypre solver and in line 43 we set parameters to Hypre solver.
 
-\end{table}
+It should be noted that the meaning of the entries of these vectors is different from those of Hips. In the case of HYPRE, the meaning of differents entries of vectors `:::freefem iparm` and `:::freefem dparm` are given in tables \ref{communipramsHypre} $\codered$ to \ref{AMGHypre} $\codered$.
 
-\begin{table}[hbtp]
- \begin{tabular}{|l|l|}
-iparms[7] & AMG interpolation type: \textbf{Default=6} \\
-\multirow{2}{*}{iparms[8]} & Specifies the use of GSMG - geometrically \\
-& smooth coarsening and interpolation: \textbf{Default=1} \\
-iparms[9] & AMG coarsen type: \textbf{Default=6} \\
-\multirow{2}{*}{iparms[10]} & Defines whether local or global measures \\
-& are used: \textbf{Default=1}\\
-iparms[11]& AMG cycle type:\textbf{ Default=1}\\
-iparms[12]& AMG Smoother type: \textbf{Default=1}\\
-iparms[13]& AMG number of levels for smoothers: \textbf{Default=3}\\
-iparms[14]& AMG number of sweeps for smoothers: \textbf{Default=2}\\
-iparms[15]& Maximum number of multigrid levels:\textbf{ Default=25}\\
-\multirow{6}{*}{iparms[16]}& Defines which variant of the Schwartz method is
-used:\\
-& 0: hybrid multiplicative Schwartz method (no overlap across processor
-boundaries)\\
-& 1: hybrid additive Schwartz method (no overlap across processor boundaries)\\
-& 2: additive Schwartz method\\
-& 3: hybrid multiplicative Schwartz method (with overlap across processor
-boundaries)\\
-& \textbf{ Default=1}\\
-iparms[17]& Size of the system of PDEs: \textbf{ Default=1}\\
-iparms[18]& Overlap for the Schwarz method: \textbf{ Default=1}\\
-\multirow{4}{*}{iparms[19]} & Type of domain used for the Schwarz method\\
-& 0: each point is a domain \\
-& 1: each node is a domain (only of interest in ``systems'' AMG)\\
-& 2: each domain is generated by agglomeration (default) \\
-dparms[1]& AMG strength threshold: \textbf{ Default=0.25}\\
-dparms[2]& Truncation factor for the interpolation: \textbf{ Default=1e-2} \\
+In Table \ref{hyprelabel} $\codered$ the results of running example \ref{hypre:laplacian} $\codered$ on Cluster Paradent of Grid5000 are reported. We can see in this running example the efficiency of parallelism, in particular when AMG are use as preconditioner.
 
-\multirow{2}{*}{dparms[3]}& Sets a parameter to modify the definition \\
-& of strength for diagonal dominant portions of the matrix: \textbf{
-Default=0.9} \\
-\multirow{2}{*}{dparms[3]} & Defines a smoothing parameter for the additive
-Schwartz method \\
-& \textbf{ Default=1.} \\
- \end{tabular}
-\caption{Definitions of other entries of \textbf{iparms} and \textbf{dparms} if
-preconditioner is \textbf{BOOMER AMG}}
+__Example Laplacian3D.edp__
 
-\end{table}
+```freefem
+load "msh3"
+load "hipre_FreeFem" // Load librairie
+int nn=10,iii;
+int[int] iparm(20);
+real[int] dparm(6);
+for(iii=0;iii<20;iii++)iparm[iii]=-1;
+for(iii=0;iii<6;iii++) dparm[iii]=-1;
+iparm[0]=2; // PCG as krylov method
+iparm[1]=0; // AMG as preconditionner 2: if ParaSails
+iparm[7]=7; // Interpolation
+iparm[9]=6; // AMG Coarsen type
+iparm[10]=1; // Measure type
+iparm[16]=2; // Additive schwarz as smoother
+dparm[0]=1e-13; // Tolerance to convergence
+dparm[1]=5e-4; // Threshold
+dparm[2]=5e-4; // Truncation factor
+.
+.
+.
+set(Aa,solver=sparsesolver,dparams=dparm, lparams=iparm);
+```
 
-\begin{table}[hbtp]
-\begin{center}
- \begin{tabular}{|l|l|}
-iparms[7]& Row size in Parallel ILUT: \textbf{ Default=1000} \\
-iparms[8]& Set maximum number of iterations: \textbf{ Default=30} \\
-dparms[1]& Drop tolerance in Parallel ILUT: \textbf{ Default=1e-5} \\
- \end{tabular}
-\end{center}
-\caption{Definitions of other entries of \textbf{iparms} and \textbf{dparms} if
-preconditioner is \textbf{PILUT}}
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.13 : Definitions of common entries of iparms and dparms vectors for every preconditioner in HYPRE</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td>iparms[0]</td>
+	        <td>Solver identification: 0: BiCGStab, 1: GMRES, 2: PCG. Default=1</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[1]</td>
+	        <td>Preconditioner identification: 0: BOOMER AMG, 1: PILUT, 2: Parasails, 3: Schwartz Default=0</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[2]</td>
+	        <td>Maximum of iteration: Default=1000</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[3]</td>
+	        <td>Krylov subspace dim: Default= 40</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[4]</td>
+	        <td>Solver print info level: Default=2</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[5]</td>
+	        <td>Solver log: Default=1</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[6]</td>
+	        <td>Solver stopping criteria only for BiCGStab : Default=1</td>
+	    </tr>
+	    <tr>
+	        <td>dparms[0]</td>
+	        <td>Tolerance for convergence: Default=$1.0e-11$</td>
+	    </tr>
+	</tbody>
+</table>
 
-\end{table}
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.14 : Definitions of other entries of iparms and dparms if preconditioner is BOOMER AMG</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td>iparms[7]</td>
+	        <td>AMG interpolation type: Default=6</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[8]</td>
+	        <td>Specifies the use of GSMG - geometrically smooth coarsening and interpolation: Default=1</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[9]</td>
+	        <td>AMG coarsen type: Default=6</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[10]</td>
+	        <td>Defines whether local or global measures are used: Default=1</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[11]</td>
+	        <td>AMG cycle type: Default=1</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[12]</td>
+	        <td>AMG Smoother type: Default=1</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[13]</td>
+	        <td>AMG number of levels for smoothers: Default=3</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[14]</td>
+	        <td>AMG number of sweeps for smoothers: Default=2</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[15]</td>
+	        <td>Maximum number of multigrid levels: Default=25</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[16]</td>
+	        <td>Defines which variant of the Schwartz method isused:<br>
+			0: hybrid multiplicative Schwartz method (no overlap across processorboundaries)<br>
+			1: hybrid additive Schwartz method (no overlap across processor boundaries)<br>
+			2: additive Schwartz method<br>
+			3: hybrid multiplicative Schwartz method (with overlap across processorboundaries)<br>
+			Default=1
+			</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[17]</td>
+	        <td>Size of the system of PDEs: Default=1</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[18]</td>
+	        <td>Overlap for the Schwarz method: Default=1</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[19]</td>
+	        <td>Type of domain used for the Schwarz method<br>
+			0: each point is a domain<br>
+			1: each node is a domain (only of interest in ``systems'' AMG)<br>
+			2: each domain is generated by agglomeration (default)</td>
+	    </tr>
+	    <tr>
+	        <td>dparms[1]</td>
+	        <td>AMG strength threshold: Default=0.25</td>
+	    </tr>
+	    <tr>
+	        <td>dparms[2]</td>
+	        <td>Truncation factor for the interpolation: Default=1e-2</td>
+	    </tr>
+	    <tr>
+	        <td>dparms[3]</td>
+	        <td>Sets a parameter to modify the definition of strength for diagonal dominant portions of the matrix: Default=0.9</td>
+	    </tr>
+	    <tr>
+	        <td>dparms[3]</td>
+	        <td>Defines a smoothing parameter for the additive Schwartz method. Default=1</td>
+	    </tr>
+	</tbody>
+</table>
 
-\begin{table}[hbtp]
- \begin{tabular}{|l|l|}
-iparms[7]& Number of levels in Parallel Sparse Approximate inverse: \textbf{
-Default=1} \\
-\multirow{4}{*}{iparms[8]}& Symmetric parameter for the ParaSails
-preconditioner:\\
-& 0: nonsymmetric and/or indefinite problem, and nonsymmetric preconditioner\\
-& 1: SPD problem, and SPD (factored) preconditioner\\
-& 2: nonsymmetric, definite problem, and SPD (factored) preconditioner\\
-& \textbf{ Default=0} \\
-\multirow{3}{*}{dparms[1]} & Filters parameters:The filter parameter is used to
-\\
-& drop small nonzeros in the preconditioner, to reduce \\
-& the cost of applying the preconditioner: \textbf{ Default=0.1} \\
-dparms[2] & Threshold parameter: \textbf{ Default=0.1} \\
- \end{tabular}
-\caption{Definitions of other entries of \textbf{iparms} and \textbf{dparms} if
-preconditioner is \textbf{ParaSails}}
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.15 : Definitions of other entries of iparms and dparms if preconditioner is PILUT</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td>iparms[7]</td>
+	        <td>Row size in Parallel ILUT: Default=1000</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[8]</td>
+	        <td>Set maximum number of iterations: Default=30</td>
+	    </tr>
+	    <tr>
+	        <td>dparms[1]</td>
+	        <td>Drop tolerance in Parallel ILUT: Default=$1e-5$</td>
+	    </tr>
+	</tbody>
+</table>
 
-\end{table}
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Table 11.16 : Definitions of other entries of iparms and dparms if preconditioner is ParaSails</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <tr>
+	        <td>iparms[7]</td>
+	        <td>Number of levels in Parallel Sparse Approximate inverse: Default=1</td>
+	    </tr>
+	    <tr>
+	        <td>iparms[8]</td>
+	        <td>Symmetric parameter for the ParaSailspreconditioner:<br>
+			0: nonsymmetric and/or indefinite problem, and nonsymmetric preconditioner<br>
+			1: SPD problem, and SPD (factored) preconditioner<br>
+			2: nonsymmetric, definite problem, and SPD (factored) preconditioner<br>
+			Default=0</td>
+	    </tr>
+	    <tr>
+	        <td>dparms[1]</td>
+	        <td>Filters parameters. The filter parameter is used to drop small nonzeros in the preconditioner, to reduce the cost of applying the preconditioner: Default=0.1</td>
+	    </tr>
+	    <tr>
+	        <td>dparms[2]</td>
+	        <td>Threshold parameter: Default=0.1</td>
+	    </tr>
+	</tbody>
+</table>
 
 \begin{table}[hbtp]
  \begin{tabular}{|l|l|}
@@ -488,18 +511,71 @@ boundaries)\\
 & 2: additive Schwartz method\\
 & 3: hybrid multiplicative Schwartz method (with overlap across processor
 boundaries)\\
-& \textbf{ Default=1}\\
+& Default=1\\
 
-iparms[8]& Overlap for the Schwartz method: \textbf{ Default=1}\\
+iparms[8]& Overlap for the Schwartz method: Default=1\\
 \multirow{4}{*}{iparms[9]} & Type of domain used for the Schwartz method\\
 & 0: each point is a domain \\
 & 1: each node is a domain (only of interest in ``systems'' AMG)\\
 & 2: each domain is generated by agglomeration (default) \\
  \end{tabular}
-\caption{Definitions of other entries of \textbf{iparms} and \textbf{dparms} if
-preconditionner is \textbf{Schwartz}}
+\caption{Definitions of other entries of iparms and dparms if
+preconditionner is Schwartz}
 
 \end{table}
+
+<table class="data-table">
+<thead>
+	<tr>
+		<th colspan="2">Table 11.17 : Definitions of other entries of iparms and dparms if preconditionner is Schwartz</th>
+	</tr>
+</thead>
+<tbody>
+    <tr>
+        <th class="border-left border-right">\multirow{6}{*}{iparms[7]}</th>
+        <th class="border-right">Defines which variant of the Schwartz method isused:</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td>0: hybrid multiplicative Schwartz method (no overlap across processorboundaries)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>1: hybrid additive Schwartz method (no overlap across processor boundaries)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>2: additive Schwartz method</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>3: hybrid multiplicative Schwartz method (with overlap across processorboundaries)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Default=1</td>
+    </tr>
+    <tr>
+        <td>iparms[8]</td>
+        <td>Overlap for the Schwartz method: Default=1</td>
+    </tr>
+    <tr>
+        <td>\multirow{4}{*}{iparms[9]}</td>
+        <td>Type of domain used for the Schwartz method</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>0: each point is a domain</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>1: each node is a domain (only of interest in ``systems'' AMG)</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>2: each domain is generated by agglomeration (default)</td>
+    </tr>
+</table>
 
 \begin{table}
 \begin{center}
