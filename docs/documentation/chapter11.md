@@ -7,22 +7,23 @@ parallel linear solvers can be direct or iterative. In FreeFem++ both are availa
 
 We recall that the `:::freefem solver` parameters are defined in the following commands: `:::freefem solve`, `:::freefem problem`, `:::freefem set` (setting parameter of a matrix) and in the construction of the matrix corresponding to a bilinear form. In these commands, the parameter `:::freefem solver` must be set to `:::freefem sparsesolver` for parallel sparse solver. We have added specify parameters to these command lines for parallel sparse solvers. These are
 
-* `:::freefem lparams:` vector of integer parameters (l is for the c++ type long)
-* `:::freefem dparams:` vector of real parameters
-* `:::freefem sparams:` string parameters
-* `:::freefem datafilename:` name of the file which contains solver parameters
+* `:::freefem lparams` : vector of integer parameters (l is for the c++ type long)
+* `:::freefem dparams` : vector of real parameters
+* `:::freefem sparams` : string parameters
+* `:::freefem datafilename` : name of the file which contains solver parameters
 
 The following four parameters are only for direct solvers and are vectors. These parameters allow the user to preprocess the matrix (see the section on sparse direct solver above for more information).
 
-* `:::freefem permr:` row permutation (integer vector)
-* `:::freefem permc:` column permutation or inverse row permutation (integer vector)
-* `:::freefem scaler:` row scaling (real vector)
-* `:::freefem scalec:` column scaling (real vector)
+* `:::freefem permr` : row permutation (integer vector)
+* `:::freefem permc` : column permutation or inverse row permutation (integer vector)
+* `:::freefem scaler` : row scaling (real vector)
+* `:::freefem scalec` : column scaling (real vector)
 
 
 There are two possibilities to control solver parameters. The first method defines parameters with `:::freefem lparams`, `:::freefem dparams` and `:::freefem sparams` in .edp file. The second one reads the solver parameters from a data file. The name of this file is specified by `:::freefem datafilename`. If `:::freefem lparams`, `:::freefem dparams`, `:::freefem sparams` or `:::freefem datafilename` is not provided by the user, the solver's default value is used.
 
-To use parallel solver in FreeFem++, we need to load the dynamic library corresponding to this solver. For example to use MUMPS solver as parallel solver in FreeFem, write in the .edp file __load "MUMPS\_FreeFem"__.
+To use parallel solver in FreeFem++, we need to load the dynamic library corresponding to this solver.
+For example to use MUMPS solver as parallel solver in FreeFem, write in the .edp file `:::freefem load "MUMPS\_FreeFem"`.
 
 If the libraries are not loaded, the default sparse solver will be loaded (default sparse solver is UMFPACK). The table 11.1 \ref{lib.sparse.solver} $\codered$ gives this new value for the different libraries.
 
@@ -265,7 +266,7 @@ __Creating Library of MUMPS interface for FreeFem++:__
 
 The MUMPS interface for FreeFem++ is given in file MUMPS\_freefem.cpp (directory src/solver/ $\codered$).
 This interface works with the release 3.8.3 and 3.8.4 of MUMPS. To used MUMPS in FreeFem++, we need the library corresponding to this interface.
-A description to obtain this library is given in the file README\_COMPILE in the directory src/solver $\codered$ of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc to yours system: comment Section 1, comment line corresponding to libraries BLAS, BLACS, ScaLAPACK, Metis, scotch in Section 2 and comment in Section 3 $\codered$ the paragraph corresponding to MUMPS solver. And then type __make mumps__ in a terminal window.
+A description to obtain this library is given in the file README\_COMPILE in the directory src/solver $\codered$ of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc to yours system: comment Section 1, comment line corresponding to libraries BLAS, BLACS, ScaLAPACK, Metis, scotch in Section 2 and comment in Section 3 $\codered$ the paragraph corresponding to MUMPS solver. And then type `:::bash make mumps` in a terminal window.
 
 Now we give a short description of MUMPS parameters before describing the method to call MUMPS in FreeFem++.
 
@@ -277,7 +278,7 @@ The parameter INCTL and CNTL is the control parameter of MUMPS. The vectors ICNT
 We describe now some elements of the main parameters of ICNTL for MUMPS.
 
 * __Input matrix parameter__
-	The input matrix is controlled by parameters ICNTL(5) and ICNTL(18). The matrix format (resp. matrix pattern and matrix entries) are controlled by INCTL(5) (resp. INCTL(18)). The different values of ICNTL(5) are 0 for assembled format and 1 for element format. In the current release of Freefem$++$, we consider that FE matrix or matrix is storage in assembled format. Therefore, INCTL(5) is treated as 0 value. The main option for ICNTL(18): INCLTL(18)=0 centrally on the host processor, ICNTL(18)=3 distributed the input matrix pattern and the entries (recommended option for distributed matrix by developer of MUMPS). For other values of ICNTL(18) see the user's guide of MUMPS. These values can be used also in FreeFem++.
+	The input matrix is controlled by parameters ICNTL(5) and ICNTL(18). The matrix format (resp. matrix pattern and matrix entries) are controlled by INCTL(5) (resp. INCTL(18)). The different values of ICNTL(5) are 0 for assembled format and 1 for element format. In the current release of Freefem++, we consider that FE matrix or matrix is storage in assembled format. Therefore, INCTL(5) is treated as 0 value. The main option for ICNTL(18): INCLTL(18)=0 centrally on the host processor, ICNTL(18)=3 distributed the input matrix pattern and the entries (recommended option for distributed matrix by developer of MUMPS). For other values of ICNTL(18) see the user's guide of MUMPS. These values can be used also in FreeFem++.
 
 	The default option implemented in FreeFem++ are ICNTL(5)=0 and ICNTL(18)=0.
 
@@ -286,12 +287,12 @@ We describe now some elements of the main parameters of ICNTL for MUMPS.
 	$$
 	A_{p} = P \: D_r \: A \: Q_c \ D_c P^t
 	$$
-	where $P$ is the permutation matrix, $Q_c$ is the column permutation, $D_r$ and $D_c$ are diagonal matrix for respectively row and column scaling. The ordering strategy to obtain $P$ is controlled by parameter ICNTL(7). The permutation of zero free diagonal $Q_c$ is controlled by parameter ICNTL(6). The row and column scaling is controlled by parameter ICNTL(18). These option are connected and also strongly related with ICNTL(12) (see documentation of mumps for more details \cite{mumpsuserguide} $\codered$). The parameters permr, scaler, and scalec in FreeFem++ allow to give permutation matrix($P$), row scaling ($D_r$) and column scaling ($D_c$) of the user respectively.
+	where $P$ is the permutation matrix, $Q_c$ is the column permutation, $D_r$ and $D_c$ are diagonal matrix for respectively row and column scaling. The ordering strategy to obtain $P$ is controlled by parameter ICNTL(7). The permutation of zero free diagonal $Q_c$ is controlled by parameter ICNTL(6). The row and column scaling is controlled by parameter ICNTL(18). These option are connected and also strongly related with ICNTL(12) (see documentation of mumps for more details \cite{mumpsuserguide} $\codered$). The parameters `:::freefem permr`, `:::freefem scaler`, and `:::freefem scalec` in FreeFem++ allow to give permutation matrix($P$), row scaling ($D_r$) and column scaling ($D_c$) of the user respectively.
 
 __Calling MUMPS in FreeFem++__
 
 To call MUMPS in FreeFem++, we need to load the dynamic library MUMPS\_freefem.dylib (MacOSX), MUMPS\_freefem.so (Unix) or MUMPS\_freefem.dll (Windows) $\codered$.
-This is done in typing load "MUMPS\_freefem" in the .edp file. We give now the two methods to give the option of MUMPS solver in FreeFem++.
+This is done in typing `:::freefem load "MUMPS\_freefem"` in the .edp file. We give now the two methods to give the option of MUMPS solver in FreeFem++.
 
 * __Solver parameters is defined in .edp file:__
 	In this method, we need to give the parameters `:::freefem lparams` and `:::freefem dparams`. These parameters are defined for MUMPS by :
@@ -373,21 +374,21 @@ A simple example of calling MUMPS in FreeFem++ with this two methods is given in
 
 ### SuperLU distributed solver
 
-The package SuperLU_DIST \cite{slu2,slu1} $\codered$ solves linear systems using LU factorization. It is a free scientific library under BSD license. The web site of this project is http://crd.lbl.gov/~xiaoye/SuperLU. This library provides functions to handle square or rectangular matrix in real and complex arithmetics. The method implemented in SuperLU_DIST is a supernodal method \cite{slu1} $\codered$. New release of this package includes a parallel symbolic factorization \cite{slu2} $\codered$. This scientific library is written in C and MPI for communications.
+The package SuperLU_DIST \cite{slu2,slu1} $\codered$ solves linear systems using LU factorization. It is a free scientific library under BSD license. The web site of this project is [http://crd.lbl.gov/~xiaoye/SuperLU](http://crd.lbl.gov/~xiaoye/SuperLU). This library provides functions to handle square or rectangular matrix in real and complex arithmetics. The method implemented in SuperLU_DIST is a supernodal method \cite{slu1} $\codered$. New release of this package includes a parallel symbolic factorization \cite{slu2} $\codered$. This scientific library is written in C and MPI for communications.
 
 __Installation of SuperLU_DIST:__
 
-To use SuperLU_DIST in FreeFem++, you have to install SuperLU_DIST package. We need MPI and ParMetis library to do this compilation. An installation procedure to obtain this package is given in the file README\_COMPILE in the directory src/solver/ of the FreeFem++ package.
+To use SuperLU_DIST in FreeFem++, you have to install SuperLU_DIST package. We need MPI and ParMetis library to do this compilation. An installation procedure to obtain this package is given in the file README\_COMPILE in the directory src/solver/ $\codered$ of the FreeFem++ package.
 
 __Creating Library of SuperLU_DIST interface for FreeFem++:__
 
-The FreeFem++ interface to SuperLU_DIST for real (resp. complex) arithmetics is given in file real_SuperLU_DIST_FreeFem.cpp (resp. complex_SuperLU_DIST_FreeFem.cpp). These files are in the directory src/solver/. These interfaces are compatible with the release 3.2.1 of SuperLU_DIST. To use SuperLU_DIST in FreeFem++, we need libraries corresponding to these interfaces. A description to obtain these libraries is given in the file README_COMPILE in the directory src/solver of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc in your system : comment Section 1, comment line corresponding to libraries BLAS, Metis, ParMetis in Section 2 and comment in Section 3 the paragraph corresponding to SuperLU_DIST solver. And just type `:::bash make rsludist` (resp. `:::bash make csludist`) in the terminal to obtain the dynamic library of interface for real (resp. complex) arithmetics.
+The FreeFem++ interface to SuperLU_DIST for real (resp. complex) arithmetics is given in file real_SuperLU_DIST_FreeFem.cpp (resp. complex_SuperLU_DIST_FreeFem.cpp). These files are in the directory src/solver/. These interfaces are compatible with the release 3.2.1 of SuperLU_DIST. To use SuperLU_DIST in FreeFem++, we need libraries corresponding to these interfaces. A description to obtain these libraries is given in the file README_COMPILE in the directory src/solver $\codered$ of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc in your system : comment Section 1, comment line corresponding to libraries BLAS, Metis, ParMetis in Section 2 and comment in Section 3 the paragraph corresponding to SuperLU_DIST solver. And just type `:::bash make rsludist` (resp. `:::bash make csludist`) in the terminal to obtain the dynamic library of interface for real (resp. complex) arithmetics.
 
 Now we give a short description of SuperLU_DIST parameters before describing the method to call SuperLU_DIST in FreeFem++.
 
 __SuperLU_DIST parameters:__
 
-We describe now some parameters of SuperLU_DIST. The SuperLU_DIST library use a 2D-logical process group. This process grid is specifies by $nprow$ (process row) and $npcol$ (process column) such that $N_{p} = nprow \: npcol$ where $N_{p}$ is the number of all process allocated for SuperLU_DIST.
+We describe now some parameters of SuperLU_DIST. The SuperLU_DIST library use a 2D-logical process group. This process grid is specified by $nprow$ (process row) and $npcol$ (process column) such that $N_{p} = nprow \: npcol$ where $N_{p}$ is the number of all process allocated for SuperLU_DIST.
 
 The input matrix parameters is controlled by "matrix= " in sparams for internal parameter or in the third line of parameters file. The different value are
 
@@ -403,7 +404,7 @@ A_{p} = P_{c} \: P_r \: D_r \: A \: D_{c} \: P_{c}^{t}
 $$
 where $P_c$ and $P_r$ is the row and column permutation matrix respectively, $D_r$ and $D_c$ are diagonal matrix for respectively row and column scaling.
 The option argument RowPerm (resp. ColPerm) control the row (resp. column) permutation matrix. $D_r$ and $D_c$ is controlled by the parameter DiagScale.
-The parameter permr, permc, scaler, and scalec in FreeFem++ is provided to give row permutation, column permutation, row scaling and column scaling of the user respectively.
+The parameter `:::freefem permr`, `:::freefem permc`, `:::freefem scaler`, and `:::freefem scalec` in FreeFem++ is provided to give row permutation, column permutation, row scaling and column scaling of the user respectively.
 The other parameters for LU factorization are ParSymFact and ReplaceTinyPivot. The parallel symbolic factorization works only on a power of two processes and need the ParMetis ordering \cite{parmetis} $\codered$. The default option argument of SuperLU_DIST are given in the file ffsuperlu_dist_fileparam.txt.
 
 __Calling SuperLU_DIST in FreeFem++__
@@ -431,7 +432,7 @@ To call SuperLU_DIST with internal parameter, we used the parameters sparams. Th
 * PrintStat=NO,
 * DiagScale=NOEQUIL
 
-This value correspond to the parameter in the file ffsuperlu_dist_fileparam.txt. If one parameter is not specify by the user, we take the default value of SuperLU_DIST.
+This value correspond to the parameter in the file ffsuperlu_dist_fileparam.txt. $\codered$ If one parameter is not specified by the user, we take the default value of SuperLU_DIST.
 
 __Reading solver parameters on a file:__
 The structure of data file for SuperLU_DIST in FreeFem++ is given in the file ffsuperlu_dist_fileparam.txt (default value of the FreeFem++ interface).
@@ -459,7 +460,7 @@ If no solver parameter is given, we used default option of SuperLU_DIST solver.
 
 __Example__
 
-A simple example of calling SuperLU_DIST in FreeFem++ with this two methods is given in the file testsolver_superLU_DIST.edp in the directory examples++-mpi.
+A simple example of calling SuperLU_DIST in FreeFem++ with this two methods is given in the file testsolver_superLU_DIST.edp in the directory examples++-mpi. $\codered$
 
 ### Pastix solver
 
@@ -471,27 +472,23 @@ To used Pastix in FreeFem++, you have to install pastix package in first. To com
 
 __Creating Library of pastix interface for FreeFem++:__
 
-The FreeFem++ interface to pastix is given in file real_pastix_FreeFem.cpp (resp. complex_pastix_FreeFem.cpp) for real (resp.complex) arithmetics. This interface is compatible with the release 2200 of pastix and is designed for a global matrix. We have also implemented interface for distributed matrices. To use pastix in FreeFem++, we need the library corresponding to this interface. A description to obtain this library is given in the file README_COMPILE in the directory src/solver of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc to yours system : comment Section 1, comment line corresponding to libraries BLAS, METIS and SCOTCH in Section 2 and comment in Section 3 the paragraph corresponding to pastix solver. And just type __make rpastix__ (resp. __make cpastix__) in the terminal to obtain the dynamic library of interface for real (resp. complex) arithmetics.
+The FreeFem++ interface to pastix is given in file real_pastix_FreeFem.cpp (resp. complex_pastix_FreeFem.cpp) for real (resp.complex) arithmetics. This interface is compatible with the release 2200 of pastix and is designed for a global matrix. We have also implemented interface for distributed matrices. To use pastix in FreeFem++, we need the library corresponding to this interface. A description to obtain this library is given in the file README_COMPILE in the directory src/solver of FreeFem++. We recall here the procedure. Go to the directory src/solver in FreeFem++ package. Edit the file makefile-sparsesolver.inc to yours system : comment Section 1, comment line corresponding to libraries BLAS, METIS and SCOTCH in Section 2 and comment in Section 3 the paragraph corresponding to pastix solver. And just type `:::bash make rpastix` (resp. `:::bash make cpastix`) in the terminal to obtain the dynamic library of interface for real (resp. complex) arithmetics.
 
 Now we give a short description of pastix parameters before describing the method to call pastix in FreeFem++.
 
 __Pastix parameters: __
 
 The input `:::freefem matrix` parameter of FreeFem++ depend on pastix interface. `:::freefem matrix = assembled` for non distributed matrix. It is the same parameter for SuperLU_DIST. There are four parameters in Pastix : iparm, dparm, perm and invp. These parameters are respectively the integer parameters (vector of size 64), real parameters (vector of size 64), permutation matrix and inverse permutation matrix respectively. iparm and dparm vectors are described in \cite{pastixrefcard} $\codered$.
-The parameters permr and permc in FreeFem++ are provided to give permutation matrix and inverse permutation matrix of the user respectively.
+The parameters `:::freefem permr` and `:::freefem permc` in FreeFem++ are provided to give permutation matrix and inverse permutation matrix of the user respectively.
 
 __Solver parameters defined in .edp file:__
 
 To call Pastix in FreeFem++ in this case, we need to specify the parameters __lparams__ and __dparams__. These parameters are defined by :
 $\codered$
 
-\begin{center}
-\begin{tabular}{ll}
-$\forall i=0,\ldots,63, \quad$ & lparams[$i$] = iparm[$i$].\\
-\\
-$\forall i=0,\ldots,63, \quad$ & dparams[$i$] = dparm[$i$].
-\end{tabular}
-\end{center}
+$\forall i$ = 0,... ,63, `:::freefem lparams[i] = iparm[i]`.
+
+$\forall i$ = 0,... ,63, `:::freefem dparams[i] = dparm[i]`.
 
 
 __Reading solver parameters on a file:__
@@ -502,13 +499,13 @@ The structure of data file for pastix parameters in FreeFem++ is : first line st
 assembled /* matrix input :: assembled, distributed global and distributed */
 iparm[0]
 iparm[1]
-\ldots
-\ldots
+...
+...
 iparm[63]
 dparm[0]
 dparm[1]
-\ldots
-\ldots
+...
+...
 dparm[63]
 ```
 
@@ -517,7 +514,7 @@ An example of this file parameter is given in ffpastix_iparm_dparm.txt with a de
 If no solver parameter is given, we use the default option of pastix solver.
 
 __Example:__
-A simple example of calling pastix in FreeFem++ with this two methods is given in the file testsolver_pastix.edp in the directory examples++-mpi.
+A simple example of calling pastix in FreeFem++ with this two methods is given in the file testsolver_pastix.edp in the directory examples++-mpi. $\codered$
 
 In Table 11.3 \ref{recap.direct.solveur} $\codered$, we recall the different matrix considering in the different direct solvers.
 
@@ -592,7 +589,7 @@ We realized an interface which is easy to use, so that the call of these differe
 
 _pARMS_ (parallel Algebraic Multilevel Solver) is a software developed by Youssef Saad and al at University of Minnesota \cite{spARMS} $\codered$.
 This software is specialized in the resolution of large sparse non symmetric linear systems of equation. Solvers developed in pARMS is the Krylov subspace type.
-It consists of variants of GMRES like FGMRES(Flexible GMRES) , DGMRES(Deflated GMRES) \cite{SAAD03} $\codered$ and BICGSTAB. pARMS also implements parallel preconditioner like RAS (Restricted Additive Schwarz)\cite{CAI89} $\codered$ and Schur Complement type preconditioner \cite{LISAAD} $\codered$.
+It consists of variants of GMRES like FGMRES (Flexible GMRES) , DGMRES (Deflated GMRES) \cite{SAAD03} $\codered$ and BICGSTAB. pARMS also implements parallel preconditioner like RAS (Restricted Additive Schwarz)\cite{CAI89} $\codered$ and Schur Complement type preconditioner \cite{LISAAD} $\codered$.
 
 All these parallel preconditioners are based on the principle of domain decomposition. Thus, the matrix $A$ is partitioned into sub matrices $A_i$($i=1,...,p$) where p represents the number of partitions one needs. The union of $A_i$ forms the original matrix. The solution of the overall system is obtained by solving the local systems on $A_i$ (see \cite{Smith96} $\codered$).
 Therefore, a distinction is made between iterations on $A$ and the local iterations on $A_i$.
@@ -603,22 +600,21 @@ __Installation of pARMS__
 To install pARMS, you must first download the pARMS package at \cite{spARMS} $\codered$. Once the download is complete, you must unpack package pARMS and follow the installation procedure described in file README to create the library __libparms.a__.
 
 __Using pARMS as interface to FreeFem++__
-Before calling pARMS solver inside FreeFem++, you must compile file $parms\_FreeFem.cpp$ to create a dynamic library $parms\_FreeFem.so$. To do this, move to the directory $src/solver$ of FreeFem++, edit the file $makefile\-parms.inc$ to specify the following variables:
+Before calling pARMS solver inside FreeFem++, you must compile file parms\_FreeFem.cpp to create a dynamic library parms\_FreeFem.so. To do this, move to the directory src/solver of FreeFem++, edit the file makefile\-parms.inc to specify the following variables: $\codered$
 
-\begin{tabular}{ll}
- %\begin{tabular*}
-$PARMS\_DIR$ : & Directory of pARMS \\
-\textbf{$PARMS\_INCLUDE$} : & Directory for header of pARMS \\
-\textbf{$METIS$} : & METIS directory \\
-\textbf{$METIS\_LIB$} : & METIS librairy \\
-\textbf{$MPI$} : & MPI directory \\
-\textbf{$MPI\_INCLUDE$} : & MPI headers \\
-\textbf{$FREEFEM$} : & FreeFem++ directory \\
-\textbf{$FREEFEM\_INCLUDE$} : & FreeFem++ header for sparse linear solver\\
-\textbf{$LIBBLAS$} : & Blas library\\
-\end{tabular}
+```freefem
+PARMS_DIR : // Directory of pARMS
+PARMS_INCLUDE : // Directory for header of pARMS
+METIS : // METIS directory
+METIS_LIB : // METIS librairy
+MPI : // MPI directory
+MPI_INCLUDE : // MPI headers
+FREEFEM : // FreeFem++ directory
+FREEFEM_INCLUDE : // FreeFem++ header for sparse linear solver
+LIBBLAS : // Blas library
+```
 
-After that, in the command line type `:::bash make parms` to create $parms\_FreeFem.so$.
+After that, in the command line type `:::bash make parms` to create parms\_FreeFem.so.
 
 As usual in FreeFem++, we will show by examples how to call pARMS in FreeFem++.
 There are three ways of doing this:
@@ -633,9 +629,9 @@ mesh Th = buildmesh (C(50));
 fespace Vh(Th,P2);
 Vh u,v;
 func f= x*y;
-problem Poisson(u,v,solver=sparsesolver) = // bilinear part will use
-int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) // a sparse solver, in this case pARMS
-- int2d(Th)( f*v) // right hand side
+problem Poisson(u,v,solver=sparsesolver) = // Bilinear part will use
+int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) // A sparse solver, in this case pARMS
+- int2d(Th)( f*v) // Right hand side
 + on(1,u=0); // Dirichlet boundary condition
 
 real cpu=clock();
@@ -703,7 +699,7 @@ We need two vectors to specify the parameters of the linear solver. In line 1 of
 <table>
 	<thead>
 		<tr>
-			<th colspan="2">Table 11.4 : Meaning of __lparams__ corresponding variables for example
+			<th colspan="2">Table 11.4 : Meaning of lparams corresponding variables for example
 			\ref{exm:segond} $\codered$</th>
 		</tr>
 	</thead>
@@ -778,7 +774,7 @@ We need two vectors to specify the parameters of the linear solver. In line 1 of
 	    </tr>
 	    <tr>
 	        <td>iparm[16]</td>
-	        <td>Print message when solving:default 0(no messageprint).<br>0: no message is print,<br>1: Convergence informations like number of iteration and residual ,<br>2: Timing for a different step like preconditioner<br>3 : Print all informations.</td>
+	        <td>Print message when solving:default 0 (no messageprint).<br>0: no message is print,<br>1: Convergence informations like number of iteration and residual ,<br>2: Timing for a different step like preconditioner<br>3 : Print all informations.</td>
 	    </tr>
 	</tbody>
 </table>
@@ -786,7 +782,7 @@ We need two vectors to specify the parameters of the linear solver. In line 1 of
 <table>
 	<thead>
 		<tr>
-			<th colspan="2">Table 11.5 : Significations of __dparams__ corresponding variables for example \ref{exm:segond} $\codered$</th>
+			<th colspan="2">Table 11.5 : Significations of dparams corresponding variables for example \ref{exm:segond} $\codered$</th>
 		</tr>
 	</thead>
 	<tbody>
