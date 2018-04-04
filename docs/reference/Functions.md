@@ -52,6 +52,10 @@ $\arccosh$ function.
 real theta = acosh(x);
 ```
 
+$$
+\acosh(x) = \ln\left(x + \sqrt{x^2-1}\right)
+$$
+
 <u>Parameter:</u>
 
 - `x` (`:::freefem real`)
@@ -222,6 +226,10 @@ $\arcsinh$ function.
 real theta = asinh(x);
 ```
 
+$$
+\asinh(x) = \ln\left(x + \sqrt{x^2+1}\right)
+$$
+
 <u>Parameter:</u>
 
  - `x` (`:::freefem real`)
@@ -234,6 +242,7 @@ real theta = asinh(x);
 
 ## assert
 Verify a condition is true (same as C), if not the program stops.
+
 ```freefem
 assert(x==0)
 ```
@@ -511,11 +520,11 @@ real x = cos(theta);
 
 <u>Parameters:</u>
 
- - `theta` (`:::freefem real`)
+ - `theta` (`:::freefem real` or `:::freefem complex`)
 
 <u>Output:</u>
 
- - `x` (`:::freefem real`)
+ - `x` (`:::freefem real` or `:::freefem complex`)
 
 ![cos function](images/cos.svg)
 
@@ -526,6 +535,10 @@ $\cosh$ function.
 ```freefem
 real x = cosh(theta);
 ```
+
+$$
+\cosh(x) = \frac{e^x + e^{-x}}{2}
+$$
 
 <u>Parameters:</u>
 
@@ -553,6 +566,22 @@ Arithmetic useful function.
 dist(a, b) = sqrt(a^2 + b^2);
 dist(a, b, c) = sqrt(a^2 + b^2 + c^2);
 ```
+
+## dumptable
+Show all types, operators and functions in __`FreeFem++`__.
+
+```freefem
+dumptable(out);
+```
+
+<u>Parameters:</u>
+
+- `out` (`:::cpp ostream`)<br/>
+	`:::freefem cout` of `:::freefem ofstream` file.
+
+<u>Output:</u>
+
+- None
 
 ## dx
 
@@ -884,11 +913,11 @@ real a = exp(b);
 
 <u>Parameters:</u>
 
- - `b` (`:::freefem real`)
+ - `b` (`:::freefem real` or `:::freefem complex`)
 
 <u>Output:</u>
 
- - `a` (`:::freefem real`)
+ - `a` (`:::freefem real` or `:::freefem complex`)
 
 ## fdim
 Positive difference (`cmath` function).
@@ -955,7 +984,7 @@ real Min = fmin(a, b);
 ## fmod
 Remainder of $a/b$ (`cmath` function).
 ```freefem
-real Mod = fmin(a, b);
+real Mod = fmod(a, b);
 ```
 
 <u>Parameters:</u>
@@ -1141,6 +1170,13 @@ matrix I = interpolate(Wh, Vh, [inside=Inside], [t=T], [op=Op], [U2Vc=U2VC]);
  - `I` (`:::freefem matrix`)<br/>
  Interpolation matrix operator
 
+## invdiff
+Arithmetic useful function.
+```freefem
+invdif(a, b) = (-abs(a-b) > 10^(-30)) ? 1(/b-a) : 0
+invdif(a, b, e) = (-abs(a-b) > e) ? 1(/b-a) : 0
+```
+
 ## invdiffnp
 Arithmetic useful function.
 ```freefem
@@ -1265,11 +1301,18 @@ real l = log(x);
 
 <u>Parameters:</u>
 
- - `x` (`:::freefem real`)
+ - `x` (`:::freefem real` or `:::freefem complex`)
 
 <u>Output:</u>
 
- - `l` (`:::freefem real`)
+ - `l` (`:::freefem real` or `:::freefem complex`)
+
+!!!note "Complex value"
+	For complex value, the `:::freefem log` function is defined as:
+	$$
+	\log(z) = \log(|z|) + i\arg(z)
+	$$
+
 
 ## log10
 Common logarithm.
@@ -1290,7 +1333,7 @@ real l = log10(x);
 Integer value nearest to $x$.
 
 ```freefem
-int l = rint(a);
+int l = lrint(a);
 ```
 
 <u>Parameters:</u>
@@ -1305,7 +1348,7 @@ int l = rint(a);
 Round a value, and return a integer value.
 
 ```freefem
-int l = round(a);
+int l = lround(a);
 ```
 
 <u>Parameters:</u>
@@ -1321,32 +1364,36 @@ Maximum value of two values.
 
 ```freefem
 real m = max(a, b);
+real m = max(a, b, c);
 ```
 
 <u>Parameters:</u>
 
- - `a` (`:::freefem real`)
- - `b` (`:::freefem real`)
+ - `a` (`:::freefem int` or `:::freefem real`)
+ - `b` (`:::freefem int` or `:::freefem real`)
+ - `c` (`:::freefem int` or `:::freefem real`) _[Optional]_
 
 <u>Output:</u>
 
- - `b` (`:::freefem real`)
+ - `b` (`:::freefem int` or `:::freefem real`)
 
 ## min
 Minimum value of two values.
 
 ```freefem
 real m = min(a, b);
+real m = min(a, b, c);
 ```
 
 <u>Parameters:</u>
 
- - `a` (`:::freefem real`)
- - `b` (`:::freefem real`)
+ - `a` (`:::freefem int` or `:::freefem real`)
+ - `b` (`:::freefem int` or `:::freefem real`)
+ - `c` (`:::freefem int` or `:::freefem real`) _[Optional]_
 
 <u>Output:</u>
 
- - `b` (`:::freefem real`)
+ - `b` (`:::freefem int` or `:::freefem real`)
 
 ## movemesh
 Move a mesh.
@@ -1529,10 +1576,10 @@ Arithmetic useful function.
 real p = projection(a, b, x);
 ```
 
-Projection is equaivalent to:
+Projection is equivalent to:
 
 ```freefem
-projection(a, b, x) = min(max(a, x), b);
+projection(a, b, x) = min(max(a, x), b)*(a < b) + min(max(b, x), a)*(1-(a < b));
 ```
 
 <u>Parameters:</u>
@@ -1544,6 +1591,118 @@ projection(a, b, x) = min(max(a, x), b);
 <u>Output:</u>
 
  - `p` (`:::freefem real`)
+
+## randinit
+
+Initialize the state vector by using a seed.
+
+```freefem
+randinit(seed);
+```
+
+<u>Parameters:</u>
+
+ - `seed` (`:::freefem int`)
+
+<u>Output:</u>
+
+ - None
+
+## randint31
+
+Generate `:::cpp usigned int` (31 bits) random number.
+
+```freefem
+int r = randint31();
+```
+
+<u>Parameters:</u>
+
+ - None
+
+<u>Output:</u>
+
+ - `r` (`:::freefem int`)
+
+## randint32
+
+Generate `:::cpp usigned int` (32 bits) random number.
+
+```freefem
+int r = randint32();
+```
+
+<u>Parameters:</u>
+
+ - None
+
+<u>Output:</u>
+
+ - `r` (`:::freefem int`)
+
+## randreal1
+
+Generate uniform `:::freefem real` in $[0, 1]$ (32 bits).
+
+```freefem
+real r = randreal1();
+```
+
+<u>Parameters:</u>
+
+ - None
+
+<u>Output:</u>
+
+ - `r` (`:::freefem real`)
+
+## randreal2
+
+Generate uniform `:::freefem real` in $[0, 1)$ (32 bits).
+
+```freefem
+real r = randreal2();
+```
+
+<u>Parameters:</u>
+
+ - None
+
+<u>Output:</u>
+
+ - `r` (`:::freefem real`)
+
+## randreal3
+
+Generate uniform `:::freefem real` in $(0, 1)$ (32 bits).
+
+```freefem
+real r = randreal3();
+```
+
+<u>Parameters:</u>
+
+ - None
+
+<u>Output:</u>
+
+ - `r` (`:::freefem real`)
+
+## randres53
+
+Generate uniform `:::freefem real` in $[0, 1)$ (53 bits).
+
+```freefem
+real r = randres53();
+```
+
+<u>Parameters:</u>
+
+ - None
+
+<u>Output:</u>
+
+ - `r` (`:::freefem real`)
 
 ## readmesh
 Read a 2D mesh file at different formats (see [Mesh Generation](../documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh)).
@@ -1669,11 +1828,11 @@ real x = sin(theta);
 
 <u>Parameter:</u>
 
- - `theta` (`:::freefem real`)
+ - `theta` (`:::freefem real` or `:::freefem complex`)
 
 <u>Output:</u>
 
- - `x` (`:::freefem real`)
+ - `x` (`:::freefem real` or `:::freefem complex`)
 
 ![sin function](images/sin.svg)
 
@@ -1682,6 +1841,10 @@ $\sinh$ function.
 ```freefem
 real x = sinh(theta);
 ```
+
+$$
+\sinh(x) = \frac{e^{x} - e^{-x}}{2}
+$$
 
 <u>Parameter:</u>
 
@@ -1817,6 +1980,11 @@ int Res = system(Command);
  - `Res` (`:::freefem int`)<br/>
  Value returned by the system command
 
+!!note
+	On Windows, the full path of the command is needed. For example, the execute `ls.exe`:
+	```
+	int Res = exec("C:\\cygwin\\bin\\ls.exe");
+	```
 
 ## tan
 $\tan$ function.

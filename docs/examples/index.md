@@ -810,6 +810,148 @@ Result|
 :-----:|
 ![LagrangeMultipliers](images/LagrangeMultipliers.jpg)|
 
+## Visualization
+
+### Plot
+
+```freefem
+mesh Th = square(5,5);
+fespace Vh(Th, P1);
+
+//plot scalar and vectorial FE function
+Vh uh=x*x+y*y, vh=-y^2+x^2;
+plot(Th, uh, [uh, vh], value=true, wait=true);
+
+//zoom on box defined by the two corner points [0.1,0.2] and [0.5,0.6]
+plot(uh, [uh, vh], bb=[[0.1, 0.2], [0.5, 0.6]],
+	wait=true, grey=true, fill=true, value=true);
+
+//compute a cut
+int n = 10;
+real[int] xx(10), yy(10);
+for (int i = 0; i < n; i++){
+	x = i/real(n);
+	y = i/real(n);
+	xx[i] = i;
+	yy[i] = uh; //value of uh at point (i/10., i/10.)
+}
+plot([xx, yy], wait=true);
+
+{// file for gnuplot
+	ofstream gnu("plot.gp");
+	for (int i = 0; i < n; i++)
+		gnu << xx[i] << " " << yy[i] << endl;
+}
+
+// to call gnuplot command and wait 5 second (thanks to unix command)
+// and make postscript plot
+exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output \"gnuplot.eps\" \n replot \n quit' | gnuplot");
+```
+
+First plot|
+:-----:|
+![Plot1](images/Plot1.jpg)|
+
+Second plot|
+:-----:|
+![Plot2](images/Plot2.jpg)|
+
+Gnuplot|
+:-----:|
+![Plot3](images/Plot3.png)|
+
+### HSV
+
+```freefem
+// from: \url{http://en.wikipedia.org/wiki/HSV_color_space}
+// The HSV (Hue, Saturation, Value) model defines a color space
+// in terms of three constituent components:
+// HSV color space as a color wheel
+// Hue, the color type (such as red, blue, or yellow):
+// Ranges from 0-360 (but normalized to 0-100% in some applications like here)
+// Saturation, the "vibrancy" of the color: Ranges from 0-100%
+// The lower the saturation of a color, the more "grayness" is present
+// and the more faded the color will appear.
+// Value, the brightness of the color: Ranges from 0-100%
+
+mesh Th = square(10, 10, [2*x-1, 2*y-1]);
+
+fespace Vh(Th, P1);
+Vh uh=2-x*x-y*y;
+
+real[int] colorhsv=[ // color hsv model
+	4./6., 1 , 0.5, // dark blue
+	4./6., 1 , 1, // blue
+	5./6., 1 , 1, // magenta
+	1, 1. , 1, // red
+	1, 0.5 , 1 // light red
+	];
+ real[int] viso(31);
+
+ for (int i = 0; i < viso.n; i++)
+	viso[i] = i*0.1;
+
+ plot(uh, viso=viso(0:viso.n-1), value=true, fill=true, wait=true, hsv=colorhsv);
+```
+
+Result|
+:-----:|
+![HSV](images/HSV.jpg)|
+
+### Medit
+
+```freefem
+load "medit"
+
+mesh Th = square(10, 10, [2*x-1, 2*y-1]);
+
+fespace Vh(Th, P1);
+Vh u=2-x*x-y*y;
+
+medit("u", Th, u);
+
+// Old way
+savemesh(Th, "u", [x, y, u*.5]); //save u.points and u.faces file
+// build a u.bb file for medit
+{
+	ofstream file("u.bb");
+	file << "2 1 1 " << u[].n << " 2 \n";
+	for (int j = 0; j < u[].n; j++)
+		file << u[][j] << endl;
+}
+//call medit command
+exec("ffmedit u");
+//clean files on unix-like OS
+exec("rm u.bb u.faces u.points");
+```
+
+2D plot|
+:-----:|
+![Medit1](images/Medit1.jpg)|
+
+Plot with elevation|
+:-----:|
+![Medit2](images/Medit2.jpg)|
+
+### Paraview
+
+```freefem
+load "iovtk"
+
+mesh Th = square(10, 10, [2*x-1, 2*y-1]);
+
+fespace Vh(Th, P1);
+Vh u=2-x*x-y*y;
+
+int[int] Order = [1];
+string DataName = "u";
+savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
+```
+
+Result|
+:-----:|
+![Paraview](images/Paraview.jpg)|
+
 ## Parallelization
 
 ### MPI-GMRES 2D
@@ -1767,144 +1909,458 @@ if(sff != "")
 ```
 --->
 
-## Visualization
+## References
 
-### Plot
+### Complex
 
 ```freefem
-mesh Th = square(5,5);
-fespace Vh(Th, P1);
+real a = 2.45, b = 5.33;
+complex z1 = a + b*1i, z2 = a + sqrt(2.)*1i;
 
-//plot scalar and vectorial FE function
-Vh uh=x*x+y*y, vh=-y^2+x^2;
-plot(Th, uh, [uh, vh], value=true, wait=true);
-
-//zoom on box defined by the two corner points [0.1,0.2] and [0.5,0.6]
-plot(uh, [uh, vh], bb=[[0.1, 0.2], [0.5, 0.6]],
-	wait=true, grey=true, fill=true, value=true);
-
-//compute a cut
-int n = 10;
-real[int] xx(10), yy(10);
-for (int i = 0; i < n; i++){
-	x = i/real(n);
-	y = i/real(n);
-	xx[i] = i;
-	yy[i] = uh; //value of uh at point (i/10., i/10.)
-}
-plot([xx, yy], wait=true);
-
-{// file for gnuplot
-	ofstream gnu("plot.gp");
-	for (int i = 0; i < n; i++)
-		gnu << xx[i] << " " << yy[i] << endl;
+func string pc(complex z){
+	string r = "(" + real(z);
+	if (imag(z) >= 0) r = r + "+";
+	return r + imag(z) + "i)";
 }
 
-// to call gnuplot command and wait 5 second (thanks to unix command)
-// and make postscript plot
-exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output \"gnuplot.eps\" \n replot \n quit' | gnuplot");
+func string toPolar(complex z){
+	return "";//abs(z) + "*(cos(" + arg(z) + ")+i*sin(" + arg(z) + "))";
+}
+
+cout << "Standard output of the complex " << pc(z1) << " is the pair: " << z1 << endl;
+cout << pc(z1) << " + " << pc(z2) << " = " << pc(z1+z2) << endl;
+cout << pc(z1) << " - " << pc(z2) << " = " << pc(z1-z2) << endl;
+cout << pc(z1) << " * " << pc(z2) << " = " << pc(z1*z2) << endl;
+cout << pc(z1) << " / " << pc(z2) << " = " << pc(z1/z2) << endl;
+cout << "Real part of " << pc(z1) << " = " << real(z1) << endl;
+cout << "Imaginary part of " << pc(z1) << " = " << imag(z1) << endl;
+cout << "abs(" << pc(z1) << ") = " << abs(z1) << endl;
+cout << "Polar coordinates of " << pc(z2) << " = " << toPolar(z2) << endl;
+cout << "de Moivre formula: " << pc(z2) << "^3 = " << toPolar(z2^3) << endl;
+cout << " and polar(" << abs(z2) << ", " << arg(z2) << ") = " << pc(polar(abs(z2), arg(z2))) << endl;
+cout << "Conjugate of " <<pc(z2) << " = " << pc(conj(z2)) <<endl;
+cout << pc(z1) << " ^ " << pc(z2) << " = " << pc(z1^z2) << endl;
 ```
 
-First plot|
-:-----:|
-![Plot1](images/Plot1.jpg)|
-
-Second plot|
-:-----:|
-![Plot2](images/Plot2.jpg)|
-
-Gnuplot|
-:-----:|
-![Plot3](images/Plot3.png)|
-
-### HSV
-
-```freefem
-// from: \url{http://en.wikipedia.org/wiki/HSV_color_space}
-// The HSV (Hue, Saturation, Value) model defines a color space
-// in terms of three constituent components:
-// HSV color space as a color wheel
-// Hue, the color type (such as red, blue, or yellow):
-// Ranges from 0-360 (but normalized to 0-100% in some applications like here)
-// Saturation, the "vibrancy" of the color: Ranges from 0-100%
-// The lower the saturation of a color, the more "grayness" is present
-// and the more faded the color will appear.
-// Value, the brightness of the color: Ranges from 0-100%
-
-mesh Th = square(10, 10, [2*x-1, 2*y-1]);
-
-fespace Vh(Th, P1);
-Vh uh=2-x*x-y*y;
-
-real[int] colorhsv=[ // color hsv model
-	4./6., 1 , 0.5, // dark blue
-	4./6., 1 , 1, // blue
-	5./6., 1 , 1, // magenta
-	1, 1. , 1, // red
-	1, 0.5 , 1 // light red
-	];
- real[int] viso(31);
-
- for (int i = 0; i < viso.n; i++)
-	viso[i] = i*0.1;
-
- plot(uh, viso=viso(0:viso.n-1), value=true, fill=true, wait=true, hsv=colorhsv);
+Output of this script is:
+```bash
+Standard output of the complex (2.45+5.33i) is the pair: (2.45,5.33)
+(2.45+5.33i) + (2.45+1.41421i) = (4.9+6.74421i)
+(2.45+5.33i) - (2.45+1.41421i) = (0+3.91579i)
+(2.45+5.33i) * (2.45+1.41421i) = (-1.53526+16.5233i)
+(2.45+5.33i) / (2.45+1.41421i) = (1.692+1.19883i)
+Real part of (2.45+5.33i) = 2.45
+Imaginary part of (2.45+5.33i) = 5.33
+abs((2.45+5.33i)) = 5.86612
+Polar coordinates of (2.45+1.41421i) =
+de Moivre formula: (2.45+1.41421i)^3 =
+ and polar(2.82887, 0.523509) = (2.45+1.41421i)
+Conjugate of (2.45+1.41421i) = (2.45-1.41421i)
+(2.45+5.33i) ^ (2.45+1.41421i) = (8.37072-12.7078i)
 ```
 
-Result|
-:-----:|
-![HSV](images/HSV.jpg)|
-
-### Medit
+### String
 
 ```freefem
-load "medit"
+// Concatenation
+string tt = "toto1" + 1 + " -- 77";
 
-mesh Th = square(10, 10, [2*x-1, 2*y-1]);
+// Append
+string t1 = "0123456789";
+t1(4:3) = "abcdefghijk-";
 
-fespace Vh(Th, P1);
-Vh u=2-x*x-y*y;
+// Sub string
+string t55 = t1(4:14);
 
-medit("u", Th, u);
+cout << "tt = " << tt << endl;
 
-// Old way
-savemesh(Th, "u", [x, y, u*.5]); //save u.points and u.faces file
-// build a u.bb file for medit
+cout << "t1 = " << t1 << endl;
+cout << "t1.find(abc) = " << t1.find("abc") << endl;
+cout << "t1.rfind(abc) = " << t1.rfind("abc") << endl;
+cout << "t1.find(abc, 10) = " << t1.find("abc",10) << endl;
+cout << "t1.ffind(abc, 10) = " << t1.rfind("abc",10) << endl;
+cout << "t1.length = " << t1.length << endl;
+
+cout << "t55 = " << t55 << endl;
+```
+
+The output of this script is:
+```bash
+tt = toto11 -- 77
+t1 = 0123abcdefghijk-456789
+t1.find(abc) = 4
+t1.rfind(abc) = 4
+t1.find(abc, 10) = -1
+t1.ffind(abc, 10) = 4
+t1.length = 22
+t55 = abcdefghijk
+```
+
+### Elementary function
+
+```freefem
+real b = 1.;
+real a = b;
+func real phix(real t){
+	return (a+b)*cos(t) - b*cos(t*(a+b)/b);
+}
+func real phiy(real t){
+	return (a+b)*sin(t) - b*sin(t*(a+b)/b);
+}
+
+border C(t=0, 2*pi){x=phix(t); y=phiy(t);}
+mesh Th = buildmesh(C(50));
+plot(Th);
+```
+
+$\codered$ img
+
+### Array
+
+```freefem
+real[int] tab(10), tab1(10); //2 array of 10 real
+//real[int] tab2; //bug: array with no size
+
+tab = 1.03; //set all the array to 1.03
+tab[1] = 2.15;
+
+cout << "tab: " << tab << endl;
+cout << "min: " << tab.min << endl;
+cout << "max: " << tab.max << endl;
+cout << "sum: " << tab.sum << endl;
+
+tab.resize(12); //change the size of array tab to 12 with preserving first value
+tab(10:11) = 3.14; //set values 10 & 11
+cout << "resized tab: " << tab << endl;
+
+tab.sort ; //sort the array tab
+cout << "sorted tab:" << tab << endl;
+
+real[string] tt; //array with string index
+tt["+"] = 1.5;
+cout << "tt[\"a\"] = " << tt["a"] << endl;
+cout << "tt[\"+\"] = " << tt["+"] << endl;
+
+real[int] a(5), b(5), c(5), d(5);
+a = 1;
+b = 2;
+c = 3;
+a[2] = 0;
+d = ( a ? b : c ); //for i = 0, n-1 : d[i] = a[i] ? b[i] : c[i]
+cout << " d = ( a ? b : c ) is " << d << endl;
+d = ( a ? 1 : c ); //for i = 0, n-1: d[i] = a[i] ? 1 : c[i]
+d = ( a ? b : 0 ); //for i = 0, n-1: d[i] = a[i] ? b[i] : 0
+d = ( a ? 1 : 0 ); //for i = 0, n-1: d[i] = a[i] ? 0 : 1
+
+int[int] ii(0:d.n-1); //set array ii to 0, 1, ..., d.n-1
+d = -1:-5; //set d to -1, -2, ..., -5
+
+sort(d, ii); //sort array d and ii in parallel
+cout << "d: " << d << endl;
+cout << "ii: " << ii << endl;
+
+
 {
-	ofstream file("u.bb");
-	file << "2 1 1 " << u[].n << " 2 \n";
-	for (int j = 0; j < u[].n; j++)
-		file << u[][j] << endl;
+	int[int] A1(2:10); //2, 3, 4, 5, 6, 7, 8, 9, 10
+	int[int] A2(2:3:10); //2, 5, 8
+	cout << "A1(2:10): " << A1 << endl;
+	cout << "A2(2:3:10): " << A1 << endl;
+	A1 = 1:2:5;
+	cout << "1:2:5 => " << A1 << endl;
 }
-//call medit command
-exec("ffmedit u");
-//clean files on unix-like OS
-exec("rm u.bb u.faces u.points");
+{
+	real[int] A1(2:10); //2, 3, 4, 5, 6, 7, 8, 9, 10
+	real[int] A2(2:3:10); //2, 5, 8
+	cout << "A1(2:10): " << A1 << endl;
+	cout << "A2(2:3:10): " << A1 << endl;
+	A1 = 1.:0.5:3.999;
+	cout << "1.:0.5:3.999 => " << A1 << endl;
+}
+{
+	complex[int] A1(2.+0i:10.+0i); //2, 3, 4, 5, 6, 7, 8, 9, 10
+	complex[int] A2(2.:3.:10.); //2, 5, 8
+	cout << " A1(2.+0i:10.+0i): " << A1 << endl;
+	cout << " A2(2.:3.:10.)= " << A2 << endl;
+	cout << " A1.re real part array: " << A1.re << endl ;
+	// he real part array of the complex array
+	cout << " A1.im imag part array: " << A1.im << endl ;
+	//the imaginary part array of the complex array
+}
+
+// Integer array operators
+{
+	int N = 5;
+	real[int] a(N), b(N), c(N);
+	a = 1;
+	a(0:4:2) = 2;
+	a(3:4) = 4;
+	cout << "a: " << a << endl;
+	b = a + a;
+	cout <<"b = a + a: " << b << endl;
+	b += a;
+	cout <<"b += a: " << b << endl;
+	b += 2*a;
+	cout <<"b += 2*a: " << b << endl;
+	b /= 2;
+	cout <<" b /= 2: " << b << endl;
+	b .*= a; // same as b = b .* a
+	cout << "b .*= a: " << b << endl;
+	b ./= a; //same as b = b ./ a
+	cout << "b ./= a: " << b << endl;
+	c = a + b;
+	cout << "c = a + b: " << c << endl;
+	c = 2*a + 4*b;
+	cout << "c = 2*a + 4b: " << c << endl;
+	c = a + 4*b;
+	cout << "c = a + 4b: " << c << endl;
+	c = -a + 4*b;
+	cout << "c = -a + 4b: " << c << endl;
+	c = -a - 4*b;
+	cout << "c = -a - 4b: " << c << endl;
+	c = -a - b;
+	cout << "c = -a -b: " << c << endl;
+
+	c = a .* b;
+	cout << "c = a .* b: " << c << endl;
+	c = a ./ b;
+	cout << "c = a ./ b: " << c << endl;
+	c = 2 * b;
+	cout << "c = 2 * b: " << c << endl;
+	c = b * 2;
+	cout << "c = b * 2: " << c << endl;
+
+	//this operator do not exist
+	//c = b/2;
+	//cout << "c = b / 2: " << c << endl;
+
+	//Array methods
+	cout << "||a||_1 = " << a.l1 << endl;
+	cout << "||a||_2 = " << a.l2 << endl;
+	cout << "||a||_infty = " << a.linfty << endl;
+	cout << "sum a_i = " << a.sum << endl;
+	cout << "max a_i = " << a.max << " a[ " << a.imax << " ] = " << a[a.imax] << endl;
+	cout << "min a_i = " << a.min << " a[ " << a.imin << " ] = " << a[a.imin] << endl;
+
+	cout << "a' * a = " << (a'*a) << endl;
+	cout << "a quantile 0.2 = " << a.quantile(0.2) << endl;
+
+	//Array mapping
+	int[int] I = [2, 3, 4, -1, 3];
+	b = c = -3;
+	b = a(I); //for (i = 0; i < b.n; i++) if (I[i] >= 0) b[i] = a[I[i]];
+	c(I) = a; //for (i = 0; i < I.n; i++) if (I[i] >= 0) C(I[i]) = a[i];
+	cout << "b = a(I) : " << b << endl;
+	cout << "c(I) = a " << c << endl;
+	c(I) += a; //for (i = 0; i < I.n; i++) if (I[i] >= 0) C(I[i]) += a[i];
+	cout << "b = a(I) : " << b << endl;
+	cout << "c(I) = a " << c << endl;
+
+}
+
+{
+	// Array versus matrix
+	int N = 3, M = 4;
+
+	real[int, int] A(N, M);
+	real[int] b(N), c(M);
+	b = [1, 2, 3];
+	c = [4, 5, 6, 7];
+
+	complex[int, int] C(N, M);
+	complex[int] cb = [1, 2, 3], cc = [10i, 20i, 30i, 40i];
+
+	b = [1, 2, 3];
+
+	int [int] I = [2, 0, 1];
+	int [int] J = [2, 0, 1, 3];
+
+	A = 1; //set all the matrix
+	A(2, :) = 4; //the full line 2
+	A(:, 1) = 5; //the full column 1
+	A(0:N-1, 2) = 2; //set the column 2
+	A(1, 0:2) = 3; //set the line 1 from 0 to 2
+
+	cout << "A = " << A << endl;
+
+	//outer product
+	C = cb * cc';
+	C += 3 * cb * cc';
+	C -= 5i * cb * cc';
+	cout << "C = " << C << endl;
+
+	//this transforms an array into a sparse matrix
+	matrix B;
+	B = A;
+	B = A(I, J); //B(i, j) = A(I(i), J(j))
+	B = A(I^-1, J^-1); //B(I(i), J(j)) = A(i,j)
+
+	//outer product
+	A = 2. * b * c';
+	cout << "A = " << A << endl;
+	B = b*c'; //outer product B(i, j) = b(i)*c(j)
+	B = b*c'; //outer product B(i, j) = b(i)*c(j)
+	B = (2*b*c')(I, J); //outer product B(i, j) = b(I(i))*c(J(j))
+	B = (3.*b*c')(I^-1,J^-1); //outer product B(I(i), J(j)) = b(i)*c(j)
+	cout << "B = (3.*b*c')(I^-1,J^-1) = " << B << endl;
+}
 ```
 
-2D plot|
-:-----:|
-![Medit1](images/Medit1.jpg)|
+The output os this script is:
+```bash
+tab: 10
+	1.03	2.15	1.03	1.03	1.03
+	1.03	1.03	1.03	1.03	1.03
 
-Plot with elevation|
-:-----:|
-![Medit2](images/Medit2.jpg)|
+min: 1.03
+max: 2.15
+sum: 11.42
+resized tab: 12
+	1.03	2.15	1.03	1.03	1.03
+	1.03	1.03	1.03	1.03	1.03
+	3.14	3.14
+sorted tab:12
+	1.03	1.03	1.03	1.03	1.03
+	1.03	1.03	1.03	1.03	2.15
+	3.14	3.14
+tt["a"] = 0
+tt["+"] = 1.5
+ d = ( a ? b : c ) is 5
+	  2	  2	  3	  2	  2
 
-### Paraview
+d: 5
+	 -5	 -4	 -3	 -2	 -1
 
-```freefem
-load "iovtk"
+ii: 5
+	  4	  3	  2	  1	  0
 
-mesh Th = square(10, 10, [2*x-1, 2*y-1]);
+A1(2:10): 9
+	  2	  3	  4	  5	  6
+	  7	  8	  9	 10
+A2(2:3:10): 9
+	  2	  3	  4	  5	  6
+	  7	  8	  9	 10
+1:2:5 => 3
+	  1	  3	  5
+A1(2:10): 9
+	  2	  3	  4	  5	  6
+	  7	  8	  9	 10
+A2(2:3:10): 9
+	  2	  3	  4	  5	  6
+	  7	  8	  9	 10
+1.:0.5:3.999 => 6
+	  1	1.5	  2	2.5	  3
+	3.5
+ A1(2.+0i:10.+0i): 9
+	(2,0)	(3,0)	(4,0)	(5,0)	(6,0)
+	(7,0)	(8,0)	(9,0)	(10,0)
+ A2(2.:3.:10.)= 3
+	(2,0)	(5,0)	(8,0)
+ A1.re real part array: 9
+	  2	  3	  4	  5	  6
+	  7	  8	  9	 10
+ A1.im imag part array: 9
+	  0	  0	  0	  0	  0
+	  0	  0	  0	  0
+a: 5
+	  2	  1	  2	  4	  4
 
-fespace Vh(Th, P1);
-Vh u=2-x*x-y*y;
+b = a + a: 5
+	  4	  2	  4	  8	  8
 
-int[int] Order = [1];
-string DataName = "u";
-savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
+b += a: 5
+	  6	  3	  6	 12	 12
+
+b += 2*a: 5
+	 10	  5	 10	 20	 20
+
+ b /= 2: 5
+	  5	2.5	  5	 10	 10
+
+b .*= a: 5
+	 10	2.5	 10	 40	 40
+
+b ./= a: 5
+	  5	2.5	  5	 10	 10
+
+c = a + b: 5
+	  7	3.5	  7	 14	 14
+
+c = 2*a + 4b: 5
+	 24	 12	 24	 48	 48
+
+c = a + 4b: 5
+	 22	 11	 22	 44	 44
+
+c = -a + 4b: 5
+	 18	  9	 18	 36	 36
+
+c = -a - 4b: 5
+	-22	-11	-22	-44	-44
+
+c = -a -b: 5
+	 -7	-3.5	 -7	-14	-14
+
+c = a .* b: 5
+	 10	2.5	 10	 40	 40
+
+c = a ./ b: 5
+	0.4	0.4	0.4	0.4	0.4
+
+c = 2 * b: 5
+	 10	  5	 10	 20	 20
+
+c = b * 2: 5
+	 10	  5	 10	 20	 20
+
+||a||_1 = 13
+||a||_2 = 6.40312
+||a||_infty = 4
+sum a_i = 13
+max a_i = 4 a[ 3 ] = 4
+min a_i = 1 a[ 1 ] = 1
+a' * a = 41
+a quantile 0.2 = 2
+b = a(I) : 5
+	  2	  4	  4	 -3	  4
+
+c(I) = a 5
+	 -3	 -3	  2	  4	  2
+
+b = a(I) : 5
+	  2	  4	  4	 -3	  4
+
+c(I) = a 5
+	 -3	 -3	  4	  9	  4
+
+A = 3 4
+	   1   5   2   1
+	   3   3   3   1
+	   4   5   2   4
+
+C = 3 4
+	 (-50,-40) (-100,-80) (-150,-120) (-200,-160)
+	 (-100,-80) (-200,-160) (-300,-240) (-400,-320)
+	 (-150,-120) (-300,-240) (-450,-360) (-600,-480)
+
+A = 3 4
+	   8  10  12  14
+	  16  20  24  28
+	  24  30  36  42
+
+B = (3.*b*c')(I^-1,J^-1) = # Sparse Matrix (Morse)  
+# first line: n m (is symmetic) nbcoef
+# after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
+3 4 0  12
+        1         1 10
+        1         2 12
+        1         3 8
+        1         4 14
+        2         1 15
+        2         2 18
+        2         3 12
+        2         4 21
+        3         1 5
+        3         2 6
+        3         3 4
+        3         4 7
 ```
-
-Result|
-:-----:|
-![Paraview](images/Paraview.jpg)|

@@ -1,35 +1,87 @@
 ## Standard types
 
 ### int
-Integer value.
+Integer value (equivalent to `:::cpp long` in `C++`).
+
 ```freefem
 int i = 0;
 ```
 
 ### bool
 Boolean value.
+
 ```freefem
 bool b = true;
 ```
 
+!!!question "The result of a comparison is a boolean"
+	```freefem
+	bool b = (1 < 2);
+	```
+
 ### real
-Real value (C double precision).
+Real value (equivalent to `:::cpp double` in `C++`).
+
 ```freefem
 real r = 0.;
 ```
 
 ### complex
-Complex value (two C double precision).
+Complex value (equivalent to two `:::cpp double` or `:::freefem complex<double>` in `C++`).
+
 ```freefem
 complex c = 0. + 1i;
 ```
 The imaginary number $i$ is defined as `1i`
 
+!!!question "Example"
+	```freefem
+	complex a = 1i, b = 2 + 3i;
+	cout << "a + b = " << a + b << endl;
+	cout << "a - b = " << a - b << endl;
+	cout << "a*b = " << a*b << endl;
+	cout << "a/b = " << a/b << endl;
+	```
+
+	The output of this script is:
+	```bash
+	a + b = (2,4)
+	a - b = (-2,-2)
+	a*b = (-3,2)
+	a/b = (0.230769,0.153846)
+	```
+
+!!!note
+	See [Complex example](../examples/#complex) for a detailled example.
+
 ### string
 String value.
+
 ```freefem
 string s = "this is a string";
 ```
+
+!!!note
+	`:::freefem string` value is enclosed within double quotes.
+
+Other types can be concatenate to a string, like:
+```freefem
+int i = 1;
+real r = 1.;
+string s = "the int i = " + i +", the real r = " + r + ", the complex z = " + (1. + 1i);
+```
+
+To append a string in a string at position 4:
+```freefem
+s(4:3) = "+++";
+```
+
+To copy a substring in an other string:
+```freefem
+string s2 = s1(5:10);
+```
+
+See [String Example](../examples/#string) for a complete example.
 
 ## Mesh design
 
@@ -59,13 +111,14 @@ Define the 2D geometrical border in parametric coordinates.
 	```
 
 ### mesh
-2D Mesh type
+2D Mesh type (see [Mesh Generation](../documentation/MeshGeneration/)).
+
 ```freefem
 mesh Th;
 ```
 
 ### mesh3
-3D mesh type
+3D mesh type (see [Mesh Generation](../documentation/MeshGeneration/)).
 ```freefem
 mesh3 Th;
 ```
@@ -74,7 +127,8 @@ mesh3 Th;
 ## Finite element space design
 
 ### fespace
-Finite element space type.
+Finite element space type (see [Finite Element](../documentation/FiniteElement/)).
+
 ```freefem
 fespace Uh(Th, P1);
 fespace UPh(Th, [P2, P2, P1]);
@@ -189,6 +243,9 @@ Function without parameters ($x$, $y$ and $z$ are implicitly considered):
 func f = x^2 + y^2;
 ```
 
+!!!note
+	Function's type is defined by the expression's type.
+
 Function with parameters:
 ```freefem
 func real f (real var){
@@ -196,15 +253,62 @@ func real f (real var){
 }
 ```
 
+### Elementary functions
+
+Class of basic functions (polynomials, exponential, logarithmic, trigonometric, circular) and the functions obtained from those by the four arithmetic operations
+$$
+f(x) + g(x),\, f(x) - g(x),\, f(x)g(x),\, f(x)/g(x)
+$$
+and by composition $f(g(x))$, each applied a finite number of times.
+
+In __`FreeFem++`__,  all elementary functions can thus be created. The derivative of an elementary function is also an elementary function; however, the indefinite integral of an elementary function cannot always be expressed in terms of elementary functions.
+
+See [Elementary function example](../examples/#elementary-function) for a complete example.
+
+### Random functions
+
+__`FreeFem++`__ includes the [Mersenne Twister](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html) random number generator. It is a very fast and accurate random number generator of period $2^{219937}-1$.
+
+See [`:::freefem randint32()`](Functions/#randint32), [`:::freefem randint31()`](Functions/#randint31), [`:::freefem randreal1()`](Functions/#randreal1), [`:::freefem randreal2()`](Functions/#randreal2), [`:::freefem randreal3()`](Functions/#randreal3), [`:::freefem randres53()`](Functions/#randres53), [`:::freefem randinit(seed)`](Functions/#randinit).
+
+In addition, the `ffrandom` plugin interface `:::freefem random`, `:::freefem srandom` and `:::freefem srandomdev` functions of the unix `libc` library. The range is $0 -- 2^{31}-1$.
+
+!!!note
+	If `:::freefem srandomdev` is not defined, a seed based on the current time is used.
+
+`:::freefem gsl` plugin equally allows usage of all random functions of the `gsllib`, see [gsl external library](ExternalLibraries/#ff_gsl_awk).
+
+### FE-functions
+
+Finite element functions are also constructed like elementary functions by an arithmetic formula involving elementary functions.
+
+The difference is that they are evaluated at declaration time and __`FreeFem++`__ stores the array of its values at the places associated with he degree of freedom of the finite element type. By opposition, elementary functions are evaluated only when needed. Hence FE-functions are not defined only by their formula but also by the mesh and the finite element which enter in their definitions.
+
+If the value of a FE-function is requested at a point which is not a degree of freedom, an interpolation is used, leading to an interpolation error, while by contrast, an elementary function can be evaluated at any point exactly.
+
+```freefem
+func f = x^2*(1+y)^3 + y^2;
+mesh Th = square(20, 20, [-2+4*x, -2+4*y]); // ]-2, 2[^2
+fespace Vh(Th, P1);
+Vh fh=f; //fh is the projection of f to Vh (real value)
+func zf = (x^2*(1+y)^3 + y^2)*exp(x + 1i*y);
+Vh<complex> zh = zf; //zh is the projection of zf to complex value Vh space
+```
+
+The construction of `:::freefem fh = f` is explained in [Finite Element](../documentation/FiniteElement/).
+
+!!!warning
+	The `:::freefem plot` command only works for real or complex FE-functions, not for elementary functions.
 
 ## Problem design
 
 ### problem
 Problem type.
+
 ```freefem
 problem Laplacian (u, uh) = ...
 ```
-FreeFem++ needs the variational form in the problem definition.
+__`FreeFem++`__ needs the variational form in the problem definition.
 
 In order to solve the problem, just call:
 ```freefem
@@ -260,7 +364,7 @@ Laplacian;
 
 
 !!!note "_Très grande valeur_"
-	The "_Très grand valeur_" `:::freefem tgv` (or Terrible giant value) used to implement the Dirichlet conditions can be modified in the problem definition:
+	The "_Très grand valeur_" `:::freefem tgv` (or _Terrible giant value_) used to implement the Dirichlet conditions can be modified in the problem definition:
 
 	```freefem
 	problem Laplacian(u, uh, tgv=1e30) = ...
@@ -306,15 +410,49 @@ Variational form type.
 varf vLaplacian (u, uh) = ...
 ```
 
-Directly define a variationnal form.
+Directly define a variational form.
 
 This is the other way to define a problem in order to directly manage matrix and right hang side.
 
-Usage of `:::freefem varf` is detailled in the [tutorial](../tutorial).
+Usage of `:::freefem varf` is detailed in the [tutorial](../tutorial).
 
 ## Array
 
-Array can be defined using types: `:::freefem int, bool, real, complex, string, ...`
+An array stores multiple objects, and there are 2 kinds of arrays:
+ * the first is similar to `vector`, i.e. array with integer indices
+ * the second is array with string indices
+
+In the first case, the size of the array must be known at execution time, and implementation is done with the `:::cpp KN<>` class and all the vector operator of `:::cpp KN<>` are implemented.
+
+Arrays can be set like in matlab or scilab with the operator `::`, the array generator of `a:c` is equivalent to `a:1:c`, and the array set by `a:b:c` is set to size $\lfloor |(b-a)/c|+1 \rfloor$ and the value $i$ is set by $a + i (b-a)/c$.
+
+There are `:::freefem int,real, complex` array with, in the third case, two operators (`:::freefem .in`, `:::freefem .re`) to generate the real and imaginary real array from the complex array (without copy).
+
+!!!note
+	Quantiles are points taken at regular intervals from the cumulative distribution function of a random variable. Here the array values are random.
+
+	This statisticial function `:::freefem a.quantile(q)` computes $v$ from an array $a$ of size $n$ for a given number $q\in ]0,1[$ such that:
+	$$
+	\#\{ i / a[i] < v \} \sim q*n
+	$$
+	it is equivalent to $v = a[q*n]$ when the array $a$ is sorted.
+
+For example, to declare, fill and display an array of `:::freefem real` of size `n`:
+```freefem
+int n = 5;
+real[int] Ai(n);
+for (int i = 0; i < n; i++)
+	Ai[i] = i;
+cout << Ai << endl;
+```
+
+The output of this script is:
+```bash
+5
+	  0	  1	  2	  3	  4
+```
+
+See the [Array example](../example/#array) for a complete example.
 
 ### Array index
 Array index can be int or string:
@@ -366,6 +504,8 @@ real ArrayMax = Aii.max;
 
 
 ## matrix
+Defines a sparse matrix.
+
 Matrices can be defined like vectors:
 
 ```freefem
@@ -378,6 +518,12 @@ or using a variational form type:
 
 ```freefem
 matrix Laplacian = vLaplacian(Uh, Uh);
+```
+
+or from block of matrices:
+```freefem
+matrix A1, ..., An;
+matrix A = [[A1, ...], ..., [..., An]];
 ```
 
 Matrices are designed using templates, so they can be real or complex:
@@ -455,4 +601,4 @@ real[int] Aii = A.diag;
 	String parameters for the solver, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)
 
 !!!tip
-	To modify the solver, the stop test,... after the matrix construction, use the [`:::freefem set` keyword](functions/#set).
+	To modify the `:::freefem solver`, the stop test,... after the matrix construction, use the [`:::freefem set` keyword](functions/#set).

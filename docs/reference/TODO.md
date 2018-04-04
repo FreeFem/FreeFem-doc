@@ -30,12 +30,13 @@ Progression:
 ## Global variables
 
 Progression:
-<div class="progress progress-100plus">
-	<div class="progress-bar" style="width:100%">
+<div class="progress progress-80plus">
+	<div class="progress-bar" style="width:96%">
 	</div>
-	<span class="progress-label">100</span>
+	<span class="progress-label">96</span>
 </div>
 
+- [ ] [nuEdge](GlobalVariables/#nuEdge)
 
 ## Quadrature formulae
 
