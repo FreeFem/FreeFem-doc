@@ -27,7 +27,7 @@ real r = 0.;
 ```
 
 ### complex
-Complex value (equivalent to two `:::cpp double` or `:::freefem complex<double>` in `C++`).
+Complex value (equivalent to two `:::cpp double` or `:::cpp complex<double>` in `C++`).
 
 ```freefem
 complex c = 0. + 1i;
@@ -150,6 +150,7 @@ Generic:
  - `:::freefem P2 / P23d`
  - `:::freefem P2b`
  - `:::freefem P2dc`
+ - `:::freefem P2h`
  - `:::freefem RT0 / RT03d`
  - `:::freefem RT0Ortho`
  - `:::freefem Edge03d`
@@ -194,13 +195,15 @@ Using _Element_Mixte_:
 
  - `:::freefem RT1`
  - `:::freefem RT1Ortho`
+ - `:::freefem RT2`
+ - `:::freefem RT2Ortho`
  - `:::freefem BDM1`
  - `:::freefem BDM1Ortho`
 
 Using _Element_Mixte3d_:
 
- - `:::freefem Edge13D`
- - `:::freefem Edge23D`
+ - `:::freefem Edge13d`
+ - `:::freefem Edge23d`
 
 Using _Element_QF_:
 
@@ -220,6 +223,7 @@ UPh [Ux, Uy, p];
 ### macro
 Macro type.
 ```freefem
+macro vU() [Ux, Uy] //
 macro grad(u) [dx(u), dy(u)] //
 ```
 Macro ends with `//`.
@@ -232,6 +236,34 @@ Macro ends with `//`.
 	macro Grad(U) [grad(U#x), grad(U#y)] //
 	```
 
+See [Macro example](../examples/#macro)
+
+### NewMacro / EndMacro
+
+!!!warning
+	In developement - Not tested
+
+Set and end a macro
+
+```freefem
+NewMacro grad(u) [dx(u), dy(u)] EndMacro
+```
+
+### IFMACRO
+
+Check if a macro exists and check its value.
+
+```freefem
+IFMACRO(AA) //check if macro AA exists
+...
+ENDIFMACRO
+
+IFMACRO(AA, tt) //check if amcro exists and is equall to tt
+...
+ENDIFMACRO
+```
+
+### ENDIFMACRO
 
 ## Functions design
 
@@ -419,19 +451,20 @@ Usage of `:::freefem varf` is detailed in the [tutorial](../tutorial).
 ## Array
 
 An array stores multiple objects, and there are 2 kinds of arrays:
- * the first is similar to `vector`, i.e. array with integer indices
+
+ * the first is similar to vector, i.e. array with integer indices
  * the second is array with string indices
 
 In the first case, the size of the array must be known at execution time, and implementation is done with the `:::cpp KN<>` class and all the vector operator of `:::cpp KN<>` are implemented.
 
-Arrays can be set like in matlab or scilab with the operator `::`, the array generator of `a:c` is equivalent to `a:1:c`, and the array set by `a:b:c` is set to size $\lfloor |(b-a)/c|+1 \rfloor$ and the value $i$ is set by $a + i (b-a)/c$.
+Arrays can be set like in Matlab or Scilab with the operator `::`, the array generator of `a:c` is equivalent to `a:1:c`, and the array set by `a:b:c` is set to size $\lfloor |(b-a)/c|+1 \rfloor$ and the value $i$ is set by $a + i (b-a)/c$.
 
-There are `:::freefem int,real, complex` array with, in the third case, two operators (`:::freefem .in`, `:::freefem .re`) to generate the real and imaginary real array from the complex array (without copy).
+There are `:::freefem int,real, complex` array with, in the third case, two operators (`:::freefem .im`, `:::freefem .re`) to generate the real and imaginary real array from the complex array (without copy).
 
 !!!note
 	Quantiles are points taken at regular intervals from the cumulative distribution function of a random variable. Here the array values are random.
 
-	This statisticial function `:::freefem a.quantile(q)` computes $v$ from an array $a$ of size $n$ for a given number $q\in ]0,1[$ such that:
+	This statistical function `:::freefem a.quantile(q)` computes $v$ from an array $a$ of size $n$ for a given number $q\in ]0,1[$ such that:
 	$$
 	\#\{ i / a[i] < v \} \sim q*n
 	$$
@@ -502,6 +535,80 @@ real ArrayMax = Aii.max;
 
 	where `:::freefem U` is a finite element function.
 
+### Array of FE functions
+It is also possible to make an array of FE functions, with the same syntax, and we can treat them as vector valued function if we need them.
+
+The syntax for space or vector finite function is
+```freefem
+int n = 100; //size of the array.
+Vh[int] wh(n); //real scalar case
+Wh[int] [uh,vh](n); //real vectorial case
+Vh<complex>[int] cwh(n); //complex scalar case
+Wh<complex>[int] [cuh, cvh](n); //complex vectorial case
+[cuh[2], cvh[2]] = [x, y]; //set interpolation of index 2
+
+// Array of Array
+real [int][int] V(10);
+matrix[int] B(10);
+real [int, int][int] A(10);
+```
+
+!!!question "Example"
+	In the following example, Poisson's equation is solved for 3 different given functions $f=1,\, \sin(\pi x)\cos(\pi y),\, |x-1||y-1|$, whose solutions are stored in an array of FE function.
+	```freefem
+	// Mesh
+	mesh Th = square(20, 20, [2*x, 2*y]);
+
+	// Fespace
+	fespace Vh(Th, P1);
+	Vh u, v, f;
+
+	// Problem
+	problem Poisson (u, v)
+		= int2d(Th)(
+			  dx(u)*dx(v)
+			+ dy(u)*dy(v)
+		)
+		+ int2d(Th)(
+			- f*v
+		)
+		+ on(1, 2, 3, 4, u=0)
+		;
+
+	Vh[int] uu(3); //an array of FE function
+	// Solve problem 1
+	f = 1;
+	Poisson;
+	uu[0] = u;
+	// Solve problem 2
+	f = sin(pi*x)*cos(pi*y);
+	Poisson;
+	uu[1] = u;
+	// Solve problem 3
+	f = abs(x-1)*abs(y-1);
+	Poisson;
+	uu[2] = u;
+
+	// Plot
+	for (int i = 0; i < 3; i++)
+		plot(uu[i], wait=true);
+	```
+
+	See [FE array example](../examples/#fe-array).
+
+### Map arrays
+
+```freefem
+real[string] map; //a dynamic array
+
+map["1"] = 2.0;
+map[2] = 3.0; //2 is automatically cast to the string "2"
+
+cout << "map[\"1\"] = " << map["1"] << endl;
+cout << "map[2] = " << map[2] << endl;
+```
+
+It is just a map of the standard template library so no operations on vector are allowed, except the selection of an item.
 
 ## matrix
 Defines a sparse matrix.
@@ -514,7 +621,7 @@ matrix A = [[1, 2, 3],
 			[7, 8, 9]];
 ```
 
-or using a variational form type:
+or using a variational form type (see [Finite Element](../documentation/FiniteElement/#variational-form-sparse-matrix-pde-data-vector)):
 
 ```freefem
 matrix Laplacian = vLaplacian(Uh, Uh);
@@ -526,6 +633,22 @@ matrix A1, ..., An;
 matrix A = [[A1, ...], ..., [..., An]];
 ```
 
+or using sparse matrix set:
+```freefem
+A = [I, J, C];
+```
+
+!!!note
+	`I` and `J` are `:::freefem int[int]` and `C` is `:::freefem real[int]`. The matrix is define as:
+	$$
+	A = \sum_k{C[k]M_{I[k], J[k]}}
+	$$
+	where $M_{a, b} = \left(\delta_{ia}\delta_{jb}\right)_{ij}$ <!--- __ --->
+
+	`I`, `J` and `C` can be retrived using `[I, J, C] = A` (array are automatically resized).
+
+	The size of the matrix is `:::freefem n = I.max;`, `:::freefem m = J.max;`.
+
 Matrices are designed using templates, so they can be real or complex:
 
 ```freefem
@@ -533,18 +656,6 @@ matrix<real> A = ...
 matrix<complex> Ai = ...
 ```
 
-The size of a matrix is obtain using:
-
-```freefem
-int NRows = A.n;
-int NColumns = A.m;
-```
-
-The diagonal of the matrix is obtained using:
-
-```freefem
-real[int] Aii = A.diag;
-```
 
 !!!note "Solver"
 	See [`:::freefem problem`](#problem).
@@ -602,3 +713,61 @@ real[int] Aii = A.diag;
 
 !!!tip
 	To modify the `:::freefem solver`, the stop test,... after the matrix construction, use the [`:::freefem set` keyword](functions/#set).
+
+### Matrix size
+The size of a matrix is obtain using:
+
+```freefem
+int NRows = A.n;
+int NColumns = A.m;
+```
+
+### Matrix resize
+To resize a matrix, use:
+```freefem
+A.resize(n, m);
+```
+
+!!!warning
+When resizing, all new terms are set to zero.
+
+### Matrix diagonal
+The diagonal of the matrix is obtained using:
+
+```freefem
+real[int] Aii = A.diag;
+```
+
+### Matrix renumbering
+```freefem
+int[int] I(15, J(15);
+matrix B = A;
+B = A(I, J);
+B = A(I^-1, J^-1);
+```
+
+### Complex matrix
+Use `.im` and `.re` to get the imaginary and real part of a complex amtrix, respectvely:
+```freefem
+matrix<complex> C = ...
+matrix R = C.re;
+matrix I = C.im;
+```
+
+### Dot product / Outer product
+
+The dot product of two matrices is realized using:
+```freefem
+real d = A' * B;
+```
+
+The outer product of two matrices is realized using:
+```freefem
+matrix C = A * B'
+```
+
+See [Matrix operations example](./example/#matrix-operations) for a complete example.
+
+### Matrix inversion
+
+See [Matrix inversion example](../examples/#matrix-inversion).

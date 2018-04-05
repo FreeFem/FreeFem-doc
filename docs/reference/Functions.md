@@ -53,7 +53,7 @@ real theta = acosh(x);
 ```
 
 $$
-\acosh(x) = \ln\left(x + \sqrt{x^2-1}\right)
+\arccosh(x) = \ln\left(x + \sqrt{x^2-1}\right)
 $$
 
 <u>Parameter:</u>
@@ -69,7 +69,7 @@ $$
 ## adaptmesh
 Mesh adaptation function.
 ```freefem
-mesh Thnew = adaptamesh(Th, [fx, fy], hmin=HMin, hmax=HMax, err=Err, errg=ErrG, nbvx=NbVx, nbsmooth=NbSmooth, nbjacoby=NbJacoby, ratio=Ratio, omega=Omega, iso=Iso, abserror=AbsError, cutoff=CutOff, verbosity=Verbosity, inquire=Inquire, splitpbedge=SplitPbEdge, maxsubdiv=MaxSubdiv, rescaling=Rescaling, keepbackvertices=KeepBackVertices, isMetric=IsMetric, power=Power, thetamax=ThetaMax, splitin2=SplitIn2, metric=Metric, nomeshgeneration=NoMeshGeneration, periodic=Periodic);
+mesh Thnew = adaptamesh(Th, [fx, fy], hmin=HMin, hmax=HMax, err=Err, errg=ErrG, nbvx=NbVx, nbsmooth=NbSmooth, nbjacoby=NbJacoby, ratio=Ratio, omega=Omega, iso=Iso, abserror=AbsError, cutoff=CutOff, verbosity=Verbosity, inquire=Inquire, splitpbedge=SplitPbEdge, maxsubdiv=MaxSubdiv, rescaling=Rescaling, keepbackvertices=KeepBackVertices, IsMetric=isMetric, power=Power, thetamax=ThetaMax, splitin2=SplitIn2, metric=Metric, nomeshgeneration=NoMeshGeneration, periodic=Periodic);
 ```
 
 <u>Parameters:</u>
@@ -114,7 +114,7 @@ mesh Thnew = adaptamesh(Th, [fx, fy], hmin=HMin, hmax=HMax, err=Err, errg=ErrG, 
  Rescale the function in [0, 1]
  - _`:::freefem keepbackvertices=`_ (`:::freefem bool`)<br/>
  If true, try to keep vertices of the original mesh
- - _`:::freefem isMetric=`_ (`:::freefem bool`)<br/>
+ - _`:::freefem IsMetric=`_ (`:::freefem bool`)<br/>
  If true, the metric is defined explicitly
  - _`:::freefem power=`_ (`:::freefem int`)<br/>
  Exponent of the Hessian
@@ -227,7 +227,7 @@ real theta = asinh(x);
 ```
 
 $$
-\asinh(x) = \ln\left(x + \sqrt{x^2+1}\right)
+\arcsinh(x) = \ln\left(x + \sqrt{x^2+1}\right)
 $$
 
 <u>Parameter:</u>
@@ -1485,7 +1485,7 @@ plot([Th], [u], [[Ux, Uy, Uz]], [wait=Wait], [ps=PS], [coef=Coef], [fill=Fill], 
 
  - `Th` (`:::freefem mesh` or `:::freefem mesh3`)<br/>
  Mesh to display
- - `u` (`::freefem fespace` function)<br/>
+ - `u` (`:::freefem fespace` function)<br/>
  Scalar `:::freefem fespace` function to display
  - `[Ux, Uy]` / `[Ux, Uy, Uz]` (`:::freefem fespace` function array)<br/>
  Vectorial `:::freefem fespace` function to display
@@ -1610,7 +1610,7 @@ randinit(seed);
 
 ## randint31
 
-Generate `:::cpp usigned int` (31 bits) random number.
+Generate `:::cpp unsigned int` (31 bits) random number.
 
 ```freefem
 int r = randint31();
@@ -1626,7 +1626,7 @@ int r = randint31();
 
 ## randint32
 
-Generate `:::cpp usigned int` (32 bits) random number.
+Generate `:::cpp unsigned int` (32 bits) random number.
 
 ```freefem
 int r = randint32();
@@ -1982,7 +1982,7 @@ int Res = system(Command);
 
 !!note
 	On Windows, the full path of the command is needed. For example, the execute `ls.exe`:
-	```
+	```freefem
 	int Res = exec("C:\\cygwin\\bin\\ls.exe");
 	```
 

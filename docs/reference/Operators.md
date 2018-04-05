@@ -3,14 +3,14 @@ Addition operator.
 ```freefem
 real a = 1. + 2.;
 ```
-Works for `::freefem int`, `::freefem real`, `::freefem complex`, `::freefem string`, `::freefem mesh`, `::freefem mesh3`, array.
+Works for `:::freefem int`, `:::freefem real`, `:::freefem complex`, `:::freefem string`, `:::freefem mesh`, `:::freefem mesh3`, array.
 
 ## -
 Substraction operator.
 ```freefem
 real a = 1. - 2.;
 ```
-Works for `::freefem int`, `::freefem real`, `::freefem complex`, array.
+Works for `:::freefem int`, `:::freefem real`, `:::freefem complex`, array.
 
 ## *
 Multiplication operator.
@@ -19,7 +19,7 @@ real[int] b;
 matrix A
 real[int] x = A^-1*b;
 ```
-Works for `::freefem int`, `::freefem real`, `::freefem complex`, array, `::freefem matrix`.
+Works for `:::freefem int`, `:::freefem real`, `:::freefem complex`, array, `:::freefem matrix`.
 
 ## .*
 Term by term multiplication.
@@ -32,7 +32,7 @@ Division operator.
 ```freefem
 real a = 1. / 2.;
 ```
-Works for `::freefem int`, `::freefem real`, `::freefem complex`.
+Works for `:::freefem int`, `:::freefem real`, `:::freefem complex`.
 
 ## ./
 Term by term division.
@@ -46,16 +46,14 @@ Remainder from the division.
 ```freefem
 int a = 1 % 2;
 ```
-Works for `::freefem int`, `:::freefem real`.
+Works for `:::freefem int`, `:::freefem real`.
 
 ## ^
 Power operator.
 ```freefem
 real a = 2.^2;
 ```
-Works for `::freefem int`, `::freefem real`, `::freefem complex`, `::freefem matrix`.
-
-In the case of matrix, `^-1` mean for the inverse matrix.
+Works for `:::freefem int`, `:::freefem real`, `:::freefem complex`, `:::freefem matrix`.
 
 ## ^-1
 Inverse of a `:::freefem matrix`.
@@ -64,12 +62,15 @@ Inverse of a `:::freefem matrix`.
 real[int] Res = A^-1 * b;
 ```
 
+!!!warning
+	This operator can not be used to directly create a matrix, see [Matrix inversion](../examples/#matrix-inversion).
+
 ## '
 Transpose operator.
 ```freefem
 real[int] a = b';
 ```
-Works for array and `::freefem matrix`.
+Works for array and `:::freefem matrix`.
 
 !!!note
 	For `:::freefem matrix<complex>`, the `''` operator return the Hermitian tranpose.
@@ -85,7 +86,7 @@ $$
 
 `a ? b : c` is equal to `b` if the `a` is true, `c` otherwise.
 
-!!!question "Example with `::freefem int`"
+!!!question "Example with `:::freefem int`"
 	```freefem
 	int a = 12;
 	int b = 5;

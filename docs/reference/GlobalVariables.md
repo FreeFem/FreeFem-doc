@@ -7,6 +7,17 @@ fespace Vh0(Th, P0);
 Vh0 A = area;
 ```
 
+## ARGV
+
+Array that contains all the command line arguments.
+
+```freefem
+for (int i = 0; i < ARGV.n; i++)
+	cout << ARGV[i] << endl;
+```
+
+See [Command line arguments example](../examples/#command-line-arguments) for a complete example.
+
 ## BoundaryEdge
 
 Return 1 if the current edge is on a boundary, 0 otherwise.
@@ -134,7 +145,6 @@ Index of the current edge in the triangle.
 ```freefem
 real nE = int2d(Th)(nuEdge);
 ```
-$\codered$ Example is needed
 
 ## nuTriangle
 

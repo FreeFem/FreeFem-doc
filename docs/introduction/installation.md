@@ -276,7 +276,7 @@ sudo make install
 Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-with-intel-software-tools-for-developers)
 
 ### Compilation on Windows
-$\codered$ (Good luck!)
+$\codered$ Windows compilation (Good luck!)
 
 ## Environnement variables and init file
 

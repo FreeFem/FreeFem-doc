@@ -955,7 +955,7 @@ Result|
 ## Parallelization
 
 ### MPI-GMRES 2D
-$\codered$
+$\codered$ check script
 <!---
 ```freefem
 // NBPROC 10
@@ -1430,7 +1430,7 @@ if(sff != "")
 --->
 
 ### MPI-GMRES 3D
-$\codered$
+$\codered$ check script
 <!---
 ```freefem
 // NBPROC 10
@@ -2013,7 +2013,7 @@ mesh Th = buildmesh(C(50));
 plot(Th);
 ```
 
-$\codered$ img
+$\codered$ add img
 
 ### Array
 
@@ -2363,4 +2363,861 @@ B = (3.*b*c')(I^-1,J^-1) = # Sparse Matrix (Morse)
         3         2 6
         3         3 4
         3         4 7
+```
+
+### Block matrix example
+
+```freefem
+// Parameters
+real f1 = 1.;
+real f2 = 1.5;
+
+// Mesh
+mesh Th1 = square(10, 10);
+mesh Th2 = square(10, 10, [1+x, -1+y]);
+plot(Th1, Th2);
+
+// Fespace
+fespace Uh1(Th1, P1);
+Uh1 u1;
+
+fespace Uh2(Th2, P2);
+Uh2 u2;
+
+// Macro
+macro grad(u) [dx(u), dy(u)] //
+
+// Problem
+varf vPoisson1 (u, v)
+	= int2d(Th1)(
+		  grad(u)' * grad(v)
+	)
+	- int2d(Th1)(
+		  f1 * v
+	)
+	+ on(1, 2, 3, 4, u=0)
+	;
+
+varf vPoisson2 (u, v)
+	= int2d(Th2)(
+		  grad(u)' * grad(v)
+	)
+	- int2d(Th2)(
+		  f1 * v
+	)
+	+ on(1, 2, 3, 4, u=0)
+	;
+matrix<real> Poisson1 = vPoisson1(Uh1, Uh1);
+real[int] Poisson1b = vPoisson1(0, Uh1);
+
+matrix<real> Poisson2 = vPoisson2(Uh2, Uh2);
+real[int] Poisson2b = vPoisson2(0, Uh2);
+
+//block matrix
+matrix<real> G = [[Poisson1, 0], [0, Poisson2]];
+set(G, solver=sparsesolver);
+
+//block right hand side
+real[int] Gb = [Poisson1b, Poisson2b];
+
+// Solve
+real[int] sol = G^-1 * Gb;
+
+// Dispatch
+[u1[], u2[]] = sol;
+
+// Plot
+plot(u1, u2);
+```
+
+\$codered$ add img
+
+### Matrix operations
+
+```freefem
+// Mesh
+mesh Th = square(2, 1);
+
+// Fespace
+fespace Vh(Th, P1);
+Vh f, g;
+f = x*y;
+g = sin(pi*x);
+
+Vh<complex> ff, gg; //a complex valued finite element function
+ff= x*(y+1i);
+gg = exp(pi*x*1i);
+
+// Problem
+varf mat (u, v)
+	= int2d(Th)(
+		  1*dx(u)*dx(v)
+		+ 2*dx(u)*dy(v)
+		+ 3*dy(u)*dx(v)
+		+ 4*dy(u)*dy(v)
+	)
+	+ on(1, 2, 3, 4, u=1)
+	;
+
+varf mati (u, v)
+	= int2d(Th)(
+		 1*dx(u)*dx(v)
+		+ 2i*dx(u)*dy(v)
+		+ 3*dy(u)*dx(v)
+		+ 4*dy(u)*dy(v)
+	)
+	+ on(1, 2, 3, 4, u=1)
+	;
+
+matrix A = mat(Vh, Vh);
+matrix<complex> AA = mati(Vh, Vh); //a complex sparse matrix
+
+// Operations
+Vh m0; m0[] = A*f[];
+Vh m01; m01[] = A'*f[];
+Vh m1; m1[] = f[].*g[];
+Vh m2; m2[] = f[]./g[];
+
+// Display
+cout << "f = " << f[] << endl;
+cout << "g = " << g[] << endl;
+cout << "A = " << A << endl;
+cout << "m0 = " << m0[] << endl;
+cout << "m01 = " << m01[] << endl;
+cout << "m1 = "<< m1[] << endl;
+cout << "m2 = "<< m2[] << endl;
+cout << "dot Product = "<< f[]'*g[] << endl;
+cout << "hermitien Product = "<< ff[]'*gg[] << endl;
+cout << "outer Product = "<< (A=f[]*g[]') << endl;
+cout << "hermitien outer Product = "<< (AA=ff[]*gg[]') << endl;
+
+// Diagonal
+real[int] diagofA(A.n);
+diagofA = A.diag; //get the diagonal of the matrix
+A.diag = diagofA ; //set the diagonal of the matrix
+
+// Sparse matrix set
+int[int] I(1), J(1);
+real[int] C(1);
+
+[I, J, C] = A; //get the sparse term of the matrix A (the array are resized)
+cout << "I = " << I << endl;
+cout << "J = " << J << endl;
+cout << "C = " << C << endl;
+
+A = [I, J, C]; //set a new matrix
+matrix D = [diagofA]; //set a diagonal matrix D from the array diagofA
+cout << "D = " << D << endl;
+```
+
+The output of this script is:
+```bash
+f = 6
+	  0	  0	  0	  0	0.5
+	  1
+g = 6
+	  0	  1	1.224646799e-16	  0	  1
+	1.224646799e-16
+A = # Sparse Matrix (Morse)  
+# first line: n m (is symmetic) nbcoef
+# after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
+6 6 0  24
+        1         1 1.0000000000000000199e+30
+        1         2 0.49999999999999994449
+        1         4 0
+        1         5 -2.5
+        2         1 0
+        2         2 1.0000000000000000199e+30
+        2         3 0.49999999999999994449
+        2         5 0.49999999999999977796
+        2         6 -2.5
+        3         2 0
+        3         3 1.0000000000000000199e+30
+        3         6 0.49999999999999977796
+        4         1 0.49999999999999977796
+        4         4 1.0000000000000000199e+30
+        4         5 0
+        5         1 -2.5
+        5         2 0.49999999999999977796
+        5         4 0.49999999999999994449
+        5         5 1.0000000000000000199e+30
+        5         6 0
+        6         2 -2.5
+        6         3 0
+        6         5 0.49999999999999994449
+        6         6 1.0000000000000000199e+30
+
+m0 = 6
+	-1.25	-2.25	0.5	  0	5e+29
+	1e+30
+m01 = 6
+	-1.25	-2.25	  0	0.25	5e+29
+	1e+30
+m1 = 6
+	  0	  0	  0	  0	0.5
+	1.224646799e-16
+m2 = 6
+	-nan	  0	  0	-nan	0.5
+	8.165619677e+15
+dot Product = 0.5
+hermitien Product = (1.11022e-16,2.5)
+outer Product = # Sparse Matrix (Morse)  
+# first line: n m (is symmetic) nbcoef
+# after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
+6 6 0  8
+        5         2 0.5
+        5         3 6.1232339957367660359e-17
+        5         5 0.5
+        5         6 6.1232339957367660359e-17
+        6         2 1
+        6         3 1.2246467991473532072e-16
+        6         5 1
+        6         6 1.2246467991473532072e-16
+
+hermitien outer Product = # Sparse Matrix (Morse)  
+# first line: n m (is symmetic) nbcoef
+# after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
+6 6 0  24
+        2         1 (0,0.5)
+        2         2 (0.5,3.0616169978683830179e-17)
+        2         3 (6.1232339957367660359e-17,-0.5)
+        2         4 (0,0.5)
+        2         5 (0.5,3.0616169978683830179e-17)
+        2         6 (6.1232339957367660359e-17,-0.5)
+        3         1 (0,1)
+        3         2 (1,6.1232339957367660359e-17)
+        3         3 (1.2246467991473532072e-16,-1)
+        3         4 (0,1)
+        3         5 (1,6.1232339957367660359e-17)
+        3         6 (1.2246467991473532072e-16,-1)
+        5         1 (0.5,0.5)
+        5         2 (0.5,-0.49999999999999994449)
+        5         3 (-0.49999999999999994449,-0.50000000000000011102)
+        5         4 (0.5,0.5)
+        5         5 (0.5,-0.49999999999999994449)
+        5         6 (-0.49999999999999994449,-0.50000000000000011102)
+        6         1 (1,1)
+        6         2 (1,-0.99999999999999988898)
+        6         3 (-0.99999999999999988898,-1.000000000000000222)
+        6         4 (1,1)
+        6         5 (1,-0.99999999999999988898)
+        6         6 (-0.99999999999999988898,-1.000000000000000222)
+
+I = 8
+	  4	  4	  4	  4	  5
+	  5	  5	  5
+J = 8
+	  1	  2	  4	  5	  1
+	  2	  4	  5
+C = 8
+	0.5	6.123233996e-17	0.5	6.123233996e-17	  1
+	1.224646799e-16	  1	1.224646799e-16
+  -- Raw Matrix    nxm  =6x6 nb  none zero coef. 8
+  -- Raw Matrix    nxm  =6x6 nb  none zero coef. 6
+D = # Sparse Matrix (Morse)  
+# first line: n m (is symmetic) nbcoef
+# after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
+6 6 1  6
+        1         1 0
+        2         2 0
+        3         3 0
+        4         4 0
+        5         5 0.5
+        6         6 1.2246467991473532072e-16
+```
+
+!!!warning
+	Due to `Fortran` indices starting at one, the output of a diagonal matrix `D` is indexed from 1. but in __`FreeFem++`__, the indices start from 0.
+
+### Matrix inversion
+
+```freefem
+load "lapack"
+load "fflapack"
+
+// Matrix
+int n = 5;
+real[int, int] A(n, n), A1(n, n), B(n,n);
+for (int i = 0; i < n; ++i)
+	for (int j = 0; j < n; ++j)
+		A(i, j) = (i == j) ? n+1 : 1;
+cout << A << endl;
+
+// Inversion (lapack)
+A1 = A^-1; //def in "lapack"
+cout << A1 << endl;
+
+B = 0;
+for (int i = 0; i < n; ++i)
+	for (int j = 0; j < n; ++j)
+		for (int k = 0; k < n; ++k)
+			B(i, j) += A(i,k)*A1(k,j);
+cout << B << endl;
+
+// Inversion (fflapack)
+inv(A1); //def in "fflapack"
+cout << A1 << endl;
+```
+
+The output of this script is:
+```bash
+5 5
+	   6   1   1   1   1
+	   1   6   1   1   1
+	   1   1   6   1   1
+	   1   1   1   6   1
+	   1   1   1   1   6
+
+5 5
+	 0.18 -0.02 -0.02 -0.02 -0.02
+	 -0.02 0.18 -0.02 -0.02 -0.02
+	 -0.02 -0.02 0.18 -0.02 -0.02
+	 -0.02 -0.02 -0.02 0.18 -0.02
+	 -0.02 -0.02 -0.02 -0.02 0.18
+
+5 5
+	   1 1.040834086e-17 1.040834086e-17 1.734723476e-17 2.775557562e-17
+	 3.469446952e-18   1 -1.734723476e-17 1.734723476e-17 2.775557562e-17
+	 2.428612866e-17 -3.122502257e-17   1 1.734723476e-17 2.775557562e-17
+	 2.081668171e-17 -6.938893904e-17 -3.469446952e-17   1   0
+	 2.775557562e-17 -4.163336342e-17 -2.775557562e-17   0   1
+
+5 5
+	   6   1   1   1   1
+	   1   6   1   1   1
+	   1   1   6   1   1
+	   1   1   1   6   1
+	   1   1   1   1   6
+```
+
+!!!tip
+	To compile `lapack.cpp` and `fflapack.cpp`, you must have the `lapack` library on your system and compile the plugin with the command:
+	```bash
+	ff-c++ lapack.cpp -llapack
+	ff-c++ fflapack.cpp -llapack
+	```
+
+### FE array
+
+```freefem
+// Mesh
+mesh Th = square(20, 20, [2*x, 2*y]);
+
+// Fespace
+fespace Vh(Th, P1);
+Vh u, v, f;
+
+// Problem
+problem Poisson (u, v)
+	= int2d(Th)(
+		  dx(u)*dx(v)
+		+ dy(u)*dy(v)
+	)
+	+ int2d(Th)(
+		- f*v
+	)
+	+ on(1, 2, 3, 4, u=0)
+	;
+
+Vh[int] uu(3); //an array of FE function
+// Solve problem 1
+f = 1;
+Poisson;
+uu[0] = u;
+// Solve problem 2
+f = sin(pi*x)*cos(pi*y);
+Poisson;
+uu[1] = u;
+// Solve problem 3
+f = abs(x-1)*abs(y-1);
+Poisson;
+uu[2] = u;
+
+// Plot
+for (int i = 0; i < 3; i++)
+	plot(uu[i], wait=true);
+```
+
+$\codered$ add img
+
+### Loop
+
+```freefem
+for (int i = 0; i < 10; i=i+1)
+	cout << i << endl;
+
+real eps = 1.;
+while (eps > 1e-5){
+	eps = eps/2;
+	if (i++ < 100)
+		break;
+	cout << eps << endl;
+}
+
+for (int j = 0; j < 20; j++){
+	if (j < 10) continue;
+	cout << "j = " << j << endl;
+}
+```
+
+### Implicit loop
+
+```freefem
+real [int, int] a(10, 10);
+real [int] b(10);
+
+for [i, bi : b]{
+	bi = i+1;
+	cout << i << " " << bi << endl;
+}
+cout << "b = " << b << endl;
+
+for [i, j, aij : a]{
+	aij = 1./(2+i+j);
+	if (abs(aij) < 0.2) aij = 0;
+}
+cout << "a = " << a << endl;
+
+matrix A = a;
+string[string] ss; //a map
+ss["1"] = 1;
+ss["2"] = 2;
+ss["3"] = 5;
+for [i, bi : ss]
+	bi = i + 6 + "-dddd";
+cout << "ss = " << ss << endl;
+
+int[string] si;
+si[1] = 2;
+si[50] = 1;
+for [i, vi : si]{
+	cout << " i " << setw(3) << i << " " << setw(10) << vi << endl;
+	vi = atoi(i)*2;
+}
+cout << "si = " << si << endl;
+
+for [i, j, aij : A]{
+	cout << i << " " << j << " " << aij << endl;
+	aij = -aij;
+}
+cout << A << endl;
+```
+
+The output of this script is:
+```bash
+0 1
+1 2
+2 3
+3 4
+4 5
+5 6
+6 7
+7 8
+8 9
+9 10
+b = 10
+	  1	  2	  3	  4	  5
+	  6	  7	  8	  9	 10
+
+a = 10 10
+	 0.5 0.3333333333 0.25 0.2   0   0   0   0   0   0
+	 0.3333333333 0.25 0.2   0   0   0   0   0   0   0
+	 0.25 0.2   0   0   0   0   0   0   0   0
+	 0.2   0   0   0   0   0   0   0   0   0
+	   0   0   0   0   0   0   0   0   0   0
+	   0   0   0   0   0   0   0   0   0   0
+	   0   0   0   0   0   0   0   0   0   0
+	   0   0   0   0   0   0   0   0   0   0
+	   0   0   0   0   0   0   0   0   0   0
+	   0   0   0   0   0   0   0   0   0   0
+
+ss = 1 1
+2 2
+3 5
+
+ i   1          2
+ i  50          1
+si = 1 2
+50 100
+
+0 0 0.5
+0 1 0.333333
+0 2 0.25
+0 3 0.2
+1 0 0.333333
+1 1 0.25
+1 2 0.2
+2 0 0.25
+2 1 0.2
+3 0 0.2
+# Sparse Matrix (Morse)  
+# first line: n m (is symmetic) nbcoef
+# after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
+10 10 0  10
+        1         1 -0.5
+        1         2 -0.33333333333333331483
+        1         3 -0.25
+        1         4 -0.2000000000000000111
+        2         1 -0.33333333333333331483
+        2         2 -0.25
+        2         3 -0.2000000000000000111
+        3         1 -0.25
+        3         2 -0.2000000000000000111
+        4         1 -0.2000000000000000111
+```
+
+### I/O
+
+```freefem
+int i;
+cout << "std-out" << endl;
+cout << " enter i = ?";
+cin >> i;
+
+{
+	ofstream f("toto.txt");
+	f << i << "hello world'\n";
+} //close the file f because the variable f is delete
+
+{
+	ifstream f("toto.txt");
+	f >> i;
+}
+
+{
+	ofstream f("toto.txt", append);
+	//to append to the existing file "toto.txt"
+	f << i << "hello world'\n";
+} //close the file f because the variable f is delete
+
+cout << i << endl;
+```
+
+### File stream
+
+```freefem
+int where;
+real[int] f = [0, 1, 2, 3, 4, 5];
+real[int] g(6);
+
+{
+	ofstream file("f.txt", binary);
+	file.precision(16);
+	file << f << endl;
+	where = file.tellp();
+	file << 0.1 ;
+
+	cout << "Where in file " << where << endl;
+	file << " # comment bla bla ... 0.3 \n";
+	file << 0.2 << endl;
+	file.flush; //to flush the buffer of file
+}
+
+//Function to skip comment starting with # in a file
+func ifstream skipcomment(ifstream &ff){
+	while(1){
+		int where = ff.tellg(); //store file position
+		string comment;
+		ff >> comment;
+		if (!ff.good()) break;
+		if (comment(0:0)=="#"){
+			getline(ff, comment);
+			cout << " -- #" << comment << endl;
+		}
+		else{
+			ff.seekg(where); //restore file position
+			break;
+		}
+	}
+	return ff;
+}
+
+{
+	real xx;
+	ifstream file("f.txt", binary);
+	cout << "Where " << file.seekg << endl;
+	file.seekg(where);
+	file >> xx;
+	cout << " xx = " << xx << " good ? " << file.good() << endl;
+	assert(xx == 0.1);
+	skipcomment(file) >> xx;
+	assert(xx == 0.2);
+	file.seekg(0); //rewind
+	cout << "Where " << file.tellg() << " " << file.good() << endl;
+	file >> g;
+}
+```
+
+### Command line arguments
+
+When using the command:
+```bash
+FreeFem++ script.edp arg1 arg2
+```
+
+The arguments can be used in the script with:
+```freefem
+for (int i = 0; i < ARGV.n; i++)
+	cout << ARGV[i] << endl;
+```
+
+When using the command:
+```bash
+FreeFem++ script.edp -n 10 -a 1. -d 42.
+```
+
+The arguments can be used in the script with:
+```freefem
+load "getARGV.idp"
+
+int n = getARGV("n", 1);
+real a = getARGV("a", 1.);
+real d = getARGV("d", 1.);
+```
+
+### Macro
+
+```freefem
+// Macro without parameters
+macro xxx() {
+	real i = 0;
+	int j = 0;
+	cout << i << " " << j << endl;
+}//
+
+xxx
+
+// Macro with parameters
+macro toto(i) i //
+
+toto({real i = 0; int j = 0; cout << i << " " << j << endl;})
+
+// Macro as parameter of a macro
+real[int,int] CC(7, 7), EE(6, 3), EEps(4, 4);
+
+macro VIL6(v, i) [v(1,i), v(2,i), v(4,i), v(5,i), v(6,i)] //
+macro VIL3(v, i) [v(1,i), v(2,i)] //
+macro VV6(v, vv) [
+	v(vv,1), v(vv,2),
+	v(vv,4), v(vv,5),
+	v(vv,6)] //
+macro VV3(v, vv) [v(vv,1), v(vv,2)] //
+
+func C5x5 = VV6(VIL6, CC);
+func E5x2 = VV6(VIL3, EE);
+func Eps = VV3(VIL3, EEps);
+
+// Macro concatenation
+mesh Th = square(2, 2);
+fespace Vh(Th, P1);
+Vh Ux=x, Uy=y;
+
+macro div(V) (dx(V#x) + dy(V#y)) //
+
+cout << int2d(Th)(div(U)) << endl;
+
+// Verify the quoting
+macro foo(i, j, k) i j k //
+foo(, , )
+foo({int[}, {int] a(10}, {);})
+
+//NewMacro - EndMacro
+NewMacro grad(u) [dx(u), dy(u)] EndMacro
+cout << int2d(Th)(grad(Ux)' * grad(Uy)) << endl;
+
+// IFMACRO - ENDIFMACRO
+macro AA CAS1 //
+
+IFMACRO(AA,CAS1 )
+cout << "AA = " << Stringification(AA) << endl;
+macro CASE file1.edp//
+ENDIFMACRO
+IFMACRO(AA, CAS2)
+macro CASE file2.edp//
+ENDIFMACRO
+
+cout << "CASE = " << Stringification(CASE) << endl;
+
+IFMACRO(CASE)
+include Stringification(CASE)
+ENDIFMACRO
+
+// FILE - LINE
+cout << "In " << FILE << ", line " << LINE << endl;
+```
+
+The output script generated with macros is:
+```freefem
+1 : // Macro without parameters
+2 :  macro xxx {
+3 : 	real i = 0;
+4 : 	int j = 0;
+5 : 	cout << i << " " << j << endl;
+6 : }//
+7 :
+8 :  
+1 : 	   
+2 : 	   
+3 : 	        
+4 :  {
+1 : 	real i = 0;
+2 : 	int j = 0;
+3 : 	cout << i << " " << j << endl;
+4 : }
+9 :
+10 : // Macro with parameters
+11 :  macro toto(i )   i //
+12 :
+13 :                    real i = 0; int j = 0; cout << i << " " << j << endl;
+14 :
+15 : // Macro as parameter of a macro
+16 : real[int,int] CC(7, 7), EE(6, 3), EEps(4, 4);
+17 :
+18 :   macro VIL6(v,i )   [v(1,i), v(2,i), v(4,i), v(5,i), v(6,i)] //
+19 :   macro VIL3(v,i )   [v(1,i), v(2,i)] //
+20 :   macro VV6(v,vv )   [
+21 : 	v(vv,1), v(vv,2),
+22 : 	v(vv,4), v(vv,5),
+23 : 	v(vv,6)] //
+24 :   macro VV3(v,vv )   [v(vv,1), v(vv,2)] //
+25 :
+26 : func C5x5 =   
+1 : 	 
+2 : 	 
+3 : 	  [
+1 : 	        [ CC(1,1),  CC(2,1),  CC(4,1),  CC(5,1),  CC(6,1)] ,         [ CC(1,2),  CC(2,2),  CC(4,2),  CC(5,2),  CC(6,2)] ,
+2 : 	        [ CC(1,4),  CC(2,4),  CC(4,4),  CC(5,4),  CC(6,4)] ,         [ CC(1,5),  CC(2,5),  CC(4,5),  CC(5,5),  CC(6,5)] ,
+3 : 	        [ CC(1,6),  CC(2,6),  CC(4,6),  CC(5,6),  CC(6,6)] ] ;
+27 : func E5x2 =   
+1 : 	 
+2 : 	 
+3 : 	  [
+1 : 	     [ EE(1,1),  EE(2,1)] ,      [ EE(1,2),  EE(2,2)] ,
+2 : 	     [ EE(1,4),  EE(2,4)] ,      [ EE(1,5),  EE(2,5)] ,
+3 : 	     [ EE(1,6),  EE(2,6)] ] ;
+28 : func Eps =      [     [ EEps(1,1),  EEps(2,1)] ,      [ EEps(1,2),  EEps(2,2)] ] ;
+29 :
+30 : // Macro concatenation
+31 : mesh Th = square(2, 2);
+32 : fespace Vh(Th, P1);
+33 : Vh Ux=x, Uy=y;
+34 :
+35 :  macro div(V )   (dx(V#x) + dy(V#y)) //
+36 :
+37 : cout << int2d(Th)(     (dx(Ux) + dy(Uy)) ) << endl;
+38 :
+39 : // Verify the quoting
+40 :    macro foo(i,j,k )   i j k //
+41 :           
+42 :         int[ int] a(10 );
+43 :
+44 : //NewMacro - EndMacro
+45 :  macro grad(u )   [dx(u), dy(u)]
+46 : cout << int2d(Th)(    [dx(Ux), dy(Ux)] ' *     [dx(Uy), dy(Uy)] ) << endl;
+47 :
+48 : // IFMACRO - ENDIFMACRO
+49 :   macro AACAS1 //
+50 :
+51 :
+1 : cout << "AA = " << Stringification( CAS1 ) << endl;
+2 :   macro CASEfile1.edp//
+3 :
+52 :
+53 :
+54 : cout << "CASE = " << Stringification(file1.edp) << endl;
+55 :
+56 :
+1 : include Stringification(file1.edp)cout << "This is the file 1" << endl;
+2 :
+2 :
+57 :
+58 : // FILE - LINE
+59 : cout << "In " << FILE << ", line " << LINE << endl;
+```
+
+The output os this script is:
+```bash
+AA = CAS1
+CASE = file1.edp
+This is the file 1
+In Macro.edp, line 59
+```
+
+### Basic error handling
+
+```freefem
+real a;
+try{
+	a = 1./0.;
+}
+catch (...) //all exceptions can be caught
+{
+	cout << "Catch an ExecError" << endl;
+	a = 0.;
+}
+```
+
+The output of this script is:
+```bash
+1/0 : d d d
+  current line = 3
+Exec error :  Div by 0
+   -- number :1
+Catch an ExecError
+```
+
+### Error handling
+
+```freefem
+// Parameters
+int nn = 5;
+func f = 1; //right hand side function
+func g = 0; //boundary condition function
+
+// Mesh
+mesh Th = square(nn, nn);
+
+// Fespace
+fespace Vh(Th, P1);
+Vh uh, vh;
+
+// Problem
+real cpu = clock();
+problem laplace (uh, vh, solver=Cholesky, tolpivot=1e-6)
+	= int2d(Th)(
+		  dx(uh)*dx(vh)
+		+ dy(uh)*dy(vh)
+	)
+	+ int2d(Th)(
+		- f*vh
+	)
+	;
+
+try{
+	cout << "Try Cholesky" << endl;
+
+	// Solve
+	laplace;
+
+	// Plot
+	plot(uh);
+
+	// Display
+	cout << "laplacian Cholesky " << nn << ", x_" << nn << " : " << -cpu+clock() << " s, max = " << uh[].max << endl;
+}
+catch(...) { //catch all error
+	cout << " Catch cholesky PB " << endl;
+}
+```
+
+The output of this script is:
+```bash
+Try Cholesky
+ERREUR choleskypivot (35)= -6.43929e-15 < 1e-06
+  current line = 29
+Exec error : FATAL ERREUR dans ./../femlib/MatriceCreuse_tpl.hpp
+cholesky line:
+   -- number :688
+ catch an erreur in  solve  =>  set  sol = 0 !!!!!!!
+ Catch cholesky PB
 ```

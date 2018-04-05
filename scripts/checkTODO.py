@@ -33,6 +33,7 @@ documentationFilesList = [
 	"documentation/Visualization.md",
 	"documentation/Parallelization.md",
 	"documentation/chapter11.md",
+	"documentation/chapter11part2.md",
 	"documentation/Plugins.md",
 	"documentation/Developers.md"
 	]
@@ -44,6 +45,7 @@ documentationNamesList = [
 	"Visualization",
 	"Parallelization",
 	"Chapter 11",
+	"Chapter 11 part2",
 	"Plugins",
 	"Developers"
 	]
@@ -214,6 +216,8 @@ def checkTODOByLines(_FilesList, _NamesList, _TODOFile):
 					CurrentLine += 1
 					if "$\\codered$" in line:
 						TODOs.append("- [ ] line "+str(CurrentLine)+"\n")
+						line = line.replace("$\codered$", "")
+						TODOs.append("\t```"+line+"```\n")
 						NumberOfTODO += 1
 					elif "$\\codeerror$" in line:
 						TODOs.append("- [ ] line "+str(CurrentLine)+"\n")
@@ -291,7 +295,7 @@ for i in range(0, len(referenceFilesList)):
 					Item = Item[1:]
 				Link = referenceFilesList[i].replace(".md", "")
 				Link = Link.replace("reference/", "")
-				TODOs.append("- [ ] ["+Item+"]("+Link+"/#"+Item+")\n")
+				TODOs.append("- [ ] ["+Item+"]("+Link+"/#"+Item.lower()+")\n")
 				NumberOfTODO += 1
 
 		TODOFile.write("Progression:\n")

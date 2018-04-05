@@ -23,6 +23,7 @@ Progression:
 </div>
 
 - [ ] line 279
+	``` Windows compilation (Good luck!)```
 
 ## How to contribute?
 
