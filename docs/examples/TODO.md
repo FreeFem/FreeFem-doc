@@ -16,8 +16,4 @@ Progression:
 	``` check script```
 - [ ] line 1433
 	``` check script```
-- [ ] line 2016
-	``` add img```
-- [ ] line 2741
-	``` add img```
 

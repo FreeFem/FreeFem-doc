@@ -1909,6 +1909,90 @@ if(sff != "")
 ```
 --->
 
+## Developers
+
+### FFT
+
+```freefem
+load "dfft"
+
+// Parameters
+int nx = 32;
+real ny = 16;
+real N = nx*ny;
+func f1 = cos(2*x*2*pi)*cos(3*y*2*pi);
+
+// Mesh
+//warning: the fourier space is not exactly the unit square due to periodic condition
+mesh Th = square(nx-1, ny-1, [(nx-1)*x/nx, (ny-1)*y/ny]);
+//warning: the numbering of the vertices (x,y) is
+//given by i = x/nx + nx*y/ny
+
+// Fespace
+fespace Vh(Th,P1);
+Vh<complex> u = f1, v;
+Vh w = f1;
+Vh ur, ui;
+
+// FFT
+//in dfft the matrix n, m is in row-major order and array n, m is
+//store j + m*i (the transpose of the square numbering)
+v[] = dfft(u[], ny, -1);
+u[] = dfft(v[], ny, +1);
+cout << "||u||_\infty " << u[].linfty << endl;
+
+u[] *= 1./N;
+cout << "||u||_\infty " << u[].linfty << endl;
+
+ur = real(u);
+
+// Plot
+plot(w, wait=1, value=1, cmm="w");
+plot(ur, wait=1, value=1, cmm="u");
+v = w - u;
+cout << "diff = " << v[].max << " " << v[].min << endl;
+assert( norm(v[].max) < 1e-10 && norm(v[].min) < 1e-10);
+
+// Other example
+//FFT Lapacian
+//-\Delta u = f with biperiodic condition
+func f = cos(3*2*pi*x)*cos(2*2*pi*y);
+func ue = (1./(square(2*pi)*13.))*cos(3*2*pi*x)*cos(2*2*pi*y); //the exact solution
+Vh<complex> ff = f;
+Vh<complex> fhat;
+Vh<complex> wij;
+
+// FFT
+fhat[] = dfft(ff[],ny,-1);
+
+//warning in fact we take mode between -nx/2, nx/2 and -ny/2, ny/2
+//thanks to the operator ?:
+wij = square(2.*pi)*(square(( x<0.5?x*nx:(x-1)*nx)) + square((y<0.5?y*ny:(y-1)*ny)));
+wij[][0] = 1e-5; //to remove div / 0
+fhat[] = fhat[] ./ wij[];
+u[] = dfft(fhat[], ny, 1);
+u[] /= complex(N);
+ur = real(u); //the solution
+w = real(ue); //the exact solution
+
+// Plot
+plot(w, ur, value=1, cmm="ue", wait=1);
+
+// Error
+w[] -= ur[];
+real err = abs(w[].max) + abs(w[].min);
+cout << "err = " << err << endl;
+assert(err < 1e-6);
+
+fftwplan p1 = plandfft(u[], v[], ny, -1);
+fftwplan p2 = plandfft(u[], v[], ny, 1);
+real ccc = square(2.*pi);
+cout << "ny = " << ny << endl;
+map(wij[], ny, ccc*(x*x+y*y));
+wij[][0] = 1e-5;
+plot(wij, cmm="wij");
+```
+
 ## References
 
 ### Complex
@@ -2012,8 +2096,9 @@ border C(t=0, 2*pi){x=phix(t); y=phiy(t);}
 mesh Th = buildmesh(C(50));
 plot(Th);
 ```
-
-$\codered$ add img
+Mesh|
+:----:|
+![ElementaryFunction](images/ElementaryFunction.png)|
 
 ### Array
 
@@ -2365,7 +2450,7 @@ B = (3.*b*c')(I^-1,J^-1) = # Sparse Matrix (Morse)
         3         4 7
 ```
 
-### Block matrix example
+### Block matrix
 
 ```freefem
 // Parameters
@@ -2430,7 +2515,9 @@ real[int] sol = G^-1 * Gb;
 plot(u1, u2);
 ```
 
-\$codered$ add img
+Result|
+:----:|
+![BlockMatrix](images/BlockMatrix.png)|
 
 ### Matrix operations
 
@@ -2738,7 +2825,17 @@ for (int i = 0; i < 3; i++)
 	plot(uu[i], wait=true);
 ```
 
-$\codered$ add img
+First result|
+:----:|
+![FEArray1](images/FEArray1.png)|
+
+Second result|
+:----:|
+![FEArray2](images/FEArray2.png)|
+
+Third result|
+:----:|
+![FEArray3](images/FEArray3.png)|
 
 ### Loop
 

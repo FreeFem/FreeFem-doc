@@ -804,7 +804,7 @@ Under Windows, launch __`FreeFem++`__ with the mouse (or ctrl O) on the example.
 
 ### Example: Discrete Fast Fourier Transform
 
-This will add FFT to __`FreeFem++`__, taken from \url{http://www.fftw.org/}. To download and install under `download/include` just go in `download/fftw` and try `make`.$\codered$
+This will add FFT to __`FreeFem++`__, taken from [FFTW](http://www.fftw.org/). To download and install under `download/include` just go in `download/fftw` and try `make`.
 
 The 1D dfft (fast discret fourier transform) for a simple array $f$ of size $n$ is defined by the following formula
 $$
@@ -847,7 +847,7 @@ g++ -c -Iinclude -I../download/install/include dfft.cpp
 g++ -bundle -undefined dynamic_lookup dfft.o -o ./dfft.dylib ../download/install/lib/libfftw3.a
 ```
 
-To test, try `dfft.edp`. $\codered$
+To test, try [FFT example](../examples/#fft).
 
 ### Load Module for Dervieux' P0-P1 Finite Volume Method
 

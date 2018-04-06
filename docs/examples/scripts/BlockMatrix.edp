@@ -1,3 +1,5 @@
+load "iovtk"
+
 // Parameters
 real f1 = 1.;
 real f2 = 1.5;
@@ -58,3 +60,10 @@ real[int] sol = G^-1 * Gb;
 
 // Plot
 plot(u1, u2);
+
+int[int] Order = [1];
+savevtk("BlockMatrix1.vtu", Th1, u1, dataname="u", order=Order);
+
+fespace PV(Th2, P1);
+PV uu2 = u2;
+savevtk("BlockMatrix2.vtu", Th2, u2, dataname="u", order=Order);

@@ -1,3 +1,5 @@
+load "iovtk"
+
 // Mesh
 mesh Th = square(20, 20, [2*x, 2*y]);
 
@@ -34,3 +36,7 @@ uu[2] = u;
 // Plot
 for (int i = 0; i < 3; i++)
 	plot(uu[i], wait=true);
+
+int[int] Order = [1];
+for (int i = 0; i < 3; i++)
+	savevtk("FEArray"+i+".vtu", Th, uu[i], order=Order);

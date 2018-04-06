@@ -941,7 +941,7 @@ See [Reference part](../reference/Functions/#adaptmesh) for more inforamtions
 
 * `:::freefem nbsmooth=` number of iterations of the smoothing procedure (5 is the default).
 
-* `nbjacoby=` number of iterations in a smoothing procedure during the metric construction, 0 means no smoothing, 6 is the default.
+* `:::freefem nbjacoby=` number of iterations in a smoothing procedure during the metric construction, 0 means no smoothing, 6 is the default.
 
 * `:::freefem ratio=` ratio for a prescribed smoothing on the metric. If the value is 0 or less than 1.1 no smoothing is done on the metric. 1.8 is the default.
 
@@ -951,9 +951,9 @@ See [Reference part](../reference/Functions/#adaptmesh) for more inforamtions
 
 * `:::freefem omega=` relaxation parameter for the smoothing procedure. 1.0 is the default.
 
-* `:::freefem iso=` If true, forces the metric to be isotropic. `false` is the default.
+* `:::freefem iso=` If true, forces the metric to be isotropic. `:::freefem false` is the default.
 
-* `:::freefem abserror=` If false, the metric is evaluated using the criteria of equi-repartion of relative error. `false` is the default. In this case the metric is defined by
+* `:::freefem abserror=` If false, the metric is evaluated using the criteria of equi-repartion of relative error. `:::freefem false` is the default. In this case the metric is defined by
 	\begin{equation}
 		\mathcal{M} = \left({1\over\mathtt{err}\,\, \mathtt{coef}^2} \quad {
 		|\mathcal{H}| \over max(\mathtt{CutOff},|\eta|)}\right)^p
@@ -970,18 +970,18 @@ See [Reference part](../reference/Functions/#adaptmesh) for more inforamtions
 
 * `:::freefem verbosity=` informational messages level (can be chosen between 0 and $\infty$). Also changes the value of the global variable verbosity (obsolete).
 
-* `:::freefem inquire=` To inquire graphically about the mesh. `false` is the default.
+* `:::freefem inquire=` To inquire graphically about the mesh. `:::freefem false` is the default.
 
-* `:::freefem splitpbedge=` If true, splits all internal edges in half with two boundary vertices. `true` is the
+* `:::freefem splitpbedge=` If true, splits all internal edges in half with two boundary vertices. `:::freefem true` is the
 default.
 
 * `:::freefem maxsubdiv=` Changes the metric such that the maximum subdivision of a background edge is bound by `:::freefem val`. Always limited by 10, and 10 is also the default.
 
-* `:::freefem rescaling=` if true, the function with respect to which the mesh is adapted is rescaled to be between 0 and 1. `true` is the default.
+* `:::freefem rescaling=` if true, the function with respect to which the mesh is adapted is rescaled to be between 0 and 1. `:::freefem true` is the default.
 
-* `:::freefem keepbackvertices=` if true, tries to keep as many vertices from the original mesh as possible. `true` is the default.
+* `:::freefem keepbackvertices=` if true, tries to keep as many vertices from the original mesh as possible. `:::freefem true` is the default.
 
-* `:::freefem isMetric=` if true, the metric is defined explicitly. `false` is the default. If the 3 functions $m_{11}, m_{12}, m_{22}$ are given, they directly define a symmetric matrix field whose Hessian is computed to define a metric. If only one function is given, then it represents the isotropic mesh size at every point.
+* `:::freefem IsMetric=` if true, the metric is defined explicitly. `:::freefem false` is the default. If the 3 functions $m_{11}, m_{12}, m_{22}$ are given, they directly define a symmetric matrix field whose Hessian is computed to define a metric. If only one function is given, then it represents the isotropic mesh size at every point.
 
 	For example, if the partial derivatives `:::freefem fxx` ($=\p^2 f/\p x^2$), `:::freefem fxy` ($=\p^2 f/\p x\p y$), `:::freefem fyy` ($=\p^2 f/\p y^2$) are given, we can set `:::freefem Th = adaptmesh(Th, fxx, fxy, fyy, IsMetric=1, nbvx=10000, hmin=hmin);`
 
@@ -1693,7 +1693,7 @@ This keyword correspond to a composition of command line `:::freefem tetg` and `
 tetgtransfo(Th2, transfo=[Phi(1), Phi(2), Phi(3)]), ...) = tetg(Th3surf, ...),
 ```
 
-where `:::freefem Th3surf = movemesh23(Th2, tranfo=[Phi(1), Phi(2), Phi(3)])` and `:::freefem Th2` is the input two dimensional mesh of `:::freefem tetgtransfo`.
+where `:::freefem Th3surf = movemesh23(Th2, transfo=[Phi(1), Phi(2), Phi(3)])` and `:::freefem Th2` is the input two dimensional mesh of `:::freefem tetgtransfo`.
 
 The parameters of this command line are on the one hand the parameters `:::freefem label`, `:::freefem switch`, `:::freefem regionlist`, `:::freefem nboffacetcl`, `:::freefem facetcl` of keyword `:::freefem tetg` and on the other hand the parameter `:::freefem ptmerge` of keyword `:::freefem movemesh23`.
 
@@ -1740,7 +1740,7 @@ The parameter of this keyword are
 
 * `:::freefem label=` an integer array that allow to change the label of boundary triangles. This array is defined as the parameter `:::freefem label` in the keyword `:::freefem change`.
 
-* `:::freefem sizevolume=` a reel function. This function allows to constraint volume size of tetrahedra in the domain. (see [Isotrope mesh adaption section](#a-first-3d-isotrope-mesh-adaptation-process) to build a 3d adapted mesh).
+* `:::freefem sizeofvolume=` a reel function. This function allows to constraint volume size of tetrahedra in the domain. (see [Isotrope mesh adaption section](#a-first-3d-isotrope-mesh-adaptation-process) to build a 3d adapted mesh).
 
 The parameters `:::freefem switch`, `:::freefem nbofregions`, `:::freefem regionlist`, `:::freefem nboffacetcl` and `:::freefem facetcl` of the command line which call TetGen (`:::freefem tetg`) is used for `:::freefem tetgrefine`.
 
@@ -1750,7 +1750,7 @@ For instance, see the manual of TetGen [Hang2006](#refHang2006) for effect of `:
 
 The parameter `:::freefem regionlist` allows to define a new volume constraint in the region. The label in the `:::freefem regionlist` will be the previous label of region.
 
-This parameter and `:::freefem nbofregions` can't be used with parameter `:::freefem sizevolume`.
+This parameter and `:::freefem nbofregions` can't be used with parameter `:::freefem sizeofvolume`.
 
 **Example `:::freefem refinesphere.edp`**
 
@@ -2297,7 +2297,7 @@ medit("sol1 sol2", Th, f1, f2, order=1);
 
 The first plot named `:::freefem sol1` display f1. The second plot names `:::freefem sol2` display f2.
 
-The arguments of the function `:::freefem medit` are the name of the differents scenes (separated by a space) of `medit`, a mesh and solutions.
+The arguments of the function `:::freefem medit` are the name of the differents scenes (separated by a space) of `:::freefem medit`, a mesh and solutions.
 
 Each solution is associated with one scene. The scalar, vector and symmetric tensor solutions are specified in the format described in the section dealing with the keyword `:::freefem savesol`.
 
@@ -2498,7 +2498,7 @@ FreeYams is a surface mesh adaptation software which is developed by P. Frey. Th
 
 Also, this software allows to construct a simplification of a mesh. This decimation is based on the Hausdorff distance between the initial and the current triangulation. Compared to the software yams, FreeYams can be used also to produce anisotropic triangulations adapted to levelset simulations. A technical report on freeYams documentation is available [here](https://www.ljll.math.upmc.fr/frey/publications/RT-0252.pdf).
 
-To call FreeYams in FreeFem++, we used the keyword `:::freefem freeyams`. The arguments of this function are the initial mesh and/or metric. The metric with `::freefem freeyams` are a `:::freefem func`, a `:::freefem fespace` function, a symmetric tensor function, a symmetric tensor `:::freefem fespace` function or a vector of double (`:::freefem real[int]`). If the metric is a vector of double, this data must be given in `:::freefem metric` parameter. Otherwise, the metric is given in the argument.
+To call FreeYams in FreeFem++, we used the keyword `:::freefem freeyams`. The arguments of this function are the initial mesh and/or metric. The metric with `:::freefem freeyams` are a `:::freefem func`, a `:::freefem fespace` function, a symmetric tensor function, a symmetric tensor `:::freefem fespace` function or a vector of double (`:::freefem real[int]`). If the metric is a vector of double, this data must be given in `:::freefem metric` parameter. Otherwise, the metric is given in the argument.
 
 For example, the adapted mesh of `Thinit` defined by the metric $u$ defined as `:::freefem fespace` function is obtained by writing:
 
@@ -2741,7 +2741,7 @@ The parameters of `:::freefem mmg3d` are :
 		// Sphere falling
 		Th = mmg3d(Th, options=opt, displacement=[zero, zero, uh], memory=1000);
 	}
-	 ```
+	```
 
 ## A first 3d isotrope mesh adaptation process
 

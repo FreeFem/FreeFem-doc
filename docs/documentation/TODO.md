@@ -246,10 +246,6 @@ Progression:
 	```It is agood idea to first try the example `load.edp` in directory `example++-load` .```
 - [ ] line 671
 	```Now, assume that you are in a shell window (a `cygwin` window under Windows) in the directory `example++-load` .```
-- [ ] line 807
-	```This will add FFT to __`FreeFem++`__, taken from \url{http://www.fftw.org/}. To download and install under `download/include` just go in `download/fftw` and try `make`.```
-- [ ] line 850
-	```To test, try `dfft.edp`. ```
 - [ ] line 854
 	```The associed edp file is `examples++-load/convect_dervieux.edp`. ```
 - [ ] line 856
