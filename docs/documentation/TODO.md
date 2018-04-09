@@ -183,9 +183,9 @@ Progression:
 
 Progression:
 <div class="progress progress-80plus">
-	<div class="progress-bar" style="width:98%">
+	<div class="progress-bar" style="width:97%">
 	</div>
-	<span class="progress-label">98</span>
+	<span class="progress-label">97</span>
 </div>
 
 - [ ] line 3
@@ -218,8 +218,20 @@ Progression:
 	```It should be noted that the meaning of the entries of these vectors is different from those of Hips. In the case of HYPRE, the meaning of differents entries of vectors `:::freefem iparm` and `:::freefem dparm` are given in tables \ref{communipramsHypre}  to \ref{AMGHypre} .```
 - [ ] line 296
 	```In Table \ref{hyprelabel}  the results of running example \ref{hypre:laplacian}  on Cluster Paradent of Grid5000 are reported. We can see in this running example the efficiency of parallelism, in particular when AMG are use as preconditioner.```
-- [ ] line 596
-	```\ref{exm:segond}  }```
+- [ ] line 537
+	```			<th colspan="3">Table 11.18 : Convergence and time for solving linear system from example 11.4 \ref{exm:segond}  </th>```
+- [ ] line 698
+	````:::freefem mpiReduce(Data a,Data b,processor(int rk, mpiComm cc),MPI_Op op)`,  ERREUR DE FRAPPE QQ PART ? Reduces values `:::freefem Data a` on all processes to a single value `:::freefem Data b` on process of rank `:::freefem rk` and communicator `:::freefem cc`.```
+- [ ] line 711
+	``````
+- [ ] line 848
+	```	* `:::freefem D` is the diagonal of the local partition of unity (see below \S~\ref{sub:linear} 11.5.2  for more details)```
+- [ ] line 860
+	```In the above line, the first option selects the one-level preconditioner `:::freefem ras` (possible choices are `:::freefem ras`, `:::freefem oras`, `:::freefem soras`, `:::freefem asm`, `:::freefem osm` or `:::freefem none`), the second option selects the correction formula for the second level here `:::freefem balanced` (possible options are `:::freefem deflated`, `:::freefem additive` or `:::freefem balanced`), the third option selects right preconditioning, the fourth one is verbosity level of HPDDM (different from the one of FreeFem++), the fifth one prints all possible options of HPPDM and the last one specifies the number of coarse degrees of freedom per subdomain of the GENEO coarse space. All other options of [https://github.com/hpddm/hpddm/blob/master/doc/cheatsheet.pdf](cheatsheet of the HPDDM) \cite{Jolivet:2014:HPD}  library can be selected via the FreeFem++ function `:::freefem set`.```
+- [ ] line 1026
+	```As an example, consider the scalar product of two distributed vectors ${\mathbf U}, {\mathbf V} \in \mathbb{R}^{n}$. Using the partition of unity~\eqref{eq:hpddm:14} , we have:```
+- [ ] line 1046
+	```The matrix vector product is more involved and details are given in the SIAM book  [https://www.ljll.math.upmc.fr/nataf/OT144DoleanJolivetNataf_full.pdf](An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation) \cite{Dolean:2015:IDD}  and even more details are given in [http://jolivet.perso.enseeiht.fr/thesis.pdf](P. Jolivet's PhD manuscrit).```
 
 ## Plugins
 
