@@ -1905,6 +1905,20 @@ if(sff != "")
 ```
 --->
 
+### Direct solvers
+
+$\codered$
+
+### Solver MUMPS
+
+$\codered$
+
+### Solver superLU_DIST
+
+$\codered$
+
+### Solver PaStiX
+
 ## Developers
 
 ### FFT
