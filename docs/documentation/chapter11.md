@@ -22,7 +22,7 @@ There are two possibilities to control solver parameters. The first method defin
 
 The second one reads the solver parameters from a data file. The name of this file is specified by `:::freefem datafilename`. If `:::freefem lparams`, `:::freefem dparams`, `:::freefem sparams` or `:::freefem datafilename` is not provided by the user, the solver's default values are used.
 
-To use parallel solver in __`FreeFem++`__, we need to load the dynamic library corresponding to this solver. For example to use [MUMPS](http://mumps.enseeiht.fr/) solver as parallel solver in FreeFem, write in the `.edp` file `:::freefem load "MUMPS_FreeFem"`.
+To use parallel solver in __`FreeFem++`__, we need to load the dynamic library corresponding to this solver. For example to use [MUMPS](http://mumps.enseeiht.fr/) solver as parallel solver in __`FreeFem++`__, write in the `.edp` file `:::freefem load "MUMPS_FreeFem"`.
 
 If the libraries are not loaded, the default sparse solver will be loaded (default sparse solver is `:::freefem UMFPACK`). The [table 1](#Tab1) gives this new value for the different libraries.
 
@@ -58,13 +58,13 @@ If the libraries are not loaded, the default sparse solver will be loaded (defau
 		</tr>
 		<tr>
 			<td>real_pastix_FreeFem</td>
-			<td align="center">pastix</td>
+			<td align="center">PaStiX</td>
 			<td align="center">previous solver</td>
 		</tr>
 		<tr>
 			<td>complex_pastix_FreeFem</td>
 			<td align="center">previous solver</td>
-			<td align="center">pastix</td>
+			<td align="center">PaStiX</td>
 		</tr>
 		<tr>
 			<td>hips_FreeFem</td>
@@ -264,7 +264,7 @@ The first parameter gives the type of the matrix: 0 for unsymmetric matrix, 1 fo
 
 The second parameter defined if the host processor work during the factorization and solves steps : `:::cpp PAR=1` host processor working and `:::cpp PAR=0` host processor not working.
 
-The parameter `:::cpp INCTL` and `:::cpp CNTL` is the control parameter of MUMPS. The vectors `:::cpp ICNTL` and `:::cpp CNTL` in MUMPS becomes with index 1 like vector in fortran. For more details see the [MUMPS users' guide](http://mumps.enseeiht.fr/index.php?page=doc).
+The parameter `:::cpp INCTL` and `:::cpp CNTL` is the control parameter of MUMPS. The vectors `:::cpp ICNTL` and `:::cpp CNTL` in MUMPS becomes with index 1 like vector in `Fortran`. For more details see the [MUMPS user's guide](http://mumps.enseeiht.fr/index.php?page=doc).
 
 We describe now some elements of the main parameters of `:::cpp ICNTL` for MUMPS.
 
@@ -273,7 +273,7 @@ We describe now some elements of the main parameters of `:::cpp ICNTL` for MUMPS
 
 	The different values of `ICNTL(5)` are 0 for assembled format and 1 for element format. In the current release of __`FreeFem++`__, we consider that FE matrix or matrix is storage in assembled format. Therefore, `INCTL(5)` is treated as 0 value.
 
-	The main option for `ICNTL(18)`: `INCLTL(18)=0` centrally on the host processor, `ICNTL(18)=3` distributed the input matrix pattern and the entries (recommended option for distributed matrix by developer of MUMPS). For other values of `ICNTL(18)` see the [MUMPS users' guide](http://mumps.enseeiht.fr/index.php?page=doc). These values can be used also in __`FreeFem++`__.
+	The main option for `ICNTL(18)`: `INCLTL(18)=0` centrally on the host processor, `ICNTL(18)=3` distributed the input matrix pattern and the entries (recommended option for distributed matrix by developer of MUMPS). For other values of `ICNTL(18)` see the [MUMPS user's guide](http://mumps.enseeiht.fr/index.php?page=doc). These values can be used also in __`FreeFem++`__.
 
 	The default option implemented in __`FreeFem++`__ are `ICNTL(5)=0` and `ICNTL(18)=0`.
 
@@ -284,7 +284,7 @@ We describe now some elements of the main parameters of `:::cpp ICNTL` for MUMPS
 	$$
 	where $P$ is the permutation matrix, $Q_c$ is the column permutation, $D_r$ and $D_c$ are diagonal matrix for respectively row and column scaling.
 
-	The ordering strategy to obtain $P$ is controlled by parameter `ICNTL(7)`. The permutation of zero free diagonal $Q_c$ is controlled by parameter `ICNTL(6)`. The row and column scaling is controlled by parameter `ICNTL(18)`. These option are connected and also strongly related with `ICNTL(12)` (see the [MUMPS users' guide](http://mumps.enseeiht.fr/index.php?page=doc) for more details).
+	The ordering strategy to obtain $P$ is controlled by parameter `ICNTL(7)`. The permutation of zero free diagonal $Q_c$ is controlled by parameter `ICNTL(6)`. The row and column scaling is controlled by parameter `ICNTL(18)`. These option are connected and also strongly related with `ICNTL(12)` (see the [MUMPS user's guide](http://mumps.enseeiht.fr/index.php?page=doc) for more details).
 
 	The parameters `:::freefem permr`, `:::freefem scaler`, and `:::freefem scalec` in __`FreeFem++`__ allow to give permutation matrix($P$), row scaling ($D_r$) and column scaling ($D_c$) of the user respectively.
 
@@ -328,14 +328,14 @@ This is done in typing `:::freefem load "MUMPS_FreeFem"` in the `.edp` file. We 
 	0 /* ICNTL(17) :: not used in this release of MUMPS */
 	3 /* ICNTL(18) :: method for given : matrix pattern and matrix entries : */
 	0 /* ICNTL(19) :: method to return the Schur complement matrix */
-	0 /* ICNTL(20) :: right hand side form ( 0 dense form, 1 sparse form) : parameter will be set to 0 for freefem++ */
-	0 /* ICNTL(21) :: 0, 1 kept distributed solution : parameter is not considered in the current release of freefem++ */
+	0 /* ICNTL(20) :: right hand side form ( 0 dense form, 1 sparse form) : parameter will be set to 0 for FreeFem++ */
+	0 /* ICNTL(21) :: 0, 1 kept distributed solution : parameter is not considered in the current release of FreeFem++ */
 	0 /* ICNTL(22) :: controls the in-core/out-of-core (OOC) facility */
 	0 /* ICNTL(23) :: maximum size of the working memory in Megabyte than MUMPS can allocate per working processor */
 	0 /* ICNTL(24) :: control the detection of null pivot */
 	0 /* ICNTL(25) :: control the computation of a null space basis */
-	0 /* ICNTL(26) :: This parameter is only significant with Schur option (ICNTL(19) not zero). : parameter is not considered in the current release of freefem++ */
-	-8 /* ICNTL(27) (Experimental parameter subject to change in next release of MUMPS) :: control the blocking factor for multiple righthand side during the solution phase : parameter is not considered in the current release of freefem++ */
+	0 /* ICNTL(26) :: This parameter is only significant with Schur option (ICNTL(19) not zero). : parameter is not considered in the current release of FreeFem++ */
+	-8 /* ICNTL(27) (Experimental parameter subject to change in next release of MUMPS) :: control the blocking factor for multiple righthand side during the solution phase : parameter is not considered in the current release of FreeFem++ */
 	0 /* ICNTL(28) :: not used in this release of MUMPS*/
 	0 /* ICNTL(29) :: not used in this release of MUMPS*/
 	0 /* ICNTL(30) :: not used in this release of MUMPS*/
@@ -741,7 +741,7 @@ To specify the parameters to apply to the solver, the user can either give an in
 			</tr>
 			<tr>
 				<td>`iparm[9]`</td>
-				<td>Scale the input matrix or not: Default value 1 (Matrix should bescale)</td>
+				<td>Scale the input matrix or not: Default value 1 (Matrix should be scaled)</td>
 			</tr>
 			<tr>
 				<td>`iparm[10]`</td>

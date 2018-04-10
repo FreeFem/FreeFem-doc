@@ -1907,15 +1907,15 @@ if(sff != "")
 
 ### Direct solvers
 
-$\codered$
+$\codered$ write code
 
 ### Solver MUMPS
 
-$\codered$
+$\codered$ write code
 
 ### Solver superLU_DIST
 
-$\codered$
+$\codered$ write code
 
 ### Solver PaStiX
 
