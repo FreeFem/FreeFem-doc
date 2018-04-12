@@ -179,7 +179,7 @@ For detail of these algorithms, refer to \cite{Lucquin} $\codered$[Chapter IV, 1
 
 Two algorithms of COOOL a package \cite{coool} $\codered$ are interfaced with the Newton Raphson method (call `:::freefem Newton`) and the `:::freefem BFGS` method. These two ones are directly available in FreeFem (no dynamical link to load). Be careful with these algorithms, because their implementation uses full matrices. We also provide several optimization algorithms from the NLopt library \cite{nlopt} $\codered$ as well as an interface for Hansen's implementation of CMAES (a MPI version of this one is also available). These last algorithms can be found as dynamical links in the `:::freefem example++-load` folder as the `:::freefem ff-NLopt` and `:::freefem CMA_ES` files (`:::freefem CMA_ES_MPI` from the `:::freefem example++-mpi` folder for the mpi version).
 
-## Example of utilization for BFGS or CMAES
+### Example of utilization for BFGS or CMAES
 
 __Example algo.edp__
 
