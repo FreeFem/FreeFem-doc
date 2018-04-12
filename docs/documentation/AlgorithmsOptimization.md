@@ -114,8 +114,8 @@ varf alap(uh,vh)= int2d(Th)( alpha *( dx(uh)*dx(vh) + dy(uh)*dy(vh) ))
 
 varf amass(uh)= int2d(Th)( uh*vh) + on(1,2,3,4,uh=0);
 
-matrix amass = alap(Vh,Vh,solver=CG); // \index{matrix}
-matrix Alap= alap(Vh,Vh,solver=Cholesky,factorize=1); // \index{Cholesky}\index{factorize=}\index{solver=}
+matrix amass = alap(Vh,Vh,solver=CG);
+matrix Alap= alap(Vh,Vh,solver=Cholesky,factorize=1);
 
 // The preconditionner function
 func real[int] C(real[int] & u)
