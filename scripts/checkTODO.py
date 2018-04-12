@@ -32,7 +32,6 @@ documentationFilesList = [
 	"documentation/FiniteElement.md",
 	"documentation/Visualization.md",
 	"documentation/Parallelization.md",
-	"documentation/chapter11.md",
 	"documentation/chapter11part2.md",
 	"documentation/Plugins.md",
 	"documentation/Developers.md"
@@ -44,7 +43,6 @@ documentationNamesList = [
 	"Finite element",
 	"Visualization",
 	"Parallelization",
-	"Chapter 11",
 	"Chapter 11 part2",
 	"Plugins",
 	"Developers"

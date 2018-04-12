@@ -1006,3 +1006,5 @@ To specify the parameters to apply to the solver, the user can either give an in
 <a name="SAAD2003">[SAAD2003]</a> SAAD, Yousef. Iterative methods for sparse linear systems. siam, 2003.
 
 <a name="SMITH1996">[SMITH1996]</a> SMITH, B. P. Bj rstad and W. Gropp, Domain Decomposition. 1996.
+
+<a name="CHOW1997">[CHOW1997]</a> CHOW, Edmond, CHOW, Edmond Ten-fu, et SAAD, Yousef. Robust preconditioning for sparse linear systems. 1997.
