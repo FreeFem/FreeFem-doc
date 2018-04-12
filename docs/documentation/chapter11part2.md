@@ -686,308 +686,357 @@ Real valued problems (diffusion, heat, elasticity and Stokes) and complex valued
 	A three dimensional elasticity problem is defined. The solver is a domain decomposition method. Domain decomposition methods are a natural framework for parallel computers. The scripts run on multicores computers (from 2 to tens of thousands of cores). Recall that like in any MPI code the number of MPI processes, `:::freefem mpisize`, is given in the command line via the option `:::freefem -np`. We focus on the script `:::freefem Elasticity3D.edp` but the other scripts have the same structure. The command line to run the example on four processes with `:::freefem ffglut` visualization is: `:::freefem ff-mpirun -np 4 Elasticity3D.edp -glut ffglut`
 
 	```freefem
-	// run with MPI: ff-mpirun -np 4 script.edp
-	// NBPROC 4
+	load "hpddm" //load HPDDM plugin
+	macro partitioner()metis//metis, scotch, or parmetis
+	macro dimension()3//2D or 3D
+	macro vectorialfe()P1//
+	include "macro_ddm.idp" //additional DDM functions
 
-	load "hpddm"                        // HPDDM plugin
-	macro partitioner()metis// EOM      // metis, scotch, or parmetis
-	macro dimension()3// EOM            // 2D or 3D
-	macro vectorialfe()P1// EOM
-	include "macro_ddm.idp"             // additional DDM functions
+	// Macro
+	macro def(i)[i, i#B, i#C] //vector field definition
+	macro init(i)[i, i, i] //vector field initialization
 
-	macro def(i)[i, i#B, i#C]// EOM     // vector field definition
-	macro init(i)[i, i, i]// EOM        // vector field initialization
-	/*# DiffMacros #*/
 	real Sqrt = sqrt(2.0);
-	macro epsilon(u)[dx(u), dy(u#B), dz(u#C), (dz(u#B) + dy(u#C)) / Sqrt, (dz(u) + dx(u#C)) / Sqrt, (dy(u) + dx(u#B)) / Sqrt]// EOM
-	macro div(u)(dx(u) + dy(u#B) + dz(u#C))// EOM
-	/*# DiffMacrosEnd #*/
-	func Pk = [vectorialfe, vectorialfe, vectorialfe];             // finite element space
+	macro epsilon(u) [dx(u), dy(u#B), dz(u#C),
+		(dz(u#B) + dy(u#C)) / Sqrt,
+		(dz(u) + dx(u#C)) / Sqrt,
+		(dy(u) + dx(u#B)) / Sqrt] //
+	macro div(u) (dx(u) + dy(u#B) + dz(u#C)) //
 
-	/*# DDMoptions #*/
-	string deflation = getARGV("-deflation", "geneo");              // coarse space construction
-	int overlap = getARGV("-overlap", 1);                           // geometric overlap between subdomains
-	int fakeInterface = getARGV("-interface", 10);                  // interface between subdomains
-	int s = getARGV("-split", 1);                                   // refinement factor
-
-	mpiComm comm;
-	int p = getARGV("-hpddm_master_p", 1);
-	bool excluded = splitComm(mpiCommWorld, p, comm, topology = getARGV("-hpddm_master_topology", 0), exclude = (usedARGV("-hpddm_master_exclude") != -1));
-	/*# DDMoptionsEnd #*/
-
-	if(verbosity > 0 && mpirank == 0) {
-	    cout << " --- " << mpirank << "/" << mpisize;
-	    cout << " - elasticity-3d.edp - input parameters: refinement factor = " << s << " - overlap = " << overlap << endl;
-	}
-
-	int[int] LL = [2,3, 2,1, 2,2];
-	meshN ThBorder, Th = cube(1, 1, 1, [x, y, z]);
-	fespace Wh(Th, Pk);                         // local finite element space
-	/*# SchwarzMethod #*/
-	int[int] arrayIntersection;                 // ranks of neighboring subdomains
-	int[int][int] restrictionIntersection(0);   // local-to-neighbors renumbering
-	real[int] D;                                // partition of unity
-	{
-	    meshN ThGlobal = cube(10 * getARGV("-global", 5), getARGV("-global", 5), getARGV("-global", 5), [10 * x, y, z], label = LL);      // global mesh
-	    build(Th, ThBorder, ThGlobal, fakeInterface, s, overlap, D, arrayIntersection, restrictionIntersection, Wh, Pk, comm, excluded, 3)
-	}
-
+	// Parameters
 	real f = -9000.0;
 	real strain = 100.0;
 	real Young = 2.0e11; // steel
 	real poisson = 0.35;
+
+	func Pk = [vectorialfe, vectorialfe, vectorialfe];
+
+	string deflation = getARGV("-deflation", "geneo"); //coarse space construction
+	int overlap = getARGV("-overlap", 1); //geometric overlap between subdomains
+	int fakeInterface = getARGV("-interface", 10); //interface between subdomains
+	int s = getARGV("-split", 1); //refinement factor
+	int p = getARGV("-hpddm_master_p", 1);
+
+	mpiComm comm;
+	bool excluded = splitComm(mpiCommWorld, p, comm, topology = getARGV("-hpddm_master_topology", 0), exclude = (usedARGV("-hpddm_master_exclude") != -1));
+
+	// Display
+	if (verbosity > 0 && mpirank == 0){
+		cout << " --- " << mpirank << "/" << mpisize;
+		cout << " - Elasticity3D.edp - input parameters: refinement factor = " << s << " - overlap = " << overlap << endl;
+	}
+
+	// Mesh
+	int[int] LL = [2, 3, 2, 1, 2, 2];
+	meshN ThBorder, Th = cube(1, 1, 1, [x, y, z]);
+	fespace Wh(Th, Pk); //local finite element space
+
+	int[int] arrayIntersection; //ranks of neighboring subdomains
+	int[int][int] restrictionIntersection(0); //local-to-neighbors renumbering
+	real[int] D; //partition of unity
+	{
+		meshN ThGlobal = cube(10*getARGV("-global", 5), getARGV("-global", 5), getARGV("-global", 5), [10*x, y, z], label=LL); //global mesh
+		build(Th, ThBorder, ThGlobal, fakeInterface, s, overlap, D, arrayIntersection, restrictionIntersection, Wh, Pk, comm, excluded, 3)
+	}
+
+	// Problem
 	real tmp = 1.0 + poisson;
-	real mu = Young  / (2.0 * tmp);
+	real mu = Young / (2.0 * tmp);
 	real lambda = Young * poisson / (tmp * (1.0 - 2.0 * poisson));
-	real[int] rhs;                              // local right-hand side
-	matrix<real> Mat;                           // local operator
-	{                                           // local weak form
-	    meshN ThAugmented = Th + ThBorder;
-	    varf vPb(def(u), def(v)) = intN(ThAugmented)(lambda * div(u) * div(v) + 2.0 * mu * (epsilon(u)' * epsilon(v))) + intN(ThAugmented)(f * vC) + on(1, u = 0.0, uB = 0.0, uC = 0.0);
-	    fespace WhAugmented(ThAugmented, Pk);
-	    Mat = vPb(WhAugmented, WhAugmented, tgv = -1);
-	    real[int] rhsFull = vPb(0, WhAugmented, tgv = -1);
-	    matrix R = interpolate(Wh, WhAugmented);
-	    renumbering(Mat, R, rhsFull, rhs);
+	real[int] rhs; //local right-hand side
+	matrix<real> Mat; //local operator
+	{ //local weak form
+		meshN ThAugmented = Th + ThBorder;
+		varf vPb (def(u), def(v))
+			= intN(ThAugmented)(
+				  lambda * div(u) * div(v)
+				+ 2.0 * mu * (epsilon(u)' * epsilon(v))
+			)
+			+ intN(ThAugmented)(
+				  f * vC
+			)
+			+ on(1, u=0.0, uB=0.0, uC=0.0)
+			;
+
+		fespace WhAugmented(ThAugmented, Pk);
+		Mat = vPb(WhAugmented, WhAugmented, tgv=-1);
+		real[int] rhsFull = vPb(0, WhAugmented, tgv=-1);
+		matrix R = interpolate(Wh, WhAugmented);
+		renumbering(Mat, R, rhsFull, rhs);
 	}
 	ThBorder = cube(1, 1, 1, [x, y, z]);
 
 	dschwarz A(Mat, arrayIntersection, restrictionIntersection, scaling = D);
-	/*# SchwarzMethodEnd #*/
 
-	/*# OsmTwolevel #*/
 	set(A, sparams = "-hpddm_schwarz_method ras -hpddm_schwarz_coarse_correction balanced -hpddm_variant right -hpddm_verbosity 1 -hpddm_geneo_nu 10");
-	/*# OsmTwolevelEnd #*/
 
-	matrix<real> Opt;                           // local operator with optimized boundary conditions
+	matrix<real> Opt; //local operator with optimized boundary conditions
 	dpair ret;
 	{
-	    int solver = getOption("schwarz_method");
-	    if(solver == 1 || solver == 2 || solver == 4) { // optimized Schwarz methods
-	        fespace Ph(Th, P0);
-	        real kZero = getARGV("-kZero", 10.0);
-	        Ph transmission = 2 * kZero * mu * (2 * mu + lambda) / (lambda + 3 * mu);
-	        varf vOptimized(def(u), def(v)) = intN(Th)(lambda * div(u) * div(v) + 2.0 * mu * (epsilon(u)' * epsilon(v))) + intN1(Th, fakeInterface)(transmission * (def(u)' * def(v))) + on(1, u = 0.0, uB = 0.0, uC = 0.0);
-	        Opt = vOptimized(Wh, Wh, tgv = -1);
-	    }
-	    if(mpisize > 1 &&
-	       isSetOption("schwarz_coarse_correction")) { // two-level Schwarz methods
-	        if(excluded)
-	            attachCoarseOperator(mpiCommWorld, A/*, A = noPen, B = overlapRestriction, threshold = 2. * h[].max / diam*/);
-	        else {
-	            varf vPbNoPen(def(u), def(v)) = intN(Th)(lambda * div(u) * div(v) + 2.0 * mu * (epsilon(u)' * epsilon(v))) + on(1, u = 0.0, uB = 0.0, uC = 0.0);
-	            matrix<real> noPen = vPbNoPen(Wh, Wh, solver = CG);
-	            if(deflation == "geneo") // standard GenEO, no need for RHS -> deduced from LHS (Neumann matrix)
-	                attachCoarseOperator(mpiCommWorld, A, A = noPen/*, threshold = 2. * h[].max / diam,*/, ret = ret);
-	            else if(deflation == "dtn") {
-	                varf vMass(def(u), def(v)) = intN1(Th, fakeInterface)(u * v);
-	                matrix<real> massMatrix = vMass(Wh, Wh, solver = CG);
-	                attachCoarseOperator(mpiCommWorld, A, A = noPen, B = massMatrix, pattern = Opt/*, threshold = k,*/, ret = ret);
-	            }
-	            else if(deflation == "geneo-2") // GenEO-2 for optimized Schwarz methods, need for RHS (LHS is still Neumann matrix)
-	                attachCoarseOperator(mpiCommWorld, A, A = noPen, B = Opt, pattern = Opt/*, threshold = 2. * h[].max / diam,*/, ret = ret);
-	        }
-	    }
+		int solver = getOption("schwarz_method");
+		if (solver == 1 || solver == 2 || solver == 4){ //optimized Schwarz methods
+			fespace Ph(Th, P0);
+			real kZero = getARGV("-kZero", 10.0);
+			Ph transmission = 2 * kZero * mu * (2 * mu + lambda) / (lambda + 3 * mu);
+			varf vOptimized (def(u), def(v))
+				= intN(Th)(
+					  lambda * div(u) * div(v)
+					+ 2.0 * mu * (epsilon(u)' * epsilon(v))
+				)
+				+ intN1(Th, fakeInterface)(
+					  transmission * (def(u)' * def(v))
+				)
+				+ on(1, u=0.0, uB=0.0, uC=0.0)
+				;
+			Opt = vOptimized(Wh, Wh, tgv=-1);
+		}
+		if (mpisize > 1 && isSetOption("schwarz_coarse_correction")){ //two-level Schwarz methods
+			if(excluded)
+				attachCoarseOperator(mpiCommWorld, A);
+			else {
+				varf vPbNoPen (def(u), def(v))
+					= intN(Th)(
+						  lambda * div(u) * div(v)
+						+ 2.0 * mu * (epsilon(u)' * epsilon(v))
+					)
+					+ on(1, u=0.0, uB=0.0, uC=0.0)
+					;
+				matrix<real> noPen = vPbNoPen(Wh, Wh, solver=CG);
+				if(deflation == "geneo") //standard GenEO, no need for RHS -> deduced from LHS (Neumann matrix)
+					attachCoarseOperator(mpiCommWorld, A, A=noPen, ret=ret);
+				else if(deflation == "dtn"){
+					varf vMass (def(u), def(v)) = intN1(Th, fakeInterface)(u * v);
+					matrix<real> massMatrix = vMass(Wh, Wh, solver=CG);
+					attachCoarseOperator(mpiCommWorld, A, A=noPen, B=massMatrix, pattern=Opt, ret=ret);
+				}
+				else if(deflation == "geneo-2") //GenEO-2 for optimized Schwarz methods, need for RHS (LHS is still Neumann matrix)
+					attachCoarseOperator(mpiCommWorld, A, A=noPen, B=Opt, pattern=Opt, ret=ret);
+			}
+		}
 	}
 
-	/*# SolvePlot #*/
-	Wh<real> def(u);    // local solution
 
-	if(Opt.n > 0)       // optimized Schwarz methods
-	    DDM(A, u[], rhs, excluded = excluded, ret = ret, O = Opt);
+	// Solve
+	Wh<real> def(u); //local solution
+
+	if(Opt.n > 0) //optimized Schwarz methods
+		DDM(A, u[], rhs, excluded=excluded, ret=ret, O=Opt);
 	else
-	    u[] = A^-1 * rhs;
+		u[] = A^-1 * rhs;
 
+	// Error
 	real[int] err(u[].n);
-	err = A * u[];      // global matrix-vector product
+	err = A * u[]; //global matrix-vector product
 	err -= rhs;
 
+	// Plot
 	plotMPI(Th, u[], "Global solution", Pk, def, real, 3, 1)
 	plotMPI(Th, err, "Global residual", Pk, def, real, 3, 1)
 	real alpha = 2000.0;
-	meshN ThMoved = movemesh3(Th, transfo = [x + alpha * u, y + alpha * uB, z + alpha * uC]);
+	meshN ThMoved = movemesh3(Th, transfo = [x + alpha*u, y + alpha*uB, z + alpha*uC]);
 	u[] = mpirank;
 	plotMPI(ThMoved, u[], "Global moved solution", Pk, def, real, 3, 1)
-	/*# SolvePlotEnd #*/
 	```
 
-The macro `:::freefem build` is of particular interest since it handles the data distribution among the `:::freefem mpisize` MPI processes with the following steps:
+	The macro `:::freefem build` is of particular interest since it handles the data distribution among the `:::freefem mpisize` MPI processes with the following steps:
 
-* The initial mesh `:::freefem ThGlobal` is partitioned by process 0 into `:::freefem mpisize` submeshes
+	* The initial mesh `:::freefem ThGlobal` is partitioned by process 0 into `:::freefem mpisize` submeshes
 
-* The partition is broadcasted to every process $i$ for 0 < $i$ < `:::freefem mpisize`. From then on, all tasks are parallel.
+	* The partition is broadcasted to every process $i$ for 0 < $i$ < `:::freefem mpisize`. From then on, all tasks are parallel.
 
-* Each process creates the local submesh `:::freefem Th` (if the refinement factor `:::freefem s` defined via the option `:::freefem -split` is larger than 1, each local edge is splitted into $s$ subedges, resulting in each element being split into $s^2$ element in 2D and $s^3$ elements in 3D) so that the collection of these submeshes is an overlapping domain decomposition of a refined mesh. The number of extra layers added to the initial partition is monitored by the option `:::freefem -overlap`.
+	* Each process creates the local submesh `:::freefem Th` (if the refinement factor `:::freefem s` defined via the option `:::freefem -split` is larger than 1, each local edge is splitted into $s$ subedges, resulting in each element being split into $s^2$ element in 2D and $s^3$ elements in 3D) so that the collection of these submeshes is an overlapping domain decomposition of a refined mesh. The number of extra layers added to the initial partition is monitored by the option `:::freefem -overlap`.
 
-* Connectivity structures are created
-	* `:::freefem D` is the diagonal of the local partition of unity (see below \S~\ref{sub:linear} 11.5.2 $\codered$ for more details)
-	* `:::freefem arrayIntersection` is the list of neighbors of the current subdomain
-	* For `:::freefem j` in `:::freefem arrayIntersection`, `:::freefem restrictionIntersection[j]` is the list of the degrees of freedom that belong to the intersection of the current subdomain with its neighbor `:::freefem j`.
+	* Connectivity structures are created
+		* `:::freefem D` is the diagonal of the local partition of unity (see [Distributed vectors in HPDDM](#distributed-vectors-in-hpddm for more details)
+		* `:::freefem arrayIntersection` is the list of neighbors of the current subdomain
+		* For `:::freefem j` in `:::freefem arrayIntersection`, `:::freefem restrictionIntersection[j]` is the list of the degrees of freedom that belong to the intersection of the current subdomain with its neighbor `:::freefem j`.
 
-Then, the variational formulation `:::freefem vPb` of a three dimensional elasticity problem is used to assemble a local matrix `:::freefem Mat`. This matrix along with `:::freefem D`, `:::freefem arrayIntersection` and `:::freefem restrictionIntersection` are arguments for the constructor of the distributed matrix `:::freefem A`. This is enough to solve the problem with a one-level additive Schwarz method which can be either ASM or RAS.
+	Then, the variational formulation `:::freefem vPb` of a three dimensional elasticity problem is used to assemble a local matrix `:::freefem Mat`. This matrix along with `:::freefem D`, `:::freefem arrayIntersection` and `:::freefem restrictionIntersection` are arguments for the constructor of the distributed matrix `:::freefem A`. This is enough to solve the problem with a one-level additive Schwarz method which can be either ASM or RAS.
 
-For some problems it is interesting to use optimized interface conditions. When there are many subdomains, it is usually profitable to add a second level to the solver. Options are set in the sequel of the script:
+	For some problems it is interesting to use optimized interface conditions. When there are many subdomains, it is usually profitable to add a second level to the solver. Options are set in the sequel of the script:
 
-```freefem
-set(A, sparams = "-hpddm_schwarz_method ras -hpddm_schwarz_coarse_correction balanced -hpddm_variant right -hpddm_verbosity 1 -hpddm_geneo_nu 10");
-```
+	```freefem
+	set(A, sparams="-hpddm_schwarz_method ras -hpddm_schwarz_coarse_correction balanced -hpddm_variant right -hpddm_verbosity 1 -hpddm_geneo_nu 10");
+	```
 
-In the above line, the first option selects the one-level preconditioner `:::freefem ras` (possible choices are `:::freefem ras`, `:::freefem oras`, `:::freefem soras`, `:::freefem asm`, `:::freefem osm` or `:::freefem none`), the second option selects the correction formula for the second level here `:::freefem balanced` (possible options are `:::freefem deflated`, `:::freefem additive` or `:::freefem balanced`), the third option selects right preconditioning, the fourth one is verbosity level of HPDDM (different from the one of FreeFem++), the fifth one prints all possible options of HPPDM and the last one specifies the number of coarse degrees of freedom per subdomain of the GENEO coarse space. All other options of [https://github.com/hpddm/hpddm/blob/master/doc/cheatsheet.pdf](cheatsheet of the HPDDM) \cite{Jolivet:2014:HPD} $\codered$ library can be selected via the FreeFem++ function `:::freefem set`.
+	In the above line, the first option selects the one-level preconditioner `:::freefem ras` (possible choices are `:::freefem ras`, `:::freefem oras`, `:::freefem soras`, `:::freefem asm`, `:::freefem osm` or `:::freefem none`), the second option selects the correction formula for the second level here `:::freefem balanced` (possible options are `:::freefem deflated`, `:::freefem additive` or `:::freefem balanced`), the third option selects right preconditioning, the fourth one is verbosity level of HPDDM (different from the one of __`FreeFem++`__), the fifth one prints all possible options of HPPDM and the last one specifies the number of coarse degrees of freedom per subdomain of the GENEO coarse space. All other options of [HPDDM library](cheatsheet of the HPDDM) can be selected via the __`FreeFem++`__ function `:::freefem set`.
 
-In the last part of the script, the global linear system is solved by the domain decomposition method defined above.
+	In the last part of the script, the global linear system is solved by the domain decomposition method defined above.
 
-```freefem
-Wh<real> def(u);    // local solution
+	```freefem
+	// Solve
+	Wh<real> def(u); //local solution
 
-if(Opt.n > 0)       // optimized Schwarz methods
-    DDM(A, u[], rhs, excluded = excluded, ret = ret, O = Opt);
-else
-    u[] = A^-1 * rhs;
-
-real[int] err(u[].n);
-err = A * u[];      // global matrix-vector product
-err -= rhs;
-
-plotMPI(Th, u[], "Global solution", Pk, def, real, 3, 1)
-plotMPI(Th, err, "Global residual", Pk, def, real, 3, 1)
-real alpha = 2000.0;
-meshN ThMoved = movemesh3(Th, transfo = [x + alpha * u, y + alpha * uB, z + alpha * uC]);
-u[] = mpirank;
-plotMPI(ThMoved, u[], "Global moved solution", Pk, def, real, 3, 1)
-```
+	if(Opt.n > 0) //optimized Schwarz methods
+		DDM(A, u[], rhs, excluded=excluded, ret=ret, O=Opt);
+	else
+		u[] = A^-1 * rhs;
+	```
 
 ### Time dependent problem
 
-__Example heat-3d.edp:__ A three dimensional heat problem
+!!!question "Heat 3D"
+	A three dimensional heat problem
 
-\[
-\frac{\partial u}{\partial t} - \Delta u = 1,\ \ \ u(0,\cdot) := 0 \text{ in }\Omega\,.
-\]
+	\[
+	\frac{\partial u}{\partial t} - \Delta u = 1,\ \ \ u(0,\cdot) := 0 \text{ in }\Omega\,.
+	\]
 
-is discretized by an implicit Euler scheme. At each time step $n$, we shall seek $u^n(x,y,z)$ satisfying for all $w\in H^1(\Omega)$:
+	is discretized by an implicit Euler scheme. At each time step $n$, we shall seek $u^n(x,y,z)$ satisfying for all $w\in H^1(\Omega)$:
 
-\[
-\int_\Omega \frac{u^n-u^{n-1}}{\delta t}\,w + \nabla u^n \nabla w = \int_\Omega w ,\ \ \ u^0 := 0 \text{ in }\Omega\,.
-\]
+	\[
+	\int_\Omega \frac{u^n-u^{n-1}}{\delta t}\,w + \nabla u^n \nabla w = \int_\Omega w ,\ \ \ u^0 := 0 \text{ in }\Omega\,.
+	\]
 
-so that at each time step a linear system
+	so that at each time step a linear system
 
-\[
-(M+dt*K) u^n[] = M*u^{n-1}[] + \delta t*F
-\]
+	\[
+	(M+dt*K) u^n[] = M*u^{n-1}[] + \delta t*F
+	\]
 
-is solved by a domain decomposition method where $M$ is the mass matrix and $K$ is the rigidity matrix. In order to save computational efforts, the domain decomposition method preconditioner is built only once and then reused for all subsequent solves with matrix $A:=M+dt*K$. The distributed matrix vector product with matrix $M$ is made through the call to the function `:::freefem dmv` using the partition of unity associated to matrix $A$.
+	is solved by a domain decomposition method where $M$ is the mass matrix and $K$ is the rigidity matrix. In order to save computational efforts, the domain decomposition method preconditioner is built only once and then reused for all subsequent solves with matrix $A:=M+dt*K$. The distributed matrix vector product with matrix $M$ is made through the call to the function `:::freefem dmv` using the partition of unity associated to matrix $A$.
 
-```freefem hl_lines="90 91 92 93 94 95 96 97 98 99 100 101 102 103"
-//  run with MPI:  ff-mpirun -np 4 script.edp
-// NBPROC 4
+	```freefem
+	load "hpddm" //load HPDDM plugin
+	macro partitioner()metis//metis, scotch, or parmetis
+	macro dimension()3//2D or 3D
+	include "macro_ddm.idp" //additional DDM functions
 
-load "hpddm"                        // HPDDM plugin
-macro partitioner()metis// EOM      // metis, scotch, or parmetis
-macro dimension()3// EOM            // 2D or 3D
-include "macro_ddm.idp"             // additional DDM functions
+	// Macro
+	macro def(i)i //scalar field definition
+	macro init(i)i //scalar field initialization
+	macro grad(u) [dx(u), dy(u), dz(u)] //three-dimensional gradient
 
-macro def(i)i// EOM                         // scalar field definition
-macro init(i)i// EOM                        // scalar field initialization
-macro grad(u)[dx(u), dy(u), dz(u)]// EOM    // three-dimensional gradient
-func Pk = P2;                               // finite element space
+	// Parameters
+	func Pk = P2; //finite element space
 
-string deflation = getARGV("-deflation", "geneo");              // coarse space construction
-int overlap = getARGV("-overlap", 1);                           // geometric overlap between subdomains
-int fakeInterface = getARGV("-interface", 10);                  // interface between subdomains
-int s = getARGV("-split", 1);                                   // refinement factor
-real dt = getARGV("-dt", 0.01);                                 // time step
-int iMax = getARGV("-iMax", 10);                                // number of iterations
+	string deflation = getARGV("-deflation", "geneo"); //coarse space construction
+	int overlap = getARGV("-overlap", 1); //geometric overlap between subdomains
+	int fakeInterface = getARGV("-interface", 10); //interface between subdomains
+	int s = getARGV("-split", 1); //refinement factor
+	real dt = getARGV("-dt", 0.01); //time step
+	int iMax = getARGV("-iMax", 10); //number of iterations
 
-mpiComm comm;
-int p = getARGV("-hpddm_master_p", 1);
-bool excluded = splitComm(mpiCommWorld, p, comm, topology = getARGV("-hpddm_master_topology", 0), exclude = (usedARGV("-hpddm_master_exclude") != -1));
+	mpiComm comm;
+	int p = getARGV("-hpddm_master_p", 1);
+	bool excluded = splitComm(mpiCommWorld, p, comm, topology = getARGV("-hpddm_master_topology", 0), exclude = (usedARGV("-hpddm_master_exclude") != -1));
 
-if(verbosity > 0 && mpirank == 0) {
-    cout << " --- " << mpirank << "/" << mpisize;
-    cout << " - heat-3d.edp - input parameters: refinement factor = " << s << " - overlap = " << overlap << endl;
-}
+	// Display
+	if (verbosity > 0 && mpirank == 0){
+		cout << " --- " << mpirank << "/" << mpisize;
+		cout << " - Heat3D.edp - input parameters: refinement factor = " << s << " - overlap = " << overlap << endl;
+	}
 
-int[int] LL = [1,2, 1,1, 1,1];
-meshN ThBorder, Th = cube(1, 1, 1, [x, y, z]);
-fespace Wh(Th, Pk);                         // local finite element space
-int[int] arrayIntersection;                 // ranks of neighboring subdomains
-int[int][int] restrictionIntersection(0);   // local-to-neighbors renumbering
-real[int] D;                                // partition of unity
-{
-    meshN ThGlobal = cube(getARGV("-global", 10), getARGV("-global", 10), getARGV("-global", 10), [x, y, z], label = LL);      // global mesh
-    build(Th, ThBorder, ThGlobal, fakeInterface, s, overlap, D, arrayIntersection, restrictionIntersection, Wh, Pk, comm, excluded)
-}
+	// Mesh
+	int[int] LL = [1, 2, 1, 1, 1, 1];
+	meshN ThBorder, Th = cube(1, 1, 1, [x, y, z]);
+	fespace Wh(Th, Pk); //local finite element space
+	int[int] arrayIntersection; //ranks of neighboring subdomains
+	int[int][int] restrictionIntersection(0); //local-to-neighbors renumbering
+	real[int] D; //partition of unity
+	{
+		meshN ThGlobal = cube(getARGV("-global", 10), getARGV("-global", 10), getARGV("-global", 10), [x, y, z], label=LL); //global mesh
+		build(Th, ThBorder, ThGlobal, fakeInterface, s, overlap, D, arrayIntersection, restrictionIntersection, Wh, Pk, comm, excluded)
+	}
 
-real[int] rhs;                              // local right-hand side
-matrix<real> Mat;                           // local operator
-matrix<real> M;                             // local mass matrix
-{                                           // local weak form
-    meshN ThAugmented = Th + ThBorder;
-    varf vPb(u, v) = intN(ThAugmented)(u * v + dt * (grad(u)' * grad(v))) + intN(ThAugmented)(dt * v) + on(1, u = 0.0);
-    fespace WhAugmented(ThAugmented, Pk);
-    Mat = vPb(WhAugmented, WhAugmented, tgv = -1);
-    real[int] rhsFull = vPb(0, WhAugmented, tgv = -1);
-    matrix R = interpolate(Wh, WhAugmented);
-    varf vPbM(u, v) = intN(ThAugmented)(u * v);
-    M = vPbM(WhAugmented, WhAugmented);
-    renumbering(M, R, rhsFull, rhs);
-    renumbering(Mat, R, rhsFull, rhs);
-}
-ThBorder = cube(1, 1, 1, [x, y, z]);
+	// Problem
+	real[int] rhs; // local right-hand side
+	matrix<real> Mat; //local operator
+	matrix<real> M; //local mass matrix
+	{ //local weak form
+		meshN ThAugmented = Th + ThBorder;
+		varf vPb (u, v)
+		 	= intN(ThAugmented)(
+				  u * v
+				+ dt * (grad(u)' * grad(v))
+			)
+			+ intN(ThAugmented)(
+				  dt * v
+			)
+			+ on(1, u=0.0)
+			;
+		fespace WhAugmented(ThAugmented, Pk);
+		Mat = vPb(WhAugmented, WhAugmented, tgv=-1);
+		real[int] rhsFull = vPb(0, WhAugmented, tgv=-1);
+		matrix R = interpolate(Wh, WhAugmented);
+		varf vPbM (u, v) = intN(ThAugmented)(u * v);
+		M = vPbM(WhAugmented, WhAugmented);
+		renumbering(M, R, rhsFull, rhs);
+		renumbering(Mat, R, rhsFull, rhs);
+	}
+	ThBorder = cube(1, 1, 1, [x, y, z]);
 
-dschwarz A(Mat, arrayIntersection, restrictionIntersection, scaling = D);
+	dschwarz A(Mat, arrayIntersection, restrictionIntersection, scaling=D);
 
-matrix<real> Opt;                           // local operator with optimized boundary conditions
-dpair ret;
-{
-    int solver = getOption("schwarz_method");
-    if(solver == 1 || solver == 2 || solver == 4) { // optimized Schwarz methods
-        fespace Ph(Th, P0);
-        real kZero = getARGV("-kZero", 10.0);
-        Ph transmission = kZero;
-        varf vOptimized(u, v) = intN(Th)(u * v + dt * (grad(u)' * grad(v))) + intN1(Th, fakeInterface)(transmission * (u * v)) + on(1, u = 0.0);
-        Opt = vOptimized(Wh, Wh, tgv = -1);
-    }
-    if(mpisize > 1 && isSetOption("schwarz_coarse_correction")) { // two-level Schwarz methods
-        if(excluded)
-            attachCoarseOperator(mpiCommWorld, A/*, A = noPen, B = overlapRestriction, threshold = 2. * h[].max / diam*/);
-        else {
-            varf vPbNoPen(u, v) = intN(Th)(u * v + dt * (grad(u)' * grad(v))) + on(1, u = 0.0);
-            matrix<real> noPen = vPbNoPen(Wh, Wh, solver = CG);
-            if(deflation == "geneo") // standard GenEO, no need for RHS -> deduced from LHS (Neumann matrix)
-                attachCoarseOperator(mpiCommWorld, A, A = noPen/*, threshold = 2. * h[].max / diam,*/, ret = ret);
-            else if(deflation == "dtn") {
-                varf vMass(def(u), def(v)) = intN1(Th, fakeInterface)(u * v);
-                matrix<real> massMatrix = vMass(Wh, Wh, solver = CG);
-                attachCoarseOperator(mpiCommWorld, A, A = noPen, B = massMatrix, pattern = Opt/*, threshold = k,*/, ret = ret);
-            }
-            else if(deflation == "geneo-2") // GenEO-2 for optimized Schwarz methods, need for RHS (LHS is still Neumann matrix)
-                attachCoarseOperator(mpiCommWorld, A, A = noPen, B = Opt, pattern = Opt/*, threshold = 2. * h[].max / diam,*/, ret = ret);
-        }
-    }
-}
-/*# SolvePlot #*/
-set(A, sparams = "-hpddm_reuse_preconditioner=1");
-Wh<real> def(u) = init(0.0);    // local solution
-for(int i = 0; i < iMax; ++i) {
-    real[int] newRhs(rhs.n);
-    dmv(A, M, u[], newRhs);     // newRhs = M * u[]
-    newRhs += rhs;
+	matrix<real> Opt; //local operator with optimized boundary conditions
+	dpair ret;
+	{
+		int solver = getOption("schwarz_method");
+		if (solver == 1 || solver == 2 || solver == 4){ //optimized Schwarz methods
+			fespace Ph(Th, P0);
+			real kZero = getARGV("-kZero", 10.0);
+			Ph transmission = kZero;
+			varf vOptimized (u, v)
+				= intN(Th)(
+					  u * v
+					+ dt * (grad(u)' * grad(v))
+				)
+				+ intN1(Th, fakeInterface)(
+					  transmission * (u * v)
+				)
+				+ on(1, u=0.0)
+				;
+			Opt = vOptimized(Wh, Wh, tgv=-1);
+		}
+		if (mpisize > 1 && isSetOption("schwarz_coarse_correction")){ //two-level Schwarz methods
+			if(excluded)
+				attachCoarseOperator(mpiCommWorld, A);
+			else {
+				varf vPbNoPen (u, v)
+					= intN(Th)(
+						  u * v
+						+ dt * (grad(u)' * grad(v))
+					)
+					+ on(1, u=0.0)
+					;
+				matrix<real> noPen = vPbNoPen(Wh, Wh, solver=CG);
+				if(deflation == "geneo") //standard GenEO, no need for RHS -> deduced from LHS (Neumann matrix)
+					attachCoarseOperator(mpiCommWorld, A, A=noPen, ret = ret);
+				else if(deflation == "dtn") {
+					varf vMass (def(u), def(v)) = intN1(Th, fakeInterface)(u * v);
+					matrix<real> massMatrix = vMass(Wh, Wh, solver=CG);
+					attachCoarseOperator(mpiCommWorld, A, A=noPen, B=massMatrix, pattern=Opt, ret=ret);
+				}
+				else if(deflation == "geneo-2") //GenEO-2 for optimized Schwarz methods, need for RHS (LHS is still Neumann matrix)
+					attachCoarseOperator(mpiCommWorld, A, A=noPen, B=Opt, pattern=Opt, ret=ret);
+			}
+		}
+	}
 
-    if(Opt.n > 0)       // optimized Schwarz methods
-        DDM(A, u[], newRhs, excluded = excluded, ret = ret, O = Opt);
-    else
-        u[] = A^-1 * newRhs;
+	// Solve
+	set(A, sparams="-hpddm_reuse_preconditioner=1");
+	Wh<real> def(u) = init(0.0); //local solution
+	for (int i = 0; i < iMax; ++i){
+		real[int] newRhs(rhs.n);
+		dmv(A, M, u[], newRhs); //newRhs = M * u[]
+		newRhs += rhs;
 
-    plotMPI(Th, u[], "Global solution", Pk, def, real, 3, 0)
-}
-/*# SolvePlotEnd #*/
-```
+		if (Opt.n > 0) //optimized Schwarz methods
+			DDM(A, u[], newRhs, excluded=excluded, ret=ret, O=Opt);
+		else
+			u[] = A^-1 * newRhs;
+
+		plotMPI(Th, u[], "Global solution", Pk, def, real, 3, 0)
+	}
+	```
 
 ### Distributed vectors in HPDDM
 
-We give here some hints on the way vectors are distributed among $np$ processes when using FreeFem++ interfaced with HPDDM. The set of degrees of freedom ${\mathcal N}$ is decomposed into $np$ overlapping sets $({\mathcal N}_i)_{1\le i\le np}$. A MPI-process is in charge of each subset. Let $n:=\#{\mathcal N}$ be the number of degrees of freedom of the global finite element space. Let $R_i$ denote the restriction operator from $\R^n$ onto $\R^{\#{\mathcal N}_i}$. We have also defined local diagonal matrices $D_i\in \R^{\#{\mathcal N}_i}\times \R^{\#{\mathcal N}_i}$ so that we have a partition of unity at the algebraic level:
+We give here some hints on the way vectors are distributed among $np$ processes when using __`FreeFem++`__ interfaced with HPDDM. The set of degrees of freedom ${\mathcal N}$ is decomposed into $np$ overlapping sets $({\mathcal N}_i)_{1\le i\le np}$.
+
+ <!--- __ --->
+
+A MPI-process is in charge of each subset. Let $n:=\#{\mathcal N}$ be the number of degrees of freedom of the global finite element space. Let $R_i$ denote the restriction operator from $\R^n$ onto $\R^{\#{\mathcal N}_i}$. We have also defined local diagonal matrices $D_i\in \R^{\#{\mathcal N}_i}\times \R^{\#{\mathcal N}_i}$ so that we have a partition of unity at the algebraic level:
 
 \begin{equation}
 	\label{eq:hpddm:14}
@@ -998,7 +1047,7 @@ A global vector ${\mathbf U}\in\R^n$ is actually not stored. Rather, it is store
 
 It is important to ensure that the result of all linear algebra operators applied to this representation are coherent.
 
-As an example, consider the scalar product of two distributed vectors ${\mathbf U}, {\mathbf V} \in \mathbb{R}^{n}$. Using the partition of unity~\eqref{eq:hpddm:14} $\codered$, we have:
+As an example, consider the scalar product of two distributed vectors ${\mathbf U}, {\mathbf V} \in \mathbb{R}^{n}$. Using the partition of unity \eqref{eq:hpddm:14}, we have:
 
 \begin{align*}({\mathbf U}, {\mathbf V}) = \left({\mathbf U}, \sum_{i=1}^{np} R_i^T D_i R_i {\mathbf V}\right) &= \sum_{i=1}^{np} (R_i {\mathbf U}, D_i R_i {\mathbf V})\\
 &=\sum_{i=1}^{np} \left({\mathbf U}_i, D_i {\mathbf V}_i\right)\,.
@@ -1010,7 +1059,7 @@ Thus, the formula for the scalar product is:
 ({\mathbf U}, {\mathbf V}) = \sum_{i = 1}^{np} (R_i {\mathbf U}, D_i R_i {\mathbf V})\,.
 \end{equation*}
 
-Local scalar products are performed concurrently. Thus, the implementation is parallel except for the sum which corresponds to a `:::freefem MPI_Reduce` call across the $np$ MPI processes. Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFem++ syntax is `:::freefem dscalprod(D,u,v)`.
+Local scalar products are performed concurrently. Thus, the implementation is parallel except for the sum which corresponds to a `:::freefem MPI_Reduce` call across the $np$ MPI processes. Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFem++ syntax is `:::freefem dscalprod(D, u, v)`.
 
 A `:::freefem axpy` procedure $y \leftarrow \alpha\,x+y$ for $x,y\in \mathbb{R}^{n}$ and $\alpha\in\R$ is easily implemented concurrently for distributed vectors in the form:
 
@@ -1018,4 +1067,4 @@ A `:::freefem axpy` procedure $y \leftarrow \alpha\,x+y$ for $x,y\in \mathbb{R}^
 y_i \leftarrow \alpha\,x_i+y_i\,, \forall\ 1\le i \le np\,.
 \]
 
-The matrix vector product is more involved and details are given in the SIAM book  [https://www.ljll.math.upmc.fr/nataf/OT144DoleanJolivetNataf_full.pdf](An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation) \cite{Dolean:2015:IDD} $\codered$ and even more details are given in [http://jolivet.perso.enseeiht.fr/thesis.pdf](P. Jolivet's PhD manuscrit).
+The matrix vector product is more involved and details are given in the SIAM book  [An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation](https://www.ljll.math.upmc.fr/nataf/OT144DoleanJolivetNataf_full.pdf) and even more details are given in [P. Jolivet's PhD manuscrit](http://jolivet.perso.enseeiht.fr/thesis.pdf).

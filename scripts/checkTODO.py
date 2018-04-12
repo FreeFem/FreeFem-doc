@@ -31,8 +31,8 @@ documentationFilesList = [
 	"documentation/MeshGeneration.md",
 	"documentation/FiniteElement.md",
 	"documentation/Visualization.md",
+	"documentation/AlgorithmsOptimization.md",
 	"documentation/Parallelization.md",
-	"documentation/chapter11part2.md",
 	"documentation/Plugins.md",
 	"documentation/Developers.md"
 	]
@@ -42,8 +42,8 @@ documentationNamesList = [
 	"Mesh generation",
 	"Finite element",
 	"Visualization",
+	"Algorithms & Optimization",
 	"Parallelization",
-	"Chapter 11 part2",
 	"Plugins",
 	"Developers"
 	]

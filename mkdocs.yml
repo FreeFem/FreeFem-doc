@@ -11,9 +11,8 @@ pages:
     - Mesh Generation: documentation/MeshGeneration.md
     - Finite Element: documentation/FiniteElement.md
     - Visualization: documentation/Visualization.md
+    - Algorithms & Optimization: documentation/AlgorithmsOptimization.md
     - Parallelization: documentation/Parallelization.md
-    - (TODO) Chapter 11 part 2: documentation/chapter11part2.md
-    - (TODO) Chapter 8: documentation/chapter8.md
     - Plugins: documentation/Plugins.md
     - Developers: documentation/Developers.md
     - TODO: documentation/TODO.md

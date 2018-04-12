@@ -1,8 +1,4 @@
-# Algorithms and Optimization
-
 $$\newcommand{\MyInt}[2]{\displaystyle{\int_{#1} #2 } }$$
-
-The complete example is in `:::freefem algo.edp` file.
 
 ## Conjugate Gradient/GMRES
 
