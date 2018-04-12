@@ -249,7 +249,7 @@ This algorithm works with a normal multivariate distribution in the parameters s
 The  `:::freefem ff-Ipopt` package is an interface for the IPOPT \cite{ipopt} $\codered$ optimizer. IPOPT is a software library for large scale, non-linear, constrained optimization. Detailed informations about it are in \cite{ipopt} $\codered$ and [https://projects.coin-or.org/Ipopt](https://projects.coin-or.org/Ipopt). It implements a primal-dual interior point method along with filter method based line searchs.
 IPOPT needs a direct sparse symmetric linear solver. If your version of FreeFem has been compiled with the  `:::freefem --enable-downlad` tag, it will automatically be linked with a sequential version of MUMPS. An alternative to MUMPS would be to download the HSL subroutines (see [http://www.coin-or.org/Ipopt/documentation/node16.html](http://www.coin-or.org/Ipopt/documentation/node16.html)) and place them in the `:::freefem /ipopt/Ipopt-3.10.2/ThirdParty/HSL` directory of the FreeFem++ downloads folder before compiling.
 
-## Short description of the algorithm
+### Short description of the algorithm
 
 In this section, we give a very brief glimpse at the underlying mathematics of IPOPT. For a deeper introduction on interior methods for nonlinear smooth optimization, one may consults \cite{ipintro} $\codered$, or \cite{ipopt} $\codered$ for more IPOPT specific elements. IPOPT is designed to perform optimization for both equality and inequality constrained problems. Though, nonlinear inequalities are rearranged before the beginning of the optimization process in order to restrict the panel of nonlinear constraints to those of the equality kind. Each nonlinear inequality ones are transformed into a pair of simple bound inequality and nonlinear equality constraint by the introduction of as many slack variables as is needed : $c_{i}(x)\leq 0$ becomes $c_{i}(x) + s_{i} = 0$ and $s_{i}\leq 0$, where $s_{i}$ is added to the initial variables of the problems $x_{i}$. Thus, for convenience, we will assume that the minimization problem does not contain any nonlinear inequality constraint. It means that, given a function $f:\mathbb{R}^{n}\mapsto\mathbb{R}$, we want to find :
 
@@ -308,7 +308,7 @@ Where if $a$ is a vector of $\R^n$, $A$ denotes the diagonal matrix $A=(a_i \del
 
 More IPOPT specific features or implementation details can be found in \cite{ipopt} $\codered$. We will just retain that IPOPT is a smart Newton method for solving constrained optimization problem, with global convergence capabilities due to a robust line search method (in the sense that the algorithm will convergence no matter the initializer). Due to the underlying Newton method, the optimization process requires expressions of all derivatives up to the order 2 of the fitness function as well as those of the constraints. For problems whose hessian matrices are difficult to compute or lead to high dimensional dense matrices, it is possible to use a BFGS approximation of these objects at the cost of a much slower convergence rate.
 
-## IPOPT in FreeFem++
+### IPOPT in FreeFem++
 
 Calling the IPOPT optimizer in a FreeFem++ script is done with the  `:::freefem IPOPT` function included in the `:::freefem ff-Ipopt` dynamic library. IPOPT is designed to solve constrained minimization problem in the form :
 
@@ -684,7 +684,7 @@ The volume of the space enclosed within the shape is easier to express :
 	= \frac{1}{3}\MyInt{\Omega}{\rho^{3} \sin(\phi) d\theta d\phi}
 \end{equation}
 
-## Derivatives
+### Derivatives
 
 In order to use a newton based interior point optimization algorithm, one must be able to evaluate the derivatives of $\mathcal{A}$ and $\mathcal{V}$ with respect to $rho$. Concerning the area we have the following result :
 
@@ -723,7 +723,7 @@ Deriving the volume function derivatives is again an easier task. We immediately
 	\end{array}
 \end{equation}
 
-## The problem and its script :
+### The problem and its script :
 
 The whole code is available in  `:::freefem IpoptMinSurfVol.edp`. We propose to solve the following problem :
 
