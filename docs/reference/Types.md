@@ -14,7 +14,7 @@ Boolean value.
 bool b = true;
 ```
 
-!!!question "The result of a comparison is a boolean"
+!!!example "The result of a comparison is a boolean"
 	```freefem
 	bool b = (1 < 2);
 	```
@@ -34,7 +34,7 @@ complex c = 0. + 1i;
 ```
 The imaginary number $i$ is defined as `1i`
 
-!!!question "Example"
+!!!example "Example"
 	```freefem
 	complex a = 1i, b = 2 + 3i;
 	cout << "a + b = " << a + b << endl;
@@ -553,7 +553,7 @@ matrix[int] B(10);
 real [int, int][int] A(10);
 ```
 
-!!!question "Example"
+!!!example "Example"
 	In the following example, Poisson's equation is solved for 3 different given functions $f=1,\, \sin(\pi x)\cos(\pi y),\, |x-1||y-1|$, whose solutions are stored in an array of FE function.
 	```freefem
 	// Mesh

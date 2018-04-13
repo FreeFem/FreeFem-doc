@@ -81,7 +81,7 @@ $$
 
 Finally the new domain $\Omega^{n+1} = \mathcal{F}(\Omega^n)$
 
-!!!question "Free boundary"
+!!!example "Free boundary"
 	The FreeFem++ implementation is:
 
 	```freefem

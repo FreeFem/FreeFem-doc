@@ -250,7 +250,7 @@ B&-\epsilon I
 
 	(see e.g. [ROBERTS1993](#ROBERTS1993), 17.2)
 
-!!!question "Cavity"
+!!!example "Cavity"
 	The driven cavity flow problem is solved first at zero Reynolds number (Stokes flow) and then at Reynolds 100. The velocity pressure formulation is used first and then the calculation is repeated with the stream function vorticity formulation.
 
 	We solve the driven cavity problem by the penalty method \eqref{eqn::PvfStokes} where $\mathbf{u}_{\Gamma}\cdot \mathbf{n}=0$ and $\mathbf{u}_{\Gamma}\cdot \mathbf{s}=1$ on the top boundary and zero elsewhere ($\mathbf{n}$ is the unit normal to $\Gamma$, and $\mathbf{s}$ the unit tangent to $\Gamma$).
@@ -411,7 +411,7 @@ There is a constant $\alpha>0$ such that $\alpha\le \rho_n\le 2$ for each $n$, t
 First we define mesh, and the Taylor-Hood approximation.
 So $X_{h}$ is the velocity space, and $M_{h}$ is the pressure space.
 
-!!!question "Stokes Uzawa"
+!!!example "Stokes Uzawa"
 	```freefem
 	// Mesh
 	mesh Th = square(10, 10);
@@ -483,7 +483,7 @@ The idea of the preconditioner is that in a periodic domain, all differential op
 
 To implement this, we do
 
-!!!question "NS Uzawa Cahouet Chabart"
+!!!example "NS Uzawa Cahouet Chabart"
 	```freefem
 	// Parameters
 	verbosity = 0;

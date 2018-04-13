@@ -111,7 +111,7 @@ Remark: For complex problems, you need to use the keyword `:::freefem complexEig
 * `:::freefem which=`
 The requested subset of eigenvalues (see above).
 
-!!!question "Laplace eigenvalue"
+!!!example "Laplace eigenvalue"
 	In the first example, we compute the eigenvalues and the eigenvectors of the Dirichlet problem on square $\Omega=]0,\pi[^2$.
 
 	The problem is to find: $\lambda$, and $\nabla u_{\lambda}$ in $\mathbb{R}{\times} H^1_0(\Omega)$

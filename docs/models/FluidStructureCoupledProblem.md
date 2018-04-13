@@ -33,7 +33,7 @@ $$
 
 The data are the gravity force $\mathbf{g}$ and the boundary stress $\mathbf{h}$.
 
-!!!question "Fluide-structure"
+!!!example "Fluide-structure"
 	In our example, the Lamé system and the Stokes system are coupled by a common boundary on which the fluid stress creates a displacement of the boundary and hence changes the shape of the domain where the Stokes problem is integrated. The geometry is that of a vertical driven cavity with an elastic lid. The lid is a beam with weight so it will be deformed by its own weight and by the normal stress due to the fluid reaction. The cavity is the $10 \times 10$ square and the lid is a rectangle of height $l=2$.
 
 	A beam sits on a box full of fluid rotating because the left vertical side has velocity one. The beam is bent by its own weight, but the pressure of the fluid modifies the bending.

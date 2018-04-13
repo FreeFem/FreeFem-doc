@@ -77,7 +77,7 @@ above).
 	$$
 	for all $v$ which are in the finite element space $V_h$ and zero on the boundary $C$.
 
-!!! question "Exercise:"
+!!! example "Exercise:"
 	Change `:::freefem P1` into `:::freefem P2` and run the program.
 
 This first example shows how FreeFem++ executes with no effort all the usual steps required by the finite element method (FEM). Let's

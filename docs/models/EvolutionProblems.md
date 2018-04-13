@@ -57,7 +57,7 @@ By the boundary condition $\p u^{m+1}/\p n=0$, it follows that
 
 Using the identity just above, we can calculate the finite element approximation $u_h^m$ of $u^m$ in a step-by-step manner with respect to $t$.
 
-!!!question "Example"
+!!!example "Example"
 	We now solve the following example with the exact solution $u(x,y,t)=tx^4$, \Omega = ]0,1[^2.
 
 	\begin{eqnarray*}
@@ -193,7 +193,7 @@ if the following are satisfied:
 
 2. When $1/2\leq \theta\leq 1$, we can take $\tau$ arbitrary.
 
-!!!question "Example"
+!!!example "Example"
 	```freefem
 	// Parameters
 	real tau = 0.1;
@@ -381,7 +381,7 @@ $u^{m + 1}(x) = u^m(X^m(x))\approx$ `:::freefem convect`$(\mathbf{\alpha},-\tau 
 
 The exact solution is $u(x, t) = u(\mathbf{X}(t))$ where $\mathbf{X}$ equals $x$ rotated around the origin by an angle $\theta = -t$ (rotate in clockwise). So, if $u^0$ in a 3D perspective looks like a bell, then $u$ will have exactly the same shape, but rotated by the same amount. The program consists in solving the equation until $T = 2\pi$, that is for a full revolution and to compare the final solution with the initial one; they should be equal.
 
-!!!question "Convect"
+!!!example "Convect"
 	```freefem
 	// Parameters
 	real dt = 0.17;
@@ -456,7 +456,7 @@ An implicit Euler scheme is used and a mesh adaptation is done every 10 time ste
 \frac{{\p u}}{{\p t}} + a_1 \frac{{\p u}}{{\p x}} + a_2 \frac{{\p u}}{{\p y}} \approx \frac{1}{{\tau }}\left( {u^{n + 1} \left( x \right) - u^n \left( {x - \mathbf{\alpha}\tau } \right)} \right)
 \end{eqnarray}
 
-!!!question "Black-Scholes"
+!!!example "Black-Scholes"
 	```freefem
 	// Parameters
 	int m = 30;

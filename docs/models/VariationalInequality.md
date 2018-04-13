@@ -58,7 +58,7 @@ You can find all the mathematics about this algorithm in [ITO2003](#ITO2003).
 
 Now how to do that in FreeFem++? The full example is:
 
-!!!question "Variational inequality"
+!!!example "Variational inequality"
 	```freefem
 	load "medit"
 

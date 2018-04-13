@@ -20,7 +20,7 @@ for (i = 0; i <= 20; i++){ //which can be used in statements such as
 
 The life of a variable is the current block `{...}`, except the `:::freefem fespace` variable, and the variables local to a block are destroyed at the end of the block as follows.
 
-!!!question "Example"
+!!!example "Example"
 	```freefem
 	real r = 0.01;
 	mesh Th = square(10, 10); //unit square mesh

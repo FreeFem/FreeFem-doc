@@ -1724,7 +1724,7 @@ The named parameters of function `:::freefem interpolate` are:
 	b1 == 2, b2 == 4, b3 == 0 ...
 	```
 
-!!!question "Matrix interpolation"
+!!!example "Matrix interpolation"
 	```freefem
 	// Mesh
 	mesh Th = square(4, 4);
@@ -1783,7 +1783,7 @@ The named parameters of function `:::freefem interpolate` are:
 	ww[] = Ixx*dd;
 	```
 
-!!!question "Schwarz"
+!!!example "Schwarz"
 	The following shows how to implement with an interpolation matrix a domain decomposition algorithm based on Schwarz method with Robin conditions.
 
 	Given a non-overlapping partition $\bar\Omega=\bar\Omega_0\cup\bar\Omega_1$ with $\Omega_0\cap\Omega_1=\emptyset$, $\Sigma:=\bar\Omega_0\cap\bar\Omega_1$ the algorithm is :
@@ -1927,7 +1927,7 @@ Here, we show how to get  informations on a finite element space $W_h({\cal T}_n
 
 See the following example:
 
-!!!question "Finite element connectivity"
+!!!example "Finite element connectivity"
 	```freefem
 	// Mesh
 	mesh Th = square(5, 5);

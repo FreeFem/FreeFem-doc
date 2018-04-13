@@ -741,7 +741,7 @@ We also add functions (see [Table 2](#Tab2)) with no parameter to change the def
 	</tbody>
 </table>
 
-!!!question "Test direct solvers"
+!!!example "Test direct solvers"
 	```freefem
 	load "MUMPS_FreeFem"
 	//default solver: real-> MUMPS, complex -> MUMPS
@@ -965,7 +965,7 @@ This is done in typing `:::freefem load "MUMPS_FreeFem"` in the `.edp` file. We 
 
 If no solver parameter is given, we used default option of MUMPS solver.
 
-!!!question "MUMPS example"
+!!!example "MUMPS example"
 	A simple example of calling MUMPS in __`FreeFem++`__ with this two methods is given in the [Test solver MUMPS example](../examples/#solver-mumps).
 
 #### SuperLU distributed solver
@@ -1050,7 +1050,7 @@ NOEQUIL /* DiagScale : NOEQUIL, ROW, COL, BOTH*/
 
 If no solver parameter is given, we used default option of SuperLU_DIST solver.
 
-!!!question "Example"
+!!!example
 	A simple example of calling SuperLU_DIST in __`FreeFem++`__ with this two methods is given in the [Solver superLU_DIST example](../examples/#solver-superlu_dist).
 
 #### PaStiX solver
@@ -1096,7 +1096,7 @@ An example of this file parameter is given in `ffpastix_iparm_dparm.txt` with a 
 
 If no solver parameter is given, we use the default option of PaStiX solver.
 
-!!!question "Example"
+!!!example
 	A simple example of calling PaStiX in __`FreeFem++`__ with this two methods is given in the [Solver PaStiX example](../examples/#solver-pastix).
 
 In [Table 3](#Tab3), we recall the different matrix considering in the different direct solvers.
@@ -1180,7 +1180,7 @@ All these parallel preconditioners are based on the principle of domain decompos
 
 To solve the local problem on $A_i$ there are several preconditioners as __ilut__ (Incomplete LU with threshold), __iluk__ (Incomplete LU with level of fill in) and __ARMS__ (Algebraic Recursive Multilevel Solver).
 
-!!!question "Default parameters"
+!!!example "Default parameters"
 	```freefem
 	load "parms_FreeFem" //Tell FreeFem that you will use pARMS
 
@@ -1236,7 +1236,7 @@ Here are some default parameters:
 
 To specify the parameters to apply to the solver, the user can either give an integer vector for __integer parameters__ and real vectors for __real parameters__ or provide a __file__ which contains those parameters.
 
-!!!question "User specifies parameters inside two vectors"
+!!!example "User specifies parameters inside two vectors"
 	Lets us consider Navier-Stokes example. In this example we solve linear systems coming from discretization of Navier-Stokes equations with pARMS. Parameters of solver is specified by user.
 
 	```freefem
@@ -1605,7 +1605,7 @@ To specify the parameters to apply to the solver, the user can either give an in
 
 HIPS implements two solver classes which are the iteratives class (GMRES, PCG) and the Direct class. Concerning preconditionners, HIPS implements a type of multilevel ILU. For further informations on those preconditionners see the [HIPS documentation](http://hips.gforge.inria.fr/doc/hips_user.pdf).
 
-!!!question "Laplacian 3D solved with HIPS"
+!!!example "Laplacian 3D solved with HIPS"
 	Let us consider the 3D Laplacian example inside __`FreeFem++`__ package where after discretization we want to solve the linear equation with HIPS.
 
 	The following example is a Laplacian 3D using Hips as linear solver. We first load Hips solver at line 2. From line 7 to 18 we specify the parameters for the Hips solver and in line 82 we set these parameters in the linear solver.
@@ -1866,7 +1866,7 @@ The _sparse approximate inverse_ approximates the inverse of a matrix $A$ by a s
 
 HYPRE implement three Krylov subspace solvers: GMRES, PCG and BiCGStab.
 
-!!!question "Laplacian 3D solved with HYPRE"
+!!!example "Laplacian 3D solved with HYPRE"
 	Let us consider again the 3D Laplacian example inside FreeFem++ package where after discretization we want to solve the linear equation with Hypre. The following example is a Laplacian 3D using Hypre as linear solver. This is the same example as Hips one, so we just show here the lines where we set some Hypre parameters.
 
 	We first load the Hypre solver at line 2. From line 6 to 18 we specifies the parameters to set to Hypre solver and in line 22 we set parameters to Hypre solver.
@@ -2194,7 +2194,7 @@ __mpiComm cc(MPIrank p, int key):__ Same constructor than the last one.
 
 Here `:::freefem colors` and `:::freefem comm` is defined in `:::freefem MPIrank`. This constructor is based on `MPI_Comm_split` routine of MPI.
 
-!!!question "Split communicator"
+!!!example "Split communicator"
 	```freefem
 	mpiComm comm(mpiCommWorld, 0, 0);
 	int color = mpiRank(comm)%2;
@@ -2209,7 +2209,7 @@ Used to order the groups within `:::freefem comm` (logical) when creating the ne
 
 __mpiComm cc(MPIrank p1, MPIrank p2, int tag):__ This constructor creates an intercommuncator from two intracommunicators. `:::freefem p1` defined local (intra)communicator and rank in `local_comm` of leader (often 0) while `:::freefem p2` defined remote communicator and rank in `peer_comm` of remote leader (often 0). `:::freefem tag` Message tag to use in constructing intercommunicator. This constructor is based on `MPI_Intercomm_create`.
 
-!!!question "Merge"
+!!!example "Merge"
 	```freefem
 	mpiComm comm, cc;
 	int color = mpiRank(comm)%2;
@@ -2283,7 +2283,7 @@ Note that, for all global operations, only `:::freefem int[int]` and `:::freefem
 
 Real valued problems (diffusion, heat, elasticity and Stokes) and complex valued problems (Maxwell and Helmholtz) are given in both 2D and 3D. We detail here the 3D elasticity problem and the 3D time-dependent heat problem.
 
-!!!question "Elasticity 3D"
+!!!example "Elasticity 3D"
 	A three dimensional elasticity problem is defined. The solver is a domain decomposition method. Domain decomposition methods are a natural framework for parallel computers. The scripts run on multicores computers (from 2 to tens of thousands of cores). Recall that like in any MPI code the number of MPI processes, `:::freefem mpisize`, is given in the command line via the option `:::freefem -np`. We focus on the script `:::freefem Elasticity3D.edp` but the other scripts have the same structure. The command line to run the example on four processes with `:::freefem ffglut` visualization is: `:::freefem ff-mpirun -np 4 Elasticity3D.edp -glut ffglut`
 
 	```freefem
@@ -2476,7 +2476,7 @@ Real valued problems (diffusion, heat, elasticity and Stokes) and complex valued
 
 ### Time dependent problem
 
-!!!question "Heat 3D"
+!!!example "Heat 3D"
 	A three dimensional heat problem
 
 	\[

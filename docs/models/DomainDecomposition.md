@@ -27,7 +27,7 @@ Here we take $\Omega_1$ to be a quadrangle, $\Omega_2$ a disk and we apply the a
 |:----:|
 |![Schwarz1](images/DomainDecomposition_Schwarz1.png)|
 
-!!!question "Schwarz overlapping"
+!!!example "Schwarz overlapping"
 	```freefem
 	// Parameters
 	int inside = 2; //inside boundary
@@ -128,7 +128,7 @@ $$
 
 where the sign $+$ or $-$ of ${\pm}$ is choose to have convergence.
 
-!!!question "Schwarz non-overlapping"
+!!!example "Schwarz non-overlapping"
 	```freefem
 	// Parameters
 	int inside = 2;
@@ -221,7 +221,7 @@ $$
 
 The version of this example uses the Shur complement. The problem on the border is solved by a conjugate gradient method.
 
-!!!question "Schwarz conjugate gradient"
+!!!example "Schwarz conjugate gradient"
 	First, we construct the two domains
 	```freefem
 	// Parameters

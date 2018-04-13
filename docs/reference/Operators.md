@@ -86,7 +86,7 @@ $$
 
 `a ? b : c` is equal to `b` if the `a` is true, `c` otherwise.
 
-!!!question "Example with `:::freefem int`"
+!!!example "Example with `:::freefem int`"
 	```freefem
 	int a = 12;
 	int b = 5;
@@ -111,7 +111,7 @@ $$
 	( 12 < 5 ? 12 : 5) = 5
 	```
 
-!!!question "Example with `:::freefem real`"
+!!!example "Example with `:::freefem real`"
 	```freefem
 	real a = qsrt(2.);
 	real b = pi;

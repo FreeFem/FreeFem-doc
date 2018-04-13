@@ -467,7 +467,7 @@ plot(uh, value=true);
 
 The periodic condition does not necessarily require parallel boundaries. The following example give such example.
 
-!!!question "Periodic boundary conditions - non-parallel boundaries"
+!!!example "Periodic boundary conditions - non-parallel boundaries"
 	```freefem
 	// Parameters
 	int n = 10;
@@ -524,7 +524,7 @@ The periodic condition does not necessarily require parallel boundaries. The fol
 
 An other example with no equal border, just to see if the code works.
 
-!!! question "Periodic boundary conditions - non-equal border"
+!!! example "Periodic boundary conditions - non-equal border"
 	```freefem
 	// Macro
 	//irregular boundary condition to build border AB
@@ -588,7 +588,7 @@ An other example with no equal border, just to see if the code works.
 	plot(u, value=true);
 	```
 
-!!!question "Periodic boundry conditions - Poisson cube-balloon"
+!!!example "Periodic boundry conditions - Poisson cube-balloon"
 	```freefem
 	load "msh3"
 	load "tetgen"

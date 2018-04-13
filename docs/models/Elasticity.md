@@ -112,7 +112,7 @@ $$
 
 where $V$ is the linear closed subspace of $H^1(\Omega)^2$.
 
-!!!question "Beam"
+!!!example "Beam"
 	Consider an elastic plate with the undeformed rectangle shape $]0,10[\times ]0,2[$. The body force is the gravity force $\mathbf{f}$ and the boundary force $\mathbf{g}$ is zero on lower and upper side. On the two vertical sides of the beam are fixed.
 
 	```freefem
@@ -161,7 +161,7 @@ where $V$ is the linear closed subspace of $H^1(\Omega)^2$.
 	plot(th1, wait=true);
 	```
 
-!!!question "Beam 3D"
+!!!example "Beam 3D"
 	Consider elastic box with the undeformed parallelepiped shape $]0,5[\times ]0,1[\times]0,1[$. The body force is the gravity force $\mathbf{f}$ and the boundary force $\mathbf{g}$ is zero on all face except one the one vertical left face where the beam is fixed.
 
 	```freefem
@@ -328,7 +328,7 @@ where $\sigma_1$ and $\sigma_2$ are the principal stresses.
 
 In opening mode, the photoelasticity make symmetric pattern concentrated at $\gamma$.
 
-!!!question "(Crack Opening, $K_2(\gamma)=0$)"
+!!!example "(Crack Opening, $K_2(\gamma)=0$)"
 	```freefem
 	// Parameters
 	real d = 0.0001;
@@ -422,7 +422,7 @@ $$
 
 where $H(t)=1$ if $t>0$; $= 0$ if $t<0$.
 
-!!!question "Crack Sliding, $K_2(\gamma)=0$"
+!!!example "Crack Sliding, $K_2(\gamma)=0$"
 	```freefem
 	// Parameters
 	real d = 0.0001;

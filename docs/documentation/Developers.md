@@ -378,7 +378,7 @@ where $P_{p}$ is a set of $npPi$ points,
 
 In the formula \eqref{eq-interpo}, the list $p_{k},\, j_{k},\, i_{k}$ depend just on the type of finite element (not on the element), but the coefficient $\alpha_{k}$ can be depending on the element.
 
-!!!question "Classical scalar Lagrange finite element"
+!!!example "Classical scalar Lagrange finite element"
 	With the classical scalar Lagrange finite element, we have $\mathtt{kPi}=\mathtt{npPi}=\mathtt{NbOfNode}$ and
 
 	* $P_{p}$ is the point of the nodal points
@@ -386,7 +386,7 @@ In the formula \eqref{eq-interpo}, the list $p_{k},\, j_{k},\, i_{k}$ depend jus
 	* $p_{k}=k$ , $j_{k}=k$ because we have one node per function.
 	* $j_{k}=0$ because $N=1$
 
-!!!question "The Raviart-Thomas finite element"
+!!!example "The Raviart-Thomas finite element"
 	\begin{equation}
 		RT0_{h} = \{ \mathbf{v} \in H(div) / \forall K \in
 		\mathcal{T}_{h} \quad \mathbf{v}_{|K}(x,y) =

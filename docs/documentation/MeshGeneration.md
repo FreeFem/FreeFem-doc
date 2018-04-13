@@ -863,7 +863,7 @@ Here we solve the [Poisson's problem](../tutorial/), when $f=1$ and $\Omega$ is 
 |:----|:----|
 |![L-shape2](images/MeshGeneration_AdaptMesh2.png)|![L Shape solution](images/MeshGeneration_AdaptMesh3.png)|
 
-!!!question "Example"
+!!!example "Example"
 	The solution has the singularity $r^{3/2},\, r=|x-\gamma|$ at the point $\gamma$ of the intersection of two lines $bc$ and $bd$ (see <a href="#Fig15">Fig. 15</a>).
 
 ```freefem
@@ -1074,7 +1074,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 ## Meshing Examples
 
-!!!question "Two rectangles touching by a side"
+!!!example "Two rectangles touching by a side"
 	```freefem
 	border a(t=0, 1){x=t; y=0;};
 	border b(t=0, 1){x=1; y=t;};
@@ -1098,7 +1098,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 	</center>
 
-!!!question "NACA0012 Airfoil"
+!!!example "NACA0012 Airfoil"
 	```freefem
 	border upper(t=0, 1){
 		x=t;
@@ -1121,7 +1121,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 	</center>
 
-!!!question "Cardioid"
+!!!example "Cardioid"
 	```freefem
 	real b = 1, a = b;
 
@@ -1138,7 +1138,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 	</center>
 
-!!!question "Cassini Egg"
+!!!example "Cassini Egg"
 	```freefem
 	border C(t=0, 2*pi) {x=(2*cos(2*t)+3)*cos(t); y=(2*cos(2*t)+3)*sin(t);}
 	mesh Th = buildmesh(C(50));
@@ -1153,7 +1153,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 	</center>
 
-!!!question "By cubic Bezier curve"
+!!!example "By cubic Bezier curve"
 	```freefem
 	// A cubic Bezier curve connecting two points with two control points
 	func real bzi(real p0, real p1, real q1, real q2, real t){
@@ -1193,7 +1193,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 	</center>
 
-!!!question "Section of Engine"
+!!!example "Section of Engine"
 	```freefem
 	real a = 6., b = 1., c = 0.5;
 
@@ -1217,7 +1217,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 	</center>
 
-!!!question "Domain with U-shape channel"
+!!!example "Domain with U-shape channel"
 	```freefem
 	real d = 0.1; //width of U-shape
 	border L1(t=0, 1-d){x=-1; y=-d-t;}
@@ -1241,7 +1241,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 	</center>
 
-!!!question "Domain with V-shape cut"
+!!!example "Domain with V-shape cut"
 	```freefem
 	real dAg = 0.02; //angle of V-shape
 	border C(t=dAg, 2*pi-dAg){x=cos(t); y=sin(t);};
@@ -1266,7 +1266,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 	</center>
 
-!!!question "Smiling face"
+!!!example "Smiling face"
 	```freefem
 	real d=0.1;
 	int m = 5;
@@ -1297,7 +1297,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 
 	</center>
 
-!!!question "3 points bending"
+!!!example "3 points bending"
 	```freefem
 	// Square for Three-Point Bend Specimens fixed on Fix1, Fix2
 	// It will be loaded on Load.
@@ -1935,7 +1935,7 @@ The vector `:::freefem region`, `:::freefem labelmid`, `:::freefem labelup` and 
 
 An example of this command is given in the [Build layer mesh example](../examples/#example-build-layer-mesh).
 
-!!!question "Cube"
+!!!example "Cube"
 	`Cube.idp`
 	```freefem
 	load "medit"
@@ -1961,7 +1961,7 @@ An example of this command is given in the [Build layer mesh example](../example
 	}
 	```
 
-!!!question "Unit cube"
+!!!example "Unit cube"
 	```freefem
 	include "Cube.idp"
 
@@ -1980,7 +1980,7 @@ An example of this command is given in the [Build layer mesh example](../example
 
 	</center>
 
-!!!question "Cone"
+!!!example "Cone"
 	An axisymtric mesh on a triangle with degenerateness
 	```freefem
 	load "msh3"
@@ -2026,7 +2026,7 @@ An example of this command is given in the [Build layer mesh example](../example
 
 	</center>
 
-!!!question "Buildlayer mesh"
+!!!example "Buildlayer mesh"
 	```freefem
 	load "msh3"
 	load "tetgen"
@@ -2095,7 +2095,7 @@ An example of this command is given in the [Build layer mesh example](../example
 
 ## Meshing examples
 
-!!!question "lake"
+!!!example "lake"
 	```freefem
 	load "msh3"
 	load "medit"
@@ -2123,7 +2123,7 @@ An example of this command is given in the [Build layer mesh example](../example
 	medit("Th", Th);
 	```
 
-!!!question "Hole region"
+!!!example "Hole region"
 	```freefem
 	load "msh3"
 	load "tetgen"
@@ -2315,7 +2315,7 @@ This command line allows also to represent two differents meshes and solutions o
 medit("sol2domain", Th1, h1, Th2, h2, order=1);
 ```
 
-!!!question "`:::freefem medit`"
+!!!example "`:::freefem medit`"
 	```freefem
 	load "medit"
 
@@ -2435,7 +2435,7 @@ m_{3 1} & m_{3 2} & m_{3 3}
 \end{array}\right)$
 , the parameters `:::freefem metric` is : $$M_{aniso}= (H(V_{0}), \ldots, H(V_{nv}) )^t $$ where $H(V_{i})$ is the vector of size 6 defined by $[m11,m21,m22,m31,m32,m33]$
 
-!!!question "`:::freefem mshmet`"
+!!!example "`:::freefem mshmet`"
 	```freefem
 	load "mshmet"
 	load "medit"
@@ -2572,7 +2572,7 @@ where $H(V_{i})$ is the vector of size 6 defined by $[m11,m21,m22,m31,m32,m33]$
 	* doptions(9): Set the angular walton limitation parameter (default 45 degree).
 	* doptions(10): Set the angular ridge detection (default 45 degree).
 
-!!!question "`:::freefem freeyams`"
+!!!example "`:::freefem freeyams`"
 	```freefem
 	load "msh3"
 	load "medit"
@@ -2652,7 +2652,7 @@ The parameters of `:::freefem mmg3d` are :
 
 * `:::freefem displVect=` sets the vector displacement in a vector expression. This vector contains the displacement at each point of the initial mesh. It is a vector of size 3 $nv$.
 
-!!!question "`:::freefem mmg3d`"
+!!!example "`:::freefem mmg3d`"
 	```freefem
 	load "msh3"
 	load "medit"
@@ -2679,7 +2679,7 @@ The parameters of `:::freefem mmg3d` are :
 	medit("Isometric", Th3);
 	```
 
-!!! question "Falling spheres"
+!!! example "Falling spheres"
 	```freefem
 	load "msh3"
 	load "tetgen"
@@ -2745,7 +2745,7 @@ The parameters of `:::freefem mmg3d` are :
 
 ## A first 3d isotrope mesh adaptation process
 
-!!!question "Adaptation 3D"
+!!!example "Adaptation 3D"
 	```freefem
 	load "msh3"
 	load "tetgen"
@@ -2806,7 +2806,7 @@ The parameters of `:::freefem mmg3d` are :
 
 The idea is to get the discretization of an isoline of fluid meshes, this tool can be useful to construct meshes from image. First, we give an example of the isovalue meshes $0.2$ of analytical function $ \sqrt{(x-1/2)^2 +(y-1/2)^2}$, on unit square.
 
-!!!question "iosline"
+!!!example "iosline"
 	```freefem
 	load "isoline"
 
@@ -2887,7 +2887,7 @@ plot(Th, wait=true);
 
 Secondly, we use this idea to build meshes from image, we use the plugins `:::freefem ppm2rnm` to read `:::freefem pgm` gray scale image, and we extract the gray contour at level 0.25.
 
-!!!question "Leman lake"
+!!!example "Leman lake"
 	```freefem
 	load "ppm2rnm"
 	load "isoline"
