@@ -24,7 +24,7 @@ border b6(t=H, 0){x=0; y=t;};
 mesh Th = buildmesh(b1(nn*L) + b2(nn*h) + b3(nn*(L-l)) + b4(nn*(H-h)) + b5(nn*l) + b6(nn*H));
 
 // Fespace
-fespace Vh(Th, P1);	//Change P1 to P2 to test P2 finite element
+fespace Vh(Th, P1);	// Change P1 to P2 to test P2 finite element
 Vh u, v;
 
 // Macro
@@ -57,13 +57,13 @@ for (int i = 0; i < NAdapt; i++){
 }
 ```
 
-Adapted mesh|
-:----:|
-![poisson Associated mesh](images/poisson_associated_mesh.jpg)|
+|Adapted mesh|
+|:----:|
+|![poisson Associated mesh](images/poisson_associated_mesh.jpg)|
 
-Solution on adapted mesh|
-:----:|
-![poisson adapted mesh](images/poisson_adapted_mesh.jpg)|
+|Solution on adapted mesh|
+|:----:|
+|![poisson adapted mesh](images/poisson_adapted_mesh.jpg)|
 
 ## Poisson's equation 3D
 
@@ -143,15 +143,15 @@ plot(u2, wait=true);
 plot(u2, u2e,wait=true);
 ```
 
-Iso-surfaces of the solution |
-:----:|
-![Poisson3D](images/poisson_3d.jpg)|
+|Iso-surfaces of the solution |
+|:----:|
+|![Poisson3D](images/poisson_3d.jpg)|
 
-## Stoke Equation on a cube
+## Stokes Equation on a cube
 
 ```freefem
 load "msh3"
-load "medit" //dynamically loaded tools for 3D
+load "medit" // Dynamically loaded tools for 3D
 
 // Parameters
 int nn = 8;
@@ -165,7 +165,7 @@ real zmin = 0, zmax = 1;
 mesh3 Th = buildlayers(Th0, nn, zbound=[zmin, zmax],
 	reffacemid=rmid, reffaceup=rup, reffacelow=rdown);
 
-medit("c8x8x8", Th); //3d mesh visualization with medit
+medit("c8x8x8", Th); // 3D mesh visualization with medit
 
 // Fespaces
 fespace Vh2(Th0, P2);
@@ -194,9 +194,9 @@ solve vStokes ([u1, u2, u3, p], [v1, v2, v3, q])
 	;
 
 // Plot
-plot(p, wait=1, nbiso=5); //3d visualization of pressure isolines
+plot(p, wait=1, nbiso=5); // 3D visualization of pressure isolines
 
-//See 10 plan of the velocity in 2D
+// See 10 plan of the velocity in 2D
 for(int i = 1; i < 10; i++){
 	// Cut plane
 	real yy = i/10.;
@@ -209,10 +209,10 @@ for(int i = 1; i < 10; i++){
 }
 ```
 
-Solution and associated mesh |
-:----:|
-![Stokes 3D](images/Stokes3d.jpg) |
-![Stokes 3d mesh](images/Stokes3d-Th.jpg) |
+|Solution and associated mesh|
+|:----:|
+|![Stokes 3D](images/Stokes3d.jpg)|
+|![Stokes 3d mesh](images/Stokes3d-Th.jpg)|
 
 ## Mesh Generation
 
@@ -241,15 +241,15 @@ for (int i = 0; i < 2; i++){
 }
 ```
 
-Initial mesh|
-:-----:|
-![MeshAdaptation1](images/MeshAdaptation1.jpg)|
+|Initial mesh|
+|:-----:|
+|![MeshAdaptation1](images/MeshAdaptation1.jpg)|
 
-Adapted mesh|
-:-----:|
-![MeshAdaptation2](images/MeshAdaptation2.jpg)|
+|Adapted mesh|
+|:-----:|
+|![MeshAdaptation2](images/MeshAdaptation2.jpg)|
 
-### Mesh adaptation on the Poisson's problem
+### Mesh adaptation for the Poisson's problem
 
 ```freefem
 // Parameters
@@ -293,39 +293,39 @@ for (int i = 0; i < 4; i++){
 plot(u);
 ```
 
-Initial mesh|
-:-----:|
-![MeshAdaptationPoisson1](images/MeshAdaptationPoisson1.jpg)|
+|Initial mesh|
+|:-----:|
+|![MeshAdaptationPoisson1](images/MeshAdaptationPoisson1.jpg)|
 
-Adapted mesh|
-:-----:|
-![MeshAdaptationPoisson2](images/MeshAdaptationPoisson2.jpg)|
+|Adapted mesh|
+|:-----:|
+|![MeshAdaptationPoisson2](images/MeshAdaptationPoisson2.jpg)|
 
-Solution on adapted mesh|
-:-----:|
-![MeshAdaptationPoissonU](images/MeshAdaptationPoissonU.jpg)|
+|Solution on adapted mesh|
+|:-----:|
+|![MeshAdaptationPoissonU](images/MeshAdaptationPoissonU.jpg)|
 
 ### Uniform mesh adaptation
 
 ```freefem
-mesh Th = square(2, 2); //the initial mesh
+mesh Th = square(2, 2); // The initial mesh
 plot(Th, wait=true);
 
 Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000);
 plot(Th, wait=true);
 
-Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); //More the one time du to
-Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); //Adaptation bound `maxsubdiv=`
+Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); // More the one time du to $\codered$
+Th = adaptmesh(Th, 1./30., IsMetric=1, nbvx=10000); // Adaptation bound `maxsubdiv=`
 plot(Th, wait=true);
 ```
 
-Initial mesh|
-:-----:|
-![UniformMeshAdaptation1](images/UniformMeshAdaptation1.jpg)|
+|Initial mesh|
+|:-----:|
+|![UniformMeshAdaptation1](images/UniformMeshAdaptation1.jpg)|
 
-Adapted mesh|
-:-----:|
-![UniformMeshAdaptation2](images/UniformMeshAdaptation2.jpg)|
+|Adapted mesh|
+|:-----:|
+|![UniformMeshAdaptation2](images/UniformMeshAdaptation2.jpg)|
 
 ### Borders
 
@@ -373,22 +373,22 @@ Adapted mesh|
 	border a(t=0, 2*pi){x=r*cos(t); y=r*sin(t); label=1;}
 	r=0.3;
 	border b(t=0, 2*pi){x=r*cos(t); y=r*sin(t); label=1;}
-//	mesh Thwithhole = buildmesh(a(50) + b(-30)); // bug (a trap) because
+//	mesh Thwithhole = buildmesh(a(50) + b(-30)); // bug (a trap) because $\codered$
 		                                         // the two circle have the same radius = $0.3$
 }
 ```
 
-Mesh with two regions|
-:-----:|
-![Borders1](images/Borders1.jpg)|
+|Mesh with two regions|
+|:-----:|
+|![Borders1](images/Borders1.jpg)|
 
-Mesh without a hole|
-:-----:|
-![Borders2](images/Borders2.jpg)|
+|Mesh without a hole|
+|:-----:|
+|![Borders2](images/Borders2.jpg)|
 
-Mesh with a hole|
-:-----:|
-![Borders3](images/Borders3.jpg)|
+|Mesh with a hole|
+|:-----:|
+|![Borders3](images/Borders3.jpg)|
 
 ### Change
 
@@ -402,14 +402,14 @@ mesh Th2 = square(20, 10, [x+1, y]);
 int[int] r1=[2,0];
 plot(Th1, wait=true);
 
-Th1 = change(Th1, label=r1); //change the label of Edges 2 in 0.
+Th1 = change(Th1, label=r1); // Change the label of Edges 2 in 0. $\codered$
 plot(Th1, wait=true);
 
 int[int] r2=[4,0];
-Th2 = change(Th2, label=r2); //change the label of Edges 4 in 0.
+Th2 = change(Th2, label=r2); // Change the label of Edges 4 in 0. $\codered$
 plot(Th2, wait=true);
 
-mesh Th = Th1 + Th2; //'gluing together' of meshes Th1 and Th2
+mesh Th = Th1 + Th2; // 'gluing together' Th1 and Th2 meshes
 cout << "nb lab = " << int1d(Th1,1,3,4)(1./lenEdge)+int1d(Th2,1,2,3)(1./lenEdge)
 	 << " == " << int1d(Th,1,2,3,4)(1./lenEdge) << " == " << ((10+20)+10)*2 << endl;
 plot(Th, wait=true);
@@ -432,9 +432,9 @@ solve P(u, v)
 plot(u, wait=1);
 ```
 
-Result|
-:-----:|
-![Change](images/Change.jpg)|
+|Result|
+|:-----:|
+|![Change](images/Change.jpg)|
 
 ### Cube
 
@@ -472,11 +472,11 @@ cout << "Nb err = " << err << endl;
 assert(err==0);
 ```
 
-Cube|
-:-----:|
-![Cube](images/Cube.jpg)|
+|Cube|
+|:-----:|
+|![Cube](images/Cube.jpg)|
 
-### Empty mesh
+### Empty mesh $\codered$
 
 ```freefem
 {
@@ -488,33 +488,33 @@ Cube|
 {
 	mesh Th = square(10, 10);
 	int[int] ssd(Th.nt);
-	//build the pseudo region numbering
+	// Builds the pseudo region numbering
 	for(int i = 0; i < ssd.n; i++){
-		int iq = i/2; //because 2 triangles per quad
+		int iq = i/2; // Because we have 2 triangles per quad
 		int ix = iq%10;
 		int iy = iq/10;
 		ssd[i] = 1 + (ix>=5) + (iy>=5)*2;
 	}
-	//build emtpy with all edge $e=T1 \cap T2$ and $ssd[T1] \neq ssd[T2]$
+	// Build emtpy with all edge $e=T1 \cap T2$ and $ssd[T1] \neq ssd[T2]$ $\codered$
 	Th = emptymesh(Th, ssd);
-	//plot
+	// Plot
 	plot(Th);
 }
 ```
 
-Empty square|
-:-----:|
-![EmptyMesh1](images/EmptyMesh1.jpg)|
+|Empty square|
+|:-----:|
+|![EmptyMesh1](images/EmptyMesh1.jpg)|
 
-Empty diamond|
-:-----:|
-![EmptyMesh2](images/EmptyMesh2.jpg)|
+|Empty diamond|
+|:-----:|
+|![EmptyMesh2](images/EmptyMesh2.jpg)|
 
-### Example: 3 points
+### Example: 3 points $\codered$
 
 ```freefem
 // Square for Three-Point Bend Specimens fixed on Fix1, Fix2
-// It will be loaded on Load.
+// It will be loaded on Load
 real a = 1, b = 5, c = 0.1;
 int n = 5, m = b*n;
 border Left(t=0, 2*a){x=-b; y=a-t;}
@@ -533,11 +533,11 @@ mesh Th = buildmesh(Left(n) + Bot1(m/4) + Fix1(5) + Bot2(m/2)
 plot(Th, bw=true);
 ```
 
-3 Points|
-:-----:|
-![3Points](images/3Points.jpg)|
+|3 Points|
+|:-----:|
+|![3Points](images/3Points.jpg)|
 
-### Example: Bezier
+### Example: Bezier $\codered$
 
 ```freefem
 // A cubic Bezier curve connecting two points with two control points
@@ -570,11 +570,11 @@ mesh Th = buildmesh(G1(2*m) + G2(m) + G3(3*m) + G4(m));
 plot(Th, bw=true);
 ```
 
-Bezier|
-:-----:|
-![Bezier](images/Bezier.jpg)|
+|Bezier|
+|:-----:|
+|![Bezier](images/Bezier.jpg)|
 
-### Example: Build layer mesh
+### Example: Build layer mesh $\codered$
 
 ```freefem
 load "msh3"
@@ -618,12 +618,12 @@ func YY = x*sin(y);
 func ZZ = z;
 
 int[int] r1 = [0, 41], r2 = [98, 98, 99, 99, 1, 56];
-int[int] r3 = [4, 12];//the triangles of uppper surface mesh
-					  //generated by the triangle in the 2D region
-					  //of mesh Th of label 4 as label 12
-int[int] r4 = [4, 45];//the triangles of lower surface mesh
-					  //generated by the triangle in the 2D region
-					  //of mesh Th of label 4 as label 45.
+int[int] r3 = [4, 12]; // $\codered$ The triangles of uppper surface mesh
+					   // generated by the triangle in the 2D region
+					   // of mesh Th of label 4 as label 12
+int[int] r4 = [4, 45]; // The triangles of lower surface mesh
+					   // generated by the triangle in the 2D region
+					   // of mesh Th of label 4 as label 45.
 
 mesh3 Th3 = buildlayers(Th, MaxLayer, zbound=[zmin, zmax], region=r1,
 	labelmid=r2, labelup=r3, labeldown=r4);
@@ -642,13 +642,13 @@ mesh3 Th3sph = tetgtransfo(Ths, transfo=[XX1, YY1, ZZ1],
 medit("sphere 2 regions", Th3sph);
 ```
 
-Box with a hole|
-:-----:|
-![BuildLayerMesh1](images/BuildLayerMesh1.jpg)|
+|Box with a hole|
+|:-----:|
+|![BuildLayerMesh1](images/BuildLayerMesh1.jpg)|
 
-Sphere|
-:-----:|
-![BuildLayerMesh2](images/BuildLayerMesh2.jpg)|
+|Sphere|
+|:-----:|
+|![BuildLayerMesh2](images/BuildLayerMesh2.jpg)|
 
 ### Sphere
 
@@ -657,12 +657,12 @@ Sphere|
 real hh = 0.1;
 
 // Mesh 2D
-mesh Th = square(10, 20, [x*pi-pi/2, 2*y*pi]); //]-pi/2, pi/2[X]0, 2pi[
-//a parametrization of a sphere
+mesh Th = square(10, 20, [x*pi-pi/2, 2*y*pi]); // ]-pi/2, pi/2[X]0, 2pi[
+// A parametrization of a sphere
 func f1 = cos(x)*cos(y);
 func f2 = cos(x)*sin(y);
 func f3 = sin(x);
-//partial derivatrive of the parametrization DF
+// Partial derivative of the parametrization DF
 func f1x = sin(x)*cos(y);
 func f1y = -cos(x)*sin(y);
 func f2x = -sin(x)*sin(y);
@@ -674,7 +674,7 @@ func m11 = f1x^2 + f2x^2 + f3x^2;
 func m21 = f1x*f1y + f2x*f2y + f3x*f3y;
 func m22 = f1y^2 + f2y^2 + f3y^2;
 
-//periodic condition
+// Periodic condition
 func perio = [[4, y], [2, y], [1, x], [3, x]];
 
 // Mesh adaptation
@@ -689,13 +689,13 @@ mesh3 Th3 = movemesh23(Th, transfo=[f1, f2, f3]);
 plot(Th3);
 ```
 
-Initial mesh|
-:-----:|
-![Sphere1](images/Sphere1.jpg)|
+|Initial mesh|
+|:-----:|
+|![Sphere1](images/Sphere1.jpg)|
 
-Sphere|
-:-----:|
-![Sphere2](images/Sphere2.jpg)|
+|Sphere|
+|:-----:|
+|![Sphere2](images/Sphere2.jpg)|
 
 ## Finite Element
 
@@ -706,7 +706,7 @@ load "msh3"
 load "medit"
 
 // Parameters
-searchMethod=1; //more safe seach algo
+searchMethod=1; // More safe seach algo
 real a = 1, d = 0.5, h = 0.5;
 int nnb = 7, nni = 10;
 int nz = 3;
@@ -721,12 +721,12 @@ border b4(t=0.5, -0.5){x=-a/2; y=a*t; label=4;}
 border i1(t=0, 2.*pi){x=d/2*cos(t); y=-d/2*sin(t); label=7;}
 mesh Th = buildmesh(b1(-nnb) + b3(nnb) + b2(-nnb) + b4(nnb) + i1(nni));
 
-{ //for correct cleaning of the memory
+{ // Cleaning the memory correctly
 	int[int] old2new(0:Th.nv-1);
 	fespace Vh2(Th, P1);
 	Vh2 sorder = x + y;
 	sort(sorder[], old2new);
-	int[int] new2old = old2new^-1; //inverse the permuation
+	int[int] new2old = old2new^-1; // Inverse the permuation $\codered$
 	Th = change(Th, renumv=new2old);
 	sorder[] = 0:Th.nv-1;
 }
@@ -750,9 +750,9 @@ medit("Th3", Th3);
 fespace Vh(Th3, P2, periodic=[[1, x, z], [3, x, z], [2, y, z], [4, y, z], [5, x, y], [6, x, y]]);
 ```
 
-Periodic mesh|
-:-----:|
-![Periodic](images/Periodic.jpg)|
+|Periodic mesh|
+|:-----:|
+|![Periodic](images/Periodic.jpg)|
 
 ### Lagrange multipliers
 
@@ -784,19 +784,19 @@ matrix A = va(Vh, Vh);
 real[int] b = vL(0, Vh);
 real[int] B = vb(0, Vh);
 
-//block matrix
+// Block matrix
 matrix AA = [ [ A, B ], [ B', 0 ] ];
 set(AA, solver=sparsesolver);
 
 real[int] bb(n+1), xx(n+1), b1(1), l(1);
 b1 = 0;
-//build the block right hand size
+// Builds the block right hand size $\codered$ Builds a right-handed block ?
 bb = [b, b1];
 
 // Solve
 xx = AA^-1 * bb;
 
-//set values
+// Set values
 [uh[],l] = xx;
 
 // Display
@@ -806,9 +806,9 @@ cout << " l = " << l(0) << " , b(u, 1) =" << B'*uh[] << endl;
 plot(uh);
 ```
 
-Result|
-:-----:|
-![LagrangeMultipliers](images/LagrangeMultipliers.jpg)|
+|Result|
+|:-----:|
+|![LagrangeMultipliers](images/LagrangeMultipliers.jpg)|
 
 ## Visualization
 
@@ -818,52 +818,51 @@ Result|
 mesh Th = square(5,5);
 fespace Vh(Th, P1);
 
-//plot scalar and vectorial FE function
+// Plot scalar and vectorial FE function
 Vh uh=x*x+y*y, vh=-y^2+x^2;
 plot(Th, uh, [uh, vh], value=true, wait=true);
 
-//zoom on box defined by the two corner points [0.1,0.2] and [0.5,0.6]
+// Zoom on box defined by the two corner points [0.1,0.2] and [0.5,0.6]
 plot(uh, [uh, vh], bb=[[0.1, 0.2], [0.5, 0.6]],
 	wait=true, grey=true, fill=true, value=true);
 
-//compute a cut
+// Compute a cut
 int n = 10;
 real[int] xx(10), yy(10);
 for (int i = 0; i < n; i++){
 	x = i/real(n);
 	y = i/real(n);
 	xx[i] = i;
-	yy[i] = uh; //value of uh at point (i/10., i/10.)
+	yy[i] = uh; // Value of uh at point (i/10., i/10.)
 }
 plot([xx, yy], wait=true);
 
-{// file for gnuplot
+{ // File for gnuplot
 	ofstream gnu("plot.gp");
 	for (int i = 0; i < n; i++)
 		gnu << xx[i] << " " << yy[i] << endl;
 }
 
-// to call gnuplot command and wait 5 second (thanks to unix command)
-// and make postscript plot
+// Calls the gnuplot command, waits 5 second and generates a postscript plot $\codered$ UNIX ONLY??
 exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output \"gnuplot.eps\" \n replot \n quit' | gnuplot");
 ```
 
-First plot|
-:-----:|
-![Plot1](images/Plot1.jpg)|
+|First plot|
+|:-----:|
+|![Plot1](images/Plot1.jpg)|
 
-Second plot|
-:-----:|
-![Plot2](images/Plot2.jpg)|
+|Second plot|
+|:-----:|
+|![Plot2](images/Plot2.jpg)|
 
-Gnuplot|
-:-----:|
-![Plot3](images/Plot3.png)|
+|Gnuplot|
+|:-----:|
+|![Plot3](images/Plot3.png)|
 
 ### HSV
 
 ```freefem
-// from: \url{http://en.wikipedia.org/wiki/HSV_color_space}
+// From: http://en.wikipedia.org/wiki/HSV_color_space
 // The HSV (Hue, Saturation, Value) model defines a color space
 // in terms of three constituent components:
 // HSV color space as a color wheel
@@ -879,12 +878,12 @@ mesh Th = square(10, 10, [2*x-1, 2*y-1]);
 fespace Vh(Th, P1);
 Vh uh=2-x*x-y*y;
 
-real[int] colorhsv=[ // color hsv model
-	4./6., 1 , 0.5, // dark blue
-	4./6., 1 , 1, // blue
-	5./6., 1 , 1, // magenta
-	1, 1. , 1, // red
-	1, 0.5 , 1 // light red
+real[int] colorhsv=[ // Color hsv model
+	4./6., 1 , 0.5, // Dark blue
+	4./6., 1 , 1, // Blue
+	5./6., 1 , 1, // Magenta
+	1, 1. , 1, // Red
+	1, 0.5 , 1 // Light red
 	];
  real[int] viso(31);
 
@@ -894,9 +893,9 @@ real[int] colorhsv=[ // color hsv model
  plot(uh, viso=viso(0:viso.n-1), value=true, fill=true, wait=true, hsv=colorhsv);
 ```
 
-Result|
-:-----:|
-![HSV](images/HSV.jpg)|
+|Result|
+|:-----:|
+|![HSV](images/HSV.jpg)|
 
 ### Medit
 
@@ -911,7 +910,7 @@ Vh u=2-x*x-y*y;
 medit("u", Th, u);
 
 // Old way
-savemesh(Th, "u", [x, y, u*.5]); //save u.points and u.faces file
+savemesh(Th, "u", [x, y, u*.5]); // Saves u.points and u.faces file
 // build a u.bb file for medit
 {
 	ofstream file("u.bb");
@@ -919,19 +918,19 @@ savemesh(Th, "u", [x, y, u*.5]); //save u.points and u.faces file
 	for (int j = 0; j < u[].n; j++)
 		file << u[][j] << endl;
 }
-//call medit command
+// Calls medit command
 exec("ffmedit u");
-//clean files on unix-like OS
+// Cleans files on unix-like OS $\codered$ ONLY ON UNIX ?
 exec("rm u.bb u.faces u.points");
 ```
 
-2D plot|
-:-----:|
-![Medit1](images/Medit1.jpg)|
+|2D plot|
+|:-----:|
+|![Medit1](images/Medit1.jpg)|
 
-Plot with elevation|
-:-----:|
-![Medit2](images/Medit2.jpg)|
+|Plot with elevation|
+|:-----:|
+|![Medit2](images/Medit2.jpg)|
 
 ### Paraview
 
@@ -948,9 +947,9 @@ string DataName = "u";
 savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
 ```
 
-Result|
-:-----:|
-![Paraview](images/Paraview.jpg)|
+|Result|
+|:-----:|
+|![Paraview](images/Paraview.jpg)|
 
 ## Algorithms & Optimizations
 
@@ -958,7 +957,7 @@ Result|
 
 $\codered$ do script
 
-### CMAES vartiational inequality
+### CMAES variational inequality
 
 $\codered$ review
 ```freefem
@@ -989,8 +988,8 @@ matrix A =  BVF(Vh,Vh);
 real[int] b1 = LVF1(0,Vh) , b2 = LVF2(0,Vh);
 
 varf Vbord(v,w) = on(1,2,3,4,v=1);
-//real[int] bord = Vbord(0,Vh);
-//real[int] in = bord ? 0 : 1;
+// real[int] bord = Vbord(0,Vh);
+// real[int] in = bord ? 0 : 1;
 Vh In,Bord;
 Bord[] = Vbord(0,Vh,tgv=1);
 In[] = Bord[] ? 0:1;
@@ -998,8 +997,8 @@ Vh gh1=Bord*g1,gh2=Bord*g2;
 
 
 
-//Function which create a vector of the search space type from
-//two finite element functions
+// Function which creates a vector of the search space type from
+// two finite element functions
 func int FEFToSSP(real[int] &fef1,real[int] &fef2,real[int] &ssp)
 {
 	int kX=0;
@@ -1014,8 +1013,8 @@ func int FEFToSSP(real[int] &fef1,real[int] &fef2,real[int] &ssp)
 	}
 	return 1;
 }
-//Function spliting a vector from the search space and fills
-//two finite element functions with it
+// Splits a vector from the search space and fills
+// two finite element functions with it
 func int SSPToFEF(real[int] &fef1,real[int] &fef2,real[int] &ssp)
 {
 	int kX=0;
@@ -1048,7 +1047,6 @@ func real IneqC(real[int] &X)
 	return constraints.l2;
 }
 
-
 func real J(real[int] &X)
 {
 	Vh u1,u2;
@@ -1064,8 +1062,6 @@ func real J(real[int] &X)
 	return val ;
 }
 
-
-
 real[int] start(2*In[].sum);
 
 if(al==0)
@@ -1074,7 +1070,6 @@ if(al==0)
 	start(In[].sum:2*In[].sum-1) = 0.1;
 }
 else FEFToSSP(ou1[],ou2[],start);
-
 
 real mini = cmaes(J,start,stopMaxFunEval=10000*(al+1),stopTolX=1.e-3/(10*(al+1)),initialStdDev=(0.025/(pow(100.,al))));
 Vh best1,best2;
@@ -1191,7 +1186,7 @@ Phg part;
 fespace Vhg(Thg, P1);
 Vhg unssd; //boolean function: 1 in the subdomain, 0 elswhere
 
-fespace VhC(ThC, P1); //of the coarse problem
+fespace VhC(ThC, P1); // of the coarse problem
 
 // Partitioning
 {
@@ -1587,10 +1582,10 @@ ff-mpirun [mpi parameter] MPIGMRES3d.edp  [-glut ffglut]  [-n N] [-k K]  [-d D] 
    -d D:  set debug flag D must be one for mpiplot
    -k K:  to refined by K all  elemnt
    -ns: reomove script dump
-   -gmres 0   : use iterative schwarz algo.  
+   -gmres 0   : use iterative schwarz algo.
           1   :  Algo GMRES on residu of schwarz algo.
           2   :  DDM GMRES
-          3   :  DDM GMRES with coarse grid preconditionner (Good one)  
+          3   :  DDM GMRES with coarse grid preconditionner (Good one)
 */
 load "MPICG"  load "medit"  load "metis"
 include "getARGV.idp"
@@ -1630,7 +1625,7 @@ if(mpirank==0 && verbosity)
 int withplot=0;
 bool withmetis=1;
 bool RAS=1;
-string sPk="P2-3gd";     
+string sPk="P2-3gd";
 func Pk=P2;
 
 func bool  plotMPIall(mesh3 &Th,real[int] & u,string  cm)
@@ -1657,7 +1652,7 @@ settt
 mesh3 Thg=Cube(NN,BB,LL);
 mesh3 ThC=Cube(NNC,BB,LL);
 
-mesh3 Thi,Thin;//  with overlap, without olverlap  
+mesh3 Thi,Thin;//  with overlap, without olverlap
 fespace Phg(Thg,P0);
 fespace Vhg(Thg,P1);
 fespace VhC(ThC,P1); // of the coarse problem..
@@ -1665,8 +1660,8 @@ fespace VhC(ThC,P1); // of the coarse problem..
 
 Phg  part;
 
-// build the partitioning ...  
-{    
+// build the partitioning ...
+{
  int[int] nupart(Thg.nt);
  nupart=0;
  if(npart>1 && ipart==0)
@@ -1688,8 +1683,8 @@ if(withplot>1)
  Vhg unssd;                       // boolean function 1 in the subdomain 0 elswhere
  Thin=trunc(Thg,suppi>0,label=10); // non-overlapping mesh3, interfaces have label 10
  int nnn = sizeoverlaps*2;// to be sure
- AddLayers(Thg,suppi[],nnn,unssd[]);    // see above ! suppi and unssd are modified  
- unssd[] *= nnn;  //  to put value nnn a 0  
+ AddLayers(Thg,suppi[],nnn,unssd[]);    // see above ! suppi and unssd are modified
+ unssd[] *= nnn;  //  to put value nnn a 0
  real nnn0 = nnn - sizeoverlaps +  0.001   ;
  Thi=trunc(Thg,unssd>nnn0 ,label=10); // overlapping mesh3, interfaces have label 10
 
@@ -1698,13 +1693,13 @@ if(withplot>1)
  fespace Vhi(Thi,P1);
  int npij=npart;
  Vhi[int] pij(npij);// local partition of unit + pii
- Vhi pii;  
+ Vhi pii;
 
  real nnn1=  + 0.001  ;
  { /*
    construction of the partition of the unit,
     let phi_i P1 FE function 1 on Thin and zero ouside of Thi and positive
-    the partition is build with  
+    the partition is build with
   $$  p_i = phi_i/ \sum phi_i
 
     to build the partition of one domain i
@@ -1716,11 +1711,11 @@ if(withplot>1)
  mesh3 Thii=trunc(Thg,unssd>nnn1 ,label=10); // overlapping mesh3, interfaces have label 10
 
 
- {  
-   // find all j  mes (supp(p_j) \cap supp(p_i)) >0  
+ {
+   // find all j  mes (supp(p_j) \cap supp(p_i)) >0
    // compute all phi_j on Thii
    //  remark supp p_i include in Thi
-   //  
+   //
    fespace Phii(Thii,P0);
    fespace Vhii(Thii,P1);
    Vhi sumphi=0;
@@ -1745,8 +1740,8 @@ if(withplot>1)
 	     assert(phii[].min >=0);
 	     real interij = int3d(Thi)(  phii);
 	     if(interij>epsmes)
-	       {  
-		     pij[njpart]=abs(phii);	 
+	       {
+		     pij[njpart]=abs(phii);
 		     if(vdebug>2) cout << " ***** " << int3d(Thi)(real(pij[njpart])<0) << " " <<pij[njpart][].min << " " << phii[].min << endl;
 		     assert(int3d(Thi)(real(pij[njpart])<0) ==0);
 		     if(dplot)  plot(pij[njpart],wait=1,cmm=" j = "+ i + " " + njpart);
@@ -1771,13 +1766,13 @@ if(withplot>1)
    sumphi[]=pii[];
    for (int j=0;j<njpart;++j)
      sumphi[]+= pij[j][];
-   if(vdebug)  
+   if(vdebug)
      cout << " sum min " <<sumphi[].min << " " << sumphi[].max << endl;
-   assert(sumphi[].min> 1.-1e-6 && sumphi[].max< 1.+1e-6);  
+   assert(sumphi[].min> 1.-1e-6 && sumphi[].max< 1.+1e-6);
    //  verification
  }}// (Thii is remove here)
   // end of the construction of the local partition of the unity ...
-  // on Thi ...  
+  // on Thi ...
   // -----------------------------------------------------------------
 if(ipart==0) cout << " *** end build partition " << endl;
 
@@ -1801,7 +1796,7 @@ settt
  plotMPIall(Thi,pii[],"pi_i");
 
 mesh3[int] aThij(njpart);
-matrix Pii;  
+matrix Pii;
 matrix[int] sMj(njpart); // M of send to j
 matrix[int] rMj(njpart); // M to recv from j
 fespace Whi(Thi,Pk);
@@ -1829,7 +1824,7 @@ if(ipart==0) cout << " *** end build mesh3  intersection  " << endl;
       int j=jpart[jp];
       Thij = aThij[jp];
       matrix I = interpolate(Whij,Whi); // Whji <- Whi
-      sMj[jp] = I*Pii;  // Whi -> s Whij  
+      sMj[jp] = I*Pii;  // Whi -> s Whij
       rMj[jp] = interpolate(Whij,Whi,t=1);   // Whji -> Whi
       if(vdebug>10) {
       {Whi uuu=1;Whij vvv=-1; vvv[]+=I*uuu[]; cout << jp << " %%% " << vvv[].linfty << endl; assert(vvv[].linfty < 1e-6);}
@@ -1866,7 +1861,7 @@ varf vPbC(U,V)= int3d(ThC)(grad(U)'*grad(V))  +on(1,U=0) ; //');// for emacs
 varf vPbon(U,V)=on(10,U=1)+on(1,U=1);
 varf vPbon10only(U,V)=on(10,U=1)+on(1,U=0);
 
-//----  
+//----
 
 matrix Ai = vPb(Whi,Whi,solver=sparsesolver);
 matrix AC,Rci,Pci;//
@@ -1905,7 +1900,7 @@ func real[int] DJ(real[int]& U)
   ++kiter;
   real[int] V(U.n);
    V =  Ai*U;
-  V = onG10 ? 0.: V;  // remove internal boundary  
+  V = onG10 ? 0.: V;  // remove internal boundary
   return V;
 }
 
@@ -1933,7 +1928,7 @@ func real[int] PDJC(real[int]& U) //
   U  += Ai*V; // U =  (I-A C2) Uo
   real[int] b= onG10 ? 0. :  U;
   U =  Ai^-1*b;	//  ( C1( I -A C2) Uo
-  V = U -V; //  
+  V = U -V; //
   Update(V,U);
   return U;
 }
@@ -1944,7 +1939,7 @@ func real[int] PDJC(real[int]& U) //
   ++kiter;
   real[int] V(U.n);
   real[int] b= onG .* U;
-  b  = onG ? b : Bi ;  
+  b  = onG ? b : Bi ;
   V = Ai^-1*b;
   Update(V,U);
   V -= U;
@@ -2018,7 +2013,7 @@ if(sff != "")
   {
     ofstream ff(sff+".txt",append);
     cout << " ++++  " ;
-    cout  << mpirank <<"/" <<  mpisize << " k=" <<  ksplit << " n= " << nloc << " " << sizeoverlaps << " it=  " << kiter  ;  
+    cout  << mpirank <<"/" <<  mpisize << " k=" <<  ksplit << " n= " << nloc << " " << sizeoverlaps << " it=  " << kiter  ;
     for (int i=1; i<ittt;++i)
       cout << " " << ttt[i]-ttt[i-1] << " ";
     cout << epss << " " << Ai.nbcoef << " " << Ai.n << endl;
@@ -2030,14 +2025,14 @@ if(sff != "")
       4 nloc
       5 sizeoverlaps
       6 kiter
-      7 mesh3 & part build  
+      7 mesh3 & part build
       8 build the partion
       9 build mesh3, transfere , and the fine mesh3 ..
       10 build the matrix,  the trans matrix, factorizatioon
       11 GMRES
     */
     ff   << mpirank << " " << mpisize << " " << sPk << " " ;
-    ff <<  ksplit << " " << nloc << " " << sizeoverlaps << " " << kiter  ;  
+    ff <<  ksplit << " " << nloc << " " << sizeoverlaps << " " << kiter  ;
     for (int i=1; i<ittt;++i)
       ff << " " << ttt[i]-ttt[i-1] << " ";
     ff << epss << " " << Ai.nbcoef << " " << Ai.n << " " << gmres << endl;
@@ -2583,7 +2578,7 @@ A = 3 4
 	  16  20  24  28
 	  24  30  36  42
 
-B = (3.*b*c')(I^-1,J^-1) = # Sparse Matrix (Morse)  
+B = (3.*b*c')(I^-1,J^-1) = # Sparse Matrix (Morse)
 # first line: n m (is symmetic) nbcoef
 # after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
 3 4 0  12
@@ -2756,7 +2751,7 @@ f = 6
 g = 6
 	  0	  1	1.224646799e-16	  0	  1
 	1.224646799e-16
-A = # Sparse Matrix (Morse)  
+A = # Sparse Matrix (Morse)
 # first line: n m (is symmetic) nbcoef
 # after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
 6 6 0  24
@@ -2799,7 +2794,7 @@ m2 = 6
 	8.165619677e+15
 dot Product = 0.5
 hermitien Product = (1.11022e-16,2.5)
-outer Product = # Sparse Matrix (Morse)  
+outer Product = # Sparse Matrix (Morse)
 # first line: n m (is symmetic) nbcoef
 # after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
 6 6 0  8
@@ -2812,7 +2807,7 @@ outer Product = # Sparse Matrix (Morse)
         6         5 1
         6         6 1.2246467991473532072e-16
 
-hermitien outer Product = # Sparse Matrix (Morse)  
+hermitien outer Product = # Sparse Matrix (Morse)
 # first line: n m (is symmetic) nbcoef
 # after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
 6 6 0  24
@@ -2852,7 +2847,7 @@ C = 8
 	1.224646799e-16	  1	1.224646799e-16
   -- Raw Matrix    nxm  =6x6 nb  none zero coef. 8
   -- Raw Matrix    nxm  =6x6 nb  none zero coef. 6
-D = # Sparse Matrix (Morse)  
+D = # Sparse Matrix (Morse)
 # first line: n m (is symmetic) nbcoef
 # after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
 6 6 1  6
@@ -3098,7 +3093,7 @@ si = 1 2
 2 0 0.25
 2 1 0.2
 3 0 0.2
-# Sparse Matrix (Morse)  
+# Sparse Matrix (Morse)
 # first line: n m (is symmetic) nbcoef
 # after for each nonzero coefficient:   i j a_ij where (i,j) \in  {1,...,n}x{1,...,m}
 10 10 0  10
@@ -3303,10 +3298,10 @@ The output script generated with macros is:
 5 : 	cout << i << " " << j << endl;
 6 : }//
 7 :
-8 :  
-1 : 	   
-2 : 	   
-3 : 	        
+8 :
+1 :
+2 :
+3 :
 4 :  {
 1 : 	real i = 0;
 2 : 	int j = 0;
@@ -3329,16 +3324,16 @@ The output script generated with macros is:
 23 : 	v(vv,6)] //
 24 :   macro VV3(v,vv )   [v(vv,1), v(vv,2)] //
 25 :
-26 : func C5x5 =   
-1 : 	 
-2 : 	 
+26 : func C5x5 =
+1 :
+2 :
 3 : 	  [
 1 : 	        [ CC(1,1),  CC(2,1),  CC(4,1),  CC(5,1),  CC(6,1)] ,         [ CC(1,2),  CC(2,2),  CC(4,2),  CC(5,2),  CC(6,2)] ,
 2 : 	        [ CC(1,4),  CC(2,4),  CC(4,4),  CC(5,4),  CC(6,4)] ,         [ CC(1,5),  CC(2,5),  CC(4,5),  CC(5,5),  CC(6,5)] ,
 3 : 	        [ CC(1,6),  CC(2,6),  CC(4,6),  CC(5,6),  CC(6,6)] ] ;
-27 : func E5x2 =   
-1 : 	 
-2 : 	 
+27 : func E5x2 =
+1 :
+2 :
 3 : 	  [
 1 : 	     [ EE(1,1),  EE(2,1)] ,      [ EE(1,2),  EE(2,2)] ,
 2 : 	     [ EE(1,4),  EE(2,4)] ,      [ EE(1,5),  EE(2,5)] ,
@@ -3356,7 +3351,7 @@ The output script generated with macros is:
 38 :
 39 : // Verify the quoting
 40 :    macro foo(i,j,k )   i j k //
-41 :           
+41 :
 42 :         int[ int] a(10 );
 43 :
 44 : //NewMacro - EndMacro
