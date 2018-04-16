@@ -12,15 +12,15 @@ mpiComm comm(mpiCommWorld, 0, 0); //set a MPI_Comm to MPI_COMM_WORLD
 mpiGroup grp(proc1); //set MPI_Group to proc 1,2 in MPI_COMM_WORLD
 mpiGroup grp1(comm, proc1); //set MPI_Group to proc 1,2 in comm
 mpiGroup grp2(grp, proc2); //set MPI_Group to grp union proc2
-
-mpiComm ncomm1(mpiCommWorld, grp); //set the MPI_Comm form grp
-
-// MPI_COMM_WORLD
-mpiComm ncomm2(comm, color, key); //MPI_Comm_split(MPI_Comm comm, int color, int key, MPI_Comm *ncomm)
-mpiComm nicomm(processor(localcomm, localleader),
-				processor(peercomm, peerleader), tag);
-//build MPI_INTERCOMM_CREATE(local_comm, local_leader, peer_comm, remote_leader, tag, &nicomm)
-
-mpiComm ncomm3(intercomm, hight); //build using MPI_Intercomm_merge(intercomm, high, &ncomm)
-mpiRequest rq; //defined an MPI_Request
-mpiRequest[int] arq(10); //defined an array of 10 MPI_Request
+//
+// mpiComm ncomm1(mpiCommWorld, grp); //set the MPI_Comm form grp
+//
+// // MPI_COMM_WORLD
+// mpiComm ncomm2(comm, color, key); //MPI_Comm_split(MPI_Comm comm, int color, int key, MPI_Comm *ncomm)
+// mpiComm nicomm(processor(localcomm, localleader),
+// 				processor(peercomm, peerleader), tag);
+// //build MPI_INTERCOMM_CREATE(local_comm, local_leader, peer_comm, remote_leader, tag, &nicomm)
+//
+// mpiComm ncomm3(intercomm, hight); //build using MPI_Intercomm_merge(intercomm, high, &ncomm)
+// mpiRequest rq; //defined an MPI_Request
+// mpiRequest[int] arq(10); //defined an array of 10 MPI_Request

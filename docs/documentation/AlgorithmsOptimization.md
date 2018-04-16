@@ -259,7 +259,7 @@ This algorithm works with a normal multivariate distribution in the parameters s
 
  * `:::freefem popsize=` Integer value used to change the sample size. The default value is $4+ \lfloor 3\ln (n) \rfloor$. Increasing the population size usually improves the global search capabilities at the cost of an at most linear reduction of the convergence speed with respect to `:::freefem popsize`.
 
- * `:::freefem paramFile=` This `:::freefem string` type parameter allows the user to pass all the parameters using an extern file as in Hansen's original code. More parameters related to the CMA-ES algorithm can be changed with this file. A sample of it can be found in the `:::freefem examples++-load/ffCMAES/` folder under the name `:::freefem initials.par` $\codered$. Note that the parameters passed to the CMAES function in the __`FreeFem++`__ script will be ignored if an input parameters file is given.
+ * `:::freefem paramFile=` This `:::freefem string` type parameter allows the user to pass all the parameters using an extern file as in Hansen's original code. More parameters related to the CMA-ES algorithm can be changed with this file. Note that the parameters passed to the CMAES function in the __`FreeFem++`__ script will be ignored if an input parameters file is given.
 
 ## IPOPT
 
@@ -329,7 +329,9 @@ c(x) & = & 0 \\
 \end{array}\right.
 \end{equation}
 
-Where if $a$ is a vector of $\R^n$, $A$ denotes the diagonal matrix $A=(a_i \delta_{ij})_{1\leq i,j\leq n}$ and $e\in\R^{n} = (1,1,\dots,1)$. Solving this nonlinear system by the Newton methods is known as being the _primal-dual_ interior points method. Here again, more details are available in [FORSGREN2002](#FORSGREN2002). Most actual implementations introduce features in order to globalize the convergence capability of the method, essentially by adding some line-search steps to the Newton algorithm, or by using trust regions. For the purpose of IPOPT, this is achieved by a _filter line search_ methods, the details of which can be found in [](#) $\codered$.
+Where if $a$ is a vector of $\R^n$, $A$ denotes the diagonal matrix $A=(a_i \delta_{ij})_{1\leq i,j\leq n}$ and $e\in\R^{n} = (1,1,\dots,1)$. Solving this nonlinear system by the Newton methods is known as being the _primal-dual_ interior points method. Here again, more details are available in [FORSGREN2002](#FORSGREN2002). Most actual implementations introduce features in order to globalize the convergence capability of the method, essentially by adding some line-search steps to the Newton algorithm, or by using trust regions. For the purpose of IPOPT, this is achieved by a _filter line search_ methods, the details of which can be found in [](#).
+
+$\codered$ missing ref
 
 More IPOPT specific features or implementation details can be found in [WÄCHTER2006](#WÄCHTER2006). We will just retain that IPOPT is a smart Newton method for solving constrained optimization problem, with global convergence capabilities due to a robust line search method (in the sense that the algorithm will convergence no matter the initializer). Due to the underlying Newton method, the optimization process requires expressions of all derivatives up to the order 2 of the fitness function as well as those of the constraints. For problems whose Hessian matrices are difficult to compute or lead to high dimensional dense matrices, it is possible to use a BFGS approximation of these objects at the cost of a much slower convergence rate.
 

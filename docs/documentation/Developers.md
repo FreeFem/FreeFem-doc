@@ -592,8 +592,7 @@ __With dynamic link__ it is very simple (see section [Dynamical link](#dynamical
 } //FEM2d namespace
 ```
 
-Try with `./load.link` command in `examples++-load/` and see `BernardiRaugel.cpp` or `Morley.cpp` new finite element examples.
-$\codered$
+Try with `./load.link` command in [`examples++-load/`](https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load) and see `BernardiRaugel.cpp` or `Morley.cpp` new finite element examples.
 
 __Otherwise with static link__ (for expert only), add
 
@@ -660,7 +659,7 @@ $\codecheck$
 
 Now, it's possible to add built-in functionnalites in __`FreeFem++`__ under the three environnents Linux, Windows and MacOS X 10.3 or newer.
 
-It is agood idea to first try the example `load.edp` in directory `example++-load` $\codered$.
+It is agood idea to first try the example `load.edp` in directory [`example++-load`](https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load).
 
 You will need to install a `compiler` (generally `g++/gcc` compiler) to compile your function.
 
@@ -668,7 +667,7 @@ You will need to install a `compiler` (generally `g++/gcc` compiler) to compile 
  * MacOs Install the developer tools `Xcode` on the apple DVD
  * Linux/Unix Install the correct compiler (`gcc` for instance)
 
-Now, assume that you are in a shell window (a `cygwin` window under Windows) in the directory `example++-load` $\codered$.
+Now, assume that you are in a shell window (a `cygwin` window under Windows) in the directory [`example++-load`](https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load).
 
 !!!note
 	In the sub directory `include`, they are all the __`FreeFem++`__ include file to make the link with __`FreeFem++`__.
@@ -851,13 +850,13 @@ To test, try [FFT example](../examples/#fft).
 
 ### Load Module for Dervieux' P0-P1 Finite Volume Method
 
-The associed edp file is `examples++-load/convect_dervieux.edp`. $\codered$
+The associed edp file is [`examples++-load/convect_dervieux.edp`](https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/convect_dervieux.edp).
 
-See `mat_dervieux.cpp`. $\codered$
+See [`mat_dervieux.cpp`](https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/mat_dervieux.cpp).
 
 ### More on Adding a new finite element
 
-First read the [Adding a new finite element section](#adding-a-new-finite-element), we add two new finite elements examples in the directory `examples++-load`. $\codered$
+First read the [Adding a new finite element section](#adding-a-new-finite-element), we add two new finite elements examples in the directory [`examples++-load`](https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load).
 
 #### The Bernardi-Raugel Element
 
@@ -875,7 +874,7 @@ with notation $4=1, 5=2$ and where $\lambda^K_i$ are the barycentric coordinates
 
 <!--- __ --->
 
-See `BernardiRaugel.cpp`. $\codered$
+See [`BernardiRaugel.cpp`](https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/BernardiRaugel.cpp).
 
 A way to check the finite element
 
@@ -924,7 +923,7 @@ for (int i = 0; i < Vh.ndofK; ++i)
 }
 ```
 
-A real example using this finite element, just a small modification of the `NSP2P1.edp` $\codered$ examples, just the begenning is change to
+A real example using this finite element, just a small modification of the Navier-Stokes P2-P1 example, just the begenning is change to
 
 ```freefem
 load "BernardiRaugel"
@@ -939,15 +938,13 @@ Vh2 [v1, v2];
 
 And the plot instruction is also changed because the pressure is constant, and we cannot plot isovalues of peacewise constant functions.
 
-$\codered$ PR needed: BernaRdiRaugel.cpp
-
 #### The Morley Element
-See the example `bilapMorley.edp` $\codered$.
+See the example [`bilapMorley.edp`](https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/bilapMorley.edp).
 
 <!---
 ### Add a new sparse solver
 
-Warning the sparse solver interface as been completely rewritten in version 3.2, so the section is obsolete, the example in are correct/ $\codered$
+Warning the sparse solver interface as been completely rewritten in version 3.2, so the section is obsolete, the example in are correct/
 
 Only a fast sketch of the code is given here; for details see the .cpp code from `SuperLU.cpp` or `NewSolve.cpp`.
 
