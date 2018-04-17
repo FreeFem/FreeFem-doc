@@ -22,6 +22,6 @@ Lexer type | Version| Description
 Emacs | `0.3` | [freefem++-mode.el](https://github.com/FreeFem/freefem-parser-emacs)
 Textmate 2 | `1.0` | [FreeFem.tmbundle](https://github.com/FreeFem/FreeFem-parser-textmate)
 Gedit | `1.0` | [ffpp.lang](https://github.com/FreeFem/Freefem-parser-gedit)
-Atom | `0.1.1` | [language-freefem](https://github.com/FreeFem/FreeFem-parser-atom) or direct install in Atom packages manager
+Atom | `0.3` | [language-freefem](https://github.com/FreeFem/FreeFem-parser-atom) or via the Atom package manager
 Pygments | `1.0` | [freefem.py](https://github.com/FreeFem/FreeFem-parser-pygments)
 Vim | `0.1` | [edp.vim](https://github.com/FreeFem/FreeFem-parser-vim)
