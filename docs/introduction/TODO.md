@@ -22,8 +22,10 @@ Progression:
 	<span class="progress-label">99</span>
 </div>
 
-- [ ] line 279
+- [ ] line 269
 	``` Windows compilation (Good luck!)```
+- [ ] line 288
+	```# a comment ```
 
 ## How to contribute?
 
