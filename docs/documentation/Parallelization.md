@@ -37,21 +37,14 @@ mpiComm comm(mpiCommWorld, 0, 0); //set a MPI_Comm to MPI_COMM_WORLD
 
 mpiGroup grp(proc1); //set MPI_Group to proc 1,2 in MPI_COMM_WORLD
 mpiGroup grp1(comm, proc1); //set MPI_Group to proc 1,2 in comm
-mpiGroup grp2(grp, proc2); //set MPI_Group to grp union proc2
 
 mpiComm ncomm1(mpiCommWorld, grp); //set the MPI_Comm form grp
 
-// MPI_COMM_WORLD
 mpiComm ncomm2(comm, color, key); //MPI_Comm_split(MPI_Comm comm, int color, int key, MPI_Comm *ncomm)
-mpiComm nicomm(processor(localcomm, localleader),
-				processor(peercomm, peerleader), tag);
-//build MPI_INTERCOMM_CREATE(local_comm, local_leader, peer_comm, remote_leader, tag, &nicomm)
 
-mpiComm ncomm3(intercomm, hight); //build using MPI_Intercomm_merge(intercomm, high, &ncomm)
 mpiRequest rq; //defined an MPI_Request
 mpiRequest[int] arq(10); //defined an array of 10 MPI_Request
 ```
-$\codered$ script bug
 
 ### MPI Functions
 
@@ -112,7 +105,7 @@ processor(1) << a << b;
 processor(10) >> a >> b;
 
 //broadcast from processor of comm to other comm processor
-broadcast(processor(10, comm), a);
+// broadcast(processor(10, comm), a);
 //send synchronously to the process 10 the data a
 status = Send(processor(10, comm), a);
 //receive synchronously from the process 10 the data a
@@ -121,16 +114,12 @@ status = Recv(processor(10, comm), a);
 //send asynchronously to the process 10 the data a without request
 status = Isend(processor(10, comm), a);
 //send asynchronously to the process 10 the data a with request
-status = Isend(processor(10, req, comm), a);
+status = Isend(processor(10, comm, req), a);
 //receive asynchronously from the process 10 the data a
 status = Irecv(processor(10, req), a);
 //Error asynchronously without request.
-status = Irecv(processor(10), a);
-//Broadcast to all process comm
-broadcast(processor(comm, a));
+// status = Irecv(processor(10), a);
 ```
-$\codered$ script bug
-
 where the data type of `:::freefem a` can be of type of `:::freefem int`,`:::freefem real`, `:::freefem complex`, `:::freefem int[int]`, `:::freefem real[int]`, `:::freefem complex[int]`, `:::freefem int[int,int]`, `:::freefem double[int,int]`, `:::freefem complex[int,int]`, `:::freefem mesh`, `:::freefem mesh3`, `:::freefem mesh[int]`, `:::freefem mesh3[int]`, `:::freefem matrix`, `:::freefem matrix<complex>`
 
 ```freefem
@@ -145,15 +134,12 @@ If `:::freefem a, b` are arrays or full matrices of `:::freefem int`, `:::freefe
 ```freefem
 mpiAlltoall(a, b, [comm]);
 mpiAllgather(a, b, [comm]);
-mpiGather(a, b, processor(...));
-mpiScatter(a, b, processor(...));
-mpiReduce(a, b, processor(...), mpiMAX);
+mpiGather(a, b, processor(..) );
+mpiScatter(a, b, processor(..));
+mpiReduce(a, b, processor(..), mpiMAX);
 mpiAllReduce(a, b, comm, mpiMAX);
-mpiReduceScatter(a, b, comm, mpiMAX);
 ```
-$\codered$ mpiReduceScatter is commented in parallelempi.cpp
-
-See the `:::freefem examples++-mpi/essai.edp` $\codered$ to test of all this functionality and thank you to Guy-Antoine Atenekeng Kahou for his help to code this interface.
+Thank you to Guy-Antoine Atenekeng Kahou for his help to code this interface.
 
 ### Schwarz example in parallel
 This example is a rewritting of example [Schwarz overlapping](../models/DomainDecomposition/#schwarz-overlapping).
@@ -220,13 +206,15 @@ for (i = 0; i < 20; i++){
 	// Solve
 	pb;
 	//send u to the other proc, receive in U
-	processor(1-mpirank) << u[]; processor(1-mpirank) >> U[];
+	processor(1-mpirank) << u[];
+	processor(1-mpirank) >> U[];
 
 	// Error
 	real err0, err1;
 	err0 = int1d(Th[mpirank],interior)(square(U - u));
 	// send err0 to the other proc, receive in err1
-	processor(1-mpirank) << err0; processor(1-mpirank) >> err1;
+	processor(1-mpirank) << err0;
+	processor(1-mpirank) >> err1;
 	real err = sqrt(err0 + err1);
 	cout << " err = " << err << " - err0 = " << err0 << " - err1 = " << err1 << endl;
 	if (err < 1e-3) break;
@@ -234,11 +222,9 @@ for (i = 0; i < 20; i++){
 if (mpirank == 0)
 	plot(u, U);
 ```
-$\codered$ script bug
+$\codered$ script freeze in the loop
 
 #### True parallel Schwarz example
-
-$\codered$ check this part
 
 _Thank you to F. Nataf_
 

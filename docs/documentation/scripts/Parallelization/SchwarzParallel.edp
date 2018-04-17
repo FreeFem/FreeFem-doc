@@ -53,13 +53,15 @@ for (i = 0; i < 20; i++){
 	// Solve
 	pb;
 	//send u to the other proc, receive in U
-	processor(1-mpirank) << u[]; processor(1-mpirank) >> U[];
+	processor(1-mpirank) << u[];
+	processor(1-mpirank) >> U[];
 
 	// Error
 	real err0, err1;
 	err0 = int1d(Th[mpirank],interior)(square(U - u));
 	// send err0 to the other proc, receive in err1
-	processor(1-mpirank) << err0; processor(1-mpirank) >> err1;
+	processor(1-mpirank) << err0;
+	processor(1-mpirank) >> err1;
 	real err = sqrt(err0 + err1);
 	cout << " err = " << err << " - err0 = " << err0 << " - err1 = " << err1 << endl;
 	if (err < 1e-3) break;

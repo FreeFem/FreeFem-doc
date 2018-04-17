@@ -76,18 +76,8 @@ Progression:
 	<span class="progress-label">99</span>
 </div>
 
-- [ ] line 54
-	``` script bug```
-- [ ] line 132
-	``` script bug```
-- [ ] line 154
-	``` mpiReduceScatter is commented in parallelempi.cpp```
-- [ ] line 156
-	```See the `:::freefem examples++-mpi/essai.edp`  to test of all this functionality and thank you to Guy-Antoine Atenekeng Kahou for his help to code this interface.```
-- [ ] line 237
-	``` script bug```
-- [ ] line 241
-	``` check this part```
+- [ ] line 225
+	``` script freeze in the loop```
 
 ## Plugins
 
