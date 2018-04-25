@@ -14,7 +14,7 @@ mesh Th = square(4, 5);
 
 <center>
 
-|<a name=Fig1">Fig 1</a>: Boundary labels of the mesh by `:::freefem square(10,10)`|
+|<a name="Fig1">Fig 1</a>: Boundary labels of the mesh by `:::freefem square(10,10)`|
 |:----:|
 |![Square](images/MeshGeneration_Square.png)|
 
@@ -136,7 +136,7 @@ plot(Thwithhole, ps="Thwithhole.eps");
 !!! note
 	Notice that the orientation is changed by `:::freefem b(-30)` in 5th line. In 7th line, `:::freefem ps="fileName"` is used to generate a postscript file with identification shown on the figure.
 
-|<a	name=Fig5">Fig. 5</a>: Mesh without hole |<a name="Fig6">Fig. 6</a>: Mesh with hole |
+|<a	name="Fig5">Fig. 5</a>: Mesh without hole |<a name="Fig6">Fig. 6</a>: Mesh with hole |
 |:----:|:----:|
 |![Mesh without hole](images/MeshGeneration_Border4.png)|![Mesh with hole](images/MeshGeneration_Border5.png)|
 
@@ -177,7 +177,7 @@ int[int] NC = [-10,-11,-12,13]; //list number of $\pm$ segments of the 4 circles
 
 border bb(t=0, 1; i)
 {
-	//i is the index variable of the multi border loop
+	// i is the index variable of the multi border loop
 	int ii = (i+1)%4;
 	real t1 = 1-t;
 	x = xx[i]*t1 + xx[ii]*t;
@@ -2541,7 +2541,7 @@ where $H(V_{i})$ is the vector of size 6 defined by $[m11,m21,m22,m31,m32,m33]$
 	* loptions(0): anisotropic parameter (default 0). If you give an anisotropic metric 1 otherwise 0.
 	* loptions(1): Finite Element correction parameter (default 0). 1 for _no_ Finite Element correction otherwise 0.
 	* loptions(2): Split multiple connected points parameter (default 1). 1 for splitting multiple connected points otherwise 0.
-	* loptions(3): maximum value of memory size in Mbytes (default -1: the size is given by freeyams). 	
+	* loptions(3): maximum value of memory size in Mbytes (default -1: the size is given by freeyams).
 	* loptions(4): set the value of the connected component which we want to obtain. (Remark: freeyams give an automatic value at each connected component).
 	* loptions(5): level of verbosity
 	* loptions(6): Create point on straight edge (no mapping) parameter (default 0). 1 for creating point on straight edge otherwise 0.
@@ -2566,7 +2566,7 @@ where $H(V_{i})$ is the vector of size 6 defined by $[m11,m21,m22,m31,m32,m33]$
 	* doptions(3): Set the gradation value (Mesh density control) (default 1.3).
 	* doptions(4): Set the minimal size(hmin) (default -2.0: the size is automatically computed).
 	* doptions(5): Set the maximal size(hmax) (default -2.0: the size is automatically computed).
-	* doptions(6): Set the tolerance of the control of Chordal deviation (default -2.0). 	
+	* doptions(6): Set the tolerance of the control of Chordal deviation (default -2.0).
 	* doptions(7): Set the quality of degradation (default 0.599).
 	* doptions(8): Set the declic parameter (default 2.0).
 	* doptions(9): Set the angular walton limitation parameter (default 45 degree).
@@ -2640,7 +2640,7 @@ The parameters of `:::freefem mmg3d` are :
 
 		1 : no edge splitting or collapsing and no insert points.
 
-		0 : otherwise.		
+		0 : otherwise.
 
 	5. Verbosity level (default 3)
 
