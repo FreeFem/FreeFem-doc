@@ -7,11 +7,11 @@ First, go to the [__download__](download.md) page and choose your platform: Linu
 !!!note
 	Binary packages are available for Microsoft Windows, MacOS and some Linux distributions.
 
-Install `FreeFem++` by double-click on the appropriate file. Under Linux and MacOS the install directory is one of the following `/usr/local/bin`, `/usr/local/share/freefem++`, `/usr/local/lib/ff++`
+Install `FreeFem++` by double-clicking on the appropriate file. Under Linux and MacOS the install directory is one of the following `/usr/local/bin`, `/usr/local/share/freefem++`, `/usr/local/lib/ff++`
 
 ### Windows binary installation
 
-First download the windows installation executable, then double click on it to install `freefem++`.
+First download the windows installation executable, then double click to install `freefem++`.
 
 In most cases just answer yes (or type return) to all questions.
 
@@ -29,9 +29,9 @@ The syntax for the command-line tools are the same as those of `FreeFem.exe`.
 
 ### MacOS X binary installation
 
-Download the MacOS X binary version file, extract all the files with a double click on the icon of the file, go the the directory and put the `FreeFem+.app` application in the `/Applications` directory.
+Download the MacOS X binary version file, extract all the files by double clicking on the icon of the file, go the the directory and put the `FreeFem+.app` application in the `/Applications` directory.
 
-If you want a terminal access to `freefem++` just copy the file `FreeFem++` in a directory of your `$PATH` shell environment variable.
+If you want terminal access to `freefem++` just copy the file `FreeFem++` in a directory of your `$PATH` shell environment variable.
 
 ## Compilation
 
@@ -39,7 +39,7 @@ If you want a terminal access to `freefem++` just copy the file `FreeFem++` in a
 
 Remark: Blocks of code are shell commands in terminal.
 
-1. Install Xcode, Xcode Command Line tools and Xcode Additional Tools from [Apple website](https://developer.apple.com/download/more/)
+1. Install Xcode, Xcode Command Line tools and Xcode Additional Tools from the [Apple website](https://developer.apple.com/download/more/)
 
 2. Install gcc from [http://hpc.sourceforge.net](http://hpc.sourceforge.net/)
 
@@ -57,7 +57,7 @@ Remark: Blocks of code are shell commands in terminal.
 
 4. Install mactex from [ctan](http://mirrors.ctan.org/systems/mac/mactex/MacTeX.pkg)
 
-5. Install [openmpi](https://www.open-mpi.org/software/) source code
+5. Install the [openmpi](https://www.open-mpi.org/software/) source code
 
 	```bash
 	./configure CC=/usr/local/bin/gcc CXX=/usr/local/bin/g++ F77=/usr/local/bin/gfortran FC=/usr/local/bin/gfortran
@@ -78,7 +78,7 @@ Remark: Blocks of code are shell commands in terminal.
 
 7. Install [git](https://git-scm.com/download/mac)
 
-8. Download FreeFem++ source from the repository
+8. Download the FreeFem++ source from the repository
 
 	```bash
 	git clone https://github.com/FreeFem/FreeFem-sources.git
@@ -171,7 +171,7 @@ Remark: Blocks of code are shell commands in terminal.
 	```
 
 	!!!note
-		If your computer have many threads, you can run `make` in parallel using `make -j16` for 16 threads for example.
+		If your computer has many threads, you can run `make` in parallel using `make -j16` for 16 threads, for example.
 
 	!!!info
 		Optionnally, check the compilation with `make check`
@@ -185,7 +185,7 @@ Remark: Blocks of code are shell commands in terminal.
 ### Compilation on Arch Linux
 
 !!! warning
-	As Arch is in rolling release, the following informations can be quickly outdated !
+	As Arch is in rolling release, the following information can be quickly outdated !
 
 1. Install the following dependencies:
 
@@ -198,7 +198,7 @@ Remark: Blocks of code are shell commands in terminal.
 		valgrind cmake texlive-most
 	```
 
-2. Download `FreeFem++` source from the repository
+2. Download the `FreeFem++` source from the repository
 
 	```bash
 	git clone https://github.com/FreeFem/FreeFem-sources.git
@@ -250,7 +250,7 @@ Remark: Blocks of code are shell commands in terminal.
 	```
 
 	!!!note
-		If your computer have many threads, you can run `make` in parallel using `make -j16` for 16 threads for example.
+		If your computer has many threads, you can run `make` in parallel using `make -j16` for 16 threads, for example.
 
 	!!!info
 		Optionnally, check the compilation with `make check`
@@ -275,7 +275,7 @@ $\codered$ Windows compilation (Good luck!)
 !!!note
 	The variable `:::freefem verbosity` changes the level of internal printing (0: nothing unless there are syntax errors, 1: few, 10: lots, etc. ...), the default value is 2.
 
-	The include files are searched from the `:::freefem includepath` list and the load files are searched from the `:::freefem loadpath` list.
+	The included files are found in the `:::freefem includepath` list and the load files are found in the `:::freefem loadpath` list.
 
 The syntax of the file is:
 
@@ -306,7 +306,7 @@ The possible paths for this file are
  freefem++.pref
  ```
 
-We can also use shell environment variable to change verbosity and the search rule before the init files.
+We can also use shell environment variables to change verbosity and the search rule before the init files.
 
 ```bash
 export FF_VERBOSITY=50
