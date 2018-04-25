@@ -233,7 +233,7 @@ It is almost the same a using the CMA evolution strategy except, that since it i
 load "ff-cmaes"
 //define J, u, ...
 real min = cmaes(J, u, stopTolFun=1e-6, stopMaxIter=3000);
-cout << "minimal value is " << min << " for u = " << u << endl;
+cout << "minimum value is " << min << " for u = " << u << endl;
 ```
 
 This algorithm works with a normal multivariate distribution in the parameters space and tries to adapt its covariance matrix using the information provided by the successive function evaluations (see [NLopt documentation](https://nlopt.readthedocs.io/en/latest/) for more details). Therefore, some specific parameters can be passed to control the starting distribution, size of the sample generations, etc... Named parameters for this are the following :
@@ -537,7 +537,7 @@ __Named Parameters :__ The available named parameters in this interface are thos
 
  * `:::freefem objvalue` : An identifier to a `:::freefem real` type variable to get the last value of the objective function (best value in case of success).
 
- * `:::freefem mumin` : Minimal value for the barrier parameter $\mu$, a `:::freefem real` with $10^{-11}$ as default value.
+ * `:::freefem mumin` : minimum value for the barrier parameter $\mu$, a `:::freefem real` with $10^{-11}$ as default value.
 
  * `:::freefem linesearch` : A boolean which disables the line search when set to `:::freefem false`. The line search is activated by default. When disabled, the method becomes a standard Newton algorithm instead of a primal-dual system. The global convergence is then no longer assured, meaning that many initializers could lead to diverging iterates. But on the other hand, it can be useful when trying to catch a precise local minimum without having some out of control process making the iterate caught by some other near optimum.
 
@@ -709,11 +709,11 @@ __Named Parameters :__ The available named parameters in this interface are thos
 
 	</center>
 
-## 3D constrained minimal surface with IPOPT
+## 3D constrained minimum surface with IPOPT
 
 ### Area and volume expressions
 
-This example is aimed at numerically solving some constrained minimal surface problems with the IPOPT algorithm. We restrain to $C^{k}$ ($k\geq 1$), closed, spherically parametrizable surfaces, i.e. surfaces $S$ such that :
+This example is aimed at numerically solving some constrained minimum surface problems with the IPOPT algorithm. We restrain to $C^{k}$ ($k\geq 1$), closed, spherically parametrizable surfaces, i.e. surfaces $S$ such that :
 
 $$
 \exists \rho \in C^{k}([0,2\pi ]\times[0,\pi] ) \vert
@@ -805,7 +805,7 @@ Deriving the volume function derivatives is again an easier task. We immediately
 
 ### The problem and its script
 
-The whole code is available in [IPOPT minimal surface & volume example](../examples/#ipopt-minimal-surface-volume). We propose to solve the following problem :
+The whole code is available in [IPOPT minimum surface & volume example](../examples/#ipopt-minimum-surface-volume). We propose to solve the following problem :
 
 !!!example
 	Given a positive function $\rho_{\mathrm{object}}$ piecewise continuous, and a scalar $\mathcal{V}_{\mathrm{max}} > \mathcal{V}(\rho_{\mathrm{object}})$, find $\rho_{0}$ such that :
@@ -814,7 +814,7 @@ The whole code is available in [IPOPT minimal surface & volume example](../examp
 	\rho_{0} = \underset{\rho\in C^{1}(\Omega)}{\operatorname{argmin}}\ \mathcal{A}(\rho)\ ,\ \mathrm{s.t.}\ \rho_{0}\geq\rho_{\mathrm{object}} \ \mathrm{and\ } \mathcal{V}(\rho_{0})\leq \mathcal{V}_{\mathrm{max}}
 	$$
 
-	If $\rho_{\mathrm{object}}$ is the spherical parametrization of the surface of a 3-dimensional object (domain) $\mathcal{O}$, it can be interpreted as finding the surface with minimal area enclosing the object with a given maximal volume. If $\mathcal{V}_{\mathrm{max}}$ is close to $\mathcal{V}(\rho_{\mathrm{object}})$, so should be $\rho_{0}$ and $\rho_{\mathrm{object}}$. With higher values of $\mathcal{V}_{\mathrm{max}}$, $\rho$ should be closer to the unconstrained minimal surface surrounding $\mathcal{O}$ which is obtained as soon as $\mathcal{V}_{\mathrm{max}} \geq \frac{4}{3}\pi \|\rho_{\mathrm{object}}\|_{\infty}^{3}$ (sufficient but not necessary).
+	If $\rho_{\mathrm{object}}$ is the spherical parametrization of the surface of a 3-dimensional object (domain) $\mathcal{O}$, it can be interpreted as finding the surface with minimum area enclosing the object with a given maximum volume. If $\mathcal{V}_{\mathrm{max}}$ is close to $\mathcal{V}(\rho_{\mathrm{object}})$, so should be $\rho_{0}$ and $\rho_{\mathrm{object}}$. With higher values of $\mathcal{V}_{\mathrm{max}}$, $\rho$ should be closer to the unconstrained minimum surface surrounding $\mathcal{O}$ which is obtained as soon as $\mathcal{V}_{\mathrm{max}} \geq \frac{4}{3}\pi \|\rho_{\mathrm{object}}\|_{\infty}^{3}$ (sufficient but not necessary).
 
 	It also could be interesting to solve the same problem with the constraint $\mathcal{V}(\rho_{0})\geq \mathcal{V}_{\mathrm{min}}$ which leads to a sphere when $\mathcal{V}_{\mathrm{min}} \geq \frac{1}{6}\pi \mathrm{diam}(\mathcal{O})^{3} $ and moves toward the solution of the unconstrained problem as $\mathcal{V}_{\mathrm{min}}$ decreases.
 
@@ -1352,7 +1352,7 @@ The only quick way to use the previously presented algorithms on a parallel arch
 load "mpi-cmaes"
 ... // Define J, u and all here
 real min = cmaesMPI(J, u, stopTolFun=1e-6, stopMaxIter=3000);
-cout << "minimal value is " << min << " for u = " << u << endl;
+cout << "minimum value is " << min << " for u = " << u << endl;
 ```
 
 If the population size is not changed using the `:::freefem popsize` parameter, it will use the heuristic value slightly changed to be equal to the closest greatest multiple of the size of the communicator used by the optimizer. The __`FreeFem++`__ `:::freefem mpicommworld` is used by default. The user can specify his own MPI communicator with the named parameter `:::freefem comm=`, see the MPI section of this manual for more information about communicators in __`FreeFem++`__.

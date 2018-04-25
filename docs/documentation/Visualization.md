@@ -4,54 +4,54 @@ Results created by the finite element method can be a huge set of data, so it is
 
 There are two ways of visualization in FreeFem++:
 
-* One, the default view, supports the drawing of meshes, isovalues of real FE-functions and of vector fields, all by the command `:::freefem plot` (see [Plot section](#plot) below). For publishing purpose, FreeFem++ can store these plots as postscript files.
+* One, the default view, which supports the drawing of meshes, isovalues of real FE-functions, and of vector fields, all by the command `:::freefem plot` (see [Plot section](#plot) below). For publishing purpose, FreeFem++ can store these plots as postscript files.
 
 * Another method is to use external tools, for example, gnuplot (see [Gnuplot section](#link-with-gnuplot), [medit section](#link-with-medit), [Paraview section](#link-with-paraview)) using the command `:::freefem system` to launch them and/or to save the data in text files.
 
 ## Plot
 
-With the command `:::freefem plot`, meshes, isovalues of scalar functions and vector fields can be displayed.
+With the command `:::freefem plot`, meshes, isovalues of scalar functions, and vector fields can be displayed.
 
-The parameters of the plot command can be meshes, real FE functions, arrays of 2 real FE functions, arrays of two arrays of double, to plot respectively a mesh, a function, a vector field, or a curve defined by the two arrays of double.
+The parameters of the plot command can be meshes, real FE functions, arrays of 2 real FE functions, arrays of two double arrays, to plot respectively a mesh, a function, a vector field, or a curve defined by the two double arrays.
 
 !!! note
-	The length of an arrow is always bound to be in [5‰, 5%] of the screen size, to see something (else it will only look like porcupine).
+	The length of an arrow is always bound to be in [5‰, 5%] of the screen size in order to see something.
 
-The `:::freefem plot` command parameters are listed int the [Reference part](../reference/Functions/#plot).
+The `:::freefem plot` command parameters are listed in the [Reference part](../reference/Functions/#plot).
 
 The keyboard shortcuts are :
 
-* __enter__ try to show plot
+* __enter__ tries to show plot
 * __p__ previous plot (10 plots saved)
-* __?__ show this help
-* __+,-__ zoom in/out around the cursor 3/2 times
-* __=__ reset vue
-* __r__ refresh plot
+* __?__ shows this help
+* __+,-__ zooms in/out around the cursor 3/2 times
+* __=__ resets the view
+* __r__ refreshes plot
 * __up, down, left, right__ special keys to tanslate
-* __3__ switch 3d/2d plot keys :
+* __3__ switches 3d/2d plot keys :
 
-	__- z,Z__ focal zoom unzoom
-	__- H,h__ switch increase or decrease the Z scale of the plot
+	__- z,Z__ focal zoom and zoom out
+	__- H,h__ increases or decreases the Z scale of the plot
 	__- mouse motion__
-	__- left button__ rotate
-	__- right button__ zoom (ctrl+button on mac)
-	__- right button +alt__ tanslate (alt+ctrl+button on mac)
+	__- left button__ rotates
+	__- right button__ zooms (ctrl+button on mac)
+	__- right button +alt__ tanslates (alt+ctrl+button on mac)
 
-* __a,A__ increase or decrease the arrow size
-* __B__ switch between show border meshes or not
-* __i,I__ update or not: the min/max bound of the functions to the window
-* __n,N__ decrease or increase the number of iso value array
-* __b__ switch between black and white or color plotting
-* __g__ switch between grey or color plotting
-* __f__ switch between filling iso or iso line
-* __l__ switch between lighting or not
-* __v__ switch between show or not the numerical value of colors
-* __m__ switch between show or not meshes
+* __a,A__ increases or decreases the arrow size
+* __B__ switches between showing the border meshes or not
+* __i,I__ updates or not: the min/max bound of the functions to the window
+* __n,N__ decreases or increases the number of iso value arrays
+* __b__ switches between black and white or color plotting
+* __g__ switches between grey or color plotting
+* __f__ switches between filling iso or iso line
+* __l__ switches between lighting or not
+* __v__ switches between show or not showing the numerical value of colors
+* __m__ switches between show or not showing the meshes
 * __w__ window dump in file ffglutXXXX.ppm
-* __*__ keep/unkeep viewpoint for next plot
+* __*__ keep/drop viewpoint for next plot
 * __k__ complex data / change view type
-* __ESC__ close the graphics process before version 3.22, after no way to close.
-* __otherwise__ do nothing.
+* __ESC__ closes the graphics process before version 3.22, after no way to close
+* __otherwise__ does nothing
 
 For example:
 
@@ -100,7 +100,7 @@ To change the color table and to choose the value of iso line you can do :
 // in terms of three constituent components:
 // HSV color space as a color wheel
 // Hue, the color type (such as red, blue, or yellow):
-// Ranges from 0-360 (but normalized to 0-100% in some applications like here)
+// Ranges from 0-360 (but normalized to 0-100% in some applications, like here)
 // Saturation, the "vibrancy" of the color: Ranges from 0-100%
 // The lower the saturation of a color, the more "grayness" is present
 // and the more faded the color will appear.
@@ -135,9 +135,9 @@ real[int] colorhsv=[ // color hsv model
 
 ## Link with gnuplot
 
-Example [Membrane](../tutorial/Membrane) shows how to generate a gnuplot from a FreeFem++ file. Let us present here another technique which has the advantage of being online, i.e. one doesn't need to quit FreeFem++ to generate a gnuplot.
+Example [Membrane](../tutorial/Membrane) shows how to generate a gnuplot from a FreeFem++ file. Here is another technique which has the advantage of being online, i.e. one doesn't need to quit FreeFem++ to generate a gnuplot.
 
-But this work only if [gnuplot](http://www.gnuplot.info) is installed, and only on unix-like computer.
+However, this works only if [gnuplot](http://www.gnuplot.info) is installed, and only on an Unix-like computer.
 
 Add to the previous example:
 
@@ -148,7 +148,7 @@ Add to the previous example:
 		gnu << xx[i] << " " << yy[i] << endl;
 }
 
-// to call gnuplot command and wait 5 second (thanks to unix command)
+// to call gnuplot command and wait 5 second (due to the Unix command)
 // and make postscript plot
 exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output \"gnuplot.eps\" \n replot \n quit' | gnuplot");
 ```
@@ -166,7 +166,7 @@ As said above, `medit` is a freeware display package by Pascal Frey using OpenGL
 
 Now `medit` software is included in FreeFem++ under `ffmedit` name.
 
-The `:::freefem medit` command parameters are listed int the [Reference part](../reference/ExternalLibraries/#medit).
+The `:::freefem medit` command parameters are listed in the [Reference part](../reference/ExternalLibraries/#medit).
 
 <center>
 
@@ -216,7 +216,7 @@ exec("rm u.bb u.faces u.points");
 
 ## Link with Paraview
 
-One can also export mesh or results in the `.vtk` format in order to post-processing data using [Paraview](https://www.paraview.org/).
+One can also export mesh or results in the `.vtk` format in order to post-process data using [Paraview](https://www.paraview.org/).
 
 ```freefem
 load "iovtk"
@@ -240,4 +240,4 @@ savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
 
 ## Link with Matlab<sup>&copy;</sup>
 
-Thanks to a [Matlab plugin](http://fr.mathworks.com/matlabcentral/fileexchange/26833-freefem-to-matlab), mesh and data can be readed.
+Thanks to a [Matlab plugin](http://fr.mathworks.com/matlabcentral/fileexchange/26833-freefem-to-matlab), mesh and data can be read.

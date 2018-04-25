@@ -67,8 +67,8 @@ For two real numbers $a,b$
  * [$n_{be}$] the number of boundary element in $\mathcal{T}_h$ (get by `:::freefem Th.nbe`)
  * [$|\Omega_h|$] the measure (area or volume) in $\mathcal{T}_h$ (get by `:::freefem Th.measure`)
  * [$|\partial \Omega_h|$] the measure of the border (length or area) in $\mathcal{T}_h$ (get by `:::freefem Th.bordermeasure`)
- * [$h_{min}$] the minimal edge size of $\mathcal{T}_h$ (get by `:::freefem Th.hmin`)
- * [$h_{max}$] the maximal edge size of $\mathcal{T}_h$ (get by `:::freefem Th.hmax`)
+ * [$h_{min}$] the minimum edge size of $\mathcal{T}_h$ (get by `:::freefem Th.hmin`)
+ * [$h_{max}$] the maximum edge size of $\mathcal{T}_h$ (get by `:::freefem Th.hmax`)
  * [[$q^iq^j$]] the segment connecting $q^i$ and $q^j$
  * [$q^{k_1},q^{k_2},q^{k_3}$] the vertices of a triangle $T_k$ with anti-clock direction (get the coordinate of $q^{k_j}$ by (`:::freefem Th[k-1][j-1].x, Th[k-1][j-1].y`)
  * [$I_{\Omega}$] the set $\{i\in \N|\; q^i\not\in \Gamma_h\}$
