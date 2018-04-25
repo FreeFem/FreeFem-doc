@@ -9,9 +9,9 @@ Suppose we want to solve the Euler problem (here $x$ has nothing to do with the 
 \nabla J(x) = \left(\frac{\p J}{\p x_i} (\mathbf{x})\right) = 0
 \end{equation}
 
-where $ J$ is a functional (to minimize for example) from $ \R^n$ to $ \R$.
+where $ J$ is a function (to minimize for example) from $ \R^n$ to $ \R$.
 
-If the function is convex we can use the conjugate gradient algorithm to solve the problem, and we just need the function (named `:::freefem dJ` for example) which compute $\nabla J$, so the parameters are the name of that function with prototype `:::freefem func real[int] dJ(real[int] &xx);` which compute $\nabla J$, and a vector `:::freefem x` of type (of course the number 20 can be changed) `:::freefem real[int] x(20);` to initialize the process and get the result.
+If the function is convex we can use the conjugate gradient algorithm to solve the problem, and we just need the function (named `:::freefem dJ` for example) which computes $\nabla J$, so the parameters are the name of that function with prototype `:::freefem func real[int] dJ(real[int] &xx);` which computes $\nabla J$, and a vector `:::freefem x` of type (of course the number 20 can be changed) `:::freefem real[int] x(20);` to initialize the process and get the result.
 
 Given an initial value $\mathbf{x}^{(0)}$, a maximum number $i_{\max}$ of iterations, and an error tolerance $0<\epsilon<1$:
 
@@ -37,7 +37,7 @@ Writing the minus value in `:::freefem eps=`, i.e.,
 NLCG(dJ, x, precon=M, nbiter=imax, eps=-epsilon);
 ```
 
-we can use the stopping test :
+We can use the stopping test :
 
 \[
 \| \nabla J(\mathbf{x})\|_P^2\le \epsilon
@@ -49,26 +49,26 @@ The parameters of these three functions are:
 
 * `:::freefem nbiter=` set the number of iteration (by default 100)
 
-* `:::freefem precon=` set the preconditioner function (`:::freefem P` for example) by default it is the identity, remark the prototype is `:::freefem func real[int] P(real[int] &x)`.
+* `:::freefem precon=` set the preconditioner function (`:::freefem P` for example) by default it is the identity, note the prototype is `:::freefem func real[int] P(real[int] &x)`.
 
 * `:::freefem eps=` set the value of the stop test $\varepsilon$ ($=10^{-6}$ by default) if positive then relative test $||\nabla J(x)||_P\leq \varepsilon||\nabla J(x_0)||_P$, otherwise the absolute test is $||\nabla J(x)||_P^2\leq |\varepsilon|$.
 
 <!--- __ --->
 
-* `:::freefem veps=` set and return the value of the stop test, if positive then relative test $||\nabla J(x)||_P\leq \varepsilon||\nabla J(x_0)||_P$, otherwise the absolute test is $||\nabla J(x)||_P^2\leq |\varepsilon|$. The return value is minus the real stop test (remark: it is useful in loop).
+* `:::freefem veps=` set and return the value of the stop test, if positive, then relative test is $||\nabla J(x)||_P\leq \varepsilon||\nabla J(x_0)||_P$, otherwise the absolute test is $||\nabla J(x)||_P^2\leq |\varepsilon|$. The return value is minus the real stop test (remark: it is useful in loop).
 
 <!--- __ --->
 
-* `:::freefem stop=` `:::freefem stopfunc` add your test function to stop before `::freefem eps` criterion. The prototype for the function `:::freefem stopfunc` is
+* `:::freefem stop=` `:::freefem stopfunc` add your test function to stop before the `:::freefem eps` criterion. The prototype for the function `:::freefem stopfunc` is
 
 	```freefem
 	 func bool stopfunc(int iter, real[int] u, real[int] g)
 	```
 
-	where `:::freefem u` is the current solution, and `:::freefem g` the current gradient not preconditioned.
+	where `:::freefem u` is the current solution, and `:::freefem g`, the current gradient, is not preconditioned.
 
 !!!example "[Algorithms.edp](../examples/#Algorithms)"
-	For a given function $b$, let us find the minimizer $u$ of the functional
+	For a given function $b$, let us find the minimizer $u$ of the function
 
 	\begin{eqnarray*}
 	J(u) &=& \frac{1}{2}\int_{\Omega} f(|\nabla u|^2) - \int_{\Omega} u b \\
@@ -81,7 +81,7 @@ The parameters of these three functions are:
 	fespace Ph(Th, P0);
 	Ph alpha; //store df(|nabla u|^2)
 
-	// The functionnal J
+	// The functionn J
 	//J(u) = 1/2 int_Omega f(|nabla u|^2) - int_Omega u b
 	func real J (real[int] & u){
 		Vh w;
@@ -109,7 +109,7 @@ The parameters of these three functions are:
 	}
 	```
 
-	We want to construct also a preconditioner $C$ with solving the problem:
+	We also want to construct a preconditioner $C$ with solving the problem:
 
 	find $u_h \in V_{0h}$ such that :
 	\[
@@ -144,7 +144,7 @@ The parameters of these three functions are:
 	}
 	```
 
-	To solve the problem, we make 10 iteration of the conjugate gradient,
+	To solve the problem, we make 10 iterations of the conjugate gradient,
 	recompute the preconditioner and restart the conjugate gradient:
 
 	```freefem
@@ -181,17 +181,17 @@ AffineGMRES(A, x, precon=M, nbiter=imax, eps=±epsilon);
 ```
 
 Also, we can use the non-linear version of GMRES algorithm
-(the functional $J$ is just convex)
+(the function $J$ is just convex)
 
 ```freefem
 AffineGMRES(dJ, x, precon=M, nbiter=imax, eps=±epsilon);
 ```
 
-For detail of these algorithms, refer to [PIRONNEAU1998](#PIRONNEAU1998), Chapter IV, 1.3.
+For the details of these algorithms, refer to [PIRONNEAU1998](#PIRONNEAU1998), Chapter IV, 1.3.
 
 ## Algorithms for Unconstrained Optimization
 
-Two algorithms of COOOL package are interfaced with the Newton Raphson method (call `:::freefem Newton`) and the `:::freefem BFGS` method. These two ones are directly available in FreeFem (no dynamical link to load). Be careful with these algorithms, because their implementation uses full matrices. We also provide several optimization algorithms from the [NLopt library](https://nlopt.readthedocs.io/en/latest/) as well as an interface for Hansen's implementation of CMAES (a MPI version of this one is also available).
+Two algorithms of COOOL package are interfaced with the Newton Raphson method (called `:::freefem Newton`) and the `:::freefem BFGS` method. These two are directly available in FreeFem (no dynamical link to load). Be careful with these algorithms, because their implementation uses full matrices. We also provide several optimization algorithms from the [NLopt library](https://nlopt.readthedocs.io/en/latest/) as well as an interface for Hansen's implementation of CMAES (a MPI version of this one is also available).
 
 ### Example of usage for BFGS or CMAES
 
@@ -227,7 +227,7 @@ Two algorithms of COOOL package are interfaced with the Newton Raphson method (c
 	cout << "BFGS: J(u) = " << J(u) << ", err = " << error(u, b) << endl;
 	```
 
-Using the CMA evolution strategy is almost the same, except that, as it is a derivative free optimizer, the `:::freefem dJ` argument is omitted and there are some other named parameters to control the behaviour of the algorithm. With the same objective function as above, an example of utilization would be (see [CMAES Variational inequality](../examples/#cmaes-varational-inequality) for a complete example):
+It is almost the same a using the CMA evolution strategy except, that since it is a derivative free optimizer, the `:::freefem dJ` argument is omitted and there are some other named parameters to control the behavior of the algorithm. With the same objective function as above, an example of utilization would be (see [CMAES Variational inequality](../examples/#cmaes-varational-inequality) for a complete example):
 
 ```freefem
 load "ff-cmaes"
@@ -236,7 +236,7 @@ real min = cmaes(J, u, stopTolFun=1e-6, stopMaxIter=3000);
 cout << "minimal value is " << min << " for u = " << u << endl;
 ```
 
-This algorithm works with a normal multivariate distribution in the parameters space and try to adapt its covariance matrix using the information provides by the successive function evaluations (see [NLopt documentation](https://nlopt.readthedocs.io/en/latest/) for more details). Thus, some specific parameters can be passed to control the starting distribution, size of the sample generations etc... Named parameters for this are the following :
+This algorithm works with a normal multivariate distribution in the parameters space and tries to adapt its covariance matrix using the information provided by the successive function evaluations (see [NLopt documentation](https://nlopt.readthedocs.io/en/latest/) for more details). Therefore, some specific parameters can be passed to control the starting distribution, size of the sample generations, etc... Named parameters for this are the following :
 
  * `:::freefem seed=` Seed for random number generator (`:::freefem val` is an integer). No specified value will lead to a clock based seed initialization.
 
@@ -244,22 +244,22 @@ This algorithm works with a normal multivariate distribution in the parameters s
 
  * `:::freefem initialStdDevs=` Same as above except that the argument is an array allowing to set a value of the initial standard deviation for each parameter. Entries differing by several orders of magnitude should be avoided (if it can't be, try rescaling the problem).
 
- * `:::freefem stopTolFun=` Stops the algorithm if function values differences are smaller than the passed one, default is $10^{-12}$.
+ * `:::freefem stopTolFun=` Stops the algorithm if function value differences are smaller than the passed one, default is $10^{-12}$.
 
- * `:::freefem stopTolFunHist=` Stops the algorithm if function value differences of the best values are smaller than the passed one, default is 0 (unused).
+ * `:::freefem stopTolFunHist=` Stops the algorithm if function value differences from the best values are smaller than the passed one, default is 0 (unused).
 
- * `:::freefem stopTolX=` Stopping criteria triggered if step sizes in the parameters space are
+ * `:::freefem stopTolX=` Stopping criteria is triggered if step sizes in the parameters space are
  smaller than this real value, default is 0.
 
- * `:::freefem stopTolXFactor=` Stopping criteria triggered when the standard deviation increases more than this value. The default value is $10^{3}$.
+ * `:::freefem stopTolXFactor=` Stopping criteria is triggered when the standard deviation increases more than this value. The default value is $10^{3}$.
 
  * `:::freefem stopMaxFunEval=` Stops the algorithm when `:::freefem stopMaxFunEval` function evaluations have been done. Set to $900(n+3)^{2}$ by default, where $n$ is the parameters space dimension.
 
- * `:::freefem stopMaxIter=` Integer stopping the search when `:::freefem stopMaxIter` generations has been sampled. Unused by default.
+ * `:::freefem stopMaxIter=` Integer stopping the search when `:::freefem stopMaxIter` generations have been sampled. Unused by default.
 
- * `:::freefem popsize=` Integer value used to change the sample size. The default value is $4+ \lfloor 3\ln (n) \rfloor$. Increasing the population size usually improves the global search capabilities at the cost of an at most linear reduction of the convergence speed with respect to `:::freefem popsize`.
+ * `:::freefem popsize=` Integer value used to change the sample size. The default value is $4+ \lfloor 3\ln (n) \rfloor$. Increasing the population size usually improves the global search capabilities at the cost of, at most, a linear reduction of the convergence speed with respect to `:::freefem popsize`.
 
- * `:::freefem paramFile=` This `:::freefem string` type parameter allows the user to pass all the parameters using an extern file as in Hansen's original code. More parameters related to the CMA-ES algorithm can be changed with this file. Note that the parameters passed to the CMAES function in the __`FreeFem++`__ script will be ignored if an input parameters file is given.
+ * `:::freefem paramFile=` This `:::freefem string` type parameter allows the user to pass all the parameters using an extern file, as in Hansen's original code. More parameters related to the CMA-ES algorithm can be changed with this file. Note that the parameters passed to the CMAES function in the __`FreeFem++`__ script will be ignored if an input parameters file is given.
 
 ## IPOPT
 
@@ -270,7 +270,7 @@ IPOPT needs a direct sparse symmetric linear solver. If your version of __`FreeF
 
 ### Short description of the algorithm
 
-In this section, we give a very brief glimpse at the underlying mathematics of IPOPT. For a deeper introduction on interior methods for nonlinear smooth optimization, one may consults [FORSGREN2002](#FORSGREN2002), or [WÄCHTER2006](#WÄCHTER2006) for more IPOPT specific elements. IPOPT is designed to perform optimization for both equality and inequality constrained problems. Though, nonlinear inequalities are rearranged before the beginning of the optimization process in order to restrict the panel of nonlinear constraints to those of the equality kind. Each nonlinear inequality ones are transformed into a pair of simple bound inequality and nonlinear equality constraint by the introduction of as many slack variables as is needed : $c_{i}(x)\leq 0$ becomes $c_{i}(x) + s_{i} = 0$ and $s_{i}\leq 0$, where $s_{i}$ is added to the initial variables of the problems $x_{i}$. Thus, for convenience, we will assume that the minimization problem does not contain any nonlinear inequality constraint. It means that, given a function $f:\mathbb{R}^{n}\mapsto\mathbb{R}$, we want to find :
+In this section, we give a very brief glimpse at the underlying mathematics of IPOPT. For a deeper introduction on interior methods for nonlinear smooth optimization, one may consult [FORSGREN2002](#FORSGREN2002), or [WÄCHTER2006](#WÄCHTER2006) for more IPOPT specific elements. IPOPT is designed to perform optimization for both equality and inequality constrained problems. However, nonlinear inequalities are rearranged before the beginning of the optimization process in order to restrict the panel of nonlinear constraints to those of the equality kind. Each nonlinear inequality is transformed into a pair of simple bound inequalities and nonlinear equality constraints by the introduction of as many slack variables as is needed : $c_{i}(x)\leq 0$ becomes $c_{i}(x) + s_{i} = 0$ and $s_{i}\leq 0$, where $s_{i}$ is added to the initial variables of the problems $x_{i}$. Thus, for convenience, we will assume that the minimization problem does not contain any nonlinear inequality constraint. It means that, given a function $f:\mathbb{R}^{n}\mapsto\mathbb{R}$, we want to find :
 
 \begin{equation}\label{minimproblem}
 \begin{array} {c}
@@ -316,9 +316,9 @@ satisfies :
 \nabla f(x_{\mu}) + J_{c}(x_{\mu})^{T}\lambda_{\mu}+ z_{u}(x_{\mu},\mu) - z_{l}(x_{\mu},\mu) = 0 \quad \text{and} \quad c(x_{\mu}) = 0
 \end{equation}
 
-In this equation, the $z_l$ and $z_u$ vectors seems to play the role of Lagrange multipliers for the simple bounds inequalities, and indeed, when $\mu\rightarrow 0$, they converge toward some suitable Lagrange multipliers for the KKT conditions, provided some technical assumptions are fulfilled (see [FORSGREN2002](#FORSGREN2002)).
+In this equation, the $z_l$ and $z_u$ vectors seem to play the role of Lagrange multipliers for the simple bound inequalities, and indeed, when $\mu\rightarrow 0$, they converge toward some suitable Lagrange multipliers for the KKT conditions, provided some technical assumptions are fulfilled (see [FORSGREN2002](#FORSGREN2002)).
 
-Equation \eqref{muproblemlambda} is solved by performing a Newton method in order to find a solution of \eqref{muproblem} for each of the decreasing values of $\mu$. Some order 2 conditions are also taken into account to avoid convergence to local maximizer, see [FORSGREN2002](#FORSGREN2002) for precision about them. In the most classical IP algorithms, the Newton method is directly applied to \eqref{muproblem}. This is in most case inefficient due to frequent computation of infeasible points. These difficulties are avoided in Primal-Dual interior points methods where \eqref{muproblem} is transformed into an extended system where $z_u$ and $z_l$ are treated as unknowns and the barrier problems are finding $(x,\lambda,z_u,z_l)\in\R^n\times\R^m\times\R^n\times\R^n$ such that :
+Equation \eqref{muproblemlambda} is solved by performing a Newton method in order to find a solution of \eqref{muproblem} for each of the decreasing values of $\mu$. Some order 2 conditions are also taken into account to avoid convergence to local maximizers, see [FORSGREN2002](#FORSGREN2002) for details about them. In the most classic IP algorithms, the Newton method is directly applied to \eqref{muproblem}. This is in most case inefficient due to frequent computation of infeasible points. These difficulties are avoided in Primal-Dual interior point methods where \eqref{muproblem} is transformed into an extended system where $z_u$ and $z_l$ are treated as unknowns and the barrier problems are finding $(x,\lambda,z_u,z_l)\in\R^n\times\R^m\times\R^n\times\R^n$ such that :
 
 \begin{equation}\label{PrimalDualIPBarrierProblem}
 \left\lbrace\begin{array}{rcl}
@@ -329,15 +329,15 @@ c(x) & = & 0 \\
 \end{array}\right.
 \end{equation}
 
-Where if $a$ is a vector of $\R^n$, $A$ denotes the diagonal matrix $A=(a_i \delta_{ij})_{1\leq i,j\leq n}$ and $e\in\R^{n} = (1,1,\dots,1)$. Solving this nonlinear system by the Newton methods is known as being the _primal-dual_ interior points method. Here again, more details are available in [FORSGREN2002](#FORSGREN2002). Most actual implementations introduce features in order to globalize the convergence capability of the method, essentially by adding some line-search steps to the Newton algorithm, or by using trust regions. For the purpose of IPOPT, this is achieved by a _filter line search_ methods, the details of which can be found in [](#).
+Where if $a$ is a vector of $\R^n$, $A$ denotes the diagonal matrix $A=(a_i \delta_{ij})_{1\leq i,j\leq n}$ and $e\in\R^{n} = (1,1,\dots,1)$. Solving this nonlinear system by the Newton method is known as being the _primal-dual_ interior point method. Here again, more details are available in [FORSGREN2002](#FORSGREN2002). Most actual implementations introduce features in order to globalize the convergence capability of the method, essentially by adding some line-search steps to the Newton algorithm, or by using trust regions. For the purpose of IPOPT, this is achieved by a _filter line search_ methods, the details of which can be found in [](#).
 
 $\codered$ missing ref
 
-More IPOPT specific features or implementation details can be found in [WÄCHTER2006](#WÄCHTER2006). We will just retain that IPOPT is a smart Newton method for solving constrained optimization problem, with global convergence capabilities due to a robust line search method (in the sense that the algorithm will convergence no matter the initializer). Due to the underlying Newton method, the optimization process requires expressions of all derivatives up to the order 2 of the fitness function as well as those of the constraints. For problems whose Hessian matrices are difficult to compute or lead to high dimensional dense matrices, it is possible to use a BFGS approximation of these objects at the cost of a much slower convergence rate.
+More IPOPT specific features or implementation details can be found in [WÄCHTER2006](#WÄCHTER2006). We will just retain that IPOPT is a smart Newton method for solving constrained optimization problems, with global convergence capabilities due to a robust line search method (in the sense that the algorithm will converge no matter the initializer). Due to the underlying Newton method, the optimization process requires expressions of all derivatives up to the order 2 of the fitness function as well as those of the constraints. For problems whose Hessian matrices are difficult to compute or lead to high dimensional dense matrices, it is possible to use a BFGS approximation of these objects at the cost of a much slower convergence rate.
 
 ### IPOPT in __`FreeFem++`__
 
-Calling the IPOPT optimizer in a __`FreeFem++`__ script is done with the `:::freefem IPOPT` function included in the `:::freefem ff-Ipopt` dynamic library. IPOPT is designed to solve constrained minimization problem in the form :
+Calling the IPOPT optimizer in a __`FreeFem++`__ script is done with the `:::freefem IPOPT` function included in the `:::freefem ff-Ipopt` dynamic library. IPOPT is designed to solve constrained minimization problems in the form :
 
 $$
 \begin{array}{r l}
@@ -364,7 +364,7 @@ func matrix jacC (real[int] &X) {...} //Constraints Jacobian
 ```
 
 !!!Warning
-	In the current version of FreeFem++, returning a `:::freefem matrix` object local to a function block leads to undefined results. For each sparse matrix returning function you define, an extern matrix object has to be declared, whose associated function will overwrite and return on each call. Here is an example for `:::freefem jacC` :
+	In the current version of FreeFem++, returning a `:::freefem matrix` object that is local to a function block leads to undefined results. For each sparse matrix returning function you define, an extern matrix object has to be declared, whose associated function will overwrite and return on each call. Here is an example for `:::freefem jacC` :
 
 	```freefem
 	matrix jacCBuffer; //just declare, no need to define yet
@@ -375,7 +375,7 @@ func matrix jacC (real[int] &X) {...} //Constraints Jacobian
 	```
 
 !!!Warning
-	IPOPT requires the structure of each matrix at the initialization of the algorithm. Some errors may occur if the matrices are not constant and are built with the `:::freefem matrix A = [I,J,C]` syntax, or with an intermediary full matrix (`:::freefem real[int,int]`), because any null coefficient is discarded during the construction of the sparse matrix. It is also the case when making matrices linear combinations, for which any zero coefficient will result in the suppression of the matrix from the combination. Some controls are available to avoid such problems. Check the named parameters descriptions (`:::freefem checkindex`, `:::freefem structhess` and `:::freefem structjac` can help). We strongly advice to use `:::freefem varf` as much as possible for the matrix forging.
+	IPOPT requires the structure of each matrix at the initialization of the algorithm. Some errors may occur if the matrices are not constant and are built with the `:::freefem matrix A = [I,J,C]` syntax, or with an intermediary full matrix (`:::freefem real[int,int]`), because any null coefficient is discarded during the construction of the sparse matrix. It is also the case when making matrices linear combinations, for which any zero coefficient will result in the suppression of the matrix from the combination. Some controls are available to avoid such problems. Check the named parameter descriptions (`:::freefem checkindex`, `:::freefem structhess` and `:::freefem structjac` can help). We strongly advice to use `:::freefem varf` as much as possible for the matrix forging.
 
 
 The Hessian returning function is somewhat different because it has to be the Hessian of the Lagrangian function :
@@ -391,7 +391,7 @@ matrix hessianLBuffer; //Just to keep it in mind
 func matrix hessianL (real[int] &X, real sigma, real[int] &lambda){...}
 ```
 
-If the constraints functions are all affine, or if there are only simple bounds constraints or no constraint at all, the Lagrangian Hessian is equal to the fitness function Hessian, one can then omit the `:::freefem sigma` and `:::freefem lambda` parameters :
+If the constraints functions are all affine, or if there are only simple bound constraints, or no constraint at all, the Lagrangian Hessian is equal to the fitness function Hessian, one can then omit the `:::freefem sigma` and `:::freefem lambda` parameters :
 
 ```freefem
 matrix hessianJBuffer;
@@ -405,7 +405,7 @@ real[int] Xi = ... ; //starting point
 IPOPT(J, gradJ, hessianL, C, jacC, Xi, /*some named parameters*/);
 ```
 
-If the Hessian is omitted, the interface will tell IPOPT to use the (L)BFGS approximation (it can also be enabled with a named parameter, see further). Simple bounds or unconstrained problems do not require the constraints part, so the following expressions are valid :
+If the Hessian is omitted, the interface will tell IPOPT to use the (L)BFGS approximation (it can also be enabled with a named parameter, see further). Simple bound or unconstrained problems do not require the constraints part, so the following expressions are valid :
 
 ```freefem
 IPOPT(J, gradJ, C, jacC, Xi, ... ); //IPOPT with BFGS
@@ -413,7 +413,7 @@ IPOPT(J, gradJ, hessianJ, Xi, ... ); //Newton IPOPT without constraints
 IPOPT(J, gradJ, Xi, ... ); //BFGS, no constraints
 ```
 
-Simple bounds are passed using the `:::freefem lb` and `:::freefem ub` named parameters, while constraints bounds are passed with the `:::freefem clb` and `:::freefem cub` ones. Unboundedness in some directions can be achieved by using the $1e^{19}$ and $-1e^{19}$ values that IPOPT recognizes as $+\infty$ and $-\infty$ :
+Simple bounds are passed using the `:::freefem lb` and `:::freefem ub` named parameters, while constraint bounds are passed with the `:::freefem clb` and `:::freefem cub` ones. Unboundedness in some directions can be achieved by using the $1e^{19}$ and $-1e^{19}$ values that IPOPT recognizes as $+\infty$ and $-\infty$ :
 
 ```freefem
 real[int] xlb(n), xub(n), clb(m), cub(m);
@@ -437,10 +437,10 @@ where $A$ and $b$ are constant, it is possible to directly pass the $(A,b)$ pair
 matrix A = ... ; //linear part of the constraints
 real[int] b = ... ; //constant part of constraints
 IPOPT(J, gradJ, hessianJ, [A, b], Xi, /*bounds and named parameters*/);
-//[b, A] would work as well... Scatterbrains pampering...
+//[b, A] would work as well.
 ```
 
-Note that if you define the constraints in this way, they doesn't contribute to the Hessian, so the Hessian should only take one `:::freefem real[int]` as argument.
+Note that if you define the constraints in this way, they don't contribute to the Hessian, so the Hessian should only take one `:::freefem real[int]` as an argument.
 
 ```freefem
 // Affine constraints and P2 fitness func
@@ -451,9 +451,9 @@ real[int] bc = ... ; //constant part of constraints
 IPOPT([A, b], [Ac, bc], Xi, /*bounds and named parameters*/);
 ```
 
-If both objective and constraints functions are given this way, it automatically activates the IPOPT `:::freefem mehrotra_algorithm` option (better for linear and quadratic programming according to the documentation). Otherwise, this option can only be set through the option file (see the named parameters section).
+If both objective and constraint functions are given this way, it automatically activates the IPOPT `:::freefem mehrotra_algorithm` option (better for linear and quadratic programming according to the documentation). Otherwise, this option can only be set through the option file (see the named parameters section).
 
-A spurious case is the one of defining $f$ in this manner while using standard functions for the constraints :
+A false case is the one of defining $f$ in this manner while using standard functions for the constraints :
 
 ```freefem
 matrix A = ... ; //bilinear form matrix
@@ -463,23 +463,23 @@ func matrix jacC(real[int] &X){...} //constraints Jacobian
 IPOPT([A, b], C, jacC, Xi, /*bounds and named parameters*/);
 ```
 
-Indeed, when passing `:::freefem [A, b]` in order to define $f$, the Lagrangian Hessian is automatically build has the constant $x \mapsto A$ function, with no way to add possible constraints contributions, leading to incorrect second order derivatives. So, a problem should be defined like that in only two cases:
+Indeed, when passing `:::freefem [A, b]` in order to define $f$, the Lagrangian Hessian is automatically built and has the constant $x \mapsto A$ function, with no way to add possible constraint contributions, leading to incorrect second order derivatives. So, a problem should be defined like that in only two cases:
 
 1. constraints are nonlinear but you want to use the BFGS mode (then add `:::freefem bfgs=1` to the named parameter),
-2. constraints are affine, but in this case, why not passing them in the same way?
+2. constraints are affine, but in this case, compatible to pass in the same way
 
 Here are some other valid definitions of the problem (cases when $f$ is a pure quadratic or linear form, or $C$ a pure linear function, etc...) :
 
 ```freefem
 // Pure quadratic f - A is a matrix
-IPOPT(A, /*constraints arguments*/, Xi, /*bounds and named parameters*/);
+IPOPT(A, /*constraints arguments*/, Xi, /*bound and named parameters*/);
 // Pure linear f - b is a real[int]
-IPOPT(b, /*constraints arguments*/, Xi, /*bounds and named parameters*/);
+IPOPT(b, /*constraints arguments*/, Xi, /*bound and named parameters*/);
 // Linear constraints - Ac is a matrix
-IPOPT(/*fitness function arguments*/, Ac, Xi, /*bounds and named parameters*/);
+IPOPT(/*fitness function arguments*/, Ac, Xi, /*bound and named parameters*/);
 ```
 
-__Returned Value :__ The `:::freefem IPOPT` function returns an error code of type `:::freefem int`. A zero value is obtained when the algorithm succeeds and positive values reflects the fact that IPOPT encounters minor troubles. Negative values reveals more problematic cases. The associated IPOPT return tags are listed in the table below. The [IPOPT pdf documentation](https://projects.coin-or.org/Ipopt/browser/stable/3.10/Ipopt/doc/documentation.pdf?format=raw) provides more accurate description of these return status :
+__Returned Value :__ The `:::freefem IPOPT` function returns an error code of type `:::freefem int`. A zero value is obtained when the algorithm succeeds and positive values reflect the fact that IPOPT encounters minor troubles. Negative values reveal more problematic cases. The associated IPOPT return tags are listed in the table below. The [IPOPT pdf documentation](https://projects.coin-or.org/Ipopt/browser/stable/3.10/Ipopt/doc/documentation.pdf?format=raw) provides a more accurate description of these return statuses :
 
 |Success|Failures|
 |:----|:----|
@@ -489,29 +489,29 @@ __Returned Value :__ The `:::freefem IPOPT` function returns an error code of ty
 |:----|:----|
 |-10 `:::freefem Not_Enough_Degrees_Of_Freedom`<br>-11 `:::freefem Invalid_Problem_Definition`<br>-12 `:::freefem Invalid_Option`<br>-13 `:::freefem Invalid_Number_Detected`|-100 `:::freefem Unrecoverable_Exception`<br>-101 `:::freefem NonIpopt_Exception_Thrown`<br>-102 `:::freefem Insufficient_Memory`<br>-199 `:::freefem Internal_Error`|
 
-__Named Parameters :__ The available named parameters in this interface are those we thought to be the most subject to variations from one optimization to another, plus a few ones that are interface specific. Though, as one could see at [IPOPT Linear solver](http://www.coin-or.org/Ipopt/documentation/node59.html), there are many parameters that can be changed within IPOPT, affecting the algorithm behavior. These parameters can still be controlled by placing an option file in the execution directory. Note that [IPOPT's pdf documentation](https://projects.coin-or.org/Ipopt/browser/stable/3.10/Ipopt/doc/documentation.pdf?format=raw) may provides more informations than the previously mentioned online version for certain parameters. The in-script available parameters are :
+__Named Parameters :__ The available named parameters in this interface are those we thought to be the most subject to variations from one optimization to another, plus a few that are interface specific. Though, as one could see at [IPOPT Linear solver](http://www.coin-or.org/Ipopt/documentation/node59.html), there are many parameters that can be changed within IPOPT, affecting the algorithm behavior. These parameters can still be controlled by placing an option file in the execution directory. Note that [IPOPT's pdf documentation](https://projects.coin-or.org/Ipopt/browser/stable/3.10/Ipopt/doc/documentation.pdf?format=raw) may provides more information than the previously mentioned online version for certain parameters. The in-script available parameters are:
 
- * `:::freefem lb`, `:::freefem ub` : `:::freefem real[int]` for lower and upper simple bounds upon the search variables, must be of size $n$ (search space dimension). If two components of same index in these arrays are equal then the corresponding search variable is fixed. By default IPOPT will remove any fixed variable from the optimization process and always use the fixed value when calling functions. It can be changed using the `:::freefem fixedvar` parameter.
+ * `:::freefem lb`, `:::freefem ub` : `:::freefem real[int]` for lower and upper simple bounds upon the search variables must be of size $n$ (search space dimension). If two components of the same index in these arrays are equal then the corresponding search variable is fixed. By default IPOPT will remove any fixed variable from the optimization process and always use the fixed value when calling functions. It can be changed using the `:::freefem fixedvar` parameter.
 
- * `:::freefem clb`, `:::freefem cub` : `:::freefem real[int]` of size $m$ (number of constraints) for lower and upper constraints bounds. Equality between two components of same index $i$ in `:::freefem clb` and `:::freefem cub` reflect an equality constraint.
+ * `:::freefem clb`, `:::freefem cub` : `:::freefem real[int]` of size $m$ (number of constraints) for lower and upper constraints bounds. Equality between two components of the same index $i$ in `:::freefem clb` and `:::freefem cub` reflect an equality constraint.
 
- * `:::freefem structjacc` : To pass the greatest possible structure (indexes of non null coefficients) of the constraints Jacobian under the form `:::freefem [I,J]` where `:::freefem I` and `:::freefem J` are two integer arrays. If not defined, the structure of the constraints Jacobian, evaluated in `:::freefem Xi`, is used (no issue if the Jacobian is constant or always defined with the same `:::freefem varf`, hazardous if it is with triplet array or if a full matrix is involved).
+ * `:::freefem structjacc` : To pass the greatest possible structure (indexes of non null coefficients) of the constraint Jacobians under the form `:::freefem [I,J]` where `:::freefem I` and `:::freefem J` are two integer arrays. If not defined, the structure of the constraint Jacobians, evaluated in `:::freefem Xi`, is used (no issue if the Jacobian is constant or always defined with the same `:::freefem varf`, hazardous if it is with a triplet array or if a full matrix is involved).
 
- * `:::freefem structhess` : Same as above but for the Hessian function (unused if $f$ is P2 or less and constraints are affine). Here again, keep in mind that it is the Hessian of the Lagrangian function (which is equal to the Hessian of $f$ only if constraints are affine). If no structure is given with this parameter, the Lagrangian Hessian is evaluated on the starting point, with $\sigma=1$ and $\lambda = (1,1,\dots,1)$ (it is safe if all the constraints and fitness function Hessians are constant or build with `:::freefem varf`, and here again less reliable if built with triplet array or full matrix).
+ * `:::freefem structhess` : Same as above but for the Hessian function (unused if $f$ is P2 or less and constraints are affine). Here again, keep in mind that it is the Hessian of the Lagrangian function (which is equal to the Hessian of $f$ only if constraints are affine). If no structure is given with this parameter, the Lagrangian Hessian is evaluated on the starting point, with $\sigma=1$ and $\lambda = (1,1,\dots,1)$ (it is safe if all the constraints and fitness function Hessians are constant or build with `:::freefem varf`, and here again it is less reliable if built with a triplet array or a full matrix).
 
- * `:::freefem checkindex` : A `:::freefem bool` that triggers an index dichotomic search when matrices are copied from __`FreeFem++`__ functions to IPOPT arrays. It is used to avoid wrong index matching when some null coefficients are removed from the matrices by __`FreeFem++`__. It will not solve the problems arising when a too small structure has been given at the initialization of the algorithm. Enabled by default (except in cases where all matrices are obviously constant).
+ * `:::freefem checkindex` : A `:::freefem bool` that triggers a dichotomic index search when matrices are copied from __`FreeFem++`__ functions to IPOPT arrays. It is used to avoid wrong index matching when some null coefficients are removed from the matrices by __`FreeFem++`__. It will not solve the problems arising when a too small structure has been given at the initialization of the algorithm. Enabled by default (except in cases where all matrices are obviously constant).
 
- * `:::freefem warmstart` : If set to `:::freefem true`, the constraints dual variables $\lambda$, and simple bounds dual variables are initialized with the values of the arrays passed to `:::freefem lm`, `:::freefem lz` and `:::freefem uz` named parameters (see below).
+ * `:::freefem warmstart` : If set to `:::freefem true`, the constraints dual variables $\lambda$, and simple bound dual variables are initialized with the values of the arrays passed to `:::freefem lm`, `:::freefem lz` and `:::freefem uz` named parameters (see below).
 
  * `:::freefem lm` : `:::freefem real[int]` of size $m$, which is used to get the final values of the constraints dual variables $\lambda$ and/or initialize them in case of a warm start (the passed array is also updated to the last dual variables values at the end of the algorithm).
 
- * `:::freefem lz`, `:::freefem uz` : `:::freefem real[int]` of size $n$ to get the final values and/or initialize (in case of warm start) the dual variables associated to simple bounds.
+ * `:::freefem lz`, `:::freefem uz` : `:::freefem real[int]` of size $n$ to get the final values and/or initialize (in case of a warm start) the dual variables associated to simple bounds.
 
  * `:::freefem tol` : `:::freefem real`, convergence tolerance for the algorithm, the default value is $10^{-8}$.
 
  * `:::freefem maxiter` : `:::freefem int`, maximum number of iterations with 3000 as default value.
 
- * `:::freefem maxcputime` : `:::freefem real` value, maximum runtime duration. Default is $10^{6}$ (almost 11 days and a half).
+ * `:::freefem maxcputime` : `:::freefem real` value, maximum runtime duration. Default is $10^{6}$ (almost 11 and a half days).
 
  * `:::freefem bfgs` : `:::freefem bool` enabling or not the (low-storage) BFGS approximation of the Lagrangian Hessian. It is set to false by default, unless there is no way to compute the Hessian with the functions that have been passed to IPOPT.
 
@@ -523,9 +523,9 @@ __Named Parameters :__ The available named parameters in this interface are thos
 
  * `:::freefem optfile` : `:::freefem string` parameter to specify the IPOPT option file name. IPOPT will look for a `:::freefem ipopt.opt` file by default. Options set in the file will overwrite those defined in the __`FreeFem++`__ script.
 
- * `:::freefem printlevel` : An `:::freefem int` to control IPOPT output print level, set to 5 by default, the possible values are from 0 to 12. A description of the output informations is available in the [PDF documentation](https://projects.coin-or.org/Ipopt/browser/stable/3.10/Ipopt/doc/documentation.pdf?format=raw) of IPOPT.
+ * `:::freefem printlevel` : An `:::freefem int` to control IPOPT output print level, set to 5 by default, the possible values are from 0 to 12. A description of the output information is available in the [PDF documentation](https://projects.coin-or.org/Ipopt/browser/stable/3.10/Ipopt/doc/documentation.pdf?format=raw) of IPOPT.
 
- * `:::freefem fixedvar` : `:::freefem string` for the definition of simple bounds equality constraints treatment : use `:::freefem "make_parameter"` (default value) to simply remove them from the optimization process (the functions will always be evaluated with the fixed value for those variables), `:::freefem "make_constraint"` to treat them as any other constraint or `:::freefem "relax_bounds"` to relax fixing bound constraints.
+ * `:::freefem fixedvar` : `:::freefem string` for the definition of simple bound equality constraints treatment : use `:::freefem "make_parameter"` (default value) to simply remove them from the optimization process (the functions will always be evaluated with the fixed value for those variables), `:::freefem "make_constraint"` to treat them as any other constraint or `:::freefem "relax_bounds"` to relax fixing bound constraints.
 
  * `:::freefem mustrategy` : a `:::freefem string` to choose the update strategy for the barrier parameter $\mu$. The two possible tags are `:::freefem "monotone"`, to use the monotone (Fiacco-McCormick) strategy, or `:::freefem "adaptive"` (default setting).
 
@@ -533,18 +533,18 @@ __Named Parameters :__ The available named parameters in this interface are thos
 
  * `:::freefem pivtol` : `:::freefem real` value to set the pivot tolerance for the linear solver. A smaller number pivots for sparsity, a larger number pivots for stability. The value has to be in the $[0,1]$ interval and is set to $10^{-6}$ by default.
 
- * `:::freefem brf` : Bounds relax factor : before starting the optimization, the bounds given by the user are relaxed. This option sets the factor for this relaxation. If it is set to zero, then the bounds relaxation is disabled. This `:::freefem real` has to be positive and its default value is $10^{-8}$.
+ * `:::freefem brf` : Bound relax factor: before starting the optimization, the bounds given by the user are relaxed. This option sets the factor for this relaxation. If it is set to zero, then the bound relaxation is disabled. This `:::freefem real` has to be positive and its default value is $10^{-8}$.
 
  * `:::freefem objvalue` : An identifier to a `:::freefem real` type variable to get the last value of the objective function (best value in case of success).
 
  * `:::freefem mumin` : Minimal value for the barrier parameter $\mu$, a `:::freefem real` with $10^{-11}$ as default value.
 
- * `:::freefem linesearch` : A boolean which disables the line search when set to `:::freefem false`. The line search is activated by default. When disabled, the method becomes a standard Newton algorithm other the primal-dual system. The global convergence is then no longer assured, meaning that many initializers could lead to diverging iterates. But on the other hand, it can be useful when trying to catch a precise local minimum without having some out of control process making the iterate caught by some other near optimum.
+ * `:::freefem linesearch` : A boolean which disables the line search when set to `:::freefem false`. The line search is activated by default. When disabled, the method becomes a standard Newton algorithm instead of a primal-dual system. The global convergence is then no longer assured, meaning that many initializers could lead to diverging iterates. But on the other hand, it can be useful when trying to catch a precise local minimum without having some out of control process making the iterate caught by some other near optimum.
 
 ## Some short examples using IPOPT
 
 !!!example "Ipopt variational inequality"
-	A very simple example consisting in, given two functions $f $ and $g$ (defined on $\Omega\subset\R^{2}$), minimizing $J(u) = \displaystyle{\frac{1}{2}\int_{\Omega} \vert\nabla u\vert^{2} - \int_{\Omega}fu}\ $, with $u\leq g$ almost everywhere :
+	A very simple example consisting of, given two functions $f $ and $g$ (defined on $\Omega\subset\R^{2}$), minimizing $J(u) = \displaystyle{\frac{1}{2}\int_{\Omega} \vert\nabla u\vert^{2} - \int_{\Omega}fu}\ $, with $u\leq g$ almost everywhere :
 
 	```freefem
 	// Solve
@@ -582,7 +582,7 @@ __Named Parameters :__ The available named parameters in this interface are thos
 		;
 	```
 
-	Here we build the matrix and second member associated to the functional to minimize once and for all. The `:::freefem [A,b]` syntax for the fitness function is then used to pass it to IPOPT.
+	Here we build the matrix and second member associated to the function to fully and finally minimize it. The `:::freefem [A,b]` syntax for the fitness function is then used to pass it to IPOPT.
 
 	```freefem
 	matrix A = vP(Vh, Vh, solver=CG);
@@ -607,29 +607,29 @@ __Named Parameters :__ The available named parameters in this interface are thos
 	```
 
 !!!example "Ipopt variational inequality 2"
-	Let $\Omega$ be a domain of $\mathbb{R}^{2}$, $f_{1}, f_{2}\in L^{2}(\Omega)$ and $g_{1}, g_{2} \in L^{2}(\partial\Omega)$ four given functions with $g_{1}\leq g_{2}$ almost everywhere.
+	Let $\Omega$ be a domain of $\mathbb{R}^{2}$. $f_{1}, f_{2}\in L^{2}(\Omega)$ and $g_{1}, g_{2} \in L^{2}(\partial\Omega)$ four given functions with $g_{1}\leq g_{2}$ almost everywhere.
 	We define the space :
 
 	$$
 	V = \left\lbrace (v_{1},v_{2})\in H^{1}(\Omega)^{2} ; v_{1}\vert_{\partial\Omega}=g_{1}, v_{2}\vert_{\partial\Omega}=g_{2}, v_{1}\leq v_{2}\ \mathrm{a.e.}\ \right\rbrace
 	$$
 
-	as well as the functional $J:H^{1}(\Omega)^{2}\longrightarrow \mathbb{R}$:
+	as well as the function $J:H^{1}(\Omega)^{2}\longrightarrow \mathbb{R}$:
 
 	$$
 	J(v_{1},v_{2}) = \displaystyle{\frac{1}{2}\int_{\Omega}\vert\nabla v_{1}\vert^{2} - \int_{\Omega} f_{1}v_{1} + \frac{1}{2}\int_{\Omega}\vert\nabla v_{2}\vert^{2} - \int_{\Omega} f_{2}v_{2}}
 	$$
 
-	The problem consists in finding (numerically) two functions $(u_{1},u_{2}) = \underset{(v_{1},v_{2})\in V}{\operatorname{argmin}} J(v_{1},v_{2})$.
+	The problem entails finding (numerically) two functions $(u_{1},u_{2}) = \underset{(v_{1},v_{2})\in V}{\operatorname{argmin}} J(v_{1},v_{2})$.
 
 	```freefem
 	load "ff-Ipopt";
 
 	// Parameters
 	int nn = 10;
-	func f1 = 10;//right hand sides
+	func f1 = 10;//right hand side
 	func f2 = -15;
-	func g1 = -0.1;//Boundary conditions functions
+	func g1 = -0.1;//Boundary condition functions
 	func g2 = 0.1;
 
 	// Mesh
@@ -713,7 +713,7 @@ __Named Parameters :__ The available named parameters in this interface are thos
 
 ### Area and volume expressions
 
-This example aimed at numerically solving some constrained minimal surface problems with the IPOPT algorithm. We restrain to $C^{k}$ ($k\geq 1$), closed, spherically parametrizable surfaces, i.e. surfaces $S$ such that :
+This example is aimed at numerically solving some constrained minimal surface problems with the IPOPT algorithm. We restrain to $C^{k}$ ($k\geq 1$), closed, spherically parametrizable surfaces, i.e. surfaces $S$ such that :
 
 $$
 \exists \rho \in C^{k}([0,2\pi ]\times[0,\pi] ) \vert
@@ -766,7 +766,7 @@ The volume of the space enclosed within the shape is easier to express :
 
 ### Derivatives
 
-In order to use a newton based interior point optimization algorithm, one must be able to evaluate the derivatives of $\mathcal{A}$ and $\mathcal{V}$ with respect to $rho$. Concerning the area we have the following result :
+In order to use a Newton based interior point optimization algorithm, one must be able to evaluate the derivatives of $\mathcal{A}$ and $\mathcal{V}$ with respect to $rho$. Concerning the area, we have the following result :
 
 $$
 \forall v\in C^{1}(\Omega) \ , \ \langle d\mathcal{A}(\rho),v\rangle
@@ -783,8 +783,8 @@ Where $\bar{g}$ is the application mapping the $(\theta,\phi) \mapsto g(\theta,\
 	\end{array}
 \end{equation}
 
-With a similar approach, one can derive an expression for second order derivatives. Though comporting no specific difficulties, the detailed calculus are tedious, the result is that
-these derivatives can be write using a $3\times 3$ matrix $\mathbf{B}$ whose coefficients are expressed in term of $\rho$ and its derivatives with respect to $\theta$ and $\phi$, such that :
+With a similar approach, one can derive an expression for second order derivatives. However, comporting no specific difficulties, the detailed calculus are tedious, the result is that
+these derivatives can be written using a $3\times 3$ matrix $\mathbf{B}$ whose coefficients are expressed in term of $\rho$ and its derivatives with respect to $\theta$ and $\phi$, such that :
 
 \begin{equation}\label{msd2area}
 	\forall (w,v)\in C^{1}(\Omega)\ ,\ d^{2}\mathcal{A}(\rho)(w,v) = \MyInt{\Omega}
@@ -816,7 +816,7 @@ The whole code is available in [IPOPT minimal surface & volume example](../examp
 
 	If $\rho_{\mathrm{object}}$ is the spherical parametrization of the surface of a 3-dimensional object (domain) $\mathcal{O}$, it can be interpreted as finding the surface with minimal area enclosing the object with a given maximal volume. If $\mathcal{V}_{\mathrm{max}}$ is close to $\mathcal{V}(\rho_{\mathrm{object}})$, so should be $\rho_{0}$ and $\rho_{\mathrm{object}}$. With higher values of $\mathcal{V}_{\mathrm{max}}$, $\rho$ should be closer to the unconstrained minimal surface surrounding $\mathcal{O}$ which is obtained as soon as $\mathcal{V}_{\mathrm{max}} \geq \frac{4}{3}\pi \|\rho_{\mathrm{object}}\|_{\infty}^{3}$ (sufficient but not necessary).
 
-	It also could be interesting to solve the same problem with the constraint $\mathcal{V}(\rho_{0})\geq \mathcal{V}_{\mathrm{min}}$ which lead to a sphere when $\mathcal{V}_{\mathrm{min}} \geq \frac{1}{6}\pi \mathrm{diam}(\mathcal{O})^{3} $ and move toward the solution of the unconstrained problem as $\mathcal{V}_{\mathrm{min}}$ decreases.
+	It also could be interesting to solve the same problem with the constraint $\mathcal{V}(\rho_{0})\geq \mathcal{V}_{\mathrm{min}}$ which leads to a sphere when $\mathcal{V}_{\mathrm{min}} \geq \frac{1}{6}\pi \mathrm{diam}(\mathcal{O})^{3} $ and moves toward the solution of the unconstrained problem as $\mathcal{V}_{\mathrm{min}}$ decreases.
 
 	We start by meshing the domain $[0,2\pi ]\times\ [0,\pi ]$, then a periodic P1 finite elements space is defined.
 
@@ -1010,7 +1010,7 @@ The whole code is available in [IPOPT minimal surface & volume example](../examp
 	}
 	```
 
-	If we want to use the volume as a constraint function we must wrap it and its derivatives in some __`FreeFem++`__ functions returning the appropriate types. It is not done in the above functions in case where one wants to use it as fitness function. The lagrangian hessian also have to be wrapped since the Volume is not linear with respect to $\rho$, it has some non-null second order derivatives.
+	If we want to use the volume as a constraint function we must wrap it and its derivatives in some __`FreeFem++`__ functions returning the appropriate types. It is not done in the above functions in cases where one wants to use it as a fitness function. The lagrangian hessian also has to be wrapped since the Volume is not linear with respect to $\rho$, it has some non-null second order derivatives.
 
 	```freefem
 	func real[int] ipVolume (real[int] &X){ real[int] vol = [Volume(X)]; return vol; }
@@ -1023,14 +1023,14 @@ The whole code is available in [IPOPT minimal surface & volume example](../examp
 	}
 	```
 
-	The `:::freefem ipGradVolume` function could bring some troubles during the optimization process because the gradient vector is transformed in a sparse matrix, so any null coefficient will be discarded. We are here obliged to give IPOPT the structure by hand and use the `:::freefem checkindex` named-parameter to avoid bad indexing during copies. This gradient is actually dense, there is no reason for some components to be constantly zero :
+	The `:::freefem ipGradVolume` function could pose some troubles during the optimization process because the gradient vector is transformed in a sparse matrix, so any null coefficient will be discarded. Here we create the IPOPT structure manually and use the `:::freefem checkindex` named-parameter to avoid bad indexing during copies. This gradient is actually dense, there is no reason for some components to be constantly zero :
 
 	```freefem
 	int[int] gvi(Vh.ndof), gvj=0:Vh.ndof-1;
 	gvi = 0;
 	```
 
-	These two arrays will be passed to IPOPT with `:::freefem structjacc=[gvi,gvj]`. The last remaining things are the bounds definition. The simple lower bounds must be equal to the components of the P1 projection of $\rho_{object}$. And we choose $\alpha\in [0,1]$ to set $\mathcal{V}_{\mathrm{max}}$ to $(1-\alpha) \mathcal{V}(\rho_{object}) + \alpha\frac{4}{3}\pi \|\rho_{\mathrm{object}}\|_{\infty}^{3}$ :
+	These two arrays will be passed to IPOPT with `:::freefem structjacc=[gvi,gvj]`. The last remaining things are the bound definitions. The simple lower bound must be equal to the components of the P1 projection of $\rho_{object}$. And we choose $\alpha\in [0,1]$ to set $\mathcal{V}_{\mathrm{max}}$ to $(1-\alpha) \mathcal{V}(\rho_{object}) + \alpha\frac{4}{3}\pi \|\rho_{\mathrm{object}}\|_{\infty}^{3}$ :
 
 	<!--- __ --->
 
@@ -1069,7 +1069,7 @@ The whole code is available in [IPOPT minimal surface & volume example](../examp
 	Plot3D(GradArea(rc[]), "ShapeGradient", 1);
 	```
 
-	At last, before closing the mesh adaptation loop, we have to perform the said adaptation. The mesh is adaptated with respect to the $X=(\rho,0,0)$ (in spherical coordinates) vector field, not directly with respect to $\rho$, otherwise the true curvature of the 3D-shape would not be well taken into account.
+	Finally, before closing the mesh adaptation loop, we have to perform the said adaptation. The mesh is adaptated with respect to the $X=(\rho,0,0)$ (in spherical coordinates) vector field, not directly with respect to $\rho$, otherwise the true curvature of the 3D-shape would not be well taken into account.
 
 	```freefem
 	if (kkk < nadapt-1){
@@ -1082,7 +1082,7 @@ The whole code is available in [IPOPT minimal surface & volume example](../examp
 	}
 	```
 
-	Here are some pictures of the resulting surfaces obtained for decreasing values of $\alpha$ (and a slightly more complicated object than two orthogonal discs). We get back the enclosed object when $\alpha=0$ :
+	Here are some pictures of the resulting surfaces obtained for decreasing values of $\alpha$ (and a slightly more complicated object than two orthogonal discs). We return to the enclosed object when $\alpha=0$ :
 
 	<center>
 	![minsurf3D](images/minsurf3D.jpg)
@@ -1090,11 +1090,11 @@ The whole code is available in [IPOPT minimal surface & volume example](../examp
 
 ## The nlOpt optimizers
 
-The `:::freefem ff-NLopt` package provides a __`FreeFem++`__ interface to the free/open-source library for nonlinear optimization, thus easing the use of several different free optimization (constrained or not) routines available online along with the PDE solver. All the algorithms are well documented in [NLopt documentation](https://nlopt.readthedocs.io/en/latest/), thus no exhaustive informations concerning their mathematical specificities will be found here and we will focus on the way they are called in a __`FreeFem++`__ script. One needing detailed informations about these algorithms should visit the said cite where a description of each of them is given, as well as many bibliographical links.
+The `:::freefem ff-NLopt` package provides a __`FreeFem++`__ interface to the free/open-source library for nonlinear optimization, easing the use of several different free optimization (constrained or not) routines available online along with the PDE solver. All the algorithms are well documented in [NLopt documentation](https://nlopt.readthedocs.io/en/latest/), therefore no exhaustive information concerning their mathematical specificities will be found here and we will focus on the way they are used in a __`FreeFem++`__ script. If needing detailed information about these algorithms, visit the website where a description of each of them is given, as well as many bibliographical links.
 
-Most of the gradient based algorithm of NLopt uses a full matrix approximation of the Hessian, so if you're planing to solve a large scale problem, our advise would be to use the IPOPT optimizer which definitely surpass them.
+Most of the gradient based algorithms of NLopt uses a full matrix approximation of the Hessian, so if you're planning to solve a large scale problem, use the IPOPT optimizer which definitely surpass them.
 
-All the NLopt features are called that way:
+All the NLopt features are identified that way:
 
 ```freefem
 load "ff-NLopt"
@@ -1113,23 +1113,23 @@ real min = nloptXXXXXX(J, u, //Unavoidable part
 
 `:::freefem XXXXXX` refers to the algorithm tag (not necessarily 6 characters long). `:::freefem u` is the starting position (a `:::freefem real[int]` type array) which will be overwritten by the algorithm, the value at the end being the found $argmin$. And as usual, `:::freefem J` is a function taking a `:::freefem real[int]` type array as argument and returning a `:::freefem real`. `:::freefem grad`, `:::freefem lb` and `:::freefem ub` are "half-optional" arguments, in the sense that they are obligatory for some routines but not all.
 
-The possible optional named parameters are the following, note that they are not used by all algorithms (some does not supports constraints, or a type of constraints, some are gradient-based and other are derivative free, etc...). One can refer to the table after the parameters description to check which are the named parameters supported by a specific algorithm. Using an unsupported parameter will not stop the compiler work and seldom breaks runtime, it will just be ignored. That said, when it is obvious you are missing a routine, you will get a warning message at runtime (for example if you pass a gradient to a derivative free algorithm, or set the population of a non-genetic one, etc...). In the following description, $n$ stands for the dimension of the search space.
+The possible optionally named parameters are the following, note that they are not used by all algorithms (some do not support constraints, or a type of constraints, some are gradient-based and others are derivative free, etc...). One can refer to the table after the parameters description to check which are the named parameters supported by a specific algorithm. Using an unsupported parameter will not stop the compiler work, seldom breaks runtime, and will just be ignored. When it is obvious you are missing a routine, you will get a warning message at runtime (for example if you pass a gradient to a derivative free algorithm, or set the population of a non-genetic one, etc...). In the following description, $n$ stands for the dimension of the search space.
 
 __Half-optional parameters :__
 
-* `:::freefem grad=` The name of the function which computes the gradient of the cost function (prototype should be `:::freefem real[int]` $\rightarrow$ `:::freefem real[int]`, both argument and result should have the size $n$). This is needed as soon s a gradient-based method is involved, ignored if defined in a derivative free context.
+* `:::freefem grad=` The name of the function which computes the gradient of the cost function (prototype should be `:::freefem real[int]` $\rightarrow$ `:::freefem real[int]`, both argument and result should have the size $n$). This is needed as soon as a gradient-based method is involved, which is ignored if defined in a derivative free context.
 
-* `:::freefem lb`/`:::freefem ub` = Lower and upper bounds arrays ( `:::freefem real[int]` type) of size $n$. Used to define the bounds within which the search variable is allowed to move. Needed for some algorithms, optional or unsupported for others.
+* `:::freefem lb`/`:::freefem ub` = Lower and upper bounds arrays ( `:::freefem real[int]` type) of size $n$. Used to define the bounds within which the search variable is allowed to move. Needed for some algorithms, optional, or unsupported for others.
 
-* `:::freefem subOpt` : Only enabled for the Augmented Lagrangian and MLSL method who need a sub-optimizer in order to work. Just pass the tag of the desired local algorithm with a `:::freefem string`.
+* `:::freefem subOpt` : Only enabled for the Augmented Lagrangian and MLSL methods who need a sub-optimizer in order to work. Just pass the tag of the desired local algorithm with a `:::freefem string`.
 
 __Constraints related parameters (optional - unused if not specified):__
 
-* `:::freefem IConst`/`:::freefem EConst` : Allows to pass the name of a function implementing some inequality (resp. equality) constraints on the search space. The function type must be `:::freefem real[int]` $\rightarrow$ `:::freefem real[int]` where the size of the returned array is equal to the number of constraints (of the same type - it means that all the constraints are computed in one vectorial function). In order to mix inequality and equality constraints in a same minimization attempt, two vectorial functions have to be defined and passed. See example \eqref{varineqex} for more details about how these constraints have to be implemented.
+* `:::freefem IConst`/`:::freefem EConst` : Allows to pass the name of a function implementing some inequality (resp. equality) constraints on the search space. The function type must be `:::freefem real[int]` $\rightarrow$ `:::freefem real[int]` where the size of the returned array is equal to the number of constraints (of the same type - it means that all of the constraints are computed in one vectorial function). In order to mix inequality and equality constraints in a same minimization attempt, two vectorial functions have to be defined and passed. See example \eqref{varineqex} for more details about how these constraints have to be implemented.
 
 * `:::freefem gradIConst`/`:::freefem gradEConst` : Use to provide the inequality (resp. equality) constraints gradient. These are `:::freefem real[int]` $\rightarrow$ `:::freefem real[int,int]` type functions. Assuming we have defined a constraint function (either inequality or equality) with $p$ constraints, the size of the matrix returned by its associated gradient must be $p\times n$ (the $i$-th line of the matrix is the gradient of the $i$-th constraint). It is needed in a gradient-based context as soon as an inequality or equality constraint function is passed to the optimizer and ignored in all other cases.
 
-* `:::freefem tolIConst`/`:::freefem tolEConst` : Tolerance values for each constraint. This is an array of size equal to the number of inequality (resp. equality) constraints. Default value os set to $10^{-12}$ for each constraint of any type.
+* `:::freefem tolIConst`/`:::freefem tolEConst` : Tolerance values for each constraint. This is an array of size equal to the number of inequality (resp. equality) constraints. Default value is set to $10^{-12}$ for each constraint of any type.
 
 __Stopping criteria :__
 
@@ -1145,9 +1145,9 @@ __Stopping criteria :__
 
 * `:::freefem stopMaxFEval` : Stops the algorithm when the number of fitness evaluations reaches this `:::freefem integer` value.
 
-* `:::freefem stopTime` : Stops the algorithm when the optimization time in second exceeds this `:::freefem real` value. This is not a strict maximum: the time may exceed it slightly, depending upon the algorithm and on how slow your function evaluation is.
+* `:::freefem stopTime` : Stops the algorithm when the optimization time in seconds exceeds this `:::freefem real` value. This is not a strict maximum: the time may exceed it slightly, depending upon the algorithm and on how slow your function evaluation is.
 
-	Note that when an AUGLAG or MLSL method is used, the meta-algorithm and the sub-algorithm may have different termination criteria. Thus, for algorithms of this kind, the following named parameters has been defined (just adding the SO prefix - for Sub-Optimizer) to set the ending condition of the sub-algorithm (the meta one uses the ones above): `:::freefem SOStopFuncValue`, `:::freefem SOStopRelXTol`, and so on... If these ones are not used, the sub-optimizer will use those of the master routine.
+	Note that when an AUGLAG or MLSL method is used, the meta-algorithm and the sub-algorithm may have different termination criteria. Thus, for algorithms of this kind, the following named parameters has been defined (just adding the SO prefix - for Sub-Optimizer) to set the ending condition of the sub-algorithm (the meta one uses the ones above): `:::freefem SOStopFuncValue`, `:::freefem SOStopRelXTol`, and so on... If these are not used, the sub-optimizer will use those of the master routine.
 
  __Other named parameters :__
 
@@ -1171,13 +1171,13 @@ The following table sums up the main characteristics of each algorithm, providin
 	$$
 	V = \left\lbrace (v_{1},v_{2})\in H^{1}(\Omega)^{2} ; v_{1}\vert_{\partial\Omega}=g_{1}, v_{2}\vert_{\partial\Omega}=g_{2}, v_{1}\leq v_{2}\ \mathrm{a.e.}\ \right\rbrace
 	$$
-	as well as the functional $J:H^{1}(\Omega)^{2}\longrightarrow \mathbb{R}$:
+	as well as the function $J:H^{1}(\Omega)^{2}\longrightarrow \mathbb{R}$:
 	$$
 	J(v_{1},v_{2}) = \displaystyle{\frac{1}{2}\int_{\Omega}\vert\nabla v_{1}\vert^{2} - \int_{\Omega} f_{1}v_{1} + \frac{1}{2}\int_{\Omega}\vert\nabla v_{2}\vert^{2} - \int_{\Omega} f_{2}v_{2}}
 	$$
 	The problem consists in finding (numerically) two functions $(u_{1},u_{2}) = \underset{(v_{1},v_{2})\in V}{\operatorname{argmin}} J(v_{1},v_{2}) $.
 
-	This can be interpreted as finding $u_{1}, u_{2}$ as close as possible (in a certain sense) to the solutions of Laplace equation with respectively $f_{1}, f_{2}$ second members
+	This can be interpreted as finding $u_{1}, u_{2}$ as close as possible (in a certain sense) to the solutions of the Laplace equation with respectively $f_{1}, f_{2}$ second members
 	 and $g_{1}, g_{2}$ Dirichlet boundary conditions with the $u_{1}\leq u_{2}$ almost everywhere constraint.
 
 	Here is the corresponding script to treat this variational inequality problem with one of the NLOpt algorithms.
@@ -1185,7 +1185,7 @@ The following table sums up the main characteristics of each algorithm, providin
 	```freefem
 	//A brief script to demonstrate how to use the freefemm interfaced nlopt routines
 	//The problem consist in solving a simple variational inequality using one of the
-	//optimization algorithm of nlopt. We restart the algorithlm a few times agter
+	//optimization algorithm of nlopt. We restart the algorithlm a few times after
 	//performing some mesh adaptation to get a more precise output
 
 	load "ff-NLopt"
@@ -1346,7 +1346,7 @@ The following table sums up the main characteristics of each algorithm, providin
 
 ## Optimization with MPI
 
-The only quick way to use the previously presented algorithms on a parallel architecture lies in parallelizing the used cost function (which is in most real life case, the expensive part of the algorithm). Somehow, we provide a parallel version of the CMA-ES algorithm. The parallelization principle is the trivial one of evolving/genetic algorithms : at each iteration the cost function has to be evaluated $N$ times without any dependence at all, these $N$ calculus are then equally distributed to each processes. Calling the MPI version of CMA-ES is nearly the same as calling its sequential version (a complete example of use can be found in the [CMAES MPI variational inequality example](../examples/cmaes-mpi-variational-inequality)):
+The only quick way to use the previously presented algorithms on a parallel architecture lies in parallelizing the used cost function (which is in most real life cases, the expensive part of the algorithm). Somehow, we provide a parallel version of the CMA-ES algorithm. The parallelization principle is the trivial one of evolving/genetic algorithms: at each iteration the cost function has to be evaluated $N$ times without any dependence at all, these $N$ calculus are then equally distributed to each process. Calling the MPI version of CMA-ES is nearly the same as calling its sequential version (a complete example of use can be found in the [CMAES MPI variational inequality example](../examples/cmaes-mpi-variational-inequality)):
 
 ```freefem
 load "mpi-cmaes"
@@ -1355,7 +1355,7 @@ real min = cmaesMPI(J, u, stopTolFun=1e-6, stopMaxIter=3000);
 cout << "minimal value is " << min << " for u = " << u << endl;
 ```
 
-If the population size is not changed using the `:::freefem popsize` parameter, it will use the heuristic value slightly changed to be equal to the closest greater multiple of the size of the communicator used by the optimizer. The __`FreeFem++`__ `:::freefem mpicommworld` is used by default. The user can specify his own MPI communicator with the named parameter `:::freefem comm=`, see the MPI section of this manual for more informations about communicators in __`FreeFem++`__.
+If the population size is not changed using the `:::freefem popsize` parameter, it will use the heuristic value slightly changed to be equal to the closest greatest multiple of the size of the communicator used by the optimizer. The __`FreeFem++`__ `:::freefem mpicommworld` is used by default. The user can specify his own MPI communicator with the named parameter `:::freefem comm=`, see the MPI section of this manual for more information about communicators in __`FreeFem++`__.
 
 ## References
 
