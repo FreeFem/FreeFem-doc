@@ -1,4 +1,4 @@
-3d$$
+$$
 \newcommand{\vecttwo}[2]{\left|\begin{array}{c}{#1}\\#2\end{array}\right.}
 \newcommand{\vectthree}[3]{\left|\begin{array}{c}{#1}\\#2\\#3\end{array}\right.}
 $$
@@ -19,7 +19,7 @@ is easily created by :
 fespace IDspace(IDmesh,<IDFE>);
 ```
 
-or with $\ell$ pairs of periodic boundary conditions in 2d :
+or with $\ell$ pairs of periodic boundary conditions in 2D :
 
 ```freefem
 fespace IDspace(IDmesh,<IDFE>,
@@ -28,7 +28,7 @@ fespace IDspace(IDmesh,<IDFE>,
 			  [lak, sak], [lbk, sbl]]);
 ```
 
-and in 3d :
+and in 3D :
 
 ```freefem
 fespace IDspace(IDmesh,<IDFE>,
@@ -39,12 +39,12 @@ fespace IDspace(IDmesh,<IDFE>,
 
 where `:::freefem IDspace` is the name of the space (e.g. `:::freefem Vh`), `:::freefem IDmesh` is the name of the associated mesh and `:::freefem <IDFE>` is an identifier of finite element type.
 
-In 2d we have a pair of periodic boundary conditions, if $[la_i, sa_i]$, $[lb_i, sb_i]$ is a pair of `:::freefem int`, and the 2 labels $la_i$ and $lb_i$ refer to 2 pieces of boundary to be in equivalence. If $[la_i, sa_i]$, $[lb_i, sb_i]$ is a pair of `:::freefem real`, then $sa_i$ and $sb_i$ give two common abscissa on the two boundary curves, and two points are identified as one if the two abscissa are equal.
+In 2D we have a pair of periodic boundary conditions, if $[la_i, sa_i]$, $[lb_i, sb_i]$ is a pair of `:::freefem int`, and the 2 labels $la_i$ and $lb_i$ refer to 2 pieces of boundary to be in equivalence. If $[la_i, sa_i]$, $[lb_i, sb_i]$ is a pair of `:::freefem real`, then $sa_i$ and $sb_i$ give two common abscissa on the two boundary curves, and two points are identified as one if the two abscissa are equal.
 
-In 2d, we have a pair of periodic boundary conditions, if $[la_i, sa_i, ta_i]$, $[lb_i, sb_i, tb_i]$ is a pair of `:::freefem int`, the 2 labels $la_i$ and $lb_i$ define the 2 pieces of boundary to be in equivalence. If $[la_i, sa_i, ta_i]$, $[lb_i, sb_i, tb_i]$ is a pair of `:::freefem real`, then $sa_i$, $ta_i$ and $sb_i$, $tb_i$ give two common parameters on the two boundary surfaces, and two points are identified as one if the two parameters are equal.
+In 2D, we have a pair of periodic boundary conditions, if $[la_i, sa_i, ta_i]$, $[lb_i, sb_i, tb_i]$ is a pair of `:::freefem int`, the 2 labels $la_i$ and $lb_i$ define the 2 pieces of boundary to be in equivalence. If $[la_i, sa_i, ta_i]$, $[lb_i, sb_i, tb_i]$ is a pair of `:::freefem real`, then $sa_i$, $ta_i$ and $sb_i$, $tb_i$ give two common parameters on the two boundary surfaces, and two points are identified as one if the two parameters are equal.
 
 !!! note
-	The 2d mesh of the two identified borders must be the same, so to be sure, use the parameter `:::freefem fixedborder=true` in `:::freefem buildmesh` command (see [`:::freefem fixedborder`](MeshGeneration/#border)).
+	The 2D mesh of the two identified borders must be the same, so to be sure, use the parameter `:::freefem fixedborder=true` in `:::freefem buildmesh` command (see [`:::freefem fixedborder`](MeshGeneration/#border)).
 	<!-- like in example `:::freefem periodic2bis.edp` (see \ref{exm:periodic4bis}). -->
 
 
@@ -209,7 +209,7 @@ As of today, the known types of finite elements are:
 	!!!warning
 		To build the interplant of a function $u$ (scalar) for this finite element, we need the function and 2 partial derivatives $(u,u_x, u_y)$, creating this vectorial finite element with 3 components $(u,u_x,u_y)$ like in previous Finite Element.
 
-* `:::freefem [P2BR]` (needs `:::freefem load "BernadiRaugel"`) the Bernadi Raugel Finite Element is a Vectorial element (2d) with 2 components, see [BERNARDI1985](#BERNARDI1985). It is a 2d coupled Finite Element, where the Polynomial space is $P_1^2$ with 3 normal bubble edge functions $(P_2)$.
+* `:::freefem [P2BR]` (needs `:::freefem load "BernadiRaugel"`) the Bernadi Raugel Finite Element is a Vectorial element (2d) with 2 components, see [BERNARDI1985](#BERNARDI1985). It is a 2D coupled Finite Element, where the Polynomial space is $P_1^2$ with 3 normal bubble edge functions $(P_2)$.
 There are 9 degrees of freedom:
 	- 2 components at each of the 3 vertices and
 	- the 3 flux on the 3 edges.
@@ -259,7 +259,7 @@ There are 9 degrees of freedom:
 
 * `:::freefem [Edge23d]` (needs `:::freefem load "Element_Mixte3d"`) 3d Nedelec finite element or Edge Element of degree $2$.
 
-* `:::freefem [P1nc]` piecewise linear element continuous at the mid-point of the edge only in 2d (Crouzeix-Raviart Finite Element 2d).
+* `:::freefem [P1nc]` piecewise linear element continuous at the mid-point of the edge only in 2D (Crouzeix-Raviart Finite Element 2D).
 
 * `:::freefem [P2pnc]` piecewise quadratic plus a P3 bubble element with the continuity of the 2 moments on each edge (needs `:::freefem load "Element_P2pnc"`)
 
@@ -303,7 +303,7 @@ There are 9 degrees of freedom:
 		BDM1Ortho_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in\mathcal{T}_{h},\ \mathbf{v}_{|K} \in P_1^2\right.\right\}
 	\end{equation*}
 
-* `:::freefem [FEQF]` (needs `:::freefem load "Element_QF"`) the finite element to store functions at default quadrature points (so the quadrature is `:::freefem qf5pT` in 2d and is `:::freefem qfV5` in 3d). For over quadrature you have the following corresponding finite element's quadrature formula.
+* `:::freefem [FEQF]` (needs `:::freefem load "Element_QF"`) the finite element to store functions at default quadrature points (so the quadrature is `:::freefem qf5pT` in 2D and is `:::freefem qfV5` in 3d). For over quadrature you have the following corresponding finite element's quadrature formula.
 
 	* `:::freefem FEQF1` $\mapsto$ `:::freefem qf1pT`,
 	* `:::freefem FEQF2` $\mapsto$ `:::freefem qf2pT`,
@@ -422,7 +422,7 @@ $$
 
 !!! note
 	One challenge of the periodic boundary condition is that the mesh must have equivalent faces. The `::freefem buildlayers` mesh generator splits each quadrilateral face with the diagonal passing through the vertex with maximum number, so to be sure to have the same mesh one both face periodic the 2D numbering in corresponding edges must be compatible (for example the same variation).
-	$\codecheck$
+	$\codecheck$ $\codered$
 
 	By Default, the numbering of square vertex is correct.
 
@@ -515,7 +515,7 @@ See [Fig. 4](#Fig4) for the projection of $f(x,y)=\sin(\pi x)\cos(\pi y)$ into `
 |![P0P1P2nc](images/FiniteElement_P0P1P2P1nc.png)|![peojP0](images/FiniteElement_projP0.png)|
 
 ### P2-element
-For each vertex or midpoint $q^i$. the basis function $\phi_i$ in `:::freefem Vh(Th, P2)` is given by :
+For each vertex or mid-point $q^i$. The basis function $\phi_i$ in `:::freefem Vh(Th, P2)` is given by :
 
 \begin{eqnarray*}
 &&\phi_i(x,y)=a^k_i+b^k_ix+c^k_iy+d^k_ix^2+e^k_ixy+f^f_jy^2\textrm{ for }(x,y)\in T_k,\\
@@ -528,7 +528,7 @@ $$
 \phi_{k_1}(x,y) = \lambda^k_{1}(x,y)(2\lambda^k_1(x,y)-1)
 $$
 
-and for the midpoint $q^{k_2}$
+and for the mid-point $q^{k_2}$
 
 $$
 \phi_{k_2}(x,y) = 4\lambda^k_1(x,y)\lambda^k_4(x,y)
@@ -543,7 +543,7 @@ Vh fh = f(x.y);
 
 then :
 <center>
-`:::freefem fh =` $\displaystyle f_h(x,y)=\sum_{i=1}^{M}f(q^i)\phi_i(x,y)\quad (\textrm{summation over all vertex or midpoint})$
+`:::freefem fh =` $\displaystyle f_h(x,y)=\sum_{i=1}^{M}f(q^i)\phi_i(x,y)\quad (\textrm{summation over all vertex or mid-point})$
 </center>
 
 See [Fig. 5](#Fig5) for the projection of $f(x,y)=\sin(\pi x)\cos(\pi y)$ into `:::freefem Vh(Th, P2)`.
@@ -554,7 +554,7 @@ See [Fig. 5](#Fig5) for the projection of $f(x,y)=\sin(\pi x)\cos(\pi y)$ into `
 
 ## P1 Nonconforming Element
 
-Refer to [THOMASSET2012](#THOMASSET2012) for details; briefly, we now consider non-continuous approximations so we shall lose the property
+Refer to [THOMASSET2012](#THOMASSET2012) for details; briefly, we now consider non-continuous approximations so we will lose the property
 
 $$
 w_h\in V_h\subset H^1(\Omega)
@@ -573,7 +573,7 @@ then
 `:::freefem fh =` $\displaystyle f_h(x,y)=\sum_{i=1}^{n_v}f(m^i)\phi_i(x,y)\quad (\textrm{summation over all midpoint})$
 </center>
 
-Here the basis function $\phi_i$ associated with the midpoint $m^i=(q^{k_i}+q^{k_{i+1}})/2$ where $q^{k_i}$ is the $i$-th point in $T_k$, and we assume that $j+1=0$ if $j=3$:
+Here the basis function $\phi_i$ associated with the mid-point $m^i=(q^{k_i}+q^{k_{i+1}})/2$ where $q^{k_i}$ is the $i$-th point in $T_k$, and we assume that $j+1=0$ if $j=3$:
 
 \begin{eqnarray*}
 &&\phi_i(x,y)=a^k_i+b^k_ix+c^k_iy~\textrm{for }(x,y)\in T_k,\\
@@ -638,7 +638,7 @@ then
 
 See [Fig. 7](#Fig7) for the projection of $f(x,y)=\sin(\pi x)\cos(\pi y)$ into `:::freefem Vh(Th, P1b)`.
 
-## Vector valued FE-function
+## Vector Valued FE-function
 
 Functions from $\R^{2}$ to $\R^{N}$ with $N=1$ is called scalar function and called _vector valued_ when $N>1$. When $N=2$
 
@@ -653,15 +653,15 @@ V_h=\{\mathbf{w}=(w_1,w_2)|\; w_1\in V_h(\mathcal{T}_h,P_0),\,
 w_2\in V_h(\mathcal{T}_h,P_1)\}
 $$
 
-### Raviart-Thomas element
+### Raviart-Thomas Element
 
-In the Raviart-Thomas finite element $RT0_{h}$, the degree of freedom are the fluxes across edges $e$ of the mesh, where the flux of the function $\mathbf{f} : \R^2 \longrightarrow \R^2 $ is $\int_{e} \mathbf{f}.n_{e}$, $n_{e}$ is the unit normal of edge $e$.
+In the Raviart-Thomas finite element $RT0_{h}$, the degrees of freedom are the fluxes across edges $e$ of the mesh, where the flux of the function $\mathbf{f} : \R^2 \longrightarrow \R^2 $ is $\int_{e} \mathbf{f}.n_{e}$, $n_{e}$ is the unit normal of edge $e$.
 
-This implies a orientation of all the edges of the mesh, for example we can use the global numbering of the edge vertices and we just go from small to large numbers.
+This implies an orientation of all the edges of the mesh, for example we can use the global numbering of the edge vertices and we just go from small to large numbers.
 
-To compute the flux, we use a quadrature with one Gauss point, the middle point of the edge.
+To compute the flux, we use a quadrature with one Gauss point, the mid-point of the edge.
 
-Consider a triangle $T_k$ with three vertices $(\mathbf{a},\mathbf{b},\mathbf{c})$. Let denote the vertices numbers by $i_{a},i_{b},i_{c}$, and define the three edge vectors $\mathbf{e}^{1},\mathbf{e}^{2},\mathbf{e}^{3}$ by $ sgn(i_{b}-i_{c})(\mathbf{b}-\mathbf{c})$, $sgn(i_{c}-i_{a})(\mathbf{c}-\mathbf{a})$, $sgn(i_{a}-i_{b})(\mathbf{a}-\mathbf{b})$.
+Consider a triangle $T_k$ with three vertices $(\mathbf{a},\mathbf{b},\mathbf{c})$. Lets denote the vertices numbers by $i_{a},i_{b},i_{c}$, and define the three edge vectors $\mathbf{e}^{1},\mathbf{e}^{2},\mathbf{e}^{3}$ by $ sgn(i_{b}-i_{c})(\mathbf{b}-\mathbf{c})$, $sgn(i_{c}-i_{a})(\mathbf{c}-\mathbf{a})$, $sgn(i_{a}-i_{b})(\mathbf{a}-\mathbf{b})$.
 
 We get three basis functions :
 
@@ -722,7 +722,7 @@ Th = square(5,5);
 		   //of a vector FE function
 vh = Uxh;//ok
 //and now vh use the 5x5 mesh
-//but the fespace of vh is alway the 2x2 mesh
+//but the fespace of vh is always the 2x2 mesh
 
 // Plot
 plot(uh);
@@ -737,7 +737,7 @@ vh([x-1/2, y]) = x^2 + y^2; //interpolate vh = ((x-1/2)^2 + y^2)
 |:----:|:----:|
 |![onoldmesh](images/FiniteElement_onoldmesh.png)|![onnewmesh](images/FiniteElement_onnewmesh.png)|
 
-To get the value at a point $x=1,y=2$ of the FE function `:::freefem uh`, or `:::freefem [Uxh, Uyh]`,one writes :
+To get the value at a point $x=1,y=2$ of the FE function `:::freefem uh`, or `:::freefem [Uxh, Uyh]`, one writes :
 
 ```freefem
 real value;
@@ -760,11 +760,11 @@ real[int] array(uh.n) = uh[]; //copy the array of the function uh
 ```
 
 !!! warning
-	For a non-scalar finite element function `:::freefem [Uxh, Uyh]` the two array `:::freefem Uxh[]` and `:::freefem Uyh[]` are the same array, because the degree of freedom can touch more than one component.
+	For a non-scalar finite element function `:::freefem [Uxh, Uyh]` the two arrays `:::freefem Uxh[]` and `:::freefem Uyh[]` are the same array, because the degree of freedom can touch more than one component.
 
 ## A Fast Finite Element Interpolator
 
-In practice one may discretize the variational equations by the Finite Element method. Then there will be one mesh for $\Omega_1$ and another one for $\Omega_2$. The computation of integrals of products of functions defined on different meshes is difficult.
+In practice, one may discretize the variational equations by the Finite Element method. Then there will be one mesh for $\Omega_1$ and another one for $\Omega_2$. The computation of integrals of products of functions defined on different meshes is difficult.
 
 Quadrature formula and interpolations from one mesh to another at quadrature points are needed. We present below the interpolation operator which we have used and which is new, to the best of our knowledge.
 
@@ -786,19 +786,19 @@ $$
 
 Although this is a seemingly simple problem, it is difficult to find an efficient algorithm in practice.
 
-We propose an algorithm which is of complexity $N^1\log N^0$, where $N^i$ is the number of vertices of $\cal T_{h}^i$, and which is very fast for most practical 2d applications.
+We propose an algorithm which is of complexity $N^1\log N^0$, where $N^i$ is the number of vertices of $\cal T_{h}^i$, and which is very fast for most practical 2D applications.
 
 __Algorithm__
 
-The method has 5 steps. First a quadtree is built containing all the vertices of mesh ${\cal T}_{h}^0$ such that in each terminal cell there are at least one, and at most 4, vertices of ${\cal T}_{h}^0$. For each $q^1$, vertex of ${\cal T}_{h}^1$ do:
+The method has 5 steps. First a quadtree is built containing all the vertices of the mesh ${\cal T}_{h}^0$ such that in each terminal cell there are at least one, and at most 4, vertices of ${\cal T}_{h}^0$. For each $q^1$, vertex of ${\cal T}_{h}^1$ do:
 
 1. Find the terminal cell of the quadtree containing $q^1$.
 2. Find the the nearest vertex $q^0_j$ to $q^1$ in that cell.
 3. Choose one triangle $T_k^0\in{\cal T}_{h}^0$ which has $q^0_j$ for vertex.
 4. Compute the barycentric coordinates $\{\lambda_j\}_{j=1,2,3}$ of $q^1$ in $T^0_k$.
 	* if all barycentric coordinates are positive, go to Step 5
-	* else if one barycentric coordinate $\lambda_i$ is negative replace $T^0_k$ by the adjacent triangle opposite $q^0_i$ and go to Step 4.
-	* else two barycentric coordinates are negative so take one of the two randomly and replace $T^0_k$ by the adjacent triangle as above.
+	* otherwise, if one barycentric coordinate $\lambda_i$ is negative, replace $T^0_k$ by the adjacent triangle opposite $q^0_i$ and go to Step 4.
+	* otherwise, if two barycentric coordinates are negative, take one of the two randomly and replace $T^0_k$ by the adjacent triangle as above.
 
 5. Calculate $g(q^1)$ on $T^0_k$ by linear interpolation of $f$:
 	$$
@@ -807,7 +807,7 @@ The method has 5 steps. First a quadtree is built containing all the vertices of
 
 <center>
 
-|<a name="Fig11">Fig. 11</a>: To interpolate a function at $q^0$ the knowledge of the triangle which contains $q^0$ is needed. The algorithm may start at $q^1\in T_k^0$ and stall on the boundary (thick line) because the line $q^0q^1$ is not inside $\Omega$. But if the holes are triangulated too (doted line) then the problem does not arise.|
+|<a name="Fig11">Fig. 11</a>: To interpolate a function at $q^0$, the knowledge of the triangle which contains $q^0$ is needed. The algorithm may start at $q^1\in T_k^0$ and stall on the boundary (thick line) because the line $q^0q^1$ is not inside $\Omega$. But if the holes are triangulated too (doted line) then the problem does not arise.|
 |:----|
 |![fastInterpolate](images/FiniteElement_fastInterpolate.png)|
 
@@ -815,18 +815,18 @@ The method has 5 steps. First a quadtree is built containing all the vertices of
 
 Two problems need to be solved:
 
-* _What if $q^1$ is not in $\Omega^0_h$ ?_ Then Step 5 will stop with a  boundary triangle. So we add a step which test the distance of $q^1$ with the two adjacent boundary edges and select the nearest, and so on till the distance grows.
+* _What if $q^1$ is not in $\Omega^0_h$ ?_ Then Step 5 will stop with a boundary triangle. So we add a step which tests the distance of $q^1$ with the two adjacent boundary edges and selects the nearest, and so on till the distance grows.
 
-* _What if $\Omega^0_h$ is not convex and the marching process of Step 4 locks on a boundary?_ By construction Delaunay-Voronoï mesh generators always triangulate the convex hull of the vertices of the domain. So we make sure that this information is not lost when ${\cal T}_{h}^0,{\cal T}_{h}^1$ are constructed and we keep the triangles which are outside the domain in a special list. Hence in step 5 we can use that list to step over holes if needed.
+* _What if $\Omega^0_h$ is not convex and the marching process of Step 4 locks on a boundary?_ By construction Delaunay-Voronoï's mesh generators always triangulate the convex hull of the vertices of the domain. Therefore, we make sure that this information is not lost when ${\cal T}_{h}^0,{\cal T}_{h}^1$ are constructed and we keep the triangles which are outside the domain on a special list. That way, in step 5 we can use that list to step over holes if needed.
 
 !!! note
-	Some time in rare case the interpolation process miss some point, we cane change the search algorithm through global variable `:::freefem searchMethod`
+	Sometimes, in rare cases, the interpolation process misses some points, we can change the search algorithm through a global variable `:::freefem searchMethod`
 
 	```freefem
-	searchMethod = 0; //default value for fast search algorithm
-	searchMethod = 1; //safe search algo, use brute force in case of missing point
-	//(warning: can be very expensive in case of lot of points ouside the domain)
-	searchMethod = 2; //use alway the brute force, very very expensive
+	searchMethod = 0; // default value for fast search algorithm
+	searchMethod = 1; // safe search algorithm, uses brute force in case of missing point
+	// (warning: can be very expensive in cases where a lot of points are outside of the domain)
+	searchMethod = 2; // always uses brute force. It is very computationally expensive.
 	```
 
 !!! note
@@ -860,7 +860,7 @@ Two problems need to be solved:
 
 	<center>
 
-	|<a name="Fig12">Fig. 12</a>: Extension of a continuous FE-function|<a name="Fig13">Fig. 13</a>: Extention of discontinuous FE-function|
+	|<a name="Fig12">Fig. 12</a>: Extension of a continuous FE-function|<a name="Fig13">Fig. 13</a>: Extension of discontinuous FE-function|
 	|:----:|:----:|
 	|![us-ug](images/FiniteElement_UsUg.png)|![vs-vg](images/FiniteElement_VsVg.png)|
 
@@ -878,13 +878,13 @@ problem P (u, v)
 ```
 
 !!! note
-	When you want to formulate the problem and to solve it in the same time, you can use the keyword `:::freefem solve`.
+	When you want to formulate the problem and solve it in the same time, you can use the keyword `:::freefem solve`.
 
-### Weak form and Boundary Condition
+### Weak Form and Boundary Condition
 
-To present the principles of Variational Formulations or also called weak forms for the PDEs, let us take a model problem: a Poisson equation with Dirichlet and Robin Boundary condition.
+To present the principles of Variational Formulations, also called weak form, for the Partial Differential Equations, let's take a model problem: a Poisson equation with Dirichlet and Robin Boundary condition.
 
-The problem is: Find $u$ a real function defined on a domain $\Omega$ of $\R^d$ $(d=2,3)$ such that
+The problem: Find $u$ a real function defined on a domain $\Omega$ of $\R^d$ $(d=2,3)$ such that
 
 \begin{equation}
 	\begin{array}{rcll}
@@ -911,7 +911,7 @@ where
 !!! note
 	This is the well known Neumann boundary condition if $a=0$, and if $\Gamma_d$ is empty. In this case the function appears in the problem just by its derivatives, so it is defined only up to a constant (if $u$ is a solution then $u+c$ is also a solution).
 
-Let ${v}$ a regular test function null on $\Gamma_d$, by integration by parts we get :
+Let ${v}$, a regular test function, null on $\Gamma_d$, by integration by parts we get :
 \begin{equation}
 	- \int_{\Omega} \nabla\cdot(\kappa \nabla u) \, {v} \,d\omega
 	= \int_{\Omega} \kappa \nabla{ v} \cdot \nabla u \,d\omega
@@ -922,7 +922,7 @@ where if $d=2$ the $ \nabla{ v} . \nabla u = (\frac{\p u}{\p x}\frac{\p { v}}{\p
 
 where if $d=3$ the $ \nabla{ v} . \nabla u = (\frac{\p u}{\p x}\frac{\p { v}}{\p x}+\frac{\p u}{\p y}\frac{\p { v}}{\p y} + \frac{\p u}{\p z}\frac{\p { v}}{\p z})$,
 
-and where $\mathbf{n}$ is the unitary outside normal of $\Gamma$.
+and where $\mathbf{n}$ is the unitary outer-pointing normal of the $\Gamma$.
 
 Now we note that $\kappa \frac{ \p u}{\p n} = - a u + b $ on $\Gamma_r$ and $v=0$ on $ \Gamma_d $ and $ \Gamma = \Gamma_d \cup \Gamma_n$
 thus
@@ -946,7 +946,7 @@ where $V_0 = \{v \in H^1(\Omega) / v = 0 \mbox{ on } \Gamma_d \}$
 Except in the case of Neumann conditions everywhere, the problem \eqref{eqn::v-poisson} is well posed when $\kappa\geq \kappa_0>0$.
 
 !!! note
-	If we have only Neumann boundary condition, linear algebra tells us that the right hand side must be orthogonal to the kernel of the operator for the solution to exist. One way of writing the compatibility condition is:
+	If we have only the Neumann boundary condition, linear algebra tells us that the right hand side must be orthogonal to the kernel of the operator for the solution to exist. One way of writing the compatibility condition is:
 
 	$$
 	 \int_{\Omega} f \,d\omega + \int_{\Gamma} b \,d\gamma=0
@@ -959,7 +959,7 @@ Except in the case of Neumann conditions everywhere, the problem \eqref{eqn::v-p
 	\end{equation}
 	where $\varepsilon$ is a small parameter ($ \sim \kappa\; 10^{-10} |\Omega|^{\frac2d} $).
 
-	Remark that if the solution is of order $\frac{1}{\varepsilon}$ then the compatibility condition is unsatisfied, otherwise we get the solution such that $\int_\Omega u = 0 $, you can also add a Lagrange multiplier to solver the real mathematical problem like in the [Lagrange multipliers example](../examples/lagrange-multipliers).
+	Remark that if the solution is of order $\frac{1}{\varepsilon}$ then the compatibility condition is unsatisfied, otherwise we get the solution such that $\int_\Omega u = 0 $, you can also add a Lagrange multiplier to solve the real mathematical problem like in the [Lagrange multipliers example](../examples/lagrange-multipliers).
 
 In FreeFem++, the bidimensional problem \eqref{eqn::v-poisson} becomes :
 
@@ -981,7 +981,7 @@ problem Pw (u, v)
 	;
 ```
 
-where `:::freefem Th` is a mesh of the bidimensional domain $\Omega$, and `:::freefem gd` and `:::freefem gn` are respectively the boundary label of boundary $\Gamma_d$ and $\Gamma_n$.
+where `:::freefem Th` is a mesh of the bi-dimensional domain $\Omega$, and `:::freefem gd` and `:::freefem gn` are respectively the boundary labels of boundary $\Gamma_d$ and $\Gamma_n$.
 
 And the three dimensional problem \eqref{eqn::v-poisson} becomes
 
@@ -1004,26 +1004,26 @@ problem Pw (u, v)
 	;
 ```
 
-where `:::freefem Th` is a mesh of the three dimensional domain $\Omega$, and `:::freefem gd` and `:::freefem gn` are respectively the boundary label of boundary $\Gamma_d$ and $\Gamma_n$.
+where `:::freefem Th` is a mesh of the three dimensional domain $\Omega$, and `:::freefem gd` and `:::freefem gn` are respectively the boundary labels of boundary $\Gamma_d$ and $\Gamma_n$.
 
 ## Parameters affecting `:::freefem solve` and `:::freefem problem`
 
 The parameters are FE functions real or complex, the number $n$ of parameters is even ($n=2*k$), the $k$ first function parameters are unknown, and the $k$ last are test functions.
 
 !!! note
-	 If the functions are a part of vectoriel FE then you must give all the functions of the vectorial FE in the same order (see [Poisson problem with mixed finite element](.models/StaticProblems/#poisson-with-mixed-finite-element) for example).
+	 If the functions are a part of vectorial FE then you must give all the functions of the vectorial FE in the same order (see [Poisson problem with mixed finite element](.models/StaticProblems/#poisson-with-mixed-finite-element) for example).
 
 !!! note
 	 Don't mix complex and real parameters FE function.
 
 !!! warning
-	__Bug :__ The mixing of `:::freefem fespace` with different periodic boundary condition is not implemented. So all the finite element spaces used for test or unknown functions in a problem, must have the same type of periodic boundary condition or no periodic boundary condition. No clean message is given and the result is impredictible, sorry.
+	__Bug :__ The mixing of multiple `:::freefem fespace` with different periodic boundary conditions are not implemented. So all the finite element spaces used for tests or unknown functions in a problem, must have the same type of periodic boundary conditions or no periodic boundary conditions. No clean message is given and the result is unpredictable.
 
 The parameters are:
 
 * __solver=__ `:::freefem LU`, `:::freefem CG`, `:::freefem Crout`,`:::freefem Cholesky`,`:::freefem GMRES`,`:::freefem sparsesolver`, `:::freefem UMFPACK` ...
 
-	The default solver is `:::freefem sparsesolver` (it is equal to `:::freefem UMFPACK` if not other sparce solver is defined) or is set to `:::freefem LU` if no direct sparse solver is available.
+	The default solver is `:::freefem sparsesolver` (it is equal to `:::freefem UMFPACK` if no other sparse solver is defined) or is set to `:::freefem LU` if no direct sparse solver is available.
 
 	The storage mode of the matrix of the underlying linear system depends on the type of solver chosen; for `:::freefem LU` the matrix is sky-line non symmetric, for `:::freefem Crout` the matrix is sky-line symmetric, for `:::freefem Cholesky` the matrix is sky-line symmetric positive definite, for `:::freefem CG` the matrix is sparse symmetric positive, and for `:::freefem GMRES`, `:::freefem sparsesolver` or `:::freefem UMFPACK` the matrix is just sparse.
 
@@ -1031,7 +1031,7 @@ The parameters are:
 	$$
 	|| A x - b || < |\varepsilon|
 	$$
-	if it is positive then the stopping test is
+	if it is positive, then the stopping test is
 	$$
 	|| A x - b || < \frac{|\varepsilon|}{|| A x_{0} - b ||}
 	$$
@@ -1046,11 +1046,11 @@ The parameters are:
 
 * __tgv=__ Huge value ($10^{30}$) used to implement Dirichlet boundary conditions.
 
-* __tolpivot=__ set the tolerance of the pivot in `:::freefem UMFPACK` ($10^{-1}$) and, `:::freefem LU`, `:::freefem Crout`, `:::freefem Cholesky` factorisation ($10^{-20}$).
+* __tolpivot=__ sets the tolerance of the pivot in `:::freefem UMFPACK` ($10^{-1}$) and, `:::freefem LU`, `:::freefem Crout`, `:::freefem Cholesky` factorisation ($10^{-20}$).
 
-* __tolpivotsym=__ set the tolerance of the pivot sym in `:::freefem UMFPACK`
+* __tolpivotsym=__ sets the tolerance of the pivot sym in `:::freefem UMFPACK`
 
-* __strategy=__ set the integer `:::freefem UMFPACK` strategy ($0$ by default).
+* __strategy=__ sets the integer `:::freefem UMFPACK` strategy ($0$ by default).
 
 ## Problem definition
 
@@ -1058,11 +1058,11 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 * Identifier(s); this is the name given earlier to the variational form(s) (type `:::freefem varf` ) for possible reuse.
 
-	Remark, that the name in the `:::freefem varf` of the unknown of test function is forgotten, we just used the order in argument list to recall name as in a `C++` function,
+	Remark, that the name in the `:::freefem varf` of the unknown test function is forgotten, we use the order in the argument list to recall names as in a `C++` function,
 
 * The terms of the bilinear form itself: if $K$ is a given function,
 
-* Bilinear part for 3d meshes `:::freefem Th`
+* Bilinear part for 3D meshes `:::freefem Th`
 
 	- `:::freefem int3d(Th)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T } K\,v\,w $
 
@@ -1086,9 +1086,9 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 	- `:::freefem intallfaces(Th, 1)(K*v*w) = ` $\displaystyle\sum_{{T\in\mathtt{Th},T\subset \Omega_{1}}}\int_{\p T } K\,v\,w$
 
-	- They contribute to the sparse matrix of type `:::freefem matrix` which, whether declared explicitly or not is contructed by FreeFem++.
+	- They contribute to the sparse matrix of type `:::freefem matrix` which, whether declared explicitly or not, is constructed by FreeFem++.
 
-* Bilinear part for 2d meshes `:::freefem Th`
+* Bilinear part for 2D meshes `:::freefem Th`
 
 	- `:::freefem int2d(Th)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T } K\,v\,w$
 
@@ -1112,9 +1112,9 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 	- `:::freefem intalledges(Th, 1)(K*v*w) = ` $\displaystyle\sum_{{T\in\mathtt{Th},T\subset \Omega_{1}}}\int_{\p T } K\,v\,w$
 
-	- They contribute to the sparse matrix of type `:::freefem matrix` which, whether declared explicitly or not is contructed by FreeFem++.
+	- They contribute to the sparse matrix of type `:::freefem matrix` which, whether declared explicitly or not, is constructed by FreeFem++.
 
-* The right hand-side of the PDE in 3d, the terms of the linear form: for given functions $K,\, f$:
+* The right hand-side of the Partial Differential Equation in 3D, the terms of the linear form: for given functions $K,\, f$:
 
 	- `:::freefem int3d(Th)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T} K\,w$
 
@@ -1134,7 +1134,7 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 	- A vector of type `:::freefem real[int]`
 
-* The right hand-side of the PDE in 2d, the terms of the linear form: for given functions $K,\, f$:
+* The right hand-side of the Partial Differential Equation in 2D, the terms of the linear form: for given functions $K,\, f$:
 
 	- `:::freefem int2d(Th)(K*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T} K\,w$
 
@@ -1154,11 +1154,11 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 	- a vector of type `:::freefem real[int]`
 
-* The boundary condition terms :
+* The boundary condition terms:
 
 	- An "on" scalar form (for Dirichlet) : `:::freefem on(1, u=g)`
 
-		The meaning is for all degree of freedom $i$ of the boundary refered by "1", the diagonal term of the matrix $a_{ii}= tgv$ with the _terrible giant value_ `:::freefem tgv` (=$10^{30}$ by default) and the right hand side $b[i] = "(\Pi_h g)[i]" \times tgv $, where the $"(\Pi_h g)g[i]"$ is the boundary node value given by the interpolation of $g$.
+		Used for all degrees of freedom $i$ of the boundary referred by "1", the diagonal term of the matrix $a_{ii}= tgv$ with the _terrible giant value_ `:::freefem tgv` (=$10^{30}$ by default), and the right hand side $b[i] = "(\Pi_h g)[i]" \times tgv$, where the $"(\Pi_h g)g[i]"$ is the boundary node value given by the interpolation of $g$. $\codered$
 
 		!!! note
 			if $\mathrm{tgv} < 0$ then we put to $0$ all term of the line $i$ in the matrix, except diagonal term $a_{ii}=1$, and $b[i] = "(\Pi_h g)[i]"$.
@@ -1177,7 +1177,7 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 !!! note
 	* If needed, the different kind of terms in the sum can appear more than once.
-	* The integral mesh and the mesh associated to test function or unknown function can be different in the case of linear form.
+	* The integral mesh and the mesh associated to test functions or unknown functions can be different in the case of linear form.
 	* `:::freefem N.x`, `:::freefem N.y` and `:::freefem N.z` are the normal's components.
 
 !!! warning
