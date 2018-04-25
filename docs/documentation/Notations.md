@@ -4,7 +4,7 @@ Here mathematical expressions and corresponding __`FreeFem++`__ commands are exp
 
  * [$\delta_{ij}$] Kronecker delta ($0$ if $i\neq j$, 1 if $i=j$ for integers $i,j$)
  * [$\forall$] for all
- * [$\exists$] there exist
+ * [$\exists$] there exists
  * [i.e.] that is
  * [PDE] partial differential equation (with boundary conditions)
  * [$\emptyset$] the empty set
@@ -15,7 +15,7 @@ Here mathematical expressions and corresponding __`FreeFem++`__ commands are exp
 
 ## Sets, Mappings, Matrices, Vectors
 
-Let $E,\, F,\, G$ be three sets and $A$ subset of $E$.
+Let $E,\, F,\, G$ be three sets and $A$ the subset of $E$.
 
 
  * [$\{x\in E|\; P\}$] the subset of $E$ consisting of the elements possessing the property $P$
