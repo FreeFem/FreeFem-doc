@@ -285,7 +285,7 @@ loadpath += "/Library/FreeFem++/lib"
 loadpath += "/Users/hecht/Library/FreeFem++/lib"
 includepath += "/Library/FreeFem++/edp"
 includepath += "/Users/hecht/Library/FreeFem++/edp"
-# a comment $\codered$
+# This is a comment
 load += "funcTemplate"
 load += "myfunction"
 load += "MUMPS_seq"
