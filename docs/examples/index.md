@@ -3216,6 +3216,23 @@ cout << "ii: " << ii << endl;
 	B = (2*b*c')(I, J); //outer product B(i, j) = b(I(i))*c(J(j))
 	B = (3.*b*c')(I^-1,J^-1); //outer product B(I(i), J(j)) = b(i)*c(j)
 	cout << "B = (3.*b*c')(I^-1,J^-1) = " << B << endl;
+
+	//row and column of the maximal coefficient of A
+	int i, j, ii, jj;
+	ijmax(A, ii, jj);
+
+	i = A.imax;
+	j = A.jmax;
+
+	cout << "Max " << i << " " << j << ", = " << A.max << endl;
+
+	//row and column of the minimal coefficient of A
+	ijmin(A, i, j);
+
+	ii = A.imin;
+	jj = A.jmin;
+
+	cout << "Min " << ii << " " << jj << ", = " << A.min << endl;
 }
 ```
 

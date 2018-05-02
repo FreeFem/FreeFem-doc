@@ -24,8 +24,6 @@ Progression:
 
 - [ ] line 269
 	``` Windows compilation (Good luck!)```
-- [ ] line 288
-	```# a comment ```
 
 ## How to contribute?
 

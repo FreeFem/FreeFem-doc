@@ -526,6 +526,15 @@ real ArrayMin = Aii.min;
 real ArrayMax = Aii.max;
 ```
 
+Th minimum and maximum position of an array can be obtained using:
+```freefem
+int mini = Aii.imin;
+int minj = Aii.jmin;
+
+int maxi = Aii.imax;
+int maxj = Aii.jmax;
+```
+
 !!!tip
 	An array can be obtained from a finite element function using:
 
