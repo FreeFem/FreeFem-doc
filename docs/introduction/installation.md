@@ -187,6 +187,9 @@ Remark: Blocks of code are shell commands in terminal.
 !!! warning
 	As Arch is in rolling release, the following information can be quickly outdated !
 
+!!!warning
+	**`FreeFem++`** fails to compile using the newest version of gcc 8.1.0, use an older one instead.
+
 1. Install the following dependencies:
 
 	```bash
