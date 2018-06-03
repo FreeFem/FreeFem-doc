@@ -1,0 +1,62 @@
+load "msh3"
+load "medit"
+
+int C1=90,C2=91;
+
+border C01(t=0,1){x=t; y=0; label=C1;};
+border C02(t=1,0){x=t; y=1; label=C1;};
+border C03(t=0,1){x=1; y=t; label=C1;};
+border C04(t=1,0){x=0; y=t; label=C1;};
+border C11(t=0,0.4){x=0.1+t; y=0.1; label=C2;};
+border C12(t=0.4,0){x=0.1+t; y=0.1+0.4; label=C2;};
+border C13(t=0,0.4){x=0.1+0.4; y=0.1+t; label=C2;};
+border C14(t=0.4,0){x=0.1; y=0.1+t; label=C2;};
+
+int n=15, m=15, k=10;
+mesh Th2d=buildmesh(C01(n)+C03(n)+C02(n)+C04(n)
+                   +C11(-m)+C12(-m)+C13(-m)+C14(-m));
+
+int[int] rup=[0,1],rdown=[0,2],rmid=[C2,3],rtet=[0,0];
+
+mesh3 Th3d=buildlayers(Th2d,k,
+                       zbound=[0,0.4],
+                       reftet=rtet,
+                       labelmid=rmid,
+                       labelup=rup,
+                       labeldown=rdown);
+
+fespace Vh(Th3d,P1);
+Vh u,v;
+
+macro Grad(u) [dx(u),dy(u),dz(u)] // EOM
+
+solve Poisson(u,v,solver=CG) =
+              int3d(Th3d)( Grad(u)'*Grad(v) )
+            + on(2,u=0)
+            - int2d(Th3d,3)(v);
+
+ofstream tetdata ("temp_demo4_tetdata3d_box.txt");
+for (int i=0; i<Th3d.nt; i++){
+  for (int j=0; j<4; j++){
+    tetdata << Th3d[i][j].x << ";"
+            << Th3d[i][j].y << ";"
+            << Th3d[i][j].z << ";"
+            << u[][Vh(i,j)] << "\n";
+
+  }
+}
+
+int idx;
+int nbelement=Th3d.nbe;
+ofstream bddata ("temp_demo4_bddata3d_box.txt");
+for (int k=0;k<nbelement;++k){
+  for (int num=0;num<3;num++){
+    idx = Th3d.be(k)[num];
+    bddata << Th3d(idx).x << ";"
+           << Th3d(idx).y << ";"
+           << Th3d(idx).z << ";"
+           << u(Th3d(idx).x,Th3d(idx).y,Th3d(idx).z) << "\n";
+  }
+}
+
+medit("U",Th3d,u);

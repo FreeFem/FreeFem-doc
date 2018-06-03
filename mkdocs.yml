@@ -48,6 +48,7 @@ pages:
     - Time dependent schema optimization for heat equations: tutorial/HeatEquationOptimization.md
     - A transient Stokes solver in matrix form: tutorial/TimeDependentStokes.md
     - Wifi Propagation: tutorial/WifiPropagation.md
+    - Matlab / Octave Plots: tutorial/MatlabOctavePlot.md
     - TODO: tutorial/TODO.md
   - Examples:
     - Home: examples/index.md

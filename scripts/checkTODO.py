@@ -95,7 +95,8 @@ tutorialFilesList = [
 	"tutorial/FlowWithShocks.md",
 	"tutorial/HeatEquationOptimization.md",
 	"tutorial/TimeDependentStokes.md",
-	"tutorial/WifiPropagation.md"
+	"tutorial/WifiPropagation.md",
+	"tutorial/MatlabOctavePlot.md"
 	]
 tutorialNamesList = [
 	"Home",
@@ -117,7 +118,8 @@ tutorialNamesList = [
 	"A flow with shocks",
 	"Time dependant schema optimization for heat equations",
 	"A transient Stokes solver in matrix form",
-	"Wifi Propagation"
+	"Wifi Propagation",
+	"Plotting in Matlab or Octave"
 	]
 tutorialTODOFile = "tutorial/TODO.md"
 

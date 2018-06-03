@@ -238,6 +238,43 @@ savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
 !!!note
 	See [Paraview.edp](../examples/#visualization-paraview) for the complete script.
 
-## Link with Matlab<sup>&copy;</sup>
+## Link with Matlab<sup>&copy;</sup> and Octave
 
-Thanks to a [Matlab plugin](http://fr.mathworks.com/matlabcentral/fileexchange/26833-freefem-to-matlab), mesh and data can be read.
+2D as well as 3D simulation results can be plot with [Matlab](https://www.mathworks.com/) or [Octave](https://www.gnu.org/software/octave/) either. The simulation data has to be written into a text file first. Within Matlab or Octave the file can be processed with the [ffmatlib](https://github.com/samplemaker/freefem_matlab_octave_plot) library in order to be plot with the [patch()](https://de.mathworks.com/help/matlab/ref/patch.html) plot command:
+
+```freefem
+mesh Th = square(10, 10, [2*x-1, 2*y-1]);
+
+fespace Vh(Th, P1);
+Vh u=2-x*x-y*y;
+
+ofstream file ("export.txt");
+for (int i = 0; i < Th.nt; i++){
+  for (int j = 0; j < 3; j++){
+    file << Th[i][j].x << ";"
+         << Th[i][j].y << ";"
+         << u[][Vh(i,j)] << "\n";
+  }
+}
+```
+
+Load, convert and plot the data with the commands:
+
+```Matlab
+[X,Y,C]=ffread2patch('export.txt');
+patch(X,Y,C,C);
+view(3);
+daspect([1.0 1.0 1.0*(max(max(C))-min(min(C)))]);
+```
+
+<center>
+
+|Fig. 9: Matlab / Octave plot|
+|:----:|
+|![Matlab / Octave](images/Visualization_Matlab_Octave.png)|
+
+</center>
+
+!!!note
+    For more information have a look at the tutorial [Matlab / Octave Examples](../tutorial/MatlabOctavePlot/) or visit [ffmatlib](https://github.com/samplemaker/freefem_matlab_octave_plot) at github.
+
