@@ -269,11 +269,43 @@ Remark: Blocks of code are shell commands in terminal.
 Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-with-intel-software-tools-for-developers)
 
 ### Compilation on Windows
-$\codered$ Windows compilation (Good luck!)
+
+1. Install [MS MPI v7](https://www.microsoft.com/en-us/download/details.aspx?id=49926) (msmpisdk.msi and MSMpiSetup.exe)
+
+2. Install [Msys2](https://www.msys2.org/) (x86_64 version)
+
+3. Start MSYS2 MSYS
+
+4. Open `MSYS2 MSYS terminal`
+	- Install dependancies
+	```bash
+	sudo pacman -Syu
+	sudo pacman -S autoconf automake-wrapper bash bash-completion \
+	bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
+	findutils flex gawk gcc-libs grep gzip inetutils info less lndir \
+	make man-db git mingw-w64-x86_64-freeglut mingw-w64-x86_64-gcc \
+	mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
+	mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
+	msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
+	perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
+	```
+	- Compile __`FreeFem++`__
+	```bash
+	git clone https://github.com/FreeFem/FreeFem-sources
+	cd FreeFem-sources
+	autoreconf -i
+	./configure --enable-download --disable-pastix --disable-hips
+	./download/getall -a
+	make -j4
+	make check
+	make install
+	```
+
+	The __`FreeFem++`__ executable (and some other like `ffmedit`, ...) are in `C:\msys64\mingw64\bin`.
 
 ## Environment variables and init file
 
-`FreeFem++` reads a user’s init file named `freefem++.pref` to initialize global variables: `:::freefem verbosity`, `:::freefem includepath`, `:::freefem loadpath`.
+__`FreeFem++`__ reads a user’s init file named `freefem++.pref` to initialize global variables: `:::freefem verbosity`, `:::freefem includepath`, `:::freefem loadpath`.
 
 !!!note
 	The variable `:::freefem verbosity` changes the level of internal printing (0: nothing unless there are syntax errors, 1: few, 10: lots, etc. ...), the default value is 2.
