@@ -279,10 +279,10 @@ Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-wi
 4. Open `MSYS2 MSYS terminal`
 	- Install dependancies
 	```bash
-	sudo pacman -Syu
-	sudo pacman -S autoconf automake-wrapper bash bash-completion \
+	pacman -Syu
+	pacman -S autoconf automake-wrapper bash bash-completion \
 	bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
-	findutils flex gawk gcc-libs grep gzip inetutils info less lndir \
+	findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
 	make man-db git mingw-w64-x86_64-freeglut mingw-w64-x86_64-gcc \
 	mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
 	mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
