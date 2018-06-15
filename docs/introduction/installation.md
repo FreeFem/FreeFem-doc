@@ -276,8 +276,7 @@ Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-wi
 
 3. Start MSYS2 MSYS
 
-4. Open `MSYS2 MSYS terminal`
-	- Install dependancies
+4. Open `MSYS2 MSYS terminal` to install dependancies
 	```bash
 	pacman -Syu
 	pacman -S autoconf automake-wrapper bash bash-completion \
@@ -289,7 +288,7 @@ Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-wi
 	msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
 	perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
 	```
-	- Compile __`FreeFem++`__
+5. Open `MingW64 terminal` (or `MingW32`) to compile __`FreeFem++`__
 	```bash
 	git clone https://github.com/FreeFem/FreeFem-sources
 	cd FreeFem-sources
