@@ -35,6 +35,13 @@ If you want terminal access to `freefem++` just copy the file `FreeFem++` in a d
 
 ## Compilation
 
+### Branches / OS status
+
+| Branch | Linux | MacOSX | Windows 7 |
+|:---:|:---:|:---:|:---:|
+| Develop | [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-UbuntuAll)](https://ci.inria.fr/freefem/job/FreeFem-source-develop-UbuntuAll/) [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-UbuntuNo)](https://ci.inria.fr/freefem/job/FreeFem-source-develop-UbuntuNo/) | [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-MacOSXAll)](https://ci.inria.fr/freefem/job/FreeFem-source-develop-MacOSXAll/) [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-MacOSXNo)](https://ci.inria.fr/freefem/job/FreeFem-source-develop-MacOSXNo/) | [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-Windows7)](https://ci.inria.fr/freefem/job/FreeFem-source-develop-Windows7) [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-Windows7-32)](https://ci.inria.fr/freefem/job/FreeFem-source-develop-Windows7-32) |
+| Master | [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-UbuntuAll)](https://ci.inria.fr/freefem/job/FreeFem-source-master-UbuntuAll/) [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-UbuntuNo)](https://ci.inria.fr/freefem/job/FreeFem-source-master-UbuntuNo/) | [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-MacOSXAll)](https://ci.inria.fr/freefem/job/FreeFem-source-master-MacOSXAll/) [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-MacOSXNo)](https://ci.inria.fr/freefem/job/FreeFem-source-master-MacOSXNo/) | [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-Windows7)](https://ci.inria.fr/freefem/job/FreeFem-source-master-Windows7) [![Build Status](https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-Windows7-32)](https://ci.inria.fr/freefem/job/FreeFem-source-master-Windows7-32) |
+
 ### Compilation on OSX (>=10.13)
 
 Remark: Blocks of code are shell commands in terminal.
@@ -277,6 +284,7 @@ Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-wi
 3. Start MSYS2 MSYS
 
 4. Open `MSYS2 MSYS terminal` to install dependancies
+	- for 64bits system:
 	```bash
 	pacman -Syu
 	pacman -S autoconf automake-wrapper bash bash-completion \
@@ -285,6 +293,18 @@ Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-wi
 	make man-db git mingw-w64-x86_64-freeglut mingw-w64-x86_64-gcc \
 	mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
 	mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
+	msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
+	perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
+	```
+	- for 32bits system:
+	```bash
+	pacman -Syu
+	pacman -S autoconf automake-wrapper bash bash-completion \
+	bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
+	findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
+	make man-db git mingw-w64-i686-freeglut mingw-w64-i686-gcc \
+	mingw-w64-i686-gcc-fortran mingw-w64-i686-gsl mingw-w64-i686-hdf5 \
+	mingw-w64-i686-openblas mintty msys2-keyring msys2-launcher-git \
 	msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
 	perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
 	```
@@ -300,7 +320,7 @@ Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-wi
 	make install
 	```
 
-	The __`FreeFem++`__ executable (and some other like `ffmedit`, ...) are in `C:\msys64\mingw64\bin`.
+	The __`FreeFem++`__ executable (and some other like `ffmedit`, ...) are in `C:\msys64\mingw64\bin` (or `C:\msys32\mingw64\bin`).
 
 ## Environment variables and init file
 
