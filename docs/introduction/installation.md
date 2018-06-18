@@ -320,7 +320,7 @@ Follow the [guide](https://software.intel.com/en-us/articles/building-freefem-wi
 	make install
 	```
 
-	The __`FreeFem++`__ executable (and some other like `ffmedit`, ...) are in `C:\msys64\mingw64\bin` (or `C:\msys32\mingw64\bin`).
+	The __`FreeFem++`__ executable (and some other like `ffmedit`, ...) are in `C:\msys64\mingw64\bin` (or `C:\msys32\mingw32\bin`).
 
 ## Environment variables and init file
 
