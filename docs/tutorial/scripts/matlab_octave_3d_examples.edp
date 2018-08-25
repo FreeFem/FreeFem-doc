@@ -1,14 +1,19 @@
+/* Electrostatic Parallel Plate Capacitor Problem
+ *
+ *  Solves the Laplace Equation on a parallel plate capacitor (dirichlet) boundary.
+ *  FE-Mesh and space functions are written to text files in order to be plot with
+ *  Matlab / Octave.
+ */
+
 load "msh3"
-load "tetgen"
-load "mshmet"
 load "medit"
 
-int C20=98,C21=99;
-int CK=30,CA=31;
-int C3CT01=23, C3CT12=24, C3CT23=25, C3CT34=26;
-int C3BOT=40, C3TOP=41, C3SIDEO=42, C3SIDEI=43;
+int C20=98,C21=99; //2D mesh
+int CK=30,CA=31;   //anode+cathode
+int C3CT01=23, C3CT12=24, C3CT23=25, C3CT34=26; //3D contact labels
+int C3BOT=40, C3TOP=41, C3SIDEO=42, C3SIDEI=43; //3D labels - cube top and bottom and side labels
 
-real w0 = 0.75, h0 = 0.75;
+real w0=0.75, h0=0.75;
 
 border C01(t=0,w0){ x=t; y=0; label=C20;};
 border C02(t=w0,0){ x=t; y=h0; label=C20;};
@@ -80,38 +85,38 @@ mesh3 Tha03d=buildlayers(Tha2,l*(z[1]-z[0]),
                          zbound=[z[0],z[1]],
                          reftet=a0tet,
                          labelmid=a0mid,
-                         labelup = a0up,
-                         labeldown = a0down);
+                         labelup=a0up,
+                         labeldown=a0down);
 
 mesh3 Tha13d=buildlayers(Tha2,l*(z[2]-z[1]),
                          zbound=[z[1],z[2]],
                          reftet=a1tet,
                          labelmid=a1mid,
-                         labelup = a1up,
-                         labeldown = a1down);
+                         labelup=a1up,
+                         labeldown=a1down);
 
 mesh3 Tha23d=buildlayers(Tha2,l*(z[3]-z[2]),
                          zbound=[z[2],z[3]],
                          reftet=a2tet,
                          labelmid=a2mid,
-                         labelup = a2up,
-                         labeldown = a2down);
+                         labelup=a2up,
+                         labeldown=a2down);
 
 mesh3 Tha33d=buildlayers(Tha2,l*(z[4]-z[3]),
                          zbound=[z[3],z[4]],
                          reftet=a3tet,
                          labelmid=a3mid,
-                         labelup = a3up,
-                         labeldown = a3down);
+                         labelup=a3up,
+                         labeldown=a3down);
 
 mesh3 Tha43d=buildlayers(Tha2,l*(z[5]-z[4]),
                          zbound=[z[4],z[5]],
                          reftet=a4tet,
                          labelmid=a4mid,
-                         labelup = a4up,
-                         labeldown = a4down);
+                         labelup=a4up,
+                         labeldown=a4down);
 
-mesh3 Thn3d =Tha03d+Tha13d+Tha23d+Tha33d+Tha43d;
+mesh3 Thn3d=Tha03d+Tha13d+Tha23d+Tha33d+Tha43d;
 
 fespace Vh(Thn3d,P1);
 Vh u,v,h;
@@ -138,9 +143,9 @@ for (int j=0; j<Vh.ndof; j++)
 }
 
 Vh Ex, Ey, Ez;
-Ex = -dx(u);
-Ey = -dy(u);
-Ez = -dz(u);
+Ex=-dx(u);
+Ey=-dy(u);
+Ez=-dz(u);
 
 {
 ofstream file("capacitor3d_field.txt");

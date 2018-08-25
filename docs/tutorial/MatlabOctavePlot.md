@@ -75,7 +75,7 @@ plot(u,[Ex,Ey],wait=true);
 
 ## Exporting Data
 
-To export a FEM mesh FreeFem++ offers the [savemesh()](../documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh) command. FE-space functions must be written to text files using for-loops. The following code section writes the mesh, the potential $u$ and the 2D vector field $\mathbf{E}$ of the stripline capacitor example into three different files:
+To export a FEM mesh FreeFem++ offers the [savemesh()](../documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh) command. FE-space functions must be written to text files by for-loops. The following code section writes the mesh, the potential $u$ and the 2D vector field $\mathbf{E}$ of the stripline capacitor example into three different files:
 
 ```freefem
 //Stores the Mesh
