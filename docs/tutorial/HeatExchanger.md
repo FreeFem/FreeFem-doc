@@ -1,6 +1,6 @@
 # Heat Exchanger
 
-**Summary:** _Here we shall learn more about geometry input and triangulation files, as well as read and write} operations._
+**Summary:** _Here we shall learn more about geometry input and triangulation files, as well as read and write operations._
 
 **The problem**
 Let $\{C_{i}\}_{1,2}$, be 2 thermal conductors within an enclosure $C_0$.
