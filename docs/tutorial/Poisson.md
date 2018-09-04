@@ -71,7 +71,7 @@ above).
 		 \int_{T_h}
 			(
 				 \frac{\p u}{\p x}\frac{\p v}{\p x}
-				+ \frac{\p u}{\p y}\frac{\p v}{\py}
+				+ \frac{\p u}{\p y}\frac{\p v}{\p y}
 			)\d x \d y
 		= \int_{T_h}f v\d x\d y
 	$$
