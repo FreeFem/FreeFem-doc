@@ -9,4 +9,4 @@ Documentation of [FreeFem++](http://www.freefem.org/).
 Have a look at the [mkdocs installation](MkDocs.md)
 
 ## How to contribute
-Have a look at the [contributing file](CONTRIBUTING.md).
+Have a look at the [contributing file](CONTRIBUTING.md)
