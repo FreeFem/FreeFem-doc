@@ -85,7 +85,7 @@ real[int] b = bcl(0, Xh);
 
 Note that the boundary conditions are not specified in $bb$. Removing the comment `:::freefem //` would cause the compiler to multiply the diagonal terms corresponding to a Dirichlet degree of freedom by a very large term (`:::freefem tgv`); if so $b$ would not be needed, on the condition that $uold=1$ on boundary 3 initially. Note also that b has a tgv on the Dirichlet nodes, by construction, and so does A.
 
-The loop will them be
+The loop will then be
 ```freefem
 real[int] sol(Xh.ndof), aux(Xh.ndof);
 for (m = 0; m < M; m++){

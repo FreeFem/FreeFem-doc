@@ -64,7 +64,7 @@ which for the unknown $u$ is locally elliptic if ${\p\varphi\over\p x} < 0$ and 
 
 !!!example
 	Laplace's equation is elliptic:
-	
+
 	$$
 	\Delta\varphi \equiv {\p^2\varphi\over\p x^2_1}
 		+ {\p^2\varphi\over\p x^2_2}
@@ -134,9 +134,9 @@ $$
 
 Finding a set of boundary conditions that defines a unique $\varphi$ is a difficult art.
 
-In general, an elliptic equation is well posed (_i.e._ $\varphi$ is unique) with one Dirichlet, Neumann or Robin conditions on the whole boundary.
+In general, an elliptic equation is well posed (_i.e._ $\varphi$ is unique) with one Dirichlet, Neumann or Robin condition on the whole boundary.
 
-Thus, Laplace's equations is well posed with a Dirichlet or Neumann condition but also with :
+Thus, Laplace's equation is well posed with a Dirichlet or Neumann condition but also with :
 
 $$
 \varphi \ \hbox{given on}\ \Gamma_1,\ {\p\varphi\over\p n} \ \hbox{given on}\ \Gamma_2, \ \Gamma_1\cup\Gamma_2 =\Gamma,\ {\dot{\Gamma_1}\cap\dot{\Gamma_2}} =\emptyset.
@@ -149,7 +149,7 @@ $$
 \p\Omega.
 $$
 
-Here $t$ is time so the first condition is called an initial condition. The whole set of conditions are also called Cauchy conditions.
+Here $t$ is time so the first condition is called an initial condition. The whole set of conditions is also called Cauchy condition.
 
 The wave equation is well posed with :
 

@@ -7,10 +7,10 @@ The problem is find the velocity field $\mathbf{u}=(u_i)_{i=1}^d$ and the pressu
 	\nabla\cdot \mathbf{u}&=&0
 \end{eqnarray*}
 
-where $\nu$ is the viscosity of the fluid, $\nabla = (\p_i )_{i=1}^d $, the dot product is $\cdot$, and $\Delta = \nabla\cdot\nabla$ with the some boundary conditions ( $\mathbf{u}$ is  given on $\Gamma$)
+where $\nu$ is the viscosity of the fluid, $\nabla = (\p_i )_{i=1}^d $, the dot product is $\cdot$, and $\Delta = \nabla\cdot\nabla$ with the same boundary conditions ( $\mathbf{u}$ is  given on $\Gamma$)
 
 The weak form is
-find $\mathbf{u}, p $ such than for $\forall \mathbf{v}$ (zero on $\Gamma$), and $\forall  q$
+find $\mathbf{u}, p $ such that for $\forall \mathbf{v}$ (zero on $\Gamma$), and $\forall  q$
 
 \begin{equation}
 \int_\Omega  ((\mathbf{u}\cdot\nabla) \mathbf{u} ). \mathbf{v} + \nu \nabla \mathbf{u}:\nabla \mathbf{v}

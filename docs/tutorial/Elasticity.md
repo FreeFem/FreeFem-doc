@@ -36,30 +36,30 @@ $$
 
 where $\lambda$ ,$\mu$ are the Lamé coefficients introduced above.
 
-Remark, we do not used this equation because the associated variationnal form does not give the right boundary condition, we simply use
+Remark, we do not use this equation because the associated variational form does not give the right boundary condition, we simply use
 
 $$
 	- div( \sigma ) = \mathbf{f} \quad \mbox{in}~~\Omega
 $$
 
-where the corresponding variationnal form is:
+where the corresponding variational form is:
 
 $$
  \int_{\Omega} \sigma(u) : \epsilon(\mathbf{v})\;dx - \int_{\Omega} \mathbf{v} f \;dx =0;
 $$
 
-where $:$ denote the tensor scalar product,  i.e. $ a: b = \sum_{i,j} a_{ij}b_{ij}$.
+where $:$ denotes the tensor scalar product,  i.e. $ a: b = \sum_{i,j} a_{ij}b_{ij}$.
 
-So the variationnal form can be written as :
+So the variational form can be written as :
 
 $$
  \int_{\Omega} \lambda \nabla.u \nabla.v + 2 \mu \epsilon(\mathbf{u}):\epsilon(\mathbf{v}) \; dx - \int_{\Omega} \mathbf{v} f \;dx =0;
 $$
 
 !!! example
-	Consider elastic plate with the undeformed rectangle shape $[0,20]\times [-1,1]$.
+	Consider an elastic plate with the undeformed rectangle shape $[0,20]\times [-1,1]$.
 
-	The body force is the gravity force $\mathbf{f}$ and the boundary force $\mathbf{g}$ is zero on lower, upper and right sides. The left vertical sides of the beam is fixed. The boundary conditions are
+	The body force is the gravity force $\mathbf{f}$ and the boundary force $\mathbf{g}$ is zero on lower, upper and right sides. The left vertical side of the beam is fixed. The boundary conditions are
 
 	\begin{eqnarray*}
 	\sigma . {\bf n} &=& \mathbf{g} = 0 ~~\hbox{on}~~\Gamma_1, \Gamma_4, \Gamma_3, \\

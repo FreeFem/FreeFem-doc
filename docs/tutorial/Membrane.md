@@ -12,7 +12,7 @@ $$
 As the membrane is fixed to its planar support, one has:
 $$ \varphi |_{\Gamma }=0.$$
 
-If the support wasn't planar but have an elevation $z(x_1,x_2)$ then the boundary conditions would be of non-homogeneous Dirichlet type.
+If the support wasn't planar but had an elevation $z(x_1,x_2)$ then the boundary conditions would be of non-homogeneous Dirichlet type.
 $$ \varphi|_{\Gamma}=z.$$
 
 If a part $\Gamma_2$ of the membrane border $\Gamma$ is not fixed to the support but is left hanging, then due to the membrane's rigidity the angle with the normal vector $n$ is zero; thus the boundary conditions are
@@ -124,7 +124,7 @@ $
 except that on $\Gamma_2$ $\p_n\varphi=2$ instead of zero. So we will consider a non-homogeneous Neumann condition and solve
 
 $$
-\int_\Omega(\n\varphi\cdot\n w = \int_\Omega f w+\int_{\Gamma_2}2w\quad\forall w\in V
+\int_\Omega\n\varphi\cdot\n w = \int_\Omega f w+\int_{\Gamma_2}2w\quad\forall w\in V
 $$
 
 We will do that with two triangulations, compute the $L^2$ error:

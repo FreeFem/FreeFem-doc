@@ -5,6 +5,8 @@
 **The problem**
 Let $\{C_{i}\}_{1,2}$, be 2 thermal conductors within an enclosure $C_0$.
 
+<!-- Add image -->
+
 The first one is held at a constant temperature ${u} _{1}$ the other one has a given thermal conductivity $\kappa_2$ 5 times larger than the one of $C_0$.
 
 We assume that the border of enclosure $C_0$ is held at temperature $20^\circ C$ and that we have waited long enough for thermal equilibrium.
@@ -16,7 +18,8 @@ $$
 \quad {u}_{|\Gamma} = g
 $$
 
-where $\Omega$ is the interior of $C_0$ minus the conductors $C_1$ and $\Gamma$ is the boundary of $\Omega$, that is $C_0\cup C_1$.
+where $\Omega$ is the interior of $C_0$ minus the conductor $C_1$ and $\Gamma$ is the boundary of $\Omega$, that is $C_0\cup C_1$.
+<!-- Check with image -->
 
 Here $g$ is any function of $x$ equal to ${u}_i$ on $C_i$.
 

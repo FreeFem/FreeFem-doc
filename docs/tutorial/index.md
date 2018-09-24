@@ -1,8 +1,8 @@
 # Getting started
 
-The FreeFem++ language is [typed](../reference/types), polymorphic and reentrant with [macro generation](../reference/types#macro-design).
+The FreeFem++ language is [typed](../reference/Types), polymorphic and reentrant with [macro generation](../reference/Types#macro-design).
 
-Every variable must be typed and declared in a statement. Each statement are separated from the next by a semicolon `;`.
+Every variable must be typed and declared in a statement. Each statement is separated from the next by a semicolon `;`.
 
 The FreeFem++ language is a C++ idiom with something that is more akin to $\TeX$.
 

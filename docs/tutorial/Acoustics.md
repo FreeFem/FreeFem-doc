@@ -7,7 +7,7 @@ $
 {\p^2 u \over \p t^2} - c^2 \Delta u =0.
 $
 
-When the solution wave is monochromatic (and that depend on the boundary and initial conditions), $u$ is of the form $u(x,t)=Re(v(x) e^{ik t})$ where $v$ is a solution of Helmholtz's equation:
+When the solution wave is monochromatic (and that depends on the boundary and initial conditions), $u$ is of the form $u(x,t)=Re(v(x) e^{ik t})$ where $v$ is a solution of Helmholtz's equation:
 
 \begin{eqnarray}
 	k^{2}v + c^{2}\Delta v &= 0 &\hbox{ in } \Omega\\
