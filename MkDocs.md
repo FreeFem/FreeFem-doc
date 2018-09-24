@@ -1,5 +1,7 @@
 # Install MkDocs with dependencies
 
+## On Linux / MacOS
+
 Install python:
 ```
 apt-get install python
@@ -31,3 +33,14 @@ pip install python-markdown-math
 ```
 
 That's it! Use `mkdocs serve` for the development server or `mkdocs build` to build the static web pages.
+
+## On Windows
+
+Download latest release from [Python website](https://www.python.org/) and install it. ***Verify that environnement variables export is enable***.
+
+Install MkDocs, Material and math extension:
+```
+python -m pip install mkdocs
+python -m pip install mkdocs-material
+python -m pip install python-markdown-math
+```
