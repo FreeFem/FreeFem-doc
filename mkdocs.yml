@@ -30,7 +30,7 @@ pages:
   - Tutorials:
     - Getting started: tutorial/index.md
     - Poisson's equation: tutorial/Poisson.md
-    - Classifications of the equations: tutorial/EquationsClassification.md
+    - Classification of the equations: tutorial/EquationsClassification.md
     - Membrane: tutorial/Membrane.md
     - Heat Exchanger: tutorial/HeatExchanger.md
     - Acoustics: tutorial/Acoustics.md

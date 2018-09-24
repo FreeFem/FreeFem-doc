@@ -1091,7 +1091,7 @@ plot(Th, wait=true, ps="SplittedMesh.eps");
 	```
 
 	<center>
-
+	<!-- Review -->
 	|<a name="Fig24">Fig. 24</a>: Two rectangles touching by a side|
 	|:----:|
 	|![Rectangles touching by a side](images/MeshGeneration_Example_NACA0012_1.png)|
@@ -1404,7 +1404,7 @@ The following code generates a $3\times 4 \times 5$ grid in the unit cube $[0, 1
 mesh3 Th = cube(3, 4, 5);
 ```
 
-By defaults the label are :
+By default the labels are :
 
 1. face $y=0$,
 2. face $x=1$,
@@ -1415,7 +1415,7 @@ By defaults the label are :
 
 and the region number is $0$.
 
-A full example of the this function to build a mesh of cube $]-1,1[^3$ with face label given by $(ix + 4*(iy+1) + 16*(iz+1))$ where $(ix, iy, iz)$ is the coordinate of the barycenter of the current face.
+A full example of this function to build a mesh of cube $]-1,1[^3$ with face label given by $(ix + 4*(iy+1) + 16*(iz+1))$ where $(ix, iy, iz)$ are the coordinates of the barycenter of the current face, is given below.
 
 ```freefem
 load "msh3"
@@ -1614,11 +1614,11 @@ The parameters of this command line are:
 	$$
 	where $B$ is the smallest axis, parallel boxes containing the discretized domain of $\Omega$ and $Vol(B)$ is the volume of this box.
 
-We can do a "gluing" of surface meshes using the process given in [Change section](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh). An example to obtain a three dimensional mesh using the command line `:::freefem tetg` and `:::freefem movemesh23` is given bellow.
+We can do a "gluing" of surface meshes using the process given in [Change section](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh). An example to obtain a three dimensional mesh using the command line `:::freefem tetg` and `:::freefem movemesh23` is given below.
 
 ```freefem
 load "msh3"
-load "TetGen"
+load "tetgen"
 
 // Parameters
 real x10 = 1.;
