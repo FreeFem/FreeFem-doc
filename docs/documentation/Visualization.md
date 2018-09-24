@@ -240,7 +240,7 @@ savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
 
 ## Link with Matlab<sup>&copy;</sup> and Octave
 
-2D as well as 3D simulation results can be plot with [Matlab](https://www.mathworks.com/) or [Octave](https://www.gnu.org/software/octave/) either. The simulation data has to be written into a text file first. Within Matlab or Octave the file can be processed with the [ffmatlib](https://github.com/samplemaker/freefem_matlab_octave_plot) library in order to be plot with the [patch()](https://de.mathworks.com/help/matlab/ref/patch.html) plot command:
+To create plots from FreeFem++ simulations in [Octave](https://www.gnu.org/software/octave/) and [Matlab](https://www.mathworks.com/) the FEM mesh and the FE function must be exported to files:
 
 ```freefem
 mesh Th = square(10, 10, [2*x-1, 2*y-1]);
@@ -248,23 +248,21 @@ mesh Th = square(10, 10, [2*x-1, 2*y-1]);
 fespace Vh(Th, P1);
 Vh u=2-x*x-y*y;
 
-ofstream file ("export.txt");
-for (int i = 0; i < Th.nt; i++){
-  for (int j = 0; j < 3; j++){
-    file << Th[i][j].x << ";"
-         << Th[i][j].y << ";"
-         << u[][Vh(i,j)] << "\n";
-  }
-}
+savemesh(Th,"export_mesh.msh");
+
+ofstream file("export_data.txt"); 
+for (int j=0; j<u[].n; j++)
+   file << u[][j] << endl;
 ```
 
-Load, convert and plot the data with the commands:
+Within Matlab or Octave the export files can be processed with the [ffmatlib library](https://github.com/samplemaker/freefem_matlab_octave_plot):
 
 ```Matlab
-[X,Y,C]=ffread2patch('export.txt');
-patch(X,Y,C,C);
-view(3);
-daspect([1.0 1.0 1.0*(max(max(C))-min(min(C)))]);
+addpath('path to ffmatlib');
+[p,b,t]=ffreadmesh('export_mesh.msh');
+u=ffreaddata('export_data.txt');
+ffpdeplot(p,b,t,'XYData',u,'ZStyle','continuous','Mesh','on');
+grid;
 ```
 
 <center>
@@ -276,5 +274,5 @@ daspect([1.0 1.0 1.0*(max(max(C))-min(min(C)))]);
 </center>
 
 !!!note
-    For more information have a look at the tutorial [Matlab / Octave Examples](../tutorial/MatlabOctavePlot/) or visit [ffmatlib](https://github.com/samplemaker/freefem_matlab_octave_plot) at github.
+    For more Matlab / Octave plot examples have a look at the tutorial section [Matlab / Octave Examples](../tutorial/MatlabOctavePlot/) or visit the [ffmatlib library](https://github.com/samplemaker/freefem_matlab_octave_plot) at github.
 

@@ -3,7 +3,7 @@
 Documentation of [FreeFem++](http://www.freefem.org/).
 
 ## View the documentation
-<a href="http://13.93.1.249/" target="_blank">Documentation website.</a>
+<a href="https://doc.freefem.org" target="_blank">Documentation website.</a>
 
 ## Install the documentation
 Have a look at the [mkdocs installation](MkDocs.md)
