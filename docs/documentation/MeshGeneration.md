@@ -35,11 +35,13 @@ mesh Th = square(n, m, [x0+(x1-x0)*x, y0+(y1-y0)*y]);
 !!! note
 	Adding the named parameter `:::freefem flags=icase` with icase:
 
-	0. will produce a mesh where all quads are split with diagonal $x-y=constant$
-	1. will produce _Union Jack flag_ type of mesh.
-	2. will produce a mesh where all quads are split with diagonal $x+y=constant$
-	3. same as in case 0, except two corners where the triangles are the same as case 2 to avoid having 3 vertices on the boundary
-	4. same as in case 2, except two corners where the triangles are the same as case 0 to avoid having 3 vertices on the boundary
+	<ol start="0">
+		<li>will produce a mesh where all quads are split with diagonal $x-y=constant$</li>
+		<li>will produce _Union Jack flag_ type of mesh</li>
+		<li>will produce a mesh where all quads are split with diagonal $x+y=constant$</li>
+		<li>same as in case 0, except two corners where the triangles are the same as case 2 to avoid having 3 vertices on the boundary</li>
+		<li>same as in case 2, except two corners where the triangles are the same as case 0 to avoid having 3 vertices on the boundary</li>
+	</ol>
 
 	````freefem
 	mesh Th = square(n, m, [x0+(x1-x0)*x, y0+(y1-y0)*y], flags=icase);
