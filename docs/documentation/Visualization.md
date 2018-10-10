@@ -240,7 +240,7 @@ savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
 
 ## Link with Matlab<sup>&copy;</sup> and Octave
 
-To create plots from FreeFem++ simulations in [Octave](https://www.gnu.org/software/octave/) and [Matlab](https://www.mathworks.com/) the FEM mesh and the FE function must be exported to files:
+In order to create plots from FreeFem++ simulations in [Octave](https://www.gnu.org/software/octave/) and [Matlab](https://www.mathworks.com/) the FEM mesh and the FE function must be exported to text files:
 
 ```freefem
 mesh Th = square(10, 10, [2*x-1, 2*y-1]);
@@ -255,7 +255,7 @@ for (int j=0; j<u[].n; j++)
    file << u[][j] << endl;
 ```
 
-Within Matlab or Octave the export files can be processed with the [ffmatlib library](https://github.com/samplemaker/freefem_matlab_octave_plot):
+Within Matlab or Octave the files can be processed with the [ffmatlib library](https://github.com/samplemaker/freefem_matlab_octave_plot):
 
 ```Matlab
 addpath('path to ffmatlib');
