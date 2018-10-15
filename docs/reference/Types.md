@@ -669,7 +669,7 @@ matrix<complex> Ai = ...
 !!!note "Solver"
 	See [`:::freefem problem`](#problem).
 
-	The default solver is [`:::freefem GMRES`](GlobalVariables/#GMRES).
+	The default solver is [`:::freefem GMRES`](GlobalVariables/#gmres).
 
 	```freefem
 	matrix A = vLaplacian(Uh, Uh, solver=sparsesolver);
