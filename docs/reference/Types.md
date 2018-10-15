@@ -355,7 +355,7 @@ Laplacian;
 
 	The default solver is `:::freefem sparsesolver` or `:::freefem LU` if any direct sparse solver is available.
 
-	Solvers are listed in the [Global variables](global-variables) section.
+	Solvers are listed in the [Global variables](GlobalVariables) section.
 
 !!!note "Stop test"
 	A criterion $\varepsilon$ can be defined for iterative methods, like CG for example:
@@ -669,7 +669,7 @@ matrix<complex> Ai = ...
 !!!note "Solver"
 	See [`:::freefem problem`](#problem).
 
-	The default solver is [`:::freefem GMRES`](../global-variables/#GMRES).
+	The default solver is [`:::freefem GMRES`](GlobalVariables/#gmres).
 
 	```freefem
 	matrix A = vLaplacian(Uh, Uh, solver=sparsesolver);
