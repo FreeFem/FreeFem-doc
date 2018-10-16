@@ -1028,10 +1028,10 @@ Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) 
  - `Label` (`:::freefem int`) _[Optional]_<br/>
  Label of the 1D border<br/>
  Default: all borders of the mesh
- - _`:::freefem qfe=`_ ([quadrature formula](../quadrature)) _[Optional]_<br/>
- Quadrature formula, see [quadrature formulae](quadrature/#int1d)
- - _`:::freefem qforder=`_ ([quadrature formula](../quadrature)) _[Optional]_<br/>
- Quadrature order, see [quadrature formulae](quadrature/#int1d)
+ - _`:::freefem qfe=`_ ([quadrature formula](../QuadratureFormulae)) _[Optional]_<br/>
+ Quadrature formula, see [quadrature formulae](QuadratureFormulae/#int1d)
+ - _`:::freefem qforder=`_ ([quadrature formula](../QuadratureFormulae)) _[Optional]_<br/>
+ Quadrature order, see [quadrature formulae](QuadratureFormulae/#int1d)
 
 <u>Output:</u>
 
@@ -1070,10 +1070,10 @@ Or outside to calculate a quantity.
  - `Label` (`:::freefem int`) _[Optional]_<br/>
  Label of the 2D border (3D simulation)<br/>
  Default: all borders of the mesh
- - _`:::freefem qfe=`_ ([quadrature formula](../quadrature)) _[Optional]<br/>
- Quadrature formula, see [quadrature formulae](quadrature/#int2d)
- - _`:::freefem qforder`=_ ([quadrature formula](../quadrature)) _[Optional]_<br/>
- Quadrature order, see [quadrature formulae](quadrature/#int2d)
+ - _`:::freefem qfe=`_ ([quadrature formula](../QuadratureFormulae)) _[Optional]<br/>
+ Quadrature formula, see [quadrature formulae](QuadratureFormulae/#int2d)
+ - _`:::freefem qforder`=_ ([quadrature formula](../QuadratureFormulae)) _[Optional]_<br/>
+ Quadrature order, see [quadrature formulae](QuadratureFormulae/#int2d)
 
 <u>Output:</u>
 
@@ -1100,10 +1100,10 @@ Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) 
  - `Region` (`:::freefem int`) _[Optional]_<br/>
  Label of the 3D region<br/>
  Default: all regions of the mesh
- - _`:::freefem qfe`=_ ([quadrature formula](../quadrature)) _[Optional]<br/>
- Quadrature formula, see [quadrature formulae](quadrature/#int3d)
- - _`:::freefem qforder=`_ ([quadrature formula](../quadrature)) _[Optional]_<br/>
- Quadrature order, see [quadrature formulae](quadrature/#int3d)
+ - _`:::freefem qfe`=_ ([quadrature formula](../QuadratureFormulae)) _[Optional]<br/>
+ Quadrature formula, see [quadrature formulae](QuadratureFormulae/#int3d)
+ - _`:::freefem qforder=`_ ([quadrature formula](../QuadratureFormulae)) _[Optional]_<br/>
+ Quadrature order, see [quadrature formulae](QuadratureFormulae/#int3d)
 
  <u>Output:</u>
 
