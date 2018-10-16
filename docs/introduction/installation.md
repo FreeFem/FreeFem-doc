@@ -33,6 +33,20 @@ Download the MacOS X binary version file, extract all the files by double clicki
 
 If you want terminal access to `freefem++` just copy the file `FreeFem++` in a directory of your `$PATH` shell environment variable.
 
+### Arch AUR package
+
+An up-to-date package of FreeFem++ for Arch is available on the [Archlinux user repository](https://aur.archlinux.org/packages/freefem%2B%2B-git/).
+
+To install it:
+```bash
+git clone https://aur.archlinux.org/freefem++-git.git
+cd freefem++-git
+makepkg -si
+```
+
+!!! quote
+	Thanks to [Stephan Husmann](https://github.com/stefanhusmann)
+
 ## Compilation
 
 ### Branches / OS status
