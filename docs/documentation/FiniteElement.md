@@ -954,7 +954,7 @@ Except in the case of Neumann conditions everywhere, the problem \eqref{eqn::v-p
 
 	and a way to fix the constant is to solve for $u \in H^1(\Omega)$ such that:
 	\begin{equation}
-	{\int_{\Omega} \varepsilon u v \,\,d\omega\; + \; \kappa \nabla{ v} . \nabla u \,d\omega
+	{\int_{\Omega} (\varepsilon u v \; + \; \kappa \nabla{ v} . \nabla u) \,d\omega
 	= \int_{\Omega} f {v}} \,d\omega + \int_{\Gamma_r} b v \,d\gamma , \quad \forall v \in H^1(\Omega)
 	\end{equation}
 	where $\varepsilon$ is a small parameter ($ \sim \kappa\; 10^{-10} |\Omega|^{\frac2d} $).
