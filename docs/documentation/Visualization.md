@@ -135,7 +135,7 @@ real[int] colorhsv=[ // color hsv model
 
 ## Link with gnuplot
 
-Example [Membrane](../tutorial/Membrane) shows how to generate a gnuplot from a FreeFem++ file. Here is another technique which has the advantage of being online, i.e. one doesn't need to quit FreeFem++ to generate a gnuplot.
+Example [Membrane](../tutorials/Membrane) shows how to generate a gnuplot from a FreeFem++ file. Here is another technique which has the advantage of being online, i.e. one doesn't need to quit FreeFem++ to generate a gnuplot.
 
 However, this works only if [gnuplot](http://www.gnuplot.info) is installed, and only on an Unix-like computer.
 
@@ -274,5 +274,5 @@ grid;
 </center>
 
 !!!note
-    For more Matlab / Octave plot examples have a look at the tutorial section [Matlab / Octave Examples](../tutorial/MatlabOctavePlot/) or visit the [ffmatlib library](https://github.com/samplemaker/freefem_matlab_octave_plot) at github.
+    For more Matlab / Octave plot examples have a look at the tutorial section [Matlab / Octave Examples](../tutorials/MatlabOctavePlot/) or visit the [ffmatlib library](https://github.com/samplemaker/freefem_matlab_octave_plot) at github.
 

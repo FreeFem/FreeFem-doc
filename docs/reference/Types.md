@@ -426,14 +426,14 @@ Laplacian;
 !!!note "`:::freefem dimKrylov`"
 	Dimension of the Krylov space
 
-Usage of `:::freefem problem` is detailled in the [tutorial](../tutorial).
+Usage of `:::freefem problem` is detailled in the [tutorial](../tutorials).
 
 ### solve
 Solve type.
 
 Identical to [problem](#problem) but automatically solved.
 
-Usage of `:::freefem solve` is detailled in the [tutorial](../tutorial).
+Usage of `:::freefem solve` is detailled in the [tutorial](../tutorials).
 
 ### varf
 Variational form type.
@@ -446,7 +446,7 @@ Directly define a variational form.
 
 This is the other way to define a problem in order to directly manage matrix and right hang side.
 
-Usage of `:::freefem varf` is detailed in the [tutorial](../tutorial).
+Usage of `:::freefem varf` is detailed in the [tutorial](../tutorials).
 
 ## Array
 

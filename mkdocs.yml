@@ -28,28 +28,28 @@ pages:
     - External libraries: reference/ExternalLibraries.md
     - TODO: reference/TODO.md
   - Tutorials:
-    - Getting started: tutorial/index.md
-    - Poisson's equation: tutorial/Poisson.md
-    - Classification of the equations: tutorial/EquationsClassification.md
-    - Membrane: tutorial/Membrane.md
-    - Heat Exchanger: tutorial/HeatExchanger.md
-    - Acoustics: tutorial/Acoustics.md
-    - Thermal Conduction: tutorial/ThermalConduction.md
-    - Irrotational Fan Blade Flow and Thermal effects: tutorial/FanBlade.md
-    - Pure convection, The rotating hill: tutorial/RotatingHill.md
-    - The system of elasticity: tutorial/Elasticity.md
-    - The system of Stokes for fluids: tutorial/Stokes.md
-    - A projection Algorithm for the Navier-Stokes equations: tutorial/NavierStokesProjection.md
-    - Newton method for the steady Navier-Stokes equations: tutorial/NavierStokesNewton.md
-    - A large fluid problem: tutorial/ALargeFluidProblem.md
-    - An example with complex numbers: tutorial/ComplexNumbers.md
-    - Optimal control: tutorial/OptimalControl.md
-    - A flow with shocks: tutorial/FlowWithShocks.md
-    - Time dependent schema optimization for heat equations: tutorial/HeatEquationOptimization.md
-    - A transient Stokes solver in matrix form: tutorial/TimeDependentStokes.md
-    - Wifi Propagation: tutorial/WifiPropagation.md
-    - Matlab / Octave Plots: tutorial/MatlabOctavePlot.md
-    - TODO: tutorial/TODO.md
+    - Getting started: tutorials/index.md
+    - Poisson's equation: tutorials/Poisson.md
+    - Classification of the equations: tutorials/EquationsClassification.md
+    - Membrane: tutorials/Membrane.md
+    - Heat Exchanger: tutorials/HeatExchanger.md
+    - Acoustics: tutorials/Acoustics.md
+    - Thermal Conduction: tutorials/ThermalConduction.md
+    - Irrotational Fan Blade Flow and Thermal effects: tutorials/FanBlade.md
+    - Pure convection, The rotating hill: tutorials/RotatingHill.md
+    - The system of elasticity: tutorials/Elasticity.md
+    - The system of Stokes for fluids: tutorials/Stokes.md
+    - A projection Algorithm for the Navier-Stokes equations: tutorials/NavierStokesProjection.md
+    - Newton method for the steady Navier-Stokes equations: tutorials/NavierStokesNewton.md
+    - A large fluid problem: tutorials/ALargeFluidProblem.md
+    - An example with complex numbers: tutorials/ComplexNumbers.md
+    - Optimal control: tutorials/OptimalControl.md
+    - A flow with shocks: tutorials/FlowWithShocks.md
+    - Time dependent schema optimization for heat equations: tutorials/HeatEquationOptimization.md
+    - A transient Stokes solver in matrix form: tutorials/TimeDependentStokes.md
+    - Wifi Propagation: tutorials/WifiPropagation.md
+    - Matlab / Octave Plots: tutorials/MatlabOctavePlot.md
+    - TODO: tutorials/TODO.md
   - Examples:
     - Home: examples/index.md
     - TODO: examples/TODO.md

@@ -1,4 +1,4 @@
-See [tutorials](../tutorial) and [examples](../examples) for more detailed algorithms
+See [tutorials](../tutorials) and [examples](../examples) for more detailed algorithms
 
 ## Useful macro
 

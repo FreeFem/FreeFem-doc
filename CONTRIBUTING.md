@@ -20,7 +20,7 @@ Files to improve are in:
  - documentation/
  - examples/
  - references/
- - tutorial/
+ - tutorials/
 
 ## Via email
 

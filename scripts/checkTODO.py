@@ -76,27 +76,27 @@ referenceTODOFile = "reference/TODO.md"
 
 #tutorial
 tutorialFilesList = [
-	"tutorial/index.md",
-	"tutorial/Poisson.md",
-	"tutorial/EquationsClassification.md",
-	"tutorial/Membrane.md",
-	"tutorial/HeatExchanger.md",
-	"tutorial/Acoustics.md",
-	"tutorial/ThermalConduction.md",
-	"tutorial/FanBlade.md",
-	"tutorial/RotatingHill.md",
-	"tutorial/Elasticity.md",
-	"tutorial/Stokes.md",
-	"tutorial/NavierStokesProjection.md",
-	"tutorial/NavierStokesNewton.md",
-	"tutorial/ALargeFluidProblem.md",
-	"tutorial/ComplexNumbers.md",
-	"tutorial/OptimalControl.md",
-	"tutorial/FlowWithShocks.md",
-	"tutorial/HeatEquationOptimization.md",
-	"tutorial/TimeDependentStokes.md",
-	"tutorial/WifiPropagation.md",
-	"tutorial/MatlabOctavePlot.md"
+	"tutorials/index.md",
+	"tutorials/Poisson.md",
+	"tutorials/EquationsClassification.md",
+	"tutorials/Membrane.md",
+	"tutorials/HeatExchanger.md",
+	"tutorials/Acoustics.md",
+	"tutorials/ThermalConduction.md",
+	"tutorials/FanBlade.md",
+	"tutorials/RotatingHill.md",
+	"tutorials/Elasticity.md",
+	"tutorials/Stokes.md",
+	"tutorials/NavierStokesProjection.md",
+	"tutorials/NavierStokesNewton.md",
+	"tutorials/ALargeFluidProblem.md",
+	"tutorials/ComplexNumbers.md",
+	"tutorials/OptimalControl.md",
+	"tutorials/FlowWithShocks.md",
+	"tutorials/HeatEquationOptimization.md",
+	"tutorials/TimeDependentStokes.md",
+	"tutorials/WifiPropagation.md",
+	"tutorials/MatlabOctavePlot.md"
 	]
 tutorialNamesList = [
 	"Home",
@@ -121,7 +121,7 @@ tutorialNamesList = [
 	"Wifi Propagation",
 	"Plotting in Matlab or Octave"
 	]
-tutorialTODOFile = "tutorial/TODO.md"
+tutorialTODOFile = "tutorials/TODO.md"
 
 #examples
 examplesFilesList = [
@@ -256,7 +256,7 @@ TODOFile.write("[TODO](../documentation/TODO)\n")
 TODOFile.write("\n## Language references\n");
 TODOFile.write("[TODO](../reference/TODO)\n")
 TODOFile.write("\n## Tutorials\n");
-TODOFile.write("[TODO](../tutorial/TODO)\n")
+TODOFile.write("[TODO](../tutorials/TODO)\n")
 TODOFile.write("\n## Examples\n");
 TODOFile.write("[TODO](../examples/TODO)\n")
 TODOFile.write("\n## Models\n");

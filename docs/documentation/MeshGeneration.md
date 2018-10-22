@@ -859,7 +859,7 @@ of a function (formula or FE-function).
 
 Mesh adaptation is a very powerful tool when the solution of a problem varies locally and sharply.
 
-Here we solve the [Poisson's problem](../tutorial/), when $f=1$ and $\Omega$ is a L-shape domain.
+Here we solve the [Poisson's problem](../tutorials/), when $f=1$ and $\Omega$ is a L-shape domain.
 
 |<a name="Fig15">Fig. 15</a>: L-shape domain and its boundary name|<a name="Fig16">Fig. 16</a>: Final solution after 4-times adaptation|
 |:----|:----|

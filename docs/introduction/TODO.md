@@ -41,7 +41,7 @@ Progression:
 [TODO](../reference/TODO)
 
 ## Tutorials
-[TODO](../tutorial/TODO)
+[TODO](../tutorials/TODO)
 
 ## Examples
 [TODO](../examples/TODO)

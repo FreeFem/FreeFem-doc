@@ -204,8 +204,8 @@ ffpdeplot(p,b,t,'XYData',u,'XYStyle','off','Mesh','off','Boundary','on', ...
 
 
 **Download run through example:**  
-[Matlab / Octave file](../tutorial/scripts/matlab_octave_2d_examples.m)  
-[FreeFem++ script](../tutorial/scripts/matlab_octave_2d_examples.edp)
+[Matlab / Octave file](../tutorials/scripts/matlab_octave_2d_examples.m)  
+[FreeFem++ script](../tutorials/scripts/matlab_octave_2d_examples.edp)
 
 ## 3D Plot Examples
 
@@ -222,8 +222,8 @@ The following example shows a slicing feature on a three-dimensional parallel pl
 </center>
 
 **Download run through example:**  
-[Matlab / Octave file](../tutorial/scripts/matlab_octave_3d_examples.m)  
-[FreeFem++ script](../tutorial/scripts/matlab_octave_3d_examples.edp)
+[Matlab / Octave file](../tutorials/scripts/matlab_octave_3d_examples.m)  
+[FreeFem++ script](../tutorials/scripts/matlab_octave_3d_examples.edp)
 
 ## References
 

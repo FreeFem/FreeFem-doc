@@ -3,7 +3,7 @@ $$
 \newcommand{\vectthree}[3]{\left|\begin{array}{c}{#1}\\#2\\#3\end{array}\right.}
 $$
 
-As stated in [tutorials](../tutorial), FEM approximates all functions $w$ as
+As stated in [tutorials](../tutorials), FEM approximates all functions $w$ as
 $$
 w(x,y)\simeq w_0\phi_0(x,y)+w_1\phi_1(x,y)+\cdots+w_{M-1}\phi_{M-1}(x,y)
 $$
@@ -1400,7 +1400,7 @@ The output is
 
 In FreeFem++ it is possible to define variational forms, and use them to build matrices and vectors, and store them to speed-up the script (4 times faster here).
 
-For example let us solve the [Thermal Conduction problem](../tutorial/ThermalConduction/). The variational formulation is in $L^2(0,T;H^1(\Omega))$; we shall seek $u^n$ satisfying
+For example let us solve the [Thermal Conduction problem](../tutorials/ThermalConduction/). The variational formulation is in $L^2(0,T;H^1(\Omega))$; we shall seek $u^n$ satisfying
 
 $$
 \forall w \in V_{0}; \qquad \int_\Omega \frac{u^n-u^{n-1}}{\delta t} w + \kappa\n u^n\n w) +\int_\Gamma\alpha(u^n-u_{ue})w=0
