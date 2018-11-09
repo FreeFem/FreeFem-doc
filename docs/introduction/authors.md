@@ -1,6 +1,6 @@
 |Frédéric Hecht|
 |----|
-|Professor at [_Laboratoire Jacques Louis Lions_](https://www.ljll.math.upmc.fr/) (LJLL), Pierre and Marie Curie Univerity, Paris|
+|Professor at [_Laboratoire Jacques Louis Lions_](https://www.ljll.math.upmc.fr/) (LJLL), Pierre and Marie Curie University, Paris|
 |frederic.hecht@sorbonne-universite.fr|
 |[https://www.ljll.math.upmc.fr/hecht/](https://www.ljll.math.upmc.fr/hecht/)|
 
@@ -35,4 +35,4 @@
 |[CNRS](http://www.cnrs.fr) researcher, MPI interface with [PETSc](https://www.mcs.anl.gov/petsc/), [HPDDM](https://github.com/hpddm/hpddm), ...|
 |[http://jolivet.perso.enseeiht.fr/](http://jolivet.perso.enseeiht.fr/)|
 
-And all [Github contributors](https://github.com/FreeFem/FreeFem-doc/graphs/contributors)
+And all the dedicated [Github contributors](https://github.com/FreeFem/FreeFem-doc/graphs/contributors)
