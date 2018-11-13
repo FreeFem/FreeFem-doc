@@ -1,6 +1,6 @@
 # FreeFem++ doc
 
-Documentation of [FreeFem++](http://www.freefem.org/).
+Documentation of [FreeFem++](https://freefem.org/).
 
 ## View the documentation
 <a href="https://doc.freefem.org" target="_blank">Documentation website.</a>
