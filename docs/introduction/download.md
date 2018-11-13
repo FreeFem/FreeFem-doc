@@ -3,17 +3,17 @@
 ##Latest binary packages
 Operating System | FreeFem++ Version | Size | Date
 :--------------- |:----------------- |:---- |:----
-[MacOS 10.13](http://www.freefem.org/ff++/ftp/FreeFem++-3.61-1-MacOS_10.13.pkg) | `3.61` | 445.3 Mb | May 09, 2018
-[MacOS 10.12](http://www.freefem.org/ff++/ftp/FreeFem++-3.59-MacOS_10.12.pkg) | `3.59` | 507.1 Mb | Mar 16, 2018
-[MacOS 10.11](http://www.freefem.org/ff++/ftp/FreeFem++-3.61-1-MacOS_10.11.pkg) | `3.61` | 376.5 Mb | Jul 12, 2018
-[MacOS 10.10](http://www.freefem.org/ff++/ftp/FreeFem++-3.59-MacOS_10.10.pkg) | `3.59` | 507.1 Mb | Mar 16, 2018
+[MacOS 10.13](https://github.com/FreeFem/FreeFem-sources/releases/download/3.61/FreeFem++-3.61-1-MacOS_10.13.pkg) | `3.61` | 445.3 Mb | May 09, 2018
+[MacOS 10.12](http://www3.freefem.org/ff++/ftp/FreeFem++-3.59-MacOS_10.12.pkg) | `3.59` | 507.1 Mb | Mar 16, 2018
+[MacOS 10.11](https://github.com/FreeFem/FreeFem-sources/releases/download/3.61/FreeFem++-3.61-1-MacOS_10.11.pkg) | `3.61` | 376.5 Mb | Jul 12, 2018
+[MacOS 10.10](http://www3.freefem.org/ff++/ftp/FreeFem++-3.59-MacOS_10.10.pkg) | `3.59` | 507.1 Mb | Mar 16, 2018
 <!-- -->
-[Windows 64bit (in test)](http://www.freefem.org/ff++/ftp/FreeFem++-3.61-1-win64.exe) | `3.61` | 87.6 Mb | Jul 12, 2018
-[Windows 32bit](http://www.freefem.org/ff++/ftp/FreeFem++-3.46-win32.exe) | `3.46` | 66.4 Mb | May 09, 2017
+[Windows 64bit (in test)](https://github.com/FreeFem/FreeFem-sources/releases/download/3.61/FreeFem++-3.61-1-win64.exe) | `3.61` | 87.6 Mb | Jul 12, 2018
+[Windows 32bit](http://www3.freefem.org/ff++/ftp/FreeFem++-3.46-win32.exe) | `3.46` | 66.4 Mb | May 09, 2017
 <!-- -->
 [Source](https://github.com/FreeFem/FreeFem-sources/releases/latest) | `latest` | 25.1 Mb | Feb 22, 2018
 <!-- -->
-[Older versions](http://www.freefem.org/ff++/ftp/) | `-` | - -
+[Older versions](http://www3.freefem.org/ff++/ftp/) | `-` | - -
 
 The source code is available on the [FreeFem++ GitHub Repository](https://github.com/FreeFem/FreeFem-sources).
 

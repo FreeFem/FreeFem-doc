@@ -1,9 +1,9 @@
 site_name: FreeFem++
-pages:
+nav:
   - Introduction: index.md
   - Download: introduction/download.md
   - Installation: introduction/installation.md
-  - How to contribute?: introduction/Contributing.md
+  - How to contribute?: introduction/contributing.md
   - Citation: introduction/citation.md
   - Authors: introduction/authors.md
   - TODO: introduction/TODO.md
@@ -90,7 +90,7 @@ extra_javascript:
 markdown_extensions:
   - codehilite:
       guess_lang: false
-      linenums: true
+#      linenums: true
   - mdx_math
   - pymdownx.tasklist
   - pymdownx.inlinehilite
@@ -109,8 +109,8 @@ extra:
 repo_name: 'FreeFem++ on Github'
 repo_url: 'https://github.com/FreeFem/FreeFem-doc'
 
-# plugins:
-#     - pdf-export:
-#         verbose: true
-#         media_type: print
-#         enable_if_env: ENABLE_PDF_EXPORT
+#plugins:
+#    - pdf-export:
+#        verbose: true
+#        media_type: print
+#        enabled_if_env: ENABLE_PDF_EXPORT

@@ -791,10 +791,10 @@ $$
 
 The sequence $\{\mathcal{T}_h\}_{h\rightarrow 0}$ of $\Omega$ is called _regular_ if they satisfy the following:
 
-1. \[\lim_{h\rightarrow 0}\max\{\textrm{diam}(T_k)|\; T_k\in \mathcal{T}_h\}=0\]
+1. $\lim_{h\rightarrow 0}\max\{\textrm{diam}(T_k)|\; T_k\in \mathcal{T}_h\}=0$
 
 2. There is a number $\sigma>0$ independent of $h$ such that
-	\[\frac{\rho(T_k)}{\textrm{diam}(T_k)}\ge \sigma\qquad \textrm{for all }T_k\in \mathcal{T}_h\]
+	$\frac{\rho(T_k)}{\textrm{diam}(T_k)}\ge \sigma\qquad \textrm{for all }T_k\in \mathcal{T}_h$
 	where $\rho(T_k)$ are the diameter of the inscribed circle of $T_k$.
 
 We put $h(\mathcal{T}_h)=\max\{\textrm{diam}(T_k)|\; T_k\in \mathcal{T}_h\}$,
