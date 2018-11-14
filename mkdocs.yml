@@ -1,5 +1,5 @@
 site_name: FreeFem++
-nav:
+pages:
   - Introduction:
     - Introduction: index.md
     - Download: introduction/download.md
