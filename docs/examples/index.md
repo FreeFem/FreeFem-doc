@@ -4013,9 +4013,9 @@ The arguments can be used in the script with:
 ```freefem
 include "getARGV.idp"
 
-int n = getARGV("n", 1);
-real a = getARGV("a", 1.);
-real d = getARGV("d", 1.);
+int n = getARGV("-n", 1);
+real a = getARGV("-a", 1.);
+real d = getARGV("-d", 1.);
 ```
 
 ### Macro
