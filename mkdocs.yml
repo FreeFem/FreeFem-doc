@@ -1,12 +1,13 @@
 site_name: FreeFem++
 nav:
-  - Introduction: index.md
-  - Download: introduction/download.md
-  - Installation: introduction/installation.md
-  - How to contribute?: introduction/contributing.md
-  - Citation: introduction/citation.md
-  - Authors: introduction/authors.md
-  - TODO: introduction/TODO.md
+  - Introduction:
+    - Introduction: index.md
+    - Download: introduction/download.md
+    - Installation: introduction/installation.md
+    - How to contribute?: introduction/contributing.md
+    - Citation: introduction/citation.md
+    - Authors: introduction/authors.md
+    - TODO: introduction/TODO.md
   - Documentation:
     - Home: documentation/index.md
     - Some Notations: documentation/Notations.md
