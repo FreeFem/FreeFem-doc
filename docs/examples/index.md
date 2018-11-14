@@ -4011,7 +4011,7 @@ FreeFem++ script.edp -n 10 -a 1. -d 42.
 
 The arguments can be used in the script with:
 ```freefem
-load "getARGV.idp"
+include "getARGV.idp"
 
 int n = getARGV("n", 1);
 real a = getARGV("a", 1.);
