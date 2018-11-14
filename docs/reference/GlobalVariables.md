@@ -114,7 +114,7 @@ real L = int1d(Th, 1)(lenEdge);
 ## load
 Load a script.
 ```freefem
-load "getARGV.idp"
+load "Element_P3"
 ```
 
 ## LU
