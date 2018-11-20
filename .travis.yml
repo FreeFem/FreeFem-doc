@@ -13,6 +13,3 @@ after_success:
 - git remote add gh-token "https://${GH_TOKEN}@github.com/FreeFem/FreeFem-doc.git";
 - git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
 - mkdocs gh-deploy -v --clean --remote-name gh-token;
-env:
-  global:
-    secure: EmdzRrd/U2f9+ipK2hFKWZ4yBgauvVc7I57hSPBDtz10sl8Z78n0R2UO9C0XJ/fgKZM/Er3+EhLUPVECuxQ1Ofb1XqMtC8osIhxgnsXlZxNFclBD48vM+oXoNg4/iQ682UK+Xn7uOyhdgnn5uqDc3dDHDyo8Jrpc3nvLq5KrppQbK/UOMAgxq0pIH5WkG7XscluYBZMkuP+cE1SXzldvwUuw6+ZzNqJAQgkDbK+daCA3MLSW32KMtiJzdlJRm1BLUsiPmxRdjEbfPRuPPNHpa7REqq34e3SNXZE1end8nSi6TFfGylHeD+aEN//HrS47HVvFRp9RT+q36gppti/1Y7s6W0RZhwagdinXMSL2Uj8YuZc+lj4rxFGPIKlGUtxU1ogurOyVmuO+sGlG0Fcaa1wEXvGz5qoiaF6/eOOqNEMpau7z5Em5iwUPn6LdRc/H40qYnprGHjhCrN7sIAlU51zfQirpaHIY7bgXqw+uCicvFJiSdM7SlOORHeRtp3nuafYz0AAgKM9Cou6gtNx1xn4K5HGVz5tseSp9Ma5dI5BtzmwXjUnan67CevZ/h9/O+pMljiwSpX5TIB52EHk6Xn/QeTILN7DJpy0UvEabt6RtCXO1SjH6jnewxGgiH1iobyTOY9PQ2xtzQ1BotBgrkPcEPaKAubiWX7tKq2qbpsw=
