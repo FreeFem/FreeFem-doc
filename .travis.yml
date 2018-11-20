@@ -10,8 +10,8 @@ install:
 script:
 - git clean -f -d -x
 after_success:
-- git config user.name "Tanatloc-bot"
+- git config user.name "Travis CI"
 - git config user.email "contact@airthium.com"
-- git remote add gh-token "https://${GH_TOKEN}@github.com/FreeFem/FreeFem-doc.git";
+- git remote add gh-token "${GH_TOKEN}";
 - git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
 - mkdocs gh-deploy -v --clean --remote-name gh-token;
