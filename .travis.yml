@@ -2,16 +2,17 @@ sudo: false
 language: python
 env:
   global:
-  - secure: NnBKJDhEwrjklrPGcET34E73NW94B3lwVdeGSuDzkUjYzREVVPYQwvbxlBfD1yZJNzgAHi+o/U6wMwOqvH8GbeYfA5y8pnSRu1tdyL+e9hjWtRrBInrusnAPjN6m2oEjObUSVsk7Cw7tpvS8fIic0+yb5VUbNVJ2HjXZV1E8txibf8eRVNnT8d15c7Q4quE4Y6cD4yJzEADSDF76Ib/giwcbAO7OY1AajR62gD7RjgtgZwyoieSwoT/a2y6Sd97uaqlIbYkDn9FV5FjAwVAf6SpnTgA44l2MxQdD99GiNKHkrouatcW/0ZM9GOxg8iMO+TijM81gvaKhGYwI9cR451bLoOKIR6N6QcqCeabbxtvl+B5CTgR9DUBTmiVxwWpqIhNY2PjXngeZYch5wI9wDTEBU3+/pfHOpZ8VKT6jLj+I6y5oyNDLUCtOvwindE0xT12lIftZUs73QPWfwb+tGeKUNb8MqZzdR1N23tL9TMkraPqAsaznkIKNJH/bUaJp4TxLu5RvEOopCLOR5TQCvgJsoYaGovuR4NDqS4Ni82oKtxxCqiiNXGqa78hh8EDVeLRMvM3C65MCIZ279BfYSNqOMOxiGWDDFqmn58s+EXmkocwhn2nNWtqL/CQPzYAOeHIh+U3GOeTfWcREwu/3GQscpRSn1d2MYiUZNEkBC+o=
+    - secure: NnBKJDhEwrjklrPGcET34E73NW94B3lwVdeGSuDzkUjYzREVVPYQwvbxlBfD1yZJNzgAHi+o/U6wMwOqvH8GbeYfA5y8pnSRu1tdyL+e9hjWtRrBInrusnAPjN6m2oEjObUSVsk7Cw7tpvS8fIic0+yb5VUbNVJ2HjXZV1E8txibf8eRVNnT8d15c7Q4quE4Y6cD4yJzEADSDF76Ib/giwcbAO7OY1AajR62gD7RjgtgZwyoieSwoT/a2y6Sd97uaqlIbYkDn9FV5FjAwVAf6SpnTgA44l2MxQdD99GiNKHkrouatcW/0ZM9GOxg8iMO+TijM81gvaKhGYwI9cR451bLoOKIR6N6QcqCeabbxtvl+B5CTgR9DUBTmiVxwWpqIhNY2PjXngeZYch5wI9wDTEBU3+/pfHOpZ8VKT6jLj+I6y5oyNDLUCtOvwindE0xT12lIftZUs73QPWfwb+tGeKUNb8MqZzdR1N23tL9TMkraPqAsaznkIKNJH/bUaJp4TxLu5RvEOopCLOR5TQCvgJsoYaGovuR4NDqS4Ni82oKtxxCqiiNXGqa78hh8EDVeLRMvM3C65MCIZ279BfYSNqOMOxiGWDDFqmn58s+EXmkocwhn2nNWtqL/CQPzYAOeHIh+U3GOeTfWcREwu/3GQscpRSn1d2MYiUZNEkBC+o=
 install:
-- pip install mkdocs
-- pip install mkdocs-material
-- pip install python-markdown-math
+  - pip install mkdocs
+  - pip install mkdocs-material
+  - pip install python-markdown-math
 script:
-- git clean -f -d -x
+  - git clean -f -d -x
+  - mkdocs build
 after_success:
-- git config user.name "Travis CI"
-- git config user.email "contact@airthium.com"
-- git remote add gh-token "${GH_TOKEN}";
-- git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
-- mkdocs gh-deploy -v --clean --remote-name gh-token;
+  - git config user.name "Travis CI"
+  - git config user.email "contact@airthium.com"
+  - git remote add ghtoken "https://tanatloc-bot:${GH_TOKEN}@github.com/FreeFem/FreeFem-doc.git";
+  - git fetch ghtoken && git fetch ghtoken gh-pages:gh-pages;
+  - mkdocs gh-deploy -v --clean --remote-name ghtoken;
