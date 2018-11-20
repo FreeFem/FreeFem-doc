@@ -2,7 +2,8 @@ sudo: false
 language: python
 env:
   global:
-    secure: oyZV9nCKm1iZzbOMo5wYZZ6ApYZsuE2wFTM2e0tBsYDf80StA5O5zS0sznrSAaeLfu5fdPQQ9ugZz6P4P+weFiuhCZao3EcXBepVHv//GmEQQFwrpZcAqMM0PLOSLF7flAmIhgTk3mjJSUXIjSo1H95BaxS9aVWri5O15TdN91nP93EEgXe1V0UZ6gsjk+9oTPmN3014HwfigYVVq8NzEOgHAbRKWpQsgc0HSUlsT1cCXfP1YQDDf68nEowp+NGTs4KexwQ6q82NyF0PisW4/kkRSpQGwNRAOZSugogYpS2P0ycu3nJCvndckKM9bWdZ1xXwC8k0jTqJnQuKsv9jKr7vWQfWBc9qKbXaH1XiRtrneNLFrydGfzxREqaIpvk7UzEfWQQtbOPu4c+Bmn4ZxiwON6NWteKfS2Y45ndmqSQdFljzT/RgEtirROILk1jhoSoVXA4v5HAiN6W2WsyM9ikIbP/x5yDkv0a2dKZ9eP07BD5pW44Whk3gHuRaIcfBU7IeNnNqctxs8j1DIpBebfN7VPdx9Nl2vZtySKvufWKf6q6c8yopdHmxjA/NYuL4Rf+g5e44qg6DM608L2656X0S1jrhev3pmH92qDBOqQWwY6gwdFyFTvq2A7BYDAFS0srAOg3eHZE7YfioO7pbFgjw+oeCpHuyFsaRYp4NBmw=
+  - secure: oyZV9nCKm1iZzbOMo5wYZZ6ApYZsuE2wFTM2e0tBsYDf80StA5O5zS0sznrSAaeLfu5fdPQQ9ugZz6P4P+weFiuhCZao3EcXBepVHv//GmEQQFwrpZcAqMM0PLOSLF7flAmIhgTk3mjJSUXIjSo1H95BaxS9aVWri5O15TdN91nP93EEgXe1V0UZ6gsjk+9oTPmN3014HwfigYVVq8NzEOgHAbRKWpQsgc0HSUlsT1cCXfP1YQDDf68nEowp+NGTs4KexwQ6q82NyF0PisW4/kkRSpQGwNRAOZSugogYpS2P0ycu3nJCvndckKM9bWdZ1xXwC8k0jTqJnQuKsv9jKr7vWQfWBc9qKbXaH1XiRtrneNLFrydGfzxREqaIpvk7UzEfWQQtbOPu4c+Bmn4ZxiwON6NWteKfS2Y45ndmqSQdFljzT/RgEtirROILk1jhoSoVXA4v5HAiN6W2WsyM9ikIbP/x5yDkv0a2dKZ9eP07BD5pW44Whk3gHuRaIcfBU7IeNnNqctxs8j1DIpBebfN7VPdx9Nl2vZtySKvufWKf6q6c8yopdHmxjA/NYuL4Rf+g5e44qg6DM608L2656X0S1jrhev3pmH92qDBOqQWwY6gwdFyFTvq2A7BYDAFS0srAOg3eHZE7YfioO7pbFgjw+oeCpHuyFsaRYp4NBmw=
+  - secure: esnmmzv1bKPyLb69r+bz279xb+QphCIaGxvvqb0wYf1AwZcIPMCr7vk1Hn0xgQx+boUW+pbkdL1CnaFqB4pXLChcRJK6ZLF+ZQQO/Hib/seE7mxGTKVeO+NThKymUYJgyObL9Lt/oDvOtt/QQz0Ehsxmg5DC2xrHB1uim58Mo2XMaE4tbhZwFnnsQeRHikIotsiAaLDvpD8dhsv34Xs7T9PcopuLz5qd20buG5FaL94DVeEEI77fV9Jamhfn4QSvcycO3zyRb786MdEZSV+BgrUSVo1l3Px5HymQZd/vxdCV10IQu0R759uvBzRlcS/xsjYb2G/r2NVYhwameQzkRp+gFTNEwzzLDFsgO6fUMnsSN/Mseabq65+lkDENAV/PGtNypL/HJRLb58K/iLOzoOadNJH8xK+DSHwMVelCcomY/qeGyn/59cM14Wd04n8Lb4/uuo4NasWALXKikV1qFhKHrGUlW+2PSXYDQpb05JEN5l4KRz/8kUmFwjcTFqdebdG7hfLQmZJUtjST6PwnyJ0ywUWgvpOpqR3Sv1IErEofpYaMkW9hmLDYhZVxe1K24AFsNQy5QK8dfoBFLrAzZDkTBzJTJ4rXXhRT+3QrSBgTNjz3+sr1f+DMHrkaQX0YPgJ9TFVFIh+QRRhlXAA4hhgf6hfLXLIE2iHTmHOudjA=
 install:
 - pip install mkdocs
 - pip install mkdocs-material
@@ -13,6 +14,6 @@ script:
 after_success:
 - git config user.name "Travis CI"
 - git config user.email "contact@airthium.com"
-- git remote add ghtoken "https://tanatloc-bot:${GH_TOKEN}@github.com/FreeFem/FreeFem-doc.git";
-- git fetch ghtoken && git fetch ghtoken gh-pages:gh-pages;
-- mkdocs gh-deploy -v --clean --remote-name ghtoken;
+- git remote add gh-token "https://${GH_TOKEN}@github.com/FreeFem/FreeFem-doc.git";
+- git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
+- mkdocs gh-deploy -v --clean --remote-name gh-token;
