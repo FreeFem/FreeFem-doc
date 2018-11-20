@@ -2,13 +2,15 @@ sudo: false
 language: python
 env:
   global:
-    - secure:
+  - secure: KRu9PRKstK0TczW5px9wGcmyWpOex+b+g72YzHAkHJRdnG1lX+IB0N9Tq+yLeWtlx24fDUy4czy+iJylji74b5crPEKdnsEamtNrzDwujELZFXlYhn3x07kfcLbc2oXF+0MjcW6cD3rPfPvWHf1Ww79rT+FmihSifwm4YlCSojiBp9w9ed5ETjlFwi4D+fxYiXg0r3BusbrohzJNUBn8O9L6/kI8RxGpmp6//bjKoZK0uBhk2IjA90DRdN2KNzdH7cqxE7lo9zUX6MNmV5nW8GaUIRYPeS3UvT1c5SOWThwo0coaq6wGSk+rGKeG6Srm3M1NdwAoHZ58M/hAK6hoZT1bZqZ3qCjh/P3u7KmuYTTqjuTz7k8/eYSNArtlHGhjafTcuc/E4wBEMEzk5WlS/UAI6SZcokQH2fOHTX1zsbtqFAYWsonj9XUDPjIeV1L+x+Nt2EItBHa6S4Z+qp5sU4IP43XGNa0yC3PxLTDKVju5avV/3olOhK/zlZlgdZ7ACDAbNEmP4qoc85KXhKy5akJfRSy1DS3QntIexJq7FrW93fL/0Y3WW6oeZYw1lryJTJo4LLXX5hkP0wgJ6nimtsXtnn02FtlRa5H2gcJm8tdEj6SW1mQK6EEKqnWqLlEE8jnXtRcFAEF7gRJe8wYSlIs5H2bvDmlAVEZmB1HN6ms=
 install:
-  - pip install mkdocs
-  - pip install mkdocs-material
-  - pip install python-markdown-math
+- pip install mkdocs
+- pip install mkdocs-material
+- pip install python-markdown-math
 script:
-  - git clean -f -d -x
+- git clean -f -d -x
 deploy:
   provider: pages
+  skip-cleanup: true
+  github-token: {GH_TOKEN}
   script: mkdocs gh-pages
