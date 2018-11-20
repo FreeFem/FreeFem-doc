@@ -9,8 +9,9 @@ install:
 - pip install python-markdown-math
 script:
 - git clean -f -d -x
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: {GH_TOKEN}
-  script: mkdocs gh-pages
+after_success:
+  - git config user.name "Taantloc bot"
+  - git config user.email "contact@airthium.com"
+  - git remote add gh-token "https://${GH_TOKEN}@github.com/FreeFem/FreeFem-doc.git";
+  - git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
+  - mkdocs gh-deploy -v --clean --remote-name gh-token;
