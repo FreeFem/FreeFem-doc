@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/FreeFem/FreeFem-doc.svg?branch=master)](https://travis-ci.com/FreeFem/FreeFem-doc)
+
 # FreeFem++ doc
 
 Documentation of [FreeFem++](https://freefem.org/).
