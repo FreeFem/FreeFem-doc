@@ -1,10 +1,14 @@
 sudo: false
 language: python
+env:
+  global:
+    - secure:
 install:
   - pip install mkdocs
   - pip install mkdocs-material
   - pip install python-markdown-math
 script:
   - git clean -f -d -x
-after_success:
-  - mkdocs gh-deploy
+deploy:
+  provider: pages
+  script: mkdocs gh-pages
