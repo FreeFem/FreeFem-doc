@@ -90,8 +90,8 @@ extra_javascript:
 
 markdown_extensions:
   - codehilite:
-    guess_lang: false
-    linenums: true
+      guess_lang: false
+      linenums: true
   - mdx_math
   - pymdownx.tasklist
   - pymdownx.inlinehilite
@@ -103,9 +103,11 @@ markdown_extensions:
   - pymdownx.progressbar
 
 extra:
-  social:
-    - type: 'github'
-      link: 'https://github.com/FreeFem/FreeFem-doc'
+    social:
+      - type: 'github'
+        link: 'https://github.com/FreeFem/FreeFem-doc'
 
 repo_name: 'FreeFem++ on Github'
 repo_url: 'https://github.com/FreeFem/FreeFem-doc'
+
+
