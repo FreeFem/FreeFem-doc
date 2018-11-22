@@ -1604,7 +1604,7 @@ mesh3 Th3 = movemesh23(Th2, transfo=[Phi(1), Phi(2), Phi(3)]);
 
 The parameters of this command line are:
 
-* `:::freefem transfo=` [$\Phi$1, $\Phi$2, $\Phi$3] sets the displacement vector of transformation $\mathbf{\Phi(x,y)} = [\Phi1(x,y), \Phi2(x,y), \Phi3(x,y)]$.
+* `:::freefem transfo=` [$\Phi 1$, $\Phi 2$, $\Phi 3$] sets the displacement vector of transformation $\mathbf{\Phi(x,y)} = [\Phi1(x,y), \Phi2(x,y), \Phi3(x,y)]$.
 
 * `:::freefem label=` sets an integer label of triangles.
 
@@ -2806,7 +2806,7 @@ The parameters of `:::freefem mmg3d` are :
 
 ## Build a 2d mesh from a isoline
 
-The idea is to get the discretization of an isoline of fluid meshes, this tool can be useful to construct meshes from image. First, we give an example of the isovalue meshes $0.2$ of analytical function $ \sqrt{(x-1/2)^2 +(y-1/2)^2}$, on unit square.
+The idea is to get the discretization of an isoline of fluid meshes, this tool can be useful to construct meshes from image. First, we give an example of the isovalue meshes $0.2$ of analytical function $\sqrt{(x-1/2)^2 +(y-1/2)^2}$, on unit square.
 
 !!!example "iosline"
 	```freefem

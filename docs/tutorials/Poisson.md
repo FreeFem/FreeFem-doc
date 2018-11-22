@@ -200,7 +200,7 @@ Line 18, the problem is solved.
 
 Line 29, the visualization is done as illustrated in [figure 1.2](#Fig1.2).
 
-**(see \refSec{Plot} for zoom, postscript and other commands).**
+**(see \ref{Plot} for zoom, postscript and other commands).**
 
 Line 32, the computing time (not counting graphics) is written on the console. Notice the C++-like syntax; the user needs not study C++ for using FreeFem++, but it helps to guess what is allowed in the language.
 

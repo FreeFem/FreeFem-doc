@@ -1,8 +1,3 @@
-$$
-\newcommand{\vecttwo}[2]{\left|\begin{array}{c}{#1}\\#2\end{array}\right.}
-\newcommand{\vectthree}[3]{\left|\begin{array}{c}{#1}\\#2\\#3\end{array}\right.}
-$$
-
 As stated in [tutorials](../tutorials), FEM approximates all functions $w$ as
 $$
 w(x,y)\simeq w_0\phi_0(x,y)+w_1\phi_1(x,y)+\cdots+w_{M-1}\phi_{M-1}(x,y)
@@ -94,7 +89,7 @@ As of today, the known types of finite elements are:
 	\end{equation*}
 	where $P_{2}$ is the set of polynomials of $\R^{2}$ of degrees $\le 2$.
 
-* `:::freefem [P2b]` piecewise $P_{2} $ continuous finite element plus bubble
+* `:::freefem [P2b]` piecewise $P_{2}$ continuous finite element plus bubble
 	\begin{equation*}
 		\P^2_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{2} \oplus \mathrm{Span}\{ \lambda^{K}_{0} \lambda^{K}_{1} \lambda^{K}_{2} \} \right.\right\}
 	\end{equation*}
@@ -105,7 +100,7 @@ As of today, the known types of finite elements are:
 	\end{equation*}
 
 	!!! warning
-		Due to an interpolation problem, the degree of freedom is not the six P2 nodes but six nodes which move	inside $T(X)= G + .99 (X-G) $ where $G$ is the barycenter.
+		Due to an interpolation problem, the degree of freedom is not the six P2 nodes but six nodes which move	inside $T(X)= G + .99 (X-G)$ where $G$ is the barycenter.
 
 * `:::freefem [P2h]` quadratic homogeneous continuous (without `:::freefem P1`).
 
@@ -249,7 +244,7 @@ There are 9 degrees of freedom:
 		Edge0_{h} = \left\{ \mathbf{v} \in H(\textrm{Curl}) \left|\; \forall K \in\mathcal{T}_{h}, \ \mathbf{v}_{|K}(x,y,z) =
 			\vectthree{\alpha^1_{K}}{\alpha^2_{K}}{\alpha^3_{K}} + \vectthree{\beta^1_{K}}{\beta^2_{K}}{\beta^3_{K}}\times\vectthree{x}{y}{z} \right.\right\}
 	\end{equation*}
-	where by writing $\textrm{curl}\mathbf{w}=\vectthree{\p w_2/\p x_3-\p w_3/\p x_2}{\p w_3/\p x_1-\p w_1/\p x_3}{\p w_1/\p x_2-\p w_2/\p x_1}$ with $ \mathbf{w}=(w_i)_{i=1}^d$:
+	where by writing $\textrm{curl}\mathbf{w}=\vectthree{\p w_2/\p x_3-\p w_3/\p x_2}{\p w_3/\p x_1-\p w_1/\p x_3}{\p w_1/\p x_2-\p w_2/\p x_1}$ with $\mathbf{w}=(w_i)_{i=1}^d$:
 	$$
 	H(\textrm{curl})=\left\{\mathbf{w}\in L^{2}(\Omega)^d\left|\textrm{curl } \mathbf{w}\in L^{2}(\Omega)^d\right.\right\}
 	$$
@@ -349,7 +344,7 @@ fespace Rh(Th, RT0); //vectorial FE
 
 where `:::freefem Xh, Mh, Rh` expresses finite element spaces (called FE spaces) $X_h,\, M_h,\, R_h$, respectively.
 
-To use FE-functions $u_{h},v_{h} \in X_{h} $, $p_{h},q_{h} \in M_{h}$ and $U_{h},V_{h} \in R_{h}$, we write :
+To use FE-functions $u_{h},v_{h} \in X_{h}$, $p_{h},q_{h} \in M_{h}$ and $U_{h},V_{h} \in R_{h}$, we write :
 
 ```freefem
 Xh uh, vh;
@@ -422,7 +417,7 @@ $$
 
 !!! note
 	One challenge of the periodic boundary condition is that the mesh must have equivalent faces. The `::freefem buildlayers` mesh generator splits each quadrilateral face with the diagonal passing through the vertex with maximum number, so to be sure to have the same mesh one both face periodic the 2D numbering in corresponding edges must be compatible (for example the same variation).
-	$\codecheck$ $\codered$
+	$\codered$
 
 	By Default, the numbering of square vertex is correct.
 
@@ -463,7 +458,7 @@ Vh(Th, P0);
 Vh fh = f(x,y);
 ```
 
-then for vertices $q^{k_i},\, i=1,2,.. d+1 $ in [Fig. 1(a)](#Fig1), $f_h$ is built as
+then for vertices $q^{k_i},\, i=1,2,.. d+1$ in [Fig. 1(a)](#Fig1), $f_h$ is built as
 
 <center>
 `:::freefem fh=` $\displaystyle f_h(x,y)=\sum_k f(\frac{\sum_i q^{k_i}}{d+1}) \phi_k$
@@ -655,13 +650,13 @@ $$
 
 ### Raviart-Thomas Element
 
-In the Raviart-Thomas finite element $RT0_{h}$, the degrees of freedom are the fluxes across edges $e$ of the mesh, where the flux of the function $\mathbf{f} : \R^2 \longrightarrow \R^2 $ is $\int_{e} \mathbf{f}.n_{e}$, $n_{e}$ is the unit normal of edge $e$.
+In the Raviart-Thomas finite element $RT0_{h}$, the degrees of freedom are the fluxes across edges $e$ of the mesh, where the flux of the function $\mathbf{f} : \R^2 \longrightarrow \R^2$ is $\int_{e} \mathbf{f}.n_{e}$, $n_{e}$ is the unit normal of edge $e$.
 
 This implies an orientation of all the edges of the mesh, for example we can use the global numbering of the edge vertices and we just go from small to large numbers.
 
 To compute the flux, we use a quadrature with one Gauss point, the mid-point of the edge.
 
-Consider a triangle $T_k$ with three vertices $(\mathbf{a},\mathbf{b},\mathbf{c})$. Lets denote the vertices numbers by $i_{a},i_{b},i_{c}$, and define the three edge vectors $\mathbf{e}^{1},\mathbf{e}^{2},\mathbf{e}^{3}$ by $ sgn(i_{b}-i_{c})(\mathbf{b}-\mathbf{c})$, $sgn(i_{c}-i_{a})(\mathbf{c}-\mathbf{a})$, $sgn(i_{a}-i_{b})(\mathbf{a}-\mathbf{b})$.
+Consider a triangle $T_k$ with three vertices $(\mathbf{a},\mathbf{b},\mathbf{c})$. Lets denote the vertices numbers by $i_{a},i_{b},i_{c}$, and define the three edge vectors $\mathbf{e}^{1},\mathbf{e}^{2},\mathbf{e}^{3}$ by $sgn(i_{b}-i_{c})(\mathbf{b}-\mathbf{c})$, $sgn(i_{c}-i_{a})(\mathbf{c}-\mathbf{a})$, $sgn(i_{a}-i_{b})(\mathbf{a}-\mathbf{b})$.
 
 We get three basis functions :
 
@@ -896,13 +891,13 @@ The problem: Find $u$ a real function defined on a domain $\Omega$ of $\R^d$ $(d
 
 where
 
- * if $d=2$ then $ \nabla.(\kappa \nabla u) = \p_x(\kappa \p_x u ) + \p_y(\kappa \p_y u ) $ with $ \p_x u = \frac{\p u}{\p x}$ and $\p_y u = \frac{\p u}{\p y}$
+ * if $d=2$ then $\nabla.(\kappa \nabla u) = \p_x(\kappa \p_x u ) + \p_y(\kappa \p_y u )$ with $\p_x u = \frac{\p u}{\p x}$ and $\p_y u = \frac{\p u}{\p y}$
 
- * if $d=3$ then $\nabla.(\kappa \nabla u) = \p_x(\kappa \p_x u) + \p_y(\kappa \p_y u) + \p_z(\kappa \p_z u)$ with $ \p_x u = \frac{\p u}{\p x}$, $\p_y u = \frac{\p u}{\p y}$ and , $\p_z u = \frac{\p u}{\p z}$
+ * if $d=3$ then $\nabla.(\kappa \nabla u) = \p_x(\kappa \p_x u) + \p_y(\kappa \p_y u) + \p_z(\kappa \p_z u)$ with $\p_x u = \frac{\p u}{\p x}$, $\p_y u = \frac{\p u}{\p y}$ and , $\p_z u = \frac{\p u}{\p z}$
 
- * The border $\Gamma=\p \Omega$ is split in $\Gamma_d$ and $\Gamma_n$ such that $\Gamma_d \cap \Gamma_n = \emptyset$ and $ \Gamma_d \cup \Gamma_n = \p \Omega$,
+ * The border $\Gamma=\p \Omega$ is split in $\Gamma_d$ and $\Gamma_n$ such that $\Gamma_d \cap \Gamma_n = \emptyset$ and $\Gamma_d \cup \Gamma_n = \p \Omega$,
 
- * $\kappa$ is a given positive function, such that $\exists \kappa_0 \in \R ,\quad 0 < \kappa_0 \leq \kappa $.
+ * $\kappa$ is a given positive function, such that $\exists \kappa_0 \in \R ,\quad 0 < \kappa_0 \leq \kappa$.
 
  * $a$ a given non negative function,
 
@@ -918,13 +913,13 @@ Let ${v}$, a regular test function, null on $\Gamma_d$, by integration by parts 
 	- \int_{\Gamma} {v}\kappa \frac{ \p u}{\p \mathbf{n}} \,d\gamma,= \int_{\Omega} f {v} \,d\omega
 \end{equation}
 
-where if $d=2$ the $ \nabla{ v} . \nabla u = (\frac{\p u}{\p x}\frac{\p { v}}{\p x}+\frac{\p u}{\p y}\frac{\p { v}}{\p y})$,
+where if $d=2$ the $\nabla{ v} . \nabla u = (\frac{\p u}{\p x}\frac{\p { v}}{\p x}+\frac{\p u}{\p y}\frac{\p { v}}{\p y})$,
 
-where if $d=3$ the $ \nabla{ v} . \nabla u = (\frac{\p u}{\p x}\frac{\p { v}}{\p x}+\frac{\p u}{\p y}\frac{\p { v}}{\p y} + \frac{\p u}{\p z}\frac{\p { v}}{\p z})$,
+where if $d=3$ the $\nabla{ v} . \nabla u = (\frac{\p u}{\p x}\frac{\p { v}}{\p x}+\frac{\p u}{\p y}\frac{\p { v}}{\p y} + \frac{\p u}{\p z}\frac{\p { v}}{\p z})$,
 
 and where $\mathbf{n}$ is the unitary outer-pointing normal of the $\Gamma$.
 
-Now we note that $\kappa \frac{ \p u}{\p n} = - a u + b $ on $\Gamma_r$ and $v=0$ on $ \Gamma_d $ and $ \Gamma = \Gamma_d \cup \Gamma_n$
+Now we note that $\kappa \frac{ \p u}{\p n} = - a u + b$ on $\Gamma_r$ and $v=0$ on $\Gamma_d$ and $\Gamma = \Gamma_d \cup \Gamma_n$
 thus
 
 $$
@@ -1064,15 +1059,15 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 * Bilinear part for 3D meshes `:::freefem Th`
 
-	- `:::freefem int3d(Th)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T } K\,v\,w $
+	- `:::freefem int3d(Th)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T } K\,v\,w$
 
-	- `:::freefem int3d(Th, 1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w $
+	- `:::freefem int3d(Th, 1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w$
 
 	- `:::freefem int3d(Th, levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{T,\phi<0} K\,v\,w$
 
 	- `:::freefem int3d(Th, l, levelset=phi)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{l}}\int_{T,\phi<0} K\,v\,w$
 
-	- `:::freefem int2d(Th, 2, 5)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5})} K\,v\,w $
+	- `:::freefem int2d(Th, 2, 5)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th}}\int_{(\p T\cup\Gamma) \cap ( \Gamma_2 \cup \Gamma_{5})} K\,v\,w$
 
 	- `:::freefem int2d(Th, 1)(K*v*w) = ` $\displaystyle\sum_{T\in\mathtt{Th},T\subset \Omega_{1}}\int_{T} K\,v\,w$
 
@@ -1165,7 +1160,7 @@ Below `:::freefem v` is the unknown function and `:::freefem w` is the test func
 
 	- An "on" vectorial form (for Dirichlet) : `:::freefem on(1, u1=g1, u2=g2)`
 
-		If you have vectorial finite element like `:::freefem RT0`, the 2 components are coupled, and so you have : $b[i] = "(\Pi_h (g1,g2))[i]" \times tgv $, where $\Pi_h$ is the vectorial finite element interpolant.
+		If you have vectorial finite element like `:::freefem RT0`, the 2 components are coupled, and so you have : $b[i] = "(\Pi_h (g1,g2))[i]" \times tgv$, where $\Pi_h$ is the vectorial finite element interpolant.
 
 	- A linear form on $\Gamma$ (for Neumann in 2d) `:::freefem -int1d(Th)(f*w)` or `:::freefem -int1d(Th, 3)(f*w)`
 
@@ -1408,7 +1403,7 @@ $$
 
 where $V_0 = \{w\in H^1(\Omega)/ w_{|\Gamma_{24}}=0\}$.
 
-So to code the method with the matrices $A=(A_{ij})$, $M=(M_{ij})$, and the vectors $ u^n, b^n, b',b", b_{cl}$ (notation if $w$ is a vector then $w_i$ is a component of the vector).
+So to code the method with the matrices $A=(A_{ij})$, $M=(M_{ij})$, and the vectors $u^n, b^n, b',b", b_{cl}$ (notation if $w$ is a vector then $w_i$ is a component of the vector).
 
 \begin{equation}
 u^n = A^{-1} b^n, \quad
@@ -1624,7 +1619,7 @@ To compute error indicator for Poisson equation :
 $$
 { \eta_K = \int_K h_K^2 |( f + \Delta u_h)|^2 + \int_{\partial K} h_e |[ \frac{\partial u_h}{\partial n} ]|^2 }
 $$
-where $ h_K$ is size of the longest edge (`:::freefem hTriangle`), $h_e$ is the size of the current edge (`:::freefem lenEdge`), $n$ the
+where $h_K$ is size of the longest edge (`:::freefem hTriangle`), $h_e$ is the size of the current edge (`:::freefem lenEdge`), $n$ the
 normal.
 
 ```freefem

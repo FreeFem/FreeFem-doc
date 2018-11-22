@@ -1,15 +1,13 @@
-$$\newcommand{\MyInt}[2]{\displaystyle{\int_{#1} #2 } }$$
-
 ## Conjugate Gradient/GMRES
 
-Suppose we want to solve the Euler problem (here $x$ has nothing to do with the reserved variable for the first coordinate in FreeFem++): find $ x\in \R^n $ such that
+Suppose we want to solve the Euler problem (here $x$ has nothing to do with the reserved variable for the first coordinate in FreeFem++): find $x\in \R^n$ such that
 
 \begin{equation}
 \label{eqn:dJ=0}
 \nabla J(x) = \left(\frac{\p J}{\p x_i} (\mathbf{x})\right) = 0
 \end{equation}
 
-where $ J$ is a function (to minimize for example) from $ \R^n$ to $ \R$.
+where $J$ is a function (to minimize for example) from $\R^n$ to $\R$.
 
 If the function is convex we can use the conjugate gradient algorithm to solve the problem, and we just need the function (named `:::freefem dJ` for example) which computes $\nabla J$, so the parameters are the name of that function with prototype `:::freefem func real[int] dJ(real[int] &xx);` which computes $\nabla J$, and a vector `:::freefem x` of type (of course the number 20 can be changed) `:::freefem real[int] x(20);` to initialize the process and get the result.
 
@@ -25,9 +23,9 @@ will give the solution of $\mathbf{x}$ of $\nabla J(\mathbf{x})=0$. We can omit 
 
 The stopping test is
 
-\[
+$$
 \| \nabla J(\mathbf{x})\|_P\le \epsilon\| \nabla J(\mathbf{x}^{(0)})\|_P
-\]
+$$
 
 <!--- __ --->
 
@@ -39,9 +37,9 @@ NLCG(dJ, x, precon=M, nbiter=imax, eps=-epsilon);
 
 We can use the stopping test :
 
-\[
+$$
 \| \nabla J(\mathbf{x})\|_P^2\le \epsilon
-\]
+$$
 
 <!--- __ --->
 
@@ -112,10 +110,10 @@ The parameters of these three functions are:
 	We also want to construct a preconditioner $C$ with solving the problem:
 
 	find $u_h \in V_{0h}$ such that :
-	\[
+	$$
 	\forall v_h \in V_{0h}, \quad \int_\Omega \alpha \nabla u_h . \nabla v_h = \int_\Omega b v_h
-	\]
-	where $ \alpha=f'(|\nabla u|^2)$.
+	$$
+	where $\alpha=f'(|\nabla u|^2)$.
 
 	```freefem
 	alpha = df(dx(u)*dx(u) + dy(u)*dy(u));
@@ -164,9 +162,9 @@ The parameters of these three functions are:
 
 For a given symmetric positive matrix $A$, consider the quadratic form
 
-\[
+$$
 J(\mathbf{x})=\frac{1}{2}\mathbf{x}^TA\mathbf{x}-\mathbf{b}^T\mathbf{x}
-\]
+$$
 
 then $J(\mathbf{x})$ is minimized by the solution $\mathbf{x}$ of $A\mathbf{x}=\mathbf{b}$. In this case, we can use the function `:::freefem AffineCG`
 
@@ -305,9 +303,9 @@ The remaining equality constraints are handled with the usual Lagrange multiplie
 
 The derivations for $\nabla B$ only holds for the $x$ variables, so that :
 
-\[
+$$
 \nabla B(x,\mu) = \nabla f(x) + \left(\begin{matrix}\mu/(x_{u,1}-x_{1}) \\ \vdots \\ \mu/(x_{u,n}-x_{n})\end{matrix}\right) - \left(\begin{matrix}\mu/(x_{1}-x_{l,1}) \\ \vdots \\ \mu/(x_{n}-x_{l,n})\end{matrix}\right)
-\]
+$$
 
 If we respectively call $z_{u}(x,\mu) = \left(\mu/(x_{u,1}-x_{1}),\dots, \mu/(x_{u,n}-x_{n})\right)$ and $z_{l}(x,\mu)$ the other vector appearing in the above equation, then the optimum $(x_{\mu},\lambda_{\mu})$
 satisfies :
@@ -544,7 +542,7 @@ __Named Parameters :__ The available named parameters in this interface are thos
 ## Some short examples using IPOPT
 
 !!!example "Ipopt variational inequality"
-	A very simple example consisting of, given two functions $f $ and $g$ (defined on $\Omega\subset\R^{2}$), minimizing $J(u) = \displaystyle{\frac{1}{2}\int_{\Omega} \vert\nabla u\vert^{2} - \int_{\Omega}fu}\ $, with $u\leq g$ almost everywhere :
+	A very simple example consisting of, given two functions $f$ and $g$ (defined on $\Omega\subset\R^{2}$), minimizing $J(u) = \displaystyle{\frac{1}{2}\int_{\Omega} \vert\nabla u\vert^{2} - \int_{\Omega}fu}\ $, with $u\leq g$ almost everywhere :
 
 	```freefem
 	// Solve
@@ -816,7 +814,7 @@ The whole code is available in [IPOPT minimum surface & volume example](../examp
 
 	If $\rho_{\mathrm{object}}$ is the spherical parametrization of the surface of a 3-dimensional object (domain) $\mathcal{O}$, it can be interpreted as finding the surface with minimum area enclosing the object with a given maximum volume. If $\mathcal{V}_{\mathrm{max}}$ is close to $\mathcal{V}(\rho_{\mathrm{object}})$, so should be $\rho_{0}$ and $\rho_{\mathrm{object}}$. With higher values of $\mathcal{V}_{\mathrm{max}}$, $\rho$ should be closer to the unconstrained minimum surface surrounding $\mathcal{O}$ which is obtained as soon as $\mathcal{V}_{\mathrm{max}} \geq \frac{4}{3}\pi \|\rho_{\mathrm{object}}\|_{\infty}^{3}$ (sufficient but not necessary).
 
-	It also could be interesting to solve the same problem with the constraint $\mathcal{V}(\rho_{0})\geq \mathcal{V}_{\mathrm{min}}$ which leads to a sphere when $\mathcal{V}_{\mathrm{min}} \geq \frac{1}{6}\pi \mathrm{diam}(\mathcal{O})^{3} $ and moves toward the solution of the unconstrained problem as $\mathcal{V}_{\mathrm{min}}$ decreases.
+	It also could be interesting to solve the same problem with the constraint $\mathcal{V}(\rho_{0})\geq \mathcal{V}_{\mathrm{min}}$ which leads to a sphere when $\mathcal{V}_{\mathrm{min}} \geq \frac{1}{6}\pi \mathrm{diam}(\mathcal{O})^{3}$ and moves toward the solution of the unconstrained problem as $\mathcal{V}_{\mathrm{min}}$ decreases.
 
 	We start by meshing the domain $[0,2\pi ]\times\ [0,\pi ]$, then a periodic P1 finite elements space is defined.
 

@@ -1,3 +1,11 @@
+.md-typeset__table {
+	width: 100%;
+}
+
+.admonition .md-typeset__scrollwrap {
+	width: 100%;
+}
+
 .md-header, .md-tabs {
 	background-color: #384560 !important;
 }

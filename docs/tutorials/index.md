@@ -4,7 +4,7 @@ The FreeFem++ language is [typed](../reference/Types), polymorphic and reentrant
 
 Every variable must be typed and declared in a statement. Each statement is separated from the next by a semicolon `;`.
 
-The FreeFem++ language is a C++ idiom with something that is more akin to $\TeX$.
+The FreeFem++ language is a C++ idiom with something that is more akin to LaTeX.
 
 For the specialist, one key guideline is that FreeFem++ rarely generates an internal finite element array, this was adopted for speed and consequently FreeFem++ could be hard to beat in terms of execution speed, except for the time lost in the interpretation of the language (which can be reduced by a systematic usage of `:::freefem varf` and `:::freefem matrix` instead of `:::freefem problem`).
 

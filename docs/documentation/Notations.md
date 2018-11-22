@@ -58,7 +58,7 @@ For two real numbers $a,b$
 ## Meshes
 
  * [$\Omega$] usually denotes a domain on which PDE is defined
- * [$\Gamma$] denotes the boundary of $\Omega$,i.e., $\Gamma=\p\Omega (keyword `:::freefem border`, see [Border](MeshGeneration/#border))
+ * [$\Gamma$] denotes the boundary of $\Omega$,i.e., $\Gamma=\p\Omega$ (keyword `:::freefem border`, see [Border](MeshGeneration/#border))
  * [$\mathcal{T}_h$] the triangulation of $\Omega$, i.e., the set of triangles $T_k$, where $h$ stands for mesh size (keyword `:::freefem mesh`, `:::freefem buildmesh`, see [Mesh Generation](MeshGeneration/#commands-for-mesh-generation))
  * [$n_t$] the number of triangles in $\mathcal{T}_h$ (get by `:::freefem Th.nt`)
  * [$\Omega_h$] denotes the approximated domain $\Omega_h=\cup_{k=1}^{n_t}T_k$ of $\Omega$. If $\Omega$ is polygonal domain, then it will be $\Omega=\Omega_h$

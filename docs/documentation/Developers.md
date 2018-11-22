@@ -357,17 +357,13 @@ In the file, solutions are stored in this order : scalar solutions, vector solut
 
 ### Some notations
 
-$$
-\newcommand{\vecttwo}[2]{\left|\begin{array}{c}{#1}\\#2\end{array}\right.}
-$$
-
 For a function $\boldsymbol{f}$ taking value in $\R^{N},\, N=1,2,\cdots$, we define the finite element approximation $\Pi_h\boldsymbol{f}$ of $\boldsymbol{f}$.
 
 Let us denote the number of the degrees of freedom of the finite element by $NbDoF$. Then the $i$-th base $\boldsymbol{\omega}^{K}_{i}$ ($i=0,\cdots,NbDoF-1$) of the finite element space has the $j$-th component $\mathbf{\omega}^{K}_{ij}$ for $j=0,\cdots,N-1$.
 
 The operator $\Pi_{h}$ is called the interpolator of the finite element.
 
-We have the identity $\boldsymbol{\omega}^{K}_{i} = \Pi_{h} \boldsymbol{\omega}^{K}_{i} $.
+We have the identity $\boldsymbol{\omega}^{K}_{i} = \Pi_{h} \boldsymbol{\omega}^{K}_{i}$.
 
 Formally, the interpolator $\Pi_{h}$ is constructed by the following formula:
 \begin{equation}
@@ -394,11 +390,11 @@ In the formula \eqref{eq-interpo}, the list $p_{k},\, j_{k},\, i_{k}$ depend jus
 		\label{eq:RT0-fe}
 	\end{equation}
 
-	The degrees of freedom are the flux through an edge $e$ of the mesh, where the flux of the function $\mathbf{f} : \R^2 \longrightarrow \R^2 $ is $\int_{e} \mathbf{f}.n_{e}$, $n_{e}$ is the unit normal of edge $e$ (this implies a orientation of all the edges of the mesh, for example we can use the global numbering of the edge vertices and we just go to small to large number).
+	The degrees of freedom are the flux through an edge $e$ of the mesh, where the flux of the function $\mathbf{f} : \R^2 \longrightarrow \R^2$ is $\int_{e} \mathbf{f}.n_{e}$, $n_{e}$ is the unit normal of edge $e$ (this implies a orientation of all the edges of the mesh, for example we can use the global numbering of the edge vertices and we just go to small to large number).
 
 	To compute this flux, we use a quadrature formula with one point, the middle point of the edge. Consider a triangle $T$ with three vertices $(\mathbf{a},\mathbf{b},\mathbf{c})$.
 
-	Let denote the vertices numbers by $i_{a},i_{b},i_{c}$, and define the three edge vectors $\mathbf{e}^{0},\mathbf{e}^{1},\mathbf{e}^{2}$ by $ sgn(i_{b}-i_{c})(\mathbf{b}-\mathbf{c})$, $sgn(i_{c}-i_{a})(\mathbf{c}-\mathbf{a})$, $sgn(i_{a}-i_{b})(\mathbf{a}-\mathbf{b})$.
+	Let denote the vertices numbers by $i_{a},i_{b},i_{c}$, and define the three edge vectors $\mathbf{e}^{0},\mathbf{e}^{1},\mathbf{e}^{2}$ by $sgn(i_{b}-i_{c})(\mathbf{b}-\mathbf{c})$, $sgn(i_{c}-i_{a})(\mathbf{c}-\mathbf{a})$, $sgn(i_{a}-i_{b})(\mathbf{a}-\mathbf{b})$.
 
 	The three basis functions are:
 	\begin{equation}
@@ -493,7 +489,7 @@ The index $i,j,k$ of the array $val(i,j,k)$ correspond to:
 
  * $i$ is the basic function number on finite element $i \in [0,NoF[$
  * $j$ is the value of component $j \in [0,N[$
- * $k$ is the type of computed value $f(P),dx(f)(P), dy(f)(P), ...\ i \in [0,\mathtt{last\_operatortype}[ $.
+ * $k$ is the type of computed value $f(P),dx(f)(P), dy(f)(P), ...\ i \in [0,\mathtt{last\_operatortype}[$.
 
 	!!!note
 		For optimization, this value is computed only if `whatd[k]` is true, and the numbering is defined with
@@ -653,7 +649,6 @@ make
 ```
 
 For codewarrior compilation add the file in the project an remove the flag in panal PPC linker FreeFm++ Setting Dead-strip Static Initializition Code Flag.
-$\codecheck$
 
 ## Dynamical link
 
@@ -815,7 +810,7 @@ $$
 \mathtt{dfft}(f,m,\varepsilon)_{k+nl} = \sum_{j'=0}^{m-1} \sum_{j=0}^{n-1} f_{i+nj} e^{\varepsilon 2\pi i (kj/n+lj'/m) }
 $$
 !!!note
-	The value $n$ is given by $ size(f)/m$, and the numbering is row-major order.
+	The value $n$ is given by $size(f)/m$, and the numbering is row-major order.
 
 
 So the classical discrete DFFT is $\hat{f}=\mathtt{dfft}(f,-1)/\sqrt{n}$ and the reverse dFFT $f=\mathtt{dfft}(\hat{f},1)/\sqrt{n}$
@@ -833,7 +828,7 @@ So the classical discrete DFFT is $\hat{f}=\mathtt{dfft}(f,-1)/\sqrt{n}$ and the
 	$$
 	\widehat{\Delta f_{kl}} = -( (2\pi)^2 ( (\tilde{k})^2+(\tilde{l})^2)) \widehat{ f_{kl}} \\
 	$$
-	where $ \tilde{k} = k $ if $ k \leq n/2 $ else $ \tilde{k} = k-n$ and $\tilde{l} = l $ if $ l \leq m/2 $ else $ \tilde{l} = l-m$.
+	where $\tilde{k} = k$ if $k \leq n/2$ else $\tilde{k} = k-n$ and $\tilde{l} = l$ if $l \leq m/2$ else $\tilde{l} = l-m$.
 
 	And to have a real function we need all modes to be symmetric around zero, so $n$ and $m$ must be odd.
 
