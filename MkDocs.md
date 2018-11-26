@@ -36,7 +36,7 @@ That's it! Use `mkdocs serve` for the development server or `mkdocs build` to bu
 
 ## On Windows
 
-Download latest release from [Python website](https://www.python.org/) and install it. ***Verify that environnement variables export is enable***.
+Download latest release from [Python website](https://www.python.org/) and install it. ***Verify that environment variables export is enabled***.
 
 Install MkDocs, Material and math extension:
 ```
