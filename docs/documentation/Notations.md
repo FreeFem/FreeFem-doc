@@ -58,8 +58,8 @@ For two real numbers $a,b$
 ## Meshes
 
  * [$\Omega$] usually denotes a domain on which PDE is defined
- * [$\Gamma$] denotes the boundary of $\Omega$,i.e., $\Gamma=\p\Omega$ (keyword `:::freefem border`, see [Border](MeshGeneration/#border))
- * [$\mathcal{T}_h$] the triangulation of $\Omega$, i.e., the set of triangles $T_k$, where $h$ stands for mesh size (keyword `:::freefem mesh`, `:::freefem buildmesh`, see [Mesh Generation](MeshGeneration/#commands-for-mesh-generation))
+ * [$\Gamma$] denotes the boundary of $\Omega$,i.e., $\Gamma=\p\Omega$ (keyword `:::freefem border`, see [Border](/MeshGeneration/#border))
+ * [$\mathcal{T}_h$] the triangulation of $\Omega$, i.e., the set of triangles $T_k$, where $h$ stands for mesh size (keyword `:::freefem mesh`, `:::freefem buildmesh`, see [Mesh Generation](/MeshGeneration/#commands-for-mesh-generation))
  * [$n_t$] the number of triangles in $\mathcal{T}_h$ (get by `:::freefem Th.nt`)
  * [$\Omega_h$] denotes the approximated domain $\Omega_h=\cup_{k=1}^{n_t}T_k$ of $\Omega$. If $\Omega$ is polygonal domain, then it will be $\Omega=\Omega_h$
  * [$\Gamma_h$] the boundary of $\Omega_h$
@@ -92,5 +92,5 @@ For two real numbers $a,b$
 	\sum_{|\alpha|\le m}\int_{\Omega} D^{\alpha}v D^{\alpha}w
 	\end{eqnarray*}
  * [$H^1_0(\Omega)$] the set $\left\{w\in H^1(\Omega)\left|\; u=0\quad \textrm{on }\Gamma\right.\right\}$ * [$L^2(\Omega)^2$] denotes $L^2(\Omega)\times L^2(\Omega)$, and also $H^1(\Omega)^2=H^1(\Omega)\times H^1(\Omega)$
- * [$V_h$] denotes the finite element space created by `:::freefem fespace Vh(Th, *)` in __`FreeFem++`__ (see [Finite Elements](FiniteElement/) for `*`)
+ * [$V_h$] denotes the finite element space created by `:::freefem fespace Vh(Th, *)` in __`FreeFem++`__ (see [Finite Elements](/FiniteElement/) for `*`)
  * [$\Pi_h f$] the projection of the function $f$ into $V_h$ (`:::freefem func f=x^2*y^3; Vh v = f;}` means $v = Pi_h (f) * [\{v\}]$ for FE-function $v$ in $V_h$ means the column vector $(v_1,\cdots,v_M)^T$ if $v=v_1\phi_1+\cdots+v_M\phi_M$, which is shown by `:::freefem fespace Vh(Th, P2); Vh v; cout << v[] << endl;`

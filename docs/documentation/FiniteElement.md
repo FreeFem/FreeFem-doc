@@ -39,7 +39,7 @@ In 2D we have a pair of periodic boundary conditions, if $[la_i, sa_i]$, $[lb_i,
 In 2D, we have a pair of periodic boundary conditions, if $[la_i, sa_i, ta_i]$, $[lb_i, sb_i, tb_i]$ is a pair of `:::freefem int`, the 2 labels $la_i$ and $lb_i$ define the 2 pieces of boundary to be in equivalence. If $[la_i, sa_i, ta_i]$, $[lb_i, sb_i, tb_i]$ is a pair of `:::freefem real`, then $sa_i$, $ta_i$ and $sb_i$, $tb_i$ give two common parameters on the two boundary surfaces, and two points are identified as one if the two parameters are equal.
 
 !!! note
-	The 2D mesh of the two identified borders must be the same, so to be sure, use the parameter `:::freefem fixedborder=true` in `:::freefem buildmesh` command (see [`:::freefem fixedborder`](MeshGeneration/#border)).
+	The 2D mesh of the two identified borders must be the same, so to be sure, use the parameter `:::freefem fixedborder=true` in `:::freefem buildmesh` command (see [`:::freefem fixedborder`](./MeshGeneration/#border)).
 	<!-- like in example `:::freefem periodic2bis.edp` (see \ref{exm:periodic4bis}). -->
 
 
@@ -1006,7 +1006,7 @@ where `:::freefem Th` is a mesh of the three dimensional domain $\Omega$, and `:
 The parameters are FE functions real or complex, the number $n$ of parameters is even ($n=2*k$), the $k$ first function parameters are unknown, and the $k$ last are test functions.
 
 !!! note
-	 If the functions are a part of vectorial FE then you must give all the functions of the vectorial FE in the same order (see [Poisson problem with mixed finite element](.models/StaticProblems/#poisson-with-mixed-finite-element) for example).
+	 If the functions are a part of vectorial FE then you must give all the functions of the vectorial FE in the same order (see [Poisson problem with mixed finite element](/models/StaticProblems/#poisson-with-mixed-finite-element) for example).
 
 !!! note
 	 Don't mix complex and real parameters FE function.
