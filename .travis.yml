@@ -6,7 +6,9 @@ install:
 - pip install python-markdown-math
 script:
 - git clean -f -d -x
-- sudo find / -name pygments -type d
+- git clone https://github.com/FreeFem/FreeFem-parser-pygments.git \
+  && sudo cp FreeFem-parser-pygments /home/travis/virtualenv/python2.7.14/lib/python2.7/site-packages/pygments/lexers/ \
+  && cd /home/travis/virtualenv/python2.7.14/lib/python2.7/site-packages/pygments/lexers/ && sudo python _mapping.py
 - mkdocs build
 after_success:
 - git config user.name "Travis CI"
