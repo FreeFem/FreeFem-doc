@@ -6,7 +6,7 @@ install:
 - pip install python-markdown-math
 script:
 - git clean -f -d -x
-- find / -name pygments -type d
+- sudo find / -name pygments -type d
 - mkdocs build
 after_success:
 - git config user.name "Travis CI"
