@@ -16,7 +16,7 @@ for (int i = 0; i < ARGV.n; i++)
 	cout << ARGV[i] << endl;
 ```
 
-See [Command line arguments example](../examples/#command-line-arguments) for a complete example.
+See [Command line arguments example](/examples/#command-line-arguments) for a complete example.
 
 ## BoundaryEdge
 

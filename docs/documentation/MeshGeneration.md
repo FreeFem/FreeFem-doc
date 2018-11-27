@@ -116,7 +116,7 @@ The general expression to define a triangulation with `:::freefem buildmesh` is
 mesh Mesh_Name = buildmesh(Gamma1(m1)+...+GammaJ(mj), OptionalParameter);
 ```
 
-where $m_j$ are positive or negative numbers to indicate how many vertices should be on $\Gamma_j,\, \Gamma=\cup_{j=1}^J \Gamma_J$, and the optional parameter (see also [References](../reference/Functions/#buildmesh)), separated with a comma, can be:
+where $m_j$ are positive or negative numbers to indicate how many vertices should be on $\Gamma_j,\, \Gamma=\cup_{j=1}^J \Gamma_J$, and the optional parameter (see also [References](/reference/Functions/#buildmesh)), separated with a comma, can be:
 
 * `:::freefem nbvx= int`, to set the maximum number of vertices in the mesh.
 * `:::freefem fixedborder= bool`, to say if the mesh generator can change the boundary mesh or not (by default the boundary mesh can change; beware that with periodic boundary conditions (see. [Finite Element](FiniteElement)), it can be dangerous.
@@ -859,7 +859,7 @@ of a function (formula or FE-function).
 
 Mesh adaptation is a very powerful tool when the solution of a problem varies locally and sharply.
 
-Here we solve the [Poisson's problem](../tutorials/), when $f=1$ and $\Omega$ is a L-shape domain.
+Here we solve the [Poisson's problem](/tutorials/), when $f=1$ and $\Omega$ is a L-shape domain.
 
 |<a name="Fig15">Fig. 15</a>: L-shape domain and its boundary name|<a name="Fig16">Fig. 16</a>: Final solution after 4-times adaptation|
 |:----|:----|
@@ -929,7 +929,7 @@ If `:::freefem f1,f2` are functions and `:::freefem thold, Thnew` are meshes:
 
 The additional parameters of `:::freefem adaptmesh` are:
 
-See [Reference part](../reference/Functions/#adaptmesh) for more inforamtions
+See [Reference part](/reference/Functions/#adaptmesh) for more inforamtions
 
 * `:::freefem hmin=` Minimum edge size. Its default is related to the size of the domain to be meshed and the precision of the mesh generator.
 
@@ -997,7 +997,7 @@ default.
 
 * `:::freefem nomeshgeneration=` If true, no adapted mesh is generated (useful to compute only a metric).
 
-* `:::freefem periodic=` Writing `:::freefem periodic=[[4,y],[2,y],[1,x],[3,x]];` builds an adapted periodic mesh. The sample builds a biperiodic mesh of a square. (see [periodic finite element spaces](FiniteElement), and see [the Sphere example](../examples/#sphere) for a full example)
+* `:::freefem periodic=` Writing `:::freefem periodic=[[4,y],[2,y],[1,x],[3,x]];` builds an adapted periodic mesh. The sample builds a biperiodic mesh of a square. (see [periodic finite element spaces](FiniteElement), and see [the Sphere example](/examples/#sphere) for a full example)
 
 We can use the command `:::freefem adaptmesh` to build a uniform mesh with a constant mesh size. To build a mesh with a constant mesh size equal to $\frac{1}{30}$ try:
 
@@ -1702,7 +1702,7 @@ The parameters of this command line are, on one hand, the parameters `:::freefem
 !!!note
 	To use `:::freefem tetgtransfo`, the result's mesh of `:::freefem movemesh23` must be a closed surface and define one region only. Therefore, the parameter `:::freefem regionlist` is defined for one region.
 
-	An example of this keyword can be found in line 61 of the [Build layer mesh example](../examples/#example-build-layer-mesh).
+	An example of this keyword can be found in line 61 of the [Build layer mesh example](/examples/#build-layer-mesh).
 
 **The keyword `:::freefem tetgconvexhull`**
 
@@ -1843,7 +1843,7 @@ The parameters of movemesh in three dimensions are:
 
 * `:::freefem orientation =` An integer expression (1 by default), to reverse or not to reverse the orientation of the tetrahedra if it is not positive.
 
-An example of this command can be found in the [Poisson's equation 3D example](../examples/#poissons-equation-3d).
+An example of this command can be found in the [Poisson's equation 3D example](/examples/#poissons-equation-3d).
 
 ### Layer mesh
 
@@ -1935,7 +1935,7 @@ Moreover, we also add post processing parameters that allow to moving the mesh. 
 
 The vector `:::freefem region`, `:::freefem labelmid`, `:::freefem labelup` and `:::freefem labeldown` These vectors are composed of $n_{l}$ successive pairs of number $O_i,N_l$ where $n_{l}$ is the number (label or region) that we want to get.
 
-An example of this command is given in the [Build layer mesh example](../examples/#example-build-layer-mesh).
+An example of this command is given in the [Build layer mesh example](/examples/#build-layer-mesh).
 
 !!!example "Cube"
 	`Cube.idp`

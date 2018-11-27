@@ -65,7 +65,7 @@ The parameters of these three functions are:
 
 	where `:::freefem u` is the current solution, and `:::freefem g`, the current gradient, is not preconditioned.
 
-!!!example "[Algorithms.edp](../examples/#Algorithms)"
+!!!example "[Algorithms.edp](/examples/#algorithms)"
 	For a given function $b$, let us find the minimizer $u$ of the function
 
 	\begin{eqnarray*}
@@ -225,7 +225,7 @@ Two algorithms of COOOL package are interfaced with the Newton Raphson method (c
 	cout << "BFGS: J(u) = " << J(u) << ", err = " << error(u, b) << endl;
 	```
 
-It is almost the same a using the CMA evolution strategy except, that since it is a derivative free optimizer, the `:::freefem dJ` argument is omitted and there are some other named parameters to control the behavior of the algorithm. With the same objective function as above, an example of utilization would be (see [CMAES Variational inequality](../examples/#cmaes-varational-inequality) for a complete example):
+It is almost the same a using the CMA evolution strategy except, that since it is a derivative free optimizer, the `:::freefem dJ` argument is omitted and there are some other named parameters to control the behavior of the algorithm. With the same objective function as above, an example of utilization would be (see [CMAES Variational inequality](/examples/#cmaes-variational-inequality) for a complete example):
 
 ```freefem
 load "ff-cmaes"
@@ -803,7 +803,7 @@ Deriving the volume function derivatives is again an easier task. We immediately
 
 ### The problem and its script
 
-The whole code is available in [IPOPT minimum surface & volume example](../examples/#ipopt-minimum-surface-volume). We propose to solve the following problem :
+The whole code is available in [IPOPT minimal surface & volume example](/examples/#ipopt-minimal-surface-volume). We propose to solve the following problem :
 
 !!!example
 	Given a positive function $\rho_{\mathrm{object}}$ piecewise continuous, and a scalar $\mathcal{V}_{\mathrm{max}} > \mathcal{V}(\rho_{\mathrm{object}})$, find $\rho_{0}$ such that :
@@ -1344,7 +1344,7 @@ The following table sums up the main characteristics of each algorithm, providin
 
 ## Optimization with MPI
 
-The only quick way to use the previously presented algorithms on a parallel architecture lies in parallelizing the used cost function (which is in most real life cases, the expensive part of the algorithm). Somehow, we provide a parallel version of the CMA-ES algorithm. The parallelization principle is the trivial one of evolving/genetic algorithms: at each iteration the cost function has to be evaluated $N$ times without any dependence at all, these $N$ calculus are then equally distributed to each process. Calling the MPI version of CMA-ES is nearly the same as calling its sequential version (a complete example of use can be found in the [CMAES MPI variational inequality example](../examples/cmaes-mpi-variational-inequality)):
+The only quick way to use the previously presented algorithms on a parallel architecture lies in parallelizing the used cost function (which is in most real life cases, the expensive part of the algorithm). Somehow, we provide a parallel version of the CMA-ES algorithm. The parallelization principle is the trivial one of evolving/genetic algorithms: at each iteration the cost function has to be evaluated $N$ times without any dependence at all, these $N$ calculus are then equally distributed to each process. Calling the MPI version of CMA-ES is nearly the same as calling its sequential version (a complete example of use can be found in the [CMAES MPI variational inequality example](/examples/#cmaes-mpi-variational-inequality)):
 
 ```freefem
 load "mpi-cmaes"

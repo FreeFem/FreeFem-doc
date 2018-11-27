@@ -1,4 +1,4 @@
-As stated in [tutorials](../tutorials), FEM approximates all functions $w$ as
+As stated in [tutorials](/tutorials), FEM approximates all functions $w$ as
 $$
 w(x,y)\simeq w_0\phi_0(x,y)+w_1\phi_1(x,y)+\cdots+w_{M-1}\phi_{M-1}(x,y)
 $$
@@ -434,7 +434,7 @@ $$
 	}
 	```
 
-	The full example is in [Examples](../examples/periodic-3d).
+	The full example is in [Examples](/examples/#periodic-3d).
 
 ## Lagrangian Finite Elements
 
@@ -954,7 +954,7 @@ Except in the case of Neumann conditions everywhere, the problem \eqref{eqn::v-p
 	\end{equation}
 	where $\varepsilon$ is a small parameter ($ \sim \kappa\; 10^{-10} |\Omega|^{\frac2d} $).
 
-	Remark that if the solution is of order $\frac{1}{\varepsilon}$ then the compatibility condition is unsatisfied, otherwise we get the solution such that $\int_\Omega u = 0 $, you can also add a Lagrange multiplier to solve the real mathematical problem like in the [Lagrange multipliers example](../examples/lagrange-multipliers).
+	Remark that if the solution is of order $\frac{1}{\varepsilon}$ then the compatibility condition is unsatisfied, otherwise we get the solution such that $\int_\Omega u = 0 $, you can also add a Lagrange multiplier to solve the real mathematical problem like in the [Lagrange multipliers example](/examples/#lagrange-multipliers).
 
 In FreeFem++, the bidimensional problem \eqref{eqn::v-poisson} becomes :
 
@@ -1395,7 +1395,7 @@ The output is
 
 In FreeFem++ it is possible to define variational forms, and use them to build matrices and vectors, and store them to speed-up the script (4 times faster here).
 
-For example let us solve the [Thermal Conduction problem](../tutorials/ThermalConduction/). The variational formulation is in $L^2(0,T;H^1(\Omega))$; we shall seek $u^n$ satisfying
+For example let us solve the [Thermal Conduction problem](/tutorials/ThermalConduction/). The variational formulation is in $L^2(0,T;H^1(\Omega))$; we shall seek $u^n$ satisfying
 
 $$
 \forall w \in V_{0}; \qquad \int_\Omega \frac{u^n-u^{n-1}}{\delta t} w + \kappa\n u^n\n w) +\int_\Gamma\alpha(u^n-u_{ue})w=0
@@ -1489,7 +1489,7 @@ real[int] bcl = tgv*u0[]; //the Dirichlet boundary condition part
 ```
 
 !!! note
-	The boundary condition is implemented by penalization and vector `:::freefem bcn` contains the contribution of the boundary condition $u=1$, so to change the boundary condition, we have just to multiply the vector `:::freefem bc[]` by the current value `:::freefem f` of the new boundary condition term by term with the operator `:::freefem .*`. [Uzawa model](../models/NavierStokesEquations/#uzawa-algorithm-and-conjugate-gradients) gives a real example of using all this features.
+	The boundary condition is implemented by penalization and vector `:::freefem bcn` contains the contribution of the boundary condition $u=1$, so to change the boundary condition, we have just to multiply the vector `:::freefem bc[]` by the current value `:::freefem f` of the new boundary condition term by term with the operator `:::freefem .*`. [Uzawa model](/models/NavierStokesEquations/#uzawa-algorithm-and-conjugate-gradients) gives a real example of using all this features.
 
 And the new version of the algorithm is now:
 
@@ -1598,7 +1598,7 @@ $$
 \mathtt{etaK}[i] = \int {1}_{|K_i} = \int_{K_i} 1;
 $$
 
-Now, we can use this to compute error indicators like in example [Adaptation using residual error indicator](../models/StaticProblems/#adaptation-using-residual-error-indicator).
+Now, we can use this to compute error indicators like in example [Adaptation using residual error indicator](/models/StaticProblems/#adaptation-using-residual-error-indicator).
 
 First to compute a continuous approximation to the function $h$ "density mesh size" of the mesh $Th$.
 

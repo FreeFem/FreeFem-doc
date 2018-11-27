@@ -1,6 +1,6 @@
 # Getting started
 
-The FreeFem++ language is [typed](../reference/Types), polymorphic and reentrant with [macro generation](../reference/Types#macro-design).
+The FreeFem++ language is [typed](/reference/Types), polymorphic and reentrant with [macro generation](/reference/Types#macro-design).
 
 Every variable must be typed and declared in a statement. Each statement is separated from the next by a semicolon `;`.
 
@@ -10,7 +10,7 @@ For the specialist, one key guideline is that FreeFem++ rarely generates an inte
 
 ## The Development Cycle: Edit--Run/Visualize--Revise
 
-Many examples and tutorials are given thereafter and in the [examples part](../examples). It is better to study them and learn by example.
+Many examples and tutorials are given thereafter and in the [examples section](/examples). It is better to study them and learn by example.
 
 If you are a beginner in the finite element method, you may also have to read a book on variational formulations.
 

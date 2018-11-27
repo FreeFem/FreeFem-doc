@@ -28,7 +28,7 @@ Let $E,\, F,\, G$ be three sets and $A$ the subset of $E$.
  * [$f:\; E\to F$] the mapping form $E$ into $F$, i.e.,
 	$E\ni x\mapsto f(x)\in F$
  * [$I_E$ or $I$] the identity mapping in $E$,i.e., $I(x)=x\quad \forall x\in E$
- * [$f\circ g$] for $f:\; F\to G$ and $g:\; E\to F$, $E\ni x\mapsto (f\circ g)(x)=f(g(x))\in G$ (see [Elementary function](../reference/Types/#elementary-functions))
+ * [$f\circ g$] for $f:\; F\to G$ and $g:\; E\to F$, $E\ni x\mapsto (f\circ g)(x)=f(g(x))\in G$ (see [Elementary function](/reference/Types/#elementary-functions))
  * [$f|_A$] the restriction of $f:\; E\to F$ to the subset $A$ of $E$
  * [$\{a_k\}$] column vector with components $a_k$
  * [$(a_k)$] row vector with components $a_k$

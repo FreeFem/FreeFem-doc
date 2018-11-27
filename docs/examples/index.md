@@ -3106,9 +3106,10 @@ border C(t=0, 2*pi){x=phix(t); y=phiy(t);}
 mesh Th = buildmesh(C(50));
 plot(Th);
 ```
-Mesh|
-:----:|
-![ElementaryFunction](images/ElementaryFunction.png)|
+
+|Mesh|
+|:----:|
+|![Elementary Function](images/ElementaryFunction.png)|
 
 ### Array
 

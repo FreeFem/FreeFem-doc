@@ -1537,7 +1537,7 @@ plot([Th], [u], [[Ux, Uy, Uz]], [wait=Wait], [ps=PS], [coef=Coef], [fill=Fill], 
 
  - None
 
-See the [visualization](../documentation/Visualization) chapter for in-graphic commands.
+See the [visualization](/documentation/Visualization) chapter for in-graphic commands.
 
 ## polar
 Polar coordinates.
@@ -1707,7 +1707,7 @@ real r = randres53();
  - `r` (`:::freefem real`)
 
 ## readmesh
-Read a 2D mesh file at different formats (see [Mesh Generation](../documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh)).
+Read a 2D mesh file at different formats (see [Mesh Generation](/documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh)).
 
 ```freefem
 mesh Th = readmesh(MeshFileName);
@@ -1722,7 +1722,7 @@ mesh Th = readmesh(MeshFileName);
  - `Th` (`:::freefem mesh`)
 
 ## readmesh3
-Read a 3D mesh file at different formats (see [Mesh Generation](../documentation/MeshGeneration/#readwrite-statements-for-a-mesh-in-3d)).
+Read a 3D mesh file at different formats (see [Mesh Generation](/documentation/MeshGeneration/#readwrite-statements-for-a-mesh-in-3d)).
 
 ```freefem
 mesh3 Th = readmesh3(MeshFileName);
@@ -1782,7 +1782,7 @@ real r = round(a);
  - `r` (`:::freefem real`)
 
 ## savemesh
-Save a 2D or 3D mesh in different formats (see [Mesh Generation 2D](../documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh) and [Mesh Generation 3D](../documentation/MeshGeneration/#readwrite-statements-for-a-mesh-in-3d)).
+Save a 2D or 3D mesh in different formats (see [Mesh Generation 2D](/documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh) and [Mesh Generation 3D](/documentation/MeshGeneration/#readwrite-statements-for-a-mesh-in-3d)).
 
 ```freefem
 savemesh(Th, MeshFileName);
@@ -1943,7 +1943,7 @@ real s = sqrt(a);
   - `H` (`:::freefem real`) _[Optional]_<br/>
   Height along $y$
   - _`:::freefem flags=`_ (`:::freefem int`) _[Optional]_<br/>
-  Structured mesh type, see [Mesh Generation chapter](../documentation/MeshGeneration/#square) for more information
+  Structured mesh type, see [Mesh Generation chapter](/documentation/MeshGeneration/#square) for more information
 
  <u>Output:</u>
 

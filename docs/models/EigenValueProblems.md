@@ -67,7 +67,7 @@ Remark: For complex problems, you need to use the keyword `:::freefem complexEig
 !!! note
 	Boundary condition and Eigenvalue Problems
 
-	The locking (Dirichlet) boundary condition is make with exact penalization so we put `:::freefem 1e30=tgv` on the diagonal term of the locked degree of freedom (see [Finite Element chapter](../documentation/FiniteElement/#variational-form-sparse-matrix-pde-data-vector)). So take Dirichlet boundary condition just on $A$ and not on $B$ because we solve $w=OP^{-1}*B*v$.
+	The locking (Dirichlet) boundary condition is make with exact penalization so we put `:::freefem 1e30=tgv` on the diagonal term of the locked degree of freedom (see [Finite Element chapter](/documentation/FiniteElement/#variational-form-sparse-matrix-pde-data-vector)). So take Dirichlet boundary condition just on $A$ and not on $B$ because we solve $w=OP^{-1}*B*v$.
 
 	<!--- ** --->
 

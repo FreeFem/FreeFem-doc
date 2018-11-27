@@ -1,4 +1,4 @@
-See [Loop example](../examples/#loop).
+See [Loop example](/examples/#loop).
 
 ## for
 For loop.
@@ -61,7 +61,7 @@ catch(...){
 }
 ```
 
-See [Basic error handling example](../examples/#basic-error-handling) and [Error handling example](../examples/#error-handling).
+See [Basic error handling example](/examples/#basic-error-handling) and [Error handling example](/examples/#error-handling).
 
 ## catch
 Catch an error, see [try](#try)
@@ -80,4 +80,4 @@ for [i, j, aij : a]
 ```
 If `:::freefem real[int] a(10, 11)`, then `i=0:9`, `j=1:10` and `aij` is a reference to `a(i, j)`.
 
-See  [Implicit loop example](../examples/implicit-loop).
+See  [Implicit loop example](/examples/#implicit-loop).

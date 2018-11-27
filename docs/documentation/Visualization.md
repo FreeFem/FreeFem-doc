@@ -17,7 +17,7 @@ The parameters of the plot command can be meshes, real FE functions, arrays of 2
 !!! note
 	The length of an arrow is always bound to be in [5‰, 5%] of the screen size in order to see something.
 
-The `:::freefem plot` command parameters are listed in the [Reference part](../reference/Functions/#plot).
+The `:::freefem plot` command parameters are listed in the [Reference part](/reference/Functions/#plot).
 
 The keyboard shortcuts are :
 
@@ -131,11 +131,11 @@ real[int] colorhsv=[ // color hsv model
 |![hsv](images/Visualization_HSV_Space.png)|![threehsv](images/Visualization_HSV.png)|
 
 !!!note
-	See [HSV.edp](../examples/#visualization-hsv) for the complete script.
+	See [HSV.edp](/examples/#hsv) for the complete script.
 
 ## Link with gnuplot
 
-Example [Membrane](../tutorials/Membrane) shows how to generate a gnuplot from a FreeFem++ file. Here is another technique which has the advantage of being online, i.e. one doesn't need to quit FreeFem++ to generate a gnuplot.
+Example [Membrane](/tutorials/Membrane) shows how to generate a gnuplot from a FreeFem++ file. Here is another technique which has the advantage of being online, i.e. one doesn't need to quit FreeFem++ to generate a gnuplot.
 
 However, this works only if [gnuplot](http://www.gnuplot.info) is installed, and only on an Unix-like computer.
 
@@ -158,7 +158,7 @@ exec("echo 'plot \"plot.gp\" w l \n pause 5 \n set term postscript \n set output
 |![gnuplot](images/Visualization_Gnuplot.png)|
 
 !!!note
-	See [Plot.edp](../examples/#visualization-plot) for the complete script.
+	See [Plot.edp](/examples/#plot) for the complete script.
 
 ## Link with medit
 
@@ -166,7 +166,7 @@ As said above, `medit` is a freeware display package by Pascal Frey using OpenGL
 
 Now `medit` software is included in FreeFem++ under `ffmedit` name.
 
-The `:::freefem medit` command parameters are listed in the [Reference part](../reference/ExternalLibraries/#medit).
+The `:::freefem medit` command parameters are listed in the [Reference part](/reference/ExternalLibraries/#medit).
 
 <center>
 
@@ -212,7 +212,7 @@ exec("rm u.bb u.faces u.points");
 ```
 
 !!!note
-	See [Medit.edp](../examples/#visualization-medit) for the complete script.
+	See [Medit.edp](/examples/#medit) for the complete script.
 
 ## Link with Paraview
 
@@ -236,7 +236,7 @@ savevtk("u.vtu", Th, u, dataname=DataName, order=Order);
 |![Paraview](images/Visualization_Paraview.png)|
 
 !!!note
-	See [Paraview.edp](../examples/#visualization-paraview) for the complete script.
+	See [Paraview.edp](/examples/#paraview) for the complete script.
 
 ## Link with Matlab<sup>&copy;</sup> and Octave
 
@@ -250,7 +250,7 @@ Vh u=2-x*x-y*y;
 
 savemesh(Th,"export_mesh.msh");
 
-ofstream file("export_data.txt"); 
+ofstream file("export_data.txt");
 for (int j=0; j<u[].n; j++)
    file << u[][j] << endl;
 ```
@@ -274,5 +274,4 @@ grid;
 </center>
 
 !!!note
-    For more Matlab / Octave plot examples have a look at the tutorial section [Matlab / Octave Examples](../tutorials/MatlabOctavePlot/) or visit the [ffmatlib library](https://github.com/samplemaker/freefem_matlab_octave_plot) at github.
-
+    For more Matlab / Octave plot examples have a look at the tutorial section [Matlab / Octave Examples](/tutorials/MatlabOctavePlot/) or visit the [ffmatlib library](https://github.com/samplemaker/freefem_matlab_octave_plot) at github.

@@ -75,7 +75,7 @@ plot(u,[Ex,Ey],wait=true);
 
 ## Exporting Data
 
-To export a FEM mesh FreeFem++ offers the [savemesh()](../documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh) command. FE-space functions must be written to text files by for-loops. The following code section writes the mesh, the potential $u$ and the 2D vector field $\mathbf{E}$ of the stripline capacitor example into three different files:
+To export a FEM mesh FreeFem++ offers the [savemesh()](/documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh) command. FE-space functions must be written to text files by for-loops. The following code section writes the mesh, the potential $u$ and the 2D vector field $\mathbf{E}$ of the stripline capacitor example into three different files:
 
 ```freefem
 //Stores the Mesh
@@ -98,7 +98,7 @@ for (int j=0; j<Ex[].n; j++)
 
 ## Importing Data
 
-A mesh file as previously written with the `savemesh(Th,"filename.msh")` command consists of [three main sections](../documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh):
+A mesh file as previously written with the `savemesh(Th,"filename.msh")` command consists of [three main sections](/documentation/MeshGeneration/#data-structures-and-readwrite-statements-for-a-mesh):
 
 1. The mesh points as nodal coordinates  
 2. A list of boundary edges including boundary labels  
@@ -204,8 +204,8 @@ ffpdeplot(p,b,t,'XYData',u,'XYStyle','off','Mesh','off','Boundary','on', ...
 
 
 **Download run through example:**  
-[Matlab / Octave file](../tutorials/scripts/matlab_octave_2d_examples.m)  
-[FreeFem++ script](../tutorials/scripts/matlab_octave_2d_examples.edp)
+[Matlab / Octave file](/tutorials/scripts/matlab_octave_2d_examples.m)  
+[FreeFem++ script](/tutorials/scripts/matlab_octave_2d_examples.edp)
 
 ## 3D Plot Examples
 
@@ -222,8 +222,8 @@ The following example shows a slicing feature on a three-dimensional parallel pl
 </center>
 
 **Download run through example:**  
-[Matlab / Octave file](../tutorials/scripts/matlab_octave_3d_examples.m)  
-[FreeFem++ script](../tutorials/scripts/matlab_octave_3d_examples.edp)
+[Matlab / Octave file](/tutorials/scripts/matlab_octave_3d_examples.m)  
+[FreeFem++ script](/tutorials/scripts/matlab_octave_3d_examples.edp)
 
 ## References
 
@@ -237,4 +237,3 @@ The following example shows a slicing feature on a three-dimensional parallel pl
              "GNU Octave scientific programming language"
 [matlab]:     https://www.mathworks.com/
              "Matlab scientific programming language"
-

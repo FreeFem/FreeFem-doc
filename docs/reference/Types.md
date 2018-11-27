@@ -52,7 +52,7 @@ The imaginary number $i$ is defined as `1i`
 	```
 
 !!!note
-	See [Complex example](../examples/#complex) for a detailled example.
+	See [Complex example](/examples/#complex) for a detailed example.
 
 ### string
 String value.
@@ -81,7 +81,7 @@ To copy a substring in an other string:
 string s2 = s1(5:10);
 ```
 
-See [String Example](../examples/#string) for a complete example.
+See [String Example](/examples/#string) for a complete example.
 
 ## Mesh design
 
@@ -111,14 +111,14 @@ Define the 2D geometrical border in parametric coordinates.
 	```
 
 ### mesh
-2D Mesh type (see [Mesh Generation](../documentation/MeshGeneration/)).
+2D Mesh type (see [Mesh Generation](/documentation/MeshGeneration/)).
 
 ```freefem
 mesh Th;
 ```
 
 ### mesh3
-3D mesh type (see [Mesh Generation](../documentation/MeshGeneration/)).
+3D mesh type (see [Mesh Generation](/documentation/MeshGeneration/)).
 ```freefem
 mesh3 Th;
 ```
@@ -127,7 +127,7 @@ mesh3 Th;
 ## Finite element space design
 
 ### fespace
-Finite element space type (see [Finite Element](../documentation/FiniteElement/)).
+Finite element space type (see [Finite Element](/documentation/FiniteElement/)).
 
 ```freefem
 fespace Uh(Th, P1);
@@ -236,7 +236,7 @@ Macro ends with `//`.
 	macro Grad(U) [grad(U#x), grad(U#y)] //
 	```
 
-See [Macro example](../examples/#macro)
+See [Macro example](/examples/#macro)
 
 ### NewMacro / EndMacro
 
@@ -295,7 +295,7 @@ and by composition $f(g(x))$, each applied a finite number of times.
 
 In __`FreeFem++`__,  all elementary functions can thus be created. The derivative of an elementary function is also an elementary function; however, the indefinite integral of an elementary function cannot always be expressed in terms of elementary functions.
 
-See [Elementary function example](../examples/#elementary-function) for a complete example.
+See [Elementary function example](/examples/#elementary-function) for a complete example.
 
 ### Random functions
 
@@ -327,7 +327,7 @@ func zf = (x^2*(1+y)^3 + y^2)*exp(x + 1i*y);
 Vh<complex> zh = zf; //zh is the projection of zf to complex value Vh space
 ```
 
-The construction of `:::freefem fh = f` is explained in [Finite Element](../documentation/FiniteElement/).
+The construction of `:::freefem fh = f` is explained in [Finite Element](/documentation/FiniteElement/).
 
 !!!warning
 	The `:::freefem plot` command only works for real or complex FE-functions, not for elementary functions.
@@ -402,7 +402,7 @@ Laplacian;
 	problem Laplacian(u, uh, tgv=1e30) = ...
 	```
 
-	Refere to [Problem definition](../documentation/FiniteElement/#problem-definition) for a description of the Dirichlet condition implementation.
+	Refere to [Problem definition](/documentation/FiniteElement/#problem-definition) for a description of the Dirichlet condition implementation.
 
 !!!note "Pivot tolerance"
 	The tolerance of the pivot in `:::freefem UMFPACK`, `:::freefem LU`, `:::freefem Crout`, `:::freefem Cholesky` factorization can be modified in the problem definition:
@@ -426,14 +426,14 @@ Laplacian;
 !!!note "`:::freefem dimKrylov`"
 	Dimension of the Krylov space
 
-Usage of `:::freefem problem` is detailled in the [tutorial](../tutorials).
+Usage of `:::freefem problem` is detailled in the [tutorial](/tutorials).
 
 ### solve
 Solve type.
 
 Identical to [problem](#problem) but automatically solved.
 
-Usage of `:::freefem solve` is detailled in the [tutorial](../tutorials).
+Usage of `:::freefem solve` is detailled in the [tutorial](/tutorials).
 
 ### varf
 Variational form type.
@@ -446,7 +446,7 @@ Directly define a variational form.
 
 This is the other way to define a problem in order to directly manage matrix and right hang side.
 
-Usage of `:::freefem varf` is detailed in the [tutorial](../tutorials).
+Usage of `:::freefem varf` is detailed in the [tutorial](/tutorials).
 
 ## Array
 
@@ -485,7 +485,7 @@ The output of this script is:
 	  0	  1	  2	  3	  4
 ```
 
-See the [Array example](../example/#array) for a complete example.
+See the [Array example](/examples/#array) for a complete example.
 
 ### Array index
 Array index can be int or string:
@@ -603,7 +603,7 @@ real [int, int][int] A(10);
 		plot(uu[i], wait=true);
 	```
 
-	See [FE array example](../examples/#fe-array).
+	See [FE array example](/examples/#fe-array).
 
 ### Map arrays
 
@@ -630,7 +630,7 @@ matrix A = [[1, 2, 3],
 			[7, 8, 9]];
 ```
 
-or using a variational form type (see [Finite Element](../documentation/FiniteElement/#variational-form-sparse-matrix-pde-data-vector)):
+or using a variational form type (see [Finite Element](/documentation/FiniteElement/#variational-form-sparse-matrix-pde-data-vector)):
 
 ```freefem
 matrix Laplacian = vLaplacian(Uh, Uh);
@@ -709,16 +709,16 @@ matrix<complex> Ai = ...
 	See [`:::freefem problem`](#problem).
 
 !!!note "datafilename"
-	Name of the file containing solver parameters, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)
+	Name of the file containing solver parameters, see [Parallel sparse solvers](/documentation/ParallelSparseSolvers)
 
 !!!note "lparams"
-	Vector of integer parameters for the solver, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)
+	Vector of integer parameters for the solver, see [Parallel sparse solvers](/documentation/ParallelSparseSolvers)
 
 !!!note "dparams"
-	Vector of real parameters for the solver, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)
+	Vector of real parameters for the solver, see [Parallel sparse solvers](/documentation/ParallelSparseSolvers)
 
 !!!note "sparams"
-	String parameters for the solver, see [Parallel sparse solvers](../documentation/ParallelSparseSolvers)
+	String parameters for the solver, see [Parallel sparse solvers](/documentation/ParallelSparseSolvers)
 
 !!!tip
 	To modify the `:::freefem solver`, the stop test,... after the matrix construction, use the [`:::freefem set` keyword](functions/#set).
@@ -775,8 +775,8 @@ The outer product of two matrices is realized using:
 matrix C = A * B'
 ```
 
-See [Matrix operations example](./example/#matrix-operations) for a complete example.
+See [Matrix operations example](/examples/#matrix-operations) for a complete example.
 
 ### Matrix inversion
 
-See [Matrix inversion example](../examples/#matrix-inversion).
+See [Matrix inversion example](/examples/#matrix-inversion).

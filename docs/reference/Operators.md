@@ -63,7 +63,7 @@ real[int] Res = A^-1 * b;
 ```
 
 !!!warning
-	This operator can not be used to directly create a matrix, see [Matrix inversion](../examples/#matrix-inversion).
+	This operator can not be used to directly create a matrix, see [Matrix inversion](/examples/#matrix-inversion).
 
 ## '
 Transpose operator.

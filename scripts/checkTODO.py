@@ -252,15 +252,15 @@ checkTODOByLines(indexFilesList, indexNamesList, indexTODOFile)
 checkTODOByLines(introductionFilesList, introductionNamesList, introductionTODOFile)
 TODOFile = open(docDirectory + introductionTODOFile, "a")
 TODOFile.write("\n## Documentation\n");
-TODOFile.write("[TODO](../documentation/TODO)\n")
+TODOFile.write("[TODO](/documentation/TODO)\n")
 TODOFile.write("\n## Language references\n");
-TODOFile.write("[TODO](../reference/TODO)\n")
+TODOFile.write("[TODO](/reference/TODO)\n")
 TODOFile.write("\n## Tutorials\n");
-TODOFile.write("[TODO](../tutorials/TODO)\n")
+TODOFile.write("[TODO](/tutorials/TODO)\n")
 TODOFile.write("\n## Examples\n");
-TODOFile.write("[TODO](../examples/TODO)\n")
+TODOFile.write("[TODO](/examples/TODO)\n")
 TODOFile.write("\n## Models\n");
-TODOFile.write("[TODO](../models/TODO)\n")
+TODOFile.write("[TODO](/models/TODO)\n")
 TODOFile.close();
 
 #documentation

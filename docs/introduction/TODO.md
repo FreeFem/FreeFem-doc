@@ -35,16 +35,16 @@ Progression:
 
 
 ## Documentation
-[TODO](../documentation/TODO)
+[TODO](/documentation/TODO)
 
 ## Language references
-[TODO](../reference/TODO)
+[TODO](/reference/TODO)
 
 ## Tutorials
-[TODO](../tutorials/TODO)
+[TODO](/tutorials/TODO)
 
 ## Examples
-[TODO](../examples/TODO)
+[TODO](/examples/TODO)
 
 ## Models
-[TODO](../models/TODO)
+[TODO](/models/TODO)

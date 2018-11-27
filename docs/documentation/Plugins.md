@@ -44,7 +44,7 @@ cout << "spline1.dd(t) = " << dds1 << endl;
 
 This can be usefull to build function from data value.
 
-The list of all `gsl` functions and the __`FreeFem++`__ equivalent is available in the [Language references](../reference/ExternalLibraries/#ff_gsl_awk) (same names without `_`).
+The list of all `gsl` functions and the __`FreeFem++`__ equivalent is available in the [Language references](/reference/ExternalLibraries/#ff_gsl_awk) (same names without `_`).
 
 ## ffrandom
 

@@ -55,7 +55,7 @@ Using the Laplace operator $\Delta = \p^2 /\p x^2 + \p^2 /\p y^2$, we can find t
 
 where $f=p/\mu$, $\Omega =\{(x,y);\;x^{2}+y^{2}<1\}$.
 
-[Poisson's equation](../tutorials/Poisson) appears also in __electrostatics__ taking the form of $f=\rho /\epsilon $ where $\rho $ is the charge density, $\epsilon $ the dielectric constant and $u$ is named as electrostatic potential.
+[Poisson's equation](/tutorials/Poisson) appears also in __electrostatics__ taking the form of $f=\rho /\epsilon $ where $\rho $ is the charge density, $\epsilon $ the dielectric constant and $u$ is named as electrostatic potential.
 
 The soap film is glued to the ring $% \p \Omega =C$, then we have the boundary condition
 
@@ -335,9 +335,9 @@ plot(Zcp, nbiso=40);
 
 ## Error estimation
 
-There are famous estimation between the numerical result $u_h$ and the exact solution $u$ of the [Poisson's problem](../tutorials/Poisson):
+There are famous estimation between the numerical result $u_h$ and the exact solution $u$ of the [Poisson's problem](/tutorials/Poisson):
 
-If triangulations $\{\mathcal{T}_h\}_{h\downarrow 0}$ is regular (see [Regular Triangulation](../documentation/MeshGeneration/#regular-triangulation-htriangle)), then we have the estimates
+If triangulations $\{\mathcal{T}_h\}_{h\downarrow 0}$ is regular (see [Regular Triangulation](/documentation/MeshGeneration/#regular-triangulation-htriangle)), then we have the estimates
 
 \begin{eqnarray}
 	|\nabla u - \nabla u_h|_{0,\Omega} &\le& C_1h \label{eqn::ErrorEstimatation1}\\

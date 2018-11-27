@@ -384,7 +384,7 @@ B&-\epsilon I
 
 	Notice that the stiffness matrices are reused (keyword `:::freefem init=i`)
 
-	The complete script is available in [Examples](../examples/#cavity).
+	The complete script is available in [Examples](/examples/#cavity).
 
 ## Uzawa Algorithm and Conjugate Gradients
 

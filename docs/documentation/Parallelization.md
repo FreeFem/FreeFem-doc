@@ -142,7 +142,7 @@ mpiAllReduce(a, b, comm, mpiMAX);
 Thank you to Guy-Antoine Atenekeng Kahou for his help to code this interface.
 
 ### Schwarz example in parallel
-This example is a rewritting of example [Schwarz overlapping](../models/DomainDecomposition/#schwarz-overlapping).
+This example is a rewritting of example [Schwarz overlapping](/models/DomainDecomposition/#schwarz-overlapping).
 
 ```bash
 ff-mpirun -np 2 SchwarzParallel.edp
@@ -228,7 +228,7 @@ $\codered$ script freeze in the loop
 
 _Thank you to F. Nataf_
 
-This is a explanation of the two examples [MPI-GMRES 2D](../examples/#mpi-gmres-2d) and [MPI-GMRES 3D](../examples/#mpi-gmres-3d), a Schwarz parallel with a complexity almost independent of the number of process (with a coarse grid preconditioner).
+This is a explanation of the two examples [MPI-GMRES 2D](/examples/#mpi-gmres-2d) and [MPI-GMRES 3D](/examples/#mpi-gmres-3d), a Schwarz parallel with a complexity almost independent of the number of process (with a coarse grid preconditioner).
 
 To solve the following Poisson problem on domain $\Omega$ with boundary $\Gamma$ in $L^2(\Omega)$ :
 
@@ -667,7 +667,7 @@ If the libraries are not loaded, the default sparse solver will be loaded (defau
 	</tbody>
 </table>
 
-We also add functions (see [Table 2](#Tab2)) with no parameter to change the default sparse solver in the `.edp` file. To use these functions, we need to load the library corresponding to the solver. An example of using different parallel sparse solvers for the same problem is given in [Direct solvers example](../examples/#direct-solvers).
+We also add functions (see [Table 2](#Tab2)) with no parameter to change the default sparse solver in the `.edp` file. To use these functions, we need to load the library corresponding to the solver. An example of using different parallel sparse solvers for the same problem is given in [Direct solvers example](/examples/#direct-solvers).
 
 <table>
 	<thead>
@@ -952,7 +952,7 @@ This is done in typing `:::freefem load "MUMPS_FreeFem"` in the `.edp` file. We 
 If no solver parameter is given, we used default option of MUMPS solver.
 
 !!!example "MUMPS example"
-	A simple example of calling MUMPS in __`FreeFem++`__ with this two methods is given in the [Test solver MUMPS example](../examples/#solver-mumps).
+	A simple example of calling MUMPS in __`FreeFem++`__ with this two methods is given in the [Test solver MUMPS example](/examples/#solver-mumps).
 
 #### SuperLU distributed solver
 
@@ -1037,7 +1037,7 @@ NOEQUIL /* DiagScale : NOEQUIL, ROW, COL, BOTH*/
 If no solver parameter is given, we used default option of SuperLU_DIST solver.
 
 !!!example
-	A simple example of calling SuperLU_DIST in __`FreeFem++`__ with this two methods is given in the [Solver superLU_DIST example](../examples/#solver-superlu_dist).
+	A simple example of calling SuperLU_DIST in __`FreeFem++`__ with this two methods is given in the [Solver superLU_DIST example](/examples/#solver-superlu_dist).
 
 #### PaStiX solver
 
@@ -1083,7 +1083,7 @@ An example of this file parameter is given in `ffpastix_iparm_dparm.txt` with a 
 If no solver parameter is given, we use the default option of PaStiX solver.
 
 !!!example
-	A simple example of calling PaStiX in __`FreeFem++`__ with this two methods is given in the [Solver PaStiX example](../examples/#solver-pastix).
+	A simple example of calling PaStiX in __`FreeFem++`__ with this two methods is given in the [Solver PaStiX example](/examples/#solver-pastix).
 
 In [Table 3](#Tab3), we recall the different matrix considering in the different direct solvers.
 

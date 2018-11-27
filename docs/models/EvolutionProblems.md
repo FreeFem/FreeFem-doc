@@ -114,7 +114,7 @@ Using the identity just above, we can calculate the finite element approximation
 
 	In the last statement, the $L^2$-error $\left(\int_{\Omega}\left| u-tx^4\right|^2\right)^{1/2}$ is calculated at $t=m\tau, \tau =0.1$. At $t=0.1$, the error is 0.000213269. The errors increase with $m$ and 0.00628589 at $t=3$.
 
-	The iteration of the backward Euler \eqref{eqn::heatequationBWE} is made by [`:::freefem for` loop](../reference/Loops/#for).
+	The iteration of the backward Euler \eqref{eqn::heatequationBWE} is made by [`:::freefem for` loop](/reference/Loops/#for).
 
 	!!! note
 		The stiffness matrix in the loop is used over and over again. FreeFem++ support reuses of stiffness matrix.
@@ -167,7 +167,7 @@ A=(a_{ij}),\quad a_{ij}=a(\phi_j,\phi_i)\nonumber
 
 Refer [TABATA1994](#TABATA1994), pp.70--75 for solvability of \eqref{eqn::Evolution-1}. The stability of \eqref{eqn::Evolution-1} is in [TABATA1994](#TABATA1994), Theorem 2.13:
 
-Let $\{\mathcal{T}_h\}_{h\downarrow 0}$ be regular triangulations (see [Regular Triangulation](../documentation/MeshGeneration/#regular-triangulation-htriangle)). Then there is a number $c_0>0$ independent of $h$ such that,
+Let $\{\mathcal{T}_h\}_{h\downarrow 0}$ be regular triangulations (see [Regular Triangulation](/documentation/MeshGeneration/#regular-triangulation-htriangle)). Then there is a number $c_0>0$ independent of $h$ such that,
 
 \begin{eqnarray}
 |u_h^n|^2\le

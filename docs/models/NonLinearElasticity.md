@@ -31,7 +31,7 @@ $$
 
 and $D^{2}E$ is the second differential of $E$.
 
-So all notations can be define with [`:::freefem macro`](../reference/Types/#macro-design):
+So all notations can be define with [`:::freefem macro`](/reference/Types/#macro-design):
 
 ```freefem
 macro EL(u, v) [dx(u), (dx(v)+dy(u)), dy(v)] //is [epsilon_11, 2epsilon_12, epsilon_22]

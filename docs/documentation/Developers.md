@@ -841,7 +841,7 @@ g++ -c -Iinclude -I../download/install/include dfft.cpp
 g++ -bundle -undefined dynamic_lookup dfft.o -o ./dfft.dylib ../download/install/lib/libfftw3.a
 ```
 
-To test, try [FFT example](../examples/#fft).
+To test, try [FFT example](/examples/#fft).
 
 ### Load Module for Dervieux' P0-P1 Finite Volume Method
 
