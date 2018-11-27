@@ -635,13 +635,13 @@ See [Fig. 7](#Fig7) for the projection of $f(x,y)=\sin(\pi x)\cos(\pi y)$ into `
 
 ## Vector Valued FE-function
 
-Functions from $\R^{2}$ to $\R^{N}$ with $N=1$ is called scalar function and called _vector valued_ when $N>1$. When $N=2$
+Functions from $\R^{2}$ to $\R^{N}$ with $N=1$ are called scalar functions and called _vector valued_ when $N>1$. When $N=2$
 
 ```freefem
 fespace Vh(Th, [P0, P1]) ;
 ```
 
-make the space
+makes the space
 
 $$
 V_h=\{\mathbf{w}=(w_1,w_2)|\; w_1\in V_h(\mathcal{T}_h,P_0),\,

@@ -157,7 +157,7 @@ Used to solve a problem like $Ax=b$
 int Conv = AffineCG(A, x, precon=Precon, nbiter=NbIter, eps=Eps, veps=VEps, stop=Stop);
 ```
 
-<u>Parameter:</u>
+<u>Parameters:</u>
 
  - `A` (`:::freefem matrix`)<br/>
  Matrix of the problem $Ax=b$
@@ -241,7 +241,8 @@ $$
 ![arcsinh function](images/arcsinh.svg)
 
 ## assert
-Verify a condition is true (same as C), if not the program stops.
+
+Verify if a condition is true (same as C), if not the program stops.
 
 ```freefem
 assert(x==0)
@@ -249,7 +250,7 @@ assert(x==0)
 
 <u>Parameter:</u>
 
- - Bollean condition
+ - Boolean condition
 
 <u>Output:</u>
 
@@ -318,7 +319,7 @@ int a = atoi(s);
  - `a` (`:::freefem int`)
 
 ## atof
-Convert a string to an real.
+Convert a string to a real.
 
 ```freefem
 real a = atof(s);
@@ -345,12 +346,12 @@ mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixedborder
 <u>Parameters:</u>
 
  - `b1`, `b2`, `b3`, `b4` (`:::freefem border`)<br/>
- Geometry border, `b1(nn)` mean `b1` border discretize by `nn` vertices
+ Geometry border, `b1(nn)` means `b1` border discretized by `nn` vertices
  - _`:::freefem nbvx=`_ (`:::freefem int`) _[Optional]_<br/>
  Maximum number of vertices<br/>
  Default: 9000
  - _`:::freefem fixedborder=`_ (`:::freefem bool`) _[Optional]_<br/>
- If true, mesh generator can not change the boundary mesh<br/>
+ If true, mesh generator cannot change the boundary mesh<br/>
  Default: `:::freefem false`
  <!--- - _`:::freefem fixeborder=`_ (`:::freefem bool`) _[Deprecated]_ --->
 
@@ -380,7 +381,7 @@ int[int] L = [0, 1];
 Thnew = change(Th, label=L);
 ```
 
-<u>Parameter:</u>
+<u>Parameters:</u>
 
  - `Th` (`:::freefem mesh`)<br/>
  Original mesh
@@ -427,7 +428,7 @@ Check a [`:::freefem movemesh`](#movemesh) without mesh generation.
 real minT = checkmovemesh(Th, [Dx, Dy]);
 ```
 
-<u>Parameter:</u>
+<u>Parameters:</u>
 
 Same as [`:::freefem movemesh`](#movemesh)
 
@@ -456,6 +457,7 @@ real t = clock();
 Same as [`:::freefem EigenValue`](#EigenValue) for complex problems.
 
 ## conj
+
 Caculate the conjuguate of a complex number.
 ```freefem
 complex C1 = 1 + 1i;
@@ -486,7 +488,7 @@ Compute $c\circ \mathbf{X}$ with $\mathbf{X}(\mathbf{x}) = \mathbf{x}_{\tau}$ an
 	\mathbf{x}_{\tau} &=& \mathbf{x}
 \end{eqnarray}
 
-<u>Parameter:</u>
+<u>Parameters:</u>
 
  - `ux` (`:::freefem fespace` function)<br/>
  Velocity: $x$ component
@@ -1345,7 +1347,7 @@ int l = lrint(a);
  - `l` (`:::freefem int`)
 
 ## lround
-Round a value, and return a integer value.
+Round a value, and return an integer value.
 
 ```freefem
 int l = lround(a);
@@ -1416,9 +1418,9 @@ mesh3 MovedTh = movemesh(Th, [Dx, Dy, Dz], [region=Region], [label=Label], [face
  - _`:::freefem region=`_ (`:::freefem int`) _[Optional]_ **3D only**<br/>
  Set label to tetrahedra
  - _`:::freefem label=`_ (`:::freefem int[int]`) _[Optional]_ **3D only**<br/>
- Set label of faces (see [change](#change) for more informations)
+ Set label of faces (see [change](#change) for more information)
  - _`:::freefem facemerge=`_ (`:::freefem int`) _[Optional]_ **3D only**<br/>
- If equal to 1, some face can be merged during the mesh moving<br/>
+ If equal to 1, some faces can be merged during the mesh moving<br/>
  Default: 1
  - _`:::freefem ptmerge=`_ (`:::freefem real`) _[Optional]_ **3D only**<br/>
  Criteria to define when two points merge
@@ -1465,7 +1467,7 @@ problem (u, v)
  - `Label` (`:::freefem int` or `:::freefem border` in 2D)<br/>
  Boundary reference where to impose the Dirichlet condition
  - `uD` (`:::freefem fespace` function, `:::freefem func` or `:::freefem real` or `:::freefem int`)<br/>
- Dirichlet condition (`u` is an unknwown of the problem)
+ Dirichlet condition (`u` is an unknown of the problem)
 
 <u>Output:</u>
 
@@ -1479,7 +1481,7 @@ plot([Th], [u], [[Ux, Uy, Uz]], [wait=Wait], [ps=PS], [coef=Coef], [fill=Fill], 
 ```
 
 !!!info
-	Only one af `Th`, `u` or `[Ux, Uy]` / `[Ux, Uy, Uz]` is needed for the `:::freefem plot` command.
+	Only one of `Th`, `u` or `[Ux, Uy]` / `[Ux, Uy, Uz]` is needed for the `:::freefem plot` command.
 
 <u>Parameters:</u>
 
@@ -1510,7 +1512,7 @@ plot([Th], [u], [[Ux, Uy, Uz]], [wait=Wait], [ps=PS], [coef=Coef], [fill=Fill], 
  - _`:::freefem nbiso=`_ (`:::freefem int`)<br/>
  Number of isovalues
  - _`:::freefem nbarrow=`_ (`:::freefem int`)<br/>
- Number of color of arrows values
+ Number of colors of arrows values
  - _`:::freefem viso=`_ (`:::freefem real[int]`)<br/>
  Specify an array of isovalues
  - _`:::freefem varrow=`_ (`:::freefem real[int]`)<br/>
@@ -1863,7 +1865,7 @@ Sort two array in parallel
 sort(A, B);
 ```
 
-<u>Parameter:</u>
+<u>Parameters:</u>
 
  - `A` (`:::freefem real[int]`)
  - `B` (`:::freefem int[int]`)
@@ -1881,7 +1883,7 @@ Split mesh triangles according to a function.
 Th = splitmesh(Th0, f);
 ```
 
-<u>Parameter:</u>
+<u>Parameters:</u>
 
  - `Th0` (`:::freefem mesh`)
  - `f` (`:::freefem func` or `:::freefem fespace` function)
@@ -1930,7 +1932,7 @@ real s = sqrt(a);
  mesh Th = square(nnX, nnY, [[L*x, H*y]], [flags=Flags]);
  ```
 
- <u>Parameter:</u>
+ <u>Parameters:</u>
 
   - `nnX` (`:::freefem int`)<br/>
   Discretization along $x$
@@ -1941,7 +1943,7 @@ real s = sqrt(a);
   - `H` (`:::freefem real`) _[Optional]_<br/>
   Height along $y$
   - _`:::freefem flags=`_ (`:::freefem int`) _[Optional]_<br/>
-  Structured mesh type, see [Mesh Generation chapter](../documentation/MeshGeneration/#square) for more informations
+  Structured mesh type, see [Mesh Generation chapter](../documentation/MeshGeneration/#square) for more information
 
  <u>Output:</u>
 
@@ -1981,7 +1983,7 @@ int Res = system(Command);
  Value returned by the system command
 
 !!note
-	On Windows, the full path of the command is needed. For example, the execute `ls.exe`:
+	On Windows, the full path of the command is needed. For example, to execute `ls.exe`:
 	```freefem
 	int Res = exec("C:\\cygwin\\bin\\ls.exe");
 	```
@@ -2040,11 +2042,11 @@ Split triangle of a mesh.
 mesh Th = trunc(Th0, R, [split=Split], [label=Label]);
 ```
 
-<u>Parameter:</u>
+<u>Parameters:</u>
 
  - `Th0` (`:::freefem mesh`)
  - `R` (`:::freefem bool` or `:::freefem int`)<br/>
- Split triangles where `R` is true or different of 0
+ Split triangles where `R` is true or different from 0
  - _`:::freefem split=`_ (`:::freefem int`) _[Optional]_<br/>
  Level of splitting<br/>
  Default: 1

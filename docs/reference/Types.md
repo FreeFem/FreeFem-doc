@@ -648,13 +648,13 @@ A = [I, J, C];
 ```
 
 !!!note
-	`I` and `J` are `:::freefem int[int]` and `C` is `:::freefem real[int]`. The matrix is define as:
+	`I` and `J` are `:::freefem int[int]` and `C` is `:::freefem real[int]`. The matrix is defined as:
 	$$
 	A = \sum_k{C[k]M_{I[k], J[k]}}
 	$$
 	where $M_{a, b} = \left(\delta_{ia}\delta_{jb}\right)_{ij}$ <!--- __ --->
 
-	`I`, `J` and `C` can be retrived using `[I, J, C] = A` (array are automatically resized).
+	`I`, `J` and `C` can be retrieved using `[I, J, C] = A` (arrays are automatically resized).
 
 	The size of the matrix is `:::freefem n = I.max;`, `:::freefem m = J.max;`.
 
@@ -756,7 +756,7 @@ B = A(I^-1, J^-1);
 ```
 
 ### Complex matrix
-Use `.im` and `.re` to get the imaginary and real part of a complex amtrix, respectvely:
+Use `.im` and `.re` to get the imaginary and real part of a complex matrix, respectively:
 ```freefem
 matrix<complex> C = ...
 matrix R = C.re;

@@ -122,7 +122,7 @@ load "Element_P3"
 LU solver.
 
 ## N
-Outward unit normal at the current point if it is on a curve defined by a border. `:::freefem N.x, N.y, N.z` are respectively the $x$, $y$y and $z$ components of the normal.
+Outward unit normal at the current point if it is on a curve defined by a border. `:::freefem N.x, N.y, N.z` are respectively the $x$, $y$ and $z$ components of the normal.
 
 ```freefem
 func Nx = N.x;
@@ -132,7 +132,7 @@ func Nz = N.z;
 
 ## nTonEdge
 
-Number of adjacent triangle of the current edge.
+Number of adjacent triangles of the current edge.
 
 ```freefem
 real nTE = int2d(Th)(nTonEdge);

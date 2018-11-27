@@ -813,7 +813,7 @@ The function
 $$
 f(x,y) = 10.0x^3+y^3+\tan^{-1}[\varepsilon/(\sin(5.0y)-2.0x)],\ \varepsilon = 0.0001
 $$
-sharply varies in value and the initial mesh given by one of the commands if [Mesh Generation section](##commands-for-mesh-generation) cannot reflect its sharp variations.
+sharply varies in value and the initial mesh given by one of the commands in the [Mesh Generation section](##commands-for-mesh-generation) cannot reflect its sharp variations.
 
 ```freefem
 // Parameters
@@ -1917,17 +1917,17 @@ The parameters of this command are:
 
 	The number of associated points or vertex $V_{i}^{2d}$ is the integer part of $coef(V_{i}^{2d}) M$.
 
-* `:::freefem region=` This vector is used to initialized the region of tetrahedra.
+* `:::freefem region=` This vector is used to initialize the region of tetrahedra.
 
-	This vector contain successive pair of the 2d region number at index $2i$ and the corresponding 3d region number at index $2i+1$, like [`:::freefem change`](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
+	This vector contains successive pairs of the 2d region number at index $2i$ and the corresponding 3d region number at index $2i+1$, like [`:::freefem change`](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
 
-* `:::freefem labelmid=` This vector is used to initialized the 3d labels number of the vertical face or mid face form the 2d label number.
+* `:::freefem labelmid=` This vector is used to initialize the 3d labels number of the vertical face or mid face from the 2d label number.
 
-	This vector contains successive pair of the 2d label number at index $2i$ and the corresponding 3d label number at index $2i+1$, like [`:::freefem change`](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
+	This vector contains successive pairs of the 2d label number at index $2i$ and the corresponding 3d label number at index $2i+1$, like [`:::freefem change`](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
 
-* `:::freefem labelup=` This vector is used to initialized the 3d label numbers of the upper/top face form the 2d region number.
+* `:::freefem labelup=` This vector is used to initialize the 3d label numbers of the upper/top face from the 2d region number.
 
-	This vector contains successive pair of the 2d region number at index $2i$ and the corresponding 3d label number at index $2i+1$, like [`:::freefem change`](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
+	This vector contains successive pairs of the 2d region number at index $2i$ and the corresponding 3d label number at index $2i+1$, like [`:::freefem change`](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
 
 * `:::freefem labeldown=` Same as the previous case but for the lower/down face label.
 
