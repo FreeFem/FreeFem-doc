@@ -236,7 +236,7 @@ The boundary consists of 10 lines $L_i,\, i=1,\cdots,10$ whose end points are $q
 
 </center>
 
-In FreeFem++ there are many mesh file formats available for communication with other tools such as `emc2`, `modulef`, ... (see [Mesh format chapter](/MeshFormat) $\codered$). The extension of a file implies its format. More details can be found on the file format .msh in the article by F. Hecht "bamg : a bidimensional anisotropic mesh generator" [Hecht1998](#refHecht19982).
+In FreeFem++ there are many mesh file formats available for communication with other tools such as `emc2`, `modulef`, ... (see [Mesh format chapter](./Developers/#mesh-format) $\codered$). The extension of a file implies its format. More details can be found on the file format .msh in the article by F. Hecht "bamg : a bidimensional anisotropic mesh generator" [Hecht1998](#refHecht19982).
 
 A mesh file can be read into FreeFem++ except that the names of the borders are lost and only their reference numbers are kept. So these borders have to be referenced by the number which corresponds to their order of appearance in the program, unless this number is overwritten by the keyword `:::freefem label`. Here are some examples:
 
