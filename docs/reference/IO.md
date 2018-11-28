@@ -1,6 +1,6 @@
 See [I/O example](/examples/#io)
 
-See [File stream example](/examples/file-stream).
+See [File stream example](/examples/#file-stream).
 
 ## cout
 Standard C++ output device (default: console).

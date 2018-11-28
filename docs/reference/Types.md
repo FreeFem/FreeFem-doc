@@ -301,14 +301,14 @@ See [Elementary function example](/examples/#elementary-function) for a complete
 
 __`FreeFem++`__ includes the [Mersenne Twister](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html) random number generator. It is a very fast and accurate random number generator of period $2^{219937}-1$.
 
-See [`:::freefem randint32()`](Functions/#randint32), [`:::freefem randint31()`](Functions/#randint31), [`:::freefem randreal1()`](Functions/#randreal1), [`:::freefem randreal2()`](Functions/#randreal2), [`:::freefem randreal3()`](Functions/#randreal3), [`:::freefem randres53()`](Functions/#randres53), [`:::freefem randinit(seed)`](Functions/#randinit).
+See [`:::freefem randint32()`](../Functions/#randint32), [`:::freefem randint31()`](../Functions/#randint31), [`:::freefem randreal1()`](../Functions/#randreal1), [`:::freefem randreal2()`](../Functions/#randreal2), [`:::freefem randreal3()`](../Functions/#randreal3), [`:::freefem randres53()`](../Functions/#randres53), [`:::freefem randinit(seed)`](../Functions/#randinit).
 
 In addition, the `ffrandom` plugin interface `:::freefem random`, `:::freefem srandom` and `:::freefem srandomdev` functions of the unix `libc` library. The range is $0 -- 2^{31}-1$.
 
 !!!note
 	If `:::freefem srandomdev` is not defined, a seed based on the current time is used.
 
-`:::freefem gsl` plugin equally allows usage of all random functions of the `gsllib`, see [gsl external library](ExternalLibraries/#ff_gsl_awk).
+`:::freefem gsl` plugin equally allows usage of all random functions of the `gsllib`, see [gsl external library](../ExternalLibraries/#ff_gsl_awk).
 
 ### FE-functions
 
@@ -355,7 +355,7 @@ Laplacian;
 
 	The default solver is `:::freefem sparsesolver` or `:::freefem LU` if any direct sparse solver is available.
 
-	Solvers are listed in the [Global variables](GlobalVariables) section.
+	Solvers are listed in the [Global variables](../GlobalVariables/) section.
 
 !!!note "Stop test"
 	A criterion $\varepsilon$ can be defined for iterative methods, like CG for example:
@@ -669,7 +669,7 @@ matrix<complex> Ai = ...
 !!!note "Solver"
 	See [`:::freefem problem`](#problem).
 
-	The default solver is [`:::freefem GMRES`](GlobalVariables/#gmres).
+	The default solver is [`:::freefem GMRES`](../GlobalVariables/#gmres).
 
 	```freefem
 	matrix A = vLaplacian(Uh, Uh, solver=sparsesolver);
@@ -709,19 +709,19 @@ matrix<complex> Ai = ...
 	See [`:::freefem problem`](#problem).
 
 !!!note "datafilename"
-	Name of the file containing solver parameters, see [Parallel sparse solvers](/documentation/ParallelSparseSolvers)
+	Name of the file containing solver parameters, see [Parallel sparse solvers](/documentation/Parallelization/#ParallelSparseSolvers)
 
 !!!note "lparams"
-	Vector of integer parameters for the solver, see [Parallel sparse solvers](/documentation/ParallelSparseSolvers)
+	Vector of integer parameters for the solver, see [Parallel sparse solvers](/documentation/Parallelization/#ParallelSparseSolvers)
 
 !!!note "dparams"
-	Vector of real parameters for the solver, see [Parallel sparse solvers](/documentation/ParallelSparseSolvers)
+	Vector of real parameters for the solver, see [Parallel sparse solvers](/documentation/Parallelization/#ParallelSparseSolvers)
 
 !!!note "sparams"
-	String parameters for the solver, see [Parallel sparse solvers](/documentation/ParallelSparseSolvers)
+	String parameters for the solver, see [Parallel sparse solvers](/documentation/Parallelization/#ParallelSparseSolvers)
 
 !!!tip
-	To modify the `:::freefem solver`, the stop test,... after the matrix construction, use the [`:::freefem set` keyword](functions/#set).
+	To modify the `:::freefem solver`, the stop test,... after the matrix construction, use the [`:::freefem set` keyword](../Functions/#set).
 
 ### Matrix size
 The size of a matrix is obtain using:

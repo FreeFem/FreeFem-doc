@@ -95,7 +95,7 @@ The data are the gravity force $\mathbf{g}$ and the boundary stress $\mathbf{h}$
 	plot(sh, wait=true);
 	```
 
-	 We use the Uzawa conjugate gradient to solve the Stokes problem like in [Navier-Stokes equations](NavierStokesEquations/#uzawa-algorithm-and-conjugate-gradients)
+	 We use the Uzawa conjugate gradient to solve the Stokes problem like in [Navier-Stokes equations](../NavierStokesEquations/#uzawa-algorithm-and-conjugate-gradients)
 
 	```freefem
 	// Fespace (fluid)

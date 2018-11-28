@@ -2,7 +2,7 @@
 
 First, it is possible to define variational forms, and use this forms to build matrix and vector to make very fast script (4 times faster here).
 
-For example solve the [ThermalConduction](ThermalConduction) problem, we must solve the temperature equation in $\Omega$ in a time interval (0,T).
+For example solve the [ThermalConduction](../ThermalConduction/) problem, we must solve the temperature equation in $\Omega$ in a time interval (0,T).
 
 \begin{eqnarray}
 	\p_t u -\nabla\cdot(\kappa\nabla u) &=& 0 &\hbox{ in } \Omega\times(0,T)\\

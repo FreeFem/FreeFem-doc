@@ -1,6 +1,6 @@
 Consider an elastic plate whose displacement change vertically, which is made up of three plates of different materials, welded on each other.
 
-Let $\Omega_i$, $i=1,2,3$ be the domain occupied by $i$-th material with tension $\mu_i$ (see [Soap film](StaticProblems/#soap-film)).
+Let $\Omega_i$, $i=1,2,3$ be the domain occupied by $i$-th material with tension $\mu_i$ (see [Soap film](../StaticProblems/#soap-film)).
 
 The computational domain $\Omega$ is the interior of $\overline{\Omega_1}\cup \overline{\Omega_2}\cup \overline{\Omega_3}$. The vertical displacement $u(x,y)$ is obtained from
 
