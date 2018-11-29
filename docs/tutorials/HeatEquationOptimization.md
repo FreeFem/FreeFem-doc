@@ -4,12 +4,14 @@ First, it is possible to define variational forms, and use this forms to build m
 
 For example solve the [ThermalConduction](../ThermalConduction/) problem, we must solve the temperature equation in $\Omega$ in a time interval (0,T).
 
-\begin{eqnarray}
+$$
+\begin{array}{rcll}
 	\p_t u -\nabla\cdot(\kappa\nabla u) &=& 0 &\hbox{ in } \Omega\times(0,T)\\
 	u(x,y,0) &=& u_0 + x u_1\\
 	u &=& 30 &\hbox{ on } \Gamma_{24}\times(0,T)\\
 	\kappa\frac{\p u}{\p n} + \alpha(u-u_e) &=& 0 &\hbox{ on } \Gamma\times(0,T)
-\end{eqnarray}
+\end{array}
+$$
 
 The variational formulation is in $L^2(0,T;H^1(\Omega))$; we shall seek $u^n$ satisfying
 
@@ -17,7 +19,7 @@ The variational formulation is in $L^2(0,T;H^1(\Omega))$; we shall seek $u^n$ sa
 \forall w \in V_{0};\ \int_\Omega \frac{u^n-u^{n-1}}{\delta t} w + \kappa\nabla u^n\nabla w) +\int_\Gamma\alpha(u^n-u_{ue})w=0
 \end{equation}
 
-where $ V_0 = \{w\in H^1(\Omega)/ w_{|\Gamma_{24}}=0\}$.
+where $V_0 = \{w\in H^1(\Omega)/ w_{|\Gamma_{24}}=0\}$.
 
 So, to code the method with the matrices $A=(A_{ij})$, $M=(M_{ij})$, and the vectors $u^n, b^n, b',b", b_{cl}$ (notation if $w$ is a vector then $w_i$ is a component of the vector).
 

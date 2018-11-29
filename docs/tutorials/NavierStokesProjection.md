@@ -25,7 +25,7 @@ A possible algorithm, proposed by Chorin, is :
 	p^{m+1} &= 0 &\mbox{ on } \Gamma_{out}
 \end{eqnarray}
 
-where $\mathbf{u}o\mathbf{X}(x) = \mathbf{u}(\mathbf{x}-\mathbf{u}(\mathbf{x})\delta t)$ since $\p _t \mathbf{u} + \mathbf{u}\cdot\nabla \mathbf{u} $ is approximated by the method of characteristics, as in the previous section.
+where $\mathbf{u}o\mathbf{X}(x) = \mathbf{u}(\mathbf{x}-\mathbf{u}(\mathbf{x})\delta t)$ since $\p _t \mathbf{u} + \mathbf{u}\cdot\nabla \mathbf{u}$ is approximated by the method of characteristics, as in the previous section.
 
 We use the Chorin's algorithm with free boundary condition at outlet (i.e. $p=0,\nu \p_n u = 0$), to compute a correction, q, to the pressure.
 
@@ -49,7 +49,7 @@ The geometry is that of a channel with a backward facing step so that the inflow
 This can only be done if the triangulation is sufficiently fine, or well adapted to the flow.
 
 !!!note
-	There is a technical difficulty in the example: the output B.C. Here we put $p=0$ and $ \nu \p_n u = 0$.
+	There is a technical difficulty in the example: the output B.C. Here we put $p=0$ and $\nu \p_n u = 0$.
 
 ```freefem
 // Parameters

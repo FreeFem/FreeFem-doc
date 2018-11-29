@@ -7,10 +7,9 @@ The problem is find the velocity field $\mathbf{u}=(u_i)_{i=1}^d$ and the pressu
 	\nabla\cdot \mathbf{u}&=&0
 \end{eqnarray*}
 
-where $\nu$ is the viscosity of the fluid, $\nabla = (\p_i )_{i=1}^d $, the dot product is $\cdot$, and $\Delta = \nabla\cdot\nabla$ with the same boundary conditions ( $\mathbf{u}$ is  given on $\Gamma$)
+where $\nu$ is the viscosity of the fluid, $\nabla = (\p_i )_{i=1}^d$, the dot product is $\cdot$, and $\Delta = \nabla\cdot\nabla$ with the same boundary conditions ($\mathbf{u}$ is  given on $\Gamma$)
 
-The weak form is
-find $\mathbf{u}, p $ such that for $\forall \mathbf{v}$ (zero on $\Gamma$), and $\forall  q$
+The weak form is find $\mathbf{u}, p$ such that for $\forall \mathbf{v}$ (zero on $\Gamma$), and $\forall  q$
 
 \begin{equation}
 \int_\Omega  ((\mathbf{u}\cdot\nabla) \mathbf{u} ). \mathbf{v} + \nu \nabla \mathbf{u}:\nabla \mathbf{v}
@@ -19,10 +18,9 @@ find $\mathbf{u}, p $ such that for $\forall \mathbf{v}$ (zero on $\Gamma$), and
 
 The Newton Algorithm to solve nonlinear problem is
 
-Find $u\in V$ such that $F(u)=0$ where
-$ F : V \mapsto V $.
+Find $u\in V$ such that $F(u)=0$ where $F : V \mapsto V$.
 
-1. choose $u_0\in \R^n $ , ;
+1. choose $u_0\in \R^n$ , ;
 2. for ( $i =0$; $i$ < niter; $i = i+1$)
 	1. solve $DF(u_i) w_i = F(u_i)$;
 	2. $u_{i+1} = u_i - w_i$;
@@ -32,9 +30,9 @@ break $|| w_i|| < \varepsilon$.
 
 Where $DF(u)$ is the differential of $F$ at point $u$, this is a linear application such that:
 
-$
+$$
 F(u+\delta) = F(u) + DF(u) \delta + o(\delta)
-$
+$$
 
 For Navier Stokes, $F$ and $DF$ are :
 

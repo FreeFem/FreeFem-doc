@@ -31,9 +31,9 @@ $$
 <!--- TODO check ref-->
 With such _"mixed boundary conditions"_ the problem has a unique solution (**see (1987)**, Dautray-Lions (1988), Strang (1986) and Raviart-Thomas (1983)). The easiest proof is to notice that $\varphi$ is the state of least energy, i.e.
 
- $$
+$$
 E(\phi) =\min_{\varphi-z\in V} E(v) ,\quad \mbox{with} \quad E(v)=\int_\Omega(\frac12|\n v|^2-fv )
- $$
+$$
 
 and where $V$ is the subspace of the Sobolev space $H^1(\Omega)$ of functions which have zero trace on $\Gamma_1$. Recall that ($x\in\R^d,~d=2$ here)
 
@@ -117,9 +117,9 @@ Next we would like to check the results !
 
 One simple way is to adjust the parameters so as to know the solutions. For instance on the unit circle `a=1`, $\varphi_e=\sin(x^2+y^2-1)$ solves the problem when
 
-$
+$$
 z=0, f=-4(\cos(x^2+y^2-1)-(x^2+y^2)\sin(x^2+y^2-1))
-$
+$$
 
 except that on $\Gamma_2$ $\p_n\varphi=2$ instead of zero. So we will consider a non-homogeneous Neumann condition and solve
 
@@ -129,9 +129,9 @@ $$
 
 We will do that with two triangulations, compute the $L^2$ error:
 
-$
+$$
 \epsilon = \int_\Omega|\varphi-\varphi_e|^2
-$
+$$
 
 and print the error in both cases as well as the log of their ratio an indication of the rate of convergence.
 

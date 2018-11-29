@@ -41,10 +41,10 @@ Let $E,\, F,\, G$ be three sets and $A$ the subset of $E$.
 For two real numbers $a,b$
 
 
- * [\quad]$[a,b]$ is the interval $\{x\in \R|\; a\le x\le b\}$
- * [\quad]$]a,b]$ is the interval $\{x\in \R|\; a< x\le b\}$
- * [\quad]$[a,b[$ is the interval $\{x\in \R|\; a\le x< b\}$
- * [\quad]$]a,b[$ is the interval $\{x\in \R|\; a< x< b\}$
+ * $[a,b]$ is the interval $\{x\in \R|\; a\le x\le b\}$
+ * $]a,b]$ is the interval $\{x\in \R|\; a< x\le b\}$
+ * $[a,b[$ is the interval $\{x\in \R|\; a\le x< b\}$
+ * $]a,b[$ is the interval $\{x\in \R|\; a< x< b\}$
 
 
 ## Differential Calculus

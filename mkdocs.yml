@@ -85,7 +85,7 @@ extra_css:
   - 'stylesheets/extra.css'
 
 extra_javascript:
-  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML
+  - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AMS_CHTML
   - mathjax-config.js
 
 markdown_extensions:

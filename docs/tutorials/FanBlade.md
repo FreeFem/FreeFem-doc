@@ -9,7 +9,7 @@ Without viscosity and vorticity incompressible flows have a velocity given by:
 $$
 u=\left(\begin{matrix}{\p \psi \over \p x_{2} }\\ -{\p \psi
 \over \p x_{1}} \end{matrix}\right), \quad
-\hbox{ where $\psi $ is solution of }\quad \Delta \psi =0
+\hbox{ where $\psi$ is solution of }\quad \Delta \psi =0
 $$
 
 This equation expresses both incompressibility ($\nabla\cdot u=0$) and absence of vortex ($\nabla\times u =0$).
@@ -28,7 +28,7 @@ Let us consider a wing profile $S$ in a uniform flow. Infinity will be represent
 \psi |_{S}=0, \quad
 \psi|_{C}= {u_\infty}y,
 \end{eqnarray}
-where $\partial\Omega=C\cup S $
+where $\partial\Omega=C\cup S$
 
 **The NACA0012 Airfoil**
 

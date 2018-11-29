@@ -23,9 +23,9 @@ The term $\alpha(u-u_e)$ accounts for the loss of temperature by convection in a
 
 The variational formulation is in $L^2(0,T;H^1(\Omega))$; in loose terms and after applying an implicit Euler finite difference approximation in time; we shall seek $u^n(x,y)$ satisfying for all $w\in H^1(\Omega)$:
 
-$
+$$
 \int_\Omega(\frac{u^n-u^{n-1}}{\delta t} w + \kappa\n u^n\n w) +\int_\Gamma\alpha(u^n-u_ue)w=0
-$
+$$
 
 ```freefem
 // Parameters
@@ -143,13 +143,13 @@ $$
 \kappa{\p u\over \p n} +\alpha(u-u_e) + c[(u + 273)^4 - (u_e+273)^4] = 0
 $$
 
-The problem is \x{nonlinear}, and must be solved iteratively. If $m$ denotes the iteration index, a semi-linearization of the radiation condition gives
+The problem is nonlinear, and must be solved iteratively. If $m$ denotes the iteration index, a semi-linearization of the radiation condition gives
 $$
 {\p u^{m+1}\over \p n} + \alpha(u^{m+1}-u_e)+ c(u^{m+1}-u_e)
 (u^m+u_e +546) ((u^m + 273)^2 + (u_e+273)^2) = 0,
 $$
 
-because we have the identity $ a^4 - b^4 = (a-b)(a+b)(a^2+b^2)$.
+because we have the identity $a^4 - b^4 = (a-b)(a+b)(a^2+b^2)$.
 
 The iterative process will work with $v=u-u_e$.
 

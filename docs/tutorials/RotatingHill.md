@@ -12,12 +12,10 @@ $$
 
 Pure convection by $\mathbf{u}$ is
 
-$$
 \begin{eqnarray}
 \p_t c + \mathbf{u}.\nabla c &= 0 &\hbox{ in } \Omega\times(0,T)\\
 c (t=0) &= c ^0 &\hbox{ in } \Omega.
 \end{eqnarray}
-$$
 
 The exact solution $c(x_t,t)$ at time $t$ en point $x_t$ is given by
 
@@ -40,7 +38,7 @@ The game consists in solving the equation until $T=2\pi$, that is for a full rev
 
 ## **Solution by a Characteristics-Galerkin Method**
 
-In FreeFem++ there is an operator called `:::freefem convect([u1,u2], dt, c)` which compute $ c\circ X$ with $X$ is the convect field defined by $ X(x)= x_{dt}$ and where $x_\tau$ is particule path in the steady state velocity field $\mathbf{u}=[u1,u2]$ starting at point $x$ at time $\tau=0$, so $x_\tau$ is solution of the following ODE:
+In FreeFem++ there is an operator called `:::freefem convect([u1,u2], dt, c)` which compute $c\circ X$ with $X$ is the convect field defined by $X(x)= x_{dt}$ and where $x_\tau$ is particule path in the steady state velocity field $\mathbf{u}=[u1,u2]$ starting at point $x$ at time $\tau=0$, so $x_\tau$ is solution of the following ODE:
 
 $$
 \dot{x}_\tau = u(x_\tau), \mathbf{x}_{\tau=0}=x.

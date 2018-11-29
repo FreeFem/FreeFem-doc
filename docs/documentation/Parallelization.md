@@ -232,10 +232,12 @@ This is a explanation of the two examples [MPI-GMRES 2D](/examples/#mpi-gmres-2d
 
 To solve the following Poisson problem on domain $\Omega$ with boundary $\Gamma$ in $L^2(\Omega)$ :
 
-\begin{eqnarray}
+$$
+\begin{array}{rcll}
 	-\Delta u &=& f & \mbox{ in } \Omega\\
 	u &=& g & \mbox{ on } \Gamma
-\end{eqnarray}
+\end{array}
+$$
 
 where $f$ and $g$ are two given functions of $L^2(\Omega)$ and of $H^{\frac12}(\Gamma)$,
 
@@ -251,12 +253,14 @@ The parallel Schwarz method is:
 
 Let $\ell=0$ the iterator and a initial guest $u^0$ respecting the boundary condition (i.e. $u^0_{|\Gamma} = g$).
 
-\begin{eqnarray}
+$$
+\begin{array}{rcll}
 	\forall i = 1 .., N_p:&\nonumber\\
 	\displaystyle -\Delta u_i^\ell &=& f &\mbox{ in } \Omega_i\label{eq:lapl}\\
 	u_i^\ell &=& u^\ell & \mbox{ on } \Gamma_i \setminus \Gamma\\
 	u_i^\ell &=& g & \mbox{ on } \Gamma_i \cap \Gamma
-\end{eqnarray}
+\end{array}
+$$
 
 \begin{equation}
 \label{eq:pu1}
@@ -2650,9 +2654,9 @@ Local scalar products are performed concurrently. Thus, the implementation is pa
 
 A `:::freefem axpy` procedure $y \leftarrow \alpha\,x+y$ for $x,y\in \mathbb{R}^{n}$ and $\alpha\in\R$ is easily implemented concurrently for distributed vectors in the form:
 
-\[
+$$
 y_i \leftarrow \alpha\,x_i+y_i\,, \forall\ 1\le i \le np\,.
-\]
+$$
 
 The matrix vector product is more involved and details are given in the SIAM book  [An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation](https://www.ljll.math.upmc.fr/nataf/OT144DoleanJolivetNataf_full.pdf) and even more details are given in [P. Jolivet's PhD manuscrit](http://jolivet.perso.enseeiht.fr/thesis.pdf).
 

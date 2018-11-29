@@ -16,7 +16,7 @@ documentationPages=(
 	documentation/FiniteElement
 	documentation/Visualization
 	documentation/AlgorithmsOptimization
-	# documentation/Parallelization
+	documentation/Parallelization
 	documentation/Plugins
 	documentation/Developers
 )
@@ -53,7 +53,7 @@ function md2latex() {
   for md in "${array[@]}"
   do
     echo "convert $target$md"
-    pandoc $target$md.md -o $target$md.tex
+    pandoc $target$md.md -o $target$md.tex --filter pandoc-latex-admonition
   done
 }
 

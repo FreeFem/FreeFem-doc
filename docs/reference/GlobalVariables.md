@@ -195,7 +195,7 @@ Verbosity level.
 int Verbosity = verbosity;
 verbosity = 0;
 ```
-0 = nothing, 1 = few informations, 10 = a lot of informations, ...
+0 = nothing, 1 = little information, 10 = a lot of information, ...
 
 This is an integer value.
 
@@ -231,6 +231,6 @@ This is a real value.
 ## z
 The $z$ coordinate at the current point.
 ```freefem
-real CurrentY = y;
+real CurrentZ = z;
 ```
 This is a real value.

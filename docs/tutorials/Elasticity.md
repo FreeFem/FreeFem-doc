@@ -48,7 +48,7 @@ $$
  \int_{\Omega} \sigma(u) : \epsilon(\mathbf{v})\;dx - \int_{\Omega} \mathbf{v} f \;dx =0;
 $$
 
-where $:$ denotes the tensor scalar product,  i.e. $ a: b = \sum_{i,j} a_{ij}b_{ij}$.
+where $:$ denotes the tensor scalar product,  i.e. $a: b = \sum_{i,j} a_{ij}b_{ij}$.
 
 So the variational form can be written as :
 
@@ -66,7 +66,7 @@ $$
 	{\bf u} &=& \mathbf{0} ~~\hbox{on}~~\Gamma_2
 	\end{eqnarray*}
 
-Here ${\bf u}=(u,v) $ has two components.
+Here ${\bf u}=(u,v)$ has two components.
 
 The above two equations are strongly coupled by their mixed derivatives, and thus any iterative solution on each of the components is risky. One should rather use FreeFem++'s system approach and write:
 
