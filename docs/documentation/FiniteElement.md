@@ -39,7 +39,7 @@ In 2D we have a pair of periodic boundary conditions, if $[la_i, sa_i]$, $[lb_i,
 In 2D, we have a pair of periodic boundary conditions, if $[la_i, sa_i, ta_i]$, $[lb_i, sb_i, tb_i]$ is a pair of `:::freefem int`, the 2 labels $la_i$ and $lb_i$ define the 2 pieces of boundary to be in equivalence. If $[la_i, sa_i, ta_i]$, $[lb_i, sb_i, tb_i]$ is a pair of `:::freefem real`, then $sa_i$, $ta_i$ and $sb_i$, $tb_i$ give two common parameters on the two boundary surfaces, and two points are identified as one if the two parameters are equal.
 
 !!! note
-	The 2D mesh of the two identified borders must be the same, so to be sure, use the parameter `:::freefem fixedborder=true` in `:::freefem buildmesh` command (see [`:::freefem fixedborder`](./MeshGeneration/#border)).
+	The 2D mesh of the two identified borders must be the same, so to be sure, use the parameter `:::freefem fixedborder=true` in `:::freefem buildmesh` command (see [`:::freefem fixedborder`](../MeshGeneration/#border)).
 	<!-- like in example `:::freefem periodic2bis.edp` (see \ref{exm:periodic4bis}). -->
 
 

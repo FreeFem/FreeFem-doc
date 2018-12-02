@@ -270,7 +270,7 @@ if the following are satisfied:
 	|:----:|
 	|![TimeDifference](images/EvolutionProblems_TimeDifference.png)|
 
-	We can see in <a href="Fig19">Fig. 19</a> that $u_h^n(\theta)$ become unstable at $\theta=0.4$, and figures are omitted in the case $\theta<0.4$.
+	We can see in [Fig. 19](#Fig19) that $u_h^n(\theta)$ become unstable at $\theta=0.4$, and figures are omitted in the case $\theta<0.4$.
 
 ## Convection
 
@@ -516,7 +516,7 @@ An implicit Euler scheme is used and a mesh adaptation is done every 10 time ste
 	plot(u, wait=true, value=true);
 	```
 
-	Results are shown on <a href="Fig21">Fig. 21</a>.
+	Results are shown on [Fig. 21](#Fig21).
 
 	|<a name="Fig22">Fig. 22</a>: The adapted triangulation|
 	|:----:|

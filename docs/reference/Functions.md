@@ -1021,7 +1021,7 @@ int1d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(
 	...
 )
 ```
-Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) definition to impose a boundary condition only (FreeFem++ does not support 1D simulation), or outside to calculate a quantity.
+Used in [problem](../Types/#problem), [solve](../Types/#solve) or [varf](../Types/#varf) definition to impose a boundary condition only (FreeFem++ does not support 1D simulation), or outside to calculate a quantity.
 
 <u>Parameters:</u>
 
@@ -1031,9 +1031,9 @@ Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) 
  Label of the 1D border<br/>
  Default: all borders of the mesh
  - _`:::freefem qfe=`_ ([quadrature formula](../QuadratureFormulae)) _[Optional]_<br/>
- Quadrature formula, see [quadrature formulae](QuadratureFormulae/#int1d)
+ Quadrature formula, see [quadrature formulae](../QuadratureFormulae/#int1d)
  - _`:::freefem qforder=`_ ([quadrature formula](../QuadratureFormulae)) _[Optional]_<br/>
- Quadrature order, see [quadrature formulae](QuadratureFormulae/#int1d)
+ Quadrature order, see [quadrature formulae](../QuadratureFormulae/#int1d)
 
 <u>Output:</u>
 
@@ -1057,7 +1057,7 @@ int2d(Th, [Label], [qfe=Qfe], [qforder=Qforder])(
 	...
 )
 ```
-Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) definition to:
+Used in [problem](../Types/#problem), [solve](../Types/#solve) or [varf](../Types/#varf) definition to:
  - Calculate integral in 2D simulation
  - Impose a boundary condition in 3D simulation
 Or outside to calculate a quantity.
@@ -1072,10 +1072,10 @@ Or outside to calculate a quantity.
  - `Label` (`:::freefem int`) _[Optional]_<br/>
  Label of the 2D border (3D simulation)<br/>
  Default: all borders of the mesh
- - _`:::freefem qfe=`_ ([quadrature formula](../QuadratureFormulae)) _[Optional]<br/>
- Quadrature formula, see [quadrature formulae](QuadratureFormulae/#int2d)
+ - _`:::freefem qfe=`_ ([quadrature formula](../QuadratureFormulae)) _[Optional]_<br/>
+ Quadrature formula, see [quadrature formulae](../QuadratureFormulae/#int2d)
  - _`:::freefem qforder`=_ ([quadrature formula](../QuadratureFormulae)) _[Optional]_<br/>
- Quadrature order, see [quadrature formulae](QuadratureFormulae/#int2d)
+ Quadrature order, see [quadrature formulae](../QuadratureFormulae/#int2d)
 
 <u>Output:</u>
 
@@ -1093,7 +1093,7 @@ int3d(Th, [Region], [qfe=Qfe], [qforder=Qforder])(
 	...
 )
 ```
-Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) definition to calculate integral in 3D simulation, or outside to calculate a quantity.
+Used in [problem](../Types/#problem), [solve](../Types/#solve) or [varf](../Types/#varf) definition to calculate integral in 3D simulation, or outside to calculate a quantity.
 
 <u>Parameters:</u>
 
@@ -1102,10 +1102,10 @@ Used in [problem](types/#problem), [solve](types/#solve) or [varf](types/#varf) 
  - `Region` (`:::freefem int`) _[Optional]_<br/>
  Label of the 3D region<br/>
  Default: all regions of the mesh
- - _`:::freefem qfe`=_ ([quadrature formula](../QuadratureFormulae)) _[Optional]<br/>
- Quadrature formula, see [quadrature formulae](QuadratureFormulae/#int3d)
+ - _`:::freefem qfe`=_ ([quadrature formula](../QuadratureFormulae)) _[Optional]_<br/>
+ Quadrature formula, see [quadrature formulae](../QuadratureFormulae/#int3d)
  - _`:::freefem qforder=`_ ([quadrature formula](../QuadratureFormulae)) _[Optional]_<br/>
- Quadrature order, see [quadrature formulae](QuadratureFormulae/#int3d)
+ Quadrature order, see [quadrature formulae](../QuadratureFormulae/#int3d)
 
  <u>Output:</u>
 
@@ -1798,7 +1798,7 @@ savemesh(Th, MeshFileName);
  - None
 
 ## set
-Set a property to a matrix. See [matrix](Types/#matrix).
+Set a property to a matrix. See [matrix](../Types/#matrix).
 
 ## sign
 Sign of a value.

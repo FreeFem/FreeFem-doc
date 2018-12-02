@@ -30,17 +30,17 @@ real B = int2d(Th)(BoundaryEdge);
 
 Conjugate gradient solver.
 
-> Usable in [`:::freefem problem`](types/#problem) and [`:::freefem solve`](types/#solve) definition
+> Usable in [`:::freefem problem`](../Types/#problem) and [`:::freefem solve`](../Types/#solve) definition
 ```freefem
 problem Laplacian (U, V, solver=CG) = ...
 ```
 
-> Or in [`:::freefem matrix`](types/#matrix) construction
+> Or in [`:::freefem matrix`](../Types/#matrix) construction
 ```freefem
 matrix A = vLaplacian(Uh, Uh, solver=CG);
 ```
 
-> Or in [`:::freefem set` function](functions/#set)
+> Or in [`:::freefem set` function](../Functions/#set)
 ```freefem
 set(A, solver=CG);
 ```
@@ -82,7 +82,7 @@ Vh h = hTriangle;
 ```
 
 ## include
-Include an [external library](ExternalLibraries).
+Include an [external library](../ExternalLibraries).
 ```freefem
 include "iovtk"
 ```

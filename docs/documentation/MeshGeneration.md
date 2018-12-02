@@ -119,7 +119,7 @@ mesh Mesh_Name = buildmesh(Gamma1(m1)+...+GammaJ(mj), OptionalParameter);
 where $m_j$ are positive or negative numbers to indicate how many vertices should be on $\Gamma_j,\, \Gamma=\cup_{j=1}^J \Gamma_J$, and the optional parameter (see also [References](/reference/Functions/#buildmesh)), separated with a comma, can be:
 
 * `:::freefem nbvx= int`, to set the maximum number of vertices in the mesh.
-* `:::freefem fixedborder= bool`, to say if the mesh generator can change the boundary mesh or not (by default the boundary mesh can change; beware that with periodic boundary conditions (see. [Finite Element](./FiniteElement)), it can be dangerous.
+* `:::freefem fixedborder= bool`, to say if the mesh generator can change the boundary mesh or not (by default the boundary mesh can change; beware that with periodic boundary conditions (see. [Finite Element](../FiniteElement)), it can be dangerous.
 
 The orientation of boundaries can be changed by changing the sign of $m_j$.
 
@@ -236,7 +236,7 @@ The boundary consists of 10 lines $L_i,\, i=1,\cdots,10$ whose end points are $q
 
 </center>
 
-In FreeFem++ there are many mesh file formats available for communication with other tools such as `emc2`, `modulef`, ... (see [Mesh format chapter](./Developers/#mesh-format) $\codered$). The extension of a file implies its format. More details can be found on the file format .msh in the article by F. Hecht "bamg : a bidimensional anisotropic mesh generator" [Hecht1998](#refHecht19982).
+In FreeFem++ there are many mesh file formats available for communication with other tools such as `emc2`, `modulef`, ... (see [Mesh format chapter](../Developers/#mesh-format) $\codered$). The extension of a file implies its format. More details can be found on the file format .msh in the article by F. Hecht "bamg : a bidimensional anisotropic mesh generator" [Hecht1998](#refHecht19982).
 
 A mesh file can be read into FreeFem++ except that the names of the borders are lost and only their reference numbers are kept. So these borders have to be referenced by the number which corresponds to their order of appearance in the program, unless this number is overwritten by the keyword `:::freefem label`. Here are some examples:
 
@@ -997,7 +997,7 @@ default.
 
 * `:::freefem nomeshgeneration=` If true, no adapted mesh is generated (useful to compute only a metric).
 
-* `:::freefem periodic=` Writing `:::freefem periodic=[[4,y],[2,y],[1,x],[3,x]];` builds an adapted periodic mesh. The sample builds a biperiodic mesh of a square. (see [periodic finite element spaces](./FiniteElement), and see [the Sphere example](/examples/#sphere) for a full example)
+* `:::freefem periodic=` Writing `:::freefem periodic=[[4,y],[2,y],[1,x],[3,x]];` builds an adapted periodic mesh. The sample builds a biperiodic mesh of a square. (see [periodic finite element spaces](../FiniteElement), and see [the Sphere example](/examples/#sphere) for a full example)
 
 We can use the command `:::freefem adaptmesh` to build a uniform mesh with a constant mesh size. To build a mesh with a constant mesh size equal to $\frac{1}{30}$ try:
 
@@ -1481,7 +1481,7 @@ Nb err = 0
 
 ### Read/Write Statements for a Mesh in 3D
 
-In three dimensions, the file mesh format supported for input and output files by FreeFem++ are the extension .msh and .mesh. These formats are described in the [Mesh Format section](./Developers/#mesh-format) $\codered$.
+In three dimensions, the file mesh format supported for input and output files by FreeFem++ are the extension .msh and .mesh. These formats are described in the [Mesh Format section](../Developers/#mesh-format) $\codered$.
 
 **Extension file .msh**
 The structure of the files with extension .msh in 3D is given in <a href="#Tab2">Table 2.</a>.
@@ -1503,7 +1503,7 @@ The boundary consists of a union of triangles. Each triangle $be_j, j=1,\cdots,n
 </center>
 
 **extension file .mesh**
-The data structure for a three dimensional mesh is composed of the data structure presented in [Mesh Format section](./Developers/#mesh-format) $\codered$ and a data structure for the tetrahedra. The tetrahedra of a three dimensional mesh are referred using the following field:
+The data structure for a three dimensional mesh is composed of the data structure presented in [Mesh Format section](../Developers/#mesh-format) $\codered$ and a data structure for the tetrahedra. The tetrahedra of a three dimensional mesh are referred using the following field:
 
 ```
 Tetrahedra
@@ -1513,7 +1513,7 @@ Vertex1 Vertex2 Vertex3 Vertex4 Label
 Vertex1 Vertex2 Vertex3 Vertex4 Label
 ```
 
-This field is express with the notation of [Mesh Format section](./Developers/#mesh-format) $\codered$.
+This field is express with the notation of [Mesh Format section](../Developers/#mesh-format) $\codered$.
 
 ### TetGen: A tetrahedral mesh generator
 
@@ -1830,7 +1830,7 @@ The parameters of movemesh in three dimensions are:
 
 * `:::freefem region=` sets the integer labels of the tetrahedra. 0 by default.
 
-* `:::freefem label=` sets the labels of the border faces. This parameter is initialized as the label for the keyword [`:::freefem change`](./MeshGeneration/#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
+* `:::freefem label=` sets the labels of the border faces. This parameter is initialized as the label for the keyword [`:::freefem change`](#how-to-change-the-label-of-elements-and-border-elements-of-a-mesh).
 
 * `:::freefem facemerge=` An integer expression. When you transform a mesh, some faces can be merged. This parameter equals to one if the merges' faces is considered. Otherwise it equals to zero. By default, this parameter is equal to 1.
 
