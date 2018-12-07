@@ -16,6 +16,12 @@ nav:
     - Visualization: documentation/Visualization.md
     - Algorithms & Optimization: documentation/AlgorithmsOptimization.md
     - Parallelization: documentation/Parallelization.md
+    - ffddm:
+      - What is ffddm ?: documentation/ffddm/ffddm.md
+      - Tutorial slides: documentation/ffddm/tutorial-slides.html
+      - Introduction to DDM: documentation/ffddm/introddm.md
+      - ffddm Documentation: documentation/ffddm/documentation.md
+      - Examples: documentation/ffddm/examples.md
     - Plugins: documentation/Plugins.md
     - Developers: documentation/Developers.md
     - TODO: documentation/TODO.md
