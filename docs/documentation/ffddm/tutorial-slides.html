@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code,
+      .remark-inline-code { font-family: 'Ubuntu Mono';
+        /* background: #F5F5F5; /* lighter */
+        background: #e7e8e2; /* darker */
+        border-radius: 3px;
+        padding: 4px;
+      }
+
+      .pull-left {
+        float: left;
+        width: 46%;
+      }
+      .pull-right {
+        float: right;
+        width: 51%;
+      }
+      .pull-left31 {
+        float: left;
+        width: 31%;
+      }
+      .pull-right65 {
+        float: right;
+        width: 65%;
+      }
+      .pull-left38 {
+        float: left;
+        width: 38%;
+      }
+      .pull-right58 {
+        float: right;
+        width: 58%;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: left, top
+
+# Why Domain Decomposition Methods ?
+
+How can we solve a large sparse linear system $A u = b \in \mathbb{R}^n$ ?
+
+![:scale 100%](figures/Methods_Solves_1.png)
+
+---
+
+### [Step 1: Decompose the mesh](documentation/#overlapping-mesh-decomposition)
+<div style="overflow: hidden;">
+.pull-left38[
+```ff1
+mesh Th = square(50,50);
+```
+]
+.pull-right58[
+```ff1
+mesh Th = square(50,50);
+ffddmbuildDmesh(M, Th, mpiCommWorld)
+```
+]
+</div>
+
+### [Step 2: Define your finite element](documentation/#local-finite-element-spaces)
+<div style="overflow: hidden;">
+.pull-left38[
+```ff1
+fespace Vh(Th, P1);
+```
+]
+.pull-right58[
+```ff1
+macro def(u)  u // EOM
+macro init(u) u // EOM
+ffddmbuildDfespace(FE, M, real, def, init, P1)
+```
+]
+</div>
+
+### [Step 3: Define your problem](documentation/#define-the-problem-to-solve)
+<div style="overflow: hidden;">
+.pull-left38[
+```ff1
+varf Pb(u, v) = ...
+matrix A = Pb(Vh, Vh);
+```
+]
+.pull-right58[
+```ff1
+macro Varf(varfName, meshName, VhName)
+    varf varfName(u,v) = ... // EOM
+ffddmsetupOperator(PB, FE, Varf)
+```
+]
+</div>
+
+---
+
+## [Step 1: Decompose the mesh](documentation/#overlapping-mesh-decomposition)
+
+Build a collection of $N$ overlapping sub-meshes $(Th\_{i})\_{i=1}^N$ from the global mesh $Th$
+
+<div style="overflow: hidden; display: inline-block;">
+ <img src="figures/domain1.png" width = 35% style="float:left" />
+ <img src="figures/domain2.png" width = 35% style="float:right"/>
+</div>
+
+```cpp
+ffddmbuildDmesh( prmesh , ThGlobal , comm )
+```
+
+- mesh distributed over the mpi processes of communicator **comm**
+- initial mesh **ThGlobal** partitioned with *metis* by default
+- size of the overlap given by [ffddmoverlap](parameters/#global-parameters) (default 1)
+
+`prmesh#Thi` is the local mesh of the subdomain for each mpi process
+
+---
+
+```cpp
+macro dimension 2// EOM            // 2D or 3D
+
+include "ffddm.idp"
+
+mesh ThGlobal = square(50,50);    // global mesh
+
+*// Step 1: Decompose the mesh
+*ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
+```
+
+```cpp
+medit("Th"+mpirank, MThi);
+```
+
+Copy and paste this to a file 'test.edp' and run it:
+
+```console
+$ ff-mpirun -np 2 test.edp -glut ffglut
+```
+
+---
+
+## [Step 2: Define your finite element](documentation/#local-finite-element-spaces)
+
+```cpp
+ffddmbuildDfespace( prfe , prmesh , scalar , def , init , Pk )
+```
+
+builds the local finite element spaces and associated distributed operators on top of the mesh decomposition **prmesh**
+
+- **scalar**: type of data for this finite element: *real* or *complex*
+- **Pk**: your type of finite element: P1, [P2,P2,P1], ...
+- **def**, **init**: macros specifying how to define and initialize a **Pk** FE function
+
+`prfe#Vhi` is the local FE space defined on `prmesh#Thi` for each mpi process
+
+.pull-left[
+example for P2 *complex*:
+```cpp
+macro def(u)  u // EOM
+macro init(u) u // EOM
+ffddmbuildDfespace( FE , M , complex ,
+                     def , init , P2 )
+```
+]
+.pull-right[
+example for [P2,P2,P1] *real*:
+```cpp
+macro def(u)  [u, u#B, u#C] // EOM
+macro init(u) [u, u, u]     // EOM
+ffddmbuildDfespace( FE , M , real , def ,
+                     init , [P2,P2,P1] )
+```
+]
+
+---
+
+## [Step 2: Define your finite element](documentation/#local-finite-element-spaces)
+
+### Distributed vectors and restriction operators
+
+<div>
+ <img src="figures/domain2.png" width = 35% style="float:right"/>
+</div>
+
+Natural decomposition of the set of d.o.f.'s ${\mathcal N}$ of $Vh$ into the $N$ subsets of d.o.f.'s $({\mathcal N}\_i)\_{i=1}^N$ each associated with the local FE space $Vh\_i$
+
+$${\mathcal N} = \cup\_{i=1}^N {\mathcal N}\_i\,, $$
+but with duplications of the d.o.f.'s in the overlap
+
+**_Definition_** a *distributed vector* is a collection of local vectors $({\mathbf V\_i})\_{1\le i\le N}$ so that the values on the duplicated d.o.f.'s are the same:
+
+$$
+{\mathbf V}\_i = R\_i\,{\mathbf V}, \quad i = 1, ..., N
+$$
+
+where ${\mathbf V}$ is the corresponding global vector  
+and $R\_i$ is the *restriction operator* from ${\mathcal N}$ into ${\mathcal N}\_i$
+
+**_Remark_** $R\_i^T$ is the *extension operator*: extension by $0$ from ${\mathcal N}\_i$ into ${\mathcal N}$
+
+---
+
+## [Step 2: Define your finite element](documentation/#local-finite-element-spaces)
+
+### Partition of unity
+
+<div style="overflow: hidden; display: inline-block;">
+<div>
+ <img src="figures/domain3.png" width = 43% style="float:right"/>
+</div>
+
+Duplicated unknowns coupled via a *partition of unity*:
+$$ I = \sum\_{i = 1}^N R\_i^T D\_i R\_i $$
+</div>
+
+ $(D\_i)\_{1\le i \le N}$ are square diagonal matrices of size #${\mathcal N}\_i$
+
+ $$ {\mathbf V} = \sum\_{i = 1}^N R\_i^T D\_i R\_i {\mathbf V} = \sum\_{i = 1}^N R\_i^T D\_i {\mathbf V\_i} $$
+
+---
+
+## [Step 2: Define your finite element](documentation/#local-finite-element-spaces)
+
+### Data exchange between neighbors
+
+```cpp
+func prfe#update(K[int] vi, bool scale)
+```
+
+synchronizes local vectors ${\mathbf V}\_i$ between subdomains  
+$\Rightarrow$ exchange the values of ${\mathbf V}\_i$ shared with neighbors in the overlap region
+
+
+ $$
+  {\mathbf V}\_i \leftarrow R\_i \left( \sum\_{j=1}^N R\_j^T D\_j {\mathbf V}\_j \right) = D\_i {\mathbf V}\_i + \sum\_{j\in \mathcal{O}(i)} R\_i\,R\_j^T\,D\_j {\mathbf V}\_j
+ $$
+ where $\mathcal{O}(i)$ is the set of neighbors of subdomain $i$. Exchange operators $R_i\,R_j^T$ correspond to neighbor-to-neighbor MPI communications
+
+ .pull-left[
+ ```cpp
+ FEupdate(vi, false);
+ ```
+ $$
+  {\mathbf V}\_i \leftarrow R\_i \left( \sum\_{j=1}^N R\_j^T {\mathbf V}\_j \right)
+ $$
+ ]
+ .pull-right[
+ ```cpp
+ FEupdate(vi, true);
+ ```
+ $$
+  {\mathbf V}\_i \leftarrow R\_i \left( \sum\_{j=1}^N R\_j^T D\_j {\mathbf V}\_j  \right)
+ $$
+ ]
+---
+
+```cpp
+macro dimension 2// EOM            // 2D or 3D
+
+include "ffddm.idp"
+
+mesh ThGlobal = square(50,50);    // global mesh
+
+// Step 1: Decompose the mesh
+ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
+
+*// Step 2: Define your finite element
+*macro def(u)  u // EOM
+*macro init(u) u // EOM
+*ffddmbuildDfespace( FE , M , real , def , init , P2 )
+```
+
+```cpp
+FEVhi vi = x;
+medit("v"+mpirank, MThi, vi);
+
+vi[] = FEDk[mpirank];
+medit("D"+mpirank, MThi, vi);
+
+vi = 1;
+FEupdate(vi[],true);
+medit("1", MThi, vi);
+
+FEupdate(vi[],false);
+medit("multiplicity", MThi, vi);
+```
+TODO ffddmplot
+
+---
+
+## [Step 3: Define your problem](documentation/#define-the-problem-to-solve)
+
+```cpp
+ffddmsetupOperator( pr , prfe , Varf )
+```
+
+builds the distributed operator associated to your variational form on top of the distributed FE **prfe**  
+
+**Varf** is a macro defining your abstract variational form
+
+```cpp
+macro Varf(varfName, meshName, VhName)
+    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(f*v)
+                       + on(1, u = 0);  // EOM
+```
+
+$\Rightarrow$ assemble local 'Dirichlet' matrices $A\_i = R\_i A R\_i^T$
+
+<div style="overflow: hidden;">
+.pull-left31[
+$$A = \sum\_{i=1}^N R\_i^T D\_i A\_i R\_i$$
+]
+.pull-right65[
+ **Warning** only true because $D\_i R\_i A = D\_i A R\_i$  
+ due to the fact that $D\_i$ vanishes at the interface **!!**
+]
+</div>
+
+`pr#A` applies $A$ to a distributed vector: ${\mathbf U}\_i \leftarrow R\_i \sum\_{j=1}^N R\_j^T D\_j A\_j {\mathbf V}\_j$
+
+$\Rightarrow$ multiply by $A\_i$ + `prfe#update`
+
+---
+
+```cpp
+macro dimension 2// EOM            // 2D or 3D
+
+include "ffddm.idp"
+
+mesh ThGlobal = square(50,50);    // global mesh
+
+// Step 1: Decompose the mesh
+ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
+
+// Step 2: Define your finite element
+macro def(u)  u // EOM
+macro init(u) u // EOM
+ffddmbuildDfespace( FE , M , real , def , init , P2 )
+
+*// Step 3: Define your problem
+*macro grad(u) [dx(u), dy(u)] // EOM
+*macro Varf(varfName, meshName, VhName)
+*    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(1*v)
+*                       + on(1, u = 0);  // EOM
+*ffddmsetupOperator( PB , FE , Varf )
+*
+*FEVhi ui, bi;
+*ffddmbuildrhs( PB , Varf , bi[] )
+```
+
+```cpp
+ui[] = PBA(bi[]);
+ffddmplot(PB, ui, "A*b")
+```
+
+---
+
+## [Step ??: Solve the linear system with the parallel direct solver *MUMPS*](documentation/#define-the-problem-to-solve)
+
+```cpp
+func K[int] pr#directsolve(K[int]& bi)
+```
+
+We have $A$ and $b$ in distributed form, we can solve the linear system $A u = b$ using the parallel direct solver *MUMPS*
+
+```cpp
+// Step ??: solve the problem using the direct parallel solver MUMPS
+ui[] = PBdirectsolve(bi[]);
+ffddmplot(PB, ui, "u")
+```
+
+---
+
+## [Step 4: Define the one level DD preconditioner](documentation/#one-level-preconditioners)
+
+```cpp
+ffddmsetupPrecond( pr , VarfPrec )
+```
+
+builds the one level preconditioner for problem **pr**.  
+
+By default it is the *Restricted Additive Schwarz (RAS)* preconditioner:
+
+$$
+M^{-1}\_1 = M^{-1}\_{\text{RAS}} = \sum\_{i=1}^N R\_i^T D\_i A\_i^{-1} R\_i \quad \text{with}\; A\_i = R\_i A R\_i^T
+$$
+
+**_Setup step_**: compute the $LU$ (or $L D L^T$) factorization of local matrices $A\_i$ 
+
+`pr#PREC1` applies $M^{-1}\_1$ to a distributed vector: ${\mathbf U}\_i \leftarrow R\_i \sum\_{j=1}^N R\_j^T D\_j A\_j^{-1} {\mathbf V}\_i$
+
+$\Rightarrow$ apply $A\_i^{-1}$ (forward/backward substitutions) + `prfe#update`
+
+---
+
+## [Step 5: Solve the linear system with preconditioned GMRES](documentation/#solving-the-linear-system)
+
+```cpp
+func K[int] pr#fGMRES(K[int]& x0i, K[int]& bi, real eps, int nitermax, string sprec)
+```
+
+solves the linear system with flexible GMRES with DD preconditioner $M^{-1}$
+
+- **x0i**: initial guess
+- **bi**: right-hand side
+- **eps**: relative tolerance
+- **nitermax**: maximum number of iterations
+- **sprec**: `"left"` or `"right"` preconditioning
+
+LEFT & RIGHT ?
+
+---
+
+```cpp
+macro dimension 2// EOM            // 2D or 3D
+
+include "ffddm.idp"
+
+mesh ThGlobal = square(50,50);    // global mesh
+
+// Step 1: Decompose the mesh
+ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
+
+// Step 2: Define your finite element
+macro def(u)  u // EOM
+macro init(u) u // EOM
+ffddmbuildDfespace( FE , M , real , def , init , P2 )
+
+// Step 3: Define your problem
+macro grad(u) [dx(u), dy(u)] // EOM
+macro Varf(varfName, meshName, VhName)
+    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(1*v)
+                       + on(1, u = 0);  // EOM
+ffddmsetupOperator( PB , FE , Varf )
+
+FEVhi ui, bi;
+ffddmbuildrhs( PB , Varf , bi[] )
+
+*// Step 4: Define the one level DD preconditioner
+*ffddmsetupPrecond( PB , Varf )
+
+*// Step 5: Solve the linear system with GMRES
+*FEVhi x0i = 0;
+*ui[] = PBfGMRES(x0i[], bi[], 1.e-6, 200, "right");
+```
+
+```cpp
+ffddmplot(PB, ui, "u")
+PBwritesummary
+```
+
+    </textarea>
+    <script src="remark.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+
+    var options = {};
+    var renderMath = function() {
+       renderMathInElement(document.body, {delimiters: [ // mind the order of delimiters(!?)
+           {left: "$$", right: "$$", display: true},
+           {left: "$", right: "$", display: false},
+           {left: "\\[", right: "\\]", display: true},
+           {left: "\\(", right: "\\)", display: false},
+       ]});
+    }
+
+    remark.macros.scale = function (percentage) {
+      var url = this;
+      return '<img src="' + url + '" style="width: ' + percentage + '" class = "center"/>';
+    };
+    
+
+
+      var slideshow = remark.create({
+        highlightLanguage: 'cpp',
+        highlightStyle: 'github',
+        highlightLines:true,
+        slideNumberFormat: function (current, total) {
+    return current + '/' + total;
+  }
+});
+
+// Setup MathJax
+MathJax.Hub.Config({
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  },
+  "HTML-CSS": { fonts: ["TeX"] }
+});
+MathJax.Hub.Queue(function() {
+    $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+        return(elem.SourceElement());
+    }).parent().addClass('has-jax');
+});
+MathJax.Hub.Configured();
+
+    </script>
+  </body>
+</html>
