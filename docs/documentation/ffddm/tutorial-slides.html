@@ -78,10 +78,12 @@ class: center, middle, inverse
 # Short tutorial
 
 .footnote1[Pierre-Henri Tournier  
-Frédéric Nataf]
+Frédéric Nataf  
+Pierre Jolivet]
 
 .footnote2[tournier@ljll.math.upmc.fr  
-nataf@ljll.math.upmc.fr]
+nataf@ljll.math.upmc.fr  
+pierre.jolivet@enseeiht.fr]
 
 ---
 
@@ -146,7 +148,7 @@ macro dimension 2// EOM            // 2D or 3D
 
 include "ffddm.idp"
 
-mesh ThGlobal = square(50,50);    // global mesh
+mesh ThGlobal = square(100,100);    // global mesh
 
 *// Step 1: Decompose the mesh
 *ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
@@ -284,7 +286,7 @@ macro dimension 2// EOM            // 2D or 3D
 
 include "ffddm.idp"
 
-mesh ThGlobal = square(50,50);    // global mesh
+mesh ThGlobal = square(100,100);    // global mesh
 
 // Step 1: Decompose the mesh
 ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
@@ -304,12 +306,11 @@ medit("D"+mpirank, MThi, vi);
 
 vi = 1;
 FEupdate(vi[],true);
-medit("1", MThi, vi);
+ffddmplot(FE,vi,"1")
 
 FEupdate(vi[],false);
-medit("multiplicity", MThi, vi);
+ffddmplot(FE,vi,"multiplicity")
 ```
-TODO ffddmplot
 
 ---
 
@@ -352,7 +353,7 @@ macro dimension 2// EOM            // 2D or 3D
 
 include "ffddm.idp"
 
-mesh ThGlobal = square(50,50);    // global mesh
+mesh ThGlobal = square(100,100);    // global mesh
 
 // Step 1: Decompose the mesh
 ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
@@ -386,13 +387,13 @@ ffddmplot(PB, ui, "A*b")
 .pull-left38[
 ### [Step 1: Decompose the mesh](documentation/#overlapping-mesh-decomposition)
 ```ff1
-mesh Th = square(50,50);
+mesh Th = square(100,100);
 ```
 ]
 .pull-right58[
 
 ```ff1
-mesh Th = square(50,50);
+mesh Th = square(100,100);
 ffddmbuildDmesh(M, Th, mpiCommWorld)
 ```
 ]
@@ -520,7 +521,7 @@ macro dimension 2// EOM            // 2D or 3D
 
 include "ffddm.idp"
 
-mesh ThGlobal = square(50,50);    // global mesh
+mesh ThGlobal = square(100,100);    // global mesh
 
 // Step 1: Decompose the mesh
 ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
@@ -605,7 +606,7 @@ macro dimension 2// EOM            // 2D or 3D
 
 include "ffddm.idp"
 
-mesh ThGlobal = square(50,50);    // global mesh
+mesh ThGlobal = square(100,100);    // global mesh
 
 // Step 1: Decompose the mesh
 ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
@@ -641,7 +642,7 @@ ui[] = PBfGMRES(x0i[], bi[], 1.e-6, 200, "right");
 ## [Build the coarse space from a coarse mesh](documentation/#building-the-coarse-space-from-a-coarse-mesh)
 
 ```cpp
-ffddmEuansetup( pr , Thc , VarfEprec , VarfAprec )
+ffddmcoarsemeshsetup( pr , Thc , VarfEprec , VarfAprec )
 ```
 
 For **non SPD** problems, an alternative is to build the coarse space by discretizing the PDE on a coarser mesh **Thc**
@@ -664,7 +665,7 @@ macro dimension 2// EOM            // 2D or 3D
 
 include "ffddm.idp"
 
-mesh ThGlobal = square(50,50);    // global mesh
+mesh ThGlobal = square(100,100);    // global mesh
 
 // Step 1: Decompose the mesh
 ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
@@ -689,7 +690,7 @@ ffddmsetupPrecond( PB , Varf )
 
 *// Build the coarse space from a coarse mesh
 *mesh Thc = square(10,10);
-*ffddmEuansetup( PB , Thc , Varf , null )
+*ffddmcoarsemeshsetup( PB , Thc , Varf , null )
 
 // Step 5: Solve the linear system with GMRES
 FEVhi x0i = 0;
@@ -725,7 +726,13 @@ Example [here](https://github.com/FreeFem/FreeFem-sources/blob/v4/examples%2B%2B
 
 ---
 
-## Some results: 3D elasticity with GeneO
+## Some results: Heterogeneous 3D elasticity with GenEO
+
+Heterogeneous 3D linear elasticity equation discretized with P2 FE  
+solved on 4096 MPI processes  
+$n\approx$ 262 million
+
+![:scale 100%](figures/comparisonAMG.png)
 
 ---
 

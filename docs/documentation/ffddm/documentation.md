@@ -258,8 +258,8 @@ The main ingredient of a two level preconditioner is the so-called 'coarse space
 $Z$ is a rectangular matrix of size $n \times n_c$, where usually $n_c \ll n$.  
 $Z$ is used to build the 'coarse space operator' $E = Z^T A Z$, a square matrix of size $n_c \times n_c$. We can then define the 'coarse space correction operator' $Q = Z E^{-1} Z^T = Z (Z^T A Z)^{-1} Z^T$, which can then be used to enrich the one level preconditioner through a correction formula. The simplest one is the *additive* coarse correction: $M^{-1}_2 = M^{-1}_1 + Q$. See `pr#corr` below for all other available correction formulas.
 
-There are multiple ways to define a relevant coarse space $Z$ for different classes of problems. **[`ffddmgeneosetup`](#building-the-geneo-coarse-space)** defines a coarse space correction operator by building the GenEO coarse space, while **[`ffddmEuansetup`](#building-the-coarse-space-from-a-coarse-mesh)** builds the coarse space using a coarse mesh.  
-After a call to either **[`ffddmgeneosetup`](#building-the-geneo-coarse-space)** or **[`ffddmEuansetup`](#building-the-coarse-space-from-a-coarse-mesh)**, the following variables and functions are set up:
+There are multiple ways to define a relevant coarse space $Z$ for different classes of problems. **[`ffddmgeneosetup`](#building-the-geneo-coarse-space)** defines a coarse space correction operator by building the GenEO coarse space, while **[`ffddmcoarsemeshsetup`](#building-the-coarse-space-from-a-coarse-mesh)** builds the coarse space using a coarse mesh.  
+After a call to either **[`ffddmgeneosetup`](#building-the-geneo-coarse-space)** or **[`ffddmcoarsemeshsetup`](#building-the-coarse-space-from-a-coarse-mesh)**, the following variables and functions are set up:
 
 - `int pr#ncoarsespace` the size of the coarse space $n_c$.
 - `string pr#corr` initialized with the value of [ffddmcorrection](parameters.md#global-parameters). Specifies the type of coarse correction formula to use for the two level preconditioner. The possible values are:  
@@ -284,7 +284,7 @@ The implementation differs depending on the method used to build the coarse spac
 
 ***For advanced users***:
 
-int pr#bEuan = 0;
+int pr#bCM = 0;
 
 ### Building the GenEO coarse space
 
@@ -318,7 +318,7 @@ matrix<pr#prfe#K> pr#matN;
 ### Building the coarse space from a coarse mesh
 
 ```freefem
-ffddmEuansetup(pr,Thc,VarfEprec,VarfA)
+ffddmcoarsemeshsetup(pr,Thc,VarfEprec,VarfA)
 ```
 
 builds the coarse space for problem **pr** from a coarse problem which corresponds to the discretization of a variational form on a coarser mesh **Thc** of $\Omega$. This will create and expose variables whose names will be prefixed by **pr**, see below. It is assumed that **[`ffddmsetupPrecond`](#one-level-preconditioners)** has already been called for prefix **pr** in order to define the one level preconditioner for problem **pr**. The abstract variational form for the coarse problem can differ from the original problem **pr** and is given by macro **VarfEprec** (see **[`ffddmsetupOperator`](#define-the-problem-to-solve)** for more details on how to define the abstract variational form as a macro).  
@@ -332,11 +332,11 @@ matrix<pr#prfe#K>[int] pr#aRdEprec(pr#prfe#prmesh#npart);
 
 func pr#prfe#K[int] pr#AEprec(pr#prfe#K[int] &x)
 
-matrix<pr#prfe#K> pr#Zeuan
+matrix<pr#prfe#K> pr#ZCM
 
-matrix<pr#prfe#K> pr#Zeuani
+matrix<pr#prfe#K> pr#ZCMi
 
-matrix<pr#prfe#K> pr#Eeuan;
+matrix<pr#prfe#K> pr#ECM;
 
 ## Solving the linear system
 
