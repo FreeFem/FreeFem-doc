@@ -90,7 +90,7 @@ was developed.
 A frontal solver builds a $LU$ or Cholesky decomposition of a sparse matrix
 given as the assembly of element matrices by eliminating equations
 only on a subset of elements at a time. This subset is called the *front* and it is essentially the transition region between the part of the system already finished and the part not touched yet. These methods are basically sequential since the unknowns are processed the one after another or one front after another. In order to benefit from multicore processors, a [multifrontal solver](http://en.wikipedia.org/wiki/Multifrontal_method)
- is an improvement of the frontal solver that uses several independent fronts at the same time. The fronts can be worked on by different processors, which enables parallel computing. 
+ is an improvement of the frontal solver that uses several independent fronts at the same time. The fronts can be worked on by different processors, which enables parallel computing. `ffddm` provides an interface to the parallel sparse direct solver [MUMPS](http://mumps.enseeiht.fr/).   
 
 
 ### Schwarz methods
@@ -118,6 +118,18 @@ A_{j}\, {\mathbf Y}_j = \mathbf{RHS}_j\,.
 $$
 
 Each local vector ${\mathbf Y}_j$ is weighted by the partition of unity matrix $D_j$. Then data transfers between neighboring subdomains implement the $R_i\,R_j^T\,D_j\,{\mathbf Y}_j$ formula. The contribution from neighboring subdomains are summed locally. This pattern is very similar to that of the [update](#Update) procedure.
+
+#### Optimized Restricted Additive Schwarz (ORAS)
+
+The ORAS preconditioner may be seen as a variant of the RAS preconditioner. It reads:
+
+$$
+M^{-1}_{RAS} := \sum_{j=1}^N R_j^T D_j\, B_j^{-1}\, R_j\,
+$$
+where $B_j$ are local matrices of size $\#{\mathcal N}_j \times \#{\mathcal N}_j$ for $1\le j \le N$. This variant is very useful when dealing with wave propagation phenomena such as Helmholtz problems in acoustics or Maxwell system in the frequency domain for electromagnetism. Defining $B_j$ as the discretization of the physical equation with impedance conditions on the boundary of the subdomain 
+
+
+
 
 #### Two level methods
 The RAS method is called a one-level method in the sense that sub-domains only interact with their direct neighbors. For some problems such as Darcy problems or static elasticiy problems and when the number of subdomains is large, such one-level methods may suffer from a slow convergence. The fix is to add to the preconditioner an auxiliary coarse problem that couples all subdomains at each iteration and is inexpensive to calculate. We consider two ways to build this coarse problem, see below [Coarse Mesh](#coarse-mesh) and [GenEO](#geneo)
