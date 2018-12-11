@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>ffddm</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -42,72 +42,81 @@
         width: 38%;
       }
       .pull-right58 {
+        padding-top: 53px;
         float: right;
         width: 58%;
       }
+      
+      .footnote1 {
+        text-align: left;
+        position:absolute;
+        bottom: 4em;
+        left: 27em;
+        font-size: 0.8em;
+      }
+      .footnote2 {
+        text-align: right;
+        position:absolute;
+        bottom: 4em;
+        left: 40em;
+        font-size: 0.8em;
+      }
+      
+      .title {font-size: 2.5em;font-weight:bold;}
+      
+      .red {color:red;}
 
     </style>
   </head>
   <body>
     <textarea id="source">
 
+class: center, middle, inverse
+
+.title[ffddm]
+
+# Short tutorial
+
+.footnote1[Pierre-Henri Tournier  
+Frédéric Nataf]
+
+.footnote2[tournier@ljll.math.upmc.fr  
+nataf@ljll.math.upmc.fr]
+
+---
+
 class: left, top
 
-# Why Domain Decomposition Methods ?
+## [What is **ffddm** ?](ffddm/#what-is-ffddm)
+
+- **ffddm** implements a class of parallel solvers in *FreeFem++*:  
+*overlapping Schwarz domain decomposition methods*
+
+- The entire **ffddm** framework is written in the *FreeFem++* language  
+**ffddm** aims at simplifying the use of parallel solvers in *FreeFem++*  
+You can find the **ffddm** scripts and examples [here](https://github.com/FreeFem/FreeFem-sources/tree/v4/examples%2B%2B-ffddm)
+
+- **ffddm** provides a set of high-level macros and functions to
+  - handle data distribution: distributed meshes and linear algebra
+  - build DD preconditioners for your variational problems
+  - solve your problem using preconditioned Krylov methods
+
+- **ffddm** implements scalable two level Schwarz methods, with a coarse space correction built
+ either from a coarse mesh or a [GenEO](https://link.springer.com/article/10.1007%2Fs00211-013-0576-y#page-1) coarse space  
+ *Ongoing research*: approximate coarse solves and three level methods
+ 
+- **ffddm** can also act as a wrapper for the [**HPDDM**](https://github.com/hpddm/hpddm) library  
+ **HPDDM** is an efficient C++11 implementation of various domain decomposition methods and Krylov subspace algorithms 
+ with advanced block and recycling techniques  
+ More details on how to use **HPDDM** within **ffddm** [here](DOC)
+ 
+---
+
+## Why Domain Decomposition Methods ?
 
 How can we solve a large sparse linear system $A u = b \in \mathbb{R}^n$ ?
 
 ![:scale 100%](figures/Methods_Solves_1.png)
-
----
-
-### [Step 1: Decompose the mesh](documentation/#overlapping-mesh-decomposition)
-<div style="overflow: hidden;">
-.pull-left38[
-```ff1
-mesh Th = square(50,50);
-```
-]
-.pull-right58[
-```ff1
-mesh Th = square(50,50);
-ffddmbuildDmesh(M, Th, mpiCommWorld)
-```
-]
-</div>
-
-### [Step 2: Define your finite element](documentation/#local-finite-element-spaces)
-<div style="overflow: hidden;">
-.pull-left38[
-```ff1
-fespace Vh(Th, P1);
-```
-]
-.pull-right58[
-```ff1
-macro def(u)  u // EOM
-macro init(u) u // EOM
-ffddmbuildDfespace(FE, M, real, def, init, P1)
-```
-]
-</div>
-
-### [Step 3: Define your problem](documentation/#define-the-problem-to-solve)
-<div style="overflow: hidden;">
-.pull-left38[
-```ff1
-varf Pb(u, v) = ...
-matrix A = Pb(Vh, Vh);
-```
-]
-.pull-right58[
-```ff1
-macro Varf(varfName, meshName, VhName)
-    varf varfName(u,v) = ... // EOM
-ffddmsetupOperator(PB, FE, Varf)
-```
-]
-</div>
 
 ---
 
@@ -371,7 +380,76 @@ ffddmplot(PB, ui, "A*b")
 
 ---
 
-## [Step ??: Solve the linear system with the parallel direct solver *MUMPS*](documentation/#define-the-problem-to-solve)
+## Summary so far: translating your sequential *FreeFem++* script
+
+<div style="overflow: hidden;">
+.pull-left38[
+### [Step 1: Decompose the mesh](documentation/#overlapping-mesh-decomposition)
+```ff1
+mesh Th = square(50,50);
+```
+]
+.pull-right58[
+
+```ff1
+mesh Th = square(50,50);
+ffddmbuildDmesh(M, Th, mpiCommWorld)
+```
+]
+</div>
+
+<div style="overflow: hidden;">
+.pull-left38[
+### [Step 2: Define your finite element](documentation/#local-finite-element-spaces)
+```ff1
+fespace Vh(Th, P1);
+```
+]
+.pull-right58[
+```ff1
+macro def(u)  u // EOM
+macro init(u) u // EOM
+ffddmbuildDfespace(FE, M, real, def, init, P1)
+```
+]
+</div>
+
+<div style="overflow: hidden;">
+.pull-left38[
+### [Step 3: Define your problem](documentation/#define-the-problem-to-solve)
+```ff1
+varf Pb(u, v) = ...
+matrix A = Pb(Vh, Vh);
+```
+]
+.pull-right58[
+```ff1
+macro Varf(varfName, meshName, VhName)
+    varf varfName(u,v) = ... // EOM
+ffddmsetupOperator(PB, FE, Varf)
+```
+]
+</div>
+
+<!--
+<div style="overflow: hidden;">
+.pull-left38[
+### [Solve the linear system](documentation/#define-the-problem-to-solve)
+```ff1
+u[] = A^-1 * b[];
+```
+]
+.pull-right58[
+```ff1
+ui[] = PBdirectsolve(bi[]);
+```
+]
+</div>
+-->
+
+---
+
+## [Solve the linear system with the parallel direct solver *MUMPS*](documentation/#define-the-problem-to-solve)
 
 ```cpp
 func K[int] pr#directsolve(K[int]& bi)
@@ -380,7 +458,7 @@ func K[int] pr#directsolve(K[int]& bi)
 We have $A$ and $b$ in distributed form, we can solve the linear system $A u = b$ using the parallel direct solver *MUMPS*
 
 ```cpp
-// Step ??: solve the problem using the direct parallel solver MUMPS
+// Solve the problem using the direct parallel solver MUMPS
 ui[] = PBdirectsolve(bi[]);
 ffddmplot(PB, ui, "u")
 ```
@@ -423,7 +501,17 @@ solves the linear system with flexible GMRES with DD preconditioner $M^{-1}$
 - **nitermax**: maximum number of iterations
 - **sprec**: `"left"` or `"right"` preconditioning
 
-LEFT & RIGHT ?
+.pull-left[
+.center[*left preconditioning*]
+
+.center[solve $M^{-1} A x = M^{-1} b$]
+]
+.pull-right[
+.center[*right preconditioning*]
+
+.center[solve $A M^{-1} y = b$]
+.center[$\Rightarrow x = M^{-1} y$]
+]
 
 ---
 
@@ -464,6 +552,220 @@ ffddmbuildrhs( PB , Varf , bi[] )
 ffddmplot(PB, ui, "u")
 PBwritesummary
 ```
+
+---
+
+## [Define a two level DD preconditioner](documentation/#two-level-preconditioners)
+
+**Goal** improve scalability of the one level method
+
+$\Rightarrow$ enrich the one level preconditioner with a *coarse problem* coupling all subdomains
+
+Main ingredient is a rectangular matrix $\color{red}{Z}$ of size $n \times n\_c,\,$ where $n\_c \ll n$  
+$\color{red}{Z}$ is the *coarse space* matrix
+
+The *coarse space operator* $E = \color{red}{Z}^T A \color{red}{Z}$ is a square matrix of size $n\_c \times n\_c$
+
+The simplest way to enrich the one level preconditioner is through the *additive coarse correction* formula:
+
+$$M^{-1}\_2 = M^{-1}\_1 + \color{red}{Z} E^{-1} \color{red}{Z}^T$$
+
+.center[*How to choose $\color{red}{Z}$ ?*]
+
+---
+
+## [Build the GenEO coarse space](documentation/#building-the-geneo-coarse-space)
+
+```cpp
+ffddmgeneosetup( pr , Varf )
+```
+
+The *GenEO* method builds a robust coarse space for highly heterogeneous or anisotropic **SPD** problems
+
+$\Rightarrow$ solve a local generalized eigenvalue problem in each subdomain
+
+$$
+D\_i A\_i D\_i\, V\_{i,k} = \lambda\_{i,k}\, A\_i^{\text{Neu}} \,V\_{i,k}
+$$
+
+with $A\_i^{\text{Neu}}$ the local Neumann matrices built from **Varf** (same **Varf** as [Step 3](tutorial-slides.html#11))
+
+The GenEO coarse space is $\color{red}{Z} = (R\_i^T D\_i V\_{i,k})^{i=1,...,N}\_{\lambda\_{i,k} \ge \color{blue}{\tau}}$  
+The eigenvectors $V\_{i,k}$ selected to enter the coarse space correspond to eigenvalues $\lambda_{i,k} \ge \color{blue}{\tau}$, where $\color{blue}{\tau}$ is a threshold parameter 
+ 
+ **Theorem**   
+ the spectrum of the preconditioned operator lies in the interval $[\displaystyle \frac{1}{1+k_1 \color{blue}{\tau}} , k_0 ]$  
+ where $k_0 - 1$ is the \# of neighbors and $k_1$ is the multiplicity of intersections  
+ $\Rightarrow$ $k_0$ and $k_1$ do not depend on $N$ nor on the PDE
+
+---
+
+```cpp
+macro dimension 2// EOM            // 2D or 3D
+
+include "ffddm.idp"
+
+mesh ThGlobal = square(50,50);    // global mesh
+
+// Step 1: Decompose the mesh
+ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
+
+// Step 2: Define your finite element
+macro def(u)  u // EOM
+macro init(u) u // EOM
+ffddmbuildDfespace( FE , M , real , def , init , P2 )
+
+// Step 3: Define your problem
+macro grad(u) [dx(u), dy(u)] // EOM
+macro Varf(varfName, meshName, VhName)
+    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(1*v)
+                       + on(1, u = 0);  // EOM
+ffddmsetupOperator( PB , FE , Varf )
+
+FEVhi ui, bi;
+ffddmbuildrhs( PB , Varf , bi[] )
+
+// Step 4: Define the one level DD preconditioner
+ffddmsetupPrecond( PB , Varf )
+
+*// Build the GenEO coarse space
+*ffddmgeneosetup( PB , Varf )
+
+// Step 5: Solve the linear system with GMRES
+FEVhi x0i = 0;
+ui[] = PBfGMRES(x0i[], bi[], 1.e-6, 200, "right");
+```
+
+---
+
+## [Build the coarse space from a coarse mesh](documentation/#building-the-coarse-space-from-a-coarse-mesh)
+
+```cpp
+ffddmEuansetup( pr , Thc , VarfEprec , VarfAprec )
+```
+
+For **non SPD** problems, an alternative is to build the coarse space by discretizing the PDE on a coarser mesh **Thc**
+
+.red[$Z$] will be the *interpolation matrix* from the coarse FE space ${Vh}\_c$ to the original FE space $Vh$
+
+$\Rightarrow E=\color{red}{Z}^{T} A \color{red}{Z}$ is the matrix of the problem discretized on the coarse mesh
+
+The variational problem to be discretized on **Thc** is given by macro **VarfEprec**  
+
+**VarfEprec** can differ from the original **Varf** of the problem  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Example*: added absorption for wave propagation problems
+  
+Similarly, **VarfAprec** specifies the global operator involved in multiplicative coarse correction formulas. It defaults to $A$ if **VarfAprec** is not defined
+
+---
+
+```cpp
+macro dimension 2// EOM            // 2D or 3D
+
+include "ffddm.idp"
+
+mesh ThGlobal = square(50,50);    // global mesh
+
+// Step 1: Decompose the mesh
+ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
+
+// Step 2: Define your finite element
+macro def(u)  u // EOM
+macro init(u) u // EOM
+ffddmbuildDfespace( FE , M , real , def , init , P2 )
+
+// Step 3: Define your problem
+macro grad(u) [dx(u), dy(u)] // EOM
+macro Varf(varfName, meshName, VhName)
+    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(1*v)
+                       + on(1, u = 0);  // EOM
+ffddmsetupOperator( PB , FE , Varf )
+
+FEVhi ui, bi;
+ffddmbuildrhs( PB , Varf , bi[] )
+
+// Step 4: Define the one level DD preconditioner
+ffddmsetupPrecond( PB , Varf )
+
+*// Build the coarse space from a coarse mesh
+*mesh Thc = square(10,10);
+*ffddmEuansetup( PB , Thc , Varf , null )
+
+// Step 5: Solve the linear system with GMRES
+FEVhi x0i = 0;
+ui[] = PBfGMRES(x0i[], bi[], 1.e-6, 200, "right");
+```
+
+---
+
+## [Use **HPDDM** within **ffddm**](documentation/#using-hpddm-within-ffddm)
+
+**ffddm** allows you to use **HPDDM** to solve your problem,
+effectively replacing the **ffddm** implementation of all parallel linear algebra computations
+
+$\Rightarrow$ define your problem with **ffddm**, solve it with **HPDDM**  
+$\Rightarrow$ **ffddm** acts as a finite element interface for **HPDDM**
+
+- you can use **HPDDM** features unavailable in **ffddm** such as advanced Krylov subspace methods
+implementing block and recycling techniques
+- conversely, some features of **ffddm** such as two level methods built from a coarse mesh are not implemented in **HPDDM**
+
+To switch to **HPDDM**, simply define the macro `pr#withhpddm` before using `ffddmsetupOperator` ([Step 3](tutorial-slides.html#11)). You can then pass **HPDDM** options
+with command-line arguments or directly to the underlying **HPDDM** operator:
+
+```cpp
+macro PBwithhpddm()1 // EOM
+ffddmsetupOperator( PB , FE , Varf )
+set(PBhpddmOP,sparams="-hpddm_krylov_method gcrodr");
+```
+
+Or, define `pr#withhpddmkrylov` to use **HPDDM** only for the Krylov method
+
+Example [here](https://github.com/FreeFem/FreeFem-sources/blob/v4/examples%2B%2B-ffddm/Helmholtz-2d-HPDDM-BGMRES.edp): Helmholtz problem with multiple rhs solved with Block GMRES
+
+---
+
+## Some results: 3D elasticity with GeneO
+
+---
+
+## Some results: 2-level DD for Maxwell equations, scattering from the COBRA cavity
+
+<div style="overflow: hidden; display: inline-block;">
+ <div style="float:left; margin-left: auto; margin-right: auto;">
+   f = 10 GHz
+ </div>
+ <img src="figures/10GHz_borders_new_v2.png" width = 37% style="float; margin-left: 2%; margin-right: auto;" />
+ <img src="figures/10GHz_new.png" width = 45.7% style="float:right; margin-left: auto; margin-right: auto;"/>
+</div>
+
+<div style="overflow: hidden; display: inline-block;">
+  <div style="float:left; margin-left: auto; margin-right: auto;">
+    f = 16 GHz
+  </div>
+ <img src="figures/16GHz_new.png" width = 56% style="display:block; margin-left: auto; margin-right: auto;"/>
+</div>
+
+---
+
+## Some results: 2-level DD for Maxwell equations, scattering from the COBRA cavity
+
+- order 2 Nedelec edge FE
+- fine mesh: 10 points per wavelength
+- coarse mesh: 3.33 points per wavelength
+- two level ORAS preconditioner with added absorption
+- f = 10 GHz: $n\approx$ 107 million, .red[$n_c \approx$ 4 million]  
+f = 16 GHz: $n\approx$ 198 million, .red[$n_c \approx$ 7.4 million]
+
+$\rightarrow$ coarse problem too large for a direct solver  
+$\Rightarrow$ inexact coarse solve: GMRES + one level ORAS preconditioner
+
+![:scale 100%](figures/table.png)
+
+speedup of 1.81 from 1536 to 3072 cores at 10GHz  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.51 from 3072 to 6144 cores at 16GHz
+
+You can find the script [here](https://github.com/FreeFem/FreeFem-sources/blob/v4/examples%2B%2B-ffddm/Maxwell_Cobracavity.edp)
 
     </textarea>
     <script src="remark.js" type="text/javascript"></script>

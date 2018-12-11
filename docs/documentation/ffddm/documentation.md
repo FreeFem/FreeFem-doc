@@ -343,3 +343,5 @@ matrix<pr#prfe#K> pr#Eeuan;
 ```freefem
 func pr#prfe#K[int] pr#fGMRES(pr#prfe#K[int]& x0i, pr#prfe#K[int]& bi, real eps, int nbiter, string sprec)
 ```
+
+## Using *HPDDM* within *ffddm* 
