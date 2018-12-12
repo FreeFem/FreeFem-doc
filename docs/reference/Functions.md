@@ -814,7 +814,31 @@ $$
 - `upp` (`:::freefem fespace` function)
 
 ## EigenValue
-Compute the generalized eigenvalue of $Au=\lambda Bu$.
+Compute the generalized eigenvalue of $Au=\lambda Bu$. The shifted-inverse method
+is used by default with `sigma=`$\sigma$, the shift of the method. The function 
+`EigenValue` can be used for either matrices or functions returing a matrix vector product. 
+The use of the matrix version is shown below. 
+
+`int k=EigenValue(A,B,nev= , sigma= );`
+
+<u>Parameters:</u> 
+
+ - `A`, `B`: matrices of same size <br/>
+ - `nev=n`: number of desired eigenvalues given by an integer `n`
+ - `sym=`: the problem is symmetric or not
+ - `tol=`: the relative accuracy to which eigenvalues are to be determined
+ - `value=`: an array to store the real part of the eigenvalues
+ - `ivalue=`: an array to store the imaginary part of the eigenvalues
+ - `vector=`: a Finite Element function array to store the eigenvectors
+ - `sigma=`: the shift value
+ - Other parameters are available for more advanced use: see the FreeFem++ manual and the ARPACK 
+ documentation.
+ 
+ <u>Output:</u>
+ The output is the number of converged eigenvalues, which can be different than the 
+ number of requested eigenvalues given by `nev=`. Note that the eigenvalues and the eigenvectors are 
+ stored for further purposes using the parameters `value=` and `vector=`.
+ 
 
 ```freefem
 int Res = EigenValue()
