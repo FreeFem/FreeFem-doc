@@ -819,7 +819,9 @@ is used by default with `:::freefem sigma=`$\sigma$, the shift of the method. Th
 `:::freefem EigenValue` can be used for either matrices or functions returning a matrix vector product.
 The use of the matrix version is shown below.
 
-`:::freefem int k=EigenValue(A,B,nev= , sigma= );`
+```freefem
+int k = EigenValue(A,B,nev= , sigma= );
+```
 
 <u>Parameters:</u>
 
