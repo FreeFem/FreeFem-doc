@@ -815,30 +815,30 @@ $$
 
 ## EigenValue
 Compute the generalized eigenvalue of $Au=\lambda Bu$. The shifted-inverse method
-is used by default with `sigma=`$\sigma$, the shift of the method. The function 
-`EigenValue` can be used for either matrices or functions returing a matrix vector product. 
-The use of the matrix version is shown below. 
+is used by default with `:::freefem sigma=`$\sigma$, the shift of the method. The function
+`:::freefem EigenValue` can be used for either matrices or functions returning a matrix vector product.
+The use of the matrix version is shown below.
 
-`int k=EigenValue(A,B,nev= , sigma= );`
+`:::freefem int k=EigenValue(A,B,nev= , sigma= );`
 
-<u>Parameters:</u> 
+<u>Parameters:</u>
 
- - `A`, `B`: matrices of same size <br/>
- - `nev=n`: number of desired eigenvalues given by an integer `n`
- - `sym=`: the problem is symmetric or not
- - `tol=`: the relative accuracy to which eigenvalues are to be determined
- - `value=`: an array to store the real part of the eigenvalues
- - `ivalue=`: an array to store the imaginary part of the eigenvalues
- - `vector=`: a Finite Element function array to store the eigenvectors
- - `sigma=`: the shift value
- - Other parameters are available for more advanced use: see the FreeFem++ manual and the ARPACK 
+ - `:::freefem A`, `:::freefem B`: matrices of same size <br/>
+ - `:::freefem nev=n`: number of desired eigenvalues given by an integer `n`
+ - `:::freefem sym=`: the problem is symmetric or not
+ - `:::freefem tol=`: the relative accuracy to which eigenvalues are to be determined
+ - `:::freefem value=`: an array to store the real part of the eigenvalues
+ - `:::freefem ivalue=`: an array to store the imaginary part of the eigenvalues
+ - `:::freefem vector=`: a Finite Element function array to store the eigenvectors
+ - `:::freefem sigma=`: the shift value
+ - Other parameters are available for more advanced use: see the FreeFem++ manual $\codered$ and the ARPACK
  documentation.
- 
+
  <u>Output:</u>
- The output is the number of converged eigenvalues, which can be different than the 
- number of requested eigenvalues given by `nev=`. Note that the eigenvalues and the eigenvectors are 
- stored for further purposes using the parameters `value=` and `vector=`.
- 
+ The output is the number of converged eigenvalues, which can be different than the
+ number of requested eigenvalues given by `:::freefem nev=`. Note that the eigenvalues and the eigenvectors are
+ stored for further purposes using the parameters `:::freefem value=` and `:::freefem vector=`.
+
 
 ```freefem
 int Res = EigenValue()
