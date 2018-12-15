@@ -1,4 +1,6 @@
-site_name: FreeFem++
+site_name: FreeFem++ documentation
+site_url: https://doc.freefem.org
+site_description: FreeFEM++ documentation
 nav:
   - Introduction:
     - Introduction: index.md
