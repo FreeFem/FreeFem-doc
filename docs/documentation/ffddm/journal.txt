@@ -1,2 +1,3 @@
 A FAIRE
 code des transparents difficilement lisible car police trop petite
+-glut ffglut en -wg partout ? 
