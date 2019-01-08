@@ -39,12 +39,12 @@
       }
       .pull-left38 {
         float: left;
-        width: 38%;
+        width: 36%;
       }
       .pull-right58 {
         padding-top: 53px;
         float: right;
-        width: 58%;
+        width: 60%;
       }
       
       .footnote1 {
@@ -110,7 +110,7 @@ You can find the **ffddm** scripts and examples [here](https://github.com/FreeFe
 - **ffddm** can also act as a wrapper for the [**HPDDM**](https://github.com/hpddm/hpddm) library  
  **HPDDM** is an efficient C++11 implementation of various domain decomposition methods and Krylov subspace algorithms 
  with advanced block and recycling techniques  
- More details on how to use **HPDDM** within **ffddm** [here](DOC)
+ More details on how to use **HPDDM** within **ffddm** [here](documentation/#using-hpddm-within-ffddm)
  
 ---
 
@@ -185,8 +185,8 @@ example for P2 *complex*:
 ```cpp
 macro def(u)  u // EOM
 macro init(u) u // EOM
-ffddmbuildDfespace( FE , M , complex ,
-                     def , init , P2 )
+ffddmbuildDfespace( FE, M, complex,
+                    def, init, P2 )
 ```
 ]
 .pull-right[
@@ -194,8 +194,8 @@ example for [P2,P2,P1] *real*:
 ```cpp
 macro def(u)  [u, u#B, u#C] // EOM
 macro init(u) [u, u, u]     // EOM
-ffddmbuildDfespace( FE , M , real , def ,
-                     init , [P2,P2,P1] )
+ffddmbuildDfespace( FE, M, real, def,
+                    init, [P2,P2,P1] )
 ```
 ]
 
@@ -326,8 +326,8 @@ builds the distributed operator associated to your variational form on top of th
 
 ```cpp
 macro Varf(varfName, meshName, VhName)
-    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(f*v)
-                       + on(1, u = 0);  // EOM
+    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v))
+                       + int2d(meshName)(f*v) + on(1, u = 0);  // EOM
 ```
 
 $\Rightarrow$ assemble local 'Dirichlet' matrices $A\_i = R\_i A R\_i^T$
@@ -366,8 +366,8 @@ ffddmbuildDfespace( FE , M , real , def , init , P2 )
 *// Step 3: Define your problem
 *macro grad(u) [dx(u), dy(u)] // EOM
 *macro Varf(varfName, meshName, VhName)
-*    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(1*v)
-*                       + on(1, u = 0);  // EOM
+*    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v))
+*                       + int2d(meshName)(1*v) + on(1, u = 0);  // EOM
 *ffddmsetupOperator( PB , FE , Varf )
 *
 *FEVhi ui, bi;
@@ -491,7 +491,7 @@ $\Rightarrow$ apply $A\_i^{-1}$ (forward/backward substitutions) + `prfe#update`
 ## [Step 5: Solve the linear system with preconditioned GMRES](documentation/#solving-the-linear-system)
 
 ```cpp
-func K[int] pr#fGMRES(K[int]& x0i, K[int]& bi, real eps, int nitermax, string sprec)
+func K[int] pr#fGMRES(K[int]& x0i, K[int]& bi, real eps, int itmax, string sp)
 ```
 
 solves the linear system with flexible GMRES with DD preconditioner $M^{-1}$
@@ -499,8 +499,8 @@ solves the linear system with flexible GMRES with DD preconditioner $M^{-1}$
 - **x0i**: initial guess
 - **bi**: right-hand side
 - **eps**: relative tolerance
-- **nitermax**: maximum number of iterations
-- **sprec**: `"left"` or `"right"` preconditioning
+- **itmax**: maximum number of iterations
+- **sp**: `"left"` or `"right"` preconditioning
 
 .pull-left[
 .center[*left preconditioning*]
@@ -518,24 +518,20 @@ solves the linear system with flexible GMRES with DD preconditioner $M^{-1}$
 
 ```cpp
 macro dimension 2// EOM            // 2D or 3D
-
 include "ffddm.idp"
 
 mesh ThGlobal = square(100,100);    // global mesh
-
 // Step 1: Decompose the mesh
 ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
-
 // Step 2: Define your finite element
 macro def(u)  u // EOM
 macro init(u) u // EOM
 ffddmbuildDfespace( FE , M , real , def , init , P2 )
-
 // Step 3: Define your problem
 macro grad(u) [dx(u), dy(u)] // EOM
 macro Varf(varfName, meshName, VhName)
-    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(1*v)
-                       + on(1, u = 0);  // EOM
+    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v))
+                       + int2d(meshName)(1*v) + on(1, u = 0);  // EOM
 ffddmsetupOperator( PB , FE , Varf )
 
 FEVhi ui, bi;
@@ -603,24 +599,20 @@ The eigenvectors $V\_{i,k}$ selected to enter the coarse space correspond to eig
 
 ```cpp
 macro dimension 2// EOM            // 2D or 3D
-
 include "ffddm.idp"
 
 mesh ThGlobal = square(100,100);    // global mesh
-
 // Step 1: Decompose the mesh
 ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
-
 // Step 2: Define your finite element
 macro def(u)  u // EOM
 macro init(u) u // EOM
 ffddmbuildDfespace( FE , M , real , def , init , P2 )
-
 // Step 3: Define your problem
 macro grad(u) [dx(u), dy(u)] // EOM
 macro Varf(varfName, meshName, VhName)
-    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(1*v)
-                       + on(1, u = 0);  // EOM
+    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v))
+                       + int2d(meshName)(1*v) + on(1, u = 0);  // EOM
 ffddmsetupOperator( PB , FE , Varf )
 
 FEVhi ui, bi;
@@ -662,24 +654,20 @@ Similarly, **VarfAprec** specifies the global operator involved in multiplicativ
 
 ```cpp
 macro dimension 2// EOM            // 2D or 3D
-
 include "ffddm.idp"
 
 mesh ThGlobal = square(100,100);    // global mesh
-
 // Step 1: Decompose the mesh
 ffddmbuildDmesh( M , ThGlobal , mpiCommWorld )
-
 // Step 2: Define your finite element
 macro def(u)  u // EOM
 macro init(u) u // EOM
 ffddmbuildDfespace( FE , M , real , def , init , P2 )
-
 // Step 3: Define your problem
 macro grad(u) [dx(u), dy(u)] // EOM
 macro Varf(varfName, meshName, VhName)
-    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(1*v)
-                       + on(1, u = 0);  // EOM
+    varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v))
+                       + int2d(meshName)(1*v) + on(1, u = 0);  // EOM
 ffddmsetupOperator( PB , FE , Varf )
 
 FEVhi ui, bi;

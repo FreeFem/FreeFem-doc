@@ -1,23 +1,21 @@
 ## Examples
 
-nonlinear or time dependent ?
-
-| File name                          | d   | $M^{-1}_1$ | $M^{-1}_2$  | inexact CS |
-| ---------------------------------- | --- | ---------- | ----------- | ---------- |
-| Helmholtz-2d-marmousi.edp          | 2D  | ORAS       | Coarse Mesh | X          |
-| Helmholtz-2d-simple.edp            | 2D  | ORAS       | Coarse Mesh | X          |
-| Helmholtz-3d-overthrust.edp        | 3D  | ORAS       | X           | X          |
-| Helmholtz-3d-simple.edp            | 3D  | ORAS       | Coarse Mesh | X          |
-| Maxwell_Cobracavity.edp            | 2D  | ORAS       | Coarse Mesh | ORAS       |
-| Navier-2d-marmousi2.edp            | 2D  | ORAS       | Coarse Mesh | X          |
-| Richards-2d.edp                    | 2D  |            |             |            |
-| diffusion-2d-thirdlevelgeneo.edp   | 2D  |            |             |            |
-| diffusion-3d-intermediate.edp      | 3D  |            |             |            |
-| diffusion-3d-minimal-ddm.edp       | 3D  |            |             |            |
-| diffusion-3d-minimal-direct.edp    | 3D  |            |             |            |
-| diffusion-3d-simple.edp            | 3D  |            |             |            |
-| elasticity-3d-simple.edp           | 3D  |            |             |            |
-| elasticity-3d-thirdlevelgeneo.edp  | 3D  |            |             |            |
-| natural_convection.edp             | 2D  |            |             |            |
-| natural_convection_3D_obstacle.edp | 3D  |            |             |            |
-
+| File name                          | $M^{-1}_1$ | $M^{-1}_2$  | inexact CS  | comments                                           |
+| ---------------------------------- | ---------- | ----------- | ----------- | -------------------------------------------------- |
+| diffusion-3d-minimal-direct.edp    |            |             |             | direct solver <br> MUMPS                           |
+| diffusion-3d-minimal-ddm.edp       | RAS        | GenEO       |             |                                                    |
+| diffusion-3d-simple.edp            | RAS        | GenEO       |             | comparison with <br> direct solver                 |
+| diffusion-2d-thirdlevelgeneo.edp   | RAS        | GenEO       | RAS + GenEO |                                                    |
+| elasticity-3d-simple.edp           | RAS        | GenEO       |             |                                                    |
+| elasticity-3d-thirdlevelgeneo.edp  | RAS        | GenEO       | RAS + GenEO |                                                    |
+| Helmholtz-2d-simple.edp            | ORAS       | Coarse Mesh |             |                                                    |
+| Helmholtz-2d-marmousi.edp          | ORAS       | Coarse Mesh |             |                                                    |
+| Helmholtz-3d-simple.edp            | ORAS       | Coarse Mesh |             |                                                    |
+| Helmholtz-3d-overthrust.edp        | ORAS       |             |             |                                                    |
+| Helmholtz-2d-HPDDM-BGMRES.edp      | ORAS       |             |             | multi-rhs <br> Block GMRES <br> with HPDDM         |
+| Navier-2d-marmousi2.edp            | ORAS       | Coarse Mesh |             |                                                    |
+| Maxwell-3d-simple.edp              | ORAS       | Coarse Mesh |             |                                                    |
+| Maxwell_Cobracavity.edp            | ORAS       | Coarse Mesh | ORAS        |                                                    |
+| natural_convection.edp             | ORAS       | Coarse Mesh |             | nonlinear                                          |
+| natural_convection_3D_obstacle.edp | ORAS       | Coarse Mesh |             | nonlinear                                          |
+| Richards-2d.edp                    | RAS        |             |             | nonlinear <br> time dependent <br> mesh adaptation |
