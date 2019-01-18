@@ -3,13 +3,15 @@
 ## Latest binary packages
 
 Operating System | FreeFem++ Version | Size | Date
-:--------------- |:----------------- |:---- |:----
+:--------------- |:----------------- |:---- |:----3.2  Mb | May 09, 2018
+[MacOS 10.10 and better ](http://www3.freefem.org/ff++/ftp/FreeFem++-4.0-MacOS_10.11.pkg) | `4.0-beta` | 387.5 Mb | Jan 18, 2019
 [MacOS 10.13](https://github.com/FreeFem/FreeFem-sources/releases/download/3.61/FreeFem++-3.61-1-MacOS_10.13.pkg) | `3.61` | 445.3 Mb | May 09, 2018
 [MacOS 10.12](http://www3.freefem.org/ff++/ftp/FreeFem++-3.59-MacOS_10.12.pkg) | `3.59` | 507.1 Mb | Mar 16, 2018
 [MacOS 10.11](https://github.com/FreeFem/FreeFem-sources/releases/download/3.61/FreeFem++-3.61-1-MacOS_10.11.pkg) | `3.61` | 376.5 Mb | Jul 12, 2018
 [MacOS 10.10](http://www3.freefem.org/ff++/ftp/FreeFem++-3.59-MacOS_10.10.pkg) | `3.59` | 507.1 Mb | Mar 16, 2018
 [Windows 64bit (in test)](https://github.com/FreeFem/FreeFem-sources/releases/download/3.61/FreeFem++-3.61-1-win64.exe) | `3.61` | 87.6 Mb | Jul 12, 2018
 [Windows 32bit](http://www3.freefem.org/ff++/ftp/FreeFem++-3.46-win32.exe) | `3.46` | 66.4 Mb | May 09, 2017
+[Source](http://www3.freefem.org/ff++/ftp/freefem++-4.0-beta.tar.gz) | `4.0-beta` | 3.2 Mb | Jan 18, 2019
 [Source](https://github.com/FreeFem/FreeFem-sources/releases/latest) | `latest` | 25.1 Mb | Feb 22, 2018
 [Older versions](http://www3.freefem.org/ff++/ftp/) | `-` | - -
 
