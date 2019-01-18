@@ -3,7 +3,7 @@
 ## Latest binary packages
 
 Operating System | FreeFem++ Version | Size | Date
-:--------------- |:----------------- |:---- |:----3.2  Mb | May 09, 2018
+:--------------- |:----------------- |:---- |:----
 [MacOS 10.10 and better ](http://www3.freefem.org/ff++/ftp/FreeFem++-4.0-MacOS_10.11.pkg) | `4.0-beta` | 387.5 Mb | Jan 18, 2019
 [MacOS 10.13](https://github.com/FreeFem/FreeFem-sources/releases/download/3.61/FreeFem++-3.61-1-MacOS_10.13.pkg) | `3.61` | 445.3 Mb | May 09, 2018
 [MacOS 10.12](http://www3.freefem.org/ff++/ftp/FreeFem++-3.59-MacOS_10.12.pkg) | `3.59` | 507.1 Mb | Mar 16, 2018
