@@ -376,7 +376,7 @@ ffddmbuildDfespace( FE , M , real , def , init , P2 )
 
 ```cpp
 ui[] = PBA(bi[]);
-ffddmplot(PB, ui, "A*b")
+ffddmplot(FE, ui, "A*b")
 ```
 
 ---
@@ -461,7 +461,7 @@ We have $A$ and $b$ in distributed form, we can solve the linear system $A u = b
 ```cpp
 // Solve the problem using the direct parallel solver MUMPS
 ui[] = PBdirectsolve(bi[]);
-ffddmplot(PB, ui, "u")
+ffddmplot(FE, ui, "u")
 ```
 
 ---
@@ -546,7 +546,7 @@ ffddmbuildrhs( PB , Varf , bi[] )
 ```
 
 ```cpp
-ffddmplot(PB, ui, "u")
+ffddmplot(FE, ui, "u")
 PBwritesummary
 ```
 
