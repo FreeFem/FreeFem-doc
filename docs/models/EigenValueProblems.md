@@ -18,7 +18,7 @@ The return value is the number of converged eigenvalues (can be greater than the
 int k = EigenValue(OP, B, nev=Nev, sigma=Sigma);
 ```
 
-where the matrix $OP= A - \sigma B $ with a solver and boundary condition, and the matrix $B$.
+where the matrix $OP= A - \sigma B$ with a solver and boundary condition, and the matrix $B$.
 
 There is also a functional interface:
 
