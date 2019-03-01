@@ -73,7 +73,7 @@ real[int] a = b';
 Works for array and `:::freefem matrix`.
 
 !!!note
-	For `:::freefem matrix<complex>`, the `''` operator return the Hermitian tranpose.
+	For `:::freefem matrix<complex>`, the `'` operator return the Hermitian tranpose.
 
 ## :
 Tensor scalar product.
