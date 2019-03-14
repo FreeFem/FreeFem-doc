@@ -5,9 +5,9 @@
 **The problem**
 Let $\{C_{i}\}_{1,2}$, be 2 thermal conductors within an enclosure $C_0$.
 
-<!-- Add image -->
+![Heat Exchanger Th](images/heat_exchangerGeo.svg)
 
-The first one is held at a constant temperature ${u} _{1}$ the other one has a given thermal conductivity $\kappa_2$ 5 times larger than the one of $C_0$.
+The first one is held at a constant temperature ${u} _{1}$ the other one has a given thermal conductivity $\kappa_2$ 3 times larger than the one of $C_0$.
 
 We assume that the border of enclosure $C_0$ is held at temperature $20^\circ C$ and that we have waited long enough for thermal equilibrium.
 
@@ -19,7 +19,6 @@ $$
 $$
 
 where $\Omega$ is the interior of $C_0$ minus the conductor $C_1$ and $\Gamma$ is the boundary of $\Omega$, that is $C_0\cup C_1$.
-<!-- Check with image -->
 
 Here $g$ is any function of $x$ equal to ${u}_i$ on $C_i$.
 
@@ -31,11 +30,11 @@ $$
 
 The variational formulation for this problem is in the subspace $H^1_0(\Omega) \subset H^1(\Omega)$ of functions which have zero traces on $\Gamma$.
 
-$
+$$
 u-g\in H^1_0(\Omega) : \int_\Omega\n u\n v =0 \forall v\in H^1_0(\Omega)
-$
+$$
 
-Let us assume that $C_0$ is a circle of radius 5 centered at the origin, $C_i$ are rectangles, $C_1$ being at the constant temperature $u_1=60^\circ C$.
+Let us assume that $C_0$ is a circle of radius 5 centered at the origin, $C_i$ are rectangles, $C_1$ being at the constant temperature $u_1=60^\circ C$ (so we can only consider its boundary).
 
 ```freefem
 // Parameters
