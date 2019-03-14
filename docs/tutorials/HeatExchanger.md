@@ -7,7 +7,7 @@ Let $\{C_{i}\}_{1,2}$, be 2 thermal conductors within an enclosure $C_0$.
 
 | The heat exchanger geometry |
 |:---:|
-| ![Heat Exchanger Th](images/heat_exchangerGeo.gng) |
+| ![Heat Exchanger Th](images/heat_exchangerGeo.png) |
 
 The first one is held at a constant temperature ${u} _{1}$ the other one has a given thermal conductivity $\kappa_2$ 3 times larger than the one of $C_0$.
 
