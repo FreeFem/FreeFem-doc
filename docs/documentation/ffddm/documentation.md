@@ -11,7 +11,7 @@ mesh3 ThGlobal = cube(10, 10, 10, [x, y, z], label = LL);      // global mesh
 macro grad(u) [dx(u), dy(u), dz(u)]// EOM    // three-dimensional gradient
 
 macro Varf(varfName, meshName, VhName)
-    varf varfName(u,v) = int3d(meshName)(grad(u)''* grad(v)) + int3d(meshName)(v) + on(1, u = 1.0);
+    varf varfName(u,v) = int3d(meshName)(grad(u)'* grad(v)) + int3d(meshName)(v) + on(1, u = 1.0);
 // EOM
        
 // Domain decomposition
@@ -360,4 +360,19 @@ func pr#prfe#K[int] pr#fGMRES(pr#prfe#K[int]& x0i, pr#prfe#K[int]& bi, real eps,
 solves the linear system for problem **pr** using the flexible GMRES algorithm with preconditioner $M^{-1}$ (corresponding to `pr#PREC`). Returns the local vector corresponding to the restriction of the solution to `pr#prfe#Vhi`. **x0i** and **bi** are local distributed vectors corresponding respectively to the initial guess and the right-hand side (see **[`ffddmbuildrhs`](#define-the-problem-to-solve)**). **eps** is the stopping criterion in terms of the relative decrease in residual norm. If **eps** $< 0$, the residual norm itself is used instead. **itmax** sets the maximum number of iterations. **sp** selects between the `"left"` or `"right"` preconditioning variants: *left* preconditioned GMRES solves $M^{-1} A x = M^{-1} b$, while *right* preconditioned GMRES solves $A M^{-1} y = b$ for $y$, with $x = M^{-1} y$.
 
 
-## Using *HPDDM* within *ffddm* 
+## Using *HPDDM* within *ffddm*
+
+*ffddm* allows you to use *HPDDM* to solve your problem, effectively replacing the *ffddm* implementation of all parallel linear algebra computations.
+*ffddm* can then be viewed as a finite element interface for *HPDDM*.  
+You can use *HPDDM* features unavailable in *ffddm* such as advanced Krylov subspace methods implementing block and recycling techniques.  
+To switch to *HPDDM*, simply define the macro `pr#withhpddm` before using **[`ffddmsetupOperator`](#define-the-problem-to-solve)**. You can then pass *HPDDM* options with command-line arguments or directly to the underlying *HPDDM* operator `pr#hpddmOP`:
+
+```freefem
+macro PBwithhpddm()1 // EOM
+ffddmsetupOperator( PB , FE , Varf )
+set(PBhpddmOP,sparams="-hpddm_krylov_method gcrodr");
+```
+
+You can also choose to replace only the Krylov solver, by defining the macro `pr#withhpddmkrylov` before using **[`ffddmsetupOperator`](#define-the-problem-to-solve)**.
+Doing so, a call to `pr#fGMRES` will call the *HPDDM* Krylov solver, with *ffddm* providing the operator and preconditioner through `pr#A` and `pr#PREC`.  
+An example can be found in **Helmholtz-2d-HPDDM-BGMRES.edp**, see the [Examples](examples.md) section.
