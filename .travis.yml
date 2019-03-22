@@ -22,8 +22,8 @@ script:
     # - SPHINXOPTS='-n -b linkcheck' make -e html
     - make html
     - make latex
-    - cd build/latex && pdflatex -interaction=nonstopmode FreeFEM.tex && pdflatex -interaction=nonstopmode FreeFEM.tex && cd ../..
     - echo "doc.freefem.org" > build/html/CNAME
+    - cd build/latex && pdflatex -interaction=nonstopmode FreeFEM.tex && pdflatex -interaction=nonstopmode FreeFEM.tex && cd ../..
 
 deploy:
     - provider: pages
