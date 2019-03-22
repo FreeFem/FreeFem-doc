@@ -1,4 +1,5 @@
-.idea
-site
-.DS_Store
-pdf
+build
+tools/package-lock.json
+tools/node_modules
+tools/lunr_index.js
+source/sphinx-extensions/__pycache__

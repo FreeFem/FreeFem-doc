@@ -1,0 +1,13 @@
+<script async src="{{ pathto('_static/js/lunr.js', 1) }}"></script>
+<script async src="{{ pathto('_static/lunr/lunr_index.js', 1) }}"></script>
+
+<div class="search-container">
+	<label for="searchInput"><i class="fas fa-search"></i></label>
+	<input type="search" placeholder="Search ..." id="searchInput">
+	<div id="searchResults"></div>
+</div>
+
+<script src="{{ pathto('_static/js/search.js', 1)}}"></script>
+<script>
+   initSearch('{{pathto("", 1)}}')
+</script>

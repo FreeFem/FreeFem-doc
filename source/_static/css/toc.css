@@ -1,0 +1,46 @@
+#toc {
+	grid-row: 3;
+	grid-column: 3;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: .55rem 0 .55rem .55rem;
+	background-color: #F7F7F9;
+	border-left: 2px solid #EFEFEF;
+	font-size: .9rem;
+}
+
+#toc > div {
+	position: sticky;
+	top: 4.3rem;
+	padding: .55rem;
+	max-height: calc(100vh - 3.75rem);
+	overflow: auto;
+	width: 100%;
+}
+
+#subnav div > ul > li > a {
+	color: #00007F;
+}
+
+#toc ul {
+	list-style: none;
+	margin: 0;
+	padding: .55rem;
+}
+
+#toc li {
+	line-height: 1.875em;
+}
+
+#toc a:hover {
+  color: #0000FF;
+}
+
+#toc li.blur > a {
+	color: #00007F;
+}
+
+#toc li.blur > a:hover {
+  color: #0000FF;
+}

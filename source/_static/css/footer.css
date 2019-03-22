@@ -1,0 +1,23 @@
+footer {
+	grid-row: 4;
+	grid-column: 1 / 4;
+	display: flex;
+	min-height: 3.75rem;
+	font-size: 1.25rem;
+	border-top: 2px solid #EFEFEF;
+	justify-content: space-around;
+	align-items: center;
+}
+
+footer i {
+    color: #FF699B;
+}
+
+footer img {
+	height: 2.5rem;
+	width: 2.5rem;
+}
+
+footer a {
+	padding: 0.55rem;
+}

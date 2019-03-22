@@ -1,19 +1,40 @@
-sudo: false
-language: python
-install:
-- pip install mkdocs
-- pip install mkdocs-material
-- pip install python-markdown-math
-- git clone https://github.com/FreeFem/FreeFem-parser-pygments.git ~/pygments
-- sudo cp ~/pygments/freefem.py /home/travis/virtualenv/python2.7.14/lib/python2.7/site-packages/pygments/lexers/
-- cd /home/travis/virtualenv/python2.7.14/lib/python2.7/site-packages/pygments/lexers/ && sudo python _mapping.py
-- cd /home/travis/build/FreeFem/FreeFem-doc
+git:
+    submodules: false
+
+notifications:
+    email: false
+
+language: generic
+
+before_install:
+    - sudo apt update
+    - sudo apt install nodejs npm
+    - sudo pip install --upgrade pip
+    - sudo pip install Sphinx
+    - sudo pip install sphinxcontrib-inlinesyntaxhighlight
+    - sudo apt install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
+    - git clone https://github.com/FreeFem/FreeFem-parser-pygments.git ~/pygments
+    - sudo cp ~/pygments/freefem.py /usr/local/lib/python2.7/dist-packages/pygments/lexers/
+    - cd /usr/local/lib/python2.7/dist-packages/pygments/lexers/ && sudo python _mapping.py
+    - cd /home/travis/build/FreeFem/${GH_REPOSITORY}
+
 script:
-- git clean -f -d -x
-- mkdocs build
-after_success:
-- git config user.name "Travis CI"
-- git config user.email "contact@airthium.com"
-- git remote add gh-token "https://${GH_TOKEN}@github.com/FreeFem/FreeFem-doc.git";
-- git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
-- mkdocs gh-deploy -v --clean --remote-name gh-token;
+    # - SPHINXOPTS='-n -b linkcheck' make -e html
+    - make html
+    - make latex
+    - cd build/latex && pdflatex -interaction=nonstopmode FreeFEM.tex && pdflatex -interaction=nonstopmode FreeFEM.tex && cd ../..
+    - echo "doc.freefem.org" > build/html/CNAME
+
+deploy:
+    - provider: pages
+      skip-cleanup: true
+      github-token: ${GH_TOKEN}
+      local-dir: build/html/
+      target-branch: gh-pages
+      keep-history: true
+    - provider: pages
+      skip-cleanup: true
+      github-token: ${GH_TOKEN}
+      local-dir: build/latex/
+      target-branch: pdf
+      keep-history: true

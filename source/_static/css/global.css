@@ -1,0 +1,420 @@
+/** GLOBAL **/
+a {
+	text-decoration: none;
+	color: #444;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #444;
+}
+
+div[id]:target::before {
+	margin-top: -3.5rem;
+  padding-top: 3.5rem;
+}
+
+div[id]::before {
+	 display: block;
+	 margin-top: -.9rem;
+	 padding-top: .9rem;
+	 content: "";
+}
+
+strong {
+	font-weight: bold;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	padding-left: .55rem;
+	text-justify: none;
+}
+
+li {
+	margin: 0;
+	padding: 0;
+}
+
+b {
+	font-weight: 700;
+	color: #00007F;
+}
+
+button:focus {
+	outline: none;
+}
+
+i {
+	font-size: 1.11rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #444;
+}
+
+p {
+	line-height: 1.625rem;
+	color: #444;
+}
+
+.fake-title {
+	font-size: 1.2rem;
+	font-weight: bold;
+	font-family: "Roboto", sans-serif;
+}
+
+/** CODE TABLES **/
+.linenos {
+	background-color: #E0E0E5;
+	color: rgba(0,0,0,.26);
+	border-radius: .125rem 0 0 .125rem;
+	padding: 0 .75rem !important;
+}
+
+.linenos pre {
+	padding: 0 .27rem;
+	margin: 0;
+}
+
+table.highlighttable {
+	display: block;
+	background-color: #EFEFEF !important;
+	border-radius: .125rem;
+	margin: 1.11rem 0;
+	overflow: hidden;
+	position: relative;
+}
+
+table.highlighttable tbody {
+	display: block;
+}
+
+table.highlighttable tr {
+	display: flex;
+}
+
+table.highlighttable .code {
+	flex: 1;
+	overflow: hidden;
+	padding: 0 .55rem;
+}
+
+table.highlighttable pre {
+	display: block;
+	margin: 0;
+	overflow: auto;
+	line-height: 1.2rem;
+	font-size: 1rem;
+	padding: .55rem 0;
+}
+
+.highlight {
+	background-color: #EFEFEF !important;
+	margin: 0;
+}
+
+.highlight .nf {
+	color: #00007F !important;
+}
+
+.literal.highlight {
+	border-radius: .25rem;
+	padding: .25rem;
+}
+
+.copy-button {
+	position: absolute;
+	top: .27rem;
+	right: 0.3rem;
+	width: 1.75rem;
+	height: 1.75rem;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.copy-button i {
+	color: rgba(0.75, 0.75, 0.75, 0.1);
+	transition: color .25s, opacity .25s;
+}
+
+.copy-button:hover i {
+	color: rgba(0,0,0,.54);
+}
+
+.clipboard-message {
+    display: block;
+    position: absolute;
+    top: .01rem;
+    right: 2.1rem;
+		padding: .375rem .625rem;
+    -webkit-transform: translateX(.8rem);
+    transform: translateX(.8rem);
+    transition: opacity .175s,-webkit-transform .25s cubic-bezier(.9,.1,.9,0);
+    transition: transform .25s cubic-bezier(.9,.1,.9,0),opacity .175s;
+    transition: transform .25s cubic-bezier(.9,.1,.9,0),opacity .175s,-webkit-transform .25s cubic-bezier(.9,.1,.9,0);
+    border-radius: .125rem;
+    background-color: rgba(0,0,0,.54);
+    color: #fff;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.clipboard-message::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -.25rem;
+    width: 0;
+    margin-top: -.25rem;
+    border-color: transparent rgba(0,0,0,.54);
+    border-style: solid;
+    border-width: .25rem 0 .25rem .25rem;
+    content: "";
+}
+
+.clipboard-message--active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    transition: opacity .175s 75ms,-webkit-transform .25s cubic-bezier(.4,0,.2,1);
+    transition: transform .25s cubic-bezier(.4,0,.2,1),opacity .175s 75ms;
+    transition: transform .25s cubic-bezier(.4,0,.2,1),opacity .175s 75ms,-webkit-transform .25s cubic-bezier(.4,0,.2,1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/** CODE LINES **/
+code, .code {
+	font-size: 1rem;
+}
+
+/** IMAGES **/
+img.align-center {
+	display: block;
+	margin: auto;
+}
+
+div.inline {
+   display: inline-flex;
+}
+
+.figure {
+	margin: auto;
+	margin-top: .55rem;
+	max-width: 90%;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
+	border-radius: .27rem;
+	margin-bottom: 1.11rem;
+}
+
+.figure img {
+		order: 2;
+		align-self: center;
+		max-width: 90%;
+		margin: .75rem 1rem;
+}
+
+.figure .caption {
+	order: 1;
+	background-color: rgba(0,0,0,.54);
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	border-radius: .125rem .125rem 0 0;
+}
+
+.figure a {
+	order: 2;
+	display: flex;
+	justify-content: center;
+}
+
+.figure .caption .code {
+	color: black;
+	font-weight: normal;
+}
+
+.caption .caption-text {
+	background-color: transparent !important;
+	text-align: center;
+}
+
+.caption-text {
+	padding: 1em;
+}
+
+/** TABLEAUX **/
+table:not(.highlighttable) {
+	min-width: 100%;
+	box-shadow: 0 .11rem .11rem 0 rgba(0,0,0,.14), 0 .05rem .27rem 0 rgba(0,0,0,.12), 0 .16rem .05rem -.11rem rgba(0,0,0,.2);
+	border: none;
+	border-collapse: collapse;
+	overflow: auto;
+	font-family: "Roboto", sans-serif;
+	border-radius: .27rem;
+}
+
+table:not(.highlighttable) caption {
+	background-color: rgba(0,0,0,.54);
+	padding: .55rem 0;
+	color: white;
+	font-weight: bold;
+	border-radius: .27rem .27rem 0 0;
+}
+
+table:not(.highlighttable) caption code, .code, .docutils code {
+	color: black;
+	font-weight: normal;
+}
+
+.caption-number {
+	text-align: center;
+	padding-left: .27rem;
+	flex-shrink: 0;
+}
+
+table a {
+	color: #3f51b5;
+}
+
+table a:visited {
+	color: #3f51b5;
+}
+
+table.docutils {
+	margin: 1.11rem 0;
+	border-radius: .27rem;
+}
+
+th {
+	background-color: rgba(0,0,0,.54);
+	color: #fff;
+	border: none;
+	padding: .55rem;
+}
+
+td:not(.code) {
+	padding: .55rem;
+}
+
+td:not(.linenos) {
+	padding: .55rem;
+}
+
+.math {
+	overflow-x: auto;
+}
+
+span {
+	margin: 0;
+}
+
+
+/** ADMONITIONS **/
+.admonition {
+	position: relative;
+	box-shadow: 0 .11rem .11rem 0 rgba(0,0,0,.14), 0 .05rem .27rem 0 rgba(0,0,0,.12), 0 .16rem .05rem -.11rem rgba(0,0,0,.2);
+	margin: 1.5625em 0;
+	padding: 0 .75rem;
+	border-left: .25rem solid #448aff;
+	border-radius: .125rem;
+	overflow: hidden;
+	overflow-wrap: break-word;
+}
+
+.admonition-title {
+	margin: 0 -1rem;
+	padding: .8rem 1.2rem .8rem 2.65rem;
+	border-bottom: .1rem solid rgba(68,138,255,.1);
+	background-color: rgba(68,138,255,.1);
+	font-weight: 700;
+}
+
+.admonition-title::before {
+	position: absolute;
+	font-family: "Font Awesome 5 Free";
+	left: .8rem;
+	color: #448aff;
+	font-size: 1rem;
+	content: "\f304";
+}
+
+.admonition.warning {
+	border-left-color: #ff9100;
+}
+
+.admonition.warning .admonition-title {
+	background-color: rgba(255,145,0,.1);
+}
+
+.admonition.warning .admonition-title::before {
+	content: '\f071';
+	color: #ff9100;
+}
+
+.admonition.tip {
+	border-left-color: #651fff;
+}
+
+.admonition.tip .admonition-title {
+	background-color: rgba(101,31,255,.1);
+}
+
+.admonition.tip .admonition-title::before {
+	content: '\f0c3';
+	color: #651fff;
+}
+
+/** SCROLLBAR DESIGN **/
+body::-webkit-scrollbar {
+	width: .55rem;
+}
+
+::-webkit-scrollbar {
+  width: .27rem;
+  height: .27rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0000FF;
+}
+
+.md-typeset pre {
+	webkit-overflow-scrolling: touch;
+}
+
+.md-typeset .codehilite, .md-typeset .highlight {
+	webkit-overflow-scrolling: touch;
+}
+
+#PDFbanner {
+	/* position: relative; */
+	box-shadow: 0 .11rem .11rem 0 rgba(0,0,0,.14), 0 .05rem .27rem 0 rgba(0,0,0,.12), 0 .16rem .05rem -.11rem rgba(0,0,0,.2);
+	margin: 1.5625em;
+	padding: 0.75rem;
+	border: .25rem solid #00007f;
+	border-radius: .125rem;
+	font-size: 1.25rem;
+	line-height: 1.25rem;
+}
+
+#PDFbanner p {
+	padding: 0.55rem;
+	margin: 0;
+	text-align: center;
+}

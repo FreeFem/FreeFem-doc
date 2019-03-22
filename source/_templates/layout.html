@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		{% include "head.html" %}
+	</head>
+	<body>
+		{%- block header %}
+		{% include "header.html" %}
+		{% endblock %}
+
+		{%- block nav %}
+		{% include "nav.html" %}
+		{% endblock %}
+
+		{% include "subnav.html" %}
+		{% block document %}
+		<div id="content">
+			{% block body %} {% endblock %}
+		</div>
+		{% endblock %}
+		{% include "toc.html" %}
+
+		{%- block footer %}
+		{% include "footer.html" %}
+		{% endblock %}
+
+		<script async src="{{ pathto('_static/js/common.js', 1)}}"></script>
+	</body>
+</html>

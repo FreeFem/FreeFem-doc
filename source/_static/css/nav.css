@@ -1,0 +1,233 @@
+nav {
+	grid-row: 1;
+	grid-column: 2 / 3;
+	display: flex;
+	grid-template-rows: 3.75rem;
+	justify-items: center;
+	align-items: center;
+	background-color: transparent;
+	position: sticky;
+	top: 0;
+	z-index: 2;
+}
+
+nav .nav-links {
+	display: none;
+}
+
+nav .nav-btn {
+	display: none;
+}
+
+nav .sidenav {
+	display: none;
+}
+
+/** STATIC NAVIGATION **/
+/* nav #staticNav {
+	grid-row: 1;
+	grid-column: 2;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	overflow: auto;
+}
+
+nav #staticNav .nav-item {
+	padding: .2rem;
+	margin: auto;
+	cursor: pointer;
+	white-space: nowrap;
+	cursor: pointer;
+	height: 18px;
+	color: #00007F;
+	font-family: Roboto;
+	font-size: 15px;
+	line-height: 18px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+nav #staticNav .nav-item:hover {
+	font-weight: 700;
+} */
+
+/** SEARCH BAR **/
+/* nav .search-container {
+	grid-row: 1;
+	grid-column: 3;
+	justify-self: end;
+	padding: 0 .55rem;
+
+	display: flex;
+	flex-direction: row;
+}
+
+nav .search-container label {
+	padding: .55rem 0 .55rem .55rem;
+	background-color: #0000FF;
+}
+
+nav .search-container label i {
+	color: #FFF;
+	-webkit-transition: color .6s ease-in;
+	-moz-transition: color .6s ease-in;
+	-o-transition: color .6s ease-in;
+	transition: color .6s ease-in;
+}
+
+nav #searchInput {
+	margin: 0;
+	padding: .55rem;
+	font-size: 1rem;
+	border: none;
+	background-color: #0000FF;
+	color: #FFF;
+}
+
+nav #searchInput:focus {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50%;
+	height: 100%;
+	outline: none;
+	border-radius: 0;
+}
+
+nav #searchResults {
+	background-color: #f1f1f1;
+	color: grey;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	width: 50%;
+	max-height: 50vh;
+	z-index: 1;
+	overflow: auto;
+	border-radius: 0 0 .27rem .27rem;
+	box-shadow: .27rem .55rem 1rem #888888;
+}
+
+nav #searchResults .search-result {
+	padding: 1.11rem;
+}
+
+nav #searchResults .search-result-main-title {
+	font-size: 1rem;
+	color: grey;
+	font-weight: bold;
+}
+
+nav #searchResults .search-result-main-title i {
+	color: #0000FF;
+	padding-right: .55rem;
+}
+
+nav #searchResults .search-result-sub {
+	padding: .27rem;
+}
+
+nav #searchResults .search-result-title {
+	font-weight: bold;
+	color: gray;
+}
+
+nav #searchResults .search-result-preview {
+	color: black;
+	font-weight: normal;
+}
+
+nav #searchResults a:hover {
+	color: black;
+} */
+
+/** RESPONSIVE **/
+
+/** NAVIGATION BUTTON **/
+nav .nav-btn {
+	/* grid-row: 1;
+	grid-column: 1; */
+
+	display: none;
+}
+
+/** SIDENAV **/
+nav .sidenav {
+	width: 0;
+	height: 100%;
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: white;
+	overflow-x: hidden;
+	transition: 0.5s;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 5px 10px 18px #888888;
+}
+
+nav .sidenav .closebtn {
+	padding: 1rem;
+	align-self: stretch;
+	text-align: right;
+	background-color: #F7F7F9;
+	position: absolute;
+	right: .2rem;
+}
+
+nav .sidenav .previousNav {
+	padding: 1rem;
+	display: block;
+	background-color: #F7F7F9;
+}
+
+nav .sidenav .sidenav-title {
+	padding: 1rem;
+	font-weight: bold;
+	cursor: default;
+	background-color: #F7F7F9;
+}
+
+nav .sidenav .nav-items {
+	max-height: 70vh;
+	overflow: auto;
+}
+
+nav .sidenav .nav-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 1.11rem 1.11rem;
+	color: black;
+	transition: 0.3s;
+	cursor: pointer;
+	border-bottom: 1px solid #EFEFEF;
+}
+
+nav .sidenav .nav-item:hover {
+	color: #00007F;
+}
+
+nav .sidenav i {
+	color: black;
+}
+
+#sideNav svg {
+	width: 200px;
+	margin: 1.11rem;
+}
+
+.sideNavHeader {
+	display: inline-flex;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: #F7F7F9;
+}
+
+.sideNavHeader h1 {
+	color: #0000FF;
+}
