@@ -35,7 +35,7 @@ By now you should have two new icons on your desktop:
 
 where ``(VERSION)`` is the version of the files (for example 3.59).
 
-By default, the installed files are in :text:`C:\\Programs Files\\FreeFem++`. In this directory, you have all the ``.dll`` files and other applications: ``FreeFem++-nw.exe``, ``ffglut.exe``, … The syntax for the command-line tools are the same as those of ``FreeFem.exe``.
+By default, the installed files are in ``C:\Programs Files\FreeFem++``. In this directory, you have all the ``.dll`` files and other applications: ``FreeFem++-nw.exe``, ``ffglut.exe``, … The syntax for the command-line tools are the same as those of ``FreeFem.exe``.
 
 MacOS X binary installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -419,7 +419,7 @@ Compilation on Windows
       make install
 
    The **FreeFEM** executable (and some other like ``ffmedit``, …)
-   are in :text:`C:\\msys64\\mingw64\\bin` (or :text:`C:\\msys32\\mingw32\\bin`).
+   are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
 
 Environment variables and init file
 -----------------------------------
