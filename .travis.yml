@@ -37,5 +37,3 @@ deploy:
       skip-cleanup: true
       api_key: ${GH_TOKEN}
       file: build/latex/FreeFEM-doc_released_${DATE}.pdf
-      on:
-        tags: true
