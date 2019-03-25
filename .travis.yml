@@ -12,6 +12,7 @@ before_install:
     - sudo pip install --upgrade pip
     - sudo pip install Sphinx
     - sudo pip install sphinxcontrib-inlinesyntaxhighlight
+    - sudo pip install sphinx-sitemap
     - sudo apt install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
     - git clone https://github.com/FreeFem/FreeFem-parser-pygments.git ~/pygments
     - sudo cp ~/pygments/freefem.py /usr/local/lib/python2.7/dist-packages/pygments/lexers/
