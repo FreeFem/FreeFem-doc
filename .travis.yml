@@ -23,7 +23,6 @@ script:
     - make html
     - make latex
     - echo "doc.freefem.org" > build/html/CNAME
-    - echo "google-site-verification: google61ca8a551cdffefd.html" > build/html/google61ca8a551cdffefd.html
     - cd build/latex && pdflatex -interaction=nonstopmode FreeFEM.tex && pdflatex -interaction=nonstopmode FreeFEM.tex && cd ../..
 
 deploy:
