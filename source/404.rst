@@ -1,0 +1,12 @@
+something goes wrong
+====================
+
+I will redirect you to the introduction soon
+
+.. only:: html
+
+	.. raw:: html
+
+		<script>
+			setTimeout(function(){window.location.href = "introduction/index.html"}, 2000)
+		</script>
