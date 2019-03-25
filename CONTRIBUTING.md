@@ -13,11 +13,11 @@ Just do a pull request !
 Files to improve are in:
 - source/
  - documentation/
- - examples/
+  - examples/
  - introduction/
- - models/
+ - model
  - references/
- - tutorials/
+ - tutorial/
 
 ## Via email
 

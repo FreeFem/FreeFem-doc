@@ -1,7 +1,7 @@
 .. role:: freefem(code)
    :language: freefem
 
-.. _tutorials:
+.. _tutorial:
 
 Tutorials
 =========

@@ -6,7 +6,7 @@ Transmission problem
 
 Consider an elastic plate whose displacement change vertically, which is made up of three plates of different materials, welded on each other.
 
-Let :math:`\Omega_i`, :math:`i=1,2,3` be the domain occupied by :math:`i`-th material with tension :math:`\mu_i` (see :ref:`Soap film <modelStaticSoap>`).
+Let :math:`\Omega_i`, :math:`i=1,2,3` be the domain occupied by :math:`i`-th material with tension :math:`\mu_i` (see :ref:`Soap film <modelStatisSoap>`).
 
 The computational domain :math:`\Omega` is the interior of :math:`\overline{\Omega_1}\cup \overline{\Omega_2}\cup \overline{\Omega_3}`.
 The vertical displacement :math:`u(x,y)` is obtained from:
