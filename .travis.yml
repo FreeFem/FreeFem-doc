@@ -1,6 +1,10 @@
 git:
     submodules: false
 
+branches:
+    only:
+        -master
+
 notifications:
     email: false
 
