@@ -10,7 +10,7 @@
 
 .search-container label {
   padding: .55rem 0 .55rem .55rem;
-  background-color: #0000FF;
+  background-color: #00007F;
 }
 
 .search-container label i {
@@ -21,7 +21,7 @@
 	margin: 0;
 	padding: .55rem;
 	border: none;
-	background-color: #0000FF;
+	background-color: #00007F;
 	color: #FFF;
 	font-size: 1rem;
 	width: 230px;
@@ -37,10 +37,8 @@
 	background-color: #f1f1f1;
 	color: grey;
 	position: absolute;
-	top: 3.75rem;
-	right: 0;
+	top: 3rem;
 	margin: 0;
-	width: 50vw;
 	max-height: 50vh;
 	z-index: 2;
 	overflow: auto;
