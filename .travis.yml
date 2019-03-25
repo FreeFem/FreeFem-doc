@@ -34,7 +34,7 @@ before_deploy:
     - git config --local user.name "sgarnotel"
     - git config --local user.email "simon.garnotel@gmail.com"
     - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-    - git tag $TRAVIS_TAG
+    - git tag $TRAVIS_TAG --force
 
 deploy:
     - provider: pages
