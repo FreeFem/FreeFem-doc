@@ -6,12 +6,12 @@ Welcome to FreeFEM documentation
 .. toctree::
 
    introduction/index
-   tutorial/index
+   tutorials/index
    documentation/index
-   reference/index
-   model/index
-   example/index
-   reference
+   references/index
+   models/index
+   examples/index
+   references
 
 .. only:: html
 
