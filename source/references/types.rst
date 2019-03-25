@@ -547,7 +547,7 @@ In order to solve the problem, just call:
 
    Dimension of the Krylov space
 
-Usage of :freefem:`problem` is detailled in the :ref:`tutorials <tutorial>`.
+Usage of :freefem:`problem` is detailled in the :ref:`tutorials <tutorials>`.
 
 .. _typeSolve:
 
@@ -558,7 +558,7 @@ Solve type.
 
 Identical to :ref:`problem <typeProblem>` but automatically solved.
 
-Usage of :freefem:`solve` is detailled in the :ref:`tutorials <tutorial>`.
+Usage of :freefem:`solve` is detailled in the :ref:`tutorials <tutorials>`.
 
 .. _typeVarf:
 
@@ -576,7 +576,7 @@ Directly define a variational form.
 
 This is the other way to define a problem in order to directly manage matrix and right hang side.
 
-Usage of :freefem:`varf` is detailed in the :ref:`tutorial <tutorial>`.
+Usage of :freefem:`varf` is detailed in the :ref:`tutorial <tutorials>`.
 
 Array
 -----

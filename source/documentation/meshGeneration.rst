@@ -1081,7 +1081,7 @@ of a function (formula or FE-function).
 
 Mesh adaptation is a very powerful tool when the solution of a problem varies locally and sharply.
 
-Here we solve the :ref:`Poisson’s problem <tutorialPoisson>`, when :math:`f=1` and :math:`\Omega` is a L-shape domain.
+Here we solve the :ref:`Poisson’s problem <tutorialsPoisson>`, when :math:`f=1` and :math:`\Omega` is a L-shape domain.
 
 .. subfigstart::
 

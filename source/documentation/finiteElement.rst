@@ -6,7 +6,7 @@
 Finite element
 ==============
 
-As stated in :ref:`tutorials <tutorial>`, FEM approximates all functions :math:`w` as:
+As stated in :ref:`tutorials <tutorials>`, FEM approximates all functions :math:`w` as:
 
 .. math::
    w(x,y)\simeq w_0\phi_0(x,y)+w_1\phi_1(x,y)+\cdots+w_{M-1}\phi_{M-1}(x,y)

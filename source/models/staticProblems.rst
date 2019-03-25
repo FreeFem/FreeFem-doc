@@ -4,7 +4,7 @@
 Static problems
 ===============
 
-.. _modelStatisSoap:
+.. _modelStaticSoap:
 
 Soap Film
 ---------
