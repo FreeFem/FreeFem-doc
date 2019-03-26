@@ -8,5 +8,7 @@ I will redirect you to the introduction soon
 	.. raw:: html
 
 		<script>
-			setTimeout(function(){window.location.href = "/introduction/index.html"}, 2000)
+			header("Status: 301 Moved Permanently", false, 301);
+			header("Location: /introduction/index.html");
+			exit();
 		</script>
