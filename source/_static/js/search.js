@@ -4,147 +4,151 @@ let rootPath = ''
 const LUNR_LIMIT = 50
 
 function initSearch(path) {
-   rootPath = path
+  rootPath = path
 }
 
 function search(event) {
-   searchClean()
+  searchClean()
 
-   if (!event.target)
-      return
+  if (!event.target)
+    return
 
-   if (!event.target.value)
-      return
+  if (!event.target.value)
+    return
 
-   const text = event.target.value
+  const text = event.target.value
 
-   if (text === '')
-      return
-   else
-      searchLunr(text)
+  if (text === '')
+    return
+  else
+    searchLunr(text)
 }
 
 function searchClean() {
-   searchResults.innerHTML = ''
+  searchResults.innerHTML = ''
 }
 
 function searchLunr(text) {
-   const idx = lunr.Index.load(LUNR_DATA[0])
-   const results = idx.search(text)
+  const idx = lunr.Index.load(LUNR_DATA[0])
+  const results = idx.search(text)
 
-   const resultsi = []
-   results.forEach(function(result) {
-      const ref = result['ref']
-      const index = Number(ref)+1
-      const idxi = lunr.Index.load(LUNR_DATA[index])
-      resultsi[index] = idxi.search(text)
-   })
+  const resultsi = []
+  results.forEach(function(result) {
+    const ref = result['ref']
+    const index = Number(ref) + 1
+    const idxi = lunr.Index.load(LUNR_DATA[index])
+    resultsi[index] = idxi.search(text)
+  })
 
-   const resultsHTML = parseLunrResults(results, resultsi, text)
-   if (resultsHTML.length === 0)
-      searchResults.innerHTML = '<p>No results</p>'
-   else {
-      for (let result of resultsHTML) {
-         const div = document.createElement('div')
-         div.className = 'search-result'
+  const resultsHTML = parseLunrResults(results, resultsi, text)
+  if (resultsHTML.length === 0)
+    searchResults.innerHTML = '<p>No results</p>'
+  else {
+    for (let result of resultsHTML) {
+      const div = document.createElement('div')
+      div.className = 'search-result'
 
-         const title = document.createElement('a')
-         title.className = 'search-result-main-title'
-         title.innerHTML = '<i class="fas fa-poll"></i>' + result.mainTitle
-         title.href = result.link
-         div.appendChild(title)
+      const title = document.createElement('a')
+      title.className = 'search-result-main-title'
+      title.innerHTML = '<i class="fas fa-poll"></i>' + result.mainTitle
+      title.href = result.link
+      div.appendChild(title)
 
-         for (let i = 0; i < result.titles.length; i++) {
-            const subdiv = document.createElement('div')
-            subdiv.className = 'search-result-sub'
+      for (let i = 0; i < result.titles.length; i++) {
+        const subdiv = document.createElement('div')
+        subdiv.className = 'search-result-sub'
 
-            const title = document.createElement('a')
-            title.className = 'search-result-title'
-            title.href = result.links[i]
+        const title = document.createElement('a')
+        title.className = 'search-result-title'
+        title.href = result.links[i]
 
-            const titleDiv = document.createElement('div')
+        const titleDiv = document.createElement('div')
 
-            const titleText = document.createElement('p')
-            titleText.className = 'search-result-title-text'
-            titleText.innerHTML = result.titles[i]
+        const titleText = document.createElement('p')
+        titleText.className = 'search-result-title-text'
+        titleText.innerHTML = result.titles[i]
 
-            const preview = document.createElement('p')
-            preview.className = 'search-result-preview'
-            preview.innerHTML = result.previews[i]
+        const preview = document.createElement('p')
+        preview.className = 'search-result-preview'
+        preview.innerHTML = result.previews[i]
 
-            title.appendChild(titleDiv)
-            titleDiv.appendChild(titleText)
-            titleDiv.appendChild(preview)
+        title.appendChild(titleDiv)
+        titleDiv.appendChild(titleText)
+        titleDiv.appendChild(preview)
 
-            subdiv.appendChild(title)
-            div.appendChild(subdiv)
-         }
-
-         searchResults.appendChild(div)
+        subdiv.appendChild(title)
+        div.appendChild(subdiv)
       }
-      searchResults.style.display = 'block'
-   }
+
+      searchResults.appendChild(div)
+    }
+    searchResults.style.display = 'block'
+  }
 }
 
 function parseLunrResults(results, resultsi, text) {
-   const html = []
+  const html = []
 
-   for (let i = 0; i < Math.min(LUNR_LIMIT, results.length); i++) {
-      const id = results[i]['ref']
-      const item = PREVIEW_LOOKUP[0][id]
-      const mainTitle = item['t']
-      const link = rootPath + item['l']
+  for (let i = 0; i < Math.min(LUNR_LIMIT, results.length); i++) {
+    const id = results[i]['ref']
+    const item = PREVIEW_LOOKUP[0][id]
+    const mainTitle = item['t']
+    const link = rootPath + item['l']
 
-      const titlei = []
-      const previewi = []
-      const linki = []
-      for (let k = 0; k < resultsi.length; k++) {
-         const results = resultsi[k]
-         if (results)
-            for (var j = 0; j < results.length; j++) {
-               const id = results[j]['ref']
-               const item = PREVIEW_LOOKUP[k][id]
-               const title = item['t']
-               let preview = item['p']
+    const titlei = []
+    const previewi = []
+    const linki = []
+    for (let k = 0; k < resultsi.length; k++) {
+      const results = resultsi[k]
+      if (results)
+        for (var j = 0; j < results.length; j++) {
+          const id = results[j]['ref']
+          const item = PREVIEW_LOOKUP[k][id]
+          const title = item['t']
+          let preview = item['p']
 
-               let lpreview = preview.toLowerCase()
-               let ltext = text.toLowerCase()
-               let index = lpreview.indexOf(ltext)
-               preview = preview.slice(Math.max(0, index-124), Math.min(index+124, preview.length))
+          let lpreview = preview.toLowerCase()
+          let ltext = text.toLowerCase()
+          let index = lpreview.indexOf(ltext)
+          preview = preview.slice(Math.max(0, index - 124), Math.min(index + 124, preview.length))
 
-               lpreview = preview.toLowerCase()
-               index = lpreview.indexOf(ltext)
-               preview = preview.slice(0, index) + '<b>' + preview.slice(index, index+text.length) + '</b>' + preview.slice(index+text.length)
+          lpreview = preview.toLowerCase()
+          index = lpreview.indexOf(ltext)
+          preview = preview.slice(0, index) + '<b>' + preview.slice(index, index + text.length) + '</b>' + preview.slice(index + text.length)
 
-               const link = rootPath + item['l']
-               titlei.push(title)
-               previewi.push(preview)
-               linki.push(link)
-            }
-      }
+          const link = rootPath + item['l']
+          titlei.push(title)
+          previewi.push(preview)
+          linki.push(link)
+        }
+    }
 
-      html.push(
-         {
-            mainTitle: mainTitle,
-            link: link,
-            titles: titlei,
-            previews: previewi,
-            links: linki
-         }
-      )
-   }
+    html.push({
+      mainTitle: mainTitle,
+      link: link,
+      titles: titlei,
+      previews: previewi,
+      links: linki
+    })
+  }
 
-   return html
+  return html
 }
 
 searchInput.addEventListener('input', function(event) {
-   search(event)
+  search(event)
 })
 
 searchInput.addEventListener('focus', function(event) {
-   if (!searchResults.children.length)
-     return
+  document.getElementById("search-overlay").style.display = "block";
 
-   event.stopPropagation()
-   searchResults.style.display = 'block'
+  if (!searchResults.children.length)
+    return
+
+  event.stopPropagation()
+  searchResults.style.display = 'block'
 })
+
+function removeOverlay() {
+  document.getElementById("search-overlay").style.display = "none";
+}

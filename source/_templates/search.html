@@ -2,8 +2,9 @@
 <script async src="{{ pathto('_static/lunr/lunr_index.js', 1) }}"></script>
 
 <div class="search-container">
-	<label for="searchInput"><i class="fas fa-search"></i></label>
+	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
+	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
