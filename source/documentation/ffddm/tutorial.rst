@@ -285,7 +285,7 @@ builds the distributed operator associated to your variational form on top of th
     ffddmbuildrhs( PB , Varf , bi[] )
 
     ui[] = PBA(bi[]);
-    ffddmplot(PB, ui, "A*b")
+    ffddmplot(FE, ui, "A*b")
 
 Summary so far: translating your sequential *FreeFEM* script
 --------------------------------------------------------------
@@ -371,7 +371,7 @@ We have :math:`A` and :math:`b` in distributed form, we can solve the linear sys
 
     // Solve the problem using the direct parallel solver MUMPS
     ui[] = PBdirectsolve(bi[]);
-    ffddmplot(PB, ui, "u")
+    ffddmplot(FE, ui, "u")
 
 Step 4: Define the one level DD preconditioner
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -454,7 +454,7 @@ solve :math:`A M^{-1} y = b`
     FEVhi x0i = 0;
     ui[] = PBfGMRES(x0i[], bi[], 1.e-6, 200, "right");
 
-    ffddmplot(PB, ui, "u")
+    ffddmplot(FE, ui, "u")
     PBwritesummary
 
 Define a two level DD preconditioner
