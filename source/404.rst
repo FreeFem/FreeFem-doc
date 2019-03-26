@@ -1,8 +1,3 @@
-something goes wrong
-====================
-
-I will redirect you to the introduction soon
-
 .. only:: html
 
 	.. raw:: html
@@ -11,8 +6,13 @@ I will redirect you to the introduction soon
 			// Try a catch
 			const currentURL = window.location.href
 			if (currentURL.slice(-1) === '/')
-				window.location.href = currentURL.splice(0, -1).toLowerCase() + '.html'
+				window.location.href = currentURL.splice(0, -1).toLowerCase()
 			// Else go to index
 			window.location.href = '/introduction/index.html'
 			exit()
 		</script>
+
+something goes wrong
+====================
+
+I will redirect you to the introduction soon
