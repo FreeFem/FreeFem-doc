@@ -5,8 +5,8 @@
 		<script>
 			// Try a catch
 			const currentURL = window.location.href
-			if (currentURL.slice(-1) === '/')
-				window.location.href = currentURL.splice(0, -1).toLowerCase()
+			if (currentURL.lastIndexOf('/') !== -1)
+				window.location.href = currentURL.slice(0, currentURL.lastIndexOf('/')).toLowerCase()
 			// Else go to index
 			window.location.href = '/introduction/index.html'
 			exit()
