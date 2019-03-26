@@ -88,6 +88,8 @@ html_add_permalinks = ' '
 
 # -- Options for LaTeX output ------------------------------------------------
 
+latex_additional_files = ['_static/img/logo_ANR.png', '_static/img/logo_CNRS.png', '_static/img/logo_INRIA.png', '_static/img/logo_LJLL.png', '_static/img/logo_Sorbonne.png', '_static/img/logo_UPMC.png']
+
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
@@ -180,6 +182,41 @@ latex_elements = {
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
+    'maketitle': r'''
+        \sphinxmaketitle
+        \clearpage
+        \Huge{In collaboration with:}
+        \vfill
+        \begin{minipage}{.49\linewidth}
+            \centering
+            \sphinxincludegraphics[width=.8\linewidth]{logo_LJLL.png}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{.49\linewidth}
+            \centering
+            \sphinxincludegraphics[width=.8\linewidth]{logo_UPMC.png}
+        \end{minipage}
+        \vfill
+        \begin{minipage}{.49\linewidth}
+            \centering
+            \sphinxincludegraphics[width=.8\linewidth]{logo_Sorbonne.png}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{.49\linewidth}
+            \centering
+            \sphinxincludegraphics[width=.8\linewidth]{logo_ANR.png}
+        \end{minipage}
+        \vfill
+        \begin{minipage}{.49\linewidth}
+            \centering
+            \sphinxincludegraphics[width=.8\linewidth]{logo_INRIA.png}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{.49\linewidth}
+            \centering
+            \sphinxincludegraphics[width=.8\linewidth]{logo_CNRS.png}
+        \end{minipage}
+    '''
 }
 
 # Grouping the document tree into LaTeX files. List of tuples

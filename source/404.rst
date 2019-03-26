@@ -8,7 +8,8 @@ I will redirect you to the introduction soon
 	.. raw:: html
 
 		<script>
-			header("Status: 301 Moved Permanently", false, 301);
-			header("Location: /introduction/index.html");
-			exit();
+			header('Status: 301 Moved Permanently', false, 301)
+			header('Location: /introduction/index.html')
+			window.location.href = '/introduction/index.html'
+			exit()
 		</script>
