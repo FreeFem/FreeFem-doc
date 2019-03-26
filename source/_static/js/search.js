@@ -1,6 +1,7 @@
 const searchInput = document.getElementById('searchInput')
 const searchResults = document.getElementById('searchResults')
 let rootPath = ''
+const LUNR_LIMIT = 50
 
 function initSearch(path) {
    rootPath = path
@@ -29,7 +30,6 @@ function searchClean() {
 
 function searchLunr(text) {
    const idx = lunr.Index.load(LUNR_DATA[0])
-   // const results = idx.search('*'+text+'*')
    const results = idx.search(text)
 
    const resultsi = []
@@ -37,7 +37,6 @@ function searchLunr(text) {
       const ref = result['ref']
       const index = Number(ref)+1
       const idxi = lunr.Index.load(LUNR_DATA[index])
-      // resultsi[index] = idxi.search('*'+text+'*')
       resultsi[index] = idxi.search(text)
    })
 
@@ -90,7 +89,7 @@ function searchLunr(text) {
 function parseLunrResults(results, resultsi, text) {
    const html = []
 
-   for (let i = 0; i < results.length; i++) {
+   for (let i = 0; i < Math.min(LUNR_LIMIT, results.length); i++) {
       const id = results[i]['ref']
       const item = PREVIEW_LOOKUP[0][id]
       const mainTitle = item['t']
