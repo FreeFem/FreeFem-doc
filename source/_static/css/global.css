@@ -122,6 +122,8 @@ table.highlighttable pre {
 .literal.highlight {
 	border-radius: .25rem;
 	padding: .25rem;
+	display: inline-block;
+	line-height: normal;
 }
 
 .copy-button {
