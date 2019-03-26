@@ -140,3 +140,11 @@ function parseLunrResults(results, resultsi, text) {
 searchInput.addEventListener('input', function(event) {
    search(event)
 })
+
+searchInput.addEventListener('focus', function(event) {
+   if (!searchResults.children.length)
+     return
+
+   event.stopPropagation()
+   searchResults.style.display = 'block'
+})

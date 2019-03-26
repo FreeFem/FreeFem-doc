@@ -1,6 +1,6 @@
 // Close search on click
 window.onclick = function(e) {
-   if (!e.target.matches('#searchResults')) {
+   if (!e.target.matches('#searchResults') && !e.target.matches('#searchInput')) {
       const searchResults = document.getElementById('searchResults')
       searchResults.style.display = 'none'
    }
