@@ -27,13 +27,8 @@ script:
     - make html
     - make latex
     - echo "doc.freefem.org" > build/html/CNAME
-    - cd build/latex && DATE=`date +%Y%m%d` && pdflatex -interaction=nonstopmode -jobname FreeFEM-doc_released_${DATE} FreeFEM.tex && pdflatex -interaction=nonstopmode -jobname FreeFEM-doc_released_${DATE} FreeFEM.tex && cd ../..
-
-before_deploy:
-    - git config --local user.name "sgarnotel"
-    - git config --local user.email "simon.garnotel@gmail.com"
-    - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-    - git tag $TRAVIS_TAG --force
+    - cd build/latex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && cd ../..
+    - mkdir build/html/pdf && cp build/latex/FreeFEM-documentation.pdf build/html/pdf/
 
 deploy:
     - provider: pages
@@ -42,7 +37,9 @@ deploy:
       local-dir: build/html/
       target-branch: gh-pages
       keep-history: true
-    - provider: releases
+    - provider: pages
       skip-cleanup: true
-      api_key: ${GH_TOKEN}
-      file: build/latex/FreeFEM-doc_released_${DATE}.pdf
+      github-token: ${GH_TOKEN}
+      local-dir: build/latex/
+      target-branch: pdf
+      keep-history: true
