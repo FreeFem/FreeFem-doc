@@ -7,7 +7,7 @@
         Do you prefer a PDF version ?
       </p>
       <p>
-        Get it <a href="../pdf/FreeFEM-documentation.pdf" target="_blank">here</a>
+        Get it <a href="/pdf/FreeFEM-documentation.pdf" target="_blank">here</a>
       </p>
     </div>
 
