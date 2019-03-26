@@ -73,9 +73,18 @@ function readHtml(root, file, fileId) {
 }
 
 function parseAnchor(text) {
+   // First pass
    text = text.toLowerCase()
-   text = text.replace(' ', '-')
-   text = text.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'-')
+   text = text.trim()
+   text = text.replace(/ /g, '-')
+   text = text.replace(/[’&\/\\#,+()$~%.'":*?<>{}]/g,'-')
+
+   // Second pass
+   while (text.slice(-1) === '-')
+    text = text.slice(0, -1)
+   text = text.replace(/-+/g, '-')
+
+   console.log(text)
    return text
 }
 
