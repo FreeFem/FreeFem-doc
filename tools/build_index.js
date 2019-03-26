@@ -159,7 +159,7 @@ function buildPreviews(docs) {
       const doc = docs[i]
       const preview = doc['b']
       result[doc['id']] = {
-         't': doc['t'],
+         't': doc['t'].replace('Logo', ''),
          'p': preview,
          'l': doc['link']
       }
@@ -183,14 +183,27 @@ function main() {
    }
    const idx = buildIndex(docs)
    const previews = buildPreviews(docs)
-   let js = 'const LUNR_DATA = [' + JSON.stringify(idx)
-   for (let i = 0; i < idxi.length; i++)
-      js += ',\n' + JSON.stringify(idxi[i])
+
+   let js = 'const LUNR_DATA = ' + JSON.stringify(idx) + ';\n'
+
+   js += 'const LUNR_PAGEDATA = ['
+   for (let i = 0; i < idxi.length; i++) {
+     js += JSON.stringify(idxi[i])
+     if (i < idxi.length -1)
+        js += ',\n'
+   }
    js += '];\n'
-   js += 'const PREVIEW_LOOKUP = [' + JSON.stringify(previews)
-   for (let i = 0; i < previewsi.length; i++)
-      js += ',\n' + JSON.stringify(previewsi[i])
+
+   js += 'const PREVIEW_DATA = ' + JSON.stringify(previews) + ';\n'
+
+   js += 'const PREVIEW_PAGEDATA = ['
+   for (let i = 0; i < previewsi.length; i++) {
+      js += JSON.stringify(previewsi[i])
+      if (i < idxi.length - 1)
+         js += ',\n'
+   }
    js += '];'
+
    fs.writeFile(OUTPUT_INDEX+'.js', js, function(err) {
       if(err) {
          return console.log(err)
