@@ -8,8 +8,11 @@ I will redirect you to the introduction soon
 	.. raw:: html
 
 		<script>
-			header('Status: 301 Moved Permanently', false, 301)
-			header('Location: /introduction/index.html')
+			// Try a catch
+			const currentURL = window.location.href
+			if (currentURL.slice(-1) === '/')
+				window.location.href = currentURL.splice(0, -1).toLowerCase() + '.html'
+			// Else go to index
 			window.location.href = '/introduction/index.html'
 			exit()
 		</script>
