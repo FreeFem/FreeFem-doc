@@ -130,53 +130,6 @@ function parseLunrResults(results, resultsi, text) {
       })
    })
 
-
-
-   // for (let i = 0; i < Math.min(LUNR_LIMIT, results.length); i++) {
-   //    const id = results[i]['ref']
-   //    const item = PREVIEW_DATA[id]
-   //    const mainTitle = item['t']
-   //    const link = rootPath + item['l']
-   //
-   //    const titlei = []
-   //    const previewi = []
-   //    const linki = []
-   //    for (let k = 0; k < resultsi.length; k++) {
-   //       const results = resultsi[k]
-   //       if (results)
-   //          for (var j = 0; j < results.length; j++) {
-   //             const id = results[j]['ref']
-   //             const item = PREVIEW_PAGEDATA[k][id]
-   //             const title = item['t']
-   //             let preview = item['p']
-   //
-   //             let lpreview = preview.toLowerCase()
-   //             let ltext = text.toLowerCase()
-   //             let index = lpreview.indexOf(ltext)
-   //             preview = preview.slice(Math.max(0, index-124), Math.min(index+124, preview.length))
-   //
-   //             lpreview = preview.toLowerCase()
-   //             index = lpreview.indexOf(ltext)
-   //             preview = preview.slice(0, index) + '<b>' + preview.slice(index, index+text.length) + '</b>' + preview.slice(index+text.length)
-   //
-   //             const link = rootPath + item['l']
-   //             titlei.push(title)
-   //             previewi.push(preview)
-   //             linki.push(link)
-   //          }
-   //    }
-   //
-   //    html.push(
-   //       {
-   //          mainTitle: mainTitle,
-   //          link: link,
-   //          titles: titlei,
-   //          previews: previewi,
-   //          links: linki
-   //       }
-   //    )
-   // }
-
    return html
 }
 
