@@ -185,7 +185,7 @@ latex_elements = {
     'maketitle': r'''
         \sphinxmaketitle
         \clearpage
-        \Huge{In collaboration with:}
+        In collaboration with:
         \vfill
         \begin{minipage}{.49\linewidth}
             \centering
