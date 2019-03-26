@@ -84,7 +84,6 @@ function parseAnchor(text) {
     text = text.slice(0, -1)
    text = text.replace(/-+/g, '-')
 
-   console.log(text)
    return text
 }
 
