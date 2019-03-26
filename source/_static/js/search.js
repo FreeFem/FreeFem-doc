@@ -82,11 +82,8 @@ function searchLunr(text) {
 
          searchResults.appendChild(div)
       }
-
-      searchResults.appendChild(div)
-    }
-    searchResults.style.display = 'block'
-  }
+      searchResults.style.display = 'block'
+   }
 }
 
 function parseLunrResults(results, resultsi, text) {
