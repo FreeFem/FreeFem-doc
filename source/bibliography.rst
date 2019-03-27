@@ -1,7 +1,7 @@
 .. only:: html
 
-   References
-   ==========
+   Bibliography
+   ============
 
 .. [PIRONNEAU1998] PIRONNEAU, Olivier and LUCQUIN-DESREUX, Brigitte. Introduction to scientific computing. Wiley, 1998.
 

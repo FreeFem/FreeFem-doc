@@ -1,0 +1,23 @@
+<script>
+	// Try to catch old documentation links
+	const url = window.location.href
+
+	// References without s in the old documentation
+	if (url.includes('reference') && !url.includes('references'))
+		url = url.replace('reference', 'references')
+
+	// Modify link to retrieve good one
+	let index = url.lastIndexOf('/')
+	if (index === (url.length-1)) {
+		url = url.slice(0, -1)
+		index = url.lastIndexOf('/')
+	}
+
+	let lastWay = url.slice(index)
+	console.log(lastWay)
+
+	// Else redirect to home
+	setTimeout(function(){
+	window.location.href = 'https://doc.freefem.org/introduction/index.html'
+	}, 5000);
+</script>

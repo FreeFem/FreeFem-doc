@@ -11,7 +11,7 @@ Welcome to FreeFEM documentation
    references/index
    models/index
    examples/index
-   references
+   bibliography
 
 .. only:: html
 
