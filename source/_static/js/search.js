@@ -50,7 +50,7 @@ function searchLunr(text) {
 
          const title = document.createElement('a')
          title.className = 'search-result-main-title'
-         title.innerHTML = '<i class="fas fa-poll"></i>' + result.mainTitle
+         title.innerHTML = '<i class="fas fa-file-alt"></i>' + result.mainTitle
          title.href = result.link
          div.appendChild(title)
 

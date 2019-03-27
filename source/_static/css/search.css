@@ -11,7 +11,7 @@
 #search-icon {
   padding: .55rem 0 .55rem .55rem;
   background-color: #00007F;
-	z-index: 2;
+  z-index: 2;
 }
 
 #search-icon i {
@@ -27,7 +27,7 @@
   font-size: 1rem;
   width: 230px;
   transition: width 0.5s;
-	z-index: 2;
+  z-index: 2;
 }
 
 #searchInput:focus {
@@ -45,17 +45,17 @@
   transition: width 0s .25s, height 0s .25s, opacity .25s;
   background-color: rgba(0, 0, 0, .54);
   cursor: pointer;
-	z-index: 1;
-	display: none;
+  z-index: 1;
+  display: none;
 }
 
 #searchResults {
-  background-color: #f1f1f1;
+  background-color: #fff;
   color: grey;
   position: absolute;
   top: 3rem;
   margin: 0;
-  max-height: 50vh;
+  max-height: 75vh;
   min-width: 100%;
   z-index: 2;
   overflow: auto;
@@ -64,22 +64,25 @@
 }
 
 #searchResults .search-result {
-  padding: 1.11rem;
+  border-bottom: 1px solid #EFEFEF;
 }
 
 #searchResults .search-result-main-title {
-  font-size: 1rem;
-  color: grey;
-  font-weight: bold;
+  font-size: 1.2rem;
+  color: #00007F;
+  display: block;
+  outline: 0;
+  overflow: hidden;
 }
 
 #searchResults .search-result-main-title i {
   color: #0000FF;
-  padding-right: .55rem;
+  padding: .8rem 1rem;
+  font-size: 1.5rem;
 }
 
 #searchResults .search-result-sub {
-  padding: .27rem;
+
 }
 
 #searchResults .search-result-title {
@@ -87,11 +90,22 @@
   color: gray;
 }
 
+#searchResults .search-result-title-text {
+  margin: 0;
+  padding: 0 3.125rem;
+}
+
 #searchResults .search-result-preview {
   color: black;
   font-weight: normal;
+  margin: 0;
+  padding: 0 3.125rem;
 }
 
 #searchResults a:hover {
-  color: black;
+  background-color: rgba(83,109,254,.1);
+}
+
+#searchResults a:hover p {
+  background-color: rgba(83,109,254,.1);
 }
