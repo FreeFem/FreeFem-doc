@@ -63,6 +63,10 @@
   box-shadow: .27rem .55rem 1rem #888888;
 }
 
+#searchResults > p {
+    text-align: center;
+}
+
 #searchResults .search-result {
   border-bottom: 1px solid #EFEFEF;
 }
