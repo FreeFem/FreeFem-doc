@@ -5,7 +5,7 @@
 The [FreeFEM](https://freefem.org/) documentation is a collaborative effort. We welcome all contributions, do not hesitate to submit a pull request.
 
 ## View the documentation
-<a href="https://doc.freefem.org" target="_blank">Documentation website.</a>
+Visit the [Documentation website](https://doc.freefem.org) or download the [PDF](https://doc.freefem.org/pdf/FreeFEM-documentation.pdf)
 
 ## Install the documentation
 Have a look at the [mkdocs installation](MkDocs.md)
