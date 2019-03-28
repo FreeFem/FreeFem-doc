@@ -3358,7 +3358,7 @@ A first 3d isotrope mesh adaptation process
         }
 
 Build a 2d mesh from an isoline
-------------------------------
+-------------------------------
 
 The idea is to get the discretization of an isoline of fluid meshes, this tool can be useful to construct meshes from image.
 First, we give an example of the isovalue meshes :math:`0.2` of analytical function :math:`\sqrt{(x-1/2)^2 +(y-1/2)^2}`, on unit square.

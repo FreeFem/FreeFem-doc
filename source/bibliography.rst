@@ -67,6 +67,8 @@
 
 .. [ITO2003] ITO, Kazufumi and KUNISCH, Karl. Semi–smooth Newton methods for variational inequalities of the first kind. ESAIM: Mathematical Modelling and Numerical Analysis, 2003, vol. 37, no 1, p. 41-62.
 
+.. [HINTERMULLER2002] HINTERMÜLLER, Michael, ITO, Kazufumi, et KUNISCH, Karl. The primal-dual active set strategy as a semismooth Newton method. SIAM Journal on Optimization, 2002, vol. 13, no 3, p. 865-888.
+
 .. [OXBORROW2007] OXBORROW, Mark. Traceable 2-D finite-element simulation of the whispering-gallery modes of axisymmetric electromagnetic resonators. IEEE Transactions on Microwave Theory and Techniques, 2007, vol. 55, no 6, p. 1209-1218.
 
 .. [GRUDININ2012] GRUDININ, Ivan S. and YU, Nan. Finite-element modeling of coupled optical microdisk resonators for displacement sensing. JOSA B, 2012, vol. 29, no 11, p. 3010-3014.
