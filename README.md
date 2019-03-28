@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/FreeFem/FreeFem-doc.svg?branch=master)](https://travis-ci.org/FreeFem/FreeFem-doc)
 
-# FreeFem++ doc
+# FreeFEM documentation
 
-Documentation of [FreeFem++](https://freefem.org/).
+The [FreeFEM documentation](https://freefem.org/) is a collaborative effort. We welcome all contributions, do not hesitate to submit a pull request.
 
 ## View the documentation
 <a href="https://doc.freefem.org" target="_blank">Documentation website.</a>
