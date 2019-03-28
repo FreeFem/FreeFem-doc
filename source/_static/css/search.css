@@ -82,7 +82,7 @@
 }
 
 #searchResults .search-result-sub {
-
+  border-bottom: 1px solid #EFEFEF;
 }
 
 #searchResults .search-result-title {
@@ -103,9 +103,9 @@
 }
 
 #searchResults a:hover {
-  background-color: rgba(83,109,254,.1);
+  background-color: rgba(83, 109, 254, .1);
 }
 
 #searchResults a:hover p {
-  background-color: rgba(83,109,254,.1);
+  background-color: rgba(83, 109, 254, .1);
 }
