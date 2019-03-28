@@ -2,7 +2,7 @@
 
 # FreeFEM documentation
 
-The [FreeFEM documentation](https://doc.freefem.org/) is a collaborative effort. We welcome all contributions, do not hesitate to submit a pull request.
+The [FreeFEM](https://freefem.org/) documentation is a collaborative effort. We welcome all contributions, do not hesitate to submit a pull request.
 
 ## View the documentation
 <a href="https://doc.freefem.org" target="_blank">Documentation website.</a>
