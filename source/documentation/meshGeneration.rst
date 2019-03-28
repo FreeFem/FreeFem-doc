@@ -3357,7 +3357,7 @@ A first 3d isotrope mesh adaptation process
             medit("U-adap-iso-"+ii, Th3, u, wait=true);
         }
 
-Build a 2d mesh from a isoline
+Build a 2d mesh from an isoline
 ------------------------------
 
 The idea is to get the discretization of an isoline of fluid meshes, this tool can be useful to construct meshes from image.
@@ -3387,8 +3387,7 @@ The list of named parameter are :
 
 -  :freefem:`close=` close the isoline with the border (default :freefem:`true`), we add the part of the mesh border such the value is less than the isovalue
 
--  :freefem:`smoothing=` number of smoothing process is the :math:`{l} ^{r} {s}` where :math:`l` is the length of the current line component, :math:`r` the ratio, :math:`s` is smoothing value.
-    The smoothing default value is 0.
+-  :freefem:`smoothing=` number of smoothing process is the :math:`{l} ^{r} {s}` where :math:`l` is the length of the current line component, :math:`r` the ratio, :math:`s` is smoothing value. The smoothing default value is 0.
 
 -  :freefem:`ratio=` the ratio (1 by default).
 
