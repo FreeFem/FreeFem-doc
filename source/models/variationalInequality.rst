@@ -62,7 +62,7 @@ An algorithm to solve the previous problem is:
 
       where :math:`<,>` is the duality bracket between :math:`H^{1}_0(\Omega)` and :math:`H^{-1}(\Omega)`, and :math:`c` is a penalty constant (large enough).
 
-You can find all the mathematics about this algorithm in [ITO2003]_.
+You can find all the mathematics about this algorithm in [HINTERMULLER2002]_.
 
 Now how to do that in **FreeFEM**? The full example is:
 

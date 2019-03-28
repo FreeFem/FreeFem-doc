@@ -1714,7 +1714,7 @@ Now, to build the right hand size we need 4 vectors.
     //we have for the node i : i in Gamma_24 -> bcn[i] != 0
     real[int] bcl = tgv*u0[]; //the Dirichlet boundary condition part
 
-.. note:: The boundary condition is implemented by penalization and vector :freefem:`bcn` contains the contribution of the boundary condition :math:`u=1`, so to change the boundary condition, we have just to multiply the vector :freefem:`bc[]` by the current value :freefem:`f` of the new boundary condition term by term with the operator :freefem:`.*`.
+.. note:: The boundary condition is implemented by penalization and vector :freefem:`bcn` contains the contribution of the boundary condition :math:`u=1`, so to change the boundary condition, we have just to multiply the vector :freefem:`bcn[]` by the current value :freefem:`f` of the new boundary condition term by term with the operator :freefem:`.*`.
 
     :ref:`Uzawa model <navierStokesUzawaConjugateGradients>` gives a real example of using all this features.
 
