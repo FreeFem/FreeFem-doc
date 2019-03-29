@@ -8,7 +8,7 @@ The [FreeFEM](https://freefem.org/) documentation is a collaborative effort. We 
 Visit the [Documentation website](https://doc.freefem.org) or download the [PDF](https://doc.freefem.org/pdf/FreeFEM-documentation.pdf). The PDF is re-generated automatically after each GitHub commit.
 
 ## Install the documentation
-Have a look at the [mkdocs installation](MkDocs.md)
+FreeFEM-doc uses [Sphinx](http://www.sphinx-doc.org/en/master/), have a look at the [sphinx installation](sphinx.md)
 
 ## How to contribute
 Have a look at the [contributing file](CONTRIBUTING.md)
