@@ -8,6 +8,7 @@
 	background-color: #F7F7F9;
 	border-right: 2px solid #EFEFEF;
 	font-size: 0.9rem;
+	overflow-anchor: none;
 }
 
 #subnav b {

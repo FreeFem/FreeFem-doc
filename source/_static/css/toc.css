@@ -8,6 +8,7 @@
 	background-color: #F7F7F9;
 	border-left: 2px solid #EFEFEF;
 	font-size: .9rem;
+	overflow-anchor: none;
 }
 
 #toc > div {
