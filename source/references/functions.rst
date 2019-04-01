@@ -19,11 +19,11 @@ Return the absolute value.
 
 Parameters:
 
--  ``b`` (:freefem:`real`)
+-  ``b`` (:freefem:`int`, :freefem:`real`, :freefem:`complex` or :freefem:`fespace` function)
 
 Output:
 
--  ``a`` (:freefem:`real`)
+-  ``a`` (:freefem:`int` or :freefem:`real`)
 
 acos
 ----
