@@ -73,10 +73,10 @@ So far we have discontinuous :math:`P_0` elements,linear :math:`P_1` and quadrat
 .. toctree::
 
    notations
-   meshGeneration
-   finiteElement
+   mesh-generation
+   finite-element
    visualization
-   algorithmsOptimization
+   algorithms-and-optimization
    parallelization
    plugins
    developers

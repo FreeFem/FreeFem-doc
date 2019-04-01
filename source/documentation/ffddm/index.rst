@@ -68,7 +68,7 @@ To try this example, just copy and paste the script above in a file â€˜test.edpâ
 
 .. toctree::
 
-  introddm
+  introduction-to-the-domain-decomposition-method
   documentation
   parameters
   tutorial

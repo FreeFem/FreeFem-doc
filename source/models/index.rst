@@ -10,17 +10,17 @@ It is a complement to the :ref:`Tutorial part <tutorial>` which was only an intr
 
 .. toctree::
 
-   staticProblems
+   static-problems
    elasticity
-   nonLinearStaticProblems
-   eigenValueProblems
-   evolutionProblems
-   navierStokesEquations
-   variationalInequality
-   domainDecomposition
-   fluidStructureCoupledProblem
-   transmissionProblem
-   freeBoundaryProblem
-   nonLinearElasticity
-   compressibleNeoHookeanMaterials
-   whisperingGalleryModes
+   non-linear-static-problems
+   eigen-value-problems
+   evolution-problems
+   navier-stokes-equations
+   variational-inequality
+   domain-decomposition
+   fluid-structure-coupled-problem
+   transmission-problem
+   free-boundary-problems
+   non-linear-elasticity
+   compressible-neo-hookean-materials
+   whispering-gallery-modes

@@ -6,9 +6,9 @@ Examples
 .. toctree::
 
    misc
-   meshGeneration
-   finiteElement
+   mesh-generation
+   finite-element
    visualization
-   algoOptimizations
+   algorithms-and-optimizations
    parallelization
    developers

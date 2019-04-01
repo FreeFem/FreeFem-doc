@@ -46,10 +46,10 @@ The variable name is just an alphanumeric string, the underscore character ``_``
 .. toctree::
 
    types
-   globalVariables
-   quadratureFormulae
+   global-variables
+   quadrature-formulae
    operators
    loops
    IO
    functions
-   externalLibraries
+   external-libraries
