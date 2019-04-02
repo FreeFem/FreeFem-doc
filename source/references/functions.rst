@@ -19,11 +19,11 @@ Return the absolute value.
 
 Parameters:
 
--  ``b`` (:freefem:`int`, :freefem:`real`, :freefem:`complex`, :freefem:`fespace` function or :freefem:`array`)
+-  ``b`` (:freefem:`int`, :freefem:`real`, :freefem:`complex`, :freefem:`fespace` function, :freefem:`real[int]` or :freefem:`real[int, int]`)
 
 Output:
 
--  ``a`` (:freefem:`int`, :freefem:`real` or :freefem:`array`)
+-  ``a`` (:freefem:`int`, :freefem:`real`, :freefem:`real[int]` or :freefem:`real[int, int]`)
 
 acos
 ----
@@ -37,11 +37,11 @@ acos
 
 Parameter:
 
--  ``x`` (:freefem:`real`)
+-  ``x`` (:freefem:`real`, :freefem:`real[int]` or :freefem:`real[int, int]`)
 
 Output:
 
--  ``theta`` (:freefem:`real`)
+-  ``theta`` (:freefem:`real`, :freefem:`real[int]` or :freefem:`real[int, int]`)
 
 .. figure:: images/arccos.png
    :alt: arccos function
@@ -217,11 +217,11 @@ asin
 
 Parameter:
 
--  ``x`` (:freefem:`real`)
+-  ``x`` (:freefem:`real`, :freefem:`real[int]` or :freefem:`real[int, int]`)
 
 Output:
 
--  ``theta`` (:freefem:`real`)
+-  ``theta`` (:freefem:`real`, :freefem:`real[int]` or :freefem:`real[int, int]`)
 
 .. figure:: images/arcsin.png
    :alt: arcsin function
