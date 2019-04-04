@@ -1200,15 +1200,6 @@ Parameters:
 
 Output:
 
--  ``Min`` (:freefem:`real`)
-
-Parameters:
-
--  ``a`` (:freefem:`real`)
--  ``b`` (:freefem:`real`)
-
-Output:
-
 -  ``Mod`` (:freefem:`real`)
 
 imag
