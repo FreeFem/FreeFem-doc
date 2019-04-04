@@ -157,7 +157,7 @@ Define the 2D geometrical border in parametric coordinates.
    .. code-block:: freefem
       :linenos:
 
-      border b(t=0, vectorX.n-1){x=vectorX[t]; P.x=vectorY[t];}
+      border b(t=0, vectorX.n-1){P.x=vectorX[t]; P.y=vectorY[t];}
 
 mesh
 ~~~~
