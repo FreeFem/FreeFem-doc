@@ -1429,7 +1429,7 @@ The C++ :cpp:`isInf` function.
 .. code-block:: freefem
    :linenos:
 
-   int i = isInf(a);
+   bool b = isInf(a);
 
 isNaN
 -----
@@ -1439,7 +1439,7 @@ The C++ :cpp:`isNan` function.
 .. code-block:: freefem
    :linenos:
 
-   int i = isNaN(a);
+   bool b = isNaN(a);
 
 j0
 --
