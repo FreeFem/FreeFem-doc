@@ -152,7 +152,7 @@ Define the 2D geometrical border in parametric coordinates.
 
 .. note:: From vector
 
-   A border can be defined from two vectors using :freefem`P.x` and :freefem:`P.y`:
+   A border can be defined from two vectors using :freefem:`P.x` and :freefem:`P.y`:
 
    .. code-block:: freefem
       :linenos:
