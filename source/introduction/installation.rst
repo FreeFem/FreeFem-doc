@@ -229,21 +229,21 @@ Compilation on Ubuntu
 
    .. note:: To see all the options, type ``./configure --help``
 
-5. Download the packages
+5. Download the 3rd party packages
 
    .. code-block:: bash
       :linenos:
 
-      ./download/getall -a
+      ./3rdparty/getall -a
 
    .. note:: All the third party packages have their own licence
 
-6. Download and compile petsc & slepc
+6. Compile petsc & slepc
 
    .. code-block:: bash
       :linenos:
 
-      cd download/ff-petsc
+      cd 3rdparty/ff-petsc
       make petsc-slepc SUDO=sudo
       cd -
 
@@ -320,16 +320,16 @@ Compilation on Arch Linux
    .. code-block:: bash
       :linenos:
 
-      ./download/getall -a
+      ./3rdparty/getall -a
 
    .. note:: All the third party packages have their own licence
 
-6. Download and compile petsc & slepc
+6. Compile petsc & slepc
 
    .. code-block:: bash
       :linenos:
 
-      cd download/ff-petsc
+      cd 3rdparty/ff-petsc
       make petsc-slepc SUDO=sudo
       cd -
 
@@ -413,7 +413,7 @@ Compilation on Windows
       cd FreeFem-sources
       autoreconf -i
       ./configure --enable-download --disable-pastix --disable-hips
-      ./download/getall -a
+      ./3rdparty/getall -a
       make -j4
       make check
       make install
