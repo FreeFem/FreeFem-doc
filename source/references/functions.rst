@@ -1389,8 +1389,8 @@ Arithmetic useful function.
 .. code-block:: freefem
    :linenos:
 
-   invdif(a, b) = (-abs(a-b) > 10^(-30)) ? 1(/b-a) : 0
-   invdif(a, b, e) = (-abs(a-b) > e) ? 1(/b-a) : 0
+   invdiff(a, b) = (abs(a-b) < 10^(-30)) ? (a-b) : 1/(a-b)
+   invdiff(a, b, e) = (abs(a-b) < e) ? (a-b) : 1/(a-b)
 
 invdiffnp
 ---------
