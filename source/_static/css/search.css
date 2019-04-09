@@ -9,7 +9,7 @@
 }
 
 #search-icon {
-  padding: .55rem 0 .55rem .55rem;
+  padding: .5625rem 0 .5625rem .5625rem;
   background-color: #00007F;
   z-index: 2;
 }
@@ -20,14 +20,17 @@
 
 #searchInput {
   margin: 0;
-  padding: .55rem;
+  padding: .5625rem;
   border: none;
   background-color: #00007F;
   color: #FFF;
   font-size: 1rem;
   width: 230px;
+  height: 38px;
   transition: width 0.5s;
   z-index: 2;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 
 #searchInput:focus {
