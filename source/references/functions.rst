@@ -2505,7 +2505,7 @@ time
 
 Return the current time (C++ function).
 
-.. code-clock:: freefem
+.. code-block:: freefem
    :linenos:
 
    real t = time();

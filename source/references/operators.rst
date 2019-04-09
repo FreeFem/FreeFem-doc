@@ -128,8 +128,8 @@ Comparison operator >, >=
    cout << (a > b) << endl;
    cout << (a >= b) << endl;
 
-Compound operator +=, -=, *=, /=
---------------------------------
+Compound operator `+=`, `-=`, `*=`, `/=`
+----------------------------------------
 
 .. code-block:: freefem
    :linenos:
