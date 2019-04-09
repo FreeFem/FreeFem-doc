@@ -1652,6 +1652,24 @@ Output:
 
 -  ``b`` (:freefem:`int` or :freefem:`real`)
 
+ltime
+-----
+
+Return the current time since *the Epcoh*.
+
+.. code-block:: freefem
+   :linenos:
+
+   int t = ltime();
+
+Parameter:
+
+- None
+
+Output:
+
+- ``t`` (:freefem:`int`)
+
 min
 ---
 
@@ -2314,6 +2332,64 @@ Output:
 
 -  ``Th`` (:freefem:`mesh`)
 
+storagetotal
+------------
+
+.. code-block:: freefem
+   :linenos:
+
+   int total = storagetotal();
+
+storageused
+-----------
+
+.. code-block:: freefem
+   :linenos:
+
+   int used = storageused();
+
+strtod
+------
+
+C++ `strtod` function
+
+.. code-block:: freefem
+   :linenos:
+
+   string text = "10.5";
+   real number = strtod(text);
+
+Parameter:
+
+- ``text`` (:freefem:`string`)
+
+Output:
+
+- ``number`` (:freefem:`real`)
+
+strtol
+------
+
+C++ `strtol` function
+
+.. code-block:: freefem
+   :linenos:
+
+   string text = "10";
+   int number = strtol(text);
+
+   int base = 16;
+   int number = strtol(text, base);
+
+Parameter:
+
+- ``text`` (:freefem:`string`)
+- ``base`` (:freefem:`int`) Base *[Optional]*
+
+Output:
+
+- ``number`` (:freefem:`int`)
+
 swap
 ----
 
@@ -2423,6 +2499,24 @@ Parameter:
 Output:
 
 -  ``tg`` (:freefem:`real`)
+
+time
+----
+
+Return the current time (C++ function).
+
+.. code-clock:: freefem
+   :linenos:
+
+   real t = time();
+
+Parameter:
+
+- None
+
+Output:
+
+- ``t`` (:freefem:`real`)
 
 trunc
 -----

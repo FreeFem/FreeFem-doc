@@ -30,6 +30,7 @@ Problems involving partial differential equations from several branches of physi
 
 .. toctree::
 
+   new-features
    download
    installation
    contributing
