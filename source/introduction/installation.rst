@@ -225,7 +225,7 @@ Compilation on Ubuntu
    .. code-block:: bash
       :linenos:
 
-      ./configure --enable-download --enable-optim --disable-pastix
+      ./configure --enable-download --enable-optim
 
    .. note:: To see all the options, type ``./configure --help``
 
@@ -311,7 +311,7 @@ Compilation on Arch Linux
    .. code-block:: bash
       :linenos:
 
-      ./configure --enable-download --enable-optim --disable-pastix
+      ./configure --enable-download --enable-optim
 
    .. note:: To see all the options, type ``./configure --help``
 
@@ -412,7 +412,7 @@ Compilation on Windows
       git clone https://github.com/FreeFem/FreeFem-sources
       cd FreeFem-sources
       autoreconf -i
-      ./configure --enable-download --disable-pastix --disable-hips
+      ./configure --enable-download --disable-hips
       ./3rdparty/getall -a
       make -j4
       make check

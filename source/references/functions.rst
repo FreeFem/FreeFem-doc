@@ -1432,6 +1432,11 @@ The C++ :cpp:`isNan` function.
 
    bool b = isNaN(a);
 
+isNormal
+--------
+
+The C++ :cpp:`isNormal` function.
+
 j0
 --
 
@@ -1627,19 +1632,21 @@ Output:
 max
 ---
 
-Maximum value of two values.
+Maximum value of two, three or four values.
 
 .. code-block:: freefem
    :linenos:
 
    real m = max(a, b);
    real m = max(a, b, c);
+   real m = max(a, b, c, d);
 
 Parameters:
 
 -  ``a`` (:freefem:`int` or :freefem:`real`)
 -  ``b`` (:freefem:`int` or :freefem:`real`)
 -  ``c`` (:freefem:`int` or :freefem:`real`) *[Optional]*
+-  ``d`` (:freefem:`int` or :freefem:`real`) *[Optional]*
 
 Output:
 
@@ -1648,19 +1655,21 @@ Output:
 min
 ---
 
-Minimum value of two values.
+Minimum value of two, three or four values.
 
 .. code-block:: freefem
    :linenos:
 
    real m = min(a, b);
    real m = min(a, b, c);
+   real m = min(a, b, c, d);
 
 Parameters:
 
 -  ``a`` (:freefem:`int` or :freefem:`real`)
 -  ``b`` (:freefem:`int` or :freefem:`real`)
 -  ``c`` (:freefem:`int` or :freefem:`real`) *[Optional]*
+-  ``d`` (:freefem:`int` or :freefem:`real`) *[Optional]*
 
 Output:
 

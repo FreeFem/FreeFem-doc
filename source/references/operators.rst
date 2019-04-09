@@ -14,6 +14,24 @@ Addition operator +
 
 Works for :freefem:`int`, :freefem:`real`, :freefem:`complex`, :freefem:`string`, :freefem:`mesh`, :freefem:`mesh3`, array.
 
+Increment operator ++
+---------------------
+
+Pre-increment:
+
+.. code-block:: freefem
+   :linenos:
+
+   int i = 0;
+   ++i;
+
+Post-increment:
+.. code-block:: freefem
+   :linenos:
+
+   int i = 0;
+   i++;
+
 Substraction operator -
 -----------------------
 
@@ -23,6 +41,23 @@ Substraction operator -
    real a = 1. - 2.;
 
 Works for :freefem:`int`, :freefem:`real`, :freefem:`complex`, array.
+
+Decrement operator --
+---------------------
+
+Pre-decrement:
+.. code-block:: freefem
+   :linenos:
+
+   int i = 0;
+   --i;
+
+Post-decrement:
+.. code-block:: freefem
+   :linenos:
+
+   int i = 0;
+   i--;
 
 Multiplication operator *
 -------------------------
@@ -35,6 +70,60 @@ Multiplication operator *
    real[int] x = A^-1*b;
 
 Works for :freefem:`int`, :freefem:`real`, :freefem:`complex`, array, :freefem:`matrix`.
+
+Equal operator =
+----------------
+
+.. code-block:: freefem
+   :linenos:
+
+   real a = 1.;
+
+Comparison operator ==
+----------------------
+
+.. code-block:: freefem
+   :linenos:
+
+   real a = 1.;
+   real b = 1.;
+
+   cout << (a == b) << endl;
+
+Comparison operator !=
+----------------------
+
+.. code-block:: freefem
+   :linenos:
+
+   real a = 1.;
+   real b = 2.;
+
+   cout << (a != b) << endl;
+
+Comparison operator <, <=
+-------------------------
+
+.. code-block:: freefem
+   :linenos:
+
+   real a = 1.;
+   real b = 2.;
+
+   cout << (a < b) << endl;
+   cout << (a <= b) << endl;
+
+Comparison operator >, >=
+-------------------------
+
+.. code-block:: freefem
+   :linenos:
+
+   real a = 3.;
+   real b = 2.;
+
+   cout << (a > b) << endl;
+   cout << (a >= b) << endl;
 
 Term by term multiplication .*
 ------------------------------
