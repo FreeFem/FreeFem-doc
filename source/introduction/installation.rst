@@ -1,9 +1,6 @@
 .. role:: freefem(code)
    :language: freefem
 
-.. role:: text(code)
-   :language: text
-
 .. role:: bash(code)
    :language: bash
 

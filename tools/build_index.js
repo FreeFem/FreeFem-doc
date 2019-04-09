@@ -61,6 +61,7 @@ function readHtml(root, file, fileId) {
 
    let body = $('#content').text()
    if (typeof body == 'undefined') body = ''
+   body = body.replace(/=/g, " = ")
 
    const data = [{
       'id': fileId,
@@ -127,7 +128,12 @@ function readSingleHtml(root, file) {
                      title = $(this).find('h6')
 
       title = title.text()
-      const body = $(this).text()
+      if (typeof title == 'undefined') title = ''
+      console.log('\t'+title)
+      
+      let body = $(this).text()
+      if (typeof body == 'undefined') body = ''
+      body = body.replace(/=/g, " = ")
 
       data.push({
          'id': i,
