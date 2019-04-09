@@ -26,6 +26,7 @@ Pre-increment:
    ++i;
 
 Post-increment:
+
 .. code-block:: freefem
    :linenos:
 
@@ -46,6 +47,7 @@ Decrement operator --
 ---------------------
 
 Pre-decrement:
+
 .. code-block:: freefem
    :linenos:
 
@@ -53,6 +55,7 @@ Pre-decrement:
    --i;
 
 Post-decrement:
+
 .. code-block:: freefem
    :linenos:
 
