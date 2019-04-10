@@ -2316,7 +2316,7 @@ Output:
 .. code-block:: freefem
    :linenos:
 
-   mesh Th = square(nnX, nnY, [[L*x, H*y]], [flags=Flags]);
+   mesh Th = square(nnX, nnY, [[L*x, H*y]], [flags=Flags], [label=Labels], [region=Region]);
 
 Parameters:
 
@@ -2325,6 +2325,8 @@ Parameters:
 -  ``L`` (:freefem:`real`) *[Optional]*\  Length along :math:`x`
 -  ``H`` (:freefem:`real`) *[Optional]*\  Height along :math:`y`
 -  :freefem:`flags=` (:freefem:`int`) *[Optional]*
+- :freefem:`label=` (:freefem:`int[int]`) *[Optional]*
+- :freefem:`region=` (:freefem:`int`) *[Optional]*
 
    Structured mesh type, see :ref:`Mesh Generation chapter <meshSquare>` for more information
 
