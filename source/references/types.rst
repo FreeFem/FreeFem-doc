@@ -956,7 +956,7 @@ Matrix renumbering
 .. code-block:: freefem
    :linenos:
 
-   int[int] I(15, J(15);
+   int[int] I(15), J(15);
    matrix B = A;
    B = A(I, J);
    B = A(I^-1, J^-1);
