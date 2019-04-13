@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 
 <html lang="en">
-	<head>
-		{% include "head.html" %}
-	</head>
-	<body>
-		{%- block header %}
-		{% include "header.html" %}
-		{% endblock %}
 
-		{%- block nav %}
-		{% include "nav.html" %}
-		{% endblock %}
+<head>
+	{% include "head.html" %}
+</head>
 
-		{% include "subnav.html" %}
-		{% block document %}
-		<div id="content">
-			{% block body %} {% endblock %}
+<body>
+	{%- block header %}
+	{% include "header.html" %}
+	{% endblock %}
+
+	{%- block nav %}
+	{% include "nav.html" %}
+	{% endblock %}
+
+	{% include "subnav.html" %}
+	{% block document %}
+	<div id="content">
+		{% block body %} {% endblock %}
+		<div class="content-nav-buttons" role="navigation">
+			{%- if prev %}
+			<a href="{{ prev.link|e }}" class="btn-neutral" title="previous topic" rel="previous"><span class="fa fa-arrow-circle-left"></span> Previous topic: {{ prev.title }}</a>
+			{%- endif %}
+			{%- if next %}
+			<a href="{{ next.link|e }}" class="btn-neutral" title="next topic" rel="next">Next topic: {{ next.title }} <span class="fa fa-arrow-circle-right"></span></a>
+			{%- endif %}
 		</div>
-		{% endblock %}
-		{% include "toc.html" %}
+	</div>
+	{% endblock %}
+	{% include "toc.html" %}
 
-		{%- block footer %}
-		{% include "footer.html" %}
-		{% endblock %}
+	{%- block footer %}
+	{% include "footer.html" %}
+	{% endblock %}
 
-		<script async src="{{ pathto('_static/js/common.js', 1)}}"></script>
-	</body>
+	<script async src="{{ pathto('_static/js/common.js', 1)}}"></script>
+</body>
+
 </html>

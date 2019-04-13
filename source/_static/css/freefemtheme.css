@@ -163,3 +163,19 @@ body {
 	margin: 1rem auto;
 	width: 40%;
 }
+
+.content-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-neutral {
+    background-color: #f3f6f6 !important;
+    display: inline-block;
+    border-radius: 2px;
+    white-space: nowrap;
+    text-align: center;
+    padding: 6px 12px 8px 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
+}
