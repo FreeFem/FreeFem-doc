@@ -89,9 +89,17 @@ Authors
    +------------------------------------------------------------------+
    | Karla Pérez                                                      |
    +==================================================================+
-   | Web designer, `Airthium <https://www.airthium.com>`__ internship |
+   | Developer, `Airthium <https://www.airthium.com>`__ internship    |
    +------------------------------------------------------------------+
    | https://github.com/karlaprzbr                                    |
+   +------------------------------------------------------------------+
+
+   +------------------------------------------------------------------+
+   | Loan Cannard                                                     |
+   +==================================================================+
+   | Web designer, `Airthium <https://www.airthium.com>`__ internship |
+   +------------------------------------------------------------------+
+   | https://www.linkedin.com/in/loancannard                          |
    +------------------------------------------------------------------+
 
 And all the dedicated `Github contributors <https://github.com/FreeFem/FreeFem-doc/graphs/contributors>`__
