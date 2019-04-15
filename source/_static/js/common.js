@@ -109,7 +109,7 @@ function updateBlur() {
 
    {  // scroll toc to current element
       const div = toc.children[0]
-      div.scrollTo(0, els_[last].offsetTop-div.offsetHeight/2)
+    //  div.scrollTo(0, els_[last].offsetTop-div.offsetHeight/2)
    }
 }
 
