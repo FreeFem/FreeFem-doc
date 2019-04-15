@@ -8,6 +8,9 @@ Mesh Generation
 
 Let us begin with the two important keywords: :freefem:`border` and :freefem:`buildmesh`.
 
+Generalities
+------------
+
 .. _meshSquare:
 
 Square
