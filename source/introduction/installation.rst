@@ -422,8 +422,8 @@ Compilation on Windows
    are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
 
 
-Using CMake (FreeFem++ without plugins)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Using CMake (FreeFEM without plugins)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Compilation on OSX (>=10.13)
 """"""""""""""""""""""""""""
