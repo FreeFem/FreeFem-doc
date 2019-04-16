@@ -219,4 +219,8 @@
 	li {
 		margin: 0;
 	}
+
+	.content-nav-buttons {
+	        flex-direction: column;
+        }
 }
