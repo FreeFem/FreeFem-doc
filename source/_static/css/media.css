@@ -221,6 +221,7 @@
 	}
 
 	.content-nav-buttons {
-	        flex-direction: column;
-        }
+		flex-direction: column;
+		overflow: hidden;
+	}
 }
