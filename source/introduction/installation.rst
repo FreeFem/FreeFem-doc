@@ -154,7 +154,7 @@ Remark: Blocks of code are shell commands in terminal.
    .. code-block:: bash
       :linenos:
 
-      curl -O https://fr.mirror.babylon.network/gnu/gsl/gsl-2.4.tar.gz
+      curl -O http://mirror.cyberbits.eu/gnu/gsl/gsl-2.5.tar.gz
       tar zxvf gsl-2.4.tar.gz
       cd gsl-2.4
       ./configure CC=/usr/local/bin/gcc
