@@ -422,6 +422,8 @@ Compilation on Windows
    are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
 
 
+.. _cmake:
+
 Using CMake (FreeFEM without plugins)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
