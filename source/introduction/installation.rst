@@ -155,9 +155,9 @@ Remark: Blocks of code are shell commands in terminal.
       :linenos:
 
       curl -O http://mirror.cyberbits.eu/gnu/gsl/gsl-2.5.tar.gz
-      tar zxvf gsl-2.4.tar.gz
-      cd gsl-2.4
-      ./configure CC=/usr/local/bin/gcc
+      tar zxvf gsl-2.5.tar.gz
+      cd gsl-2.5
+      ./configure 
       make
       sudo make install
 
