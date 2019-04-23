@@ -477,14 +477,27 @@ Compilation on OSX (>=10.13)
 
 7. Install `git <https://git-scm.com/download/mac>`__
 
-8. Download the **FreeFEM** source from the repository
+8. Install SparseSuite and Arpack from `macport <https://www.macports.org>`__ or with `Homebrew <https://brew.sh>`__
+
+   .. code-block:: bash
+      :linenos:
+
+      sudo port install arpack SuiteSparse
+
+   .. code-block:: bash
+      :linenos:
+
+      brew install arpack suite-sparse
+
+
+9. Download the **FreeFEM** source from the repository
 
    .. code-block:: bash
       :linenos:
 
       git clone https://github.com/FreeFem/FreeFem-sources.git
 
-9) Compile **FreeFEM**. Don’t forget to update the MacOS SDK version with your own in the command below:
+10. Compile **FreeFEM**. Don’t forget to update the MacOS SDK version with your own in the command below:
 
    .. code-block:: bash
       :linenos:
