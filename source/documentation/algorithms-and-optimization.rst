@@ -475,7 +475,7 @@ Unboundedness in some directions can be achieved by using the :math:`1e^{19}` an
 .. math::
    \begin{array}{c c}
        \forall x\in\mathbb{R}^{n},\ f(x) = \frac{1}{2}\left\langle Ax,x \right\rangle + \left\langle b,x\right\rangle & (A,b)\in\mathcal{M}_{n,n}(\mathbb{R})\times\mathbb{R}^{n} \\
-       \mathrm{or} ,\ C(x) = Ax + b & (A,b)\in\mathcal{M}_{n,m}(\mathbb{R})\times\mathbb{R}^{m}
+       \mathrm{or} ,\ C(x) = Ax + b & (A,b)\in\mathcal{M}_{m,n}(\mathbb{R})\times\mathbb{R}^{m}
    \end{array}
 
 where :math:`A` and :math:`b` are constant, it is possible to directly pass the :math:`(A,b)` pair instead of defining 3 (or 2) functions.
