@@ -456,6 +456,24 @@ Output:
 -  :freefem:`Thnew` (:freefem:`mesh`) Mesh with changed
    parameters
 
+checkmovemesh
+-------------
+
+Check a :ref:`movemesh <functionMovemesh>` without mesh generation.
+
+.. code-block:: freefem
+   :linenos:
+
+   real minT = checkmovemesh(Th, [Dx, Dy]);
+
+Parameters:
+
+Same as :ref:`movemesh <functionMovemesh>`
+
+Output:
+
+-  ``minT`` (:freefem:`real`) Minimum triangle area
+
 chi
 ---
 
@@ -476,24 +494,6 @@ Output:
 
 -  ``IsInMesh`` (:freefem:`int`) 1 if :math:`(x,y)\in` ``Th``\  0 if
    :math:`(x,y)\not\in` ``Th``
-
-checkmovemesh
--------------
-
-Check a :ref:`movemesh <functionMovemesh>` without mesh generation.
-
-.. code-block:: freefem
-   :linenos:
-
-   real minT = checkmovemesh(Th, [Dx, Dy]);
-
-Parameters:
-
-Same as :ref:`movemesh <functionMovemesh>`
-
-Output:
-
--  ``minT`` (:freefem:`real`) Minimum triangle area
 
 clock
 -----
@@ -1629,6 +1629,24 @@ Output:
 
 -  ``l`` (:freefem:`int`)
 
+ltime
+-----
+
+Return the current time since *the Epcoh*.
+
+.. code-block:: freefem
+   :linenos:
+
+   int t = ltime();
+
+Parameter:
+
+- None
+
+Output:
+
+- ``t`` (:freefem:`int`)
+
 max
 ---
 
@@ -1651,24 +1669,6 @@ Parameters:
 Output:
 
 -  ``b`` (:freefem:`int` or :freefem:`real`)
-
-ltime
------
-
-Return the current time since *the Epcoh*.
-
-.. code-block:: freefem
-   :linenos:
-
-   int t = ltime();
-
-Parameter:
-
-- None
-
-Output:
-
-- ``t`` (:freefem:`int`)
 
 min
 ---
