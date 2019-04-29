@@ -223,7 +223,8 @@ In practice, this builds the necessary distributed operators associated to the f
 Define the problem to solve
 ---------------------------
 
-.. code:: freefem
+.. code-block:: freefem
+   :linenos:
 
    ffddmsetupOperator(pr,prfe,Varf)
 

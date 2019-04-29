@@ -18,7 +18,7 @@ Examples
 +---------------------------------------+------------------+------------------+-------------+------------------------------------------+
 | `elasticity-3d-thirdlevelgeneo.edp`_  | RAS              | GenEO            | RAS + GenEO |                                          |
 +---------------------------------------+------------------+------------------+-------------+------------------------------------------+
-| `Helmholtz-2d-simple.edp`_            | ORAS             | Coarse Mesh      |             |                                          |
+| `Helmholtz-2d-simple.edp`_            | ORAS             | Coarse Mesh / DtN|             |for the DtN coarse space see `this paper`_|
 +---------------------------------------+------------------+------------------+-------------+------------------------------------------+
 | `Helmholtz-2d-marmousi.edp`_          | ORAS             | Coarse Mesh      |             |                                          |
 +---------------------------------------+------------------+------------------+-------------+------------------------------------------+
@@ -58,3 +58,4 @@ Examples
 .. _natural_convection.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/natural_convection.edp
 .. _natural_convection_3D_obstacle.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/natural_convection_3D_obstacle.edp
 .. _Richards-2d.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Richards-2d.edp
+.. _this paper: https://doi.org/10.1016/j.cam.2014.03.031
