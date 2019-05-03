@@ -2520,6 +2520,24 @@ Output:
 
 - ``t`` (:freefem:`real`)
 
+trace
+-----
+
+Matrix trace
+
+.. code-block:: freefem
+  :linenos:
+
+  real tr = trace([[1, 2], [3, 4]]);
+
+Parameters:
+
+- Matrix
+
+Output:
+
+- Trace of the matrix (:freefem:`real`)
+
 trunc
 -----
 
