@@ -157,7 +157,7 @@ Remark: Blocks of code are shell commands in terminal.
       curl -O http://mirror.cyberbits.eu/gnu/gsl/gsl-2.5.tar.gz
       tar zxvf gsl-2.5.tar.gz
       cd gsl-2.5
-      ./configure 
+      ./configure
       make
       sudo make install
 
@@ -192,7 +192,7 @@ Compilation on Ubuntu
 
       sudo apt-get update && sudo apt-get upgrade
       sudo apt-get install cpp freeglut3-dev g++ gcc gfortran \
-          ghostscript m4 make patch pkg-config wget python unzip \
+          m4 make patch pkg-config wget python unzip \
           libopenblas-dev liblapack-dev libhdf5-dev libgsl-dev \
           libscotch-dev libfftw3-dev libarpack2-dev libsuitesparse-dev \
           libmumps-seq-dev libnlopt-dev coinor-libipopt-dev libgmm++-dev libtet1.5-dev \
@@ -286,7 +286,7 @@ Compilation on Arch Linux
 
       pacman -Syu
       pacman -S git openmpi gcc-fortran wget python
-          freeglut ghostscript m4 make patch gmm
+          freeglut m4 make patch gmm
           blas lapack hdf5 gsl fftw arpack suitesparse
           gnuplot autoconf automake bison flex gdb
           valgrind cmake texlive-most
