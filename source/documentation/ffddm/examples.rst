@@ -40,6 +40,8 @@ Examples
 +---------------------------------------+------------------+------------------+-------------+------------------------------------------+
 | `Richards-2d.edp`_                    | RAS              |                  |             | nonlinear time dependent mesh adaptation |
 +---------------------------------------+------------------+------------------+-------------+------------------------------------------+
+| `heat-torus-3d-surf.edp`_             | RAS              | GenEO            |             | 3d surface time dependent                |
++---------------------------------------+------------------+------------------+-------------+------------------------------------------+
 
 .. _diffusion-3d-minimal-direct.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/diffusion-3d-minimal-direct.edp
 .. _diffusion-3d-minimal-ddm.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/diffusion-3d-minimal-ddm.edp
@@ -58,4 +60,5 @@ Examples
 .. _natural_convection.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/natural_convection.edp
 .. _natural_convection_3D_obstacle.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/natural_convection_3D_obstacle.edp
 .. _Richards-2d.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Richards-2d.edp
+.. _heat-torus-3d-surf.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/heat-torus-3d-surf.edp
 .. _this paper: https://doi.org/10.1016/j.cam.2014.03.031
