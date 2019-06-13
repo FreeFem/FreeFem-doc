@@ -393,13 +393,18 @@ Build a 2D mesh using border elements.
 .. code-block:: freefem
    :linenos:
 
-   mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn), [nbvx=Nbvx], [fixedborder=FixedBorder]);
+   mesh Th = buildmesh(b1(nn) + b2(nn) + b3(nn) + b4(nn),[points=Points], ][nbvx=Nbvx], [fixedborder=FixedBorder]);
 
 Parameters:
 
 -  ``b1``, ``b2``, ``b3``, ``b4`` (:freefem:`border`)
 
    Geometry border, ``b1(nn)`` means ``b1`` border discretized by ``nn`` vertices
+-  :freefem:`points` (:freefem:`real[int, int]`) *[Optional]*
+
+   Specify a set of points
+
+   The size of :freefem:`Points` array is :freefem:`(nbp, 2)`, containing a set of :freefem:`nbp` points with :freefem:`x` and :freefem:`y` coordinates
 -  :freefem:`nbvx=` (:freefem:`int`) *[Optional]*
 
    Maximum number of vertices Default: 9000
