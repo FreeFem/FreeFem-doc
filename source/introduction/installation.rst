@@ -99,6 +99,7 @@ Compilation
   The Inria Jenkins server is used for the CI/CD integration of the source code.
 
   Compilation results of the develop branch are here
+
   +-----------------+-------------------+-------------------+-------------------+-------------------+-------------------+
   | Branch          | Linux 16.04       | Linux 18.04       | MacOS 10.10.5     | MacOS 10.13.5     | Windows 7         |
   +=================+===================+===================+===================+===================+===================+
@@ -764,31 +765,9 @@ We can also use shell environment variables to change verbosity and the search r
       export FF_VERBOSITY=100;
       ./FreeFem++-nw
 
- |Build Status01| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job6
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job6/
- |Build Status02| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job6
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job6/
- |Build Status03| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job6
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job6/
- |Build Status04| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job6
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job6/
- |Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-Windows7
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-Windows7
-   
-   
-   
-   
-.. |Build Status06| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-Windows7-32
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-develop-Windows7-32
-.. |Build Status07| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-UbuntuAll
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-master-UbuntuAll/
-.. |Build Status08| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-UbuntuNo
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-master-UbuntuNo/
-.. |Build Status09| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-MacOSXAll
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-master-MacOSXAll/
-.. |Build Status10| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-MacOSXNo
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-master-MacOSXNo/
-.. |Build Status11| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-Windows7
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-master-Windows7
-.. |Build Status12| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-Windows7-32
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-master-Windows7-32
+.. |Build Status01| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job6:target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job6/
+.. |Build Status02| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job6:target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job6/
+.. |Build Status03| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job6:target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job6/
+.. |Build Status04| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job6:target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job6/
+.. |Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-Windows7:target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-Windows7
+
