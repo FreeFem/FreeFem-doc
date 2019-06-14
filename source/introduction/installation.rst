@@ -513,20 +513,20 @@ Compilation on Windows
 .. 2. Install gcc from `http://hpc.sourceforge.net <http://hpc.sourceforge.net/>`__
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       curl -O http://prdownloads.sourceforge.net/hpc/gfortran-8.1-bin.tar.gz?download
-      sudo tar zxvf gfortran-8.1-bin.tar.gz -C /
+..       sudo tar zxvf gfortran-8.1-bin.tar.gz -C /
 
 .. 3. Install cmake from `macport <https://www.macports.org>`__ or with `Homebrew <https://brew.sh>`__
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       sudo port install cmake
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       brew install cmake
 
@@ -535,23 +535,23 @@ Compilation on Windows
 .. 5. Install the `openmpi <https://www.open-mpi.org/software/ompi/v4.0/>`__ source code
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       ./configure CC=/usr/local/bin/gcc CXX=/usr/local/bin/g++ F77=/usr/local/bin/gfortran FC=/usr/local/bin/gfortran
-      make
-      sudo make install
+..       make
+..       sudo make install
 
 .. 6. Install `gsl <https://www.gnu.org/software/gsl>`__
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       curl -O https://fr.mirror.babylon.network/gnu/gsl/gsl-2.4.tar.gz
-      tar zxvf gsl-2.4.tar.gz
-      cd gsl-2.4
-      ./configure CC=/usr/local/bin/gcc
-      make
-      sudo make install
+..       tar zxvf gsl-2.4.tar.gz
+..       cd gsl-2.4
+..       ./configure CC=/usr/local/bin/gcc
+..       make
+..       sudo make install
 
 .. 7. Install `git <https://git-scm.com/download/mac>`__
 
@@ -563,7 +563,7 @@ Compilation on Windows
 ..       sudo port install arpack SuiteSparse
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       brew install arpack suite-sparse
 
@@ -578,15 +578,15 @@ Compilation on Windows
 .. 10. Compile **FreeFEM**. Don’t forget to update the MacOS SDK version with your own in the command below:
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       cd FreeFem-sources
-      mkdir build
-      cd build
-      cmake ..
-      make
-      make test
-      sudo make install
+..       mkdir build
+..       cd build
+..       cmake ..
+..       make
+..       make test
+..       sudo make install
 
 
 .. Compilation on Ubuntu
@@ -595,42 +595,42 @@ Compilation on Windows
 .. 1. Install the following dependencies
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       sudo apt-get update && sudo apt-get upgrade
-      sudo apt-get install cpp freeglut3-dev g++ gcc gfortran \
-          ghostscript m4 make patch pkg-config wget python unzip \
-          libopenblas-dev liblapack-dev libhdf5-dev libgsl-dev \
-          libscotch-dev libfftw3-dev libarpack2-dev libsuitesparse-dev \
-          libmumps-seq-dev libnlopt-dev coinor-libipopt-dev libgmm++-dev libtet1.5-dev \
-          gnuplot-qt autoconf automake autotools-dev bison flex gdb valgrind git cmake
+..       sudo apt-get install cpp freeglut3-dev g++ gcc gfortran \
+..           ghostscript m4 make patch pkg-config wget python unzip \
+..           libopenblas-dev liblapack-dev libhdf5-dev libgsl-dev \
+..           libscotch-dev libfftw3-dev libarpack2-dev libsuitesparse-dev \
+..           libmumps-seq-dev libnlopt-dev coinor-libipopt-dev libgmm++-dev libtet1.5-dev \
+..           gnuplot-qt autoconf automake autotools-dev bison flex gdb valgrind git cmake
 
 ..       # mpich is required for the FreeFem parallel computing version
-      sudo apt-get install mpich
+..       sudo apt-get install mpich
 
 ..    .. warning:: In the oldest distribution of Ubuntu, ``libgsl-dev`` does not exists, use ``libgsl2-dev`` instead
 
 .. 2. Download **FreeFEM** source from the repository
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       git clone https://github.com/FreeFem/FreeFem-sources.git
 
 .. 3. Configure
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       cd FreeFem-sources
-      mkdir build
-      cd build
-      cmake ..
+..       mkdir build
+..       cd build
+..       cmake ..
 
 .. 4. Build
 
 ..   .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       make
 
@@ -641,7 +641,7 @@ Compilation on Windows
 .. 5. Install
 
 ..    .. code-block:: bash
-      :linenos:
+..       :linenos:
 
 ..       sudo make install
 
