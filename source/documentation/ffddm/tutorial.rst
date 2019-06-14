@@ -5,6 +5,12 @@ Tutorial
 
 Authors: Pierre-Henri Tournier - Frédéric Nataf - Pierre Jolivet
 
+.. only:: html
+
+  **We recommend checking the** `slides`_ **version of this tutorial.**
+
+.. _slides: ../../_static/html/tutorial-slides.html
+
 What is **ffddm** ?
 -------------------
 
@@ -476,7 +482,7 @@ The simplest way to enrich the one level preconditioner is through the *additive
 .. math::
     M^{-1}_2 = M^{-1}_1 + \color{red}{Z} E^{-1} \color{red}{Z}^T
 
-*How to choose $\color{red}{Z}$ ?*
+How to choose :math:`\color{red}{Z}` ?
 
 Build the GenEO coarse space
 ----------------------------
@@ -495,7 +501,7 @@ The *GenEO* method builds a robust coarse space for highly heterogeneous or anis
 .. math::
     D_i A_i D_i\, V_{i,k} = \lambda_{i,k}\, A_i^{\text{Neu}} \,V_{i,k}
 
-with :math:`A_i^{\text{Neu}}` the local Neumann matrices built from **Varf** (same **Varf** as :ref:`Step 3 <ffddmTutorialDefineYourProblem>`
+with :math:`A_i^{\text{Neu}}` the local Neumann matrices built from **Varf** (same **Varf** as :ref:`Step 3 <ffddmTutorialDefineYourProblem>`)
 
 The GenEO coarse space is :math:`\color{red}{Z} = (R_i^T D_i V_{i,k})^{i=1,...,N}_{\lambda_{i,k} \ge \color{blue}{\tau}}`
 The eigenvectors :math:`V_{i,k}` selected to enter the coarse space correspond to eigenvalues :math:`\lambda_{i,k} \ge \color{blue}{\tau}`, where :math:`\color{blue}{\tau}` is a threshold parameter
