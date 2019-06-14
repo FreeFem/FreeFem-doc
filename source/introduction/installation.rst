@@ -96,15 +96,16 @@ Compilation
   Branches / OS status
   ~~~~~~~~~~~~~~~~~~~~
 
-  +-----------------+-------------------+-------------------+-------------------+
-  | Branch          | Linux             | MacOSX            | Windows 7         |
-  +=================+===================+===================+===================+
-  | Develop         | |Build Status01|  | |Build Status03|  | |Build Status05|  |
-  |                 | |Build Status02|  | |Build Status04|  | |Build Status06|  |
-  +-----------------+-------------------+-------------------+-------------------+
-  | Master          | |Build Status07|  | |Build Status09|  | |Build Status11|  |
-  |                 | |Build Status08|  | |Build Status10|  | |Build Status12|  |
-  +-----------------+-------------------+-------------------+-------------------+
+The Inria Jenkins server is used for the CI/CD integration of the source code.
+
+Compilation results of the develop branch are here:
+ 
+  +-----------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+  | Branch          | Linux 16.04       | Linux 18.04       | MacOS 10.10.5     | MacOS 10.13.5     | Windows 7         |
+  +=================+===================+===================+===================+===================+===================+
+  | Develop         | |Build Status01|  | |Build Status02|  | |Build Status03|  | |Build Status04|  | |Build Status05|  |
+  +-----------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+
 
 Using autotools
 ~~~~~~~~~~~~~~~
@@ -498,87 +499,88 @@ Compilation on Windows
    are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
 
 
-.. _cmake:
 
-Using CMake (FreeFEM without plugins)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. .. _cmake:
 
-Compilation on OSX (>=10.13)
-""""""""""""""""""""""""""""
+.. Using CMake (FreeFEM without plugins) 
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Install Xcode, Xcode Command Line tools and Xcode Additional Tools from the `Apple website <https://developer.apple.com/download/more/>`__
+.. Compilation on OSX (>=10.13)
+   """"""""""""""""""""""""""""
 
-2. Install gcc from `http://hpc.sourceforge.net <http://hpc.sourceforge.net/>`__
+.. 1. Install Xcode, Xcode Command Line tools and Xcode Additional Tools from the `Apple website <https://developer.apple.com/download/more/>`__
 
-   .. code-block:: bash
+.. 2. Install gcc from `http://hpc.sourceforge.net <http://hpc.sourceforge.net/>`__
+
+..    .. code-block:: bash
       :linenos:
 
-      curl -O http://prdownloads.sourceforge.net/hpc/gfortran-8.1-bin.tar.gz?download
+..       curl -O http://prdownloads.sourceforge.net/hpc/gfortran-8.1-bin.tar.gz?download
       sudo tar zxvf gfortran-8.1-bin.tar.gz -C /
 
-3. Install cmake from `macport <https://www.macports.org>`__ or with `Homebrew <https://brew.sh>`__
+.. 3. Install cmake from `macport <https://www.macports.org>`__ or with `Homebrew <https://brew.sh>`__
 
-   .. code-block:: bash
+..    .. code-block:: bash
       :linenos:
 
-      sudo port install cmake
+..       sudo port install cmake
 
-   .. code-block:: bash
+..    .. code-block:: bash
       :linenos:
 
-      brew install cmake
+..       brew install cmake
 
-4. Install mactex from `ctan <http://mirrors.ctan.org/systems/mac/mactex/MacTeX.pkg>`__
+.. 4. Install mactex from `ctan <http://mirrors.ctan.org/systems/mac/mactex/MacTeX.pkg>`__
 
-5. Install the `openmpi <https://www.open-mpi.org/software/ompi/v4.0/>`__ source code
+.. 5. Install the `openmpi <https://www.open-mpi.org/software/ompi/v4.0/>`__ source code
 
-   .. code-block:: bash
+..    .. code-block:: bash
       :linenos:
 
-      ./configure CC=/usr/local/bin/gcc CXX=/usr/local/bin/g++ F77=/usr/local/bin/gfortran FC=/usr/local/bin/gfortran
+..       ./configure CC=/usr/local/bin/gcc CXX=/usr/local/bin/g++ F77=/usr/local/bin/gfortran FC=/usr/local/bin/gfortran
       make
       sudo make install
 
-6. Install `gsl <https://www.gnu.org/software/gsl>`__
+.. 6. Install `gsl <https://www.gnu.org/software/gsl>`__
 
-   .. code-block:: bash
+..    .. code-block:: bash
       :linenos:
 
-      curl -O https://fr.mirror.babylon.network/gnu/gsl/gsl-2.4.tar.gz
+..       curl -O https://fr.mirror.babylon.network/gnu/gsl/gsl-2.4.tar.gz
       tar zxvf gsl-2.4.tar.gz
       cd gsl-2.4
       ./configure CC=/usr/local/bin/gcc
       make
       sudo make install
 
-7. Install `git <https://git-scm.com/download/mac>`__
+.. 7. Install `git <https://git-scm.com/download/mac>`__
 
-8. Install SparseSuite and Arpack from `macport <https://www.macports.org>`__ or with `Homebrew <https://brew.sh>`__
+.. 8. Install SparseSuite and Arpack from `macport <https://www.macports.org>`__ or with `Homebrew <https://brew.sh>`__
 
-   .. code-block:: bash
+..   .. code-block:: bash
+..       :linenos:
+
+..       sudo port install arpack SuiteSparse
+
+..    .. code-block:: bash
       :linenos:
 
-      sudo port install arpack SuiteSparse
+..       brew install arpack suite-sparse
 
-   .. code-block:: bash
+
+.. 9. Download the **FreeFEM** source from the repository
+
+..    .. code-block:: bash
+..       :linenos:
+
+..       git clone https://github.com/FreeFem/FreeFem-sources.git
+
+.. 10. Compile **FreeFEM**. Don’t forget to update the MacOS SDK version with your own in the command below:
+
+..    .. code-block:: bash
       :linenos:
 
-      brew install arpack suite-sparse
-
-
-9. Download the **FreeFEM** source from the repository
-
-   .. code-block:: bash
-      :linenos:
-
-      git clone https://github.com/FreeFem/FreeFem-sources.git
-
-10. Compile **FreeFEM**. Don’t forget to update the MacOS SDK version with your own in the command below:
-
-   .. code-block:: bash
-      :linenos:
-
-      cd FreeFem-sources
+..       cd FreeFem-sources
       mkdir build
       cd build
       cmake ..
@@ -587,15 +589,15 @@ Compilation on OSX (>=10.13)
       sudo make install
 
 
-Compilation on Ubuntu
-"""""""""""""""""""""
+.. Compilation on Ubuntu
+   """""""""""""""""""""
 
-1. Install the following dependencies
+.. 1. Install the following dependencies
 
-   .. code-block:: bash
+..    .. code-block:: bash
       :linenos:
 
-      sudo apt-get update && sudo apt-get upgrade
+..       sudo apt-get update && sudo apt-get upgrade
       sudo apt-get install cpp freeglut3-dev g++ gcc gfortran \
           ghostscript m4 make patch pkg-config wget python unzip \
           libopenblas-dev liblapack-dev libhdf5-dev libgsl-dev \
@@ -603,45 +605,45 @@ Compilation on Ubuntu
           libmumps-seq-dev libnlopt-dev coinor-libipopt-dev libgmm++-dev libtet1.5-dev \
           gnuplot-qt autoconf automake autotools-dev bison flex gdb valgrind git cmake
 
-      # mpich is required for the FreeFem parallel computing version
+..       # mpich is required for the FreeFem parallel computing version
       sudo apt-get install mpich
 
-   .. warning:: In the oldest distribution of Ubuntu, ``libgsl-dev`` does not exists, use ``libgsl2-dev`` instead
+..    .. warning:: In the oldest distribution of Ubuntu, ``libgsl-dev`` does not exists, use ``libgsl2-dev`` instead
 
-2. Download **FreeFEM** source from the repository
+.. 2. Download **FreeFEM** source from the repository
 
-   .. code-block:: bash
+..    .. code-block:: bash
       :linenos:
 
-      git clone https://github.com/FreeFem/FreeFem-sources.git
+..       git clone https://github.com/FreeFem/FreeFem-sources.git
 
-3. Configure
+.. 3. Configure
 
-   .. code-block:: bash
+..    .. code-block:: bash
       :linenos:
 
-      cd FreeFem-sources
+..       cd FreeFem-sources
       mkdir build
       cd build
       cmake ..
 
-4. Build
+.. 4. Build
 
-   .. code-block:: bash
+..   .. code-block:: bash
       :linenos:
 
-      make
+..       make
 
-   .. note:: If your computer has many threads, you can run ``make`` in parallel using ``make -j16`` for 16 threads, for example.
+..    .. note:: If your computer has many threads, you can run ``make`` in parallel using ``make -j16`` for 16 threads, for example.
 
-   .. note:: Optionnally, check the compilation with ``make test``
+..    .. note:: Optionnally, check the compilation with ``make test``
 
-5. Install
+.. 5. Install
 
-   .. code-block:: bash
+..    .. code-block:: bash
       :linenos:
 
-      sudo make install
+..       sudo make install
 
 
 Compilation on Windows
@@ -763,6 +765,19 @@ We can also use shell environment variables to change verbosity and the search r
 
       export FF_VERBOSITY=100;
       ./FreeFem++-nw
+
+ |Build Status01| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job6/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job6/
+ |Build Status02| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job6/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job6/
+ |Build Status03| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job6/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job6/
+ |Build Status04| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job6/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job6/
+ |Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFem-source-develop-Windows7/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFem-source-develop-Windows7/
+
+
 
 .. |Build Status01| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-UbuntuAll
    :target: https://ci.inria.fr/freefem/job/FreeFem-source-develop-UbuntuAll/
