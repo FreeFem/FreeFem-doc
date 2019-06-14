@@ -764,29 +764,20 @@ We can also use shell environment variables to change verbosity and the search r
       export FF_VERBOSITY=100;
       ./FreeFem++-nw
 
-|Build Status01| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job6/
-:target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job6
-|Build Status02| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job6/
-:target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job6
-|Build Status03| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job6/
-:target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job6
-|Build Status04| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job6/
-:target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job6
-|Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFem-source-develop-Windows7/
-:target: https://ci.inria.fr/freefem-dev/job/FreeFem-source-develop-Windows7
-
-
-
-.. |Build Status01| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-UbuntuAll
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-develop-UbuntuAll/
-.. |Build Status02| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-UbuntuNo
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-develop-UbuntuNo/
-.. |Build Status03| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-MacOSXAll
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-develop-MacOSXAll/
-.. |Build Status04| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-MacOSXNo
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-develop-MacOSXNo/
-.. |Build Status05| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-Windows7
-   :target: https://ci.inria.fr/freefem/job/FreeFem-source-develop-Windows7
+ |Build Status01| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job6
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job6/
+ |Build Status02| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job6
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job6/
+ |Build Status03| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job6
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job6/
+ |Build Status04| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job6
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job6/
+ |Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-Windows7
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-Windows7
+   
+   
+   
+   
 .. |Build Status06| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-develop-Windows7-32
    :target: https://ci.inria.fr/freefem/job/FreeFem-source-develop-Windows7-32
 .. |Build Status07| image:: https://ci.inria.fr/freefem/buildStatus/icon?job=FreeFem-source-master-UbuntuAll
