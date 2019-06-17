@@ -108,14 +108,14 @@ Compilation
 
 Using autotools
 ~~~~~~~~~~~~~~~
-    .. note:: 2 worked versions of FreeFEM are possible: minimal and full: sequential and without plugins (contains in 3rdparty) full: parallel with available plugins. 
+    .. note:: 2 worked versions of FreeFEM are possible: minimal and full: sequential and without plugins (contains in 3rdparty) full: parallel with available plugins.
 	.. note:: We advise you to use the package manager for macOS Homebrew to get the different packages required avalaible `here <https://brew.sh>`__
 
 Compilation on OSX (>=10.13)
 """"""""""""""""""""""""""""
 
 1. Install Xcode, Xcode Command Line tools and Xcode Additional Tools from the `Apple website <https://developer.apple.com/download/more/>`__
-   
+
 2. Install gcc and gfortran from Homebrew
 
    .. code-block:: bash
@@ -127,28 +127,28 @@ Compilation on OSX (>=10.13)
 
    .. code-block:: bash
       :linenos:
-	  
+
        curl -L https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.1.tar.gz --output openmpi-4.0.1.tar.gz
        tar xf openmpi-4.0.1
        cd openmpi-4.0.1/
-	   
+
    - with brew gcc gfortran compilers
 
    .. code-block:: bash
       :lineno-start: 4
-	  
-       ./configure CC=clang CXX=clang++ FC=gfortran-9 F77=gfortran-9 --prefix=/usr/local 
-	  
+
+       ./configure CC=clang CXX=clang++ FC=gfortran-9 F77=gfortran-9 --prefix=/usr/local
+
    - with LLVM gcc and brew gfortran compilers
 
    .. code-block:: bash
        :lineno-start: 4
-	 
+
        ./configure CC=gcc-9 CXX=g++-9 FC=gfortran-9 F77=gfortran-9 --prefix=/usr/local
 
    .. code-block:: bash
       :lineno-start: 5
-      
+
        make
        sudo make install
 
@@ -156,8 +156,8 @@ Compilation on OSX (>=10.13)
 
    .. code-block:: bash
       :linenos:
-	  
-      brew install m4 git flex bison 
+
+      brew install m4 git flex bison
 
 5. If you want build your own configure according your system, install autoconf and automake from Homebrew (optional, see note in step 10)
 
@@ -166,13 +166,13 @@ Compilation on OSX (>=10.13)
 
       brew install autoconf
       brew install automake
-	  
-6. To use **FreeFEM** with its plugins, install rom Homebrew suitesparse, hdf5, cmake, wget	 
- 
+
+6. To use **FreeFEM** with its plugins, install rom Homebrew suitesparse, hdf5, cmake, wget
+
    .. code-block:: bash
       :linenos:
 
-      brew install suitesparse hdf5 cmake wget	 
+      brew install suitesparse hdf5 cmake wget
 
 7. Install `gsl <https://www.gnu.org/software/gsl>`__
 
@@ -246,17 +246,17 @@ Compilation on OSX (>=10.13)
 
    .. code-block:: bash
       :linenos:
-	  
+
       make
       make check
       sudo make install
    .. note:: To install FreeFEM, it is recommanded to change the user ID of your installation directory instead of using SUDO.
-	  
-	  
-	  
-	  
-	  
-	  
+
+
+
+
+
+
 
 Compilation on Ubuntu
 """""""""""""""""""""
@@ -442,7 +442,7 @@ Follow the `guide <https://software.intel.com/en-us/articles/building-freefem-wi
 Compilation on Windows
 """"""""""""""""""""""
 
-1. Install `MS MPI v7 <https://www.microsoft.com/en-us/download/details.aspx?id=49926>`__ (msmpisdk.msi and MSMpiSetup.exe)
+1. Install `MS MPI v9 <https://www.microsoft.com/en-us/download/details.aspx?id=56511>`__ (msmpisdk.msi and MSMpiSetup.exe)
 
 2. Install `Msys2 <https://www.msys2.org/>`__ (x86_64 version)
 
@@ -455,20 +455,25 @@ Compilation on Windows
    .. code-block:: bash
       :linenos:
 
+      source shell mingw64
+
       pacman -Syu
       pacman -S autoconf automake-wrapper bash bash-completion \
-          bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
-          findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
-          make man-db git mingw-w64-x86_64-freeglut mingw-w64-x86_64-gcc \
-          mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
-          mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
-          msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
-          perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
+        bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
+        findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
+        make man-db git mingw-w64-x86_64-freeglut mingw-w64-x86_64-gcc \
+        mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
+        mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
+        msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git python \
+        perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which \
+        mingw-w64-x86_64-libmicroutils mingw-w64-x86_64-arpack cmake
 
    -  for 32bits system:
 
    .. code-block:: bash
       :linenos:
+
+      source shell mingw32
 
       pacman -Syu
       pacman -S autoconf automake-wrapper bash bash-completion \
@@ -501,7 +506,7 @@ Compilation on Windows
 
 .. .. _cmake:
 
-.. Using CMake (FreeFEM without plugins) 
+.. Using CMake (FreeFEM without plugins)
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. Compilation on OSX (>=10.13)
@@ -644,64 +649,64 @@ Compilation on Windows
 
 ..       sudo make install
 
-
-Compilation on Windows
-""""""""""""""""""""""
-
-1. Install `MS MPI v7 <https://www.microsoft.com/en-us/download/details.aspx?id=49926>`__ (msmpisdk.msi and MSMpiSetup.exe)
-
-2. Install `Msys2 <https://www.msys2.org/>`__ (x86_64 version)
-
-3. Start MSYS2 MSYS
-
-4. Open ``MSYS2 MSYS terminal`` to install dependancies
-
-   -  for 64bits system:
-
-   .. code-block:: bash
-      :linenos:
-
-      pacman -Syu
-      pacman -S autoconf automake-wrapper bash bash-completion \
-          bison bsdcpio bsdtar bzip2 cmake coreutils curl dash file filesystem \
-          findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
-          make man-db git mingw-w64-x86_64-freeglut mingw-w64-x86_64-gcc \
-          mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
-          mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
-          msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
-          perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
-
-   -  for 32bits system:
-
-   .. code-block:: bash
-      :linenos:
-
-      pacman -Syu
-      pacman -S autoconf automake-wrapper bash bash-completion \
-          bison bsdcpio bsdtar bzip2 cmake coreutils curl dash file filesystem \
-          findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
-          make man-db git mingw-w64-i686-freeglut mingw-w64-i686-gcc \
-          mingw-w64-i686-gcc-fortran mingw-w64-i686-gsl mingw-w64-i686-hdf5 \
-          mingw-w64-i686-openblas mintty msys2-keyring msys2-launcher-git \
-          msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
-      perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
-
-5. Open ``MingW64 terminal`` (or ``MingW32``) to compile **FreeFEM**
-
-   .. code-block:: bash
-      :linenos:
-
-      git clone https://github.com/FreeFem/FreeFem-sources
-      cd FreeFem-sources
-      mkdir build
-      cd build
-      cmake ..
-      make -j4
-      make test
-      make install
-
-   The **FreeFEM** executable (and some other like ``ffmedit``, …)
-   are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
+..
+.. Compilation on Windows
+.. """"""""""""""""""""""
+..
+.. 1. Install `MS MPI v7 <https://www.microsoft.com/en-us/download/details.aspx?id=49926>`__ (msmpisdk.msi and MSMpiSetup.exe)
+..
+.. 2. Install `Msys2 <https://www.msys2.org/>`__ (x86_64 version)
+..
+.. 3. Start MSYS2 MSYS
+..
+.. 4. Open ``MSYS2 MSYS terminal`` to install dependancies
+..
+..    -  for 64bits system:
+..
+..    .. code-block:: bash
+..       :linenos:
+..
+..       pacman -Syu
+..       pacman -S autoconf automake-wrapper bash bash-completion \
+..           bison bsdcpio bsdtar bzip2 cmake coreutils curl dash file filesystem \
+..           findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
+..           make man-db git mingw-w64-x86_64-freeglut mingw-w64-x86_64-gcc \
+..           mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
+..           mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
+..           msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
+..           perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
+..
+..    -  for 32bits system:
+..
+..    .. code-block:: bash
+..       :linenos:
+..
+..       pacman -Syu
+..       pacman -S autoconf automake-wrapper bash bash-completion \
+..           bison bsdcpio bsdtar bzip2 cmake coreutils curl dash file filesystem \
+..           findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
+..           make man-db git mingw-w64-i686-freeglut mingw-w64-i686-gcc \
+..           mingw-w64-i686-gcc-fortran mingw-w64-i686-gsl mingw-w64-i686-hdf5 \
+..           mingw-w64-i686-openblas mintty msys2-keyring msys2-launcher-git \
+..           msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
+..       perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
+..
+.. 5. Open ``MingW64 terminal`` (or ``MingW32``) to compile **FreeFEM**
+..
+..    .. code-block:: bash
+..       :linenos:
+..
+..       git clone https://github.com/FreeFem/FreeFem-sources
+..       cd FreeFem-sources
+..       mkdir build
+..       cd build
+..       cmake ..
+..       make -j4
+..       make test
+..       make install
+..
+..    The **FreeFEM** executable (and some other like ``ffmedit``, …)
+..    are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
 
 
 Environment variables and init file
@@ -775,4 +780,3 @@ We can also use shell environment variables to change verbosity and the search r
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job6/
 .. |Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-windows7
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-windows7
-
