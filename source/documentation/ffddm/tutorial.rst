@@ -84,7 +84,7 @@ Copy and paste this to a file 'test.edp' and run it:
 .. code-block:: bash
     :linenos:
 
-    ff-mpirun -np 2 test.edp -glut ffglut
+    ff-mpirun -np 2 test.edp -wg
 
 Step 2: Define your finite element
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

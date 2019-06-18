@@ -94,9 +94,9 @@ class: left, top
 - **ffddm** implements a class of parallel solvers in *FreeFEM*:
 *overlapping Schwarz domain decomposition methods*
 
-- The entire **ffddm** framework is written in the *FreeFEM* language
-**ffddm** aims at simplifying the use of parallel solvers in *FreeFEM*
-You can find the **ffddm** scripts [here](https://github.com/FreeFem/FreeFem-sources/blob/develop/idp) ('ffddm*.idp' files) and examples [here](https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm)
+- The entire **ffddm** framework is written in the *FreeFEM* language  
+  **ffddm** aims at simplifying the use of parallel solvers in *FreeFEM*  
+  You can find the **ffddm** scripts [here](https://github.com/FreeFem/FreeFem-sources/blob/develop/idp) ('ffddm*.idp' files) and examples [here](https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm)
 
 - **ffddm** provides a set of high-level macros and functions to
   - handle data distribution: distributed meshes and linear algebra
@@ -161,7 +161,7 @@ medit("Th"+mpirank, MThi);
 Copy and paste this to a file 'test.edp' and run it:
 
 ```console
-$ ff-mpirun -np 2 test.edp -glut ffglut
+$ ff-mpirun -np 2 test.edp -wg
 ```
 
 ---
