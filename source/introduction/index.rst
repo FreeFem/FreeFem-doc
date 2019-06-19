@@ -1,6 +1,6 @@
-:Version: |version|
-
 .. only:: html
+
+  **Current release:** |version|
 
   .. raw:: html
 
