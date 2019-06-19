@@ -9,6 +9,16 @@
       <p>
         Get it <a href="/pdf/FreeFEM-documentation.pdf" target="_blank">here</a>
       </p>
+      <div class="PDFbanner-v3">
+        <p>
+          FreeFEM v3 PDF (not up to date)
+        </p>
+        <p>
+          <a href="/pdf/FreeFEM-doc-v3.pdf" target="_blank">Offical version</a> (English)<br/>
+          <a href="/pdf/FreeFEM-doc-v3_Spanish.pdf" target="_blank">Spanish version</a><br/>
+          <a href="/pdf/FreeFEM-doc-v3_Chinese.pdf" target="_blank">Chinese version</a> (用中文（表达)
+        </p>
+      </div>
     </div>
 
 Introduction

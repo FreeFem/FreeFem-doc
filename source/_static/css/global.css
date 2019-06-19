@@ -420,3 +420,9 @@ body::-webkit-scrollbar {
 	margin: 0;
 	text-align: center;
 }
+
+.PDFbanner-v3 {
+	line-height: 1rem;
+	font-size: 1rem;
+	background-color: rgba(0, 0, 127, 0.25);
+}
