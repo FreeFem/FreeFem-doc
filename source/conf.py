@@ -2,6 +2,10 @@
 import sys, os
 sys.path.append(os.path.abspath('sphinx-extensions'))
 
+import requests
+r = requests.get('https://api.github.com/repos/FreeFem/FreeFem-sources/releases/latest')
+GitHubVersion = r.json()
+
 # -- Project information -----------------------------------------------------
 
 project = 'FreeFEM'
@@ -9,9 +13,9 @@ copyright = '2019, FreeFEM'
 author = 'Frederic Hecht'
 
 # The short X.Y version
-version = '4.1.2'
+version = GitHubVersion['tag_name']
 # The full version, including alpha/beta/rc tags
-release = '4.1.2'
+release = GitHubVersion['tag_name']
 
 # -- General configuration ---------------------------------------------------
 
