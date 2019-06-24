@@ -424,5 +424,6 @@ body::-webkit-scrollbar {
 .PDFbanner-v3 {
 	line-height: 1rem;
 	font-size: 1rem;
-	background-color: rgba(0, 0, 127, 0.25);
+	background-color:rgba(236, 236, 236, 1)
 }
+
