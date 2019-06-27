@@ -12,6 +12,7 @@
 
 #subnav > div {
 	position: sticky;
+	position: -webkit-sticky;
 	top: 3.75rem;
 	max-height: calc(100vh - 3.75rem);
 	padding: .55rem;

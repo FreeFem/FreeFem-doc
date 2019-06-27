@@ -12,6 +12,7 @@
 
 #toc > div {
 	position: sticky;
+	position: -webkit-sticky;
 	top: 3.75rem;
 	max-height: calc(100vh - 3.75rem);
 	padding: 1.1rem .55rem .55rem .55rem;
