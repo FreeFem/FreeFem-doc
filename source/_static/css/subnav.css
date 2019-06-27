@@ -4,15 +4,19 @@
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	/* padding: .55rem; */
 	background-color: #F7F7F9;
 	border-right: 2px solid #EFEFEF;
-	font-size: 0.9rem;
+	font-size: .9rem;
 	overflow-anchor: none;
 }
 
-#subnav b {
-	margin: 0.75rem 0;
+#subnav > div {
+	position: sticky;
+	top: 3.75rem;
+	max-height: calc(100vh - 3.75rem);
+	padding: .55rem;
+	overflow: auto;
+	width: 100%;
 }
 
 #subnav ul {
@@ -21,10 +25,6 @@
 
 #subnav div > ul > li > a {
 	color: #00007F;
-}
-
-#subnav li {
-
 }
 
 #subnav li.toctree-l1{
@@ -52,13 +52,4 @@
 
 #subnav a:hover {
   color: #0000FF;
-}
-
-#subnav > div {
-	position: sticky;
-	top: 3.75rem;
-	max-height: calc(100vh - 3.75rem);
-	padding: .55rem;
-	overflow: auto;
-	width: 100%;
 }
