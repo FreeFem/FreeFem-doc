@@ -1783,7 +1783,7 @@ The type *mesh3* in 3 dimension
 Operators to generate a *mesh3*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. remark::
+.. note::
 
    For 3D mesh tools, Load the library ”msh3” ⇒ load "msh3" in top of .edp file. 
 
@@ -2789,7 +2789,7 @@ Build a 3d mesh of a cube with a balloon
        ThS=freeyams(ThS,hmin=h,hmax=h,gradation=2.,verbosity=-10,mem=100,option=0);
    
       return ThS;
- }  
+    }  
    
  
 

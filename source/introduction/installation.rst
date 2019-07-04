@@ -4,7 +4,7 @@
 .. role:: bash(code)
    :language: bash
 
-==================
+
 Installation guide
 ==================
 
@@ -24,7 +24,7 @@ First, go to the :ref:`download page <download>` and choose your platform: Linux
 Install **FreeFEM** by double-clicking on the appropriate file. Under Linux and MacOS the install directory is one of the following ``/usr/local/bin``, ``/usr/local/share/freefem++``, ``/usr/local/lib/ff++``
 
 Windows binary installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 First download the windows installation executable, then double click to install **FreeFEM**.
 
@@ -42,14 +42,14 @@ where ``(VERSION)`` is the version of the files (for example 3.59).
 By default, the installed files are in ``C:\Programs Files\FreeFem++``. In this directory, you have all the ``.dll`` files and other applications: ``FreeFem++-nw.exe``, ``ffglut.exe``, … The syntax for the command-line tools are the same as those of ``FreeFem.exe``.
 
 MacOS X binary installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Download the MacOS X binary version file, extract all the files by double clicking on the icon of the file, go the the directory and put the ``FreeFem++.app`` application in the ``/Applications`` directory.
 
 If you want terminal access to **FreeFEM** just copy the file ``FreeFem++`` in a directory of your :bash:`$PATH` shell environment variable.
 
 Arch AUR package
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 An up-to-date package of **FreeFEM** for Arch is available on the `Archlinux user repository <https://aur.archlinux.org/packages/freefem%2B%2B-git/>`__.
 
@@ -67,31 +67,37 @@ To install it:
 |
 |
 
-Compilation
------------
-
 .. only:: html
 
-  Branches / OS status
-  ~~~~~~~~~~~~~~~~~~~~
+  Status of *FreeFEM* continuous integration 
+  ------------------------------------------
 
-  The Inria Jenkins server is used for the CI/CD integration of the source code.
+  The Inria Jenkins platform is used for the CI/CD integration of the source code.
 
-  Compilation results of the develop branch are here
+  Compilation results of the develop branch by OS type and configuration of FreeFEM are here
 
   +-----------------+-------------------+-------------------+-------------------+-------------------+-------------------+
   | Branch          | Linux 16.04       | Linux 18.04       | MacOS 10.10.5     | MacOS 10.13.5     | Windows 7         |
   +=================+===================+===================+===================+===================+===================+
   | Develop         | |Build Status01|  | |Build Status02|  | |Build Status03|  | |Build Status04|  | |Build Status05|  |
-  +-----------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+  |(sequential and  |                   |                   |                   |                   |                   | 
+  |without          |                   |                   |                   |                   |                   |  
+  |PETSc/SLEPc)     |                   |                   |                   |                   |                   |         
+  +=================+===================+===================+===================+===================+===================+
+  | Develop         | |Build Status06|  | |Build Status07|  | |Build Status08|  | |Build Status09|  | |Build Status10|  |
+  |compiles in DEBUG|                   |                   |                   |                   |                   |
+  | Mode and runs   |                   |                   |                   |                   |                   |
+  | with MPI,       |                   |                   |                   |                   |                   |
+  | PETSc/SLESc     |                   |                   |                   |                   |                   |
+  +-----------------+-------------------+-------------------+-------------------+-------------------+-------------------+           
 
 Using autotools
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
     .. note:: 2 worked versions of FreeFEM are possible: minimal and full: sequential and without plugins (contains in 3rdparty) full: parallel with available plugins.
 	.. note:: We advise you to use the package manager for macOS Homebrew to get the different packages required avalaible `here <https://brew.sh>`__
 
 Compilation on OSX (>=10.13)
-""""""""""""""""""""""""""""
+''''''''''''''''''''''''''''
 
 1. Install Xcode, Xcode Command Line tools and Xcode Additional Tools from the `Apple website <https://developer.apple.com/download/more/>`__
 
@@ -205,7 +211,7 @@ Compilation on OSX (>=10.13)
 
    .. note:: All the third party packages have their own licence
 
-11. Compile petsc & slepc
+11. If you want use `HPDDM <https://github.com/hpddm/hpddm>`__ (High Performance Domain Decomposition Methods) for massively parallel computing, install PETSc/SLEPc
 
    .. code-block:: bash
       :linenos:
@@ -213,21 +219,19 @@ Compilation on OSX (>=10.13)
       cd 3rdparty/ff-petsc
       make petsc-slepc SUDO=sudo
       cd -
-
-12. Reconfigure with petsc and slepc
-
-   .. code-block:: bash
-      :linenos:
-
       ./reconfigure
 
-13. Build FreeFEM executable
+12. Build your **FreeFEM** library and executable
 
    .. code-block:: bash
       :linenos:
 
-      make
+      make -j<nbProcs>
       make check
+	  
+	  .. note:: ``make check`` is optionnally, but advise to check the validity of your **FreeFEM** building
+   
+ 13. Install the **FreeFEM** apllication 
       sudo make install
    .. note:: To install FreeFEM, it is recommanded to change the user ID of your installation directory instead of using SUDO.
 
@@ -238,9 +242,9 @@ Compilation on OSX (>=10.13)
 
 
 Compilation on Ubuntu
-"""""""""""""""""""""
+'''''''''''''''''''''
 
-1. Install the following dependencies
+1. Install the following packages on you system
 
    .. code-block:: bash
       :linenos:
@@ -293,7 +297,7 @@ Compilation on Ubuntu
 
    .. note:: All the third party packages have their own licence
 
-6. Compile petsc & slepc
+6. If you want use `HPDDM <https://github.com/hpddm/hpddm>`__ (High Performance Domain Decomposition Methods) for massively parallel computing, install PETSc/SLEPc
 
    .. code-block:: bash
       :linenos:
@@ -301,34 +305,29 @@ Compilation on Ubuntu
       cd 3rdparty/ff-petsc
       make petsc-slepc SUDO=sudo
       cd -
-
-7. Reconfigure with petsc and slepc
-
-   .. code-block:: bash
-      :linenos:
-
       ./reconfigure
 
-8. Build
+7. Build your **FreeFEM** library and executable
 
    .. code-block:: bash
       :linenos:
 
-      make
+      make -j<nbProcs>
+      make check
+   
+   .. note:: ``make check`` is optionnally, but advise to check the validity of your **FreeFEM** building
 
-   .. note:: If your computer has many threads, you can run ``make`` in parallel using ``make -j16`` for 16 threads, for example.
-
-   .. note:: Optionnally, check the compilation with ``make check``
-
-9. Install
+9. Install the executable 
 
    .. code-block:: bash
       :linenos:
 
       sudo make install
 
+
+
 Compilation on Arch Linux
-"""""""""""""""""""""""""
+'''''''''''''''''''''''''
 
 .. warning:: As Arch is in rolling release, the following information can be quickly outdated !
 
@@ -388,14 +387,14 @@ Compilation on Arch Linux
       make petsc-slepc SUDO=sudo
       cd -
 
-7. Reconfigure with petsc and slepc
+7. If you want use `HPDDM <https://github.com/hpddm/hpddm>`__ (High Performance Domain Decomposition Methods) for massively parallel computing, install PETSc/SLEPc
 
    .. code-block:: bash
       :linenos:
 
       ./reconfigure
 
-8. Build
+8. Compile the **FreeFEM** source
 
    .. code-block:: bash
       :linenos:
@@ -406,20 +405,22 @@ Compilation on Arch Linux
 
    .. note:: Optionnally, check the compilation with ``make check``
 
-9. Install
+9. Install the **FreeFEM** application
 
    .. code-block:: bash
       :linenos:
 
       sudo make install
+	  
+	  
 
 Compilation on Linux with Intel software tools
-""""""""""""""""""""""""""""""""""""""""""""""
+''''''''''''''''''''''''''''''''''''''''''''''
 
 Follow the `guide <https://software.intel.com/en-us/articles/building-freefem-with-intel-software-tools-for-developers>`__
 
 Compilation on Windows
-""""""""""""""""""""""
+''''''''''''''''''''''
 
 1. Install `MS MPI v9 <https://www.microsoft.com/en-us/download/details.aspx?id=56511>`__ (msmpisdk.msi and MSMpiSetup.exe)
 
@@ -760,7 +761,7 @@ Text-editor
 -----------
 
 Atom
-~~~~
+^^^^
 
 In order to get the syntax highlighting in `Atom <https://atom.io/>`__, you have to install the `FreeFEM language support <https://atom.io/packages/language-freefem-official>`__.
 
@@ -783,18 +784,38 @@ To launch scripts directly from Atom, you have to install the ``atom-runner`` pa
 Reboot Atom, and use Alt+R to run a FreeFem++ script.
 
 Gedit
-~~~~~
+^^^^^
 
 In order to get the syntax highlighting in Gedit, you have to downlaod the `Gedit parser <https://github.com/FreeFem/FreeFem-parser-gedit>`__ and copy it in ``/usr/share/gtksourceview-3.0/language-specs/``.	  
 	  
 	  
-.. |Build Status01| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job5
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job5/
-.. |Build Status02| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job5
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job5/
-.. |Build Status03| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job5
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job5/
-.. |Build Status04| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job5
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job5/
+.. |Build Status01| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job3
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job3/
+.. |Build Status02| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job3
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job3/
+.. |Build Status03| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job3
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job3/
+.. |Build Status04| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job3
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job3/
 .. |Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-windows7
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-windows7
+
+.. |Build Status06| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job5
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job5/
+.. |Build Status07| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job5
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job5/
+.. |Build Status08| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job5
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job5/
+.. |Build Status09| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job5
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job5/
+.. |Build Status10| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-windows7-job5
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-windows7-job5
+   
+   
+..       make -j4
+..       make test
+..       make install
+..
+..    The **FreeFEM** executable (and some other like ``ffmedit``, …)
+..    are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
+
