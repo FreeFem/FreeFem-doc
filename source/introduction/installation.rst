@@ -442,15 +442,21 @@ Follow the `guide <https://software.intel.com/en-us/articles/building-freefem-wi
 Compilation on Windows
 """"""""""""""""""""""
 
-1. Install `MS MPI v9 <https://www.microsoft.com/en-us/download/details.aspx?id=56511>`__ (msmpisdk.msi and MSMpiSetup.exe)
+.. warning:: 
+   The support ended for all releases under Windows 32 bits since the V4.
 
-2. Install `Msys2 <https://www.msys2.org/>`__ (x86_64 version)
 
-3. Start MSYS2 MSYS
+1. Install `Microsoft MPI v9.0 <https://www.microsoft.com/en-us/download/details.aspx?id=56511>`__ (msmpisdk.msi and MSMpiSetup.exe)
 
-4. Open ``MSYS2 MSYS terminal`` to install dependancies
+2. Install the software `Msys2 <https://www.msys2.org/>`__ (x86_64 version)
 
-   -  for 64bits system:
+3. Install the version control system `Git <https://git-scm.com/download/win>`__ for Windows
+
+4. Start MSYS2 MSYS
+
+5. Open ``MSYS2 MSYS terminal`` to install dependancies
+
+   -  for 64bits system (all *FreeFEM* release version):
 
    .. code-block:: bash
       :linenos:
@@ -466,14 +472,14 @@ Compilation on Windows
         mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
         msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git python \
         perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which \
-        mingw-w64-x86_64-libmicroutils mingw-w64-x86_64-arpack cmake
+        mingw-w64-x86_64-libmicroutils mingw-w64-x86_64-arpack cmake python2
 
-   -  for 32bits system:
+   -  for 32bits system (less *FreeFEM* release V4 is not currently supported):
 
    .. code-block:: bash
       :linenos:
 
-      source shell mingw32
+      *source shell mingw32
 
       pacman -Syu
       pacman -S autoconf automake-wrapper bash bash-completion \
@@ -485,7 +491,7 @@ Compilation on Windows
           msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
       perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
 
-5. Open ``MingW64 terminal`` (or ``MingW32``) to compile **FreeFEM**
+6. Open ``MingW64 terminal`` (or ``MingW32``) to compile **FreeFEM**
 
    .. code-block:: bash
       :linenos:
