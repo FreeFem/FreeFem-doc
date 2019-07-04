@@ -1,42 +1,42 @@
-.. only:: html
-.. |logo1| image:: ../_static/img/logo_cnrs_SU_UP.png
-   :scale: 40%
-.. |logo2| image:: ../_static/img/inr_logo_rouge_300.jpg
-   :scale: 20%
-.. |logo3| image:: ../_static/img/logo_LJLL.png
-   :scale: 60%
-.. |logo4| image:: ../_static/img/logo_alpines.png
-   :scale: 45%
+|
+|
 
-.. centered::
-  |logo1|  |logo2|  |logo3|  |logo4|
-  
-|
-|
-|
-|
 
 .. raw:: html
+   
+   <style type="text/css">
+   t {
+     color: blue;
+     font-weight: bold;
+	 font-size:50px
+   }
+   </style>
+   
+   <center>
+    <t> FreeFEM </t> <br/>
+    Fourth edition, Version 4.2.1 </t>
+   </center> 
 
-    <style> .blue {color:blue;font-weight : bold;font-size:35px} </style>
+===============
 
-.. role:: blue
-
-:blue:`The FreeFEM` |version| :blue:`is out!`
+|
 	
 .. only:: html
 
   .. raw:: html
 
     <div id="PDFbanner">
-      <p>
-        The user manuel is available <a href="/pdf/FreeFEM-documentation.pdf"><img src="../_static/img/logo_pdf.png"width="15" height=""></a>
-      </p>
 	  <p>
-	    <b>Professor Frédéric Hecht</b>'s personal <a href="https://www.ljll.math.upmc.fr/hecht/" target="_blank">website</a> <br> 
+	    <b><font size="5"><a href="https://www.ljll.math.upmc.fr/hecht/" target="_blank">Frédéric Hecht</a></font></b>  <br> 
 	    
-	    <font size="2">Laboratoire Jacques-Louis Lions, Université Pierre et Marie Curie, Paris</font>
+		<font size="4">Laboratoire Jacques-Louis Lions, Sorbonne University, Paris</font>
 	  </p>	
+	  <br> 
+      <p>
+        <font size="4"> The user manual is available <a href="/pdf/FreeFEM-documentation.pdf"><img src="../_static/img/logo_pdf.png"width="25" height=""></a></font>
+      </p>  
+	  <br> 
+	  <br> 
 	  <div class="PDFbanner-v3">
         <p>
           <i>The FreeFEM v3 PDF is archived (not up to date)</i>
@@ -55,8 +55,8 @@
 |
 |
 
-Introduction
-============
+**Introduction**
+================
 
 **FreeFEM** is a partial differential equation solver for non-linear multi-physics systems in 2D and 3D.
 
@@ -71,6 +71,33 @@ Problems involving partial differential equations from several branches of physi
    :alt: FreeFem++
 
 .. _FreeFem++: https://freefem.org
+
+
+|
+|
+|
+|
+|
+|
+
+
+.. only:: html
+.. |logo1| image:: ../_static/img/logo_cnrs_SU_UP.png
+   :scale: 40%
+.. |logo2| image:: ../_static/img/inr_logo_rouge_300.jpg
+   :scale: 20%
+.. |logo3| image:: ../_static/img/logo_LJLL.png
+   :scale: 60%
+.. |logo4| image:: ../_static/img/logo_alpines.png
+   :scale: 45%
+
+.. centered::
+  |logo1|  |logo2|  |logo3|    |logo4|
+  
+
+
+
+
 
 .. toctree::
 

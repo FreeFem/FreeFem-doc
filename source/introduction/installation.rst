@@ -4,10 +4,17 @@
 .. role:: bash(code)
    :language: bash
 
+==================
 Installation guide
 ==================
 
-Easy installation
+To use FreeFEM, two installation methods are available: user access (binarie package) and access developers (compilation of source code).
+Follow the section corresponding to your type of installation
+
+|
+|
+
+Binaries package
 -----------------
 
 First, go to the :ref:`download page <download>` and choose your platform: Linux, MacOS or Windows.
@@ -37,7 +44,7 @@ By default, the installed files are in ``C:\Programs Files\FreeFem++``. In this 
 MacOS X binary installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Download the MacOS X binary version file, extract all the files by double clicking on the icon of the file, go the the directory and put the ``FreeFem+.app`` application in the ``/Applications`` directory.
+Download the MacOS X binary version file, extract all the files by double clicking on the icon of the file, go the the directory and put the ``FreeFem++.app`` application in the ``/Applications`` directory.
 
 If you want terminal access to **FreeFEM** just copy the file ``FreeFem++`` in a directory of your :bash:`$PATH` shell environment variable.
 
@@ -57,36 +64,8 @@ To install it:
 
 .. note:: Thanks to `Stephan Husmann <https://github.com/stefanhusmann>`__
 
-Text-editor
------------
-
-Atom
-~~~~
-
-In order to get the syntax highlighting in `Atom <https://atom.io/>`__, you have to install the `FreeFEM language support <https://atom.io/packages/language-freefem-official>`__.
-
-You can do it directly in Atom: Edit -> Preferences -> Install, and search for ``language-freefem-offical``.
-
-To launch scripts directly from Atom, you have to install the ``atom-runner`` package. Once installed, modify the Atom configuration file (Edit -> Config...) to have something like that:
-
-.. code-block:: bash
-   :linenos:
-
-   "*":
-      ...
-
-      runner:
-         extensions:
-            edp: "FreeFem++"
-         scopes:
-            "Freefem++": "FreeFem++"
-
-Reboot Atom, and use Alt+R to run a FreeFem++ script.
-
-Gedit
-~~~~~
-
-In order to get the syntax highlighting in Gedit, you have to downlaod the `Gedit parser <https://github.com/FreeFem/FreeFem-parser-gedit>`__ and copy it in ``/usr/share/gtksourceview-3.0/language-specs/``.
+|
+|
 
 Compilation
 -----------
@@ -708,6 +687,9 @@ Compilation on Windows
 ..    The **FreeFEM** executable (and some other like ``ffmedit``, …)
 ..    are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
 
+|
+|
+
 
 Environment variables and init file
 -----------------------------------
@@ -769,14 +751,51 @@ We can also use shell environment variables to change verbosity and the search r
 
       export FF_VERBOSITY=100;
       ./FreeFem++-nw
+	  
+|
+|  
+	  
 
-.. |Build Status01| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job6
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job6/
-.. |Build Status02| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job6
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job6/
-.. |Build Status03| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job6
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job6/
-.. |Build Status04| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job6
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job6/
+Text-editor
+-----------
+
+Atom
+~~~~
+
+In order to get the syntax highlighting in `Atom <https://atom.io/>`__, you have to install the `FreeFEM language support <https://atom.io/packages/language-freefem-official>`__.
+
+You can do it directly in Atom: Edit -> Preferences -> Install, and search for ``language-freefem-offical``.
+
+To launch scripts directly from Atom, you have to install the ``atom-runner`` package. Once installed, modify the Atom configuration file (Edit -> Config...) to have something like that:
+
+.. code-block:: bash
+   :linenos:
+
+   "*":
+      ...
+
+      runner:
+         extensions:
+            edp: "FreeFem++"
+         scopes:
+            "Freefem++": "FreeFem++"
+
+Reboot Atom, and use Alt+R to run a FreeFem++ script.
+
+Gedit
+~~~~~
+
+In order to get the syntax highlighting in Gedit, you have to downlaod the `Gedit parser <https://github.com/FreeFem/FreeFem-parser-gedit>`__ and copy it in ``/usr/share/gtksourceview-3.0/language-specs/``.	  
+	  
+	  
+
+.. |Build Status01| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job5
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job5/
+.. |Build Status02| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job5
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job5/
+.. |Build Status03| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job5
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job5/
+.. |Build Status04| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job5
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job5/
 .. |Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-windows7
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-windows7

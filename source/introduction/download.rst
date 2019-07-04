@@ -38,6 +38,8 @@ The source code is available on the `FreeFEM GitHub Repository <https://github.c
 
 .. note:: The support ended for all releases under Windows 32 bits. 
 
+|
+|
 
 Syntax highlighters
 -------------------

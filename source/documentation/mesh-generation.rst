@@ -3,18 +3,35 @@
 
 .. _meshGeneration:
 
+
 Mesh Generation
 ===============
 
-Let us begin with the two important keywords: :freefem:`border` and :freefem:`buildmesh`.
+In this section, operators and tools on meshes are presented.
 
-Generalities
-------------
+FreeFEM type for mesh variable:
+
+ - 2d mesh: **mesh**
+ - 3d mesh: **mesh3**
+ - 3d surface mesh: **meshS**
+
+Through this presentation, the principal commands for the generation mesh and link between mesh-mesh3 -meshS are described.
+
+
+.. _mesh2d:
+
+The type *mesh* in 2 dimension
+------------------------------
+
+Commands for 2d mesh Generation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The **FreeFEM** type to define a 2d mesh object is *mesh*.
 
 .. _meshSquare:
 
-Square
-~~~~~~
+*Square*
+''''''''
 
 The command :freefem:`square` triangulates the unit square.
 
@@ -74,10 +91,11 @@ To construct a :math:`n\times m` grid in the rectangle :math:`[x_0,x_1]\times [y
          plot(Th, wait=1, cmm="square flags = "+i );
       }
 
+
 .. _meshBorder:
 
-Border
-~~~~~~
+*Border*
+''''''''
 
 Boundaries are defined piecewise by parametrized curves. The pieces can only intersect at their endpoints, but it is possible to join more than two endpoints. This can be used to structure the mesh if an area touches a border and create new regions by dividing larger ones:
 
@@ -217,8 +235,8 @@ The following example shows how to change the orientation. The example generates
     mesh Thwithhole = buildmesh(a(50) + b(-30)); // bug (a trap) because
         // the two circles have the same radius = :math:`0.3`
 
-Multi-Border
-~~~~~~~~~~~~
+*Multi-Border*
+''''''''''''''
 
 Sometimes it can be useful to make an array of the border, but unfortunately it is incompatible with the **FreeFEM** syntax. To bypass this problem, if the number of segments of the discretization :math:`n` is an array, we make an implicit loop on all of the values of the array, and the index variable :math:`i` of the loop is defined after the parameter definition, like in :freefem:`border a(t=0, 2*pi; i)` ...
 
@@ -268,7 +286,7 @@ And a more complex example to define a square with small circles:
 .. _meshDataStructureReadWrite:
 
 Data Structures and Read/Write Statements for a Mesh
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Users who want to read a triangulation made elsewhere should see the structure of the file generated below:
 
@@ -446,8 +464,10 @@ So these borders have to be referenced by the number which corresponds to their 
   // Plot
   plot(th2, u);
 
+
+
 Mesh Connectivity and data
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following example explains methods to obtain mesh information.
 
@@ -713,7 +733,7 @@ The real characteristic function of a mesh :freefem:`Th` is :freefem:`chi(Th)` i
 :freefem:`chi(Th)(P)=0` if :math:`P\not\in Th`
 
 The keyword "triangulate"
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **FreeFEM** is able to build a triangulation from a set of points.
 This triangulation is a Delaunay mesh of the convex hull of the set of points.
@@ -799,7 +819,7 @@ One new way to build a mesh is to have two arrays: one for the :math:`x` values 
    mesh Th = triangulate(xx[], yy[]);
 
 Boundary FEM Spaces Built as Empty Meshes
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To define a Finite Element space on a boundary, we came up with the idea of a mesh with no internal points (called empty mesh).
 It can be useful to handle Lagrange multipliers in mixed and mortar methods.
@@ -864,12 +884,12 @@ It is also possible to build an empty mesh of a pseudo subregion with :freefem:`
    Empty mesh
 
 Remeshing
----------
+^^^^^^^^^
 
 .. _meshGenerationMoveMesh:
 
-Movemesh
-~~~~~~~~
+*Movemesh*
+''''''''''
 
 Meshes can be translated, rotated, and deformed by :freefem:`movemesh`; this is useful for elasticity to watch the deformation due to the displacement :math:`\mathbf{\Phi}(x,y)=(\Phi_1(x,y),\Phi_2(x,y))` of shape.
 
@@ -997,8 +1017,8 @@ Now, we give an example of moving a mesh with a Lagrangian function :math:`u` de
 
 .. _meshRegularTriangulation:
 
-Regular Triangulation: hTriangle
------------------------------------------------
+*Regular Triangulation: hTriangle*
+''''''''''''''''''''''''''''''''''
 
 For a set :math:`S`, we define the diameter of :math:`S` by
 
@@ -1024,8 +1044,8 @@ We put :math:`h(\mathcal{T}_h)=\max\{\textrm{diam}(T_k)|\; T_k\in \mathcal{T}_h\
    Ph h = hTriangle;
    cout << "size of mesh = " << h[].max << endl;
 
-Adaptmesh
----------
+*Adaptmesh*
+'''''''''''
 
 The function:
 
@@ -1319,8 +1339,8 @@ To build a mesh with a constant mesh size equal to :math:`\frac{1}{30}` try:
 
    Mesh adaptation
 
-Trunc
------
+*Trunc*
+'''''''
 
 Two operators have been introduced to remove triangles from a mesh or to divide them.
 Operator :freefem:`trunc` has two parameters:
@@ -1383,8 +1403,8 @@ The following example construct all "trunced" meshes to the support of the basic
 
    Trunc
 
-Splitmesh
----------
+*Splitmesh*
+'''''''''''
 
 Another way to split mesh triangles is to use :freefem:`splitmesh`, for example:
 
@@ -1428,7 +1448,7 @@ Another way to split mesh triangles is to use :freefem:`splitmesh`, for example:
 .. _meshExamples:
 
 Meshing Examples
-----------------
+^^^^^^^^^^^^^^^^
 
 .. tip:: Two rectangles touching by a side
 
@@ -1676,8 +1696,9 @@ Meshing Examples
 
 .. _meshGenerationChangeLabel:
 
-How to change the label of elements and border elements of a mesh
------------------------------------------------------------------
+
+Method to change the label of elements and border elements of a mesh
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Changing the label of elements and border elements will be done using the keyword :freefem:`change`.
 The parameters for this command line are for two dimensional and three dimensional cases:
@@ -1742,11 +1763,32 @@ An example of using this function is given here:
 This function is the operator "+" between meshes.
 The method implemented needs the point in adjacent meshes to be the same.
 
-Mesh in three dimensions
-------------------------
 
-Cube
-~~~~
+The type *mesh3* in 3 dimension
+-------------------------------
+
+
+.. note::
+
+   Up to the version 3, FreeFEM allowed to consider a surface problem such as the PDE
+   is treated like boundary conditions on the boundary domain (on triangles describing
+   the boundary domain). With the version 4, in particular 4.2.1, a completed model for
+   surface problem is possible, with the definition of a surface mesh and a surface problem
+   with a variational form on domain ( with triangle elements) and application of boundary
+   conditions on border domain (describing by edges). The keywords to define a surface
+   mesh is **meshS**.
+
+
+
+Operators to generate a *mesh3*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. remark::
+
+   For 3D mesh tools, Load the library ”msh3” ⇒ load "msh3" in top of .edp file. 
+
+*Cube*
+''''''
 
 A new function :freefem:`cube` like the function :freefem:`square` in 2d is the simple way to a build cubic object, in plugin :freefem:`msh3` (need :freefem:`load "msh3"`).
 
@@ -1832,8 +1874,19 @@ The output of this script is:
 
 .. _meshReadWrite3D:
 
-Read/Write Statements for a Mesh in 3D
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+*BuildLayers*
+'''''''''''''
+
+
+TODO
+
+
+
+
+Read/Write Statements for a **mesh3**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In three dimensions, the file mesh format supported for input and output files by **FreeFEM** are the extension .msh and .mesh.
 These formats are described in the :ref:`Mesh Format section <meshFileDataStructure>`.
@@ -1879,8 +1932,46 @@ Each triangle :math:`be_j, j=1,\cdots,n_{tri}` has three vertices :math:`q^{j_1}
 
 This field is express with the notation of :ref:`Mesh Format section <meshFileDataStructure>`.
 
+
+
+
+**Extension file .mesh** 
+
+**Extension file .vtk** 
+
+**Extension file .msh/.geo Gmsh** 
+
+
+Remeshing
+^^^^^^^^^
+*trunc*
+'''''''
+
+*split*
+'''''''
+
+*movemesh - movemesh3*
+''''''''''''''''''''''
+
+*change*
+''''''''
+
+*extract*
+'''''''''
+
+*buildSurface*
+''''''''''''''
+
+*AddLayers*
+'''''''''''
+
+*change*
+''''''''
+
+
+
 TetGen: A tetrahedral mesh generator
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **TetGen**
 
@@ -1888,7 +1979,7 @@ TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Appl
 TetGen is free for research and non-commercial use.
 For any commercial license utilization, a commercial license is available upon request to Hang Si.
 
-This software is a tetrahedral mesh generator of a three dimensional domain defined by its boundary.
+This software is a tetrahedral mesh generator of a three dimensional domain defined by its boundary (a surface).
 The input domain takes into account a polyhedral or a piecewise linear complex.
 This tetrahedralization is a constrained Delaunay tetrahedralization.
 
@@ -1896,6 +1987,7 @@ The method used in TetGen to control the quality of the mesh is a Delaunay refin
 The quality measure of this algorithm is the Radius-Edge Ratio (see Section 1.3.1 [HANG2006]_ for more details).
 A theoretical bound of this ratio of the Shewchuk algorithm is obtained for a given complex of vertices, constrained segments and facets of surface mesh, with no input angle less than 90 degrees.
 This theoretical bound is 2.0.
+
 
 The launch of TetGen is done with the keyword :freefem:`tetg`.
 The parameters of this command line is:
@@ -1982,6 +2074,11 @@ We now give the command line in **FreeFEM** to construct these meshes.
 **keyword: movemesh23**
 
 A simple method to construct a surface is to place a two dimensional domain in a three dimensional space.
+
+.. warning::
+   Since the release 4.2.1, the **FreeFEM** function movemesh23 returns a meshS type.
+  
+  
 This corresponds to moving the domain by a displacement vector of this form :math:`\mathbf{\Phi(x,y)} = (\Phi1(x,y), \Phi2(x,y), \Phi3(x,y))`.
 
 The result of moving a two dimensional mesh Th2 by this three dimensional displacement is obtained using:
@@ -1989,7 +2086,7 @@ The result of moving a two dimensional mesh Th2 by this three dimensional displa
 .. code-block:: freefem
    :linenos:
 
-   mesh3 Th3 = movemesh23(Th2, transfo=[Phi(1), Phi(2), Phi(3)]);
+   **meshS** Th3 = movemesh23(Th2, transfo=[Phi(1), Phi(2), Phi(3)]);
 
 The parameters of this command line are:
 
@@ -2055,29 +2152,29 @@ An example to obtain a three dimensional mesh using the command line :freefem:`t
    mesh Thsq3 = square(35, 8, [x30+(x31-x30)*x, y30+(y31-y30)*y]);
 
    // Mesh 2D to 3D surface
-   mesh3 Th31h = movemesh23(Thsq1, transfo=[XX1, YY1, ZZ1max]);
-   mesh3 Th31b = movemesh23(Thsq1, transfo=[XX1, YY1, ZZ1min]);
+   meshS Th31h = movemesh23(Thsq1, transfo=[XX1, YY1, ZZ1max], orientation=1);
+   meshS Th31b = movemesh23(Thsq1, transfo=[XX1, YY1, ZZ1min], orientation=-1);
 
-   mesh3 Th32h = movemesh23(Thsq2, transfo=[XX2, YY2max, ZZ2]);
-   mesh3 Th32b = movemesh23(Thsq2, transfo=[XX2, YY2min, ZZ2]);
+   meshS Th32h = movemesh23(Thsq2, transfo=[XX2, YY2max, ZZ2], orientation=-1);
+   meshS Th32b = movemesh23(Thsq2, transfo=[XX2, YY2min, ZZ2], orientation=1);
 
-   mesh3 Th33h = movemesh23(Thsq3, transfo=[XX3max, YY3, ZZ3]);
-   mesh3 Th33b = movemesh23(Thsq3, transfo=[XX3min, YY3, ZZ3]);
+   meshS Th33h = movemesh23(Thsq3, transfo=[XX3max, YY3, ZZ3], orientation=1);
+   meshS Th33b = movemesh23(Thsq3, transfo=[XX3min, YY3, ZZ3], orientation=-1);
 
    // Gluing surfaces
-   mesh3 Th33 = Th31h + Th31b + Th32h + Th32b + Th33h + Th33b;
+   meshS Th33 = Th31h + Th31b + Th32h + Th32b + Th33h + Th33b;
    plot(Th33, cmm="Th33");
 
    // Tetrahelize the interior of the cube with TetGen
    real[int] domain =[1.5, pi, 0.75, 145, 0.0025];
-   mesh3 Thfinal = tetg(Th33, switch="paAAQY", regionlist=domain);
+   meshS Thfinal = tetg(Th33, switch="paAAQY", regionlist=domain);
    plot(Thfinal, cmm="Thfinal");
 
    // Build a mesh of a half cylindrical shell of interior radius 1, and exterior radius 2 and a height of 1.5
    func mv2x = x*cos(y);
    func mv2y = x*sin(y);
    func mv2z = z;
-   mesh3 Thmv2 = movemesh3(Thfinal, transfo=[mv2x, mv2y, mv2z]);
+   meshS Thmv2 = movemesh(Thfinal, transfo=[mv2x, mv2y, mv2z], facemerge=0);
    plot(Thmv2, cmm="Thmv2");
 
 The command :freefem:`movemesh3` is described in the following section.
@@ -2132,6 +2229,7 @@ The parameters of this command line are :
 
 In the string :freefem:`switch`, we can’t used the option :freefem:`p` and :freefem:`q` of TetGen.
 
+
 Reconstruct/Refine a three dimensional mesh with TetGen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2159,70 +2257,70 @@ The label in the :freefem:`regionlist` will be the previous label of region.
 
 This parameter and :freefem:`nbofregions` can’t be used with the parameter :freefem:`sizeofvolume`.
 
-**Example refinesphere.edp**
+`**Example refinesphere.edp** <https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/3d/refinesphere.edp>`_
 
 .. code-block:: freefem
    :linenos:
 
    load "msh3"
-   load "TetGen"
+   load "tetgen"
    load "medit"
 
-   mesh Th = square(10, 20, [x*pi-pi/2, 2*y*pi]); // $]-pi/2, pi/2[X]0, 2pi[ $
-
-   // A parametrization of a sphere
-   func f1 = cos(x)*cos(y);
-   func f2 = cos(x)*sin(y);
+   mesh Th=square(10,20,[x*pi-pi/2,2*y*pi]);  //  $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
+   //  a parametrization of a sphere 
+   func f1 =cos(x)*cos(y);
+   func f2 =cos(x)*sin(y);
    func f3 = sin(x);
-   // Partial derivative of the parametrization DF
-   func f1x = sin(x)*cos(y);
-   func f1y = -cos(x)*sin(y);
-   func f2x = -sin(x)*sin(y);
-   func f2y = cos(x)*cos(y);
-   func f3x = cos(x);
-   func f3y = 0;
-   // M = DF^t DF
-   func m11 = f1x^2 + f2x^2 + f3x^2;
-   func m21 = f1x*f1y + f2x*f2y + f3x*f3y;
-   func m22 = f1y^2 + f2y^2 + f3y^2;
+   //  partiel derivative of the parametrization DF
+   func f1x=sin(x)*cos(y);   
+   func f1y=-cos(x)*sin(y);
+   func f2x=-sin(x)*sin(y);
+   func f2y=cos(x)*cos(y);
+   func f3x=cos(x);
+   func f3y=0;
+   // $  M = DF^t DF $
+   func m11=f1x^2+f2x^2+f3x^2;
+   func m21=f1x*f1y+f2x*f2y+f3x*f3y;
+   func m22=f1y^2+f2y^2+f3y^2;
 
-   // Mesh adaptation
-   func perio = [[4, y], [2, y], [1, x], [3, x]];
-   real hh = 0.1;
-   real vv = 1/square(hh);
-   verbosity = 2;
-   Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
-   Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
-   plot(Th, wait=true);
+   func perio=[[4,y],[2,y],[1,x],[3,x]];  
+   real hh=0.1;
+   real vv= 1/square(hh);
+   verbosity=2;
+   Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+   Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+   plot(Th,wait=1);
 
-   // Construction of the surface of spheres
-   real Rmin = 1.;
+   verbosity=2;
+
+   // construction of the surface of spheres
+   real Rmin  = 1.;
    func f1min = Rmin*f1;
    func f2min = Rmin*f2;
    func f3min = Rmin*f3;
 
-   mesh3 Th3 = movemesh23(Th, transfo=[f1min, f2min, f3min]);
+   meshS ThS=movemesh23(Th,transfo=[f1min,f2min,f3min]);
 
-   // Contruct the volume
-   real[int] domain = [0., 0., 0., 145, 0.01];
-   mesh3 Th3sph = tetg(Th3, switch="paAAQYY", nbofregions=1, regionlist=domain);
+   real[int] domain = [0.,0.,0.,145,0.01];
+   mesh3 Th3sph=tetg(ThS,switch="paAAQYY",nbofregions=1,regionlist=domain);
 
-   // Refine
-   int[int] newlabel = [145, 18];
-   real[int] domainrefine = [0., 0., 0., 145, 0.0001];
-   mesh3 Th3sphrefine = tetgreconstruction(Th3sph, switch="raAQ", reftet=newlabel,
-       nbofregions=1, regionlist=domain, sizeofvolume=0.0001);
+   int[int] newlabel = [145,18];
+   real[int] domainrefine = [0.,0.,0.,145,0.0001];
+   mesh3 Th3sphrefine=tetgreconstruction(Th3sph,switch="raAQ",region=newlabel,nbofregions=1,regionlist=domainrefine,sizeofvolume=0.0001);
 
-   // Re-Refine
-   int[int] newlabel2 = [145, 53];
-   func fsize = 0.01/((1 + 5*sqrt((x-0.5)^2+(y-0.5)^2+(z-0.5)^2))^3);
-   mesh3 Th3sphrefine2 = tetgreconstruction(Th3sph, switch="raAQ", reftet=newlabel2,
-       sizeofvolume=fsize);
+   int[int] newlabel2 = [145,53];
+   func fsize = 0.01/(( 1 + 5*sqrt( (x-0.5)^2+(y-0.5)^2+(z-0.5)^2) )^3);
+   mesh3 Th3sphrefine2=tetgreconstruction(Th3sph,switch="raAQ",region=newlabel2,sizeofvolume=fsize);
 
-   // Medit
-   medit("sphere", Th3sph);
-   medit("isotroperefine", Th3sphrefine);
-   medit("anisotroperefine", Th3sphrefine2);
+    medit("sphere",Th3sph,wait=1);
+    medit("sphererefinedomain",wait=1,Th3sphrefine);
+    medit("sphererefinelocal",wait=1,Th3sphrefine2);
+
+   // FFCS: testing 3d plots
+   plot(Th3sph);
+   plot(Th3sphrefine);
+   plot(Th3sphrefine2);
+   
 
 Moving mesh in three dimensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2602,96 +2700,98 @@ Meshing examples
         func f2min = Rmin*f2;
         func f3min = Rmin*f3;
 
-        mesh3 Th3sph = movemesh23(Th, transfo=[f1min, f2min, f3min]);
+        meshS ThSsph = movemesh23(Th, transfo=[f1min, f2min, f3min]);
 
         real Rmax = 2.;
         func f1max = Rmax*f1;
         func f2max = Rmax*f2;
         func f3max = Rmax*f3;
 
-        mesh3 Th3sph2 = movemesh23(Th, transfo=[f1max, f2max, f3max]);
+        meshS ThSsph2 = movemesh23(Th, transfo=[f1max, f2max, f3max]);
 
         //gluing meshse
-        mesh3 Th3 = Th3sph + Th3sph2;
+        meshS ThS = ThSsph + ThSsph2;
 
         cout << " TetGen call without hole " << endl;
         real[int] domain2 = [1.5, 0., 0., 145, 0.001, 0.5, 0., 0., 18, 0.001];
-        mesh3 Th3fin = tetg(Th3, switch="paAAQYY", nbofregions=2, regionlist=domain2);
+        mesh3 Th3fin = tetg(ThS, switch="paAAQYY", nbofregions=2, regionlist=domain2);
         medit("Sphere with two regions", Th3fin);
 
         cout << " TetGen call with hole " << endl;
         real[int] hole = [0.,0.,0.];
         real[int] domain = [1.5, 0., 0., 53, 0.001];
-        mesh3 Th3finhole = tetg(Th3, switch="paAAQYY",
+        mesh3 Th3finhole = tetg(ThS, switch="paAAQYY",
             nbofholes=1, holelist=hole, nbofregions=1, regionlist=domain);
         medit("Sphere with a hole", Th3finhole);
 
 Build a 3d mesh of a cube with a balloon
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-First the ``MeshSurface.idp`` file to build boundary mesh of a Hexaedra and of a Sphere:
-
 .. code-block:: freefem
    :linenos:
 
-   func mesh3 SurfaceHex (int[int] &N, real[int, int] &B, int[int, int] &L, int orientation){
-       real x0 = B(0, 0), x1 = B(0, 1);
-       real y0 = B(1, 0), y1 = B(1, 1);
-       real z0 = B(2, 0), z1 = B(2, 1);
-
-       int nx = N[0], ny = N[1], nz = N[2];
-
-       mesh Thx = square(ny, nz, [y0+(y1-y0)*x, z0+(z1-z0)*y]);
-       mesh Thy = square(nx, nz, [x0+(x1-x0)*x, z0+(z1-z0)*y]);
-       mesh Thz = square(nx, ny, [x0+(x1-x0)*x, y0+(y1-y0)*y]);
-
-       int[int] refx = [0, L(0,0)], refX = [0, L(0,1)]; //Xmin, Ymax faces labels renumbering
-       int[int] refy = [0, L(1,0)], refY = [0, L(1,1)]; //Ymin, Ymax faces labesl renumbering
-       int[int] refz = [0, L(2,0)], refZ = [0, L(2,1)]; //Zmin, Zmax faces labels renumbering
-
-       mesh3 Thx0 = movemesh23(Thx, transfo=[x0, x, y], orientation=-orientation, label=refx);
-       mesh3 Thx1 = movemesh23(Thx, transfo=[x1, x, y], orientation=+orientation, label=refX);
-       mesh3 Thy0 = movemesh23(Thy, transfo=[x, y0, y], orientation=+orientation, label=refy);
-       mesh3 Thy1 = movemesh23(Thy, transfo=[x, y1, y], orientation=-orientation, label=refY);
-       mesh3 Thz0 = movemesh23(Thz, transfo=[x, y, z0], orientation=-orientation, label=refz);
-       mesh3 Thz1 = movemesh23(Thz, transfo=[x, y, z1], orientation=+orientation, label=refZ);
-       mesh3 Th = Thx0 + Thx1 + Thy0 + Thy1 + Thz0 + Thz1;
-
-       return Th;
+   func meshS SurfaceHex(int[int] & N,real[int,int] &B ,int[int,int] & L,int orientation){
+       real x0=B(0,0),x1=B(0,1);
+       real y0=B(1,0),y1=B(1,1);
+       real z0=B(2,0),z1=B(2,1);
+    
+       int nx=N[0],ny=N[1],nz=N[2];
+    
+       mesh Thx = square(ny,nz,[y0+(y1-y0)*x,z0+(z1-z0)*y]);
+       mesh Thy = square(nx,nz,[x0+(x1-x0)*x,z0+(z1-z0)*y]);
+       mesh Thz = square(nx,ny,[x0+(x1-x0)*x,y0+(y1-y0)*y]);
+    
+       int[int] refx=[0,L(0,0)],refX=[0,L(0,1)];   //  Xmin, Ymax faces labels renumbering 
+       int[int] refy=[0,L(1,0)],refY=[0,L(1,1)];   //  Ymin, Ymax faces labesl renumbering 
+       int[int] refz=[0,L(2,0)],refZ=[0,L(2,1)];   //  Zmin, Zmax faces labels renumbering 
+    
+       meshS Thx0 = movemesh23(Thx,transfo=[x0,x,y],orientation=-orientation,label=refx);
+       meshS Thx1 = movemesh23(Thx,transfo=[x1,x,y],orientation=+orientation,label=refX);
+       meshS Thy0 = movemesh23(Thy,transfo=[x,y0,y],orientation=+orientation,label=refy);
+       meshS Thy1 = movemesh23(Thy,transfo=[x,y1,y],orientation=-orientation,label=refY);
+       meshS Thz0 = movemesh23(Thz,transfo=[x,y,z0],orientation=-orientation,label=refz);
+       meshS Thz1 = movemesh23(Thz,transfo=[x,y,z1],orientation=+orientation,label=refZ);
+       meshS Th= Thx0+Thx1+Thy0+Thy1+Thz0+Thz1;
+       
+	   return Th;
    }
 
-   func mesh3 Sphere (real R, real h, int L, int orientation){
-       mesh Th=square(10, 20, [x*pi-pi/2, 2*y*pi]); //]-pi/2, pi/2[X]0,2pi[
-
-       func f1 = cos(x)*cos(y);
-       func f2 = cos(x)*sin(y);
-       func f3 = sin(x);
-
-       func f1x = sin(x)*cos(y);
-       func f1y = -cos(x)*sin(y);
-       func f2x = -sin(x)*sin(y);
-       func f2y = cos(x)*cos(y);
-       func f3x = cos(x);
-       func f3y = 0;
-
-       func m11 = f1x^2 + f2x^2 + f3x^2;
-       func m21 = f1x*f1y + f2x*f2y + f3x*f3y;
-       func m22 = f1y^2 + f2y^2 + f3y^2;
-
-       func perio = [[4, y], [2, y], [1, x], [3, x]]; //to store the periodic condition
-
-       real hh = h/R; //hh mesh size on unite sphere
-       real vv = 1/square(hh);
-       Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
-       Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
-       Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
-       Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
-       int[int] ref = [0, L];
-
-       mesh3 ThS = movemesh23(Th, transfo=[f1*R, f2*R, f3*R], orientation=orientation, refface=ref);
-
-       return ThS;
+   func meshS Sphere(real R,real h,int L,int orientation) {
+       return Ellipsoide(R,R,R,h,L,orientation);
    }
+   
+   func meshS Ellipsoide (real RX,real RY, real RZ,real h,int L,int orientation) {
+       mesh  Th=square(10,20,[x*pi-pi/2,2*y*pi]);  //  $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
+       //  a parametrization of a sphere 
+       func f1 =RX*cos(x)*cos(y);
+       func f2 =RY*cos(x)*sin(y);
+       func f3 =RZ*sin(x);
+   	   //    partiel derivative 
+       func f1x= -RX*sin(x)*cos(y);   
+       func f1y= -RX*cos(x)*sin(y);
+       func f2x= -RY*sin(x)*sin(y);
+       func f2y= +RY*cos(x)*cos(y);
+       func f3x=-RZ*cos(x);
+       func f3y=0;
+       // the metric on the sphere  $  M = DF^t DF $
+       func m11=f1x^2+f2x^2+f3x^2;
+       func m21=f1x*f1y+f2x*f2y+f3x*f3y;
+       func m22=f1y^2+f2y^2+f3y^2;
+       func perio=[[4,y],[2,y],[1,x],[3,x]];  // to store the periodic condition 
+       real hh=h;// hh  mesh size on unite sphere
+       real vv= 1/square(hh);
+       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+       int[int] ref=[0,L];  
+       meshS ThS=movemesh23(Th,transfo=[f1,f2,f3],orientation=orientation,refface=ref);
+       ThS=freeyams(ThS,hmin=h,hmax=h,gradation=2.,verbosity=-10,mem=100,option=0);
+   
+      return ThS;
+ }  
+   
+ 
 
 The test of the two functions and the call to :freefem:`TetGen` mesh generator:
 
@@ -2710,10 +2810,10 @@ The test of the two functions and the call to :freefem:`TetGen` mesh generator:
    int [int,int] L = [[1, 2], [3, 4], [5, 6]];
 
    // Mesh
-   mesh3 ThH = SurfaceHex(N, B, L, 1);
-   mesh3 ThS = Sphere(0.5, hs, 7, 1);
+   meshS ThH = SurfaceHex(N, B, L, 1);
+   meshS ThS = Sphere(0.5, hs, 7, 1);
 
-   mesh3 ThHS = ThH + ThS;
+   meshS ThHS = ThH + ThS;
    medit("Hex-Sphere", ThHS);
 
    real voltet = (hs^3)/6.;
@@ -3252,12 +3352,12 @@ The parameters of :freefem:`mmg3d` are :
         func zero = 0.;
         func dep = vit[2];
 
-        // Mesh
-        mesh3 ThH = SurfaceHex(N, B, L, 1);
-        mesh3 ThSg = Sphere(1, hs, 300, -1);
-        mesh3 ThSd = Sphere(1, hs, 310, -1);
-        ThSd = movemesh3(ThSd, transfo=[x, 4+y, z]);
-        mesh3 ThHS = ThH + ThSg + ThSd;//gluing surface meshes
+        // Meshes
+        meshS ThH = SurfaceHex(N, B, L, 1);
+        meshS ThSg = Sphere(1, hs, 300, -1);
+        meshS ThSd = Sphere(1, hs, 310, -1);
+        ThSd = movemesh(ThSd, [x, 4+y, z]);
+        meshS ThHS = ThH + ThSg + ThSd;
         medit("ThHS", ThHS);
 
         real voltet = (hs^3)/6.;
