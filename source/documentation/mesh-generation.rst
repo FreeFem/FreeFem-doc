@@ -20,8 +20,8 @@ Through this presentation, the principal commands for the generation mesh and li
 
 .. _mesh2d:
 
-The type *mesh* in 2 dimension
-------------------------------
+**The type mesh in 2 dimension**
+--------------------------------
 
 Commands for 2d mesh Generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1694,74 +1694,6 @@ Meshing Examples
 
         Domain for three-point bending test
 
-.. _meshGenerationChangeLabel:
-
-
-Method to change the label of elements and border elements of a mesh
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Changing the label of elements and border elements will be done using the keyword :freefem:`change`.
-The parameters for this command line are for two dimensional and three dimensional cases:
-
--  :freefem:`label =` is a vector of integer that contains successive pairs of the old label number to the new label number.
--  :freefem:`region =` is a vector of integer that contains successive pairs of the old region number to new region number.
--  :freefem:`flabel =` is an integer function given the new value of the label.
--  :freefem:`fregion=` is an integer function given the new value of the region.
-
-These vectors are composed of :math:`n_{l}` successive pairs of numbers :math:`O,N` where :math:`n_{l}` is the number (label or region) that we want to change.
-For example, we have :
-
-.. math::
-    \mathtt{label} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ] \\
-    \mathtt{region} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ]
-    :label: eq.org.vector.change.label
-
-An example of using this function is given here:
-
-.. code-block:: freefem
-   :linenos:
-
-   verbosity=3;
-
-   // Mesh
-   mesh Th1 = square(10, 10);
-   mesh Th2 = square(20, 10, [x+1, y]);
-
-   int[int] r1=[2,0];
-   plot(Th1, wait=true);
-
-   Th1 = change(Th1, label=r1); //change the label of Edges 2 in 0.
-   plot(Th1, wait=true);
-
-   int[int] r2=[4,0];
-   Th2 = change(Th2, label=r2); //change the label of Edges 4 in 0.
-   plot(Th2, wait=true);
-
-   mesh Th = Th1 + Th2; //'gluing together' of meshes Th1 and Th2
-   cout << "nb lab = " << int1d(Th1,1,3,4)(1./lenEdge)+int1d(Th2,1,2,3)(1./lenEdge)
-        << " == " << int1d(Th,1,2,3,4)(1./lenEdge) << " == " << ((10+20)+10)*2 << endl;
-   plot(Th, wait=true);
-
-   fespace Vh(Th, P1);
-   Vh u, v;
-
-   macro Grad(u) [dx(u),dy(u)] // Definition of a macro
-
-   solve P(u, v)
-       = int2d(Th)(
-             Grad(u)'*Grad(v)
-       )
-       -int2d(Th)(
-             v
-       )
-       + on(1, 3, u=0)
-       ;
-
-   plot(u, wait=1);
-
-**"gluing" different mesh** In line 17 of the previous file, the method to "gluing" different meshes of the same dimension in **FreeFEM** is using.
-This function is the operator "+" between meshes.
-The method implemented needs the point in adjacent meshes to be the same.
 
 
 The type *mesh3* in 3 dimension
@@ -1780,7 +1712,7 @@ The type *mesh3* in 3 dimension
 
 
 
-Operators to generate a *mesh3*
+Commands for 3d mesh Generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
@@ -1876,11 +1808,265 @@ The output of this script is:
 
 
 
-*BuildLayers*
+*buildlayers*
 '''''''''''''
 
+This mesh is obtained by extending a two dimensional mesh in the :math:`z`-axis.
 
-TODO
+The domain :math:`\Omega_{3d}` defined by the layer mesh is equal to :math:`\Omega_{3d} = \Omega_{2d} \times [zmin, zmax]` where :math:`\Omega_{2d}` is the domain defined by the two dimensional meshes.
+:math:`zmin` and :math:`zmax` are functions of :math:`\Omega_{2d}` in :math:`\R` that defines respectively the lower surface and upper surface of :math:`\Omega_{3d}`.
+
+.. figure:: images/MeshGeneration_LayerMesh.png
+    :width: 100%
+    :name: meshGenerationLayerMesh
+
+    Example of Layer mesh in three dimensions.
+
+For a vertex of a two dimensional mesh :math:`V_{i}^{2d} = (x_{i},y_{i})`, we introduce the number of associated vertices in the :math:`z-`\ axis :math:`M_{i}+1`.
+
+We denote by :math:`M` the maximum of :math:`M_{i}` over the vertices of the two dimensional mesh.
+This value is called the number of layers (if :math:`\forall i, \; M_{i}=M` then there are :math:`M` layers in the mesh of :math:`\Omega_{3d}`).
+:math:`V_{i}^{2d}` generated :math:`M+1` vertices which are defined by:
+
+.. math::
+   \forall j=0, \ldots, M, \quad V_{i,j}^{3d} = ( x_{i}, y_{i}, \theta_{i}(z_{i,j}) ),
+
+where :math:`(z_{i,j})_{j=0,\ldots,M}` are the :math:`M+1` equidistant points on the interval :math:`[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d})]`:
+
+.. math::
+    z_{i,j} = j \: \delta \alpha + zmin(V_{i}^{2d}), \quad \delta \alpha= \frac{ zmax( V_{i}^{2d} ) - zmin( V_{i}^{2d}) }{M}.
+
+The function :math:`\theta_{i}`, defined on :math:`[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]`, is given by:
+
+.. math::
+   \theta_{i}(z) = \left \{
+   \begin{array}{cl}
+   \theta_{i,0} & \mbox{if} \: z=zmin(V_{i}^{2d}), \\
+   \theta_{i,j} & \mbox{if} \: z \in ] \theta_{i,j-1}, \theta_{i,j}],\\
+   \end{array}
+   \right.
+
+with :math:`(\theta_{i,j})_{j=0,\ldots,M_{i}}` are the :math:`M_{i}+1` equidistant points on the interval :math:`[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]`.
+
+Set a triangle :math:`K=(V_{i1}^{2d}`, :math:`V_{i2}^{2d}`, :math:`V_{i3}^{2d})` of the two dimensional mesh.
+:math:`K` is associated with a triangle on the upper surface (resp. on the lower surface) of layer mesh:
+
+:math:`( V_{i1,M}^{3d}, V_{i2,M}^{3d}, V_{i3,M}^{3d} )` (resp. :math:`( V_{i1,0}^{3d}, V_{i2,0}^{3d}, V_{i3,0}^{3d})`).
+
+Also :math:`K` is associated with :math:`M` volume prismatic elements which are defined by:
+
+.. math::
+   \forall j=0,\ldots,M, \quad H_{j} = ( V_{i1,j}^{3d}, V_{i2,j}^{3d}, V_{i3,j}^{3d}, V_{i1,j+1}^{3d}, V_{i2,j+1}^{3d}, V_{i3,j+1}^{3d} ).
+
+Theses volume elements can have some merged point:
+
+-  0 merged point : prism
+-  1 merged points : pyramid
+-  2 merged points : tetrahedra
+-  3 merged points : no elements
+
+The elements with merged points are called degenerate elements.
+To obtain a mesh with tetrahedra, we decompose the pyramid into two tetrahedra and the prism into three tetrahedra.
+These tetrahedra are obtained by cutting the quadrilateral face of pyramid and prism with the diagonal which have the vertex with the maximum index (see [HECHT1992]_ for the reason of this choice).
+
+The triangles on the middle surface obtained with the decomposition of the volume prismatic elements are the triangles generated by the edges on the border of the two dimensional mesh.
+The label of triangles on the border elements and tetrahedra are defined with the label of these associated elements.
+
+The arguments of :freefem:`buildlayers` is a two dimensional mesh and the number of layers :math:`M`.
+
+The parameters of this command are:
+
+-  :freefem:`zbound=` :math:`[zmin,zmax]` where :math:`zmin` and :math:`zmax` are functions expression.
+    Theses functions define the lower surface mesh and upper mesh of surface mesh.
+
+-  :freefem:`coef=` A function expression between [0,1].
+    This parameter is used to introduce degenerate element in mesh.
+
+   The number of associated points or vertex :math:`V_{i}^{2d}` is the integer part of :math:`coef(V_{i}^{2d}) M`.
+
+-  :freefem:`region=` This vector is used to initialize the region of tetrahedra.
+
+   This vector contains successive pairs of the 2d region number at index :math:`2i` and the corresponding 3d region number at index :math:`2i+1`, like :ref:`change <meshGenerationChangeLabel>`.
+
+-  :freefem:`labelmid=` This vector is used to initialize the 3d labels number of the vertical face or mid face from the 2d label number.
+
+   This vector contains successive pairs of the 2d label number at index :math:`2i` and the corresponding 3d label number at index :math:`2i+1`, like :ref:`change <meshGenerationChangeLabel>`.
+
+-  :freefem:`labelup=` This vector is used to initialize the 3d label numbers of the upper/top face from the 2d region number.
+
+   This vector contains successive pairs of the 2d region number at index :math:`2i` and the corresponding 3d label number at index :math:`2i+1`, like :ref:`change <meshGenerationChangeLabel>`.
+
+-  :freefem:`labeldown=` Same as the previous case but for the lower/down face label.
+
+Moreover, we also add post processing parameters that allow to moving the mesh.
+These parameters correspond to parameters :freefem:`transfo`, :freefem:`facemerge` and :freefem:`ptmerge` of the command line :freefem:`movemesh`.
+
+The vector :freefem:`region`, :freefem:`labelmid`, :freefem:`labelup` and :freefem:`labeldown` These vectors are composed of :math:`n_{l}` successive pairs of number :math:`O_i,N_l` where :math:`n_{l}` is the number (label or region) that we want to get.
+
+An example of this command is given in the :ref:`Build layer mesh example <exampleBuildLayerMesh>`.
+
+.. tip:: Cube
+
+    .. code-block:: freefem
+        :linenos:
+
+        //Cube.idp
+        load "medit"
+        load "msh3"
+
+        func mesh3 Cube (int[int] &NN, real[int, int] &BB, int[int, int] &L){
+            real x0 = BB(0,0), x1 = BB(0,1);
+            real y0 = BB(1,0), y1 = BB(1,1);
+            real z0 = BB(2,0), z1 = BB(2,1);
+
+            int nx = NN[0], ny = NN[1], nz = NN[2];
+
+            // 2D mesh
+            mesh Thx = square(nx, ny, [x0+(x1-x0)*x, y0+(y1-y0)*y]);
+
+            // 3D mesh
+            int[int] rup = [0, L(2,1)], rdown=[0, L(2,0)];
+            int[int] rmid=[1, L(1,0), 2, L(0,1), 3, L(1,1), 4, L(0,0)];
+            mesh3 Th = buildlayers(Thx, nz, zbound=[z0,z1],
+            labelmid=rmid, labelup = rup, labeldown = rdown);
+
+            return Th;
+        }
+
+.. tip:: Unit cube
+
+    .. code-block:: freefem
+        :linenos:
+
+        include "Cube.idp"
+
+        int[int] NN = [10,10,10]; //the number of step in each direction
+        real [int, int] BB = [[0,1],[0,1],[0,1]]; //the bounding box
+        int [int, int] L = [[1,2],[3,4],[5,6]]; //the label of the 6 face left,right, front, back, down, right
+        mesh3 Th = Cube(NN, BB, L);
+        medit("Th", Th);
+
+    .. figure:: images/MeshGeneration_LayerMesh_Example1.png
+        :width: 50%
+        :name: meshGenerationLayerMeshExample1
+
+        The mesh of a cube made with :freefem:`cube.edp`
+
+.. tip:: Cone
+
+    An axisymtric mesh on a triangle with degenerateness
+
+    .. code-block:: freefem
+        :linenos:
+
+        load "msh3"
+        load "medit"
+
+        // Parameters
+        real RR = 1;
+        real HH = 1;
+
+        int nn=10;
+
+        // 2D mesh
+        border Taxe(t=0, HH){x=t; y=0; label=0;}
+        border Hypo(t=1, 0){x=HH*t; y=RR*t; label=1;}
+        border Vert(t=0, RR){x=HH; y=t; label=2;}
+        mesh Th2 = buildmesh(Taxe(HH*nn) + Hypo(sqrt(HH*HH+RR*RR)*nn) + Vert(RR*nn));
+        plot(Th2, wait=true);
+
+        // 3D mesh
+        real h = 1./nn;
+        int MaxLayersT = (int(2*pi*RR/h)/4)*4;//number of layers
+        real zminT = 0;
+        real zmaxT = 2*pi; //height 2*pi
+        func fx = y*cos(z);
+        func fy = y*sin(z);
+        func fz = x;
+        int[int] r1T = [0,0], r2T = [0,0,2,2], r4T = [0,2];
+        //trick function:
+        //The function defined the proportion
+        //of number layer close to axis with reference MaxLayersT
+        func deg = max(.01, y/max(x/HH, 0.4)/RR);
+        mesh3 Th3T = buildlayers(Th2, coef=deg, MaxLayersT,
+            zbound=[zminT, zmaxT], transfo=[fx, fy, fz],
+            facemerge=0, region=r1T, labelmid=r2T);
+        medit("cone", Th3T);
+
+    .. figure:: images/MeshGeneration_LayerMesh_Example2.png
+        :width: 50%
+        :name: meshGenerationLayerMeshExample2
+
+        The mesh of a cone made with :freefem:`cone.edp`
+
+.. tip:: Buildlayer mesh
+
+    .. code-block:: freefem
+        :linenos:
+
+        load "msh3"
+        load "TetGen"
+        load "medit"
+
+        // Parameters
+        int C1 = 99;
+        int C2 = 98;
+
+        // 2D mesh
+        border C01(t=0, pi){x=t; y=0; label=1;}
+        border C02(t=0, 2*pi){ x=pi; y=t; label=1;}
+        border C03(t=0, pi){ x=pi-t; y=2*pi; label=1;}
+        border C04(t=0, 2*pi){ x=0; y=2*pi-t; label=1;}
+
+        border C11(t=0, 0.7){x=0.5+t; y=2.5; label=C1;}
+        border C12(t=0, 2){x=1.2; y=2.5+t; label=C1;}
+        border C13(t=0, 0.7){x=1.2-t; y=4.5; label=C1;}
+        border C14(t=0, 2){x=0.5; y=4.5-t; label=C1;}
+
+        border C21(t=0, 0.7){x=2.3+t; y=2.5; label=C2;}
+        border C22(t=0, 2){x=3; y=2.5+t; label=C2;}
+        border C23(t=0, 0.7){x=3-t; y=4.5; label=C2;}
+        border C24(t=0, 2){x=2.3; y=4.5-t; label=C2;}
+
+        mesh Th = buildmesh(C01(10) + C02(10) + C03(10) + C04(10)
+            + C11(5) + C12(5) + C13(5) + C14(5)
+            + C21(-5) + C22(-5) + C23(-5) + C24(-5));
+
+        mesh Ths = buildmesh(C01(10) + C02(10) + C03(10) + C04(10)
+            + C11(5) + C12(5) + C13(5) + C14(5));
+
+        // Construction of a box with one hole and two regions
+        func zmin = 0.;
+        func zmax = 1.;
+        int MaxLayer = 10;
+
+        func XX = x*cos(y);
+        func YY = x*sin(y);
+        func ZZ = z;
+
+        int[int] r1 = [0, 41], r2 = [98, 98, 99, 99, 1, 56];
+        int[int] r3 = [4, 12];  //the triangles of uppper surface mesh
+                                //generated by the triangle in the 2D region
+                                //of mesh Th of label 4 as label 12
+        int[int] r4 = [4, 45];  //the triangles of lower surface mesh
+                                //generated by the triangle in the 2D region
+                                //of mesh Th of label 4 as label 45.
+
+        mesh3 Th3 = buildlayers(Th, MaxLayer, zbound=[zmin, zmax], region=r1,
+            labelmid=r2, labelup=r3, labeldown=r4);
+            medit("box 2 regions 1 hole", Th3);
+
+        // Construction of a sphere with TetGen
+        func XX1 = cos(y)*sin(x);
+        func YY1 = sin(y)*sin(x);
+        func ZZ1 = cos(x);
+
+        real[int] domain = [0., 0., 0., 0, 0.001];
+        string test = "paACQ";
+        cout << "test = " << test << endl;
+        mesh3 Th3sph = tetgtransfo(Ths, transfo=[XX1, YY1, ZZ1],
+            switch=test, nbofregions=1, regionlist=domain);
+        medit("sphere 2 regions", Th3sph);
 
 
 
@@ -1942,31 +2128,117 @@ This field is express with the notation of :ref:`Mesh Format section <meshFileDa
 **Extension file .msh/.geo Gmsh** 
 
 
+
+
 Remeshing
 ^^^^^^^^^
-*trunc*
-'''''''
 
-*split*
-'''''''
-
-*movemesh - movemesh3*
-''''''''''''''''''''''
+.. _meshGenerationChangeLabel:
 
 *change*
 ''''''''
 
+This command changes the label of elements and border elements of a mesh.
+
+
+Changing the label of elements and border elements will be done using the keyword :freefem:`change`.
+The parameters for this command line are for two dimensional and three dimensional cases:
+
+-  :freefem:`reftet=` is a vector of integer that contains successive pairs of the old label number to the new label number.
+-  :freefem:`refface=` is a vector of integer that contains successive pairs of the old region number to new region number.
+-  :freefem:`flabel=` is an integer function given the new value of the label.
+-  :freefem:`fregion=` is an integer function given the new value of the region.
+-  :freefem:`rmInternalFaces=` is a boolean, equal true to remove the internal faces.
+-  :freefem:`rmlfaces=` is a vector of integer, where triangle's label given are remove of the mesh
+
+These vectors are composed of :math:`n_{l}` successive pairs of numbers :math:`O,N` where :math:`n_{l}` is the number (label or region) that we want to change.
+For example, we have :
+
+.. math::
+    \mathtt{label} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ] \\
+    \mathtt{region} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ]
+    :label: eq.org.vector.change.label
+
+An example of using this function is given here:
+
+.. code-block:: freefem
+   :linenos:
+
+   verbosity=3;
+
+   // Mesh
+   mesh Th1 = square(10, 10);
+   mesh Th2 = square(20, 10, [x+1, y]);
+
+   int[int] r1=[2,0];
+   plot(Th1, wait=true);
+
+   Th1 = change(Th1, label=r1); //change the label of Edges 2 in 0.
+   plot(Th1, wait=true);
+
+   int[int] r2=[4,0];
+   Th2 = change(Th2, label=r2); //change the label of Edges 4 in 0.
+   plot(Th2, wait=true);
+
+
+
+.. code-block:: freefem
+   :linenos:
+   
+   mesh Th1 = square(10,10) ;
+   // boundary label: 1 -> 1 bottom, 2 -> 1 right, 3->1 top, 4->1 left boundary label is 1
+   int[int] re=[1,1, 2,1, 3,1, 4,1]
+   Th1=change(Th1,refe=re); plot(Th1,wait=1) ;
+
+
+
+.. _meshGenerationtrunc:
+
+*trunc*
+'''''''
+This operator have been introduce to remove peace of mesh and split all element or for a particular label element
+
+-  :freefem:`split=`   , typeid(long)
+-  :freefem:`label=`   , typeid(long)
+-  :freefem:`new2old=`   , typeid(KN<long>  
+-  :freefem:`old2new=`    , typeid(KN<long> 
+-  :freefem:`renum=`     , typeid(bool)
+
+
+*movemesh - movemesh3*
+''''''''''''''''''''''
+-  :freefem:`transfo`    , typeid(E_Array)   
+-  :freefem:`reftet`    , typeid(KN_<long>)   
+-  :freefem:`refface`    , typeid(KN_<long>)
+-  :freefem:`ptmerge`    , typeid(double)
+-  :freefem:`facemerge`   , typeid(long)
+-  :freefem:`boolsurface`   , typeid(long)   
+-  :freefem:`orientation`    , typeid(long)
+-  :freefem:`region`      , typeid(KN_<long>)    
+-  :freefem:`label`       , typeid(KN_<long>) 
+
+movemesh doesn't use the prefix tranfo= [.,.,.], the geometric transformation is directly given by  [.,.,.] in the arguments list
+
+
 *extract*
 '''''''''
+-  :freefem:`refface`     , typeid(KN_<long>)
+-  :freefem:`label`       , typeid(KN_<long>)
+
 
 *buildSurface*
 ''''''''''''''
 
+
+This new function allows to build the surface mesh of a volume mesh, under the condition the surface is the boundary of the volume.
+By definition, a **mesh3** is defined by a list of vertices, tetrahedron elements and triangle border elements. *buildSurface* function create the meshS corresponding, given 
+the list vertices which are on the border domain, the triangle elements and build the list of edges.
+Remark, for a closed surface mesh, the edges list is empty. 
+
+
 *AddLayers*
 '''''''''''
 
-*change*
-''''''''
 
 
 
@@ -2073,7 +2345,7 @@ We now give the command line in **FreeFEM** to construct these meshes.
 
 **keyword: movemesh23**
 
-A simple method to construct a surface is to place a two dimensional domain in a three dimensional space.
+A simple method to construct a surface is to place a two dimensional domain in a three dimensional space. Plan a 2D mesh in the (x,y,z)-space to create a surface mesh 3D, **meshS**.
 
 .. warning::
    Since the release 4.2.1, the **FreeFEM** function movemesh23 returns a meshS type.
@@ -2361,266 +2633,6 @@ The parameters of movemesh in three dimensions are:
 
 An example of this command can be found in the :ref:`Poisson’s equation 3D example <examplePoissonEquation3D>`.
 
-Layer mesh
-~~~~~~~~~~
-
-In this section, we present the command line to obtain a Layer mesh: :freefem:`buildlayers`.
-This mesh is obtained by extending a two dimensional mesh in the :math:`z`-axis.
-
-The domain :math:`\Omega_{3d}` defined by the layer mesh is equal to :math:`\Omega_{3d} = \Omega_{2d} \times [zmin, zmax]` where :math:`\Omega_{2d}` is the domain defined by the two dimensional meshes.
-:math:`zmin` and :math:`zmax` are functions of :math:`\Omega_{2d}` in :math:`\R` that defines respectively the lower surface and upper surface of :math:`\Omega_{3d}`.
-
-.. figure:: images/MeshGeneration_LayerMesh.png
-    :width: 100%
-    :name: meshGenerationLayerMesh
-
-    Example of Layer mesh in three dimensions.
-
-For a vertex of a two dimensional mesh :math:`V_{i}^{2d} = (x_{i},y_{i})`, we introduce the number of associated vertices in the :math:`z-`\ axis :math:`M_{i}+1`.
-
-We denote by :math:`M` the maximum of :math:`M_{i}` over the vertices of the two dimensional mesh.
-This value is called the number of layers (if :math:`\forall i, \; M_{i}=M` then there are :math:`M` layers in the mesh of :math:`\Omega_{3d}`).
-:math:`V_{i}^{2d}` generated :math:`M+1` vertices which are defined by:
-
-.. math::
-   \forall j=0, \ldots, M, \quad V_{i,j}^{3d} = ( x_{i}, y_{i}, \theta_{i}(z_{i,j}) ),
-
-where :math:`(z_{i,j})_{j=0,\ldots,M}` are the :math:`M+1` equidistant points on the interval :math:`[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d})]`:
-
-.. math::
-    z_{i,j} = j \: \delta \alpha + zmin(V_{i}^{2d}), \quad \delta \alpha= \frac{ zmax( V_{i}^{2d} ) - zmin( V_{i}^{2d}) }{M}.
-
-The function :math:`\theta_{i}`, defined on :math:`[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]`, is given by:
-
-.. math::
-   \theta_{i}(z) = \left \{
-   \begin{array}{cl}
-   \theta_{i,0} & \mbox{if} \: z=zmin(V_{i}^{2d}), \\
-   \theta_{i,j} & \mbox{if} \: z \in ] \theta_{i,j-1}, \theta_{i,j}],\\
-   \end{array}
-   \right.
-
-with :math:`(\theta_{i,j})_{j=0,\ldots,M_{i}}` are the :math:`M_{i}+1` equidistant points on the interval :math:`[zmin( V_{i}^{2d} ), zmax( V_{i}^{2d} )]`.
-
-Set a triangle :math:`K=(V_{i1}^{2d}`, :math:`V_{i2}^{2d}`, :math:`V_{i3}^{2d})` of the two dimensional mesh.
-:math:`K` is associated with a triangle on the upper surface (resp. on the lower surface) of layer mesh:
-
-:math:`( V_{i1,M}^{3d}, V_{i2,M}^{3d}, V_{i3,M}^{3d} )` (resp. :math:`( V_{i1,0}^{3d}, V_{i2,0}^{3d}, V_{i3,0}^{3d})`).
-
-Also :math:`K` is associated with :math:`M` volume prismatic elements which are defined by:
-
-.. math::
-   \forall j=0,\ldots,M, \quad H_{j} = ( V_{i1,j}^{3d}, V_{i2,j}^{3d}, V_{i3,j}^{3d}, V_{i1,j+1}^{3d}, V_{i2,j+1}^{3d}, V_{i3,j+1}^{3d} ).
-
-Theses volume elements can have some merged point:
-
--  0 merged point : prism
--  1 merged points : pyramid
--  2 merged points : tetrahedra
--  3 merged points : no elements
-
-The elements with merged points are called degenerate elements.
-To obtain a mesh with tetrahedra, we decompose the pyramid into two tetrahedra and the prism into three tetrahedra.
-These tetrahedra are obtained by cutting the quadrilateral face of pyramid and prism with the diagonal which have the vertex with the maximum index (see [HECHT1992]_ for the reason of this choice).
-
-The triangles on the middle surface obtained with the decomposition of the volume prismatic elements are the triangles generated by the edges on the border of the two dimensional mesh.
-The label of triangles on the border elements and tetrahedra are defined with the label of these associated elements.
-
-The arguments of :freefem:`buildlayers` is a two dimensional mesh and the number of layers :math:`M`.
-
-The parameters of this command are:
-
--  :freefem:`zbound=` :math:`[zmin,zmax]` where :math:`zmin` and :math:`zmax` are functions expression.
-    Theses functions define the lower surface mesh and upper mesh of surface mesh.
-
--  :freefem:`coef=` A function expression between [0,1].
-    This parameter is used to introduce degenerate element in mesh.
-
-   The number of associated points or vertex :math:`V_{i}^{2d}` is the integer part of :math:`coef(V_{i}^{2d}) M`.
-
--  :freefem:`region=` This vector is used to initialize the region of tetrahedra.
-
-   This vector contains successive pairs of the 2d region number at index :math:`2i` and the corresponding 3d region number at index :math:`2i+1`, like :ref:`change <meshGenerationChangeLabel>`.
-
--  :freefem:`labelmid=` This vector is used to initialize the 3d labels number of the vertical face or mid face from the 2d label number.
-
-   This vector contains successive pairs of the 2d label number at index :math:`2i` and the corresponding 3d label number at index :math:`2i+1`, like :ref:`change <meshGenerationChangeLabel>`.
-
--  :freefem:`labelup=` This vector is used to initialize the 3d label numbers of the upper/top face from the 2d region number.
-
-   This vector contains successive pairs of the 2d region number at index :math:`2i` and the corresponding 3d label number at index :math:`2i+1`, like :ref:`change <meshGenerationChangeLabel>`.
-
--  :freefem:`labeldown=` Same as the previous case but for the lower/down face label.
-
-Moreover, we also add post processing parameters that allow to moving the mesh.
-These parameters correspond to parameters :freefem:`transfo`, :freefem:`facemerge` and :freefem:`ptmerge` of the command line :freefem:`movemesh`.
-
-The vector :freefem:`region`, :freefem:`labelmid`, :freefem:`labelup` and :freefem:`labeldown` These vectors are composed of :math:`n_{l}` successive pairs of number :math:`O_i,N_l` where :math:`n_{l}` is the number (label or region) that we want to get.
-
-An example of this command is given in the :ref:`Build layer mesh example <exampleBuildLayerMesh>`.
-
-.. tip:: Cube
-
-    .. code-block:: freefem
-        :linenos:
-
-        //Cube.idp
-        load "medit"
-        load "msh3"
-
-        func mesh3 Cube (int[int] &NN, real[int, int] &BB, int[int, int] &L){
-            real x0 = BB(0,0), x1 = BB(0,1);
-            real y0 = BB(1,0), y1 = BB(1,1);
-            real z0 = BB(2,0), z1 = BB(2,1);
-
-            int nx = NN[0], ny = NN[1], nz = NN[2];
-
-            // 2D mesh
-            mesh Thx = square(nx, ny, [x0+(x1-x0)*x, y0+(y1-y0)*y]);
-
-            // 3D mesh
-            int[int] rup = [0, L(2,1)], rdown=[0, L(2,0)];
-            int[int] rmid=[1, L(1,0), 2, L(0,1), 3, L(1,1), 4, L(0,0)];
-            mesh3 Th = buildlayers(Thx, nz, zbound=[z0,z1],
-            labelmid=rmid, labelup = rup, labeldown = rdown);
-
-            return Th;
-        }
-
-.. tip:: Unit cube
-
-    .. code-block:: freefem
-        :linenos:
-
-        include "Cube.idp"
-
-        int[int] NN = [10,10,10]; //the number of step in each direction
-        real [int, int] BB = [[0,1],[0,1],[0,1]]; //the bounding box
-        int [int, int] L = [[1,2],[3,4],[5,6]]; //the label of the 6 face left,right, front, back, down, right
-        mesh3 Th = Cube(NN, BB, L);
-        medit("Th", Th);
-
-    .. figure:: images/MeshGeneration_LayerMesh_Example1.png
-        :width: 50%
-        :name: meshGenerationLayerMeshExample1
-
-        The mesh of a cube made with :freefem:`cube.edp`
-
-.. tip:: Cone
-
-    An axisymtric mesh on a triangle with degenerateness
-
-    .. code-block:: freefem
-        :linenos:
-
-        load "msh3"
-        load "medit"
-
-        // Parameters
-        real RR = 1;
-        real HH = 1;
-
-        int nn=10;
-
-        // 2D mesh
-        border Taxe(t=0, HH){x=t; y=0; label=0;}
-        border Hypo(t=1, 0){x=HH*t; y=RR*t; label=1;}
-        border Vert(t=0, RR){x=HH; y=t; label=2;}
-        mesh Th2 = buildmesh(Taxe(HH*nn) + Hypo(sqrt(HH*HH+RR*RR)*nn) + Vert(RR*nn));
-        plot(Th2, wait=true);
-
-        // 3D mesh
-        real h = 1./nn;
-        int MaxLayersT = (int(2*pi*RR/h)/4)*4;//number of layers
-        real zminT = 0;
-        real zmaxT = 2*pi; //height 2*pi
-        func fx = y*cos(z);
-        func fy = y*sin(z);
-        func fz = x;
-        int[int] r1T = [0,0], r2T = [0,0,2,2], r4T = [0,2];
-        //trick function:
-        //The function defined the proportion
-        //of number layer close to axis with reference MaxLayersT
-        func deg = max(.01, y/max(x/HH, 0.4)/RR);
-        mesh3 Th3T = buildlayers(Th2, coef=deg, MaxLayersT,
-            zbound=[zminT, zmaxT], transfo=[fx, fy, fz],
-            facemerge=0, region=r1T, labelmid=r2T);
-        medit("cone", Th3T);
-
-    .. figure:: images/MeshGeneration_LayerMesh_Example2.png
-        :width: 50%
-        :name: meshGenerationLayerMeshExample2
-
-        The mesh of a cone made with :freefem:`cone.edp`
-
-.. tip:: Buildlayer mesh
-
-    .. code-block:: freefem
-        :linenos:
-
-        load "msh3"
-        load "TetGen"
-        load "medit"
-
-        // Parameters
-        int C1 = 99;
-        int C2 = 98;
-
-        // 2D mesh
-        border C01(t=0, pi){x=t; y=0; label=1;}
-        border C02(t=0, 2*pi){ x=pi; y=t; label=1;}
-        border C03(t=0, pi){ x=pi-t; y=2*pi; label=1;}
-        border C04(t=0, 2*pi){ x=0; y=2*pi-t; label=1;}
-
-        border C11(t=0, 0.7){x=0.5+t; y=2.5; label=C1;}
-        border C12(t=0, 2){x=1.2; y=2.5+t; label=C1;}
-        border C13(t=0, 0.7){x=1.2-t; y=4.5; label=C1;}
-        border C14(t=0, 2){x=0.5; y=4.5-t; label=C1;}
-
-        border C21(t=0, 0.7){x=2.3+t; y=2.5; label=C2;}
-        border C22(t=0, 2){x=3; y=2.5+t; label=C2;}
-        border C23(t=0, 0.7){x=3-t; y=4.5; label=C2;}
-        border C24(t=0, 2){x=2.3; y=4.5-t; label=C2;}
-
-        mesh Th = buildmesh(C01(10) + C02(10) + C03(10) + C04(10)
-            + C11(5) + C12(5) + C13(5) + C14(5)
-            + C21(-5) + C22(-5) + C23(-5) + C24(-5));
-
-        mesh Ths = buildmesh(C01(10) + C02(10) + C03(10) + C04(10)
-            + C11(5) + C12(5) + C13(5) + C14(5));
-
-        // Construction of a box with one hole and two regions
-        func zmin = 0.;
-        func zmax = 1.;
-        int MaxLayer = 10;
-
-        func XX = x*cos(y);
-        func YY = x*sin(y);
-        func ZZ = z;
-
-        int[int] r1 = [0, 41], r2 = [98, 98, 99, 99, 1, 56];
-        int[int] r3 = [4, 12];  //the triangles of uppper surface mesh
-                                //generated by the triangle in the 2D region
-                                //of mesh Th of label 4 as label 12
-        int[int] r4 = [4, 45];  //the triangles of lower surface mesh
-                                //generated by the triangle in the 2D region
-                                //of mesh Th of label 4 as label 45.
-
-        mesh3 Th3 = buildlayers(Th, MaxLayer, zbound=[zmin, zmax], region=r1,
-            labelmid=r2, labelup=r3, labeldown=r4);
-            medit("box 2 regions 1 hole", Th3);
-
-        // Construction of a sphere with TetGen
-        func XX1 = cos(y)*sin(x);
-        func YY1 = sin(y)*sin(x);
-        func ZZ1 = cos(x);
-
-        real[int] domain = [0., 0., 0., 0, 0.001];
-        string test = "paACQ";
-        cout << "test = " << test << endl;
-        mesh3 Th3sph = tetgtransfo(Ths, transfo=[XX1, YY1, ZZ1],
-            switch=test, nbofregions=1, regionlist=domain);
-        medit("sphere 2 regions", Th3sph);
 
 .. _meshing-examples-1:
 

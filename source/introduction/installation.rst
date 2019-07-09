@@ -23,8 +23,8 @@ First, go to the :ref:`download page <download>` and choose your platform: Linux
 
 Install **FreeFEM** by double-clicking on the appropriate file. Under Linux and MacOS the install directory is one of the following ``/usr/local/bin``, ``/usr/local/share/freefem++``, ``/usr/local/lib/ff++``
 
-Windows binary installation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Windows installation
+^^^^^^^^^^^^^^^^^^^^
 
 First download the windows installation executable, then double click to install **FreeFEM**.
 
@@ -41,8 +41,8 @@ where ``(VERSION)`` is the version of the files (for example 3.59).
 
 By default, the installed files are in ``C:\Programs Files\FreeFem++``. In this directory, you have all the ``.dll`` files and other applications: ``FreeFem++-nw.exe``, ``ffglut.exe``, … The syntax for the command-line tools are the same as those of ``FreeFem.exe``.
 
-MacOS X binary installation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+macOS X installation
+^^^^^^^^^^^^^^^^^^^^
 
 Download the MacOS X binary version file, extract all the files by double clicking on the icon of the file, go the the directory and put the ``FreeFem++.app`` application in the ``/Applications`` directory.
 
@@ -76,20 +76,15 @@ To install it:
 
   Compilation results of the develop branch by OS type and configuration of FreeFEM are here
 
-  +-----------------+-------------------+-------------------+-------------------+-------------------+-------------------+
-  | Branch          | Linux 16.04       | Linux 18.04       | MacOS 10.10.5     | MacOS 10.13.5     | Windows 7         |
-  +=================+===================+===================+===================+===================+===================+
-  | Develop         | |Build Status01|  | |Build Status02|  | |Build Status03|  | |Build Status04|  | |Build Status05|  |
-  |(sequential and  |                   |                   |                   |                   |                   | 
-  |without          |                   |                   |                   |                   |                   |  
-  |PETSc/SLEPc)     |                   |                   |                   |                   |                   |         
-  +=================+===================+===================+===================+===================+===================+
-  | Develop         | |Build Status06|  | |Build Status07|  | |Build Status08|  | |Build Status09|  | |Build Status10|  |
-  |compiles in DEBUG|                   |                   |                   |                   |                   |
-  | Mode and runs   |                   |                   |                   |                   |                   |
-  | with MPI,       |                   |                   |                   |                   |                   |
-  | PETSc/SLESc     |                   |                   |                   |                   |                   |
-  +-----------------+-------------------+-------------------+-------------------+-------------------+-------------------+           
+  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+  | Branch                 | Linux 16.04       | Linux 18.04       | MacOS 10.10.5     | MacOS 10.13.5     | Windows 7         |
+  +========================+===================+===================+===================+===================+===================+
+  | Develop                | |Build Status01|  | |Build Status02|  | |Build Status03|  | |Build Status04|  | |Build Status05|  |      
+  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+  | Develop                | |Build Status06|  | |Build Status07|  | |Build Status08|  | |Build Status09|  | |Build Status10|  |
+  | compiles in DEBUG      |                   |                   |                   |                   |                   |
+  | runs MPI & PETSc/SLEPS |                   |                   |                   |                   |                   |
+  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+           
 
 Using autotools
 ^^^^^^^^^^^^^^^
@@ -233,11 +228,8 @@ Compilation on OSX (>=10.13)
    
  13. Install the **FreeFEM** apllication 
       sudo make install
-   .. note:: To install FreeFEM, it is recommanded to change the user ID of your installation directory instead of using SUDO.
-
-
-
-
+     
+	  .. note:: To install FreeFEM, it is recommanded to change the user ID of your installation directory instead of using SUDO.
 
 
 
@@ -424,26 +416,45 @@ Compilation on Windows
 
 .. warning:: 
    The support ended for all releases under Windows 32 bits since the V4.
+    We assume your development machine is 64-bit, and you want your compiler to target 64-bit windows by default.
 
 
 1. Install `Microsoft MPI v9.0 <https://www.microsoft.com/en-us/download/details.aspx?id=56511>`__ (msmpisdk.msi and MSMpiSetup.exe)
 
-2. Install the software `Msys2 <https://www.msys2.org/>`__ (x86_64 version)
+.. note::
+   2019/07/07  Microsoft MPI v10.0 isn't usable in MSYS/mingw64 with gfortran `more information here < https://github.com/Microsoft/Microsoft-MPI/issues/7 >`__
+
+
+2. Download ` msys2-x86_64-latest.exe and run it.<http://repo.msys2.org/distrib/msys2-x86_64-latest.exe>`__ (x86_64 version) and run it 
 
 3. Install the version control system `Git <https://git-scm.com/download/win>`__ for Windows
 
-4. Start MSYS2 MSYS
+4. In the MSYS2 shell, execute the following. 
+Hint: if you right click the title bar, go to Options -> Keys and tick "Ctrl+Shift+letter shortcuts" you can use Ctrl+Shift+V to paste in the MSYS shell.
 
-5. Open ``MSYS2 MSYS terminal`` to install dependancies
+   .. code-block:: bash
+      :linenos:
+      
+	  pacman -Syuu
+
+Close the MSYS2 shell once you're asked to. There are now 3 MSYS subsystems installed: MSYS2, MinGW32 and MinGW64. 
+They can respectively be launched from C:\dev\msys64\msys2.exe, C:\dev\msys64\mingw32.exe and C:\dev\msys64\mingw64.exe
+Reopen MSYS2 (doesn't matter which version, since we're merely installing packages). 
+Repeatedly run the following command until it says there are no further updates. You might have to restart your shell again.
+
+   .. code-block:: bash
+      :linenos:
+      
+	  pacman -Syuu
+	  
+
+5. Now that MSYS2 is fully up-to-date, install the following dependancies
 
    -  for 64bits system (all *FreeFEM* release version):
 
    .. code-block:: bash
       :linenos:
 
-      source shell mingw64
-
-      pacman -Syu
       pacman -S autoconf automake-wrapper bash bash-completion \
         bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
         findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
@@ -459,9 +470,6 @@ Compilation on Windows
    .. code-block:: bash
       :linenos:
 
-      *source shell mingw32
-
-      pacman -Syu
       pacman -S autoconf automake-wrapper bash bash-completion \
           bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
           findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
@@ -471,7 +479,7 @@ Compilation on Windows
           msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
       perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
 
-6. Open ``MingW64 terminal`` (or ``MingW32``) to compile **FreeFEM**
+6. Open a ``MingW64 terminal`` (or ``MingW32`` for old 32 bits **FreeFEM** version) and compile the **FreeFEM** source
 
    .. code-block:: bash
       :linenos:
@@ -479,7 +487,10 @@ Compilation on Windows
       git clone https://github.com/FreeFem/FreeFem-sources
       cd FreeFem-sources
       autoreconf -i
-      ./configure --enable-download --disable-hips
+      ./configure ./configure --enable-generic --enable-optim \ 
+	       --enable-download --enable-maintainer-mode \
+           CXXFLAGS=-mtune=generic CFLAGS=-mtune=generic \
+		   FFLAGS=-mtune=generic--enable-download --disable-hips
       ./3rdparty/getall -a
       make -j4
       make check
@@ -763,8 +774,8 @@ We can also use shell environment variables to change verbosity and the search r
 |  
 	  
 
-Text-editor
------------
+Coloring Syntax FreeFem++
+-------------------------
 
 Atom
 ^^^^
@@ -793,7 +804,25 @@ Gedit
 ^^^^^
 
 In order to get the syntax highlighting in Gedit, you have to downlaod the `Gedit parser <https://github.com/FreeFem/FreeFem-parser-gedit>`__ and copy it in ``/usr/share/gtksourceview-3.0/language-specs/``.	  
-	  
+
+
+Textmate 2 editor under macOS 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To use the coloring **FreeFEM** syntax with the Textmate 2 editor on Mac 10.7 or better, download from macromates.com and download the textmate freefem++ syntax `here <http://www3.freefem.org/ff++/Textmate2-ff++.zip>`__ (version june 2107). To install this parser, unzip Textmate2-ff++.zip and follow the explanation given in file How_To.rtf.
+
+rom www.freefem.org/ff++/Textmate2-ff++.zip (version june 2107) unzip Textmate2-
+
+
+Notepad++ editor under windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ 
+Read and follow the instruction, `FREEFEM++ COLOR SYNTAX OF WINDOWS <http://www3.freefem.org/ff++/color-syntax-win.pdf>`__ .
+ 
+Emacs editor
+^^^^^^^^^^^^
+For emacs editor you can download `ff++-mode.el <https://github.com/rrgalvan/freefem-mode/>`__ .
+ 	  
 	  
 .. |Build Status01| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job3
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job3/
@@ -817,11 +846,5 @@ In order to get the syntax highlighting in Gedit, you have to downlaod the `Gedi
 .. |Build Status10| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-windows7-job5
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-windows7-job5
    
-   
-..       make -j4
-..       make test
-..       make install
-..
-..    The **FreeFEM** executable (and some other like ``ffmedit``, …)
-..    are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
+
 
