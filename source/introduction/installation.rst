@@ -41,6 +41,21 @@ Download the MacOS X binary version file, extract all the files by double clicki
 
 If you want terminal access to **FreeFEM** just copy the file ``FreeFem++`` in a directory of your :bash:`$PATH` shell environment variable.
 
+Ubuntu binary installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Beforehand, install the following dependances using the apt tool:
+
+.. code-block:: bash
+   :linenos:
+    
+   sudo apt-get install libhdf5-dev libsuitesparse-dev libarpack2-dev 
+	
+Download the package FreeFEM .deb, install it by double clicking on the icon of the file.
+FreeFEM is directly available in your terminal by the command "FreeFem++".
+
+
 Arch AUR package
 ~~~~~~~~~~~~~~~~
 
