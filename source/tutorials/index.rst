@@ -3,12 +3,15 @@
 
 .. _tutorial:
 
-Tutorials
-=========
+Learning by Examples
+====================
+
+|
+|
 
 The **FreeFEM** language is :ref:`typed <referenceTypes>`, polymorphic and reentrant with :ref:`macro generation <typeMacroDesign>`.
 
-Every variable must be typed and declared in a statement. Each statement is separated from the next by a semicolon ``;``.
+Every variable must be typed and declared in a statement, that is separated from the next by a semicolon ``;``.
 
 The **FreeFEM** language is a C++ idiom with something that is more akin to LaTeX.
 

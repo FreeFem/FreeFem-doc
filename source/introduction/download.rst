@@ -1,7 +1,7 @@
 .. _download:
 
-Download FreeFEM
-======================
+Download
+========
 
 Latest binary packages
 ----------------------

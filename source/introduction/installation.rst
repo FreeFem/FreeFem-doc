@@ -8,8 +8,8 @@
 Installation guide
 ==================
 
-To use FreeFEM, two installation methods are available: user access (binarie package) and access developers (compilation of source code).
-Follow the section corresponding to your type of installation
+To use FreeFEM, two installation methods are available: user access (binarie package) and access developers (from the source code).
+Follow the section corresponding to your type of installation.
 
 |
 |
@@ -17,7 +17,7 @@ Follow the section corresponding to your type of installation
 Binaries package
 -----------------
 
-First, go to the :ref:`download page <download>` and choose your platform: Linux, MacOS or Windows.
+First, open the following web page :ref:`download page <download>` and choose your platform: Linux, MacOS or Windows.
 
 .. note:: Binary packages are available for Microsoft Windows, MacOS and some Linux distributions.
 
@@ -48,9 +48,9 @@ Download the MacOS X binary version file, extract all the files by double clicki
 
 If you want terminal access to **FreeFEM** just copy the file ``FreeFem++`` in a directory of your :bash:`$PATH` shell environment variable.
 
+
 Ubuntu binary installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 Beforehand, install the following dependances using the apt tool:
 
@@ -79,35 +79,16 @@ To install it:
 
 .. note:: Thanks to `Stephan Husmann <https://github.com/stefanhusmann>`__
 
-|
-|
 
-.. only:: html
-
-  Status of *FreeFEM* continuous integration 
-  ------------------------------------------
-
-  The Inria Jenkins platform is used for the CI/CD integration of the source code.
-
-  Compilation results of the develop branch by OS type and configuration of FreeFEM are here
-
-  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
-  | Branch                 | Linux 16.04       | Linux 18.04       | MacOS 10.10.5     | MacOS 10.13.5     | Windows 7         |
-  +========================+===================+===================+===================+===================+===================+
-  | Develop                | |Build Status01|  | |Build Status02|  | |Build Status03|  | |Build Status04|  | |Build Status05|  |      
-  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
-  | Develop                | |Build Status06|  | |Build Status07|  | |Build Status08|  | |Build Status09|  | |Build Status10|  |
-  | compiles in DEBUG      |                   |                   |                   |                   |                   |
-  | runs MPI & PETSc/SLEPS |                   |                   |                   |                   |                   |
-  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+           
 
 Using autotools
-^^^^^^^^^^^^^^^
-    .. note:: 2 worked versions of FreeFEM are possible: minimal and full: sequential and without plugins (contains in 3rdparty) full: parallel with available plugins.
+---------------
+	
+	2 worked versions of FreeFEM are possible: minimal and full - 1/ sequential and without plugins (contains in 3rdparty) 2/ full: parallel with plugins.
 	.. note:: We advise you to use the package manager for macOS Homebrew to get the different packages required avalaible `here <https://brew.sh>`__
 
 Compilation on OSX (>=10.13)
-''''''''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Install Xcode, Xcode Command Line tools and Xcode Additional Tools from the `Apple website <https://developer.apple.com/download/more/>`__
 
@@ -249,7 +230,7 @@ Compilation on OSX (>=10.13)
 
 
 Compilation on Ubuntu
-'''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^
 
 1. Install the following packages on you system
 
@@ -334,7 +315,7 @@ Compilation on Ubuntu
 
 
 Compilation on Arch Linux
-'''''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: As Arch is in rolling release, the following information can be quickly outdated !
 
@@ -422,22 +403,23 @@ Compilation on Arch Linux
 	  
 
 Compilation on Linux with Intel software tools
-''''''''''''''''''''''''''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Follow the `guide <https://software.intel.com/en-us/articles/building-freefem-with-intel-software-tools-for-developers>`__
 
+
 Compilation on Windows
-''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: 
    The support ended for all releases under Windows 32 bits since the V4.
-    We assume your development machine is 64-bit, and you want your compiler to target 64-bit windows by default.
+   We assume your development machine is 64-bit, and you want your compiler to target 64-bit windows by default.
 
 
 1. Install `Microsoft MPI v9.0 <https://www.microsoft.com/en-us/download/details.aspx?id=56511>`__ (msmpisdk.msi and MSMpiSetup.exe)
 
 .. note::
-   2019/07/07  Microsoft MPI v10.0 isn't usable in MSYS/mingw64 with gfortran `more information here < https://github.com/Microsoft/Microsoft-MPI/issues/7 >`__
+   2019/07/07  Microsoft MPI v10.0 isn't usable in MSYS/mingw64 with gfortran `more information here <https://github.com/Microsoft/Microsoft-MPI/issues/7>`__
 
 
 2. Download ` msys2-x86_64-latest.exe and run it.<http://repo.msys2.org/distrib/msys2-x86_64-latest.exe>`__ (x86_64 version) and run it 
@@ -720,8 +702,29 @@ Repeatedly run the following command until it says there are no further updates.
 ..    The **FreeFEM** executable (and some other like ``ffmedit``, …)
 ..    are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
 
-|
-|
+
+
+
+
+.. only:: html
+
+  *FreeFEM* continuous integration 
+  --------------------------------
+
+  The Inria Jenkins platform is used for the CI/CD integration of the source code.
+
+  Compilation results of the develop branch by OS type and configuration of FreeFEM are here
+
+  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+  | Branch                 | Linux 16.04       | Linux 18.04       | MacOS 10.10.5     | MacOS 10.13.5     | Windows 7         |
+  +========================+===================+===================+===================+===================+===================+
+  | Develop                | |Build Status01|  | |Build Status02|  | |Build Status03|  | |Build Status04|  | |Build Status05|  |      
+  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+  | Develop                | |Build Status06|  | |Build Status07|  | |Build Status08|  | |Build Status09|  | |Build Status10|  |
+  | *compiles in DEBUG     |                   |                   |                   |                   |                   |
+  | runs MPI & PETSc/SLEPS*|                   |                   |                   |                   |                   |
+  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+           
+
 
 
 Environment variables and init file

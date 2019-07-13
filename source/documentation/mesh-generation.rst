@@ -94,8 +94,8 @@ To construct a :math:`n\times m` grid in the rectangle :math:`[x_0,x_1]\times [y
 
 .. _meshBorder:
 
-*Border*
-''''''''
+the command *border*
+''''''''''''''''''''
 
 Boundaries are defined piecewise by parametrized curves. The pieces can only intersect at their endpoints, but it is possible to join more than two endpoints. This can be used to structure the mesh if an area touches a border and create new regions by dividing larger ones:
 
@@ -284,6 +284,9 @@ And a more complex example to define a square with small circles:
    plot(th, wait=1);
 
 .. _meshDataStructureReadWrite:
+
+
+
 
 Data Structures and Read/Write Statements for a Mesh
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -732,6 +735,8 @@ The real characteristic function of a mesh :freefem:`Th` is :freefem:`chi(Th)` i
 
 :freefem:`chi(Th)(P)=0` if :math:`P\not\in Th`
 
+
+
 The keyword "triangulate"
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -818,6 +823,8 @@ One new way to build a mesh is to have two arrays: one for the :math:`x` values 
    //build the mesh
    mesh Th = triangulate(xx[], yy[]);
 
+
+
 Boundary FEM Spaces Built as Empty Meshes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -888,8 +895,8 @@ Remeshing
 
 .. _meshGenerationMoveMesh:
 
-*Movemesh*
-''''''''''
+the command *movemesh*
+''''''''''''''''''''''
 
 Meshes can be translated, rotated, and deformed by :freefem:`movemesh`; this is useful for elasticity to watch the deformation due to the displacement :math:`\mathbf{\Phi}(x,y)=(\Phi_1(x,y),\Phi_2(x,y))` of shape.
 
@@ -1044,8 +1051,8 @@ We put :math:`h(\mathcal{T}_h)=\max\{\textrm{diam}(T_k)|\; T_k\in \mathcal{T}_h\
    Ph h = hTriangle;
    cout << "size of mesh = " << h[].max << endl;
 
-*Adaptmesh*
-'''''''''''
+the command *daptmesh*
+''''''''''''''''''''''
 
 The function:
 
@@ -1339,8 +1346,8 @@ To build a mesh with a constant mesh size equal to :math:`\frac{1}{30}` try:
 
    Mesh adaptation
 
-*Trunc*
-'''''''
+the command trunc*
+''''''''''''''''''
 
 Two operators have been introduced to remove triangles from a mesh or to divide them.
 Operator :freefem:`trunc` has two parameters:
@@ -1403,8 +1410,8 @@ The following example construct all "trunced" meshes to the support of the basic
 
    Trunc
 
-*Splitmesh*
-'''''''''''
+the command *splitmesh*
+'''''''''''''''''''''''
 
 Another way to split mesh triangles is to use :freefem:`splitmesh`, for example:
 
@@ -1696,8 +1703,8 @@ Meshing Examples
 
 
 
-The type *mesh3* in 3 dimension
--------------------------------
+**The type mesh3 in 3 dimension**
+---------------------------------
 
 
 .. note::
@@ -1712,17 +1719,17 @@ The type *mesh3* in 3 dimension
 
 
 
-Commands for 3d mesh Generation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3d mesh generation
+^^^^^^^^^^^^^^^^^^
 
 .. note::
 
    For 3D mesh tools, Load the library ”msh3” ⇒ load "msh3" in top of .edp file. 
 
-*Cube*
-''''''
+the command *cube*
+''''''''''''''''''
 
-A new function :freefem:`cube` like the function :freefem:`square` in 2d is the simple way to a build cubic object, in plugin :freefem:`msh3` (need :freefem:`load "msh3"`).
+The function :freefem:`cube` like the function :freefem:`square` in 2d is the simple way to a build cubic object, in plugin :freefem:`msh3` (need :freefem:`load "msh3"`).
 
 The following code generates a :math:`3\times 4 \times 5` grid in the unit cube :math:`[0, 1]^3`.
 
@@ -1808,8 +1815,8 @@ The output of this script is:
 
 
 
-*buildlayers*
-'''''''''''''
+the command *buildlayers*
+'''''''''''''''''''''''''
 
 This mesh is obtained by extending a two dimensional mesh in the :math:`z`-axis.
 
@@ -2071,8 +2078,8 @@ An example of this command is given in the :ref:`Build layer mesh example <examp
 
 
 
-Read/Write Statements for a **mesh3**
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Read/Write statements
+^^^^^^^^^^^^^^^^^^^^^
 
 In three dimensions, the file mesh format supported for input and output files by **FreeFEM** are the extension .msh and .mesh.
 These formats are described in the :ref:`Mesh Format section <meshFileDataStructure>`.
@@ -2135,8 +2142,8 @@ Remeshing
 
 .. _meshGenerationChangeLabel:
 
-*change*
-''''''''
+the command *change*
+''''''''''''''''''''
 
 This command changes the label of elements and border elements of a mesh.
 
@@ -2194,28 +2201,148 @@ An example of using this function is given here:
 
 .. _meshGenerationtrunc:
 
-*trunc*
-'''''''
-This operator have been introduce to remove peace of mesh and split all element or for a particular label element
+the command *trunc*
+'''''''''''''''''''
 
--  :freefem:`split=`   , typeid(long)
--  :freefem:`label=`   , typeid(long)
+This operator have been introduce to remove peace of mesh and split all element or for a particular label element
+The two named parameter
+-  :freefem:`split=` sets the level n of triangle splitting. each triangle is splitted in n × n ( one by default)
+-  :freefem:`label=`   sets the label number of new boundary item (one by default)
 -  :freefem:`new2old=`   , typeid(KN<long>  
 -  :freefem:`old2new=`    , typeid(KN<long> 
 -  :freefem:`renum=`     , typeid(bool)
 
 
-*movemesh - movemesh3*
-''''''''''''''''''''''
--  :freefem:`transfo`    , typeid(E_Array)   
--  :freefem:`reftet`    , typeid(KN_<long>)   
--  :freefem:`refface`    , typeid(KN_<long>)
--  :freefem:`ptmerge`    , typeid(double)
--  :freefem:`facemerge`   , typeid(long)
--  :freefem:`boolsurface`   , typeid(long)   
--  :freefem:`orientation`    , typeid(long)
--  :freefem:`region`      , typeid(KN_<long>)    
--  :freefem:`label`       , typeid(KN_<long>) 
+
+.. code-block:: freefem
+   :linenos:
+
+   load "msh3"// buildlayer
+   load "medit"// medit
+   int nn=8;
+   mesh Th2=square(nn,nn);
+   fespace Vh2(Th2,P2);
+   Vh2 ux,uz,p2;
+   int[int] rup=[0,2],  //  upper face  2d region 0 -> 3d label 2
+      rdown=[0,1],      //  lower face  2d region 0 -> 3d label 1
+      rmid=[1,1,  //  vert face.  2d label 1 -> 3d label 1
+           2,1,  //  vert face.  2d label 2 -> 3d label 1
+           3,1,  //  vert face.  2d label 3 -> 3d label 1
+           4,1],  //  vert face.  2d label 4 -> 3d label 1
+      rtet=[0,0];  //  2d region  0-> 3d region  0
+   real zmin=0,zmax=1;
+
+   mesh3 Th=buildlayers(Th2,nn,
+      zbound=[zmin,zmax],
+      region=rtet, //  region number
+      labelmid=rmid,  // 4 vert.  faces labels number
+      labelup = rup,
+      labeldown = rdown);
+    //  remove the small cube $]1/2,1[^2$
+   Th= trunc(Th,((x<0.5) |(y< 0.5)| (z<0.5)),label=3); 
+   medit("cube",Th);
+
+
+
+
+the command *movemesh* (movemesh3)
+''''''''''''''''''''''''''''''''''
+
+3D meshes  can be translated, rotated, and deformed using the command line :freefem:`movemesh` as in the 2D case (see :ref:`section movemesh <meshGenerationMoveMesh>`).
+If :math:`\Omega` is tetrahedrized as :math:`T_{h}(\Omega)`, and :math:`\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))` is a displacement vector then :math:`\Phi(T_{h})` is obtained by:
+
+.. code-block:: freefem
+   :linenos:
+
+   mesh3 Th = movemesh(Th, [Phi1, Phi2, Phi3], ...);
+   mesh3 Th = movemesh3(Th, transfo=[Phi1, Phi2, Phi3], ...);  older syntax
+
+
+The parameters of movemesh in three dimensions are:
+
+-  :freefem:`transfo=` (older argument used in movemesh3) sets the geometric transformation :math:`\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))`
+
+-  :freefem:`region=` sets the integer labels of the tetrahedra.
+    0 by default.
+
+-  :freefem:`label=` sets the labels of the border faces.
+    This parameter is initialized as the label for the keyword :ref:`change <meshGenerationChangeLabel>`.
+
+-  :freefem:`facemerge=` An integer expression.
+    When you transform a mesh, some faces can be merged.
+    This parameter equals to one if the merges’ faces is considered.
+    Otherwise it equals to zero.
+    By default, this parameter is equal to 1.
+
+-  :freefem:`ptmerge =` A real expression.
+    When you transform a mesh, some points can be merged.
+    This parameter is the criteria to define two merging points.
+    By default, we use
+
+    .. math::
+        ptmerge \: = \: 1e-7 \: \:Vol( B ),
+
+   where :math:`B` is the smallest axis parallel boxes containing the discretion domain of :math:`\Omega` and :math:`Vol(B)` is the volume of this box.
+
+-  :freefem:`orientation =` An integer expression 
+   equal 1, give the oientation of the triangulation, elements must be in the reference orientation (counter clock wise)
+   equal -1 reverse the orientation of the tetrahedra
+    
+.. note::
+   The orientation of tetrahedra are checked by the positivity of its area and automatically corrected during the building of the adjacency.  
+   
+   
+   
+An example of this command can be found in the :ref:`Poisson’s equation 3D example <examplePoissonEquation3D>`.
+
+
+.. code-block:: freefem
+   :linenos:
+
+   load "medit"
+   include "cube.idp"
+   int[int]  Nxyz=[20,5,5];
+   real [int,int]  Bxyz=[[0.,5.],[0.,1.],[0.,1.]];
+   int [int,int]  Lxyz=[[1,2],[2,2],[2,2]];
+   real E = 21.5e4;
+   real sigma = 0.29;
+   real mu = E/(2*(1+sigma));
+   real lambda = E*sigma/((1+sigma)*(1-2*sigma));
+   real gravity = -0.05;
+   real sqrt2=sqrt(2.);
+
+   mesh3 Th=Cube(Nxyz,Bxyz,Lxyz);
+   fespace Vh(Th,[P1,P1,P1]);
+   Vh [u1,u2,u3], [v1,v2,v3];
+ 
+   macro epsilon(u1,u2,u3)  [dx(u1),dy(u2),dz(u3),(dz(u2)+dy(u3))/sqrt2,(dz(u1)+dx(u3))/sqrt2,(dy(u1)+dx(u2))/sqrt2] // EOM
+   macro div(u1,u2,u3) ( dx(u1)+dy(u2)+dz(u3) ) // EOM
+  
+   solve Lame([u1,u2,u3],[v1,v2,v3])=
+     int3d(Th)(  
+	       lambda*div(u1,u2,u3)*div(v1,v2,v3)	
+	       +2.*mu*( epsilon(u1,u2,u3)'*epsilon(v1,v2,v3) ) 
+	         )
+     - int3d(Th) (gravity*v3)
+     + on(1,u1=0,u2=0,u3=0);
+
+   real dmax= u1[].max;
+   real coef= 0.1/dmax;
+
+   int[int] ref2=[1,0,2,0]; // array 
+   mesh3 Thm=movemesh(Th,[x+u1*coef,y+u2*coef,z+u3*coef],label=ref2);
+   // mesh3 Thm=movemesh3(Th,transfo=[x+u1*coef,y+u2*coef,z+u3*coef],label=ref2); older syntax
+   Thm=change(Thm,label=ref2);
+   plot(Th,Thm, wait=1,cmm="coef  amplification = "+coef );
+
+
+
+
+
+
+
+
+
 
 movemesh doesn't use the prefix tranfo= [.,.,.], the geometric transformation is directly given by  [.,.,.] in the arguments list
 
@@ -2226,8 +2353,8 @@ movemesh doesn't use the prefix tranfo= [.,.,.], the geometric transformation is
 -  :freefem:`label`       , typeid(KN_<long>)
 
 
-*buildSurface*
-''''''''''''''
+the command *buildSurface*
+''''''''''''''''''''''''''
 
 
 This new function allows to build the surface mesh of a volume mesh, under the condition the surface is the boundary of the volume.
@@ -2236,115 +2363,13 @@ the list vertices which are on the border domain, the triangle elements and buil
 Remark, for a closed surface mesh, the edges list is empty. 
 
 
-*AddLayers*
-'''''''''''
+the command *AddLayers*
+'''''''''''''''''''''''
 
 
 
-
-TetGen: A tetrahedral mesh generator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**TetGen**
-
-TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Applied Analysis and Stochastics in Berlin, Germany [HANG2006]_.
-TetGen is free for research and non-commercial use.
-For any commercial license utilization, a commercial license is available upon request to Hang Si.
-
-This software is a tetrahedral mesh generator of a three dimensional domain defined by its boundary (a surface).
-The input domain takes into account a polyhedral or a piecewise linear complex.
-This tetrahedralization is a constrained Delaunay tetrahedralization.
-
-The method used in TetGen to control the quality of the mesh is a Delaunay refinement due to Shewchuk [SHEWCHUK1998]_.
-The quality measure of this algorithm is the Radius-Edge Ratio (see Section 1.3.1 [HANG2006]_ for more details).
-A theoretical bound of this ratio of the Shewchuk algorithm is obtained for a given complex of vertices, constrained segments and facets of surface mesh, with no input angle less than 90 degrees.
-This theoretical bound is 2.0.
-
-
-The launch of TetGen is done with the keyword :freefem:`tetg`.
-The parameters of this command line is:
-
--  :freefem:`reftet=` sets the label of tetrahedra.
-
--  :freefem:`label=` is a vector of integers that contains the old labels number at index :math:`2i` and the new labels number at index :math:`2i+1` of Triangles.
-    This parameter is initialized as a label for the keyword :ref:`change <meshGenerationChangeLabel>`.
-
--  :freefem:`switch=` A string expression.
-    This string corresponds to the command line switch of TetGen see Section 3.2 of [HANG2006]_.
-
--  :freefem:`nbofholes=` Number of holes (default value: "size of :freefem:`holelist` / 3").
-
--  :freefem:`holelist=` This array corresponds to :freefem:`holelist` of TetGenio data structure [HANG2006]_.
-    A real vector of size :freefem:`3 * nbofholes`.
-    In TetGen, each hole is associated with a point inside this domain.
-    This vector is :math:`x_{1}^{h}, y_{1}^{h}, z_{1}^{h}, x_{2}^{h}, y_{2}^{h}, z_{2}^{h}, \cdots,` where :math:`x_{i}^{h},y_{i}^{h},z_{i}^{h}` is the associated point with the :math:`i^{\mathrm{th}}` hole.
-
--  :freefem:`nbofregions=` Number of regions (default value: "size of :freefem:`regionlist` / 5").
-
--  :freefem:`regionlist=` This array corresponds to :freefem:`regionlist` of TetGenio data structure [HANG2006]_.
-
-   The attribute and the volume constraint of region are given in this real vector of size :freefem:`5 * nbofregions`.
-   The :math:`i^{\mathrm{th}}` region is described by five elements: :math:`x-`\ coordinate, :math:`y-`\ coordinate and :math:`z-`\ coordinate of a point inside this domain (:math:`x_{i},y_{i},z_{i}`); the attribute (:math:`at_{i}`) and the maximum volume for tetrahedra (:math:`mvol_{i}`) for this region.
-
-   The :freefem:`regionlist` vector is: :math:`x_{1}, y_{1}, z_{1}, at_{1}, mvol_{1}, x_{2}, y_{2}, z_{2}, at_{2}, mvol_{2}, \cdots`.
-
--  :freefem:`nboffacetcl=` Number of facets constraints "size of :freefem:`facetcl` / 2").
-
--  :freefem:`facetcl=` This array corresponds to :freefem:`facetconstraintlist` of TetGenio data structure [HANG2006]_.
-
-   The :math:`i^{th}` facet constraint is defined by the facet marker :math:`Ref_{i}^{fc}` and the maximum area for faces :math:`marea_{i}^{fc}`.
-   The :freefem:`facetcl` array is: :math:`Ref_{1}^{fc}, marea_{1}^{fc}, Ref_{2}^{fc}, marea_{2}^{fc}, \cdots`.
-
-   This parameters has no effect if switch :freefem:`q` is not selected.
-
-Principal switch parameters in TetGen:
-
--  :freefem:`p` Tetrahedralization of boundary.
-
--  :freefem:`q` Quality mesh generation.
-    The bound of Radius-Edge Ratio will be given after the option :freefem:`q`.
-    By default, this value is 2.0.
-
--  :freefem:`a` Constructs with the volume constraints on tetrahedra.
-    These volumes constraints are defined with the bound of the previous switch :freefem:`q` or in the parameter :freefem:`regionlist`.
-
--  :freefem:`A` Attributes reference to region given in the :freefem:`regionlist`.
-    The other regions have label 0.
-
-   The option ``AA`` gives a different label at each region.
-   This switch works with the option :freefem:`p`.
-   If option :freefem`r` is used, this switch has no effect.
-
--  :freefem:`r` Reconstructs and Refines a previously generated mesh.
-    This character is only used with the command line :freefem:`tetgreconstruction`.
-
--  :freefem:`Y` This switch preserves the mesh on the exterior boundary.
-
-   This switch must be used to ensure a conformal mesh between two adjacent meshes.
-
--  :freefem:`YY` This switch preserves the mesh on the exterior and interior boundary.
-
--  :freefem:`C` The consistency of the result’s mesh is testing by TetGen.
-
--  :freefem:`CC` The consistency of the result’s mesh is testing by TetGen and also constrained checks of Delaunay mesh (if :freefem:`p` switch is selected) or the consistency of Conformal Delaunay (if :freefem:`q` switch is selected).
-
--  :freefem:`V` Give information of the work of TetGen.
-    More information can be obtained in specified :freefem:`VV` or :freefem:`VVV`.
-
--  :freefem:`Q` Quiet: No terminal output except errors
-
--  :freefem:`M` The coplanar facets are not merging.
-
--  :freefem:`T` Sets a tolerance for coplanar test.
-    The default value is :math:`1e-8`.
-
--  :freefem:`d` Intersections of facets are detected.
-
-To obtain a tetrahedral mesh with TetGen, we need the surface mesh of a three dimensional domain.
-We now give the command line in **FreeFEM** to construct these meshes.
-
-**keyword: movemesh23**
-
+the command *movemesh23*
+''''''''''''''''''''''''
 A simple method to construct a surface is to place a two dimensional domain in a three dimensional space. Plan a 2D mesh in the (x,y,z)-space to create a surface mesh 3D, **meshS**.
 
 .. warning::
@@ -2449,7 +2474,311 @@ An example to obtain a three dimensional mesh using the command line :freefem:`t
    meshS Thmv2 = movemesh(Thfinal, transfo=[mv2x, mv2y, mv2z], facemerge=0);
    plot(Thmv2, cmm="Thmv2");
 
-The command :freefem:`movemesh3` is described in the following section.
+
+
+.. _meshStype:
+
+**The type meshS in 3 dimension**
+---------------------------------
+
+Commands for 3d surface mesh Generation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+the command *square3*
+'''''''''''''''''''''
+The function :freefem:`square3` like the function :freefem:`square` in 2d is the simple way to a build the unit square plan in the space :math:`\mathbb{R^3}`. 
+To use this command, it is necessary to load the pluging :freefem:`msh3` (need :freefem:`load "msh3"`).
+A square in 3d consists in building a 2d square which is projected from :math:`\mathbb{R^2}` to :math:`\mathbb{R^3}`.
+The parameters of this command line are:
+ 
+ - n,m  generates a n×m grid in the unit square
+ - :freefem:`.,.,.]` is  [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ] is the geometric transformation from :math:`\mathbb{R^2}` to :math:`\mathbb{R^3}`. By default, [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ] = [x,y,0]
+ - :freefem:`orientation=` 
+   equal 1, give the oientation of the triangulation, elements must be in the reference orientation (counter clock wise)
+   equal -1 reverse the orientation of the triangles
+
+.. code-block:: freefem
+   :linenos:
+    
+	int n=10
+    meshS Th1 = square3(n,n,[2*x,y,1],orientation=-1);
+
+
+The following code generates a :math:`3\times 4 \times 5` grid in the unit cube :math:`[0, 1]^3` with a clock wise triangulation.
+
+
+
+
+*composition of 2D mesh generator with movemesh23*
+'''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+.. code-block:: freefem
+   :linenos:
+	
+	load "msh3"
+	real l = 3;
+	border a(t=-l,l){x=t; y=-l;label=1;};
+	border b(t=-l,l){x=l; y=t;label=1;};
+	border c(t=l,-l){x=t; y=l;label=1;};
+	border d(t=l,-l){x=-l; y=t;label=1;};
+	int n = 100;
+	border i(t=0,2*pi){x=1.1*cos(t);y=1.1*sin(t);label=5;};
+	mesh th= buildmesh(a(n)+b(n)+c(n)+d(n)+i(-n));
+	meshS Th= movemesh23(th,transfo=[x,y,cos(x)^2+sin(y)^2]);
+
+
+Read/Write Statements
+^^^^^^^^^^^^^^^^^^^^^
+
+the command *readmeshS*
+'''''''''''''''''''''''
+
+the command *savemesh*
+''''''''''''''''''''''
+
+The function :freefem:`savemesh` allows to 
+
+savemesh(Th, filename, [u,v,w], ....)
+
+
+
+
+
+
+the command *vtkloadS*
+''''''''''''''''''''''
+
+the command *savevtk*
+'''''''''''''''''''''
+
+the command *gmshloadS*
+'''''''''''''''''''''''
+
+the command *savegmsh*
+''''''''''''''''''''''
+
+
+
+Remeshing
+^^^^^^^^^
+
+the command *trunc*
+'''''''''''''''''''
+
+the command *movemeshS* - movemesh
+''''''''''''''''''''''''''''''''''
+
+meshS Th1 = square3(n,n,[2*x,y,1],orientation=-1);
+meshS Th2=movemeshS(Th1, transfo=[x,y,z]);
+meshS Th2=movemesh(Th1, [x,y,z]);
+
+
+Link with a mesh3
+^^^^^^^^^^^^^^^^^
+
+In topology and mathematics, the boundary of a subset S of a topological space X is the set of points which can be approached both from S and from the outside of S.
+The general definitions to the boundary of a subset S of a topological space X are:
+ 
+ - the closure of S without the interior of S: :math:` \partial S = S  \backslash \mathring S`.
+ - the intersection of the closure of S with the closure of its complement :math:`\partial S = S  \cap (X  \backslash S)`.
+ -  the set of points p of X such that every neighborhood of p contains at least one point of S and at least one point not of S.
+ 
+More concretely in FreeFEM, the gestion of a 3D mesh is as follows. Let be :math:`\Omega` a subset of :math:`\mathbb{R}^3` and :math:`\partial \Omega` is boundary, the finite element discretization :math:`\Omega_h` of this domain gives:
+ 
+ - a mesh3 type, denotes Th3, meshing the volume domain. It contains all the nodes, the tetrahedrons $\Omega_i$ such as  :math:`\Omega_h = \cup_i \Omega_i` and the list of triangles describing the boundary domain
+ - a meshS type, denotes ThS, meshing the boundary of the volume domain. Typically, containing the nodes belonging to the boundary of Th3 and, if it exists the boundary triangles and the edges.
+
+
+Remark: Condition of meshS existence 
+| In FreeFEM, a meshS can be defined in 2 cases such as: 
+ 
+ - Th3 :math:`\subset` ThS where it exactly describes the bounder of Th3. 
+ - a mehS is an explicite surface mesh given by a list of vertices, triangle finite elements and boundary edge elements (can be optional follows the geometry domain)
+
+
+
+the command *Gamma*
+'''''''''''''''''''
+The command :freefem:`Gamma` allows to build and manipulate the border mesh independly of a volume mesh such as the surface is describeb by triangle elements and edges border elements in 3d.
+
+.. code-block:: freefem
+   :linenos:
+   
+    load "msh3"
+    int n= 10;
+    int nvb = (n+1)^3 - (n-1)^3;// Nb boundary vertices
+    int ntb = n*n*12; // Nb of Boundary triangle 
+    mesh3 Th=cube(n,n,n);
+    Th = buildSurface(Th); // build the surface mesh
+    // build Th1, the surface of Th, defined by triangles elements and edges border elements list
+    meshS Th1 = Th.Gamma;
+
+
+the command *buildSurface*
+''''''''''''''''''''''''''
+Let Th3 a volume mesh (mesh3 type) ; such as the geometry description is a list of vertices, tetrahedra elements and triangle border elements. Remember that the mesh3 type can now contains 
+
+
+the command *savesurfacemesh*
+'''''''''''''''''''''''''''''
+
+The command :freefem:`savesurfacemesh` allows to 
+
+--> mesh3 and meshS=NULL
+
+savesurfmesh(Th,filename_mesh)
+write in the file the vertices list and the triangle list (face of the volum mesh) according to a numbering in local surface  
+
+savesurfmesh(Th,filename_points,filename_faces)
+The operation does the same thing that the first exept to 
+
+
+the command *extract*
+'''''''''''''''''''''
+
+
+.. code-block:: freefem
+   :linenos:
+   
+   int nn = 30; // Mesh quality
+   // Mesh
+   int[int] labs = [1, 2, 2, 1, 1, 2]; // Label numbering
+   mesh3 Th = cube(nn, nn, nn, label=labs);
+   // extract the surface (boundary) of the cube
+   int[int] llabs = [1, 2]; //  Th = buildSurface(Th); 
+   meshS ThS = extract(Th,label=llabs);
+
+
+
+Glue of meshS meshes
+''''''''''''''''''''
+
+
+.. code-block:: freefem
+   :linenos:
+	
+    meshS Th1 = square3(n,n,[2*x,y,1],orientation=-1);
+	meshS Th2 = square3(n,n,[2*x,y,0],orientation=1);
+	meshS Th11 = square3(n,n,[2*x,1,y],orientation=1);
+	meshS Th22 = square3(n,n,[2*x,0,y],orientation=-1);
+	meshS Th5 = square3(n,n,[1,y,x]);
+	meshS Th6 = square3(n,n,[2,y,x],orientation=1);
+	meshS Th = Th1+Th2+Th11+Th22+Th5+Th6;
+	assert(Th.nbnomanifold==40);
+
+
+
+
+
+
+
+TetGen: A tetrahedral mesh generator
+------------------------------------
+
+
+TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Applied Analysis and Stochastics in Berlin, Germany [HANG2006]_.
+TetGen is free for research and non-commercial use.
+For any commercial license utilization, a commercial license is available upon request to Hang Si.
+
+This software is a tetrahedral mesh generator of a three dimensional domain defined by its boundary (a surface).
+The input domain takes into account a polyhedral or a piecewise linear complex.
+This tetrahedralization is a constrained Delaunay tetrahedralization.
+
+The method used in TetGen to control the quality of the mesh is a Delaunay refinement due to Shewchuk [SHEWCHUK1998]_.
+The quality measure of this algorithm is the Radius-Edge Ratio (see Section 1.3.1 [HANG2006]_ for more details).
+A theoretical bound of this ratio of the Shewchuk algorithm is obtained for a given complex of vertices, constrained segments and facets of surface mesh, with no input angle less than 90 degrees.
+This theoretical bound is 2.0.
+
+
+The launch of TetGen is done with the keyword :freefem:`tetg`.
+The parameters of this command line is:
+
+-  :freefem:`reftet=` sets the label of tetrahedra.
+
+-  :freefem:`label=` is a vector of integers that contains the old labels number at index :math:`2i` and the new labels number at index :math:`2i+1` of Triangles.
+    This parameter is initialized as a label for the keyword :ref:`change <meshGenerationChangeLabel>`.
+
+-  :freefem:`switch=` A string expression.
+    This string corresponds to the command line switch of TetGen see Section 3.2 of [HANG2006]_.
+
+-  :freefem:`nbofholes=` Number of holes (default value: "size of :freefem:`holelist` / 3").
+
+-  :freefem:`holelist=` This array corresponds to :freefem:`holelist` of TetGenio data structure [HANG2006]_.
+    A real vector of size :freefem:`3 * nbofholes`.
+    In TetGen, each hole is associated with a point inside this domain.
+    This vector is :math:`x_{1}^{h}, y_{1}^{h}, z_{1}^{h}, x_{2}^{h}, y_{2}^{h}, z_{2}^{h}, \cdots,` where :math:`x_{i}^{h},y_{i}^{h},z_{i}^{h}` is the associated point with the :math:`i^{\mathrm{th}}` hole.
+
+-  :freefem:`nbofregions=` Number of regions (default value: "size of :freefem:`regionlist` / 5").
+
+-  :freefem:`regionlist=` This array corresponds to :freefem:`regionlist` of TetGenio data structure [HANG2006]_.
+
+   The attribute and the volume constraint of region are given in this real vector of size :freefem:`5 * nbofregions`.
+   The :math:`i^{\mathrm{th}}` region is described by five elements: :math:`x-`\ coordinate, :math:`y-`\ coordinate and :math:`z-`\ coordinate of a point inside this domain (:math:`x_{i},y_{i},z_{i}`); the attribute (:math:`at_{i}`) and the maximum volume for tetrahedra (:math:`mvol_{i}`) for this region.
+
+   The :freefem:`regionlist` vector is: :math:`x_{1}, y_{1}, z_{1}, at_{1}, mvol_{1}, x_{2}, y_{2}, z_{2}, at_{2}, mvol_{2}, \cdots`.
+
+-  :freefem:`nboffacetcl=` Number of facets constraints "size of :freefem:`facetcl` / 2").
+
+-  :freefem:`facetcl=` This array corresponds to :freefem:`facetconstraintlist` of TetGenio data structure [HANG2006]_.
+
+   The :math:`i^{th}` facet constraint is defined by the facet marker :math:`Ref_{i}^{fc}` and the maximum area for faces :math:`marea_{i}^{fc}`.
+   The :freefem:`facetcl` array is: :math:`Ref_{1}^{fc}, marea_{1}^{fc}, Ref_{2}^{fc}, marea_{2}^{fc}, \cdots`.
+
+   This parameters has no effect if switch :freefem:`q` is not selected.
+
+Principal switch parameters in TetGen:
+
+-  :freefem:`p` Tetrahedralization of boundary.
+
+-  :freefem:`q` Quality mesh generation.
+    The bound of Radius-Edge Ratio will be given after the option :freefem:`q`.
+    By default, this value is 2.0.
+
+-  :freefem:`a` Constructs with the volume constraints on tetrahedra.
+    These volumes constraints are defined with the bound of the previous switch :freefem:`q` or in the parameter :freefem:`regionlist`.
+
+-  :freefem:`A` Attributes reference to region given in the :freefem:`regionlist`.
+    The other regions have label 0.
+
+   The option ``AA`` gives a different label at each region.
+   This switch works with the option :freefem:`p`.
+   If option :freefem`r` is used, this switch has no effect.
+
+-  :freefem:`r` Reconstructs and Refines a previously generated mesh.
+    This character is only used with the command line :freefem:`tetgreconstruction`.
+
+-  :freefem:`Y` This switch preserves the mesh on the exterior boundary.
+
+   This switch must be used to ensure a conformal mesh between two adjacent meshes.
+
+-  :freefem:`YY` This switch preserves the mesh on the exterior and interior boundary.
+
+-  :freefem:`C` The consistency of the result’s mesh is testing by TetGen.
+
+-  :freefem:`CC` The consistency of the result’s mesh is testing by TetGen and also constrained checks of Delaunay mesh (if :freefem:`p` switch is selected) or the consistency of Conformal Delaunay (if :freefem:`q` switch is selected).
+
+-  :freefem:`V` Give information of the work of TetGen.
+    More information can be obtained in specified :freefem:`VV` or :freefem:`VVV`.
+
+-  :freefem:`Q` Quiet: No terminal output except errors
+
+-  :freefem:`M` The coplanar facets are not merging.
+
+-  :freefem:`T` Sets a tolerance for coplanar test.
+    The default value is :math:`1e-8`.
+
+-  :freefem:`d` Intersections of facets are detected.
+
+To obtain a tetrahedral mesh with TetGen, we need the surface mesh of a three dimensional domain.
+We now give the command line in **FreeFEM** to construct these meshes.
+
+
+
+
+
+
+
+
 
 **The keyword tetgtransfo**
 
@@ -2502,8 +2831,16 @@ The parameters of this command line are :
 In the string :freefem:`switch`, we can’t used the option :freefem:`p` and :freefem:`q` of TetGen.
 
 
+
+
+
+
+
+
+
+
 Reconstruct/Refine a three dimensional mesh with TetGen
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------------------------------
 
 Meshes in three dimension can be refined using TetGen with the command line :freefem:`tetgreconstruction`.
 
@@ -2594,44 +2931,20 @@ This parameter and :freefem:`nbofregions` can’t be used with the parameter :fr
    plot(Th3sphrefine2);
    
 
-Moving mesh in three dimensions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Meshes in three dimensions can be translated, rotated, and deformed using the command line :freefem:`movemesh` as in the 2D case (see :ref:`section movemesh <meshGenerationMoveMesh>`).
-If :math:`\Omega` is tetrahedrized as :math:`T_{h}(\Omega)`, and :math:`\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))` is a displacement vector then :math:`\Phi(T_{h})` is obtained by:
 
-.. code-block:: freefem
-   :linenos:
 
-   mesh3 Th = movemesh(Th, [Phi1, Phi2, Phi3], ...);
 
-The parameters of movemesh in three dimensions are:
 
--  :freefem:`region=` sets the integer labels of the tetrahedra.
-    0 by default.
 
--  :freefem:`label=` sets the labels of the border faces.
-    This parameter is initialized as the label for the keyword :ref:`change <meshGenerationChangeLabel>`.
 
--  :freefem:`facemerge=` An integer expression.
-    When you transform a mesh, some faces can be merged.
-    This parameter equals to one if the merges’ faces is considered.
-    Otherwise it equals to zero.
-    By default, this parameter is equal to 1.
 
--  :freefem:`ptmerge =` A real expression.
-    When you transform a mesh, some points can be merged.
-    This parameter is the criteria to define two merging points.
-    By default, we use
 
-    .. math::
-        ptmerge \: = \: 1e-7 \: \:Vol( B ),
 
-   where :math:`B` is the smallest axis parallel boxes containing the discretion domain of :math:`\Omega` and :math:`Vol(B)` is the volume of this box.
 
--  :freefem:`orientation =` An integer expression (1 by default), to reverse or not to reverse the orientation of the tetrahedra if it is not positive.
 
-An example of this command can be found in the :ref:`Poisson’s equation 3D example <examplePoissonEquation3D>`.
+
+
 
 
 .. _meshing-examples-1:
@@ -2737,7 +3050,7 @@ Meshing examples
         medit("Sphere with a hole", Th3finhole);
 
 Build a 3d mesh of a cube with a balloon
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------
 
 .. code-block:: freefem
    :linenos:
@@ -2858,6 +3171,19 @@ The test of the two functions and the call to :freefem:`TetGen` mesh generator:
    :label: CubeSphere
 
    Cube sphere
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 Medit
 -----

@@ -47,28 +47,6 @@ The characteristics of **FreeFEM** are:
 -  Many examples and tutorials: elliptic, parabolic and hyperbolic problems, Navier-Stokes flows, elasticity, fluid structure interactions, Schwarz’s domain decomposition method, eigenvalue problem, residual error indicator, …
 -  A parallel version using MPI
 
-.. rst-class:: fake-title
-
-   History
-
-The project has evolved from MacFem, PCfem, written in Pascal.
-The first C version lead to ``freefem 3.4``; it offered mesh adaptivity on a single mesh only.
-
-A thorough rewriting in ``C++`` led to ``freefem+`` (``freefem+`` 1.2.10 was its last release), which included interpolation over multiple meshes (functions defined on one mesh can be used on any other mesh); this software is no longer maintained but is still in use because it handles a problem description using the strong form of the PDEs.
-Implementing the interpolation from one unstructured mesh to another was not easy because it had to be fast and non-diffusive; for each point, one had to find the containing triangle.
-This is one of the basic problems of computational geometry (see [PREPARATA1985]_ for example).
-Doing it in a minimum number of operations was the challenge.
-Our implementation is :math:`\mathcal{O}(n log n)` and based on a quadtree.
-This version also grew out of hand because of the evolution of the template syntax in ``C++``.
-
-We have been working for a few years now on **FreeFEM** , entirely re-written again in ``C++`` with a thorough usage of template and generic programming for coupled systems of unknown size at compile time.
-Like all versions of ``freefem``, it has a high level user friendly input language which is not too far from the mathematical writing of the problems.
-
-The ``freefem`` language allows for a quick specification of any partial differential system of equations.
-The language syntax of **FreeFEM** is the result of a new design which makes use of the STL [STROUSTRUP2000]_, templates, and bison for its implementation; more details can be found in [HECHT2002]_.
-The outcome is a versatile software in which any new finite elements can be included in a few hours; but a recompilation is then necessary.
-Therefore the library of finite elements available in **FreeFEM** will grow with the version number and with the number of users who program more new elements.
-So far we have discontinuous :math:`P_0` elements,linear :math:`P_1` and quadratic :math:`P_2` Lagrangian elements, discontinuous :math:`P_1` and Raviart-Thomas elements and a few others like bubble elements.
 
 .. toctree::
 

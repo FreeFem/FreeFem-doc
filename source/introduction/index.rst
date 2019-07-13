@@ -97,14 +97,12 @@ Problems involving partial differential equations from several branches of physi
 
 
 
-
-
 .. toctree::
-
-   citation
-   history
+   
    new-features
-   download
    installation
+   download
+   history
+   citation
    authors
    contributing

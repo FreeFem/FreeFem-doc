@@ -466,6 +466,7 @@ The functions :math:`U_{h}, V_{h}` have three components, so we have:
 
     The full example is in :ref:`examples <examplePeriodic3D>`.
 
+
 Lagrangian Finite Elements
 --------------------------
 
@@ -616,6 +617,28 @@ See :ref:`finiteElementProjP2` for the projection of :math:`f(x,y)=\sin(\pi x)\c
    :label: FiniteElement
 
    Finite elements :freefem:`P1, P2`
+   
+   
+
+.. _surfacePkLagrange:  
+   
+Surface Lagrangian Finite Elements   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 P1 Nonconforming Element
 ------------------------
@@ -696,6 +719,7 @@ See :numref:`finiteElementProjP1nc` for the projection of :math:`f(x,y)=\sin(\pi
    :label: FiniteElement
 
    Finite elements :freefem:`P1nc, P1b`
+   
 
 Other FE-space
 --------------
