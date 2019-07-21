@@ -11,11 +11,11 @@ In this section, operators and tools on meshes are presented.
 
 FreeFEM type for mesh variable:
 
- - 2d mesh: **mesh**
- - 3d mesh: **mesh3**
- - 3d surface mesh: **meshS**
+ - 2d mesh: :freefem:`mesh`
+ - 3d mesh: :freefem:`mesh3`
+ - 3d surface :freefem:`meshS`
 
-Through this presentation, the principal commands for the generation mesh and link between mesh-mesh3 -meshS are described.
+Through this presentation, the principal commands for the mesh generation and links between :freefem:`mesh` - :freefem:`mesh3` - :freefem:`meshS`  are described.
 
 
 .. _mesh2d:
@@ -26,12 +26,12 @@ Through this presentation, the principal commands for the generation mesh and li
 Commands for 2d mesh Generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The **FreeFEM** type to define a 2d mesh object is *mesh*.
+The **FreeFEM** type to define a 2d mesh object is :freefem:`mesh`.
 
 .. _meshSquare:
 
-*Square*
-''''''''
+the command *square*
+''''''''''''''''''''
 
 The command :freefem:`square` triangulates the unit square.
 
@@ -94,8 +94,10 @@ To construct a :math:`n\times m` grid in the rectangle :math:`[x_0,x_1]\times [y
 
 .. _meshBorder:
 
-the command *border*
-''''''''''''''''''''
+the command *buildmesh*
+'''''''''''''''''''''''
+
+*mesh building with :freefem:`border`*
 
 Boundaries are defined piecewise by parametrized curves. The pieces can only intersect at their endpoints, but it is possible to join more than two endpoints. This can be used to structure the mesh if an area touches a border and create new regions by dividing larger ones:
 
@@ -235,8 +237,8 @@ The following example shows how to change the orientation. The example generates
     mesh Thwithhole = buildmesh(a(50) + b(-30)); // bug (a trap) because
         // the two circles have the same radius = :math:`0.3`
 
-*Multi-Border*
-''''''''''''''
+*mesh building with array of :freefem:`border`*
+
 
 Sometimes it can be useful to make an array of the border, but unfortunately it is incompatible with the **FreeFEM** syntax. To bypass this problem, if the number of segments of the discretization :math:`n` is an array, we make an implicit loop on all of the values of the array, and the index variable :math:`i` of the loop is defined after the parameter definition, like in :freefem:`border a(t=0, 2*pi; i)` ...
 
@@ -282,191 +284,6 @@ And a more complex example to define a square with small circles:
    plot(bb(nn), cc(NC), wait=1);
    mesh th = buildmesh(bb(nn) + cc(NC));
    plot(th, wait=1);
-
-.. _meshDataStructureReadWrite:
-
-
-
-
-Data Structures and Read/Write Statements for a Mesh
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Users who want to read a triangulation made elsewhere should see the structure of the file generated below:
-
-.. code-block:: freefem
-   :linenos:
-
-   border C(t=0, 2*pi){x=cos(t); y=sin(t);}
-   mesh Th = buildmesh(C(10));
-   savemesh(Th, "mesh.msh");
-
-The mesh is shown on :numref:`figBuildMesh`.
-
-The information about :freefem:`Th` are saved in the file :freefem:`mesh.msh` whose structure is shown on :numref:`tabMeshStructure`.
-
-There, :math:`n_v` denotes the number of vertices, :math:`n_t` the number of triangles and :math:`n_s` the number of edges on boundary.
-
-For each vertex :math:`q^i,\, i=1,\cdots,n_v`, denoted by :math:`(q^i_x,q^i_y)` the :math:`x`-coordinate and :math:`y`-coordinate.
-
-Each triangle :math:`T_k, k=1,\cdots,n_t` has three vertices :math:`q^{k_1},\, q^{k_2},\,q^{k_3}` that are oriented counter-clockwise.
-
-The boundary consists of 10 lines :math:`L_i,\, i=1,\cdots,10` whose end points are :math:`q^{i_1},\, q^{i_2}`.
-
-.. figure:: images/MeshGeneration_Data.png
-  :name: figBuildMesh
-  :width: 50%
-
-  Mesh by :freefem:`buildmesh(C(10))`
-
-In the :numref:`figBuildMesh`, we have the following.
-
-:math:`n_v=14, n_t=16, n_s=10`
-
-:math:`q^1=(-0.309016994375, 0.951056516295)`
-
-:math:`\dots`
-
-:math:`q^{14}=(-0.309016994375, -0.951056516295)`
-
-The vertices of :math:`T_1` are :math:`q^9, q^{12},\, q^{10}`.
-
-:math:`\dots`
-
-The vertices of :math:`T_{16}` are :math:`q^9, q^{10}, q^{6}`.
-
-The edge of the 1st side :math:`L_1` are :math:`q^6, q^5`.
-
-:math:`\dots`
-
-The edge of the 10th side :math:`L_{10}` are :math:`q^{10}, q^6`.
-
-.. table:: The structure of :freefem:`mesh_sample.msh`
-    :name: tabMeshStructure
-
-    +-----------------------------------+---------------------------------------------------------------+
-    | Content of the file               | Explanation                                                   |
-    +===================================+===============================================================+
-    | 14 16 10                          | :math:`n_v\quad n_t\quad n_e`                                 |
-    +-----------------------------------+---------------------------------------------------------------+
-    | -0.309016994375 0.951056516295 1  | :math:`q^1_x\quad q^1_y\quad` boundary label :math:`=1`       |
-    |                                   |                                                               |
-    | 0.309016994375 0.951056516295 1   | :math:`q^2_x\quad q^2_y\quad` boundary label :math:`=1`       |
-    |                                   |                                                               |
-    | ...                               | ...                                                           |
-    |                                   |                                                               |
-    | -0.309016994375 -0.951056516295 1 | :math:`q^{14}_x\quad q^{14}_y\quad` boundary label :math:`=1` |
-    +-----------------------------------+---------------------------------------------------------------+
-    | 9 12 10 0                         | :math:`1_1\quad 1_2\quad 1_3\quad` region label :math:`=0`    |
-    |                                   |                                                               |
-    | 5 9 6 0                           | :math:`2_1\quad 2_2\quad 2_3\quad` region label :math:`=0`    |
-    |                                   |                                                               |
-    | ...                               | ...                                                           |
-    |                                   |                                                               |
-    | 9 10 6 0                          | :math:`16_1\quad 16_2\quad 16_3\quad` region label :math:`=0` |
-    +-----------------------------------+---------------------------------------------------------------+
-    | 6 5 1                             | :math:`1_1\quad 1_2\quad` boundary label :math:`=1`           |
-    |                                   |                                                               |
-    | 5 2 1                             | :math:`2_1\quad 2_2\quad` boundary label :math:`=1`           |
-    |                                   |                                                               |
-    | ...                               | ...                                                           |
-    |                                   |                                                               |
-    | 10 6 1                            | :math:`10_1\quad 10_2\quad` boundary label :math:`=1`         |
-    +-----------------------------------+---------------------------------------------------------------+
-
-In **FreeFEM** there are many mesh file formats available for communication with other tools such as ``emc2``, ``modulef``, … (see :ref:`Mesh format chapter <meshFileDataStructure>` ).
-
-The extension of a file implies its format.
-More details can be found on the file format .msh in the article by F. Hecht "bamg : a bidimensional anisotropic mesh generator" [HECHT1998_2]_.
-
-A mesh file can be read into **FreeFEM** except that the names of the borders are lost and only their reference numbers are kept.
-So these borders have to be referenced by the number which corresponds to their order of appearance in the program, unless this number is overwritten by the keyword :freefem:`label`. Here are some examples:
-
-.. code-block:: freefem
-  :linenos:
-
-  border floor(t=0, 1){x=t; y=0; label=1;}
-  border right(t=0, 1){x=1; y=t; label=5;}
-  border ceiling(t=1, 0){x=t; y=1; label=5;}
-  border left(t=1, 0){x=0; y=t; label=5;}
-
-  int n = 10;
-  mesh th = buildmesh(floor(n) + right(n) + ceiling(n) + left(n));
-  savemesh(th, "toto.am_fmt"); //"formatted Marrocco" format
-  savemesh(th, "toto.Th"); //"bamg"-type mesh
-  savemesh(th, "toto.msh"); //freefem format
-  savemesh(th, "toto.nopo"); //modulef format
-  mesh th2 = readmesh("toto.msh"); //read the mesh
-
-.. code-block:: freefem
-  :linenos:
-
-  // Parameters
-  int n = 10;
-
-  // Mesh
-  border floor(t=0, 1){x=t; y=0; label=1;};
-  border right(t=0, 1){x=1; y=t; label=5;};
-  border ceiling(t=1, 0){x=t; y=1; label=5;};
-  border left(t=1, 0){x=0; y=t; label=5;};
-
-  mesh th = buildmesh(floor(n) + right(n) + ceiling(n) + left(n));
-
-  //save mesh in different formats
-  savemesh(th, "toto.am_fmt"); // format "formated Marrocco"
-  savemesh(th, "toto.Th"); // format database db mesh "bamg"
-  savemesh(th, "toto.msh"); // format freefem
-  savemesh(th, "toto.nopo"); // modulef format
-
-  // Fespace
-  fespace femp1(th, P1);
-  femp1 f = sin(x)*cos(y);
-  femp1 g;
-
-  //save the fespace function in a file
-  {
-    ofstream file("f.txt");
-    file << f[] << endl;
-  } //the file is automatically closed at the end of the block
-  //read a file and put it in a fespace function
-  {
-    ifstream file("f.txt");
-    file >> g[] ;
-  }//the file is equally automatically closed
-
-  // Plot
-  plot(g);
-
-  // Mesh 2
-  //read the mesh for freefem format saved mesh
-  mesh th2 = readmesh("toto.msh");
-
-  // Fespace 2
-  fespace Vh2(th2, P1);
-  Vh2 u, v;
-
-  // Problem
-  //solve:
-  //  $u + \Delta u = g$ in $\Omega $
-  //  $u=0$ on $\Gamma_1$
-  //  $\frac{\partial u }{\partial n} = g$ on $\Gamma_2$
-  solve Problem(u, v)
-    = int2d(th2)(
-        u*v
-      - dx(u)*dx(v)
-      - dy(u)*dy(v)
-    )
-    + int2d(th2)(
-      - g*v
-    )
-    + int1d(th2, 5)(
-        g*v
-    )
-    + on(1, u=0)
-    ;
-
-  // Plot
-  plot(th2, u);
-
 
 
 Mesh Connectivity and data
@@ -825,8 +642,8 @@ One new way to build a mesh is to have two arrays: one for the :math:`x` values 
 
 
 
-Boundary FEM Spaces Built as Empty Meshes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2d Finite Element space on a boundary
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To define a Finite Element space on a boundary, we came up with the idea of a mesh with no internal points (called empty mesh).
 It can be useful to handle Lagrange multipliers in mixed and mortar methods.
@@ -889,6 +706,7 @@ It is also possible to build an empty mesh of a pseudo subregion with :freefem:`
    :label: EmptyMesh
 
    Empty mesh
+
 
 Remeshing
 ^^^^^^^^^
@@ -1024,8 +842,10 @@ Now, we give an example of moving a mesh with a Lagrangian function :math:`u` de
 
 .. _meshRegularTriangulation:
 
-*Regular Triangulation: hTriangle*
-''''''''''''''''''''''''''''''''''
+the command *hTriangle*
+'''''''''''''''''''''''
+
+This section presents the way to obtain a regular triangulation with **FreeFEM**.
 
 For a set :math:`S`, we define the diameter of :math:`S` by
 
@@ -1051,8 +871,8 @@ We put :math:`h(\mathcal{T}_h)=\max\{\textrm{diam}(T_k)|\; T_k\in \mathcal{T}_h\
    Ph h = hTriangle;
    cout << "size of mesh = " << h[].max << endl;
 
-the command *daptmesh*
-''''''''''''''''''''''
+the command *adaptmesh*
+'''''''''''''''''''''''
 
 The function:
 
@@ -1346,8 +1166,8 @@ To build a mesh with a constant mesh size equal to :math:`\frac{1}{30}` try:
 
    Mesh adaptation
 
-the command trunc*
-''''''''''''''''''
+the command *trunc*
+'''''''''''''''''''
 
 Two operators have been introduced to remove triangles from a mesh or to divide them.
 Operator :freefem:`trunc` has two parameters:
@@ -1409,6 +1229,58 @@ The following example construct all "trunced" meshes to the support of the basic
    :label: Trunc
 
    Trunc
+
+
+
+the command *change*
+''''''''''''''''''''
+
+This command changes the label of elements and border elements of a mesh.
+
+
+Changing the label of elements and border elements will be done using the keyword :freefem:`change`.
+The parameters for this command line are for two dimensional and three dimensional cases:
+
+-  :freefem:`refe=` is an array of integers to change the references on edges
+-  :freefem:`reft=` is an array of integers to change the references on triangles
+-  :freefem:`label=` is an array of integers to change the 4 default label numbers
+-  :freefem:`region=` is an array of integers to change the default region numbers
+-  :freefem:`renumv=` is an array of integers, which explicitly gives the new numbering of vertices in the new mesh. By default, this numbering is that of the original mesh
+-  :freefem:`renumt=` is an array of integers, which explicitly gives the new numbering of elements in the new mesh, according the new vertices numbering given by :freefem:`renumv=`. By default, this numbering is that of the original mesh
+-  :freefem:`flabel=` is an integer function given the new value of the label
+-  :freefem:`fregion=` is an integer function given the new value of the region
+-  :freefem:`rmledges=` is an integer to remove edges in the new mesh, following a label
+-  :freefem:`rmInternalEdges=` is a boolean, if equal to true to remove the internal edges. By default, the internal edges are stored
+
+These vectors are composed of :math:`n_{l}` successive pairs of numbers :math:`O,N` where :math:`n_{l}` is the number (label or region) that we want to change.
+For example, we have :
+
+.. math::
+    \mathtt{label} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ] \\
+    \mathtt{region} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ]
+    :label: eq.org.vector.change.label
+
+An application example is given here:
+
+.. code-block:: freefem
+   :linenos:
+
+   // Mesh
+   mesh Th1 = square(10, 10);
+   mesh Th2 = square(20, 10, [x+1, y]);
+
+   int[int] r1=[2,0];
+   plot(Th1, wait=true);
+   
+   Th1 = change(Th1, label=r1); //change the label of Edges 2 in 0.
+   plot(Th1, wait=true);
+   
+   // boundary label: 1 -> 1 bottom, 2 -> 1 right, 3->1 top, 4->1 left boundary label is 1
+   int[int] re=[1,1, 2,1, 3,1, 4,1]
+   Th2=change(Th2,refe=re); 
+   plot(Th2,wait=1) ;
+
+
 
 the command *splitmesh*
 '''''''''''''''''''''''
@@ -2078,62 +1950,6 @@ An example of this command is given in the :ref:`Build layer mesh example <examp
 
 
 
-Read/Write statements
-^^^^^^^^^^^^^^^^^^^^^
-
-In three dimensions, the file mesh format supported for input and output files by **FreeFEM** are the extension .msh and .mesh.
-These formats are described in the :ref:`Mesh Format section <meshFileDataStructure>`.
-
-**Extension file .msh** The structure of the files with extension .msh in 3D is given by:
-
-.. math::
-    \begin{array}{cccccc}
-        n_v & n_{tet} & n_{tri} & & \\
-        q^1_x & q^1_y & q^1_z & Vertex label & \\
-        q^2_x & q^2_y & q^2_z & Vertex label & \\
-        \vdots & \vdots & \vdots & \vdots & \\
-        q^{n_v}_x & q^{n_v}_y & q^{n_v}_z & Vertex label & \\
-        1_1 & 1_2 & 1_3 & 1_4 & region label \\
-        2_1 & 2_2 & 2_3 & 2_4 & region label \\
-        \vdots & \vdots & \vdots & \vdots & \vdots \\
-        (n_{tet})_1 & (n_{tet})_2 & (n_{tet})_3 & (n_{tet})_4 & region label \\
-        1_1 & 1_2 & 1_3 & boundary label & \\
-        2_1 & 2_2 & 2_3 & boundary label & \\
-        \vdots & \vdots & \vdots & \vdots & \\
-        (n_tri)_{1} & (n_{tri})_2 & (n_{tri})_3 & boundary label & \\
-    \end{array}
-
-In this structure, :math:`n_v` denotes the number of vertices, :math:`n_{tet}` the number of tetrahedra and :math:`n_{tri}` the number of triangles.
-
-For each vertex :math:`q^i,\, i=1,\cdots,n_v`, we denote by :math:`(q^i_x,q^i_y,q^i_z)` the :math:`x`-coordinate, the :math:`y`-coordinate and the :math:`z`-coordinate.
-
-Each tetrahedra :math:`T_k, k=1,\cdots,n_{tet}` has four vertices :math:`q^{k_1},\, q^{k_2},\,q^{k_3}, \,q^{k_4}`.
-
-The boundary consists of a union of triangles.
-Each triangle :math:`be_j, j=1,\cdots,n_{tri}` has three vertices :math:`q^{j_1},\, q^{j_2},\,q^{j_3}`.
-
-**extension file .mesh** The data structure for a three dimensional mesh is composed of the data structure presented in :ref:`Mesh Format section <meshFileDataStructure>` and a data structure for the tetrahedra. The tetrahedra of a three dimensional mesh are referred using the following field:
-
-.. code-block:: bash
-   :linenos:
-
-   Tetrahedra
-   NbTetrahedra
-   Vertex1 Vertex2 Vertex3 Vertex4 Label
-   ...
-   Vertex1 Vertex2 Vertex3 Vertex4 Label
-
-This field is express with the notation of :ref:`Mesh Format section <meshFileDataStructure>`.
-
-
-
-
-**Extension file .mesh** 
-
-**Extension file .vtk** 
-
-**Extension file .msh/.geo Gmsh** 
-
 
 
 
@@ -2145,7 +1961,7 @@ Remeshing
 the command *change*
 ''''''''''''''''''''
 
-This command changes the label of elements and border elements of a mesh.
+This command changes the label of elements and border elements of a mesh. It's the equivalent command in 2d mesh case.
 
 
 Changing the label of elements and border elements will be done using the keyword :freefem:`change`.
@@ -2159,44 +1975,32 @@ The parameters for this command line are for two dimensional and three dimension
 -  :freefem:`rmlfaces=` is a vector of integer, where triangle's label given are remove of the mesh
 
 These vectors are composed of :math:`n_{l}` successive pairs of numbers :math:`O,N` where :math:`n_{l}` is the number (label or region) that we want to change.
-For example, we have :
+For example, we have:
 
 .. math::
-    \mathtt{label} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ] \\
-    \mathtt{region} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ]
-    :label: eq.org.vector.change.label
+   \mathtt{label} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ] \\
+   \mathtt{region} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ]
+   
 
-An example of using this function is given here:
+An example of use:
 
 .. code-block:: freefem
    :linenos:
 
-   verbosity=3;
-
    // Mesh
-   mesh Th1 = square(10, 10);
-   mesh Th2 = square(20, 10, [x+1, y]);
+   mesh3 Th1 = cube(10, 10);
+   mesh3 Th2 = cube(20, 10, [x+1, y,z]);
 
    int[int] r1=[2,0];
    plot(Th1, wait=true);
-
+   
    Th1 = change(Th1, label=r1); //change the label of Edges 2 in 0.
    plot(Th1, wait=true);
-
-   int[int] r2=[4,0];
-   Th2 = change(Th2, label=r2); //change the label of Edges 4 in 0.
-   plot(Th2, wait=true);
-
-
-
-.. code-block:: freefem
-   :linenos:
    
-   mesh Th1 = square(10,10) ;
    // boundary label: 1 -> 1 bottom, 2 -> 1 right, 3->1 top, 4->1 left boundary label is 1
    int[int] re=[1,1, 2,1, 3,1, 4,1]
-   Th1=change(Th1,refe=re); plot(Th1,wait=1) ;
-
+   Th2=change(Th2,refe=re); 
+   plot(Th2,wait=1) ;
 
 
 .. _meshGenerationtrunc:
@@ -2208,9 +2012,9 @@ This operator have been introduce to remove peace of mesh and split all element 
 The two named parameter
 -  :freefem:`split=` sets the level n of triangle splitting. each triangle is splitted in n × n ( one by default)
 -  :freefem:`label=`   sets the label number of new boundary item (one by default)
--  :freefem:`new2old=`   , typeid(KN<long>  
--  :freefem:`old2new=`    , typeid(KN<long> 
--  :freefem:`renum=`     , typeid(bool)
+-  :freefem:`new2old=`   ,   
+-  :freefem:`old2new=`    ,  
+-  :freefem:`renum=`     , 
 
 
 
@@ -2245,22 +2049,22 @@ The two named parameter
 
 
 
-the command *movemesh* (movemesh3)
-''''''''''''''''''''''''''''''''''
+the command *movemesh3*
+'''''''''''''''''''''''
 
 3D meshes  can be translated, rotated, and deformed using the command line :freefem:`movemesh` as in the 2D case (see :ref:`section movemesh <meshGenerationMoveMesh>`).
-If :math:`\Omega` is tetrahedrized as :math:`T_{h}(\Omega)`, and :math:`\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))` is a displacement vector then :math:`\Phi(T_{h})` is obtained by:
+If :math:`\Omega` is tetrahedrized as :math:`T_{h}(\Omega)`, and :math:`\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))` is the transformation vector then :math:`\Phi(T_{h})` is obtained by:
 
 .. code-block:: freefem
    :linenos:
 
    mesh3 Th = movemesh(Th, [Phi1, Phi2, Phi3], ...);
-   mesh3 Th = movemesh3(Th, transfo=[Phi1, Phi2, Phi3], ...);  older syntax
+   mesh3 Th = movemesh3(Th, transfo=[Phi1, Phi2, Phi3], ...);  (syntax with transfo=)
 
 
 The parameters of movemesh in three dimensions are:
 
--  :freefem:`transfo=` (older argument used in movemesh3) sets the geometric transformation :math:`\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))`
+-  :freefem:`transfo=` sets the geometric transformation :math:`\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))`
 
 -  :freefem:`region=` sets the integer labels of the tetrahedra.
     0 by default.
@@ -2347,8 +2151,11 @@ An example of this command can be found in the :ref:`Poisson’s equation 3D exa
 movemesh doesn't use the prefix tranfo= [.,.,.], the geometric transformation is directly given by  [.,.,.] in the arguments list
 
 
-*extract*
-'''''''''
+the command *extract*
+'''''''''''''''''''''
+
+This command offers the possibility to extract a boundary part of a :freefem:`mesh3`
+
 -  :freefem:`refface`     , typeid(KN_<long>)
 -  :freefem:`label`       , typeid(KN_<long>)
 
@@ -2363,20 +2170,15 @@ the list vertices which are on the border domain, the triangle elements and buil
 Remark, for a closed surface mesh, the edges list is empty. 
 
 
-the command *AddLayers*
-'''''''''''''''''''''''
-
-
-
 the command *movemesh23*
 ''''''''''''''''''''''''
-A simple method to construct a surface is to place a two dimensional domain in a three dimensional space. Plan a 2D mesh in the (x,y,z)-space to create a surface mesh 3D, **meshS**.
+A simple method to tranform a 2D mesh in 3D Surface mesh. The principe is to project a two dimensional domain in a three dimensional space, 2d surface in the (x,y,z)-space to create a surface mesh 3D, **meshS**.
 
 .. warning::
    Since the release 4.2.1, the **FreeFEM** function movemesh23 returns a meshS type.
   
   
-This corresponds to moving the domain by a displacement vector of this form :math:`\mathbf{\Phi(x,y)} = (\Phi1(x,y), \Phi2(x,y), \Phi3(x,y))`.
+This corresponds to translate, rotate or deforme the domain by a displacement vector of this form :math:`\mathbf{\Phi(x,y)} = (\Phi1(x,y), \Phi2(x,y), \Phi3(x,y))`.
 
 The result of moving a two dimensional mesh Th2 by this three dimensional displacement is obtained using:
 
@@ -2476,6 +2278,172 @@ An example to obtain a three dimensional mesh using the command line :freefem:`t
 
 
 
+
+
+
+
+
+
+.. _meshing-examples-1:
+
+3d Meshing examples
+^^^^^^^^^^^^^^^^^^^
+
+.. tip:: Lake
+
+    .. code-block:: freefem
+        :linenos:
+
+        load "msh3"
+        load "medit"
+
+        // Parameters
+        int nn = 5;
+
+        // 2D mesh
+        border cc(t=0, 2*pi){x=cos(t); y=sin(t); label=1;}
+        mesh Th2 = buildmesh(cc(100));
+
+        // 3D mesh
+        int[int] rup = [0, 2], rlow = [0, 1];
+        int[int] rmid = [1, 1, 2, 1, 3, 1, 4, 1];
+        func zmin = 2-sqrt(4-(x*x+y*y));
+        func zmax = 2-sqrt(3.);
+
+        mesh3 Th = buildlayers(Th2, nn,
+            coef=max((zmax-zmin)/zmax, 1./nn),
+            zbound=[zmin,zmax],
+            labelmid=rmid,
+            labelup=rup,
+            labeldown=rlow);
+
+        medit("Th", Th);
+
+.. tip:: Hole region
+
+    .. code-block:: freefem
+        :linenos:
+
+        load "msh3"
+        load "TetGen"
+        load "medit"
+
+        // 2D mesh
+        mesh Th = square(10, 20, [x*pi-pi/2, 2*y*pi]); // ]-pi/2, pi/2[X]0,2pi[
+
+        // 3D mesh
+        //parametrization of a sphere
+        func f1 = cos(x)*cos(y);
+        func f2 = cos(x)*sin(y);
+        func f3 = sin(x);
+        //partial derivative of the parametrization
+        func f1x = sin(x)*cos(y);
+        func f1y = -cos(x)*sin(y);
+        func f2x = -sin(x)*sin(y);
+        func f2y = cos(x)*cos(y);
+        func f3x = cos(x);
+        func f3y = 0;
+        //M = DF^t DF
+        func m11 = f1x^2 + f2x^2 + f3x^2;
+        func m21 = f1x*f1y + f2x*f2y + f3x*f3y;
+        func m22 = f1y^2 + f2y^2 + f3y^2;
+
+        func perio = [[4, y], [2, y], [1, x], [3, x]];
+        real hh = 0.1;
+        real vv = 1/square(hh);
+        verbosity = 2;
+        Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
+        Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
+        plot(Th, wait=true);
+
+        //construction of the surface of spheres
+        real Rmin = 1.;
+        func f1min = Rmin*f1;
+        func f2min = Rmin*f2;
+        func f3min = Rmin*f3;
+
+        meshS ThSsph = movemesh23(Th, transfo=[f1min, f2min, f3min]);
+
+        real Rmax = 2.;
+        func f1max = Rmax*f1;
+        func f2max = Rmax*f2;
+        func f3max = Rmax*f3;
+
+        meshS ThSsph2 = movemesh23(Th, transfo=[f1max, f2max, f3max]);
+
+        //gluing meshes
+        meshS ThS = ThSsph + ThSsph2;
+
+        cout << " TetGen call without hole " << endl;
+        real[int] domain2 = [1.5, 0., 0., 145, 0.001, 0.5, 0., 0., 18, 0.001];
+        mesh3 Th3fin = tetg(ThS, switch="paAAQYY", nbofregions=2, regionlist=domain2);
+        medit("Sphere with two regions", Th3fin);
+
+        cout << " TetGen call with hole " << endl;
+        real[int] hole = [0.,0.,0.];
+        real[int] domain = [1.5, 0., 0., 53, 0.001];
+        mesh3 Th3finhole = tetg(ThS, switch="paAAQYY",
+            nbofholes=1, holelist=hole, nbofregions=1, regionlist=domain);
+        medit("Sphere with a hole", Th3finhole);
+
+.. tip:: Build a 3d mesh of a cube with a balloon
+
+   .. code-block:: freefem
+      :linenos:
+
+      load "msh3"
+      load "TetGen"
+      load "medit"
+      include "MeshSurface.idp"
+
+      // Parameters
+      real hs = 0.1; //mesh size on sphere
+      int[int] N = [20, 20, 20];
+      real [int,int] B = [[-1, 1], [-1, 1], [-1, 1]];
+      int [int,int] L = [[1, 2], [3, 4], [5, 6]];
+
+      // Meshes
+      meshS ThH = SurfaceHex(N, B, L, 1);
+      meshS ThS = Sphere(0.5, hs, 7, 1);
+
+      meshS ThHS = ThH + ThS;
+      medit("Hex-Sphere", ThHS);
+
+      real voltet = (hs^3)/6.;
+      cout << "voltet = " << voltet << endl;
+      real[int] domain = [0, 0, 0, 1, voltet, 0, 0, 0.7, 2, voltet];
+      mesh3 Th = tetg(ThHS, switch="pqaAAYYQ", nbofregions=2, regionlist=domain);
+      medit("Cube with ball", Th);
+
+.. subfigstart::
+
+.. _meshGenerationCubeSphere1:
+
+.. figure:: images/MeshGeneration_CubeSphere1.png
+   :alt: MeshGeneration_CubeSphere1
+   :width: 90%
+
+   The surface mesh of the hex with internal sphere
+
+.. _meshGenerationCubeSphere2:
+
+.. figure:: images/MeshGeneration_CubeSphere2.png
+   :alt: MeshGeneration_CubeSphere2
+   :width: 90%
+
+   The tetrahedral mesh of the cube with internal ball
+
+.. subfigend::
+   :width: 0.49
+   :alt: CubeSphere
+   :label: CubeSphere
+
+   Cube sphere
+   
+   
+
+
+
 .. _meshStype:
 
 **The type meshS in 3 dimension**
@@ -2496,12 +2464,21 @@ The parameters of this command line are:
  - :freefem:`orientation=` 
    equal 1, give the oientation of the triangulation, elements must be in the reference orientation (counter clock wise)
    equal -1 reverse the orientation of the triangles
+   it's the global orientation of the surface 1 extern (-1 intern)
 
 .. code-block:: freefem
    :linenos:
     
-	int n=10
-    meshS Th1 = square3(n,n,[2*x,y,1],orientation=-1);
+	real R = 3, r=1; 
+	real h = 0.2; // 
+	int nx = R*2*pi/h;
+	int ny = r*2*pi/h;
+	func torex= (R+r*cos(y*pi*2))*cos(x*pi*2);
+	func torey= (R+r*cos(y*pi*2))*sin(x*pi*2);
+	func torez= r*sin(y*pi*2);
+
+
+	meshS ThS=square3(nx,ny,[torex,torey,torez],orientation=-1) ;
 
 
 The following code generates a :math:`3\times 4 \times 5` grid in the unit cube :math:`[0, 1]^3` with a clock wise triangulation.
@@ -2509,54 +2486,129 @@ The following code generates a :math:`3\times 4 \times 5` grid in the unit cube 
 
 
 
-*composition of 2D mesh generator with movemesh23*
-'''''''''''''''''''''''''''''''''''''''''''''''''' 
+
+surface mesh builder
+''''''''''''''''''''
+
+Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, constructors of sphere, ellipsoid, surface mesh of a 3d box are available.
+
+
+ - :freefem:`meshS SurfaceHex(N,B,L,orient)`
+  
+   + this operator allows to build the surface mesh of a 3d box 
+   + int[int]  N=[nx,ny,nz]; //  the number of seg in the 3 direction
+   + real [int,int]  B=[[xmin,xmax],[ymin,ymax],[zmin,zmax]]; // bounding bax  
+   + int [int,int]  L=[[1,2],[3,4],[5,6]]; // the label of the 6 face left,right, front, back, down, right
+   + orient the global orientation of the surface 1 extern (-1 intern), 
+
+
+
+ - :freefem:`func meshS Sphere(real R,real h,int L,int orient)`
+
+   + where R is  the raduis of the sphere, 
+   + h is the mesh size  of  the shpere
+   + L is the label the the sphere
+   + orient the global orientation of the surface 1 extern (-1 intern)
+
+
+ - :freefem:`func meshS Ellipsoide (real RX,real RY,real RZ,real h,int L,int orientation)` 
+
+   + where RX, RY, RZ are real numbers such as the parametric equations of the ellipsoid can be written as: .. math::
+      x &= Rx cos(u)sin(v) \\	 
+      y &= Ry sin(u)sin(v)	\\
+      z &= Rz cos(v) \\
+      \forall u \in [0,2pi[ and v \in [0,pi]
+    
+   + h is the mesh size 
+   + L is the label
+   + orient the global orientation of the surface 1 extern (-1 intern)
+
 
 .. code-block:: freefem
    :linenos:
-	
-	load "msh3"
-	real l = 3;
-	border a(t=-l,l){x=t; y=-l;label=1;};
-	border b(t=-l,l){x=l; y=t;label=1;};
-	border c(t=l,-l){x=t; y=l;label=1;};
-	border d(t=l,-l){x=-l; y=t;label=1;};
-	int n = 100;
-	border i(t=0,2*pi){x=1.1*cos(t);y=1.1*sin(t);label=5;};
-	mesh th= buildmesh(a(n)+b(n)+c(n)+d(n)+i(-n));
-	meshS Th= movemesh23(th,transfo=[x,y,cos(x)^2+sin(y)^2]);
+   
+   func meshS SurfaceHex(int[int] & N,real[int,int] &B ,int[int,int] & L,int orientation){
+       real x0=B(0,0),x1=B(0,1);
+       real y0=B(1,0),y1=B(1,1);
+       real z0=B(2,0),z1=B(2,1);
+    
+       int nx=N[0],ny=N[1],nz=N[2];
+    
+       mesh Thx = square(ny,nz,[y0+(y1-y0)*x,z0+(z1-z0)*y]);
+       mesh Thy = square(nx,nz,[x0+(x1-x0)*x,z0+(z1-z0)*y]);
+       mesh Thz = square(nx,ny,[x0+(x1-x0)*x,y0+(y1-y0)*y]);
+    
+       int[int] refx=[0,L(0,0)],refX=[0,L(0,1)];   //  Xmin, Ymax faces labels renumbering 
+       int[int] refy=[0,L(1,0)],refY=[0,L(1,1)];   //  Ymin, Ymax faces labesl renumbering 
+       int[int] refz=[0,L(2,0)],refZ=[0,L(2,1)];   //  Zmin, Zmax faces labels renumbering 
+    
+       meshS Thx0 = movemesh23(Thx,transfo=[x0,x,y],orientation=-orientation,label=refx);
+       meshS Thx1 = movemesh23(Thx,transfo=[x1,x,y],orientation=+orientation,label=refX);
+       meshS Thy0 = movemesh23(Thy,transfo=[x,y0,y],orientation=+orientation,label=refy);
+       meshS Thy1 = movemesh23(Thy,transfo=[x,y1,y],orientation=-orientation,label=refY);
+       meshS Thz0 = movemesh23(Thz,transfo=[x,y,z0],orientation=-orientation,label=refz);
+       meshS Thz1 = movemesh23(Thz,transfo=[x,y,z1],orientation=+orientation,label=refZ);
+       meshS Th= Thx0+Thx1+Thy0+Thy1+Thz0+Thz1;
+       
+    return Th;
+    }
+
+    func meshS Sphere(real R,real h,int L,int orientation) {
+       return Ellipsoide(R,R,R,h,L,orientation);
+   }
+   
+   func meshS Ellipsoide (real RX,real RY, real RZ,real h,int L,int orientation) {
+       mesh  Th=square(10,20,[x*pi-pi/2,2*y*pi]);  //  $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
+       //  a parametrization of a sphere 
+       func f1 =RX*cos(x)*cos(y);
+       func f2 =RY*cos(x)*sin(y);
+       func f3 =RZ*sin(x);
+   	   //    partiel derivative 
+       func f1x= -RX*sin(x)*cos(y);   
+       func f1y= -RX*cos(x)*sin(y);
+       func f2x= -RY*sin(x)*sin(y);
+       func f2y= +RY*cos(x)*cos(y);
+       func f3x=-RZ*cos(x);
+       func f3y=0;
+       // the metric on the sphere  $  M = DF^t DF $
+       func m11=f1x^2+f2x^2+f3x^2;
+       func m21=f1x*f1y+f2x*f2y+f3x*f3y;
+       func m22=f1y^2+f2y^2+f3y^2;
+       func perio=[[4,y],[2,y],[1,x],[3,x]];  // to store the periodic condition 
+       real hh=h;// hh  mesh size on unite sphere
+       real vv= 1/square(hh);
+       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
+       int[int] ref=[0,L];  
+       meshS ThS=movemesh23(Th,transfo=[f1,f2,f3],orientation=orientation,refface=ref);
+       ThS=freeyams(ThS,hmin=h,hmax=h,gradation=2.,verbosity=-10,mem=100,option=0);
+   
+      return ThS;
+    }  
 
 
-Read/Write Statements
-^^^^^^^^^^^^^^^^^^^^^
 
-the command *readmeshS*
-'''''''''''''''''''''''
+2D mesh generator and *movemesh23*
+'''''''''''''''''''''''''''''''''' 
 
-the command *savemesh*
-''''''''''''''''''''''
+**FreeFEM** 's meshes can be built by the composition of the :freefem:`movemesh23` command from a 2d mesh generation. 
+The operation is a projection of a 2d plane in :math:`\mathbb{R^3}` following the geometric transformation  [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ].
 
-The function :freefem:`savemesh` allows to 
-
-savemesh(Th, filename, [u,v,w], ....)
-
-
-
-
-
-
-the command *vtkloadS*
-''''''''''''''''''''''
-
-the command *savevtk*
-'''''''''''''''''''''
-
-the command *gmshloadS*
-'''''''''''''''''''''''
-
-the command *savegmsh*
-''''''''''''''''''''''
-
+.. code-block:: freefem
+   :linenos:
+   
+   load "msh3"
+   real l = 3;
+   border a(t=-l,l){x=t; y=-l;label=1;};
+   border b(t=-l,l){x=l; y=t;label=1;};
+   border c(t=l,-l){x=t; y=l;label=1;};
+   border d(t=l,-l){x=-l; y=t;label=1;};
+   int n = 100;
+   border i(t=0,2*pi){x=1.1*cos(t);y=1.1*sin(t);label=5;};
+   mesh th= buildmesh(a(n)+b(n)+c(n)+d(n)+i(-n));
+   meshS Th= movemesh23(th,transfo=[x,y,cos(x)^2+sin(y)^2]);
 
 
 Remeshing
@@ -2565,12 +2617,54 @@ Remeshing
 the command *trunc*
 '''''''''''''''''''
 
-the command *movemeshS* - movemesh
-''''''''''''''''''''''''''''''''''
+.. code-block:: freefem
+   :linenos:
+   
+   toto
+   
+the command *movemeshS*
+'''''''''''''''''''''''
 
-meshS Th1 = square3(n,n,[2*x,y,1],orientation=-1);
-meshS Th2=movemeshS(Th1, transfo=[x,y,z]);
-meshS Th2=movemesh(Th1, [x,y,z]);
+Like 2d and 3d type meshes in **FreeFEM**, :freefem:`meshS` can be translated, rotated or deformated by an application :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ].
+The image :math:`T_{h}(\Omega)` is obtained by the command :freefem:`movemeshS`.
+
+The parameters of movemeshS are:
+
+-  :freefem:`transfo=` sets the geometric transformation :math:`\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))`
+
+-  :freefem:`region=` sets the integer labels of the triangles.
+    0 by default.
+
+-  :freefem:`label=` sets the labels of the border edges.
+    This parameter is initialized as the label for the keyword :ref:`change <meshGenerationChangeLabel>`.
+
+-  :freefem:`facemerge=` An integer expression.
+    When you transform a mesh, some triangles can be merged and fix the parameter to 1, else 0
+    By default, this parameter is equal to 1.
+
+-  :freefem:`ptmerge =` A real expression.
+    When you transform a mesh, some points can be merged.
+    This parameter is the criteria to define two merging points.
+    By default, we use
+	
+	.. math::
+	   ptmerge \: = \: 1e-7 \: \:Vol( B ),
+
+	where :math:`B` is the smallest axis parallel boxes containing the discretion domain of :math:`\Omega` and :math:`Vol(B)` is the volume of this box.
+
+ -  :freefem:`orientation =` An integer expression 
+	   equal 1, give the oientation of the triangulation, elements must be in the reference orientation (counter clock wise)
+	   equal -1 reverse the orientation of the triangles. It's the global orientation of the normals at the surface 1 extern (-1 intern)
+	
+	
+Example of using
+
+.. code-block:: freefem
+   :linenos:
+
+   meshS Th1 = square3(n,n,[2*x,y,1],orientation=-1);
+   meshS Th2=movemeshS(Th1, transfo=[x,y,z]);
+   meshS Th2=movemesh(Th1, [x,y,z]);
 
 
 Link with a mesh3
@@ -2579,13 +2673,13 @@ Link with a mesh3
 In topology and mathematics, the boundary of a subset S of a topological space X is the set of points which can be approached both from S and from the outside of S.
 The general definitions to the boundary of a subset S of a topological space X are:
  
- - the closure of S without the interior of S: :math:` \partial S = S  \backslash \mathring S`.
+ - the closure of S without the interior of S :math:`\partial S = S  \backslash \mathring S`.
  - the intersection of the closure of S with the closure of its complement :math:`\partial S = S  \cap (X  \backslash S)`.
  -  the set of points p of X such that every neighborhood of p contains at least one point of S and at least one point not of S.
  
 More concretely in FreeFEM, the gestion of a 3D mesh is as follows. Let be :math:`\Omega` a subset of :math:`\mathbb{R}^3` and :math:`\partial \Omega` is boundary, the finite element discretization :math:`\Omega_h` of this domain gives:
  
- - a mesh3 type, denotes Th3, meshing the volume domain. It contains all the nodes, the tetrahedrons $\Omega_i$ such as  :math:`\Omega_h = \cup_i \Omega_i` and the list of triangles describing the boundary domain
+ - a mesh3 type, denotes Th3, meshing the volume domain. It contains all the nodes, the tetrahedrons   :math:`\Omega_i` such as  :math:`\Omega_h = \cup_i \Omega_i` and the list of triangles describing the boundary domain
  - a meshS type, denotes ThS, meshing the boundary of the volume domain. Typically, containing the nodes belonging to the boundary of Th3 and, if it exists the boundary triangles and the edges.
 
 
@@ -2595,11 +2689,14 @@ Remark: Condition of meshS existence
  - Th3 :math:`\subset` ThS where it exactly describes the bounder of Th3. 
  - a mehS is an explicite surface mesh given by a list of vertices, triangle finite elements and boundary edge elements (can be optional follows the geometry domain)
 
-
+.. note::
+   Hence, if an input mesh (.msh freefem or .mesh format) contains a list of vertices, tetrahedra, triangles and edges, **FreeFEM** builds a :freefem:`mesh3` whitch contains explicitly a surface mesh type :freefem:`meshS`.
+   
+    
 
 the command *Gamma*
 '''''''''''''''''''
-The command :freefem:`Gamma` allows to build and manipulate the border mesh independly of a volume mesh such as the surface is describeb by triangle elements and edges border elements in 3d.
+The command :freefem:`Gamma` allows to build and manipulate the border mesh independly of a volume mesh such as the surface is described by triangle elements and edges border elements in 3d. Use this function, suppose that the :freefem:`mesh3`object even contains the geometric description of its surface. That means, the input mesh explicitly contains the list of vertices, tetrahedra, triangles and edges. In case where the surface mesh doesn't exist, before calling :freefem:`Gamma`, must build it by calling the :freefem:`buildSurface` function (see the next function description).
 
 .. code-block:: freefem
    :linenos:
@@ -2616,21 +2713,38 @@ The command :freefem:`Gamma` allows to build and manipulate the border mesh inde
 
 the command *buildSurface*
 ''''''''''''''''''''''''''
-Let Th3 a volume mesh (mesh3 type) ; such as the geometry description is a list of vertices, tetrahedra elements and triangle border elements. Remember that the mesh3 type can now contains 
+Let Th3 a volume mesh (mesh3 type) ; such as the geometry description is a list of vertices, tetrahedra elements and triangle border elements. 
+**FreeFEM** can generate the surface mesh associated to Th3. The intern mechanism of **FreeFEM** created directly the :freefem:`meshS` associated to Th3 and accessible by the command :freefem:`meshS ThS = Th3.Gamma;`.
 
 
 the command *savesurfacemesh*
 '''''''''''''''''''''''''''''
 
-The command :freefem:`savesurfacemesh` allows to 
+Available on 3d meshes, the command :freefem:`savesurfacemesh` allows to save the surface of a 3d volume :freefem:`mesh3`.
 
---> mesh3 and meshS=NULL
+Example of using 
+
+.. code-block:: freefem
+   :linenos:
+   
+    load "msh3"
+    mesh3 Th3=cube(10,15,5);
+    savemesh(Th3, "surf.mesh");
+    savesurfacemesh(Th3, "surfreal.mesh");
+    mesh3 ThS3 = trunc(Th3, 1, split=3);
+    meshS ThSS = ThS3.Gamma;
+    savesurfacemesh(ThS3, "surfacesplit.mesh");
+    savemesh(ThSS,"GammaSplit.mesh" );
+	
+volume mesh and meshS=NULL
 
 savesurfmesh(Th,filename_mesh)
 write in the file the vertices list and the triangle list (face of the volum mesh) according to a numbering in local surface  
 
 savesurfmesh(Th,filename_points,filename_faces)
 The operation does the same thing that the first exept to 
+
+
 
 
 the command *extract*
@@ -2653,6 +2767,7 @@ the command *extract*
 Glue of meshS meshes
 ''''''''''''''''''''
 
+A surface 3d mesh can be the result of the generation of several assembled meshes, with caution of the right orientation at the merged interfaces. 
 
 .. code-block:: freefem
    :linenos:
@@ -2667,13 +2782,18 @@ Glue of meshS meshes
 	assert(Th.nbnomanifold==40);
 
 
+.. warning::
+
+   For the moment, the gestion of no manifold mesh are not considered in FreeFEM. To check if the meshS contains no manifold elements, the command :freefem:`nbnomanifold`. 
+
+
 
 
 
 
 
 TetGen: A tetrahedral mesh generator
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Applied Analysis and Stochastics in Berlin, Germany [HANG2006]_.
@@ -2775,11 +2895,6 @@ We now give the command line in **FreeFEM** to construct these meshes.
 
 
 
-
-
-
-
-
 **The keyword tetgtransfo**
 
 This keyword corresponds to a composition of command line :freefem:`tetg` and :freefem:`movemesh23`.
@@ -2839,8 +2954,8 @@ In the string :freefem:`switch`, we can’t used the option :freefem:`p` and :fr
 
 
 
-Reconstruct/Refine a three dimensional mesh with TetGen
--------------------------------------------------------
+Reconstruct/Refine a 3d mesh with TetGen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Meshes in three dimension can be refined using TetGen with the command line :freefem:`tetgreconstruction`.
 
@@ -2937,252 +3052,526 @@ This parameter and :freefem:`nbofregions` can’t be used with the parameter :fr
 
 
 
+.. _meshDataStructureReadWrite:
 
 
 
 
+Read/Write Statements for meshes
+--------------------------------
 
+2d case
+^^^^^^^
 
+format of  mesh data 
+''''''''''''''''''''
 
+Users who want to read a triangulation made elsewhere should see the structure of the file generated below:
 
-
-
-.. _meshing-examples-1:
-
-Meshing examples
-----------------
-
-.. tip:: Lake
-
-    .. code-block:: freefem
-        :linenos:
-
-        load "msh3"
-        load "medit"
-
-        // Parameters
-        int nn = 5;
-
-        // 2D mesh
-        border cc(t=0, 2*pi){x=cos(t); y=sin(t); label=1;}
-        mesh Th2 = buildmesh(cc(100));
-
-        // 3D mesh
-        int[int] rup = [0, 2], rlow = [0, 1];
-        int[int] rmid = [1, 1, 2, 1, 3, 1, 4, 1];
-        func zmin = 2-sqrt(4-(x*x+y*y));
-        func zmax = 2-sqrt(3.);
-
-        mesh3 Th = buildlayers(Th2, nn,
-            coef=max((zmax-zmin)/zmax, 1./nn),
-            zbound=[zmin,zmax],
-            labelmid=rmid,
-            labelup=rup,
-            labeldown=rlow);
-
-        medit("Th", Th);
-
-.. tip:: Hole region
-
-    .. code-block:: freefem
-        :linenos:
-
-        load "msh3"
-        load "TetGen"
-        load "medit"
-
-        // 2D mesh
-        mesh Th = square(10, 20, [x*pi-pi/2, 2*y*pi]); // ]-pi/2, pi/2[X]0,2pi[
-
-        // 3D mesh
-        //parametrization of a sphere
-        func f1 = cos(x)*cos(y);
-        func f2 = cos(x)*sin(y);
-        func f3 = sin(x);
-        //partial derivative of the parametrization
-        func f1x = sin(x)*cos(y);
-        func f1y = -cos(x)*sin(y);
-        func f2x = -sin(x)*sin(y);
-        func f2y = cos(x)*cos(y);
-        func f3x = cos(x);
-        func f3y = 0;
-        //M = DF^t DF
-        func m11 = f1x^2 + f2x^2 + f3x^2;
-        func m21 = f1x*f1y + f2x*f2y + f3x*f3y;
-        func m22 = f1y^2 + f2y^2 + f3y^2;
-
-        func perio = [[4, y], [2, y], [1, x], [3, x]];
-        real hh = 0.1;
-        real vv = 1/square(hh);
-        verbosity = 2;
-        Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
-        Th = adaptmesh(Th, m11*vv, m21*vv, m22*vv, IsMetric=1, periodic=perio);
-        plot(Th, wait=true);
-
-        //construction of the surface of spheres
-        real Rmin = 1.;
-        func f1min = Rmin*f1;
-        func f2min = Rmin*f2;
-        func f3min = Rmin*f3;
-
-        meshS ThSsph = movemesh23(Th, transfo=[f1min, f2min, f3min]);
-
-        real Rmax = 2.;
-        func f1max = Rmax*f1;
-        func f2max = Rmax*f2;
-        func f3max = Rmax*f3;
-
-        meshS ThSsph2 = movemesh23(Th, transfo=[f1max, f2max, f3max]);
-
-        //gluing meshse
-        meshS ThS = ThSsph + ThSsph2;
-
-        cout << " TetGen call without hole " << endl;
-        real[int] domain2 = [1.5, 0., 0., 145, 0.001, 0.5, 0., 0., 18, 0.001];
-        mesh3 Th3fin = tetg(ThS, switch="paAAQYY", nbofregions=2, regionlist=domain2);
-        medit("Sphere with two regions", Th3fin);
-
-        cout << " TetGen call with hole " << endl;
-        real[int] hole = [0.,0.,0.];
-        real[int] domain = [1.5, 0., 0., 53, 0.001];
-        mesh3 Th3finhole = tetg(ThS, switch="paAAQYY",
-            nbofholes=1, holelist=hole, nbofregions=1, regionlist=domain);
-        medit("Sphere with a hole", Th3finhole);
-
-Build a 3d mesh of a cube with a balloon
-----------------------------------------
 
 .. code-block:: freefem
    :linenos:
 
-   func meshS SurfaceHex(int[int] & N,real[int,int] &B ,int[int,int] & L,int orientation){
-       real x0=B(0,0),x1=B(0,1);
-       real y0=B(1,0),y1=B(1,1);
-       real z0=B(2,0),z1=B(2,1);
-    
-       int nx=N[0],ny=N[1],nz=N[2];
-    
-       mesh Thx = square(ny,nz,[y0+(y1-y0)*x,z0+(z1-z0)*y]);
-       mesh Thy = square(nx,nz,[x0+(x1-x0)*x,z0+(z1-z0)*y]);
-       mesh Thz = square(nx,ny,[x0+(x1-x0)*x,y0+(y1-y0)*y]);
-    
-       int[int] refx=[0,L(0,0)],refX=[0,L(0,1)];   //  Xmin, Ymax faces labels renumbering 
-       int[int] refy=[0,L(1,0)],refY=[0,L(1,1)];   //  Ymin, Ymax faces labesl renumbering 
-       int[int] refz=[0,L(2,0)],refZ=[0,L(2,1)];   //  Zmin, Zmax faces labels renumbering 
-    
-       meshS Thx0 = movemesh23(Thx,transfo=[x0,x,y],orientation=-orientation,label=refx);
-       meshS Thx1 = movemesh23(Thx,transfo=[x1,x,y],orientation=+orientation,label=refX);
-       meshS Thy0 = movemesh23(Thy,transfo=[x,y0,y],orientation=+orientation,label=refy);
-       meshS Thy1 = movemesh23(Thy,transfo=[x,y1,y],orientation=-orientation,label=refY);
-       meshS Thz0 = movemesh23(Thz,transfo=[x,y,z0],orientation=-orientation,label=refz);
-       meshS Thz1 = movemesh23(Thz,transfo=[x,y,z1],orientation=+orientation,label=refZ);
-       meshS Th= Thx0+Thx1+Thy0+Thy1+Thz0+Thz1;
-       
-	   return Th;
-   }
+   border C(t=0, 2*pi){x=cos(t); y=sin(t);}
+   mesh Th1 = buildmesh(C(10));
+   savemesh(Th1, "mesh.msh");
+   mesh Th2=readmesh("mesh.msh");
 
-   func meshS Sphere(real R,real h,int L,int orientation) {
-       return Ellipsoide(R,R,R,h,L,orientation);
-   }
+The mesh is shown on :numref:`figBuildMesh`.
+
+The information about :freefem:`Th` are saved in the file :freefem:`mesh.msh` whose structure is shown on :numref:`tabMeshStructure`.
+An external file contains a mesh at format .mesh can be read by the ommand :freefem:`readmesh(file_name)`.
+
+There, :math:`n_v` denotes the number of vertices, :math:`n_t` the number of triangles and :math:`n_s` the number of edges on boundary.
+
+For each vertex :math:`q^i,\, i=1,\cdots,n_v`, denoted by :math:`(q^i_x,q^i_y)` the :math:`x`-coordinate and :math:`y`-coordinate.
+
+Each triangle :math:`T_k, k=1,\cdots,n_t` has three vertices :math:`q^{k_1},\, q^{k_2},\,q^{k_3}` that are oriented counter-clockwise.
+
+The boundary consists of 10 lines :math:`L_i,\, i=1,\cdots,10` whose end points are :math:`q^{i_1},\, q^{i_2}`.
+
+.. figure:: images/MeshGeneration_Data.png
+  :name: figBuildMesh
+  :width: 50%
+
+  Mesh by :freefem:`buildmesh(C(10))`
+
+In the :numref:`figBuildMesh`, we have the following.
+
+:math:`n_v=14, n_t=16, n_s=10`
+
+:math:`q^1=(-0.309016994375, 0.951056516295)`
+
+:math:`\dots`
+
+:math:`q^{14}=(-0.309016994375, -0.951056516295)`
+
+The vertices of :math:`T_1` are :math:`q^9, q^{12},\, q^{10}`.
+
+:math:`\dots`
+
+The vertices of :math:`T_{16}` are :math:`q^9, q^{10}, q^{6}`.
+
+The edge of the 1st side :math:`L_1` are :math:`q^6, q^5`.
+
+:math:`\dots`
+
+The edge of the 10th side :math:`L_{10}` are :math:`q^{10}, q^6`.
+
+.. table:: The structure of :freefem:`mesh_sample.msh`
+    :name: tabMeshStructure
+
+    +-----------------------------------+---------------------------------------------------------------+
+    | Content of the file               | Explanation                                                   |
+    +===================================+===============================================================+
+    | 14 16 10                          | :math:`n_v\quad n_t\quad n_e`                                 |
+    +-----------------------------------+---------------------------------------------------------------+
+    | -0.309016994375 0.951056516295 1  | :math:`q^1_x\quad q^1_y\quad` boundary label :math:`=1`       |
+    |                                   |                                                               |
+    | 0.309016994375 0.951056516295 1   | :math:`q^2_x\quad q^2_y\quad` boundary label :math:`=1`       |
+    |                                   |                                                               |
+    | ...                               | ...                                                           |
+    |                                   |                                                               |
+    | -0.309016994375 -0.951056516295 1 | :math:`q^{14}_x\quad q^{14}_y\quad` boundary label :math:`=1` |
+    +-----------------------------------+---------------------------------------------------------------+
+    | 9 12 10 0                         | :math:`1_1\quad 1_2\quad 1_3\quad` region label :math:`=0`    |
+    |                                   |                                                               |
+    | 5 9 6 0                           | :math:`2_1\quad 2_2\quad 2_3\quad` region label :math:`=0`    |
+    |                                   |                                                               |
+    | ...                               | ...                                                           |
+    |                                   |                                                               |
+    | 9 10 6 0                          | :math:`16_1\quad 16_2\quad 16_3\quad` region label :math:`=0` |
+    +-----------------------------------+---------------------------------------------------------------+
+    | 6 5 1                             | :math:`1_1\quad 1_2\quad` boundary label :math:`=1`           |
+    |                                   |                                                               |
+    | 5 2 1                             | :math:`2_1\quad 2_2\quad` boundary label :math:`=1`           |
+    |                                   |                                                               |
+    | ...                               | ...                                                           |
+    |                                   |                                                               |
+    | 10 6 1                            | :math:`10_1\quad 10_2\quad` boundary label :math:`=1`         |
+    +-----------------------------------+---------------------------------------------------------------+
+
+In **FreeFEM** there are many mesh file formats available for communication with other tools such as ``emc2``, ``modulef``, … (see :ref:`Mesh format chapter <meshFileDataStructure>` ).
+
+The extension of a file implies its format.
+More details can be found on the file format .msh in the article by F. Hecht "bamg : a bidimensional anisotropic mesh generator" [HECHT1998_2]_.
+
+A mesh file can be read into **FreeFEM** except that the names of the borders are lost and only their reference numbers are kept.
+So these borders have to be referenced by the number which corresponds to their order of appearance in the program, unless this number is overwritten by the keyword :freefem:`label`. Here are some examples:
+
+.. code-block:: freefem
+  :linenos:
+  
+  // Parameters
+  int n = 10;
+
+  // Mesh
+  border floor(t=0, 1){x=t; y=0; label=1;};
+  border right(t=0, 1){x=1; y=t; label=5;};
+  border ceiling(t=1, 0){x=t; y=1; label=5;};
+  border left(t=1, 0){x=0; y=t; label=5;};
+
+  mesh th = buildmesh(floor(n) + right(n) + ceiling(n) + left(n));
+
+  //save mesh in different formats
+  savemesh(th, "toto.am_fmt"); // format "formated Marrocco"
+  savemesh(th, "toto.Th"); // format database db mesh "bamg"
+  savemesh(th, "toto.msh"); // format freefem
+  savemesh(th, "toto.nopo"); // modulef format
+ 
+  // Fespace
+  fespace femp1(th, P1);
+  femp1 f = sin(x)*cos(y);
+  femp1 g;
+
+  //save the fespace function in a file
+  {
+    ofstream file("f.txt");
+    file << f[] << endl;
+  } //the file is automatically closed at the end of the block
+  //read a file and put it in a fespace function
+  {
+    ifstream file("f.txt");
+    file >> g[] ;
+  }//the file is equally automatically closed
+
+  // Plot
+  plot(g);
+
+  // Mesh 2
+  //read the mesh for freefem format saved mesh
+  mesh th2 = readmesh("toto.msh");
+
+  // Fespace 2
+  fespace Vh2(th2, P1);
+  Vh2 u, v;
+
+  // Problem
+  //solve:
+  //  $u + \Delta u = g$ in $\Omega $
+  //  $u=0$ on $\Gamma_1$
+  //  $\frac{\partial u }{\partial n} = g$ on $\Gamma_2$
+  solve Problem(u, v)
+    = int2d(th2)(
+        u*v
+      - dx(u)*dx(v)
+      - dy(u)*dy(v)
+    )
+    + int2d(th2)(
+      - g*v
+    )
+    + int1d(th2, 5)(
+        g*v
+    )
+    + on(1, u=0)
+    ;
+
+  // Plot
+  plot(th2, u);
+
    
-   func meshS Ellipsoide (real RX,real RY, real RZ,real h,int L,int orientation) {
-       mesh  Th=square(10,20,[x*pi-pi/2,2*y*pi]);  //  $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
-       //  a parametrization of a sphere 
-       func f1 =RX*cos(x)*cos(y);
-       func f2 =RY*cos(x)*sin(y);
-       func f3 =RZ*sin(x);
-   	   //    partiel derivative 
-       func f1x= -RX*sin(x)*cos(y);   
-       func f1y= -RX*cos(x)*sin(y);
-       func f2x= -RY*sin(x)*sin(y);
-       func f2y= +RY*cos(x)*cos(y);
-       func f3x=-RZ*cos(x);
-       func f3y=0;
-       // the metric on the sphere  $  M = DF^t DF $
-       func m11=f1x^2+f2x^2+f3x^2;
-       func m21=f1x*f1y+f2x*f2y+f3x*f3y;
-       func m22=f1y^2+f2y^2+f3y^2;
-       func perio=[[4,y],[2,y],[1,x],[3,x]];  // to store the periodic condition 
-       real hh=h;// hh  mesh size on unite sphere
-       real vv= 1/square(hh);
-       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-       Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
-       int[int] ref=[0,L];  
-       meshS ThS=movemesh23(Th,transfo=[f1,f2,f3],orientation=orientation,refface=ref);
-       ThS=freeyams(ThS,hmin=h,hmax=h,gradation=2.,verbosity=-10,mem=100,option=0);
-   
-      return ThS;
-    }  
-   
+
+Input/output for a mesh
+'''''''''''''''''''''''
+
+ - the command *readmesh*
+ 
+The function :freefem:`readmesh` allows to build a :freefem:`mesh` from a data file 
+ .. code-block:: freefem
+    :linenos:
+
+    mesh Th=readmeshS("Th.mesh");
+    mesh Thff = readmesh("Thff.msh"); // FreeFEM format
+	 
+ - the command *savemesh*
+
+The function :freefem:`savemesh` allows to export a :freefem:`mesh`
+ .. code-block:: freefem
+    :linenos:
+
+    savemesh(Th,"Th.mesh")
+    savemesh(Thff,"Thff.msh") // FreeFEM format
+	
+    savemesh(th, "toto.msh"); // format freefem	 savemesh(th, "toto.am_fmt"); // format "formated Marrocco"
+    savemesh(th, "toto.Th"); // format database db mesh "bamg"
+    savemesh(th, "toto.nopo"); // modulef format 
+    // allows to save the 2d mesh with the 3rd space coordinate as a scalar solution for visualise
+    savemesh(Th,"mm",[x,y,u]); //  save surface mesh for medit, see for example minimal-surf.edp
+    exec("medit mm;rm mm.bb mm.faces mm.points");  
+ 	
+	
+	
+	
+ - the command *vtkloadS*
+
+The function :freefem:`vtkload` allows to build a :freefem:`mesh` from a data mesh at vtk format mesh
+  
+ .. code-block:: freefem
+    :linenos:
+
+    load "iovtk"
+    mesh Th=vtkloadS("mymesh.vtk");
  
 
-The test of the two functions and the call to :freefem:`TetGen` mesh generator:
+- the command *savevtk*
 
-.. code-block:: freefem
+The function :freefem:`savevtk` allows to export a :freefem:`mesh` to a data mesh at vtk format mesh
+ .. code-block:: freefem
+    :linenos:
+
+     load "iovtk"
+     savevtk("Th.vtk",Th);
+ 
+
+ - the command *gmshload*
+
+The function :freefem:`gmshloadS` allows to build a :freefem:`mesh` from a data mesh file at formatmsh (GMSH)
+ .. code-block:: freefem
+    :linenos:
+
+    load "gmsh"
+    mesh Th=gmshload("mymesh.msh");
+
+ - the command *savegmsh*
+
+The function :freefem:`savegmsh` allows to export a :freefem:`mesh` to a data mesh msh (GMSH)
+   .. code-block:: freefem
+      :linenos:
+      
+	  load "gmsh"
+      savegmsh(Th, "Th");
+
+   
+  
+3d case
+^^^^^^^
+
+format of  mesh data 
+''''''''''''''''''''
+
+In three dimensions, the file mesh format supported for input and output files by **FreeFEM** are the extension .msh and .mesh.
+These formats are described in the :ref:`Mesh Format section <meshFileDataStructure>`.
+
+**Extension file .msh** The structure of the files with extension .msh in 3D is given by:
+
+.. math::
+    \begin{array}{cccccc}
+        n_v & n_{tet} & n_{tri} & & \\
+        q^1_x & q^1_y & q^1_z & Vertex label & \\
+        q^2_x & q^2_y & q^2_z & Vertex label & \\
+        \vdots & \vdots & \vdots & \vdots & \\
+        q^{n_v}_x & q^{n_v}_y & q^{n_v}_z & Vertex label & \\
+        1_1 & 1_2 & 1_3 & 1_4 & region label \\
+        2_1 & 2_2 & 2_3 & 2_4 & region label \\
+        \vdots & \vdots & \vdots & \vdots & \vdots \\
+        (n_{tet})_1 & (n_{tet})_2 & (n_{tet})_3 & (n_{tet})_4 & region label \\
+        1_1 & 1_2 & 1_3 & boundary label & \\
+        2_1 & 2_2 & 2_3 & boundary label & \\
+        \vdots & \vdots & \vdots & \vdots & \\
+        (n_tri)_{1} & (n_{tri})_2 & (n_{tri})_3 & boundary label & \\
+    \end{array}
+
+
+
+
+In this structure, :math:`n_v` denotes the number of vertices, :math:`n_{tet}` the number of tetrahedra and :math:`n_{tri}` the number of triangles.
+
+For each vertex :math:`q^i,\, i=1,\cdots,n_v`, we denote by :math:`(q^i_x,q^i_y,q^i_z)` the :math:`x`-coordinate, the :math:`y`-coordinate and the :math:`z`-coordinate.
+
+Each tetrahedra :math:`T_k, k=1,\cdots,n_{tet}` has four vertices :math:`q^{k_1},\, q^{k_2},\,q^{k_3}, \,q^{k_4}`.
+
+The boundary consists of a union of triangles.
+Each triangle :math:`tri_j, j=1,\cdots,n_{tri}` has three vertices :math:`q^{j_1},\, q^{j_2},\,q^{j_3}`.
+
+**extension file .mesh** The data structure for a three dimensional mesh is composed of the data structure presented in :ref:`Mesh Format section <meshFileDataStructure>` and a data structure for the tetrahedra. The tetrahedra of a three dimensional mesh are referred using the following field:
+
+.. code-block:: bash
    :linenos:
 
-   load "msh3"
-   load "TetGen"
-   load "medit"
-   include "MeshSurface.idp"
+   Tetrahedra
+   NbTetrahedra
+   Vertex1 Vertex2 Vertex3 Vertex4 Label
+   ...
+   Vertex1 Vertex2 Vertex3 Vertex4 Label
+   Triangles
+   NbTriangles
+   Vertex1 Vertex2 Vertex3 Label
+   ...
+   Vertex1 Vertex2 Vertex3 Label
+   
+This field is express with the notation of :ref:`Mesh Format section <meshFileDataStructure>`.
 
-   // Parameters
-   real hs = 0.1; //mesh size on sphere
-   int[int] N = [20, 20, 20];
-   real [int,int] B = [[-1, 1], [-1, 1], [-1, 1]];
-   int [int,int] L = [[1, 2], [3, 4], [5, 6]];
 
-   // Mesh
-   meshS ThH = SurfaceHex(N, B, L, 1);
-   meshS ThS = Sphere(0.5, hs, 7, 1);
+Input/output for a mesh3
+''''''''''''''''''''''''
 
-   meshS ThHS = ThH + ThS;
-   medit("Hex-Sphere", ThHS);
+ - the command *readmesh3*
+ 
+The function :freefem:`readmesh3` allows to build a :freefem:`mesh3` from a data file 
+ .. code-block:: freefem
+    :linenos:
 
-   real voltet = (hs^3)/6.;
-   cout << "voltet = " << voltet << endl;
-   real[int] domain = [0, 0, 0, 1, voltet, 0, 0, 0.7, 2, voltet];
-   mesh3 Th = tetg(ThHS, switch="pqaAAYYQ", nbofregions=2, regionlist=domain);
-   medit("Cube with ball", Th);
+    mesh3 Th3=readmesh3("Th3.mesh");
+    mesh3 Th3ff = readmesh3("Th3ff.msh"); // FreeFEM format
+	 
+ - the command *savemesh*
 
-.. subfigstart::
+The function :freefem:`savemesh` allows to export a :freefem:`mesh3`
+ .. code-block:: freefem
+    :linenos:
 
-.. _meshGenerationCubeSphere1:
+    savemesh(Th3,"Th3.mesh")
+    savemesh(Th3ff,"Th3ff.msh") // FreeFEM format
+	
+ - the command *vtkload3*
 
-.. figure:: images/MeshGeneration_CubeSphere1.png
-   :alt: MeshGeneration_CubeSphere1
-   :width: 90%
+The function :freefem:`vtkload3` allows to build a :freefem:`mesh3` from a data mesh at vtk format mesh
+  
+ .. code-block:: freefem
+    :linenos:
 
-   The surface mesh of the hex with internal sphere
+    load "iovtk"
+    mesh3 Th3=vtkloadS("mymesh.vtk");
+ 
 
-.. _meshGenerationCubeSphere2:
+- the command *savevtk*
 
-.. figure:: images/MeshGeneration_CubeSphere2.png
-   :alt: MeshGeneration_CubeSphere2
-   :width: 90%
+The function :freefem:`savevtk` allows to export a :freefem:`mesh3` to a data mesh at vtk format mesh
+ .. code-block:: freefem
+    :linenos:
 
-   The tetrahedral mesh of the cube with internal ball
+     load "iovtk"
+     savevtk("Th3.vtk",Th3);
+ 
 
-.. subfigend::
-   :width: 0.49
-   :alt: CubeSphere
-   :label: CubeSphere
+ - the command *gmshload3*
 
-   Cube sphere
+The function :freefem:`gmshload3` allows to build a :freefem:`mesh3` from a data mesh file at formatmsh (GMSH)
+ .. code-block:: freefem
+    :linenos:
+
+    load "gmsh"
+    mesh3 Th3=gmshload3("mymesh.msh");
+
+ - the command *savegmsh*
+
+The function :freefem:`savegmsh` allows to export a :freefem:`mesh3` to a data mesh msh (GMSH)
+   .. code-block:: freefem
+      :linenos:
+      
+	  load "gmsh"
+      savegmsh(Th3, "Th3");
+
+
+
+
+
+Surface 3d case 
+^^^^^^^^^^^^^^^
+ 
+format of  mesh data 
+''''''''''''''''''''
+
+Like 2d and 3d, the input and output format files supported by **FreeFEM** are the extension .msh and .mesh.
+These formats are described in the :ref:`Mesh Format section <meshFileDataStructure>`.
+
+**Extension file .msh** The structure of the files with extension .msh in surface 3D is given by:
+
+.. math::
+    \begin{array}{cccccc}
+        n_v & n_{tri} & n_{edges} & & \\
+        q^1_x & q^1_y & q^1_z & Vertex label & \\
+        q^2_x & q^2_y & q^2_z & Vertex label & \\
+        \vdots & \vdots & \vdots & \vdots & \\
+        q^{n_v}_x & q^{n_v}_y & q^{n_v}_z & Vertex label & \\
+        1_1 & 1_2 & 1_3  & region label \\
+        2_1 & 2_2 & 2_3  & region label \\
+        \vdots & \vdots & \vdots  & \vdots \\
+        (n_{tri})_1 & (n_{tri})_2 & (n_{tri})_3 & region label \\
+        1_1 & 1_2 & boundary label & \\
+        2_1 & 2_2 & boundary label & \\
+        \vdots &  \vdots & \vdots & \\
+        (n_edge)_{1} & (n_{edge})_2 & boundary label & \\
+    \end{array}
+
+
+
+
+In this structure, :math:`n_v` denotes the number of vertices, :math:`n_{tet}` the number of tetrahedra and :math:`n_{tri}` the number of triangles.
+
+For each vertex :math:`q^i,\, i=1,\cdots,n_v`, we denote by :math:`(q^i_x,q^i_y,q^i_z)` the :math:`x`-coordinate, the :math:`y`-coordinate and the :math:`z`-coordinate.
+
+Each tetrahedra :math:`T_k, k=1,\cdots,n_{tet}` has four vertices :math:`q^{k_1},\, q^{k_2},\,q^{k_3}, \,q^{k_4}`.
+
+The boundary consists of a union of triangles.
+Each triangle :math:`be_j, j=1,\cdots,n_{tri}` has three vertices :math:`q^{j_1},\, q^{j_2},\,q^{j_3}`.
+
+**extension file .mesh** The data structure for a three dimensional mesh is composed of the data structure presented in :ref:`Mesh Format section <meshFileDataStructure>` and a data structure for the tetrahedra. The tetrahedra of a three dimensional mesh are referred using the following field:
+
+.. code-block:: bash
+   :linenos:
+
+   MeshVersionFormatted 2
+   Dimension 3
+
+   Vertices
+   NbVertices
+   (v0)x (v0)y (v0)z
+   ...
+   (vn)x (vn)y (vn)z
+   
+   Triangles
+   NbTriangles
+   Vertex1 Vertex2 Vertex3 Label
+   ...
+   Vertex1 Vertex2 Vertex3 Label
+   
+   Edges
+   NbEdges
+   Vertex1 Vertex2 Label
+   ...
+   Vertex1 Vertex2 Label
+   
+   End
    
    
    
    
-   
-   
-   
-   
-   
-   
-   
-   
+
+This field is express with the notation of :ref:`Mesh Format section <meshFileDataStructure>`.
+
+
+
+
+
+
+Input/output for a meshS
+''''''''''''''''''''''''
+
+ - the command *readmesh3*
+ 
+The function :freefem:`readmeshS` allows to build a :freefem:`meshS` from a data file 
+ .. code-block:: freefem
+    :linenos:
+
+    meshS ThS=readmeshS("ThS.mesh");
+    meshS Th3ff = readmeshS("ThSff.msh"); // FreeFEM format
+	 
+ - the command *savemesh*
+
+The function :freefem:`savemesh` allows to export a :freefem:`meshS`
+ .. code-block:: freefem
+    :linenos:
+
+    savemesh(ThS,"ThS.mesh")
+    savemesh(ThSff,"ThSff.msh") // FreeFEM format
+	
+ - the command *vtkloadS*
+
+The function :freefem:`vtkloadS` allows to build a :freefem:`meshS` from a data mesh at vtk format mesh
+  
+ .. code-block:: freefem
+    :linenos:
+
+    load "iovtk"
+    meshS ThS=vtkloadS("mymesh.vtk");
+ 
+
+- the command *savevtk*
+
+The function :freefem:`savevtk` allows to export a :freefem:`meshS` to a data mesh at vtk format mesh
+ .. code-block:: freefem
+    :linenos:
+
+     load "iovtk"
+     savevtk("ThS.vtk",ThS);
+ 
+
+ - the command *gmshloadS*
+
+The function :freefem:`gmshloadS` allows to build a :freefem:`meshS` from a data mesh file at formatmsh (GMSH)
+ .. code-block:: freefem
+    :linenos:
+
+    load "gmsh"
+    meshS ThS=gmshloadS("mymesh.msh");
+
+ - the command *savegmsh*
+
+The function :freefem:`savegmsh` allows to export a :freefem:`meshS` to a data mesh msh (GMSH)
+   .. code-block:: freefem
+      :linenos:
+      
+	  load "gmsh"
+      savegmsh(ThS, "ThS");
+
+
+ 
+ 
+ 
+ 
+ 
+ 
    
 
 Medit

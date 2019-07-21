@@ -65,6 +65,38 @@ Problems involving partial differential equations from several branches of physi
 
 **FreeFEM** is written in C++ and its language is a C++ idiom.
 
+**FreeFEM** currently interfaces to the following libraries:
+
+
+.. hlist::
+    :columns: 3
+	 
+    * `ARPACK <https://www.caam.rice.edu/software/ARPACK/>`_ 
+    * `BLAS <http://www.netlib.org/blas/>`_ 
+    * `OpenBLAS <http://www.openblas.net/>`_  
+    * `FFTW V3.3.2 <http://www.fftw.org>`_
+    * `Ipopt V3.12.4 <https://projects.coin-or.org/Ipopt>`_   
+    * `Gmm++ V4.2 <http://getfem.org/gmm.html>`_
+    * `freeYams <https://www.ljll.math.upmc.fr/frey/software.html>`_           
+    * `METIS V5.1.0 <http://www.netlib.org/linalg/>`_
+    * `ParMETIS V4.0.3 <http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/>`_
+    * `MMG3D V4.0 <https://www.mmgtools.org>`_
+    * `mshmet <https://www.ljll.math.upmc.fr/frey/software.html>`_
+    * `MUMPS V5.0.2 <http://mumps.enseeiht.fr/>`_
+    * `NLopt V2.2.4 <http://ab-initio.mit.edu/wiki/index.php/NLopt>`_   
+    * `ScaLAPACK <http://www.netlib.org/scalapack/>`_
+    * `Scotch V6.0.4 <https://gforge.inria.fr/projects/scotch/>`_   
+    * `SuiteSparse V4.4.4 <http://faculty.cse.tamu.edu/davis/SuiteSparse/>`_
+    * `SuperLU V5.2.1 <http://crd-legacy.lbl.gov/~xiaoye/SuperLU/>`_        
+    * `TetGen V1.5.1 <http://www.tetgen.org/>`_
+    * `PETSc V3.11.2 <https://www.mcs.anl.gov/petsc/>`_   
+    * `HTool <https://github.com/PierreMarchand20/>`_
+    * `HPDDM <https://github.com/hpddm>`_
+
+|
+|
+
+
 .. image:: ../_static/img/Logo.png
    :align: center
    :width: 65%

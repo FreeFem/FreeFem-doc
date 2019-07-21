@@ -14,8 +14,8 @@ Follow the section corresponding to your type of installation.
 |
 |
 
-Binaries package
------------------
+Using binaries package
+----------------------
 
 First, open the following web page :ref:`download page <download>` and choose your platform: Linux, MacOS or Windows.
 
@@ -50,9 +50,9 @@ If you want terminal access to **FreeFEM** just copy the file ``FreeFem++`` in a
 
 
 Ubuntu binary installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Beforehand, install the following dependances using the apt tool:
+Beforehand, install the following dependances libraries using the apt tool:
 
 .. code-block:: bash
    :linenos:
@@ -81,8 +81,8 @@ To install it:
 
 
 
-Using autotools
----------------
+Compiling source code
+---------------------
 	
 	2 worked versions of FreeFEM are possible: minimal and full - 1/ sequential and without plugins (contains in 3rdparty) 2/ full: parallel with plugins.
 	.. note:: We advise you to use the package manager for macOS Homebrew to get the different packages required avalaible `here <https://brew.sh>`__
@@ -416,11 +416,11 @@ Compilation on Windows
    We assume your development machine is 64-bit, and you want your compiler to target 64-bit windows by default.
 
 
-1. Install `Microsoft MPI v9.0 <https://www.microsoft.com/en-us/download/details.aspx?id=56511>`__ (msmpisdk.msi and MSMpiSetup.exe)
+1. Install the `Microsoft MPI v7.0 (archived) <https://www.microsoft.com/en-us/download/details.aspx?id=49926>`__ (msmpisdk.msi and MSMpiSetup.exe)
 
 .. note::
    2019/07/07  Microsoft MPI v10.0 isn't usable in MSYS/mingw64 with gfortran `more information here <https://github.com/Microsoft/Microsoft-MPI/issues/7>`__
-
+               Microsoft MPI v9: mpiexec.exe doesn't run 
 
 2. Download ` msys2-x86_64-latest.exe and run it.<http://repo.msys2.org/distrib/msys2-x86_64-latest.exe>`__ (x86_64 version) and run it 
 
@@ -454,9 +454,9 @@ Repeatedly run the following command until it says there are no further updates.
 
       pacman -S autoconf automake-wrapper bash bash-completion \
         bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
-        findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
-        make man-db git mingw-w64-x86_64-freeglut mingw-w64-x86_64-gcc \
-        mingw-w64-x86_64-gcc-fortran mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
+        findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils 
+		info less lndir make man-db git mingw-w64-x86_64-freeglut \
+		mingw-w64-x86_64-toolchain  mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
         mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
         msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git python \
         perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which \
@@ -468,13 +468,13 @@ Repeatedly run the following command until it says there are no further updates.
       :linenos:
 
       pacman -S autoconf automake-wrapper bash bash-completion \
-          bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
-          findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils info less lndir \
-          make man-db git mingw-w64-i686-freeglut mingw-w64-i686-gcc \
-          mingw-w64-i686-gcc-fortran mingw-w64-i686-gsl mingw-w64-i686-hdf5 \
-          mingw-w64-i686-openblas mintty msys2-keyring msys2-launcher-git \
-          msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
-      perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
+        bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
+        findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils \ 
+		info less lndir make man-db git mingw-w64-i686-freeglut \
+		mingw-w64-i686-toolchain mingw-w64-i686-gsl mingw-w64-i686-hdf5 \
+        mingw-w64-i686-openblas mintty msys2-keyring msys2-launcher-git \
+        msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
+        perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
 
 6. Open a ``MingW64 terminal`` (or ``MingW32`` for old 32 bits **FreeFEM** version) and compile the **FreeFEM** source
 
@@ -824,16 +824,16 @@ Gedit
 In order to get the syntax highlighting in Gedit, you have to downlaod the `Gedit parser <https://github.com/FreeFem/FreeFem-parser-gedit>`__ and copy it in ``/usr/share/gtksourceview-3.0/language-specs/``.	  
 
 
-Textmate 2 editor under macOS 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Textmate 2, an editor under macOS 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To use the coloring **FreeFEM** syntax with the Textmate 2 editor on Mac 10.7 or better, download from macromates.com and download the textmate freefem++ syntax `here <http://www3.freefem.org/ff++/Textmate2-ff++.zip>`__ (version june 2107). To install this parser, unzip Textmate2-ff++.zip and follow the explanation given in file How_To.rtf.
 
 rom www.freefem.org/ff++/Textmate2-ff++.zip (version june 2107) unzip Textmate2-
 
 
-Notepad++ editor under windows
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Notepad++,an editor under windows
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  
 Read and follow the instruction, `FREEFEM++ COLOR SYNTAX OF WINDOWS <http://www3.freefem.org/ff++/color-syntax-win.pdf>`__ .
  

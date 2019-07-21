@@ -19,34 +19,49 @@ In **FreeFEM**, the finite element space:
 .. math::
    V_h=\left\{w\left|\; w_0\phi_0+w_1\phi_1+\cdots+w_{M-1}\phi_{M-1},\, w_i\in \R\right.\right\}
 
-is easily created by:
+is easily created by
 
-.. code-block:: freefem
-   :linenos:
+ - in 2d
 
-   fespace IDspace(IDmesh,<IDFE>);
+ .. code-block:: freefem
+    :linenos:
 
-or with :math:`\ell` pairs of periodic boundary conditions in 2D:
+    fespace IDspace(IDmesh,<IDFE>);
 
-.. code-block:: freefem
-   :linenos:
+ or with :math:`\ell` pairs of periodic boundary conditions in 2D:
 
-   fespace IDspace(IDmesh,<IDFE>,
-       periodic=[[la1, sa1], [lb1, sb1],
-                 ...
-                 [lak, sak], [lbk, sbl]]);
+ .. code-block:: freefem
+    :linenos:
 
-and in 3D:
+    fespace IDspace(IDmesh,<IDFE>,
+        periodic=[[la1, sa1], [lb1, sb1],
+                  ...
+                  [lak, sak], [lbk, sbl]]);
+ 
+ - in 3D:
 
-.. code-block:: freefem
-   :linenos:
+ .. code-block:: freefem
+    :linenos:
 
-   fespace IDspace(IDmesh,<IDFE>,
-       periodic=[[la1, sa1, ta1], [lb1, sb1, tb1],
-                 ...
-                 [lak, sak, tak], [lbk, sbl, tbl]]);
+    fespace IDspace(IDmesh3,<IDFE>,
+        periodic=[[la1, sa1, ta1], [lb1, sb1, tb1],
+                  ...
+                  [lak, sak, tak], [lbk, sbl, tbl]]);
 
-where :freefem:`IDspace` is the name of the space (e.g. :freefem:`Vh`), :freefem:`IDmesh` is the name of the associated mesh and :freefem:`<IDFE>` is an identifier of finite element type.
+ - in surface 3D:
+
+ .. code-block:: freefem
+    :linenos:
+
+    fespace IDspace(IDmeshS,<IDFE>,
+        periodic=[[la1, sa1, ta1], [lb1, sb1, tb1],
+                  ...
+                  [lak, sak, tak], [lbk, sbl, tbl]]);
+
+
+
+where :freefem:`IDspace` is the name of the space (e.g. :freefem:`Vh`), :freefem:`IDmesh` :freefem:`IDmesh3` :freefem:`IDmeshS `is respectly the name of the associated :freefem:`mesh`, :freefem:`mesh3`, :freefem:`meshS` and :freefem:`<IDFE>` is an identifier of finite element type.
+
 
 In 2D we have a pair of periodic boundary conditions, if :math:`[la_i, sa_i]`, :math:`[lb_i, sb_i]` is a pair of :freefem:`int`, and the 2 labels :math:`la_i` and :math:`lb_i` refer to 2 pieces of boundary to be in equivalence.
 
@@ -58,21 +73,24 @@ If :math:`[la_i, sa_i, ta_i]`, :math:`[lb_i, sb_i, tb_i]` is a pair of :freefem:
 
 .. note:: The 2D mesh of the two identified borders must be the same, so to be sure, use the parameter :freefem:`fixedborder=true` in :freefem:`buildmesh` command (see :ref:`fixedborder <meshBorder>`).
 
+List of the types of finite elements
+------------------------------------
+
 As of today, the known types of finite elements are:
 
--  :freefem:`[P0, P03d]` piecewise constant discontinuous finite element (2d, 3d), the degrees of freedom are the barycenter element value.
+-  :freefem:`[P0]` piecewise constant discontinuous finite element (2d, 3d, surface 3d), the degrees of freedom are the barycenter element value.
 
     .. math::
         \P^0_{h} = \left\{ v \in L^2(\Omega) \left|\; \textrm{for all }K \in \mathcal{T}_{h}\;\;\textrm{there is }\alpha_{K}\in \R : \;\; v_{|K} = \alpha_{K } \right.\right\}
         :label: eq:P0
 
--  :freefem:`[P1, P13d]` piecewise linear continuous finite element (2d, 3d), the degrees of freedom are the vertices values.
+-  :freefem:`[P1]` piecewise linear continuous finite element (2d, 3d, surface 3d), the degrees of freedom are the vertices values.
 
     .. math::
         \P^1_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h},\ v_{|K} \in P_{1} \right.\right\}
         :label: eq:P1
 
--  :freefem:`[P1dc]` piecewise linear discontinuous finite element
+-  :freefem:`[P1dc]` piecewise linear discontinuous finite element (2d, 3d with load"Element_P1dc1")
 
     .. math::
         \P^1_{dc|h} = \left\{ v \in L^{2}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{1} \right.\right\}
@@ -80,7 +98,7 @@ As of today, the known types of finite elements are:
 
    .. warning:: Due to an interpolation problem, the degree of freedom is not the vertices but three vertices which move inside :math:`T(X)= G + .99 (X-G)` where :math:`G` is the barycenter.
 
--  :freefem:`[P1b, P1b3d]` piecewise linear continuous finite element plus bubble (2d, 3d)
+-  :freefem:`[P1b]` piecewise linear continuous finite element plus bubble (2d, 3d)
 
    **The 2D Case:**
 
@@ -96,23 +114,30 @@ As of today, the known types of finite elements are:
 
     where :math:`\lambda^{K}_{i}, i=0,..,d` are the :math:`d+1` barycentric coordinate functions of the element :math:`K` (triangle or tetrahedron).
 
--  :freefem:`P1bl,P1bl3d` piecewise linear continuous finite element plus linear bubble (2d, 3d).
+-  :freefem:`P1bl,P1bl3d` piecewise linear continuous finite element plus linear bubble (with load"Element_P1bl" 2d, 3d).
 
    The bubble is built by splitting the :math:`K`, a barycenter in :math:`d+1` sub element. (need :freefem:`load "Element_P1bl"`)
 
--  :freefem:`[P2, P23d]` piecewise :math:`P_{2}` continuous finite element (2d, 3d)
+-  :freefem:`[P2, P2]` piecewise :math:`P_{2}` continuous finite element (2d, 3d, surface 3d)
 
     .. math::
         \P^2_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{2} \right.\right\}
 
     where :math:`P_{2}` is the set of polynomials of :math:`\R^{2}` of degrees :math:`\le 2`.
 
--  :freefem:`[P2b]` piecewise :math:`P_{2}` continuous finite element plus bubble
+-  :freefem:`[P2b, P2b3d]` piecewise :math:`P_{2}` continuous finite element plus bubble (2d, 3d with load"Element_P2bulle3")
 
+   **The 2D Case:**
+    
     .. math::
         \P^2_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{2} \oplus \mathrm{Span}\{ \lambda^{K}_{0} \lambda^{K}_{1} \lambda^{K}_{2} \} \right.\right\}
+		
+    **The 3D Case:**
+    
+	 .. math::
+	    \P^2_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{2} \oplus \mathrm{Span}\{ \lambda^{K}_{0} \lambda^{K}_{1} \lambda^{K}_{2} \lambda^{K}_{3} \} \right.\right\}
 
--  :freefem:`[P2dc]` piecewise :math:`P_{2}` discontinuous finite element
+-  :freefem:`[P2dc]` piecewise :math:`P_{2}` discontinuous finite element (2d)
 
     .. math::
         \P^2_{dc|h} = \left\{ v \in L^{2}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{2} \right.\right\}
@@ -341,8 +366,10 @@ As of today, the known types of finite elements are:
 
 You can use this element to optimize the storage and reuse of functions with a long formula inside an integral for non linear processes.
 
-Use of freefem fespace in 2D
-----------------------------
+
+
+Use of fespace in 2D
+--------------------
 
 With the 2D finite element spaces
 
@@ -391,6 +418,9 @@ The functions :math:`U_{h}, V_{h}` have two components so we have
 .. math::
     U_{h}=\vecttwo{Uxh}{Uyh} \quad \mbox{and}\quad V_{h}=\vecttwo{Vxh}{Vyh}
 
+
+
+
 Use of fespace in 3D
 --------------------
 
@@ -400,30 +430,68 @@ With the 3D finite element spaces
     X_{h} = \{ v \in H^{1}(]0,1[^3) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{1} \}
 
 .. math::
-    X_{ph} = \left\{ v \in X_{h} |\; v\left(\vecttwo{0}{.}\right) = v\left(\vecttwo{1}{.}\right) , v\left(\vecttwo{.}{0}\right) = v\left(\vecttwo{.}{1}\right) \right\}
+    X_{ph} = \left\{ v \in X_{h} |\; v\left(\vectthree{0}{.}{.}\right) = v\left(\vectthree{1}{.}{.}\right) , v\left(\vectthree{.}{0}{.}\right) = v\left(\vectthree{.}{1}{.}\right) , v\left(\vectthree{.}{.}{0}\right) = v\left(\vectthree{.}{.}{1}\right) \right\}
 
 .. math::
-    M_{h} = \{ v \in H^{1}(]0,1[^2) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{2} \}
+    M_{h} = \{ v \in H^{1}(]0,1[^3) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{2} \}
 
 .. math::
-    R_{h} = \left\{ \mathbf{v} \in H^{1}(]0,1[^2)^{2} |\; \forall K \in \mathcal{T}_{h}\quad \mathbf{v}_{|K}(x,y) = \vecttwo{\alpha_{K}}{\beta_{K}} + \gamma_{K}\vecttwo{x}{y} \right\}
+    R_{h} = \left\{ \mathbf{v} \in H^{1}(]0,1[^3)^{2} |\; \forall K \in \mathcal{T}_{h}\quad \mathbf{v}_{|K}(x,y,z) = \vectthree{\alpha_{K}}{\beta_{K}}{\gamma_{K}} + \delta_{K}\vectthree{x}{y}{z} \right\}	
+
 
 when :math:`\mathcal{T}_h` is a mesh :math:`10\times 10\times 10` of the unit cubic :math:`]0,1[^2`, we write in **FreeFEM**:
 
 .. code-block:: freefem
     :linenos:
 
-    mesh3 Th = buildlayers(square(10, 10),10, zbound=[0,1]);
     //label: 0 up, 1 down, 2 front, 3 left, 4 back, 5 right
+	int nn=10;
+	mesh3 Th=buildlayers(square(nn,nn,region=0),nn,
+	  zbound=[zmin,zmax], labelmid=rmid, reffaceup = rup,
+	  reffacelow = rdown);
+
     fespace Xh(Th, P1); //scalar FE
-    fespace Xph(Th, P1,
-        periodic=[[0, x, y], [1, x, y],
-            [2, x, z], [4, x, z],
-            [3, y, z], [5, y, z]]); //three-periodic FE
+	// a FE space with full periodic condition in 3 axes	
+	fespace Xph(Th,P1,periodic=[[1,y,z],[2,y,z],
+	                 [3,x,z],[4,x,z],[5,x,y],[6,x,y]]);				
     fespace Mh(Th, P2); //scalar FE
     fespace Rh(Th, RT03d); //vectorial FE
 
 where :freefem:`Xh, Mh, Rh` expresses finite element spaces (called FE spaces) :math:`X_h,\, M_h,\, R_h`, respectively.
+
+The functions :math:`U_{h}, V_{h}` have two components so we have
+
+
+
+Use of fespace in surface 3D
+----------------------------
+
+With the 3D finite element spaces
+
+.. math::
+    X_{h} = \{ v \in H^{1}(]0,1[^3) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{1} \}
+
+
+.. code-block:: freefem
+    :linenos:
+
+    meshS Th = square3(10, 10);
+    fespace Xh(Th, P1); //scalar FE
+    
+where :freefem:`Xh` expresses finite element spaces (called FE spaces) :math:`X_h`, respectively.
+
+To use FE-functions :math:`u_{h},v_{h} \in X_{h}`, :math:`p_{h},q_{h} \in M_{h}` and :math:`U_{h},V_{h} \in R_{h}`, we write:
+
+.. code-block:: freefem
+    :linenos:
+
+    Xh uh, vh;
+    Xh[int] Uh(10);         //array of 10 functions in Xh
+   
+
+
+Finite Element functions
+------------------------
 
 To define and use FE-functions :math:`u_{h},v_{h} \in X_{h}`, :math:`p_{h},q_{h} \in M_{h}` and :math:`U_{h},V_{h} \in R_{h}`, we write:
 
@@ -442,7 +510,7 @@ To define and use FE-functions :math:`u_{h},v_{h} \in X_{h}`, :math:`p_{h},q_{h}
 The functions :math:`U_{h}, V_{h}` have three components, so we have:
 
 .. math::
-    U_{h}=\vectthree{Uxh}{Uyh}{Uzh} \quad \mbox{and}\quad V_{h}=\vectthree{Vxh}{Vyh}{Vzh}
+    U_{h}=\vectthree{(U_h)_x}{(U_h)_y}{(U_h)_z} \quad \mbox{and}\quad V_{h}=\vectthree{(V_h)_x}{(V_h)_y}{(V_h)_z}
 
 .. note:: One challenge of the periodic boundary condition is that the mesh must have equivalent faces.
 
@@ -471,7 +539,7 @@ Lagrangian Finite Elements
 --------------------------
 
 P0-element
-~~~~~~~~~~
+^^^^^^^^^^
 
 For each triangle (d=2) or tetrahedron (d=3) :math:`T_k`, the basis function :math:`\phi_k` in :freefem:`Vh(Th, P0)` is given by:
 
@@ -497,7 +565,7 @@ then for vertices :math:`q^{k_i},\, i=1,2,.. d+1` in :numref:`finiteElementP1P2`
 See :numref:`finiteElementProjP0` for the projection of :math:`f(x,y)=\sin(\pi x)\cos(\pi y)` on :freefem:`Vh(Th, P0)` when the mesh :freefem:`Th` is a :math:`4\times 4`-grid of :math:`[-1,1]^2` as in :numref:`finiteElementP0P1P2P1nc`.
 
 P1-element
-~~~~~~~~~~
+^^^^^^^^^^
 
 .. figure:: images/FiniteElement_P1P2.png
     :name: finiteElementP1P2
@@ -558,7 +626,7 @@ See :numref:`finiteElementProjP1` for the projection of :math:`f(x,y)=\sin(\pi x
    Finite element :freefem:`P0`
 
 P2-element
-~~~~~~~~~~
+^^^^^^^^^^
 
 For each vertex or mid-point :math:`q^i`.
 The basis function :math:`\phi_i` in :freefem:`Vh(Th, P2)` is given by:
@@ -620,17 +688,195 @@ See :ref:`finiteElementProjP2` for the projection of :math:`f(x,y)=\sin(\pi x)\c
    
    
 
-.. _surfacePkLagrange:  
+.. _surfacePkLagrange:   
    
-Surface Lagrangian Finite Elements   
+Surface Lagrangian Finite Elements
+----------------------------------
+
+
+Surface P0 Lagragian element
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Surface P1 Lagragian element
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*0) Notation*
+
+ - Let :math:`\hat K` be the shape triangle in the space :math:`\mathbb{R}^2` of vertice :math:`(i_0,i_1,i_2)`
+ - Let :math:`K` be a triangle of the space :math:`\mathbb{R}^3` of vertice :math:`(A_0,A_1,A_2)`
+ - :math:`x_q` a quadrature point on K
+ - :math:`X_q` a quadrature point on A
+ - :math:`(\lambda_i)_{i=0}^2` shape fonction of :math:`\hat K` (:math:`P1\_2d` )
+ - :math:`(\psi_i)_{i=0}^2` shape fonction of K ( P1s )
+ 
+
+*1) Geometric transformation: from the current FE to the reference FE*
+
+Let be :math:`\hat x= \begin{pmatrix}   \hat x \\ \hat y  \end{pmatrix}` a point of the triangle :math:`\hat K \subset \mathbb{R}^2` and :math:`X= \begin{pmatrix}   x \\  y  \\ z \end{pmatrix}` a point of the triangle :math:`K \subset \mathbb{R}^3`, where :math:`\hat x` and :math:`\hat X` are expressed in baricentric coordinates.
+
+The motivation here is to parameterize the 3d surface mesh to the reference 2d triangle, thus to be reduced to a finite element 2d P1.
+Let's define a geometric transformation F, such as 
+
+.. math:: 
+   F: \mathbb{R}^2 \rightarrow \mathbb{R}^3
    
+However, thus defines transformation F as not bijective. 
+
+So, consider the following approximation 
+
+.. math::
+   \tilde F: \mathbb{R}^2 &\rightarrow \mathbb{R}^3  \\
+   \hat{x}   &\rightarrow  X  \\
+   \begin{pmatrix} x \\ y \\ 0 \end{pmatrix} &\rightarrow  \begin{pmatrix} \overrightarrow {A_0 A_1} \\ \overrightarrow {A_0A_2} \\ \overrightarrow {A_0A_1} \wedge  \overrightarrow     {A_0A_2} \end{pmatrix} ( \hat{x} -A_0)        
+
+where :math:`\wedge` denote the usual vector product.
+
+
+.. figure:: images/geotransfo_P1s.png
+   :alt: 
+   :width: 60%
+
+   F, a parameterization from the reference 2d triangle to a 3d surface triangle
+
+.. note::
+
+   :math:`\overrightarrow {A0A1} \wedge  \overrightarrow {A_0A_2} = \vec n = \begin{pmatrix} n_x \\ n_y \\ n_z \end{pmatrix}`  defines the vector, orthogonal to the tangent plane generated by :math:`( A_0,\overrightarrow {A_0A_1}, \overrightarrow {A_0A_2} )`
+
+
+
+The affine transformation :math:`\tilde F` allows you to pass from the 2d reference triangle, which we project in :math:`\mathbb{R}^3` to the 3d current triangle, discretizing the surface we note :math:`\Gamma`.
+
+Then :math:`\tilde F^{-1}` is well defined and allows to return to the reference triangle :math:`\hat K`, to the usual coordinates of :math:`\mathbb{R}^2` completed by the coordinate :math:`z=0`.
+
+*2) Interpolation element fini*
+
+Remember that the reference geometric element for the finite element :math:`P1s`that we are building is the reference triangle :math:`\hat K` in the vertex plane ():math:`i_0, i_1, i_2`), which we project into space by posing :math:`z=0` by the membrane hypothesis. 
+
+Hence :math:`i_0 = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}`, :math:`i_1 = \begin{pmatrix} 1 \\ 0 \\ 0  \end{pmatrix}`, :math:`i_1 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}`.
+
+
+Let X be a point of the current triangle K, we have X= :math:`\tilde F(\hat{x})`.   
+The barycentric coordinates of X in K are given by:
+:math:`X = \sum_{i=0} ^2  A_i \hat \lambda(\hat{x})` où
+
+ - :math:`A_i` the points of the current triangle K
+ - :math:`\hat \lambda_i` basic functions :math:`P1 \_2d`
+  
+  + :math:`\hat \lambda_0(x,y) = 1-x-y`
+  + :math:`\hat \lambda_1(x,y) = x`
+  + :math:`\hat \lambda_2(x,y) = y`
+
+
+We need to define a quadrature formula for the finite element approximation. The usual formulation for a 2d triangle will be used by redefining the quadrature points
+:math:`X_q = x_q = \begin{pmatrix} \hat x_q \\ \hat y_q \\ 0 \end{pmatrix}`.
+
+
+*3) The Lagragian P1 functions and theirs 1st order derivatives*
+
+
+The finite element interpolation gives us the following relationship:
+:math:`\psi_i(X) = F^{-1} (\psi_i)( F^{-1} (X))`.
+To find the expression of the basic functions :math:`\psi` on the current triangle K, it is sufficient to use the inverse of the transformation :math:`\tilde F` to get back to the reference triangle :math:`\hat K`.
+However in FreeFEM, the definition of the reference finite element, the current geometry is based on barycentric coordinates in order not to use geometric transformation. :math:`\tilde F`. \\
+The method used here is  geometric and based on the properties of the vector product and the area of the current triangle K. \\
+
+
+*The shape functions*
+ 
+
+Let be the triangle K of vertices :math:`i_0, i_1, i_2 \subset  \mathbb{R}^3` and :math:`(\lambda_i)_{i=0} ^2` the local barycentric coordinates at K. 
+The normal is defined as the tangent plane generated by :math:`(A_0,  \overrightarrow {A_0A_1},  \overrightarrow {A_0A_2})`, \\
+:math:`\vec n =  \overrightarrow {A_0A_1} \wedge  \overrightarrow {A_0A_2}` avec :math:`\mid \mid \vec n \mid \mid  = 2 \text{ mes }(\hat K)`.
+
+Le denotes the operator V, defines the usual vector product of  :math:`\mathbb{R}^3` such as :math:`V(A,B,C) =  (B-A) \wedge (C-A)`
+ 
+The mixed product of three vectors u, v, w, noté :math:`[u, v, w]`, is the determinant of these three vectors in any direct orthonormal basis, thus
+:math:`(A \wedge V,C)= \text{ det }(A,B,C)`
+
+with :math:`(.,.)` is the usual scalar product of :math:`\mathbb{R}^3`. \\
+Let Ph :math:` \ in \mathbb{R}^3` and P his projected in the triangle K such as:
+
+.. figure:: images/subtriangle_P1s.png
+   :alt: 
+   :width: 40%
+
+Let's lay the sub-triangles as follows :
+ 
+ - :math:`K_0 = (P,A1,A2)`
+ - :math:`K_1 = (A0,P,A2)`
+ - :math:`K_2 = (A0,A1,P)`
+ 
+with  :math:`K = K_0 \cup K_1 \cup K_2`.
+
+ .. note::
+    Properties in :math:`\mathbb{R}^3`
+	- Let :math:`\vec n` be the normal to the tangent plane generated by :math:`(A_0, \overrightarrow {A_0A_1}, \overrightarrow {A_0A_2})`
+    -:math:`\vec n =\overrightarrow {A_0 A_1} \wedge \overrightarrow {A_0 A_2}`
+	- By definition,  :math:`\mathcal{A}= \frac{1}{2} \mid < \vec n,\vec n> \mid` and the vectorial area by :math:`\mathcal{A^S}= \frac{1}{2} < \vec n,\vec n>` hence  :math:`\mathcal{A^S} (PBC)= \frac{1}{2} < \vec n_0,\vec n>`, with :math:`\vec n_0` the normal vector to the plane (PBC)
+ 
+
+Let's define the respective vector areas 
+
+ - :math:`\vec N_0(P) =  V(P,A1,A2)` the vectorial area of K0 
+ - :math:`\vec N_1(P) =  V(A0,P,A2)` the vectorial area of K1
+ - :math:`\vec N_2(P) =  V(A0,A1,P)` the vectorial area of K2
+ 
+
+
+By definition, in 3d, the barycentric coordinates are given by algebraic area ratio: :math:`\begin{equation} \lambda_i(P) = \frac {(\vec N_i(P),\vec N)}{(\vec N,\vec N)}\label{basisfunc} \end{equation}`
+
+Note that :math:`(\vec N_i(P) ,\vec N) = 2 \text{ sign } \text{ mes } (K_i) \mid \mid \vec N \mid \mid`
+and :math:`(\vec N,\vec N) = 2 \text{ sign } \text{ mes } (K)  \mid \mid \vec N \mid \mid`, avec :math:`sign` the orientation of the current triangle compared to the reference triangle. 
+
+We find the finite element interpolation,  :math:`P = \sum_{i=0}^2  \lambda_i(P) A_i`.  
+
+
+*1st order derivatives of Lagrangian P1 FE*
+
+Let :math:`\vec Y` be any vector of :math:`\in \mathbb{R}^3`. 
+
+.. math::
+   \begin{aligned} 
+   (\vec N_2(P) ,\vec Y) &= ( (A_1-A_0) \wedge (P-A_0),Y) \\
+   &=\text{det}(A_1-A_0,P-A_0,Y)  \\
+   &= \text{det}(A_1-A_0,P,Y)- \text{det}(A_1-A_0,A_0,Y)
+   \end{aligned}
+
+
+Let's calculate the differential of :math:`(\vec N_2(P),Y), \forall Y`
+
+.. math::
+
+   D_P (\vec N_2(P) ,\vec Y)  =  \text{det} (A_1-A_0,P',Y) dP  
+   \begin{aligned}
+   \nabla_P (\vec N_2(P) ,\vec Y) &= \text{ det } (A_1-A_0, P' ,\vec Y) \\
+   &= - det (A_1-A_0, \vec Y, P') \\
+   &= - (A_1-A_0) \wedge \vec Y . P' \\
+   &=  \vec Y \wedge (A_1-A_0)  
+   \end{aligned}
+
+Consider in particular :math:`\vec Y = \vec N`, then
+.. math:: 
    
+   \begin{aligned}
+   \nabla_P (\vec N_2(P) ,\vec N) &=  \vec N \wedge (A_1-A_0) \\
+   &=  \vec N \wedge E_2
+   &= - \text{det} (A_1-A_0, \vec Y, P')
+   \end{aligned}
+
+
+This leads to 
+:math:`\begin{equation} \nabla_P \lambda_2(P) = \frac {(\vec N \wedge E_2)}{(\vec N,\vec N)} \end{equation}` 
+
+By similar calculations for :math:`\vec N_0(P)$ et $\vec N_1(P)`  
+
+:math:`\begin{equation} \nabla_P \lambda_i(P) = \frac {(\vec N \wedge E_i)}{(\vec N,\vec N)}\label{derivbasisfunc} \end{equation}`
+
+
+
    
-   
-   
-   
-   
-   
+Surface P2 Lagragian element
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^   
    
    
    
@@ -766,7 +1012,7 @@ makes the space
     w_2\in V_h(\mathcal{T}_h,P_1)\}
 
 Raviart-Thomas Element
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 In the Raviart-Thomas finite element :math:`RT0_{h}`, the degrees of freedom are the fluxes across edges :math:`e` of the mesh, where the flux of the function :math:`\mathbf{f} : \R^2 \longrightarrow \R^2` is :math:`\int_{e} \mathbf{f}.n_{e}`, :math:`n_{e}` is the unit normal of edge :math:`e`.
 
@@ -1041,7 +1287,7 @@ For **FreeFEM**, a problem must be given in variational form, so we need a bilin
 .. note:: When you want to formulate the problem and solve it in the same time, you can use the keyword :freefem:`solve`.
 
 Weak Form and Boundary Condition
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To present the principles of Variational Formulations, also called weak form, for the Partial Differential Equations, let’s take a model problem: a Poisson equation with Dirichlet and Robin Boundary condition.
 
