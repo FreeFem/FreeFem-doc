@@ -30,7 +30,7 @@ The **FreeFEM** type to define a 2d mesh object is :freefem:`mesh`.
 
 .. _meshSquare:
 
-the command *square*
+The command *square*
 ''''''''''''''''''''
 
 The command :freefem:`square` triangulates the unit square.
@@ -64,10 +64,10 @@ To construct a :math:`n\times m` grid in the rectangle :math:`[x_0,x_1]\times [y
 .. note:: Adding the named parameter :freefem:`flags=icase` with icase:
 
   0. will produce a mesh where all quads are split with diagonal :math:`x-y=constant`
-  1. will produce *Union Jack flag* type of mesh
+  1. will produce a *Union Jack flag* type of mesh
   2. will produce a mesh where all quads are split with diagonal :math:`x+y=constant`
-  3. same as in case 0, except two corners where the triangles are the same as case 2 to avoid having 3 vertices on the boundary
-  4. same as in case 2, except two corners where the triangles are the same as case 0 to avoid having 3 vertices on the boundary
+  3. same as in case 0, except two corners where the triangles are the same as case 2, to avoid having 3 vertices on the boundary
+  4. same as in case 2, except two corners where the triangles are the same as case 0, to avoid having 3 vertices on the boundary
 
   .. code-block:: freefem
     :linenos:
@@ -94,10 +94,10 @@ To construct a :math:`n\times m` grid in the rectangle :math:`[x_0,x_1]\times [y
 
 .. _meshBorder:
 
-the command *buildmesh*
+The command *buildmesh*
 '''''''''''''''''''''''
 
-*mesh building with :freefem:`border`*
+*mesh building with* :freefem:`border`
 
 Boundaries are defined piecewise by parametrized curves. The pieces can only intersect at their endpoints, but it is possible to join more than two endpoints. This can be used to structure the mesh if an area touches a border and create new regions by dividing larger ones:
 
@@ -237,7 +237,7 @@ The following example shows how to change the orientation. The example generates
     mesh Thwithhole = buildmesh(a(50) + b(-30)); // bug (a trap) because
         // the two circles have the same radius = :math:`0.3`
 
-*mesh building with array of :freefem:`border`*
+*mesh building with array of* :freefem:`border`
 
 
 Sometimes it can be useful to make an array of the border, but unfortunately it is incompatible with the **FreeFEM** syntax. To bypass this problem, if the number of segments of the discretization :math:`n` is an array, we make an implicit loop on all of the values of the array, and the index variable :math:`i` of the loop is defined after the parameter definition, like in :freefem:`border a(t=0, 2*pi; i)` ...
@@ -301,11 +301,11 @@ The following example explains methods to obtain mesh information.
    {
        int NbTriangles = Th.nt;
        real MeshArea = Th.measure;
-       real BorderLenght = Th.bordermeasure;
+       real BorderLength = Th.bordermeasure;
 
        cout << "Number of triangle(s) = " << NbTriangles << endl;
        cout << "Mesh area = " << MeshArea << endl;
-       cout << "Border length = " << BorderLenght << endl;
+       cout << "Border length = " << BorderLength << endl;
 
        // Th(i) return the vextex i of Th
        // Th[k] return the triangle k of Th
@@ -713,7 +713,7 @@ Remeshing
 
 .. _meshGenerationMoveMesh:
 
-the command *movemesh*
+The command *movemesh*
 ''''''''''''''''''''''
 
 Meshes can be translated, rotated, and deformed by :freefem:`movemesh`; this is useful for elasticity to watch the deformation due to the displacement :math:`\mathbf{\Phi}(x,y)=(\Phi_1(x,y),\Phi_2(x,y))` of shape.
@@ -842,7 +842,7 @@ Now, we give an example of moving a mesh with a Lagrangian function :math:`u` de
 
 .. _meshRegularTriangulation:
 
-the command *hTriangle*
+The command *hTriangle*
 '''''''''''''''''''''''
 
 This section presents the way to obtain a regular triangulation with **FreeFEM**.
@@ -871,7 +871,7 @@ We put :math:`h(\mathcal{T}_h)=\max\{\textrm{diam}(T_k)|\; T_k\in \mathcal{T}_h\
    Ph h = hTriangle;
    cout << "size of mesh = " << h[].max << endl;
 
-the command *adaptmesh*
+The command *adaptmesh*
 '''''''''''''''''''''''
 
 The function:
@@ -931,7 +931,7 @@ of a function (formula or FE-function).
 
 Mesh adaptation is a very powerful tool when the solution of a problem varies locally and sharply.
 
-Here we solve the :ref:`Poisson’s problem <tutorialPoisson>`, when :math:`f=1` and :math:`\Omega` is a L-shape domain.
+Here we solve the :ref:`Poisson’s problem <tutorialPoisson>`, when :math:`f=1` and :math:`\Omega` is an L-shape domain.
 
 .. subfigstart::
 
@@ -1166,7 +1166,7 @@ To build a mesh with a constant mesh size equal to :math:`\frac{1}{30}` try:
 
    Mesh adaptation
 
-the command *trunc*
+The command *trunc*
 '''''''''''''''''''
 
 Two operators have been introduced to remove triangles from a mesh or to divide them.
@@ -1233,7 +1233,7 @@ The following example construct all "trunced" meshes to the support of the basic
 
 
 
-the command *change*
+The command *change*
 ''''''''''''''''''''
 
 This command changes the label of elements and border elements of a mesh.
@@ -1283,7 +1283,7 @@ An application example is given here:
 
 
 
-the command *splitmesh*
+The command *splitmesh*
 '''''''''''''''''''''''
 
 Another way to split mesh triangles is to use :freefem:`splitmesh`, for example:
@@ -1488,7 +1488,7 @@ Meshing Examples
         :width: 50%
         :name: ushape
 
-        Domain with U-shape channel changed by :freefem`d`
+        Domain with U-shape channel changed by :freefem:`d`
 
 .. tip:: Domain with V-shape cut
 
@@ -1545,7 +1545,7 @@ Meshing Examples
 
         Smiling face (Mouth is changeable)
 
-. tip:: 3 points bending
+.. tip:: 3 points bending
 
     .. code-block:: freefem
         :linenos:
@@ -1597,12 +1597,12 @@ Meshing Examples
 
 .. note::
 
-   For 3D mesh tools, load "msh3" at the top of .edp script. 
+   For 3D mesh tools, put :freefem:`load "msh3"` at the top of the .edp script. 
 
-the command *cube*
+The command *cube*
 ''''''''''''''''''
 
-The function :freefem:`cube` like the function :freefem:`square` in 2d is the simple way to a build cubic object, in plugin :freefem:`msh3` (need :freefem:`load "msh3"`).
+The function :freefem:`cube` like its 2d function :freefem:`square` is a simple way to build cubic objects, it is contained in plugin :freefem:`msh3` (import with :freefem:`load "msh3"`).
 
 The following code generates a :math:`3\times 4 \times 5` grid in the unit cube :math:`[0, 1]^3`.
 
@@ -1682,13 +1682,13 @@ The output of this script is:
     :width: 50%
     :name: meshGeneration_cube
 
-    The mesh 3d of function :freefem:`cube(4, 5, 6, flags=3)`
+    The 3D mesh of function :freefem:`cube(4, 5, 6, flags=3)`
 
 .. _meshReadWrite3D:
 
 
 
-the command *buildlayers*
+The command *buildlayers*
 '''''''''''''''''''''''''
 
 This mesh is obtained by extending a two dimensional mesh in the :math:`z`-axis.
@@ -1962,7 +1962,7 @@ Remeshing
 .. note::
    if an operation on a :freefem:`mesh3` is performed then the same operation is applyed on its surface part (its :freefem:`meshS` associated) 	
 
-the command *change*
+The command *change*
 ''''''''''''''''''''
 
 This command changes the label of elements and border elements of a mesh. It's the equivalent command in 2d mesh case.
@@ -2009,7 +2009,7 @@ An example of use:
 
 .. _meshGenerationtrunc:
 
-the command *trunc*
+The command *trunc*
 '''''''''''''''''''
 
 This operator have been introduce to remove peace of mesh and split all element or for a particular label element
@@ -2052,7 +2052,7 @@ An example of use
 
 
 
-the command *movemesh3*
+The command *movemesh3*
 '''''''''''''''''''''''
 
 3D meshes  can be translated, rotated, and deformed using the command line :freefem:`movemesh` as in the 2D case (see :ref:`section movemesh <meshGenerationMoveMesh>`).
@@ -2154,7 +2154,7 @@ An example of this command can be found in the :ref:`Poisson’s equation 3D exa
 movemesh doesn't use the prefix tranfo= [.,.,.], the geometric transformation is directly given by  [.,.,.] in the arguments list
 
 
-the command *extract*
+The command *extract*
 '''''''''''''''''''''
 
 This command offers the possibility to extract a boundary part of a :freefem:`mesh3`
@@ -2180,7 +2180,7 @@ This command offers the possibility to extract a boundary part of a :freefem:`me
 
 
 
-the command *buildSurface*
+The command *buildSurface*
 ''''''''''''''''''''''''''
 
 
@@ -2190,7 +2190,7 @@ the list vertices which are on the border domain, the triangle elements and buil
 Remark, for a closed surface mesh, the edges list is empty. 
 
 
-the command *movemesh23*
+The command *movemesh23*
 ''''''''''''''''''''''''
 A simple method to tranform a 2D mesh in 3D Surface mesh. The principe is to project a two dimensional domain in a three dimensional space, 2d surface in the (x,y,z)-space to create a surface mesh 3D, **meshS**.
 
@@ -2476,7 +2476,7 @@ An example to obtain a three dimensional mesh using the command line :freefem:`t
 Commands for 3d surface mesh generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-the command *square3*
+The command *square3*
 '''''''''''''''''''''
 The function :freefem:`square3` like the function :freefem:`square` in 2d is the simple way to a build the unit square plan in the space :math:`\mathbb{R^3}`. 
 To use this command, it is necessary to load the pluging :freefem:`msh3` (need :freefem:`load "msh3"`).
@@ -2638,7 +2638,7 @@ The operation is a projection of a 2d plane in :math:`\mathbb{R^3}` following th
 Remeshing
 ^^^^^^^^^
 
-the command *trunc*
+The command *trunc*
 '''''''''''''''''''
 
 This operator allows to define a :freefem:`meshS` by truncating another one, i.e. by removing triangles, and/or by splitting each triangle by a given positive integer s.
@@ -2671,7 +2671,7 @@ An example of how to call the function
    ThS=trunc(ThS, (x < 0.5) | (y < 0.5) | (z > 1.), split=4); 
    
    
-the command *movemeshS*
+The command *movemeshS*
 '''''''''''''''''''''''
 
 Like 2d and 3d type meshes in **FreeFEM**, :freefem:`meshS` can be translated, rotated or deformated by an application :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ].
@@ -2718,7 +2718,7 @@ Example of using
 
 
 
-the command *change*
+The command *change*
 '''''''''''''''''''''''
 
 
@@ -2769,7 +2769,7 @@ Remark: Condition of meshS existence
    
     
 
-the command *Gamma*
+The command *Gamma*
 '''''''''''''''''''
 The command :freefem:`Gamma` allows to build and manipulate the border mesh independly of a volume mesh such as the surface is described by triangle elements and edges border elements in 3d. Use this function, suppose that the :freefem:`mesh3` object even contains the geometric description of its surface. That means, the input mesh explicitly contains the list of vertices, tetrahedra, triangles and edges. In case where the surface mesh doesn't exist, before calling :freefem:`Gamma`, must build it by calling the :freefem:`buildSurface` function (see the next function description).
 
@@ -2786,13 +2786,13 @@ The command :freefem:`Gamma` allows to build and manipulate the border mesh inde
     meshS Th1 = Th.Gamma;
 
 
-the command *buildSurface*
+The command *buildSurface*
 ''''''''''''''''''''''''''
 Let Th3 a volume mesh (mesh3 type) ; such as the geometry description is a list of vertices, tetrahedra elements and triangle border elements. 
 **FreeFEM** can generate the surface mesh associated to Th3. The intern mechanism of **FreeFEM** created directly the :freefem:`meshS` associated to Th3 and accessible by the command :freefem:`meshS ThS = Th3.Gamma;`.
 
 
-the command *savesurfacemesh*
+The command *savesurfacemesh*
 '''''''''''''''''''''''''''''
 
 Available for 3d meshes, the command :freefem:`savesurfacemesh` saves the entire surface of a 3d volume :freefem:`mesh3` at the format .mesh.
@@ -2923,7 +2923,7 @@ Principal switch parameters in TetGen:
 
    The option ``AA`` gives a different label at each region.
    This switch works with the option :freefem:`p`.
-   If option :freefem`r` is used, this switch has no effect.
+   If option :freefem:`r` is used, this switch has no effect.
 
 -  :freefem:`r` Reconstructs and Refines a previously generated mesh.
     This character is only used with the command line :freefem:`tetgreconstruction`.
