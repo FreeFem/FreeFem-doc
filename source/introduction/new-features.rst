@@ -19,7 +19,12 @@ Surface Finite Element
 .. role:: freefem(code)
    :language: freefem
    
-The surface finite element method is available since FreeFEM V4.2.1. Some examples in examples/3dSurf. 
+The surface finite element method is available since FreeFEM V4.2.1. 
+| Some examples in examples/3dSurf. 
+
+|
+|
+
 Abstract about Surface FEM in FreeFEM.
 
 * new **meshS** type, refer to the section :ref:`The type meshS in 3 dimension <meshStype>`  

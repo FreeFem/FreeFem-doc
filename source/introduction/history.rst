@@ -28,8 +28,8 @@ History
 .. rst-class:: fake-title
 
    The development of FreeFEM through more than 30 years
-|
 
+|
 
 **1987**
 
