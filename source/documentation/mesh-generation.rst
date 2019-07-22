@@ -1170,8 +1170,9 @@ the command *trunc*
 '''''''''''''''''''
 
 Two operators have been introduced to remove triangles from a mesh or to divide them.
-Operator :freefem:`trunc` has two parameters:
+Operator :freefem:`trunc` has the following parameters:
 
+- boolean function to keep or remove elements
 -  :freefem:`label=` sets the label number of new boundary item, one by default.
 -  :freefem:`split=` sets the level :math:`n` of triangle splitting.
     Each triangle is split in :math:`n\times n`, one by default.
@@ -1596,7 +1597,7 @@ Meshing Examples
 
 .. note::
 
-   For 3D mesh tools, Load the library ”msh3” ⇒ load "msh3" in top of .edp file. 
+   For 3D mesh tools, load "msh3" at the top of .edp script. 
 
 the command *cube*
 ''''''''''''''''''
@@ -1958,6 +1959,9 @@ Remeshing
 
 .. _meshGenerationChangeLabel:
 
+.. note::
+   if an operation on a :freefem:`mesh3` is performed then the same operation is applyed on its surface part (its :freefem:`meshS` associated) 	
+
 the command *change*
 ''''''''''''''''''''
 
@@ -2009,14 +2013,13 @@ the command *trunc*
 '''''''''''''''''''
 
 This operator have been introduce to remove peace of mesh and split all element or for a particular label element
-The two named parameter
--  :freefem:`split=` sets the level n of triangle splitting. each triangle is splitted in n × n ( one by default)
--  :freefem:`label=`   sets the label number of new boundary item (one by default)
--  :freefem:`new2old=`   ,   
--  :freefem:`old2new=`    ,  
--  :freefem:`renum=`     , 
+The three named parameter
+- boolean function to keep or remove elements
+- :freefem:`split=` sets the level n of triangle splitting. each triangle is splitted in n × n ( one by default)
+- freefem:`label=`   sets the label number of new boundary item (1 by default)
 
 
+An example of use
 
 .. code-block:: freefem
    :linenos:
@@ -2043,7 +2046,7 @@ The two named parameter
       labelup = rup,
       labeldown = rdown);
     //  remove the small cube $]1/2,1[^2$
-   Th= trunc(Th,((x<0.5) |(y< 0.5)| (z<0.5)),label=3); 
+   Th= trunc(Th,((x<0.5) |(y< 0.5)| (z<0.5)), split=3, label=3); 
    medit("cube",Th);
 
 
@@ -2156,8 +2159,25 @@ the command *extract*
 
 This command offers the possibility to extract a boundary part of a :freefem:`mesh3`
 
--  :freefem:`refface`     , typeid(KN_<long>)
--  :freefem:`label`       , typeid(KN_<long>)
+-  :freefem:`refface`     , is a vector of integer that contains a list of triangle face references, where the extract function must be apply.
+-  :freefem:`label`       , is a vector of integer that contains a list of tetrahedra label
+
+
+
+.. code-block:: freefem
+   :linenos:
+
+   load"msh3"
+   int nn = 30;
+   int[int] labs = [1, 2, 2, 1, 1, 2]; // Label numbering
+   mesh3 Th = cube(nn, nn, nn, label=labs);
+   // extract the surface (boundary) of the cube
+   int[int] llabs = [1, 2]; 
+   meshS ThS = extract(Th,label=llabs);
+
+
+
+
 
 
 the command *buildSurface*
@@ -2193,7 +2213,8 @@ The parameters of this command line are:
 
 -  :freefem:`label=` sets an integer label of triangles.
 
--  :freefem:`orientation=` sets an integer orientation of mesh.
+-  :freefem:`orientation=` sets an integer orientation to give the global orientation of the surface of mesh. Equal 1, give a triangulation in the reference orientation (counter clock wise)
+   equal -1 reverse the orientation of the triangles
 
 -  :freefem:`ptmerge=` A real expression.
     When you transform a mesh, some points can be merged.
@@ -2449,7 +2470,10 @@ An example to obtain a three dimensional mesh using the command line :freefem:`t
 **The type meshS in 3 dimension**
 ---------------------------------
 
-Commands for 3d surface mesh Generation
+.. warning::
+   Since the release 4.2.1, the surface :freefem:`mesh3` object (list of vertices and border elements, without tetahedra elements) is remplaced by :freefem:`meshS` type.
+
+Commands for 3d surface mesh generation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 the command *square3*
@@ -2462,7 +2486,7 @@ The parameters of this command line are:
  - n,m  generates a n×m grid in the unit square
  - :freefem:`.,.,.]` is  [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ] is the geometric transformation from :math:`\mathbb{R^2}` to :math:`\mathbb{R^3}`. By default, [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ] = [x,y,0]
  - :freefem:`orientation=` 
-   equal 1, give the oientation of the triangulation, elements must be in the reference orientation (counter clock wise)
+   equal 1, gives the orientation of the triangulation, elements are in the reference orientation (counter clock wise)
    equal -1 reverse the orientation of the triangles
    it's the global orientation of the surface 1 extern (-1 intern)
 
@@ -2487,8 +2511,8 @@ The following code generates a :math:`3\times 4 \times 5` grid in the unit cube 
 
 
 
-surface mesh builder
-''''''''''''''''''''
+surface mesh builders
+'''''''''''''''''''''
 
 Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, constructors of sphere, ellipsoid, surface mesh of a 3d box are available.
 
@@ -2513,15 +2537,15 @@ Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, co
 
  - :freefem:`func meshS Ellipsoide (real RX,real RY,real RZ,real h,int L,int orientation)` 
 
-   + where RX, RY, RZ are real numbers such as the parametric equations of the ellipsoid can be written as: .. math::
-      x &= Rx cos(u)sin(v) \\	 
-      y &= Ry sin(u)sin(v)	\\
-      z &= Rz cos(v) \\
-      \forall u \in [0,2pi[ and v \in [0,pi]
-    
    + h is the mesh size 
    + L is the label
    + orient the global orientation of the surface 1 extern (-1 intern)
+   + where RX, RY, RZ are real numbers such as the parametric equations of the ellipsoid is: 
+   
+ .. math::
+    \forall u \in [0,2pi[ and v \in [0,pi], \vectthree{x=\text{Rx } cos(u)sin(v)}{y=Ry sin(u)sin(v)}{z = Rz cos(v)     }
+	
+
 
 
 .. code-block:: freefem
@@ -2590,8 +2614,8 @@ Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, co
 
 
 
-2D mesh generator and *movemesh23*
-'''''''''''''''''''''''''''''''''' 
+2D mesh generators combined with  *movemesh23*
+'''''''''''''''''''''''''''''''''''''''''''''' 
 
 **FreeFEM** 's meshes can be built by the composition of the :freefem:`movemesh23` command from a 2d mesh generation. 
 The operation is a projection of a 2d plane in :math:`\mathbb{R^3}` following the geometric transformation  [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ].
@@ -2617,10 +2641,35 @@ Remeshing
 the command *trunc*
 '''''''''''''''''''
 
+This operator allows to define a :freefem:`meshS` by truncating another one, i.e. by removing triangles, and/or by splitting each triangle by a given positive integer s.
+In a FreeFEM script, this function must be called as follows:
+
+:freefem:`meshS` TS2= :freefem:`trunc` (TS1, boolean function to keep or remove elements, split = s, label = ...)
+
+
+The command has the following arguments:
+ 
+- boolean function to keep or remove elements
+- :freefem:`split=` sets the level n of triangle splitting. each triangle is splitted in n × n ( one by default)
+- :freefem:`label=`   sets the label number of new boundary item (1 by default)
+
+An example of how to call the function
+
+
 .. code-block:: freefem
    :linenos:
    
-   toto
+   real R = 3, r=1; 
+   real h = 0.2; // 
+   int nx = R*2*pi/h;
+   int ny = r*2*pi/h;
+   func torex= (R+r*cos(y*pi*2))*cos(x*pi*2);
+   func torey= (R+r*cos(y*pi*2))*sin(x*pi*2);
+   func torez= r*sin(y*pi*2);
+   // build a tore
+   meshS ThS=square3(nx,ny,[torex,torey,torez]) ;
+   ThS=trunc(ThS, (x < 0.5) | (y < 0.5) | (z > 1.), split=4); 
+   
    
 the command *movemeshS*
 '''''''''''''''''''''''
@@ -2667,6 +2716,32 @@ Example of using
    meshS Th2=movemesh(Th1, [x,y,z]);
 
 
+
+
+the command *change*
+'''''''''''''''''''''''
+
+
+Equivalent for a 2d or 3d mesh, the command :freefem:`change` changes the label of elements and border elements of a :freefem:`meshS`.
+
+The parameters for this command line are:
+
+-  :freefem:`reftri=` is a vector of integer that contains successive pairs of the old label number to the new label number for elements.
+-  :freefem:`refedge=` is a vector of integer that contains successive pairs of the old region number to new region number for boundary elements.
+-  :freefem:`flabel=` is an integer function given the new value of the label.
+-  :freefem:`fregion=` is an integer function given the new value of the region.
+-  :freefem:`rmInternalEdges=` is a boolean, equal true to remove the internal edges.
+-  :freefem:`rmledges=` is a vector of integer, where edge's label given are remove of the mesh
+
+These vectors are composed of :math:`n_{l}` successive pairs of numbers :math:`O,N` where :math:`n_{l}` is the number (label or region) that we want to change.
+For example, we have:
+
+.. math::
+   \mathtt{label} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ] \\
+   \mathtt{region} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ]
+   
+
+
 Link with a mesh3
 ^^^^^^^^^^^^^^^^^
 
@@ -2696,7 +2771,7 @@ Remark: Condition of meshS existence
 
 the command *Gamma*
 '''''''''''''''''''
-The command :freefem:`Gamma` allows to build and manipulate the border mesh independly of a volume mesh such as the surface is described by triangle elements and edges border elements in 3d. Use this function, suppose that the :freefem:`mesh3`object even contains the geometric description of its surface. That means, the input mesh explicitly contains the list of vertices, tetrahedra, triangles and edges. In case where the surface mesh doesn't exist, before calling :freefem:`Gamma`, must build it by calling the :freefem:`buildSurface` function (see the next function description).
+The command :freefem:`Gamma` allows to build and manipulate the border mesh independly of a volume mesh such as the surface is described by triangle elements and edges border elements in 3d. Use this function, suppose that the :freefem:`mesh3` object even contains the geometric description of its surface. That means, the input mesh explicitly contains the list of vertices, tetrahedra, triangles and edges. In case where the surface mesh doesn't exist, before calling :freefem:`Gamma`, must build it by calling the :freefem:`buildSurface` function (see the next function description).
 
 .. code-block:: freefem
    :linenos:
@@ -2720,9 +2795,13 @@ Let Th3 a volume mesh (mesh3 type) ; such as the geometry description is a list 
 the command *savesurfacemesh*
 '''''''''''''''''''''''''''''
 
-Available on 3d meshes, the command :freefem:`savesurfacemesh` allows to save the surface of a 3d volume :freefem:`mesh3`.
+Available for 3d meshes, the command :freefem:`savesurfacemesh` saves the entire surface of a 3d volume :freefem:`mesh3` at the format .mesh.
+Two possibilies about the mesh3 surface:
+ 
+ - the geometric surface isn't explicite, that means the :freefem:`mesh3` doesn't contain surface elements (triangles) and border surface elements (edge). The surface is defined by the border of the volume. Hence, :freefem:`savesurfacemesh` returns the list of vertices and faces of the volume mesh, according to a local numbring at the border mesh. 
+ - the geometric surface is explicite and known by the :freefem:`mesh3` type. This may be due to the nature of the data mesh (list of vertices, tetrahedra, triangles, edges) or a surface building by **FreeFEM** with the calling of :freefem:`buildSurface` operator. In this case, :freefem:`savesurfacemesh` allows to save the real geometry of the surface 3d mesh (list of vertices, triangles, edges)
 
-Example of using 
+Example of use 
 
 .. code-block:: freefem
    :linenos:
@@ -2746,24 +2825,6 @@ The operation does the same thing that the first exept to
 
 
 
-
-the command *extract*
-'''''''''''''''''''''
-
-
-.. code-block:: freefem
-   :linenos:
-   
-   int nn = 30; // Mesh quality
-   // Mesh
-   int[int] labs = [1, 2, 2, 1, 1, 2]; // Label numbering
-   mesh3 Th = cube(nn, nn, nn, label=labs);
-   // extract the surface (boundary) of the cube
-   int[int] llabs = [1, 2]; //  Th = buildSurface(Th); 
-   meshS ThS = extract(Th,label=llabs);
-
-
-
 Glue of meshS meshes
 ''''''''''''''''''''
 
@@ -2784,7 +2845,7 @@ A surface 3d mesh can be the result of the generation of several assembled meshe
 
 .. warning::
 
-   For the moment, the gestion of no manifold mesh are not considered in FreeFEM. To check if the meshS contains no manifold elements, the command :freefem:`nbnomanifold`. 
+   For the moment, the case of no manifold mesh are not considered in FreeFEM. To check if the meshS contains no manifold elements, the command :freefem:`nbnomanifold`. 
 
 
 
