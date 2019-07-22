@@ -48,9 +48,10 @@ Authors
    +-----------------------------------------------------------------------+
 
    +-------------------------------------------------------------------------------+
-   | Antoine Le Hyaric                                                             +
+   | Antoine Le Hyaric                                                             |
+   +===============================================================================+
    | `CNRS <http://www.cnrs.fr>`__ research engineer at `Laboratoire Jacques Louis |
-   | Lions <https://www.ljll.math.upmc.fr/>` , expert in                           |
+   | Lions <https://www.ljll.math.upmc.fr/>`_, expert in                           |
    | software engineering for scientific applications, electromagnetics            |
    | simulations, parallel computing and three-dimensionsal visualization          |
    +-------------------------------------------------------------------------------+

@@ -15,7 +15,7 @@ author = 'Frederic Hecht'
 # The short X.Y version
 version = '4.2.1' # GitHubVersion['tag_name']
 # The full version, including alpha/beta/rc tags
-release = '4.1.2' #GitHubVersion['tag_name']
+release = '4.2.1' #GitHubVersion['tag_name']
 
 # -- General configuration ---------------------------------------------------
 
