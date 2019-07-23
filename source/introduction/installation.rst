@@ -419,10 +419,11 @@ Compilation on Windows
 1. Install the `Microsoft MPI v7.0 (archived) <https://www.microsoft.com/en-us/download/details.aspx?id=49926>`__ (msmpisdk.msi and MSMpiSetup.exe)
 
 .. note::
-   2019/07/07  Microsoft MPI v10.0 isn't usable in MSYS/mingw64 with gfortran `more information here <https://github.com/Microsoft/Microsoft-MPI/issues/7>`__
-               Microsoft MPI v9: mpiexec.exe doesn't run 
+   2019/07/07  
+    - Microsoft MPI v10.0 isn't usable in MSYS/mingw64 with gfortran `more information here <https://github.com/Microsoft/Microsoft-MPI/issues/7>`__
+    - Microsoft MPI v9: mpiexec.exe doesn't run 
 
-2. Download ` msys2-x86_64-latest.exe and run it.<http://repo.msys2.org/distrib/msys2-x86_64-latest.exe>`__ (x86_64 version) and run it 
+2. Download `msys2-x86_64-latest.exe <http://repo.msys2.org/distrib/msys2-x86_64-latest.exe>`__ (x86_64 version) and run it. 
 
 3. Install the version control system `Git <https://git-scm.com/download/win>`__ for Windows
 
