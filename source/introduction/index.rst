@@ -1,17 +1,12 @@
-.. raw:: html
+.. only:: html
 
-   <style type="text/css">
-   t {
-     color: #00007f;
-     font-weight: bold;
-	 font-size:50px
-   }
-   </style>
+  .. rst-class:: IndexTitle
 
-   <center>
-    <t> FreeFEM </t> <br/>
-    Fourth edition, Version 4.2.1 </t>
-   </center>
+    FreeFEM
+
+  .. rst-class:: IndexSubTitle
+
+    Fourth edition, Version |version|
 
 .. only:: html
 

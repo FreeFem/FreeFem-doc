@@ -404,6 +404,19 @@ body::-webkit-scrollbar {
 	webkit-overflow-scrolling: touch;
 }
 
+.indextitle {
+	font-size: 2.5rem;
+	font-weight: bold;
+	color: #00007f;
+	text-align: center;
+	margin-bottom: .2rem;
+}
+
+.indexsubtitle {
+	text-align: center;
+	margin-top: .2rem;
+}
+
 #PDFbanner {
 	/* position: relative; */
 	/* box-shadow: 0 .11rem .11rem 0 rgba(0,0,0,.14), 0 .05rem .27rem 0 rgba(0,0,0,.12), 0 .16rem .05rem -.11rem rgba(0,0,0,.2); */
