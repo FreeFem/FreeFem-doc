@@ -406,24 +406,54 @@ body::-webkit-scrollbar {
 
 #PDFbanner {
 	/* position: relative; */
-	box-shadow: 0 .11rem .11rem 0 rgba(0,0,0,.14), 0 .05rem .27rem 0 rgba(0,0,0,.12), 0 .16rem .05rem -.11rem rgba(0,0,0,.2);
+	/* box-shadow: 0 .11rem .11rem 0 rgba(0,0,0,.14), 0 .05rem .27rem 0 rgba(0,0,0,.12), 0 .16rem .05rem -.11rem rgba(0,0,0,.2); */
 	margin: 1.5625em;
 	padding: 0.75rem;
 	border: .25rem solid #00007f;
 	border-radius: .125rem;
 	font-size: 1.25rem;
 	line-height: 1.25rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	/* align-items: center; */
 }
 
-#PDFbanner p {
+#PDFbanner > p {
 	padding: 0.55rem;
 	margin: 0;
 	text-align: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+#PDFbanner > p > a > img {
+	width: 2rem;
+	margin-left: 1rem;
 }
 
 .PDFbanner-v3 {
+	flex: 1 1 auto;
 	line-height: 1rem;
 	font-size: 1rem;
 	background-color:rgba(236, 236, 236, 1)
 }
 
+.PDFbanner-v3 > p {
+	text-align: center;
+}
+
+#IndexLogos {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#IndexLogos > img {
+	max-width: 50%;
+	padding: 1rem;
+}
