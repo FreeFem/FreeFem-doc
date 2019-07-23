@@ -455,13 +455,14 @@ Repeatedly run the following command until it says there are no further updates.
 
       pacman -S autoconf automake-wrapper bash bash-completion \
         bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
-        findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils 
-	    info less lndir make man-db git mingw-w64-x86_64-freeglut \
-	    mingw-w64-x86_64-toolchain  mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
+        findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils \
+        info less lndir make man-db git mingw-w64-x86_64-freeglut \
+        mingw-w64-x86_64-toolchain  mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
         mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
-        msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git python \
-        perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which \
-        mingw-w64-x86_64-libmicroutils mingw-w64-x86_64-arpack cmake python2
+        msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch \
+        pax-git python perl pkg-config pkgfile rebase sed tar tftp-hpa time \
+        tzcode unzip util-linux which mingw-w64-x86_64-libmicroutils \
+        mingw-w64-x86_64-arpack cmake python2
 
    -  for 32bits system (less *FreeFEM* release V4 is not currently supported):
 
@@ -470,12 +471,13 @@ Repeatedly run the following command until it says there are no further updates.
 
       pacman -S autoconf automake-wrapper bash bash-completion \
         bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
-        findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils \ 
-	    info less lndir make man-db git mingw-w64-i686-freeglut \
-	    mingw-w64-i686-toolchain mingw-w64-i686-gsl mingw-w64-i686-hdf5 \
+        findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils \
+        info less lndir make man-db git mingw-w64-i686-freeglut \
+        mingw-w64-i686-toolchain mingw-w64-i686-gsl mingw-w64-i686-hdf5 \
         mingw-w64-i686-openblas mintty msys2-keyring msys2-launcher-git \
         msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
-        perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip util-linux which
+        perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip \ 
+		util-linux which
 
 6. Open a ``MingW64 terminal`` (or ``MingW32`` for old 32 bits **FreeFEM** version) and compile the **FreeFEM** source
 
@@ -486,9 +488,9 @@ Repeatedly run the following command until it says there are no further updates.
       cd FreeFem-sources
       autoreconf -i
       ./configure ./configure --enable-generic --enable-optim \
-           --enable-download --enable-maintainer-mode \
-           CXXFLAGS=-mtune=generic CFLAGS=-mtune=generic \
-           FFLAGS=-mtune=generic--enable-download --disable-hips
+        --enable-download --enable-maintainer-mode \
+        CXXFLAGS=-mtune=generic CFLAGS=-mtune=generic \
+        FFLAGS=-mtune=generic--enable-download --disable-hips
       ./3rdparty/getall -a
       make -j4
       make check
