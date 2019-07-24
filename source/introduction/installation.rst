@@ -853,8 +853,8 @@ For emacs editor you can download `ff++-mode.el <https://github.com/rrgalvan/fre
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job3/
 .. |Build Status04| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job3
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job3/
-.. |Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-windows7
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-windows7
+.. |Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-windows7-job3
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-windows7-job3/
 
 .. |Build Status06| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job5
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job5/
