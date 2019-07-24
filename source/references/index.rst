@@ -15,7 +15,7 @@ For example:
 
     int i, n = 20; //i, n are integer
     real[int] xx(n), yy(n); //two array of size n
-    for (i = 0; i < n; i++){ //which can be used in statements such as
+    for (i = 0; i < 20; i++){ //which can be used in statements such as
         xx[i] = cos(i*pi/10);
         yy[i] = sin(i*pi/10);
     }
