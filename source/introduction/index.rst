@@ -42,7 +42,7 @@
           <i>The FreeFEM v3 PDF is archived (not up to date)</i>
         </p>
         <p>
-          <a href="/_static/pdf/FreeFEM-doc-v3.pdf" target="_blank">Offical version</a> (English)<br/>
+          <a href="/_static/pdf/FreeFEM-doc-v3.pdf" target="_blank">Official version</a> (English)<br/>
           <a href="/_static/pdf/FreeFEM-doc-v3_Spanish.pdf" target="_blank">Spanish version</a>, by Eliseo Chac ́on Vera <br/>
           <a href="/_static/pdf/FreeFEM-doc-v3_Chinese.pdf" target="_blank">Chinese version</a> (中文) <br/>
 		  <a href="http://comfos.org/jp/ffempp/index.html" target="_blank">Japanese version</a>, by Kohji Ohtsuka
