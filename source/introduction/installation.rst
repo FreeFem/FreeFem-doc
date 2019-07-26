@@ -52,6 +52,8 @@ If you want terminal access to **FreeFEM** just copy the file ``FreeFem++`` in a
 Ubuntu binary installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. note:: The Debian package is build for Ubuntu 18.04   
+
 Beforehand, install the following dependances libraries using the apt tool:
 
 .. code-block:: bash
