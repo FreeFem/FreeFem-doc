@@ -2517,33 +2517,35 @@ surface mesh builders
 Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, constructors of sphere, ellipsoid, surface mesh of a 3d box are available.
 
 
- - :freefem:`meshS SurfaceHex(N,B,L,orient)`
+ - :freefem:`SurfaceHex(N, B, L, orient)`
   
    + this operator allows to build the surface mesh of a 3d box 
    + int[int]  N=[nx,ny,nz]; //  the number of seg in the 3 direction
    + real [int,int]  B=[[xmin,xmax],[ymin,ymax],[zmin,zmax]]; // bounding bax  
    + int [int,int]  L=[[1,2],[3,4],[5,6]]; // the label of the 6 face left,right, front, back, down, right
-   + orient the global orientation of the surface 1 extern (-1 intern), 
+   + orient the global orientation of the surface 1 extern (-1 intern),
+   + returns a :freefem:`meshS` type
 
 
 
- - :freefem:`func meshS Sphere(real R,real h,int L,int orient)`
+ - :freefem:`Sphere(R, h, L, orient)`
 
    + where R is  the raduis of the sphere, 
    + h is the mesh size  of  the shpere
    + L is the label the the sphere
    + orient the global orientation of the surface 1 extern (-1 intern)
+   + returns a :freefem:`meshS` type
 
-
- - :freefem:`func meshS Ellipsoide (real RX,real RY,real RZ,real h,int L,int orientation)` 
+ - :freefem:`Ellipsoide (RX, RY, RZ, h, L, orient)` 
 
    + h is the mesh size 
    + L is the label
    + orient the global orientation of the surface 1 extern (-1 intern)
    + where RX, RY, RZ are real numbers such as the parametric equations of the ellipsoid is: 
+   + returns a :freefem:`meshS` type
    
  .. math::
-    \forall u \in [0,2pi[ and v \in [0,pi], \vectthree{x=\text{Rx } cos(u)sin(v)}{y=Ry sin(u)sin(v)}{z = Rz cos(v)     }
+    \forall u \in [0,2 \pi[ \text{ and } v \in [0, \pi], \vectthree{x=\text{Rx } cos(u)sin(v)}{y=\text{Ry } sin(u)sin(v)}{     z = \text{Rz } cos(v)     }
 	
 
 
