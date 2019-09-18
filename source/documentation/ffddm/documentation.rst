@@ -1,3 +1,6 @@
+.. role:: freefem(code)
+   :language: freefem
+
 .. _ffddmDocumentation:
 
 ffddm documentation
@@ -175,7 +178,7 @@ In practice, this builds the necessary distributed operators associated to the f
 -  ``pr#mdef`` macro, saves the macro **def** giving the definition of a finite element function in the finite element space **Pk**
 -  ``pr#minit`` macro, saves the macro **init** specifying how to interpolate a scalar function onto the (possibly multiple) components of a finite element function of **Pk**.
    This is used to create the local partition of unity function in ``pr#Vhi``, by interpolating the local P1 partition of unity function onto the components of ``pr#Vhi``.
-   For non Lagrange finite element spaces (e.g. *RT0*, *Edge03d*, …), see :ref:`ffddmbuildDfespaceEdge <ffddmDocumentationLocalFiniteElementSpaces>`.
+   For non Lagrange finite element spaces (e.g. *RT0*, *Edge03d*, …), see :ref:`ffddmbuildDfespaceEdge <ffddmDocumentationPartitionUnityEdge>`.
 -  ``pr#K[int][int] pr#Dk`` array (size ``prmesh#npart``) of local partition of unity vectors in the subdomains, equivalent to :math:`(D_i)_{i=1,...,N}`.
    In the standard parallel case, only the local partition of unity vector for this mpi rank ``pr#Dk[mpiRank(prmesh#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. ``prmesh#excluded`` = 1).
    In the sequential case, all local partition of unity vectors are defined.
@@ -563,3 +566,138 @@ You can also choose to replace only the Krylov solver, by defining the macro ``p
 Doing so, a call to ``pr#fGMRES`` will call the **HPDDM** Krylov solver, with **ffddm** providing the operator and preconditioner through ``pr#A`` and ``pr#PREC``.
 
 An example can be found in **Helmholtz-2d-HPDDM-BGMRES.edp**, see the :ref:`Examples <ffddmExamples>` section.
+
+.. _ffddmDocumentationAdvanced:
+
+Advanced use
+----------------------------
+
+.. raw:: html
+
+  <!--
+  .. _ffddmDocumentationNonlinearTimedependent:
+
+  Nonlinear and time dependent problems
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  .. code-block:: freefem
+    :linenos:
+
+    pr#fromVhi(ui,VhName,res)
+
+  .. code-block:: freefem
+    :linenos:
+
+  ffddmbuildDmeshAug(pr,Th,comm)
+  -->
+
+
+.. _ffddmDocumentationPartitionUnityEdge:
+
+Local finite element spaces for non Lagrange finite elements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For Lagrange finite elements, the partition of unity :math:`(D_i)_{i=1,...,N}` (see ``pr#Dk`` and ``pr#Dih``) is built by interpolating the local P1 partition of unity function onto the components of the **Pk** finite element space ``pr#Vhi``.
+For non Lagrange finite element spaces, such as Raviart–Thomas or Nédélec edge elements, the definition of the degrees of freedom can be more involved, and interpolating the P1 partition of unity functions directly is inappropriate.
+The idea is then to use a "pseudo" finite element **Pkpart** derived from **Pk** which is suitable for interpolating the P1 partition of unity, in the sense that it will produce a partition of unity for **Pk**.
+
+For example, for first-order Nédélec edge elements (*Edge03d*), whose degrees of freedom are the circulations along the edges, we define the "pseudo" finite element *Edge03ds0* which can be seen as a scalar Lagrange counterpart: the numbering of the degrees of freedom is the same, but they correspond to the value at the edge midpoints.
+
+For Lagrange finite elements, the distributed finite element spaces are built using :ref:`ffddmbuildDfespace <ffddmDocumentationLocalFiniteElementSpaces>`. Here you must use **ffddmbuildDfespaceEdge**, which builds the distributed finite element space using a "pseudo" finite element to build the partition of unity:
+
+.. code-block:: freefem
+   :linenos:
+
+   ffddmbuildDfespaceEdge(pr,prmesh,scalar,def,init,Pk,defpart,initpart,Pkpart)
+
+where macros **defpart** and **initpart** specify how to define and interpolate a function in the 'pseudo' finite element space **Pkpart**, similar to **def** and **init** for **Pk**.
+
+An example with first-order Nédélec edge elements (*Edge03d* + *Edge03ds0*) for Maxwell equations can be found in **Maxwell-3d-simple.edp**, see the :ref:`Examples <ffddmExamples>` section.
+
+.. _ffddmDocumentationInexactCoarseSolve:
+
+Inexact coarse solves for two level methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We have seen in the :ref:`Two level preconditioners section <ffddmDocumentationTwoLevelPreconditioners>` that two level methods produce a ‘coarse space operator’ :math:`E` that needs to be inverted at each iteration.
+By default the coarse space operator matrix is factorized by the direct solver *MUMPS*. This can become a bottleneck and hinder scalability for large problems, where :math:`E` can become too large to be factorized efficiently.
+To remedy this, we can instead opt to use an iterative method to solve the coarse problem at each iteration.  Moreover, in order to retain robustness, a DD preconditioner can be used to solve the inner coarse problem more efficiently.
+
+.. raw:: html
+
+  <!--
+  Three level GenEO
+  '''''''''''''''''
+  -->
+
+Coarse mesh and inexact coarse solve
+''''''''''''''''''''''''''''''''''''''''
+
+When the coarse problem comes from a coarse mesh discretization, a natural way to do inexact coarse solve is to use a one level domain decomposition method on the coarse problem, with the same subdomain partitioning for the coarse and fine meshes.
+This means that each processor is associated to one spatial subdomain and hosts the two local (nested) coarse and fine submeshes corresponding to this subdomain, as well as the corresponding local matrices for the two discretizations.
+This natural choice offers interesting benefits: 
+
+-  We naturally recover a load-balanced parallel implementation, provided that the initial partitioning is balanced.
+-  The communication pattern between neighboring subdomains is the same for the coarse and fine discretizations.
+-  The assembly and the application of the interpolation operator :math:`Z` (and :math:`Z^T`) between the fine and the coarse spaces can be computed locally in each subdomain and require no communication.
+
+In **ffddm**, the first step is to build the two nested mesh decompositions using **ffddmbuildDmeshNested**:
+
+.. code-block:: freefem
+   :linenos:
+
+   ffddmbuildDmeshNested(pr,Thc,s,comm)
+
+decomposes the coarse mesh **Thc** into overlapping submeshes and creates the fine decomposition by locally refining submeshes by a factor of **s**, i.e. splitting each mesh element into :math:`s^d` elements, :math:`s \geq 1`.
+This will create and expose variables corresponding to both decompositions, prefixed by **pr** for the fine mesh and by **pr#Coarse** for the coarse mesh (see :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>`).  
+It also sets the integer variable ``pr#binexactCS`` to 1, which specifies that any two level method defined on mesh prefix **pr** will use inexact coarse solves.
+
+The distributed finite element spaces, operators and preconditioners can then be defined for both decompositions. Here is an example where the coarse problem is solved using a one level method:
+
+.. code-block:: freefem
+   :linenos:
+
+   ffddmbuildDmeshNested(M, Thc, 3, mpiCommWorld)
+
+   ffddmbuildDfespace(FE, M, real, def, init, Pk)
+   ffddmbuildDfespace(FECoarse, MCoarse, real, def, init, Pk)
+
+   // coarse operator (Varf of E):
+   ffddmsetupOperator(PBCoarse, FECoarse, VarfEprec)
+   // one level preconditioner for the coarse problem:
+   ffddmsetupPrecond(PBCoarse, VarfPrecC)
+
+   // operator for the fine problem:
+   ffddmsetupOperator(PB, FE, Varf)
+   // one level preconditioner for the fine problem:
+   ffddmsetupPrecond(PB, VarfPrec)
+
+   // add the second level:
+   ffddmcoarsemeshsetup(PB, Thc, VarfEprec, null)
+
+   [...]
+   u[] = PBfGMRES(x0, rhs, 1.e-6, 200, "right");
+
+**Remarks**:
+
+- Note that the different prefixes need to match: prefixes for the coarse decomposition have to be those of the fine decomposition, appended with ``Coarse``.
+- The operator and preconditioner for the coarse problem have to be defined before those of the fine problem, because the ``pr#Q`` function is actually defined by ``ffddmsetupPrecond`` and involves a call to ``pr#CoarsefGMRES`` (which is defined by ``ffddmsetupPrecond`` for the coarse problem) for the iterative solution of the coarse problem if ``pr#prfe#prmesh#binexactCS`` :math:`\neq 0`.
+- In this case, ``ffddmcoarsemeshsetup`` does not use **Thc** or **VarfEprec** and only builds the local interpolation matrices between fine and coarse local finite element spaces ``pr#prfe#Vhi`` and ``pr#prfe#CoarseVhi`` to be able to apply :math:`Z` and :math:`Z^T`.
+- The GMRES tolerance for the inner solution of the coarse problem is set by :ref:`ffddminexactCStol <ffddmParametersGlobal>` and is equal to 0.1 by default.
+
+In practice, these methods can give good results for wave propagation problems, where the addition of artificial absorption in the preconditioner helps with the convergence of the one level method for the inner solution of the coarse problem.
+You can find an example for Maxwell equations in **Maxwell_Cobracavity.edp**, see the :ref:`Examples <ffddmExamples>` section. More details can be found `here`_ and in 
+
+  \M. Bonazzoli, V. Dolean, I. G. Graham, E. A. Spence, P.-H. Tournier. Domain decomposition preconditioning for the high-frequency time-harmonic Maxwell equations with absorption. Mathematics of Computation, 2019. DOI: https://doi.org/10.1090/mcom/3447 
+
+.. _here: ../../_static/html/tutorial-slides.html#26
+
+.. raw:: html
+
+  <!--
+  Computing integrals
+  ~~~~~~~~~~~~~~~~~~~
+  -->
+
+
+

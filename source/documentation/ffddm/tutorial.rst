@@ -613,8 +613,7 @@ See :ref:`documentation <ffddmDocumentationHPDDMffddm>`
 
 :math:`\Rightarrow` **ffddm** acts as a finite element interface for **HPDDM**
 
-- you can use **HPDDM** features unavailable in **ffddm** such as advanced Krylov subspace methods implementing block and recycling techniques
-- conversely, some features of **ffddm** such as two level methods built from a coarse mesh are not implemented in **HPDDM**
+You can use **HPDDM** features unavailable in **ffddm** such as advanced Krylov subspace methods implementing block and recycling techniques
 
 To switch to **HPDDM**, simply define the macro `pr#withhpddm` before using `ffddmsetupOperator` (:ref:`Step 3 <ffddmTutorialDefineYourProblem>`). You can then pass **HPDDM** options
 with command-line arguments or directly to the underlying **HPDDM** operator:
