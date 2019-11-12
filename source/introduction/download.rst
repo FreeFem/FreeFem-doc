@@ -15,11 +15,11 @@ FreeFEM v4.2.1 release runs under MacOS X, Ubuntu and Windows 64 bits.
 +--------------------------------+-------------------+-----------+--------------+
 | `MacOS 10.10.5 up to 10.13.5`_ | ``4.2.1``         |  417 Mb   | May 31, 2019 |
 +--------------------------------+-------------------+-----------+--------------+
-| `Ubuntu 16.04 or higher`_      | ``4.2.1``         |  52.6 Mb  | May 31, 2019 |
+| `Ubuntu 16.04 or higher`_      | ``4.4.2``         |  80.7 Mb  | Oct 15, 2019 |
 +--------------------------------+-------------------+-----------+--------------+
-| `Windows 64bits`_              | ``4.2.1``         |  135 Mb   | May 31, 2019 |
+| `Windows 64bits`_              | ``4.2.1``         |  130 Mb   | Oct 15, 2019 |
 +--------------------------------+-------------------+-----------+--------------+
-| `Source_4.2.1`_                | ``4.2.1``         | 3.2 Mb    | May 31, 2019 |
+| `Source_4.4.2`_                | ``4.4.2``         | 12.5 Mb    | May 31, 2019 |
 +--------------------------------+-------------------+-----------+--------------+
 | `previous releases`_           | ``-``             | ``-``     | ``-``        |
 +--------------------------------+-------------------+-----------+--------------+
@@ -28,10 +28,10 @@ The source code is available on the `FreeFEM GitHub Repository <https://github.c
 
 .. _MacOS 10.14: 
 .. _MacOS 10.10.5 up to 10.13.5: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.2.1/FreeFem++-4.2-1-b-348-MacOS_10.11.pkg
-.. _Ubuntu 16.04 or higher: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.2.1/freefem_4.2.1-1_amd64.deb
-.. _Windows 64bits: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.2.1/FreeFem.-4.2-1-win64.exe
+.. _Ubuntu 16.04 or higher: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.4.2/FreeFEM_4.4.2_Ubuntu_16.04_amd64.deb
+.. _Windows 64bits: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.4.2/FreeFem.-4.4-2-win64.exe
 .. _Windows 32bits: http://www3.freefem.org/ff++/ftp/FreeFem++-3.46-win32.exe
-.. _Source_4.2.1: https://github.com/FreeFem/FreeFem-sources/archive/v4.2.1.tar.gz
+.. _Source_4.2.1: https://github.com/FreeFem/FreeFem-sources/archive/v4.4.2.tar.gz
 .. _previous releases: http://www3.freefem.org/ff++/ftp/
 
 
