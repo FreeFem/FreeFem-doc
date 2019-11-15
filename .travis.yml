@@ -29,7 +29,7 @@ script:
     - echo "doc.freefem.org" > build/html/CNAME
     - cd build/latex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && cd ../..
     - mkdir build/html/pdf && cp build/latex/FreeFEM-documentation.pdf build/html/pdf/
-    - md5sum  build/html/pdf/FreeFEM-documentation.pdf >> build/html/pdf/FreeFEM-documentation.pdf.md5
+    - (cd  build/html/pdf &&  md5sum FreeFEM-documentation.pdf >> FreeFEM-documentation.pdf.md5)
     
 deploy:
     - provider: pages
