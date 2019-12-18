@@ -27,6 +27,8 @@ Linear problems
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 | `helmholtz-2d-PETSc-complex.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/helmholtz-2d-PETSc-complex.edp>`__                     | Domain decomposition methods with optimized boundary conditions            |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| `helmholtz-mg-2d-PETSc-complex.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/helmholtz-mg-2d-PETSc-complex.edp>`__               | Geometric multigrid methods                                                |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 | `laplace-RT-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-RT-2d-PETSc.edp>`__                                   | Vectorial two-dimensional problem with a block preconditioner (fieldsplit) |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 | `laplace-adapt-3d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-adapt-3d-PETSc.edp>`__                             | Three-dimensional problem with *h* adaptivity, multigrid methods           |
@@ -51,6 +53,8 @@ Linear problems
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 | `maxwell-3d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/maxwell-3d-PETSc.edp>`__                                         | Multigrid method                                                           |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
+| `maxwell-mg-3d-PETSc-complex.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/maxwell-mg-3d-PETSc-complex.edp>`__                   | Two-grid preconditioner                                                    |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 
 Nonlinear problems
 ~~~~~~~~~~~~~~~~~~
@@ -60,13 +64,13 @@ Nonlinear problems
 +====================================================================================================================================================================+=============================================================+
 | `bratu-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/bratu-2d-PETSc.edp>`__                                                 |                                                             |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
-| `Newton-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-2d-PETSc.edp>`__                                               |                                                             |
+| `newton-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-2d-PETSc.edp>`__                                               |                                                             |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
-| `Newton-adaptmesh-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-adaptmesh-2d-PETSc.edp>`__                           | Newton method and *h* adaptivity                            |
+| `newton-adaptmesh-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-adaptmesh-2d-PETSc.edp>`__                           | Newton method and *h* adaptivity                            |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
-| `Newton-vi-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-vi-2d-PETSc.edp>`__                                         | Newton method and a variational inequality                  |
+| `newton-vi-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-vi-2d-PETSc.edp>`__                                         | Newton method and a variational inequality                  |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
-| `Newton-vi-adaptmesh-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-vi-adaptmesh-2d-PETSc.edp>`__                     | Newton method, *h* adaptivity, and a variational inequality |
+| `newton-vi-adaptmesh-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-vi-adaptmesh-2d-PETSc.edp>`__                     | Newton method, *h* adaptivity, and a variational inequality |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
 | `elasticity-SNES-3d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/elasticity-SNES-3d-PETSc.edp>`__                             | Linear elasiticty with a Newton method                      |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
