@@ -35,7 +35,7 @@ Linear problems
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 | `laplace-lagrange-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-lagrange-PETSc.edp>`__                             | Laplace equation with constraints and a block preconditioner (fieldsplit)  |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
-| `elasticity-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/elasticity-2d-PETSc.edp>`__                                   | Vectorial problem, domain decomposition and multigrid methods              |
+| `elasticity-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/elasticity-2d-PETSc.edp>`__                                   | Vectorial problem, domain decomposition (GenEO) and multigrid methods      |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
 | `elasticity-3d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/elasticity-3d-PETSc.edp>`__                                   |                                                                            |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------+
@@ -64,13 +64,15 @@ Nonlinear problems
 +====================================================================================================================================================================+=============================================================+
 | `bratu-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/bratu-2d-PETSc.edp>`__                                                 |                                                             |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
-| `newton-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-2d-PETSc.edp>`__                                               |                                                             |
+| `bratu-hpddm-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/bratu-hpddm-2d-PETSc.edp>`__                                     | GenEO with reused coarse spaces                             |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
-| `newton-adaptmesh-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-adaptmesh-2d-PETSc.edp>`__                           | Newton method and *h* adaptivity                            |
+| `newton-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/newton-2d-PETSc.edp>`__                                               |                                                             |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
-| `newton-vi-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-vi-2d-PETSc.edp>`__                                         | Newton method and a variational inequality                  |
+| `newton-adaptmesh-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/newton-adaptmesh-2d-PETSc.edp>`__                           | Newton method and *h* adaptivity                            |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
-| `newton-vi-adaptmesh-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Newton-vi-adaptmesh-2d-PETSc.edp>`__                     | Newton method, *h* adaptivity, and a variational inequality |
+| `newton-vi-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/newton-vi-2d-PETSc.edp>`__                                         | Newton method and a variational inequality                  |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
+| `newton-vi-adaptmesh-2d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/newton-vi-adaptmesh-2d-PETSc.edp>`__                     | Newton method, *h* adaptivity, and a variational inequality |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
 | `elasticity-SNES-3d-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/elasticity-SNES-3d-PETSc.edp>`__                             | Linear elasiticty with a Newton method                      |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
@@ -122,6 +124,8 @@ Eigenvalue problems
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
 | `laplace-2d-SLEPc-complex.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-2d-SLEPc-complex.edp>`__                                 |                                               |
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
+| `laplace-beltrami-3d-surf-SLEPc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-beltrami-3d-surf-SLEPc.edp>`__                     | Eigenvalue problem on a surface               |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------+
 
 Miscellaneous
 ~~~~~~~~~~~~~
@@ -143,6 +147,8 @@ Miscellaneous
 +------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
 | `withPartitioning.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/withPartitioning.edp>`__             | Connectivity construction with a user-supplied partitioning |
 +------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
+| `createPartition.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/createPartition.edp>`__               | Creation of different partitions of unity using the same DD |
++------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------+
 
 Reproducible science
 ~~~~~~~~~~~~~~~~~~~~
@@ -154,4 +160,3 @@ Reproducible science
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
 | `A Multilevel Schwarz Preconditioner Based on a Hierarchy of Robust Coarse Spaces <https://hal.archives-ouvertes.fr/hal-02151184/document>`__                 | `GitHub repository <https://github.com/prj-/aldaas2019multi>`__ |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------+
-
