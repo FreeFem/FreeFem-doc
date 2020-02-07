@@ -202,7 +202,7 @@ Then:
    :label: equation3
 
 where :math:`M` is the dimension of :math:`V_h`, i.e. the number of vertices.
-The :math:`w_k` are called the *degree of freedom* of :math:`w` and :math:`M` the number of degree of freedom.
+The :math:`w_k` are called the *degrees of freedom* of :math:`w` and :math:`M` the number of degree of freedom.
 
 It is said also that the *nodes* of this finite element method are the vertices.
 

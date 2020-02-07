@@ -96,11 +96,13 @@ then you will get the following message from **FreeFEM**:
     Error line number 2, in file bb.edp, before  token ;
    parse error
      current line = 2
-   Compile error : parse error
-           line number :2, ;
-   error Compile error : parse error
-           line number :2, ;
-    code = 1
+syntax error
+  current line = 2
+Compile error : syntax error
+	line number :2, ;
+error Compile error : syntax error
+	line number :2, ;
+ code = 1 mpirank: 0
 
 If you use the same symbol twice as in:
 

@@ -1,15 +1,13 @@
 Version 4: new features
 =======================
 
-
 |
 |
-
 
 Hash Matrix
 -----------
 
-A new internal managment of matrix inside the FreeFEM core have been introduced in FreeFEM 4.0, for better performance.
+A new internal managment of matrix inside the FreeFEM core has been introduced in FreeFEM 4.0, for better performance.
 
 
 ===============
@@ -19,11 +17,9 @@ Surface Finite Element
 .. role:: freefem(code)
    :language: freefem
    
-The surface finite element method is available since FreeFEM V4.2.1. 
-| Some examples in examples/3dSurf. 
+The surface finite element method is available since FreeFEM V4.2.1. Some examples are given  in examples/3dSurf. 
 
-|
-|
+
 
 Abstract about Surface FEM in FreeFEM.
 
