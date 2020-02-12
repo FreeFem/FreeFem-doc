@@ -25,7 +25,7 @@ FreeFEM v4.2.1 release runs under MacOS X, Ubuntu and Windows 64 bits.
 The source code is available on the `FreeFEM GitHub Repository <https://github.com/FreeFem/FreeFem-sources>`__.
 
 
-.. _MacOS 10.10.5 up or higher: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.5/FreeFem++-4.5-full-MacOS_10.11.pkg
+.. _MacOS 10.10.5 or higher: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.5/FreeFem++-4.5-full-MacOS_10.11.pkg
 .. _Ubuntu 16.04 or higher: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.5/FreeFEM_4.5_Ubuntu_withPETSc_amd64.deb
 .. _Windows 64bits: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.5/FreeFem++-4.5-win64.exe
 .. _Source_4.5: https://github.com/FreeFem/FreeFem-sources/archive/v4.5.tar.gz
