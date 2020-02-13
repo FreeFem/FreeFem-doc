@@ -111,7 +111,7 @@ Now let us assume that the airfoil is hot and that air is there to cool it.
 Much like in the previous section the heat equation for the temperature :math:`v` is
 
 .. math::
-   \partial_t v -\nabla\cdot(\kappa\nabla v) + u\cdot\nabla v =0,~~v(t=0)=v_0, ~~\frac{\partial v}{\partial n}|_C=0
+   \partial_t v -\nabla\cdot(\kappa\nabla v) + u\cdot\nabla v =0,~~v(t=0)=v_0, ~~\frac{\partial v}{\partial\boldsymbol{n}}|_C=0
 
 But now the domain is outside AND inside :math:`S` and :math:`\kappa` takes a different value in air and in steel.
 Furthermore there is convection of heat by the flow, hence the term :math:`u\cdot\nabla v` above.

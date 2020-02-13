@@ -29,9 +29,9 @@ If the support wasn’t planar but had an elevation :math:`z(x_1,x_2)` then the 
 If a part :math:`\Gamma_2` of the membrane border :math:`\Gamma` is not fixed to the support but is left hanging, then due to the membrane’s rigidity the angle with the normal vector :math:`n` is zero; thus the boundary conditions are:
 
 .. math::
-   \varphi|_{\Gamma_1}=z,~~~~\frac{\partial\varphi}{\partial n}|_{\Gamma_2}=0
+   \varphi|_{\Gamma_1}=z,~~~~\frac{\partial\varphi}{\partial\boldsymbol{n}}|_{\Gamma_2}=0
 
-where :math:`\Gamma_1=\Gamma-\Gamma_2`; recall that :math:`\frac{\partial\varphi}{\partial n}=\nabla\varphi\cdot n`
+where :math:`\Gamma_1=\Gamma-\Gamma_2`; recall that :math:`\frac{\partial\varphi}{\partial\boldsymbol{n}}=\nabla\varphi\cdot n`
 Let us recall also that the Laplace operator :math:`\Delta` is defined by:
 
 .. math::

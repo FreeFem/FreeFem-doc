@@ -21,7 +21,7 @@ We must solve the temperature equation in :math:`\Omega` in a time interval (0,T
     \begin{array}{rcl}
         \partial_t u -\nabla\cdot(\kappa\nabla u) &= 0 & \hbox{ in } \Omega\times(0,T)\\
         u(x,y,0) &= u_0+x u_1 &\\
-        \kappa\frac{\partial u}{\partial n} +\alpha(u-u_e) &= 0 & \hbox{ on } \Gamma\times(0,T)
+        \kappa\frac{\partial u}{\partial \boldsymbol{n}} +\alpha(u-u_e) &= 0 & \hbox{ on } \Gamma\times(0,T)
     \end{array}
 
 Here the diffusion :math:`\kappa` will take two values, one below the middle horizontal line and ten times less above, so as to simulate a thermostat.
@@ -141,7 +141,7 @@ We take the convention of numbering of the edges as in :freefem:`square()` (1 fo
         u(t=0) &= u_0 + \frac z{L_z} (u_1-u)&\\
         u|_{\Gamma_4} &= u_0&\\
         u|_{\Gamma_2} &= u_1&\\
-        \alpha(u-u_e) + {\partial u\over \partial n} |_{\Gamma_1\cup\Gamma_3} &= 0&
+        \alpha(u-u_e) + {\partial u\over \partial\boldsymbol{n}} |_{\Gamma_1\cup\Gamma_3} &= 0&
     \end{array}
 
 Note that the PDE has been multiplied by :math:`r`.
@@ -176,13 +176,13 @@ Heat loss through radiation is a loss proportional to the absolute temperature t
 This adds to the loss by convection and gives the following boundary condition:
 
 .. math::
-   \kappa{\partial u\over \partial n} +\alpha(u-u_e) + c[(u + 273)^4 - (u_e+273)^4] = 0
+   \kappa{\partial u\over \partial\boldsymbol{n}} +\alpha(u-u_e) + c[(u + 273)^4 - (u_e+273)^4] = 0
 
 The problem is nonlinear, and must be solved iteratively.
 If :math:`m` denotes the iteration index, a semi-linearization of the radiation condition gives
 
 .. math::
-   {\partial u^{m+1}\over \partial n} + \alpha(u^{m+1}-u_e)+ c(u^{m+1}-u_e)
+   {\partial u^{m+1}\over \partial\boldsymbol{n}} + \alpha(u^{m+1}-u_e)+ c(u^{m+1}-u_e)
    (u^m+u_e +546) ((u^m + 273)^2 + (u_e+273)^2) = 0,
 
 because we have the identity :math:`a^4 - b^4 = (a-b)(a+b)(a^2+b^2)`.

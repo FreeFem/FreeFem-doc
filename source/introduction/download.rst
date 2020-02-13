@@ -6,7 +6,7 @@ Download
 Latest binary packages
 ----------------------
 
-FreeFEM v4.2.1 release runs under MacOS X, Ubuntu and Windows 64 bits.
+FreeFEM v4.5 release runs under MacOS X, Ubuntu and Windows 64 bits.
 
 +--------------------------------+-------------------+-----------+--------------+
 | Operating System               | FreeFEM Version   | Size      | Date         |

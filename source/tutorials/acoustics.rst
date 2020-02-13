@@ -14,7 +14,7 @@ When the solution wave is monochromatic (and that depends on the boundary and in
 .. math::
     \begin{array}{rcl}
         k^{2}v + c^{2}\Delta v &= 0 &\hbox{ in } \Omega\\
-        \frac{\partial v}{\partial n}|_\Gamma &= g &
+        \frac{\partial v}{\partial\boldsymbol{n}}|_\Gamma &= g &
     \end{array}
 
 where :math:`g` is the source.
@@ -125,7 +125,7 @@ To find all the :math:`u_e` one can do the following :
    :width: 90%
    :align: center
 
-   First eigen state (:math:`\lambda=(k/c)^2=19.4256`) close to :math:`20` of eigenvalue problem: :math:`-\Delta \varphi = \lambda\varphi` and :math:`\frac{\partial \varphi}{\partial n} = 0` on :math:`\Gamma`}
+   First eigen state (:math:`\lambda=(k/c)^2=19.4256`) close to :math:`20` of eigenvalue problem: :math:`-\Delta \varphi = \lambda\varphi` and :math:`\frac{\partial \varphi}{\partial\boldsymbol{n}} = 0` on :math:`\Gamma`}
 
 .. subfigend::
    :width: 0.49

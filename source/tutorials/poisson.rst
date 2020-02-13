@@ -165,7 +165,7 @@ However, we notice that all corners of :math:`\Gamma_h = \partial\Omega_h` are o
 A finite element space is, usually, a space of polynomial functions on elements, triangles here only, with certain matching properties at edges, vertices etc. Here :freefem:`fespace Vh(Th, P1)` defines :math:`V_h` to be the space of continuous functions which are affine in :math:`x,y` on each triangle of :math:`T_h`.
 
 As it is a linear vector space of finite dimension, basis can be found.
-The canonical basis is made of functions, called the *hat function* :math:`\phi_k` which are continuous piecewise affine and are equal to 1 on one vertex and 0 on all others. A typical hat function is shown on :numref:`figPoissonHat`.
+The canonical basis is made of functions, called the *hat function* :math:`\phi_k`, which are continuous piecewise affine and are equal to 1 on one vertex and 0 on all others. A typical hat function is shown on :numref:`figPoissonHat`.
 
 .. subfigstart::
 
@@ -338,7 +338,7 @@ The problem can then be solved by:
       \mathtt{u}(x,y) = \sum_{i=0}^{M-1} \mathtt{u[][}i\mathtt{]} \phi_i(x,y) ,
       \qquad \mathtt{F}(x,y) = \sum_{i=0}^{M-1} \mathtt{F[][}i\mathtt{]} \phi_i(x,y)
 
-   where :math:`\phi_i, i=0...,,M-1` are the basis functions of `Vh` like in equation (\ref{equation3}), and :math:`M = \mathtt{Vh.ndof}` is the number of degree of freedom (i.e. the dimension of the space `Vh`).
+   where :math:`\phi_i, i=0...,,M-1` are the basis functions of `Vh` like in equation :eq: `equation3`, and :math:`M = \mathtt{Vh.ndof}` is the number of degree of freedom (i.e. the dimension of the space `Vh`).
 
 The linear system :eq:`eqn:Equation` is solved by :freefem:`UMFPACK` unless another option is mentioned specifically as in:
 

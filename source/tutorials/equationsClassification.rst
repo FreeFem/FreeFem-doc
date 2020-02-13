@@ -29,13 +29,14 @@ If :math:`F` and :math:`\varphi` are vector valued functions, then the PDE is ac
 Unless indicated otherwise, here by convention *one* PDE corresponds to one scalar valued :math:`F` and :math:`\varphi`.
 If :math:`F` is linear with respect to its arguments, then the PDE is said to be *linear*.
 
-The general form of a second order, linear scalar PDE is :math:`{\partial^2\varphi\over\partial x_i\partial x_j}` and :math:`A:B` means :math:`\sum^d_{i,j=1} a_{ij} b_{ij}.`
+The general form of a second order, linear scalar PDE is
 
 .. math::
    \alpha\varphi + a\cdot\nabla\varphi + B :\nabla(\nabla\varphi) =
    f{\quad\hbox{ in }\quad}\Omega\subset \mathbb{R}^d,
 
-where :math:`f(x),\alpha(x)\in \mathbb{R}`, :math:`a(x)\in \mathbb{R}^d`, :math:`B(x)\in \mathbb{R}^{d\times d}` are the PDE *coefficients*.
+where :math:`{\partial^2\varphi\over\partial x_i\partial x_j}` and :math:`A:B` means :math:`\sum^d_{i,j=1} a_{ij} b_{ij}.`,
+:math:`f(x),\alpha(x)\in \mathbb{R}`, :math:`a(x)\in \mathbb{R}^d`, :math:`B(x)\in \mathbb{R}^{d\times d}` are the PDE *coefficients*.
 If the coefficients are independent of :math:`x`, the PDE is said to have *constant coefficients*.
 
 To a PDE we associate a quadratic form, by replacing :math:`\varphi` by :math:`1`, :math:`\partial\varphi/\partial x_i` by :math:`z_i` and :math:`\partial^2\varphi/\partial x_i\partial x_j` by :math:`z_i z_j`, where :math:`z` is a vector in :math:`\mathbb{R}^d`:
@@ -45,12 +46,12 @@ To a PDE we associate a quadratic form, by replacing :math:`\varphi` by :math:`1
 
 If it is the equation of an ellipse (ellipsoid if :math:`d \geq 2`), the PDE is said to be *elliptic*; if it is the equation of a parabola or a hyperbola, the PDE is said to be *parabolic* or *hyperbolic*.
 
-If :math:`A \equiv 0`, the degree is no longer 2 but 1, and for reasons that will appear more clearly later, the PDE is still said to be hyperbolic.
+If :math:`B \equiv 0`, the degree is no longer 2 but 1, and for reasons that will appear more clearly later, the PDE is still said to be hyperbolic.
 
 These concepts can be generalized to systems, by studying whether or not the polynomial system :math:`P(z)` associated with the PDE system has branches at infinity (ellipsoids have no branches at infinity, paraboloids have one, and hyperboloids have several).
 
 If the PDE is not linear, it is said to be *non-linear*.
-Those are said to be locally elliptic, parabolic, or hyperbolic according to the type of the linearized equation.
+These are said to be locally elliptic, parabolic, or hyperbolic according to the type of the linearized equation.
 
 For example, for the non-linear equation
 
@@ -112,16 +113,16 @@ For example:
 is called a *Dirichlet boundary condition*. The *Neumann* condition is
 
 .. math::
-   {\partial\varphi\over\partial \mathbf{n}}(x) \ \hbox{given on }\
-   \Gamma \hbox{ (or } \mathbf{n}\cdot B\nabla\varphi,\hbox{given on }\
+   {\partial\varphi\over\partial \boldsymbol{n}}(x) \ \hbox{given on }\
+   \Gamma \hbox{ (or } \boldsymbol{n}\cdot B\nabla\varphi,\hbox{given on }\
    \Gamma\hbox{ for a general second order PDE)}
 
-where :math:`\mathbf{n}` is the normal at :math:`x\in\Gamma` directed towards the exterior of :math:`\Omega` (by definition :math:`{\partial\varphi\over\partial \mathbf{n}}=\nabla\varphi\cdot \mathbf{n}`).
+where :math:`\boldsymbol{n}` is the normal at :math:`x\in\Gamma` directed towards the exterior of :math:`\Omega` (by definition :math:`{\partial\varphi\over\partial \boldsymbol{n}}=\nabla\varphi\cdot \boldsymbol{n}`).
 
 Another classical condition, called a *Robin* (or *Fourier*) condition is written as:
 
 .. math::
-   \varphi(x) + \beta(x) {\partial\varphi\over\partial n}(x) \ \hbox{given on}\ \Gamma.
+   \varphi(x) + \beta(x) {\partial\varphi\over\partial \boldsymbol{n}}(x) \ \hbox{given on}\ \Gamma.
 
 Finding a set of boundary conditions that defines a unique :math:`\varphi` is a difficult art.
 
@@ -130,7 +131,7 @@ In general, an elliptic equation is well posed (*i.e.* :math:`\varphi` is unique
 Thus, Laplace’s equation is well posed with a Dirichlet or Neumann condition but also with :
 
 .. math::
-   \varphi \ \hbox{given on}\ \Gamma_1,\ {\partial\varphi\over\partial n} \ \hbox{given on}\ \Gamma_2, \ \Gamma_1\cup\Gamma_2 =\Gamma,\ {\dot{\Gamma_1}\cap\dot{\Gamma_2}} =\emptyset.
+   \varphi \ \hbox{given on}\ \Gamma_1,\ {\partial\varphi\over\partial \boldsymbol{n}} \ \hbox{given on}\ \Gamma_2, \ \Gamma_1\cup\Gamma_2 =\Gamma,\ {\dot{\Gamma_1}\cap\dot{\Gamma_2}} =\emptyset.
 
 Parabolic and hyperbolic equations rarely require boundary conditions on all of :math:`\Gamma\times]0,T[`.
 For instance, the heat equation is well posed with :
