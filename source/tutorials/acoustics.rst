@@ -125,7 +125,7 @@ To find all the :math:`u_e` one can do the following :
    :width: 90%
    :align: center
 
-   First eigen state (:math:`\lambda=(k/c)^2=19.4256`) close to :math:`20` of eigenvalue problem: :math:`-\Delta \varphi = \lambda\varphi` and :math:`\frac{\partial \varphi}{\partial\boldsymbol{n}} = 0` on :math:`\Gamma`}
+   First eigen state (:math:`\lambda=(k/c)^2=14.695`) close to :math:`15` of eigenvalue problem: :math:`-\Delta \varphi = \lambda\varphi` and :math:`\frac{\partial \varphi}{\partial\boldsymbol{n}} = 0` on :math:`\Gamma`}
 
 .. subfigend::
    :width: 0.49

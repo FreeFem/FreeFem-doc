@@ -85,7 +85,7 @@ The variational formulation is in :math:`L^2(0,T;H^1(\Omega))`; in loose terms a
 .. note:: We must separate by hand the bilinear part from the linear one.
 
 .. note:: The way we store the temperature at point (3, 0.5) for all times in file ``thermic.dat``.
-   Should a one dimensional plot be required, the same procedure can be used. For instance to print :math:`x\mapsto \frac{\partial u}{\partial y}(x,0.9)` one would do:
+   Should a one dimensional plot be required (you can use gnuplot tools), the same procedure can be used. For instance to print :math:`x\mapsto \frac{\partial u}{\partial y}(x,0.9)` one would do:
 
    .. code-block:: freefem
       :linenos:
