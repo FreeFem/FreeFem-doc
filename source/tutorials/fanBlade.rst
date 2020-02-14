@@ -13,8 +13,8 @@ We also learn how to manipulate the region indicator and see how smooth is the p
 Without viscosity and vorticity incompressible flows have a velocity given by:
 
 .. math::
-   u=\left(\begin{matrix}{\partial \psi \over \partial x_{2} }\\ -{\partial \psi
-   \over \partial x_{1}} \end{matrix}\right), \quad
+   \boldsymbol{u}=\left(\begin{matrix}{\partial \psi \over \partial x }\\ -{\partial \psi
+   \over \partial y \end{matrix}\right), \quad
    \mbox{ where }\psi\mbox{ is solution of }\quad \Delta \psi =0
 
 This equation expresses both incompressibility (:math:`\nabla\cdot u=0`) and absence of vortex (:math:`\nabla\times u =0`).
@@ -32,11 +32,11 @@ Let us consider a wing profile :math:`S` in a uniform flow.
 Infinity will be represented by a large circle :math:`C` where the flow is assumed to be of uniform velocity; one way to model this problem is to write:
 
 .. math::
-   \Delta \psi =0 ~\hbox{~in~}~ \Omega, \qquad
-   \psi |_{S}=0, \quad
-   \psi|_{C}= {u_\infty}y
+   \Delta \psi =0 \hbox{ in } \Omega, \qquad
+   \psi |_{S}=-l, \quad
+   \psi|_{C}= {\boldsymbol{u}_\infty}.\boldsymbol{x}^\perp
 
-where :math:`\partial\Omega=C\cup S`
+where :math:`\partial\Omega=C\cup S` and :math:`l` is the lift force.
 
 **The NACA0012 Airfoil**
 
@@ -49,28 +49,29 @@ An equation for the upper surface of a NACA0012 (this is a classical wing profil
    :linenos:
 
    // Parameters
-   real S = 99;
-
+   int  S = 99;// wing label
+   // u infty
+   real theta = 8*pi/180;// // 1 degree on incidence =>  lift
+   real lift = theta*0.151952/0.0872665; //  lift approximation formula
+   real  uinfty1= cos(theta), uinfty2= sin(theta);
    // Mesh
+   func naca12 = 0.17735*sqrt(x) - 0.075597*x - 0.212836*(x^2) + 0.17363*(x^3) - 0.06254*(x^4);
    border C(t=0., 2.*pi){x=5.*cos(t); y=5.*sin(t);}
-   border Splus(t=0., 1.){x=t; y=0.17735*sqrt(t) - 0.075597*t
-      - 0.212836*(t^2) + 0.17363*(t^3) - 0.06254*(t^4); label=S;}
-   border Sminus(t=1., 0.){x=t; y=-(0.17735*sqrt(t) - 0.075597*t
-      -0.212836*(t^2) + 0.17363*(t^3) - 0.06254*(t^4)); label=S;}
+   border Splus(t=0., 1.){x=t; y=naca12; label=S;}
+   border Sminus(t=1., 0.){x=t; y=-naca12; label=S;}
    mesh Th = buildmesh(C(50) + Splus(70) + Sminus(70));
 
    // Fespace
-   fespace Vh(Th, P2);
-   Vh psi, w;
-
+   fespace Xh(Th, P2);
+   Xh psi, w;
+   macro grad(u) [dx(u),dy(u)]// def of grad operator
    // Solve
    solve potential(psi, w)
       = int2d(Th)(
-           dx(psi)*dx(w)
-         +dy(psi)*dy(w)
+   	   grad(psi)'*grad(w) //  scalar product
       )
-      + on(C, psi = y)
-      + on(S, psi=0)
+      + on(C, psi = [uinfty1,uinfty2]'*[y,-x])
+      + on(S, psi=-lift) // to get a correct value
       ;
 
    plot(psi, wait=1);
@@ -95,7 +96,7 @@ A zoom of the streamlines are shown on :numref:`figFanPotential`.
    :width: 90%
 
    Temperature distribution at time T=25 (now the maximum is at 90 instead of 120).
-   Note that an incidence angle has been added here.
+   
 
 .. subfigend::
    :width: 0.49
@@ -122,23 +123,17 @@ Consider the following, to be plugged at the end of the previous program:
    :linenos:
 
    // Parameters
-   real S = 99;
    real dt=0.05;
    real nbT=50;
 
    // Mesh
-   border C(t=0., 2.*pi){x=5.*cos(t); y=5.*sin(t);}
-   border Splus(t=0., 1.){x=t; y=0.17735*sqrt(t) - 0.075597*t
-      - 0.212836*(t^2) + 0.17363*(t^3) - 0.06254*(t^4); label=S;}
-   border Sminus(t=1., 0.){x=t; y=-(0.17735*sqrt(t) - 0.075597*t
-      -0.212836*(t^2) + 0.17363*(t^3) - 0.06254*(t^4)); label=S;}
-   border D(t=0., 2.){x=1.+t; y=0.;} // Added to have a fine mesh at trail
+   border D(t=0., 2.){x=1.+cos(theta)*t; y=+sin(theta)*t;} // Added to have a fine mesh at trail
    mesh Sh = buildmesh(C(25) + Splus(-90) + Sminus(-90) + D(200));
    int steel=Sh(0.5,0).region, air=Sh(-1,0).region;
 
    // Fespaces
    fespace Vh(Sh, P2);
-   Vh psi, w;
+
 
    fespace Wh(Sh, P1);
    Wh v, vv;
@@ -153,7 +148,7 @@ Consider the following, to be plugged at the end of the previous program:
    problem thermic(v, vv, init=i, solver=LU)
       = int2d(Sh)(
            v*vv/dt
-         + k*(dx(v) * dx(vv) + dy(v) * dy(vv))
+         + k*grad(v)'*grad(vv)
          + 10*(u1*dx(v)+u2*dy(v))*vv
       )
       - int2d(Sh)(

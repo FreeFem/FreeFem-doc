@@ -178,8 +178,8 @@ This adds to the loss by convection and gives the following boundary condition:
 .. math::
    \kappa{\partial u\over \partial\boldsymbol{n}} +\alpha(u-u_e) + c[(u + 273)^4 - (u_e+273)^4] = 0
 
-The problem is nonlinear, and must be solved iteratively.
-If :math:`m` denotes the iteration index, a semi-linearization of the radiation condition gives
+The problem is nonlinear, and must be solved iteratively with fixed-point iteration
+where :math:`m` denotes the iteration index, a semi-linearization of the radiation condition gives
 
 .. math::
    {\partial u^{m+1}\over \partial\boldsymbol{n}} + \alpha(u^{m+1}-u_e)+ c(u^{m+1}-u_e)
@@ -193,13 +193,9 @@ The iterative process will work with :math:`v=u-u_e`.
    :linenos:
 
    ...
-   // Parameters
-   real rad=1e-8;
-   real uek=ue+273;
-
    // Mesh
    fespace Vh(Th, P1);
-   Vh vold, w, v=u0-ue, b;
+   Vh vold, w, v=u0-ue, b,vp;
 
    // Problem
    problem thermradia(v, w)
@@ -216,14 +212,19 @@ The iterative process will work with :math:`v=u-u_e`.
        + on(2, 4, v=u0-ue)
        ;
 
+   verbosity=0; // to remove spurious FREEfem print
    for (real t=0;t<T;t+=dt){
-       vold = v;
-       for (int m = 0; m < 5; m++){
-           b = alpha + rad * (v + 2*uek) * ((v+uek)^2 + uek^2);
-           thermradia;
+     vold[] = v[];// just copy DoF's, faster than interpolation pv=v;
+     for (int m = 0; m < 5; m++) {
+       vp[]=v[];// save previous state of commute error
+       b = alpha + rad * (v + 2*uek) * ((v+uek)^2 + uek^2);
+       thermradia;
+       vp[]-=v[];
+       real err = vp[].linfty;// error value
+       cout << " time " << t << " iter " << m << " err = "<< vp[].linfty << endl;
+       if( err < 1e-5) break; // if error is enough  small break fixed-point loop
        }
-   }
-   vold = v+ue;
+     }
+   v[] += ue;//  add a constant to all DoF's of v
 
-   // Plot
-   plot(vold);
+   plot(v);
