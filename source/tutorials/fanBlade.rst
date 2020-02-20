@@ -13,8 +13,8 @@ We also learn how to manipulate the region indicator and see how smooth is the p
 Without viscosity and vorticity incompressible flows have a velocity given by:
 
 .. math::
-   \boldsymbol{u}=\left(\begin{matrix}{\partial \psi \over \partial x }\\ -{\partial \psi
-   \over \partial y \end{matrix}\right), \quad
+   \boldsymbol{u}=\left(\begin{matrix}{\partial \psi \over \partial x }\\
+   -\partial \psi \over \partial y \end{matrix}\right), \quad
    \mbox{ where }\psi\mbox{ is solution of }\quad \Delta \psi =0
 
 This equation expresses both incompressibility (:math:`\nabla\cdot u=0`) and absence of vortex (:math:`\nabla\times u =0`).
@@ -96,7 +96,7 @@ A zoom of the streamlines are shown on :numref:`figFanPotential`.
    :width: 90%
 
    Temperature distribution at time T=25 (now the maximum is at 90 instead of 120).
-   
+
 
 .. subfigend::
    :width: 0.49
