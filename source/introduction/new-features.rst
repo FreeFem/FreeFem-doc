@@ -1,4 +1,3 @@
-
 Version 4.5: new features
 =========================
 
@@ -18,7 +17,7 @@ New meshes and FEM border
 
 After Surface FEM, Line FEM is possible with a new mesh type :freefem:`meshL`, :freefem:`P0` :freefem:`P1` :freefem:`P2` :freefem:`P1dc` FE, basic FEM, mesh generation
 This new development allows to solve a 1d problem, such as a problem described on a 3d curve.
-
+=======
 
 Abstract about Line FEM in FreeFEM.
 

@@ -9,13 +9,13 @@ GitHubVersion = r.json()
 # -- Project information -----------------------------------------------------
 
 project = 'FreeFEM'
-copyright = '2019, FreeFEM'
+copyright = '2020, FreeFEM'
 author = 'Frederic Hecht'
 
 # The short X.Y version
-version = '4.2.1' # GitHubVersion['tag_name']
+version = '4.5' # GitHubVersion['tag_name']
 # The full version, including alpha/beta/rc tags
-release = '4.2.1' #GitHubVersion['tag_name']
+release = '4.5' #GitHubVersion['tag_name']
 
 # -- General configuration ---------------------------------------------------
 

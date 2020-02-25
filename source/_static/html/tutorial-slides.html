@@ -695,9 +695,8 @@ effectively replacing the **ffddm** implementation of all parallel linear algebr
 $\Rightarrow$ define your problem with **ffddm**, solve it with **HPDDM**  
 $\Rightarrow$ **ffddm** acts as a finite element interface for **HPDDM**
 
-- you can use **HPDDM** features unavailable in **ffddm** such as advanced Krylov subspace methods
+You can use **HPDDM** features unavailable in **ffddm** such as advanced Krylov subspace methods
 implementing block and recycling techniques
-- conversely, some features of **ffddm** such as two level methods built from a coarse mesh are not implemented in **HPDDM**
 
 To switch to **HPDDM**, simply define the macro `pr#withhpddm` before using `ffddmsetupOperator` ([Step 3](tutorial-slides.html#11)). You can then pass **HPDDM** options
 with command-line arguments or directly to the underlying **HPDDM** operator:

@@ -20,6 +20,7 @@ Command-line arguments
 -  ``-ffddm_geneo_threshold R``, threshold parameter for selecting local eigenvectors when solving the local generalized eigenvalue problems for the GenEO method, see :ref:`ffddmtau <ffddmParametersGlobal>` (default 0.5).
    If the command-line parameter **-ffddm_geneo_nu N** is used, then :ref:`ffddmtau <ffddmParametersGlobal>` is initialized to 0.
 -  ``-ffddm_schwarz_coarse_correction S``, specifies the coarse correction formula to use for the two level preconditioner: “AD” (*Additive*), “BNN” (*Balancing Neumann-Neumann*), “ADEF1” (*Adapted Deflation Variant 1*), “ADEF2” (*Adapted Deflation Variant 2*), “RBNN1” (*Reduced Balancing Variant 1*), “RBNN2” (*Reduced Balancing Variant 2*) or “none” (no coarse correction), see :ref:`ffddmcorrection <ffddmParametersGlobal>` (default “ADEF1”).
+-  ``-ffddm_inexactCS_tol R``, specifies the GMRES tolerance for the inner solution of the coarse problem when using a two level method with approximate coarse solves, see :ref:`ffddminexactCStol <ffddmParametersGlobal>` (default 0.1).
 
 .. _ffddmParametersGlobal:
 
@@ -54,3 +55,5 @@ Global parameters
 -  ``ffddmcorrection`` initialized by command-line argument **-ffddm_schwarz_coarse_correction S**, specifies the coarse correction formula to use for the two level preconditioner: “AD” (*Additive*), “BNN” (*Balancing Neumann-Neumann*), “ADEF1” (*Adapted Deflation Variant 1*), “ADEF2” (*Adapted Deflation Variant 2*), “RBNN1” (*Reduced Balancing Variant 1*), “RBNN2” (*Reduced Balancing Variant 2*) or “none” (no coarse correction).
    Default is “ADEF1”.
    See the section about :ref:`Two level preconditioners <ffddmDocumentationTwoLevelPreconditioners>` for more details.
+-  ``ffddminexactCStol`` initialized by command-line argument **-ffddm_inexactCS_tol R**, GMRES tolerance for the inner solution of the coarse problem when using a two level method with approximate coarse solves (default 0.1).
+   See the section about :ref:`Approximate coarse solves for two level methods <ffddmDocumentationApproximateCoarseSolve>` for more details.

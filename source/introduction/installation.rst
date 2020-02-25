@@ -450,23 +450,19 @@ Repeatedly run the following command until it says there are no further updates.
 
 5. Now that MSYS2 is fully up-to-date, install the following dependancies
 
-   -  for 64bits system (all *FreeFEM* release version):
+   -  for 64 bit systems:
 
    .. code-block:: bash
       :linenos:
 
-      pacman -S autoconf automake-wrapper bash bash-completion \
-        bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem \
-        findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils \
-        info less lndir make man-db git mingw-w64-x86_64-freeglut \
-        mingw-w64-x86_64-toolchain  mingw-w64-x86_64-gsl mingw-w64-x86_64-hdf5 \
-        mingw-w64-x86_64-openblas mintty msys2-keyring msys2-launcher-git \
-        msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch \
-        pax-git python perl pkg-config pkgfile rebase sed tar tftp-hpa time \
-        tzcode unzip util-linux which mingw-w64-x86_64-libmicroutils \
-        mingw-w64-x86_64-arpack cmake python2
+      pacman -S autoconf make automake-wrapper bison git cmake \
+        mingw-w64-x86_64-freeglut mingw-w64-x86_64-toolchain \
+        mingw-w64-x86_64-openblas patch python perl pkg-config pkgfile \
+        rebase tar time tzcode unzip which mingw-w64-x86_64-libmicroutils \
+        --ignore mingw-w64-x86_64-gcc-ada --ignore mingw-w64-x86_64-gcc-objc \
+        --ignore mingw-w64-x86_64-gdb --noconfirm
 
-   -  for 32bits system (less *FreeFEM* release V4 is not currently supported):
+   -  for 32 bit systems (**FreeFEM** lower than version 4):
 
    .. code-block:: bash
       :linenos:
@@ -478,10 +474,10 @@ Repeatedly run the following command until it says there are no further updates.
         mingw-w64-i686-toolchain mingw-w64-i686-gsl mingw-w64-i686-hdf5 \
         mingw-w64-i686-openblas mintty msys2-keyring msys2-launcher-git \
         msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git \
-        perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip \ 
-		util-linux which
+        perl pkg-config pkgfile rebase sed tar tftp-hpa time tzcode unzip \
+        util-linux which
 
-6. Open a ``MingW64 terminal`` (or ``MingW32`` for old 32 bits **FreeFEM** version) and compile the **FreeFEM** source
+6. Open a ``MingW64 terminal`` (or ``MingW32`` for old 32 bit **FreeFEM** version) and compile the **FreeFEM** source
 
    .. code-block:: bash
       :linenos:
@@ -713,8 +709,8 @@ Repeatedly run the following command until it says there are no further updates.
 
 .. only:: html
 
-  *FreeFEM* continuous integration 
-  --------------------------------
+  **FreeFEM** continuous integration 
+  ----------------------------------
 
   The Inria Jenkins platform is used for the CI/CD integration of the source code.
 

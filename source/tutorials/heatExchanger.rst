@@ -140,9 +140,9 @@ Note the following:
 
 .. tip:: **Exercise :**
 
-   Use the symmetry of the problem with respect to the axes.
+   Use the symmetry of the problem with respect to the `x` axes.
 
-   Triangulate only one half of the domain, and set Dirichlet conditions on the vertical axis, and Neumann conditions on the horizontal axis.
+   Triangulate only one half of the domain, and set homogeneous Neumann conditions on the horizontal axis.
 
 **Writing and reading triangulation files** Suppose that at the end of the previous program we added the line
 

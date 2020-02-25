@@ -6,37 +6,37 @@ Download
 Latest binary packages
 ----------------------
 
-FreeFEM v4.2.1 release runs under MacOS X, Ubuntu and Windows 64 bits. 
+FreeFEM v4.5 release runs under MacOS X, Ubuntu and Windows 64 bits.
 
 +--------------------------------+-------------------+-----------+--------------+
 | Operating System               | FreeFEM Version   | Size      | Date         |
 +================================+===================+===========+==============+
-| `MacOS 10.14`_                 | ``-``             | ``-``     |  ``-``       |
+| `MacOS 10.10.5 or higher`_     | ``4.5``           |  412 MB   | Feb 11, 2020 |
 +--------------------------------+-------------------+-----------+--------------+
-| `MacOS 10.10.5 up to 10.13.5`_ | ``4.2.1``         |  417 Mb   | May 31, 2019 |
+| `Ubuntu 16.04 or higher`_      | ``4.5``           |  210 MB   | Feb 11, 2020 |
 +--------------------------------+-------------------+-----------+--------------+
-| `Ubuntu 16.04 or higher`_      | ``4.2.1``         |  52.6 Mb  | May 31, 2019 |
+| `Windows 64 bits`_             | ``4.5``           |  55 MB    | Feb 11, 2020 |
 +--------------------------------+-------------------+-----------+--------------+
-| `Windows 64bits`_              | ``4.2.1``         |  135 Mb   | May 31, 2019 |
+| `Docker image`_                | ``4.5``           |  479 MB   | Feb 11, 2020 |
 +--------------------------------+-------------------+-----------+--------------+
-| `Source_4.2.1`_                | ``4.2.1``         | 3.2 Mb    | May 31, 2019 |
+| `Source 4.5`_                  | ``4.5``           |  12.6 MB  | Feb 11, 2020 |
 +--------------------------------+-------------------+-----------+--------------+
 | `previous releases`_           | ``-``             | ``-``     | ``-``        |
 +--------------------------------+-------------------+-----------+--------------+
 
 The source code is available on the `FreeFEM GitHub Repository <https://github.com/FreeFem/FreeFem-sources>`__.
 
-.. _MacOS 10.14: 
-.. _MacOS 10.10.5 up to 10.13.5: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.2.1/FreeFem++-4.2-1-b-348-MacOS_10.11.pkg
-.. _Ubuntu 16.04 or higher: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.2.1/freefem_4.2.1-1_amd64.deb
-.. _Windows 64bits: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.2.1/FreeFem.-4.2-1-win64.exe
-.. _Windows 32bits: http://www3.freefem.org/ff++/ftp/FreeFem++-3.46-win32.exe
-.. _Source_4.2.1: https://github.com/FreeFem/FreeFem-sources/archive/v4.2.1.tar.gz
+
+.. _MacOS 10.10.5 or higher: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.5/FreeFem++-4.5-full-MacOS_10.11.pkg
+.. _Ubuntu 16.04 or higher: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.5/FreeFEM_4.5_Ubuntu_withPETSc_amd64.deb
+.. _Windows 64 bits: https://github.com/FreeFem/FreeFem-sources/releases/download/v4.5/FreeFem++-4.5-win64.exe
+.. _Docker image: https://hub.docker.com/r/freefem/freefem
+.. _Source 4.5: https://github.com/FreeFem/FreeFem-sources/archive/v4.5.tar.gz
 .. _previous releases: http://www3.freefem.org/ff++/ftp/
 
 
 
-.. note:: The support ended for all releases under Windows 32 bits. 
+.. note:: The support ended for all releases under Windows 32 bits.
 
 |
 |

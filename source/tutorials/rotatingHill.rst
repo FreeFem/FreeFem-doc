@@ -29,7 +29,7 @@ The exact solution :math:`c(x_t,t)` at time :math:`t` en point :math:`x_t` is gi
 where :math:`x_t` is the particle path in the flow starting at point :math:`x` at time :math:`0`. So :math:`x_t` are solutions of
 
 .. math::
-   \dot{x_t} = u(x_t), \quad\ x_{t=0} =x , \quad\mbox{where}\quad \dot{x_t} = \frac{\text{d} ( t \mapsto x_t)}{\text{d} t}
+   \dot{x_t} = u(x_t), \quad\ x_{t=0} =x , \quad\mbox{where}\quad \dot{x_t} = \frac{\text{d} ( x_t }{\text{d} t}
 
 The ODE are reversible and we want the solution at point :math:`x` at time :math:`t` ( not at point :math:`x_t`) the initial point is :math:`x_{-t}`, and we have
 
@@ -44,7 +44,7 @@ Solution by a Characteristics-Galerkin Method
 In **FreeFEM** there is an operator called :freefem:`convect([u1,u2], dt, c)` which compute :math:`c\circ X` with :math:`X` is the convect field defined by :math:`X(x)= x_{dt}` and where :math:`x_\tau` is particule path in the steady state velocity field :math:`\mathbf{u}=[u1,u2]` starting at point :math:`x` at time :math:`\tau=0`, so :math:`x_\tau` is solution of the following ODE:
 
 .. math::
-   \dot{x}_\tau = u(x_\tau), \mathbf{x}_{\tau=0}=x.
+   \dot{x}_\tau = u(x_\tau), {x}_{\tau=0}=x.
 
 When :math:`\mathbf{u}` is piecewise constant; this is possible because :math:`x_\tau` is then a polygonal curve which can be computed exactly and the solution exists always when :math:`\mathbf{u}` is divergence free; convect returns :math:`c(x_{df})=C\circ X`.
 
@@ -179,139 +179,36 @@ Now if you think that DG is too slow try this:
 .. code-block:: freefem
    :linenos:
 
-   // Parameters
-   real al=0.5;
-   real dt = 0.05;
-
    // Mesh
    border C(t=0., 2.*pi) {x=cos(t); y=sin(t);};
    mesh Th = buildmesh(C(100));
 
-   // Fespace
-   fespace Vh(Th,P1dc);
-   Vh w, ccold, v1 = y, v2 = -x, cc = exp(-10*((x-0.3)^2 +(y-0.3)^2));
-   Vh rhs=0;
+   fespace Vh(Th,P1);//P1,P2,P0,P1dc,P2dc, uncond stable
 
-   // Macro
-   macro n() (N.x*v1 + N.y*v2) // Macro without parameter
+   Vh vh,vo,u1 = y, u2 = -x, v = exp(-10*((x-0.3)^2 +(y-0.3)^2));
+   real dt = 0.03,t=0, tmax=2*pi, al=0.5, alp=200;
 
-   // Problem
-   real t = 0.;
+   problem  A(v,vh) = int2d(Th)(v*vh/dt-v*(u1*dx(vh)+u2*dy(vh)))
+     + intalledges(Th)(vh*(mean(v)*(N.x*u1+N.y*u2)
+                      +alp*jump(v)*abs(N.x*u1+N.y*u2)))
+     + int1d(Th,1)(((N.x*u1+N.y*u2)>0)*(N.x*u1+N.y*u2)*v*vh)
+     - int2d(Th)(vo*vh/dt);
 
-   varf vAdual (cc, w)
-       = int2d(Th)(
-             (cc/dt+(v1*dx(cc)+v2*dy(cc)))*w
-       )
-       + intalledges(Th)(
-             (1-nTonEdge)*w*(al*abs(n)-n/2)*jump(cc)
-       )
-       ;
+   varf  Adual(v,vh) = int2d(Th)((v/dt+(u1*dx(v)+u2*dy(v)))*vh)
+     + intalledges(Th)((1-nTonEdge)*vh*(al*abs(N.x*u1+N.y*u2)
+     				-(N.x*u1+N.y*u2)/2)*jump(v));
 
-   varf vBdual (cc, w)
-       = - int2d(Th)(
-             ccold*w/dt
-       )
-       ;
+   varf rhs(vo,vh)= int2d(Th)(vo*vh/dt);
 
-   matrix AA = vAdual(Vh, Vh);
-   matrix BB = vBdual(Vh, Vh);
-   set (AA, init=t, solver=sparsesolver);
+   real[int] viso=[-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1,1.1];
 
-   // Time iterations
-   for (t = 0.; t < 2.*pi; t += dt){
-       ccold = cc;
-       rhs[] = BB * ccold[];
-       cc[] = AA^-1 * rhs[];
-       plot(cc, fill=1, cmm="t="+t+", min="+cc[].min+", max="+ cc[].max);
-   }
+   matrix AA=Adual(Vh,Vh,solver=GMRES);
+   matrix BB=rhs(Vh,Vh);
 
-Notice the new keyword :freefem:`set` to specify a solver in this framework; the modifier :freefem:`init` is used to tell the solver that the matrix has not changed (:freefem:`init=true`), and the name parameter are the same that in problem definition (see :ref:`Problem <problemDefinition>`)
-
-**Finite Volume Methods** can also be handled with **FreeFEM** but it requires programming.
--------------------------------------------------------------------------------------------
-
-For instance the :math:`P_0-P_1` Finite Volume Method of Dervieux *et al* associates to each :math:`P_0` function :math:`c^1` a :math:`P_0` function :math:`c^0` with constant value around each vertex :math:`q^i` equal to :math:`c^1(q^i)` on the cell :math:`\sigma_i` made by all the medians of all triangles having :math:`q^i` as vertex.
-
-Then upwinding is done by taking left or right values at the median:
-
-.. math::
-   \int_{\sigma_i}\frac 1{\delta t}({c^1}^{n+1}-{c^1}^n) + \int_{\partial\sigma_i}u\cdot n c^-=0, \forall i
-
-It can be programmed as :
-
-.. code-block:: freefem
-   :linenos:
-
-   load "mat_dervieux"; //External module in C++ must be loaded
-
-   // Parameters
-   real dt = 0.025;
-
-   // Mesh
-   border a(t=0., 2.*pi){x=cos(t); y=sin(t);}
-   mesh th = buildmesh(a(100));
-
-   // Fespace
-   fespace Vh(th,P1);
-   Vh vh, vold, u1=y, u2=-x;
-   Vh v=exp(-10*((x-0.3)^2 +(y-0.3)^2)), vWall=0, rhs=0;
-
-   // Problem
-   //qf1pTlump means mass lumping is used
-   problem FVM(v,vh) = int2d(th,qft=qf1pTlump)(v*vh/dt)
-       - int2d(th,qft=qf1pTlump)(vold*vh/dt)
-       + int1d(th,a)(((u1*N.x+u2*N.y)<0)*(u1*N.x+u2*N.y)*vWall*vh)
-   + rhs[] ;
-
-   matrix A;
-   MatUpWind0(A, th, vold, [u1, u2]);
-
-   // Time loop
-   for (int t = 0; t < 2.*pi ; t += dt){
-       vold = v;
-       rhs[] = A * vold[];
-       FVM;
-       plot(v, wait=0);
-   }
-
-the “mass lumping" parameter forces a quadrature formula with Gauss points at the vertices so as to make the mass matrix diagonal; the linear system solved by a conjugate gradient method for instance will then converge in one or two iterations.
-
-The right hand side ``rhs`` is computed by an external C++ function ``MatUpWind0(...)`` which is programmed as :
-
-.. code-block:: cpp
-   :linenos:
-
-   // Computes matrix a on a triangle for the Dervieux FVM
-   int fvmP1P0(double q[3][2], // the 3 vertices of a triangle T
-       double u[2], // convection velocity on T
-       double c[3], // the P1 function on T
-       double a[3][3],// output matrix
-       double where[3]) // where>0 means we're on the boundary
+   for ( t=0; t< tmax ; t+=dt)
    {
-       for (int i = 0; i < 3; i++)
-           for(int j = 0; j < 3; j++) a[i][j] = 0;
-
-       for(int i = 0; i < 3; i++){
-           int ip = (i+1)%3, ipp = (ip+1)%3;
-           double unL = -((q[ip][1] + q[i][1] - 2*q[ipp][1])*u[0]
-               - (q[ip][0] + q[i][0] - 2*q[ipp][0])*u[1])/6.;
-           if (unL > 0){
-               a[i][i] += unL;
-               a[ip][i] -=unL;
-           }
-           else{
-               a[i][ip] += unL;
-               a[ip][ip] -=unL;
-           }
-           if (where[i] && where[ip]){ // this is a boundary edge
-               unL = ((q[ip][1] - q[i][1])*u[0] - (q[ip][0] - q[i][0])*u[1])/2;
-               if (unL > 0){
-                   a[i][i] += unL;
-                   a[ip][ip] += unL;
-               }
-           }
-       }
-       return 1;
-   }
-
-It must be inserted into a larger .cpp file, shown in Appendix A, which is the load module linked to **FreeFEM**.
+      vo[]=v[];
+      vh[]=BB*vo[];
+      v[]=AA^-1*vh[];
+      plot(v,fill=0,viso=viso,cmm=" t="+t + ", min=" + v[].min + ", max=" +  v[].max);
+   };
