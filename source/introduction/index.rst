@@ -58,7 +58,7 @@
 **Introduction**
 ================
 
-**FreeFEM** is a partial differential equation solver for non-linear multi-physics systems in 2D and 3D.
+**FreeFEM** is a partial differential equation solver for non-linear multi-physics systems in 1D, 2D, 3D and 3D border domains (surface and curve).
 
 Problems involving partial differential equations from several branches of physics, such as fluid-structure interactions, require interpolations of data on several meshes and their manipulation within one program.
 **FreeFEM** includes a fast interpolation algorithm and a language for the manipulation of data on multiple meshes.

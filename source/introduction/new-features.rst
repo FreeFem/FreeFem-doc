@@ -7,7 +7,7 @@ Version 4.5: new features
 Release, binaries packages 
 --------------------------
 
-* Since the version 4.5, the FreeFEM binaries packages provides with a compiled PETSc library.
+* Since the version 4.5, the FreeFEM binary packages provides with a compiled PETSc library.
 * FreeFEM is now interfaced with ParMmg.
 
 New meshes and FEM border 

@@ -8,14 +8,14 @@
 Installation guide
 ==================
 
-To use FreeFEM, two installation methods are available: user access (binarie package) and access developers (from the source code).
+To use FreeFEM, two installation methods are available: user access (binary package) and access developers (from the source code).
 Follow the section corresponding to your type of installation.
 
 |
 |
 
-Using binaries package
-----------------------
+Using binary package
+--------------------
 
 First, open the following web page :ref:`download page <download>` and choose your platform: Linux, MacOS or Windows.
 
@@ -25,6 +25,8 @@ Install **FreeFEM** by double-clicking on the appropriate file. Under Linux and 
 
 Windows installation
 ^^^^^^^^^^^^^^^^^^^^
+
+.. note:: The windows package is build for Window 7 64bits
 
 First download the windows installation executable, then double click to install **FreeFEM**.
 
@@ -44,24 +46,31 @@ By default, the installed files are in ``C:\Programs Files\FreeFem++``. In this 
 macOS X installation
 ^^^^^^^^^^^^^^^^^^^^
 
-Download the MacOS X binary version file, extract all the files by double clicking on the icon of the file, go the the directory and put the ``FreeFem++.app`` application in the ``/Applications`` directory.
+Download the macOS X binary version file, extract all the files by double clicking on the icon of the file, go the the directory and put the ``FreeFem++.app`` application in the ``/Applications`` directory.
 
 If you want terminal access to **FreeFEM** just copy the file ``FreeFem++`` in a directory of your :bash:`$PATH` shell environment variable.
 
 
-Ubuntu binary installation
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ubuntu installation
+^^^^^^^^^^^^^^^^^^^
 
-.. note:: The Debian package is build for Ubuntu 18.04   
+.. note:: The Debian package is built for Ubuntu 16.04   
 
 Beforehand, install the following dependances libraries using the apt tool:
 
 .. code-block:: bash
    :linenos:
     
-   sudo apt-get install libhdf5-dev libsuitesparse-dev libarpack2-dev 
+   sudo apt-get install libgsl-dev libhdf5-dev 
+                liblapack-dev libopenmpi-dev freeglut3-dev
 	
-Download the package FreeFEM .deb, install it by double clicking on the icon of the file.
+Download the package FreeFEM .deb, install it by the command
+
+.. code-block:: bash
+   :linenos:
+   
+   dpkg -i FreeFEM_VERSION_Ubuntu_withPETSc_amd64.deb
+
 FreeFEM is directly available in your terminal by the command "FreeFem++".
 
 
@@ -94,43 +103,44 @@ Compilation on OSX (>=10.13)
 
 1. Install Xcode, Xcode Command Line tools and Xcode Additional Tools from the `Apple website <https://developer.apple.com/download/more/>`__
 
-2. Install gcc and gfortran from Homebrew
+2. Install gfortran from Homebrew
 
    .. code-block:: bash
       :linenos:
 
-       brew install gcc
+       brew install gfortran
 
-3. To use **FreeFEM** parallel version, install the `openmpi <https://www.open-mpi.org/software/ompi/v4.0/>`__ source code
+3. To use **FreeFEM** parallel version, install `openmpi <https://www.open-mpi.org/software/ompi/v4.0/>`__  or  `mpich <http://www.mpich.org/downloads/>`__ 
 
    .. code-block:: bash
       :linenos:
-
+	  
+       # to install openmpi
        curl -L https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.1.tar.gz --output openmpi-4.0.1.tar.gz
        tar xf openmpi-4.0.1
        cd openmpi-4.0.1/
-
-   - with brew gcc gfortran compilers
-
+       # to install mpich
+       curl -L http://www.mpich.org/static/downloads/3.3.2/mpich-3.3.2.tar.gz --output mpich-3.3.2.tar.gz
+       tar xf mpich-3.3.2
+       cd mpich-3.3.2
+	   
    .. code-block:: bash
       :lineno-start: 4
-
-       ./configure CC=clang CXX=clang++ FC=gfortran-9 F77=gfortran-9 --prefix=/usr/local
-
-   - with LLVM gcc and brew gfortran compilers
-
-   .. code-block:: bash
-       :lineno-start: 4
-
-       ./configure CC=gcc-9 CXX=g++-9 FC=gfortran-9 F77=gfortran-9 --prefix=/usr/local
+	  
+       # with brew gcc gfortran compilers
+       ./configure CC=clang CXX=clang++ FC=gfortran-9 F77=gfortran-9 --prefix=/where/you/want/to/have/files/installed
+    
+       # with LLVM gcc and brew gfortran compilers
+       ./configure CC=gcc-9 CXX=g++-9 FC=gfortran-9 F77=gfortran-9 --prefix=/where/you/want/to/have/files/installed
+   
 
    .. code-block:: bash
       :lineno-start: 5
 
-       make
-       sudo make install
+       make -j<nbProcs>
+       make -j<nbProcs> install
 
-4. Install the required libraries for **FreeFEM**
+4. Install the minimal libraries for **FreeFEM**
 
    .. code-block:: bash
       :linenos:
@@ -142,10 +152,9 @@ Compilation on OSX (>=10.13)
    .. code-block:: bash
       :linenos:
 
-      brew install autoconf
-      brew install automake
+      brew install autoconf automake
 
-6. To use **FreeFEM** with its plugins, install rom Homebrew suitesparse, hdf5, cmake, wget
+6. To use **FreeFEM** with its plugins, install from Homebrew suitesparse, hdf5, cmake, wget
 
    .. code-block:: bash
       :linenos:
@@ -161,8 +170,8 @@ Compilation on OSX (>=10.13)
       tar zxvf gsl-2.5.tar.gz
       cd gsl-2.5
       ./configure
-      make
-      sudo make install
+      make -j<nbProcs>
+      make -j<nbProcs> install --prefix=/where/you/want/to/have/files/installed
 
 8. Download the latest Git for Mac installer `git <https://git-scm.com/download/mac>`__ and the **FreeFEM** source from the repository
 
@@ -184,16 +193,14 @@ Compilation on OSX (>=10.13)
 
    .. code-block:: bash
       :lineno-start: 3
+      
+	  // with brew gcc gfortran compilers 
+      ./configure --enable-download CC=clang CXX=clang++ F77=gfortran-9 FC=gfortran-9 --prefix=/where/you/want/to/have/files/installed
+	  
+      // with LLVM gcc and brew gfortran compilers 
+      ./configure --enable-download CC=clang CXX=clang++ F77=gfortran-9 FC=gfortran-9 --prefix=/where/you/want/to/have/files/installed
 
-      ./configure --enable-download CC=clang CXX=clang++ F77=gfortran-9 FC=gfortran-9
-
-   - with brew gcc and brew gfortran compilers
-
-   .. code-block:: bash
-      :lineno-start: 3
-
-      ./configure --enable-download CC=gcc-9 CXX=g++-9 F77=gfortran-9 FC=gfortran-9
-
+   
 
 10. Download the 3rd party packages to use FreeFEM plugins
 
@@ -204,13 +211,13 @@ Compilation on OSX (>=10.13)
 
    .. note:: All the third party packages have their own licence
 
-11. If you want use `HPDDM <https://github.com/hpddm/hpddm>`__ (High Performance Domain Decomposition Methods) for massively parallel computing, install PETSc/SLEPc
+11. If you want use PETSc/SLEPc and `HPDDM <https://github.com/hpddm/hpddm>`__ (High Performance Domain Decomposition Methods)
 
    .. code-block:: bash
       :linenos:
 
       cd 3rdparty/ff-petsc
-      make petsc-slepc SUDO=sudo
+      make petsc-slepc // add SUDO=sudo if your installation directory is the default /usr/local
       cd -
       ./reconfigure
 
@@ -220,21 +227,21 @@ Compilation on OSX (>=10.13)
       :linenos:
 
       make -j<nbProcs>
-      make check
+      make -j<nbProcs> check
 	  
 	  .. note:: ``make check`` is optionnally, but advise to check the validity of your **FreeFEM** building
    
  13. Install the **FreeFEM** apllication 
-      sudo make install
+      make install
      
-	  .. note:: To install FreeFEM, it is recommanded to change the user ID of your installation directory instead of using SUDO.
+	  .. note:: it isn't necessary to execute this last command, FreeFEM executable is avalaible here your_installation/src/nw/FreeFem++ and mpi executable here your_installation/src/mpi/ff-mpirun
 
 
 
 Compilation on Ubuntu
 ^^^^^^^^^^^^^^^^^^^^^
 
-1. Install the following packages on you system
+1. Install the following packages on your system
 
    .. code-block:: bash
       :linenos:
@@ -242,12 +249,10 @@ Compilation on Ubuntu
       sudo apt-get update && sudo apt-get upgrade
       sudo apt-get install cpp freeglut3-dev g++ gcc gfortran \
           m4 make patch pkg-config wget python unzip \
-          libopenblas-dev liblapack-dev libhdf5-dev libgsl-dev \
-          libscotch-dev libfftw3-dev libarpack2-dev libsuitesparse-dev \
-          libmumps-seq-dev libnlopt-dev coinor-libipopt-dev libgmm++-dev libtet1.5-dev \
-          gnuplot-qt autoconf automake autotools-dev bison flex gdb valgrind git cmake
+          liblapack-dev libhdf5-dev libgsl-dev \
+          autoconf automake autotools-dev bison flex gdb git cmake
 
-      # mpich is required for the FreeFem parallel computing version
+      # mpich is required for the FreeFEM parallel computing version
       sudo apt-get install mpich
 
    .. warning:: In the oldest distribution of Ubuntu, ``libgsl-dev`` does not exists, use ``libgsl2-dev`` instead
@@ -274,7 +279,7 @@ Compilation on Ubuntu
    .. code-block:: bash
       :linenos:
 
-      ./configure --enable-download --enable-optim
+      ./configure --enable-download --enable-optim --prefix=/where/you/want/to/have/files/installed
 
    .. note:: To see all the options, type ``./configure --help``
 
@@ -287,13 +292,13 @@ Compilation on Ubuntu
 
    .. note:: All the third party packages have their own licence
 
-6. If you want use `HPDDM <https://github.com/hpddm/hpddm>`__ (High Performance Domain Decomposition Methods) for massively parallel computing, install PETSc/SLEPc
+6. If you want use PETSc/SLEPc and `HPDDM <https://github.com/hpddm/hpddm>`__ (High Performance Domain Decomposition Methods) for massively parallel computing
 
    .. code-block:: bash
       :linenos:
 
       cd 3rdparty/ff-petsc
-      make petsc-slepc SUDO=sudo
+      make petsc-slepc // add SUDO=sudo if your installation directory is the default /usr/local
       cd -
       ./reconfigure
 
@@ -303,17 +308,18 @@ Compilation on Ubuntu
       :linenos:
 
       make -j<nbProcs>
-      make check
+      make -j<nbProcs> check
    
    .. note:: ``make check`` is optionnally, but advise to check the validity of your **FreeFEM** building
 
-9. Install the executable 
+8. Install the executable 
 
    .. code-block:: bash
       :linenos:
 
-      sudo make install
+      make install
 
+   .. note:: it isn't necessary to execute this last command, FreeFEM executable is avalaible here your_installation/src/nw/FreeFem++ and mpi executable here your_installation/src/mpi/ff-mpirun
 
 
 Compilation on Arch Linux
@@ -368,7 +374,7 @@ Compilation on Arch Linux
 
    .. note:: All the third party packages have their own licence
 
-6. Compile petsc & slepc
+6. If you want use `HPDDM <https://github.com/hpddm/hpddm>`__ (High Performance Domain Decomposition Methods) for massively parallel computing, install PETSc/SLEPc
 
    .. code-block:: bash
       :linenos:
@@ -376,15 +382,9 @@ Compilation on Arch Linux
       cd 3rdparty/ff-petsc
       make petsc-slepc SUDO=sudo
       cd -
-
-7. If you want use `HPDDM <https://github.com/hpddm/hpddm>`__ (High Performance Domain Decomposition Methods) for massively parallel computing, install PETSc/SLEPc
-
-   .. code-block:: bash
-      :linenos:
-
       ./reconfigure
 
-8. Compile the **FreeFEM** source
+7. Compile the **FreeFEM** source
 
    .. code-block:: bash
       :linenos:
@@ -395,7 +395,7 @@ Compilation on Arch Linux
 
    .. note:: Optionnally, check the compilation with ``make check``
 
-9. Install the **FreeFEM** application
+8. Install the **FreeFEM** application
 
    .. code-block:: bash
       :linenos:
@@ -418,12 +418,7 @@ Compilation on Windows
    We assume your development machine is 64-bit, and you want your compiler to target 64-bit windows by default.
 
 
-1. Install the `Microsoft MPI v7.0 (archived) <https://www.microsoft.com/en-us/download/details.aspx?id=49926>`__ (msmpisdk.msi and MSMpiSetup.exe)
-
-.. note::
-   2019/07/07  
-    - Microsoft MPI v10.0 isn't usable in MSYS/mingw64 with gfortran `more information here <https://github.com/Microsoft/Microsoft-MPI/issues/7>`__
-    - Microsoft MPI v9: mpiexec.exe doesn't run 
+1. Install the `Microsoft MPI v10.1.2 (archived) <https://www.microsoft.com/en-us/download/details.aspx?id=100593>`__ (msmpisdk.msi and MSMpiSetup.exe)
 
 2. Download `msys2-x86_64-latest.exe <http://repo.msys2.org/distrib/msys2-x86_64-latest.exe>`__ (x86_64 version) and run it. 
 
@@ -489,13 +484,29 @@ Repeatedly run the following command until it says there are no further updates.
         --enable-download --enable-maintainer-mode \
         CXXFLAGS=-mtune=generic CFLAGS=-mtune=generic \
         FFLAGS=-mtune=generic--enable-download --disable-hips
+		
+		
+7. If you want use `HPDDM <https://github.com/hpddm/hpddm>`__ (High Performance Domain Decomposition Methods) for massively parallel computing, install PETSc/SLEPc
+
+   .. code-block:: bash
+      :linenos:
+
+      cd 3rdparty/ff-petsc
+      make petsc-slepc SUDO=sudo
+      cd -
+      ./reconfigure	
+
+8. Download the 3rd party packages and build your **FreeFEM** library and executable
+
+   .. code-block:: bash
+      :linenos:		
+	  
       ./3rdparty/getall -a
-      make -j4
+      make
       make check
       make install
 
-   The **FreeFEM** executable (and some other like ``ffmedit``, …)
-   are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
+   .. note:: The **FreeFEM** executable (and some other like ``ffmedit``, …) are in ``C:\msys64\mingw64\bin`` (or ``C:\msys32\mingw32\bin``).
 
 
 
@@ -716,16 +727,17 @@ Repeatedly run the following command until it says there are no further updates.
 
   Compilation results of the develop branch by OS type and configuration of FreeFEM are here
 
-  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
-  | Branch                 | Linux 16.04       | Linux 18.04       | MacOS 10.10.5     | MacOS 10.13.5     | Windows 7         |
-  +========================+===================+===================+===================+===================+===================+
-  | Develop                | |Build Status01|  | |Build Status02|  | |Build Status03|  | |Build Status04|  | |Build Status05|  |      
-  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
-  | Develop                | |Build Status06|  | |Build Status07|  | |Build Status08|  | |Build Status09|  | |Build Status10|  |
-  | *compiles in DEBUG     |                   |                   |                   |                   |                   |
-  | runs MPI & PETSc/SLEPS*|                   |                   |                   |                   |                   |
-  +------------------------+-------------------+-------------------+-------------------+-------------------+-------------------+           
-
+  +------------------------+-------------------+-------------------+-------------------+-------------------+---------------------+
+  | Branch                 | Linux 16.04       | Linux 18.04       | MacOS 10.10.5     | MacOS 10.13.5     | Windows 7           |
+  +========================+===================+===================+===================+===================+=====================+
+  | Develop                | |Build Status01|  | |Build Status02|  | |Build Status03|  | |Build Status04|  | |Build Status05|    |      
+  +------------------------+-------------------+-------------------+-------------------+-------------------+---------------------+
+  | Develop                | |Build Status06|  | |Build Status07|  | |Build Status08|  | |Build Status09|  | |Build Status10|    |
+  | mpich and PETSc/SLEPc  |                   |                   |                   |                   | MSMPI V10.1.2       |
+  +------------------------+-------------------+-------------------+-------------------+-------------------+---------------------+           
+  | Develop                | |Build Status11|  | |Build Status12|  | |Build Status13|  | |Build Status14|  |                     |
+  | openmpi and PETSc/SLEPc|                   |                   |                   |                   |                     |
+  +------------------------+-------------------+-------------------+-------------------+-------------------+---------------------+ 
 
 
 Environment variables and init file
@@ -854,16 +866,24 @@ For emacs editor you can download `ff++-mode.el <https://github.com/rrgalvan/fre
 .. |Build Status05| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-windows7-job3
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-windows7-job3/
 
-.. |Build Status06| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job5
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job5/
-.. |Build Status07| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job5
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job5/
-.. |Build Status08| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job5
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job5/
-.. |Build Status09| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job5
-   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job5/
+.. |Build Status06| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job5_mpich/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job5/_mpich/
+.. |Build Status07| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job5_mpich/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job5/_mpich/
+.. |Build Status08| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job5_mpich/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job5/_mpich/
+.. |Build Status09| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job5_mpich/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job5/_mpich/
 .. |Build Status10| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-windows7-job5
    :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-windows7-job5
    
+.. |Build Status11| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1604-job5_openmpi/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1604-job5/_openmpi/
+.. |Build Status12| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-ubuntu1804-job5_openmpi/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-ubuntu1804-job5/_openmpi/
+.. |Build Status13| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1010-job5_openmpi/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1010-job5/_openmpi/
+.. |Build Status14| image:: https://ci.inria.fr/freefem-dev/buildStatus/icon?job=FreeFEM-sources-macos1013-job5_openmpi/
+   :target: https://ci.inria.fr/freefem-dev/job/FreeFEM-sources-macos1013-job5/_openmpi/
 
 

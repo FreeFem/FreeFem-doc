@@ -92,16 +92,16 @@ then you will get the following message from **FreeFEM**:
 .. code-block:: bash
    :linenos:
 
-       2 : mesh Th = square(10,10;
-    Error line number 2, in file bb.edp, before  token ;
+   2 : mesh Th = square(10,10;
+   Error line number 2, in file bb.edp, before  token ;
    parse error
-     current line = 2
+   current line = 2
    syntax error
-  current line = 2
+   current line = 2
    Compile error : syntax error
-	line number :2, ;
+   line number :2, ;
    error Compile error : syntax error
-	line number :2, ;
+   line number :2, ;
    code = 1 mpirank: 0
 
 If you use the same symbol twice as in:
