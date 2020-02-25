@@ -2012,7 +2012,7 @@ An example of use:
 The command *trunc*
 '''''''''''''''''''
 
-This operator have been introduce to remove peace of mesh and split all element or for a particular label element
+This operator have been introduce to remove a piece of mesh or/and split all element or for a particular label element
 The three named parameter
 - boolean function to keep or remove elements
 - :freefem:`split=` sets the level n of triangle splitting. each triangle is splitted in n × n ( one by default)
@@ -2024,35 +2024,18 @@ An example of use
 .. code-block:: freefem
    :linenos:
 
-   load "msh3"// buildlayer
-   load "medit"// medit
+   load "msh3"
+   load "medit"
    int nn=8;
-   mesh Th2=square(nn,nn);
-   fespace Vh2(Th2,P2);
-   Vh2 ux,uz,p2;
-   int[int] rup=[0,2],  //  upper face  2d region 0 -> 3d label 2
-      rdown=[0,1],      //  lower face  2d region 0 -> 3d label 1
-      rmid=[1,1,  //  vert face.  2d label 1 -> 3d label 1
-           2,1,  //  vert face.  2d label 2 -> 3d label 1
-           3,1,  //  vert face.  2d label 3 -> 3d label 1
-           4,1],  //  vert face.  2d label 4 -> 3d label 1
-      rtet=[0,0];  //  2d region  0-> 3d region  0
-   real zmin=0,zmax=1;
-
-   mesh3 Th=buildlayers(Th2,nn,
-      zbound=[zmin,zmax],
-      region=rtet, //  region number
-      labelmid=rmid,  // 4 vert.  faces labels number
-      labelup = rup,
-      labeldown = rdown);
-    //  remove the small cube $]1/2,1[^2$
+   mesh3 Th=cube(nn,nn,nn);
+   //  remove the small cube $]1/2,1[^2$
    Th= trunc(Th,((x<0.5) |(y< 0.5)| (z<0.5)), split=3, label=3); 
    medit("cube",Th);
 
 
 
 
-The command *movemesh3*
+The command *movemesh*
 '''''''''''''''''''''''
 
 3D meshes  can be translated, rotated, and deformed using the command line :freefem:`movemesh` as in the 2D case (see :ref:`section movemesh <meshGenerationMoveMesh>`).
@@ -2673,8 +2656,8 @@ An example of how to call the function
    ThS=trunc(ThS, (x < 0.5) | (y < 0.5) | (z > 1.), split=4); 
    
    
-The command *movemeshS*
-'''''''''''''''''''''''
+The command *movemesh*
+''''''''''''''''''''''
 
 Like 2d and 3d type meshes in **FreeFEM**, :freefem:`meshS` can be translated, rotated or deformated by an application :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ].
 The image :math:`T_{h}(\Omega)` is obtained by the command :freefem:`movemeshS`.
@@ -2689,7 +2672,7 @@ The parameters of movemeshS are:
 -  :freefem:`label=` sets the labels of the border edges.
     This parameter is initialized as the label for the keyword :ref:`change <meshGenerationChangeLabel>`.
 
--  :freefem:`facemerge=` An integer expression.
+-  :freefem:`edgemerge=` An integer expression.
     When you transform a mesh, some triangles can be merged and fix the parameter to 1, else 0
     By default, this parameter is equal to 1.
 

@@ -14,7 +14,7 @@
    
    <center>
     <t> FreeFEM </t> <br/>
-    Fourth edition, Version 4.2.1 </t>
+    Fourth edition, Version 4.5 </t>
    </center> 
 
 ===============
@@ -43,7 +43,7 @@
         </p>
         <p>
           <a href="/_static/pdf/FreeFEM-doc-v3.pdf" target="_blank">Official version</a> (English)<br/>
-          <a href="/_static/pdf/FreeFEM-doc-v3_Spanish.pdf" target="_blank">Spanish version</a>, by Eliseo Chac ́on Vera <br/>
+          <a href="/_static/pdf/FreeFEM-doc-v3_Spanish.pdf" target="_blank">Spanish version</a>, by Eliseo Chacón Vera <br/>
           <a href="/_static/pdf/FreeFEM-doc-v3_Chinese.pdf" target="_blank">Chinese version</a> (中文) <br/>
 		  <a href="http://comfos.org/jp/ffempp/index.html" target="_blank">Japanese version</a>, by Kohji Ohtsuka
         </p>
@@ -92,9 +92,12 @@ Problems involving partial differential equations from several branches of physi
     * `SuiteSparse V4.4.4 <http://faculty.cse.tamu.edu/davis/suitesparse.html>`_
     * `SuperLU V5.2.1 <http://crd-legacy.lbl.gov/~xiaoye/SuperLU/>`_        
     * `TetGen V1.5.1 <http://www.tetgen.org/>`_
-    * `PETSc V3.11.2 <https://www.mcs.anl.gov/petsc/>`_   
+    * `PETSc V3.12.4 <https://www.mcs.anl.gov/petsc/>`_   
     * `HTool <https://pierremarchand.netlify.com/project/htool/>`_
     * `HPDDM <https://github.com/hpddm/hpddm>`_
+    * `BemTool <https://github.com/PierreMarchand20/BemTool>`_
+    * `ParMmg <https://github.com/MmgTools/ParMmg>`_
+	
 
 |
 |
