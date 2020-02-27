@@ -8,8 +8,8 @@ The domain :math:`\Omega` is defined with:
 
    // Parameters
    real L = 10; //length
-   real hr = 2.1; //left height
-   real hl = 0.35; //right height
+   real hl = 2.1; //left height
+   real hr = 0.35; //right height
    int n = 4;
 
    // Mesh
