@@ -2718,7 +2718,6 @@ The parameters for this command line are:
 -  :freefem:`refedge=` is a vector of integer that contains successive pairs of the old region number to new region number for boundary elements.
 -  :freefem:`flabel=` is an integer function given the new value of the label.
 -  :freefem:`fregion=` is an integer function given the new value of the region.
--  :freefem:`rmInternalEdges=` is a boolean, equal true to remove the internal edges.
 -  :freefem:`rmledges=` is a vector of integer, where edge's label given are remove of the mesh
 
 These vectors are composed of :math:`n_{l}` successive pairs of numbers :math:`O,N` where :math:`n_{l}` is the number (label or region) that we want to change.
@@ -3001,16 +3000,15 @@ Example of using
 The command *change*
 ''''''''''''''''''''
 
-Equivalent for a 2d or 3d mesh, the command :freefem:`change` changes the label of elements and border elements of a :freefem:`meshS`.
+The command :freefem:`change` changes the label of elements and border elements of a :freefem:`meshL`.
 
 The parameters for this command line are:
 
--  :freefem:`reftri=` is a vector of integer that contains successive pairs of the old label number to the new label number for elements.
--  :freefem:`refedge=` is a vector of integer that contains successive pairs of the old region number to new region number for boundary elements.
+-  :freefem:`refedge=` is a vector of integer that contains successive pairs of the old label number to the new label number for elements.
+-  :freefem:`refpoint=` is a vector of integer that contains successive pairs of the old region number to new region number for boundary elements.
 -  :freefem:`flabel=` is an integer function given the new value of the label.
 -  :freefem:`fregion=` is an integer function given the new value of the region.
--  :freefem:`rmInternalEdges=` is a boolean, equal true to remove the internal edges.
--  :freefem:`rmledges=` is a vector of integer, where edge's label given are remove of the mesh
+-  :freefem:`rmlpoint=` is a vector of integer, where edge's label given are remove of the mesh
 
 These vectors are composed of :math:`n_{l}` successive pairs of numbers :math:`O,N` where :math:`n_{l}` is the number (label or region) that we want to change.
 For example, we have:
@@ -3065,6 +3063,25 @@ The commands *rebuildBorder*
 This operator, used in the last example, allows to reconstruted the border elements following a special criteria :freefem:`ridgeangledetection`. By default, it value is :math:`\frac{8}{9}*arctan(1)\approx40°`, the diedral angle for a decahedron.
 
 
+
+
+The commands *checkmesh*
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This function is avalaible for all 3D meshes. It checkes and validates the a given mesh, allows to remove duplicate vertices and/or elements and border elements. The possible arguments are 
+
+- :freefem:`precismesh` this parameter is the criteria to define two merging points.
+    By default, it value is 1e-7 and define the smallest axis parallel boxes containing the discretion domain of :math:`\Omega`
+
+- :freefem:`removeduplicate=` is a boolean, allowing remove the duplicated elements and border elements
+
+Example:
+
+.. code-block:: freefem
+   :linenos:
+   
+    mesh3 Th = checkmesh(Th); 
+	  
 
 TetGen: A tetrahedral mesh generator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
