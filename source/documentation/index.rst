@@ -1,7 +1,7 @@
 Documentation
 =============
 
-The fruit of a long maturing process, **freefem**, in its last avatar, **FreeFEM** , is a high level integrated development environment (IDE) for numerically solving partial differential equations (PDE) in dimension 2 and 3.
+The fruit of a long maturing process, **freefem**, in its last avatar, **FreeFEM** , is a high level integrated development environment (IDE) for numerically solving partial differential equations (PDE) in dimension 1,2 3 and surface and line 3D.
 It is the ideal tool for teaching the finite element method but it is also perfect for research to quickly test new ideas or multi-physics and complex applications.
 
 **FreeFEM** has an advanced automatic mesh generator, capable of a posteriori mesh adaptation; it has a general purpose elliptic solver interfaced with fast algorithms, such as the multi-frontal method UMFPACK, SuperLU, MUMPS.

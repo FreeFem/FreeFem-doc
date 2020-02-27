@@ -11,11 +11,14 @@ In this section, operators and tools on meshes are presented.
 
 FreeFEM type for mesh variable:
 
- - 2d mesh: :freefem:`mesh`
- - 3d mesh: :freefem:`mesh3`
- - 3d surface :freefem:`meshS`
-
-Through this presentation, the principal commands for the mesh generation and links between :freefem:`mesh` - :freefem:`mesh3` - :freefem:`meshS`  are described.
+ - 1D mesh: :freefem:`meshL`
+ - 2D mesh: :freefem:`mesh`
+ - 3D volume mesh: :freefem:`mesh3`
+ - 3D border meshes
+ 	- 3D surface :freefem:`meshS`
+	- 3D curve :freefem:`meshL`
+	
+Through this presentation, the principal commands for the mesh generation and links between :freefem:`mesh` - :freefem:`mesh3` - :freefem:`meshS` - :freefem:`meshL` are described.
 
 
 .. _mesh2d:
@@ -2467,7 +2470,7 @@ A square in 3d consists in building a 2d square which is projected from :math:`\
 The parameters of this command line are:
  
  - n,m  generates a n×m grid in the unit square
- - :freefem:`.,.,.]` is  [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ] is the geometric transformation from :math:`\mathbb{R^2}` to :math:`\mathbb{R^3}`. By default, [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ] = [x,y,0]
+ - :freefem:`[.,.,.]` is  [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ] is the geometric transformation from :math:`\mathbb{R^2}` to :math:`\mathbb{R^3}`. By default, [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ] = [x,y,0]
  - :freefem:`orientation=` 
    equal 1, gives the orientation of the triangulation, elements are in the reference orientation (counter clock wise)
    equal -1 reverse the orientation of the triangles
@@ -2698,13 +2701,13 @@ Example of using
 
    meshS Th1 = square3(n,n,[2*x,y,1],orientation=-1);
    meshS Th2=movemeshS(Th1, transfo=[x,y,z]);
-   meshS Th2=movemesh(Th1, [x,y,z]);
+   meshS Th3=movemesh(Th1, [x,y,z]);
 
 
 
 
 The command *change*
-'''''''''''''''''''''''
+''''''''''''''''''''
 
 
 Equivalent for a 2d or 3d mesh, the command :freefem:`change` changes the label of elements and border elements of a :freefem:`meshS`.
@@ -2766,12 +2769,12 @@ The command :freefem:`Gamma` allows to build and manipulate the border mesh inde
     int nvb = (n+1)^3 - (n-1)^3;// Nb boundary vertices
     int ntb = n*n*12; // Nb of Boundary triangle 
     mesh3 Th=cube(n,n,n);
-    Th = buildSurface(Th); // build the surface mesh
+    Th = buildBdMesh(Th); // build the surface mesh
     // build Th1, the surface of Th, defined by triangles elements and edges border elements list
     meshS Th1 = Th.Gamma;
 
 
-The command *buildSurface*
+The command *buildBdMesh*
 ''''''''''''''''''''''''''
 Let Th3 a volume mesh (mesh3 type) ; such as the geometry description is a list of vertices, tetrahedra elements and triangle border elements. 
 **FreeFEM** can generate the surface mesh associated to Th3. The intern mechanism of **FreeFEM** created directly the :freefem:`meshS` associated to Th3 and accessible by the command :freefem:`meshS ThS = Th3.Gamma;`.
@@ -2835,6 +2838,232 @@ A surface 3d mesh can be the result of the generation of several assembled meshe
 
 
 
+.. _meshLtype:
+
+**The type meshL in 3 dimension**
+---------------------------------
+
+
+Commands for 3d curve mesh generation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The command *segment*
+'''''''''''''''''''''
+The function :freefem:`segment` is a basic command to define a curve in 3D space.
+
+The parameters of this command line are:
+ 
+ - n generates a n subsegments from the unit line
+ - :freefem:`[.,.,.]` is  [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ] is the geometric transformation from :math:`\mathbb{R^1}` to :math:`\mathbb{R^3}`. By default, [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ] = [x,0,0]
+ - :freefem:`orientation=` 
+   equal 1, gives the orientation of the triangulation, elements are in the reference orientation (counter clock wise)
+   equal -1 reverse the orientation of the triangles
+   it's the global orientation of the surface 1 extern (-1 intern)
+ - :freefem:`cleanmesh=` is a boolean, allowing remove the duplicated nodes 
+ - :freefem:`removeduplicate=` is a boolean, allowing remove the duplicated elements and border elements
+ - :freefem:`precismesh` this parameter is the criteria to define two merging points.
+     By default, it value is 1e-7 and define the smallest axis parallel boxes containing the discretion domain of :math:`\Omega`
+	 
+ By defaut, the border points are marked by label 1 and 2.
+ 
+.. code-block:: freefem
+   :linenos:
+    
+	real R = 3, r=1; 
+	real h = 0.1; // 
+	int nx = R*2*pi/h;
+	func torex= (R+r*cos(y*pi*2))*cos(x*pi*2);
+	func torey= (R+r*cos(y*pi*2))*sin(x*pi*2);
+	func torez= r*sin(y*pi*2);
+	meshL Th=segment(nx,[torex,torey,torez],removeduplicate=true) ;
+
+The following code generates a 10 subsegments from the unit line with a clock wise triangulation, according to the geometric transformation [torex,torey,torez] and removing the duplicated points/elements
+
+
+
+
+The command *buildmesh*
+'''''''''''''''''''''''
+
+This operator allows to define a curve mesh from multi-borders. 
+The domain can be defined by a parametrized curve (keyword :freefem:`border`), such as Th1 in the following example
+or piecewise by parametrized curves, such as the construction of the mesh Th2.
+ 
+The pieces can only intersect at their endpoints, but it is possible to join more than two endpoints. 
+
+.. code-block:: freefem
+   :linenos:
+
+   load "msh3" 
+   
+   // conical helix
+   border E1(t=0, 10.*pi){x=(1.)*t*cos(t); y=-(1.)*t*sin(t); z=t;}
+   meshL Th1=buildmeshL(E1(1000));
+   
+   int upper = 1, others = 2, inner = 3, n = 10;
+   border D01(t=0, 1) {x=0; y=-1+t; }
+   border D02(t=0, 1){x=1.5-1.5*t; y=-1; z=3;label=upper;} 
+   border D03(t=0, 1){x=1.5; y=-t; z=3;label=upper;}
+   border D04(t=0, 1){x=1+0.5*t; y=0; z=3;label=others;}
+   border D05(t=0, 1){x=0.5+0.5*t; y=0; z=3;label=others;}
+   border D06(t=0, 1){x=0.5*t; y=0; z=3;label=others;}
+   border D11(t=0, 1){x=0.5; y=-0.5*t; z=3;label=inner;}
+   border D12(t=0, 1){x=0.5+0.5*t; y=-0.5; z=3;label=inner;}
+   border D13(t=0, 1){x=1; y=-0.5+0.5*t; z=3;label=inner;}
+   
+   meshL Th2=buildmeshL(D01(-n) + D02(-n) + D03(-n) + D04(-n) + D05(-n)
+      + D06(-n) + D11(n) + D12(n) + D13(n));
+	
+ 
+Remeshing
+^^^^^^^^^
+
+The command *trunc*
+'''''''''''''''''''
+
+This operator allows to define a :freefem:`meshL` by truncating another one, i.e. by removing segments, and/or by splitting each element by a given positive integer s.
+Here, an example to use this function:
+
+:freefem:`meshL` ThL2= :freefem:`trunc` (ThL1, boolean function to keep or remove elements, split = s, label = ...)
+
+
+The command has the following arguments:
+ 
+- boolean function to keep or remove elements
+- :freefem:`split=` sets the level n of edge splitting, each edge is splitted in n subpart( one by default)
+- :freefem:`label=`   sets the label number of new boundary item (1 by default)
+- :freefem:`new2old`
+- :freefem:`old2new`
+- :freefem:`renum`
+- :freefem:`orientation=` 
+   equal 1, gives the orientation of the triangulation, elements are in the reference orientation (counter clock wise)
+   equal -1 reverse the orientation of the triangles
+   it's the global orientation of the surface 1 extern (-1 intern)
+- :freefem:`cleanmesh=` is a boolean, allowing remove the duplicated nodes 
+- :freefem:`removeduplicate=` is a boolean, allowing remove the duplicated elements and border elements
+- :freefem:`precismesh` this parameter is the criteria to define two merging points.
+   By default, it value is 1e-7 and define the smallest axis parallel boxes containing the discretion domain of :math:`\Omega`
+
+An example of how to call this function
+
+
+.. code-block:: freefem
+   :linenos:
+   
+   int nx=10;
+   meshL Th=segment(nx,[5.*x,cos(pi*x),sin(pi*x)]);
+   Th=trunc(Th, (x < 0.5) | (y < 0.5) | (z > 1.), split=4); 
+   
+   
+The command *movemesh*
+''''''''''''''''''''''
+
+This is the classical mesh transformation **FreeFEM** function, :freefem:`meshL` can be deformed by an application [ :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ].
+The image :math:`T_{h}(\Omega)` is obtained by the command :freefem:`movemeshL`.
+
+The parameters of movemesh are:
+
+-  :freefem:`transfo=` sets the geometric transformation :math:`\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))`
+
+-  :freefem:`refedge=` sets the integer labels of the triangles.
+    0 by default.
+
+-  :freefem:`refpoint=` sets the labels of the border points.
+    This parameter is initialized as the label for the keyword :ref:`change <meshGenerationChangeLabel>`.
+
+- :freefem:`precismesh` this parameter is the criteria to define two merging points.
+    By default, it value is 1e-7 and define the smallest axis parallel boxes containing the discretion domain of :math:`\Omega`
+
+-  :freefem:`orientation =` An integer expression 
+	   equal 1, give the oientation of the triangulation, elements must be in the reference orientation (counter clock wise)
+	   equal -1 reverse the orientation of the triangles. It's the global orientation of the normals at the surface 1 extern (-1 intern)
+
+- :freefem:`cleanmesh=` is a boolean, allowing remove the duplicated nodes 
+
+- :freefem:`removeduplicate=` is a boolean, allowing remove the duplicated elements and border elements
+
+
+.. note:: The definition of the geometric transformation depends on the space dimension of the studied problem. It means that, with curve FEM, it's possible to treat a real 1D problem (space coordinate is x) then the transformation is given by x: ->F(x), that means [F_x] and F_y=F_z=0 in FreeFEM function. 	
+	
+Example of using
+
+.. code-block:: freefem
+   :linenos:
+
+   int nx=100;
+   meshL Th=Sline(nx);
+   meshL Th31=movemesh(Th, [x]);
+   meshL Th32=movemesh(Th, [x,-x*(x-1)]);
+   meshL Th3=Th31+Th32;
+
+
+
+The command *change*
+''''''''''''''''''''
+
+Equivalent for a 2d or 3d mesh, the command :freefem:`change` changes the label of elements and border elements of a :freefem:`meshS`.
+
+The parameters for this command line are:
+
+-  :freefem:`reftri=` is a vector of integer that contains successive pairs of the old label number to the new label number for elements.
+-  :freefem:`refedge=` is a vector of integer that contains successive pairs of the old region number to new region number for boundary elements.
+-  :freefem:`flabel=` is an integer function given the new value of the label.
+-  :freefem:`fregion=` is an integer function given the new value of the region.
+-  :freefem:`rmInternalEdges=` is a boolean, equal true to remove the internal edges.
+-  :freefem:`rmledges=` is a vector of integer, where edge's label given are remove of the mesh
+
+These vectors are composed of :math:`n_{l}` successive pairs of numbers :math:`O,N` where :math:`n_{l}` is the number (label or region) that we want to change.
+For example, we have:
+
+.. math::
+   \mathtt{label} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ] \\
+   \mathtt{region} &= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ]
+   
+
+The commands *buildBdMesh* and *Gamma*
+''''''''''''''''''''''''''''''''''''''
+
+The command :freefem:`Gamma` allows to extract the border mesh independly of a surface mesh.
+With this function, the constructed border mesh contains the full geometric description of th eboundary surface. In case where the border mesh doesn't exist, before calling :freefem:`Gamma`, must build it by calling the :freefem:`buildBdMesh` function (see the next function description).
+
+.. code-block:: freefem
+   :linenos:
+   
+   load "msh3"
+   int n= 10;
+   meshS Th=square3(n,n);
+   Th = buildBdMesh(Th); // build the border mesh
+   // build Th1, the border of Th, defined by edges elements and point border elements 
+   meshL Th1 = Th.Gamma;
+
+
+tottototototot
+'''''''''''''''''''''''''''''''
+
+An assembling of :freefem:`meshL` is possible thanks to the operator :freefem:`+`.
+The result returns a :freefem:`meshL`, with caution of the right orientation at the merged interfaces. Here, the function :freefem:`checkMesh`can be called.
+
+.. code-block:: freefem
+   :linenos:
+   
+    int n=10;
+    meshL Th1 = segment(n);
+    meshL Th2 = segment(n,[0,x,0],orientation=1);
+    meshL Th3 = segment(n,[x,0,1],orientation=1);
+    meshL Th4 = segment(n,[0,0,x],orientation=-1);
+
+    meshL Th = Th1+Th2+Th3+Th4;
+    Th=rebuildBorder(Th, ridgeangledetection=pi/2.+0.0001);
+
+.. warning::
+
+   For the moment, the case of no manifold mesh are not considered in FreeFEM. To check if the meshL contains no manifold elements, the command :freefem:`nbnomanifold`. 
+
+
+The commands *rebuildBorder*
+''''''''''''''''''''''''''''
+
+This operator, used in the last example, allows to reconstruted the border elements following a special criteria :freefem:`ridgeangledetection`. By default, it value is :math:`\frac{8}{9}*arctan(1)\approx40°`, the diedral angle for a decahedron.
 
 
 

@@ -16,7 +16,8 @@ New meshes and FEM border
    :language: freefem
 
 After Surface FEM, Line FEM is possible with a new mesh type :freefem:`meshL`, :freefem:`P0` :freefem:`P1` :freefem:`P2` :freefem:`P1dc` FE, basic FEM, mesh generation
-This new development allows to solve a 1d problem, such as a problem described on a 3d curve.
+This new development allows to treat a 1d problem, such as a problem described on a 3d curve.
+
 =======
 
 Abstract about Line FEM in FreeFEM.
@@ -28,19 +29,18 @@ Abstract about Line FEM in FreeFEM.
   - generator of meshL :freefem:`segment`, define multi :freefem:`border` and :freefem:`buildmesh` function.
   - basic transformation are avalaible: :freefem:`movemesh`, :freefem:`trunc`, :freefem:`extract`, :freefem:`checkmesh`, :freefem:`change`, :freefem:`AddLayers`, glue of :freefem:`meshL`.
   
-    It is possible to build the underlying :freefem:`meshL` from a :freefem:`meshS` with the function :freefem:`buildBdMesh`: :freefem:`ThS=buildBdMesh(ThS)` builds the boundary domain associated to the :freefem:`meshS` ThS and extract it by the command :freefem:`meshL` ThL=ThS. :freefem:`Gamma` 
+    It is possible to build the underlying :freefem:`meshL` from a :freefem:`meshS` with the function :freefem:`buildBdMesh`: :freefem:`ThS=buildBdMesh(ThS)` builds the boundary domain associated to the :freefem:`meshS` ThS and extract it by the command :freefem:`meshL` ThL=ThS. :freefem:`Gamma`. 
   
 
-* new FESpace with surface finite element type, see the section :ref:`surface Lagrangian Finite Elements <curvePkLagrange>`
+* new FESpace with curve finite element type
  
- - :freefem:`FESpace` :freefem:`P0` :freefem:`P1`, :freefem:`P2`, :freefem:`P1dc` Lagrange finite elements
-
+ - :freefem:`FESpace` :freefem:`P0` :freefem:`P1`, :freefem:`P2`, :freefem:`P1dc` Lagrange finite elements and possible to add a custumed finite element with the classical method (like a plugin).
 
 * as in the standard 2d, 3d, surface 3d case, the variational problem associated to surface PDE can be defined by using the keywords
 
   - :freefem:`problem` 
   - :freefem:`varf` to access to matrix and RHS vector
-  - available operators are :freefem:`int1d`,:freefem:`on` and the operator :freefem:`int0d` to defien a Neumann boundary condition 
+  - available operators are :freefem:`int1d`, :freefem:`on` and the operator :freefem:`int0d` to defien a Neumann boundary condition 
 
 
 * visualisation tools 
@@ -61,5 +61,5 @@ Abstract about Line FEM in FreeFEM.
 Boundary Element Method
 -----------------------
 
-Allows to define and solve a 2d/3d BEM formulation and rebuild the associated potential
-
+Allows to define and solve a 2d/3d BEM formulation and rebuild the associated potential.
+The document is in construction.
