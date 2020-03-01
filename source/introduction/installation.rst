@@ -19,14 +19,14 @@ Using binary package
 
 First, open the following web page :ref:`download page <download>` and choose your platform: Linux, MacOS or Windows.
 
-.. note:: Binary packages are available for Microsoft Windows, MacOS and some Linux distributions.
+.. note:: Binary packages are available for Microsoft Windows, MacOS and some Linux distributions. Since the release 4.5, FreeFEM binaries provide with the current version of PETSc.
 
 Install **FreeFEM** by double-clicking on the appropriate file. Under Linux and MacOS the install directory is one of the following ``/usr/local/bin``, ``/usr/local/share/freefem++``, ``/usr/local/lib/ff++``
 
 Windows installation
 ^^^^^^^^^^^^^^^^^^^^
 
-.. note:: The windows package is build for Window 7 64bits
+.. note:: The windows package is build for Window 7 64bits. The support ended for all releases under Windows 32 bits since the V4. 
 
 First download the windows installation executable, then double click to install **FreeFEM**.
 
@@ -39,9 +39,20 @@ By now you should have two new icons on your desktop:
 -  ``FreeFem++ (VERSION).exe``, the ``freefem++`` application.
 -  ``FreeFem++ (VERSION) Examples``, a link to the ``freefem++`` examples folder.
 
-where ``(VERSION)`` is the version of the files (for example 3.59).
+where ``(VERSION)`` is the version of the files (for example 4.5).
 
 By default, the installed files are in ``C:\Programs Files\FreeFem++``. In this directory, you have all the ``.dll`` files and other applications: ``FreeFem++-nw.exe``, ``ffglut.exe``, … The syntax for the command-line tools are the same as those of ``FreeFem.exe``.
+
+To use FreeFEM binaries under Windows, two methods are possible:
+* Use the launch Windows FreeFEM program (launchff++.exe)
+Warning: if you launch freefem++ without filename script by double clip, your get a error due (it is bug of usage GetOpenFileName in win64 ).
+
+* In shell terminal (cmd, powershell, bash, ... ):
+
+  - To launch sequential version: runs the command: C:\>"Program Files (x86)\FreeFem++\FreeFem++.exe" <mySequentialScript.edp>
+  - To launch parallel version: First install MSMPI for parallel version under window64 MS MPI V10.1.2, and install both msmpisdk.msi and MSMpiSetup.exe. Runs the command: C:\>"Program Files\Microsoft MPI\Bin\mpiexec.exe" -n <nbProcs> C:\>"Program Files (x86)\FreeFem++\FreeFem++-mpi.exe" <myParallelScript.edp>
+
+
 
 macOS X installation
 ^^^^^^^^^^^^^^^^^^^^
@@ -194,7 +205,7 @@ Compilation on OSX (>=10.13)
    .. code-block:: bash
       :lineno-start: 3
       
-	  // with brew gcc gfortran compilers 
+      // with brew gcc gfortran compilers 
       ./configure --enable-download CC=clang CXX=clang++ F77=gfortran-9 FC=gfortran-9 --prefix=/where/you/want/to/have/files/installed
 	  
       // with LLVM gcc and brew gfortran compilers 
