@@ -15,7 +15,7 @@ New meshes and FEM border
 .. role:: freefem(code)
    :language: freefem
 
-After Surface FEM, Line FEM is possible with a new mesh type :freefem:`meshL`, :freefem:`P0` :freefem:`P1` :freefem:`P2` :freefem:`P1dc` FE, basic FEM, mesh generation
+After Surface FEM, Line FEM is possible with a new mesh type :freefem:`meshL`, :freefem:`P0` :freefem:`P1` :freefem:`P2` :freefem:`P1dc` FE, basic FEM, mesh generation.
 This new development allows to treat a 1d problem, such as a problem described on a 3d curve.
 
 =======
@@ -32,7 +32,7 @@ Abstract about Line FEM in FreeFEM.
     It is possible to build the underlying :freefem:`meshL` from a :freefem:`meshS` with the function :freefem:`buildBdMesh`: :freefem:`ThS=buildBdMesh(ThS)` builds the boundary domain associated to the :freefem:`meshS` ThS and extract it by the command :freefem:`meshL` ThL=ThS. :freefem:`Gamma`. 
   
 
-* new FESpace with curve finite element type
+* new finite element space with curve finite element type
  
  - :freefem:`FESpace` :freefem:`P0` :freefem:`P1`, :freefem:`P2`, :freefem:`P1dc` Lagrange finite elements and possible to add a custumed finite element with the classical method (like a plugin).
 
@@ -40,19 +40,19 @@ Abstract about Line FEM in FreeFEM.
 
   - :freefem:`problem` 
   - :freefem:`varf` to access to matrix and RHS vector
-  - available operators are :freefem:`int1d`, :freefem:`on` and the operator :freefem:`int0d` to defien a Neumann boundary condition 
+  - available operators are :freefem:`int1d`, :freefem:`on` and the operator :freefem:`int0d` to define a Neumann boundary condition 
 
 
 * visualisation tools 
 
   - plot with :freefem:`plot` of ffglut, :freefem:`medit` meshes meshL and solutions
-  - 2d or 3d view, with in 3d the option to visualize the elememt Normal (touch 'T') and the deformed domain according to it (touch '2').
+  - 2d or 3d view, with in 3d the option to visualize the elememt Normals at element (touch 'T') and the deformed domain according to it (touch '2').
   - loading, saving of meshes and solution at FreeFEM's format
     
     + ".mesh"  mesh format file of Medit (P. Frey LJLL) 
     + ".msh" for mesh and ".sol" data solution at freefem format
     + ".msh" data file of Gmsh (Mesh generator) (load  "gmsh")
-    + vtk format for meshes and solutions (load "iovtk")
+    + vtk format for meshes and solutions (load "iovtk" and use the ".vtu" extension)
 
  
 ===============
