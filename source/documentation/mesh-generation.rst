@@ -2513,26 +2513,27 @@ Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, co
    + returns a :freefem:`meshS` type
 
 
-
- - :freefem:`Sphere(R, h, L, orient)`
-
-   + where R is  the raduis of the sphere, 
-   + h is the mesh size  of  the shpere
-   + L is the label the the sphere
-   + orient the global orientation of the surface 1 extern (-1 intern)
-   + returns a :freefem:`meshS` type
-
- - :freefem:`Ellipsoide (RX, RY, RZ, h, L, orient)` 
+ - :freefem:`Ellipsoide (RX, RY, RZ, OX, OY, OZ, h, L, orient)` 
 
    + h is the mesh size 
    + L is the label
    + orient the global orientation of the surface 1 extern (-1 intern)
+   + OX, OY, OZ are real numbers to give the Ellipsoide center ( optinal, by default is (0,0,0) ) 
    + where RX, RY, RZ are real numbers such as the parametric equations of the ellipsoid is: 
    + returns a :freefem:`meshS` type
    
  .. math::
-    \forall u \in [0,2 \pi[ \text{ and } v \in [0, \pi], \vectthree{x=\text{Rx } cos(u)sin(v)}{y=\text{Ry } sin(u)sin(v)}{     z = \text{Rz } cos(v)     }
+    \forall u \in [- \frac{\pi}{2},\frac{\pi}{2}  [ \text{ and } v \in [0, 2 \pi], \vectthree{x=\text{Rx } cos(u)cos(v) + \text{Ox }}{y=\text{Ry } cos(u)sin(v) + \text{Oy }{z = \text{Rz } sin(v)  + \text{Oz }    }
 	
+
+ - :freefem:`Sphere(R, OX, OY, OZ, h, L, orient)`
+
+   + where R is the raduis of the sphere, 
+   + OX, OY, OZ are real numbers to give the Ellipsoide center ( optinal, by default is (0,0,0) ) 
+   + h is the mesh size  of  the shpere
+   + L is the label the the sphere
+   + orient the global orientation of the surface 1 extern (-1 intern)
+   + returns a :freefem:`meshS` type
 
 
 
@@ -2662,7 +2663,7 @@ An example of how to call the function
 The command *movemesh*
 ''''''''''''''''''''''
 
-Like 2d and 3d type meshes in **FreeFEM**, :freefem:`meshS` can be translated, rotated or deformated by an application :math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3` ].
+Like 2d and 3d type meshes in **FreeFEM**, :freefem:`meshS` can be translated, rotated or deformated by an application [:math:`\Phi 1`, :math:`\Phi 2`, :math:`\Phi 3`].
 The image :math:`T_{h}(\Omega)` is obtained by the command :freefem:`movemeshS`.
 
 The parameters of movemeshS are:
@@ -3055,6 +3056,19 @@ An assembling of :freefem:`meshL` is possible thanks to the operator :freefem:`+
 .. warning::
 
    For the moment, the case of no manifold mesh are not considered in FreeFEM. To check if the meshL contains no manifold elements, the command :freefem:`nbnomanifold`. 
+
+
+The command extract
+'''''''''''''''''''
+
+This operator allows to extract a labeled piece or the entire border of a 2D mesh and project it in 3D. Optionally, a geometic transformation can be applied.
+
+.. code-block:: freefem
+   :linenos:
+   
+	mesh Th=square(10,10);
+	int[int] ll=[4];
+	meshL ThL = extract(Th,[x+2,y*5],refedge=ll);
 
 
 The commands *rebuildBorder*
