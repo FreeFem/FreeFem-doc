@@ -64,7 +64,7 @@ To try this example, just copy and paste the script above in a file â€˜test.edpâ
 
 .. code:: bash
 
-   ff-mpirun -np 2 test.edp -glut ffglut
+   ff-mpirun -np 2 test.edp -wg
 
 .. toctree::
 

@@ -140,27 +140,27 @@ Eigenvalue problems
 Miscellaneous
 ~~~~~~~~~~~~~
 
-+------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-| Filename                                                                                                                           | Comments (preconditioners, numerical schemes)                       |
-+====================================================================================================================================+=====================================================================+
-| `transpose-solve-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/transpose-solve-PETSc.edp>`__   | Solving a transposed system                                         |
-+------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-| `Schur-complement-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Schur-complement-PETSc.edp>`__ | Computing an exact Schur complement                                 |
-+------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-| `block-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/block-PETSc.edp>`__                       |                                                                     |
-+------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-| `heat-io-2d.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/heat-io-2d.edp>`__                         | Automatic ParaView animation output                                 |
-+------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-| `stokes-io-3d.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/stokes-io-3d.edp>`__                     |                                                                     |
-+------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-| `buildRecursive.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/buildRecursive.edp>`__                 | Recursive mesh partitioning (for geometric multigrid)               |
-+------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-| `withPartitioning.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/withPartitioning.edp>`__             | Connectivity construction with a user-supplied partitioning         |
-+------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-| `createPartition.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/createPartition.edp>`__               | Creation of different partitions of unity using the same DD         |
-+------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
-| `dump-load-Dmesh.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/dump-load-Dmesh.edp>`__               | Dumping and loading a distributed mesh for restarting a computation |
-+------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| Filename                                                                                                                           | Comments (preconditioners, numerical schemes)                            |
++====================================================================================================================================+==========================================================================+
+| `transpose-solve-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/transpose-solve-PETSc.edp>`__   | Solving a transposed system                                              |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| `Schur-complement-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Schur-complement-PETSc.edp>`__ | Computing an exact Schur complement                                      |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| `block-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/block-PETSc.edp>`__                       |                                                                          |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| `buildRecursive.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/buildRecursive.edp>`__                 | Recursive mesh partitioning (for geometric multigrid)                    |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| `withPartitioning.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/withPartitioning.edp>`__             | Connectivity construction with a user-supplied partitioning              |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| `createPartition.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/createPartition.edp>`__               | Creation of different partitions of unity using the same DD              |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| `save-load-Dmesh.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/save-load-Dmesh.edp>`__               | Saving and loading a distributed mesh for restarting a computation       |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| `transfer.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/transfer.edp>`__                             | Parallel interpolation of finite element functions                       |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| `reconstructDmesh.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/reconstructDmesh.edp>`__             | Construction of a distributed mesh from sequential nonoverlapping meshes |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
 
 Reproducible science
 ~~~~~~~~~~~~~~~~~~~~
