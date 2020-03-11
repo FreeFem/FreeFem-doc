@@ -483,12 +483,12 @@ Repeatedly run the following command until it says there are no further updates.
    .. code-block:: bash
       :linenos:
 
-      pacman -S autoconf make automake-wrapper bison git cmake \
+      pacman -S autoconf make automake-wrapper bison git \
         mingw-w64-x86_64-freeglut mingw-w64-x86_64-toolchain \
         mingw-w64-x86_64-openblas patch python perl pkg-config pkgfile \
         rebase tar time tzcode unzip which mingw-w64-x86_64-libmicroutils \
         --ignore mingw-w64-x86_64-gcc-ada --ignore mingw-w64-x86_64-gcc-objc \
-        --ignore mingw-w64-x86_64-gdb --noconfirm
+        --ignore mingw-w64-x86_64-gdb mingw-w64-x86_64-cmake --noconfirm
 
    -  for 32 bit systems (**FreeFEM** lower than version 4):
 
