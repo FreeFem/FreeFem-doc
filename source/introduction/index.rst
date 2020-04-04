@@ -14,7 +14,7 @@
    
    <center>
     <t> FreeFEM </t> <br/>
-    Fourth edition, Version 4.5 </t>
+    Fourth edition, Version 4.6 </t>
    </center> 
 
 ===============
