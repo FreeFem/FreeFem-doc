@@ -2523,7 +2523,7 @@ Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, co
    + returns a :freefem:`meshS` type
    
  .. math::
-    \forall u \in [- \frac{\pi}{2},\frac{\pi}{2}  [ \text{ and } v \in [0, 2 \pi], \vectthree{x=\text{Rx } cos(u)cos(v) + \text{Ox }}{y=\text{Ry } cos(u)sin(v) + \text{Oy }{z = \text{Rz } sin(v)  + \text{Oz }    }
+    \forall u \in [- \frac{\pi}{2},\frac{\pi}{2}  [ \text{ and } v \in [0, 2 \pi], \vectthree{x=\text{Rx } cos(u)cos(v) + \text{Ox }}{y=\text{Ry } cos(u)sin(v) + \text{Oy }}{z = \text{Rz } sin(v)  + \text{Oz }    }
 	
 
  - :freefem:`Sphere(R, OX, OY, OZ, h, L, orient)`
