@@ -553,14 +553,14 @@ Using *HPDDM* within *ffddm*
 You can use **HPDDM** features unavailable in **ffddm** such as advanced Krylov subspace methods implementing block and recycling techniques.
 
 To switch to **HPDDM**, simply define the macro ``pr#withhpddm`` before using :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>`. You can then pass **HPDDM** options
-with command-line arguments or directly to the underlying **HPDDM** operator ``pr#hpddmOP``:
+with command-line arguments or directly to the underlying **HPDDM** operator ``pr#hpddmOP``. Options need to be prefixed by the operator prefix:
 
 .. code-block:: freefem
   :linenos:
 
   macro PBwithhpddm()1 // EOM
   ffddmsetupOperator( PB , FE , Varf )
-  set(PBhpddmOP,sparams="-hpddm_krylov_method gcrodr");
+  set(PBhpddmOP,sparams="-hpddm_PB_krylov_method gcrodr");
 
 You can also choose to replace only the Krylov solver, by defining the macro ``pr#withhpddmkrylov`` before using :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>`.
 Doing so, a call to ``pr#fGMRES`` will call the **HPDDM** Krylov solver, with **ffddm** providing the operator and preconditioner through ``pr#A`` and ``pr#PREC``.

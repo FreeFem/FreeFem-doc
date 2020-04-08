@@ -616,14 +616,14 @@ See :ref:`documentation <ffddmDocumentationHPDDMffddm>`
 You can use **HPDDM** features unavailable in **ffddm** such as advanced Krylov subspace methods implementing block and recycling techniques
 
 To switch to **HPDDM**, simply define the macro `pr#withhpddm` before using `ffddmsetupOperator` (:ref:`Step 3 <ffddmTutorialDefineYourProblem>`). You can then pass **HPDDM** options
-with command-line arguments or directly to the underlying **HPDDM** operator:
+with command-line arguments or directly to the underlying **HPDDM** operator. Options need to be prefixed by the operator prefix:
 
 .. code-block:: freefem
     :linenos:
 
     macro PBwithhpddm()1 // EOM
     ffddmsetupOperator( PB , FE , Varf )
-    set(PBhpddmOP,sparams="-hpddm_krylov_method gcrodr");
+    set(PBhpddmOP,sparams="-hpddm_PB_krylov_method gcrodr");
 
 Or, define `pr#withhpddmkrylov` to use **HPDDM** only for the Krylov method
 
