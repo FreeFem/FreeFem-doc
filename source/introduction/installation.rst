@@ -513,10 +513,10 @@ Repeatedly run the following command until it says there are no further updates.
       git clone https://github.com/FreeFem/FreeFem-sources
       cd FreeFem-sources
       autoreconf -i
-      ./configure ./configure --enable-generic --enable-optim \
+      ./configure --enable-generic --enable-optim \
         --enable-download --enable-maintainer-mode \
         CXXFLAGS=-mtune=generic CFLAGS=-mtune=generic \
-        FFLAGS=-mtune=generic--enable-download --disable-hips
+        FFLAGS=-mtune=generic --enable-download --disable-hips
 		--prefix=/where/you/want/to/have/files/installed
 		
 		
