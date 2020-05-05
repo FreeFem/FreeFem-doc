@@ -272,7 +272,7 @@ See for example TODO
 -  ``func prfe#K[int] pr#A(prfe#K[int] &ui)`` The function ``pr#A`` computes the parallel matrix-vector product, i.e. the action of the global operator :math:`A` on the local vector :math:`u_i`.
    The computation is equivalent to :math:`R_i (\sum_{j=1}^N R_j^T D_j A_j u_j)` and is performed in parallel using local matrices ``pr#aRd`` and the function ``prfe#update``.
    In the sequential case, the global matrix ``pr#Aglobal`` is used instead.
--  ``func prfe#K[int] pr#AT(prfe#K[int] &ui)`` Similarly to ``pr#A``, The function ``pr#AT`` computes the action of :math:`A^T`, the transpose of the global operator :math:`A`, on `u_i`.
+-  ``func prfe#K[int] pr#AT(prfe#K[int] &ui)`` Similarly to ``pr#A``, The function ``pr#AT`` computes the action of :math:`A^T`, the transpose of the global operator :math:`A`, on :math:`u_i`.
 -  ``func prfe#K[int] pr#directsolve(prfe#K[int]& rhsi)`` The function ``pr#directsolve`` allows to solve the linear system :math:`A x = b` in parallel using the parallel direct solver *MUMPS*.
    The matrix is given to *MUMPS* in distributed form through the local matrices ``pr#aRd``.
    The input *rhsi* is given as a distributed vector (*rhsi* is the restriction of the global right-hand side :math:`b` to the subdomain of this mpi rank, see :ref:`ffddmbuildrhs <ffddmDocumentationBuildRhs>`) and the returned vector is local as well.
