@@ -74,25 +74,26 @@ Problems involving partial differential equations from several branches of physi
 .. hlist::
     :columns: 3
 	 
-    * `ARPACK <https://www.caam.rice.edu/software/ARPACK/>`_ 
-    * `BLAS <http://www.netlib.org/blas/>`_ 
-    * `OpenBLAS <http://www.openblas.net/>`_  
-    * `FFTW V3.3.2 <http://www.fftw.org>`_
-    * `Ipopt V3.12.4 <https://github.com/coin-or/Ipopt>`_   
-    * `Gmm++ V4.2 <http://getfem.org/gmm.html>`_
-    * `freeYams <https://www.ljll.math.upmc.fr/frey/software.html>`_           
-    * `METIS V5.1.0 <http://glaros.dtc.umn.edu/gkhome/metis/metis/overview>`_
-    * `ParMETIS V4.0.3 <http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview>`_
-    * `MMG3D V4.0 <https://www.mmgtools.org>`_
+    * `ARPACK <https://www.caam.rice.edu/software/ARPACK/>`_
+    * `BLAS <http://www.netlib.org/blas/>`_
+    * `OpenBLAS <http://www.openblas.net/>`_
+    * `FFTW 3.3.2 <http://www.fftw.org>`_
+    * `Ipopt 3.12.4 <https://github.com/coin-or/Ipopt>`_
+    * `Gmm++ 4.2 <http://getfem.org/gmm.html>`_
+    * `freeYams <https://www.ljll.math.upmc.fr/frey/software.html>`_
+    * `METIS <http://glaros.dtc.umn.edu/gkhome/metis/metis/overview>`_
+    * `ParMETIS <http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview>`_
+    * `Mmg <https://www.mmgtools.org/>`_
     * `mshmet <https://www.ljll.math.upmc.fr/frey/software.html>`_
-    * `MUMPS V5.0.2 <http://mumps.enseeiht.fr/>`_
-    * `NLopt V2.2.4 <http://ab-initio.mit.edu/wiki/index.php/NLopt>`_   
+    * `MUMPS <http://mumps.enseeiht.fr/>`_
+    * `NLopt 2.2.4 <http://ab-initio.mit.edu/wiki/index.php/NLopt>`_
     * `ScaLAPACK <http://www.netlib.org/scalapack/>`_
-    * `Scotch V6.0.4 <https://gforge.inria.fr/projects/scotch/>`_   
-    * `SuiteSparse V4.4.4 <http://faculty.cse.tamu.edu/davis/suitesparse.html>`_
-    * `SuperLU V5.2.1 <http://crd-legacy.lbl.gov/~xiaoye/SuperLU/>`_        
-    * `TetGen V1.5.1 <http://www.tetgen.org/>`_
-    * `PETSc V3.12.4 <https://www.mcs.anl.gov/petsc/>`_   
+    * `Scotch <https://gforge.inria.fr/projects/scotch/>`_
+    * `SuiteSparse <http://faculty.cse.tamu.edu/davis/suitesparse.html>`_
+    * `SuperLU <http://crd-legacy.lbl.gov/~xiaoye/SuperLU/>`_
+    * `TetGen <http://www.tetgen.org/>`_
+    * `PETSc <https://www.mcs.anl.gov/petsc/>`_
+    * `SLEPc <https://slepc.upv.es/>`_
     * `HTool <https://pierremarchand.netlify.com/project/htool/>`_
     * `HPDDM <https://github.com/hpddm/hpddm>`_
     * `BemTool <https://github.com/PierreMarchand20/BemTool>`_
