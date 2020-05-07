@@ -73,26 +73,26 @@ Note also that the implementation relies on the knowledge of a partition of unit
 Update
 ~~~~~~
 
-From a collection of local vectors :math:`({\mathbf U}_i)_{1\le i \le N}`, it is possible ensure consistency of the duplicated data and thus creating a distributed vector :math:`({\mathbf V}_i)_{1\le i \le N}` by calling the function ``pr#update(Ui, TRUE)`` where ``pr`` is a user defined prefix that refers to the domain decomposition.
+From a collection of local vectors :math:`({\mathbf U}_i)_{1\le i \le N}`, it is possible ensure consistency of the duplicated data by modifying the distributed vector :math:`({\mathbf U}_i)_{1\le i \le N}` by calling the function ``pr#update(Ui, TRUE)`` where ``pr`` is a user defined prefix that refers to the domain decomposition.
 This function performs the following operation for all :math:`1\le i \le N`:
 
 .. math::
-    {\mathbf V}_i \leftarrow R_i\, \sum_{j=1}^N R_j^T D_j {\mathbf U}_j
+    {\mathbf U}_i \leftarrow R_i\, \sum_{j=1}^N R_j^T D_j {\mathbf U}_j
 
 .. note:: The implementation corresponds to
 
     .. math::
-        {\mathbf V}_i := R_i \sum_{j=1}^N R_j^T D_j {\mathbf U}_j = D_i {\mathbf U}_i + \sum_{j\in \mathcal{O}(i)} R_i\,R_j^T\,D_j {\mathbf U}_j
+        {\mathbf U}_i \leftarrow R_i \sum_{j=1}^N R_j^T D_j {\mathbf U}_j = D_i {\mathbf U}_i + \sum_{j\in \mathcal{O}(i)} R_i\,R_j^T\,D_j {\mathbf U}_j
 
     where :math:`\mathcal{O}(i)` is the set of neighbors of subdomain :math:`i`.
-    Therefore, the matrix vector product is computed in three steps: - concurrent computing of :math:`D_j {\mathbf U}_j` for all :math:`1\le j\le N`; - neighbor to neighbor MPI-communications (:math:`R_i\,R_j^T`) ; - concurrent sum of neighbor contributions.
+    Therefore, the matrix vector product is computed in three steps: - concurrent computing of :math:`D_j {\mathbf U}_j` for all :math:`1\le j\le N`; - neighbor to neighbor MPI-communications from subdomain :math:`j` to subdomain math:`i`  (:math:`R_i\,R_j^T`) ; - concurrent sum of neighbor contributions.
 
 Distributed Matrix and Vector resulting from a variational formulation
 ----------------------------------------------------------------------
 
 The discretization of a variational formulation on the global mesh :math:`Th` yields a global matrix :math:`A` and a global right hand side :math:`\mathbf{RHS}`.
 Thanks to the sparsity of finite element matrices for partial differential equations and thanks to the overlap between subdomains, the knowledge of the local matrix :math:`R_i A R_i^T` on each subdomain :math:`1\le i\le N` is sufficient to perform the matrix-vector product :math:`A\times \mathbf{U}` for any global vector :math:`\mathbf{U}`.
-Once the problem has been set up by a call to ``ffddmsetupOperator(myprefix, myFEprefix, myVarf)``, the matrix-vector product is performed by calling the function ``pr#A(Ui)`` where ``pr`` is a user defined prefix that refers to the problem at hand which itself implicitly refers to the triplet (domain decomposition, finite element, variational formulation).
+Once the problem has been set up by a call to ``ffddmsetupOperator(myprefix, myFEprefix, myVarf)``, the matrix-vector product is performed by calling the function ``myprefix#A(Ui)`` where ``myprefix`` is a user defined prefix that refers to the problem at hand which itself implicitly refers to the triplet (domain decomposition, finite element, variational formulation).
 See more on problem defintion in this :ref:`documentation <ffddmDocumentationDefineProblemToSolve>` and more on distributed linear algebra in chapter 8 of `"An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation" SIAM 2015 <http://bookstore.siam.org/ot144/>`__.
 
 Distributed Linear Solvers
@@ -102,7 +102,7 @@ In many cases, we are interested in the solution of the problem in terms of the 
 
 .. math:: A\, \mathbf{X} = \mathbf{RHS}\,.
 
-``ffddm`` offers two parallel solvers: :ref:`direct factorization <ffddmIntroductionDisitributedDirectSolvers>` and :ref:`Schwarz <ffddmIntroductionSchwarzMethods>` domain decomposition methods.
+``ffddm`` offers two parallel solvers: :ref:`direct factorization <ffddmIntroductionDisitributedDirectSolvers>` and iterative preconditioned solvers via :ref:`Schwarz <ffddmIntroductionSchwarzMethods>` domain decomposition methods.
 
 .. _ffddmIntroductionDisitributedDirectSolvers:
 
@@ -114,14 +114,32 @@ A frontal solver builds a :math:`LU` or Cholesky decomposition of a sparse matri
 This subset is called the *front* and it is essentially the transition region between the part of the system already finished and the part not touched yet.
 These methods are basically sequential since the unknowns are processed the one after another or one front after another.
 In order to benefit from multicore processors, a `multifrontal solver <https://en.wikipedia.org/wiki/Multifrontal_method>`__ is an improvement of the frontal solver that uses several independent fronts at the same time.
-The fronts can be worked on by different processors, which enables parallel computing. ``ffddm`` provides an interface to the parallel sparse direct solver `MUMPS <http://mumps.enseeiht.fr/>`__.
+The fronts can be worked on by different processors, which enables parallel computing. ``ffddm`` provides an interface to the parallel sparse direct solver `MUMPS <http://mumps.enseeiht.fr/>`__. These methods have the advantage to be very robust and to have a predictable cost. The main drawback is the memory requirement which can be prohibitive especially for three-dimensional problems. 
 
 .. _ffddmIntroductionSchwarzMethods:
 
 Schwarz methods
 ~~~~~~~~~~~~~~~
 
-We consider the solve of the equation :math:`A\, \mathbf{X} = \mathbf{RHS}` by a flexible GMRES method preconditioned by domain decomposition methods.
+These methods are part of the large family of preconditioned iterative solvers. When considering the solve of the equation :math:`A\, \mathbf{X} = \mathbf{RHS}`, a preconditioner is a linear operator that approximtes the inverse of :math:`A\` and whose cost of the associated matrix-vector product is much cheaper than solving the original linear system. It enables to accelerate the solve of the latter with Krylov type methods such as the conjugate gradient gradient (in the symmetric positive definite case), GMRES or BiCGSTAB in the general case. Two options are possible. 
+
+Left preconditioning: the preconditioner is applied to the left of the equation 
+
+.. math::
+   M^{-1}  A\, \mathbf{X} =  M^{-1} \mathbf{RHS}\,.
+
+and the Krylov method is applied to the left preconditioned system with a residual that is preconditioner dependant. 
+
+Right preconditioning: the preconditioner is inserted on the right of the operator:
+
+.. math::
+    A\, M^{-1}  \mathbf{Y} =  \mathbf{RHS}\, \text{ where } \mathbf{X} =  M^{-1}  \mathbf{Y}.
+
+and the Krylov method is applied to the right preconditioned system with a residual that is preconditioner independant.  
+
+In both cases, if the preconditioner is efficient the number of iterations to get a converged solution is much smaller than the number of iterations of the Krylov method applied to the original equation :math:`A\, \mathbf{X} = \mathbf{RHS}`.  Although right preconditioning seems more intricate, it is much safer to use since the convergence is checked on a residual that does not depend on the preconditioner.
+
+In the sequel, we consider the solve of the equation :math:`A\, \mathbf{X} = \mathbf{RHS}` preconditioned by domain decomposition methods and with a **flexible GMRES** Krylov method which is thus necessarily right preconditioned. 
 
 Restricted Additive Schwarz (RAS)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -131,8 +149,8 @@ The RAS preconditioner reads:
 .. math::
    M^{-1}_{RAS} := \sum_{j=1}^N R_j^T D_j (R_j\, A\,R_j^T)^{-1} R_j\,.
 
-Let :math:`A_{i}` denote the local matrix :math:`(R_i\, A\,R_i^T)`.
-The application of the operator :math:`M^{-1}_{RAS}` to a distributed right hand side :math:`(\mathbf{RHS}_i)_{i=1}^N` consists in computing:
+where for each subdomain :math:`j` the restriction matrix :math:`R_j` and  the partition of unity matrix :math:`D_j`have been introduced above. 
+The application of the operator :math:`M^{-1}_{RAS}` to a global right hand side :math:`\mathbf{RHS}` is detailed below. Recall this global vector is distributed among processes via the local vectors :math:`(\mathbf{RHS}_i)_{i=1}^N`. Let :math:`A_{j}` denote the local matrix :math:`(R_j\, A\,R_j^T)`. The local vector in subdomain :math:`i` of the matrix vector product :math:`M^{-1}_{RAS}\, \mathbf{RHS}` consists in computing:
 
 .. math::
    R_i\, \sum_{j=1}^N R_j^T\,D_j\, A_{j}^{-1}\,\, \mathbf{ RHS}_j
