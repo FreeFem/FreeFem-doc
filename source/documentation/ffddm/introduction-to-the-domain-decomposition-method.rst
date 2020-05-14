@@ -58,7 +58,7 @@ The matrices :math:`R_i` and :math:`D_i` are the heart of distributed linear alg
 Distributed scalar product
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For two global vectors :math:`{\mathbf U}` and :math:`{\mathbf V}` of size :math:`\#{\mathcal N}`, the formula for the scalar product :math:`{\mathbf V}^T\,{\mathbf U}=({\mathbf U},\,{\mathbf V})` in terms of their distributed vector counterparts makes use of the partition of unity matrices :math:`(D_i)_{1\le i \le N` introduced above:
+For two global vectors :math:`{\mathbf U}` and :math:`{\mathbf V}` of size :math:`\#{\mathcal N}`, the formula for the scalar product :math:`{\mathbf V}^T\,{\mathbf U}=({\mathbf U},\,{\mathbf V})` in terms of their distributed vector counterparts makes use of the partition of unity matrices :math:`(D_i)_{1\le i \le N}` introduced above:
 
 .. math::
    ({\mathbf U}, {\mathbf V}) = \left({\mathbf U}, \sum_{i=1}^N R_i^T D_i R_i {\mathbf V}\right) = \sum_{i=1}^N(R_i {\mathbf U}, D_i R_i {\mathbf V})
