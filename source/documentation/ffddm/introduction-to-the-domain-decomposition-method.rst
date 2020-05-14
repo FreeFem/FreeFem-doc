@@ -66,7 +66,7 @@ For two global vectors :math:`{\mathbf U}` and :math:`{\mathbf V}` of size :math
 
 Local scalar products are performed concurrently.
 Thus, the implementation is parallel except for the sum which corresponds to a MPI_Reduce call across the :math:`N` MPI processes.
-Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFEM syntax is ``dscalprod(Di,u,v)`` or equivalently ``myFEprefix#scalprod(u,v)`` where ``myFEprefix`` is a user defined prefix for the finite element space decomposition, see the :ref:`ffddm documentation<ffddmDocumentationLocalFiniteElementSpaces>`.
+Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFEM syntax is ``dscalprod(Di,u,v)`` or equivalently ``myFEprefix#scalprod(u,v)`` where ``myFEprefix`` is a user defined prefix for the finite element space decomposition, see the :ref:`ffddm documentation <ffddmDocumentationLocalFiniteElementSpaces>`.
 
 .. _ffddmDocumentationUpdate:
 
