@@ -16,6 +16,8 @@ Minimal example
 
    include "ffddm.idp"
 
+   load "msh3"
+
    int[int] LL = [2,2, 1,2, 2,2];
    mesh3 ThGlobal = cube(10, 10, 10, [x, y, z], label = LL);      // global mesh
 
@@ -26,25 +28,25 @@ Minimal example
    // EOM
 
    // Domain decomposition
-   ffddmbuildDmesh( Lap , ThGlobal , mpiCommWorld )
+   ffddmbuildDmesh( LapMesh , ThGlobal , mpiCommWorld )
 
    macro def(i)i// EOM                         // scalar field definition
    macro init(i)i// EOM                        // scalar field initialization
-   ffddmbuildDfespace( Lap , Lap , real , def , init , P1 )
+   ffddmbuildDfespace( LapFE , LapMesh , real , def , init , P1 )
 
-   ffddmsetupOperator( Lap ,Lap , Varf )
+   ffddmsetupOperator( Lap , LapFE , Varf )
 
    real[int] rhsi(0);
    ffddmbuildrhs( Lap , Varf , rhsi )
 
-   LapVhi def(ui);
+   LapFEVhi def(ui);
 
    //Direct solve
    ui[] = Lapdirectsolve(rhsi);
 
    Lapwritesummary
 
-   ffddmplot(Lap,ui,"u");
+   ffddmplot(LapFE,ui,"u");
 
 .. _ffddmDocumentationOverlappingMeshDecomposition:
 
@@ -54,11 +56,11 @@ Overlapping mesh decomposition
 .. code-block:: freefem
    :linenos:
 
-   ffddmbuildDmesh(pr,Th,comm)
+   ffddmbuildDmesh(prmesh,Th,comm)
 
 decomposes the mesh **Th** into overlapping submeshes.
 The mesh will be distributed over the mpi ranks of communicator **comm**.
-This will create and expose variables whose names will be prefixed by **pr**, see below (# is the concatenation operator).
+This will create and expose variables whose names will be prefixed by **prmesh**, see below (# is the concatenation operator).
 The way the initial mesh **Th** is partitioned depends on the value of :ref:`ffddmpartitioner <ffddmParametersGlobal>`.
 
 The size of the overlap between subdomains (its width in terms of number of mesh elements) is given by :ref:`ffddmoverlap <ffddmParametersGlobal>`.
@@ -71,49 +73,50 @@ The label of the new border of the submeshes (the interface between the subdomai
 
 **defines**:
 
--  ``int pr#npart`` number of subdomains for this decomposition; should be equal to mpiSize(\ **comm**) - :ref:`ffddmexclude <ffddmParametersGlobal>` * :ref:`ffddmpCS <ffddmParametersGlobal>`
--  ``meshN[int] pr#aTh`` array (size ``pr#npart``) of local meshes of the subdomains.
-   In the standard parallel case, only the local mesh for this mpi rank ``pr#aTh[mpiRank(pr#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i.e. ``prmesh#excluded`` = 1, see below).
-   In the sequential case, all local meshes are defined.
--  ``meshN pr#Thi`` the local mesh of the subdomain for this mpi rank, i. e. ``pr#aTh[mpiRank(pr#commddm)]`` in the parallel case -  ``int pr#numberIntersection`` the number of neighbors for this mpi rank
--  ``int[int] pr#arrayIntersection`` the list of neighbor ranks in ``pr#commddm`` for this mpi rank
--  ``int pr#pCS`` equal to :ref:`ffddmpCS <ffddmParametersGlobal>`
--  ``int pr#exclude`` equal to :ref:`ffddmexclude <ffddmParametersGlobal>`
--  ``int pr#excluded`` *true* if :ref:`ffddmexclude <ffddmParametersGlobal>` is *true* (:math:`\neq 0`) and mpiRank(\ **comm**) < ``pr#pCS``.
+-  ``int prmesh#npart`` number of subdomains for this decomposition; should be equal to mpiSize(\ **comm**) - :ref:`ffddmexclude <ffddmParametersGlobal>` * :ref:`ffddmpCS <ffddmParametersGlobal>`
+-  ``int prmesh#pCS`` equal to :ref:`ffddmpCS <ffddmParametersGlobal>`
+-  ``int prmesh#exclude`` equal to :ref:`ffddmexclude <ffddmParametersGlobal>`
+-  ``int prmesh#excluded`` *true* if :ref:`ffddmexclude <ffddmParametersGlobal>` is *true* (:math:`\neq 0`) and mpiRank(\ **comm**) < ``prmesh#pCS``.
    In this case, this mpi rank will be excluded from the spatial domain decomposition and will only work on the coarse problem.
--  ``mpiComm pr#commddm`` mpi communicator for ranks participating in the spatial domain decomposition (ranks 0 to ``pr#npart``-1 in **comm** if ``pr#exclude`` is *false*, ranks ``pr#pCS`` to ``pr#pCS``\ +\ ``pr#npart``-1 otherwise)
--  ``mpiComm pr#commCS`` mpi communicator for ranks participating in the assembly and resolution of the coarse problem for two-level preconditioners (ranks 0 to ``pr#pCS`` - 1 in **comm**)
--  ``mpiComm pr#commself`` self mpi communicator (this mpi rank only), used for factorizing local matrices
+-  ``mpiComm prmesh#commddm`` mpi communicator for ranks participating in the spatial domain decomposition (ranks 0 to ``prmesh#npart``-1 in **comm** if ``prmesh#exclude`` is *false*, ranks ``prmesh#pCS`` to ``prmesh#pCS``\ +\ ``prmesh#npart``-1 otherwise)
+-  ``mpiComm prmesh#commCS`` mpi communicator for ranks participating in the assembly and resolution of the coarse problem for two-level preconditioners (ranks 0 to ``prmesh#pCS`` - 1 in **comm**)
+-  ``mpiComm prmesh#commself`` self mpi communicator (this mpi rank only), used for factorizing local matrices
+-  ``meshN[int] prmesh#aTh`` array (size ``prmesh#npart``) of local meshes of the subdomains.
+   In the standard parallel case, only the local mesh for this mpi rank ``prmesh#aTh[mpiRank(prmesh#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i.e. ``prmesh#excluded`` = 1, see below).
+   In the sequential case, all local meshes are defined.
+-  ``meshN prmesh#Thi`` the local mesh of the subdomain for this mpi rank, i. e. ``prmesh#aTh[mpiRank(prmesh#commddm)]`` in the parallel case
+-  ``int prmesh#numberIntersection`` the number of neighbors for this mpi rank
+-  ``int[int] prmesh#arrayIntersection`` the list of neighbor ranks in ``prmesh#commddm`` for this mpi rank
 
 .. raw:: html
 
    <!--
    ***For advanced users***:
 
-   - `int pr#binexactCS`
-   - `int pr#inexactCSsplit`
-   - `int pr#isincomm`
-   - `meshN[int] pr#aThborder`
+   - `int prmesh#binexactCS`
+   - `int prmesh#inexactCSsplit`
+   - `int prmesh#isincomm`
+   - `meshN[int] prmesh#aThborder`
    -->
 
 **Remark for sequential use** (see :ref:`-seqddm <ffddmParametersCommandLine>`):
-    - ``meshN[int] pr#aTh`` array (size ``pr#npart``) of local meshes of the subdomains
+    - ``meshN[int] prmesh#aTh`` array (size ``prmesh#npart``) of local meshes of the subdomains
 
 .. raw:: html
 
    <!--
-    int pr#binexactgeneoCS
+    int prmesh#binexactgeneoCS
 
-   fespace pr#VhiP1(pr#Thi,P1);
+   fespace prmesh#VhiP1(prmesh#Thi,P1);
 
-   pr#VhiP1[int] pr#partitionIntersectionbasei(0);
+   prmesh#VhiP1[int] prmesh#partitionIntersectionbasei(0);
 
-   meshN pr#Thglob = minimalMesh;
+   meshN prmesh#Thglob = minimalMesh;
 
-   matrix[int] pr#RihP1(pr#npart);
-   pr#VhiP1[int] pr#DP1(pr#npart);
+   matrix[int] prmesh#RihP1(prmesh#npart);
+   prmesh#VhiP1[int] prmesh#DP1(prmesh#npart);
 
-   NewMacro pr#mpicomm()comm EndMacro
+   NewMacro prmesh#mpicomm()comm EndMacro
 
    ***depends on***:
    - [ffddmpartitioner](parameters.md#global-parameters)
@@ -134,10 +137,10 @@ Local finite element spaces
 .. code-block:: freefem
    :linenos:
 
-   ffddmbuildDfespace(pr,prmesh,scalar,def,init,Pk)
+   ffddmbuildDfespace(prfe,prmesh,scalar,def,init,Pk)
 
 builds the local finite element spaces and associated distributed operators on top of the mesh decomposition **prmesh**.
-This will create and expose variables whose names will be prefixed by **pr**, see below.
+This will create and expose variables whose names will be prefixed by **prfe**, see below.
 It is assumed that :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>` has already been called with prefix **prmesh** in order to build the mesh decomposition.
 
 The local finite element spaces of type **Pk** (where **Pk** is the type of finite element: P1, [P2,P2,P1], …) are defined on the local meshes of the subdomains based on the mesh decomposition previously created with prefix **prmesh**.
@@ -164,35 +167,35 @@ For vectorial [P2,P2,P1] finite elements and real-valued problems:
    macro init(u) [u, u, u]// EOM
    ffddmbuildDfespace(myFEprefix,mymeshprefix,real,def,init,[P2,P2,P1])
 
-In practice, this builds the necessary distributed operators associated to the finite element space: the local partition of unity functions :math:`(D_i)_{i=1,...,N}` (see ``pr#Dk`` and ``pr#Dih`` below) as well as the function ``pr#update`` (see below) which synchronizes local vectors :math:`(u_i)_{i=1,...,N}` between neighboring subdomains, performing the equivalent of :math:`u_i = R_i (\sum_{j=1}^N R_j^T u_j)` or :math:`u_i = R_i (\sum_{j=1}^N R_j^T D_j u_j)` in a distributed parallel environment.
+In practice, this builds the necessary distributed operators associated to the finite element space: the local partition of unity functions :math:`(D_i)_{i=1,...,N}` (see ``prfe#Dk`` and ``prfe#Dih`` below) as well as the function ``prfe#update`` (see below) which synchronizes local vectors :math:`(u_i)_{i=1,...,N}` between neighboring subdomains, performing the equivalent of :math:`u_i = R_i (\sum_{j=1}^N R_j^T u_j)` or :math:`u_i = R_i (\sum_{j=1}^N R_j^T D_j u_j)` in a distributed parallel environment.
 
-``pr#scalprod`` (see below) performs the parallel scalar product for vectors defined on this finite element.
+``prfe#scalprod`` (see below) performs the parallel scalar product for vectors defined on this finite element.
 
 **defines**:
 
--  ``pr#prmesh`` macro, saves the parent prefix **prmesh** of the mesh decomposition
--  ``pr#K`` macro, saves the type of data **scalar** for this finite element space (*real* or *complex*)
--  ``func pr#fPk`` saves the type of finite element **Pk**, e.g. \ *P1, [P2,P2,P1], …*
--  ``fespace pr#Vhi`` the local finite element space for this mpi rank, defined on the local mesh ``prmesh#Thi``
--  ``int pr#Ndofglobal`` the total number of degrees of freedom :math:`n` for this finite element discretization
--  ``pr#mdef`` macro, saves the macro **def** giving the definition of a finite element function in the finite element space **Pk**
--  ``pr#minit`` macro, saves the macro **init** specifying how to interpolate a scalar function onto the (possibly multiple) components of a finite element function of **Pk**.
-   This is used to create the local partition of unity function in ``pr#Vhi``, by interpolating the local P1 partition of unity function onto the components of ``pr#Vhi``.
+-  ``prfe#prmesh`` macro, saves the parent prefix **prmesh** of the mesh decomposition
+-  ``prfe#K`` macro, saves the type of data **scalar** for this finite element space (*real* or *complex*)
+-  ``func prfe#fPk`` saves the type of finite element **Pk**, e.g. \ *P1, [P2,P2,P1], …*
+-  ``fespace prfe#Vhi`` the local finite element space for this mpi rank, defined on the local mesh ``prmesh#Thi``
+-  ``int prfe#Ndofglobal`` the total number of degrees of freedom :math:`n` for this finite element discretization
+-  ``prfe#mdef`` macro, saves the macro **def** giving the definition of a finite element function in the finite element space **Pk**
+-  ``prfe#minit`` macro, saves the macro **init** specifying how to interpolate a scalar function onto the (possibly multiple) components of a finite element function of **Pk**.
+   This is used to create the local partition of unity function in ``prfe#Vhi``, by interpolating the local P1 partition of unity function onto the components of ``prfe#Vhi``.
    For non Lagrange finite element spaces (e.g. *RT0*, *Edge03d*, …), see :ref:`ffddmbuildDfespaceEdge <ffddmDocumentationPartitionUnityEdge>`.
--  ``pr#K[int][int] pr#Dk`` array (size ``prmesh#npart``) of local partition of unity vectors in the subdomains, equivalent to :math:`(D_i)_{i=1,...,N}`.
-   In the standard parallel case, only the local partition of unity vector for this mpi rank ``pr#Dk[mpiRank(prmesh#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. ``prmesh#excluded`` = 1).
+-  ``prfe#K[int][int] prfe#Dk`` array (size ``prmesh#npart``) of local partition of unity vectors in the subdomains, equivalent to :math:`(D_i)_{i=1,...,N}`.
+   In the standard parallel case, only the local partition of unity vector for this mpi rank ``prfe#Dk[mpiRank(prmesh#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. ``prmesh#excluded`` = 1).
    In the sequential case, all local partition of unity vectors are defined.
--  ``matrix<pr#K>[int] pr#Dih`` array (size ``prmesh#npart``) similar to ``pr#Dk`` but in *matrix* form, allowing for easier *matrix*-*matrix* multiplications.
-   ``pr#Dih[i]`` is a diagonal matrix, with the diagonal equal to ``pr#Dk[i]``.
--  ``fespace pr#Vhglob`` the global finite element space defined on the global mesh ``prmesh#Thglob``.
+-  ``matrix<prfe#K>[int] prfe#Dih`` array (size ``prmesh#npart``) similar to ``prfe#Dk`` but in *matrix* form, allowing for easier *matrix*-*matrix* multiplications.
+   ``prfe#Dih[i]`` is a diagonal matrix, with the diagonal equal to ``prfe#Dk[i]``.
+-  ``fespace prfe#Vhglob`` the global finite element space defined on the global mesh ``prmesh#Thglob``.
    Defined only if :ref:`-noGlob <ffddmParametersCommandLine>` is not used.
--  ``matrix<pr#K>[int] pr#Rih`` array (size ``prmesh#npart``) of restriction matrices from the global finite element space to the local finite element spaces on the local submeshes of the subdomains.
-   In the standard parallel case, only the restriction matrix for this mpi rank ``pr#Rih[mpiRank(prmesh#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. ``prmesh#excluded`` = 1).
-   In the sequential case, all restriction matrices are defined. The restriction matrices ``pr#Rih`` are defined only if :ref:`-noGlob <ffddmParametersCommandLine>` is not used.
--  ``func int pr#update(scalar[int] ui, bool scale)`` The function ``pr#update`` synchronizes the local vector *ui* between subdomains by exchanging the values of *ui* shared with neighboring subdomains (in the overlap region) using point-to-point MPI communications.
+-  ``matrix<prfe#K>[int] prfe#Rih`` array (size ``prmesh#npart``) of restriction matrices from the global finite element space to the local finite element spaces on the local submeshes of the subdomains.
+   In the standard parallel case, only the restriction matrix for this mpi rank ``prfe#Rih[mpiRank(prmesh#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. ``prmesh#excluded`` = 1).
+   In the sequential case, all restriction matrices are defined. The restriction matrices ``prfe#Rih`` are defined only if :ref:`-noGlob <ffddmParametersCommandLine>` is not used.
+-  ``func int prfe#update(scalar[int] ui, bool scale)`` The function ``prfe#update`` synchronizes the local vector *ui* between subdomains by exchanging the values of *ui* shared with neighboring subdomains (in the overlap region) using point-to-point MPI communications.
    If *scale* is *true*, *ui* is multiplied by the local partition of unity beforehand.
    This is equivalent to :math:`u_i = R_i (\sum_{j=1}^N R_j^T u_j)` when *scale* is *false* and :math:`u_i = R_i (\sum_{j=1}^N R_j^T D_j u_j)` when *scale* is *true*.
--  ``func scalar pr#scalprod(scalar[int] ai, scalar[int] bi)`` The function ``pr#scalprod`` computes the global scalar product of two vectors whose local restriction to the subdomain of this mpi rank are *ai* and *bi*.
+-  ``func scalar prfe#scalprod(scalar[int] ai, scalar[int] bi)`` The function ``prfe#scalprod`` computes the global scalar product of two vectors whose local restriction to the subdomain of this mpi rank are *ai* and *bi*.
    The result is computed as :math:`\sum_{j=1}^N (D_j a_j, b_j)`.
 
 .. raw:: html
@@ -203,16 +206,16 @@ In practice, this builds the necessary distributed operators associated to the f
 
    ***For advanced users***:
 
-   matrix<pr#K>[int] pr#restrictionIntersection(0);
+   matrix<prfe#K>[int] prfe#restrictionIntersection(0);
 
-   NewMacro pr#mdefpart udefpart EndMacro
+   NewMacro prfe#mdefpart udefpart EndMacro
 
-   NewMacro pr#minitpart uinitpart EndMacro
+   NewMacro prfe#minitpart uinitpart EndMacro
 
-   func pr#fPkP0 = mPkP0;
+   func prfe#fPkP0 = mPkP0;
 
-   pr#K[int][int] pr#rcv(0);
-   pr#K[int][int] pr#snd(0);
+   prfe#K[int][int] prfe#rcv(0);
+   prfe#K[int][int] prfe#snd(0);
 
    ***depends on***:
 
@@ -574,10 +577,23 @@ with command-line arguments or directly to the underlying **HPDDM** operator ``p
 
   macro PBwithhpddm()1 // EOM
   ffddmsetupOperator( PB , FE , Varf )
-  set(PBhpddmOP,sparams="-hpddm_PB_krylov_method gcrodr");
+  set(PBhpddmOP,sparams="-hpddm_PB_krylov_method gcrodr -hpddm_PB_recycle 10");
 
 You can also choose to replace only the Krylov solver, by defining the macro ``pr#withhpddmkrylov`` before using :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>`.
-Doing so, a call to ``pr#fGMRES`` will call the **HPDDM** Krylov solver, with **ffddm** providing the operator and preconditioner through ``pr#A`` and ``pr#PREC``.
+Doing so, a call to ``pr#fGMRES`` will call the **HPDDM** Krylov solver, with **ffddm** providing the operator and preconditioner through ``pr#A`` and ``pr#PREC``. You can then pass **HPDDM** options to the Krylov solver through command-line arguments:
+
+.. code-block:: freefem
+  :linenos:
+
+  macro PBwithhpddmkrylov()1 // EOM
+  ffddmsetupOperator( PB , FE , Varf )
+
+For example, using restarted GCRO-DR(40) and recycling 10 Ritz vectors at each restart:
+
+.. code-block:: bash
+  :linenos:
+
+  ff-mpirun -np 4 test.edp -wg -hpddm_krylov_method gcrodr -hpddm_recycle 10 -ffddm_gmres_restart 40
 
 An example can be found in **Helmholtz-2d-HPDDM-BGMRES.edp**, see the :ref:`Examples <ffddmExamples>` section.
 
@@ -611,7 +627,7 @@ Advanced use
 Local finite element spaces for non Lagrange finite elements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For Lagrange finite elements, the partition of unity :math:`(D_i)_{i=1,...,N}` (see ``pr#Dk`` and ``pr#Dih``) is built by interpolating the local P1 partition of unity function onto the components of the **Pk** finite element space ``pr#Vhi``.
+For Lagrange finite elements, the partition of unity :math:`(D_i)_{i=1,...,N}` (see ``prfe#Dk`` and ``prfe#Dih``) is built by interpolating the local P1 partition of unity function onto the components of the **Pk** finite element space ``prfe#Vhi``.
 For non Lagrange finite element spaces, such as Raviart–Thomas or Nédélec edge elements, the definition of the degrees of freedom can be more involved, and interpolating the P1 partition of unity functions directly is inappropriate.
 The idea is then to use a "pseudo" finite element **Pkpart** derived from **Pk** which is suitable for interpolating the P1 partition of unity, in the sense that it will produce a partition of unity for **Pk**.
 
@@ -622,7 +638,7 @@ For Lagrange finite elements, the distributed finite element spaces are built us
 .. code-block:: freefem
    :linenos:
 
-   ffddmbuildDfespaceEdge(pr,prmesh,scalar,def,init,Pk,defpart,initpart,Pkpart)
+   ffddmbuildDfespaceEdge(prfe,prmesh,scalar,def,init,Pk,defpart,initpart,Pkpart)
 
 where macros **defpart** and **initpart** specify how to define and interpolate a function in the 'pseudo' finite element space **Pkpart**, similar to **def** and **init** for **Pk**.
 
@@ -660,11 +676,11 @@ In **ffddm**, the first step is to build the two nested mesh decompositions usin
 .. code-block:: freefem
    :linenos:
 
-   ffddmbuildDmeshNested(pr,Thc,s,comm)
+   ffddmbuildDmeshNested(prmesh,Thc,s,comm)
 
 decomposes the coarse mesh **Thc** into overlapping submeshes and creates the fine decomposition by locally refining submeshes by a factor of **s**, i.e. splitting each mesh element into :math:`s^d` elements, :math:`s \geq 1`.
-This will create and expose variables corresponding to both decompositions, prefixed by **pr** for the fine mesh and by **pr#Coarse** for the coarse mesh (see :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>`).  
-It also sets the integer variable ``pr#binexactCS`` to 1, which specifies that any two level method defined on mesh prefix **pr** will use inexact coarse solves.
+This will create and expose variables corresponding to both decompositions, prefixed by **prmesh** for the fine mesh and by **prmesh#Coarse** for the coarse mesh (see :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>`).
+It also sets the integer variable ``prmesh#binexactCS`` to 1, which specifies that any two level method defined on mesh prefix **prmesh** will use inexact coarse solves.
 
 The distributed finite element spaces, operators and preconditioners can then be defined for both decompositions. Here is an example where the coarse problem is solved using a one level method:
 

@@ -36,28 +36,28 @@ For more details on how to use HPDDM within ``ffddm``, see :ref:`the ffddm docum
   include "ffddm.idp"
   mesh Th = square(50,50);    // global mesh
   // Step 1: Decompose the mesh
-  ffddmbuildDmesh( P , Th , mpiCommWorld )
+  ffddmbuildDmesh( M , Th , mpiCommWorld )
   // Step 2: Define your finite element
   macro def(u)  u // EOM
   macro init(u) u // EOM
-  ffddmbuildDfespace( P , P , real , def , init , P2 )
+  ffddmbuildDfespace( FE , M , real , def , init , P2 )
   // Step 3: Define your problem
   macro grad(u) [dx(u), dy(u)] // EOM
   macro Varf(varfName, meshName, VhName)
       varf varfName(u,v) = int2d(meshName)(grad(u)'* grad(v)) + int2d(meshName)(1*v)
                          + on(1, u = 0);  // EOM
-  ffddmsetupOperator( P , P , Varf )
-  PVhi ui, bi;
-  ffddmbuildrhs( P , Varf , bi[] )
+  ffddmsetupOperator( PB , FE , Varf )
+  FEVhi ui, bi;
+  ffddmbuildrhs( PB , Varf , bi[] )
   // Step 4: Define the one level DD preconditioner
-  ffddmsetupPrecond( P , Varf )
+  ffddmsetupPrecond( PB , Varf )
   // Step 5: Define the two-level GenEO Coarse Space
-  ffddmgeneosetup( P , Varf )
+  ffddmgeneosetup( PB , Varf )
   // Step 6: Solve the linear system with GMRES
-  PVhi x0i = 0;
-  ui[] = PfGMRES(x0i[], bi[], 1.e-6, 200, "right");
-  ffddmplot(P, ui, "u")
-  Pwritesummary
+  FEVhi x0i = 0;
+  ui[] = PBfGMRES(x0i[], bi[], 1.e-6, 200, "right");
+  ffddmplot(FE, ui, "u")
+  PBwritesummary
 
 This example solves a Laplace problem in 2D in parallel with a two-level GenEO domain decomposition method.
 To try this example, just copy and paste the script above in a file ‘test.edp’ and run it on 2 cores with

@@ -97,7 +97,7 @@ Distributed Matrix and Vector resulting from a variational formulation
 The discretization of a variational formulation on the global mesh :math:`Th` yields a global matrix :math:`A` and a global right hand side :math:`\mathbf{RHS}`.
 Thanks to the sparsity of finite element matrices for partial differential equations and thanks to the overlap between subdomains, the knowledge of the local matrix :math:`R_i A R_i^T` on each subdomain :math:`1\le i\le N` is sufficient to perform the matrix-vector product :math:`A\times \mathbf{U}` for any global vector :math:`\mathbf{U}`.
 Once the problem has been set up by a call to ``ffddmsetupOperator(myprefix, myFEprefix, myVarf)``, the matrix-vector product is performed by calling the function ``myprefix#A(Ui)`` where ``myprefix`` is a user defined prefix that refers to the problem at hand which itself implicitly refers to the triplet (domain decomposition, finite element, variational formulation).
-See more on problem defintion in this :ref:`documentation <ffddmDocumentationDefineProblemToSolve>` and more on distributed linear algebra in chapter 8 of `"An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation" SIAM 2015 <http://bookstore.siam.org/ot144/>`__.
+See more on problem definition in this :ref:`documentation <ffddmDocumentationDefineProblemToSolve>` and more on distributed linear algebra in chapter 8 of `"An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation" SIAM 2015 <http://bookstore.siam.org/ot144/>`__.
 
 Distributed Linear Solvers
 --------------------------

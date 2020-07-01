@@ -623,7 +623,7 @@ with command-line arguments or directly to the underlying **HPDDM** operator. Op
 
     macro PBwithhpddm()1 // EOM
     ffddmsetupOperator( PB , FE , Varf )
-    set(PBhpddmOP,sparams="-hpddm_PB_krylov_method gcrodr");
+    set(PBhpddmOP,sparams="-hpddm_PB_krylov_method gcrodr -hpddm_PB_recycle 10");
 
 Or, define `pr#withhpddmkrylov` to use **HPDDM** only for the Krylov method
 
