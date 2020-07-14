@@ -185,6 +185,10 @@ Miscellaneous
 +------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
 | `function-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/function-PETSc.edp>`__                 | Custom plugin showing how to directly access PETSc in C++                |
 +------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| `convect.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/convect.edp>`__                               | Calling the convert FreeFEM function on a distributed mesh               |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
+| `MatLoad-PETSc.edp <https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/MatLoad-PETSc.edp>`__                   | Loading a distributed matrix/vector with various formats                 |
++------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------+
 
 Reproducible science
 ~~~~~~~~~~~~~~~~~~~~
