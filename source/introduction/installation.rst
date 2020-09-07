@@ -140,7 +140,7 @@ Compilation on OSX (>=10.13)
 
        brew cask install gfortran
        
-.. note:: If you have installed gcc via brew, .gfortran comes with it and you do not need this line       
+.. note:: If you have installed gcc via brew, gfortran comes with it and you do not need this line       
 
 3. To use **FreeFEM** parallel version, install `openmpi <https://www.open-mpi.org/software/ompi/v4.0/>`__  or  `mpich <http://www.mpich.org/downloads/>`__ 
 
