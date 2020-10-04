@@ -3039,7 +3039,7 @@ With this function, the constructed border mesh contains the full geometric desc
 Glue of meshL meshes
 ''''''''''''''''''''
 
-An assembling of :freefem:`meshL` is possible thanks to the operator :freefem:`+`. The result returns a :freefem:`meshL`, with caution of the right orientation at the merged interfaces. Here, the function :freefem:`checkMesh` can be called.
+An assembling of :freefem:`meshL` is possible thanks to the operator :freefem:`+`. The result returns a :freefem:`meshL`, with caution of the right orientation at the merged interfaces. Here, the function :freefem:`checkMesh`can be called.
 
 .. code-block:: freefem
    :linenos:
