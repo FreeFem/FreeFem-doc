@@ -31,6 +31,8 @@ extensions = [
     'subfig'
 ]
 
+sitemap_url_scheme = "{link}"
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 

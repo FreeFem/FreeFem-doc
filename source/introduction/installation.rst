@@ -138,7 +138,9 @@ Compilation on OSX (>=10.13)
    .. code-block:: bash
       :linenos:
 
-       brew install gfortran
+       brew cask install gfortran
+       
+.. note:: If you have installed gcc via brew, gfortran comes with it and you do not need this line       
 
 3. To use **FreeFEM** parallel version, install `openmpi <https://www.open-mpi.org/software/ompi/v4.0/>`__  or  `mpich <http://www.mpich.org/downloads/>`__ 
 
@@ -264,9 +266,9 @@ Compilation on OSX (>=10.13)
    .. note:: ``make check`` is optionnally, but advise to check the validity of your **FreeFEM** building
    
 13. Install the **FreeFEM** apllication 
-      make install
+      make install // add SUDO=sudo might be necessary
      
-   .. note:: it isn't necessary to execute this last command, FreeFEM executable is avalaible here your_installation/src/nw/FreeFem++ and mpi executable here your_installation/src/mpi/ff-mpirun
+   .. note:: it isn't necessary to execute this last command, FreeFEM executable is avalaible here your_installation/src/nw/FreeFem++ and mpi executable here your_installation/src/mpi/ff-mpirun. 
 
 
 
