@@ -287,7 +287,7 @@ It implements a primal-dual interior point method along with filter method based
 
 IPOPT needs a direct sparse symmetric linear solver.
 If your version of **FreeFEM** has been compiled with the :freefem:`--enable-downlad` tag, it will automatically be linked with a sequential version of MUMPS.
-An alternative to MUMPS would be to download the HSL subroutines (see `Compiling and Installing the Java Interface JIPOPT <https://www.coin-or.org/Ipopt/documentation/node16.html>`__) and place them in the :freefem:`/ipopt/Ipopt-3.10.2/ThirdParty/HSL` directory of the **FreeFEM** downloads folder before compiling.
+An alternative to MUMPS would be to download the HSL subroutines (see `Compiling and Installing the Java Interface JIPOPT <https://projects.coin-or.org/Ipopt/wiki/JavaInterface>`__) and place them in the :freefem:`/ipopt/Ipopt-3.10.2/ThirdParty/HSL` directory of the **FreeFEM** downloads folder before compiling.
 
 Short description of the algorithm
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -572,7 +572,7 @@ The `IPOPT pdf documentation <https://projects.coin-or.org/Ipopt/browser/stable/
 +---------------------------------------+------------------------------------+
 
 **Named Parameters :** The available named parameters in this interface are those we thought to be the most subject to variations from one optimization to another, plus a few that are interface specific.
-Though, as one could see at `IPOPT Linear solver <https://www.coin-or.org/Ipopt/documentation/node59.html>`__, there are many parameters that can be changed within IPOPT, affecting the algorithm behavior.
+Though, as one could see at `IPOPT Linear solver <https://coin-or.github.io/Ipopt/OPTIONS.html#OPT_MA97_Linear_Solver>`__, there are many parameters that can be changed within IPOPT, affecting the algorithm behavior.
 These parameters can still be controlled by placing an option file in the execution directory.
 Note that `IPOPT’s pdf documentation <https://projects.coin-or.org/Ipopt/browser/stable/3.10/Ipopt/doc/documentation.pdf?format=raw>`__ may provides more information than the previously mentioned online version for certain parameters.
 The in-script available parameters are:
