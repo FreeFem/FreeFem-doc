@@ -13,7 +13,7 @@ copyright = '2020, FreeFEM'
 author = 'Frederic Hecht'
 
 # The short X.Y version
-version = '4.6' # GitHubVersion['tag_name']
+# version = '4.6' # GitHubVersion['tag_name']
 # The full version, including alpha/beta/rc tags
 release = '4.6' #GitHubVersion['tag_name']
 
