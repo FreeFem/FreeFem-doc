@@ -13,7 +13,7 @@ copyright = '2020, FreeFEM'
 author = 'Frederic Hecht'
 
 # The short X.Y version
-# version = '4.6' # GitHubVersion['tag_name']
+version = '4.6' # GitHubVersion['tag_name']
 # The full version, including alpha/beta/rc tags
 release = '4.6' #GitHubVersion['tag_name']
 
@@ -30,6 +30,8 @@ extensions = [
     'sphinx_sitemap',
     'subfig'
 ]
+
+sitemap_url_scheme = "{link}"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
