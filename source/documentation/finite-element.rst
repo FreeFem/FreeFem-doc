@@ -1577,7 +1577,8 @@ After the "=" sign, one may find sums of:
 
         Used for all degrees of freedom :math:`i` of the boundary referred by "1", the diagonal term of the matrix :math:`a_{ii}= tgv` with the *terrible giant value* :freefem:`tgv` (= :math:`10^{30}` by default), and the right hand side :math:`b[i] = "(\Pi_h g)[i]" \times tgv`, where the :math:`"(\Pi_h g)g[i]"` is the boundary node value given by the interpolation of :math:`g`.
 
-        .. note:: if :math:`\mathrm{tgv} < 0` then we put to :math:`0` all term of the line :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"`.
+        .. note:: 
+	if :math:`\mathrm{tgv} == -2 ` then we put to :math:`0` all term of the line and colomn  :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"` and else if :math:`\mathrm{tgv} < 0` then we put to :math:`0` all term of the line :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"`. 
 
     -  An "on" vectorial form (for Dirichlet): :freefem:`on(1, u1=g1, u2=g2)`
 
