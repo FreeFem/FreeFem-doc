@@ -1531,7 +1531,7 @@ After the "=" sign, one may find sums of:
 
     -  They contribute to the sparse matrix of type :freefem:`matrix` which, whether declared explicitly or not, is constructed by **FreeFEM**.
 
--  The right hand-side of the Partial Differential Equation in 3D, the terms of the linear form: for given functions :math:`K,\, f`:
+    -  The right hand-side of the Partial Differential Equation in 3D, the terms of the linear form: for given functions :math:`K,\, f`:
 
     -  :freefem:`int3d(Th)(K*w) =` :math:`\displaystyle\sum_{T\in\mathtt{Th}}\int_{T} K\,w`
 
@@ -1577,13 +1577,7 @@ After the "=" sign, one may find sums of:
 
         Used for all degrees of freedom :math:`i` of the boundary referred by "1", the diagonal term of the matrix :math:`a_{ii}= tgv` with the *terrible giant value* :freefem:`tgv` (= :math:`10^{30}` by default), and the right hand side :math:`b[i] = "(\Pi_h g)[i]" \times tgv`, where the :math:`"(\Pi_h g)g[i]"` is the boundary node value given by the interpolation of :math:`g`.
 
-        .. note:: 
-	if :math:`\mathrm{tgv} == -2 ` then we put to :math:`0` all term of the line and colomn  :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"` and else if :math:`\mathrm{tgv} < 0` then we put to :math:`0` all term of the line :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"`. 
-
-    -  An "on" vectorial form (for Dirichlet): :freefem:`on(1, u1=g1, u2=g2)`
-
-    If you have vectorial finite element like :freefem:`RT0`, the 2 components are coupled, and so you have : :math:`b[i] = "(\Pi_h (g1,g2))[i]" \times tgv`, where :math:`\Pi_h` is the vectorial finite element interpolant.
-
+   
     -  A linear form on :math:`\Gamma` (for Neumann in 2d) :freefem:`-int1d(Th)(f*w)` or :freefem:`-int1d(Th, 3)(f*w)`
 
     -  A bilinear form on :math:`\Gamma` or :math:`\Gamma_{2}` (for Robin in 2d) :freefem:`int1d(Th)(K*v*w)` or :freefem:`int1d(Th,2)(K*v*w)`
@@ -1593,9 +1587,25 @@ After the "=" sign, one may find sums of:
     -  A bilinear form on :math:`\Gamma` or :math:`\Gamma_{2}` (for Robin in 3d) :freefem:`int2d(Th)(K*v*w)` or :freefem:`int2d(Th,2)(K*v*w)`
 
 .. note::
+    *  An "on" vectorial form (for Dirichlet): :freefem:`on(1, u1=g1, u2=g2)`
+
+    If you have vectorial finite element like :freefem:`RT0`, the 2 components are coupled, and so you have : :math:`b[i] = "(\Pi_h (g1,g2))[i]" \times tgv`, where :math:`\Pi_h` is the vectorial finite element interpolant.
+
+
+    *  An "on" vectorial form (for Dirichlet):	 :freefem:`on(u=g, tgv= none positive value  )` ,
+    
+      if the value is equal to -2 (i.e :freefem:`tgv == -2 `) then   we put to :math:`0` all term of the line and colomn  :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"` 
+      else if the value is equal to  -20 (i.e :freefem:`tgv == -20 `) then   we put to :math:`0` all term of the line and colomn  :math:`i` in the matrix, and :math:`b[i] = "(\Pi_h g)[i]"` 
+  
+      else if the value is equal to -10 (i.e :freefem:`tgv == -10 `) then   we put to :math:`0` all term of the line the matrix, and :math:`b[i] = "(\Pi_h g)[i]"` 
+    
+      else  (i.e :freefem:`tgv == -1 `) we put to :math:`0` all term of the line :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"`. 
+
     * If needed, the different kind of terms in the sum can appear more than once.
-    * The integral mesh and the mesh associated to test functions or unknown functions can be different in the case of linear form.
+    * The integral mesh and the mesh associated to test functions or unknown functions can be different in the case of :freefem:`varf` form.
     * :freefem:`N.x`, :freefem:`N.y` and :freefem:`N.z` are the normal’s components.
+    * :freefem:`Ns.x`, :freefem:`Ns.y` and :freefem:`Ns.z` are the normal’s components of the suface in case of :freefem:`meshS` integral
+    * :freefem:`Tl.x`, :freefem:`Tl.y` and :freefem:`Tl.z` are the tangent’s components of the line  in case of :freefem:`meshL` integral
 
 .. warning:: It is not possible to write in the same integral the linear part and the bilinear part such as in :freefem:`int1d(Th)(K*v*w - f*w)`.
 
