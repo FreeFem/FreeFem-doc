@@ -2513,7 +2513,7 @@ Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, co
    + returns a :freefem:`meshS` type
 
 
- - :freefem:`Ellipsoide (RX, RY, RZ, OX, OY, OZ, h, L, orient)` 
+ - :freefem:`Ellipsoide (RX, RY, RZ, h, L, OX, OY, OZ, orient)` 
 
    + h is the mesh size 
    + L is the label
@@ -2526,7 +2526,7 @@ Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, co
     \forall u \in [- \frac{\pi}{2},\frac{\pi}{2}  [ \text{ and } v \in [0, 2 \pi], \vectthree{x=\text{Rx } cos(u)cos(v) + \text{Ox }}{y=\text{Ry } cos(u)sin(v) + \text{Oy }}{z = \text{Rz } sin(v)  + \text{Oz }    }
 	
 
- - :freefem:`Sphere(R, OX, OY, OZ, h, L, orient)`
+ - :freefem:`Sphere(R, h, L, OX, OY, OZ, orient)`
 
    + where R is the raduis of the sphere, 
    + OX, OY, OZ are real numbers to give the Ellipsoide center ( optinal, by default is (0,0,0) ) 
@@ -2566,11 +2566,7 @@ Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, co
     return Th;
     }
 
-    func meshS Sphere(real R,real h,int L,int orientation) {
-       return Ellipsoide(R,R,R,h,L,orientation);
-   }
-   
-   func meshS Ellipsoide (real RX,real RY, real RZ,real h,int L,int orientation) {
+    func meshS Ellipsoide (real RX,real RY,real RZ,real h,int L,real Ox,real Oy,real Oz,int orientation) {
        mesh  Th=square(10,20,[x*pi-pi/2,2*y*pi]);  //  $]\frac{-pi}{2},frac{-pi}{2}[\times]0,2\pi[ $
        //  a parametrization of a sphere 
        func f1 =RX*cos(x)*cos(y);
@@ -2596,11 +2592,19 @@ Adding at the top of a *FreeFEM* script :freefem:`include "MeshSurface.idp"`, co
        Th=adaptmesh(Th,m11*vv,m21*vv,m22*vv,IsMetric=1,periodic=perio);
        int[int] ref=[0,L];  
        meshS ThS=movemesh23(Th,transfo=[f1,f2,f3],orientation=orientation,refface=ref);
-       ThS=freeyams(ThS,hmin=h,hmax=h,gradation=2.,verbosity=-10,mem=100,option=0);
-   
-      return ThS;
-    }  
-
+       ThS=mmgs(ThS,hmin=h,hmax=h,hgrad=2.);
+     return ThS;
+    } 
+    
+    func meshS Ellipsoide (real RX,real RY,real RZ,real h,int L,int orientation) { 
+     return Ellipsoide (RX,RY,RZ,h,L,0.,0.,0.,orientation);
+    }
+    func meshS Sphere(real R,real h,int L,int orientation) {
+     return Ellipsoide(R,R,R,h,L,orientation);
+    }
+    func meshS Sphere(real R,real h,int L,real Ox,real Oy,real Oz,int orientation) {
+     return Ellipsoide(R,R,R,h,L,Ox,Oy,Oz,orientation);
+    }
 
 
 2D mesh generators combined with  *movemesh23*
