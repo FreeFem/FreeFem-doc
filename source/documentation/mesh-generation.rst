@@ -3043,7 +3043,7 @@ With this function, the constructed border mesh contains the full geometric desc
 Glue of meshL meshes
 ''''''''''''''''''''
 
-An assembling of :freefem:`meshL` is possible thanks to the operator :freefem:`+`. The result returns a :freefem:`meshL`, with caution of the right orientation at the merged interfaces. Here, the function :freefem:`checkMesh` can be called.
+An assembling of :freefem:`meshL` is possible thanks to the operator :freefem:`+`. The result returns a :freefem:`meshL`, with caution of the right orientation at the merged interfaces. Here, the function :freefem:`checkmesh` can be called.
 
 .. code-block:: freefem
    :linenos:
@@ -3088,11 +3088,12 @@ The commands *checkmesh*
 
 This function is avalaible for all 3D meshes. It checkes and validates the a given mesh, allows to remove duplicate vertices and/or elements and border elements. The possible arguments are 
 
-- :freefem:`precismesh` this parameter is the criteria to define two merging points.
+- :freefem:`precismesh=` this parameter is the criteria to define two merging points.
     By default, it value is 1e-7 and define the smallest axis parallel boxes containing the discretion domain of :math:`\Omega`
 
 - :freefem:`removeduplicate=` is a boolean, allowing remove the duplicated elements and border elements
 
+- :freefem:`rebuildboundary=` is a boolean, allowing rebuild the border elements (in case of incomplete list given by the mesh) 
 Example:
 
 .. code-block:: freefem
