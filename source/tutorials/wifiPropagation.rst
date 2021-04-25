@@ -127,8 +127,8 @@ Let’s resolve this equation !
    Vh<complex> wallabsorption = randreal1()*0.5i;
    Vh k = 6;
 
-   cout << "Reflexion of walls : " << wallreflexion << "\n";
-   cout << "Absorption of walls : " << wallabsorption << "\n";
+   cout << "Reflexion of walls min/max: " << wallreflexion[].min << " " << wallreflexion[].max << "\n";
+   cout << "Absorption of walls min/max: " << wallabsorption[].min << " "<<   wallabsorption[].max << "\n";
 
    problem muwave(v,w) =
        int2d(Th)(
