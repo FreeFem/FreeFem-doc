@@ -112,7 +112,7 @@ Now let us assume that the airfoil is hot and that air is there to cool it.
 Much like in the previous section the heat equation for the temperature :math:`v` is
 
 .. math::
-   \partial_t v -\nabla\cdot(\kappa\nabla v) + u\cdot\nabla v =0,~~v(t=0)=v_0, ~~\frac{\partial v}{\partial\boldsymbol{n}}|_C=0
+   \partial_t v -\nabla\cdot(\kappa\nabla v) + u\cdot\nabla v =0,~~v(t=0)=v_0, ~~\frac{\partial v}{\partial\boldsymbol{n}}|_{C,u\cdot n>0}=0, v|_{C,u\cdot n<0}=0 
 
 But now the domain is outside AND inside :math:`S` and :math:`\kappa` takes a different value in air and in steel.
 Furthermore there is convection of heat by the flow, hence the term :math:`u\cdot\nabla v` above.
@@ -122,47 +122,65 @@ Consider the following, to be plugged at the end of the previous program:
 .. code-block:: freefem
    :linenos:
 
-   // Parameters
-   real dt=0.05;
-   real nbT=50;
+// Corrected by F. Hecht may 2021 
+// Parameters
+real S = 99;
 
-   // Mesh
-   border D(t=0., 2.){x=1.+cos(theta)*t; y=+sin(theta)*t;} // Added to have a fine mesh at trail
-   mesh Sh = buildmesh(C(25) + Splus(-90) + Sminus(-90) + D(200));
-   int steel=Sh(0.5,0).region, air=Sh(-1,0).region;
+border C(t=0, 2*pi){x=3*cos(t); y=3*sin(t);} // Label 1,2 
+border Splus(t=0, 1){x=t; y=0.17735*sqrt(t) - 0.075597*t - 0.212836*(t^2) + 0.17363*(t^3) - 0.06254*(t^4); label=S;}
+border Sminus(t=1, 0){x=t; y=-(0.17735*sqrt(t) - 0.075597*t - 0.212836*(t^2) + 0.17363*(t^3) - 0.06254*(t^4)); label=S;}
+mesh Th = buildmesh(C(50) + Splus(70) + Sminus(70));
+// Fespace
+fespace Vh(Th, P2);
+Vh psi, w;
 
-   // Fespaces
-   fespace Vh(Sh, P2);
+// Problem
+solve potential(psi, w)
+  = int2d(Th)(dx(psi)*dx(w)+dy(psi)*dy(w))
+  + on(C, psi = y) 
+  + on(S, psi=0);
 
+// Plot
+plot(psi, wait=1);
 
-   fespace Wh(Sh, P1);
-   Wh v, vv;
+/// Thermic
+// Parameters
+real dt = 0.005, nbT = 50;
 
-   fespace W0(Sh,P0);
-   W0 k=0.01*(region==air)+0.1*(region==steel);
-   W0 u1=dy(psi)*(region==air), u2=-dx(psi)*(region==air);
-   Wh vold = 120*(region==steel);
+// Mesh
+border D(t=0, 2){x=1+t; y=0;}
+mesh Sh = buildmesh(C(25) + Splus(-90) + Sminus(-90) + D(200));
+int steel = Sh(0.5, 0).region, air = Sh(-1, 0).region;
+// Change label to put BC on In flow 
+// Fespace
+fespace Wh(Sh, P1);
+Wh  vv;
 
-   // Problem
-   int i;
-   problem thermic(v, vv, init=i, solver=LU)
-      = int2d(Sh)(
-           v*vv/dt
-         + k*grad(v)'*grad(vv)
-         + 10*(u1*dx(v)+u2*dy(v))*vv
-      )
-      - int2d(Sh)(
-           vold*vv/dt
-      )
-      ;
+fespace W0(Sh, P0);
+W0 k = 0.01*(region == air) + 0.1*(region == steel);
+W0 u1 = dy(psi)*(region == air), u2 = -dx(psi)*(region == air);
+Wh v = 120*(region == steel), vold;
+// set the label to 10 on inflow boundary to inforce the temperature.
+Sh = change(Sh,flabel = (label == C &&  [u1,u2]'*N<0) ? 10 : label);
+int i;
+problem thermic(v, vv, init=i, solver=LU)
+  = int2d(Sh)(
+      v*vv/dt + k*(dx(v)*dx(vv) + dy(v)*dy(vv))
+    + 10*(u1*dx(v) + u2*dy(v))*vv
+  )
+  - int2d(Sh)(vold*vv/dt)
+  + on(10, v= 0);
+  
 
-   for(i = 0; i < nbT; i++){
-      v = vold;
-      thermic;
-      plot(v);
-   }
+for(i = 0; i < nbT; i++) {
+    vold[]= v[];
+    thermic;
+    plot(v);
+}
 
 .. note:: How steel and air are identified by the mesh parameter region which is defined when buildmesh is called and takes an integer value corresponding to each connected component of :math:`\Omega`;
+
+.. note:: We use the change function to put label 10 on inflow boundary, remark the trick to chanhe only label C :freefem:`flabel = (label == C &&  [u1,u2]'*N<0) ? 10 : label`
 
    How the convection terms are added without upwinding.
    Upwinding is necessary when the Pecley number :math:`|u|L/\kappa` is large (here is a typical length scale), The factor 10 in front of the convection terms is a quick way of multiplying the velocity by 10 (else it is too slow to see something).
