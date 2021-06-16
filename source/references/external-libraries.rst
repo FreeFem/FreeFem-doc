@@ -4035,7 +4035,7 @@ Need
 .. code-block:: freefem
    :linenos:
 
-   load "gsmh"
+   load "gmsh"
 
 The ``gmsh`` software is available `here <http://gmsh.info/>`__
 
