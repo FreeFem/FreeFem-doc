@@ -4067,7 +4067,7 @@ Load a 3D mesh build with Gmsh.
 .. code-block:: freefem
    :linenos:
 
-   mesh3 Th = gmshload(MeshFile, [reftet=RefTet], [renum=Renum]);
+   mesh3 Th = gmshload3(MeshFile, [reftet=RefTet], [renum=Renum]);
 
 Parameters:
 
