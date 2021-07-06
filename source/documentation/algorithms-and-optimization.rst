@@ -84,7 +84,7 @@ The parameters of these three functions are:
       fespace Ph(Th, P0);
       Ph alpha; //store df(|nabla u|^2)
 
-      // The functionn J
+      // The function J
       //J(u) = 1/2 int_Omega f(|nabla u|^2) - int_Omega u b
       func real J (real[int] & u){
          Vh w;
@@ -94,7 +94,7 @@ The parameters of these three functions are:
          return r;
       }
 
-      // The gradiant of J
+      // The gradient of J
       func real[int] dJ (real[int] & u){
          Vh w;
          w[] = u;
@@ -224,7 +224,7 @@ Example of usage for BFGS or CMAES
          return s;
       }
 
-      //the gradiant of J (this is a affine version (the RHS is in)
+      //the gradient of J (this is a affine version (the RHS is in)
       func real[int] DJ (real[int] &u){
          for (int i = 0; i < u.n; i++)
             u[i] = (i+1)*u[i];
