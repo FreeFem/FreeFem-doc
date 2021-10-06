@@ -1,0 +1,49 @@
+name: "Doc build (HTML & PDF)"
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@main
+      
+      - name: Install
+        run: |
+          sudo apt update
+          sudo apt install nodejs npm
+          sudo pip install --upgrade pip
+          sudo pip install Sphinx
+          sudo pip install sphinxcontrib-inlinesyntaxhighlight
+          sudo pip install sphinx-sitemap
+          sudo apt install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
+          git clone https://github.com/FreeFem/FreeFem-parser-pygments.git ~/pygments
+          sudo cp ~/pygments/freefem.py /usr/local/lib/python2.7/dist-packages/pygments/lexers/
+          cd /usr/local/lib/python2.7/dist-packages/pygments/lexers/ && sudo python _mapping.py && cd -
+      
+      - name: Build
+        run: |
+          make html
+          make latex
+          echo "doc.freefem.org" > build/html/CNAME
+          cd build/latex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && cd -
+          mkdir build/html/pdf && cp build/latex/FreeFEM-documentation.pdf build/html/pdf/
+          (cd build/html/pdf && md5sum FreeFEM-documentation.pdf >> FreeFEM-documentation.pdf.md5)
+      
+      - name: Deploy HTML
+        uses: ad-m/github-push-action@master
+        with:
+          branch: gh-pages
+          directory: build/html
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Deploy PDF
+        uses: ad-m/github-push-action@master
+        with:
+          branch: pdf
+          directory: build/latex
+          github_token: ${{ secrets.GITHUB_TOKEN }}
