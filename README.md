@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/FreeFem/FreeFem-doc.svg?branch=master)](https://travis-ci.com/FreeFem/FreeFem-doc)
+[![Build Status](https://app.travis-ci.com/FreeFem/FreeFem-doc.svg?branch=master)](https://travis-ci.com/FreeFem/FreeFem-doc)
 
 # FreeFEM documentation
 
