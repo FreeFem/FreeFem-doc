@@ -621,6 +621,50 @@ Advanced use
   ffddmbuildDmeshAug(pr,Th,comm)
   -->
 
+.. _ffddmDocumentationInterpolation:
+
+Interpolation between two distributed finite element spaces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The parallel interpolation of a distributed finite element function to another distributed finite element space can be computed using the ``prfe#transferfromVhi`` macro. Internally, it uses the ``transfer`` macro from the ``macro_ddm.idp`` script. The macro is prefixed by the source finite element prefix **prfe** and is used a follows:
+
+.. code-block:: freefem
+   :linenos:
+
+   prfe#transferfromVhi(us,Vht,Pkt,rest)
+
+where **us** is distributed source FE function defined on ``prfe#Vhi``, **Vht** is the target local finite element space, **Pkt** is the approximation space corresponding to **Vht** and **rest** is the target local FE function defined on **Vht**. You can find an example below:
+
+.. code-block:: freefem
+   :linenos:
+
+   macro dimension()2//
+
+   include "ffddm.idp"
+
+   mesh Ths = square(10,10);
+
+   mesh Tht = square(30,20);
+
+   ffddmbuildDmesh(Ms,Ths,mpiCommWorld)
+
+   ffddmbuildDmesh(Mt,Tht,mpiCommWorld)
+
+   func Pk = [P2,P2];
+
+   macro def(u)[u,u#2]//
+   macro init(u)[u,u]//
+   ffddmbuildDfespace(FEs,Ms,real,def,init,Pk)
+   ffddmbuildDfespace(FEt,Mt,real,def,init,Pk)
+
+   FEsVhi def(us) = [cos(x^2+y),sin(x^2+y)];
+
+   FEtVhi def(ut);
+
+   FEstransferfromVhi(us,FEtVhi,Pk,ut)
+
+   ffddmplot(FEs,us,"u source");
+   ffddmplot(FEt,ut,"u target");
 
 .. _ffddmDocumentationPartitionUnityEdge:
 
