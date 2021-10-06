@@ -23,7 +23,6 @@ jobs:
           sudo apt install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
           git clone https://github.com/FreeFem/FreeFem-parser-pygments.git ~/pygments
           (ls /usr/lib)
-          (ls /usr/local/lib)
           sudo cp ~/pygments/freefem.py /usr/local/lib/python3.8/dist-packages/pygments/lexers/
           (cd /usr/local/lib/python3.8/dist-packages/pygments/lexers/ && sudo python _mapping.py)
       
