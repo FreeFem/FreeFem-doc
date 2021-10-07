@@ -43,6 +43,7 @@ jobs:
           branch: gh-pages
           directory: build/html
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
       
       - name: Deploy PDF
         uses: ad-m/github-push-action@master
@@ -50,3 +51,4 @@ jobs:
           branch: pdf
           directory: build/latex
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
