@@ -16,23 +16,26 @@ jobs:
         run: |
           sudo apt update
           sudo apt install nodejs npm
-          sudo pip install --upgrade pip
-          sudo pip install Sphinx
-          sudo pip install sphinxcontrib-inlinesyntaxhighlight
-          sudo pip install sphinx-sitemap
           sudo apt install texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
+          pip install --upgrade pip
+          pip install Sphinx
+          pip install sphinxcontrib-inlinesyntaxhighlight
+          pip install sphinx-sitemap
           git clone https://github.com/FreeFem/FreeFem-parser-pygments.git ~/pygments
           sudo cp ~/pygments/freefem.py /usr/lib/python3/dist-packages/pygments/lexers/
-          cd /usr/lib/python3/dist-packages/pygments/lexers/ && sudo python _mapping.py && cd -
+          (cd /usr/lib/python3/dist-packages/pygments/lexers/ && sudo python _mapping.py)
       
-      - name: Build
+      - name: Build PDF
+        run: |
+          make latex
+          (cd build/latex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex)
+
+      - name: Build HTML
         run: |
           make html
-          make latex
           echo "doc.freefem.org" > build/html/CNAME
-          cd build/latex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && cd -
           mkdir build/html/pdf && cp build/latex/FreeFEM-documentation.pdf build/html/pdf/
-          #cd build/html/pdf && md5sum FreeFEM-documentation.pdf >> FreeFEM-documentation.pdf.md5 && cd -
+          (cd build/html/pdf && md5sum FreeFEM-documentation.pdf >> FreeFEM-documentation.pdf.md5)
       
       - name: Deploy HTML
         uses: ad-m/github-push-action@master
