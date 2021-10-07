@@ -1,5 +1,0 @@
-mpiComm comm(mpiCommWorld, 0, 0);
-int color = mpiRank(comm)%2;
-mpiComm ccc(processor(color, comm), 0);
-mpiComm qpp(comm, 0, 0);
-mpiComm cp(ccc, color, 0);

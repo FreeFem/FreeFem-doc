@@ -1,5 +1,0 @@
-macro grad(u) [dx(u), dy(u)] //
-macro Grad(U) [grad(U#x), grad(U#y)] //
-
-macro div(u, v) (dx(u) + dy(v)) //
-macro Div(U) (dx(U#x) + dy(U#y)) //

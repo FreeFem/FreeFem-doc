@@ -1,5 +1,0 @@
-int n = 5;
-real[int] Ai(n);
-for (int i = 0; i < n; i++)
-	Ai[i] = i;
-cout << Ai << endl;

@@ -1,9 +1,0 @@
-real a;
-try{
-	a = 1./0.;
-}
-catch (...) //all exceptions can be caught
-{
-	cout << "Catch an ExecError" << endl;
-	a = 0.;
-}

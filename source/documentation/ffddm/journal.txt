@@ -1,4 +1,0 @@
-A FAIRE
-ddmplot ne marche pas avec un prefix de type FE, il lui faut un préfixe de type problème 
-code des transparents difficilement lisible car police trop petite
--glut ffglut en -wg partout ? 

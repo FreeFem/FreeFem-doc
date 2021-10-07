@@ -1,9 +1,0 @@
-// Parameters
-int nn = 10;
-
-// Mesh
-for (int i = 0; i < 5; i++){
-	int[int] labs = [11, 12, 13, 14];
-	mesh Th = square(nn, nn, flags=i, label=labs, region=10);
-	plot(Th, cmm="square falgs="+i);
-}
