@@ -1,3 +1,0 @@
-border C(t=0, 2*pi) {x=(2*cos(2*t)+3)*cos(t); y=(2*cos(2*t)+3)*sin(t);}
-mesh Th = buildmesh(C(50));
-plot(Th, ps="Cassini.eps", bw=true);

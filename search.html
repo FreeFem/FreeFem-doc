@@ -1,0 +1,14 @@
+<script async src="_static/js/lunr.js"></script>
+<script async src="_static/lunr/lunr_index.js"></script>
+
+<div class="search-container">
+	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
+	<input type="search" placeholder="Type to start searching" id="searchInput">
+	<label id="search-overlay" onclick="removeOverlay()"></label>
+	<div id="searchResults"></div>
+</div>
+
+<script src="_static/js/search.js"></script>
+<script>
+   initSearch('./')
+</script>
