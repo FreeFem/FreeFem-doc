@@ -9,13 +9,13 @@ GitHubVersion = r.json()
 # -- Project information -----------------------------------------------------
 
 project = 'FreeFEM'
-copyright = '2020, FreeFEM'
+copyright = '2021, FreeFEM'
 author = 'Frederic Hecht'
 
 # The short X.Y version
-version = '4.6' # GitHubVersion['tag_name']
+version = '4.8' # GitHubVersion['tag_name']
 # The full version, including alpha/beta/rc tags
-release = '4.6' #GitHubVersion['tag_name']
+release = '4.8' #GitHubVersion['tag_name']
 
 # -- General configuration ---------------------------------------------------
 
@@ -91,7 +91,7 @@ html_baseurl = 'https://doc.freefem.org/'
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'FreeFEM-doc'
 
-html_add_permalinks = ' '
+html_permalinks = ' '
 
 
 # -- Options for LaTeX output ------------------------------------------------
