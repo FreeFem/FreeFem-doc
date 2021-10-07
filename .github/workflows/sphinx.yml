@@ -38,15 +38,13 @@ jobs:
           (cd build/html/pdf && md5sum FreeFEM-documentation.pdf >> FreeFEM-documentation.pdf.md5)
       
       - name: Deploy HTML
-        uses: ad-m/github-push-action@master
+        uses: JamesIves/github-pages-deploy-action
         with:
           branch: gh-pages
-          directory: build/html
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          force: true
+          folder: build/html
       
       - name: Deploy PDF
-        uses: ad-m/github-push-action@master
+        uses: JamesIves/github-pages-deploy-action
         with:
           branch: pdf
           directory: build/latex
