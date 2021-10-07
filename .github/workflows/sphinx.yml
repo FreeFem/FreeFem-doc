@@ -28,7 +28,7 @@ jobs:
       - name: Build PDF
         run: |
           make latex
-          (cd build/latex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && pdflatex -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex)
+          (cd build/latex && pdflatex -halt-on-error -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && pdflatex -halt-on-error -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex)
 
       - name: Build HTML
         run: |
