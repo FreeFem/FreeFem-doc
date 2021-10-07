@@ -26,6 +26,7 @@ def depart_subfig_tex(self, node):
     figoutput = ''.join(self.body)
     figoutput = figoutput.replace('\n\\begin{figure}', '\\begin{figure}')
     figoutput = figoutput.replace('[htbp]', '[t]{%s\\linewidth}' % node['width'])
+    figoutput = figoutput.replace('[H]', '[t]{%s\\linewidth}' % node['width'])
     figoutput = figoutput.replace('figure', 'subfigure')
     figoutput = figoutput.replace('\\end{figure}\n', '\\end{figure}')
     self.body = self.__body

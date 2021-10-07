@@ -3094,6 +3094,7 @@ This function is avalaible for all 3D meshes. It checkes and validates the a giv
 - :freefem:`removeduplicate=` is a boolean, allowing remove the duplicated elements and border elements
 
 - :freefem:`rebuildboundary=` is a boolean, allowing rebuild the border elements (in case of incomplete list given by the mesh) 
+
 Example:
 
 .. code-block:: freefem
