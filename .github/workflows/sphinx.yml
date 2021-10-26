@@ -32,8 +32,8 @@ jobs:
 
       - name: Build HTML
         run: |
-          cp source/_static/js/lunr.js build/html/_static/js/
           make html
+          cp source/_static/js/lunr.js build/html/_static/js/
           echo "doc.freefem.org" > build/html/CNAME
           mkdir build/html/pdf && cp build/latex/FreeFEM-documentation.pdf build/html/pdf/
           (cd build/html/pdf && md5sum FreeFEM-documentation.pdf >> FreeFEM-documentation.pdf.md5)
