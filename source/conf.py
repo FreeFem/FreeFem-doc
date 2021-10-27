@@ -91,7 +91,8 @@ html_baseurl = 'https://doc.freefem.org/'
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'FreeFEM-doc'
 
-html_permalinks = ' '
+html_permalinks = True
+html_permalinks_icon = ''
 
 
 # -- Options for LaTeX output ------------------------------------------------

@@ -35,7 +35,24 @@
 	{% include "footer.html" %}
 	{% endblock %}
 
+	<!-- Common -->
 	<script async src="{{ pathto('_static/js/common.js', 1)}}"></script>
+	<!-- Nav -->
+	<script async src="{{ pathto('_static/js/nav.js', 1)}}"></script>
+	<!-- Subnav -->
+	<script async src="{{ pathto('_static/js/subnav.js', 1)}}"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="{{ pathto('_static/js/mathjax-config.js', 1) }}"></script>
+	<script src="{{ pathto('_static/js/lunr.js', 1) }}"></script>
+	<script src="{{ pathto('_static/lunr/lunr_index.js', 1) }}"></script>
+	<script src="{{ pathto('_static/js/search.js', 1)}}"></script>
+	<script>
+		initSearch('{{pathto("", 1)}}')
+	</script>
+	<!-- Github -->
+	<script async src="{{ pathto('_static/js/github.js', 1) }}"></script>
 </body>
 
 </html>
