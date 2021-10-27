@@ -53,9 +53,9 @@ const searchLunr = (text) => {
         const subdiv = document.createElement('div')
         subdiv.className = 'search-result-sub'
 
-        const subtitle = document.createElement('a')
-        subtitle.className = 'search-result-title'
-        subtitle.href = result.links[i]
+        const subTitle = document.createElement('a')
+        subTitle.className = 'search-result-title'
+        subTitle.href = result.links[i]
 
         const titleDiv = document.createElement('div')
 
@@ -67,15 +67,16 @@ const searchLunr = (text) => {
         preview.className = 'search-result-preview'
         preview.innerHTML = result.previews[i]
 
-        title.appendChild(titleDiv)
+        subTitle.appendChild(titleDiv)
 
         titleDiv.appendChild(titleText)
         titleDiv.appendChild(preview)
 
-        subdiv.appendChild(title)
+        subdiv.appendChild(subTitle)
 
         div.appendChild(subdiv)
       }
+
       searchResults.appendChild(div)
     }
     searchResults.style.display = 'block'
