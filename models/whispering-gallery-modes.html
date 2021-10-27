@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1942,12 +1924,11 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="whispering-gallery-modes">
-<h1>Whispering gallery modes<a class="headerlink" href="#whispering-gallery-modes" title="Permalink to this headline">¶</a></h1>
+<h1>Whispering gallery modes<a class="headerlink" href="#whispering-gallery-modes" title="Permalink to this headline"></a></h1>
 <p>Author: <a class="reference external" href="http://linkeding.com/in/grudinin">I. S. Grudinin</a></p>
 <p>In whispering gallery mode (WGM) resonators, which are typically spheres or disks, electromagnetic field is trapped by total internal reflections from the boundary.
 Modes of such resonators are distinguished by compact volume and record high quality factors (Q) in a broad range of frequencies.</p>
@@ -1958,12 +1939,12 @@ It’s possible to solve the vectorial wave equation by reducing it to a two dim
 <p>Such reduction leads to a system of 3 equations to be solved in a 2D “<span class="math notranslate nohighlight">\(\rho-z\)</span>” section of a resonator.
 Please refer to <a class="reference internal" href="../bibliography.html#oxborrow2007" id="id1"><span>[OXBORROW2007]</span></a> for a detailed derivation and to <a class="reference internal" href="../bibliography.html#grudinin2012" id="id2"><span>[GRUDININ2012]</span></a> for an example of using <strong>FreeFEM</strong> to compute WGMs.</p>
 <section id="wave-equation-for-the-wgms">
-<h2>Wave equation for the WGMs<a class="headerlink" href="#wave-equation-for-the-wgms" title="Permalink to this headline">¶</a></h2>
+<h2>Wave equation for the WGMs<a class="headerlink" href="#wave-equation-for-the-wgms" title="Permalink to this headline"></a></h2>
 <p>Since electric field is discontinuous on the surface of a dielectric and magnetic field is typically not, we derive our equations for the magnetic field.
 The electric field can be easily derived at a later stage from <span class="math notranslate nohighlight">\(\vec{E}=\frac{i}{\omega\epsilon_0}\hat{\epsilon}^{-1}\nabla\times\vec{H}\)</span>.
 Following a standard procedure starting with Maxwell equations we derive a wave equation in a single-axis anisotropic medium such as an optical crystal:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-wave">
-<span class="eqno">(60)<a class="headerlink" href="#equation-eqn-wave" title="Permalink to this equation">¶</a></span>\[\nabla\times\left(\hat{\epsilon}^{-1}\nabla\times\vec{H}\right)-k_0^2\vec{H}-\alpha\nabla\left(\nabla\cdot\vec{H}\right)=0\]</div>
+<span class="eqno">(60)<a class="headerlink" href="#equation-eqn-wave" title="Permalink to this equation"></a></span>\[\nabla\times\left(\hat{\epsilon}^{-1}\nabla\times\vec{H}\right)-k_0^2\vec{H}-\alpha\nabla\left(\nabla\cdot\vec{H}\right)=0\]</div>
 <p>Here <span class="math notranslate nohighlight">\(k_0=\omega/c\)</span> is the wavenumber, <span class="math notranslate nohighlight">\(\alpha\)</span> is the penalty term added to fight spurious FEM solutions.
 For anisotropic single-axis medium with <span class="math notranslate nohighlight">\(\partial\hat{\epsilon}/\partial\phi=0\)</span> in cylindrical system of coordinates we have:</p>
 <div class="math notranslate nohighlight">
@@ -1971,7 +1952,7 @@ For anisotropic single-axis medium with <span class="math notranslate nohighligh
 <p>We now assume axial symmetry of our electromagnetic fields and insert an imaginary unity in front of the <span class="math notranslate nohighlight">\(H_{\phi}\)</span> to allow all field components to be real numbers and also to account for the phase shift of this component <span class="math notranslate nohighlight">\(\vec{H}(\rho,\phi,z)=\left\{H_{\rho}(\rho,z),iH_{\phi}(\rho,z),H_z(\rho,z)\right\}\times e^{im\phi}\)</span>.</p>
 <p>We write the wave equation <a class="reference internal" href="#equation-eqn-wave">(60)</a> explicitly in cylindrical coordinates, thus obtaining a set of three differential equations for the domain <span class="math notranslate nohighlight">\(\Omega\)</span> given by the resonator’s cross section and some space outside:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-system">
-<span class="eqno">(61)<a class="headerlink" href="#equation-eqn-system" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(61)<a class="headerlink" href="#equation-eqn-system" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     A_1\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}&amp;=&amp;0\\ \nonumber
     A_2\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}&amp;=&amp;0\\ \nonumber
     A_3\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}&amp;=&amp;0
@@ -1979,7 +1960,7 @@ For anisotropic single-axis medium with <span class="math notranslate nohighligh
 <p>The numerical solutions of these equations and boundary conditions can be found with <strong>FreeFEM</strong> if we write the system in the weak, or integral form.</p>
 </section>
 <section id="weak-formulation">
-<h2>Weak formulation<a class="headerlink" href="#weak-formulation" title="Permalink to this headline">¶</a></h2>
+<h2>Weak formulation<a class="headerlink" href="#weak-formulation" title="Permalink to this headline"></a></h2>
 <p>In general, to obtain the integral or “weak” statements equivalent to system <a class="reference internal" href="#equation-eqn-system">(61)</a> and boundary conditions we form a scalar dot product between an arbitrary magnetic field test function <span class="math notranslate nohighlight">\(\mathbf{H}^t=\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}\)</span> and the components of our vectorial equation <span class="math notranslate nohighlight">\(A_1,A_2,A_3\)</span>, and integrate over the resonator’s cross section domain <span class="math notranslate nohighlight">\(\Omega\)</span> (and its boundary for the boundary conditions):</p>
 <div class="math notranslate nohighlight">
 \[\int\limits_{\Omega}(H^t_{\rho}A_1+H^t_{\phi}A_2+H^t_{z}A_3)d\Omega\]</div>
@@ -1991,7 +1972,7 @@ For example:</p>
 <p>Thus converting equations <a class="reference internal" href="#equation-eqn-system">(61)</a> we obtain a large expression for the weak form.</p>
 </section>
 <section id="a-dielectric-sphere-example-with-freefem">
-<h2>A dielectric sphere example with FreeFEM<a class="headerlink" href="#a-dielectric-sphere-example-with-freefem" title="Permalink to this headline">¶</a></h2>
+<h2>A dielectric sphere example with FreeFEM<a class="headerlink" href="#a-dielectric-sphere-example-with-freefem" title="Permalink to this headline"></a></h2>
 <p>We now compute the fundamental mode frequency for a fused silica sphere.
 The sphere is 36 micrometer in diameter, the refractive index is 1.46, the boundary condition is the magnetic wall (which can actually be omitted as it holds automatically).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">  1 </span><span class="c1">// Parameters</span>
@@ -2138,7 +2119,24 @@ The sphere is 36 micrometer in diameter, the refractive index is 1.46, the bound
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

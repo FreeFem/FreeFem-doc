@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1942,15 +1924,14 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="loops">
-<h1>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h1>
+<h1>Loops<a class="headerlink" href="#loops" title="Permalink to this headline"></a></h1>
 <p>See <a class="reference internal" href="../examples/developers.html#exampleloop"><span class="std std-ref">Loop example</span></a>.</p>
 <section id="for">
-<span id="loopfor"></span><h2>for<a class="headerlink" href="#for" title="Permalink to this headline">¶</a></h2>
+<span id="loopfor"></span><h2>for<a class="headerlink" href="#for" title="Permalink to this headline"></a></h2>
 <p>For loop.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="kr">N</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
 <span class="lineno">2 </span>    <span class="p">...</span>
@@ -1959,7 +1940,7 @@
 </div>
 </section>
 <section id="if">
-<span id="loopif"></span><h2>if<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h2>
+<span id="loopif"></span><h2>if<a class="headerlink" href="#if" title="Permalink to this headline"></a></h2>
 <p>If condition.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">if</span> <span class="p">(</span><span class="n">condition</span><span class="p">){</span>
 <span class="lineno">2 </span>    <span class="p">...</span>
@@ -1971,11 +1952,11 @@
 </div>
 </section>
 <section id="else">
-<h2>else<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h2>
+<h2>else<a class="headerlink" href="#else" title="Permalink to this headline"></a></h2>
 <p>See <a class="reference internal" href="#loopif"><span class="std std-ref">if</span></a>.</p>
 </section>
 <section id="while">
-<h2>while<a class="headerlink" href="#while" title="Permalink to this headline">¶</a></h2>
+<h2>while<a class="headerlink" href="#while" title="Permalink to this headline"></a></h2>
 <p>While loop.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">while</span> <span class="p">(</span><span class="n">condition</span><span class="p">){</span>
 <span class="lineno">2 </span>    <span class="p">...</span>
@@ -1984,7 +1965,7 @@
 </div>
 </section>
 <section id="continue">
-<h2>continue<a class="headerlink" href="#continue" title="Permalink to this headline">¶</a></h2>
+<h2>continue<a class="headerlink" href="#continue" title="Permalink to this headline"></a></h2>
 <p>Continue a loop.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="kr">N</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">){</span>
 <span class="lineno">2 </span>    <span class="p">...</span>
@@ -1995,7 +1976,7 @@
 </div>
 </section>
 <section id="break">
-<h2>break<a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h2>
+<h2>break<a class="headerlink" href="#break" title="Permalink to this headline"></a></h2>
 <p>Break a loop.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">while</span> <span class="p">(</span><span class="n">condition1</span><span class="p">){</span>
 <span class="lineno">2 </span>    <span class="p">...</span>
@@ -2006,7 +1987,7 @@
 </div>
 </section>
 <section id="try">
-<span id="looptry"></span><h2>try<a class="headerlink" href="#try" title="Permalink to this headline">¶</a></h2>
+<span id="looptry"></span><h2>try<a class="headerlink" href="#try" title="Permalink to this headline"></a></h2>
 <p>Try a part of code.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">try</span><span class="p">{</span>
 <span class="lineno">2 </span>    <span class="p">...</span>
@@ -2019,11 +2000,11 @@
 <p>See <a class="reference internal" href="../examples/developers.html#examplebasicerrorhandling"><span class="std std-ref">Basic error handling example</span></a> and <a class="reference internal" href="../examples/developers.html#exampleerrorhandling"><span class="std std-ref">Error handling example</span></a>.</p>
 </section>
 <section id="catch">
-<h2>catch<a class="headerlink" href="#catch" title="Permalink to this headline">¶</a></h2>
+<h2>catch<a class="headerlink" href="#catch" title="Permalink to this headline"></a></h2>
 <p>Catch an error, see <a class="reference internal" href="#looptry"><span class="std std-ref">try</span></a></p>
 </section>
 <section id="implicit-loop">
-<h2>Implicit loop<a class="headerlink" href="#implicit-loop" title="Permalink to this headline">¶</a></h2>
+<h2>Implicit loop<a class="headerlink" href="#implicit-loop" title="Permalink to this headline"></a></h2>
 <p>Array with one index:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">for</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="nl">ai</span> <span class="o">:</span> <span class="n">a</span><span class="p">]</span>
 </pre></div>
@@ -2077,7 +2058,24 @@
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

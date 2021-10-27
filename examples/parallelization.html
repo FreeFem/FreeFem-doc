@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1938,14 +1920,13 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="parallelization">
-<span id="exampleparallelization"></span><h1>Parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline">¶</a></h1>
+<span id="exampleparallelization"></span><h1>Parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline"></a></h1>
 <section id="mpi-gmres-2d">
-<span id="examplempigmres2d"></span><h2>MPI-GMRES 2D<a class="headerlink" href="#mpi-gmres-2d" title="Permalink to this headline">¶</a></h2>
+<span id="examplempigmres2d"></span><h2>MPI-GMRES 2D<a class="headerlink" href="#mpi-gmres-2d" title="Permalink to this headline"></a></h2>
 <p>To launch this script, use for example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>ff-mpirun -np <span class="m">12</span> MPIGMRES2D.edp -d <span class="m">1</span> -k <span class="m">1</span> -gmres <span class="m">2</span> -n <span class="m">50</span>
 </pre></div>
@@ -2411,19 +2392,19 @@
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/MPIGMRES2D.png"><img alt="../_images/MPIGMRES2D.png" src="../_images/MPIGMRES2D.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Results</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Results</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="mpi-gmres-3d">
-<span id="examplempigmres3d"></span><h2>MPI-GMRES 3D<a class="headerlink" href="#mpi-gmres-3d" title="Permalink to this headline">¶</a></h2>
+<span id="examplempigmres3d"></span><h2>MPI-GMRES 3D<a class="headerlink" href="#mpi-gmres-3d" title="Permalink to this headline"></a></h2>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p>todo</p>
 </div>
 </section>
 <section id="direct-solvers">
-<span id="exampledirectsolvers"></span><h2>Direct solvers<a class="headerlink" href="#direct-solvers" title="Permalink to this headline">¶</a></h2>
+<span id="exampledirectsolvers"></span><h2>Direct solvers<a class="headerlink" href="#direct-solvers" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;MUMPS_FreeFem&quot;</span>
 <span class="lineno"> 2 </span><span class="c1">//default solver: real-&gt; MUMPS, complex -&gt; MUMPS</span>
 <span class="lineno"> 3 </span><span class="cp">load</span> <span class="s">&quot;real_SuperLU_DIST_FreeFem&quot;</span>
@@ -2519,7 +2500,7 @@
 </div>
 </section>
 <section id="solver-mumps">
-<span id="examplesolvermumps"></span><h2>Solver MUMPS<a class="headerlink" href="#solver-mumps" title="Permalink to this headline">¶</a></h2>
+<span id="examplesolvermumps"></span><h2>Solver MUMPS<a class="headerlink" href="#solver-mumps" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">  1 </span><span class="cp">load</span> <span class="s">&quot;MUMPS_FreeFem&quot;</span>
 <span class="lineno">  2 </span>
 <span class="lineno">  3 </span><span class="c1">// Parameters</span>
@@ -2624,14 +2605,14 @@
 </div>
 </section>
 <section id="solver-superlu-dist">
-<span id="examplesolversuperludist"></span><h2>Solver superLU_DIST<a class="headerlink" href="#solver-superlu-dist" title="Permalink to this headline">¶</a></h2>
+<span id="examplesolversuperludist"></span><h2>Solver superLU_DIST<a class="headerlink" href="#solver-superlu-dist" title="Permalink to this headline"></a></h2>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <p>write code (SuperLU_DIST seems to have a bug)</p>
 </div>
 </section>
 <section id="solver-pastix">
-<span id="examplesolverpastix"></span><h2>Solver PaStiX<a class="headerlink" href="#solver-pastix" title="Permalink to this headline">¶</a></h2>
+<span id="examplesolverpastix"></span><h2>Solver PaStiX<a class="headerlink" href="#solver-pastix" title="Permalink to this headline"></a></h2>
 <div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
 <p>write code (PaStiX seems to have a bug)</p>
@@ -2675,7 +2656,24 @@
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

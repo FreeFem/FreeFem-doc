@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1952,14 +1934,13 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="plotting-in-matlab-and-octave">
-<span id="tutorialmatlaboctaveplot"></span><h1>Plotting in Matlab and Octave<a class="headerlink" href="#plotting-in-matlab-and-octave" title="Permalink to this headline">¶</a></h1>
+<span id="tutorialmatlaboctaveplot"></span><h1>Plotting in Matlab and Octave<a class="headerlink" href="#plotting-in-matlab-and-octave" title="Permalink to this headline"></a></h1>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
 <p>In order to create a plot of a <strong>FreeFEM</strong> simulation in <a class="reference external" href="https://www.mathworks.com/">Matlab©</a> or <a class="reference external" href="https://www.gnu.org/software/octave/">Octave</a> two steps are necessary:</p>
 <ul class="simple">
 <li><p>The mesh, the finite element space connectivity and the simulation data must be exported into files</p></li>
@@ -1972,7 +1953,7 @@
 </div>
 </section>
 <section id="d-problem">
-<h2>2D Problem<a class="headerlink" href="#d-problem" title="Permalink to this headline">¶</a></h2>
+<h2>2D Problem<a class="headerlink" href="#d-problem" title="Permalink to this headline"></a></h2>
 <p>Consider a stripline capacitor problem which is also shown in <a class="reference internal" href="#figmatlabboundaryplot"><span class="std std-numref">Fig. 52</span></a>. On the two boundaries (the electrodes) <span class="math notranslate nohighlight">\(C_{A}\)</span>, <span class="math notranslate nohighlight">\(C_{K}\)</span> a Dirichlet condition and on the enclosure <span class="math notranslate nohighlight">\(C_{B}\)</span> a Neumann condition is set. The electrostatic potential <span class="math notranslate nohighlight">\(u\)</span> between the two electrodes is given by the Laplace equation</p>
 <div class="math notranslate nohighlight">
 \[\Delta u(x,y) = 0\]</div>
@@ -2025,7 +2006,7 @@
 </div>
 </section>
 <section id="exporting-data">
-<h2>Exporting Data<a class="headerlink" href="#exporting-data" title="Permalink to this headline">¶</a></h2>
+<h2>Exporting Data<a class="headerlink" href="#exporting-data" title="Permalink to this headline"></a></h2>
 <p>The mesh is stored with the <strong>FreeFEM</strong> command <a class="reference internal" href="../documentation/mesh-generation.html#meshdatastructurereadwrite"><span class="std std-ref">savemesh()</span></a>, while the connectivity of the finite element space and the simulation data are stored with the macro commands <code class="docutils literal notranslate"><span class="pre">ffSaveVh()</span></code> and <code class="docutils literal notranslate"><span class="pre">ffSaveData()</span></code>. These two commands are located in the <code class="docutils literal notranslate"><span class="pre">ffmatlib.idp</span></code> file which is included in the <code class="docutils literal notranslate"><span class="pre">ffmatlib</span></code>. Therefore, to export the stripline capacitor data the following statement sequence must be added to the <strong>FreeFEM</strong> code:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">include</span> <span class="s">&quot;ffmatlib.idp&quot;</span>
 <span class="lineno"> 2 </span>
@@ -2041,7 +2022,7 @@
 </div>
 </section>
 <section id="importing-data">
-<h2>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h2>
+<h2>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline"></a></h2>
 <p>The mesh file can be loaded into the Matlab / Octave workspace using the <code class="docutils literal notranslate"><span class="pre">ffreadmesh()</span></code> command. A mesh file consists of <a class="reference internal" href="../documentation/mesh-generation.html#meshdatastructurereadwrite"><span class="std std-ref">three main sections</span></a>:</p>
 <ol class="arabic simple">
 <li><p>The mesh points as nodal coordinates</p></li>
@@ -2063,7 +2044,7 @@
 </div>
 </section>
 <section id="d-plot-examples">
-<h2>2D Plot Examples<a class="headerlink" href="#d-plot-examples" title="Permalink to this headline">¶</a></h2>
+<h2>2D Plot Examples<a class="headerlink" href="#d-plot-examples" title="Permalink to this headline"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">ffpdeplot()</span></code> is a plot solution for creating patch, contour, quiver, mesh, border, and region plots of 2D geometries. The basic syntax is:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="p">[</span><span class="n">handles</span><span class="p">,</span><span class="n">varargout</span><span class="p">]</span> <span class="p">=</span> <span class="n">ffpdeplot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">varargin</span><span class="p">)</span>
 </pre></div>
@@ -2079,7 +2060,7 @@ A table showing all options can be found in the <a class="reference external" hr
 <figure class="align-default" id="figmatlabboundaryplot">
 <a class="reference internal image-reference" href="../_images/capacitor_boundary_mesh_500x400.png"><img alt="../_images/capacitor_boundary_mesh_500x400.png" src="../_images/capacitor_boundary_mesh_500x400.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Boundary and Mesh</span><a class="headerlink" href="#figmatlabboundaryplot" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Boundary and Mesh</span><a class="headerlink" href="#figmatlabboundaryplot" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -2092,7 +2073,7 @@ A table showing all options can be found in the <a class="reference external" hr
 <figure class="align-default" id="figmatlabpatchplot">
 <a class="reference internal image-reference" href="../_images/capacitor_patch_500x400.png"><img alt="../_images/capacitor_patch_500x400.png" src="../_images/capacitor_patch_500x400.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Patch Plot with Mesh</span><a class="headerlink" href="#figmatlabpatchplot" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Patch Plot with Mesh</span><a class="headerlink" href="#figmatlabpatchplot" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -2108,7 +2089,7 @@ A table showing all options can be found in the <a class="reference external" hr
 <figure class="align-default" id="figmatlabsurf">
 <a class="reference internal image-reference" href="../_images/capacitor_surf_500x400.png"><img alt="../_images/capacitor_surf_500x400.png" src="../_images/capacitor_surf_500x400.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 54 </span><span class="caption-text">3D Surf Plot</span><a class="headerlink" href="#figmatlabsurf" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">3D Surf Plot</span><a class="headerlink" href="#figmatlabsurf" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -2123,7 +2104,7 @@ A table showing all options can be found in the <a class="reference external" hr
 <figure class="align-default" id="figmatlabcontour">
 <a class="reference internal image-reference" href="../_images/capacitor_contour_quiver_500x400.png"><img alt="../_images/capacitor_contour_quiver_500x400.png" src="../_images/capacitor_contour_quiver_500x400.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Contour and Quiver Plot</span><a class="headerlink" href="#figmatlabcontour" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Contour and Quiver Plot</span><a class="headerlink" href="#figmatlabcontour" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><strong>Download run through example:</strong></p>
@@ -2131,12 +2112,12 @@ A table showing all options can be found in the <a class="reference external" hr
 <p><a class="reference download internal" download="" href="../_downloads/e337dafe6d32061c160c1a5aac9157c5/matlab_octave_2d_examples.edp"><code class="xref download docutils literal notranslate"><span class="pre">FreeFEM</span> <span class="pre">script</span></code></a></p>
 </section>
 <section id="id1">
-<h2>3D Plot Examples<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>3D Plot Examples<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <p>3D problems are handled by the <code class="docutils literal notranslate"><span class="pre">ffpdeplot3D()</span></code> command, which works similarly to the <code class="docutils literal notranslate"><span class="pre">ffpdeplot()</span></code> command. In particular in three-dimensions cross sections of the solution can be created. The following example shows a cross-sectional problem of a three-dimensional parallel plate capacitor.</p>
 <figure class="align-default" id="figmatlabslice">
 <a class="reference internal image-reference" href="../_images/capacitor3d_slice_500x400.png"><img alt="../_images/capacitor3d_slice_500x400.png" src="../_images/capacitor3d_slice_500x400.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Slice on a 3D Parallel Plate Capacitor</span><a class="headerlink" href="#figmatlabslice" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Slice on a 3D Parallel Plate Capacitor</span><a class="headerlink" href="#figmatlabslice" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><strong>Download run through example:</strong></p>
@@ -2144,7 +2125,7 @@ A table showing all options can be found in the <a class="reference external" hr
 <p><a class="reference download internal" download="" href="../_downloads/df1eac994ce5c82db1bd09d087723570/matlab_octave_3d_examples.edp"><code class="xref download docutils literal notranslate"><span class="pre">FreeFEM</span> <span class="pre">script</span></code></a></p>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.gnu.org/software/octave/">Octave</a></p></li>
 <li><p><a class="reference external" href="https://www.mathworks.com/">Matlab</a></p></li>
@@ -2190,7 +2171,24 @@ A table showing all options can be found in the <a class="reference external" hr
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

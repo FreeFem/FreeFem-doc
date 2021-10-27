@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1941,23 +1923,22 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="types">
-<span id="referencetypes"></span><h1>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h1>
+<span id="referencetypes"></span><h1>Types<a class="headerlink" href="#types" title="Permalink to this headline"></a></h1>
 <section id="standard-types">
-<h2>Standard types<a class="headerlink" href="#standard-types" title="Permalink to this headline">¶</a></h2>
+<h2>Standard types<a class="headerlink" href="#standard-types" title="Permalink to this headline"></a></h2>
 <section id="int">
-<h3>int<a class="headerlink" href="#int" title="Permalink to this headline">¶</a></h3>
+<h3>int<a class="headerlink" href="#int" title="Permalink to this headline"></a></h3>
 <p>Integer value (equivalent to <code class="code cpp docutils literal notranslate"><span class="pre">long</span></code> in <code class="docutils literal notranslate"><span class="pre">C++</span></code>).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="bool">
-<h3>bool<a class="headerlink" href="#bool" title="Permalink to this headline">¶</a></h3>
+<h3>bool<a class="headerlink" href="#bool" title="Permalink to this headline"></a></h3>
 <p>Boolean value.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">bool</span> <span class="n">b</span> <span class="o">=</span> <span class="kr">true</span><span class="p">;</span>
 </pre></div>
@@ -1969,14 +1950,14 @@
 </div>
 </section>
 <section id="real">
-<h3>real<a class="headerlink" href="#real" title="Permalink to this headline">¶</a></h3>
+<h3>real<a class="headerlink" href="#real" title="Permalink to this headline"></a></h3>
 <p>Real value (equivalent to <code class="code cpp docutils literal notranslate"><span class="pre">double</span></code> in <code class="docutils literal notranslate"><span class="pre">C++</span></code>).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">r</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="complex">
-<h3>complex<a class="headerlink" href="#complex" title="Permalink to this headline">¶</a></h3>
+<h3>complex<a class="headerlink" href="#complex" title="Permalink to this headline"></a></h3>
 <p>Complex value (equivalent to two <code class="code cpp docutils literal notranslate"><span class="pre">double</span></code> or <code class="code cpp docutils literal notranslate"><span class="pre">complex&lt;double&gt;</span></code> in <code class="docutils literal notranslate"><span class="pre">C++</span></code>).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">complex</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">0.</span> <span class="o">+</span> <span class="mi">1</span><span class="n">i</span><span class="p">;</span>
 </pre></div>
@@ -2006,7 +1987,7 @@ a/b <span class="o">=</span> <span class="o">(</span><span class="m">0</span>.23
 </div>
 </section>
 <section id="string">
-<h3>string<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h3>
+<h3>string<a class="headerlink" href="#string" title="Permalink to this headline"></a></h3>
 <p>String value.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">string</span> <span class="n">s</span> <span class="o">=</span> <span class="s">&quot;this is a string&quot;</span><span class="p">;</span>
 </pre></div>
@@ -2033,9 +2014,9 @@ a/b <span class="o">=</span> <span class="o">(</span><span class="m">0</span>.23
 </section>
 </section>
 <section id="mesh-design">
-<h2>Mesh design<a class="headerlink" href="#mesh-design" title="Permalink to this headline">¶</a></h2>
+<h2>Mesh design<a class="headerlink" href="#mesh-design" title="Permalink to this headline"></a></h2>
 <section id="border">
-<h3>border<a class="headerlink" href="#border" title="Permalink to this headline">¶</a></h3>
+<h3>border<a class="headerlink" href="#border" title="Permalink to this headline"></a></h3>
 <p>Border type.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">border</span> <span class="nf">b</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="nf">cos</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="kr">pi</span><span class="o">*</span><span class="kp">t</span><span class="p">);</span> <span class="kr">y</span><span class="o">=</span><span class="nf">sin</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="kr">pi</span><span class="o">*</span><span class="kp">t</span><span class="p">);}</span>
 </pre></div>
@@ -2067,14 +2048,14 @@ a/b <span class="o">=</span> <span class="o">(</span><span class="m">0</span>.23
 </div>
 </section>
 <section id="mesh">
-<h3>mesh<a class="headerlink" href="#mesh" title="Permalink to this headline">¶</a></h3>
+<h3>mesh<a class="headerlink" href="#mesh" title="Permalink to this headline"></a></h3>
 <p>2D Mesh type (see <a class="reference internal" href="../documentation/mesh-generation.html#meshgeneration"><span class="std std-ref">Mesh Generation</span></a>).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">mesh</span> <span class="n">Th</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="mesh3">
-<h3>mesh3<a class="headerlink" href="#mesh3" title="Permalink to this headline">¶</a></h3>
+<h3>mesh3<a class="headerlink" href="#mesh3" title="Permalink to this headline"></a></h3>
 <p>3D mesh type (see <a class="reference internal" href="../documentation/mesh-generation.html#meshgeneration"><span class="std std-ref">Mesh Generation</span></a>).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">mesh3</span> <span class="n">Th</span><span class="p">;</span>
 </pre></div>
@@ -2082,9 +2063,9 @@ a/b <span class="o">=</span> <span class="o">(</span><span class="m">0</span>.23
 </section>
 </section>
 <section id="finite-element-space-design">
-<h2>Finite element space design<a class="headerlink" href="#finite-element-space-design" title="Permalink to this headline">¶</a></h2>
+<h2>Finite element space design<a class="headerlink" href="#finite-element-space-design" title="Permalink to this headline"></a></h2>
 <section id="fespace">
-<h3>fespace<a class="headerlink" href="#fespace" title="Permalink to this headline">¶</a></h3>
+<h3>fespace<a class="headerlink" href="#fespace" title="Permalink to this headline"></a></h3>
 <p>Finite element space type (see <a class="reference internal" href="../documentation/finite-element.html#finiteelement"><span class="std std-ref">Finite Element</span></a>).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Uh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P1</span><span class="p">);</span>
 <span class="lineno">2 </span><span class="kt">fespace</span> <span class="nf">UPh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="p">[</span><span class="nc">P2</span><span class="p">,</span> <span class="nc">P2</span><span class="p">,</span> <span class="nc">P1</span><span class="p">]);</span>
@@ -2174,9 +2155,9 @@ a/b <span class="o">=</span> <span class="o">(</span><span class="m">0</span>.23
 </section>
 </section>
 <section id="macro-design">
-<span id="typemacrodesign"></span><h2>Macro design<a class="headerlink" href="#macro-design" title="Permalink to this headline">¶</a></h2>
+<span id="typemacrodesign"></span><h2>Macro design<a class="headerlink" href="#macro-design" title="Permalink to this headline"></a></h2>
 <section id="macro">
-<h3>macro<a class="headerlink" href="#macro" title="Permalink to this headline">¶</a></h3>
+<h3>macro<a class="headerlink" href="#macro" title="Permalink to this headline"></a></h3>
 <p>Macro type.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">macro</span> <span class="n">vU</span><span class="p">()</span> <span class="p">[</span><span class="n">Ux</span><span class="p">,</span> <span class="n">Uy</span><span class="p">]</span> <span class="c1">//</span>
 <span class="lineno">2 </span><span class="kt">macro</span> <span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="p">[</span><span class="nf">dx</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">)]</span> <span class="c1">//</span>
@@ -2195,7 +2176,7 @@ a/b <span class="o">=</span> <span class="o">(</span><span class="m">0</span>.23
 <p>See <a class="reference internal" href="../examples/developers.html#examplemacro"><span class="std std-ref">Macro example</span></a></p>
 </section>
 <section id="newmacro-endmacro">
-<h3>NewMacro / EndMacro<a class="headerlink" href="#newmacro-endmacro" title="Permalink to this headline">¶</a></h3>
+<h3>NewMacro / EndMacro<a class="headerlink" href="#newmacro-endmacro" title="Permalink to this headline"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>In developement - Not tested</p>
@@ -2206,7 +2187,7 @@ a/b <span class="o">=</span> <span class="o">(</span><span class="m">0</span>.23
 </div>
 </section>
 <section id="ifmacro">
-<h3>IFMACRO<a class="headerlink" href="#ifmacro" title="Permalink to this headline">¶</a></h3>
+<h3>IFMACRO<a class="headerlink" href="#ifmacro" title="Permalink to this headline"></a></h3>
 <p>Check if a macro exists and check its value.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">IFMACRO</span><span class="p">(</span><span class="n">AA</span><span class="p">)</span> <span class="c1">//check if macro AA exists</span>
 <span class="lineno">2 </span><span class="p">...</span>
@@ -2219,13 +2200,13 @@ a/b <span class="o">=</span> <span class="o">(</span><span class="m">0</span>.23
 </div>
 </section>
 <section id="endifmacro">
-<h3>ENDIFMACRO<a class="headerlink" href="#endifmacro" title="Permalink to this headline">¶</a></h3>
+<h3>ENDIFMACRO<a class="headerlink" href="#endifmacro" title="Permalink to this headline"></a></h3>
 </section>
 </section>
 <section id="functions-design">
-<h2>Functions design<a class="headerlink" href="#functions-design" title="Permalink to this headline">¶</a></h2>
+<h2>Functions design<a class="headerlink" href="#functions-design" title="Permalink to this headline"></a></h2>
 <section id="func">
-<h3>func<a class="headerlink" href="#func" title="Permalink to this headline">¶</a></h3>
+<h3>func<a class="headerlink" href="#func" title="Permalink to this headline"></a></h3>
 <p>Function type.</p>
 <p>Function without parameters (<span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> are implicitly considered):</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">func</span> <span class="n">f</span> <span class="o">=</span> <span class="kr">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="kr">y</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span>
@@ -2243,7 +2224,7 @@ a/b <span class="o">=</span> <span class="o">(</span><span class="m">0</span>.23
 </div>
 </section>
 <section id="elementary-functions">
-<span id="typeelementaryfunctions"></span><h3>Elementary functions<a class="headerlink" href="#elementary-functions" title="Permalink to this headline">¶</a></h3>
+<span id="typeelementaryfunctions"></span><h3>Elementary functions<a class="headerlink" href="#elementary-functions" title="Permalink to this headline"></a></h3>
 <p>Class of basic functions (polynomials, exponential, logarithmic, trigonometric, circular) and the functions obtained from those by the four arithmetic operations</p>
 <div class="math notranslate nohighlight">
 \[f(x) + g(x),\, f(x) - g(x),\, f(x)g(x),\, f(x)/g(x)\]</div>
@@ -2253,7 +2234,7 @@ The derivative of an elementary function is also an elementary function; however
 <p>See <a class="reference internal" href="../examples/developers.html#exampleelementaryfunction"><span class="std std-ref">Elementary function example</span></a> for a complete example.</p>
 </section>
 <section id="random-functions">
-<h3>Random functions<a class="headerlink" href="#random-functions" title="Permalink to this headline">¶</a></h3>
+<h3>Random functions<a class="headerlink" href="#random-functions" title="Permalink to this headline"></a></h3>
 <p><strong>FreeFEM</strong> includes the <a class="reference external" href="http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html">Mersenne Twister</a> random number generator.
 It is a very fast and accurate random number generator of period <span class="math notranslate nohighlight">\(2^{219937}-1\)</span>.</p>
 <p>See <a class="reference internal" href="functions.html#referencerandint32"><span class="std std-ref">randint32()</span></a>, <a class="reference internal" href="functions.html#referencerandint31"><span class="std std-ref">randint31()</span></a>, <a class="reference internal" href="functions.html#referencerandreal1"><span class="std std-ref">randreal1()</span></a>, <a class="reference internal" href="functions.html#referencerandreal2"><span class="std std-ref">randreal2()</span></a>, <a class="reference internal" href="functions.html#referencerandreal3"><span class="std std-ref">randreal3()</span></a>, <a class="reference internal" href="functions.html#referencerandres53"><span class="std std-ref">randres53()</span></a>, <a class="reference internal" href="functions.html#referencerandinit"><span class="std std-ref">randinit(seed)</span></a>.</p>
@@ -2266,7 +2247,7 @@ The range is <span class="math notranslate nohighlight">\(0 -- 2^{31}-1\)</span>
 <p><code class="code freefem docutils literal notranslate"><span class="pre">gsl</span></code> plugin equally allows usage of all random functions of the <code class="docutils literal notranslate"><span class="pre">gsllib</span></code>, see <a class="reference internal" href="external-libraries.html#referenceffgslawk"><span class="std std-ref">gsl external library</span></a>.</p>
 </section>
 <section id="fe-functions">
-<h3>FE-functions<a class="headerlink" href="#fe-functions" title="Permalink to this headline">¶</a></h3>
+<h3>FE-functions<a class="headerlink" href="#fe-functions" title="Permalink to this headline"></a></h3>
 <p>Finite element functions are also constructed like elementary functions by an arithmetic formula involving elementary functions.</p>
 <p>The difference is that they are evaluated at declaration time and <strong>FreeFEM</strong> stores the array of its values at the places associated with he degree of freedom of the finite element type.
 By opposition, elementary functions are evaluated only when needed.
@@ -2288,9 +2269,9 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 </section>
 </section>
 <section id="problem-design">
-<span id="typeproblemdesign"></span><h2>Problem design<a class="headerlink" href="#problem-design" title="Permalink to this headline">¶</a></h2>
+<span id="typeproblemdesign"></span><h2>Problem design<a class="headerlink" href="#problem-design" title="Permalink to this headline"></a></h2>
 <section id="problem">
-<span id="typeproblem"></span><h3>problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h3>
+<span id="typeproblem"></span><h3>problem<a class="headerlink" href="#problem" title="Permalink to this headline"></a></h3>
 <p>Problem type.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">problem</span> <span class="n">Laplacian</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">uh</span><span class="p">)</span> <span class="o">=</span> <span class="p">...</span>
 </pre></div>
@@ -2383,13 +2364,13 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 <p>Usage of <code class="code freefem docutils literal notranslate"><span class="pre">problem</span></code> is detailled in the <a class="reference internal" href="../tutorials/index.html#tutorial"><span class="std std-ref">tutorials</span></a>.</p>
 </section>
 <section id="solve">
-<span id="typesolve"></span><h3>solve<a class="headerlink" href="#solve" title="Permalink to this headline">¶</a></h3>
+<span id="typesolve"></span><h3>solve<a class="headerlink" href="#solve" title="Permalink to this headline"></a></h3>
 <p>Solve type.</p>
 <p>Identical to <a class="reference internal" href="#typeproblem"><span class="std std-ref">problem</span></a> but automatically solved.</p>
 <p>Usage of <code class="code freefem docutils literal notranslate"><span class="pre">solve</span></code> is detailled in the <a class="reference internal" href="../tutorials/index.html#tutorial"><span class="std std-ref">tutorials</span></a>.</p>
 </section>
 <section id="varf">
-<span id="typevarf"></span><h3>varf<a class="headerlink" href="#varf" title="Permalink to this headline">¶</a></h3>
+<span id="typevarf"></span><h3>varf<a class="headerlink" href="#varf" title="Permalink to this headline"></a></h3>
 <p>Variational form type.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">varf</span> <span class="n">vLaplacian</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">uh</span><span class="p">)</span> <span class="o">=</span> <span class="p">...</span>
 </pre></div>
@@ -2400,7 +2381,7 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 </section>
 </section>
 <section id="array">
-<h2>Array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h2>
+<h2>Array<a class="headerlink" href="#array" title="Permalink to this headline"></a></h2>
 <p>An array stores multiple objects, and there are 2 kinds of arrays:</p>
 <ul class="simple">
 <li><p>the first is similar to vector, i.e. array with integer indices</p></li>
@@ -2433,7 +2414,7 @@ Here the array values are random.</p>
 </div>
 <p>See the <a class="reference internal" href="../examples/developers.html#examplearray"><span class="std std-ref">Array example</span></a> for a complete example.</p>
 <section id="array-index">
-<h3>Array index<a class="headerlink" href="#array-index" title="Permalink to this headline">¶</a></h3>
+<h3>Array index<a class="headerlink" href="#array-index" title="Permalink to this headline"></a></h3>
 <p>Array index can be int or string:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">Ai</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
 <span class="lineno">2 </span><span class="kt">real</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span> <span class="n">As</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
@@ -2441,21 +2422,21 @@ Here the array values are random.</p>
 </div>
 </section>
 <section id="array-size">
-<h3>Array size<a class="headerlink" href="#array-size" title="Permalink to this headline">¶</a></h3>
+<h3>Array size<a class="headerlink" href="#array-size" title="Permalink to this headline"></a></h3>
 <p>The size of an array is obtained using the keyword <code class="docutils literal notranslate"><span class="pre">n</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">ArraySize</span> <span class="o">=</span> <span class="n">Ai</span><span class="p">.</span><span class="kr">n</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="array-sort">
-<h3>Array sort<a class="headerlink" href="#array-sort" title="Permalink to this headline">¶</a></h3>
+<h3>Array sort<a class="headerlink" href="#array-sort" title="Permalink to this headline"></a></h3>
 <p>To sort an array:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">Ai</span><span class="p">.</span><span class="nf">sort</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="double-array">
-<h3>Double array<a class="headerlink" href="#double-array" title="Permalink to this headline">¶</a></h3>
+<h3>Double array<a class="headerlink" href="#double-array" title="Permalink to this headline"></a></h3>
 <p>A double array (matrix) can be defined using two indexes:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="n">Aii</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]];</span>
 </pre></div>
@@ -2488,7 +2469,7 @@ Here the array values are random.</p>
 </div>
 </section>
 <section id="array-of-fe-functions">
-<h3>Array of FE functions<a class="headerlink" href="#array-of-fe-functions" title="Permalink to this headline">¶</a></h3>
+<h3>Array of FE functions<a class="headerlink" href="#array-of-fe-functions" title="Permalink to this headline"></a></h3>
 <p>It is also possible to make an array of FE functions, with the same syntax, and we can treat them as vector valued function if we need them.</p>
 <p>The syntax for space or vector finite function is</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">int</span> <span class="kr">n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">//size of the array.</span>
@@ -2550,7 +2531,7 @@ Here the array values are random.</p>
 </div>
 </section>
 <section id="map-arrays">
-<h3>Map arrays<a class="headerlink" href="#map-arrays" title="Permalink to this headline">¶</a></h3>
+<h3>Map arrays<a class="headerlink" href="#map-arrays" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span> <span class="n">map</span><span class="p">;</span> <span class="c1">//a dynamic array</span>
 <span class="lineno">2 </span>
 <span class="lineno">3 </span><span class="n">map</span><span class="p">[</span><span class="s">&quot;1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">;</span>
@@ -2564,7 +2545,7 @@ Here the array values are random.</p>
 </section>
 </section>
 <section id="matrix">
-<span id="typematrix"></span><h2>matrix<a class="headerlink" href="#matrix" title="Permalink to this headline">¶</a></h2>
+<span id="typematrix"></span><h2>matrix<a class="headerlink" href="#matrix" title="Permalink to this headline"></a></h2>
 <p>Defines a sparse matrix.</p>
 <p>Matrices can be defined like vectors:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">matrix</span> <span class="kp">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
@@ -2679,7 +2660,7 @@ Here the array values are random.</p>
 <p>To modify the <code class="code freefem docutils literal notranslate"><span class="pre">solver</span></code>, the stop test,… after the matrix construction, use the <a class="reference internal" href="functions.html#functionset"><span class="std std-ref">set keyword</span></a>.</p>
 </div>
 <section id="matrix-size">
-<h3>Matrix size<a class="headerlink" href="#matrix-size" title="Permalink to this headline">¶</a></h3>
+<h3>Matrix size<a class="headerlink" href="#matrix-size" title="Permalink to this headline"></a></h3>
 <p>The size of a matrix is obtain using:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">NRows</span> <span class="o">=</span> <span class="kp">A</span><span class="p">.</span><span class="kr">n</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kt">int</span> <span class="n">NColumns</span> <span class="o">=</span> <span class="kp">A</span><span class="p">.</span><span class="kr">m</span><span class="p">;</span>
@@ -2687,7 +2668,7 @@ Here the array values are random.</p>
 </div>
 </section>
 <section id="matrix-resize">
-<h3>Matrix resize<a class="headerlink" href="#matrix-resize" title="Permalink to this headline">¶</a></h3>
+<h3>Matrix resize<a class="headerlink" href="#matrix-resize" title="Permalink to this headline"></a></h3>
 <p>To resize a matrix, use:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kp">A</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="kr">n</span><span class="p">,</span> <span class="kr">m</span><span class="p">);</span>
 </pre></div>
@@ -2698,14 +2679,14 @@ Here the array values are random.</p>
 </div>
 </section>
 <section id="matrix-diagonal">
-<h3>Matrix diagonal<a class="headerlink" href="#matrix-diagonal" title="Permalink to this headline">¶</a></h3>
+<h3>Matrix diagonal<a class="headerlink" href="#matrix-diagonal" title="Permalink to this headline"></a></h3>
 <p>The diagonal of the matrix is obtained using:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">Aii</span> <span class="o">=</span> <span class="kp">A</span><span class="p">.</span><span class="kr">diag</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="matrix-renumbering">
-<h3>Matrix renumbering<a class="headerlink" href="#matrix-renumbering" title="Permalink to this headline">¶</a></h3>
+<h3>Matrix renumbering<a class="headerlink" href="#matrix-renumbering" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">I</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span> <span class="n">J</span><span class="p">(</span><span class="mi">15</span><span class="p">);</span>
 <span class="lineno">2 </span><span class="kt">matrix</span> <span class="kp">B</span> <span class="o">=</span> <span class="kp">A</span><span class="p">;</span>
 <span class="lineno">3 </span><span class="kp">B</span> <span class="o">=</span> <span class="kp">A</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">J</span><span class="p">);</span>
@@ -2714,7 +2695,7 @@ Here the array values are random.</p>
 </div>
 </section>
 <section id="complex-matrix">
-<h3>Complex matrix<a class="headerlink" href="#complex-matrix" title="Permalink to this headline">¶</a></h3>
+<h3>Complex matrix<a class="headerlink" href="#complex-matrix" title="Permalink to this headline"></a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">.im</span></code> and <code class="docutils literal notranslate"><span class="pre">.re</span></code> to get the imaginary and real part of a complex matrix, respectively:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">matrix</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">C</span> <span class="o">=</span> <span class="p">...</span>
 <span class="lineno">2 </span><span class="kt">matrix</span> <span class="n">R</span> <span class="o">=</span> <span class="n">C</span><span class="p">.</span><span class="kr">re</span><span class="p">;</span>
@@ -2723,7 +2704,7 @@ Here the array values are random.</p>
 </div>
 </section>
 <section id="dot-product-outer-product">
-<h3>Dot product / Outer product<a class="headerlink" href="#dot-product-outer-product" title="Permalink to this headline">¶</a></h3>
+<h3>Dot product / Outer product<a class="headerlink" href="#dot-product-outer-product" title="Permalink to this headline"></a></h3>
 <p>The dot product of two matrices is realized using:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="nf">d</span> <span class="o">=</span> <span class="kp">A</span><span class="o">&#39;</span> <span class="o">*</span> <span class="kp">B</span><span class="p">;</span>
 </pre></div>
@@ -2735,7 +2716,7 @@ Here the array values are random.</p>
 <p>See <a class="reference internal" href="../examples/developers.html#examplematrixoperations"><span class="std std-ref">Matrix operations example</span></a> for a complete example.</p>
 </section>
 <section id="matrix-inversion">
-<h3>Matrix inversion<a class="headerlink" href="#matrix-inversion" title="Permalink to this headline">¶</a></h3>
+<h3>Matrix inversion<a class="headerlink" href="#matrix-inversion" title="Permalink to this headline"></a></h3>
 <p>See <a class="reference internal" href="../examples/developers.html#examplematrixinversion"><span class="std std-ref">Matrix inversion example</span></a>.</p>
 </section>
 </section>
@@ -2828,7 +2809,24 @@ Here the array values are random.</p>
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

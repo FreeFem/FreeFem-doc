@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1947,12 +1929,11 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="thermal-conduction">
-<span id="thermalconduction"></span><h1>Thermal Conduction<a class="headerlink" href="#thermal-conduction" title="Permalink to this headline">¶</a></h1>
+<span id="thermalconduction"></span><h1>Thermal Conduction<a class="headerlink" href="#thermal-conduction" title="Permalink to this headline"></a></h1>
 <p><strong>Summary :</strong>
 <em>Here we shall learn how to deal with a time dependent parabolic problem.
 We shall also show how to treat an axisymmetric problem and show also how to deal with a nonlinear problem</em></p>
@@ -2036,18 +2017,18 @@ Should a one dimensional plot be required (you can use gnuplot tools), the same 
 <figure class="align-default" id="id1">
 <span id="figthermalt"></span><a class="reference internal image-reference" href="../_images/thermic.png"><img alt="Thermic" src="../_images/thermic.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Temperature at <span class="math notranslate nohighlight">\(t=4.9\)</span>.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Temperature at <span class="math notranslate nohighlight">\(t=4.9\)</span>.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <span id="figthermalcurve"></span><a class="reference internal image-reference" href="../_images/thermicvst.png"><img alt="ThermicVST" src="../_images/thermicvst.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Decay of temperature versus time at <span class="math notranslate nohighlight">\(x=3, y=0.5\)</span></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Decay of temperature versus time at <span class="math notranslate nohighlight">\(x=3, y=0.5\)</span></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Thermal conduction</span></p>
 </div><section id="axisymmetry-3d-rod-with-circular-section">
-<span id="ThermalConduction"></span><h2>Axisymmetry: 3D Rod with circular section<a class="headerlink" href="#axisymmetry-3d-rod-with-circular-section" title="Permalink to this headline">¶</a></h2>
+<span id="ThermalConduction"></span><h2>Axisymmetry: 3D Rod with circular section<a class="headerlink" href="#axisymmetry-3d-rod-with-circular-section" title="Permalink to this headline"></a></h2>
 <p>Let us now deal with a cylindrical rod instead of a flat plate.
 For simplicity we take <span class="math notranslate nohighlight">\(\kappa=1\)</span>.</p>
 <p>In cylindrical coordinates, the Laplace operator becomes (<span class="math notranslate nohighlight">\(r\)</span> is the distance to the axis, <span class="math notranslate nohighlight">\(z\)</span> is the distance along the axis, <span class="math notranslate nohighlight">\(\theta\)</span> polar angle in a fixed plane perpendicular to the axis):</p>
@@ -2089,7 +2070,7 @@ Still one can prove existence and uniqueness for <span class="math notranslate n
 </div>
 </section>
 <section id="a-nonlinear-problem-radiation">
-<h2>A Nonlinear Problem : Radiation<a class="headerlink" href="#a-nonlinear-problem-radiation" title="Permalink to this headline">¶</a></h2>
+<h2>A Nonlinear Problem : Radiation<a class="headerlink" href="#a-nonlinear-problem-radiation" title="Permalink to this headline"></a></h2>
 <p>Heat loss through radiation is a loss proportional to the absolute temperature to the fourth power (Stefan’s Law).
 This adds to the loss by convection and gives the following boundary condition:</p>
 <div class="math notranslate nohighlight">
@@ -2174,7 +2155,24 @@ where <span class="math notranslate nohighlight">\(m\)</span> denotes the iterat
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

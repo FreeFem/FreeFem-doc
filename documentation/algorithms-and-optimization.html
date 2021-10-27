@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1942,18 +1924,17 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="algorithms-optimization">
-<h1>Algorithms &amp; Optimization<a class="headerlink" href="#algorithms-optimization" title="Permalink to this headline">¶</a></h1>
+<h1>Algorithms &amp; Optimization<a class="headerlink" href="#algorithms-optimization" title="Permalink to this headline"></a></h1>
 <section id="conjugate-gradient-gmres">
-<h2>Conjugate Gradient/GMRES<a class="headerlink" href="#conjugate-gradient-gmres" title="Permalink to this headline">¶</a></h2>
+<h2>Conjugate Gradient/GMRES<a class="headerlink" href="#conjugate-gradient-gmres" title="Permalink to this headline"></a></h2>
 <p>Suppose we want to solve the Euler problem (here <span class="math notranslate nohighlight">\(x\)</span> has nothing to do with the reserved variable for the first coordinate in <strong>FreeFEM</strong>):</p>
 <p>find <span class="math notranslate nohighlight">\(x\in \mathbb{R}^n\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-eqndj">
-<span class="eqno">(24)<a class="headerlink" href="#equation-eqndj" title="Permalink to this equation">¶</a></span>\[\nabla J(x) = \left(\frac{\partial J}{\partial x_i} (\mathbf{x})\right) = 0\]</div>
+<span class="eqno">(24)<a class="headerlink" href="#equation-eqndj" title="Permalink to this equation"></a></span>\[\nabla J(x) = \left(\frac{\partial J}{\partial x_i} (\mathbf{x})\right) = 0\]</div>
 <p>where <span class="math notranslate nohighlight">\(J\)</span> is a function (to minimize for example) from <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>.</p>
 <p>If the function is convex we can use the conjugate gradient algorithm to solve the problem, and we just need the function (named <code class="code freefem docutils literal notranslate"><span class="pre">dJ</span></code> for example) which computes <span class="math notranslate nohighlight">\(\nabla J\)</span>, so the parameters are the name of that function with prototype <code class="code freefem docutils literal notranslate"><span class="pre">func</span> <span class="pre">real[int]</span> <span class="pre">dJ(real[int]</span> <span class="pre">&amp;xx);</span></code> which computes <span class="math notranslate nohighlight">\(\nabla J\)</span>, and a vector <code class="code freefem docutils literal notranslate"><span class="pre">x</span></code> of type (of course the number 20 can be changed) <code class="code freefem docutils literal notranslate"><span class="pre">real[int]</span> <span class="pre">x(20);</span></code> to initialize the process and get the result.</p>
 <p>Given an initial value <span class="math notranslate nohighlight">\(\mathbf{x}^{(0)}\)</span>, a maximum number <span class="math notranslate nohighlight">\(i_{\max}\)</span> of iterations, and an error tolerance <span class="math notranslate nohighlight">\(0&lt;\epsilon&lt;1\)</span>:</p>
@@ -2095,13 +2076,13 @@ In this case, we can use the function <code class="code freefem docutils literal
 <p>For the details of these algorithms, refer to <a class="reference internal" href="../bibliography.html#pironneau1998" id="id1"><span>[PIRONNEAU1998]</span></a>, Chapter IV, 1.3.</p>
 </section>
 <section id="algorithms-for-unconstrained-optimization">
-<h2>Algorithms for Unconstrained Optimization<a class="headerlink" href="#algorithms-for-unconstrained-optimization" title="Permalink to this headline">¶</a></h2>
+<h2>Algorithms for Unconstrained Optimization<a class="headerlink" href="#algorithms-for-unconstrained-optimization" title="Permalink to this headline"></a></h2>
 <p>Two algorithms of COOOL package are interfaced with the Newton Raphson method (called <code class="code freefem docutils literal notranslate"><span class="pre">Newton</span></code>) and the <code class="code freefem docutils literal notranslate"><span class="pre">BFGS</span></code> method.
 These two are directly available in <strong>FreeFEM</strong> (no dynamical link to load).
 Be careful with these algorithms, because their implementation uses full matrices.
 We also provide several optimization algorithms from the <a class="reference external" href="https://nlopt.readthedocs.io/en/latest/">NLopt library</a> as well as an interface for Hansen’s implementation of CMAES (a MPI version of this one is also available).</p>
 <section id="example-of-usage-for-bfgs-or-cmaes">
-<h3>Example of usage for BFGS or CMAES<a class="headerlink" href="#example-of-usage-for-bfgs-or-cmaes" title="Permalink to this headline">¶</a></h3>
+<h3>Example of usage for BFGS or CMAES<a class="headerlink" href="#example-of-usage-for-bfgs-or-cmaes" title="Permalink to this headline"></a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>BFGS</p>
@@ -2173,7 +2154,7 @@ Note that the parameters passed to the CMAES function in the <strong>FreeFEM</st
 </section>
 </section>
 <section id="ipopt">
-<h2>IPOPT<a class="headerlink" href="#ipopt" title="Permalink to this headline">¶</a></h2>
+<h2>IPOPT<a class="headerlink" href="#ipopt" title="Permalink to this headline"></a></h2>
 <p>The <code class="code freefem docutils literal notranslate"><span class="pre">ff-Ipopt</span></code> package is an interface for the <a class="reference external" href="https://projects.coin-or.org/Ipopt">IPOPT</a> <a class="reference internal" href="../bibliography.html#wachter2006" id="id2"><span>[WÄCHTER2006]</span></a> optimizer.
 IPOPT is a software library for large scale, non-linear, constrained optimization.
 It implements a primal-dual interior point method along with filter method based line searches.</p>
@@ -2181,7 +2162,7 @@ It implements a primal-dual interior point method along with filter method based
 If your version of <strong>FreeFEM</strong> has been compiled with the <code class="code freefem docutils literal notranslate"><span class="pre">--enable-downlad</span></code> tag, it will automatically be linked with a sequential version of MUMPS.
 An alternative to MUMPS would be to download the HSL subroutines (see <a class="reference external" href="https://projects.coin-or.org/Ipopt/wiki/JavaInterface">Compiling and Installing the Java Interface JIPOPT</a>) and place them in the <code class="code freefem docutils literal notranslate"><span class="pre">/ipopt/Ipopt-3.10.2/ThirdParty/HSL</span></code> directory of the <strong>FreeFEM</strong> downloads folder before compiling.</p>
 <section id="short-description-of-the-algorithm">
-<h3>Short description of the algorithm<a class="headerlink" href="#short-description-of-the-algorithm" title="Permalink to this headline">¶</a></h3>
+<h3>Short description of the algorithm<a class="headerlink" href="#short-description-of-the-algorithm" title="Permalink to this headline"></a></h3>
 <p>In this section, we give a very brief glimpse at the underlying mathematics of IPOPT.
 For a deeper introduction on interior methods for nonlinear smooth optimization, one may consult <a class="reference internal" href="../bibliography.html#forsgren2002" id="id3"><span>[FORSGREN2002]</span></a>, or <a class="reference internal" href="../bibliography.html#wachter2006" id="id4"><span>[WÄCHTER2006]</span></a> for more IPOPT specific elements.
 IPOPT is designed to perform optimization for both equality and inequality constrained problems.
@@ -2190,13 +2171,13 @@ Each nonlinear inequality is transformed into a pair of simple bound inequalitie
 Thus, for convenience, we will assume that the minimization problem does not contain any nonlinear inequality constraint.
 It means that, given a function <span class="math notranslate nohighlight">\(f:\mathbb{R}^{n}\mapsto\mathbb{R}\)</span>, we want to find:</p>
 <div class="math notranslate nohighlight" id="equation-minimproblem">
-<span class="eqno">(25)<a class="headerlink" href="#equation-minimproblem" title="Permalink to this equation">¶</a></span>\[\begin{split}x_{0} = \underset{x\in V}{\operatorname{argmin}} f(x) \\
+<span class="eqno">(25)<a class="headerlink" href="#equation-minimproblem" title="Permalink to this equation"></a></span>\[\begin{split}x_{0} = \underset{x\in V}{\operatorname{argmin}} f(x) \\
 \mathrm{with}\ V = \left\lbrace x\in\mathbb{R}^{n}\ \vert\ c(x)= 0 \ \text{and}\ x_{l}\leq x\leq x_{u}\right\rbrace\end{split}\]</div>
 <p>Where <span class="math notranslate nohighlight">\(c:\mathbb{R}^{n}\rightarrow\mathbb{R}^{m}\)</span> and <span class="math notranslate nohighlight">\(x_{l},x_{u}\in\mathbb{R}^{n}\)</span> and inequalities hold componentwise.
 The <span class="math notranslate nohighlight">\(f\)</span> function as well as the constraints <span class="math notranslate nohighlight">\(c\)</span> should be twice-continuously differentiable.</p>
 <p>As a barrier method, interior points algorithms try to find a Karush-Kuhn-Tucker point for <a class="reference internal" href="#equation-minimproblem">(25)</a> by solving a sequence of problems, unconstrained with respect to the inequality constraints, of the form:</p>
 <div class="math notranslate nohighlight" id="equation-barrier">
-<span class="eqno">(26)<a class="headerlink" href="#equation-barrier" title="Permalink to this equation">¶</a></span>\[\mathrm{for\ a\ given\ }\mu &gt; 0,\ \mathrm{find}\ x_{\mu} = \underset{x\in\mathbb{R}^{n}\ \vert\ c(x)=0}{\operatorname{argmin}}\ B(x,\mu)\]</div>
+<span class="eqno">(26)<a class="headerlink" href="#equation-barrier" title="Permalink to this equation"></a></span>\[\mathrm{for\ a\ given\ }\mu &gt; 0,\ \mathrm{find}\ x_{\mu} = \underset{x\in\mathbb{R}^{n}\ \vert\ c(x)=0}{\operatorname{argmin}}\ B(x,\mu)\]</div>
 <p>Where <span class="math notranslate nohighlight">\(\mu\)</span> is a positive real number and</p>
 <div class="math notranslate nohighlight">
 \[B(x,\mu) = f(x) - \displaystyle{\mu\sum_{i=1}^{n} \ln (x_{u,i}-x_{i})} - \displaystyle{\mu\sum_{i=1}^{m} \ln(x_{i}-x_{l,i})}\]</div>
@@ -2204,14 +2185,14 @@ The <span class="math notranslate nohighlight">\(f\)</span> function as well as 
 If the sequence of barrier parameters <span class="math notranslate nohighlight">\(\mu\)</span> converge to 0, intuition suggests that the sequence of minimizers of <a class="reference internal" href="#equation-barrier">(26)</a> converge to a local constrained minimizer of <a class="reference internal" href="#equation-minimproblem">(25)</a>.
 For a given <span class="math notranslate nohighlight">\(\mu\)</span>, <a class="reference internal" href="#equation-barrier">(26)</a> is solved by finding <span class="math notranslate nohighlight">\((x_{\mu},\lambda_{\mu})\in\mathbb{R}^{n}\times\mathbb{R}^{m}\)</span> such that:</p>
 <div class="math notranslate nohighlight" id="equation-muproblem">
-<span class="eqno">(27)<a class="headerlink" href="#equation-muproblem" title="Permalink to this equation">¶</a></span>\[\begin{split}\nabla B(x_{\mu},\mu) + \displaystyle{\sum_{i=1}^{m}\lambda_{\mu,i}\nabla c_{i}(x_{\mu})}= \nabla B(x_{\mu},\mu) + J_{c}(x_{\mu})^{T}\lambda_{\mu}&amp;= 0\\
+<span class="eqno">(27)<a class="headerlink" href="#equation-muproblem" title="Permalink to this equation"></a></span>\[\begin{split}\nabla B(x_{\mu},\mu) + \displaystyle{\sum_{i=1}^{m}\lambda_{\mu,i}\nabla c_{i}(x_{\mu})}= \nabla B(x_{\mu},\mu) + J_{c}(x_{\mu})^{T}\lambda_{\mu}&amp;= 0\\
 c(x_{\mu}) &amp;= 0\end{split}\]</div>
 <p>The derivations for <span class="math notranslate nohighlight">\(\nabla B\)</span> only holds for the <span class="math notranslate nohighlight">\(x\)</span> variables, so that:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\nabla B(x,\mu) = \nabla f(x) + \left(\begin{matrix}\mu/(x_{u,1}-x_{1}) \\ \vdots \\ \mu/(x_{u,n}-x_{n})\end{matrix}\right) - \left(\begin{matrix}\mu/(x_{1}-x_{l,1}) \\ \vdots \\ \mu/(x_{n}-x_{l,n})\end{matrix}\right)\end{split}\]</div>
 <p>If we respectively call <span class="math notranslate nohighlight">\(z_{u}(x,\mu) = \left(\mu/(x_{u,1}-x_{1}),\dots, \mu/(x_{u,n}-x_{n})\right)\)</span> and <span class="math notranslate nohighlight">\(z_{l}(x,\mu)\)</span> the other vector appearing in the above equation, then the optimum <span class="math notranslate nohighlight">\((x_{\mu},\lambda_{\mu})\)</span> satisfies:</p>
 <div class="math notranslate nohighlight" id="equation-muproblemlambda">
-<span class="eqno">(28)<a class="headerlink" href="#equation-muproblemlambda" title="Permalink to this equation">¶</a></span>\[\nabla f(x_{\mu}) + J_{c}(x_{\mu})^{T}\lambda_{\mu}+ z_{u}(x_{\mu},\mu) - z_{l}(x_{\mu},\mu) = 0 \quad \text{and} \quad c(x_{\mu}) = 0\]</div>
+<span class="eqno">(28)<a class="headerlink" href="#equation-muproblemlambda" title="Permalink to this equation"></a></span>\[\nabla f(x_{\mu}) + J_{c}(x_{\mu})^{T}\lambda_{\mu}+ z_{u}(x_{\mu},\mu) - z_{l}(x_{\mu},\mu) = 0 \quad \text{and} \quad c(x_{\mu}) = 0\]</div>
 <p>In this equation, the <span class="math notranslate nohighlight">\(z_l\)</span> and <span class="math notranslate nohighlight">\(z_u\)</span> vectors seem to play the role of Lagrange multipliers for the simple bound inequalities, and indeed, when <span class="math notranslate nohighlight">\(\mu\rightarrow 0\)</span>, they converge toward some suitable Lagrange multipliers for the KKT conditions, provided some technical assumptions are fulfilled (see <a class="reference internal" href="../bibliography.html#forsgren2002" id="id5"><span>[FORSGREN2002]</span></a>).</p>
 <p>Equation <a class="reference internal" href="#equation-muproblemlambda">(28)</a> is solved by performing a Newton method in order to find a solution of <a class="reference internal" href="#equation-muproblem">(27)</a> for each of the decreasing values of <span class="math notranslate nohighlight">\(\mu\)</span>.
 Some order 2 conditions are also taken into account to avoid convergence to local maximizers, see <a class="reference internal" href="../bibliography.html#forsgren2002" id="id6"><span>[FORSGREN2002]</span></a> for details about them.
@@ -2219,7 +2200,7 @@ In the most classic IP algorithms, the Newton method is directly applied to <a c
 This is in most case inefficient due to frequent computation of infeasible points.
 These difficulties are avoided in Primal-Dual interior point methods where <a class="reference internal" href="#equation-muproblem">(27)</a> is transformed into an extended system where <span class="math notranslate nohighlight">\(z_u\)</span> and <span class="math notranslate nohighlight">\(z_l\)</span> are treated as unknowns and the barrier problems are finding <span class="math notranslate nohighlight">\((x,\lambda,z_u,z_l)\in\mathbb{R}^n\times\mathbb{R}^m\times\mathbb{R}^n\times\mathbb{R}^n\)</span> such that:</p>
 <div class="math notranslate nohighlight" id="equation-primaldualipbarrierproblem">
-<span class="eqno">(29)<a class="headerlink" href="#equation-primaldualipbarrierproblem" title="Permalink to this equation">¶</a></span>\[\begin{split}\left\lbrace
+<span class="eqno">(29)<a class="headerlink" href="#equation-primaldualipbarrierproblem" title="Permalink to this equation"></a></span>\[\begin{split}\left\lbrace
 \begin{array}{rcl}
    \nabla f(x) + J_{c}(x)^{T}\lambda+ z_{u} - z_{l} &amp; = &amp; 0 \\
    c(x) &amp; = &amp; 0 \\
@@ -2238,7 +2219,7 @@ Due to the underlying Newton method, the optimization process requires expressio
 For problems whose Hessian matrices are difficult to compute or lead to high dimensional dense matrices, it is possible to use a BFGS approximation of these objects at the cost of a much slower convergence rate.</p>
 </section>
 <section id="ipopt-in-freefem">
-<h3>IPOPT in <strong>FreeFEM</strong><a class="headerlink" href="#ipopt-in-freefem" title="Permalink to this headline">¶</a></h3>
+<h3>IPOPT in <strong>FreeFEM</strong><a class="headerlink" href="#ipopt-in-freefem" title="Permalink to this headline"></a></h3>
 <p>Calling the IPOPT optimizer in a <strong>FreeFEM</strong> script is done with the <code class="code freefem docutils literal notranslate"><span class="pre">IPOPT</span></code> function included in the <code class="code freefem docutils literal notranslate"><span class="pre">ff-Ipopt</span></code> dynamic library.
 IPOPT is designed to solve constrained minimization problems in the form:</p>
 <div class="math notranslate nohighlight">
@@ -2493,7 +2474,7 @@ But on the other hand, it can be useful when trying to catch a precise local min
 </section>
 </section>
 <section id="some-short-examples-using-ipopt">
-<h2>Some short examples using IPOPT<a class="headerlink" href="#some-short-examples-using-ipopt" title="Permalink to this headline">¶</a></h2>
+<h2>Some short examples using IPOPT<a class="headerlink" href="#some-short-examples-using-ipopt" title="Permalink to this headline"></a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Ipopt variational inequality
@@ -2648,22 +2629,22 @@ We define the space:</p>
 <figure class="align-default" id="id10">
 <span id="figalgovarineqfill"></span><a class="reference internal image-reference" href="../_images/VarIneqFill.jpg"><img alt="VarIneqFill" src="../_images/VarIneqFill.jpg" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 121 </span><span class="caption-text">Numerical Approximation of the Variational Inequality</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 121 </span><span class="caption-text">Numerical Approximation of the Variational Inequality</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id11">
 <span id="figalgovarineqiso"></span><a class="reference internal image-reference" href="../_images/VarIneqIso.jpg"><img alt="../_images/VarIneqIso.jpg" src="../_images/VarIneqIso.jpg" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 122 </span><span class="caption-text">Numerical Approximation of the Variational Inequality</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 122 </span><span class="caption-text">Numerical Approximation of the Variational Inequality</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Variational inequality</span></p>
 </div></div>
 </section>
 <section id="d-constrained-minimum-surface-with-ipopt">
-<span id="VariationalInequality"></span><h2>3D constrained minimum surface with IPOPT<a class="headerlink" href="#d-constrained-minimum-surface-with-ipopt" title="Permalink to this headline">¶</a></h2>
+<span id="VariationalInequality"></span><h2>3D constrained minimum surface with IPOPT<a class="headerlink" href="#d-constrained-minimum-surface-with-ipopt" title="Permalink to this headline"></a></h2>
 <section id="area-and-volume-expressions">
-<h3>Area and volume expressions<a class="headerlink" href="#area-and-volume-expressions" title="Permalink to this headline">¶</a></h3>
+<h3>Area and volume expressions<a class="headerlink" href="#area-and-volume-expressions" title="Permalink to this headline"></a></h3>
 <p>This example is aimed at numerically solving some constrained minimum surface problems with the IPOPT algorithm.
 We restrain to <span class="math notranslate nohighlight">\(C^{k}\)</span> (<span class="math notranslate nohighlight">\(k\geq 1\)</span>), closed, spherically parametrizable surfaces, i.e. surfaces <span class="math notranslate nohighlight">\(S\)</span> such that:</p>
 <div class="math notranslate nohighlight">
@@ -2685,7 +2666,7 @@ In order to exclude self crossing and opened shapes, the following assumptions u
 \[\rho \geq 0\ \ \mathrm{and}\ \ \forall \phi, \rho(0,\phi) = \rho(2\pi,\phi)\]</div>
 <p>For a given function <span class="math notranslate nohighlight">\(\rho\)</span> the first fundamental form (the metric) of the defined surface has the following matrix representation:</p>
 <div class="math notranslate nohighlight" id="equation-msfff">
-<span class="eqno">(30)<a class="headerlink" href="#equation-msfff" title="Permalink to this equation">¶</a></span>\[\begin{split}G =
+<span class="eqno">(30)<a class="headerlink" href="#equation-msfff" title="Permalink to this equation"></a></span>\[\begin{split}G =
 \left(
 \begin{array}{c c}
     \rho^{2}\sin^{2}(\phi) + (\partial_{\theta}\rho)^{2} &amp;\partial_{\theta}\rho\partial_{\phi}\rho \\
@@ -2695,18 +2676,18 @@ In order to exclude self crossing and opened shapes, the following assumptions u
 <p>This metric is used to express the area of the surface.
 Let <span class="math notranslate nohighlight">\(g=\det(G)\)</span>, then we have:</p>
 <div class="math notranslate nohighlight" id="equation-msarea">
-<span class="eqno">(31)<a class="headerlink" href="#equation-msarea" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{ll}
+<span class="eqno">(31)<a class="headerlink" href="#equation-msarea" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{ll}
     \mathcal{A}(\rho) &amp;= \int{\Omega}{\left\| \partial_{\theta} X \wedge \partial_{\phi} X \right\|} =\int{\Omega}{\sqrt{g}}\\
         &amp;=\int{\Omega}{\sqrt{ \rho^{2}(\partial_{\theta}\rho)^{2} + \rho^{4}\sin^{2}(\phi) + \rho^{2}(\partial_{\phi}\rho)^{2}\sin^{2}(\phi)}d\theta d\phi}
 \end{array}\end{split}\]</div>
 <p>The volume of the space enclosed within the shape is easier to express:</p>
 <div class="math notranslate nohighlight" id="equation-msvolume">
-<span class="eqno">(32)<a class="headerlink" href="#equation-msvolume" title="Permalink to this equation">¶</a></span>\[\mathcal{V}(\rho)
+<span class="eqno">(32)<a class="headerlink" href="#equation-msvolume" title="Permalink to this equation"></a></span>\[\mathcal{V}(\rho)
 = \int{\Omega}{\int_{0}^{\rho(\theta,\phi)} r^{2}\sin(\phi) dr d\theta d\phi}
 = \frac{1}{3}\int{\Omega}{\rho^{3} \sin(\phi) d\theta d\phi}\]</div>
 </section>
 <section id="derivatives">
-<h3>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this headline">¶</a></h3>
+<h3>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this headline"></a></h3>
 <p>In order to use a Newton based interior point optimization algorithm, one must be able to evaluate the derivatives of <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> with respect to <span class="math notranslate nohighlight">\(rho\)</span>.
 Concerning the area, we have the following result:</p>
 <div class="math notranslate nohighlight">
@@ -2715,7 +2696,7 @@ Concerning the area, we have the following result:</p>
 <p>Where <span class="math notranslate nohighlight">\(\bar{g}\)</span> is the application mapping the <span class="math notranslate nohighlight">\((\theta,\phi) \mapsto g(\theta,\phi)\)</span> scalar field to <span class="math notranslate nohighlight">\(\rho\)</span>.
 This leads to the following expression, easy to transpose in a freefem script using:</p>
 <div class="math notranslate nohighlight" id="equation-msdarea">
-<span class="eqno">(33)<a class="headerlink" href="#equation-msdarea" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{r c l}
+<span class="eqno">(33)<a class="headerlink" href="#equation-msdarea" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{r c l}
     \forall v\in C^{1}(\Omega)&amp; &amp;\\
     \langle d\mathcal{A}(\rho),v\rangle &amp;=&amp; \int{\Omega}{ \left(2\rho^{3}\sin^{2}(\phi) + \rho(\partial_{\theta}\rho)^{2} + \rho(\partial_{\phi}\rho)^{2}\sin^{2}(\phi) \right) v} \\
     &amp; &amp; +\int{\Omega}{\ \rho^{2}\partial_{\theta}\rho\partial_{\theta} v\ + \ \rho^{2}\partial_{\phi}\rho\sin^{2}(\phi)\partial_{\phi} v }
@@ -2723,7 +2704,7 @@ This leads to the following expression, easy to transpose in a freefem script us
 <p>With a similar approach, one can derive an expression for second order derivatives.
 However, comporting no specific difficulties, the detailed calculus are tedious, the result is that these derivatives can be written using a <span class="math notranslate nohighlight">\(3\times 3\)</span> matrix <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> whose coefficients are expressed in term of <span class="math notranslate nohighlight">\(\rho\)</span> and its derivatives with respect to <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span>, such that:</p>
 <div class="math notranslate nohighlight" id="equation-msd2area">
-<span class="eqno">(34)<a class="headerlink" href="#equation-msd2area" title="Permalink to this equation">¶</a></span>\[\begin{split}\forall (w,v)\in C^{1}(\Omega)\ ,\ d^{2}\mathcal{A}(\rho)(w,v) = \int{\Omega}
+<span class="eqno">(34)<a class="headerlink" href="#equation-msd2area" title="Permalink to this equation"></a></span>\[\begin{split}\forall (w,v)\in C^{1}(\Omega)\ ,\ d^{2}\mathcal{A}(\rho)(w,v) = \int{\Omega}
 {
    \left(\begin{array}{c c c} w &amp; \partial_{\theta} w &amp; \partial_{\phi} w \end{array}\right)
    \mathbf{B}
@@ -2731,13 +2712,13 @@ However, comporting no specific difficulties, the detailed calculus are tedious,
 <p>Deriving the volume function derivatives is again an easier task.
 We immediately get the following expressions:</p>
 <div class="math notranslate nohighlight" id="equation-msdvolume">
-<span class="eqno">(35)<a class="headerlink" href="#equation-msdvolume" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{r c l}
+<span class="eqno">(35)<a class="headerlink" href="#equation-msdvolume" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{r c l}
    \forall v\ ,\ \langle d\mathcal{V}(\rho),v\rangle &amp; = &amp; \int{\Omega}{\rho^{2}\sin(\phi)v\ d\theta d\phi} \\
    \forall w,v\ , d^{2}\mathcal{V}(\rho)(w,v) &amp; = &amp; \int{\Omega}{2\rho\sin(\phi)wv\ d\theta d\phi}
 \end{array}\end{split}\]</div>
 </section>
 <section id="the-problem-and-its-script">
-<h3>The problem and its script<a class="headerlink" href="#the-problem-and-its-script" title="Permalink to this headline">¶</a></h3>
+<h3>The problem and its script<a class="headerlink" href="#the-problem-and-its-script" title="Permalink to this headline"></a></h3>
 <p>The whole code is available in <a class="reference internal" href="../examples/algorithms-and-optimizations.html#exampleipoptminimalsurfacevolume"><span class="std std-ref">IPOPT minimal surface &amp; volume example</span></a>.
 We propose to solve the following problem:</p>
 <div class="admonition tip">
@@ -3006,7 +2987,7 @@ We return to the enclosed object when <span class="math notranslate nohighlight"
 </section>
 </section>
 <section id="the-nlopt-optimizers">
-<h2>The nlOpt optimizers<a class="headerlink" href="#the-nlopt-optimizers" title="Permalink to this headline">¶</a></h2>
+<h2>The nlOpt optimizers<a class="headerlink" href="#the-nlopt-optimizers" title="Permalink to this headline"></a></h2>
 <p>The <code class="code freefem docutils literal notranslate"><span class="pre">ff-NLopt</span></code> package provides a <strong>FreeFEM</strong> interface to the free/open-source library for nonlinear optimization, easing the use of several different free optimization (constrained or not) routines available online along with the PDE solver.
 All the algorithms are well documented in <a class="reference external" href="https://nlopt.readthedocs.io/en/latest/">NLopt documentation</a>, therefore no exhaustive information concerning their mathematical specificities will be found here and we will focus on the way they are used in a <strong>FreeFEM</strong> script.
 If needing detailed information about these algorithms, visit the website where a description of each of them is given, as well as many bibliographical links.</p>
@@ -3096,7 +3077,7 @@ More details can be found in <a class="reference external" href="https://nlopt.r
 \[V = \left\lbrace (v_{1},v_{2})\in H^{1}(\Omega)^{2} ; v_{1}\vert_{\partial\Omega}=g_{1}, v_{2}\vert_{\partial\Omega}=g_{2}, v_{1}\leq v_{2}\ \mathrm{a.e.}\ \right\rbrace\]</div>
 <p>as well as the function <span class="math notranslate nohighlight">\(J:H^{1}(\Omega)^{2}\longrightarrow \mathbb{R}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-varineqex">
-<span class="eqno">(36)<a class="headerlink" href="#equation-varineqex" title="Permalink to this equation">¶</a></span>\[J(v_{1},v_{2}) = \displaystyle{\frac{1}{2}\int_{\Omega}\vert\nabla v_{1}\vert^{2} - \int_{\Omega} f_{1}v_{1} + \frac{1}{2}\int_{\Omega}\vert\nabla v_{2}\vert^{2} - \int_{\Omega} f_{2}v_{2}}\]</div>
+<span class="eqno">(36)<a class="headerlink" href="#equation-varineqex" title="Permalink to this equation"></a></span>\[J(v_{1},v_{2}) = \displaystyle{\frac{1}{2}\int_{\Omega}\vert\nabla v_{1}\vert^{2} - \int_{\Omega} f_{1}v_{1} + \frac{1}{2}\int_{\Omega}\vert\nabla v_{2}\vert^{2} - \int_{\Omega} f_{2}v_{2}}\]</div>
 <p>The problem consists in finding (numerically) two functions <span class="math notranslate nohighlight">\((u_{1},u_{2}) = \underset{(v_{1},v_{2})\in V}{\operatorname{argmin}} J(v_{1},v_{2})\)</span>.</p>
 <p>This can be interpreted as finding <span class="math notranslate nohighlight">\(u_{1}, u_{2}\)</span> as close as possible (in a certain sense) to the solutions of the Laplace equation with respectively <span class="math notranslate nohighlight">\(f_{1}, f_{2}\)</span> second members and <span class="math notranslate nohighlight">\(g_{1}, g_{2}\)</span> Dirichlet boundary conditions with the <span class="math notranslate nohighlight">\(u_{1}\leq u_{2}\)</span> almost everywhere constraint.</p>
 <p>Here is the corresponding script to treat this variational inequality problem with one of the NLOpt algorithms.</p>
@@ -3264,7 +3245,7 @@ More details can be found in <a class="reference external" href="https://nlopt.r
 </div>
 </section>
 <section id="optimization-with-mpi">
-<h2>Optimization with MPI<a class="headerlink" href="#optimization-with-mpi" title="Permalink to this headline">¶</a></h2>
+<h2>Optimization with MPI<a class="headerlink" href="#optimization-with-mpi" title="Permalink to this headline"></a></h2>
 <p>The only quick way to use the previously presented algorithms on a parallel architecture lies in parallelizing the used cost function (which is in most real life cases, the expensive part of the algorithm).
 Somehow, we provide a parallel version of the CMA-ES algorithm.
 The parallelization principle is the trivial one of evolving/genetic algorithms: at each iteration the cost function has to be evaluated <span class="math notranslate nohighlight">\(N\)</span> times without any dependence at all, these <span class="math notranslate nohighlight">\(N\)</span> calculus are then equally distributed to each process.
@@ -3330,7 +3311,24 @@ The user can specify his own MPI communicator with the named parameter <code cla
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

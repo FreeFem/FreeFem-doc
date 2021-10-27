@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1964,14 +1946,13 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="global-variables">
-<span id="globalvariables"></span><h1>Global variables<a class="headerlink" href="#global-variables" title="Permalink to this headline">¶</a></h1>
+<span id="globalvariables"></span><h1>Global variables<a class="headerlink" href="#global-variables" title="Permalink to this headline"></a></h1>
 <section id="area">
-<h2>area<a class="headerlink" href="#area" title="Permalink to this headline">¶</a></h2>
+<h2>area<a class="headerlink" href="#area" title="Permalink to this headline"></a></h2>
 <p>Area of the current triangle.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Vh0</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P0</span><span class="p">);</span>
 <span class="lineno">2 </span><span class="n">Vh0</span> <span class="kp">A</span> <span class="o">=</span> <span class="kr">area</span><span class="p">;</span>
@@ -1979,7 +1960,7 @@
 </div>
 </section>
 <section id="argv">
-<h2>ARGV<a class="headerlink" href="#argv" title="Permalink to this headline">¶</a></h2>
+<h2>ARGV<a class="headerlink" href="#argv" title="Permalink to this headline"></a></h2>
 <p>Array that contains all the command line arguments.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="kr">ARGV</span><span class="p">.</span><span class="kr">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="lineno">2 </span>    <span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="kr">ARGV</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="kr">endl</span><span class="p">;</span>
@@ -1988,14 +1969,14 @@
 <p>See <a class="reference internal" href="../examples/developers.html#examplecommandlinearguments"><span class="std std-ref">Command line arguments example</span></a> for a complete example.</p>
 </section>
 <section id="boundaryedge">
-<h2>BoundaryEdge<a class="headerlink" href="#boundaryedge" title="Permalink to this headline">¶</a></h2>
+<h2>BoundaryEdge<a class="headerlink" href="#boundaryedge" title="Permalink to this headline"></a></h2>
 <p>Return 1 if the current edge is on a boundary, 0 otherwise.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="kp">B</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">BoundaryEdge</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 <section id="cg">
-<h2>CG<a class="headerlink" href="#cg" title="Permalink to this headline">¶</a></h2>
+<h2>CG<a class="headerlink" href="#cg" title="Permalink to this headline"></a></h2>
 <p>Conjugate gradient solver.</p>
 <p>Usable in <a class="reference internal" href="types.html#typeproblem"><span class="std std-ref">problem</span></a> and <a class="reference internal" href="types.html#typesolve"><span class="std std-ref">solve</span></a> definition</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">problem</span> <span class="n">Laplacian</span> <span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="kp">solver</span><span class="o">=</span><span class="kr">CG</span><span class="p">)</span> <span class="o">=</span> <span class="p">...</span>
@@ -2011,33 +1992,33 @@
 </div>
 </section>
 <section id="cholesky">
-<h2>Cholesky<a class="headerlink" href="#cholesky" title="Permalink to this headline">¶</a></h2>
+<h2>Cholesky<a class="headerlink" href="#cholesky" title="Permalink to this headline"></a></h2>
 <p>Cholesky solver.</p>
 </section>
 <section id="crout">
-<h2>Crout<a class="headerlink" href="#crout" title="Permalink to this headline">¶</a></h2>
+<h2>Crout<a class="headerlink" href="#crout" title="Permalink to this headline"></a></h2>
 <p>Crout solver.</p>
 </section>
 <section id="edgeorientation">
-<h2>edgeOrientation<a class="headerlink" href="#edgeorientation" title="Permalink to this headline">¶</a></h2>
+<h2>edgeOrientation<a class="headerlink" href="#edgeorientation" title="Permalink to this headline"></a></h2>
 <p>Sign of <span class="math notranslate nohighlight">\(i-j\)</span> if the current edge is <span class="math notranslate nohighlight">\([q_i, q_j]\)</span>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">S</span> <span class="o">=</span> <span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="mi">1</span><span class="p">)(</span><span class="kr">edgeOrientation</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 <section id="false">
-<h2>false<a class="headerlink" href="#false" title="Permalink to this headline">¶</a></h2>
+<h2>false<a class="headerlink" href="#false" title="Permalink to this headline"></a></h2>
 <p>False boolean value.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">bool</span> <span class="n">b</span> <span class="o">=</span> <span class="kr">false</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="gmres">
-<span id="globalvariablesgmres"></span><h2>GMRES<a class="headerlink" href="#gmres" title="Permalink to this headline">¶</a></h2>
+<span id="globalvariablesgmres"></span><h2>GMRES<a class="headerlink" href="#gmres" title="Permalink to this headline"></a></h2>
 <p>GMRES solver (Generalized minimal residual method).</p>
 </section>
 <section id="htriangle">
-<h2>hTriangle<a class="headerlink" href="#htriangle" title="Permalink to this headline">¶</a></h2>
+<h2>hTriangle<a class="headerlink" href="#htriangle" title="Permalink to this headline"></a></h2>
 <p>Size of the current triangle.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P0</span><span class="p">);</span>
 <span class="lineno">2 </span><span class="n">Vh</span> <span class="n">h</span> <span class="o">=</span> <span class="kr">hTriangle</span><span class="p">;</span>
@@ -2045,28 +2026,28 @@
 </div>
 </section>
 <section id="include">
-<h2>include<a class="headerlink" href="#include" title="Permalink to this headline">¶</a></h2>
+<h2>include<a class="headerlink" href="#include" title="Permalink to this headline"></a></h2>
 <p>Include an <a class="reference internal" href="external-libraries.html#externallibraries"><span class="std std-ref">external library</span></a>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">include</span> <span class="s">&quot;iovtk&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="internaledge">
-<h2>InternalEdge<a class="headerlink" href="#internaledge" title="Permalink to this headline">¶</a></h2>
+<h2>InternalEdge<a class="headerlink" href="#internaledge" title="Permalink to this headline"></a></h2>
 <p>Return 0 if the current edge is on a boundary, 1 otherwise.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">I</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">InternalEdge</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 <section id="label">
-<h2>label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
+<h2>label<a class="headerlink" href="#label" title="Permalink to this headline"></a></h2>
 <p>Label number of a boundary if the current point is on a boundary, 0 otherwise.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">L</span> <span class="o">=</span> <span class="n">Th</span><span class="p">(</span><span class="n">xB</span><span class="p">,</span> <span class="n">yB</span><span class="p">).</span><span class="kr">label</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="lenedge">
-<h2>lenEdge<a class="headerlink" href="#lenedge" title="Permalink to this headline">¶</a></h2>
+<h2>lenEdge<a class="headerlink" href="#lenedge" title="Permalink to this headline"></a></h2>
 <p>Length of the current edge.</p>
 <p>For an edge <span class="math notranslate nohighlight">\([q_i, g_j]\)</span>, return <span class="math notranslate nohighlight">\(|q_i-q_j|\)</span>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">L</span> <span class="o">=</span> <span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="mi">1</span><span class="p">)(</span><span class="kr">lenEdge</span><span class="p">);</span>
@@ -2074,18 +2055,18 @@
 </div>
 </section>
 <section id="load">
-<h2>load<a class="headerlink" href="#load" title="Permalink to this headline">¶</a></h2>
+<h2>load<a class="headerlink" href="#load" title="Permalink to this headline"></a></h2>
 <p>Load a script.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;Element_P3&quot;</span>
 </pre></div>
 </div>
 </section>
 <section id="lu">
-<h2>LU<a class="headerlink" href="#lu" title="Permalink to this headline">¶</a></h2>
+<h2>LU<a class="headerlink" href="#lu" title="Permalink to this headline"></a></h2>
 <p>LU solver.</p>
 </section>
 <section id="n">
-<h2>N<a class="headerlink" href="#n" title="Permalink to this headline">¶</a></h2>
+<h2>N<a class="headerlink" href="#n" title="Permalink to this headline"></a></h2>
 <p>Outward unit normal at the current point if it is on a curve defined by a border.
 <code class="code freefem docutils literal notranslate"><span class="pre">N.x,</span> <span class="pre">N.y,</span> <span class="pre">N.z</span></code> are respectively the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> components of the normal.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">func</span> <span class="n">Nx</span> <span class="o">=</span> <span class="kr">N</span><span class="p">.</span><span class="kr">x</span><span class="p">;</span>
@@ -2095,21 +2076,21 @@
 </div>
 </section>
 <section id="ntonedge">
-<h2>nTonEdge<a class="headerlink" href="#ntonedge" title="Permalink to this headline">¶</a></h2>
+<h2>nTonEdge<a class="headerlink" href="#ntonedge" title="Permalink to this headline"></a></h2>
 <p>Number of adjacent triangles of the current edge.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">nTE</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">nTonEdge</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 <section id="nuedge">
-<h2>nuEdge<a class="headerlink" href="#nuedge" title="Permalink to this headline">¶</a></h2>
+<h2>nuEdge<a class="headerlink" href="#nuedge" title="Permalink to this headline"></a></h2>
 <p>Index of the current edge in the triangle.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">nE</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">nuEdge</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>
 <section id="nutriangle">
-<h2>nuTriangle<a class="headerlink" href="#nutriangle" title="Permalink to this headline">¶</a></h2>
+<h2>nuTriangle<a class="headerlink" href="#nutriangle" title="Permalink to this headline"></a></h2>
 <p>Index of the current triangle.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P0</span><span class="p">);</span>
 <span class="lineno">2 </span><span class="n">Vh</span> <span class="kr">n</span> <span class="o">=</span> <span class="kr">nuTriangle</span><span class="p">;</span>
@@ -2117,7 +2098,7 @@
 </div>
 </section>
 <section id="p">
-<h2>P<a class="headerlink" href="#p" title="Permalink to this headline">¶</a></h2>
+<h2>P<a class="headerlink" href="#p" title="Permalink to this headline"></a></h2>
 <p>Current point.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">cx</span> <span class="o">=</span> <span class="kr">P</span><span class="p">.</span><span class="kr">x</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kt">real</span> <span class="n">cy</span> <span class="o">=</span> <span class="kr">P</span><span class="p">.</span><span class="kr">y</span><span class="p">;</span>
@@ -2126,7 +2107,7 @@
 </div>
 </section>
 <section id="pi">
-<h2>pi<a class="headerlink" href="#pi" title="Permalink to this headline">¶</a></h2>
+<h2>pi<a class="headerlink" href="#pi" title="Permalink to this headline"></a></h2>
 <p>Pi = 3.14159.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">Pi</span> <span class="o">=</span> <span class="kr">pi</span><span class="p">;</span>
 </pre></div>
@@ -2134,25 +2115,25 @@
 <p>This is a real value.</p>
 </section>
 <section id="region">
-<h2>region<a class="headerlink" href="#region" title="Permalink to this headline">¶</a></h2>
+<h2>region<a class="headerlink" href="#region" title="Permalink to this headline"></a></h2>
 <p>Region number of the current point. If the point is outside, then <code class="code freefem docutils literal notranslate"><span class="pre">region</span> <span class="pre">==</span> <span class="pre">notaregion</span></code> where <code class="code freefem docutils literal notranslate"><span class="pre">notaregion</span></code> is a <strong>FreeFEM</strong> integer constant.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">R</span> <span class="o">=</span> <span class="n">Th</span><span class="p">(</span><span class="n">xR</span><span class="p">,</span> <span class="n">yR</span><span class="p">).</span><span class="kr">region</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="sparsesolver">
-<h2>sparsesolver<a class="headerlink" href="#sparsesolver" title="Permalink to this headline">¶</a></h2>
+<h2>sparsesolver<a class="headerlink" href="#sparsesolver" title="Permalink to this headline"></a></h2>
 <p>Sparse matrix solver.</p>
 </section>
 <section id="true">
-<h2>true<a class="headerlink" href="#true" title="Permalink to this headline">¶</a></h2>
+<h2>true<a class="headerlink" href="#true" title="Permalink to this headline"></a></h2>
 <p>True boolean value.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">bool</span> <span class="n">b</span> <span class="o">=</span> <span class="kr">true</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="verbosity">
-<h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline">¶</a></h2>
+<h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this headline"></a></h2>
 <p>Verbosity level.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">Verbosity</span> <span class="o">=</span> <span class="kr">verbosity</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kr">verbosity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -2162,14 +2143,14 @@
 <p>This is an integer value.</p>
 </section>
 <section id="version">
-<h2>version<a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h2>
+<h2>version<a class="headerlink" href="#version" title="Permalink to this headline"></a></h2>
 <p><strong>FreeFEM</strong> version.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="kr">version</span> <span class="o">&lt;&lt;</span> <span class="kr">endl</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="volume">
-<h2>volume<a class="headerlink" href="#volume" title="Permalink to this headline">¶</a></h2>
+<h2>volume<a class="headerlink" href="#volume" title="Permalink to this headline"></a></h2>
 <p>Volume of the current tetrahedra.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Vh0</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P0</span><span class="p">);</span>
 <span class="lineno">2 </span><span class="n">Vh0</span> <span class="n">V</span> <span class="o">=</span> <span class="kr">volume</span><span class="p">;</span>
@@ -2177,7 +2158,7 @@
 </div>
 </section>
 <section id="x">
-<h2>x<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h2>
+<h2>x<a class="headerlink" href="#x" title="Permalink to this headline"></a></h2>
 <p>The <span class="math notranslate nohighlight">\(x\)</span> coordinate at the current point.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">CurrentX</span> <span class="o">=</span> <span class="kr">x</span><span class="p">;</span>
 </pre></div>
@@ -2185,7 +2166,7 @@
 <p>This is a real value.</p>
 </section>
 <section id="y">
-<h2>y<a class="headerlink" href="#y" title="Permalink to this headline">¶</a></h2>
+<h2>y<a class="headerlink" href="#y" title="Permalink to this headline"></a></h2>
 <p>The <span class="math notranslate nohighlight">\(y\)</span> coordinate at the current point.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">CurrentY</span> <span class="o">=</span> <span class="kr">y</span><span class="p">;</span>
 </pre></div>
@@ -2193,7 +2174,7 @@
 <p>This is a real value.</p>
 </section>
 <section id="z">
-<h2>z<a class="headerlink" href="#z" title="Permalink to this headline">¶</a></h2>
+<h2>z<a class="headerlink" href="#z" title="Permalink to this headline"></a></h2>
 <p>The <span class="math notranslate nohighlight">\(z\)</span> coordinate at the current point.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">CurrentZ</span> <span class="o">=</span> <span class="kr">z</span><span class="p">;</span>
 </pre></div>
@@ -2263,7 +2244,24 @@
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

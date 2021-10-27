@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1943,15 +1925,14 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="getting-started">
-<span id="tutorialpoisson"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<span id="tutorialpoisson"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
 <p>For a given function <span class="math notranslate nohighlight">\(f(x,y)\)</span>, find a function <span class="math notranslate nohighlight">\(u(x,y)\)</span> satisfying :</p>
 <div class="math notranslate nohighlight" id="equation-eqn-poisson">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eqn-poisson" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(1)<a class="headerlink" href="#equation-eqn-poisson" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     -\Delta u(x,y) &amp;= f(x,y) &amp; \mbox{ for all }(x,y)\mbox{ in }\Omega\\
     u(x,y) &amp;= 0 &amp; \mbox{ for all }(x,y)\mbox{ on }\partial\Omega
 \end{array}\end{split}\]</div>
@@ -2003,13 +1984,13 @@
 <figure class="align-default" id="id1">
 <span id="figpoissonmesh"></span><a class="reference internal image-reference" href="../_images/firstTh.png"><img alt="firstTh" src="../_images/firstTh.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Mesh Th by <code class="code freefem docutils literal notranslate"><span class="pre">buildmesh(C(50))</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Mesh Th by <code class="code freefem docutils literal notranslate"><span class="pre">buildmesh(C(50))</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <span id="figpoissonu"></span><a class="reference internal image-reference" href="../_images/firstU.png"><img alt="firstU" src="../_images/firstU.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Isovalue by <code class="code freefem docutils literal notranslate"><span class="pre">plot(u)</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Isovalue by <code class="code freefem docutils literal notranslate"><span class="pre">plot(u)</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Poisson’s equation</span></p>
@@ -2076,13 +2057,13 @@ The canonical basis is made of functions, called the <em>hat function</em> <span
 <figure class="align-default" id="id3">
 <span id="figpoissonmesh2"></span><a class="reference internal image-reference" href="../_images/meshTh_2.png"><img alt="meshTh2" src="../_images/meshTh_2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text"><code class="code freefem docutils literal notranslate"><span class="pre">mesh</span> <span class="pre">Th</span></code></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text"><code class="code freefem docutils literal notranslate"><span class="pre">mesh</span> <span class="pre">Th</span></code></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <span id="figpoissonhat"></span><a class="reference internal image-reference" href="../_images/hat_functions.png"><img alt="HatFunctions" src="../_images/hat_functions.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Graph of <span class="math notranslate nohighlight">\(\phi_1\)</span> (left) and <span class="math notranslate nohighlight">\(\phi_6\)</span> (right)</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Graph of <span class="math notranslate nohighlight">\(\phi_1\)</span> (left) and <span class="math notranslate nohighlight">\(\phi_6\)</span> (right)</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Hat functions</span></p>
@@ -2093,14 +2074,14 @@ Then it is easy to see that the restriction of <span class="math notranslate noh
 </div>
 <p>Then:</p>
 <div class="math notranslate nohighlight" id="equation-equation3">
-<span class="eqno">(2)<a class="headerlink" href="#equation-equation3" title="Permalink to this equation">¶</a></span>\[V_h(\mathcal{T}_h,P_1)=\left\{w(x,y)\left|\; w(x,y)=\sum_{k=1}^{M}w_k\phi_k(x,y),\, w_k\textrm{ are real numbers}\right.\right\}\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-equation3" title="Permalink to this equation"></a></span>\[V_h(\mathcal{T}_h,P_1)=\left\{w(x,y)\left|\; w(x,y)=\sum_{k=1}^{M}w_k\phi_k(x,y),\, w_k\textrm{ are real numbers}\right.\right\}\]</div>
 <p>where <span class="math notranslate nohighlight">\(M\)</span> is the dimension of <span class="math notranslate nohighlight">\(V_h\)</span>, i.e. the number of vertices.
 The <span class="math notranslate nohighlight">\(w_k\)</span> are called the <em>degrees of freedom</em> of <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(M\)</span> the number of degree of freedom.</p>
 <p>It is said also that the <em>nodes</em> of this finite element method are the vertices.</p>
 <p><strong>Setting the problem</strong></p>
 <p>On line 9, <code class="code freefem docutils literal notranslate"><span class="pre">Vh</span> <span class="pre">u,</span> <span class="pre">v</span></code> declares that <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> are approximated as above, namely:</p>
 <div class="math notranslate nohighlight" id="equation-defu">
-<span class="eqno">(3)<a class="headerlink" href="#equation-defu" title="Permalink to this equation">¶</a></span>\[u(x,y)\simeq u_h(x,y)=\sum_{k=0}^{M-1} u_k\phi_k(x,y)\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-defu" title="Permalink to this equation"></a></span>\[u(x,y)\simeq u_h(x,y)=\sum_{k=0}^{M-1} u_k\phi_k(x,y)\]</div>
 <p>On the line 12, the right hand side <code class="docutils literal notranslate"><span class="pre">f</span></code> is defined analytically using the keyword <code class="code freefem docutils literal notranslate"><span class="pre">func</span></code>.</p>
 <p>Line 18 to 26 define the bilinear form of equation <a class="reference internal" href="#equation-eqn-poisson">(1)</a> and its Dirichlet boundary conditions.</p>
 <p>This <em>variational formulation</em> is derived by multiplying <a class="reference internal" href="#equation-eqn-poisson">(1)</a> by <span class="math notranslate nohighlight">\(v(x,y)\)</span> and integrating the result over <span class="math notranslate nohighlight">\(\Omega\)</span>:</p>
@@ -2111,7 +2092,7 @@ The <span class="math notranslate nohighlight">\(w_k\)</span> are called the <em
 \[a(u,v) - \ell(f,v) = 0 \quad \forall v \mbox{ satisfying }v=0\mbox{ on }\partial\Omega.\]</div>
 <p>with:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-weakform">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-weakform" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-weakform" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     a(u,v) &amp;=&amp; \int_{\Omega}\nabla u\cdot \nabla v \,\text{d} x\text{d} y\\
     \ell(f,v) &amp;=&amp; \int_{\Omega}fv\, \text{d} x\text{d} y
 \end{array}\end{split}\]</div>
@@ -2145,7 +2126,7 @@ The <span class="math notranslate nohighlight">\(w_k\)</span> are called the <em
 <p><strong>Access to matrices and vectors</strong></p>
 <p>Internally <strong>FreeFEM</strong> will solve a linear system of the type</p>
 <div class="math notranslate nohighlight" id="equation-eqn-equation">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eqn-equation" title="Permalink to this equation">¶</a></span>\[\sum_{j=0}^{M-1} A_{ij}u_j - F_i=0 ,\quad i=0,\cdots,M-1;\qquad
+<span class="eqno">(5)<a class="headerlink" href="#equation-eqn-equation" title="Permalink to this equation"></a></span>\[\sum_{j=0}^{M-1} A_{ij}u_j - F_i=0 ,\quad i=0,\cdots,M-1;\qquad
 F_i=\int_{\Omega}f\phi_i\, \text{d} x\text{d} y\]</div>
 <p>which is found by using <a class="reference internal" href="#equation-defu">(3)</a> and replacing <span class="math notranslate nohighlight">\(v\)</span> by <span class="math notranslate nohighlight">\(\phi_i\)</span> in <a class="reference internal" href="#equation-eqn-weakform">(4)</a>.
 The Dirichlet conditions are implemented by penalty, namely by setting <span class="math notranslate nohighlight">\(A_{ii}=10^{30}\)</span> and <span class="math notranslate nohighlight">\(F_i=10^{30}*0\)</span> if <span class="math notranslate nohighlight">\(i\)</span> is a boundary degree of freedom.</p>
@@ -2225,7 +2206,24 @@ If the user wants to access <span class="math notranslate nohighlight">\(A\)</sp
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

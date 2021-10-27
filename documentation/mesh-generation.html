@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1946,12 +1928,11 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="mesh-generation">
-<span id="meshgeneration"></span><h1>Mesh Generation<a class="headerlink" href="#mesh-generation" title="Permalink to this headline">¶</a></h1>
+<span id="meshgeneration"></span><h1>Mesh Generation<a class="headerlink" href="#mesh-generation" title="Permalink to this headline"></a></h1>
 <p>In this section, operators and tools on meshes are presented.</p>
 <p>FreeFEM type for mesh variable:</p>
 <blockquote>
@@ -1971,12 +1952,12 @@
 </div></blockquote>
 <p>Through this presentation, the principal commands for the mesh generation and links between <code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code> - <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code> - <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> - <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code> are described.</p>
 <section id="the-type-mesh-in-2-dimension">
-<span id="mesh2d"></span><h2><strong>The type mesh in 2 dimension</strong><a class="headerlink" href="#the-type-mesh-in-2-dimension" title="Permalink to this headline">¶</a></h2>
+<span id="mesh2d"></span><h2><strong>The type mesh in 2 dimension</strong><a class="headerlink" href="#the-type-mesh-in-2-dimension" title="Permalink to this headline"></a></h2>
 <section id="commands-for-2d-mesh-generation">
-<h3>Commands for 2d mesh Generation<a class="headerlink" href="#commands-for-2d-mesh-generation" title="Permalink to this headline">¶</a></h3>
+<h3>Commands for 2d mesh Generation<a class="headerlink" href="#commands-for-2d-mesh-generation" title="Permalink to this headline"></a></h3>
 <p>The <strong>FreeFEM</strong> type to define a 2d mesh object is <code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code>.</p>
 <section id="the-command-square">
-<span id="meshsquare"></span><h4>The command <em>square</em><a class="headerlink" href="#the-command-square" title="Permalink to this headline">¶</a></h4>
+<span id="meshsquare"></span><h4>The command <em>square</em><a class="headerlink" href="#the-command-square" title="Permalink to this headline"></a></h4>
 <p>The command <code class="code freefem docutils literal notranslate"><span class="pre">square</span></code> triangulates the unit square.</p>
 <p>The following generates a <span class="math notranslate nohighlight">\(4 \times 5\)</span> grid in the unit square <span class="math notranslate nohighlight">\([0,1]^2\)</span>. The labels of the boundaries are shown in <a class="reference internal" href="#figboundarylabels"><span class="std std-numref">Fig. 57</span></a>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
@@ -1985,7 +1966,7 @@
 <figure class="align-default" id="figboundarylabels">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Square.png"><img alt="../_images/MeshGeneration_Square.png" src="../_images/MeshGeneration_Square.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Boundary labels of the mesh by <code class="code freefem docutils literal notranslate"><span class="pre">square(10,10)</span></code></span><a class="headerlink" href="#figboundarylabels" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Boundary labels of the mesh by <code class="code freefem docutils literal notranslate"><span class="pre">square(10,10)</span></code></span><a class="headerlink" href="#figboundarylabels" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>To construct a <span class="math notranslate nohighlight">\(n\times m\)</span> grid in the rectangle <span class="math notranslate nohighlight">\([x_0,x_1]\times [y_0,y_1]\)</span>, proceed as follows:</p>
@@ -2030,7 +2011,7 @@ to <span class="math notranslate nohighlight">\(10\)</span>, for instance (v 3.8
 </div>
 </section>
 <section id="the-command-buildmesh">
-<span id="meshborder"></span><h4>The command <em>buildmesh</em><a class="headerlink" href="#the-command-buildmesh" title="Permalink to this headline">¶</a></h4>
+<span id="meshborder"></span><h4>The command <em>buildmesh</em><a class="headerlink" href="#the-command-buildmesh" title="Permalink to this headline"></a></h4>
 <p><em>mesh building with</em> <code class="code freefem docutils literal notranslate"><span class="pre">border</span></code></p>
 <p>Boundaries are defined piecewise by parametrized curves. The pieces can only intersect at their endpoints, but it is possible to join more than two endpoints. This can be used to structure the mesh if an area touches a border and create new regions by dividing larger ones:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">int</span> <span class="n">upper</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -2065,13 +2046,13 @@ to <span class="math notranslate nohighlight">\(10\)</span>, for instance (v 3.8
 <figure class="align-default" id="id31">
 <span id="figmultipleborder"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_Border1.png"><img alt="MeshGeneration_Border1" src="../_images/MeshGeneration_Border1.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Multiple border ends intersect</span><a class="headerlink" href="#id31" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Multiple border ends intersect</span><a class="headerlink" href="#id31" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id32">
 <span id="figgeneratedmesh"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_Border2.png"><img alt="MeshGeneration_Border2" src="../_images/MeshGeneration_Border2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Generated mesh</span><a class="headerlink" href="#id32" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Generated mesh</span><a class="headerlink" href="#id32" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Border</span></p>
@@ -2082,7 +2063,7 @@ to <span class="math notranslate nohighlight">\(10\)</span>, for instance (v 3.8
 <figure class="align-default" id="figborder">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Border3.png"><img alt="../_images/MeshGeneration_Border3.png" src="../_images/MeshGeneration_Border3.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Orientation of the boundary defined by <span class="math notranslate nohighlight">\((\phi_x(t),\phi_y(t))\)</span></span><a class="headerlink" href="#figborder" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">Orientation of the boundary defined by <span class="math notranslate nohighlight">\((\phi_x(t),\phi_y(t))\)</span></span><a class="headerlink" href="#figborder" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>The general expression to define a triangulation with <code class="code freefem docutils literal notranslate"><span class="pre">buildmesh</span></code> is</p>
@@ -2113,13 +2094,13 @@ to <span class="math notranslate nohighlight">\(10\)</span>, for instance (v 3.8
 <figure class="align-default" id="id33">
 <span id="figmeswithouthhole"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_Border4.png"><img alt="MeshGeneration_Border4" src="../_images/MeshGeneration_Border4.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Mesh without hole</span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">Mesh without hole</span><a class="headerlink" href="#id33" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id34">
 <span id="figmeshwithhole"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_Border5.png"><img alt="MeshGeneration_Border5" src="../_images/MeshGeneration_Border5.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Mesh with hole</span><a class="headerlink" href="#id34" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Mesh with hole</span><a class="headerlink" href="#id34" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Mesh with a hole</span></p>
@@ -2177,7 +2158,7 @@ to <span class="math notranslate nohighlight">\(10\)</span>, for instance (v 3.8
 </section>
 </section>
 <section id="mesh-connectivity-and-data">
-<h3>Mesh Connectivity and data<a class="headerlink" href="#mesh-connectivity-and-data" title="Permalink to this headline">¶</a></h3>
+<h3>Mesh Connectivity and data<a class="headerlink" href="#mesh-connectivity-and-data" title="Permalink to this headline"></a></h3>
 <p>The following example explains methods to obtain mesh information.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">  1 </span><span class="c1">// Mesh</span>
 <span class="lineno">  2 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
@@ -2434,7 +2415,7 @@ to <span class="math notranslate nohighlight">\(10\)</span>, for instance (v 3.8
 <p><code class="code freefem docutils literal notranslate"><span class="pre">chi(Th)(P)=0</span></code> if <span class="math notranslate nohighlight">\(P\not\in Th\)</span></p>
 </section>
 <section id="the-keyword-triangulate">
-<h3>The keyword “triangulate”<a class="headerlink" href="#the-keyword-triangulate" title="Permalink to this headline">¶</a></h3>
+<h3>The keyword “triangulate”<a class="headerlink" href="#the-keyword-triangulate" title="Permalink to this headline"></a></h3>
 <p><strong>FreeFEM</strong> is able to build a triangulation from a set of points.
 This triangulation is a Delaunay mesh of the convex hull of the set of points.
 It can be useful to build a mesh from a table function.</p>
@@ -2452,13 +2433,13 @@ It can be useful to build a mesh from a table function.</p>
 <figure class="align-default" id="id35">
 <span id="figdelaunaymesh"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_Triangulate1.png"><img alt="MeshGeneration_Triangulate1" src="../_images/MeshGeneration_Triangulate1.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Delaunay mesh of the convex hull of point set in file xy</span><a class="headerlink" href="#id35" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Delaunay mesh of the convex hull of point set in file xy</span><a class="headerlink" href="#id35" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id36">
 <span id="figisovalue"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_Triangulate2.png"><img alt="MeshGeneration_Triangulate2" src="../_images/MeshGeneration_Triangulate2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Isolvalue of table function</span><a class="headerlink" href="#id36" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Isolvalue of table function</span><a class="headerlink" href="#id36" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Triangulate</span></p>
@@ -2498,7 +2479,7 @@ The command <code class="code freefem docutils literal notranslate"><span class=
 </div>
 </section>
 <section id="d-finite-element-space-on-a-boundary">
-<h3>2d Finite Element space on a boundary<a class="headerlink" href="#d-finite-element-space-on-a-boundary" title="Permalink to this headline">¶</a></h3>
+<h3>2d Finite Element space on a boundary<a class="headerlink" href="#d-finite-element-space-on-a-boundary" title="Permalink to this headline"></a></h3>
 <p>To define a Finite Element space on a boundary, we came up with the idea of a mesh with no internal points (called empty mesh).
 It can be useful to handle Lagrange multipliers in mixed and mortar methods.</p>
 <p>So the function <code class="code freefem docutils literal notranslate"><span class="pre">emptymesh</span></code> removes all the internal points of a mesh except points on internal boundaries.</p>
@@ -2533,21 +2514,21 @@ It can be useful to handle Lagrange multipliers in mixed and mortar methods.</p>
 <figure class="align-default" id="id37">
 <span id="figemptymesh1"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_EmptyMesh1.png"><img alt="MeshGeneration_EmptyMesh1" src="../_images/MeshGeneration_EmptyMesh1.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 65 </span><span class="caption-text">The empty mesh with boundary</span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">The empty mesh with boundary</span><a class="headerlink" href="#id37" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id38">
 <span id="figemptymesh2"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_EmptyMesh2.png"><img alt="MeshGeneration_EmptyMesh2" src="../_images/MeshGeneration_EmptyMesh2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 66 </span><span class="caption-text">An empty mesh defined from a pseudo region numbering of triangle</span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">An empty mesh defined from a pseudo region numbering of triangle</span><a class="headerlink" href="#id38" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Empty mesh</span></p>
 </div></section>
 <section id="remeshing">
-<span id="EmptyMesh"></span><h3>Remeshing<a class="headerlink" href="#remeshing" title="Permalink to this headline">¶</a></h3>
+<span id="EmptyMesh"></span><h3>Remeshing<a class="headerlink" href="#remeshing" title="Permalink to this headline"></a></h3>
 <section id="the-command-movemesh">
-<span id="meshgenerationmovemesh"></span><h4>The command <em>movemesh</em><a class="headerlink" href="#the-command-movemesh" title="Permalink to this headline">¶</a></h4>
+<span id="meshgenerationmovemesh"></span><h4>The command <em>movemesh</em><a class="headerlink" href="#the-command-movemesh" title="Permalink to this headline"></a></h4>
 <p>Meshes can be translated, rotated, and deformed by <code class="code freefem docutils literal notranslate"><span class="pre">movemesh</span></code>; this is useful for elasticity to watch the deformation due to the displacement <span class="math notranslate nohighlight">\(\mathbf{\Phi}(x,y)=(\Phi_1(x,y),\Phi_2(x,y))\)</span> of shape.</p>
 <p>It is also useful to handle free boundary problems or optimal shape problems.</p>
 <p>If <span class="math notranslate nohighlight">\(\Omega\)</span> is triangulated as <span class="math notranslate nohighlight">\(T_h(\Omega)\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> is a displacement vector then <span class="math notranslate nohighlight">\(\mathbf{\Phi}(T_h)\)</span> is obtained by:</p>
@@ -2599,13 +2580,13 @@ To spot such problems, one may check the minimum triangle area in the transforme
 <figure class="align-default" id="id39">
 <span id="figlshape"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_MoveMesh1.png"><img alt="MeshGeneration_MoveMesh1" src="../_images/MeshGeneration_MoveMesh1.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 67 </span><span class="caption-text">L-shape</span><a class="headerlink" href="#id39" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">L-shape</span><a class="headerlink" href="#id39" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id40">
 <span id="figmovedlshape"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_MoveMesh2.png"><img alt="MeshGeneration_MoveMesh2" src="../_images/MeshGeneration_MoveMesh2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Moved L-shape</span><a class="headerlink" href="#id40" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Moved L-shape</span><a class="headerlink" href="#id40" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Move mesh</span></p>
@@ -2651,7 +2632,7 @@ A statement like <span class="math notranslate nohighlight">\(u=u\)</span> redef
 </div>
 </section>
 <section id="the-command-htriangle">
-<span id="meshregulartriangulation"></span><h4>The command <em>hTriangle</em><a class="headerlink" href="#the-command-htriangle" title="Permalink to this headline">¶</a></h4>
+<span id="meshregulartriangulation"></span><h4>The command <em>hTriangle</em><a class="headerlink" href="#the-command-htriangle" title="Permalink to this headline"></a></h4>
 <p>This section presents the way to obtain a regular triangulation with <strong>FreeFEM</strong>.</p>
 <p>For a set <span class="math notranslate nohighlight">\(S\)</span>, we define the diameter of <span class="math notranslate nohighlight">\(S\)</span> by</p>
 <div class="math notranslate nohighlight">
@@ -2671,7 +2652,7 @@ A statement like <span class="math notranslate nohighlight">\(u=u\)</span> redef
 </div>
 </section>
 <section id="the-command-adaptmesh">
-<h4>The command <em>adaptmesh</em><a class="headerlink" href="#the-command-adaptmesh" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>adaptmesh</em><a class="headerlink" href="#the-command-adaptmesh" title="Permalink to this headline"></a></h4>
 <p>The function:</p>
 <div class="math notranslate nohighlight">
 \[f(x,y) = 10.0x^3+y^3+\tan^{-1}[\varepsilon/(\sin(5.0y)-2.0x)],\ \varepsilon = 0.0001\]</div>
@@ -2701,7 +2682,7 @@ A statement like <span class="math notranslate nohighlight">\(u=u\)</span> redef
 <figure class="align-default" id="figmeshadaptation">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_AdaptMesh1.png"><img alt="../_images/MeshGeneration_AdaptMesh1.png" src="../_images/MeshGeneration_AdaptMesh1.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 69 </span><span class="caption-text">3D graphs for the initial mesh and 1st and 2nd mesh adaptations</span><a class="headerlink" href="#figmeshadaptation" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">3D graphs for the initial mesh and 1st and 2nd mesh adaptations</span><a class="headerlink" href="#figmeshadaptation" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><strong>FreeFEM</strong> uses a variable metric/Delaunay automatic meshing algorithm.</p>
@@ -2719,13 +2700,13 @@ A statement like <span class="math notranslate nohighlight">\(u=u\)</span> redef
 <figure class="align-default" id="id41">
 <span id="adaptmesh2"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_AdaptMesh2.png"><img alt="MeshGeneration_AdaptMesh2" src="../_images/MeshGeneration_AdaptMesh2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 70 </span><span class="caption-text">L-shape domain and its boundary name</span><a class="headerlink" href="#id41" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">L-shape domain and its boundary name</span><a class="headerlink" href="#id41" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id42">
 <span id="adaptmesh3"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_AdaptMesh3.png"><img alt="MeshGeneration_AdaptMesh3" src="../_images/MeshGeneration_AdaptMesh3.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Final solution after 4-times adaptation</span><a class="headerlink" href="#id42" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Final solution after 4-times adaptation</span><a class="headerlink" href="#id42" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Mesh adaptation</span></p>
@@ -2919,25 +2900,25 @@ To build a mesh with a constant mesh size equal to <span class="math notranslate
 <figure class="align-default" id="id43">
 <span id="adaptmesh4"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_AdaptMesh4.png"><img alt="MeshGeneration_AdaptMesh4" src="../_images/MeshGeneration_AdaptMesh4.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Initial mesh</span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Initial mesh</span><a class="headerlink" href="#id43" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id44">
 <span id="adaptmesh5"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_AdaptMesh5.png"><img alt="MeshGeneration_AdaptMesh5" src="../_images/MeshGeneration_AdaptMesh5.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 73 </span><span class="caption-text">First iteration</span><a class="headerlink" href="#id44" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">First iteration</span><a class="headerlink" href="#id44" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id45">
 <span id="adaptmesh6"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_AdaptMesh6.png"><img alt="MeshGeneration_AdaptMesh6" src="../_images/MeshGeneration_AdaptMesh6.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Last iteration</span><a class="headerlink" href="#id45" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Last iteration</span><a class="headerlink" href="#id45" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Mesh adaptation</span></p>
 </div></section>
 <section id="the-command-trunc">
-<span id="AdaptMesh2"></span><h4>The command <em>trunc</em><a class="headerlink" href="#the-command-trunc" title="Permalink to this headline">¶</a></h4>
+<span id="AdaptMesh2"></span><h4>The command <em>trunc</em><a class="headerlink" href="#the-command-trunc" title="Permalink to this headline"></a></h4>
 <p>Two operators have been introduced to remove triangles from a mesh or to divide them.
 Operator <code class="code freefem docutils literal notranslate"><span class="pre">trunc</span></code> has the following parameters:</p>
 <ul class="simple">
@@ -2976,19 +2957,19 @@ Operator <code class="code freefem docutils literal notranslate"><span class="pr
 <figure class="align-default" id="id46">
 <span id="trunc1"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_Trunc1.png"><img alt="MeshGeneration_Trunc1" src="../_images/MeshGeneration_Trunc1.png" style="width: 49%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Mesh of support the function P1 number 0, split in <span class="math notranslate nohighlight">\(5{\times}5\)</span></span><a class="headerlink" href="#id46" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Mesh of support the function P1 number 0, split in <span class="math notranslate nohighlight">\(5{\times}5\)</span></span><a class="headerlink" href="#id46" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id47">
 <span id="trunc6"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_Trunc1.png"><img alt="MeshGeneration_Trunc1" src="../_images/MeshGeneration_Trunc1.png" style="width: 49%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Mesh of support the function P1 number 6, split in <span class="math notranslate nohighlight">\(5{\times}5\)</span></span><a class="headerlink" href="#id47" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Mesh of support the function P1 number 6, split in <span class="math notranslate nohighlight">\(5{\times}5\)</span></span><a class="headerlink" href="#id47" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Trunc</span></p>
 </div></section>
 <section id="the-command-change">
-<span id="Trunc"></span><h4>The command <em>change</em><a class="headerlink" href="#the-command-change" title="Permalink to this headline">¶</a></h4>
+<span id="Trunc"></span><h4>The command <em>change</em><a class="headerlink" href="#the-command-change" title="Permalink to this headline"></a></h4>
 <p>This command changes the label of elements and border elements of a mesh.</p>
 <p>Changing the label of elements and border elements will be done using the keyword <code class="code freefem docutils literal notranslate"><span class="pre">change</span></code>.
 The parameters for this command line are for two dimensional and three dimensional cases:</p>
@@ -3007,7 +2988,7 @@ The parameters for this command line are for two dimensional and three dimension
 <p>These vectors are composed of <span class="math notranslate nohighlight">\(n_{l}\)</span> successive pairs of numbers <span class="math notranslate nohighlight">\(O,N\)</span> where <span class="math notranslate nohighlight">\(n_{l}\)</span> is the number (label or region) that we want to change.
 For example, we have :</p>
 <div class="math notranslate nohighlight" id="equation-eq-org-vector-change-label">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eq-org-vector-change-label" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathtt{label} &amp;= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ] \\
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-org-vector-change-label" title="Permalink to this equation"></a></span>\[\begin{split}\mathtt{label} &amp;= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ] \\
 \mathtt{region} &amp;= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ]\end{split}\]</div>
 <p>An application example is given here:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Mesh</span>
@@ -3028,7 +3009,7 @@ For example, we have :</p>
 </div>
 </section>
 <section id="the-command-splitmesh">
-<h4>The command <em>splitmesh</em><a class="headerlink" href="#the-command-splitmesh" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>splitmesh</em><a class="headerlink" href="#the-command-splitmesh" title="Permalink to this headline"></a></h4>
 <p>Another way to split mesh triangles is to use <code class="code freefem docutils literal notranslate"><span class="pre">splitmesh</span></code>, for example:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="c1">// Mesh</span>
 <span class="lineno">2 </span><span class="kt">border</span> <span class="nf">a</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="nf">cos</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span> <span class="kr">y</span><span class="o">=</span><span class="nf">sin</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span> <span class="kr">label</span><span class="o">=</span><span class="mi">1</span><span class="p">;}</span>
@@ -3044,20 +3025,20 @@ For example, we have :</p>
 <figure class="align-default" id="id48">
 <span id="splitmesh1"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_SplitMesh1.png"><img alt="MeshGeneration_SplitMesh1" src="../_images/MeshGeneration_SplitMesh1.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Initial mesh</span><a class="headerlink" href="#id48" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Initial mesh</span><a class="headerlink" href="#id48" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id49">
 <span id="splitmesh2"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_SplitMesh2.png"><img alt="MeshGeneration_SplitMesh2" src="../_images/MeshGeneration_SplitMesh2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 78 </span><span class="caption-text">All left mesh triangle is split conformaly in <code class="code freefem docutils literal notranslate"><span class="pre">int(1+5*(square(x-0.5)+y*y)^2</span></code> triangles</span><a class="headerlink" href="#id49" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">All left mesh triangle is split conformaly in <code class="code freefem docutils literal notranslate"><span class="pre">int(1+5*(square(x-0.5)+y*y)^2</span></code> triangles</span><a class="headerlink" href="#id49" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Split mesh</span></p>
 </div></section>
 </section>
 <section id="meshing-examples">
-<span id="meshexamples"></span><span id="SplitMesh"></span><h3>Meshing Examples<a class="headerlink" href="#meshing-examples" title="Permalink to this headline">¶</a></h3>
+<span id="meshexamples"></span><span id="SplitMesh"></span><h3>Meshing Examples<a class="headerlink" href="#meshing-examples" title="Permalink to this headline"></a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Two rectangles touching by a side</p>
@@ -3078,7 +3059,7 @@ For example, we have :</p>
 <figure class="align-default" id="naca00121">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Example_NACA0012_1.png"><img alt="../_images/MeshGeneration_Example_NACA0012_1.png" src="../_images/MeshGeneration_Example_NACA0012_1.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Two rectangles touching by a side</span><a class="headerlink" href="#naca00121" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Two rectangles touching by a side</span><a class="headerlink" href="#naca00121" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3095,7 +3076,7 @@ For example, we have :</p>
 <figure class="align-default" id="naca00122">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Example_NACA0012_2.png"><img alt="../_images/MeshGeneration_Example_NACA0012_2.png" src="../_images/MeshGeneration_Example_NACA0012_2.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 80 </span><span class="caption-text">NACA0012 Airfoil</span><a class="headerlink" href="#naca00122" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 80 </span><span class="caption-text">NACA0012 Airfoil</span><a class="headerlink" href="#naca00122" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3111,7 +3092,7 @@ For example, we have :</p>
 <figure class="align-default" id="cardioid1">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Example_Cardioid1.png"><img alt="../_images/MeshGeneration_Example_Cardioid1.png" src="../_images/MeshGeneration_Example_Cardioid1.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 81 </span><span class="caption-text">Domain with Cardioid curve boundary</span><a class="headerlink" href="#cardioid1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 81 </span><span class="caption-text">Domain with Cardioid curve boundary</span><a class="headerlink" href="#cardioid1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3126,7 +3107,7 @@ For example, we have :</p>
 <figure class="align-default" id="cardioid2">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Example_Cardioid2.png"><img alt="../_images/MeshGeneration_Example_Cardioid2.png" src="../_images/MeshGeneration_Example_Cardioid2.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Domain with Cassini egg curve boundary</span><a class="headerlink" href="#cardioid2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 82 </span><span class="caption-text">Domain with Cassini egg curve boundary</span><a class="headerlink" href="#cardioid2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3166,7 +3147,7 @@ For example, we have :</p>
 <figure class="align-default" id="bezier">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Example_Bezier.png"><img alt="../_images/MeshGeneration_Example_Bezier.png" src="../_images/MeshGeneration_Example_Bezier.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Boundary drawn by Bezier curves</span><a class="headerlink" href="#bezier" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 83 </span><span class="caption-text">Boundary drawn by Bezier curves</span><a class="headerlink" href="#bezier" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3190,7 +3171,7 @@ For example, we have :</p>
 <figure class="align-default" id="engine">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Example_Engine.png"><img alt="../_images/MeshGeneration_Example_Engine.png" src="../_images/MeshGeneration_Example_Engine.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Section of Engine</span><a class="headerlink" href="#engine" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text">Section of Engine</span><a class="headerlink" href="#engine" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3214,7 +3195,7 @@ For example, we have :</p>
 <figure class="align-default" id="ushape">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Example_UShape.png"><img alt="../_images/MeshGeneration_Example_UShape.png" src="../_images/MeshGeneration_Example_UShape.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Domain with U-shape channel changed by <code class="code freefem docutils literal notranslate"><span class="pre">d</span></code></span><a class="headerlink" href="#ushape" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">Domain with U-shape channel changed by <code class="code freefem docutils literal notranslate"><span class="pre">d</span></code></span><a class="headerlink" href="#ushape" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3239,7 +3220,7 @@ For example, we have :</p>
 <figure class="align-default" id="vshape">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Example_VShape.png"><img alt="../_images/MeshGeneration_Example_VShape.png" src="../_images/MeshGeneration_Example_VShape.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Domain with V-shape cut changed by <code class="code freefem docutils literal notranslate"><span class="pre">dAg</span></code></span><a class="headerlink" href="#vshape" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Domain with V-shape cut changed by <code class="code freefem docutils literal notranslate"><span class="pre">dAg</span></code></span><a class="headerlink" href="#vshape" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3268,7 +3249,7 @@ For example, we have :</p>
 <figure class="align-default" id="smilingface">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Example_SmilingFace.png"><img alt="../_images/MeshGeneration_Example_SmilingFace.png" src="../_images/MeshGeneration_Example_SmilingFace.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Smiling face (Mouth is changeable)</span><a class="headerlink" href="#smilingface" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Smiling face (Mouth is changeable)</span><a class="headerlink" href="#smilingface" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3297,14 +3278,14 @@ For example, we have :</p>
 <figure class="align-default" id="threepoints">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Example_ThreePoints.png"><img alt="../_images/MeshGeneration_Example_ThreePoints.png" src="../_images/MeshGeneration_Example_ThreePoints.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Domain for three-point bending test</span><a class="headerlink" href="#threepoints" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Domain for three-point bending test</span><a class="headerlink" href="#threepoints" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
 </section>
 </section>
 <section id="the-type-mesh3-in-3-dimension">
-<h2><strong>The type mesh3 in 3 dimension</strong><a class="headerlink" href="#the-type-mesh3-in-3-dimension" title="Permalink to this headline">¶</a></h2>
+<h2><strong>The type mesh3 in 3 dimension</strong><a class="headerlink" href="#the-type-mesh3-in-3-dimension" title="Permalink to this headline"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Up to the version 3, FreeFEM allowed to consider a surface problem such as the PDE
@@ -3316,13 +3297,13 @@ conditions on border domain (describing by edges). The keywords to define a surf
 mesh is <strong>meshS</strong>.</p>
 </div>
 <section id="d-mesh-generation">
-<h3>3d mesh generation<a class="headerlink" href="#d-mesh-generation" title="Permalink to this headline">¶</a></h3>
+<h3>3d mesh generation<a class="headerlink" href="#d-mesh-generation" title="Permalink to this headline"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For 3D mesh tools, put <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;msh3&quot;</span></code> at the top of the .edp script.</p>
 </div>
 <section id="the-command-cube">
-<h4>The command <em>cube</em><a class="headerlink" href="#the-command-cube" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>cube</em><a class="headerlink" href="#the-command-cube" title="Permalink to this headline"></a></h4>
 <p>The function <code class="code freefem docutils literal notranslate"><span class="pre">cube</span></code> like its 2d function <code class="code freefem docutils literal notranslate"><span class="pre">square</span></code> is a simple way to build cubic objects, it is contained in plugin <code class="code freefem docutils literal notranslate"><span class="pre">msh3</span></code> (import with <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;msh3&quot;</span></code>).</p>
 <p>The following code generates a <span class="math notranslate nohighlight">\(3\times 4 \times 5\)</span> grid in the unit cube <span class="math notranslate nohighlight">\([0, 1]^3\)</span>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">mesh3</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">cube</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
@@ -3391,19 +3372,19 @@ mesh is <strong>meshS</strong>.</p>
 <figure class="align-default" id="meshgeneration-cube">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Cube.jpg"><img alt="../_images/MeshGeneration_Cube.jpg" src="../_images/MeshGeneration_Cube.jpg" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 89 </span><span class="caption-text">The 3D mesh of function <code class="code freefem docutils literal notranslate"><span class="pre">cube(4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">flags=3)</span></code></span><a class="headerlink" href="#meshgeneration-cube" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">The 3D mesh of function <code class="code freefem docutils literal notranslate"><span class="pre">cube(4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">flags=3)</span></code></span><a class="headerlink" href="#meshgeneration-cube" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="the-command-buildlayers">
-<span id="meshreadwrite3d"></span><h4>The command <em>buildlayers</em><a class="headerlink" href="#the-command-buildlayers" title="Permalink to this headline">¶</a></h4>
+<span id="meshreadwrite3d"></span><h4>The command <em>buildlayers</em><a class="headerlink" href="#the-command-buildlayers" title="Permalink to this headline"></a></h4>
 <p>This mesh is obtained by extending a two dimensional mesh in the <span class="math notranslate nohighlight">\(z\)</span>-axis.</p>
 <p>The domain <span class="math notranslate nohighlight">\(\Omega_{3d}\)</span> defined by the layer mesh is equal to <span class="math notranslate nohighlight">\(\Omega_{3d} = \Omega_{2d} \times [zmin, zmax]\)</span> where <span class="math notranslate nohighlight">\(\Omega_{2d}\)</span> is the domain defined by the two dimensional meshes.
 <span class="math notranslate nohighlight">\(zmin\)</span> and <span class="math notranslate nohighlight">\(zmax\)</span> are functions of <span class="math notranslate nohighlight">\(\Omega_{2d}\)</span> in <span class="math notranslate nohighlight">\(\R\)</span> that defines respectively the lower surface and upper surface of <span class="math notranslate nohighlight">\(\Omega_{3d}\)</span>.</p>
 <figure class="align-default" id="meshgenerationlayermesh">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_LayerMesh.png"><img alt="../_images/MeshGeneration_LayerMesh.png" src="../_images/MeshGeneration_LayerMesh.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Example of Layer mesh in three dimensions.</span><a class="headerlink" href="#meshgenerationlayermesh" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Example of Layer mesh in three dimensions.</span><a class="headerlink" href="#meshgenerationlayermesh" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>For a vertex of a two dimensional mesh <span class="math notranslate nohighlight">\(V_{i}^{2d} = (x_{i},y_{i})\)</span>, we introduce the number of associated vertices in the <span class="math notranslate nohighlight">\(z-\)</span>axis <span class="math notranslate nohighlight">\(M_{i}+1\)</span>.</p>
@@ -3514,7 +3495,7 @@ These parameters correspond to parameters <code class="code freefem docutils lit
 <figure class="align-default" id="meshgenerationlayermeshexample1">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_LayerMesh_Example1.png"><img alt="../_images/MeshGeneration_LayerMesh_Example1.png" src="../_images/MeshGeneration_LayerMesh_Example1.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 91 </span><span class="caption-text">The mesh of a cube made with <code class="code freefem docutils literal notranslate"><span class="pre">cube.edp</span></code></span><a class="headerlink" href="#meshgenerationlayermeshexample1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">The mesh of a cube made with <code class="code freefem docutils literal notranslate"><span class="pre">cube.edp</span></code></span><a class="headerlink" href="#meshgenerationlayermeshexample1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3560,7 +3541,7 @@ These parameters correspond to parameters <code class="code freefem docutils lit
 <figure class="align-default" id="meshgenerationlayermeshexample2">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_LayerMesh_Example2.png"><img alt="../_images/MeshGeneration_LayerMesh_Example2.png" src="../_images/MeshGeneration_LayerMesh_Example2.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 92 </span><span class="caption-text">The mesh of a cone made with <code class="code freefem docutils literal notranslate"><span class="pre">cone.edp</span></code></span><a class="headerlink" href="#meshgenerationlayermeshexample2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">The mesh of a cone made with <code class="code freefem docutils literal notranslate"><span class="pre">cone.edp</span></code></span><a class="headerlink" href="#meshgenerationlayermeshexample2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div>
@@ -3636,13 +3617,13 @@ These parameters correspond to parameters <code class="code freefem docutils lit
 </section>
 </section>
 <section id="id3">
-<h3>Remeshing<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3>Remeshing<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
 <div class="admonition note" id="meshgenerationchangelabel">
 <p class="admonition-title">Note</p>
 <p>if an operation on a <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code> is performed then the same operation is applyed on its surface part (its <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> associated)</p>
 </div>
 <section id="id4">
-<h4>The command <em>change</em><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>change</em><a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
 <p>This command changes the label of elements and border elements of a mesh. It’s the equivalent command in 2d mesh case.</p>
 <p>Changing the label of elements and border elements will be done using the keyword <code class="code freefem docutils literal notranslate"><span class="pre">change</span></code>.
 The parameters for this command line are for two dimensional and three dimensional cases:</p>
@@ -3678,7 +3659,7 @@ For example, we have:</p>
 </div>
 </section>
 <section id="meshgenerationtrunc">
-<span id="id5"></span><h4>The command <em>trunc</em><a class="headerlink" href="#meshgenerationtrunc" title="Permalink to this headline">¶</a></h4>
+<span id="id5"></span><h4>The command <em>trunc</em><a class="headerlink" href="#meshgenerationtrunc" title="Permalink to this headline"></a></h4>
 <p>This operator have been introduce to remove a piece of mesh or/and split all element or for a particular label element
 The three named parameter
 - boolean function to keep or remove elements
@@ -3696,7 +3677,7 @@ The three named parameter
 </div>
 </section>
 <section id="id6">
-<h4>The command <em>movemesh</em><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>movemesh</em><a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
 <p>3D meshes  can be translated, rotated, and deformed using the command line <code class="code freefem docutils literal notranslate"><span class="pre">movemesh</span></code> as in the 2D case (see <a class="reference internal" href="#meshgenerationmovemesh"><span class="std std-ref">section movemesh</span></a>).
 If <span class="math notranslate nohighlight">\(\Omega\)</span> is tetrahedrized as <span class="math notranslate nohighlight">\(T_{h}(\Omega)\)</span>, and <span class="math notranslate nohighlight">\(\Phi(x,y)=(\Phi1(x,y,z), \Phi2(x,y,z), \Phi3(x,y,z))\)</span> is the transformation vector then <span class="math notranslate nohighlight">\(\Phi(T_{h})\)</span> is obtained by:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">mesh3</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">movemesh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="p">[</span><span class="n">Phi1</span><span class="p">,</span> <span class="n">Phi2</span><span class="p">,</span> <span class="n">Phi3</span><span class="p">],</span> <span class="p">...);</span>
@@ -3783,7 +3764,7 @@ equal -1 reverse the orientation of the tetrahedra</p></li>
 <p>movemesh doesn’t use the prefix tranfo= [.,.,.], the geometric transformation is directly given by  [.,.,.] in the arguments list</p>
 </section>
 <section id="the-command-extract">
-<h4>The command <em>extract</em><a class="headerlink" href="#the-command-extract" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>extract</em><a class="headerlink" href="#the-command-extract" title="Permalink to this headline"></a></h4>
 <p>This command offers the possibility to extract a boundary part of a <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code></p>
 <ul class="simple">
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">refface</span></code>     , is a vector of integer that contains a list of triangle face references, where the extract function must be apply.</p></li>
@@ -3800,14 +3781,14 @@ equal -1 reverse the orientation of the tetrahedra</p></li>
 </div>
 </section>
 <section id="the-command-buildsurface">
-<h4>The command <em>buildSurface</em><a class="headerlink" href="#the-command-buildsurface" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>buildSurface</em><a class="headerlink" href="#the-command-buildsurface" title="Permalink to this headline"></a></h4>
 <p>This new function allows to build the surface mesh of a volume mesh, under the condition the surface is the boundary of the volume.
 By definition, a <strong>mesh3</strong> is defined by a list of vertices, tetrahedron elements and triangle border elements. <em>buildSurface</em> function create the meshS corresponding, given
 the list vertices which are on the border domain, the triangle elements and build the list of edges.
 Remark, for a closed surface mesh, the edges list is empty.</p>
 </section>
 <section id="the-command-movemesh23">
-<h4>The command <em>movemesh23</em><a class="headerlink" href="#the-command-movemesh23" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>movemesh23</em><a class="headerlink" href="#the-command-movemesh23" title="Permalink to this headline"></a></h4>
 <p>A simple method to tranform a 2D mesh in 3D Surface mesh. The principe is to project a two dimensional domain in a three dimensional space, 2d surface in the (x,y,z)-space to create a surface mesh 3D, <strong>meshS</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -3906,7 +3887,7 @@ An example to obtain a three dimensional mesh using the command line <code class
 </section>
 </section>
 <section id="d-meshing-examples">
-<span id="meshing-examples-1"></span><h3>3d Meshing examples<a class="headerlink" href="#d-meshing-examples" title="Permalink to this headline">¶</a></h3>
+<span id="meshing-examples-1"></span><h3>3d Meshing examples<a class="headerlink" href="#d-meshing-examples" title="Permalink to this headline"></a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Lake</p>
@@ -4037,28 +4018,28 @@ An example to obtain a three dimensional mesh using the command line <code class
 <figure class="align-default" id="id50">
 <span id="meshgenerationcubesphere1"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_CubeSphere1.png"><img alt="MeshGeneration_CubeSphere1" src="../_images/MeshGeneration_CubeSphere1.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 93 </span><span class="caption-text">The surface mesh of the hex with internal sphere</span><a class="headerlink" href="#id50" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">The surface mesh of the hex with internal sphere</span><a class="headerlink" href="#id50" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id51">
 <span id="meshgenerationcubesphere2"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_CubeSphere2.png"><img alt="MeshGeneration_CubeSphere2" src="../_images/MeshGeneration_CubeSphere2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 94 </span><span class="caption-text">The tetrahedral mesh of the cube with internal ball</span><a class="headerlink" href="#id51" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">The tetrahedral mesh of the cube with internal ball</span><a class="headerlink" href="#id51" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Cube sphere</span></p>
 </div></section>
 </section>
 <section id="the-type-meshs-in-3-dimension">
-<span id="meshstype"></span><span id="CubeSphere"></span><h2><strong>The type meshS in 3 dimension</strong><a class="headerlink" href="#the-type-meshs-in-3-dimension" title="Permalink to this headline">¶</a></h2>
+<span id="meshstype"></span><span id="CubeSphere"></span><h2><strong>The type meshS in 3 dimension</strong><a class="headerlink" href="#the-type-meshs-in-3-dimension" title="Permalink to this headline"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Since the release 4.2.1, the surface <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code> object (list of vertices and border elements, without tetahedra elements) is remplaced by <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> type.</p>
 </div>
 <section id="commands-for-3d-surface-mesh-generation">
-<h3>Commands for 3d surface mesh generation<a class="headerlink" href="#commands-for-3d-surface-mesh-generation" title="Permalink to this headline">¶</a></h3>
+<h3>Commands for 3d surface mesh generation<a class="headerlink" href="#commands-for-3d-surface-mesh-generation" title="Permalink to this headline"></a></h3>
 <section id="the-command-square3">
-<h4>The command <em>square3</em><a class="headerlink" href="#the-command-square3" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>square3</em><a class="headerlink" href="#the-command-square3" title="Permalink to this headline"></a></h4>
 <p>The function <code class="code freefem docutils literal notranslate"><span class="pre">square3</span></code> like the function <code class="code freefem docutils literal notranslate"><span class="pre">square</span></code> in 2d is the simple way to a build the unit square plan in the space <span class="math notranslate nohighlight">\(\mathbb{R^3}\)</span>.
 To use this command, it is necessary to load the pluging <code class="code freefem docutils literal notranslate"><span class="pre">msh3</span></code> (need <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;msh3&quot;</span></code>).
 A square in 3d consists in building a 2d square which is projected from <span class="math notranslate nohighlight">\(\mathbb{R^2}\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R^3}\)</span>.
@@ -4088,7 +4069,7 @@ it’s the global orientation of the surface 1 extern (-1 intern)</p></li>
 <p>The following code generates a <span class="math notranslate nohighlight">\(3\times 4 \times 5\)</span> grid in the unit cube <span class="math notranslate nohighlight">\([0, 1]^3\)</span> with a clock wise triangulation.</p>
 </section>
 <section id="surface-mesh-builders">
-<h4>surface mesh builders<a class="headerlink" href="#surface-mesh-builders" title="Permalink to this headline">¶</a></h4>
+<h4>surface mesh builders<a class="headerlink" href="#surface-mesh-builders" title="Permalink to this headline"></a></h4>
 <p>Adding at the top of a <em>FreeFEM</em> script <code class="code freefem docutils literal notranslate"><span class="pre">include</span> <span class="pre">&quot;MeshSurface.idp&quot;</span></code>, constructors of sphere, ellipsoid, surface mesh of a 3d box are available.</p>
 <blockquote>
 <div><ul class="simple">
@@ -4197,7 +4178,7 @@ it’s the global orientation of the surface 1 extern (-1 intern)</p></li>
 </div>
 </section>
 <section id="d-mesh-generators-combined-with-movemesh23">
-<h4>2D mesh generators combined with  <em>movemesh23</em><a class="headerlink" href="#d-mesh-generators-combined-with-movemesh23" title="Permalink to this headline">¶</a></h4>
+<h4>2D mesh generators combined with  <em>movemesh23</em><a class="headerlink" href="#d-mesh-generators-combined-with-movemesh23" title="Permalink to this headline"></a></h4>
 <p><strong>FreeFEM</strong> ‘s meshes can be built by the composition of the <code class="code freefem docutils literal notranslate"><span class="pre">movemesh23</span></code> command from a 2d mesh generation.
 The operation is a projection of a 2d plane in <span class="math notranslate nohighlight">\(\mathbb{R^3}\)</span> following the geometric transformation  [ <span class="math notranslate nohighlight">\(\Phi 1\)</span>, <span class="math notranslate nohighlight">\(\Phi 2\)</span>, <span class="math notranslate nohighlight">\(\Phi 3\)</span> ].</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
@@ -4215,9 +4196,9 @@ The operation is a projection of a 2d plane in <span class="math notranslate noh
 </section>
 </section>
 <section id="id7">
-<h3>Remeshing<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3>Remeshing<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
 <section id="id8">
-<h4>The command <em>trunc</em><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>trunc</em><a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
 <p>This operator allows to define a <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> by truncating another one, i.e. by removing triangles, and/or by splitting each triangle by a given positive integer s.
 In a FreeFEM script, this function must be called as follows:</p>
 <p><code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> TS2= <code class="code freefem docutils literal notranslate"><span class="pre">trunc</span></code> (TS1, boolean function to keep or remove elements, split = s, label = …)</p>
@@ -4242,7 +4223,7 @@ In a FreeFEM script, this function must be called as follows:</p>
 </div>
 </section>
 <section id="id9">
-<h4>The command <em>movemesh</em><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>movemesh</em><a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
 <p>Like 2d and 3d type meshes in <strong>FreeFEM</strong>, <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> can be translated, rotated or deformated by an application [<span class="math notranslate nohighlight">\(\Phi 1\)</span>, <span class="math notranslate nohighlight">\(\Phi 2\)</span>, <span class="math notranslate nohighlight">\(\Phi 3\)</span>].
 The image <span class="math notranslate nohighlight">\(T_{h}(\Omega)\)</span> is obtained by the command <code class="code freefem docutils literal notranslate"><span class="pre">movemeshS</span></code>.</p>
 <p>The parameters of movemeshS are:</p>
@@ -4295,7 +4276,7 @@ equal -1 reverse the orientation of the triangles. It’s the global orientation
 </div>
 </section>
 <section id="id10">
-<h4>The command <em>change</em><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>change</em><a class="headerlink" href="#id10" title="Permalink to this headline"></a></h4>
 <p>Equivalent for a 2d or 3d mesh, the command <code class="code freefem docutils literal notranslate"><span class="pre">change</span></code> changes the label of elements and border elements of a <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code>.</p>
 <p>The parameters for this command line are:</p>
 <ul class="simple">
@@ -4313,7 +4294,7 @@ For example, we have:</p>
 </section>
 </section>
 <section id="link-with-a-mesh3">
-<h3>Link with a mesh3<a class="headerlink" href="#link-with-a-mesh3" title="Permalink to this headline">¶</a></h3>
+<h3>Link with a mesh3<a class="headerlink" href="#link-with-a-mesh3" title="Permalink to this headline"></a></h3>
 <p>In topology and mathematics, the boundary of a subset S of a topological space X is the set of points which can be approached both from S and from the outside of S.
 The general definitions to the boundary of a subset S of a topological space X are:</p>
 <blockquote>
@@ -4343,7 +4324,7 @@ The general definitions to the boundary of a subset S of a topological space X a
 <p>Hence, if an input mesh (.msh freefem or .mesh format) contains a list of vertices, tetrahedra, triangles and edges, <strong>FreeFEM</strong> builds a <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code> whitch contains explicitly a surface mesh type <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code>.</p>
 </div>
 <section id="the-command-gamma">
-<h4>The command <em>Gamma</em><a class="headerlink" href="#the-command-gamma" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>Gamma</em><a class="headerlink" href="#the-command-gamma" title="Permalink to this headline"></a></h4>
 <p>The command <code class="code freefem docutils literal notranslate"><span class="pre">Gamma</span></code> allows to build and manipulate the border mesh independly of a volume mesh such as the surface is described by triangle elements and edges border elements in 3d. Use this function, suppose that the <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code> object even contains the geometric description of its surface. That means, the input mesh explicitly contains the list of vertices, tetrahedra, triangles and edges. In case where the surface mesh doesn’t exist, before calling <code class="code freefem docutils literal notranslate"><span class="pre">Gamma</span></code>, must build it by calling the <code class="code freefem docutils literal notranslate"><span class="pre">buildSurface</span></code> function (see the next function description).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
 <span class="lineno">2 </span> <span class="kt">int</span> <span class="kr">n</span><span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
@@ -4357,12 +4338,12 @@ The general definitions to the boundary of a subset S of a topological space X a
 </div>
 </section>
 <section id="the-command-buildbdmesh">
-<h4>The command <em>buildBdMesh</em><a class="headerlink" href="#the-command-buildbdmesh" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>buildBdMesh</em><a class="headerlink" href="#the-command-buildbdmesh" title="Permalink to this headline"></a></h4>
 <p>Let Th3 a volume mesh (mesh3 type) ; such as the geometry description is a list of vertices, tetrahedra elements and triangle border elements.
 <strong>FreeFEM</strong> can generate the surface mesh associated to Th3. The intern mechanism of <strong>FreeFEM</strong> created directly the <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> associated to Th3 and accessible by the command <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span> <span class="pre">ThS</span> <span class="pre">=</span> <span class="pre">Th3.Gamma;</span></code>.</p>
 </section>
 <section id="the-command-savesurfacemesh">
-<h4>The command <em>savesurfacemesh</em><a class="headerlink" href="#the-command-savesurfacemesh" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>savesurfacemesh</em><a class="headerlink" href="#the-command-savesurfacemesh" title="Permalink to this headline"></a></h4>
 <p>Available for 3d meshes, the command <code class="code freefem docutils literal notranslate"><span class="pre">savesurfacemesh</span></code> saves the entire surface of a 3d volume <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code> at the format .mesh.
 Two possibilies about the mesh3 surface:</p>
 <blockquote>
@@ -4389,7 +4370,7 @@ write in the file the vertices list and the triangle list (face of the volum mes
 The operation does the same thing that the first exept to</p>
 </section>
 <section id="glue-of-meshs-meshes">
-<h4>Glue of meshS meshes<a class="headerlink" href="#glue-of-meshs-meshes" title="Permalink to this headline">¶</a></h4>
+<h4>Glue of meshS meshes<a class="headerlink" href="#glue-of-meshs-meshes" title="Permalink to this headline"></a></h4>
 <p>A surface 3d mesh can be the result of the generation of several assembled meshes, with caution of the right orientation at the merged interfaces.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="kt">meshS</span> <span class="n">Th1</span> <span class="o">=</span> <span class="nf">square3</span><span class="p">(</span><span class="kr">n</span><span class="p">,</span><span class="kr">n</span><span class="p">,[</span><span class="mi">2</span><span class="o">*</span><span class="kr">x</span><span class="p">,</span><span class="kr">y</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="kp">orientation</span><span class="o">=-</span><span class="mi">1</span><span class="p">);</span>
 <span class="lineno">2 </span>     <span class="kt">meshS</span> <span class="n">Th2</span> <span class="o">=</span> <span class="nf">square3</span><span class="p">(</span><span class="kr">n</span><span class="p">,</span><span class="kr">n</span><span class="p">,[</span><span class="mi">2</span><span class="o">*</span><span class="kr">x</span><span class="p">,</span><span class="kr">y</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="kp">orientation</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -4409,11 +4390,11 @@ The operation does the same thing that the first exept to</p>
 </section>
 </section>
 <section id="the-type-meshl-in-3-dimension">
-<span id="meshltype"></span><h2><strong>The type meshL in 3 dimension</strong><a class="headerlink" href="#the-type-meshl-in-3-dimension" title="Permalink to this headline">¶</a></h2>
+<span id="meshltype"></span><h2><strong>The type meshL in 3 dimension</strong><a class="headerlink" href="#the-type-meshl-in-3-dimension" title="Permalink to this headline"></a></h2>
 <section id="commands-for-3d-curve-mesh-generation">
-<h3>Commands for 3d curve mesh generation<a class="headerlink" href="#commands-for-3d-curve-mesh-generation" title="Permalink to this headline">¶</a></h3>
+<h3>Commands for 3d curve mesh generation<a class="headerlink" href="#commands-for-3d-curve-mesh-generation" title="Permalink to this headline"></a></h3>
 <section id="the-command-segment">
-<h4>The command <em>segment</em><a class="headerlink" href="#the-command-segment" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>segment</em><a class="headerlink" href="#the-command-segment" title="Permalink to this headline"></a></h4>
 <p>The function <code class="code freefem docutils literal notranslate"><span class="pre">segment</span></code> is a basic command to define a curve in 3D space.</p>
 <p>The parameters of this command line are:</p>
 <blockquote>
@@ -4446,7 +4427,7 @@ it’s the global orientation of the surface 1 extern (-1 intern)</p></li>
 <p>The following code generates a 10 subsegments from the unit line with a clock wise triangulation, according to the geometric transformation [torex,torey,torez] and removing the duplicated points/elements</p>
 </section>
 <section id="id11">
-<h4>The command <em>buildmesh</em><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>buildmesh</em><a class="headerlink" href="#id11" title="Permalink to this headline"></a></h4>
 <p>This operator allows to define a curve mesh from multi-borders.
 The domain can be defined by a parametrized curve (keyword <code class="code freefem docutils literal notranslate"><span class="pre">border</span></code>), such as Th1 in the following example
 or piecewise by parametrized curves, such as the construction of the mesh Th2.</p>
@@ -4475,9 +4456,9 @@ or piecewise by parametrized curves, such as the construction of the mesh Th2.</
 </section>
 </section>
 <section id="id12">
-<h3>Remeshing<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3>Remeshing<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
 <section id="id13">
-<h4>The command <em>trunc</em><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>trunc</em><a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
 <p>This operator allows to define a <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code> by truncating another one, i.e. by removing segments, and/or by splitting each element by a given positive integer s.
 Here, an example to use this function:</p>
 <p><code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code> ThL2= <code class="code freefem docutils literal notranslate"><span class="pre">trunc</span></code> (ThL1, boolean function to keep or remove elements, split = s, label = …)</p>
@@ -4512,7 +4493,7 @@ it’s the global orientation of the surface 1 extern (-1 intern)</p>
 </div>
 </section>
 <section id="id14">
-<h4>The command <em>movemesh</em><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>movemesh</em><a class="headerlink" href="#id14" title="Permalink to this headline"></a></h4>
 <p>This is the classical mesh transformation <strong>FreeFEM</strong> function, <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code> can be deformed by an application [ <span class="math notranslate nohighlight">\(\Phi 1\)</span>, <span class="math notranslate nohighlight">\(\Phi 2\)</span>, <span class="math notranslate nohighlight">\(\Phi 3\)</span> ].
 The image <span class="math notranslate nohighlight">\(T_{h}(\Omega)\)</span> is obtained by the command <code class="code freefem docutils literal notranslate"><span class="pre">movemeshL</span></code>.</p>
 <p>The parameters of movemesh are:</p>
@@ -4556,7 +4537,7 @@ equal -1 reverse the orientation of the triangles. It’s the global orientation
 </div>
 </section>
 <section id="id15">
-<h4>The command <em>change</em><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<h4>The command <em>change</em><a class="headerlink" href="#id15" title="Permalink to this headline"></a></h4>
 <p>The command <code class="code freefem docutils literal notranslate"><span class="pre">change</span></code> changes the label of elements and border elements of a <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code>.</p>
 <p>The parameters for this command line are:</p>
 <ul class="simple">
@@ -4573,7 +4554,7 @@ For example, we have:</p>
 \mathtt{region} &amp;= [ O_{1}, N_{1}, ..., O_{n_{l}},N_{n_{l}} ]\end{split}\]</div>
 </section>
 <section id="the-commands-buildbdmesh-and-gamma">
-<h4>The commands <em>buildBdMesh</em> and <em>Gamma</em><a class="headerlink" href="#the-commands-buildbdmesh-and-gamma" title="Permalink to this headline">¶</a></h4>
+<h4>The commands <em>buildBdMesh</em> and <em>Gamma</em><a class="headerlink" href="#the-commands-buildbdmesh-and-gamma" title="Permalink to this headline"></a></h4>
 <p>The command <code class="code freefem docutils literal notranslate"><span class="pre">Gamma</span></code> allows to extract the border mesh independly of a surface mesh.
 With this function, the constructed border mesh contains the full geometric description of th eboundary surface. In case where the border mesh doesn’t exist, before calling <code class="code freefem docutils literal notranslate"><span class="pre">Gamma</span></code>, must build it by calling the <code class="code freefem docutils literal notranslate"><span class="pre">buildBdMesh</span></code> function (see the next function description).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
@@ -4586,7 +4567,7 @@ With this function, the constructed border mesh contains the full geometric desc
 </div>
 </section>
 <section id="glue-of-meshl-meshes">
-<h4>Glue of meshL meshes<a class="headerlink" href="#glue-of-meshl-meshes" title="Permalink to this headline">¶</a></h4>
+<h4>Glue of meshL meshes<a class="headerlink" href="#glue-of-meshl-meshes" title="Permalink to this headline"></a></h4>
 <p>An assembling of <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code> is possible thanks to the operator <code class="code freefem docutils literal notranslate"><span class="pre">+</span></code>. The result returns a <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code>, with caution of the right orientation at the merged interfaces. Here, the function <code class="code freefem docutils literal notranslate"><span class="pre">checkmesh</span></code> can be called.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="kt">int</span> <span class="kr">n</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
 <span class="lineno">2 </span> <span class="kt">meshL</span> <span class="n">Th1</span> <span class="o">=</span> <span class="nf">segment</span><span class="p">(</span><span class="kr">n</span><span class="p">);</span>
@@ -4604,7 +4585,7 @@ With this function, the constructed border mesh contains the full geometric desc
 </div>
 </section>
 <section id="id16">
-<h4>The command extract<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<h4>The command extract<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h4>
 <p>This operator allows to extract a labeled piece or the entire border of a 2D mesh and project it in 3D. Optionally, a geometic transformation can be applied.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>     <span class="kt">mesh</span> <span class="n">Th</span><span class="o">=</span><span class="nf">square</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
 <span class="lineno">2 </span>     <span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">ll</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
@@ -4613,12 +4594,12 @@ With this function, the constructed border mesh contains the full geometric desc
 </div>
 </section>
 <section id="the-commands-rebuildborder">
-<h4>The commands <em>rebuildBorder</em><a class="headerlink" href="#the-commands-rebuildborder" title="Permalink to this headline">¶</a></h4>
+<h4>The commands <em>rebuildBorder</em><a class="headerlink" href="#the-commands-rebuildborder" title="Permalink to this headline"></a></h4>
 <p>This operator, used in the last example, allows to reconstruted the border elements following a special criteria <code class="code freefem docutils literal notranslate"><span class="pre">ridgeangledetection</span></code>. By default, it value is <span class="math notranslate nohighlight">\(\frac{8}{9}*arctan(1)\approx40°\)</span>, the diedral angle for a decahedron.</p>
 </section>
 </section>
 <section id="the-commands-checkmesh">
-<h3>The commands <em>checkmesh</em><a class="headerlink" href="#the-commands-checkmesh" title="Permalink to this headline">¶</a></h3>
+<h3>The commands <em>checkmesh</em><a class="headerlink" href="#the-commands-checkmesh" title="Permalink to this headline"></a></h3>
 <p>This function is avalaible for all 3D meshes. It checkes and validates the a given mesh, allows to remove duplicate vertices and/or elements and border elements. The possible arguments are</p>
 <ul class="simple">
 <li><dl class="simple">
@@ -4635,7 +4616,7 @@ With this function, the constructed border mesh contains the full geometric desc
 </div>
 </section>
 <section id="tetgen-a-tetrahedral-mesh-generator">
-<h3>TetGen: A tetrahedral mesh generator<a class="headerlink" href="#tetgen-a-tetrahedral-mesh-generator" title="Permalink to this headline">¶</a></h3>
+<h3>TetGen: A tetrahedral mesh generator<a class="headerlink" href="#tetgen-a-tetrahedral-mesh-generator" title="Permalink to this headline"></a></h3>
 <p>TetGen is a software developed by Dr. Hang Si of Weierstrass Institute for Applied Analysis and Stochastics in Berlin, Germany <a class="reference internal" href="../bibliography.html#hang2006" id="id17"><span>[HANG2006]</span></a>.
 TetGen is free for research and non-commercial use.
 For any commercial license utilization, a commercial license is available upon request to Hang Si.</p>
@@ -4778,7 +4759,7 @@ x_{n_v} &amp; y_{n_v} &amp; z_{n_v}
 <p>In the string <code class="code freefem docutils literal notranslate"><span class="pre">switch</span></code>, we can’t used the option <code class="code freefem docutils literal notranslate"><span class="pre">p</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">q</span></code> of TetGen.</p>
 </section>
 <section id="reconstruct-refine-a-3d-mesh-with-tetgen">
-<h3>Reconstruct/Refine a 3d mesh with TetGen<a class="headerlink" href="#reconstruct-refine-a-3d-mesh-with-tetgen" title="Permalink to this headline">¶</a></h3>
+<h3>Reconstruct/Refine a 3d mesh with TetGen<a class="headerlink" href="#reconstruct-refine-a-3d-mesh-with-tetgen" title="Permalink to this headline"></a></h3>
 <p>Meshes in three dimension can be refined using TetGen with the command line <code class="code freefem docutils literal notranslate"><span class="pre">tetgreconstruction</span></code>.</p>
 <p>The parameter of this keyword are</p>
 <ul class="simple">
@@ -4868,11 +4849,11 @@ The label in the <code class="code freefem docutils literal notranslate"><span c
 </section>
 </section>
 <section id="read-write-statements-for-meshes">
-<span id="meshdatastructurereadwrite"></span><h2>Read/Write Statements for meshes<a class="headerlink" href="#read-write-statements-for-meshes" title="Permalink to this headline">¶</a></h2>
+<span id="meshdatastructurereadwrite"></span><h2>Read/Write Statements for meshes<a class="headerlink" href="#read-write-statements-for-meshes" title="Permalink to this headline"></a></h2>
 <section id="d-case">
-<h3>2d case<a class="headerlink" href="#d-case" title="Permalink to this headline">¶</a></h3>
+<h3>2d case<a class="headerlink" href="#d-case" title="Permalink to this headline"></a></h3>
 <section id="format-of-mesh-data">
-<h4>format of  mesh data<a class="headerlink" href="#format-of-mesh-data" title="Permalink to this headline">¶</a></h4>
+<h4>format of  mesh data<a class="headerlink" href="#format-of-mesh-data" title="Permalink to this headline"></a></h4>
 <p>Users who want to read a triangulation made elsewhere should see the structure of the file generated below:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">border</span> <span class="nf">C</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="nf">cos</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span> <span class="kr">y</span><span class="o">=</span><span class="nf">sin</span><span class="p">(</span><span class="kp">t</span><span class="p">);}</span>
 <span class="lineno">2 </span><span class="kt">mesh</span> <span class="n">Th1</span> <span class="o">=</span> <span class="nf">buildmesh</span><span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
@@ -4890,7 +4871,7 @@ An external file contains a mesh at format .mesh can be read by the ommand <code
 <figure class="align-default" id="figbuildmesh">
 <a class="reference internal image-reference" href="../_images/MeshGeneration_Data.png"><img alt="../_images/MeshGeneration_Data.png" src="../_images/MeshGeneration_Data.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Mesh by <code class="code freefem docutils literal notranslate"><span class="pre">buildmesh(C(10))</span></code></span><a class="headerlink" href="#figbuildmesh" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Mesh by <code class="code freefem docutils literal notranslate"><span class="pre">buildmesh(C(10))</span></code></span><a class="headerlink" href="#figbuildmesh" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>In the <a class="reference internal" href="#figbuildmesh"><span class="std std-numref">Fig. 95</span></a>, we have the following.</p>
@@ -4905,7 +4886,7 @@ An external file contains a mesh at format .mesh can be read by the ommand <code
 <p><span class="math notranslate nohighlight">\(\dots\)</span></p>
 <p>The edge of the 10th side <span class="math notranslate nohighlight">\(L_{10}\)</span> are <span class="math notranslate nohighlight">\(q^{10}, q^6\)</span>.</p>
 <table class="docutils align-default" id="tabmeshstructure">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">The structure of <code class="code freefem docutils literal notranslate"><span class="pre">mesh_sample.msh</span></code></span><a class="headerlink" href="#tabmeshstructure" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">The structure of <code class="code freefem docutils literal notranslate"><span class="pre">mesh_sample.msh</span></code></span><a class="headerlink" href="#tabmeshstructure" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 36%" />
 <col style="width: 64%" />
@@ -5029,7 +5010,7 @@ So these borders have to be referenced by the number which corresponds to their 
 </div>
 </section>
 <section id="input-output-for-a-mesh">
-<h4>Input/output for a mesh<a class="headerlink" href="#input-output-for-a-mesh" title="Permalink to this headline">¶</a></h4>
+<h4>Input/output for a mesh<a class="headerlink" href="#input-output-for-a-mesh" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>the command <em>readmesh</em></p></li>
@@ -5096,9 +5077,9 @@ So these borders have to be referenced by the number which corresponds to their 
 </section>
 </section>
 <section id="id27">
-<h3>3d case<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<h3>3d case<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
 <section id="id28">
-<h4>format of  mesh data<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<h4>format of  mesh data<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h4>
 <p>In three dimensions, the file mesh format supported for input and output files by <strong>FreeFEM</strong> are the extension .msh and .mesh.
 These formats are described in the <a class="reference internal" href="developers.html#meshfiledatastructure"><span class="std std-ref">Mesh Format section</span></a>.</p>
 <p><strong>Extension file .msh</strong> The structure of the files with extension .msh in 3D is given by:</p>
@@ -5139,7 +5120,7 @@ Each triangle <span class="math notranslate nohighlight">\(tri_j, j=1,\cdots,n_{
 <p>This field is express with the notation of <a class="reference internal" href="developers.html#meshfiledatastructure"><span class="std std-ref">Mesh Format section</span></a>.</p>
 </section>
 <section id="input-output-for-a-mesh3">
-<h4>Input/output for a mesh3<a class="headerlink" href="#input-output-for-a-mesh3" title="Permalink to this headline">¶</a></h4>
+<h4>Input/output for a mesh3<a class="headerlink" href="#input-output-for-a-mesh3" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>the command <em>readmesh3</em></p></li>
@@ -5199,9 +5180,9 @@ Each triangle <span class="math notranslate nohighlight">\(tri_j, j=1,\cdots,n_{
 </section>
 </section>
 <section id="surface-3d-case">
-<h3>Surface 3d case<a class="headerlink" href="#surface-3d-case" title="Permalink to this headline">¶</a></h3>
+<h3>Surface 3d case<a class="headerlink" href="#surface-3d-case" title="Permalink to this headline"></a></h3>
 <section id="id29">
-<h4>format of  mesh data<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
+<h4>format of  mesh data<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h4>
 <p>Like 2d and 3d, the input and output format files supported by <strong>FreeFEM</strong> are the extension .msh and .mesh.
 These formats are described in the <a class="reference internal" href="developers.html#meshfiledatastructure"><span class="std std-ref">Mesh Format section</span></a>.</p>
 <p><strong>Extension file .msh</strong> The structure of the files with extension .msh in surface 3D is given by:</p>
@@ -5254,7 +5235,7 @@ Each triangle <span class="math notranslate nohighlight">\(be_j, j=1,\cdots,n_{t
 <p>This field is express with the notation of <a class="reference internal" href="developers.html#meshfiledatastructure"><span class="std std-ref">Mesh Format section</span></a>.</p>
 </section>
 <section id="input-output-for-a-meshs">
-<h4>Input/output for a meshS<a class="headerlink" href="#input-output-for-a-meshs" title="Permalink to this headline">¶</a></h4>
+<h4>Input/output for a meshS<a class="headerlink" href="#input-output-for-a-meshs" title="Permalink to this headline"></a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>the command <em>readmesh3</em></p></li>
@@ -5315,7 +5296,7 @@ Each triangle <span class="math notranslate nohighlight">\(be_j, j=1,\cdots,n_{t
 </section>
 </section>
 <section id="medit">
-<h2>Medit<a class="headerlink" href="#medit" title="Permalink to this headline">¶</a></h2>
+<h2>Medit<a class="headerlink" href="#medit" title="Permalink to this headline"></a></h2>
 <p>The keyword <code class="code freefem docutils literal notranslate"><span class="pre">medit</span></code> allows to display a mesh alone or a mesh and one or several functions defined on the mesh using the Pascal Frey’s freeware <code class="docutils literal notranslate"><span class="pre">medit</span></code>.
 <code class="docutils literal notranslate"><span class="pre">medit</span></code> opens its own window and uses OpenGL extensively.
 Naturally to use this command <code class="docutils literal notranslate"><span class="pre">medit</span></code> must be installed.</p>
@@ -5417,7 +5398,7 @@ A vizualisation with medit of scalar solutions <span class="math notranslate noh
 </div>
 </section>
 <section id="mshmet">
-<span id="meshgenerationmshmet"></span><h2>Mshmet<a class="headerlink" href="#mshmet" title="Permalink to this headline">¶</a></h2>
+<span id="meshgenerationmshmet"></span><h2>Mshmet<a class="headerlink" href="#mshmet" title="Permalink to this headline"></a></h2>
 <p>Mshmet is a software developed by P. Frey that allows to compute an anisotropic metric based on solutions (i.e. Hessian-based).
 This software can return also an isotropic metric.
 Moreover, <code class="docutils literal notranslate"><span class="pre">mshmet</span></code> can also construct a metric suitable for levelset interface capturing.
@@ -5562,7 +5543,7 @@ For a symmetric tensor metric <span class="math notranslate nohighlight">\(h=\le
 </div>
 </section>
 <section id="freeyams">
-<h2>FreeYams<a class="headerlink" href="#freeyams" title="Permalink to this headline">¶</a></h2>
+<h2>FreeYams<a class="headerlink" href="#freeyams" title="Permalink to this headline"></a></h2>
 <p>FreeYams is a surface mesh adaptation software which is developed by P. Frey.
 This software is a new version of yams.
 The adapted surface mesh is constructed with a geometric metric tensor field.
@@ -5727,7 +5708,7 @@ The ridge definition is given in the parameter doptions(12).</p>
 </div>
 </section>
 <section id="mmg3d">
-<h2>mmg3d<a class="headerlink" href="#mmg3d" title="Permalink to this headline">¶</a></h2>
+<h2>mmg3d<a class="headerlink" href="#mmg3d" title="Permalink to this headline"></a></h2>
 <div class="admonition-todo admonition" id="id30">
 <p class="admonition-title">Todo</p>
 <p>mmg3d-v4.0</p>
@@ -5895,7 +5876,7 @@ It is a vector of size 3 <span class="math notranslate nohighlight">\(nv\)</span
 </div>
 </section>
 <section id="a-first-3d-isotrope-mesh-adaptation-process">
-<span id="meshfirstisotropemeshadaptation"></span><h2>A first 3d isotrope mesh adaptation process<a class="headerlink" href="#a-first-3d-isotrope-mesh-adaptation-process" title="Permalink to this headline">¶</a></h2>
+<span id="meshfirstisotropemeshadaptation"></span><h2>A first 3d isotrope mesh adaptation process<a class="headerlink" href="#a-first-3d-isotrope-mesh-adaptation-process" title="Permalink to this headline"></a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Adaptation 3D</p>
@@ -5957,7 +5938,7 @@ It is a vector of size 3 <span class="math notranslate nohighlight">\(nv\)</span
 </div>
 </section>
 <section id="build-a-2d-mesh-from-an-isoline">
-<h2>Build a 2d mesh from an isoline<a class="headerlink" href="#build-a-2d-mesh-from-an-isoline" title="Permalink to this headline">¶</a></h2>
+<h2>Build a 2d mesh from an isoline<a class="headerlink" href="#build-a-2d-mesh-from-an-isoline" title="Permalink to this headline"></a></h2>
 <p>The idea is to get the discretization of an isoline of fluid meshes, this tool can be useful to construct meshes from image.
 First, we give an example of the isovalue meshes <span class="math notranslate nohighlight">\(0.2\)</span> of analytical function <span class="math notranslate nohighlight">\(\sqrt{(x-1/2)^2 +(y-1/2)^2}\)</span>, on unit square.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;</span><span class="nf">isoline</span><span class="s">&quot;</span>
@@ -6078,13 +6059,13 @@ So here : the minimum is a point <span class="math notranslate nohighlight">\(0.
 <figure class="align-default" id="id52">
 <span id="meshgenerationisoline1"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_Isoline1.jpg"><img alt="MeshGeneration_Isoline1" src="../_images/MeshGeneration_Isoline1.jpg" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 96 </span><span class="caption-text">The image of the Leman lake meshes</span><a class="headerlink" href="#id52" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">The image of the Leman lake meshes</span><a class="headerlink" href="#id52" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id53">
 <span id="meshgenerationisoline2"></span><a class="reference internal image-reference" href="../_images/MeshGeneration_Isoline2.png"><img alt="MeshGeneration_Isoline2" src="../_images/MeshGeneration_Isoline2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 97 </span><span class="caption-text">The mesh of the lake</span><a class="headerlink" href="#id53" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 97 </span><span class="caption-text">The mesh of the lake</span><a class="headerlink" href="#id53" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Isoline</span></p>
@@ -6228,7 +6209,24 @@ So here : the minimum is a point <span class="math notranslate nohighlight">\(0.
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

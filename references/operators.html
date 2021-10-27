@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1953,21 +1935,20 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="operators">
-<h1>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h1>
+<h1>Operators<a class="headerlink" href="#operators" title="Permalink to this headline"></a></h1>
 <section id="addition-operator">
-<h2>Addition operator +<a class="headerlink" href="#addition-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Addition operator +<a class="headerlink" href="#addition-operator" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">+</span> <span class="mf">2.</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Works for <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">string</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code>, array.</p>
 </section>
 <section id="increment-operator">
-<h2>Increment operator ++<a class="headerlink" href="#increment-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Increment operator ++<a class="headerlink" href="#increment-operator" title="Permalink to this headline"></a></h2>
 <p>Pre-increment:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="o">++</span><span class="n">i</span><span class="p">;</span>
@@ -1980,14 +1961,14 @@
 </div>
 </section>
 <section id="substraction-operator">
-<h2>Substraction operator -<a class="headerlink" href="#substraction-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Substraction operator -<a class="headerlink" href="#substraction-operator" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">-</span> <span class="mf">2.</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Works for <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, array.</p>
 </section>
 <section id="decrement-operator">
-<h2>Decrement operator –<a class="headerlink" href="#decrement-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Decrement operator –<a class="headerlink" href="#decrement-operator" title="Permalink to this headline"></a></h2>
 <p>Pre-decrement:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="o">--</span><span class="n">i</span><span class="p">;</span>
@@ -2000,7 +1981,7 @@
 </div>
 </section>
 <section id="multiplication-operator">
-<h2>Multiplication operator *<a class="headerlink" href="#multiplication-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Multiplication operator *<a class="headerlink" href="#multiplication-operator" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">b</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kt">matrix</span> <span class="kp">A</span>
 <span class="lineno">3 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="kr">x</span> <span class="o">=</span> <span class="kp">A</span><span class="o">^-</span><span class="mi">1</span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
@@ -2009,13 +1990,13 @@
 <p>Works for <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, array, <code class="code freefem docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
 </section>
 <section id="equal-operator">
-<h2>Equal operator =<a class="headerlink" href="#equal-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Equal operator =<a class="headerlink" href="#equal-operator" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="comparison-operator">
-<h2>Comparison operator ==<a class="headerlink" href="#comparison-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Comparison operator ==<a class="headerlink" href="#comparison-operator" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kt">real</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">;</span>
 <span class="lineno">3 </span>
@@ -2024,7 +2005,7 @@
 </div>
 </section>
 <section id="id1">
-<h2>Comparison operator !=<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>Comparison operator !=<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kt">real</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">2.</span><span class="p">;</span>
 <span class="lineno">3 </span>
@@ -2033,7 +2014,7 @@
 </div>
 </section>
 <section id="id2">
-<h2>Comparison operator &lt;, &lt;=<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>Comparison operator &lt;, &lt;=<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kt">real</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">2.</span><span class="p">;</span>
 <span class="lineno">3 </span>
@@ -2043,7 +2024,7 @@
 </div>
 </section>
 <section id="id3">
-<h2>Comparison operator &gt;, &gt;=<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>Comparison operator &gt;, &gt;=<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">3.</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kt">real</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">2.</span><span class="p">;</span>
 <span class="lineno">3 </span>
@@ -2053,7 +2034,7 @@
 </div>
 </section>
 <section id="compound-operator">
-<h2>Compound operator <cite>+=</cite>, <cite>-=</cite>, <cite>*=</cite>, <cite>/=</cite><a class="headerlink" href="#compound-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Compound operator <cite>+=</cite>, <cite>-=</cite>, <cite>*=</cite>, <cite>/=</cite><a class="headerlink" href="#compound-operator" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="n">a</span> <span class="o">+=</span> <span class="mf">2.</span><span class="p">;</span>
 <span class="lineno">3 </span><span class="n">a</span> <span class="o">-=</span> <span class="mf">1.</span><span class="p">;</span>
@@ -2063,40 +2044,40 @@
 </div>
 </section>
 <section id="term-by-term-multiplication">
-<h2>Term by term multiplication .*<a class="headerlink" href="#term-by-term-multiplication" title="Permalink to this headline">¶</a></h2>
+<h2>Term by term multiplication .*<a class="headerlink" href="#term-by-term-multiplication" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">matrix</span> <span class="kp">A</span> <span class="o">=</span> <span class="kp">B</span> <span class="p">.</span><span class="o">*</span> <span class="n">C</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="division-operator">
-<h2>Division operator /<a class="headerlink" href="#division-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Division operator /<a class="headerlink" href="#division-operator" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Works for <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>.</p>
 </section>
 <section id="term-by-term-division">
-<h2>Term by term division ./<a class="headerlink" href="#term-by-term-division" title="Permalink to this headline">¶</a></h2>
+<h2>Term by term division ./<a class="headerlink" href="#term-by-term-division" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">matrix</span> <span class="kp">A</span> <span class="o">=</span> <span class="kp">B</span> <span class="p">.</span><span class="o">/</span> <span class="n">C</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="remainder-from-the-division">
-<h2>Remainder from the division %<a class="headerlink" href="#remainder-from-the-division" title="Permalink to this headline">¶</a></h2>
+<h2>Remainder from the division %<a class="headerlink" href="#remainder-from-the-division" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">%</span> <span class="mi">2</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Works for <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>.</p>
 </section>
 <section id="power-operator">
-<h2>Power operator ^<a class="headerlink" href="#power-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Power operator ^<a class="headerlink" href="#power-operator" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Works for <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
 </section>
 <section id="inverse-of-a-matrix-1">
-<h2>Inverse of a matrix ^-1<a class="headerlink" href="#inverse-of-a-matrix-1" title="Permalink to this headline">¶</a></h2>
+<h2>Inverse of a matrix ^-1<a class="headerlink" href="#inverse-of-a-matrix-1" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">Res</span> <span class="o">=</span> <span class="kp">A</span><span class="o">^-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -2106,7 +2087,7 @@
 </div>
 </section>
 <section id="transpose-operator">
-<h2>Transpose operator ‘<a class="headerlink" href="#transpose-operator" title="Permalink to this headline">¶</a></h2>
+<h2>Transpose operator ‘<a class="headerlink" href="#transpose-operator" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="o">&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -2117,12 +2098,12 @@
 </div>
 </section>
 <section id="tensor-scalar-product">
-<h2>Tensor scalar product :<a class="headerlink" href="#tensor-scalar-product" title="Permalink to this headline">¶</a></h2>
+<h2>Tensor scalar product :<a class="headerlink" href="#tensor-scalar-product" title="Permalink to this headline"></a></h2>
 <div class="math notranslate nohighlight">
 \[A:B = \sum_{i,j}{A_{ij}B_{ij}}\]</div>
 </section>
 <section id="c-arithmetical-if-expression">
-<h2>C++ arithmetical if expression ? :<a class="headerlink" href="#c-arithmetical-if-expression" title="Permalink to this headline">¶</a></h2>
+<h2>C++ arithmetical if expression ? :<a class="headerlink" href="#c-arithmetical-if-expression" title="Permalink to this headline"></a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">?</span> <span class="pre">b</span> <span class="pre">:</span> <span class="pre">c</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">b</span></code> if the <code class="docutils literal notranslate"><span class="pre">a</span></code> is true, <code class="docutils literal notranslate"><span class="pre">c</span></code> otherwise.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -2226,7 +2207,24 @@
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

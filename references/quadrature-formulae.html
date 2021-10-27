@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1936,20 +1918,19 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="quadrature-formulae">
-<span id="quadratureformulae"></span><h1>Quadrature formulae<a class="headerlink" href="#quadrature-formulae" title="Permalink to this headline">¶</a></h1>
+<span id="quadratureformulae"></span><h1>Quadrature formulae<a class="headerlink" href="#quadrature-formulae" title="Permalink to this headline"></a></h1>
 <p>The quadrature formula is like the following:</p>
 <div class="math notranslate nohighlight">
 \[\int_{D}{f(\boldx)} \approx \sum_{\ell=1}^{L}{\omega_\ell f(\boldxi_\ell)}\]</div>
 <section id="int1d">
-<span id="quadratureformulaeint1d"></span><h2>int1d<a class="headerlink" href="#int1d" title="Permalink to this headline">¶</a></h2>
+<span id="quadratureformulaeint1d"></span><h2>int1d<a class="headerlink" href="#int1d" title="Permalink to this headline"></a></h2>
 <p>Quadrature formula on an edge.</p>
 <section id="notations">
-<h3>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">¶</a></h3>
+<h3>Notations<a class="headerlink" href="#notations" title="Permalink to this headline"></a></h3>
 <p><span class="math notranslate nohighlight">\(|D|\)</span> is the measure of the edge <span class="math notranslate nohighlight">\(D\)</span>.</p>
 <p>For a shake of simplicity, we denote:</p>
 <div class="math notranslate nohighlight">
@@ -1957,7 +1938,7 @@
 <p>with <span class="math notranslate nohighlight">\(0\leq t\leq 1\)</span>; <span class="math notranslate nohighlight">\(\boldx=(1-t)\boldx_0+t\boldx_1\)</span>.</p>
 </section>
 <section id="qf1pe">
-<h3>qf1pE<a class="headerlink" href="#qf1pe" title="Permalink to this headline">¶</a></h3>
+<h3>qf1pE<a class="headerlink" href="#qf1pe" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf1pE</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1970,7 +1951,7 @@
 \[\int_{D}{f(\boldx)} \approx |D|g\left(\frac{1}{2}\right)\]</div>
 </section>
 <section id="qf2pe">
-<h3>qf2pE<a class="headerlink" href="#qf2pe" title="Permalink to this headline">¶</a></h3>
+<h3>qf2pE<a class="headerlink" href="#qf2pe" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf2pE</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1986,7 +1967,7 @@
 \right)\]</div>
 </section>
 <section id="qf3pe">
-<h3>qf3pE<a class="headerlink" href="#qf3pe" title="Permalink to this headline">¶</a></h3>
+<h3>qf3pE<a class="headerlink" href="#qf3pe" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf3pE</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2003,7 +1984,7 @@
 \right)\]</div>
 </section>
 <section id="qf4pe">
-<h3>qf4pE<a class="headerlink" href="#qf4pe" title="Permalink to this headline">¶</a></h3>
+<h3>qf4pE<a class="headerlink" href="#qf4pe" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf4pE</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2021,7 +2002,7 @@
 \right)\]</div>
 </section>
 <section id="qf5pe">
-<h3>qf5pE<a class="headerlink" href="#qf5pe" title="Permalink to this headline">¶</a></h3>
+<h3>qf5pE<a class="headerlink" href="#qf5pe" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf5pE</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2040,7 +2021,7 @@
 \right)\]</div>
 </section>
 <section id="qf1pelump">
-<h3>qf1pElump<a class="headerlink" href="#qf1pelump" title="Permalink to this headline">¶</a></h3>
+<h3>qf1pElump<a class="headerlink" href="#qf1pelump" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf1pElump</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2053,13 +2034,13 @@
 </section>
 </section>
 <section id="int2d">
-<span id="quadratureformulaeint2d"></span><h2>int2d<a class="headerlink" href="#int2d" title="Permalink to this headline">¶</a></h2>
+<span id="quadratureformulaeint2d"></span><h2>int2d<a class="headerlink" href="#int2d" title="Permalink to this headline"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Complete formulas are no longer detailed</p>
 </div>
 <section id="qf1pt">
-<h3>qf1pT<a class="headerlink" href="#qf1pt" title="Permalink to this headline">¶</a></h3>
+<h3>qf1pT<a class="headerlink" href="#qf1pt" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf1pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2070,7 +2051,7 @@
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_1\)</span>.</p>
 </section>
 <section id="qf2pt">
-<h3>qf2pT<a class="headerlink" href="#qf2pt" title="Permalink to this headline">¶</a></h3>
+<h3>qf2pT<a class="headerlink" href="#qf2pt" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf2pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2081,7 +2062,7 @@
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_2\)</span>.</p>
 </section>
 <section id="qf5pt">
-<h3>qf5pT<a class="headerlink" href="#qf5pt" title="Permalink to this headline">¶</a></h3>
+<h3>qf5pT<a class="headerlink" href="#qf5pt" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf5pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2092,21 +2073,21 @@
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_5\)</span>.</p>
 </section>
 <section id="qf1ptlump">
-<h3>qf1pTlump<a class="headerlink" href="#qf1ptlump" title="Permalink to this headline">¶</a></h3>
+<h3>qf1pTlump<a class="headerlink" href="#qf1ptlump" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf1pTlump</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_1\)</span>.</p>
 </section>
 <section id="qf2pt4p1">
-<h3>qf2pT4P1<a class="headerlink" href="#qf2pt4p1" title="Permalink to this headline">¶</a></h3>
+<h3>qf2pT4P1<a class="headerlink" href="#qf2pt4p1" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf2pT4P1</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_1\)</span>.</p>
 </section>
 <section id="qf7pt">
-<h3>qf7pT<a class="headerlink" href="#qf7pt" title="Permalink to this headline">¶</a></h3>
+<h3>qf7pT<a class="headerlink" href="#qf7pt" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf7pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2117,7 +2098,7 @@
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_7\)</span>.</p>
 </section>
 <section id="qf9pt">
-<h3>qf9pT<a class="headerlink" href="#qf9pt" title="Permalink to this headline">¶</a></h3>
+<h3>qf9pT<a class="headerlink" href="#qf9pt" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf9pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2129,9 +2110,9 @@
 </section>
 </section>
 <section id="int3d">
-<span id="quadratureformulaeint3d"></span><h2>int3d<a class="headerlink" href="#int3d" title="Permalink to this headline">¶</a></h2>
+<span id="quadratureformulaeint3d"></span><h2>int3d<a class="headerlink" href="#int3d" title="Permalink to this headline"></a></h2>
 <section id="qfv1">
-<h3>qfV1<a class="headerlink" href="#qfv1" title="Permalink to this headline">¶</a></h3>
+<h3>qfV1<a class="headerlink" href="#qfv1" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qfV1</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2142,7 +2123,7 @@
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_1\)</span>.</p>
 </section>
 <section id="qfv2">
-<h3>qfV2<a class="headerlink" href="#qfv2" title="Permalink to this headline">¶</a></h3>
+<h3>qfV2<a class="headerlink" href="#qfv2" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qfV2</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2153,7 +2134,7 @@
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_2\)</span>.</p>
 </section>
 <section id="qfv5">
-<h3>qfV5<a class="headerlink" href="#qfv5" title="Permalink to this headline">¶</a></h3>
+<h3>qfV5<a class="headerlink" href="#qfv5" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qfV5</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2164,7 +2145,7 @@
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_5\)</span>.</p>
 </section>
 <section id="qfv1lump">
-<h3>qfV1lump<a class="headerlink" href="#qfv1lump" title="Permalink to this headline">¶</a></h3>
+<h3>qfV1lump<a class="headerlink" href="#qfv1lump" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qfV1lump</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2230,7 +2211,24 @@
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

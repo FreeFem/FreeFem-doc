@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1936,14 +1918,13 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="visualization">
-<span id="examplevisualization"></span><h1>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h1>
+<span id="examplevisualization"></span><h1>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline"></a></h1>
 <section id="plot">
-<span id="exampleplot"></span><h2>Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h2>
+<span id="exampleplot"></span><h2>Plot<a class="headerlink" href="#plot" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
 <span class="lineno"> 2 </span><span class="kt">fespace</span> <span class="nf">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P1</span><span class="p">);</span>
 <span class="lineno"> 3 </span>
@@ -1980,25 +1961,25 @@
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/Plot1.jpg"><img alt="Plot1" src="../_images/Plot1.jpg" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 208 </span><span class="caption-text">First plot</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 208 </span><span class="caption-text">First plot</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/Plot2.jpg"><img alt="Plot2" src="../_images/Plot2.jpg" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 209 </span><span class="caption-text">Second plot</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 209 </span><span class="caption-text">Second plot</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/Plot3.png"><img alt="Plot3" src="../_images/Plot3.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 210 </span><span class="caption-text">Gnuplot</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 210 </span><span class="caption-text">Gnuplot</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Plot</span></p>
 </div></section>
 <section id="hsv">
-<span id="examplehsv"></span><span id="Plot"></span><h2>HSV<a class="headerlink" href="#hsv" title="Permalink to this headline">¶</a></h2>
+<span id="examplehsv"></span><span id="Plot"></span><h2>HSV<a class="headerlink" href="#hsv" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// From: http://en.wikipedia.org/wiki/HSV_color_space</span>
 <span class="lineno"> 2 </span><span class="c1">// The HSV (Hue, Saturation, Value) model defines a color space</span>
 <span class="lineno"> 3 </span><span class="c1">// in terms of three constituent components:</span>
@@ -2033,12 +2014,12 @@
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/HSV.jpg"><img alt="../_images/HSV.jpg" src="../_images/HSV.jpg" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 211 </span><span class="caption-text">Result</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 211 </span><span class="caption-text">Result</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="medit">
-<span id="examplemedit"></span><h2>Medit<a class="headerlink" href="#medit" title="Permalink to this headline">¶</a></h2>
+<span id="examplemedit"></span><h2>Medit<a class="headerlink" href="#medit" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;</span><span class="nf">medit</span><span class="s">&quot;</span>
 <span class="lineno"> 2 </span>
 <span class="lineno"> 3 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="kr">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="kr">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
@@ -2067,19 +2048,19 @@
 <figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/Medit1.jpg"><img alt="Medit1" src="../_images/Medit1.jpg" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 212 </span><span class="caption-text">2D plot</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 212 </span><span class="caption-text">2D plot</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../_images/Medit2.jpg"><img alt="Medit2" src="../_images/Medit2.jpg" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 213 </span><span class="caption-text">Plot with elevation</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 213 </span><span class="caption-text">Plot with elevation</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Medit</span></p>
 </div></section>
 <section id="paraview">
-<span id="exampleparaview"></span><span id="Medit"></span><h2>Paraview<a class="headerlink" href="#paraview" title="Permalink to this headline">¶</a></h2>
+<span id="exampleparaview"></span><span id="Medit"></span><h2>Paraview<a class="headerlink" href="#paraview" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;iovtk&quot;</span>
 <span class="lineno"> 2 </span>
 <span class="lineno"> 3 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="kr">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="kr">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
@@ -2095,7 +2076,7 @@
 <figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../_images/Paraview.jpg"><img alt="../_images/Paraview.jpg" src="../_images/Paraview.jpg" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 214 </span><span class="caption-text">Result</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 214 </span><span class="caption-text">Result</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -2135,7 +2116,24 @@
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

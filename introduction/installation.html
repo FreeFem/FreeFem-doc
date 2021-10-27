@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1937,12 +1919,11 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="installation-guide">
-<h1>Installation guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline">¶</a></h1>
+<h1>Installation guide<a class="headerlink" href="#installation-guide" title="Permalink to this headline"></a></h1>
 <p>To use FreeFEM, two installation methods are available: user access (binary package) and access developers (from the source code).
 Follow the section corresponding to your type of installation.</p>
 <div class="admonition note">
@@ -1954,7 +1935,7 @@ Follow the section corresponding to your type of installation.</p>
 <div class="line"><br /></div>
 </div>
 <section id="using-binary-package">
-<h2>Using binary package<a class="headerlink" href="#using-binary-package" title="Permalink to this headline">¶</a></h2>
+<h2>Using binary package<a class="headerlink" href="#using-binary-package" title="Permalink to this headline"></a></h2>
 <p>First, open the following web page <a class="reference internal" href="download.html#download"><span class="std std-ref">download page</span></a> and choose your platform: Linux, MacOS or Windows.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1962,7 +1943,7 @@ Follow the section corresponding to your type of installation.</p>
 </div>
 <p>Install <strong>FreeFEM</strong> by double-clicking on the appropriate file. Under Linux and MacOS the install directory is one of the following <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>, <code class="docutils literal notranslate"><span class="pre">/usr/local/share/freefem++</span></code>, <code class="docutils literal notranslate"><span class="pre">/usr/local/lib/ff++</span></code></p>
 <section id="windows-installation">
-<h3>Windows installation<a class="headerlink" href="#windows-installation" title="Permalink to this headline">¶</a></h3>
+<h3>Windows installation<a class="headerlink" href="#windows-installation" title="Permalink to this headline"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The windows package is build for Window 7 64bits. The support ended for all releases under Windows 32 bits since the V4.</p>
@@ -2001,12 +1982,12 @@ Install MSMPI for parallel version under window64 MS MPI V10.1.2, and install bo
 </ul>
 </section>
 <section id="macos-x-installation">
-<h3>macOS X installation<a class="headerlink" href="#macos-x-installation" title="Permalink to this headline">¶</a></h3>
+<h3>macOS X installation<a class="headerlink" href="#macos-x-installation" title="Permalink to this headline"></a></h3>
 <p>Download the macOS X binary version file, extract all the files by double clicking on the icon of the file, go the the directory and put the <code class="docutils literal notranslate"><span class="pre">FreeFem++.app</span></code> application in the <code class="docutils literal notranslate"><span class="pre">/Applications</span></code> directory.</p>
 <p>If you want terminal access to <strong>FreeFEM</strong> just copy the file <code class="docutils literal notranslate"><span class="pre">FreeFem++</span></code> in a directory of your <code class="code bash docutils literal notranslate"><span class="pre">$PATH</span></code> shell environment variable.</p>
 </section>
 <section id="ubuntu-installation">
-<h3>Ubuntu installation<a class="headerlink" href="#ubuntu-installation" title="Permalink to this headline">¶</a></h3>
+<h3>Ubuntu installation<a class="headerlink" href="#ubuntu-installation" title="Permalink to this headline"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Debian package is built for Ubuntu 16.04</p>
@@ -2023,7 +2004,7 @@ Install MSMPI for parallel version under window64 MS MPI V10.1.2, and install bo
 <p>FreeFEM is directly available in your terminal by the command “FreeFem++”.</p>
 </section>
 <section id="arch-aur-package">
-<h3>Arch AUR package<a class="headerlink" href="#arch-aur-package" title="Permalink to this headline">¶</a></h3>
+<h3>Arch AUR package<a class="headerlink" href="#arch-aur-package" title="Permalink to this headline"></a></h3>
 <p>An up-to-date package of <strong>FreeFEM</strong> for Arch is available on the <a class="reference external" href="https://aur.archlinux.org/packages/freefem%2B%2B-git/">Archlinux user repository</a>.</p>
 <p>To install it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>git clone https://aur.archlinux.org/freefem++-git.git
@@ -2037,7 +2018,7 @@ Install MSMPI for parallel version under window64 MS MPI V10.1.2, and install bo
 </div>
 </section>
 <section id="fedora-installation">
-<h3>Fedora installation<a class="headerlink" href="#fedora-installation" title="Permalink to this headline">¶</a></h3>
+<h3>Fedora installation<a class="headerlink" href="#fedora-installation" title="Permalink to this headline"></a></h3>
 <p>Packages are available in the
 <a class="reference external" href="https://src.fedoraproject.org/rpms/freefem++">Fedora Repositories</a>,
 and they are managed by the
@@ -2067,7 +2048,7 @@ terminal.</p>
 </section>
 </section>
 <section id="compiling-source-code">
-<h2>Compiling source code<a class="headerlink" href="#compiling-source-code" title="Permalink to this headline">¶</a></h2>
+<h2>Compiling source code<a class="headerlink" href="#compiling-source-code" title="Permalink to this headline"></a></h2>
 <dl>
 <dt>Various versions of FreeFEM are possible:</dt><dd><ul class="simple">
 <li><p>sequential and without plugins (contains in 3rdparty)</p></li>
@@ -2082,7 +2063,7 @@ terminal.</p>
 </dd>
 </dl>
 <section id="compilation-on-osx-10-13">
-<h3>Compilation on OSX (&gt;=10.13)<a class="headerlink" href="#compilation-on-osx-10-13" title="Permalink to this headline">¶</a></h3>
+<h3>Compilation on OSX (&gt;=10.13)<a class="headerlink" href="#compilation-on-osx-10-13" title="Permalink to this headline"></a></h3>
 <ol class="arabic">
 <li><p>Install Xcode, Xcode Command Line tools and Xcode Additional Tools from the <a class="reference external" href="https://developer.apple.com/download/more/">Apple website</a></p></li>
 <li><p>Install gfortran from Homebrew</p>
@@ -2221,7 +2202,7 @@ terminal.</p>
 </div></blockquote>
 </section>
 <section id="compilation-on-ubuntu">
-<h3>Compilation on Ubuntu<a class="headerlink" href="#compilation-on-ubuntu" title="Permalink to this headline">¶</a></h3>
+<h3>Compilation on Ubuntu<a class="headerlink" href="#compilation-on-ubuntu" title="Permalink to this headline"></a></h3>
 <ol class="arabic">
 <li><p>Install the following packages on your system</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
@@ -2303,7 +2284,7 @@ terminal.</p>
 </ol>
 </section>
 <section id="compilation-on-arch-linux">
-<h3>Compilation on Arch Linux<a class="headerlink" href="#compilation-on-arch-linux" title="Permalink to this headline">¶</a></h3>
+<h3>Compilation on Arch Linux<a class="headerlink" href="#compilation-on-arch-linux" title="Permalink to this headline"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>As Arch is in rolling release, the following information can be quickly outdated !</p>
@@ -2381,7 +2362,7 @@ terminal.</p>
 </ol>
 </section>
 <section id="compilation-on-fedora">
-<h3>Compilation on Fedora<a class="headerlink" href="#compilation-on-fedora" title="Permalink to this headline">¶</a></h3>
+<h3>Compilation on Fedora<a class="headerlink" href="#compilation-on-fedora" title="Permalink to this headline"></a></h3>
 <ol class="arabic">
 <li><p>Install the following packages on your system</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span>sudo dnf update
@@ -2465,11 +2446,11 @@ terminal.</p>
 </ol>
 </section>
 <section id="compilation-on-linux-with-intel-software-tools">
-<h3>Compilation on Linux with Intel software tools<a class="headerlink" href="#compilation-on-linux-with-intel-software-tools" title="Permalink to this headline">¶</a></h3>
+<h3>Compilation on Linux with Intel software tools<a class="headerlink" href="#compilation-on-linux-with-intel-software-tools" title="Permalink to this headline"></a></h3>
 <p>Follow the <a class="reference external" href="https://software.intel.com/en-us/articles/building-freefem-with-intel-software-tools-for-developers">guide</a></p>
 </section>
 <section id="compilation-on-windows">
-<h3>Compilation on Windows<a class="headerlink" href="#compilation-on-windows" title="Permalink to this headline">¶</a></h3>
+<h3>Compilation on Windows<a class="headerlink" href="#compilation-on-windows" title="Permalink to this headline"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The support ended for all releases under Windows 32 bits since the V4.
@@ -2560,7 +2541,7 @@ Repeatedly run the following command until it says there are no further updates.
 </section>
 </section>
 <section id="freefem-continuous-integration">
-<h2><strong>FreeFEM</strong> continuous integration<a class="headerlink" href="#freefem-continuous-integration" title="Permalink to this headline">¶</a></h2>
+<h2><strong>FreeFEM</strong> continuous integration<a class="headerlink" href="#freefem-continuous-integration" title="Permalink to this headline"></a></h2>
 <p>The Inria Jenkins platform is used for the CI/CD integration of the source code.</p>
 <p>Compilation results of the develop branch by OS type and configuration of FreeFEM are here</p>
 <table class="docutils align-default">
@@ -2610,7 +2591,7 @@ openmpi and PETSc/SLEPc</p></td>
 </table>
 </section>
 <section id="environment-variables-and-init-file">
-<h2>Environment variables and init file<a class="headerlink" href="#environment-variables-and-init-file" title="Permalink to this headline">¶</a></h2>
+<h2>Environment variables and init file<a class="headerlink" href="#environment-variables-and-init-file" title="Permalink to this headline"></a></h2>
 <p><strong>FreeFEM</strong> reads a user’s init file named <code class="docutils literal notranslate"><span class="pre">freefem++.pref</span></code> to initialize global variables: <code class="code freefem docutils literal notranslate"><span class="pre">verbosity</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">includepath</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">loadpath</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2668,9 +2649,9 @@ openmpi and PETSc/SLEPc</p></td>
 </div>
 </section>
 <section id="coloring-syntax-freefem">
-<h2>Coloring Syntax FreeFem++<a class="headerlink" href="#coloring-syntax-freefem" title="Permalink to this headline">¶</a></h2>
+<h2>Coloring Syntax FreeFem++<a class="headerlink" href="#coloring-syntax-freefem" title="Permalink to this headline"></a></h2>
 <section id="atom">
-<h3>Atom<a class="headerlink" href="#atom" title="Permalink to this headline">¶</a></h3>
+<h3>Atom<a class="headerlink" href="#atom" title="Permalink to this headline"></a></h3>
 <p>In order to get the syntax highlighting in <a class="reference external" href="https://atom.io/">Atom</a>, you have to install the <a class="reference external" href="https://atom.io/packages/language-freefem-official">FreeFEM language support</a>.</p>
 <p>You can do it directly in Atom: Edit -&gt; Preferences -&gt; Install, and search for <code class="docutils literal notranslate"><span class="pre">language-freefem-offical</span></code>.</p>
 <p>To launch scripts directly from Atom, you have to install the <code class="docutils literal notranslate"><span class="pre">atom-runner</span></code> package. Once installed, modify the Atom configuration file (Edit -&gt; Config…) to have something like that:</p>
@@ -2687,20 +2668,20 @@ openmpi and PETSc/SLEPc</p></td>
 <p>Reboot Atom, and use Alt+R to run a FreeFem++ script.</p>
 </section>
 <section id="gedit">
-<h3>Gedit<a class="headerlink" href="#gedit" title="Permalink to this headline">¶</a></h3>
+<h3>Gedit<a class="headerlink" href="#gedit" title="Permalink to this headline"></a></h3>
 <p>In order to get the syntax highlighting in Gedit, you have to downlaod the <a class="reference external" href="https://github.com/FreeFem/FreeFem-parser-gedit">Gedit parser</a> and copy it in <code class="docutils literal notranslate"><span class="pre">/usr/share/gtksourceview-3.0/language-specs/</span></code>.</p>
 </section>
 <section id="textmate-2-an-editor-under-macos">
-<h3>Textmate 2, an editor under macOS<a class="headerlink" href="#textmate-2-an-editor-under-macos" title="Permalink to this headline">¶</a></h3>
+<h3>Textmate 2, an editor under macOS<a class="headerlink" href="#textmate-2-an-editor-under-macos" title="Permalink to this headline"></a></h3>
 <p>To use the coloring <strong>FreeFEM</strong> syntax with the Textmate 2 editor on Mac 10.7 or better, download from macromates.com and download the textmate freefem++ syntax <a class="reference external" href="http://www3.freefem.org/ff++/Textmate2-ff++.zip">here</a> (version june 2107). To install this parser, unzip Textmate2-ff++.zip and follow the explanation given in file How_To.rtf.</p>
 <p>rom www.freefem.org/ff++/Textmate2-ff++.zip (version june 2107) unzip Textmate2-</p>
 </section>
 <section id="notepad-an-editor-under-windows">
-<h3>Notepad++,an editor under windows<a class="headerlink" href="#notepad-an-editor-under-windows" title="Permalink to this headline">¶</a></h3>
+<h3>Notepad++,an editor under windows<a class="headerlink" href="#notepad-an-editor-under-windows" title="Permalink to this headline"></a></h3>
 <p>Read and follow the instruction, <a class="reference external" href="http://www3.freefem.org/ff++/color-syntax-win.pdf">FREEFEM++ COLOR SYNTAX OF WINDOWS</a> .</p>
 </section>
 <section id="emacs-editor">
-<h3>Emacs editor<a class="headerlink" href="#emacs-editor" title="Permalink to this headline">¶</a></h3>
+<h3>Emacs editor<a class="headerlink" href="#emacs-editor" title="Permalink to this headline"></a></h3>
 <p>For emacs editor you can download <a class="reference external" href="https://github.com/rrgalvan/freefem-mode/">ff++-mode.el</a> .</p>
 </section>
 </section>
@@ -2763,7 +2744,24 @@ openmpi and PETSc/SLEPc</p></td>
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1938,16 +1920,15 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="developers">
-<h1>Developers<a class="headerlink" href="#developers" title="Permalink to this headline">¶</a></h1>
+<h1>Developers<a class="headerlink" href="#developers" title="Permalink to this headline"></a></h1>
 <section id="file-formats">
-<h2>File formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">¶</a></h2>
+<h2>File formats<a class="headerlink" href="#file-formats" title="Permalink to this headline"></a></h2>
 <section id="mesh-file-data-structure">
-<span id="meshfiledatastructure"></span><h3>Mesh file data structure<a class="headerlink" href="#mesh-file-data-structure" title="Permalink to this headline">¶</a></h3>
+<span id="meshfiledatastructure"></span><h3>Mesh file data structure<a class="headerlink" href="#mesh-file-data-structure" title="Permalink to this headline"></a></h3>
 <p>The mesh data structure, output of a mesh generation algorithm, refers to the geometric data structure and in some case to another mesh data structure.</p>
 <p>In this case, the fields are</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="n">MeshVersionFormatted</span> <span class="mi">0</span>
@@ -2040,7 +2021,7 @@
 </ul>
 </section>
 <section id="bb-file-type-to-store-solutions">
-<h3>bb file type to Store Solutions<a class="headerlink" href="#bb-file-type-to-store-solutions" title="Permalink to this headline">¶</a></h3>
+<h3>bb file type to Store Solutions<a class="headerlink" href="#bb-file-type-to-store-solutions" title="Permalink to this headline"></a></h3>
 <p>The file is formatted such that:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="mi">2</span> <span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">solutions</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">vertices</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="mi">2</span>
 <span class="lineno">2 </span>
@@ -2056,7 +2037,7 @@
 </ul>
 </section>
 <section id="id1">
-<h3>BB file type to store solutions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>BB file type to store solutions<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
 <p>The file is formatted such that:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="mi">2</span> <span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">solutions</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="p">[</span><span class="n">Type</span> <span class="mi">1</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="p">...</span> <span class="p">[</span><span class="n">Type</span> <span class="n">ns</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">vertices</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="mi">2</span>
 <span class="lineno"> 2 </span>
@@ -2087,7 +2068,7 @@
 </ul>
 </section>
 <section id="metric-file">
-<h3>Metric file<a class="headerlink" href="#metric-file" title="Permalink to this headline">¶</a></h3>
+<h3>Metric file<a class="headerlink" href="#metric-file" title="Permalink to this headline"></a></h3>
 <p>A metric file can be of two types, isotropic or anisotropic.</p>
 <p>The isotropic file is such that</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">vertices</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="mi">1</span>
@@ -2114,7 +2095,7 @@
 </ul>
 </section>
 <section id="list-of-am-fmt-amdba-meshes">
-<h3>List of AM_FMT, AMDBA Meshes<a class="headerlink" href="#list-of-am-fmt-amdba-meshes" title="Permalink to this headline">¶</a></h3>
+<h3>List of AM_FMT, AMDBA Meshes<a class="headerlink" href="#list-of-am-fmt-amdba-meshes" title="Permalink to this headline"></a></h3>
 <p>The mesh is only composed of triangles and can be defined with the help of the following two integers and four arrays:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">nbt</span></code> the number of triangles</p></li>
@@ -2183,7 +2164,7 @@
 <p>where if <code class="docutils literal notranslate"><span class="pre">k(j)</span> <span class="pre">=</span> <span class="pre">3</span></code> when the element <code class="docutils literal notranslate"><span class="pre">j</span></code> is a triangle and <code class="docutils literal notranslate"><span class="pre">k(j)</span> <span class="pre">=</span> <span class="pre">4</span></code> when the the element <code class="docutils literal notranslate"><span class="pre">j</span></code> is a quadrilateral.</p>
 </section>
 <section id="sol-and-solb-files">
-<h3>sol and solb files<a class="headerlink" href="#sol-and-solb-files" title="Permalink to this headline">¶</a></h3>
+<h3>sol and solb files<a class="headerlink" href="#sol-and-solb-files" title="Permalink to this headline"></a></h3>
 <p>With the keyword <code class="code freefem docutils literal notranslate"><span class="pre">savesol</span></code>, we can store a scalar functions, a scalar finite element functions, a vector fields, a vector finite element fields, a symmetric tensor and a symmetric finite element tensor.</p>
 <p>Such format is used in <code class="code freefem docutils literal notranslate"><span class="pre">medit</span></code>.</p>
 <p><strong>Extension file .sol</strong></p>
@@ -2203,7 +2184,7 @@ And finally, we give the values of the solutions on the elements.</p>
 <p>The file must be ended with the keyword End.</p>
 <p>The real element of symmetric tensor :</p>
 <div class="math notranslate nohighlight" id="equation-savesol-def-symtensor">
-<span class="eqno">(39)<a class="headerlink" href="#equation-savesol-def-symtensor" title="Permalink to this equation">¶</a></span>\[\begin{split}ST^{3d}=\left(
+<span class="eqno">(39)<a class="headerlink" href="#equation-savesol-def-symtensor" title="Permalink to this equation"></a></span>\[\begin{split}ST^{3d}=\left(
 \begin{array}{ccc}
    ST_{xx}^{3d} &amp; ST_{xy}^{3d} &amp; ST_{xz}^{3d}\\
    ST_{yx}^{3d} &amp; ST_{yy}^{3d} &amp; ST_{yz}^{3d} \\
@@ -2274,9 +2255,9 @@ These arguments must be given in this order.</p>
 </section>
 </section>
 <section id="adding-a-new-finite-element">
-<span id="developersaddingfiniteelement"></span><h2>Adding a new finite element<a class="headerlink" href="#adding-a-new-finite-element" title="Permalink to this headline">¶</a></h2>
+<span id="developersaddingfiniteelement"></span><h2>Adding a new finite element<a class="headerlink" href="#adding-a-new-finite-element" title="Permalink to this headline"></a></h2>
 <section id="some-notations">
-<h3>Some notations<a class="headerlink" href="#some-notations" title="Permalink to this headline">¶</a></h3>
+<h3>Some notations<a class="headerlink" href="#some-notations" title="Permalink to this headline"></a></h3>
 <p>For a function <span class="math notranslate nohighlight">\(\boldsymbol{f}\)</span> taking value in <span class="math notranslate nohighlight">\(\mathbb{R}^{N},\, N=1,2,\cdots\)</span>, we define the finite element approximation <span class="math notranslate nohighlight">\(\Pi_h\boldsymbol{f}\)</span> of <span class="math notranslate nohighlight">\(\boldsymbol{f}\)</span>.</p>
 <p>Let us denote the number of the degrees of freedom of the finite element by <span class="math notranslate nohighlight">\(NbDoF\)</span>.
 Then the <span class="math notranslate nohighlight">\(i\)</span>-th base <span class="math notranslate nohighlight">\(\boldsymbol{\omega}^{K}_{i}\)</span> (<span class="math notranslate nohighlight">\(i=0,\cdots,NbDoF-1\)</span>) of the finite element space has the <span class="math notranslate nohighlight">\(j\)</span>-th component <span class="math notranslate nohighlight">\(\mathbf{\omega}^{K}_{ij}\)</span> for <span class="math notranslate nohighlight">\(j=0,\cdots,N-1\)</span>.</p>
@@ -2284,7 +2265,7 @@ Then the <span class="math notranslate nohighlight">\(i\)</span>-th base <span c
 <p>We have the identity <span class="math notranslate nohighlight">\(\boldsymbol{\omega}^{K}_{i} = \Pi_{h} \boldsymbol{\omega}^{K}_{i}\)</span>.</p>
 <p>Formally, the interpolator <span class="math notranslate nohighlight">\(\Pi_{h}\)</span> is constructed by the following formula:</p>
 <div class="math notranslate nohighlight" id="equation-eq-interpo">
-<span class="eqno">(40)<a class="headerlink" href="#equation-eq-interpo" title="Permalink to this equation">¶</a></span>\[\Pi_{h} \boldsymbol{f} = \sum_{k=0}^{\mathtt{kPi}-1} \alpha_k \boldsymbol{f}_{j_{k}}(P_{p_{k}}) \boldsymbol{\omega}^{K}_{i_{k}}\]</div>
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-interpo" title="Permalink to this equation"></a></span>\[\Pi_{h} \boldsymbol{f} = \sum_{k=0}^{\mathtt{kPi}-1} \alpha_k \boldsymbol{f}_{j_{k}}(P_{p_{k}}) \boldsymbol{\omega}^{K}_{i_{k}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(P_{p}\)</span> is a set of <span class="math notranslate nohighlight">\(npPi\)</span> points,</p>
 <p>In the formula <a class="reference internal" href="#equation-eq-interpo">(40)</a>, the list <span class="math notranslate nohighlight">\(p_{k},\, j_{k},\, i_{k}\)</span> depend just on the type of finite element (not on the element), but the coefficient <span class="math notranslate nohighlight">\(\alpha_{k}\)</span> can be depending on the element.</p>
 <div class="admonition tip">
@@ -2302,7 +2283,7 @@ Then the <span class="math notranslate nohighlight">\(i\)</span>-th base <span c
 <p class="admonition-title">Tip</p>
 <p>The Raviart-Thomas finite element</p>
 <div class="math notranslate nohighlight" id="equation-eq-rt0-fe">
-<span class="eqno">(41)<a class="headerlink" href="#equation-eq-rt0-fe" title="Permalink to this equation">¶</a></span>\[RT0_{h} = \{ \mathbf{v} \in H(div) / \forall K \in
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-rt0-fe" title="Permalink to this equation"></a></span>\[RT0_{h} = \{ \mathbf{v} \in H(div) / \forall K \in
 \mathcal{T}_{h} \quad \mathbf{v}_{|K}(x,y) =
 \vecttwo{\alpha_{K}}{\beta_{K}} + \gamma_{K}\vecttwo{x}{y} \}\]</div>
 <p>The degrees of freedom are the flux through an edge <span class="math notranslate nohighlight">\(e\)</span> of the mesh, where the flux of the function <span class="math notranslate nohighlight">\(\mathbf{f} : \mathbb{R}^2 \longrightarrow \mathbb{R}^2\)</span> is <span class="math notranslate nohighlight">\(\int_{e} \mathbf{f}.n_{e}\)</span>, <span class="math notranslate nohighlight">\(n_{e}\)</span> is the unit normal of edge <span class="math notranslate nohighlight">\(e\)</span> (this implies a orientation of all the edges of the mesh, for example we can use the global numbering of the edge vertices and we just go to small to large number).</p>
@@ -2332,7 +2313,7 @@ a length equal to the side of the edge or equal to <span class="math notranslate
 </div>
 </section>
 <section id="which-class-to-add">
-<h3>Which class to add?<a class="headerlink" href="#which-class-to-add" title="Permalink to this headline">¶</a></h3>
+<h3>Which class to add?<a class="headerlink" href="#which-class-to-add" title="Permalink to this headline"></a></h3>
 <p>Add file <code class="docutils literal notranslate"><span class="pre">FE_ADD.cpp</span></code> in directory <code class="docutils literal notranslate"><span class="pre">FreeFem-sources/src/femlib</span></code> for
 example first to initialize :</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">#include</span> <span class="cpf">&quot;error.hpp&quot;</span><span class="cp"></span>
@@ -2548,7 +2529,7 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 </section>
 </section>
 <section id="dynamical-link">
-<span id="developersdynamicallink"></span><h2>Dynamical link<a class="headerlink" href="#dynamical-link" title="Permalink to this headline">¶</a></h2>
+<span id="developersdynamicallink"></span><h2>Dynamical link<a class="headerlink" href="#dynamical-link" title="Permalink to this headline"></a></h2>
 <p>Now, it’s possible to add built-in functionnalites in <strong>FreeFEM</strong> under the three environnents Linux, Windows and MacOS X 10.3 or newer.</p>
 <p>It is agood idea to first try the example <code class="docutils literal notranslate"><span class="pre">load.edp</span></code> in directory <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">example++-load</a>.</p>
 <p>You will need to install a <code class="docutils literal notranslate"><span class="pre">compiler</span></code> (generally <code class="docutils literal notranslate"><span class="pre">g++/gcc</span></code> compiler) to compile your function.</p>
@@ -2573,7 +2554,7 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 <p><strong>Compilation of your module:</strong></p>
 <p>The script <code class="docutils literal notranslate"><span class="pre">ff-c++</span></code> compiles and makes the link with <strong>FreeFEM</strong>, but be careful, the script has no way to known if you try to compile for a pure Windows environment or for a cygwin environment so to build the load module under cygwin you must add the <code class="docutils literal notranslate"><span class="pre">-cygwin</span></code> parameter.</p>
 <section id="a-first-example-myfunction-cpp">
-<h3>A first example myfunction.cpp<a class="headerlink" href="#a-first-example-myfunction-cpp" title="Permalink to this headline">¶</a></h3>
+<h3>A first example myfunction.cpp<a class="headerlink" href="#a-first-example-myfunction-cpp" title="Permalink to this headline"></a></h3>
 <p>The following defines a new function call <code class="docutils literal notranslate"><span class="pre">myfunction</span></code> with no parameter, but using the <span class="math notranslate nohighlight">\(x,y\)</span> current value.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="lineno"> 2 </span><span class="cp">#include</span> <span class="cpf">&lt;cfloat&gt;</span><span class="cp"></span>
@@ -2676,7 +2657,7 @@ By default this expression does not depend of the mesh position, but if they der
 <p>Under Windows, launch <strong>FreeFEM</strong> with the mouse (or ctrl O) on the example.</p>
 </section>
 <section id="example-discrete-fast-fourier-transform">
-<h3>Example: Discrete Fast Fourier Transform<a class="headerlink" href="#example-discrete-fast-fourier-transform" title="Permalink to this headline">¶</a></h3>
+<h3>Example: Discrete Fast Fourier Transform<a class="headerlink" href="#example-discrete-fast-fourier-transform" title="Permalink to this headline"></a></h3>
 <p>This will add FFT to <strong>FreeFEM</strong>, taken from <a class="reference external" href="http://www.fftw.org/">FFTW</a>. To download and install under <code class="docutils literal notranslate"><span class="pre">download/include</span></code> just go in <code class="docutils literal notranslate"><span class="pre">download/fftw</span></code> and try <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
 <p>The 1D dfft (fast discret fourier transform) for a simple array <span class="math notranslate nohighlight">\(f\)</span> of size <span class="math notranslate nohighlight">\(n\)</span> is defined by the following formula:</p>
 <div class="math notranslate nohighlight">
@@ -2715,17 +2696,17 @@ By default this expression does not depend of the mesh position, but if they der
 <p>To test, try <a class="reference internal" href="../examples/developers.html#examplefft"><span class="std std-ref">FFT example</span></a>.</p>
 </section>
 <section id="load-module-for-dervieux-p0-p1-finite-volume-method">
-<h3>Load Module for Dervieux P0-P1 Finite Volume Method<a class="headerlink" href="#load-module-for-dervieux-p0-p1-finite-volume-method" title="Permalink to this headline">¶</a></h3>
+<h3>Load Module for Dervieux P0-P1 Finite Volume Method<a class="headerlink" href="#load-module-for-dervieux-p0-p1-finite-volume-method" title="Permalink to this headline"></a></h3>
 <p>The associed edp file is
 <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/convect_dervieux.edp">examples++-load/convect_dervieux.edp</a>.</p>
 <p>See
 <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/mat_dervieux.cpp">mat_dervieux.cpp</a>.</p>
 </section>
 <section id="more-on-adding-a-new-finite-element">
-<h3>More on Adding a new finite element<a class="headerlink" href="#more-on-adding-a-new-finite-element" title="Permalink to this headline">¶</a></h3>
+<h3>More on Adding a new finite element<a class="headerlink" href="#more-on-adding-a-new-finite-element" title="Permalink to this headline"></a></h3>
 <p>First read the <a class="reference internal" href="#developersaddingfiniteelement"><span class="std std-ref">Adding a new finite element section</span></a>, we add two new finite elements examples in the directory <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">examples++-load</a>.</p>
 <section id="the-bernardi-raugel-element">
-<h4>The Bernardi-Raugel Element<a class="headerlink" href="#the-bernardi-raugel-element" title="Permalink to this headline">¶</a></h4>
+<h4>The Bernardi-Raugel Element<a class="headerlink" href="#the-bernardi-raugel-element" title="Permalink to this headline"></a></h4>
 <p>The Bernardi-Raugel finite element is meant to solve the Navier Stokes equations in <span class="math notranslate nohighlight">\(u,p\)</span> formulation; the velocity space <span class="math notranslate nohighlight">\(P^{br}_K\)</span> is minimal to prove the inf-sup condition with piecewise constant pressure by triangle.</p>
 <p>The finite element space <span class="math notranslate nohighlight">\(V_h\)</span> is</p>
 <div class="math notranslate nohighlight">
@@ -2795,7 +2776,7 @@ By default this expression does not depend of the mesh position, but if they der
 <p>And the plot instruction is also changed because the pressure is constant, and we cannot plot isovalues of peacewise constant functions.</p>
 </section>
 <section id="the-morley-element">
-<h4>The Morley Element<a class="headerlink" href="#the-morley-element" title="Permalink to this headline">¶</a></h4>
+<h4>The Morley Element<a class="headerlink" href="#the-morley-element" title="Permalink to this headline"></a></h4>
 <p>See the example
 <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/bilapMorley.edp">bilapMorley.edp</a>.</p>
 </section>
@@ -2858,7 +2839,24 @@ By default this expression does not depend of the mesh position, but if they der
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

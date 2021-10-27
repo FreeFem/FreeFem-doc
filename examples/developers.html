@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1949,14 +1931,13 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="developers">
-<span id="exampledevelopers"></span><h1>Developers<a class="headerlink" href="#developers" title="Permalink to this headline">¶</a></h1>
+<span id="exampledevelopers"></span><h1>Developers<a class="headerlink" href="#developers" title="Permalink to this headline"></a></h1>
 <section id="fft">
-<span id="examplefft"></span><h2>FFT<a class="headerlink" href="#fft" title="Permalink to this headline">¶</a></h2>
+<span id="examplefft"></span><h2>FFT<a class="headerlink" href="#fft" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;</span><span class="nf">dfft</span><span class="s">&quot;</span>
 <span class="lineno"> 2 </span>
 <span class="lineno"> 3 </span><span class="c1">// Parameters</span>
@@ -2038,7 +2019,7 @@
 </div>
 </section>
 <section id="complex">
-<span id="examplecomplex"></span><h2>Complex<a class="headerlink" href="#complex" title="Permalink to this headline">¶</a></h2>
+<span id="examplecomplex"></span><h2>Complex<a class="headerlink" href="#complex" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">2.45</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">5.33</span><span class="p">;</span>
 <span class="lineno"> 2 </span><span class="kt">complex</span> <span class="n">z1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="mi">1</span><span class="n">i</span><span class="p">,</span> <span class="n">z2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="nf">sqrt</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">i</span><span class="p">;</span>
 <span class="lineno"> 3 </span>
@@ -2085,7 +2066,7 @@
 </div>
 </section>
 <section id="string">
-<span id="examplestring"></span><h2>String<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h2>
+<span id="examplestring"></span><h2>String<a class="headerlink" href="#string" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Concatenation</span>
 <span class="lineno"> 2 </span><span class="kt">string</span> <span class="n">tt</span> <span class="o">=</span> <span class="s">&quot;toto1&quot;</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="s">&quot; -- 77&quot;</span><span class="p">;</span>
 <span class="lineno"> 3 </span>
@@ -2121,7 +2102,7 @@
 </div>
 </section>
 <section id="elementary-function">
-<span id="exampleelementaryfunction"></span><h2>Elementary function<a class="headerlink" href="#elementary-function" title="Permalink to this headline">¶</a></h2>
+<span id="exampleelementaryfunction"></span><h2>Elementary function<a class="headerlink" href="#elementary-function" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">real</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">;</span>
 <span class="lineno"> 2 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
 <span class="lineno"> 3 </span><span class="kt">func</span> <span class="kt">real</span> <span class="nf">phix</span><span class="p">(</span><span class="kt">real</span> <span class="kp">t</span><span class="p">){</span>
@@ -2139,12 +2120,12 @@
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/ElementaryFunction.png"><img alt="../_images/ElementaryFunction.png" src="../_images/ElementaryFunction.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 221 </span><span class="caption-text">Mesh</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 221 </span><span class="caption-text">Mesh</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="array">
-<span id="examplearray"></span><h2>Array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h2>
+<span id="examplearray"></span><h2>Array<a class="headerlink" href="#array" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">  1 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">tab</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">tab1</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="c1">//2 array of 10 real</span>
 <span class="lineno">  2 </span><span class="c1">//real[int] tab2; //bug: array with no size</span>
 <span class="lineno">  3 </span>
@@ -2510,7 +2491,7 @@
 </div>
 </section>
 <section id="block-matrix">
-<span id="exampleblockmatrix"></span><h2>Block matrix<a class="headerlink" href="#block-matrix" title="Permalink to this headline">¶</a></h2>
+<span id="exampleblockmatrix"></span><h2>Block matrix<a class="headerlink" href="#block-matrix" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Parameters</span>
 <span class="lineno"> 2 </span><span class="kt">real</span> <span class="n">f1</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">;</span>
 <span class="lineno"> 3 </span><span class="kt">real</span> <span class="n">f2</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">;</span>
@@ -2576,12 +2557,12 @@
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/BlockMatrix.png"><img alt="../_images/BlockMatrix.png" src="../_images/BlockMatrix.png" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 222 </span><span class="caption-text">Result</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 222 </span><span class="caption-text">Result</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="matrix-operations">
-<span id="examplematrixoperations"></span><h2>Matrix operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">¶</a></h2>
+<span id="examplematrixoperations"></span><h2>Matrix operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Mesh</span>
 <span class="lineno"> 2 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="lineno"> 3 </span>
@@ -2778,7 +2759,7 @@
 </div>
 </section>
 <section id="matrix-inversion">
-<span id="examplematrixinversion"></span><h2>Matrix inversion<a class="headerlink" href="#matrix-inversion" title="Permalink to this headline">¶</a></h2>
+<span id="examplematrixinversion"></span><h2>Matrix inversion<a class="headerlink" href="#matrix-inversion" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;lapack&quot;</span>
 <span class="lineno"> 2 </span><span class="cp">load</span> <span class="s">&quot;fflapack&quot;</span>
 <span class="lineno"> 3 </span>
@@ -2845,7 +2826,7 @@
 </div>
 </section>
 <section id="fe-array">
-<span id="examplefearray"></span><h2>FE array<a class="headerlink" href="#fe-array" title="Permalink to this headline">¶</a></h2>
+<span id="examplefearray"></span><h2>FE array<a class="headerlink" href="#fe-array" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Mesh</span>
 <span class="lineno"> 2 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="kr">x</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="kr">y</span><span class="p">]);</span>
 <span class="lineno"> 3 </span>
@@ -2888,25 +2869,25 @@
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/FEArray1.png"><img alt="FEArray1" src="../_images/FEArray1.png" style="width: 95%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 223 </span><span class="caption-text">First result</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 223 </span><span class="caption-text">First result</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/FEArray2.png"><img alt="FEArray2" src="../_images/FEArray2.png" style="width: 95%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Second result</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Second result</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/FEArray3.png"><img alt="FEArray3" src="../_images/FEArray3.png" style="width: 95%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 225 </span><span class="caption-text">Third result</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 225 </span><span class="caption-text">Third result</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Finite element array</span></p>
 </div></section>
 <section id="loop">
-<span id="exampleloop"></span><span id="FEArray"></span><h2>Loop<a class="headerlink" href="#loop" title="Permalink to this headline">¶</a></h2>
+<span id="exampleloop"></span><span id="FEArray"></span><h2>Loop<a class="headerlink" href="#loop" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="lineno"> 2 </span>    <span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="kr">endl</span><span class="p">;</span>
 <span class="lineno"> 3 </span>
@@ -2926,7 +2907,7 @@
 </div>
 </section>
 <section id="implicit-loop">
-<span id="exampleimplicitloop"></span><h2>Implicit loop<a class="headerlink" href="#implicit-loop" title="Permalink to this headline">¶</a></h2>
+<span id="exampleimplicitloop"></span><h2>Implicit loop<a class="headerlink" href="#implicit-loop" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">real</span> <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="n">a</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 <span class="lineno"> 2 </span><span class="kt">real</span> <span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">b</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 <span class="lineno"> 3 </span>
@@ -3031,7 +3012,7 @@
 </div>
 </section>
 <section id="i-o">
-<span id="exampleio"></span><h2>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline">¶</a></h2>
+<span id="exampleio"></span><h2>I/O<a class="headerlink" href="#i-o" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
 <span class="lineno"> 2 </span><span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;std-out&quot;</span> <span class="o">&lt;&lt;</span> <span class="kr">endl</span><span class="p">;</span>
 <span class="lineno"> 3 </span><span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; enter i = ?&quot;</span><span class="p">;</span>
@@ -3058,7 +3039,7 @@
 </div>
 </section>
 <section id="file-stream">
-<span id="examplefilestream"></span><h2>File stream<a class="headerlink" href="#file-stream" title="Permalink to this headline">¶</a></h2>
+<span id="examplefilestream"></span><h2>File stream<a class="headerlink" href="#file-stream" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">int</span> <span class="n">where</span><span class="p">;</span>
 <span class="lineno"> 2 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
 <span class="lineno"> 3 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">g</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
@@ -3113,7 +3094,7 @@
 </div>
 </section>
 <section id="command-line-arguments">
-<span id="examplecommandlinearguments"></span><h2>Command line arguments<a class="headerlink" href="#command-line-arguments" title="Permalink to this headline">¶</a></h2>
+<span id="examplecommandlinearguments"></span><h2>Command line arguments<a class="headerlink" href="#command-line-arguments" title="Permalink to this headline"></a></h2>
 <p>When using the command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>FreeFem++ script.edp arg1 arg2
 </pre></div>
@@ -3137,7 +3118,7 @@
 </div>
 </section>
 <section id="macro">
-<span id="examplemacro"></span><h2>Macro<a class="headerlink" href="#macro" title="Permalink to this headline">¶</a></h2>
+<span id="examplemacro"></span><h2>Macro<a class="headerlink" href="#macro" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Macro without parameters</span>
 <span class="lineno"> 2 </span><span class="kt">macro</span> <span class="nf">xxx</span><span class="p">()</span> <span class="p">{</span>
 <span class="lineno"> 3 </span>    <span class="kt">real</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -3303,7 +3284,7 @@
 </div>
 </section>
 <section id="basic-error-handling">
-<span id="examplebasicerrorhandling"></span><h2>Basic error handling<a class="headerlink" href="#basic-error-handling" title="Permalink to this headline">¶</a></h2>
+<span id="examplebasicerrorhandling"></span><h2>Basic error handling<a class="headerlink" href="#basic-error-handling" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">a</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="k">try</span><span class="p">{</span>
 <span class="lineno">3 </span>    <span class="n">a</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">0.</span><span class="p">;</span>
@@ -3325,7 +3306,7 @@
 </div>
 </section>
 <section id="error-handling">
-<span id="exampleerrorhandling"></span><h2>Error handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h2>
+<span id="exampleerrorhandling"></span><h2>Error handling<a class="headerlink" href="#error-handling" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Parameters</span>
 <span class="lineno"> 2 </span><span class="kt">int</span> <span class="n">nn</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 <span class="lineno"> 3 </span><span class="kt">func</span> <span class="n">f</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//right hand side function</span>
@@ -3428,7 +3409,24 @@
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1953,12 +1935,11 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="finite-element">
-<span id="finiteelement"></span><h1>Finite element<a class="headerlink" href="#finite-element" title="Permalink to this headline">¶</a></h1>
+<span id="finiteelement"></span><h1>Finite element<a class="headerlink" href="#finite-element" title="Permalink to this headline"></a></h1>
 <p>As stated in <a class="reference internal" href="../tutorials/index.html#tutorial"><span class="std std-ref">tutorials</span></a>, FEM approximates all functions <span class="math notranslate nohighlight">\(w\)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[w(x,y)\simeq w_0\phi_0(x,y)+w_1\phi_1(x,y)+\cdots+w_{M-1}\phi_{M-1}(x,y)\]</div>
@@ -2011,25 +1992,25 @@ The functions <span class="math notranslate nohighlight">\(\phi_k(x,y)\)</span> 
 <p>The 2D mesh of the two identified borders must be the same, so to be sure, use the parameter <code class="code freefem docutils literal notranslate"><span class="pre">fixedborder=true</span></code> in <code class="code freefem docutils literal notranslate"><span class="pre">buildmesh</span></code> command (see <a class="reference internal" href="mesh-generation.html#meshborder"><span class="std std-ref">fixedborder</span></a>).</p>
 </div>
 <section id="list-of-the-types-of-finite-elements">
-<h2>List of the types of finite elements<a class="headerlink" href="#list-of-the-types-of-finite-elements" title="Permalink to this headline">¶</a></h2>
+<h2>List of the types of finite elements<a class="headerlink" href="#list-of-the-types-of-finite-elements" title="Permalink to this headline"></a></h2>
 <p>As of today, the known types of finite elements are:</p>
 <ul>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[P0]</span></code> piecewise constant discontinuous finite element (2d, 3d, surface 3d), the degrees of freedom are the barycenter element value.</p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-p0">
-<span class="eqno">(9)<a class="headerlink" href="#equation-eq-p0" title="Permalink to this equation">¶</a></span>\[\P^0_{h} = \left\{ v \in L^2(\Omega) \left|\; \textrm{for all }K \in \mathcal{T}_{h}\;\;\textrm{there is }\alpha_{K}\in \R : \;\; v_{|K} = \alpha_{K } \right.\right\}\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-p0" title="Permalink to this equation"></a></span>\[\P^0_{h} = \left\{ v \in L^2(\Omega) \left|\; \textrm{for all }K \in \mathcal{T}_{h}\;\;\textrm{there is }\alpha_{K}\in \R : \;\; v_{|K} = \alpha_{K } \right.\right\}\]</div>
 </div></blockquote>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[P1]</span></code> piecewise linear continuous finite element (2d, 3d, surface 3d), the degrees of freedom are the vertices values.</p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-p1">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eq-p1" title="Permalink to this equation">¶</a></span>\[\P^1_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h},\ v_{|K} \in P_{1} \right.\right\}\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-p1" title="Permalink to this equation"></a></span>\[\P^1_{h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h},\ v_{|K} \in P_{1} \right.\right\}\]</div>
 </div></blockquote>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[P1dc]</span></code> piecewise linear discontinuous finite element (2d, 3d with load”Element_P1dc1”)</p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-p1dc">
-<span class="eqno">(11)<a class="headerlink" href="#equation-eq-p1dc" title="Permalink to this equation">¶</a></span>\[\P^1_{dc|h} = \left\{ v \in L^{2}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{1} \right.\right\}\]</div>
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-p1dc" title="Permalink to this equation"></a></span>\[\P^1_{dc|h} = \left\{ v \in L^{2}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{1} \right.\right\}\]</div>
 </div></blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2040,12 +2021,12 @@ The functions <span class="math notranslate nohighlight">\(\phi_k(x,y)\)</span> 
 <p><strong>The 2D Case:</strong></p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-p1b">
-<span class="eqno">(12)<a class="headerlink" href="#equation-eq-p1b" title="Permalink to this equation">¶</a></span>\[\P^1_{b|h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{1} \oplus \mathrm{Span}\{ \lambda^{K}_{0} \lambda^{K}_{1} \lambda^{K}_{2} \} \right.\right\}\]</div>
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-p1b" title="Permalink to this equation"></a></span>\[\P^1_{b|h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{1} \oplus \mathrm{Span}\{ \lambda^{K}_{0} \lambda^{K}_{1} \lambda^{K}_{2} \} \right.\right\}\]</div>
 </div></blockquote>
 <p><strong>The 3D Case:</strong></p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-p1b-3d">
-<span class="eqno">(13)<a class="headerlink" href="#equation-eq-p1b-3d" title="Permalink to this equation">¶</a></span>\[\P^1_{b|h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{1} \oplus \mathrm{Span}\{ \lambda^{K}_{0} \lambda^{K}_{1} \lambda^{K}_{2} \lambda^{K}_{3} \} \right.\right\}\]</div>
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-p1b-3d" title="Permalink to this equation"></a></span>\[\P^1_{b|h} = \left\{ v \in H^{1}(\Omega) \left|\; \forall K \in \mathcal{T}_{h}, \ v_{|K} \in P_{1} \oplus \mathrm{Span}\{ \lambda^{K}_{0} \lambda^{K}_{1} \lambda^{K}_{2} \lambda^{K}_{3} \} \right.\right\}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\lambda^{K}_{i}, i=0,..,d\)</span> are the <span class="math notranslate nohighlight">\(d+1\)</span> barycentric coordinate functions of the element <span class="math notranslate nohighlight">\(K\)</span> (triangle or tetrahedron).</p>
 </div></blockquote>
 </li>
@@ -2194,11 +2175,11 @@ There are 9 degrees of freedom:</p>
 <blockquote>
 <div><p><strong>The 2D Case:</strong></p>
 <div class="math notranslate nohighlight" id="equation-eq-rt0">
-<span class="eqno">(14)<a class="headerlink" href="#equation-eq-rt0" title="Permalink to this equation">¶</a></span>\[RT0_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in \mathcal{T}_{h} ,\ \mathbf{v}_{|K}(x,y) =
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-rt0" title="Permalink to this equation"></a></span>\[RT0_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in \mathcal{T}_{h} ,\ \mathbf{v}_{|K}(x,y) =
 \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y} \right.\right\}\]</div>
 <p><strong>The 3D Case:</strong></p>
 <div class="math notranslate nohighlight" id="equation-eq-rt03d">
-<span class="eqno">(15)<a class="headerlink" href="#equation-eq-rt03d" title="Permalink to this equation">¶</a></span>\[RT0_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in \mathcal{T}_{h},\ \mathbf{v}_{|K}(x,y,z) =
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-rt03d" title="Permalink to this equation"></a></span>\[RT0_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in \mathcal{T}_{h},\ \mathbf{v}_{|K}(x,y,z) =
 \vectthree{\alpha^1_{K}}{\alpha^2_{K}}{\alpha^3_{K}} + \beta_{K}\vectthree{x}{y}{z} \right.\right\}\]</div>
 <p>where by writing <span class="math notranslate nohighlight">\(\textrm{div }\mathbf{w}=\sum_{i=1}^d\p w_i/\p x_i\)</span> with <span class="math notranslate nohighlight">\(\mathbf{w}=(w_i)_{i=1}^d\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -2209,7 +2190,7 @@ There are 9 degrees of freedom:</p>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[RT0Ortho]</span></code> Raviart-Thomas Orthogonal, or Nedelec finite element type I of degree <span class="math notranslate nohighlight">\(0\)</span> in dimension 2</p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-rt0ortho">
-<span class="eqno">(16)<a class="headerlink" href="#equation-rt0ortho" title="Permalink to this equation">¶</a></span>\[RT0Ortho{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in \mathcal{T}_{h},\ \mathbf{v}_{|K}(x,y) =
+<span class="eqno">(16)<a class="headerlink" href="#equation-rt0ortho" title="Permalink to this equation"></a></span>\[RT0Ortho{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in \mathcal{T}_{h},\ \mathbf{v}_{|K}(x,y) =
 \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x} \right.\right\}\]</div>
 </div></blockquote>
 </li>
@@ -2232,41 +2213,41 @@ There are 9 degrees of freedom:</p>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[RT1]</span></code> (needs <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;Element_Mixte&quot;</span></code>)</p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-rt1">
-<span class="eqno">(17)<a class="headerlink" href="#equation-eq-rt1" title="Permalink to this equation">¶</a></span>\[RT1_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in\mathcal{T}_{h}, \ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_1^2,P_0, \mathbf{v}_{|K}(x,y) =
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-rt1" title="Permalink to this equation"></a></span>\[RT1_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in\mathcal{T}_{h}, \ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_1^2,P_0, \mathbf{v}_{|K}(x,y) =
     \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y} \right.\right\}\]</div>
 </div></blockquote>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[RT1Ortho]</span></code> (needs <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;Element_Mixte&quot;</span></code>)</p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-rt1ortho">
-<span class="eqno">(18)<a class="headerlink" href="#equation-eq-rt1ortho" title="Permalink to this equation">¶</a></span>\[RT1_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in\mathcal{T}_{h},\ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_1^2,P_0, \mathbf{v}_{|K}(x,y) =
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-rt1ortho" title="Permalink to this equation"></a></span>\[RT1_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in\mathcal{T}_{h},\ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_1^2,P_0, \mathbf{v}_{|K}(x,y) =
     \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x} \right.\right\}\]</div>
 </div></blockquote>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[RT2]</span></code> (needs <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;Element_Mixte&quot;</span></code>)</p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-rt2">
-<span class="eqno">(19)<a class="headerlink" href="#equation-eq-rt2" title="Permalink to this equation">¶</a></span>\[RT2_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in\mathcal{T}_{h},\ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_2^2, P_1, \mathbf{v}_{|K}(x,y) =
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-rt2" title="Permalink to this equation"></a></span>\[RT2_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in\mathcal{T}_{h},\ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_2^2, P_1, \mathbf{v}_{|K}(x,y) =
     \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{x}{y} \right.\right\}\]</div>
 </div></blockquote>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[RT2Ortho]</span></code> (needs <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;Element_Mixte&quot;</span></code>)</p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-rt2ortho">
-<span class="eqno">(20)<a class="headerlink" href="#equation-eq-rt2ortho" title="Permalink to this equation">¶</a></span>\[RT2_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in\mathcal{T}_{h} ,\ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_2^2, P_1,\ \mathbf{v}_{|K}(x,y) =
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-rt2ortho" title="Permalink to this equation"></a></span>\[RT2_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in\mathcal{T}_{h} ,\ \alpha^1_{K}, \alpha^2_{K}, \beta_{K} \in P_2^2, P_1,\ \mathbf{v}_{|K}(x,y) =
     \vecttwo{\alpha^1_{K}}{\alpha^2_{K}} + \beta_{K}\vecttwo{-y}{x} \right.\right\}\]</div>
 </div></blockquote>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[BDM1]</span></code> (needs <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;Element_Mixte&quot;</span></code>) the Brezzi-Douglas-Marini finite element:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-bdm1">
-<span class="eqno">(21)<a class="headerlink" href="#equation-eq-bdm1" title="Permalink to this equation">¶</a></span>\[BDM1_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in\mathcal{T}_{h},\ \mathbf{v}_{|K} \in P_1^2\right.\right\}\]</div>
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-bdm1" title="Permalink to this equation"></a></span>\[BDM1_{h} = \left\{ \mathbf{v} \in H(\textrm{div}) \left|\; \forall K \in\mathcal{T}_{h},\ \mathbf{v}_{|K} \in P_1^2\right.\right\}\]</div>
 </div></blockquote>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[BDM1Ortho]</span></code> (needs <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;Element_Mixte&quot;</span></code>) the Brezzi-Douglas-Marini Orthogonal also call Nedelec of type II , finite element</p>
 <blockquote>
 <div><div class="math notranslate nohighlight" id="equation-eq-bdm1ortho">
-<span class="eqno">(22)<a class="headerlink" href="#equation-eq-bdm1ortho" title="Permalink to this equation">¶</a></span>\[BDM1Ortho_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in\mathcal{T}_{h},\ \mathbf{v}_{|K} \in P_1^2\right.\right\}\]</div>
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-bdm1ortho" title="Permalink to this equation"></a></span>\[BDM1Ortho_{h} = \left\{ \mathbf{v} \in H(\textrm{curl}) \left|\; \forall K \in\mathcal{T}_{h},\ \mathbf{v}_{|K} \in P_1^2\right.\right\}\]</div>
 </div></blockquote>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">[FEQF]</span></code> (needs <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;Element_QF&quot;</span></code>) the finite element to store functions at default quadrature points (so the quadrature is <code class="code freefem docutils literal notranslate"><span class="pre">qf5pT</span></code> in 2D and is <code class="code freefem docutils literal notranslate"><span class="pre">qfV5</span></code> in 3d).</p>
@@ -2288,7 +2269,7 @@ There are 9 degrees of freedom:</p>
 <p>You can use this element to optimize the storage and reuse of functions with a long formula inside an integral for non linear processes.</p>
 </section>
 <section id="use-of-fespace-in-2d">
-<h2>Use of fespace in 2D<a class="headerlink" href="#use-of-fespace-in-2d" title="Permalink to this headline">¶</a></h2>
+<h2>Use of fespace in 2D<a class="headerlink" href="#use-of-fespace-in-2d" title="Permalink to this headline"></a></h2>
 <p>With the 2D finite element spaces</p>
 <div class="math notranslate nohighlight">
 \[X_{h} = \left\{ v \in H^{1}(]0,1[^2) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{1} \right\}\]</div>
@@ -2324,7 +2305,7 @@ There are 9 degrees of freedom:</p>
 \[U_{h}=\vecttwo{Uxh}{Uyh} \quad \mbox{and}\quad V_{h}=\vecttwo{Vxh}{Vyh}\]</div>
 </section>
 <section id="use-of-fespace-in-3d">
-<h2>Use of fespace in 3D<a class="headerlink" href="#use-of-fespace-in-3d" title="Permalink to this headline">¶</a></h2>
+<h2>Use of fespace in 3D<a class="headerlink" href="#use-of-fespace-in-3d" title="Permalink to this headline"></a></h2>
 <p>With the 3D finite element spaces</p>
 <div class="math notranslate nohighlight">
 \[X_{h} = \{ v \in H^{1}(]0,1[^3) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{1} \}\]</div>
@@ -2353,7 +2334,7 @@ There are 9 degrees of freedom:</p>
 <p>The functions <span class="math notranslate nohighlight">\(U_{h}, V_{h}\)</span> have two components so we have</p>
 </section>
 <section id="use-of-fespace-in-surface-3d">
-<h2>Use of fespace in surface 3D<a class="headerlink" href="#use-of-fespace-in-surface-3d" title="Permalink to this headline">¶</a></h2>
+<h2>Use of fespace in surface 3D<a class="headerlink" href="#use-of-fespace-in-surface-3d" title="Permalink to this headline"></a></h2>
 <p>With the 3D finite element spaces</p>
 <div class="math notranslate nohighlight">
 \[X_{h} = \{ v \in H^{1}(]0,1[^3) |\; \forall K \in \mathcal{T}_{h}\quad v_{|K} \in P_{1} \}\]</div>
@@ -2369,7 +2350,7 @@ There are 9 degrees of freedom:</p>
 </div>
 </section>
 <section id="finite-element-functions">
-<h2>Finite Element functions<a class="headerlink" href="#finite-element-functions" title="Permalink to this headline">¶</a></h2>
+<h2>Finite Element functions<a class="headerlink" href="#finite-element-functions" title="Permalink to this headline"></a></h2>
 <p>To define and use FE-functions <span class="math notranslate nohighlight">\(u_{h},v_{h} \in X_{h}\)</span>, <span class="math notranslate nohighlight">\(p_{h},q_{h} \in M_{h}\)</span> and <span class="math notranslate nohighlight">\(U_{h},V_{h} \in R_{h}\)</span>, we write:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">Xh</span> <span class="n">uh</span><span class="p">,</span> <span class="n">vh</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="n">Xph</span> <span class="n">uph</span><span class="p">,</span> <span class="n">vph</span><span class="p">;</span>
@@ -2404,9 +2385,9 @@ There are 9 degrees of freedom:</p>
 </div>
 </section>
 <section id="lagrangian-finite-elements">
-<h2>Lagrangian Finite Elements<a class="headerlink" href="#lagrangian-finite-elements" title="Permalink to this headline">¶</a></h2>
+<h2>Lagrangian Finite Elements<a class="headerlink" href="#lagrangian-finite-elements" title="Permalink to this headline"></a></h2>
 <section id="p0-element">
-<h3>P0-element<a class="headerlink" href="#p0-element" title="Permalink to this headline">¶</a></h3>
+<h3>P0-element<a class="headerlink" href="#p0-element" title="Permalink to this headline"></a></h3>
 <p>For each triangle (d=2) or tetrahedron (d=3) <span class="math notranslate nohighlight">\(T_k\)</span>, the basis function <span class="math notranslate nohighlight">\(\phi_k\)</span> in <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P0)</span></code> is given by:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\phi_k(\mathbf{x})=
@@ -2425,11 +2406,11 @@ There are 9 degrees of freedom:</p>
 <p>See <a class="reference internal" href="#finiteelementprojp0"><span class="std std-numref">Fig. 100</span></a> for the projection of <span class="math notranslate nohighlight">\(f(x,y)=\sin(\pi x)\cos(\pi y)\)</span> on <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P0)</span></code> when the mesh <code class="code freefem docutils literal notranslate"><span class="pre">Th</span></code> is a <span class="math notranslate nohighlight">\(4\times 4\)</span>-grid of <span class="math notranslate nohighlight">\([-1,1]^2\)</span> as in <a class="reference internal" href="#finiteelementp0p1p2p1nc"><span class="std std-numref">Fig. 99</span></a>.</p>
 </section>
 <section id="p1-element">
-<h3>P1-element<a class="headerlink" href="#p1-element" title="Permalink to this headline">¶</a></h3>
+<h3>P1-element<a class="headerlink" href="#p1-element" title="Permalink to this headline"></a></h3>
 <figure class="align-default" id="finiteelementp1p2">
 <a class="reference internal image-reference" href="../_images/FiniteElement_P1P2.png"><img alt="../_images/FiniteElement_P1P2.png" src="../_images/FiniteElement_P1P2.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 98 </span><span class="caption-text"><span class="math notranslate nohighlight">\(P_1\)</span> and <span class="math notranslate nohighlight">\(P_2\)</span> degrees of freedom on triangle <span class="math notranslate nohighlight">\(T_k\)</span></span><a class="headerlink" href="#finiteelementp1p2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 98 </span><span class="caption-text"><span class="math notranslate nohighlight">\(P_1\)</span> and <span class="math notranslate nohighlight">\(P_2\)</span> degrees of freedom on triangle <span class="math notranslate nohighlight">\(T_k\)</span></span><a class="headerlink" href="#finiteelementp1p2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>For each vertex <span class="math notranslate nohighlight">\(q^i\)</span>, the basis function <span class="math notranslate nohighlight">\(\phi_i\)</span> in <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P1)</span></code> is given by:</p>
@@ -2453,19 +2434,19 @@ There are 9 degrees of freedom:</p>
 <figure class="align-default" id="id8">
 <span id="finiteelementp0p1p2p1nc"></span><a class="reference internal image-reference" href="../_images/FiniteElement_P0P1P2P1nc.png"><img alt="FiniteElement_P0P1P2P1nc" src="../_images/FiniteElement_P0P1P2P1nc.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 99 </span><span class="caption-text">Test mesh <code class="code freefem docutils literal notranslate"><span class="pre">Th</span></code> for projection</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 99 </span><span class="caption-text">Test mesh <code class="code freefem docutils literal notranslate"><span class="pre">Th</span></code> for projection</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id9">
 <span id="finiteelementprojp0"></span><a class="reference internal image-reference" href="../_images/FiniteElement_projP0.png"><img alt="FiniteElement_projP0" src="../_images/FiniteElement_projP0.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Projection to <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P0)</span></code></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 100 </span><span class="caption-text">Projection to <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P0)</span></code></span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Finite element <code class="code freefem docutils literal notranslate"><span class="pre">P0</span></code></span></p>
 </div></section>
 <section id="p2-element">
-<span id="FiniteElement"></span><h3>P2-element<a class="headerlink" href="#p2-element" title="Permalink to this headline">¶</a></h3>
+<span id="FiniteElement"></span><h3>P2-element<a class="headerlink" href="#p2-element" title="Permalink to this headline"></a></h3>
 <p>For each vertex or mid-point <span class="math notranslate nohighlight">\(q^i\)</span>.
 The basis function <span class="math notranslate nohighlight">\(\phi_i\)</span> in <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P2)</span></code> is given by:</p>
 <div class="math notranslate nohighlight">
@@ -2491,22 +2472,22 @@ The basis function <span class="math notranslate nohighlight">\(\phi_i\)</span> 
 <figure class="align-default" id="id10">
 <span id="finiteelementprojp1"></span><a class="reference internal image-reference" href="../_images/FiniteElement_projP1.png"><img alt="FiniteElement_projP1" src="../_images/FiniteElement_projP1.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 101 </span><span class="caption-text">Projection to <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P1)</span></code></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 101 </span><span class="caption-text">Projection to <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P1)</span></code></span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id11">
 <span id="finiteelementprojp2"></span><a class="reference internal image-reference" href="../_images/FiniteElement_projP2.png"><img alt="FiniteElement_projP2" src="../_images/FiniteElement_projP2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Projection to <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P2)</span></code></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 102 </span><span class="caption-text">Projection to <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P2)</span></code></span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Finite elements <code class="code freefem docutils literal notranslate"><span class="pre">P1,</span> <span class="pre">P2</span></code></span></p>
 </div></section>
 </section>
 <section id="surface-lagrangian-finite-elements">
-<span id="surfacepklagrange"></span><span id="FiniteElement"></span><h2>Surface Lagrangian Finite Elements<a class="headerlink" href="#surface-lagrangian-finite-elements" title="Permalink to this headline">¶</a></h2>
+<span id="surfacepklagrange"></span><span id="FiniteElement"></span><h2>Surface Lagrangian Finite Elements<a class="headerlink" href="#surface-lagrangian-finite-elements" title="Permalink to this headline"></a></h2>
 <section id="definition-of-the-surface-p1-lagragian-element">
-<h3>Definition of the surface P1 Lagragian element<a class="headerlink" href="#definition-of-the-surface-p1-lagragian-element" title="Permalink to this headline">¶</a></h3>
+<h3>Definition of the surface P1 Lagragian element<a class="headerlink" href="#definition-of-the-surface-p1-lagragian-element" title="Permalink to this headline"></a></h3>
 <p>To build the surface Pk-Lagrange, the main idea is to consider the usual 2d Lagrangian Finite Elements ; and its writing in barycentric coordinates ; apply a space transformation and barycentric properties.
 The FreeFEM finite elements for surface problem are: <code class="code freefem docutils literal notranslate"><span class="pre">P0</span></code> <code class="code freefem docutils literal notranslate"><span class="pre">P1</span></code> <code class="code freefem docutils literal notranslate"><span class="pre">P2</span></code> <code class="code freefem docutils literal notranslate"><span class="pre">P1b</span></code>.</p>
 <p><em>0) Notation</em></p>
@@ -2536,7 +2517,7 @@ Let’s define a geometric transformation F, such as <span class="math notransla
 <figure class="align-default" id="id12">
 <a class="reference internal image-reference" href="../_images/geotransfo_P1s.png"><img alt="" src="../_images/geotransfo_P1s.png" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 103 </span><span class="caption-text">F, a parameterization from the reference 2d triangle to a 3d surface triangle</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">F, a parameterization from the reference 2d triangle to a 3d surface triangle</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -2653,7 +2634,7 @@ and <span class="math notranslate nohighlight">\((\vec N,\vec N) = 2 \text{ sign
 </section>
 </section>
 <section id="p1-nonconforming-element">
-<h2>P1 Nonconforming Element<a class="headerlink" href="#p1-nonconforming-element" title="Permalink to this headline">¶</a></h2>
+<h2>P1 Nonconforming Element<a class="headerlink" href="#p1-nonconforming-element" title="Permalink to this headline"></a></h2>
 <p>Refer to <a class="reference internal" href="../bibliography.html#thomasset2012" id="id3"><span>[THOMASSET2012]</span></a> for details; briefly, we now consider non-continuous approximations so we will lose the property:</p>
 <div class="math notranslate nohighlight">
 \[w_h\in V_h\subset H^1(\Omega)\]</div>
@@ -2698,19 +2679,19 @@ In <a class="reference internal" href="../bibliography.html#thomasset2012" id="i
 <figure class="align-default" id="id13">
 <span id="finiteelementprojp1nc"></span><a class="reference internal image-reference" href="../_images/FiniteElement_projP1nc.png"><img alt="FiniteElement_projP1nc" src="../_images/FiniteElement_projP1nc.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Projection to <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P1nc)</span></code></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Projection to <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P1nc)</span></code></span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id14">
 <span id="finiteelementprojp1b"></span><a class="reference internal image-reference" href="../_images/FiniteElement_projP1b.png"><img alt="FiniteElement_projP1b" src="../_images/FiniteElement_projP1b.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Projection to <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P1b)</span></code></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Projection to <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P1b)</span></code></span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Finite elements <code class="code freefem docutils literal notranslate"><span class="pre">P1nc,</span> <span class="pre">P1b</span></code></span></p>
 </div></section>
 <section id="other-fe-space">
-<span id="FiniteElement"></span><h2>Other FE-space<a class="headerlink" href="#other-fe-space" title="Permalink to this headline">¶</a></h2>
+<span id="FiniteElement"></span><h2>Other FE-space<a class="headerlink" href="#other-fe-space" title="Permalink to this headline"></a></h2>
 <p>For each triangle <span class="math notranslate nohighlight">\(T_k\in \mathcal{T}_h\)</span>, let <span class="math notranslate nohighlight">\(\lambda_{k_1}(x,y),\, \lambda_{k_2}(x,y),\, \lambda_{k_3}(x,y)\)</span> be the area cordinate of the triangle (see <a class="reference internal" href="#finiteelementp1p2"><span class="std std-numref">Fig. 98</span></a>), and put:</p>
 <div class="math notranslate nohighlight">
 \[\beta_k(x,y)=27\lambda_{k_1}(x,y)\lambda_{k_2}(x,y)\lambda_{k_3}(x,y)\]</div>
@@ -2729,7 +2710,7 @@ The bubble function has the feature: 1. <span class="math notranslate nohighligh
 <p>See <a class="reference internal" href="#finiteelementprojp1b"><span class="std std-numref">Fig. 105</span></a> for the projection of <span class="math notranslate nohighlight">\(f(x,y)=\sin(\pi x)\cos(\pi y)\)</span> into <code class="code freefem docutils literal notranslate"><span class="pre">Vh(Th,</span> <span class="pre">P1b)</span></code>.</p>
 </section>
 <section id="vector-valued-fe-function">
-<h2>Vector Valued FE-function<a class="headerlink" href="#vector-valued-fe-function" title="Permalink to this headline">¶</a></h2>
+<h2>Vector Valued FE-function<a class="headerlink" href="#vector-valued-fe-function" title="Permalink to this headline"></a></h2>
 <p>Functions from <span class="math notranslate nohighlight">\(\R^{2}\)</span> to <span class="math notranslate nohighlight">\(\R^{N}\)</span> with <span class="math notranslate nohighlight">\(N=1\)</span> are called scalar functions and called <em>vector valued</em> when <span class="math notranslate nohighlight">\(N&gt;1\)</span>.
 When <span class="math notranslate nohighlight">\(N=2\)</span></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="p">[</span><span class="nc">P0</span><span class="p">,</span> <span class="nc">P1</span><span class="p">])</span> <span class="p">;</span>
@@ -2740,7 +2721,7 @@ When <span class="math notranslate nohighlight">\(N=2\)</span></p>
 \[V_h=\{\mathbf{w}=(w_1,w_2)|\; w_1\in V_h(\mathcal{T}_h,P_0),\,
 w_2\in V_h(\mathcal{T}_h,P_1)\}\]</div>
 <section id="raviart-thomas-element">
-<h3>Raviart-Thomas Element<a class="headerlink" href="#raviart-thomas-element" title="Permalink to this headline">¶</a></h3>
+<h3>Raviart-Thomas Element<a class="headerlink" href="#raviart-thomas-element" title="Permalink to this headline"></a></h3>
 <p>In the Raviart-Thomas finite element <span class="math notranslate nohighlight">\(RT0_{h}\)</span>, the degrees of freedom are the fluxes across edges <span class="math notranslate nohighlight">\(e\)</span> of the mesh, where the flux of the function <span class="math notranslate nohighlight">\(\mathbf{f} : \R^2 \longrightarrow \R^2\)</span> is <span class="math notranslate nohighlight">\(\int_{e} \mathbf{f}.n_{e}\)</span>, <span class="math notranslate nohighlight">\(n_{e}\)</span> is the unit normal of edge <span class="math notranslate nohighlight">\(e\)</span>.</p>
 <p>This implies an orientation of all the edges of the mesh, for example we can use the global numbering of the edge vertices and we just go from small to large numbers.</p>
 <p>To compute the flux, we use a quadrature with one Gauss point, the mid-point of the edge.</p>
@@ -2768,7 +2749,7 @@ If we write:</p>
 <figure class="align-default" id="finiteelementrt0">
 <a class="reference internal image-reference" href="../_images/FiniteElement_RT0.png"><img alt="../_images/FiniteElement_RT0.png" src="../_images/FiniteElement_RT0.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 106 </span><span class="caption-text">Normal vectors of each edge</span><a class="headerlink" href="#finiteelementrt0" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text">Normal vectors of each edge</span><a class="headerlink" href="#finiteelementrt0" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Mesh</span>
@@ -2804,13 +2785,13 @@ If we write:</p>
 <figure class="align-default" id="id15">
 <span id="finiteelementonoldmesh"></span><a class="reference internal image-reference" href="../_images/FiniteElement_onoldmesh.png"><img alt="FiniteElement_onoldmesh" src="../_images/FiniteElement_onoldmesh.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 107 </span><span class="caption-text"><code class="code freefem docutils literal notranslate"><span class="pre">vh</span></code> Iso on mesh <span class="math notranslate nohighlight">\(2\times 2\)</span></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 107 </span><span class="caption-text"><code class="code freefem docutils literal notranslate"><span class="pre">vh</span></code> Iso on mesh <span class="math notranslate nohighlight">\(2\times 2\)</span></span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id16">
 <span id="finiteelementonnewmesh"></span><a class="reference internal image-reference" href="../_images/FiniteElement_onnewmesh.png"><img alt="FiniteElement_onnewmesh" src="../_images/FiniteElement_onnewmesh.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 108 </span><span class="caption-text"><code class="code freefem docutils literal notranslate"><span class="pre">vh</span></code> Iso on  mesh <span class="math notranslate nohighlight">\(5\times 5\)</span></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text"><code class="code freefem docutils literal notranslate"><span class="pre">vh</span></code> Iso on  mesh <span class="math notranslate nohighlight">\(5\times 5\)</span></span><a class="headerlink" href="#id16" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div><p id="FiniteElement">To get the value at a point <span class="math notranslate nohighlight">\(x=1,y=2\)</span> of the FE function <code class="code freefem docutils literal notranslate"><span class="pre">uh</span></code>, or <code class="code freefem docutils literal notranslate"><span class="pre">[Uxh,</span> <span class="pre">Uyh]</span></code>, one writes:</p>
@@ -2838,7 +2819,7 @@ If we write:</p>
 </section>
 </section>
 <section id="a-fast-finite-element-interpolator">
-<h2>A Fast Finite Element Interpolator<a class="headerlink" href="#a-fast-finite-element-interpolator" title="Permalink to this headline">¶</a></h2>
+<h2>A Fast Finite Element Interpolator<a class="headerlink" href="#a-fast-finite-element-interpolator" title="Permalink to this headline"></a></h2>
 <p>In practice, one may discretize the variational equations by the Finite Element method.
 Then there will be one mesh for <span class="math notranslate nohighlight">\(\Omega_1\)</span> and another one for <span class="math notranslate nohighlight">\(\Omega_2\)</span>.
 The computation of integrals of products of functions defined on different meshes is difficult.</p>
@@ -2883,7 +2864,7 @@ The problem is to find <span class="math notranslate nohighlight">\(g\in V({\cal
 <a class="reference internal image-reference" href="../_images/FiniteElement_fastInterpolate.png"><img alt="../_images/FiniteElement_fastInterpolate.png" src="../_images/FiniteElement_fastInterpolate.png" style="width: 50%;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 109 </span><span class="caption-text">To interpolate a function at <span class="math notranslate nohighlight">\(q^0\)</span>, the knowledge of the triangle which contains <span class="math notranslate nohighlight">\(q^0\)</span> is needed. The algorithm may start at <span class="math notranslate nohighlight">\(q^1\in T_k^0\)</span> and stall on the boundary (thick line) because the line <span class="math notranslate nohighlight">\(q^0q^1\)</span> is not inside <span class="math notranslate nohighlight">\(\Omega\)</span>.
-But if the holes are triangulated too (doted line) then the problem does not arise.</span><a class="headerlink" href="#finiteelementfastinterpolate" title="Permalink to this image">¶</a></p>
+But if the holes are triangulated too (doted line) then the problem does not arise.</span><a class="headerlink" href="#finiteelementfastinterpolate" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Two problems need to be solved:</p>
@@ -2943,13 +2924,13 @@ But if the holes are triangulated too (doted line) then the problem does not ari
 <figure class="align-default" id="id17">
 <span id="finiteelementusug"></span><a class="reference internal image-reference" href="../_images/FiniteElement_UsUg.png"><img alt="FiniteElement_UsUg" src="../_images/FiniteElement_UsUg.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 110 </span><span class="caption-text">Extension of a continuous FE-function</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 110 </span><span class="caption-text">Extension of a continuous FE-function</span><a class="headerlink" href="#id17" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id18">
 <span id="finiteelementvsvg"></span><a class="reference internal image-reference" href="../_images/FiniteElement_VsVg.png"><img alt="FiniteElement_VsVg" src="../_images/FiniteElement_VsVg.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Extension of discontinuous FE-function</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Extension of discontinuous FE-function</span><a class="headerlink" href="#id18" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Extension of FE-function</span></p>
@@ -2957,7 +2938,7 @@ But if the holes are triangulated too (doted line) then the problem does not ari
 </div>
 </section>
 <section id="keywords-problem-and-solve">
-<span id="Extension"></span><h2>Keywords: Problem and Solve<a class="headerlink" href="#keywords-problem-and-solve" title="Permalink to this headline">¶</a></h2>
+<span id="Extension"></span><h2>Keywords: Problem and Solve<a class="headerlink" href="#keywords-problem-and-solve" title="Permalink to this headline"></a></h2>
 <p>For <strong>FreeFEM</strong>, a problem must be given in variational form, so we need a bilinear form <span class="math notranslate nohighlight">\(a(u,v)\)</span>, a linear form <span class="math notranslate nohighlight">\(\ell(f,v)\)</span>, and possibly a boundary condition form must be added.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">problem</span> <span class="kr">P</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 <span class="lineno">2 </span>    <span class="o">=</span> <span class="n">a</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">-</span> <span class="n">l</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
@@ -2970,7 +2951,7 @@ But if the holes are triangulated too (doted line) then the problem does not ari
 <p>When you want to formulate the problem and solve it in the same time, you can use the keyword <code class="code freefem docutils literal notranslate"><span class="pre">solve</span></code>.</p>
 </div>
 <section id="weak-form-and-boundary-condition">
-<h3>Weak Form and Boundary Condition<a class="headerlink" href="#weak-form-and-boundary-condition" title="Permalink to this headline">¶</a></h3>
+<h3>Weak Form and Boundary Condition<a class="headerlink" href="#weak-form-and-boundary-condition" title="Permalink to this headline"></a></h3>
 <p>To present the principles of Variational Formulations, also called weak form, for the Partial Differential Equations, let’s take a model problem: a Poisson equation with Dirichlet and Robin Boundary condition.</p>
 <p>The problem: Find <span class="math notranslate nohighlight">\(u\)</span> a real function defined on a domain <span class="math notranslate nohighlight">\(\Omega\)</span> of <span class="math notranslate nohighlight">\(\R^d\)</span> <span class="math notranslate nohighlight">\((d=2,3)\)</span> such that:</p>
 <div class="math notranslate nohighlight">
@@ -3008,7 +2989,7 @@ But if the holes are triangulated too (doted line) then the problem does not ari
 <p>The problem becomes:</p>
 <p>Find <span class="math notranslate nohighlight">\(u \in V_g = \{w \in H^1(\Omega) / w = g \mbox{ on } \Gamma_d \}\)</span> such that:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-v-poisson">
-<span class="eqno">(23)<a class="headerlink" href="#equation-eqn-v-poisson" title="Permalink to this equation">¶</a></span>\[{\int_{\Omega} \kappa \nabla{ v} . \nabla u \,d\omega + \int_{\Gamma_r} a u v \,d\gamma = \int_{\Omega} f {v}} \,d\omega
+<span class="eqno">(23)<a class="headerlink" href="#equation-eqn-v-poisson" title="Permalink to this equation"></a></span>\[{\int_{\Omega} \kappa \nabla{ v} . \nabla u \,d\omega + \int_{\Gamma_r} a u v \,d\gamma = \int_{\Omega} f {v}} \,d\omega
 + \int_{\Gamma_r} b v \,d\gamma , \quad \forall v \in V_0\]</div>
 <p>where <span class="math notranslate nohighlight">\(V_0 = \{v \in H^1(\Omega) / v = 0 \mbox{ on } \Gamma_d \}\)</span></p>
 <p>Except in the case of Neumann conditions everywhere, the problem <a class="reference internal" href="#equation-eqn-v-poisson">(23)</a> is well posed when <span class="math notranslate nohighlight">\(\kappa\geq \kappa_0&gt;0\)</span>.</p>
@@ -3069,7 +3050,7 @@ But if the holes are triangulated too (doted line) then the problem does not ari
 </section>
 </section>
 <section id="parameters-affecting-solve-and-problem">
-<h2>Parameters affecting solve and problem<a class="headerlink" href="#parameters-affecting-solve-and-problem" title="Permalink to this headline">¶</a></h2>
+<h2>Parameters affecting solve and problem<a class="headerlink" href="#parameters-affecting-solve-and-problem" title="Permalink to this headline"></a></h2>
 <p>The parameters are FE functions real or complex, the number <span class="math notranslate nohighlight">\(n\)</span> of parameters is even (<span class="math notranslate nohighlight">\(n=2*k\)</span>), the <span class="math notranslate nohighlight">\(k\)</span> first function parameters are unknown, and the <span class="math notranslate nohighlight">\(k\)</span> last are test functions.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3125,7 +3106,7 @@ But if the holes are triangulated too (doted line) then the problem does not ari
 </ul>
 </section>
 <section id="problem-definition">
-<span id="problemdefinition"></span><h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
+<span id="problemdefinition"></span><h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline"></a></h2>
 <p>Below <code class="code freefem docutils literal notranslate"><span class="pre">v</span></code> is the unknown function and <code class="code freefem docutils literal notranslate"><span class="pre">w</span></code> is the test function.</p>
 <p>After the “=” sign, one may find sums of:</p>
 <ul>
@@ -3241,7 +3222,7 @@ else if the value is equal to  -20 (i.e <code class="code freefem docutils liter
 </div>
 </section>
 <section id="numerical-integration">
-<h2>Numerical Integration<a class="headerlink" href="#numerical-integration" title="Permalink to this headline">¶</a></h2>
+<h2>Numerical Integration<a class="headerlink" href="#numerical-integration" title="Permalink to this headline"></a></h2>
 <p>Let <span class="math notranslate nohighlight">\(D\)</span> be a <span class="math notranslate nohighlight">\(N\)</span>-dimensional bounded domain.</p>
 <p>For an arbitrary polynomial <span class="math notranslate nohighlight">\(f\)</span> of degree <span class="math notranslate nohighlight">\(r\)</span>, if we can find particular (quadrature) points <span class="math notranslate nohighlight">\(\mathbf{\xi}_j,\, j=1,\cdots,J\)</span> in <span class="math notranslate nohighlight">\(D\)</span> and (quadrature) constants <span class="math notranslate nohighlight">\(\omega_j\)</span> such that</p>
 <div class="math notranslate nohighlight">
@@ -3640,7 +3621,7 @@ D_3=\left|
 </div>
 </section>
 <section id="variational-form-sparse-matrix-pde-data-vector">
-<span id="variationalformsparsematrixpde"></span><h2>Variational Form, Sparse Matrix, PDE Data Vector<a class="headerlink" href="#variational-form-sparse-matrix-pde-data-vector" title="Permalink to this headline">¶</a></h2>
+<span id="variationalformsparsematrixpde"></span><h2>Variational Form, Sparse Matrix, PDE Data Vector<a class="headerlink" href="#variational-form-sparse-matrix-pde-data-vector" title="Permalink to this headline"></a></h2>
 <p>In <strong>FreeFEM</strong> it is possible to define variational forms, and use them to build matrices and vectors, and store them to speed-up the script (4 times faster here).</p>
 <p>For example let us solve the <a class="reference internal" href="../tutorials/thermalConduction.html#thermalconduction"><span class="std std-ref">Thermal Conduction problem</span></a>.</p>
 <p>The variational formulation is in <span class="math notranslate nohighlight">\(L^2(0,T;H^1(\Omega))\)</span>; we shall seek <span class="math notranslate nohighlight">\(u^n\)</span> satisfying:</p>
@@ -3899,7 +3880,7 @@ b'_i &amp; \mbox{else if } \not\in \Gamma_{24} \end{array}\right.\end{split}\]</
 </div>
 </section>
 <section id="interpolation-matrix">
-<h2>Interpolation matrix<a class="headerlink" href="#interpolation-matrix" title="Permalink to this headline">¶</a></h2>
+<h2>Interpolation matrix<a class="headerlink" href="#interpolation-matrix" title="Permalink to this headline"></a></h2>
 <p>It is also possible to store the matrix of a linear interpolation operator from a finite element space <span class="math notranslate nohighlight">\(V_h\)</span> to another <span class="math notranslate nohighlight">\(W_h\)</span> to <code class="code freefem docutils literal notranslate"><span class="pre">interpolate</span></code>(<span class="math notranslate nohighlight">\(W_h\)</span>,<span class="math notranslate nohighlight">\(V_h\)</span>,…) a function.</p>
 <p>Note that the continuous finite functions are extended by continuity outside of the domain.</p>
 <p>The named parameters of function <code class="code freefem docutils literal notranslate"><span class="pre">interpolate</span></code> are:</p>
@@ -4121,7 +4102,7 @@ b'_i &amp; \mbox{else if } \not\in \Gamma_{24} \end{array}\right.\end{split}\]</
 </div>
 </section>
 <section id="finite-elements-connectivity">
-<h2>Finite elements connectivity<a class="headerlink" href="#finite-elements-connectivity" title="Permalink to this headline">¶</a></h2>
+<h2>Finite elements connectivity<a class="headerlink" href="#finite-elements-connectivity" title="Permalink to this headline"></a></h2>
 <p>Here, we show how to get informations on a finite element space <span class="math notranslate nohighlight">\(W_h({\cal T}_n,*)\)</span>, where “*” may be <code class="code freefem docutils literal notranslate"><span class="pre">P1,</span> <span class="pre">P2,</span> <span class="pre">P1nc</span></code>, etc.</p>
 <ul class="simple">
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">Wh.nt</span></code> gives the number of element of <span class="math notranslate nohighlight">\(W_h\)</span></p></li>
@@ -4222,7 +4203,24 @@ b'_i &amp; \mbox{else if } \not\in \Gamma_{24} \end{array}\right.\end{split}\]</
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

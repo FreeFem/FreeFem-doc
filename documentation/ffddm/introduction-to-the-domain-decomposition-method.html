@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../../_static/js/lunr.js"></script>
-<script async src="../../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../../_static/js/search.js"></script>
-<script>
-   initSearch('../../')
-</script>
 	
 </nav>
-<script async src="../../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1940,16 +1922,15 @@
 
 	</div>
 </div>
-<script async src="../../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="domain-decomposition-dd">
-<span id="ffddmintroduction"></span><h1>Domain Decomposition (DD)<a class="headerlink" href="#domain-decomposition-dd" title="Permalink to this headline">¶</a></h1>
+<span id="ffddmintroduction"></span><h1>Domain Decomposition (DD)<a class="headerlink" href="#domain-decomposition-dd" title="Permalink to this headline"></a></h1>
 <p>When the size of a three dimensional problem is large (whatever it means), it is necessary to distribute data among several processors especially for solving linear systems.
 A natural way is to do it via domain decomposition.</p>
 <section id="mesh-decomposition">
-<h2>Mesh Decomposition<a class="headerlink" href="#mesh-decomposition" title="Permalink to this headline">¶</a></h2>
+<h2>Mesh Decomposition<a class="headerlink" href="#mesh-decomposition" title="Permalink to this headline"></a></h2>
 <!--- INSERER FIGURE? The overlap is the minimum width of the overlap between sub-meshes.
 implicit  global renvoie a implicit en fait ---><p>The starting point is a collection of <span class="math notranslate nohighlight">\(N\)</span> sub-meshes <span class="math notranslate nohighlight">\((Th_i)_{i=1}^N\)</span> that together form a global mesh</p>
 <div class="math notranslate nohighlight">
@@ -1959,7 +1940,7 @@ implicit  global renvoie a implicit en fait ---><p>The starting point is a colle
 In computer science term, it corresponds to a distributed data where each piece of data is stored by a MPI process.</p>
 </section>
 <section id="distributed-linear-algebra">
-<h2>Distributed Linear Algebra<a class="headerlink" href="#distributed-linear-algebra" title="Permalink to this headline">¶</a></h2>
+<h2>Distributed Linear Algebra<a class="headerlink" href="#distributed-linear-algebra" title="Permalink to this headline"></a></h2>
 <p>For a given finite element space <span class="math notranslate nohighlight">\(Vh\)</span>, the domain decomposition induces a natural decomposition of the set of the global degrees of freedom (d.o.f.) of <span class="math notranslate nohighlight">\(Vh\)</span> into the <span class="math notranslate nohighlight">\(N\)</span> subsets of d.o.f.’s <span class="math notranslate nohighlight">\(({\mathcal N}_i)_{i=1}^N\)</span> each associated with the local finite element space <span class="math notranslate nohighlight">\(Vh_i\)</span>.
 We have thus</p>
 <div class="math notranslate nohighlight">
@@ -1977,14 +1958,14 @@ A collection of local vectors <span class="math notranslate nohighlight">\(({\ma
 </div>
 </section>
 <section id="partition-of-unity-matrices-poum">
-<h2>Partition of Unity Matrices (POUM)<a class="headerlink" href="#partition-of-unity-matrices-poum" title="Permalink to this headline">¶</a></h2>
+<h2>Partition of Unity Matrices (POUM)<a class="headerlink" href="#partition-of-unity-matrices-poum" title="Permalink to this headline"></a></h2>
 <p>Let <span class="math notranslate nohighlight">\((D_i)_{1\le i \le N}\)</span> be square diagonal matrices of size <span class="math notranslate nohighlight">\(\#{\mathcal N}_i\)</span> which form a partition of unity in the sense that:</p>
 <div class="math notranslate nohighlight">
 \[Id_{} = \sum_{i=1}^N R_i^T\,D_i\,R_i\text{ in }\R^{\#{\mathcal N}\times \#{\mathcal N}} \,.\]</div>
 <p>For instance if a degree of freedom is shared by <span class="math notranslate nohighlight">\(k\)</span> subdomains defining the corresponding entry of the diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> to be <span class="math notranslate nohighlight">\(1/k\)</span> yields partition of unity matrices.
 The matrices <span class="math notranslate nohighlight">\(R_i\)</span> and <span class="math notranslate nohighlight">\(D_i\)</span> are the heart of distributed linear algebra.</p>
 <section id="distributed-scalar-product">
-<h3>Distributed scalar product<a class="headerlink" href="#distributed-scalar-product" title="Permalink to this headline">¶</a></h3>
+<h3>Distributed scalar product<a class="headerlink" href="#distributed-scalar-product" title="Permalink to this headline"></a></h3>
 <p>For two global vectors <span class="math notranslate nohighlight">\({\mathbf U}\)</span> and <span class="math notranslate nohighlight">\({\mathbf V}\)</span> of size <span class="math notranslate nohighlight">\(\#{\mathcal N}\)</span>, the formula for the scalar product <span class="math notranslate nohighlight">\({\mathbf V}^T\,{\mathbf U}=({\mathbf U},\,{\mathbf V})\)</span> in terms of their distributed vector counterparts makes use of the partition of unity matrices <span class="math notranslate nohighlight">\((D_i)_{1\le i \le N}\)</span> introduced above:</p>
 <div class="math notranslate nohighlight">
 \[({\mathbf U}, {\mathbf V}) = \left({\mathbf U}, \sum_{i=1}^N R_i^T D_i R_i {\mathbf V}\right) = \sum_{i=1}^N(R_i {\mathbf U}, D_i R_i {\mathbf V})
@@ -1994,7 +1975,7 @@ Thus, the implementation is parallel except for the sum which corresponds to a M
 Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFEM syntax is <code class="docutils literal notranslate"><span class="pre">dscalprod(Di,u,v)</span></code> or equivalently <code class="docutils literal notranslate"><span class="pre">myFEprefix#scalprod(u,v)</span></code> where <code class="docutils literal notranslate"><span class="pre">myFEprefix</span></code> is a user defined prefix for the finite element space decomposition, see the <a class="reference internal" href="documentation.html#ffddmdocumentationlocalfiniteelementspaces"><span class="std std-ref">ffddm documentation</span></a>.</p>
 </section>
 <section id="update">
-<span id="ffddmdocumentationupdate"></span><h3>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h3>
+<span id="ffddmdocumentationupdate"></span><h3>Update<a class="headerlink" href="#update" title="Permalink to this headline"></a></h3>
 <p>From a collection of local vectors <span class="math notranslate nohighlight">\(({\mathbf U}_i)_{1\le i \le N}\)</span>, it is possible ensure consistency of the duplicated data by modifying the distributed vector <span class="math notranslate nohighlight">\(({\mathbf U}_i)_{1\le i \le N}\)</span> by calling the function <code class="docutils literal notranslate"><span class="pre">myFEprefix#update(Ui,</span> <span class="pre">TRUE)</span></code> where <code class="docutils literal notranslate"><span class="pre">myFEprefix</span></code> is the user defined prefix that refers to the finite element space decomposition.
 This function performs the following operation for all <span class="math notranslate nohighlight">\(1\le i \le N\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -2015,20 +1996,20 @@ Therefore, the matrix vector product is computed in three steps:</p>
 </section>
 </section>
 <section id="distributed-matrix-and-vector-resulting-from-a-variational-formulation">
-<h2>Distributed Matrix and Vector resulting from a variational formulation<a class="headerlink" href="#distributed-matrix-and-vector-resulting-from-a-variational-formulation" title="Permalink to this headline">¶</a></h2>
+<h2>Distributed Matrix and Vector resulting from a variational formulation<a class="headerlink" href="#distributed-matrix-and-vector-resulting-from-a-variational-formulation" title="Permalink to this headline"></a></h2>
 <p>The discretization of a variational formulation on the global mesh <span class="math notranslate nohighlight">\(Th\)</span> yields a global matrix <span class="math notranslate nohighlight">\(A\)</span> and a global right hand side <span class="math notranslate nohighlight">\(\mathbf{RHS}\)</span>.
 Thanks to the sparsity of finite element matrices for partial differential equations and thanks to the overlap between subdomains, the knowledge of the local matrix <span class="math notranslate nohighlight">\(R_i A R_i^T\)</span> on each subdomain <span class="math notranslate nohighlight">\(1\le i\le N\)</span> is sufficient to perform the matrix-vector product <span class="math notranslate nohighlight">\(A\times \mathbf{U}\)</span> for any global vector <span class="math notranslate nohighlight">\(\mathbf{U}\)</span>.
 Once the problem has been set up by a call to <code class="docutils literal notranslate"><span class="pre">ffddmsetupOperator(myprefix,</span> <span class="pre">myFEprefix,</span> <span class="pre">myVarf)</span></code>, the matrix-vector product is performed by calling the function <code class="docutils literal notranslate"><span class="pre">myprefix#A(Ui)</span></code> where <code class="docutils literal notranslate"><span class="pre">myprefix</span></code> is a user defined prefix that refers to the problem at hand which itself implicitly refers to the triplet (domain decomposition, finite element, variational formulation).
 See more on problem definition in this <a class="reference internal" href="documentation.html#ffddmdocumentationdefineproblemtosolve"><span class="std std-ref">documentation</span></a> and more on distributed linear algebra in chapter 8 of <a class="reference external" href="http://bookstore.siam.org/ot144/">“An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation” SIAM 2015</a>.</p>
 </section>
 <section id="distributed-linear-solvers">
-<h2>Distributed Linear Solvers<a class="headerlink" href="#distributed-linear-solvers" title="Permalink to this headline">¶</a></h2>
+<h2>Distributed Linear Solvers<a class="headerlink" href="#distributed-linear-solvers" title="Permalink to this headline"></a></h2>
 <p>In many cases, we are interested in the solution of the problem in terms of the vector of d.o.f.’s <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> that satisfies:</p>
 <div class="math notranslate nohighlight">
 \[A\, \mathbf{X} = \mathbf{RHS}\,.\]</div>
 <p><code class="docutils literal notranslate"><span class="pre">ffddm</span></code> offers two parallel solvers: <a class="reference internal" href="#ffddmintroductiondisitributeddirectsolvers"><span class="std std-ref">direct factorization</span></a> and iterative preconditioned solvers via <a class="reference internal" href="#ffddmintroductionschwarzmethods"><span class="std std-ref">Schwarz</span></a> domain decomposition methods.</p>
 <section id="distributed-direct-solvers">
-<span id="ffddmintroductiondisitributeddirectsolvers"></span><h3>Distributed Direct Solvers<a class="headerlink" href="#distributed-direct-solvers" title="Permalink to this headline">¶</a></h3>
+<span id="ffddmintroductiondisitributeddirectsolvers"></span><h3>Distributed Direct Solvers<a class="headerlink" href="#distributed-direct-solvers" title="Permalink to this headline"></a></h3>
 <p>In order to benefit from the sparsity of the matrix arising from a finite element discretization of a partial differential equation, a variant of Gauss elimination, the frontal method, that automatically avoids a large number of operations involving zero terms was developed.
 A frontal solver builds a <span class="math notranslate nohighlight">\(LU\)</span> or Cholesky decomposition of a sparse matrix given as the assembly of element matrices by eliminating equations only on a subset of elements at a time.
 This subset is called the <em>front</em> and it is essentially the transition region between the part of the system already finished and the part not touched yet.
@@ -2037,7 +2018,7 @@ In order to benefit from multicore processors, a <a class="reference external" h
 The fronts can be worked on by different processors, which enables parallel computing. <code class="docutils literal notranslate"><span class="pre">ffddm</span></code> provides an interface to the parallel sparse direct solver <a class="reference external" href="http://mumps.enseeiht.fr/">MUMPS</a>. These methods have the advantage to be very robust and to have a predictable cost. The main drawback is the memory requirement which can be prohibitive especially for three-dimensional problems.</p>
 </section>
 <section id="schwarz-methods">
-<span id="ffddmintroductionschwarzmethods"></span><h3>Schwarz methods<a class="headerlink" href="#schwarz-methods" title="Permalink to this headline">¶</a></h3>
+<span id="ffddmintroductionschwarzmethods"></span><h3>Schwarz methods<a class="headerlink" href="#schwarz-methods" title="Permalink to this headline"></a></h3>
 <p>These methods are part of the large family of preconditioned iterative solvers. When considering the solve of the equation <span class="math notranslate nohighlight">\(A\, \mathbf{X} = \mathbf{RHS}\)</span>, a preconditioner is a linear operator that approximates the inverse of <span class="math notranslate nohighlight">\(A\)</span> and whose cost of the associated matrix-vector product is much cheaper than solving the original linear system. It enables to accelerate the solution of the latter with Krylov type methods such as the conjugate gradient (in the symmetric positive definite case), GMRES or BiCGSTAB in the general case. Two options are possible.</p>
 <p>Left preconditioning: the preconditioner is applied to the left of the equation</p>
 <div class="math notranslate nohighlight">
@@ -2050,7 +2031,7 @@ The fronts can be worked on by different processors, which enables parallel comp
 <p>In both cases, if the preconditioner is efficient the number of iterations to get a converged solution is much smaller than the number of iterations of the Krylov method applied to the original equation <span class="math notranslate nohighlight">\(A\, \mathbf{X} = \mathbf{RHS}\)</span>.  Although right preconditioning seems more intricate, it is much safer to use since the convergence is checked on a residual that does not depend on the preconditioner.</p>
 <p>In the sequel, we consider the solution of the equation <span class="math notranslate nohighlight">\(A\, \mathbf{X} = \mathbf{RHS}\)</span> preconditioned by domain decomposition methods and with a <strong>flexible GMRES</strong> Krylov method which is thus necessarily right preconditioned.</p>
 <section id="restricted-additive-schwarz-ras">
-<h4>Restricted Additive Schwarz (RAS)<a class="headerlink" href="#restricted-additive-schwarz-ras" title="Permalink to this headline">¶</a></h4>
+<h4>Restricted Additive Schwarz (RAS)<a class="headerlink" href="#restricted-additive-schwarz-ras" title="Permalink to this headline"></a></h4>
 <p>The RAS preconditioner reads:</p>
 <div class="math notranslate nohighlight">
 \[M^{-1}_{RAS} := \sum_{j=1}^N R_j^T D_j (R_j\, A\,R_j^T)^{-1} R_j\,,\]</div>
@@ -2067,7 +2048,7 @@ The contribution from neighboring subdomains are summed locally. This
 pattern is very similar to that of the <a class="reference internal" href="#ffddmdocumentationupdate"><span class="std std-ref">update</span></a> procedure.</p>
 </section>
 <section id="optimized-restricted-additive-schwarz-oras">
-<h4>Optimized Restricted Additive Schwarz (ORAS)<a class="headerlink" href="#optimized-restricted-additive-schwarz-oras" title="Permalink to this headline">¶</a></h4>
+<h4>Optimized Restricted Additive Schwarz (ORAS)<a class="headerlink" href="#optimized-restricted-additive-schwarz-oras" title="Permalink to this headline"></a></h4>
 <p>The ORAS preconditioner may be seen as a variant of the RAS preconditioner.
 It reads:</p>
 <div class="math notranslate nohighlight">
@@ -2077,7 +2058,7 @@ This variant is very useful when dealing with wave propagation phenomena such as
 Defining <span class="math notranslate nohighlight">\(B_j\)</span> as the discretization of the physical equation with impedance conditions on the boundary of the subdomain has been proved to be a good choice.</p>
 </section>
 <section id="two-level-methods">
-<h4>Two level methods<a class="headerlink" href="#two-level-methods" title="Permalink to this headline">¶</a></h4>
+<h4>Two level methods<a class="headerlink" href="#two-level-methods" title="Permalink to this headline"></a></h4>
 <p>The RAS and ORAS methods are called a one-level method in the sense that sub-domains only interact with their direct neighbors. For some problems such as Darcy problems or static elasticity problems and when the number of subdomains is large, such one-level methods may suffer from a slow convergence.
 The fix is to add to the preconditioner an auxiliary coarse problem that couples all subdomains at each iteration and is inexpensive to calculate.</p>
 <p>In mathematical terms, we first choose  a full rank rectangular matrix  <span class="math notranslate nohighlight">\(Z\in\R^{\#{\mathcal N}\times NC}\)</span> where <span class="math notranslate nohighlight">\(NC \ll \#{\mathcal N}\)</span> denotes the dimension of the coarse space spanned by the columns of <span class="math notranslate nohighlight">\(Z\)</span>. We also pick a coarse matrix <span class="math notranslate nohighlight">\(A_C\in \R^{N_C\times N_C}\)</span>. A generic one-level method preconditioner <span class="math notranslate nohighlight">\(M_1^{-1}\)</span> is enriched by a solve on the coarse space. The simplest correction formula is additive:</p>
@@ -2086,12 +2067,12 @@ The fix is to add to the preconditioner an auxiliary coarse problem that couples
 <p>Other correction formulas are given in <a class="reference internal" href="documentation.html#ffddmdocumentationtwolevelpreconditioners"><span class="std std-ref">documentation</span></a>.</p>
 <p>We consider two ways to build <span class="math notranslate nohighlight">\(Z\)</span> and thus the coarse space and the coarse problem <span class="math notranslate nohighlight">\(A_C\)</span>, see below <a class="reference internal" href="#ffddmintroductioncoarsemesh"><span class="std std-ref">Coarse Mesh</span></a> and <a class="reference internal" href="#ffddmintroductiongeneo"><span class="std std-ref">GenEO</span></a></p>
 <section id="coarse-mesh">
-<span id="ffddmintroductioncoarsemesh"></span><h5>Coarse Mesh<a class="headerlink" href="#coarse-mesh" title="Permalink to this headline">¶</a></h5>
+<span id="ffddmintroductioncoarsemesh"></span><h5>Coarse Mesh<a class="headerlink" href="#coarse-mesh" title="Permalink to this headline"></a></h5>
 <p>A first possibility is to discretize the problem on a coarse mesh, following the same principle as multi-grid methods.
 For 3-D problems, a coarsening of the mesh size by a factor 2, reduces by a factor <span class="math notranslate nohighlight">\(2^3=8\)</span> the size of the coarse problem which is then easier to solve by a direct method. Then, <span class="math notranslate nohighlight">\(Z\)</span> is the interpolation matrix from the coarse finite element space to the fine one.</p>
 </section>
 <section id="geneo">
-<span id="ffddmintroductiongeneo"></span><h5>GenEO<a class="headerlink" href="#geneo" title="Permalink to this headline">¶</a></h5>
+<span id="ffddmintroductiongeneo"></span><h5>GenEO<a class="headerlink" href="#geneo" title="Permalink to this headline"></a></h5>
 <p>For highly heterogeneous or anisotropic problems, two level methods based on coarse meshes might fail and a more sophisticated construction must be used.
 A provable robust coarse space called GenEO is built by first solving the following local generalized eigenvalue problem in parallel for each subdomain <span class="math notranslate nohighlight">\(1\le i\le N\)</span>, where <span class="math notranslate nohighlight">\(A_i^{\text{Neu}}\)</span> denotes the local matrix resulting from the variational formulation:</p>
 <div class="math notranslate nohighlight">
@@ -2169,7 +2150,24 @@ This is a way to interpret the above generalized eigenvalue problem which contro
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../../_static/js/mathjax-config.js"></script>
+	<script src="../../_static/js/lunr.js"></script>
+	<script src="../../_static/lunr/lunr_index.js"></script>
+	<script src="../../_static/js/search.js"></script>
+	<script>
+		initSearch('../../')
+	</script>
+	<!-- Github -->
+	<script async src="../../_static/js/github.js"></script>
 </body>
 
 </html>

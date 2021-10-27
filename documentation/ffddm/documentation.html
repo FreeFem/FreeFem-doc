@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../../_static/js/lunr.js"></script>
-<script async src="../../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../../_static/js/search.js"></script>
-<script>
-   initSearch('../../')
-</script>
 	
 </nav>
-<script async src="../../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1940,14 +1922,13 @@
 
 	</div>
 </div>
-<script async src="../../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="ffddm-documentation">
-<span id="ffddmdocumentation"></span><h1>ffddm documentation<a class="headerlink" href="#ffddm-documentation" title="Permalink to this headline">¶</a></h1>
+<span id="ffddmdocumentation"></span><h1>ffddm documentation<a class="headerlink" href="#ffddm-documentation" title="Permalink to this headline"></a></h1>
 <section id="minimal-example">
-<h2>Minimal example<a class="headerlink" href="#minimal-example" title="Permalink to this headline">¶</a></h2>
+<h2>Minimal example<a class="headerlink" href="#minimal-example" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">macro</span> <span class="n">dimension</span> <span class="mi">3</span><span class="c1">// EOM            // 2D or 3D</span>
 <span class="lineno"> 2 </span>
 <span class="lineno"> 3 </span><span class="cp">include</span> <span class="s">&quot;ffddm.idp&quot;</span>
@@ -1987,7 +1968,7 @@
 </div>
 </section>
 <section id="overlapping-mesh-decomposition">
-<span id="ffddmdocumentationoverlappingmeshdecomposition"></span><h2>Overlapping mesh decomposition<a class="headerlink" href="#overlapping-mesh-decomposition" title="Permalink to this headline">¶</a></h2>
+<span id="ffddmdocumentationoverlappingmeshdecomposition"></span><h2>Overlapping mesh decomposition<a class="headerlink" href="#overlapping-mesh-decomposition" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmbuildDmesh</span><span class="p">(</span><span class="n">prmesh</span><span class="p">,</span><span class="n">Th</span><span class="p">,</span><span class="n">comm</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2054,7 +2035,7 @@ NewMacro prmesh#mpicomm()comm EndMacro
 ***see also***:
 --></section>
 <section id="local-finite-element-spaces">
-<span id="ffddmdocumentationlocalfiniteelementspaces"></span><h2>Local finite element spaces<a class="headerlink" href="#local-finite-element-spaces" title="Permalink to this headline">¶</a></h2>
+<span id="ffddmdocumentationlocalfiniteelementspaces"></span><h2>Local finite element spaces<a class="headerlink" href="#local-finite-element-spaces" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">prfe</span><span class="p">,</span><span class="n">prmesh</span><span class="p">,</span><span class="n">scalar</span><span class="p">,</span><span class="n">def</span><span class="p">,</span><span class="kp">init</span><span class="p">,</span><span class="n">Pk</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2129,7 +2110,7 @@ prfe#K[int][int] prfe#snd(0);
 - **[`ffddmbuildDfespaceEdge`](#local-finite-element-spaces)**
 --></section>
 <section id="define-the-problem-to-solve">
-<span id="ffddmdocumentationdefineproblemtosolve"></span><h2>Define the problem to solve<a class="headerlink" href="#define-the-problem-to-solve" title="Permalink to this headline">¶</a></h2>
+<span id="ffddmdocumentationdefineproblemtosolve"></span><h2>Define the problem to solve<a class="headerlink" href="#define-the-problem-to-solve" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">prfe</span><span class="p">,</span><span class="n">Varf</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2210,7 +2191,7 @@ In the sequential case, the global right-hand side vector <span class="math notr
 </div>
 </section>
 <section id="one-level-preconditioners">
-<span id="ffddmdocumentationonelevelpreconditioners"></span><h2>One level preconditioners<a class="headerlink" href="#one-level-preconditioners" title="Permalink to this headline">¶</a></h2>
+<span id="ffddmdocumentationonelevelpreconditioners"></span><h2>One level preconditioners<a class="headerlink" href="#one-level-preconditioners" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmsetupPrecond</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">VarfPrec</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2258,7 +2239,7 @@ matrix<pr#prfe#K> pr#CSinterp;
 ENDIFMACRO
 --></section>
 <section id="two-level-preconditioners">
-<span id="ffddmdocumentationtwolevelpreconditioners"></span><h2>Two level preconditioners<a class="headerlink" href="#two-level-preconditioners" title="Permalink to this headline">¶</a></h2>
+<span id="ffddmdocumentationtwolevelpreconditioners"></span><h2>Two level preconditioners<a class="headerlink" href="#two-level-preconditioners" title="Permalink to this headline"></a></h2>
 <p>The main ingredient of a two level preconditioner is the so-called ‘coarse space’ matrix <span class="math notranslate nohighlight">\(Z\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(Z\)</span> is a rectangular matrix of size <span class="math notranslate nohighlight">\(n \times n_c\)</span>, where usually <span class="math notranslate nohighlight">\(n_c \ll n\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(Z\)</span> is used to build the ‘coarse space operator’ <span class="math notranslate nohighlight">\(E = Z^T A Z\)</span>, a square matrix of size <span class="math notranslate nohighlight">\(n_c \times n_c\)</span>.
@@ -2302,7 +2283,7 @@ The two level preconditioner depends on the choice of the coarse correction form
 
 int pr#bCM = 0;
 --><section id="building-the-geneo-coarse-space">
-<span id="ffddmdocumentationbuildinggeneocoarsespace"></span><h3>Building the GenEO coarse space<a class="headerlink" href="#building-the-geneo-coarse-space" title="Permalink to this headline">¶</a></h3>
+<span id="ffddmdocumentationbuildinggeneocoarsespace"></span><h3>Building the GenEO coarse space<a class="headerlink" href="#building-the-geneo-coarse-space" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmgeneosetup</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">Varf</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2342,7 +2323,7 @@ int[int] pr#sizelgworld(mpiSize(pr#prfe#prmesh#mpicomm)), pr#offsetiworld(mpiSiz
 matrix<pr#prfe#K> pr#matN;
 --></section>
 <section id="building-the-coarse-space-from-a-coarse-mesh">
-<span id="ffddmdocumentationbuildingcoarsespacefromcoarsemesh"></span><h3>Building the coarse space from a coarse mesh<a class="headerlink" href="#building-the-coarse-space-from-a-coarse-mesh" title="Permalink to this headline">¶</a></h3>
+<span id="ffddmdocumentationbuildingcoarsespacefromcoarsemesh"></span><h3>Building the coarse space from a coarse mesh<a class="headerlink" href="#building-the-coarse-space-from-a-coarse-mesh" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmcoarsemeshsetup</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">Thc</span><span class="p">,</span><span class="n">VarfEprec</span><span class="p">,</span><span class="n">VarfAprec</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2382,7 +2363,7 @@ These parameters are set by <a class="reference internal" href="parameters.html#
 </section>
 </section>
 <section id="solving-the-linear-system">
-<span id="ffddmdocumentationsolvinglinearsystem"></span><h2>Solving the linear system<a class="headerlink" href="#solving-the-linear-system" title="Permalink to this headline">¶</a></h2>
+<span id="ffddmdocumentationsolvinglinearsystem"></span><h2>Solving the linear system<a class="headerlink" href="#solving-the-linear-system" title="Permalink to this headline"></a></h2>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">func</span> <span class="n">pr</span><span class="o">#</span><span class="n">prfe</span><span class="o">#</span><span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">pr</span><span class="o">#</span><span class="n">fGMRES</span><span class="p">(</span><span class="n">pr</span><span class="o">#</span><span class="n">prfe</span><span class="o">#</span><span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="o">&amp;</span> <span class="n">x0i</span><span class="p">,</span> <span class="n">pr</span><span class="o">#</span><span class="n">prfe</span><span class="o">#</span><span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="o">&amp;</span> <span class="n">bi</span><span class="p">,</span> <span class="kt">real</span> <span class="kp">eps</span><span class="p">,</span> <span class="kt">int</span> <span class="n">itmax</span><span class="p">,</span> <span class="kt">string</span> <span class="n">sp</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2395,7 +2376,7 @@ If <strong>eps</strong> <span class="math notranslate nohighlight">\(&lt; 0\)</s
 <strong>sp</strong> selects between the <code class="docutils literal notranslate"><span class="pre">&quot;left&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;right&quot;</span></code> preconditioning variants: <em>left</em> preconditioned GMRES solves <span class="math notranslate nohighlight">\(M^{-1} A x = M^{-1} b\)</span>, while <em>right</em> preconditioned GMRES solves <span class="math notranslate nohighlight">\(A M^{-1} y = b\)</span> for <span class="math notranslate nohighlight">\(y\)</span>, with <span class="math notranslate nohighlight">\(x = M^{-1} y\)</span>.</p>
 </section>
 <section id="using-hpddm-within-ffddm">
-<span id="ffddmdocumentationhpddmffddm"></span><h2>Using <em>HPDDM</em> within <em>ffddm</em><a class="headerlink" href="#using-hpddm-within-ffddm" title="Permalink to this headline">¶</a></h2>
+<span id="ffddmdocumentationhpddmffddm"></span><h2>Using <em>HPDDM</em> within <em>ffddm</em><a class="headerlink" href="#using-hpddm-within-ffddm" title="Permalink to this headline"></a></h2>
 <p><strong>ffddm</strong> allows you to use <strong>HPDDM</strong> to solve your problem, effectively replacing the <strong>ffddm</strong> implementation of all parallel linear algebra computations.
 <strong>ffddm</strong> can then be viewed as a finite element interface for <strong>HPDDM</strong>.</p>
 <p>You can use <strong>HPDDM</strong> features unavailable in <strong>ffddm</strong> such as advanced Krylov subspace methods implementing block and recycling techniques.</p>
@@ -2419,7 +2400,7 @@ Doing so, a call to <code class="docutils literal notranslate"><span class="pre"
 <p>An example can be found in <strong>Helmholtz-2d-HPDDM-BGMRES.edp</strong>, see the <a class="reference internal" href="examples.html#ffddmexamples"><span class="std std-ref">Examples</span></a> section.</p>
 </section>
 <section id="advanced-use">
-<span id="ffddmdocumentationadvanced"></span><h2>Advanced use<a class="headerlink" href="#advanced-use" title="Permalink to this headline">¶</a></h2>
+<span id="ffddmdocumentationadvanced"></span><h2>Advanced use<a class="headerlink" href="#advanced-use" title="Permalink to this headline"></a></h2>
 <!--
 .. _ffddmDocumentationNonlinearTimedependent:
 
@@ -2436,7 +2417,7 @@ Nonlinear and time dependent problems
 
 ffddmbuildDmeshAug(pr,Th,comm)
 --><section id="interpolation-between-two-distributed-finite-element-spaces">
-<span id="ffddmdocumentationinterpolation"></span><h3>Interpolation between two distributed finite element spaces<a class="headerlink" href="#interpolation-between-two-distributed-finite-element-spaces" title="Permalink to this headline">¶</a></h3>
+<span id="ffddmdocumentationinterpolation"></span><h3>Interpolation between two distributed finite element spaces<a class="headerlink" href="#interpolation-between-two-distributed-finite-element-spaces" title="Permalink to this headline"></a></h3>
 <p>The parallel interpolation of a distributed finite element function to another distributed finite element space can be computed using the <code class="docutils literal notranslate"><span class="pre">prfe#transferfromVhi</span></code> macro. Internally, it uses the <code class="docutils literal notranslate"><span class="pre">transfer</span></code> macro from the <code class="docutils literal notranslate"><span class="pre">macro_ddm.idp</span></code> script. The macro is prefixed by the source finite element prefix <strong>prfe</strong> and is used a follows:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">prfe</span><span class="o">#</span><span class="n">transferfromVhi</span><span class="p">(</span><span class="n">us</span><span class="p">,</span><span class="n">Vht</span><span class="p">,</span><span class="n">Pkt</span><span class="p">,</span><span class="n">rest</span><span class="p">)</span>
 </pre></div>
@@ -2473,7 +2454,7 @@ ffddmbuildDmeshAug(pr,Th,comm)
 </div>
 </section>
 <section id="local-finite-element-spaces-for-non-lagrange-finite-elements">
-<span id="ffddmdocumentationpartitionunityedge"></span><h3>Local finite element spaces for non Lagrange finite elements<a class="headerlink" href="#local-finite-element-spaces-for-non-lagrange-finite-elements" title="Permalink to this headline">¶</a></h3>
+<span id="ffddmdocumentationpartitionunityedge"></span><h3>Local finite element spaces for non Lagrange finite elements<a class="headerlink" href="#local-finite-element-spaces-for-non-lagrange-finite-elements" title="Permalink to this headline"></a></h3>
 <p>For Lagrange finite elements, the partition of unity <span class="math notranslate nohighlight">\((D_i)_{i=1,...,N}\)</span> (see <code class="docutils literal notranslate"><span class="pre">prfe#Dk</span></code> and <code class="docutils literal notranslate"><span class="pre">prfe#Dih</span></code>) is built by interpolating the local P1 partition of unity function onto the components of the <strong>Pk</strong> finite element space <code class="docutils literal notranslate"><span class="pre">prfe#Vhi</span></code>.
 For non Lagrange finite element spaces, such as Raviart–Thomas or Nédélec edge elements, the definition of the degrees of freedom can be more involved, and interpolating the P1 partition of unity functions directly is inappropriate.
 The idea is then to use a “pseudo” finite element <strong>Pkpart</strong> derived from <strong>Pk</strong> which is suitable for interpolating the P1 partition of unity, in the sense that it will produce a partition of unity for <strong>Pk</strong>.</p>
@@ -2486,7 +2467,7 @@ The idea is then to use a “pseudo” finite element <strong>Pkpart</strong> de
 <p>An example with first-order Nédélec edge elements (<em>Edge03d</em> + <em>Edge03ds0</em>) for Maxwell equations can be found in <strong>Maxwell-3d-simple.edp</strong>, see the <a class="reference internal" href="examples.html#ffddmexamples"><span class="std std-ref">Examples</span></a> section.</p>
 </section>
 <section id="inexact-coarse-solves-for-two-level-methods">
-<span id="ffddmdocumentationinexactcoarsesolve"></span><h3>Inexact coarse solves for two level methods<a class="headerlink" href="#inexact-coarse-solves-for-two-level-methods" title="Permalink to this headline">¶</a></h3>
+<span id="ffddmdocumentationinexactcoarsesolve"></span><h3>Inexact coarse solves for two level methods<a class="headerlink" href="#inexact-coarse-solves-for-two-level-methods" title="Permalink to this headline"></a></h3>
 <p>We have seen in the <a class="reference internal" href="#ffddmdocumentationtwolevelpreconditioners"><span class="std std-ref">Two level preconditioners section</span></a> that two level methods produce a ‘coarse space operator’ <span class="math notranslate nohighlight">\(E\)</span> that needs to be inverted at each iteration.
 By default the coarse space operator matrix is factorized by the direct solver <em>MUMPS</em>. This can become a bottleneck and hinder scalability for large problems, where <span class="math notranslate nohighlight">\(E\)</span> can become too large to be factorized efficiently.
 To remedy this, we can instead opt to use an iterative method to solve the coarse problem at each iteration.  Moreover, in order to retain robustness, a DD preconditioner can be used to solve the inner coarse problem more efficiently.</p>
@@ -2494,7 +2475,7 @@ To remedy this, we can instead opt to use an iterative method to solve the coars
 Three level GenEO
 '''''''''''''''''
 --><section id="coarse-mesh-and-inexact-coarse-solve">
-<h4>Coarse mesh and inexact coarse solve<a class="headerlink" href="#coarse-mesh-and-inexact-coarse-solve" title="Permalink to this headline">¶</a></h4>
+<h4>Coarse mesh and inexact coarse solve<a class="headerlink" href="#coarse-mesh-and-inexact-coarse-solve" title="Permalink to this headline"></a></h4>
 <p>When the coarse problem comes from a coarse mesh discretization, a natural way to do inexact coarse solve is to use a one level domain decomposition method on the coarse problem, with the same subdomain partitioning for the coarse and fine meshes.
 This means that each processor is associated to one spatial subdomain and hosts the two local (nested) coarse and fine submeshes corresponding to this subdomain, as well as the corresponding local matrices for the two discretizations.
 This natural choice offers interesting benefits:</p>
@@ -2604,7 +2585,24 @@ Computing integrals
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../../_static/js/mathjax-config.js"></script>
+	<script src="../../_static/js/lunr.js"></script>
+	<script src="../../_static/lunr/lunr_index.js"></script>
+	<script src="../../_static/js/search.js"></script>
+	<script>
+		initSearch('../../')
+	</script>
+	<!-- Github -->
+	<script async src="../../_static/js/github.js"></script>
 </body>
 
 </html>

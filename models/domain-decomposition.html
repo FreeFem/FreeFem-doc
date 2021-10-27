@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1942,15 +1924,14 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="domain-decomposition">
-<h1>Domain decomposition<a class="headerlink" href="#domain-decomposition" title="Permalink to this headline">¶</a></h1>
+<h1>Domain decomposition<a class="headerlink" href="#domain-decomposition" title="Permalink to this headline"></a></h1>
 <p>We present three classic examples of domain decomposition technique: first, Schwarz algorithm with overlapping, second Schwarz algorithm without overlapping (also call Shur complement), and last we show to use the conjugate gradient to solve the boundary problem of the Shur complement.</p>
 <section id="schwarz-overlapping">
-<span id="domaindecompositionschwarzoverlapping"></span><h2>Schwarz overlapping<a class="headerlink" href="#schwarz-overlapping" title="Permalink to this headline">¶</a></h2>
+<span id="domaindecompositionschwarzoverlapping"></span><h2>Schwarz overlapping<a class="headerlink" href="#schwarz-overlapping" title="Permalink to this headline"></a></h2>
 <p>To solve:</p>
 <div class="math notranslate nohighlight">
 \[-\Delta u =f,\;\mbox{in}\;\Omega=\Omega_1\cup\Omega_2\quad u|_\Gamma=0\]</div>
@@ -1967,7 +1948,7 @@
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz1.png"><img alt="figDomain1" src="../_images/DomainDecomposition_Schwarz1.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 165 </span><span class="caption-text">The 2 overlapping mesh <code class="code freefem docutils literal notranslate"><span class="pre">TH</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">th</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 165 </span><span class="caption-text">The 2 overlapping mesh <code class="code freefem docutils literal notranslate"><span class="pre">TH</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">th</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -2037,20 +2018,20 @@
 <figure class="align-default" id="id2">
 <span id="figdomaindecomposition-schwarz2"></span><a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz2.png"><img alt="DomainDecomposition_Schwarz2" src="../_images/DomainDecomposition_Schwarz2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 166 </span><span class="caption-text">Isovalues of the solution at iteration 0</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 166 </span><span class="caption-text">Isovalues of the solution at iteration 0</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
 <span id="figdomaindecomposition-schwarz3"></span><a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz3.png"><img alt="DomainDecomposition_Schwarz3" src="../_images/DomainDecomposition_Schwarz3.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 167 </span><span class="caption-text">Isovalues of the solution at iteration 0</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 167 </span><span class="caption-text">Isovalues of the solution at iteration 0</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Schwarz overlapping</span></p>
 </div></div>
 </section>
 <section id="schwarz-non-overlapping-scheme">
-<span id="DomainDecomposition_Schwarz"></span><h2>Schwarz non overlapping Scheme<a class="headerlink" href="#schwarz-non-overlapping-scheme" title="Permalink to this headline">¶</a></h2>
+<span id="DomainDecomposition_Schwarz"></span><h2>Schwarz non overlapping Scheme<a class="headerlink" href="#schwarz-non-overlapping-scheme" title="Permalink to this headline"></a></h2>
 <p>To solve:</p>
 <div class="math notranslate nohighlight">
 \[-\Delta u =f\;\mbox{in}\;\Omega=\Omega_1\cup\Omega_2\quad u|_\Gamma=0\]</div>
@@ -2058,7 +2039,7 @@
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz4.png"><img alt="figDomain4" src="../_images/DomainDecomposition_Schwarz4.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 168 </span><span class="caption-text">The two none overlapping mesh <code class="code freefem docutils literal notranslate"><span class="pre">TH</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">th</span></code></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 168 </span><span class="caption-text">The two none overlapping mesh <code class="code freefem docutils literal notranslate"><span class="pre">TH</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">th</span></code></span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Let introduce <span class="math notranslate nohighlight">\(\Gamma_i\)</span> is common the boundary of <span class="math notranslate nohighlight">\(\Omega_1\)</span> and <span class="math notranslate nohighlight">\(\Omega_2\)</span> and <span class="math notranslate nohighlight">\(\Gamma_e^i= \partial \Omega_i \setminus \Gamma_i\)</span>.</p>
@@ -2144,19 +2125,19 @@ u_i|_{\Gamma_e^i} = 0\]</div>
 <figure class="align-default" id="id5">
 <span id="figdomaindecomposition-schwarz5"></span><a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz5.png"><img alt="DomainDecomposition_Schwarz5" src="../_images/DomainDecomposition_Schwarz5.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Isovalues of the solution at iteration 0 without overlapping</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Isovalues of the solution at iteration 0 without overlapping</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <span id="figdomaindecomposition-schwarz6"></span><a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz6.png"><img alt="DomainDecomposition_Schwarz6" src="../_images/DomainDecomposition_Schwarz6.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 170 </span><span class="caption-text">Isovalues of the solution at iteration 9 without overlapping</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 170 </span><span class="caption-text">Isovalues of the solution at iteration 9 without overlapping</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </div></div>
 </section>
 <section id="schwarz-conjuguate-gradient">
-<span id="DomainDecomposition_Schwarz"></span><h2>Schwarz conjuguate gradient<a class="headerlink" href="#schwarz-conjuguate-gradient" title="Permalink to this headline">¶</a></h2>
+<span id="DomainDecomposition_Schwarz"></span><h2>Schwarz conjuguate gradient<a class="headerlink" href="#schwarz-conjuguate-gradient" title="Permalink to this headline"></a></h2>
 <p>To solve <span class="math notranslate nohighlight">\(-\Delta u =f \;\mbox{in}\;\Omega=\Omega_1\cup\Omega_2\quad u|_\Gamma=0\)</span> the Schwarz algorithm for domain decomposition without overlapping runs like this</p>
 <p>Let introduce <span class="math notranslate nohighlight">\(\Gamma_i\)</span> is common the boundary of <span class="math notranslate nohighlight">\(\Omega_1\)</span> and <span class="math notranslate nohighlight">\(\Omega_2\)</span> and <span class="math notranslate nohighlight">\(\Gamma_e^i= \partial \Omega_i \setminus \Gamma_i\)</span>.</p>
 <p>The problem find <span class="math notranslate nohighlight">\(\lambda\)</span> such that <span class="math notranslate nohighlight">\((u_1|_{\Gamma_i}=u_2|_{\Gamma_i})\)</span> where <span class="math notranslate nohighlight">\(u_i\)</span> is solution of the following Laplace problem:</p>
@@ -2304,7 +2285,24 @@ The problem on the border is solved by a conjugate gradient method.</p>
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

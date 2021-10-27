@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1943,23 +1925,22 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="a-flow-with-shocks">
-<h1>A Flow with Shocks<a class="headerlink" href="#a-flow-with-shocks" title="Permalink to this headline">¶</a></h1>
+<h1>A Flow with Shocks<a class="headerlink" href="#a-flow-with-shocks" title="Permalink to this headline"></a></h1>
 <p>Compressible Euler equations should be discretized with Finite Volumes or FEM with flux up-winding scheme but these are not implemented in <strong>FreeFEM</strong>.
 Nevertheless acceptable results can be obtained with the method of characteristics provided that the mean values <span class="math notranslate nohighlight">\(\displaystyle \bar f=\frac12\left(f^++f^-\right)\)</span> are used at shocks in the scheme, and finally mesh adaptation.</p>
 <div class="math notranslate nohighlight" id="equation-euler">
-<span class="eqno">(6)<a class="headerlink" href="#equation-euler" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(6)<a class="headerlink" href="#equation-euler" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     \partial_t\rho+\bar u\nabla\rho + \bar\rho\nabla\cdot u &amp;=&amp; 0\nonumber\\
     \bar\rho( \partial_t u+\frac{\overline{\rho u}}{\bar\rho}\nabla u +\nabla p &amp;=&amp; 0\nonumber\\
     \partial_t p + \bar u\nabla p +(\gamma-1)\bar p\nabla\cdot u &amp;=&amp; 0\\
 \end{array}\end{split}\]</div>
 <p>One possibility is to couple <span class="math notranslate nohighlight">\(u,p\)</span> and then update <span class="math notranslate nohighlight">\(\rho\)</span>, i.e.:</p>
 <div class="math notranslate nohighlight" id="equation-eulalgo">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eulalgo" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(7)<a class="headerlink" href="#equation-eulalgo" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     \frac 1{(\gamma-1)\delta t\bar p^m} (p^{m+1}-p^m \circ X^m) + \nabla\cdot u^{m+1} &amp;=&amp; 0\nonumber\\
     \frac{\bar\rho^m}{\delta t}(u^{m+1}-u^m \circ {\tilde X}^m ) +\nabla p^{m+1} &amp;=&amp; 0\nonumber\\
     \rho^{m+1} = \rho^m \circ X^m + \frac{\bar\rho^m}{(\gamma-1)\bar p^m}(p^{m+1} &amp;-&amp; p^m \circ X^m)
@@ -2079,7 +2060,7 @@ Nevertheless acceptable results can be obtained with the method of characteristi
 <figure class="align-default" id="figflowmach">
 <a class="reference internal image-reference" href="../_images/mach_2r.png"><img alt="../_images/mach_2r.png" src="../_images/mach_2r.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Pressure for a Euler flow around a disk at Mach 2 computed by <a class="reference internal" href="#equation-eulalgo">(7)</a></span><a class="headerlink" href="#figflowmach" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Pressure for a Euler flow around a disk at Mach 2 computed by <a class="reference internal" href="#equation-eulalgo">(7)</a></span><a class="headerlink" href="#figflowmach" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
@@ -2112,7 +2093,24 @@ Nevertheless acceptable results can be obtained with the method of characteristi
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

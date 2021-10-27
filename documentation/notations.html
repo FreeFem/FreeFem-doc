@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1942,15 +1924,14 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="notations">
-<h1>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">¶</a></h1>
+<h1>Notations<a class="headerlink" href="#notations" title="Permalink to this headline"></a></h1>
 <p>Here mathematical expressions and corresponding <strong>FreeFEM</strong> commands are explained.</p>
 <section id="generalities">
-<h2>Generalities<a class="headerlink" href="#generalities" title="Permalink to this headline">¶</a></h2>
+<h2>Generalities<a class="headerlink" href="#generalities" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>[<span class="math notranslate nohighlight">\(\delta_{ij}\)</span>] Kronecker delta (<span class="math notranslate nohighlight">\(0\)</span> if <span class="math notranslate nohighlight">\(i\neq j\)</span>, 1 if <span class="math notranslate nohighlight">\(i=j\)</span> for integers <span class="math notranslate nohighlight">\(i,j\)</span>)</p></li>
 <li><p>[<span class="math notranslate nohighlight">\(\forall\)</span>] for all</p></li>
@@ -1965,7 +1946,7 @@
 </ul>
 </section>
 <section id="sets-mappings-matrices-vectors">
-<h2>Sets, Mappings, Matrices, Vectors<a class="headerlink" href="#sets-mappings-matrices-vectors" title="Permalink to this headline">¶</a></h2>
+<h2>Sets, Mappings, Matrices, Vectors<a class="headerlink" href="#sets-mappings-matrices-vectors" title="Permalink to this headline"></a></h2>
 <p>Let <span class="math notranslate nohighlight">\(E,\, F,\, G\)</span> be three sets and <span class="math notranslate nohighlight">\(A\)</span> the subset of <span class="math notranslate nohighlight">\(E\)</span>.</p>
 <ul class="simple">
 <li><p>[<span class="math notranslate nohighlight">\(\{x\in E|\; P\}\)</span>] the subset of <span class="math notranslate nohighlight">\(E\)</span> consisting of the elements possessing the property <span class="math notranslate nohighlight">\(P\)</span></p></li>
@@ -1986,7 +1967,7 @@
 </ul>
 </section>
 <section id="numbers">
-<h2>Numbers<a class="headerlink" href="#numbers" title="Permalink to this headline">¶</a></h2>
+<h2>Numbers<a class="headerlink" href="#numbers" title="Permalink to this headline"></a></h2>
 <p>For two real numbers <span class="math notranslate nohighlight">\(a,b\)</span></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\([a,b]\)</span> is the interval <span class="math notranslate nohighlight">\(\{x\in \mathbb{R}|\; a\le x\le b\}\)</span></p></li>
@@ -1996,7 +1977,7 @@
 </ul>
 </section>
 <section id="differential-calculus">
-<h2>Differential Calculus<a class="headerlink" href="#differential-calculus" title="Permalink to this headline">¶</a></h2>
+<h2>Differential Calculus<a class="headerlink" href="#differential-calculus" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>[<span class="math notranslate nohighlight">\(\partial f/\partial x\)</span>] the partial derivative of <span class="math notranslate nohighlight">\(f:\mathbb{R}^d\to \mathbb{R}\)</span> with respect to <span class="math notranslate nohighlight">\(x\)</span> (<code class="code freefem docutils literal notranslate"><span class="pre">dx(f)</span></code>)</p></li>
 <li><p>[<span class="math notranslate nohighlight">\(\nabla f\)</span>] the gradient of <span class="math notranslate nohighlight">\(f:\Omega\to \mathbb{R}\)</span>,i.e., <span class="math notranslate nohighlight">\(\nabla f=(\partial f/\partial x,\, \partial f/\partial y)\)</span></p></li>
@@ -2005,7 +1986,7 @@
 </ul>
 </section>
 <section id="meshes">
-<h2>Meshes<a class="headerlink" href="#meshes" title="Permalink to this headline">¶</a></h2>
+<h2>Meshes<a class="headerlink" href="#meshes" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>[<span class="math notranslate nohighlight">\(\Omega\)</span>] usually denotes a domain on which PDE is defined</p></li>
 <li><p>[<span class="math notranslate nohighlight">\(\Gamma\)</span>] denotes the boundary of <span class="math notranslate nohighlight">\(\Omega\)</span>,i.e., <span class="math notranslate nohighlight">\(\Gamma=\partial\Omega\)</span> (keyword <code class="code freefem docutils literal notranslate"><span class="pre">border</span></code>, see <a class="reference internal" href="mesh-generation.html#meshborder"><span class="std std-ref">Border</span></a>)</p></li>
@@ -2026,7 +2007,7 @@ If <span class="math notranslate nohighlight">\(\Omega\)</span> is polygonal dom
 </ul>
 </section>
 <section id="functional-spaces">
-<h2>Functional Spaces<a class="headerlink" href="#functional-spaces" title="Permalink to this headline">¶</a></h2>
+<h2>Functional Spaces<a class="headerlink" href="#functional-spaces" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>[<span class="math notranslate nohighlight">\(L^2(\Omega)\)</span>] the set <span class="math notranslate nohighlight">\(\displaystyle{\left\{w(x,y)\left|\; \int_{\Omega}|w(x,y)|^2\text{d} x\text{d} y&lt;\infty\right.\right\}}\)</span></p></li>
 </ul>
@@ -2057,7 +2038,7 @@ If <span class="math notranslate nohighlight">\(\Omega\)</span> is polygonal dom
 </ul>
 </section>
 <section id="finite-element-spaces">
-<h2>Finite Element Spaces<a class="headerlink" href="#finite-element-spaces" title="Permalink to this headline">¶</a></h2>
+<h2>Finite Element Spaces<a class="headerlink" href="#finite-element-spaces" title="Permalink to this headline"></a></h2>
 <ul class="simple">
 <li><p>[<span class="math notranslate nohighlight">\(V_h\)</span>] denotes the finite element space created by <code class="code freefem docutils literal notranslate"><span class="pre">fespace</span> <span class="pre">Vh(Th,</span> <span class="pre">*)</span></code> in <strong>FreeFEM</strong> (see <a class="reference internal" href="finite-element.html#finiteelement"><span class="std std-ref">Finite Elements</span></a> for <code class="docutils literal notranslate"><span class="pre">*</span></code>)</p></li>
 <li><p>[<span class="math notranslate nohighlight">\(\Pi_h f\)</span>] the projection of the function <span class="math notranslate nohighlight">\(f\)</span> into <span class="math notranslate nohighlight">\(V_h\)</span> (<code class="code freefem docutils literal notranslate"><span class="pre">func</span> <span class="pre">f=x^2*y^3;</span> <span class="pre">Vh</span> <span class="pre">v</span> <span class="pre">=</span> <span class="pre">f;</span></code>) means <span class="math notranslate nohighlight">\(v = Pi_h (f) * [\{v\}]\)</span> for FE-function <span class="math notranslate nohighlight">\(v\)</span> in <span class="math notranslate nohighlight">\(V_h\)</span> means the column vector <span class="math notranslate nohighlight">\((v_1,\cdots,v_M)^T\)</span> if <span class="math notranslate nohighlight">\(v=v_1\phi_1+\cdots+v_M\phi_M\)</span>, which is shown by <code class="code freefem docutils literal notranslate"><span class="pre">fespace</span> <span class="pre">Vh(Th,</span> <span class="pre">P2);</span> <span class="pre">Vh</span> <span class="pre">v;</span> <span class="pre">cout</span> <span class="pre">&lt;&lt;</span> <span class="pre">v[]</span> <span class="pre">&lt;&lt;</span> <span class="pre">endl;</span></code></p></li>
@@ -2102,7 +2083,24 @@ If <span class="math notranslate nohighlight">\(\Omega\)</span> is polygonal dom
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

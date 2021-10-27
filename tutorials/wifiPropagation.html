@@ -19,15 +19,6 @@
   <!-- css -->
   <link rel="stylesheet" href="../_static/css/pygments_custom.css" type="text/css" />
 
-  <!-- MathJax -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-  <script src="../_static/js/mathjax-config.js"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
-  <script src="../_static/js/katex-config.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-    onload="renderMathInElement(document.body, katexOpts);"></script> -->
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
@@ -49,7 +40,6 @@
       </p>
    </a>
 </header>
-<script async src="../_static/js/github.js"></script>
 	
 	<nav id="nav">
 	<div style="display: none;">
@@ -1888,23 +1878,15 @@
 		<div id="dynamicSideNav">
 		</div>
 	</div>
-	<script async src="../_static/js/lunr.js"></script>
-<script async src="../_static/lunr/lunr_index.js"></script>
-
-<div class="search-container">
+	<div class="search-container">
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
 	<div id="searchResults"></div>
 </div>
 
-<script src="../_static/js/search.js"></script>
-<script>
-   initSearch('../')
-</script>
 	
 </nav>
-<script async src="../_static/js/nav.js"></script>
 	
 
 	<div id="subnav">
@@ -1948,27 +1930,26 @@
 
 	</div>
 </div>
-<script async src="../_static/js/subnav.js"></script>
 	
 	<div id="content">
 		
    <section id="wifi-propagation">
-<h1>Wifi Propagation<a class="headerlink" href="#wifi-propagation" title="Permalink to this headline">¶</a></h1>
+<h1>Wifi Propagation<a class="headerlink" href="#wifi-propagation" title="Permalink to this headline"></a></h1>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline"></a></h2>
 <p>In this tutorial, we will study the wifi signal power in a flat.
 An awesome flat is especially designed for the experiment, with <strong>2</strong> walls:</p>
 <figure class="align-default" id="id1">
 <img alt="../_images/house.png" src="../_images/house.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Flat</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Flat</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Even if the flat seems small enough to be covered by wifi everywhere, it is still interesting to study where the signal’s power is the lowest.
 We will study where to put the hotspot to get the best coverage, and as we’re a bit lazy we will only put it next to the left wall.</p>
 </section>
 <section id="physics">
-<h2>Physics<a class="headerlink" href="#physics" title="Permalink to this headline">¶</a></h2>
+<h2>Physics<a class="headerlink" href="#physics" title="Permalink to this headline"></a></h2>
 <p>In a nutshell, the Wifi is a electromagnetic wave that contains a signal : Internet data.
 Electromagnetic waves are well know by physicists and are ruled by the <strong>4 Maxwell equations</strong> which give you the solution for <em>E</em>, the electrical field, and <em>B</em>, the magnetic field, in space but also in time.</p>
 <p>We don’t care about the time here, because the signal period is really short so our internet quality will not change with time.
@@ -1985,9 +1966,9 @@ In walls, the refractive index is a complex number in which the two parts have a
 <p>The wifi hotspot (simulated by a simple circle) will be the boundary condition, with a non null value for our electrical field.</p>
 </section>
 <section id="coding">
-<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this headline">¶</a></h2>
+<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this headline"></a></h2>
 <section id="the-domain">
-<h3>The domain<a class="headerlink" href="#the-domain" title="Permalink to this headline">¶</a></h3>
+<h3>The domain<a class="headerlink" href="#the-domain" title="Permalink to this headline"></a></h3>
 <p>In order to create the domain of experimentation, we need to create <code class="code freefem docutils literal notranslate"><span class="pre">border</span></code> objects, like this :</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">real</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
 <span class="lineno"> 2 </span><span class="kt">border</span> <span class="nf">a00</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="kr">x</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="kp">t</span><span class="p">;</span> <span class="kr">y</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="kr">label</span><span class="o">=</span><span class="mi">1</span><span class="p">;}</span>
@@ -2014,7 +1995,7 @@ In walls, the refractive index is a complex number in which the two parts have a
 </div>
 </section>
 <section id="lets-create-a-mesh">
-<h3>Let’s create a mesh<a class="headerlink" href="#lets-create-a-mesh" title="Permalink to this headline">¶</a></h3>
+<h3>Let’s create a mesh<a class="headerlink" href="#lets-create-a-mesh" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="kr">n</span><span class="o">=</span><span class="mi">13</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kt">mesh</span> <span class="n">Sh</span> <span class="o">=</span> <span class="nf">buildmesh</span><span class="p">(</span><span class="n">a00</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">a10</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">a20</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">a30</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span>
 <span class="lineno">3 </span>    <span class="o">+</span> <span class="n">a01</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">a11</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">a21</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span> <span class="o">+</span> <span class="n">a31</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span>
@@ -2027,7 +2008,7 @@ In walls, the refractive index is a complex number in which the two parts have a
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/mesh.png"><img alt="WifiPropagationMesh" src="../_images/mesh.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Mesh</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Mesh</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>There is currently no wifi hotspot, and as we want to resolve the equation for a multiple number of position next to the left wall, let’s do a <code class="code freefem docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
@@ -2085,7 +2066,7 @@ Let’s resolve this equation !</p>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/point1.png"><img alt="Point1" src="../_images/point1.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Solution</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Solution</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Beautiful isn’t it ? This is the first position for the hotspot, but there are 6 others, and the electrical field is evolving depending on the position.
@@ -2094,37 +2075,37 @@ You can see the other positions here :</p>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/point2.png"><img alt="Point2" src="../_images/point2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Point 2</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Point 2</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/point3.png"><img alt="Point3" src="../_images/point3.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Point 3</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Point 3</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../_images/point4.png"><img alt="Point4" src="../_images/point4.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Point 4</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Point 4</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../_images/point5.png"><img alt="Point5" src="../_images/point5.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Point 5</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Point 5</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="reference internal image-reference" href="../_images/point6.png"><img alt="Point6" src="../_images/point6.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Point 6</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Point 6</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/point7.png"><img alt="Point7" src="../_images/point7.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Point 7</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Point 7</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Wifi propagation</span></p>
@@ -2169,7 +2150,24 @@ You can see the other positions here :</p>
 </footer>
 	
 
+	<!-- Common -->
 	<script async src="../_static/js/common.js"></script>
+	<!-- Nav -->
+	<script async src="../_static/js/nav.js"></script>
+	<!-- Subnav -->
+	<script async src="../_static/js/subnav.js"></script>
+	<!-- MathJax -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Search -->
+	<script src="../_static/js/mathjax-config.js"></script>
+	<script src="../_static/js/lunr.js"></script>
+	<script src="../_static/lunr/lunr_index.js"></script>
+	<script src="../_static/js/search.js"></script>
+	<script>
+		initSearch('../')
+	</script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>
