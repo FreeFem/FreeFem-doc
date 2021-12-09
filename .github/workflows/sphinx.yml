@@ -36,7 +36,7 @@ jobs:
           make html
           echo "doc.freefem.org" > build/html/CNAME
           echo "TODO: Remove the PDF from the website repository at the next FreeFem-source release"
-          mkdir build/htm/pdf && cp build/latex/FreeFEM-documentation.pdf build/html/pdf/
+          mkdir build/html/pdf && cp build/latex/FreeFEM-documentation.pdf build/html/pdf/
           (cd build/html/pdf && md5sum FreeFEM-documentation.pdf >> FreeFEM-documentation.pdf.md5)
 
       - name: Deploy HTML
