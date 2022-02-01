@@ -1,6 +1,6 @@
-name: "Doc build (HTML & PDF)"
+name: 'Doc build (HTML & PDF)'
 
-on: 
+on:
   push:
     branches:
       - master
@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@main
-      
+
       - name: Install
         run: |
           sudo apt update
@@ -24,25 +24,27 @@ jobs:
           git clone https://github.com/FreeFem/FreeFem-parser-pygments.git ~/pygments
           sudo cp ~/pygments/freefem.py /usr/lib/python3/dist-packages/pygments/lexers/
           (cd /usr/lib/python3/dist-packages/pygments/lexers/ && sudo python _mapping.py)
-      
+
       - name: Build PDF
         run: |
           make latex
           (cd build/latex && pdflatex -halt-on-error -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && pdflatex -halt-on-error -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex)
+          (cd build/latex && md5sum FreeFEM-documentation.pdf >> FreeFEM-documentation.pdf.md5)
 
       - name: Build HTML
         run: |
           make html
           echo "doc.freefem.org" > build/html/CNAME
+          echo "TODO: Remove the PDF from the website repository at the next FreeFem-source release"
           mkdir build/html/pdf && cp build/latex/FreeFEM-documentation.pdf build/html/pdf/
           (cd build/html/pdf && md5sum FreeFEM-documentation.pdf >> FreeFEM-documentation.pdf.md5)
-      
+
       - name: Deploy HTML
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
           folder: build/html
-      
+
       - name: Deploy PDF
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:

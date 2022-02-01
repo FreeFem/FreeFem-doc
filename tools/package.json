@@ -4,10 +4,9 @@
   "description": "lunr index builder",
   "main": "build_index.js",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "lunr": "^2.3.5"
+    "lunr": "2.3.9",
+    "node-html-parser": "5.0.0"
   },
-  "devDependencies": {},
   "scripts": {
     "build": "node build_index.js",
     "deploy": "mkdir -p ../build/html/_static/lunr && cp lunr_index.js ../build/html/_static/lunr/",

@@ -2,151 +2,155 @@ const searchInput = document.getElementById('searchInput')
 const searchResults = document.getElementById('searchResults')
 let rootPath = ''
 const LUNR_LIMIT = 10
+const index = lunr.Index.load(LUNR_DATA)
 
-function initSearch(path) {
+const initSearch = (path) => {
   rootPath = path
 }
 
-function search(event) {
+const search = (event) => {
   searchClean()
 
-  if (!event.target)
-    return
+  if (!event.target) return
 
-  if (!event.target.value)
-    return
+  if (!event.target.value) return
 
   const text = event.target.value
 
-  if (text === '')
-    return
-  else
-    searchLunr(text)
+  if (text === '') return
+  else searchLunr(text)
 }
 
-function searchClean() {
+const searchClean = () => {
   searchResults.innerHTML = ''
 }
 
-function searchLunr(text) {
-   const idx = lunr.Index.load(LUNR_DATA)
-   const results = idx.search(text)
+const searchLunr = (text) => {
+  const results = index.search(text)
 
-   const resultsi = []
-   results.forEach(function(result) {
-      const ref = result['ref']
-      const index = Number(ref)
-      const idxi = lunr.Index.load(LUNR_PAGEDATA[index])
-      resultsi[index] = idxi.search(text)
-   })
+  // Search in page data
+  const results_i = []
+  results.map((result) => {
+    const ref = result.ref
+    const index_i = lunr.Index.load(LUNR_PAGEDATA[ref])
+    results_i[ref] = index_i.search(text)
+  })
 
-   const resultsHTML = parseLunrResults(results, resultsi, text)
-   if (resultsHTML.length === 0)
-      searchResults.innerHTML = '<p>No results</p>'
-   else {
-      for (let result of resultsHTML) {
-         const div = document.createElement('div')
-         div.className = 'search-result'
+  const resultsHTML = parseLunrResults(results, results_i, text)
+  if (resultsHTML.length === 0) searchResults.innerHTML = '<p>No results</p>'
+  else {
+    for (let result of resultsHTML) {
+      const div = document.createElement('div')
+      div.className = 'search-result'
 
-         const title = document.createElement('a')
-         title.className = 'search-result-main-title'
-         title.innerHTML = '<i class="fas fa-file-alt"></i>' + result.mainTitle
-         title.href = result.link
-         div.appendChild(title)
+      const title = document.createElement('a')
+      title.className = 'search-result-main-title'
+      title.innerHTML = '<i class="fas fa-file-alt"></i>' + result.mainTitle
+      title.href = result.link
+      div.appendChild(title)
 
-         for (let i = 0; i < result.titles.length; i++) {
-            const subdiv = document.createElement('div')
-            subdiv.className = 'search-result-sub'
+      for (let i = 0; i < result.titles.length; i++) {
+        const subdiv = document.createElement('div')
+        subdiv.className = 'search-result-sub'
 
-            const title = document.createElement('a')
-            title.className = 'search-result-title'
-            title.href = result.links[i]
+        const subTitle = document.createElement('a')
+        subTitle.className = 'search-result-title'
+        subTitle.href = result.links[i]
 
-            const titleDiv = document.createElement('div')
+        const titleDiv = document.createElement('div')
 
-            const titleText = document.createElement('p')
-            titleText.className = 'search-result-title-text'
-            titleText.innerHTML = result.titles[i]
+        const titleText = document.createElement('p')
+        titleText.className = 'search-result-title-text'
+        titleText.innerHTML = result.titles[i]
 
-            const preview = document.createElement('p')
-            preview.className = 'search-result-preview'
-            preview.innerHTML = result.previews[i]
+        const preview = document.createElement('p')
+        preview.className = 'search-result-preview'
+        preview.innerHTML = result.previews[i]
 
-            title.appendChild(titleDiv)
-            titleDiv.appendChild(titleText)
-            titleDiv.appendChild(preview)
+        subTitle.appendChild(titleDiv)
 
-            subdiv.appendChild(title)
-            div.appendChild(subdiv)
-         }
+        titleDiv.appendChild(titleText)
+        titleDiv.appendChild(preview)
 
-         searchResults.appendChild(div)
+        subdiv.appendChild(subTitle)
+
+        div.appendChild(subdiv)
       }
-      searchResults.style.display = 'block'
-   }
+
+      searchResults.appendChild(div)
+    }
+    searchResults.style.display = 'block'
+  }
 }
 
-function parseLunrResults(results, resultsi, text) {
-   const html = []
+function parseLunrResults(results, results_i, text) {
+  const html = []
 
-   results.forEach(function (result) {
-      const ref = result['ref']
-      const item = PREVIEW_DATA[ref]
-      const mainTitle = item['t']
-      const link = rootPath + item['l']
+  results.forEach((result) => {
+    const ref = result.ref
+    const item = PREVIEW_DATA[ref]
+    const mainTitle = item.title
+    const link = rootPath + item.link
 
-      const titlei = []
-      const previewi = []
-      const linki = []
+    const titles = []
+    const previews = []
+    const links = []
 
-      resultsi[ref].forEach(function(subresult) {
-         const subref = subresult['ref']
-         const subitem = PREVIEW_PAGEDATA[ref][subref]
-         const subtitle = subitem['t']
-         const sublink = subitem['l']
-         const subpreview = subitem['p']
+    results_i[ref].forEach((result_i) => {
+      const ref_i = result_i.ref
+      const item_i = PREVIEW_PAGEDATA[ref][ref_i]
+      const title_i = item_i.title
+      const link_i = item_i.link
+      const preview_i = item_i.preview
 
-         const lowerCasePreview = subpreview.toLowerCase()
-         const lowerCaseText = text.toLowerCase()
-         const textIndex = lowerCasePreview.indexOf(lowerCaseText)
+      const lowerCasePreview = preview_i.toLowerCase()
+      const lowerCaseText = text.toLowerCase()
+      const textIndex = lowerCasePreview.indexOf(lowerCaseText)
 
-         const splittedPreview = subpreview.slice(Math.max(0, textIndex-124), Math.min(textIndex+124, subpreview.length))
+      const splittedPreview = preview_i.slice(
+        Math.max(0, textIndex - 124),
+        Math.min(textIndex + 124, preview_i.length)
+      )
 
-         const lowerCasePreview2 = splittedPreview.toLowerCase()
-         const textIndex2 = lowerCasePreview2.indexOf(lowerCaseText)
-         const finalPreview = splittedPreview.slice(0, textIndex2) + '<b>' + splittedPreview.slice(textIndex2, textIndex2+text.length) + '</b>' + splittedPreview.slice(textIndex2+text.length)
+      const lowerCasePreview2 = splittedPreview.toLowerCase()
+      const textIndex2 = lowerCasePreview2.indexOf(lowerCaseText)
+      const finalPreview =
+        splittedPreview.slice(0, textIndex2) +
+        '<b>' +
+        splittedPreview.slice(textIndex2, textIndex2 + text.length) +
+        '</b>' +
+        splittedPreview.slice(textIndex2 + text.length)
 
-         titlei.push(subtitle)
-         previewi.push(finalPreview)
-         linki.push(rootPath+sublink)
-      })
+      titles.push(title_i)
+      previews.push(finalPreview)
+      links.push(rootPath + link_i)
+    })
 
-      html.push({
-         mainTitle: mainTitle,
-         link: link,
-         titles: titlei,
-         previews: previewi,
-         links: linki
-      })
-   })
+    html.push({
+      mainTitle,
+      link,
+      titles,
+      previews,
+      links
+    })
+  })
 
-   return html
+  return html
 }
 
-searchInput.addEventListener('input', function(event) {
+searchInput.addEventListener('input', function (event) {
   search(event)
 })
 
-searchInput.addEventListener('focus', function(event) {
-  document.getElementById("search-overlay").style.display = "block";
+searchInput.addEventListener('focus', function (event) {
+  document.getElementById('search-overlay').style.display = 'block'
 
-  if (!searchResults.children.length)
-    return
+  if (!searchResults.children.length) return
 
   event.stopPropagation()
   searchResults.style.display = 'block'
 })
 
 function removeOverlay() {
-  document.getElementById("search-overlay").style.display = "none";
+  document.getElementById('search-overlay').style.display = 'none'
 }

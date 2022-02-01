@@ -18,6 +18,8 @@ Examples
 +---------------------------------------+------------------+------------------+-------------+------------------------------------------+
 | `elasticity-3d-thirdlevelgeneo.edp`_  | RAS              | GenEO            | RAS + GenEO |                                          |
 +---------------------------------------+------------------+------------------+-------------+------------------------------------------+
+| `elasticity_saddlepoint.edp`_         |                  | GenEO-SP         |             | saddle point GenEO solver from `here`_   |
++---------------------------------------+------------------+------------------+-------------+------------------------------------------+
 | `Helmholtz-2d-simple.edp`_            | ORAS             | Coarse Mesh / DtN|             |for the DtN coarse space see `this paper`_|
 +---------------------------------------+------------------+------------------+-------------+------------------------------------------+
 | `Helmholtz-2d-marmousi.edp`_          | ORAS             | Coarse Mesh      |             |                                          |
@@ -49,6 +51,7 @@ Examples
 .. _diffusion-2d-thirdlevelgeneo.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/diffusion-2d-thirdlevelgeneo.edp
 .. _elasticity-3d-simple.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/elasticity-3d-simple.edp
 .. _elasticity-3d-thirdlevelgeneo.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/elasticity-3d-thirdlevelgeneo.edp
+.. _elasticity_saddlepoint.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/elasticity_saddlepoint.edp
 .. _Helmholtz-2d-simple.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Helmholtz-2d-simple.edp
 .. _Helmholtz-2d-marmousi.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Helmholtz-2d-marmousi.edp
 .. _Helmholtz-3d-simple.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Helmholtz-3d-simple.edp
@@ -62,3 +65,4 @@ Examples
 .. _Richards-2d.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Richards-2d.edp
 .. _heat-torus-3d-surf.edp: https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/heat-torus-3d-surf.edp
 .. _this paper: https://doi.org/10.1016/j.cam.2014.03.031
+.. _here: https://arxiv.org/abs/1911.01858

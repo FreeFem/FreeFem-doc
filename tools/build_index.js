@@ -1,221 +1,238 @@
 const path = require('path')
 const fs = require('fs')
 const lunr = require('lunr')
-const cheerio = require('cheerio')
+const { parse } = require('node-html-parser')
 
 const HTML_FOLDER = '../build/html'
 const SEARCH_FIELDS = ['title', 'body']
-const EXCLUDE_FILES = ['search.html', 'genindex.html']
+const EXCLUDE_FILES = [
+  '404.html',
+  'search.html',
+  'genindex.html',
+  'tutorial-slides.html'
+]
 const OUTPUT_INDEX = 'lunr_index'
 
-function isHtml(filename) {
-   lower = filename.toLowerCase()
-   return (lower.endsWith('.htm') || lower.endsWith('.html'))
+/**
+ * Is HTML
+ * @param {string} filename File name
+ * @returns {boolean} HTML
+ */
+const isHtml = (filename) => {
+  const lower = filename.toLowerCase()
+  return lower.endsWith('.htm') || lower.endsWith('.html')
 }
 
-function findHtml(folder) {
-   if (!fs.existsSync(folder)) {
-      console.log('Could not find folder: ', folder)
-      return
-   }
+/**
+ * Find HTML files
+ * @param {string} folder Folder
+ * @returns {Array} HTML files
+ */
+const findHtml = (folder) => {
+  if (!fs.existsSync(folder)) {
+    console.error('Could not find folder: ', folder)
+    return []
+  }
 
-   const files = fs.readdirSync(folder)
-   const htmls = []
-   for (let i = 0; i < files.length; i++) {
-      const filename = path.join(folder, files[i])
-      const stat = fs.lstatSync(filename)
-      if (stat.isDirectory()) {
-         const recursed = findHtml(filename)
-         for (var j = 0; j < recursed.length; j++) {
-            recursed[j] = path.join(files[i], recursed[j]).replace(/\\/g, '/')
-         }
-         htmls.push.apply(htmls, recursed)
-      }
-      else if (isHtml(filename) && !EXCLUDE_FILES.includes(files[i])) {
-         htmls.push(files[i])
-      }
-   }
+  const files = fs.readdirSync(folder, { withFileTypes: true })
 
-   return htmls
+  const htmls = []
+  for (let file of files) {
+    const fileName = file.name
+    if (file.isDirectory()) {
+      const dirName = path.join(folder, file.name)
+      const otherHtmls = findHtml(dirName)
+      htmls.push(...otherHtmls.map((o) => path.join(fileName, o)))
+    } else {
+      if (isHtml(fileName) && !EXCLUDE_FILES.includes(fileName))
+        htmls.push(fileName)
+    }
+  }
+
+  return htmls
 }
 
-function readHtml(root, file, fileId) {
-   const filename = path.join(root, file)
-   const txt = fs.readFileSync(filename).toString()
+/**
+ * Read HTML
+ * @param {string} root Root path
+ * @param {string} file File name
+ * @returns {Object} Data { link, title, body }
+ */
+const readHtml = (root, file) => {
+  const fileName = path.join(root, file)
+  const html = fs.readFileSync(fileName).toString()
 
-   const $ = cheerio.load(txt)
+  // Parse HTML
+  const document = parse(html, {
+    script: false,
+    noscript: true,
+    style: false,
+    pre: true
+  })
 
-   function removeTocTree(element) {
-      element.children().filter(function(i, el) {
-         const className = $(this).attr('class')
-         if (className && className.includes('toctree-wrapper'))
-            $(this).remove()
-         else
-            removeTocTree($(this))
-      })
-   }
-   removeTocTree($('#content'))
+  // Title
+  const titles = document.getElementsByTagName('title')
+  const title = titles.find((t) => t.parentNode.rawTagName === 'head').text
 
-   let title = $('title').text()
-   if (typeof title == 'undefined') title = file
+  // Body
+  const toctree = document.querySelector('.toctree-wrapper')
+  document.removeChild(toctree)
 
-   let body = $('#content').text()
-   if (typeof body == 'undefined') body = ''
-   body = body.replace(/=/g, " = ")
+  const body = document.querySelector('#content').text
 
-   const data = [{
-      'id': fileId,
-      'link': file,
-      't': title,
-      'b': body
-   }]
-
-   return data
+  // Return
+  return {
+    link: file,
+    title,
+    body
+  }
 }
 
-function parseAnchor(text) {
-   // First pass
-   text = text.toLowerCase()
-   text = text.trim()
-   text = text.replace(/ /g, '-')
-   text = text.replace(/[’&\/\\#,+()$~%.'":*?<>{}]/g,'-')
+/**
+ * Parse text to anchor
+ * @param {string} text Text
+ * @returns {string} Anchor
+ */
+const parseAnchor = (text) => {
+  // First pass
+  text = text.toLowerCase()
+  text = text.trim()
+  text = text.replace(/ /g, '-')
+  text = text.replace(/[’&\/\\#,+()$~%.'":*?<>{}]/g, '-')
 
-   // Second pass
-   while (text.slice(-1) === '-')
-    text = text.slice(0, -1)
-   text = text.replace(/-+/g, '-')
+  // Second pass
+  while (text.slice(-1) === '-') text = text.slice(0, -1)
+  text = text.replace(/-+/g, '-')
 
-   return text
+  return text
 }
 
-function readSingleHtml(root, file) {
-   const filename = path.join(root, file)
-   const txt = fs.readFileSync(filename).toString()
+/**
+ * Read single HTML file
+ * @param {string} root Root path
+ * @param {string} file File name
+ * @returns {Array} Data [{ id, link, title, body }, ...]
+ */
+const readSingleHtml = (root, file) => {
+  const fileName = path.join(root, file)
+  const html = fs.readFileSync(fileName).toString()
 
-   const $ = cheerio.load(txt)
+  // Parse HTML
+  const document = parse(html, {
+    script: false,
+    noscript: true,
+    style: false,
+    pre: true
+  })
 
-   function removeTocTree(element) {
-      element.children().filter(function(i, el) {
-         const className = $(this).attr('class')
-         if (className && className.includes('toctree-wrapper'))
-            $(this).remove()
-         else
-            removeTocTree($(this))
-      })
-   }
-   removeTocTree($('#content'))
+  // Remove toctree
+  const toctree = document.querySelector('.toctree-wrapper')
+  document.removeChild(toctree)
 
-   const data = []
+  // Content
+  const content = document.querySelector('#content')
 
-   const content = $('#content')
-   const sections = content.find('.section')
+  // Sections
+  const sections = content.getElementsByTagName('section')
 
-   sections.each(function (i, elem) {
-      $(this).find('.section').remove()
-   })
+  return sections.map((section, index) => {
+    let titles = section.getElementsByTagName('h1')
+    if (!titles.length) titles = section.getElementsByTagName('h1')
+    if (!titles.length) titles = section.getElementsByTagName('h2')
+    if (!titles.length) titles = section.getElementsByTagName('h3')
+    if (!titles.length) titles = section.getElementsByTagName('h4')
+    if (!titles.length) titles = section.getElementsByTagName('h5')
+    if (!titles.length) titles = section.getElementsByTagName('h6')
 
-   sections.each(function (i, elem) {
-      let title = $(this).find('h1')
-      if (title.length === 0)
-         title = $(this).find('h2')
-         if (title.length === 0)
-            title = $(this).find('h3')
-            if (title.length === 0)
-               title = $(this).find('h4')
-               if (title.length === 0)
-                  title = $(this).find('h5')
-                  if (title.length === 0)
-                     title = $(this).find('h6')
+    const title = titles[0].text
 
-      title = title.text()
-      if (typeof title == 'undefined') title = ''
-      console.log('\t'+title)
-      
-      let body = $(this).text()
-      if (typeof body == 'undefined') body = ''
-      body = body.replace(/=/g, " = ")
+    const body = section.text
 
-      data.push({
-         'id': i,
-         'link': file + '#' + parseAnchor(title),
-         't': title,
-         'b': body
-      })
-   })
-
-   return data
+    return {
+      id: index,
+      link: file + '#' + parseAnchor(title),
+      title,
+      body
+    }
+  })
 }
 
-function buildIndex(docs) {
-   const idx = lunr(function () {
-      this.ref('id')
-      for (let i = 0; i < SEARCH_FIELDS.length; i++) {
-         this.field(SEARCH_FIELDS[i].slice(0, 1))
-      }
-      docs.forEach(function (doc) {
-         this.add(doc)
-      }, this)
-   })
-   return idx
+/**
+ * Build Lunr index
+ * @param {Array} docs Docs
+ * @returns {Array} Index
+ */
+const buildIndex = (docs) => {
+  return lunr(function () {
+    SEARCH_FIELDS.forEach((field) => {
+      this.field(field)
+    })
+    docs.forEach((doc) => {
+      this.add(doc)
+    }, this)
+  })
 }
 
+/**
+ * Build preview
+ * @param {Array} docs Docs
+ * @returns {Array} Previews
+ */
 function buildPreviews(docs) {
-   const result = {}
-   for (let i = 0; i < docs.length; i++) {
-      const doc = docs[i]
-      const preview = doc['b']
-      result[doc['id']] = {
-         't': doc['t'].replace('Logo', ''),
-         'p': preview,
-         'l': doc['link']
-      }
-   }
-   return result
+  return docs.map((doc) => ({
+    ...doc,
+    preview: doc.body
+  }))
 }
 
-function main() {
-   files = findHtml(HTML_FOLDER)
-   let docs = []
-   const idxi = []
-   const previewsi = []
-   console.log('Building index for these files:')
-   for (let i = 0; i < files.length; i++) {
-      console.log('    ' + files[i])
-      docs = docs.concat(readHtml(HTML_FOLDER, files[i], i))
+/**
+ * Main
+ */
+const main = () => {
+  const files = findHtml(HTML_FOLDER)
 
-      const doc = readSingleHtml(HTML_FOLDER, files[i])
-      idxi.push(buildIndex(doc))
-      previewsi.push(buildPreviews(doc))
-   }
-   const idx = buildIndex(docs)
-   const previews = buildPreviews(docs)
+  console.info('Building index for these files:')
+  const docs = []
+  const index_i = []
+  const previews_i = []
+  for (let file of files) {
+    console.info('\t - ' + file)
+    docs.push({
+      id: docs.length,
+      ...readHtml(HTML_FOLDER, file)
+    })
 
-   let js = 'const LUNR_DATA = ' + JSON.stringify(idx) + ';\n'
+    const doc = readSingleHtml(HTML_FOLDER, file)
+    index_i.push(buildIndex(doc))
+    previews_i.push(buildPreviews(doc))
+  }
+  const index = buildIndex(docs)
+  const previews = buildPreviews(docs)
 
-   js += 'const LUNR_PAGEDATA = ['
-   for (let i = 0; i < idxi.length; i++) {
-     js += JSON.stringify(idxi[i])
-     if (i < idxi.length -1)
-        js += ',\n'
-   }
-   js += '];\n'
+  let js = 'const LUNR_DATA = ' + JSON.stringify(index) + ';\n'
 
-   js += 'const PREVIEW_DATA = ' + JSON.stringify(previews) + ';\n'
+  js += 'const LUNR_PAGEDATA = ['
+  index_i.forEach((idx_i, i) => {
+    js += JSON.stringify(idx_i)
+    if (i < index_i.length - 1) js += ',\n'
+  })
+  js += '];\n'
 
-   js += 'const PREVIEW_PAGEDATA = ['
-   for (let i = 0; i < previewsi.length; i++) {
-      js += JSON.stringify(previewsi[i])
-      if (i < idxi.length - 1)
-         js += ',\n'
-   }
-   js += '];'
+  js += 'const PREVIEW_DATA = ' + JSON.stringify(previews) + ';\n'
 
-   fs.writeFile(OUTPUT_INDEX+'.js', js, function(err) {
-      if(err) {
-         return console.log(err)
-      }
-      console.log('Index saved as ' + OUTPUT_INDEX)
-   })
+  js += 'const PREVIEW_PAGEDATA = ['
+  previews_i.forEach((preview_i, i) => {
+    js += JSON.stringify(preview_i)
+    if (i < previews_i.length - 1) js += ',\n'
+  })
+  js += '];'
+
+  fs.writeFile(OUTPUT_INDEX + '.js', js, (err) => {
+    if (err) {
+      return console.error(err)
+    }
+    console.info('Index saved as ' + OUTPUT_INDEX)
+  })
 }
 
 main()
