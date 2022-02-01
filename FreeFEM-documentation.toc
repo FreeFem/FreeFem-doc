@@ -399,14 +399,14 @@
 \contentsline {subsubsection}{Notations}{381}{subsubsection*.426}%
 \contentsline {subsubsection}{qf1pE}{381}{subsubsection*.427}%
 \contentsline {subsubsection}{qf2pE}{381}{subsubsection*.428}%
-\contentsline {subsubsection}{qf3pE}{381}{subsubsection*.429}%
+\contentsline {subsubsection}{\sphinxstylestrong {qf3pE}}{381}{subsubsection*.429}%
 \contentsline {subsubsection}{qf4pE}{382}{subsubsection*.430}%
 \contentsline {subsubsection}{qf5pE}{382}{subsubsection*.431}%
 \contentsline {subsubsection}{qf1pElump}{382}{subsubsection*.432}%
 \contentsline {subsection}{\numberline {4.3.2}int2d}{382}{subsection.4.3.2}%
 \contentsline {subsubsection}{qf1pT}{383}{subsubsection*.433}%
 \contentsline {subsubsection}{qf2pT}{383}{subsubsection*.434}%
-\contentsline {subsubsection}{qf5pT}{383}{subsubsection*.435}%
+\contentsline {subsubsection}{\sphinxstylestrong {qf5pT}}{383}{subsubsection*.435}%
 \contentsline {subsubsection}{qf1pTlump}{383}{subsubsection*.436}%
 \contentsline {subsubsection}{qf2pT4P1}{383}{subsubsection*.437}%
 \contentsline {subsubsection}{qf7pT}{384}{subsubsection*.438}%
@@ -414,7 +414,7 @@
 \contentsline {subsection}{\numberline {4.3.3}int3d}{384}{subsection.4.3.3}%
 \contentsline {subsubsection}{qfV1}{384}{subsubsection*.440}%
 \contentsline {subsubsection}{qfV2}{384}{subsubsection*.441}%
-\contentsline {subsubsection}{qfV5}{385}{subsubsection*.442}%
+\contentsline {subsubsection}{\sphinxstylestrong {qfV5}}{385}{subsubsection*.442}%
 \contentsline {subsubsection}{qfV1lump}{385}{subsubsection*.443}%
 \contentsline {section}{\numberline {4.4}Operators}{385}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Addition operator +}{385}{subsection.4.4.1}%

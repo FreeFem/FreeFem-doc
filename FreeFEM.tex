@@ -136,7 +136,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Dec 09, 2021}
+\date{Feb 01, 2022}
 \release{4.8}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -28787,7 +28787,7 @@ This quadrature formula is exact on \(\mathbb{P}_3\).
 \right)\end{split}
 \end{equation*}
 
-\subsubsection{qf3pE}
+\subsubsection{\sphinxstylestrong{qf3pE}}
 \label{\detokenize{references/quadrature-formulae:qf3pe}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{n+nf}{int1d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qf3pE}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
@@ -28801,7 +28801,7 @@ or
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-This quadrature formula is exact on \(\mathbb{P}_5\).
+This quadrature formula is the default one and be exact on \(\mathbb{P}_5\).
 \begin{equation*}
 \begin{split}\int_{D}{f(\boldx)} \approx \frac{|D|}{18}\left(
       5g\left( \frac{1+\sqrt{3/5}}{2} \right)
@@ -28885,7 +28885,7 @@ Complete formulas are no longer detailed
 \subsubsection{qf1pT}
 \label{\detokenize{references/quadrature-formulae:qf1pt}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qf1pT}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qft}\PYG{o}{=}\PYG{k+kr}{qf1pT}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -28902,7 +28902,7 @@ This quadrature formula is exact on \(\mathbb{P}_1\).
 \subsubsection{qf2pT}
 \label{\detokenize{references/quadrature-formulae:qf2pt}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qf2pT}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qft}\PYG{o}{=}\PYG{k+kr}{qf2pT}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -28916,10 +28916,10 @@ or
 This quadrature formula is exact on \(\mathbb{P}_2\).
 
 
-\subsubsection{qf5pT}
+\subsubsection{\sphinxstylestrong{qf5pT}}
 \label{\detokenize{references/quadrature-formulae:qf5pt}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qf5pT}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qft}\PYG{o}{=}\PYG{k+kr}{qf5pT}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -28930,13 +28930,13 @@ or
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-This quadrature formula is exact on \(\mathbb{P}_5\).
+This quadrature formula is the default and be exact on \(\mathbb{P}_5\).
 
 
 \subsubsection{qf1pTlump}
 \label{\detokenize{references/quadrature-formulae:qf1ptlump}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qf1pTlump}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qft}\PYG{o}{=}\PYG{k+kr}{qf1pTlump}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -28946,7 +28946,7 @@ This quadrature formula is exact on \(\mathbb{P}_1\).
 \subsubsection{qf2pT4P1}
 \label{\detokenize{references/quadrature-formulae:qf2pt4p1}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qf2pT4P1}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qft}\PYG{o}{=}\PYG{k+kr}{qf2pT4P1}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -28956,7 +28956,7 @@ This quadrature formula is exact on \(\mathbb{P}_1\).
 \subsubsection{qf7pT}
 \label{\detokenize{references/quadrature-formulae:qf7pt}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qf7pT}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qft}\PYG{o}{=}\PYG{k+kr}{qf7pT}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -28973,7 +28973,7 @@ This quadrature formula is exact on \(\mathbb{P}_7\).
 \subsubsection{qf9pT}
 \label{\detokenize{references/quadrature-formulae:qf9pt}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qf9pT}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qft}\PYG{o}{=}\PYG{k+kr}{qf9pT}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -28993,7 +28993,7 @@ This quadrature formula is exact on \(\mathbb{P}_9\).
 \subsubsection{qfV1}
 \label{\detokenize{references/quadrature-formulae:qfv1}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int3d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qfV1}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int3d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfV}\PYG{o}{=}\PYG{k+kr}{qfV1}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -29010,7 +29010,7 @@ This quadrature formula is exact on \(\mathbb{P}_1\).
 \subsubsection{qfV2}
 \label{\detokenize{references/quadrature-formulae:qfv2}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int3d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qfV2}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int3d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfV}\PYG{o}{=}\PYG{k+kr}{qfV2}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -29024,10 +29024,10 @@ or
 This quadrature formula is exact on \(\mathbb{P}_2\).
 
 
-\subsubsection{qfV5}
+\subsubsection{\sphinxstylestrong{qfV5}}
 \label{\detokenize{references/quadrature-formulae:qfv5}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int3d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qfV5}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int3d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfV}\PYG{o}{=}\PYG{k+kr}{qfV5}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -29038,13 +29038,13 @@ or
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-This quadrature formula is exact on \(\mathbb{P}_5\).
+This quadrature formula is the default one and be exact on \(\mathbb{P}_5\).
 
 
 \subsubsection{qfV1lump}
 \label{\detokenize{references/quadrature-formulae:qfv1lump}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
- \PYG{n+nf}{int3d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfe}\PYG{o}{=}\PYG{k+kr}{qfV1lump}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
+ \PYG{n+nf}{int3d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{qfV}\PYG{o}{=}\PYG{k+kr}{qfV1lump}\PYG{p}{)}\PYG{p}{(} \PYG{p}{.}\PYG{p}{.}\PYG{p}{.} \PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.9)  9 DEC 2021 08:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.2.1)  1 FEB 2022 14:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -334,7 +334,7 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \FrameSep=\dimen168
 ))
 (./sphinxlatexliterals.sty
-File: sphinxlatexliterals.sty 2021/01/27 code-blocks and parsed literals
+File: sphinxlatexliterals.sty 2021/12/06 code-blocks and parsed literals
 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2020/01/13 v3.5 verbatim text (tvz,hv)
@@ -475,9 +475,9 @@ Package: titlesec 2019/10/16 v2.13 Sectioning titles
 \titlewidthfirst=\dimen184
 ))
 (./sphinxlatexstyletext.sty
-File: sphinxlatexstyletext.sty 2021/01/27 text styling
+File: sphinxlatexstyletext.sty 2021/12/06 text styling
 ) (./sphinxlatexobjects.sty
-File: sphinxlatexobjects.sty 2021/01/27 documentation environments
+File: sphinxlatexobjects.sty 2021/12/05 documentation environments
 \py@argswidth=\skip79
 \lineblockindentation=\skip80
 \DUlineblockindent=\skip81
@@ -3729,10 +3729,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 49518.
  ) 
 Here is how much of TeX's memory you used:
- 23020 strings out of 483183
- 424281 string characters out of 5966292
- 1158555 words of memory out of 5000000
- 34778 multiletter control sequences out of 15000+600000
+ 23027 strings out of 483183
+ 424446 string characters out of 5966293
+ 1158633 words of memory out of 5000000
+ 34785 multiletter control sequences out of 15000+600000
  625957 words of font info for 116 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
  48i,33n,51p,1614b,1362s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -3773,7 +3773,7 @@ texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist
 1/public/txfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
 fonts/tcxtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 >
-Output written on FreeFEM-documentation.pdf (715 pages, 33626381 bytes).
+Output written on FreeFEM-documentation.pdf (715 pages, 33626520 bytes).
 PDF statistics:
  11135 PDF objects out of 12825 (max. 8388607)
  9733 compressed objects within 98 object streams
