@@ -3030,7 +3030,7 @@ Note that the eigenvalues and the eigenvectors are stored for further purposes u
 <li><p><code class="docutils literal notranslate"><span class="pre">Label</span></code> (<code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>) <em>[Optional]</em></p>
 <p>Label of the 1D border Default: all borders of the mesh</p>
 </li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">qfe=</span></code> (<a class="reference internal" href="quadrature-formulae.html#quadratureformulae"><span class="std std-ref">quadrature formula</span></a>) <em>[Optional]</em></p>
+<li><p><code class="code freefem docutils literal notranslate"><span class="pre">qfe=</span></code> (<a class="reference internal" href="quadrature-formulae.html#quadratureformulae"><span class="std std-ref">quadrature formula</span></a>) <em>[Optional]</em>  <em>(`qf3E` by default)</em></p>
 <p>Quadrature formula, see <a class="reference internal" href="quadrature-formulae.html#quadratureformulaeint1d"><span class="std std-ref">quadrature formulae</span></a></p>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">qforder=</span></code> (<a class="reference internal" href="quadrature-formulae.html#quadratureformulae"><span class="std std-ref">quadrature formula</span></a>) <em>[Optional]</em></p>
@@ -3051,13 +3051,13 @@ Note that the eigenvalues and the eigenvectors are stored for further purposes u
 <section id="int2d">
 <h2>int2d<a class="headerlink" href="#int2d" title="Permalink to this headline"></a></h2>
 <p>2D integral.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="p">[</span><span class="n">Region</span><span class="p">],</span> <span class="p">[</span><span class="kp">qfe</span><span class="o">=</span><span class="n">Qfe</span><span class="p">],</span> <span class="p">[</span><span class="kp">qforder</span><span class="o">=</span><span class="n">Qforder</span><span class="p">])(</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="p">[</span><span class="n">Region</span><span class="p">],</span> <span class="p">[</span><span class="kp">qft</span><span class="o">=</span><span class="n">Qft</span><span class="p">],</span> <span class="p">[</span><span class="kp">qforder</span><span class="o">=</span><span class="n">Qforder</span><span class="p">])(</span>
 <span class="lineno">2 </span>    <span class="p">...</span>
 <span class="lineno">3 </span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Or</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="p">[</span><span class="n">Label</span><span class="p">],</span> <span class="p">[</span><span class="kp">qfe</span><span class="o">=</span><span class="n">Qfe</span><span class="p">],</span> <span class="p">[</span><span class="kp">qforder</span><span class="o">=</span><span class="n">Qforder</span><span class="p">])(</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="p">[</span><span class="n">Label</span><span class="p">],</span> <span class="p">[</span><span class="kp">qft</span><span class="o">=</span><span class="n">Qft</span><span class="p">],</span> <span class="p">[</span><span class="kp">qforder</span><span class="o">=</span><span class="n">Qforder</span><span class="p">])(</span>
 <span class="lineno">2 </span>    <span class="p">...</span>
 <span class="lineno">3 </span><span class="p">)</span>
 </pre></div>
@@ -3068,7 +3068,7 @@ Note that the eigenvalues and the eigenvectors are stored for further purposes u
 <li><p><code class="docutils literal notranslate"><span class="pre">Th</span></code> (<code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code> or <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code>) Mesh where the integral is calculated</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Region</span></code> (<code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>) <em>[Optional]</em> Label of the 2D region (2D simulation) Default: all regions of the mesh</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Label</span></code> (<code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>) <em>[Optional]</em> Label of the 2D border (3D simulation) Default: all borders of the mesh</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">qfe=</span></code> (<a class="reference internal" href="quadrature-formulae.html#quadratureformulae"><span class="std std-ref">quadrature formula</span></a>) <em>[Optional]</em></p>
+<li><p><code class="code freefem docutils literal notranslate"><span class="pre">qft=</span></code> (<a class="reference internal" href="quadrature-formulae.html#quadratureformulae"><span class="std std-ref">quadrature formula</span></a>) <em>[Optional]</em>  <em>(`qf5T` by default)</em></p>
 <p>Quadrature formula, see <a class="reference internal" href="quadrature-formulae.html#quadratureformulaeint2d"><span class="std std-ref">quadrature formulae</span></a></p>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">qforder=</span></code> (<a class="reference internal" href="quadrature-formulae.html#quadratureformulae"><span class="std std-ref">quadrature formula</span></a>) <em>[Optional]</em></p>
@@ -3087,7 +3087,7 @@ Note that the eigenvalues and the eigenvectors are stored for further purposes u
 <section id="int3d">
 <h2>int3d<a class="headerlink" href="#int3d" title="Permalink to this headline"></a></h2>
 <p>3D integral.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="p">[</span><span class="n">Region</span><span class="p">],</span> <span class="p">[</span><span class="kp">qfe</span><span class="o">=</span><span class="n">Qfe</span><span class="p">],</span> <span class="p">[</span><span class="kp">qforder</span><span class="o">=</span><span class="n">Qforder</span><span class="p">])(</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="p">[</span><span class="n">Region</span><span class="p">],</span> <span class="p">[</span><span class="kp">qfV</span><span class="o">=</span><span class="n">QfV</span><span class="p">],</span> <span class="p">[</span><span class="kp">qforder</span><span class="o">=</span><span class="n">Qforder</span><span class="p">])(</span>
 <span class="lineno">2 </span>    <span class="p">...</span>
 <span class="lineno">3 </span><span class="p">)</span>
 </pre></div>
@@ -3100,7 +3100,7 @@ Note that the eigenvalues and the eigenvectors are stored for further purposes u
 <p>Label of the 3D region</p>
 <p>Default: all regions of the mesh</p>
 </li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">qfe=</span></code> (<a class="reference internal" href="quadrature-formulae.html#quadratureformulae"><span class="std std-ref">quadrature formula</span></a>) <em>[Optional]</em></p>
+<li><p><code class="code freefem docutils literal notranslate"><span class="pre">qfV=</span></code> (<a class="reference internal" href="quadrature-formulae.html#quadratureformulae"><span class="std std-ref">quadrature formula</span></a>) <em>[Optional]</em>  <em>(`qf5V` by default)</em></p>
 <p>Quadrature formula, see <a class="reference internal" href="quadrature-formulae.html#quadratureformulaeint3d"><span class="std std-ref">quadrature formulae</span></a></p>
 </li>
 <li><p><code class="code freefem docutils literal notranslate"><span class="pre">qforder=</span></code> (<a class="reference internal" href="quadrature-formulae.html#quadratureformulae"><span class="std std-ref">quadrature formula</span></a>) <em>[Optional]</em></p>
