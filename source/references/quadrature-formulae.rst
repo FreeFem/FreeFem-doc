@@ -155,7 +155,7 @@ qf1pElump
 
    int1d(Th, qfe=qf1pElump)( ... )
 
-This quadrature formula is exact on :math:`\mathbb{P}_2`.
+This quadrature formula is exact on :math:`\mathbb{P}_1`.
 
 .. math::
    \int_{D}{f(\boldx)} \approx \frac{|D|}{2}\left(
