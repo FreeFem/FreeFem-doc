@@ -31559,7 +31559,7 @@ Label of the 1D border Default: all borders of the mesh
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{qfe=}} ({\hyperref[\detokenize{references/quadrature-formulae:quadratureformulae}]{\sphinxcrossref{\DUrole{std,std-ref}{quadrature formula}}}}) \sphinxstyleemphasis{{[}Optional{]}}
+\sphinxcode{\sphinxupquote{qfe=}} ({\hyperref[\detokenize{references/quadrature-formulae:quadratureformulae}]{\sphinxcrossref{\DUrole{std,std-ref}{quadrature formula}}}}) \sphinxstyleemphasis{{[}Optional{]}}  \sphinxstyleemphasis{(\textasciigrave{}qf3E\textasciigrave{} by default)}
 
 \sphinxAtStartPar
 Quadrature formula, see {\hyperref[\detokenize{references/quadrature-formulae:quadratureformulaeint1d}]{\sphinxcrossref{\DUrole{std,std-ref}{quadrature formulae}}}}
@@ -31597,7 +31597,7 @@ In a \sphinxcode{\sphinxupquote{problem}}, \sphinxcode{\sphinxupquote{solve}} or
 2D integral.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{p}{[}\PYG{n}{Region}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qfe}\PYG{o}{=}\PYG{n}{Qfe}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qforder}\PYG{o}{=}\PYG{n}{Qforder}\PYG{p}{]}\PYG{p}{)}\PYG{p}{(}
+\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{p}{[}\PYG{n}{Region}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qft}\PYG{o}{=}\PYG{n}{Qft}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qforder}\PYG{o}{=}\PYG{n}{Qforder}\PYG{p}{]}\PYG{p}{)}\PYG{p}{(}
     \PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
 \PYG{p}{)}
 \end{sphinxVerbatim}
@@ -31606,7 +31606,7 @@ In a \sphinxcode{\sphinxupquote{problem}}, \sphinxcode{\sphinxupquote{solve}} or
 Or
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{p}{[}\PYG{n}{Label}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qfe}\PYG{o}{=}\PYG{n}{Qfe}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qforder}\PYG{o}{=}\PYG{n}{Qforder}\PYG{p}{]}\PYG{p}{)}\PYG{p}{(}
+\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{p}{[}\PYG{n}{Label}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qft}\PYG{o}{=}\PYG{n}{Qft}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qforder}\PYG{o}{=}\PYG{n}{Qforder}\PYG{p}{]}\PYG{p}{)}\PYG{p}{(}
     \PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
 \PYG{p}{)}
 \end{sphinxVerbatim}
@@ -31631,7 +31631,7 @@ Parameters:
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{qfe=}} ({\hyperref[\detokenize{references/quadrature-formulae:quadratureformulae}]{\sphinxcrossref{\DUrole{std,std-ref}{quadrature formula}}}}) \sphinxstyleemphasis{{[}Optional{]}}
+\sphinxcode{\sphinxupquote{qft=}} ({\hyperref[\detokenize{references/quadrature-formulae:quadratureformulae}]{\sphinxcrossref{\DUrole{std,std-ref}{quadrature formula}}}}) \sphinxstyleemphasis{{[}Optional{]}}  \sphinxstyleemphasis{(\textasciigrave{}qf5T\textasciigrave{} by default)}
 
 \sphinxAtStartPar
 Quadrature formula, see {\hyperref[\detokenize{references/quadrature-formulae:quadratureformulaeint2d}]{\sphinxcrossref{\DUrole{std,std-ref}{quadrature formulae}}}}
@@ -31666,7 +31666,7 @@ In a \sphinxcode{\sphinxupquote{problem}}, \sphinxcode{\sphinxupquote{solve}} or
 3D integral.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n+nf}{int3d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{p}{[}\PYG{n}{Region}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qfe}\PYG{o}{=}\PYG{n}{Qfe}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qforder}\PYG{o}{=}\PYG{n}{Qforder}\PYG{p}{]}\PYG{p}{)}\PYG{p}{(}
+\PYG{n+nf}{int3d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{p}{[}\PYG{n}{Region}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qfV}\PYG{o}{=}\PYG{n}{QfV}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{k+kp}{qforder}\PYG{o}{=}\PYG{n}{Qforder}\PYG{p}{]}\PYG{p}{)}\PYG{p}{(}
     \PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
 \PYG{p}{)}
 \end{sphinxVerbatim}
@@ -31693,7 +31693,7 @@ Default: all regions of the mesh
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{qfe=}} ({\hyperref[\detokenize{references/quadrature-formulae:quadratureformulae}]{\sphinxcrossref{\DUrole{std,std-ref}{quadrature formula}}}}) \sphinxstyleemphasis{{[}Optional{]}}
+\sphinxcode{\sphinxupquote{qfV=}} ({\hyperref[\detokenize{references/quadrature-formulae:quadratureformulae}]{\sphinxcrossref{\DUrole{std,std-ref}{quadrature formula}}}}) \sphinxstyleemphasis{{[}Optional{]}}  \sphinxstyleemphasis{(\textasciigrave{}qf5V\textasciigrave{} by default)}
 
 \sphinxAtStartPar
 Quadrature formula, see {\hyperref[\detokenize{references/quadrature-formulae:quadratureformulaeint3d}]{\sphinxcrossref{\DUrole{std,std-ref}{quadrature formulae}}}}
