@@ -70,7 +70,7 @@ This quadrature formula is exact on :math:`\mathbb{P}_3`.
        + g\left( \frac{1-\sqrt{1/3}}{2} \right)
    \right)
 
-**qf3pE**
+qf3pE   *(default)*
 ~~~~~
 
 .. code-block:: freefem
@@ -204,7 +204,7 @@ or
 
 This quadrature formula is exact on :math:`\mathbb{P}_2`.
 
-**qf5pT**
+qf5pT   *(default)*
 ~~~~~
 
 .. code-block:: freefem
@@ -314,7 +314,7 @@ or
 
 This quadrature formula is exact on :math:`\mathbb{P}_2`.
 
-**qfV5**
+qfV5   *(default)*
 ~~~~
 
 .. code-block:: freefem
