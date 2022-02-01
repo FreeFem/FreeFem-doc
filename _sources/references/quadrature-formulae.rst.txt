@@ -70,8 +70,10 @@ This quadrature formula is exact on :math:`\mathbb{P}_3`.
        + g\left( \frac{1-\sqrt{1/3}}{2} \right)
    \right)
 
+.. quadratureFormulaeInt1dDefault:
+
 qf3pE   *(default)*
-~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: freefem
    :linenos:
@@ -204,8 +206,10 @@ or
 
 This quadrature formula is exact on :math:`\mathbb{P}_2`.
 
+.. quadratureFormulaeInt2dDefault:
+
 qf5pT   *(default)*
-~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: freefem
    :linenos:
@@ -314,8 +318,10 @@ or
 
 This quadrature formula is exact on :math:`\mathbb{P}_2`.
 
+.. quadratureFormulaeInt3dDefault:
+
 qfV5   *(default)*
-~~~~
+~~~~~~~~~~~~~~~~~~
 
 .. code-block:: freefem
    :linenos:
