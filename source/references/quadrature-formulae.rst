@@ -70,7 +70,7 @@ This quadrature formula is exact on :math:`\mathbb{P}_3`.
        + g\left( \frac{1-\sqrt{1/3}}{2} \right)
    \right)
 
-qf3pE
+**qf3pE**
 ~~~~~
 
 .. code-block:: freefem
@@ -85,7 +85,7 @@ or
 
    int1d(Th, qforder=6)( ... )
 
-This quadrature formula is exact on :math:`\mathbb{P}_5`.
+This quadrature formula is the default one and be exact on :math:`\mathbb{P}_5`.
 
 .. math::
 
@@ -176,7 +176,7 @@ qf1pT
 .. code-block:: freefem
    :linenos:
 
-    int2d(Th, qfe=qf1pT)( ... )
+    int2d(Th, qft=qf1pT)( ... )
 
 or
 
@@ -193,7 +193,7 @@ qf2pT
 .. code-block:: freefem
    :linenos:
 
-    int2d(Th, qfe=qf2pT)( ... )
+    int2d(Th, qft=qf2pT)( ... )
 
 or
 
@@ -204,13 +204,13 @@ or
 
 This quadrature formula is exact on :math:`\mathbb{P}_2`.
 
-qf5pT
+**qf5pT**
 ~~~~~
 
 .. code-block:: freefem
    :linenos:
 
-    int2d(Th, qfe=qf5pT)( ... )
+    int2d(Th, qft=qf5pT)( ... )
 
 or
 
@@ -219,7 +219,7 @@ or
 
     int2d(Th, qforder=6)( ... )
 
-This quadrature formula is exact on :math:`\mathbb{P}_5`.
+This quadrature formula is the default and be exact on :math:`\mathbb{P}_5`.
 
 qf1pTlump
 ~~~~~~~~~
@@ -227,7 +227,7 @@ qf1pTlump
 .. code-block:: freefem
    :linenos:
 
-    int2d(Th, qfe=qf1pTlump)( ... )
+    int2d(Th, qft=qf1pTlump)( ... )
 
 This quadrature formula is exact on :math:`\mathbb{P}_1`.
 
@@ -237,7 +237,7 @@ qf2pT4P1
 .. code-block:: freefem
    :linenos:
 
-    int2d(Th, qfe=qf2pT4P1)( ... )
+    int2d(Th, qft=qf2pT4P1)( ... )
 
 This quadrature formula is exact on :math:`\mathbb{P}_1`.
 
@@ -247,7 +247,7 @@ qf7pT
 .. code-block:: freefem
    :linenos:
 
-    int2d(Th, qfe=qf7pT)( ... )
+    int2d(Th, qft=qf7pT)( ... )
 
 or
 
@@ -264,7 +264,7 @@ qf9pT
 .. code-block:: freefem
    :linenos:
 
-    int2d(Th, qfe=qf9pT)( ... )
+    int2d(Th, qft=qf9pT)( ... )
 
 or
 
@@ -286,7 +286,7 @@ qfV1
 .. code-block:: freefem
    :linenos:
 
-    int3d(Th, qfe=qfV1)( ... )
+    int3d(Th, qfV=qfV1)( ... )
 
 or
 
@@ -303,7 +303,7 @@ qfV2
 .. code-block:: freefem
    :linenos:
 
-    int3d(Th, qfe=qfV2)( ... )
+    int3d(Th, qfV=qfV2)( ... )
 
 or
 
@@ -314,13 +314,13 @@ or
 
 This quadrature formula is exact on :math:`\mathbb{P}_2`.
 
-qfV5
+**qfV5**
 ~~~~
 
 .. code-block:: freefem
    :linenos:
 
-    int3d(Th, qfe=qfV5)( ... )
+    int3d(Th, qfV=qfV5)( ... )
 
 or
 
@@ -329,7 +329,7 @@ or
 
     int3d(Th, qforder=6)( ... )
 
-This quadrature formula is exact on :math:`\mathbb{P}_5`.
+This quadrature formula is the default one and be exact on :math:`\mathbb{P}_5`.
 
 qfV1lump
 ~~~~~~~~
@@ -337,6 +337,6 @@ qfV1lump
 .. code-block:: freefem
    :linenos:
 
-    int3d(Th, qfe=qfV1lump)( ... )
+    int3d(Th, qfV=qfV1lump)( ... )
 
 This quadrature formula is exact on :math:`\mathbb{P}_1`.
