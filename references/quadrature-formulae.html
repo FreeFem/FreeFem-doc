@@ -621,7 +621,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#notations">Notations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qf1pe">qf1pE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qf2pe">qf2pE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#qf3pe">qf3pE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qf3pe"><strong>qf3pE</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qf4pe">qf4pE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qf5pe">qf5pE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qf1pelump">qf1pElump</a></li>
@@ -630,7 +630,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#int2d">int2d</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#qf1pt">qf1pT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qf2pt">qf2pT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#qf5pt">qf5pT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qf5pt"><strong>qf5pT</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qf1ptlump">qf1pTlump</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qf2pt4p1">qf2pT4P1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qf7pt">qf7pT</a></li>
@@ -640,7 +640,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#int3d">int3d</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#qfv1">qfV1</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qfv2">qfV2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#qfv5">qfV5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qfv5"><strong>qfV5</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qfv1lump">qfV1lump</a></li>
 </ul>
 </li>
@@ -1967,7 +1967,7 @@
 \right)\]</div>
 </section>
 <section id="qf3pe">
-<h3>qf3pE<a class="headerlink" href="#qf3pe" title="Permalink to this headline"></a></h3>
+<h3><strong>qf3pE</strong><a class="headerlink" href="#qf3pe" title="Permalink to this headline"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf3pE</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1975,7 +1975,7 @@
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qforder</span><span class="o">=</span><span class="mi">6</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_5\)</span>.</p>
+<p>This quadrature formula is the default one and be exact on <span class="math notranslate nohighlight">\(\mathbb{P}_5\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\int_{D}{f(\boldx)} \approx \frac{|D|}{18}\left(
       5g\left( \frac{1+\sqrt{3/5}}{2} \right)
@@ -2041,7 +2041,7 @@
 </div>
 <section id="qf1pt">
 <h3>qf1pT<a class="headerlink" href="#qf1pt" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf1pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qft</span><span class="o">=</span><span class="kr">qf1pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
@@ -2052,7 +2052,7 @@
 </section>
 <section id="qf2pt">
 <h3>qf2pT<a class="headerlink" href="#qf2pt" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf2pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qft</span><span class="o">=</span><span class="kr">qf2pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
@@ -2062,33 +2062,33 @@
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_2\)</span>.</p>
 </section>
 <section id="qf5pt">
-<h3>qf5pT<a class="headerlink" href="#qf5pt" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf5pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<h3><strong>qf5pT</strong><a class="headerlink" href="#qf5pt" title="Permalink to this headline"></a></h3>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qft</span><span class="o">=</span><span class="kr">qf5pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qforder</span><span class="o">=</span><span class="mi">6</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_5\)</span>.</p>
+<p>This quadrature formula is the default and be exact on <span class="math notranslate nohighlight">\(\mathbb{P}_5\)</span>.</p>
 </section>
 <section id="qf1ptlump">
 <h3>qf1pTlump<a class="headerlink" href="#qf1ptlump" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf1pTlump</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qft</span><span class="o">=</span><span class="kr">qf1pTlump</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_1\)</span>.</p>
 </section>
 <section id="qf2pt4p1">
 <h3>qf2pT4P1<a class="headerlink" href="#qf2pt4p1" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf2pT4P1</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qft</span><span class="o">=</span><span class="kr">qf2pT4P1</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_1\)</span>.</p>
 </section>
 <section id="qf7pt">
 <h3>qf7pT<a class="headerlink" href="#qf7pt" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf7pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qft</span><span class="o">=</span><span class="kr">qf7pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
@@ -2099,7 +2099,7 @@
 </section>
 <section id="qf9pt">
 <h3>qf9pT<a class="headerlink" href="#qf9pt" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qf9pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qft</span><span class="o">=</span><span class="kr">qf9pT</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
@@ -2113,7 +2113,7 @@
 <span id="quadratureformulaeint3d"></span><h2>int3d<a class="headerlink" href="#int3d" title="Permalink to this headline"></a></h2>
 <section id="qfv1">
 <h3>qfV1<a class="headerlink" href="#qfv1" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qfV1</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfV</span><span class="o">=</span><span class="kr">qfV1</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
@@ -2124,7 +2124,7 @@
 </section>
 <section id="qfv2">
 <h3>qfV2<a class="headerlink" href="#qfv2" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qfV2</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfV</span><span class="o">=</span><span class="kr">qfV2</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
@@ -2134,19 +2134,19 @@
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_2\)</span>.</p>
 </section>
 <section id="qfv5">
-<h3>qfV5<a class="headerlink" href="#qfv5" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qfV5</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<h3><strong>qfV5</strong><a class="headerlink" href="#qfv5" title="Permalink to this headline"></a></h3>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfV</span><span class="o">=</span><span class="kr">qfV5</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qforder</span><span class="o">=</span><span class="mi">6</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_5\)</span>.</p>
+<p>This quadrature formula is the default one and be exact on <span class="math notranslate nohighlight">\(\mathbb{P}_5\)</span>.</p>
 </section>
 <section id="qfv1lump">
 <h3>qfV1lump<a class="headerlink" href="#qfv1lump" title="Permalink to this headline"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfe</span><span class="o">=</span><span class="kr">qfV1lump</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nf">int3d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">qfV</span><span class="o">=</span><span class="kr">qfV1lump</span><span class="p">)(</span> <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>This quadrature formula is exact on <span class="math notranslate nohighlight">\(\mathbb{P}_1\)</span>.</p>
@@ -2170,7 +2170,7 @@
 <li><a class="reference internal" href="#notations">Notations</a></li>
 <li><a class="reference internal" href="#qf1pe">qf1pE</a></li>
 <li><a class="reference internal" href="#qf2pe">qf2pE</a></li>
-<li><a class="reference internal" href="#qf3pe">qf3pE</a></li>
+<li><a class="reference internal" href="#qf3pe"><strong>qf3pE</strong></a></li>
 <li><a class="reference internal" href="#qf4pe">qf4pE</a></li>
 <li><a class="reference internal" href="#qf5pe">qf5pE</a></li>
 <li><a class="reference internal" href="#qf1pelump">qf1pElump</a></li>
@@ -2179,7 +2179,7 @@
 <li><a class="reference internal" href="#int2d">int2d</a><ul>
 <li><a class="reference internal" href="#qf1pt">qf1pT</a></li>
 <li><a class="reference internal" href="#qf2pt">qf2pT</a></li>
-<li><a class="reference internal" href="#qf5pt">qf5pT</a></li>
+<li><a class="reference internal" href="#qf5pt"><strong>qf5pT</strong></a></li>
 <li><a class="reference internal" href="#qf1ptlump">qf1pTlump</a></li>
 <li><a class="reference internal" href="#qf2pt4p1">qf2pT4P1</a></li>
 <li><a class="reference internal" href="#qf7pt">qf7pT</a></li>
@@ -2189,7 +2189,7 @@
 <li><a class="reference internal" href="#int3d">int3d</a><ul>
 <li><a class="reference internal" href="#qfv1">qfV1</a></li>
 <li><a class="reference internal" href="#qfv2">qfV2</a></li>
-<li><a class="reference internal" href="#qfv5">qfV5</a></li>
+<li><a class="reference internal" href="#qfv5"><strong>qfV5</strong></a></li>
 <li><a class="reference internal" href="#qfv1lump">qfV1lump</a></li>
 </ul>
 </li>
