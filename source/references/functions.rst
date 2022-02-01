@@ -1238,7 +1238,7 @@ Parameters:
 -  ``Label`` (:freefem:`int`) *[Optional]*
 
    Label of the 1D border Default: all borders of the mesh
--  :freefem:`qfe=` (:ref:`quadrature formula <quadratureFormulae>`) *[Optional]*  *(:freefem:`qf3E` by default)*
+-  :freefem:`qfe=` (:ref:`quadrature formula <quadratureFormulae>`) *[Optional]*  *(:ref:`qf3E <quadratureFormulaeInt1dDefault>` by default)*
 
    Quadrature formula, see :ref:`quadrature formulae <quadratureFormulaeInt1d>`
 -  :freefem:`qforder=` (:ref:`quadrature formula <quadratureFormulae>`) *[Optional]*
@@ -1278,10 +1278,10 @@ Used in :ref:`problem <typeProblem>`, :ref:`solve <typeSolve>` or :ref:`varf <ty
 
 Parameters:
 
--  ``Th`` (:freefem:`mesh` or :freefem:`mesh3`) Mesh where the integral is calculated
--  ``Region`` (:freefem:`int`) *[Optional]*\  Label of the 2D region (2D simulation) Default: all regions of the mesh
+-  ``Th`` (:freefem:`mesh`,  :freefem:`mesh3` ,  :freefem:`meshS`or :freefem:`meshL`) Mesh where the integral is calculated
+-  ``Region`` (:freefem:`int`) *[Optional]*\  Label of the 2D region (2D simulation or Surface simulation) Default: all regions of the mesh
 -  ``Label`` (:freefem:`int`) *[Optional]*\  Label of the 2D border (3D simulation) Default: all borders of the mesh
--  :freefem:`qft=` (:ref:`quadrature formula <quadratureFormulae>`) *[Optional]*  (:freefem:`qf5T` *by default* )
+-  :freefem:`qft=` (:ref:`quadrature formula <quadratureFormulae>`) *[Optional]*  (:ref:`qf5T <quadratureFormulaeInt2dDefault>` *by default* )
 
    Quadrature formula, see :ref:`quadrature formulae <quadratureFormulaeInt2d>`
 -  :freefem:`qforder=` (:ref:`quadrature formula <quadratureFormulae>`) *[Optional]*
@@ -1316,7 +1316,7 @@ Parameters:
    Label of the 3D region
 
    Default: all regions of the mesh
--  :freefem:`qfV=` (:ref:`quadrature formula <quadratureFormulae>`) *[Optional]*  *(:freefem:`qf5V` by default)*
+-  :freefem:`qfV=` (:ref:`quadrature formula <quadratureFormulae>`) *[Optional]*  *(:ref:`qf5V <quadratureFormulaeInt3dDefault>` by default)*
 
    Quadrature formula, see :ref:`quadrature formulae <quadratureFormulaeInt3d>`
 -  :freefem:`qforder=` (:ref:`quadrature formula <quadratureFormulae>`) *[Optional]*
