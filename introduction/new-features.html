@@ -51,6 +51,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#boundary-element-method">Boundary Element Method</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-6-new-features">Version 4.6: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-7-new-features">Version 4.7: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-7-1-new-features">Version [4.7-1]: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-8-new-features">Version 4.8: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-9-new-features">Version 4.9: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-10-new-features">Version 4.10: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-11-new-features-4-apr-2022">Version 4.11: new features (4 apr 2022)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation guide</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="installation.html#using-binary-package">Using binary package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="installation.html#windows-installation">Windows installation</a></li>
@@ -1899,6 +1906,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#boundary-element-method">Boundary Element Method</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-6-new-features">Version 4.6: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-7-new-features">Version 4.7: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-7-1-new-features">Version [4.7-1]: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-8-new-features">Version 4.8: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-9-new-features">Version 4.9: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-10-new-features">Version 4.10: new features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#version-4-11-new-features-4-apr-2022">Version 4.11: new features (4 apr 2022)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="download.html">Download</a></li>
 <li class="toctree-l2"><a class="reference internal" href="history.html">History</a></li>
@@ -1988,6 +2002,311 @@ This new development allows to treat a 1d problem, such as a problem described o
 The document is in construction.</p>
 </section>
 </section>
+<section id="version-4-6-new-features">
+<h1>Version 4.6: new features<a class="headerlink" href="#version-4-6-new-features" title="Permalink to this headline"></a></h1>
+<ul>
+<li><p>Added
+- new search algorithm for the element containing a point (more safe) in mesh of type mesh3, meshS, or meshL.
+- new function <cite>hasType</cite> to know if a PETSc component has been installed, e.g., <cite>hasType(“PC”, “hypre”)</cite>
+- eigenvalue problems on linear elements, cf. <cite>examples/eigen/LapEigen1DBeltrami.edp</cite> or <cite>examples/hpddm/laplace-beltrami-3d-line-SLEPc.edp</cite>
+- <cite>–download-cmake</cite> in PETSc configure if there is no CMake available
+- flags <cite>–with-[slepc|slepccomplex]-include</cite> and <cite>–with-[slepc|slepccomplex]-ldflags</cite> for when SLEPc has been built outside of FreeFEM or PETSc
+- interface to <cite>KSPSetResidualHistory</cite> and <cite>KSPGetIterationNumber</cite>
+- interface to <cite>mpiWaitAll</cite>
+- new function extract, allows to build a curve mesh from a 2d mesh (can extract a labeled boundary, apply a geometric transformation)
+- ffglut can plot a vectorial FE function in surface 3d
+- distributed ParMmg interface, cf. <cite>examples/hpddm/distributed-parmmg.edp</cite> or <cite>examples/hpddm/laplace-adapt-dist-3d-PETSc.edp</cite>
+- new parallel interpolator on non-matching meshes, cf. <cite>examples/hpddm/transfer.edp</cite>
+- ability to solve problems in single precision or with 64 bit integers
+- tool to read data form vtk file only in 3d (cf. plugin iovtk a first example <cite>examples/plugin/iovtk.edp</cite>)
+- tool to read/wrile ply file of meshL, mesh3, MeshS : Polygon File Format / Stanford Triangle Format do  <cite>load “ioply”</cite></p>
+<blockquote>
+<div><p>see <cite>examples//3dSurf/operatorsOnMeshS.edp</cite></p>
+</div></blockquote>
+</li>
+<li><p>Changed
+- new <cite>tgv</cite> values: -10 =&gt; zero row, -20 =&gt; zero row/column
+- Windows binary now shipped with PETSc/SLEPc
+- BEM examples are now in <cite>examples/mpi</cite>
+- plot border type is now in 3d (border 2d and 3d)
+- PETSc version 3.13.0</p></li>
+<li><p>Fixed
+- <cite>–enable-download_package</cite> may now be used to download a single package, e.g., <cite>–enable-download_metis</cite>
+- compilation of PETSc under Windows
+- compilation of plugins when using static libraries
+- correct detection problem in FE type when use a vectorial FE
+- macro concatenation with spaces in arguments
+- correct bug in <cite>plugin/seq/Schur-Complement.cpp</cite>
+- correct ambiguity bug in <cite>plugin/seq/bfstream.cpp</cite> (reading real or integer)
+- compilation of plugin libff-mmap-semaphore.c under windows</p></li>
+</ul>
+</section>
+<section id="version-4-7-new-features">
+<h1>Version 4.7: new features<a class="headerlink" href="#version-4-7-new-features" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p>Added</p>
+<ul>
+<li><p>new way to build matrix between 2d Finite element 2d and Curve finite element to do mortar (Thank to Axel ) , see first example <cite>examples/tutorial/mortar-DN-4-v4.5.edp</cite></p></li>
+<li><p>add <cite>Ns</cite> normal vector  in R^3 on meshS (normal of the surface) of current point (to day Ns of [x,y,0] plan  is [0,0,-1])  no be compatible to exterior normal.</p></li>
+<li><p>add <cite>Tl</cite> tangent vector in R^3 on meshL (tangent vector of the line/curve) of current point</p></li>
+<li><p>compile ffmaster / ffslave example under windows (thanks to <a class="reference external" href="mailto:johann&#37;&#52;&#48;ifado&#46;de">johann<span>&#64;</span>ifado<span>&#46;</span>de</a>)</p></li>
+<li><p>Boolean parameter <cite>spiltpbedge</cite> in <cite>buildmesh</cite> to split in to edge with two boundary vertices</p></li>
+<li><p>interface to PETSc DMPlex, see <cite>examples/hpddm/DMPlex-PETSc.edp</cite></p></li>
+<li><p>function <cite>MatDestroy</cite></p></li>
+<li><p>function <cite>MatPtAP</cite> and <cite>transferMat</cite> for parallel interpolation between non-matching grids, see <cite>examples/hpddm/PtAP-2d-PETSc.edp</cite> or <cite>examples/hpddm/diffusion-mg-2d-PETSc.edp</cite></p></li>
+<li><p>preliminary interface to <cite>SVDSolve</cite> from SLEPc to compute singular value decompositions, see <cite>examples/hpddm/mf-2d-SLEPc.edp</cite> or <cite>examples/hpddm/helmholtz-2d-SLEPc-complex.edp</cite></p></li>
+<li><p>preliminary interface to <cite>NEPSolve</cite> from SLEPc to solve nonlinear eigenvalue problems, see <cite>examples/hpddm/nonlinear-2d-SLEPc-complex.edp</cite></p></li>
+<li><p><cite>transpose</cite> parameter when constructing a <cite>Mat</cite> for defining a matrix-free transposed operation</p></li>
+<li><p>interface to <cite>PetscMemoryGetCurrentUsage</cite></p></li>
+<li><p>add P2b, RT0, RT1 surface FE (P2bS, RT0S, RT1S))</p></li>
+<li><p>add operator interpolate (2d-&gt;3d surface)</p></li>
+<li><p>add operator x = A’*b; where x, b are array and A 2 dim array (full matrix) and generate an error in case of b’*A or b’*A expression</p></li>
+<li><p>function <cite>MatLoad</cite> to load a PETSc <cite>Mat</cite> from disk, see <cite>examples/hpddm/MatLoad-PETSc.edp</cite></p></li>
+<li><p>possibility to assemble a symmetric <cite>HMatrix&lt;complex&gt;</cite> and to densify a <cite>HMatrix&lt;complex&gt;</cite> into a <cite>Mat&lt;complex&gt;</cite></p></li>
+</ul>
+</li>
+<li><p>Changed
+- moved Htool to its new GitHub location
+- ScaLAPACK and MUMPS are not compiled by PETSc anymore if there is no Fortran compiler
+- MPICH is compiled by PETSc if no MPI is detected during configure, see <a class="reference external" href="https://community.freefem.org/t/feature-request-use-download-mpich-on-ubuntu/407">https://community.freefem.org/t/feature-request-use-download-mpich-on-ubuntu/407</a>
+- PETSc version 3.13.5
+- force <cite>–with-cudac=0</cite> in <cite>make petsc-slepc</cite>, see <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/issues/141">https://github.com/FreeFem/FreeFem-sources/issues/141</a>
+- change DSL keyword P1dc3dL-&gt;P1dcL and P1dc3dS-&gt;P1dcS
+- rename <cite>view</cite>, <cite>hasType</cite>, <cite>changeSchur</cite> to respectively <cite>ObjectView</cite>, <cite>HasType</cite>, and <cite>ChangeSchur</cite></p></li>
+<li><p>Deprecated
+- rename <cite>changeNumbering</cite>, <cite>globalNumbering</cite>, <cite>originalNumbering</cite>, <cite>changeOperator</cite>, <cite>destroyRecycling</cite>, and <cite>attachCoarseOperator</cite> to respectively <cite>ChangeNumbering</cite>, <cite>GlobalNumbering</cite>, <cite>OriginalNumbering</cite>, <cite>ChangeOperator</cite>, <cite>DestroyRecycling</cite>, and <cite>AttachCoarseOperator</cite>
+- <cite>Nt</cite> the normal vector of the current (wrong on meshL) use <cite>Ns</cite> or <cite>Tl</cite></p></li>
+<li><p>Removed
+- <cite>augmentation</cite> routine from the PETSc plugin
+- <cite>MPIF77</cite> variable</p></li>
+<li><p>Fixed
+- lot of mistake in MeshL element add a example o check lot of thing <cite>tutomesh1d.edp</cite>
+- fixed problem of change of mesh when rebuild 2d mesh with buildmesh, …. (Thank to P. Jovilet to points this problem)
+- missing METIS library when using SuiteSparse compiled by PETSc
+- missing <cite>-fno-stack-protector</cite> when building PETSc on Windows, see <a class="reference external" href="https://community.freefem.org/t/error-loading-complex-petsc-slepc-library/370">https://community.freefem.org/t/error-loading-complex-petsc-slepc-library/370</a>
+- fixed ffglut for the plotting of FE array solution
+- fixed  ffglut bug on MacOS Catalina , draw inn only half windows screen (Apple Bug ???)
+- correct P0VF  finite element
+- <cite>abs</cite> function of array</p></li>
+</ul>
+</section>
+<section id="version-4-7-1-new-features">
+<h1>Version [4.7-1]: new features<a class="headerlink" href="#version-4-7-1-new-features" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p>Changed
+- change the language definition to use type as a construction function with named arguments for bem plugin
+- PETSc version 3.14.0
+- ARPACK compiled by SLEPc
+- Mmg version 5.5.0
+- -std=c++14 instead of -std=c++11 when possible</p></li>
+<li><p>Removed
+- plugins thresholdings, symmetrizeCSR, and fflapack and associed example</p></li>
+<li><p>Fixed
+- problem compilation with gfortran-10 of arpack and mumps (add -fallow-argument-mismatch flags)</p></li>
+</ul>
+</section>
+<section id="version-4-8-new-features">
+<h1>Version 4.8: new features<a class="headerlink" href="#version-4-8-new-features" title="Permalink to this headline"></a></h1>
+<ul>
+<li><p>Added
+- Bilaplacian example using Morley FE with PETSc, see <cite>examples/hpddm/bilaplacian-2d-PETSc.edp</cite>
+- Oseen problem preconditioned by PCD, see <cite>examples/hpddm/oseen-2d-PETSc.edp</cite>
+- SLEPc polynomial eigenvalue solver <cite>PEPSolve()</cite>
+- add trivial example to check periodic boundary condition on meshS , meshL  , mesh3</p>
+<blockquote>
+<div><p>examples/3d/periodic3.edp   examples/3dSurf/periodicS.edp
+examples/3dCurve/periodicL.edp</p>
+</div></blockquote>
+</li>
+<li><p>Changed
+- PETSc version 3.14.2
+- Mmg version 5.5.2
+- link of ffglut so change in configure.ac and Makefile.am  LIBS -&gt; FF_LIBS and LIBS become empty</p>
+<blockquote>
+<div><p>to remove default libs</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>change number of save plot in ffglut from 10 to 20 for O. Pironneau</p></li>
+</ul>
+</li>
+<li><p>Fixed
+- some memory leaks
+- the periodic boundary condition have wrong before first a sementic level of MeshS and MeshL case.</p>
+<blockquote>
+<div><p>the new syntexe is for example:
+meshL Tl=segment(10);   fespace Vl(Tl,P1,periodic=[[1],[2]]);
+meshS Th=square3(10,10,[x*2*pi,y*2*pi]); fespace Vh2(Th,P1,periodic=[[1,x],[3,x],[2,y],[4,y]]);</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>fixed ‘*’ keyboard trick,  to keep  the viewpoint in ffglut or not.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="version-4-9-new-features">
+<h1>Version 4.9: new features<a class="headerlink" href="#version-4-9-new-features" title="Permalink to this headline"></a></h1>
+<ul>
+<li><p>Added
+- add P3 lagrange finite element on meshS and meshS
+- add new plugin <a href="#id1"><span class="problematic" id="id2">`</span></a>meshtool`to add tool to compute the number of connected components of a all kind of mesh</p>
+<blockquote>
+<div><p>(mesh,mesh3,meshS,meshL) with 2 kind of connected components ones on interior part of the mesh (default) ans
+secondly on the closure of the mesh (see <cite>examples/hpddm/bConnectedComponents.edp</cite> )
+add functions  int[int] In=iminP1K(Th,u) or int[int] Ix=imaxP1K(Th,u)  get the array min/max of value u[i]
+where i is vertex number on  each element k, so we have  u[Im[k]] = min u[i]/ i in k;</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>add in plugin <cite>bfstream</cite> to to read binary int (4 bytes) to read fortran file and try to pull tools to share the endiannes
+in progress</p></li>
+<li><p>add gluemesh of array of MeshL and MeshS type</p></li>
+<li><p>interface to <cite>PC_MG_GALERKIN_BOTH</cite></p></li>
+<li><p>Kronecker product of two sparse matrices <cite>matrix C = kron(A, B)</cite></p></li>
+<li><p>add lot of finite element on Mesh3, MeshS, MeshL of Discontinous Galerling Element
+in 3d       : P1dc3d, P2dc3d, P3dc3d, P4dc3d , P0edge3d ,P0edgedc3d ,  P0face3d ,P0facedc3d , P0VF3d ,P0VFdc3d ,
+on Surface  : P1dcS, P2dcS, P3dcS, P4dcS , P0edgeS ,P0edgedcS , P0VFS ,P0VFdcS,
+on Curve   : P1dcL, P2dcL, P3dcL, P4dcL ,  P0VFL ,P0VFdcL
+remark; the associated generic name existe of P1dc, P2dc, P0edge, P0VF and all  dc finite element corresponding to
+no continuity across element.</p></li>
+<li><p>add code of intallfaces to  do Discontinous Galerkin  formulation in 3d (in test FH.)</p></li>
+<li><p>add dist function to a mesh , meshL, MeshS or  mesh3</p></li>
+<li><p>signeddistfunction to a meshL or  meshS</p></li>
+<li><p>add buildmesh functon to build a 2d mesh from a meshL (same as buildmesh see examples/3dCurve/border.edp)</p></li>
+</ul>
+</li>
+<li><p>Changed
+- Now the order to find MPI in configure is first if you have PETSC then take MPI from PETSc</p>
+<blockquote>
+<div><p>otherwise use previous method</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>on MeshL defined with buildmeshL now the default label are 2*k-1  (resp. 2*k)  for the begin (resp. end) of curve
+where k is the order of curve use in buildmeshL. So if you have one curve the  labels are 1  and 2.
+And new  the element label are te region number not the label.
+This element are not really test so be carfull.</p></li>
+<li><p>PETSc 3.15.0</p></li>
+</ul>
+</li>
+<li><p>Fixed
+- bug in Find triangle contening point in 2d (border case),</p>
+<blockquote>
+<div><p><cite>int Mesh::DataFindBoundary::Find(R2 PP,R *l,int &amp; outside) const</cite>
+the parameter l not correclty return due to local variable.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>set CFLAGS=-Wno-implicit-function-declaration to complie with Apple clang version 12.0.0 (clang-1200.0.32.29)
+to remove following error: implicit declaration of function
+correct <a href="#id3"><span class="problematic" id="id4">`</span></a>3dCurve/basicGlue.edp`and add missing test</p></li>
+<li><p>bugs in SLEPc <cite>SVDSolve()</cite> with a rectangular <cite>Mat</cite></p></li>
+<li><p>bugs in nElementonB for DG 3d formulation.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="version-4-10-new-features">
+<h1>Version 4.10: new features<a class="headerlink" href="#version-4-10-new-features" title="Permalink to this headline"></a></h1>
+<ul>
+<li><p>Added
+- ridgeangle named parameter in ExtractMeshL in msh3 plugin
+- DG formulation in 1d :</p>
+<blockquote>
+<div><p>add integral of all border of element : <cite>intallBE(ThL)</cite> and unified the notation by adding
+<cite>intallBE(ThS)</cite> , <cite>intallBE(Th2)</cite>, <cite>intallBE(Th3)</cite>
+<cite>nuVertex</cite> of now the vertex number of element in intallBE0d integral
+<cite>BoundaryBE</cite>, <cite>InternalBE</cite> to know if border element (BE) is on true boundary of not.
+update <cite>nElementonB</cite> in case on no manifold data (value greater &gt; 2) in meshL, MeshS case ..
+add code to use jump, mean of test functuon on MeshL case. ( not in mesh3 ) to compute RHS.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>add getcwd() function in shell plugin to get the current working dir</p></li>
+<li><p>add nuVertex to get the vextex on element in some int?</p></li>
+</ul>
+</li>
+<li><p>Changed
+- PETSc 3.16.1</p></li>
+<li><p>Deprecated
+- SLEPc and SLEPc-complex have been part of PETSc and PETSc-complex for multiple releases and are now deprecated</p></li>
+<li><p>Fixed
+- examples/potential.edp correct problem in times loops and BC
+- tutorial/mortar-DN-4.edp correct problem of region number in meshL
+- fix problem in Curve mesh and intallBE , vertex number is wrong
+- portability issue on arm64-apple with <cite>make petsc-slepc</cite>
+- fix assertion failure with <cite>transfer</cite> and <cite>transferMat</cite> with some finite elements</p></li>
+</ul>
+</section>
+<section id="version-4-11-new-features-4-apr-2022">
+<h1>Version 4.11: new features (4 apr 2022)<a class="headerlink" href="#version-4-11-new-features-4-apr-2022" title="Permalink to this headline"></a></h1>
+<ul>
+<li><p>Added
+- add computation scalar product of R3 example :  ( N’<a href="#id5"><span class="problematic" id="id6">*</span></a>Tl)
+- add tools to do compution with R3 vector see tutorial/calculus.edp
+- add an example tutorial/tgv-test.edp see see what tgv do on matrix build.
+- add R3 Th.be(k).N to  get the normal of boundary element (in all mesh type)
+- add R3 Th.be(k)[i].P  to  get the point (R3)  of boundary vertices
+- add R3 Th.be(k).measure to  get the measure of the boundary elment
+- add projection  function to a mesh , meshL, MeshS or  mesh3 with return a R3 point
+- see new example dist-projection.edp example in exemples
+- add dxx, dyy, dzz, dxy,  .. on P2L finite element
+- add tools to compute solid angle :  let R3 O; a given point, Th3 a mesh3 and ThS a meshS.</p>
+<blockquote>
+<div><p>solidangle(O,Th3.be(ke)) // triangular face is the boundary face
+solidangle(O,Th3[k],nuface) // triangular face is face nuface of tet Th3[k]
+solidangle(O,ThS[k]) // triangular face is ThS[k]
+solidangle(O,A,B,C) // triangular face i (A,B,C)
+Volume(O,Th3.be(ke)) // O, triangular face is the boundary face
+Volume(O,Th3[k],nuface) // O, triangular face is face nuface of tet Th3[k]
+Volume(O,ThS[k]) // O, triangular face is ThS[k]
+Volume(O,A,B,C) // (O,A,B,C) tet ..</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>in bem pluging add array of HMatrix</p></li>
+<li><p>examples/3d/Connectivite-3d.edp or /3dSurf/Connectivite-S.edp of test.</p></li>
+<li><p>3 function mapk, mapkk, mapkk to set a function in fourier space with k parametre</p></li>
+</ul>
+<blockquote>
+<div><p>R3 K; // le fourier variable allway 3d (sorry)
+int n1=16,n2=8, n3=4;
+real[int] tab1(nx,tab2(nx*ny),tab3(nx*ny*nz);
+mapk(tab1,K,sqr(K.x));
+mapkk(tab2,ny,K,K.norm2);
+mapkkk(tab3,ny,nz,K,K.norm2);
+//  Remark you can change K by P (current point)</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>in SurfaceMesh.ipd fonction to build a Isocaedron and a Sphere from this Isocaedron</p></li>
+<li><p>new finite element on MeshS  this  finite element is the ortogonal of RT0 on surface, or
+Nelelec Finite Element on triangle with one DoF per mesh edge and where the DoF is the
+current on  Edge in orientate edge by number of vertices.</p></li>
+<li><p>plugin Element_P3pnc for new 2d finite element P3pnc (P3 + 2 bulles)  noncoforming  (continuite of P2 mod)</p></li>
+</ul>
+<blockquote>
+<div><dl class="simple">
+<dt>and add 2 examples with this new finite element</dt><dd><p>examples/plugin/cavityNewtowP3pnc.edp examples/plugin/testFE-P3pnc.edp</p>
+</dd>
+</dl>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="simple">
+<dt>function to set dirichlet Boundary conditon on matrix A (real ou compex) trought  an real[int]</dt><dd><p>(if none zero =&gt; set BC )</p>
+</dd>
+<dt>setBC(A,au1[],-2); and the example</dt><dd><p>examples/3d/Elasticity-simple-support-BC.edp</p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p>Changed
+- the beaviour of linear solver UMFPACK, CHOLMOD in case of error , now FreeFEm exit on ExecError like in MUMPS
+- PETSc 3.17.0</p></li>
+<li><p>Removed
+-map function  in plugin dfft</p></li>
+<li><p>Fixed
+- pow(int,int) now call int version not complex version..
+- correct the normal the N implicite variable   on meshL case
+- correct version dump in banner FreeFem++ - version 4.10 (V …
+- correct  in CPU time on big mesh due to do bad HCode in HashTable.hpp
+- bug in array of finite element on meshhS, meshL (ie.  <cite>fespace Vh(ThS,[P1,P1]);</cite> )</p></li>
+</ul>
+</section>
 
 
 		<div class="content-nav-buttons" role="navigation">
@@ -2006,6 +2325,13 @@ The document is in construction.</p>
 <li><a class="reference internal" href="#boundary-element-method">Boundary Element Method</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#version-4-6-new-features">Version 4.6: new features</a></li>
+<li><a class="reference internal" href="#version-4-7-new-features">Version 4.7: new features</a></li>
+<li><a class="reference internal" href="#version-4-7-1-new-features">Version [4.7-1]: new features</a></li>
+<li><a class="reference internal" href="#version-4-8-new-features">Version 4.8: new features</a></li>
+<li><a class="reference internal" href="#version-4-9-new-features">Version 4.9: new features</a></li>
+<li><a class="reference internal" href="#version-4-10-new-features">Version 4.10: new features</a></li>
+<li><a class="reference internal" href="#version-4-11-new-features-4-apr-2022">Version 4.11: new features (4 apr 2022)</a></li>
 </ul>
 
 	</div>
