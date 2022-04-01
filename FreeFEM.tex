@@ -136,7 +136,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Feb 01, 2022}
+\date{Apr 01, 2022}
 \release{4.8}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -185,6 +185,8 @@
 \pagestyle{normal}
 \phantomsection\label{\detokenize{index::doc}}
 
+
+\sphinxstepscope
 
 \begin{DUlineblock}{0em}
 \item[] 
@@ -244,7 +246,7 @@ Problems involving partial differential equations from several branches of physi
 
 \item {} 
 \sphinxAtStartPar
-\sphinxhref{http://www.fftw.org}{FFTW 3.3.2}
+\sphinxhref{http://www.fftw.org}{FFTW 3.3.8}
 
 \item {} 
 \sphinxAtStartPar
@@ -308,10 +310,6 @@ Problems involving partial differential equations from several branches of physi
 
 \item {} 
 \sphinxAtStartPar
-\sphinxhref{https://slepc.upv.es/}{SLEPc}
-
-\item {} 
-\sphinxAtStartPar
 \sphinxhref{https://pierremarchand.netlify.com/project/htool/}{HTool}
 
 \item {} 
@@ -346,6 +344,8 @@ Problems involving partial differential equations from several branches of physi
 
 \begin{center}\sphinxincludegraphics[scale=0.4]{{logo_cnrs_SU_UP}.png}  \sphinxincludegraphics[scale=0.2]{{inr_logo_rouge_300}.jpg}  \sphinxincludegraphics[scale=0.6]{{logo_LJLL}.png}    \sphinxincludegraphics[scale=0.45]{{logo_alpines}.png}
 \end{center}
+\sphinxstepscope
+
 
 \section{Version 4.5: new features}
 \label{\detokenize{introduction/new-features:version-4-5-new-features}}\label{\detokenize{introduction/new-features::doc}}
@@ -484,6 +484,527 @@ vtk format for meshes and solutions (load “iovtk” and use the “.vtu” ext
 \sphinxAtStartPar
 Allows to define and solve a 2d/3d BEM formulation and rebuild the associated potential.
 The document is in construction.
+
+
+\section{Version 4.6: new features}
+\label{\detokenize{introduction/new-features:version-4-6-new-features}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Added
+\sphinxhyphen{} new search algorithm for the element containing a point (more safe) in mesh of type mesh3, meshS, or meshL.
+\sphinxhyphen{} new function \sphinxtitleref{hasType} to know if a PETSc component has been installed, e.g., \sphinxtitleref{hasType(“PC”, “hypre”)}
+\sphinxhyphen{} eigenvalue problems on linear elements, cf. \sphinxtitleref{examples/eigen/LapEigen1DBeltrami.edp} or \sphinxtitleref{examples/hpddm/laplace\sphinxhyphen{}beltrami\sphinxhyphen{}3d\sphinxhyphen{}line\sphinxhyphen{}SLEPc.edp}
+\sphinxhyphen{} \sphinxtitleref{\textendash{}download\sphinxhyphen{}cmake} in PETSc configure if there is no CMake available
+\sphinxhyphen{} flags \sphinxtitleref{\textendash{}with\sphinxhyphen{}{[}slepc|slepccomplex{]}\sphinxhyphen{}include} and \sphinxtitleref{\textendash{}with\sphinxhyphen{}{[}slepc|slepccomplex{]}\sphinxhyphen{}ldflags} for when SLEPc has been built outside of FreeFEM or PETSc
+\sphinxhyphen{} interface to \sphinxtitleref{KSPSetResidualHistory} and \sphinxtitleref{KSPGetIterationNumber}
+\sphinxhyphen{} interface to \sphinxtitleref{mpiWaitAll}
+\sphinxhyphen{} new function extract, allows to build a curve mesh from a 2d mesh (can extract a labeled boundary, apply a geometric transformation)
+\sphinxhyphen{} ffglut can plot a vectorial FE function in surface 3d
+\sphinxhyphen{} distributed ParMmg interface, cf. \sphinxtitleref{examples/hpddm/distributed\sphinxhyphen{}parmmg.edp} or \sphinxtitleref{examples/hpddm/laplace\sphinxhyphen{}adapt\sphinxhyphen{}dist\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
+\sphinxhyphen{} new parallel interpolator on non\sphinxhyphen{}matching meshes, cf. \sphinxtitleref{examples/hpddm/transfer.edp}
+\sphinxhyphen{} ability to solve problems in single precision or with 64 bit integers
+\sphinxhyphen{} tool to read data form vtk file only in 3d (cf. plugin iovtk a first example \sphinxtitleref{examples/plugin/iovtk.edp})
+\sphinxhyphen{} tool to read/wrile ply file of meshL, mesh3, MeshS : Polygon File Format / Stanford Triangle Format do  \sphinxtitleref{load “ioply”}
+\begin{quote}
+
+\sphinxAtStartPar
+see \sphinxtitleref{examples//3dSurf/operatorsOnMeshS.edp}
+\end{quote}
+
+\item {} 
+\sphinxAtStartPar
+Changed
+\sphinxhyphen{} new \sphinxtitleref{tgv} values: \sphinxhyphen{}10 =\textgreater{} zero row, \sphinxhyphen{}20 =\textgreater{} zero row/column
+\sphinxhyphen{} Windows binary now shipped with PETSc/SLEPc
+\sphinxhyphen{} BEM examples are now in \sphinxtitleref{examples/mpi}
+\sphinxhyphen{} plot border type is now in 3d (border 2d and 3d)
+\sphinxhyphen{} PETSc version 3.13.0
+
+\item {} 
+\sphinxAtStartPar
+Fixed
+\sphinxhyphen{} \sphinxtitleref{\textendash{}enable\sphinxhyphen{}download\_package} may now be used to download a single package, e.g., \sphinxtitleref{\textendash{}enable\sphinxhyphen{}download\_metis}
+\sphinxhyphen{} compilation of PETSc under Windows
+\sphinxhyphen{} compilation of plugins when using static libraries
+\sphinxhyphen{} correct detection problem in FE type when use a vectorial FE
+\sphinxhyphen{} macro concatenation with spaces in arguments
+\sphinxhyphen{} correct bug in \sphinxtitleref{plugin/seq/Schur\sphinxhyphen{}Complement.cpp}
+\sphinxhyphen{} correct ambiguity bug in \sphinxtitleref{plugin/seq/bfstream.cpp} (reading real or integer)
+\sphinxhyphen{} compilation of plugin libff\sphinxhyphen{}mmap\sphinxhyphen{}semaphore.c under windows
+
+\end{itemize}
+
+
+\section{Version 4.7: new features}
+\label{\detokenize{introduction/new-features:version-4-7-new-features}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Added
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+new way to build matrix between 2d Finite element 2d and Curve finite element to do mortar (Thank to Axel ) , see first example \sphinxtitleref{examples/tutorial/mortar\sphinxhyphen{}DN\sphinxhyphen{}4\sphinxhyphen{}v4.5.edp}
+
+\item {} 
+\sphinxAtStartPar
+add \sphinxtitleref{Ns} normal vector  in R\textasciicircum{}3 on meshS (normal of the surface) of current point (to day Ns of {[}x,y,0{]} plan  is {[}0,0,\sphinxhyphen{}1{]})  no be compatible to exterior normal.
+
+\item {} 
+\sphinxAtStartPar
+add \sphinxtitleref{Tl} tangent vector in R\textasciicircum{}3 on meshL (tangent vector of the line/curve) of current point
+
+\item {} 
+\sphinxAtStartPar
+compile ffmaster / ffslave example under windows (thanks to \sphinxhref{mailto:johann@ifado.de}{johann@ifado.de})
+
+\item {} 
+\sphinxAtStartPar
+Boolean parameter \sphinxtitleref{spiltpbedge} in \sphinxtitleref{buildmesh} to split in to edge with two boundary vertices
+
+\item {} 
+\sphinxAtStartPar
+interface to PETSc DMPlex, see \sphinxtitleref{examples/hpddm/DMPlex\sphinxhyphen{}PETSc.edp}
+
+\item {} 
+\sphinxAtStartPar
+function \sphinxtitleref{MatDestroy}
+
+\item {} 
+\sphinxAtStartPar
+function \sphinxtitleref{MatPtAP} and \sphinxtitleref{transferMat} for parallel interpolation between non\sphinxhyphen{}matching grids, see \sphinxtitleref{examples/hpddm/PtAP\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp} or \sphinxtitleref{examples/hpddm/diffusion\sphinxhyphen{}mg\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
+
+\item {} 
+\sphinxAtStartPar
+preliminary interface to \sphinxtitleref{SVDSolve} from SLEPc to compute singular value decompositions, see \sphinxtitleref{examples/hpddm/mf\sphinxhyphen{}2d\sphinxhyphen{}SLEPc.edp} or \sphinxtitleref{examples/hpddm/helmholtz\sphinxhyphen{}2d\sphinxhyphen{}SLEPc\sphinxhyphen{}complex.edp}
+
+\item {} 
+\sphinxAtStartPar
+preliminary interface to \sphinxtitleref{NEPSolve} from SLEPc to solve nonlinear eigenvalue problems, see \sphinxtitleref{examples/hpddm/nonlinear\sphinxhyphen{}2d\sphinxhyphen{}SLEPc\sphinxhyphen{}complex.edp}
+
+\item {} 
+\sphinxAtStartPar
+\sphinxtitleref{transpose} parameter when constructing a \sphinxtitleref{Mat} for defining a matrix\sphinxhyphen{}free transposed operation
+
+\item {} 
+\sphinxAtStartPar
+interface to \sphinxtitleref{PetscMemoryGetCurrentUsage}
+
+\item {} 
+\sphinxAtStartPar
+add P2b, RT0, RT1 surface FE (P2bS, RT0S, RT1S))
+
+\item {} 
+\sphinxAtStartPar
+add operator interpolate (2d\sphinxhyphen{}\textgreater{}3d surface)
+
+\item {} 
+\sphinxAtStartPar
+add operator x = A’*b; where x, b are array and A 2 dim array (full matrix) and generate an error in case of b’*A or b’*A expression
+
+\item {} 
+\sphinxAtStartPar
+function \sphinxtitleref{MatLoad} to load a PETSc \sphinxtitleref{Mat} from disk, see \sphinxtitleref{examples/hpddm/MatLoad\sphinxhyphen{}PETSc.edp}
+
+\item {} 
+\sphinxAtStartPar
+possibility to assemble a symmetric \sphinxtitleref{HMatrix\textless{}complex\textgreater{}} and to densify a \sphinxtitleref{HMatrix\textless{}complex\textgreater{}} into a \sphinxtitleref{Mat\textless{}complex\textgreater{}}
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+Changed
+\sphinxhyphen{} moved Htool to its new GitHub location
+\sphinxhyphen{} ScaLAPACK and MUMPS are not compiled by PETSc anymore if there is no Fortran compiler
+\sphinxhyphen{} MPICH is compiled by PETSc if no MPI is detected during configure, see \sphinxurl{https://community.freefem.org/t/feature-request-use-download-mpich-on-ubuntu/407}
+\sphinxhyphen{} PETSc version 3.13.5
+\sphinxhyphen{} force \sphinxtitleref{\textendash{}with\sphinxhyphen{}cudac=0} in \sphinxtitleref{make petsc\sphinxhyphen{}slepc}, see \sphinxurl{https://github.com/FreeFem/FreeFem-sources/issues/141}
+\sphinxhyphen{} change DSL keyword P1dc3dL\sphinxhyphen{}\textgreater{}P1dcL and P1dc3dS\sphinxhyphen{}\textgreater{}P1dcS
+\sphinxhyphen{} rename \sphinxtitleref{view}, \sphinxtitleref{hasType}, \sphinxtitleref{changeSchur} to respectively \sphinxtitleref{ObjectView}, \sphinxtitleref{HasType}, and \sphinxtitleref{ChangeSchur}
+
+\item {} 
+\sphinxAtStartPar
+Deprecated
+\sphinxhyphen{} rename \sphinxtitleref{changeNumbering}, \sphinxtitleref{globalNumbering}, \sphinxtitleref{originalNumbering}, \sphinxtitleref{changeOperator}, \sphinxtitleref{destroyRecycling}, and \sphinxtitleref{attachCoarseOperator} to respectively \sphinxtitleref{ChangeNumbering}, \sphinxtitleref{GlobalNumbering}, \sphinxtitleref{OriginalNumbering}, \sphinxtitleref{ChangeOperator}, \sphinxtitleref{DestroyRecycling}, and \sphinxtitleref{AttachCoarseOperator}
+\sphinxhyphen{} \sphinxtitleref{Nt} the normal vector of the current (wrong on meshL) use \sphinxtitleref{Ns} or \sphinxtitleref{Tl}
+
+\item {} 
+\sphinxAtStartPar
+Removed
+\sphinxhyphen{} \sphinxtitleref{augmentation} routine from the PETSc plugin
+\sphinxhyphen{} \sphinxtitleref{MPIF77} variable
+
+\item {} 
+\sphinxAtStartPar
+Fixed
+\sphinxhyphen{} lot of mistake in MeshL element add a example o check lot of thing \sphinxtitleref{tutomesh1d.edp}
+\sphinxhyphen{} fixed problem of change of mesh when rebuild 2d mesh with buildmesh, …. (Thank to P. Jovilet to points this problem)
+\sphinxhyphen{} missing METIS library when using SuiteSparse compiled by PETSc
+\sphinxhyphen{} missing \sphinxtitleref{\sphinxhyphen{}fno\sphinxhyphen{}stack\sphinxhyphen{}protector} when building PETSc on Windows, see \sphinxurl{https://community.freefem.org/t/error-loading-complex-petsc-slepc-library/370}
+\sphinxhyphen{} fixed ffglut for the plotting of FE array solution
+\sphinxhyphen{} fixed  ffglut bug on MacOS Catalina , draw inn only half windows screen (Apple Bug ???)
+\sphinxhyphen{} correct P0VF  finite element
+\sphinxhyphen{} \sphinxtitleref{abs} function of array
+
+\end{itemize}
+
+
+\section{Version {[}4.7\sphinxhyphen{}1{]}: new features}
+\label{\detokenize{introduction/new-features:version-4-7-1-new-features}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Changed
+\sphinxhyphen{} change the language definition to use type as a construction function with named arguments for bem plugin
+\sphinxhyphen{} PETSc version 3.14.0
+\sphinxhyphen{} ARPACK compiled by SLEPc
+\sphinxhyphen{} Mmg version 5.5.0
+\sphinxhyphen{} \sphinxhyphen{}std=c++14 instead of \sphinxhyphen{}std=c++11 when possible
+
+\item {} 
+\sphinxAtStartPar
+Removed
+\sphinxhyphen{} plugins thresholdings, symmetrizeCSR, and fflapack and associed example
+
+\item {} 
+\sphinxAtStartPar
+Fixed
+\sphinxhyphen{} problem compilation with gfortran\sphinxhyphen{}10 of arpack and mumps (add \sphinxhyphen{}fallow\sphinxhyphen{}argument\sphinxhyphen{}mismatch flags)
+
+\end{itemize}
+
+
+\section{Version 4.8: new features}
+\label{\detokenize{introduction/new-features:version-4-8-new-features}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Added
+\sphinxhyphen{} Bilaplacian example using Morley FE with PETSc, see \sphinxtitleref{examples/hpddm/bilaplacian\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
+\sphinxhyphen{} Oseen problem preconditioned by PCD, see \sphinxtitleref{examples/hpddm/oseen\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
+\sphinxhyphen{} SLEPc polynomial eigenvalue solver \sphinxtitleref{PEPSolve()}
+\sphinxhyphen{} add trivial example to check periodic boundary condition on meshS , meshL  , mesh3
+\begin{quote}
+
+\sphinxAtStartPar
+examples/3d/periodic3.edp   examples/3dSurf/periodicS.edp
+examples/3dCurve/periodicL.edp
+\end{quote}
+
+\item {} 
+\sphinxAtStartPar
+Changed
+\sphinxhyphen{} PETSc version 3.14.2
+\sphinxhyphen{} Mmg version 5.5.2
+\sphinxhyphen{} link of ffglut so change in configure.ac and Makefile.am  LIBS \sphinxhyphen{}\textgreater{} FF\_LIBS and LIBS become empty
+\begin{quote}
+
+\sphinxAtStartPar
+to remove default libs
+\end{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+change number of save plot in ffglut from 10 to 20 for O. Pironneau
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+Fixed
+\sphinxhyphen{} some memory leaks
+\sphinxhyphen{} the periodic boundary condition have wrong before first a sementic level of MeshS and MeshL case.
+\begin{quote}
+
+\sphinxAtStartPar
+the new syntexe is for example:
+meshL Tl=segment(10);   fespace Vl(Tl,P1,periodic={[}{[}1{]},{[}2{]}{]});
+meshS Th=square3(10,10,{[}x*2*pi,y*2*pi{]}); fespace Vh2(Th,P1,periodic={[}{[}1,x{]},{[}3,x{]},{[}2,y{]},{[}4,y{]}{]});
+\end{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+fixed ‘*’ keyboard trick,  to keep  the viewpoint in ffglut or not.
+
+\end{itemize}
+
+\end{itemize}
+
+
+\section{Version 4.9: new features}
+\label{\detokenize{introduction/new-features:version-4-9-new-features}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Added
+\sphinxhyphen{} add P3 lagrange finite element on meshS and meshS
+\sphinxhyphen{} add new plugin {\color{red}\bfseries{}\textasciigrave{}}meshtool\textasciigrave{}to add tool to compute the number of connected components of a all kind of mesh
+\begin{quote}
+
+\sphinxAtStartPar
+(mesh,mesh3,meshS,meshL) with 2 kind of connected components ones on interior part of the mesh (default) ans
+secondly on the closure of the mesh (see \sphinxtitleref{examples/hpddm/bConnectedComponents.edp} )
+add functions  int{[}int{]} In=iminP1K(Th,u) or int{[}int{]} Ix=imaxP1K(Th,u)  get the array min/max of value u{[}i{]}
+where i is vertex number on  each element k, so we have  u{[}Im{[}k{]}{]} = min u{[}i{]}/ i in k;
+\end{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+add in plugin \sphinxtitleref{bfstream} to to read binary int (4 bytes) to read fortran file and try to pull tools to share the endiannes
+in progress
+
+\item {} 
+\sphinxAtStartPar
+add gluemesh of array of MeshL and MeshS type
+
+\item {} 
+\sphinxAtStartPar
+interface to \sphinxtitleref{PC\_MG\_GALERKIN\_BOTH}
+
+\item {} 
+\sphinxAtStartPar
+Kronecker product of two sparse matrices \sphinxtitleref{matrix C = kron(A, B)}
+
+\item {} 
+\sphinxAtStartPar
+add lot of finite element on Mesh3, MeshS, MeshL of Discontinous Galerling Element
+in 3d       : P1dc3d, P2dc3d, P3dc3d, P4dc3d , P0edge3d ,P0edgedc3d ,  P0face3d ,P0facedc3d , P0VF3d ,P0VFdc3d ,
+on Surface  : P1dcS, P2dcS, P3dcS, P4dcS , P0edgeS ,P0edgedcS , P0VFS ,P0VFdcS,
+on Curve   : P1dcL, P2dcL, P3dcL, P4dcL ,  P0VFL ,P0VFdcL
+remark; the associated generic name existe of P1dc, P2dc, P0edge, P0VF and all  dc finite element corresponding to
+no continuity across element.
+
+\item {} 
+\sphinxAtStartPar
+add code of intallfaces to  do Discontinous Galerkin  formulation in 3d (in test FH.)
+
+\item {} 
+\sphinxAtStartPar
+add dist function to a mesh , meshL, MeshS or  mesh3
+
+\item {} 
+\sphinxAtStartPar
+signeddistfunction to a meshL or  meshS
+
+\item {} 
+\sphinxAtStartPar
+add buildmesh functon to build a 2d mesh from a meshL (same as buildmesh see examples/3dCurve/border.edp)
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+Changed
+\sphinxhyphen{} Now the order to find MPI in configure is first if you have PETSC then take MPI from PETSc
+\begin{quote}
+
+\sphinxAtStartPar
+otherwise use previous method
+\end{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+on MeshL defined with buildmeshL now the default label are 2*k\sphinxhyphen{}1  (resp. 2*k)  for the begin (resp. end) of curve
+where k is the order of curve use in buildmeshL. So if you have one curve the  labels are 1  and 2.
+And new  the element label are te region number not the label.
+This element are not really test so be carfull.
+
+\item {} 
+\sphinxAtStartPar
+PETSc 3.15.0
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+Fixed
+\sphinxhyphen{} bug in Find triangle contening point in 2d (border case),
+\begin{quote}
+
+\sphinxAtStartPar
+\sphinxtitleref{int Mesh::DataFindBoundary::Find(R2 PP,R *l,int \& outside) const}
+the parameter l not correclty return due to local variable.
+\end{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+set CFLAGS=\sphinxhyphen{}Wno\sphinxhyphen{}implicit\sphinxhyphen{}function\sphinxhyphen{}declaration to complie with Apple clang version 12.0.0 (clang\sphinxhyphen{}1200.0.32.29)
+to remove following error: implicit declaration of function
+correct {\color{red}\bfseries{}\textasciigrave{}}3dCurve/basicGlue.edp\textasciigrave{}and add missing test
+
+\item {} 
+\sphinxAtStartPar
+bugs in SLEPc \sphinxtitleref{SVDSolve()} with a rectangular \sphinxtitleref{Mat}
+
+\item {} 
+\sphinxAtStartPar
+bugs in nElementonB for DG 3d formulation.
+
+\end{itemize}
+
+\end{itemize}
+
+
+\section{Version 4.10: new features}
+\label{\detokenize{introduction/new-features:version-4-10-new-features}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Added
+\sphinxhyphen{} ridgeangle named parameter in ExtractMeshL in msh3 plugin
+\sphinxhyphen{} DG formulation in 1d :
+\begin{quote}
+
+\sphinxAtStartPar
+add integral of all border of element : \sphinxtitleref{intallBE(ThL)} and unified the notation by adding
+\sphinxtitleref{intallBE(ThS)} , \sphinxtitleref{intallBE(Th2)}, \sphinxtitleref{intallBE(Th3)}
+\sphinxtitleref{nuVertex} of now the vertex number of element in intallBE0d integral
+\sphinxtitleref{BoundaryBE}, \sphinxtitleref{InternalBE} to know if border element (BE) is on true boundary of not.
+update \sphinxtitleref{nElementonB} in case on no manifold data (value greater \textgreater{} 2) in meshL, MeshS case ..
+add code to use jump, mean of test functuon on MeshL case. ( not in mesh3 ) to compute RHS.
+\end{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+add getcwd() function in shell plugin to get the current working dir
+
+\item {} 
+\sphinxAtStartPar
+add nuVertex to get the vextex on element in some int?
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+Changed
+\sphinxhyphen{} PETSc 3.16.1
+
+\item {} 
+\sphinxAtStartPar
+Deprecated
+\sphinxhyphen{} SLEPc and SLEPc\sphinxhyphen{}complex have been part of PETSc and PETSc\sphinxhyphen{}complex for multiple releases and are now deprecated
+
+\item {} 
+\sphinxAtStartPar
+Fixed
+\sphinxhyphen{} examples/potential.edp correct problem in times loops and BC
+\sphinxhyphen{} tutorial/mortar\sphinxhyphen{}DN\sphinxhyphen{}4.edp correct problem of region number in meshL
+\sphinxhyphen{} fix problem in Curve mesh and intallBE , vertex number is wrong
+\sphinxhyphen{} portability issue on arm64\sphinxhyphen{}apple with \sphinxtitleref{make petsc\sphinxhyphen{}slepc}
+\sphinxhyphen{} fix assertion failure with \sphinxtitleref{transfer} and \sphinxtitleref{transferMat} with some finite elements
+
+\end{itemize}
+
+
+\section{Version 4.11: new features (4 apr 2022)}
+\label{\detokenize{introduction/new-features:version-4-11-new-features-4-apr-2022}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Added
+\sphinxhyphen{} add computation scalar product of R3 example :  ( N’{\color{red}\bfseries{}*}Tl)
+\sphinxhyphen{} add tools to do compution with R3 vector see tutorial/calculus.edp
+\sphinxhyphen{} add an example tutorial/tgv\sphinxhyphen{}test.edp see see what tgv do on matrix build.
+\sphinxhyphen{} add R3 Th.be(k).N to  get the normal of boundary element (in all mesh type)
+\sphinxhyphen{} add R3 Th.be(k){[}i{]}.P  to  get the point (R3)  of boundary vertices
+\sphinxhyphen{} add R3 Th.be(k).measure to  get the measure of the boundary elment
+\sphinxhyphen{} add projection  function to a mesh , meshL, MeshS or  mesh3 with return a R3 point
+\sphinxhyphen{} see new example dist\sphinxhyphen{}projection.edp example in exemples
+\sphinxhyphen{} add dxx, dyy, dzz, dxy,  .. on P2L finite element
+\sphinxhyphen{} add tools to compute solid angle :  let R3 O; a given point, Th3 a mesh3 and ThS a meshS.
+\begin{quote}
+
+\sphinxAtStartPar
+solidangle(O,Th3.be(ke)) // triangular face is the boundary face
+solidangle(O,Th3{[}k{]},nuface) // triangular face is face nuface of tet Th3{[}k{]}
+solidangle(O,ThS{[}k{]}) // triangular face is ThS{[}k{]}
+solidangle(O,A,B,C) // triangular face i (A,B,C)
+Volume(O,Th3.be(ke)) // O, triangular face is the boundary face
+Volume(O,Th3{[}k{]},nuface) // O, triangular face is face nuface of tet Th3{[}k{]}
+Volume(O,ThS{[}k{]}) // O, triangular face is ThS{[}k{]}
+Volume(O,A,B,C) // (O,A,B,C) tet ..
+\end{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+in bem pluging add array of HMatrix
+
+\item {} 
+\sphinxAtStartPar
+examples/3d/Connectivite\sphinxhyphen{}3d.edp or /3dSurf/Connectivite\sphinxhyphen{}S.edp of test.
+
+\item {} 
+\sphinxAtStartPar
+3 function mapk, mapkk, mapkk to set a function in fourier space with k parametre
+
+\end{itemize}
+\begin{quote}
+
+\sphinxAtStartPar
+R3 K; // le fourier variable allway 3d (sorry)
+int n1=16,n2=8, n3=4;
+real{[}int{]} tab1(nx,tab2(nx*ny),tab3(nx*ny*nz);
+mapk(tab1,K,sqr(K.x));
+mapkk(tab2,ny,K,K.norm2);
+mapkkk(tab3,ny,nz,K,K.norm2);
+//  Remark you can change K by P (current point)
+\end{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+in SurfaceMesh.ipd fonction to build a Isocaedron and a Sphere from this Isocaedron
+
+\item {} 
+\sphinxAtStartPar
+new finite element on MeshS  this  finite element is the ortogonal of RT0 on surface, or
+Nelelec Finite Element on triangle with one DoF per mesh edge and where the DoF is the
+current on  Edge in orientate edge by number of vertices.
+
+\item {} 
+\sphinxAtStartPar
+plugin Element\_P3pnc for new 2d finite element P3pnc (P3 + 2 bulles)  noncoforming  (continuite of P2 mod)
+
+\end{itemize}
+\begin{quote}
+\begin{description}
+\item[{and add 2 examples with this new finite element}] \leavevmode
+\sphinxAtStartPar
+examples/plugin/cavityNewtowP3pnc.edp examples/plugin/testFE\sphinxhyphen{}P3pnc.edp
+
+\end{description}
+\end{quote}
+\begin{itemize}
+\item {} \begin{description}
+\item[{function to set dirichlet Boundary conditon on matrix A (real ou compex) trought  an real{[}int{]}}] \leavevmode
+\sphinxAtStartPar
+(if none zero =\textgreater{} set BC )
+
+\item[{setBC(A,au1{[}{]},\sphinxhyphen{}2); and the example}] \leavevmode
+\sphinxAtStartPar
+examples/3d/Elasticity\sphinxhyphen{}simple\sphinxhyphen{}support\sphinxhyphen{}BC.edp
+
+\end{description}
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+Changed
+\sphinxhyphen{} the beaviour of linear solver UMFPACK, CHOLMOD in case of error , now FreeFEm exit on ExecError like in MUMPS
+\sphinxhyphen{} PETSc 3.17.0
+
+\item {} 
+\sphinxAtStartPar
+Removed
+\sphinxhyphen{}map function  in plugin dfft
+
+\item {} 
+\sphinxAtStartPar
+Fixed
+\sphinxhyphen{} pow(int,int) now call int version not complex version..
+\sphinxhyphen{} correct the normal the N implicite variable   on meshL case
+\sphinxhyphen{} correct version dump in banner FreeFem++ \sphinxhyphen{} version 4.10 (V …
+\sphinxhyphen{} correct  in CPU time on big mesh due to do bad HCode in HashTable.hpp
+\sphinxhyphen{} bug in array of finite element on meshhS, meshL (ie.  \sphinxtitleref{fespace Vh(ThS,{[}P1,P1{]});} )
+
+\end{itemize}
+
+\sphinxstepscope
 
 
 \section{Installation guide}
@@ -1521,6 +2042,8 @@ Read and follow the instruction, \sphinxhref{http://www3.freefem.org/ff++/color-
 \sphinxAtStartPar
 For emacs editor you can download \sphinxhref{https://github.com/rrgalvan/freefem-mode/}{ff++\sphinxhyphen{}mode.el} .
 
+\sphinxstepscope
+
 
 \section{Download}
 \label{\detokenize{introduction/download:download}}\label{\detokenize{introduction/download:id1}}\label{\detokenize{introduction/download::doc}}
@@ -1725,6 +2248,8 @@ Vim
 \par
 \sphinxattableend\end{savenotes}
 
+\sphinxstepscope
+
 
 \section{History}
 \label{\detokenize{introduction/history:history}}\label{\detokenize{introduction/history::doc}}\begin{quote}
@@ -1838,6 +2363,8 @@ FreeFem++ v3.57 parallel version
 FreeFem++ v4: New matrix type, Surface element, New Parallel tools …
 \end{quote}
 
+\sphinxstepscope
+
 
 \section{Citation}
 \label{\detokenize{introduction/citation:citation}}\label{\detokenize{introduction/citation::doc}}
@@ -1882,6 +2409,8 @@ HECHT, Frédéric. New development in FreeFem++. Journal of numerical mathematic
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 Hecht, Frédéric. \PYGZdq{}New development in FreeFem++.\PYGZdq{} Journal of numerical mathematics 20.3\PYGZhy{}4 (2012): 251\PYGZhy{}266.
 \end{sphinxVerbatim}
+
+\sphinxstepscope
 
 
 \section{Authors}
@@ -2171,6 +2700,8 @@ Web designer, \sphinxhref{https://www.airthium.com}{Airthium} internship
 \sphinxAtStartPar
 And all the dedicated \sphinxhref{https://github.com/FreeFem/FreeFem-doc/graphs/contributors}{Github contributors}
 
+\sphinxstepscope
+
 
 \section{Contributing}
 \label{\detokenize{introduction/contributing:contributing}}\label{\detokenize{introduction/contributing::doc}}
@@ -2194,6 +2725,8 @@ Open an \sphinxhref{https://github.com/FreeFem/FreeFem-sources/issues}{Issue} on
 \label{\detokenize{introduction/contributing:improve-content}}
 \sphinxAtStartPar
 Ask one of the contributors for Collaborator Access or make a \sphinxhref{https://github.com/FreeFem/FreeFem-doc/pulls}{Pull Request}.
+
+\sphinxstepscope
 
 
 \chapter{Learning by Examples}
@@ -2346,6 +2879,8 @@ For example:
 \PYG{k+kt}{real} \PYG{n}{aaa} \PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}
 \PYG{c+c1}{// real aaa;}
 \end{sphinxVerbatim}
+
+\sphinxstepscope
 
 
 \section{Getting started}
@@ -2742,6 +3277,8 @@ The linear system \eqref{equation:tutorials/poisson:eqn:Equation} is solved by \
 \sphinxAtStartPar
 meaning that \sphinxcode{\sphinxupquote{Poisson}} is declared only here and when it is called (by simply writing \sphinxcode{\sphinxupquote{Poisson;}}) then \eqref{equation:tutorials/poisson:eqn:Equation} will be solved by the Conjugate Gradient method.
 
+\sphinxstepscope
+
 
 \section{Classification of partial differential equations}
 \label{\detokenize{tutorials/equationsClassification:classification-of-partial-differential-equations}}\label{\detokenize{tutorials/equationsClassification::doc}}
@@ -2932,6 +3469,8 @@ The wave equation is well posed with :
 \ \hbox{and Dirichlet or Neumann or mixed conditions on}\
 \partial\Omega.\end{split}
 \end{equation*}
+\sphinxstepscope
+
 
 \section{Membrane}
 \label{\detokenize{tutorials/membrane:membrane}}\label{\detokenize{tutorials/membrane:tutorialmembrane}}\label{\detokenize{tutorials/membrane::doc}}
@@ -3232,6 +3771,8 @@ Then open \sphinxcode{\sphinxupquote{gnuplot}} and do:
 \sphinxAtStartPar
 This works with \sphinxcode{\sphinxupquote{P2}} and \sphinxcode{\sphinxupquote{P1}}, but not with \sphinxcode{\sphinxupquote{P1nc}} because the 3 first degrees of freedom of \sphinxcode{\sphinxupquote{P2}} or \sphinxcode{\sphinxupquote{P2}} are on vertices and not with \sphinxcode{\sphinxupquote{P1nc}}.
 
+\sphinxstepscope
+
 
 \section{Heat Exchanger}
 \label{\detokenize{tutorials/heatExchanger:heat-exchanger}}\label{\detokenize{tutorials/heatExchanger::doc}}
@@ -3428,6 +3969,8 @@ Then this is how the condenser should be computed:
 \sphinxAtStartPar
 Note that the names of the boundaries are lost but either their internal number (in the case of \sphinxcode{\sphinxupquote{C0}}) or their label number (for \sphinxcode{\sphinxupquote{C1}} and \sphinxcode{\sphinxupquote{C2}}) are kept.
 
+\sphinxstepscope
+
 
 \section{Acoustics}
 \label{\detokenize{tutorials/acoustics:acoustics}}\label{\detokenize{tutorials/acoustics::doc}}
@@ -3564,6 +4107,8 @@ To find all the \(u_e\) one can do the following :
 
 \end{figure}
 
+
+\sphinxstepscope
 
 
 \section{Thermal Conduction}
@@ -3802,6 +4347,8 @@ The iterative process will work with \(v=u-u_e\).
 \PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
+\sphinxstepscope
+
 
 \section{Irrotational Fan Blade Flow and Thermal effects}
 \label{\detokenize{tutorials/fanBlade:irrotational-fan-blade-flow-and-thermal-effects}}\label{\detokenize{tutorials/fanBlade::doc}}
@@ -3997,6 +4544,8 @@ Upwinding is necessary when the Pecley number \(|u|L/\kappa\) is large (here is 
 \sphinxAtStartPar
 The solver is Gauss’ LU factorization and when \sphinxcode{\sphinxupquote{init}} \(\neq 0\) the LU decomposition is reused so it is much faster after the first iteration.
 \end{sphinxadmonition}
+
+\sphinxstepscope
 
 
 \section{Pure Convection : The Rotating Hill}
@@ -4223,6 +4772,8 @@ Now if you think that DG is too slow try this:
 \PYG{p}{\PYGZcb{}}\PYG{p}{;}
 \end{sphinxVerbatim}
 
+\sphinxstepscope
+
 
 \section{The System of elasticity}
 \label{\detokenize{tutorials/elasticity:the-system-of-elasticity}}\label{\detokenize{tutorials/elasticity::doc}}
@@ -4389,6 +4940,8 @@ The size of the arrow is automatically bound, but the color gives the real lengt
 \end{figure}
 
 
+\sphinxstepscope
+
 
 \section{The System of Stokes for Fluids}
 \label{\detokenize{tutorials/stokes:the-system-of-stokes-for-fluids}}\label{\detokenize{tutorials/stokes::doc}}
@@ -4459,6 +5012,8 @@ Results are shown on \hyperref[\detokenize{tutorials/stokes:figstokes}]{Fig.\@ \
 
 \noindent\sphinxincludegraphics{{stokes}.png}
 \caption{Solution of Stokes’ equations for the driven cavity problem, showing the velocity field and the pressure level lines.}\label{\detokenize{tutorials/stokes:figstokes}}\end{figure}
+
+\sphinxstepscope
 
 
 \section{A projection algorithm for the Navier\sphinxhyphen{}Stokes equations}
@@ -4686,6 +5241,8 @@ Rannacher’s projection algorithm: result on an adapted mesh, \hyperref[\detoke
 \end{figure}
 
 
+\sphinxstepscope
+
 
 \section{Newton Method for the Steady Navier\sphinxhyphen{}Stokes equations}
 \label{\detokenize{tutorials/navierStokesNewton:newton-method-for-the-steady-navier-stokes-equations}}\label{\detokenize{tutorials/navierStokesNewton::doc}}
@@ -4899,6 +5456,8 @@ We use a trick to make continuation on the viscosity \(\nu\), because the Newton
 
 \end{figure}
 
+
+\sphinxstepscope
 
 
 \section{A Large Fluid Problem}
@@ -5224,6 +5783,8 @@ In variational form and with appropriated boundary conditions the problem is :
 \end{figure}
 
 
+\sphinxstepscope
+
 
 \section{An Example with Complex Numbers}
 \label{\detokenize{tutorials/complexNumbers:an-example-with-complex-numbers}}\label{\detokenize{tutorials/complexNumbers::doc}}
@@ -5354,6 +5915,8 @@ Results are shown on \hyperref[\detokenize{tutorials/complexNumbers:figcomplexre
 
 \end{figure}
 
+
+\sphinxstepscope
 
 
 \section{Optimal Control}
@@ -5540,6 +6103,8 @@ As BFGS stores an \(M\times M\) matrix where \(M\) is the number of unknowns, it
 One should use another optimizer such as the NonLinear Conjugate Gradient \sphinxcode{\sphinxupquote{NLCG}} (also a key word of \sphinxstylestrong{FreeFEM}).
 \end{sphinxadmonition}
 
+\sphinxstepscope
+
 
 \section{A Flow with Shocks}
 \label{\detokenize{tutorials/flowWithShocks:a-flow-with-shocks}}\label{\detokenize{tutorials/flowWithShocks::doc}}
@@ -5684,6 +6249,8 @@ A numerical result is given on \hyperref[\detokenize{tutorials/flowWithShocks:fi
 \noindent\sphinxincludegraphics[width=0.750\linewidth]{{mach_2r}.png}
 \caption{Pressure for a Euler flow around a disk at Mach 2 computed by \eqref{equation:tutorials/flowWithShocks:eulalgo}}\label{\detokenize{tutorials/flowWithShocks:figflowmach}}\end{figure}
 
+\sphinxstepscope
+
 
 \section{Time dependent schema optimization for heat equations}
 \label{\detokenize{tutorials/heatEquationOptimization:time-dependent-schema-optimization-for-heat-equations}}\label{\detokenize{tutorials/heatEquationOptimization::doc}}
@@ -5796,6 +6363,8 @@ Now, to build the right hand size; we need 4 vectors.
     \PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
+
+\sphinxstepscope
 
 
 \section{Tutorial to write a transient Stokes solver in matrix form}
@@ -5921,6 +6490,8 @@ For this we need a temporary vector in \(X_h\) and here is a solution:
 The freefem team agrees that the line \sphinxcode{\sphinxupquote{sol=w1{[}{]};}} is mysterious as it copies also w2 and wp into sol.
 Structured data such as vectors of \(X_h\) here cannot be written component by component.
 Hence \sphinxcode{\sphinxupquote{w1=u}} is not allowed.
+
+\sphinxstepscope
 
 
 \section{Wifi Propagation}
@@ -6159,6 +6730,8 @@ You can see the other positions here :
 
 \end{figure}
 
+
+\sphinxstepscope
 
 
 \section{Plotting in Matlab and Octave}
@@ -6439,6 +7012,8 @@ Contour (isovalue) and quiver (vector field) plot:
 
 \end{itemize}
 
+\sphinxstepscope
+
 
 \chapter{Documentation}
 \label{\detokenize{documentation/index:documentation}}\label{\detokenize{documentation/index::doc}}
@@ -6536,6 +7111,8 @@ Many examples and tutorials: elliptic, parabolic and hyperbolic problems, Navier
 A parallel version using MPI
 
 \end{itemize}
+
+\sphinxstepscope
 
 
 \section{Notations}
@@ -6823,6 +7400,8 @@ If \(\Omega\) is polygonal domain, then it will be \(\Omega=\Omega_h\)
 {[}\(\Pi_h f\){]} the projection of the function \(f\) into \(V_h\) (\sphinxcode{\sphinxupquote{func f=x\textasciicircum{}2*y\textasciicircum{}3; Vh v = f;}}) means \(v = Pi_h (f) * [\{v\}]\) for FE\sphinxhyphen{}function \(v\) in \(V_h\) means the column vector \((v_1,\cdots,v_M)^T\) if \(v=v_1\phi_1+\cdots+v_M\phi_M\), which is shown by \sphinxcode{\sphinxupquote{fespace Vh(Th, P2); Vh v; cout \textless{}\textless{} v{[}{]} \textless{}\textless{} endl;}}
 
 \end{itemize}
+
+\sphinxstepscope
 
 
 \section{Mesh Generation}
@@ -12634,6 +13213,8 @@ Leman lake
 
 \end{sphinxadmonition}
 
+\sphinxstepscope
+
 
 \section{Finite element}
 \label{\detokenize{documentation/finite-element:finite-element}}\label{\detokenize{documentation/finite-element:finiteelement}}\label{\detokenize{documentation/finite-element::doc}}
@@ -16266,6 +16847,8 @@ Degree of freedom of element \PYG{l+m}{2}:
 \end{sphinxVerbatim}
 \end{sphinxadmonition}
 
+\sphinxstepscope
+
 
 \section{Visualization}
 \label{\detokenize{documentation/visualization:visualization}}\label{\detokenize{documentation/visualization:id1}}\label{\detokenize{documentation/visualization::doc}}
@@ -16717,6 +17300,8 @@ Within Matlab or Octave the files can be plot with the \sphinxhref{https://githu
 \sphinxAtStartPar
 For more Matlab / Octave plot examples have a look at the tutorial section {\hyperref[\detokenize{tutorials/matlabOctavePlot:tutorialmatlaboctaveplot}]{\sphinxcrossref{\DUrole{std,std-ref}{Matlab / Octave Examples}}}} or visit the \sphinxhref{https://github.com/samplemaker/freefem\_matlab\_octave\_plot}{ffmatlib library} on github.
 \end{sphinxadmonition}
+
+\sphinxstepscope
 
 
 \section{Algorithms \& Optimization}
@@ -18540,6 +19125,8 @@ Calling the MPI version of CMA\sphinxhyphen{}ES is nearly the same as calling it
 If the population size is not changed using the \sphinxcode{\sphinxupquote{popsize}} parameter, it will use the heuristic value slightly changed to be equal to the closest greatest multiple of the size of the communicator used by the optimizer.
 The \sphinxstylestrong{FreeFEM} \sphinxcode{\sphinxupquote{mpicommworld}} is used by default.
 The user can specify his own MPI communicator with the named parameter \sphinxcode{\sphinxupquote{comm=}}, see the MPI section of this manual for more information about communicators in \sphinxstylestrong{FreeFEM}.
+
+\sphinxstepscope
 
 
 \section{Parallelization}
@@ -22210,6 +22797,8 @@ Operation use in reduce is: \sphinxcode{\sphinxupquote{MPI\_Op op}} which can be
 \sphinxAtStartPar
 Note that, for all global operations, only \sphinxcode{\sphinxupquote{int{[}int{]}}} and \sphinxcode{\sphinxupquote{real{[}int{]}}} are data type take in account in \sphinxstylestrong{FreeFEM}.
 
+\sphinxstepscope
+
 
 \section{PETSc and SLEPc}
 \label{\detokenize{documentation/petsc/index:petsc-and-slepc}}\label{\detokenize{documentation/petsc/index::doc}}
@@ -22235,6 +22824,8 @@ Provide these information to PETSc so that subsequent computations may be done i
 
 \sphinxAtStartPar
 Combining the power and flexibility of PETSc with the ease\sphinxhyphen{}of\sphinxhyphen{}use of FreeFEM may help design multiphysics solvers, e.g., for \sphinxhref{https://www.sciencedirect.com/science/article/pii/S0045782519301914}{Navier\textendash{}Stokes equations}, advanced matrix\sphinxhyphen{}free discretizations, and such.
+
+\sphinxstepscope
 
 
 \subsection{Examples}
@@ -22900,6 +23491,8 @@ Source code
 \par
 \sphinxattableend\end{savenotes}
 
+\sphinxstepscope
+
 
 \section{Plugins}
 \label{\detokenize{documentation/plugins:plugins}}\label{\detokenize{documentation/plugins::doc}}
@@ -23347,6 +23940,8 @@ After \PYG{n+nb}{wait} .. FF \PYG{l+m}{19} \PYG{l+m}{1}
 End Master
 After \PYG{n+nb}{wait} .. FF \PYG{l+m}{19} \PYG{l+m}{0}
 \end{sphinxVerbatim}
+
+\sphinxstepscope
 
 
 \section{Developers}
@@ -24638,6 +25233,8 @@ And the plot instruction is also changed because the pressure is constant, and w
 See the example
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples\%2B\%2B-load/bilapMorley.edp}{bilapMorley.edp}.
 
+\sphinxstepscope
+
 
 \section{ffddm}
 \label{\detokenize{documentation/ffddm/index:ffddm}}\label{\detokenize{documentation/ffddm/index::doc}}
@@ -24709,6 +25306,8 @@ To try this example, just copy and paste the script above in a file ‘test.edp�
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 ff\PYGZhy{}mpirun \PYGZhy{}np \PYG{l+m}{2} test.edp \PYGZhy{}wg
 \end{sphinxVerbatim}
+
+\sphinxstepscope
 
 
 \subsection{Domain Decomposition (DD)}
@@ -24979,6 +25578,8 @@ But the upper bound for this preconditioner is very large (which is bad for conv
 \sphinxAtStartPar
 Now, if we compare formulas for \(M^{-1}_{NN}\) and \(M^{-1}_{ASM}\), we may suspect that vectors \(\mathbf{V}_{ik}\) for which \(D_i\, (A_i^{\text{Neu}})^{-1}\,D_i\,\mathbf{V}_{ik}\) and \(A_{i}^{-1}\,\mathbf{V}_{ik}\) have very different values are responsible for the slow convergence and should contribute to the coarse space.
 This is a way to interpret the above generalized eigenvalue problem which controls the lower bound of the two\sphinxhyphen{}level preconditioned system.
+
+\sphinxstepscope
 
 
 \subsection{ffddm documentation}
@@ -25850,6 +26451,8 @@ M. Bonazzoli, V. Dolean, I. G. Graham, E. A. Spence, P.\sphinxhyphen{}H. Tournie
 
 
 
+\sphinxstepscope
+
 
 \subsection{Parameters}
 \label{\detokenize{documentation/ffddm/parameters:parameters}}\label{\detokenize{documentation/ffddm/parameters::doc}}
@@ -25992,6 +26595,8 @@ See the section about {\hyperref[\detokenize{documentation/ffddm/documentation:f
 See the section about \DUrole{xref,std,std-ref}{Approximate coarse solves for two level methods} for more details.
 
 \end{itemize}
+
+\sphinxstepscope
 
 
 \subsection{Tutorial}
@@ -26796,6 +27401,8 @@ speedup of 1.81 from 1536 to 3072 cores at 10GHz
 \sphinxAtStartPar
 You can find the script \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Maxwell\_Cobracavity.edp}{here}
 
+\sphinxstepscope
+
 
 \subsection{Examples}
 \label{\detokenize{documentation/ffddm/examples:examples}}\label{\detokenize{documentation/ffddm/examples:ffddmexamples}}\label{\detokenize{documentation/ffddm/examples::doc}}
@@ -27033,6 +27640,8 @@ GenEO
 \par
 \sphinxattableend\end{savenotes}
 
+\sphinxstepscope
+
 
 \chapter{Language references}
 \label{\detokenize{references/index:language-references}}\label{\detokenize{references/index::doc}}
@@ -27080,6 +27689,8 @@ The type declarations are mandatory in \sphinxstylestrong{FreeFEM}; in the end t
 
 \sphinxAtStartPar
 The variable name is just an alphanumeric string, the underscore character \sphinxcode{\sphinxupquote{\_}} is not allowed, because it will be used as an operator in the future.
+
+\sphinxstepscope
 
 
 \section{Types}
@@ -28372,6 +28983,8 @@ See {\hyperref[\detokenize{examples/developers:examplematrixoperations}]{\sphinx
 \sphinxAtStartPar
 See {\hyperref[\detokenize{examples/developers:examplematrixinversion}]{\sphinxcrossref{\DUrole{std,std-ref}{Matrix inversion example}}}}.
 
+\sphinxstepscope
+
 
 \section{Global variables}
 \label{\detokenize{references/global-variables:global-variables}}\label{\detokenize{references/global-variables:globalvariables}}\label{\detokenize{references/global-variables::doc}}
@@ -28717,6 +29330,8 @@ The \(z\) coordinate at the current point.
 \sphinxAtStartPar
 This is a real value.
 
+\sphinxstepscope
+
 
 \section{Quadrature formulae}
 \label{\detokenize{references/quadrature-formulae:quadrature-formulae}}\label{\detokenize{references/quadrature-formulae:quadratureformulae}}\label{\detokenize{references/quadrature-formulae::doc}}
@@ -29050,6 +29665,8 @@ This quadrature formula is the default one and be exact on \(\mathbb{P}_5\).
 \sphinxAtStartPar
 This quadrature formula is exact on \(\mathbb{P}_1\).
 
+\sphinxstepscope
+
 
 \section{Operators}
 \label{\detokenize{references/operators:operators}}\label{\detokenize{references/operators::doc}}
@@ -29324,6 +29941,8 @@ The output of this script is:
 \end{sphinxVerbatim}
 \end{sphinxadmonition}
 
+\sphinxstepscope
+
 
 \section{Loops}
 \label{\detokenize{references/loops:loops}}\label{\detokenize{references/loops::doc}}
@@ -29452,6 +30071,8 @@ If \sphinxcode{\sphinxupquote{real{[}int{]} a(10, 11)}}, then \sphinxcode{\sphin
 
 \sphinxAtStartPar
 See {\hyperref[\detokenize{examples/developers:exampleimplicitloop}]{\sphinxcrossref{\DUrole{std,std-ref}{Implicit loop example}}}}.
+
+\sphinxstepscope
 
 
 \section{I/O}
@@ -29690,6 +30311,8 @@ Behaves as if member width were called with \sphinxcode{\sphinxupquote{n}} as ar
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{n}{f}\PYG{p}{.}\PYG{k+kr}{setw}\PYG{p}{(}\PYG{k+kr}{n}\PYG{p}{)}
 \end{sphinxVerbatim}
+
+\sphinxstepscope
 
 
 \section{Functions}
@@ -33769,6 +34392,8 @@ Output:
 \sphinxcode{\sphinxupquote{b}} (\sphinxcode{\sphinxupquote{real}})
 
 \end{itemize}
+
+\sphinxstepscope
 
 
 \section{External libraries}
@@ -39356,6 +39981,8 @@ todo
 
 \subsubsection{Vtkaddscalar}
 \label{\detokenize{references/external-libraries:id247}}
+\sphinxstepscope
+
 
 \chapter{Mathematical Models}
 \label{\detokenize{models/index:mathematical-models}}\label{\detokenize{models/index::doc}}
@@ -39368,6 +39995,8 @@ It is a complement to the {\hyperref[\detokenize{tutorials/index:tutorial}]{\sph
 
 \sphinxAtStartPar
 \sphinxstylestrong{Users are invited to contribute to make this models database grow.}
+
+\sphinxstepscope
 
 
 \section{Static problems}
@@ -40652,6 +41281,8 @@ A second macro to re\sphinxhyphen{}mesh according to the new mesh size.
 \end{figure}
 
 
+\sphinxstepscope
+
 
 \section{Elasticity}
 \label{\detokenize{models/elasticity:elasticity}}\label{\detokenize{models/elasticity::doc}}
@@ -41270,6 +41901,8 @@ Crack Sliding, \(K_2(\gamma)=0\)
 
 \end{sphinxadmonition}
 
+\sphinxstepscope
+
 
 \section{Non\sphinxhyphen{}linear static problems}
 \label{\detokenize{models/non-linear-static-problems:non-linear-static-problems}}\label{\detokenize{models/non-linear-static-problems::doc}}
@@ -41368,6 +42001,8 @@ Now, we solve the Euler problem \(\nabla J (u) = 0\) with Newton\sphinxhyphen{}R
 \PYG{c+c1}{// Plot}
 \PYG{n+nf}{plot} \PYG{p}{(}\PYG{n}{u}\PYG{p}{,} \PYG{k+kp}{wait}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{,} \PYG{k+kp}{cmm}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Solution with Newton\PYGZhy{}Raphson}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+
+\sphinxstepscope
 
 
 \section{Eigen value problems}
@@ -41645,6 +42280,8 @@ lambda\PYG{o}{[}\PYG{l+m}{19}\PYG{o}{]} \PYG{o}{=} \PYG{l+m}{34}.0492, \PYG{n+nv
 \end{figure}
 
 \end{sphinxadmonition}
+
+\sphinxstepscope
 
 
 \section{Evolution problems}
@@ -42243,6 +42880,8 @@ Results are shown on \hyperref[\detokenize{models/evolution-problems:figevolutio
 \end{figure}
 
 \end{sphinxadmonition}
+
+\sphinxstepscope
 
 
 \section{Navier\sphinxhyphen{}Stokes equations}
@@ -42940,6 +43579,8 @@ Because we start from the previous solution and the end the previous solution is
 \caption{The vorticity at Reynolds number 100 a time 2s with the Cahouet\sphinxhyphen{}Chabart method.}\label{\detokenize{models/navier-stokes-equations:id8}}\end{figure}
 \end{sphinxadmonition}
 
+\sphinxstepscope
+
 
 \section{Variational Inequality}
 \label{\detokenize{models/variational-inequality:variational-inequality}}\label{\detokenize{models/variational-inequality::doc}}
@@ -43136,6 +43777,8 @@ Variational inequality
 As you can see on this example, some vector, or matrix operator are not implemented so a way is to skip the expression and we use operator \sphinxcode{\sphinxupquote{+=}},  \sphinxcode{\sphinxupquote{\sphinxhyphen{}=}} to merge the result.
 \end{sphinxadmonition}
 \end{sphinxadmonition}
+
+\sphinxstepscope
 
 
 \section{Domain decomposition}
@@ -43530,6 +44173,8 @@ The difference between the two notations \sphinxcode{\sphinxupquote{v1}} and \sp
 \end{sphinxVerbatim}
 \end{sphinxadmonition}
 
+\sphinxstepscope
+
 
 \section{Fluid\sphinxhyphen{}structure coupled problem}
 \label{\detokenize{models/fluid-structure-coupled-problem:fluid-structure-coupled-problem}}\label{\detokenize{models/fluid-structure-coupled-problem::doc}}
@@ -43782,6 +44427,8 @@ Fluid velocity and pressure, displacement vector of the structure and displaced 
 
 \end{sphinxadmonition}
 
+\sphinxstepscope
+
 
 \section{Transmission problem}
 \label{\detokenize{models/transmission-problem:transmission-problem}}\label{\detokenize{models/transmission-problem::doc}}
@@ -43914,6 +44561,8 @@ We this in mind we proceed to solve a Laplace equation with discontinuous coeffi
 
 \noindent\sphinxincludegraphics[width=0.500\linewidth]{{TransmissionProblem_U}.png}
 \caption{The isovalue of the solution \(u\)}\label{\detokenize{models/transmission-problem:id3}}\end{figure}
+
+\sphinxstepscope
 
 
 \section{Free boundary problems}
@@ -44127,6 +44776,8 @@ The \sphinxstylestrong{FreeFEM} implementation is:
 \end{figure}
 
 \end{sphinxadmonition}
+
+\sphinxstepscope
 
 
 \section{Non\sphinxhyphen{}linear elasticity}
@@ -44381,6 +45032,8 @@ And it is easy to make automatic differentiation.
 \PYG{c+c1}{// Plot}
 \PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{th1}\PYG{p}{,} \PYG{k+kp}{wait}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+
+\sphinxstepscope
 
 
 \section{Compressible Neo\sphinxhyphen{}Hookean materials}
@@ -44987,6 +45640,8 @@ while the weak BVP formulation acquires the form:
 \PYG{n+nf}{plot}\PYG{p}{(}\PYG{p}{[}\PYG{n}{u1n}\PYG{p}{,}\PYG{n}{u2n}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
+\sphinxstepscope
+
 
 \section{Whispering gallery modes}
 \label{\detokenize{models/whispering-gallery-modes:whispering-gallery-modes}}\label{\detokenize{models/whispering-gallery-modes::doc}}
@@ -45172,9 +45827,13 @@ The sphere is 36 micrometer in diameter, the refractive index is 1.46, the bound
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
+\sphinxstepscope
+
 
 \chapter{Examples}
 \label{\detokenize{examples/index:examples}}\label{\detokenize{examples/index:id1}}\label{\detokenize{examples/index::doc}}
+\sphinxstepscope
+
 
 \section{Misc}
 \label{\detokenize{examples/misc:misc}}\label{\detokenize{examples/misc::doc}}
@@ -45508,6 +46167,8 @@ The sphere is 36 micrometer in diameter, the refractive index is 1.46, the bound
 \PYG{k+kr}{cout} \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ CPU = }\PYG{l+s}{\PYGZdq{}} \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}} \PYG{n+nf}{clock}\PYG{p}{(}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{cpu} \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}} \PYG{k+kr}{endl} \PYG{p}{;}
 \PYG{n}{tabcpu} \PYG{o}{=} \PYG{n+nf}{clock}\PYG{p}{(}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{cpu}\PYG{p}{;}
 \end{sphinxVerbatim}
+
+\sphinxstepscope
 
 
 \section{Mesh Generation}
@@ -46127,6 +46788,8 @@ The sphere is 36 micrometer in diameter, the refractive index is 1.46, the bound
 \end{figure}
 
 
+\sphinxstepscope
+
 
 \section{Finite Element}
 \label{\detokenize{examples/finite-element:finite-element}}\label{\detokenize{examples/finite-element:examplefinteelement}}\label{\detokenize{examples/finite-element::doc}}
@@ -46248,6 +46911,8 @@ The sphere is 36 micrometer in diameter, the refractive index is 1.46, the bound
 
 \noindent\sphinxincludegraphics[width=0.500\linewidth]{{LagrangeMultipliers}.jpg}
 \caption{Result}\label{\detokenize{examples/finite-element:id2}}\end{figure}
+
+\sphinxstepscope
 
 
 \section{Visualization}
@@ -46426,6 +47091,8 @@ The sphere is 36 micrometer in diameter, the refractive index is 1.46, the bound
 
 \noindent\sphinxincludegraphics[width=0.500\linewidth]{{Paraview}.jpg}
 \caption{Result}\label{\detokenize{examples/visualization:id7}}\end{figure}
+
+\sphinxstepscope
 
 
 \section{Algorithms \& Optimizations}
@@ -47180,6 +47847,8 @@ ff\PYGZhy{}mpirun \PYGZhy{}np \PYG{l+m}{4} CMAESMPIVariationalInequality.edp \PY
 \noindent\sphinxincludegraphics[width=0.700\linewidth]{{CMAESMPIVariationalInequality}.png}
 \caption{Result}\label{\detokenize{examples/algorithms-and-optimizations:id5}}\end{figure}
 
+\sphinxstepscope
+
 
 \section{Parallelization}
 \label{\detokenize{examples/parallelization:parallelization}}\label{\detokenize{examples/parallelization:exampleparallelization}}\label{\detokenize{examples/parallelization::doc}}
@@ -47885,6 +48554,8 @@ write code (SuperLU\_DIST seems to have a bug)
 \sphinxAtStartPar
 write code (PaStiX seems to have a bug)
 \end{sphinxadmonition}
+
+\sphinxstepscope
 
 
 \section{Developers}
@@ -49381,6 +50052,8 @@ cholesky line:
  catch an erreur in  \PYG{n+nv}{solve}  \PYG{o}{=}\PYGZgt{}  \PYG{n+nb}{set}  \PYG{n+nv}{sol} \PYG{o}{=} \PYG{l+m}{0} !!!!!!!
  Catch cholesky PB
 \end{sphinxVerbatim}
+
+\sphinxstepscope
 
 \begin{sphinxthebibliography}{HINTERMU}
 \bibitem[PIRONNEAU1998]{bibliography:pironneau1998}
