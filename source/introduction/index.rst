@@ -14,7 +14,7 @@
    
    <center>
     <t> FreeFEM </t> <br/>
-    Fourth edition, Version 4.8 </t>
+    Fourth edition, Version 4.11 </t>
    </center> 
 
 ===============
@@ -77,7 +77,7 @@ Problems involving partial differential equations from several branches of physi
     * `ARPACK <https://www.caam.rice.edu/software/ARPACK/>`_
     * `BLAS <http://www.netlib.org/blas/>`_
     * `OpenBLAS <http://www.openblas.net/>`_
-    * `FFTW 3.3.2 <http://www.fftw.org>`_
+    * `FFTW 3.3.8 <http://www.fftw.org>`_
     * `Ipopt 3.12.4 <https://github.com/coin-or/Ipopt>`_
     * `Gmm++ 4.2 <http://getfem.org/gmm.html>`_
     * `freeYams <https://www.ljll.math.upmc.fr/frey/software.html>`_
@@ -93,7 +93,6 @@ Problems involving partial differential equations from several branches of physi
     * `SuperLU <http://crd-legacy.lbl.gov/~xiaoye/SuperLU/>`_
     * `TetGen <http://www.tetgen.org/>`_
     * `PETSc <https://www.mcs.anl.gov/petsc/>`_
-    * `SLEPc <https://slepc.upv.es/>`_
     * `HTool <https://pierremarchand.netlify.com/project/htool/>`_
     * `HPDDM <https://github.com/hpddm/hpddm>`_
     * `BemTool <https://github.com/PierreMarchand20/BemTool>`_
