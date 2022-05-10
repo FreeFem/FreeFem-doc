@@ -1939,13 +1939,13 @@ u &amp;= - u_\text{inc}  \;\; &amp;\text{on} \;\; &amp;\Gamma\\
 <p>First, let us introduce the <em>Green kernel</em> <span class="math notranslate nohighlight">\(\mathcal{G}\)</span>, which for the helmholtz equation in 3D is</p>
 <div class="math notranslate nohighlight" id="equation-eq-p">
 <span class="eqno">()<a class="headerlink" href="#equation-eq-p" title="Permalink to this equation"></a></span>\[\mathcal{G}(\boldsymbol{x}) = \exp(\imath k |\boldsymbol{x}|) / (4 \pi |\boldsymbol{x}|).\]</div>
-<p>Let us also introduce the <em>Single Layer Potential</em> <span class="math notranslate nohighlight">\(\text{SL}\)</span>, which for any <span class="math notranslate nohighlight">\(q \in H^{-1/2}(\Gamma)\)</span> is defined as</p>
+<p>Let us also introduce the <em>Single Layer Potential</em> <span class="math notranslate nohighlight">\(\operatorname{SL}\)</span>, which for any <span class="math notranslate nohighlight">\(q \in H^{-1/2}(\Gamma)\)</span> is defined as</p>
 <div class="math notranslate nohighlight" id="equation-eq-sl">
-<span class="eqno">()<a class="headerlink" href="#equation-eq-sl" title="Permalink to this equation"></a></span>\[\text{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}), \quad \forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Gamma.\]</div>
-<p>An interesting property of <span class="math notranslate nohighlight">\(\text{SL}\)</span> is that it produces solutions of the PDE at hand in <span class="math notranslate nohighlight">\(\mathbb{R}^3 \backslash \Gamma\)</span> which satisfy the necessary conditions at infinity (here the Sommerfeld radiation condition for the Helmholtz equation).</p>
+<span class="eqno">()<a class="headerlink" href="#equation-eq-sl" title="Permalink to this equation"></a></span>\[\operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}), \quad \forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Gamma.\]</div>
+<p>An interesting property of <span class="math notranslate nohighlight">\(\text{SL}\)</span> is that it produces solutions of the PDE at hand in <span class="math notranslate nohighlight">\(\mathbb{R}^3 \backslash \Gamma\)</span> which satisfy the necessary conditions at infinity (here the Helmholtz equation and the Sommerfeld radiation condition).</p>
 <p>Thus, we now need to find a so-called <em>ansatz</em> <span class="math notranslate nohighlight">\(p \in H^{-1/2}(\Gamma)\)</span> such that <span class="math notranslate nohighlight">\(\forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Omega\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eq-pv">
-<span class="eqno">()<a class="headerlink" href="#equation-eq-pv" title="Permalink to this equation"></a></span>\[u(\boldsymbol{x}) = \text{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\]</div>
+<span class="eqno">()<a class="headerlink" href="#equation-eq-pv" title="Permalink to this equation"></a></span>\[u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\]</div>
 <p>In order to find <span class="math notranslate nohighlight">\(p\)</span>, we define a variational problem by multiplying <a class="reference internal" href="#equation-eq-pv">()</a> by a test function <cite>q</cite> and integrating over <span class="math notranslate nohighlight">\(\Gamma\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\int_{\Gamma} u(\boldsymbol{x}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x}) =
@@ -1957,6 +1957,28 @@ u &amp;= - u_\text{inc}  \;\; &amp;\text{on} \;\; &amp;\Gamma\\
 <p>Of course, this inherent benefit of the boundary element method comes with a drawback: after discretization of <a class="reference internal" href="#equation-eq-bem">()</a>, for example with piecewise linear continuous (P1) functions on <span class="math notranslate nohighlight">\(\Gamma\)</span>, we end up with a linear system whose matrix is <strong>full</strong>: because <span class="math notranslate nohighlight">\(\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})\)</span> never vanishes, every interaction coefficient is nonzero. Thus, the matrix <span class="math notranslate nohighlight">\(A\)</span> of the linear system can be very costly to store (<span class="math notranslate nohighlight">\(n^2\)</span> coefficients) and invert (factorization in <span class="math notranslate nohighlight">\(\mathcal{O}(n^3)\)</span>) (<span class="math notranslate nohighlight">\(n\)</span> is the size of the linear system).
 Moreover, compared to the finite element method, the matrix coefficients are much more expensive to compute because of the double integral and the evaluation of the Green function <span class="math notranslate nohighlight">\(\mathcal{G}\)</span>. Plus, the choice of the quadrature formulas has to be made with extra care because of the singularity of <span class="math notranslate nohighlight">\(\mathcal{G}\)</span>.</p>
 </section>
+</section>
+<section id="boundary-integral-operators">
+<h2>Boundary Integral Operators<a class="headerlink" href="#boundary-integral-operators" title="Permalink to this headline"></a></h2>
+<p>In order to solve our model Dirichlet problem, we have used the <strong>Single Layer Potential</strong> <span class="math notranslate nohighlight">\(\operatorname{SL}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[q \mapsto \operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\]</div>
+<p>Depending on the choice of the boundary integral formulation or boundary condition, the <strong>Double Layer Potential</strong> <span class="math notranslate nohighlight">\(\operatorname{DL}\)</span> can also be of use:</p>
+<div class="math notranslate nohighlight">
+\[q \mapsto \operatorname{DL}(q)(\boldsymbol{x}) = \int_{\Gamma} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\]</div>
+<p>Similarly, we have used the <strong>Single Layer Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{SL}\)</span> in our variational problem</p>
+<div class="math notranslate nohighlight">
+\[p, q \mapsto \mathcal{SL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y}).\]</div>
+<p>There are three other building blocks that can be of use in the boundary element method, and depending on the problem and the choice of the formulation a boundary integral method makes use of one or a combination of these building blocks:</p>
+<p>the <strong>Double Layer Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{DL}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[p, q \mapsto \mathcal{DL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\]</div>
+<p>the <strong>Transpose Double Layer Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{TDL}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[p, q \mapsto \mathcal{TDL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\]</div>
+<p>the <strong>Hypersingular Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{HS}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[p, q \mapsto \mathcal{HS}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y})  \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\]</div>
 </section>
 </section>
 
@@ -1974,6 +1996,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <li><a class="reference internal" href="#model-problem">Model problem</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#boundary-integral-operators">Boundary Integral Operators</a></li>
 </ul>
 </li>
 </ul>
