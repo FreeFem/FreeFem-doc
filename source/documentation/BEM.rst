@@ -43,21 +43,21 @@ First, let us introduce the *Green kernel* :math:`\mathcal{G}`, which for the he
 
   \mathcal{G}(\boldsymbol{x}) = \exp(\imath k |\boldsymbol{x}|) / (4 \pi |\boldsymbol{x}|).
 
-Let us also introduce the *Single Layer Potential* :math:`\text{SL}`, which for any :math:`q \in H^{-1/2}(\Gamma)` is defined as
+Let us also introduce the *Single Layer Potential* :math:`\operatorname{SL}`, which for any :math:`q \in H^{-1/2}(\Gamma)` is defined as
 
 .. math::
   :label: eq_sl
 
-  \text{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}), \quad \forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Gamma.
+  \operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}), \quad \forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Gamma.
 
-An interesting property of :math:`\text{SL}` is that it produces solutions of the PDE at hand in :math:`\mathbb{R}^3 \backslash \Gamma` which satisfy the necessary conditions at infinity (here the Sommerfeld radiation condition for the Helmholtz equation).
+An interesting property of :math:`\text{SL}` is that it produces solutions of the PDE at hand in :math:`\mathbb{R}^3 \backslash \Gamma` which satisfy the necessary conditions at infinity (here the Helmholtz equation and the Sommerfeld radiation condition).
 
 Thus, we now need to find a so-called *ansatz* :math:`p \in H^{-1/2}(\Gamma)` such that :math:`\forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Omega`
 
 .. math::
   :label: eq_pv
 
-  u(\boldsymbol{x}) = \text{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}).
+  u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}).
 
 In order to find :math:`p`, we define a variational problem by multiplying :eq:`eq_pv` by a test function `q` and integrating over :math:`\Gamma`:
 
@@ -76,3 +76,38 @@ Note that knowing :math:`p` on :math:`\Gamma`, we can indeed compute :math:`u` a
 
 Of course, this inherent benefit of the boundary element method comes with a drawback: after discretization of :eq:`eq_bem`, for example with piecewise linear continuous (P1) functions on :math:`\Gamma`, we end up with a linear system whose matrix is **full**: because :math:`\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})` never vanishes, every interaction coefficient is nonzero. Thus, the matrix :math:`A` of the linear system can be very costly to store (:math:`n^2` coefficients) and invert (factorization in :math:`\mathcal{O}(n^3)`) (:math:`n` is the size of the linear system).  
 Moreover, compared to the finite element method, the matrix coefficients are much more expensive to compute because of the double integral and the evaluation of the Green function :math:`\mathcal{G}`. Plus, the choice of the quadrature formulas has to be made with extra care because of the singularity of :math:`\mathcal{G}`.
+
+Boundary Integral Operators
+-------------------------------------------------
+
+In order to solve our model Dirichlet problem, we have used the **Single Layer Potential** :math:`\operatorname{SL}`:
+
+.. math::
+  q \mapsto \operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).
+
+Depending on the choice of the boundary integral formulation or boundary condition, the **Double Layer Potential** :math:`\operatorname{DL}` can also be of use:
+
+.. math::
+  q \mapsto \operatorname{DL}(q)(\boldsymbol{x}) = \int_{\Gamma} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).
+
+Similarly, we have used the **Single Layer Operator** :math:`\mathcal{SL}` in our variational problem
+
+.. math::
+  p, q \mapsto \mathcal{SL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y}).
+
+There are three other building blocks that can be of use in the boundary element method, and depending on the problem and the choice of the formulation a boundary integral method makes use of one or a combination of these building blocks:
+
+the **Double Layer Operator** :math:`\mathcal{DL}`:
+
+.. math::
+  p, q \mapsto \mathcal{DL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})
+
+the **Transpose Double Layer Operator** :math:`\mathcal{TDL}`:
+
+.. math::
+  p, q \mapsto \mathcal{TDL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})
+
+the **Hypersingular Operator** :math:`\mathcal{HS}`:
+
+.. math::
+  p, q \mapsto \mathcal{HS}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y})  \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})
