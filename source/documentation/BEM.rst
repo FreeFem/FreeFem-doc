@@ -111,3 +111,17 @@ the **Hypersingular Operator** :math:`\mathcal{HS}`:
 
 .. math::
   p, q \mapsto \mathcal{HS}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y})  \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})
+
+the BEMTool library
+-------------------------------------------------
+
+In order to compute the coefficients of the BEM matrix, **FreeFEM** is interfaced with the boundary element library `BEMTool`_. **BEMTool** is a general purpose header-only C++ library written by Xavier Claeys, which handles
+
+- BEM Potentials and Operators for Laplace, Yukawa, Helmholtz and Maxwell equations
+- both in 2D and in 3D
+- 1D, 2D and 3D triangulations
+- :math:`\mathbb{P}_k`-Lagrange for :math:`k = 0,1,2` and surface :math:`\mathbb{RT}_0`
+
+Although **BEMTool** can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all :math:`n^2` coefficients of the matrix. Thus, we have to rely on a *matrix compression* technique. To do so, **FreeFEM** relies on the **Hierarchical Matrix**, or **H-Matrix** format.
+
+.. _BEMTool: https://github.com/xclaeys/BemTool
