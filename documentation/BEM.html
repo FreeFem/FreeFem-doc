@@ -1980,6 +1980,17 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <div class="math notranslate nohighlight">
 \[p, q \mapsto \mathcal{HS}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y})  \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\]</div>
 </section>
+<section id="the-bemtool-library">
+<h2>the BEMTool library<a class="headerlink" href="#the-bemtool-library" title="Permalink to this headline"></a></h2>
+<p>In order to compute the coefficients of the BEM matrix, <strong>FreeFEM</strong> is interfaced with the boundary element library <a class="reference external" href="https://github.com/xclaeys/BemTool">BEMTool</a>. <strong>BEMTool</strong> is a general purpose header-only C++ library written by Xavier Claeys, which handles</p>
+<ul class="simple">
+<li><p>BEM Potentials and Operators for Laplace, Yukawa, Helmholtz and Maxwell equations</p></li>
+<li><p>both in 2D and in 3D</p></li>
+<li><p>1D, 2D and 3D triangulations</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{P}_k\)</span>-Lagrange for <span class="math notranslate nohighlight">\(k = 0,1,2\)</span> and surface <span class="math notranslate nohighlight">\(\mathbb{RT}_0\)</span></p></li>
+</ul>
+<p>Although <strong>BEMTool</strong> can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all <span class="math notranslate nohighlight">\(n^2\)</span> coefficients of the matrix. Thus, we have to rely on a <em>matrix compression</em> technique. To do so, <strong>FreeFEM</strong> relies on the <strong>Hierarchical Matrix</strong>, or <strong>H-Matrix</strong> format.</p>
+</section>
 </section>
 
 
@@ -1997,6 +2008,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </ul>
 </li>
 <li><a class="reference internal" href="#boundary-integral-operators">Boundary Integral Operators</a></li>
+<li><a class="reference internal" href="#the-bemtool-library">the BEMTool library</a></li>
 </ul>
 </li>
 </ul>
