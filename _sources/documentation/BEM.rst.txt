@@ -74,11 +74,11 @@ Using the Dirichlet boundary condition :math:`u = - u_\text{inc}` on :math:`\Gam
 
 Note that knowing :math:`p` on :math:`\Gamma`, we can indeed compute :math:`u` anywhere using the *potential* formulation :eq:`eq_pv`. Thus, we essentially gained one space dimension, as we only have to solve for :math:`p : \Gamma \rightarrow \mathbb{C}` in :eq:`eq_bem`.
 
-Of course, this inherent benefit of the boundary element method comes with a drawback: after discretization of :eq:`eq_bem`, for example with piecewise linear continuous (P1) functions on :math:`\Gamma`, we end up with a linear system whose matrix is **full**: because :math:`\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})` never vanishes, every interaction coefficient is nonzero. Thus, the matrix :math:`A` of the linear system can be very costly to store (:math:`n^2` coefficients) and invert (factorization in :math:`\mathcal{O}(n^3)`) (:math:`n` is the size of the linear system).  
+Of course, this inherent benefit of the boundary element method comes with a drawback: after discretization of :eq:`eq_bem`, for example with piecewise linear continuous (P1) functions on :math:`\Gamma`, we end up with a linear system whose matrix is **full**: because :math:`\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})` never vanishes, every interaction coefficient is nonzero. Thus, the matrix :math:`A` of the linear system can be very costly to store (:math:`N^2` coefficients) and invert (factorization in :math:`\mathcal{O}(N^3)`) (:math:`N` is the size of the linear system).  
 Moreover, compared to the finite element method, the matrix coefficients are much more expensive to compute because of the double integral and the evaluation of the Green function :math:`\mathcal{G}`. Plus, the choice of the quadrature formulas has to be made with extra care because of the singularity of :math:`\mathcal{G}`.
 
 Boundary Integral Operators
--------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to solve our model Dirichlet problem, we have used the **Single Layer Potential** :math:`\operatorname{SL}`:
 
@@ -113,7 +113,7 @@ the **Hypersingular Operator** :math:`\mathcal{HS}`:
   p, q \mapsto \mathcal{HS}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y})  \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})
 
 the BEMTool library
--------------------------------------------------
+~~~~~~~~~~~~~~~~~~~
 
 In order to compute the coefficients of the BEM matrix, **FreeFEM** is interfaced with the boundary element library `BEMTool`_. **BEMTool** is a general purpose header-only C++ library written by Xavier Claeys, which handles
 
@@ -122,6 +122,63 @@ In order to compute the coefficients of the BEM matrix, **FreeFEM** is interface
 - 1D, 2D and 3D triangulations
 - :math:`\mathbb{P}_k`-Lagrange for :math:`k = 0,1,2` and surface :math:`\mathbb{RT}_0`
 
-Although **BEMTool** can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all :math:`n^2` coefficients of the matrix. Thus, we have to rely on a *matrix compression* technique. To do so, **FreeFEM** relies on the **Hierarchical Matrix**, or **H-Matrix** format.
+Although **BEMTool** can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all :math:`N^2` coefficients of the matrix. Thus, we have to rely on a *matrix compression* technique. To do so, **FreeFEM** relies on the **Hierarchical Matrix**, or **H-Matrix** format.
 
 .. _BEMTool: https://github.com/xclaeys/BemTool
+
+Hierarchical matrices
+~~~~~~~~~~~~~~~~~~~~~
+
+Low-rank approximation
+**********************
+
+Let :math:`\textbf{B} \in \mathbb{C}^{N \times N}` be a dense matrix. Assume that :math:`\textbf{B}` can be written as follows:
+
+.. math::
+  \textbf{B} = \sum_{j=1}^r \textbf{u}_j \textbf{v}_j^T
+
+where :math:`r \leq N, \textbf{u}_j \in \mathbb{C}^{N}, \textbf{v}_j \in \mathbb{C}^{N}.`
+
+If :math:`r < \frac{N^2}{2 N}`, the computing and storage cost is reduced to :math:`\mathcal{O}(r N) < \mathcal{O}(N^2)`. We say that :math:`\textbf{B}` is **low rank**.  
+
+Usually, the matrices we are interested in are not low-rank, but they may be well-approximated by low-rank matrices. We may start by writing their Singular Value Decomposition (SVD):
+
+.. math::
+  \textbf{B} = \sum_{j=1}^N \sigma_j \textbf{u}_j \textbf{v}_j^T
+
+where :math:`(\sigma_j)_{j=1}^N` are the *singular values* of :math:`\textbf{B}` in decreasing order, and :math:`(\textbf{u}_j)_{j=1}^N` and :math:`(\textbf{v}_j)_{j=1}^N` its *left and right singular vectors* respectively.  
+
+Indeed, if :math:`\textbf{B}` has fast decreasing singular values :math:`\sigma_j`, we can obtain a good approximation of :math:`\textbf{B}` by truncating the SVD sum, keeping only the first :math:`r` terms. Although the truncated SVD is actually the best low-rank approximation possible (Eckart-Young-Mirsky theorem), computing the SVD is costly (:math:`\mathcal{O}(N^3)`) and requires computing all :math:`N^2` coefficients of the matrix, which we want to avoid.  
+
+Thankfully, there exist several techniques to approximate a truncated SVD by computing only some coefficients of the initial matrix, such as randomized SVD, or **Partially pivoted Adaptive Cross Approximation (partial ACA)**, which requires only :math:`2 r N` coefficients.
+
+Hierarchical block structure
+****************************
+
+Unfortunately, BEM matrices generally do not have fast decreasing singular values. However, they can exhibit sub-blocks with rapidly decreasing singular values, thanks to the asymptotically smooth nature of the BEM kernel. Let us look for example at the absolute value of the matrix coefficients in the 2D (circle) case below:
+
+.. figure:: images/BEM_figyumatrix.png
+    :name: BEMfigyumatrix
+    :width: 40%
+
+- blocks *near* the diagonal contain information about the *near-field interactions*, which are not low-rank in nature
+- blocks *away* from the diagonal corresponding to the interaction between two clusters of geometric points :math:`X` and :math:`Y` satisfying the so-called **admissibility condition**
+
+.. math::
+  :label: eq_ac
+
+  \max(\text{diam}(X),\text{diam}(Y)) \leq \eta \text{ dist}(X,Y)
+
+are *far-field interactions* and have exponentially decreasing singular values. Thus, they can be well-approximated by low-rank matrices.  
+
+The idea is then to build a **hierarchical representation** of the blocks of the matrix, then identify and compress admissible blocks using low-rank approximation.  
+
+We can then build the *H-Matrix* by taking the following steps:
+
+1. build a *hierarchical partition* of the geometry, leading to a **cluster tree** of the unknowns. It can for example be defined using bisection and principal component analysis.
+2. from this hierarchical clustering, define and traverse the **block cluster tree** representation of the matrix structure, identifying the compressible blocks using admissibility condition :eq:`eq_ac`
+3. compute the low-rank approximation of the identified compressible blocks using e.g. *partial ACA* ; the remaining leaves corresponding to *near-field* interactions are computed as dense blocks.
+
+.. figure:: images/BEM_fighmatrix.svg
+    :name: BEMfighmatrix
+    :width: 80%
