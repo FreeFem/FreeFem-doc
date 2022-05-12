@@ -1988,10 +1988,10 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <li><p>1D, 2D and 3D triangulations</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbb{P}_k\)</span>-Lagrange for <span class="math notranslate nohighlight">\(k = 0,1,2\)</span> and surface <span class="math notranslate nohighlight">\(\mathbb{RT}_0\)</span></p></li>
 </ul>
-<p>Although <strong>BEMTool</strong> can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all <span class="math notranslate nohighlight">\(N^2\)</span> coefficients of the matrix. Thus, we have to rely on a <em>matrix compression</em> technique. To do so, <strong>FreeFEM</strong> relies on the <strong>Hierarchical Matrix</strong>, or <strong>H-Matrix</strong> format.</p>
 </section>
 <section id="hierarchical-matrices">
 <h3>Hierarchical matrices<a class="headerlink" href="#hierarchical-matrices" title="Permalink to this headline"></a></h3>
+<p>Although <strong>BEMTool</strong> can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all <span class="math notranslate nohighlight">\(N^2\)</span> coefficients of the matrix. Thus, we have to rely on a <em>matrix compression</em> technique. To do so, <strong>FreeFEM</strong> relies on the <strong>Hierarchical Matrix</strong>, or <strong>H-Matrix</strong> format.</p>
 <section id="low-rank-approximation">
 <h4>Low-rank approximation<a class="headerlink" href="#low-rank-approximation" title="Permalink to this headline"></a></h4>
 <p>Let <span class="math notranslate nohighlight">\(\textbf{B} \in \mathbb{C}^{N \times N}\)</span> be a dense matrix. Assume that <span class="math notranslate nohighlight">\(\textbf{B}\)</span> can be written as follows:</p>
@@ -2030,6 +2030,13 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <a class="reference internal image-reference" href="../_images/BEM_fighmatrix.svg"><img alt="../_images/BEM_fighmatrix.svg" src="../_images/BEM_fighmatrix.svg" width="80%" /></a>
 </figure>
 </section>
+<section id="the-htool-library">
+<h4>The Htool library<a class="headerlink" href="#the-htool-library" title="Permalink to this headline"></a></h4>
+<p>the H-Matrix format is implemented in the C++ library <a class="reference external" href="https://github.com/htool-ddm/htool">Htool</a>. <strong>Htool</strong> is a parallel header-only library written by Pierre Marchand and Pierre-Henri Tournier. It is interfaced with <strong>FreeFEM</strong> and provides routines to build hierarchical matrix structures (cluster trees, block trees, low-rank matrices, block matrices) as well as efficient parallel matrix-vector and matrix-matrix product using MPI and OpenMP. <strong>Htool</strong> is interfaced with <strong>BemTool</strong> to allow the compression of BEM matrices using the H-Matrix format in <strong>FreeFEM</strong>.</p>
+<figure class="align-default" id="bemfighmatrixpara">
+<a class="reference internal image-reference" href="../_images/BEM_fighmatrixpara.svg"><img alt="../_images/BEM_fighmatrixpara.svg" src="../_images/BEM_fighmatrixpara.svg" width="45%" /></a>
+</figure>
+</section>
 </section>
 </section>
 </section>
@@ -2051,6 +2058,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <li><a class="reference internal" href="#hierarchical-matrices">Hierarchical matrices</a><ul>
 <li><a class="reference internal" href="#low-rank-approximation">Low-rank approximation</a></li>
 <li><a class="reference internal" href="#hierarchical-block-structure">Hierarchical block structure</a></li>
+<li><a class="reference internal" href="#the-htool-library">The Htool library</a></li>
 </ul>
 </li>
 </ul>
