@@ -77,8 +77,12 @@ Note that knowing :math:`p` on :math:`\Gamma`, we can indeed compute :math:`u` a
 Of course, this inherent benefit of the boundary element method comes with a drawback: after discretization of :eq:`eq_bem`, for example with piecewise linear continuous (P1) functions on :math:`\Gamma`, we end up with a linear system whose matrix is **full**: because :math:`\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})` never vanishes, every interaction coefficient is nonzero. Thus, the matrix :math:`A` of the linear system can be very costly to store (:math:`N^2` coefficients) and invert (factorization in :math:`\mathcal{O}(N^3)`) (:math:`N` is the size of the linear system).  
 Moreover, compared to the finite element method, the matrix coefficients are much more expensive to compute because of the double integral and the evaluation of the Green function :math:`\mathcal{G}`. Plus, the choice of the quadrature formulas has to be made with extra care because of the singularity of :math:`\mathcal{G}`.
 
+.. _BEMintroBIO:
+
 Boundary Integral Operators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 In order to solve our model Dirichlet problem, we have used the **Single Layer Potential** :math:`\operatorname{SL}`:
 
@@ -274,3 +278,115 @@ We can also extract the boundary of a :freefem:`mesh3`:
   meshS ThS = extract(Th3, label=labs);
 
 You can find much more information about surface mesh generation :ref:`here <meshStype>`.
+
+Define the type of operator
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For now, FreeFEM allows to solve the following PDE with the boundary element method:
+
+.. math::
+  -\Delta u - k^2 u = 0, \quad k \in \mathbb{C},
+
+with
+
+- :math:`k = 0` (Laplace)
+- :math:`k \in \mathbb{R}^*_+` (Helmholtz)
+- :math:`k \in \imath \mathbb{R}^*_+` (Yukawa)
+
+First, the BEM plugin needs to be loaded:
+
+.. code-block:: freefem
+  :linenos:
+
+  load "bem"
+
+The information about the type of operator and the PDE can be specified by defining a variable of type :freefem:`BemKernel`:
+
+.. code-block:: freefem
+  :linenos:
+
+  BemKernel Ker("SL",k=2*pi);
+
+You can choose the type of operator depending on your formulation (see :ref:`Boundary Integral Operators <BEMintroBIO>`):
+
+- :freefem:`"SL"`: **Single Layer Operator** :math:`\mathcal{SL}`
+- :freefem:`"DL"`: **Double Layer Operator** :math:`\mathcal{DL}`
+- :freefem:`"TDL"`: **Transpose Double Layer Operator** :math:`\mathcal{TDL}`
+- :freefem:`"HS"`: **Hyper Singular Operator** :math:`\mathcal{HS}`
+
+Define the variational problem
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We can then define the variational form of the BEM problem. The double BEM integral is represented by the :freefem:`int1dx1d` keyword in the 2D case, and by :freefem:`int2dx2d` for a 3D problem. The :freefem:`BEM` keyword inside the integral takes the BEM kernel operator as argument: 
+
+.. code-block:: freefem
+  :linenos:
+
+  BemKernel Ker("SL", k=2*pi);
+  varf vbem(u,v) = int2dx2d(ThS)(ThS)(BEM(Ker,u,v));
+
+You can also specify the BEM kernel directly inside the integral:
+
+.. code-block:: freefem
+  :linenos:
+
+  varf vbem(u,v) = int2dx2d(ThS)(ThS)(BEM(BemKernel("SL",k=2*pi),u,v));
+
+Depending on the choice of the BEM formulation, there can be additional terms in the variational form. For example, **Second kind formulations** have an additional mass term:
+
+.. code-block:: freefem
+  :linenos:
+
+  BemKernel Ker("HS", k=2*pi);
+  varf vbem(u,v) = int2dx2d(ThS)(ThS)(BEM(Ker,u,v)) - int2d(ThS)(0.5*u*v);
+
+We can also define a linear combination of two BEM kernels, which is useful for **Combined formulations**:
+
+.. code-block:: freefem
+  :linenos:
+
+  complex k=2*pi;
+  BemKernel Ker1("HS", k=k);
+  BemKernel Ker2("DL", k=k);
+  BemKernel Ker = 1./(1i*k) * Ker1 + Ker2;
+  varf vbem(u,v) = int2dx2d(ThS)(ThS)(BEM(Ker,u,v)) - int2d(ThS)(0.5*u*v);
+
+As a starting point, you can find how to solve a 2D scattering problem by a disk using a **First kind**, **Second kind** and **Combined** formulation, for a Dirichlet (`here <https://github.com/FreeFem/FreeFem-sources/blob/master/examples/mpi/Helmholtz_circle_Dirichlet.edp>`__) and Neumann (`here <https://github.com/FreeFem/FreeFem-sources/blob/master/examples/mpi/Helmholtz_circle_Neumann.edp>`__) boundary condition.
+
+Assemble the H-Matrix
+~~~~~~~~~~~~~~~~~~~~~
+
+Assembling the matrix corresponding to the discretization of the variational form on an :freefem:`fespace` :freefem:`Uh` is similar to the finite element case, except that we end up with an :freefem:`HMatrix` instead of a sparse :freefem:`matrix`:
+
+.. code-block:: freefem
+  :linenos:
+
+  fespace Uh(ThS,P1);
+  HMatrix<complex> H = vbem(Uh,Uh);
+
+Behind the scenes, **FreeFEM** is using **Htool** and **BEMTool** to assemble the H-Matrix.
+
+.. note:: Since **Htool** is a parallel library, you need to use ``FreeFem++-mpi`` or ``ff-mpirun`` to be able to run your BEM script. The MPI parallelism is transparent to the user. You can speed up the computation by using multiple cores:
+
+  .. code-block:: freefem
+    :linenos:
+
+    ff-mpirun -np 4 script.edp -wg
+
+You can specify the different **Htool** parameters as below. These are the default values:
+
+.. code-block:: freefem
+  :linenos:
+
+  HMatrix<complex> H = vbem(Uh,Uh,
+    compressor = "partialACA", // or "fullACA", "SVD"
+    eta = 10.,                 // parameter for the admissibility condition
+    eps = 1e-3,                // target compression error for each block
+    minclustersize = 10,       // minimum block side size min(n,m)
+    maxblocksize = 1000000,    // maximum n*m block size
+    commworld = mpiCommWorld); // MPI communicator
+
+You can also set the default parameters globally in the script by changing the value of the global variables :freefem:`htoolEta`, :freefem:`htoolEpsilon`, :freefem:`htoolMinclustersize` and :freefem:`htoolMaxblocksize`.
+
+Solve the linear system
+~~~~~~~~~~~~~~~~~~~~~~~
