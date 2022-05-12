@@ -2039,6 +2039,65 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </section>
 </section>
 </section>
+<section id="solve-a-bem-problem-with-freefem">
+<h2>Solve a BEM problem with FreeFEM<a class="headerlink" href="#solve-a-bem-problem-with-freefem" title="Permalink to this headline"></a></h2>
+<section id="build-the-geometry">
+<h3>Build the geometry<a class="headerlink" href="#build-the-geometry" title="Permalink to this headline"></a></h3>
+<p>The geometry of the problem (i.e. the boundary <span class="math notranslate nohighlight">\(\Gamma\)</span>) can be discretized by a line (2D) or surface (3D) mesh:</p>
+<section id="d">
+<h4>2D<a class="headerlink" href="#d" title="Permalink to this headline"></a></h4>
+<p>In 2D, the geometry of the boundary can be defined with the <code class="code freefem docutils literal notranslate"><span class="pre">border</span></code> keyword and discretized by constructing a <em>line</em> or <em>curve</em> mesh of type <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code> using <code class="code freefem docutils literal notranslate"><span class="pre">buildmeshL</span></code>:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">border</span> <span class="nf">b</span><span class="p">(</span><span class="kp">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="nf">cos</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span> <span class="kr">y</span><span class="o">=</span><span class="nf">sin</span><span class="p">(</span><span class="kp">t</span><span class="p">);}</span>
+<span class="lineno">2 </span><span class="kt">meshL</span> <span class="n">ThL</span> <span class="o">=</span> <span class="n">buildmeshL</span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>With the <code class="code freefem docutils literal notranslate"><span class="pre">extract</span></code> keyword, we can also extract the boundary of a 2D <code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code> (need to <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;msh3&quot;</span></code>):</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
+<span class="lineno">2 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+<span class="lineno">3 </span><span class="kt">meshL</span> <span class="n">ThL</span> <span class="o">=</span> <span class="nf">extract</span><span class="p">(</span><span class="n">Th</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>or of a <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> ; we can also specify the boundary labels we want to extract:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
+<span class="lineno">2 </span><span class="kt">meshS</span> <span class="n">ThS</span> <span class="o">=</span> <span class="nf">square3</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+<span class="lineno">3 </span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">labs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">];</span>
+<span class="lineno">4 </span><span class="kt">meshL</span> <span class="n">ThL</span> <span class="o">=</span> <span class="nf">extract</span><span class="p">(</span><span class="n">ThS</span><span class="p">,</span> <span class="kr">label</span><span class="o">=</span><span class="n">labs</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can find much more information about curve mesh generation <a class="reference internal" href="mesh-generation.html#meshltype"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="id1">
+<h4>3D<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h4>
+<p>In 3D, the geometry of the boundary surface can be discretized with a surface mesh of type <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code>, which can be built by several ways, for example using the <code class="code freefem docutils literal notranslate"><span class="pre">square3</span></code> constructor:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
+<span class="lineno">2 </span><span class="kt">real</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.2</span><span class="p">;</span>
+<span class="lineno">3 </span><span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="o">/</span><span class="n">h</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="o">/</span><span class="n">h</span><span class="p">;</span>
+<span class="lineno">4 </span><span class="kt">func</span> <span class="n">torex</span> <span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="kr">y</span><span class="o">*</span><span class="kr">pi</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="kr">x</span><span class="o">*</span><span class="kr">pi</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+<span class="lineno">5 </span><span class="kt">func</span> <span class="n">tore</span> <span class="kr">y</span><span class="o">=</span> <span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">r</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="kr">y</span><span class="o">*</span><span class="kr">pi</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="kr">x</span><span class="o">*</span><span class="kr">pi</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+<span class="lineno">6 </span><span class="kt">func</span> <span class="n">torez</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="kr">y</span><span class="o">*</span><span class="kr">pi</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span>
+<span class="lineno">7 </span><span class="kt">meshS</span> <span class="n">ThS</span> <span class="o">=</span> <span class="nf">square3</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,[</span><span class="n">torex</span><span class="p">,</span><span class="n">torey</span><span class="p">,</span><span class="n">torez</span><span class="p">],</span><span class="kp">removeduplicate</span><span class="o">=</span><span class="kr">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<figure class="align-default" id="bemfigtorus">
+<a class="reference internal image-reference" href="../_images/BEM_figtorus.png"><img alt="../_images/BEM_figtorus.png" src="../_images/BEM_figtorus.png" style="width: 30%;" /></a>
+</figure>
+<p>or from a 2D <code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code> using the <code class="code freefem docutils literal notranslate"><span class="pre">movemesh23</span></code> keyword:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
+<span class="lineno">2 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+<span class="lineno">3 </span><span class="kt">meshS</span> <span class="n">ThS</span> <span class="o">=</span> <span class="nf">movemesh23</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">transfo</span><span class="o">=</span><span class="p">[</span><span class="kr">x</span><span class="p">,</span><span class="kr">y</span><span class="p">,</span><span class="nf">cos</span><span class="p">(</span><span class="kr">x</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="nf">sin</span><span class="p">(</span><span class="kr">y</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>We can also extract the boundary of a <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code>:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
+<span class="lineno">2 </span><span class="kt">mesh3</span> <span class="n">Th3</span> <span class="o">=</span> <span class="nf">cube</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+<span class="lineno">3 </span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">labs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">];</span>
+<span class="lineno">4 </span><span class="kt">meshS</span> <span class="n">ThS</span> <span class="o">=</span> <span class="nf">extract</span><span class="p">(</span><span class="n">Th3</span><span class="p">,</span> <span class="kr">label</span><span class="o">=</span><span class="n">labs</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can find much more information about surface mesh generation <a class="reference internal" href="mesh-generation.html#meshstype"><span class="std std-ref">here</span></a>.</p>
+</section>
+</section>
+</section>
 </section>
 
 
@@ -2059,6 +2118,14 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <li><a class="reference internal" href="#low-rank-approximation">Low-rank approximation</a></li>
 <li><a class="reference internal" href="#hierarchical-block-structure">Hierarchical block structure</a></li>
 <li><a class="reference internal" href="#the-htool-library">The Htool library</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#solve-a-bem-problem-with-freefem">Solve a BEM problem with FreeFEM</a><ul>
+<li><a class="reference internal" href="#build-the-geometry">Build the geometry</a><ul>
+<li><a class="reference internal" href="#d">2D</a></li>
+<li><a class="reference internal" href="#id1">3D</a></li>
 </ul>
 </li>
 </ul>

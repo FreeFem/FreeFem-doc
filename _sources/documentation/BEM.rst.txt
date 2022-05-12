@@ -193,3 +193,84 @@ the H-Matrix format is implemented in the C++ library `Htool`_. **Htool** is a p
     :width: 45%
 
 .. _Htool: https://github.com/htool-ddm/htool
+
+Solve a BEM problem with FreeFEM
+--------------------------------
+
+Build the geometry
+~~~~~~~~~~~~~~~~~~
+
+The geometry of the problem (i.e. the boundary :math:`\Gamma`) can be discretized by a line (2D) or surface (3D) mesh:
+
+2D
+**
+
+In 2D, the geometry of the boundary can be defined with the :freefem:`border` keyword and discretized by constructing a *line* or *curve* mesh of type :freefem:`meshL` using :freefem:`buildmeshL`:
+
+.. code-block:: freefem
+  :linenos:
+
+  border b(t = 0, 2*pi){x=cos(t); y=sin(t);}
+  meshL ThL = buildmeshL(b(100));
+
+With the :freefem:`extract` keyword, we can also extract the boundary of a 2D :freefem:`mesh` (need to :freefem:`load "msh3"`):
+
+.. code-block:: freefem
+  :linenos:
+
+  load "msh3"
+  mesh Th = square(10,10);
+  meshL ThL = extract(Th);
+
+or of a :freefem:`meshS` ; we can also specify the boundary labels we want to extract:
+
+.. code-block:: freefem
+  :linenos:
+
+  load "msh3"
+  meshS ThS = square3(10,10);
+  int[int] labs = [1,2];
+  meshL ThL = extract(ThS, label=labs);
+
+You can find much more information about curve mesh generation :ref:`here <meshLtype>`.
+
+3D
+**
+
+In 3D, the geometry of the boundary surface can be discretized with a surface mesh of type :freefem:`meshS`, which can be built by several ways, for example using the :freefem:`square3` constructor:
+
+.. code-block:: freefem
+  :linenos:
+
+  load "msh3"
+  real R = 3, r=1, h=0.2;
+  int nx = R*2*pi/h, ny = r*2*pi/h;
+  func torex = (R+r*cos(y*pi*2))*cos(x*pi*2);
+  func tore y= (R+r*cos(y*pi*2))*sin(x*pi*2);
+  func torez = r*sin(y*pi*2);
+  meshS ThS = square3(nx,ny,[torex,torey,torez],removeduplicate=true);
+
+.. figure:: images/BEM_figtorus.png
+    :name: BEMfigtorus
+    :width: 30%
+
+or from a 2D :freefem:`mesh` using the :freefem:`movemesh23` keyword:
+
+.. code-block:: freefem
+  :linenos:
+
+  load "msh3"
+  mesh Th = square(10,10);
+  meshS ThS = movemesh23(Th, transfo=[x,y,cos(x)^2+sin(y)^2]);
+
+We can also extract the boundary of a :freefem:`mesh3`:
+
+.. code-block:: freefem
+  :linenos:
+
+  load "msh3"
+  mesh3 Th3 = cube(10,10,10);
+  int[int] labs = [1,2,3,4];
+  meshS ThS = extract(Th3, label=labs);
+
+You can find much more information about surface mesh generation :ref:`here <meshStype>`.
