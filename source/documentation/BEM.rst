@@ -122,12 +122,12 @@ In order to compute the coefficients of the BEM matrix, **FreeFEM** is interface
 - 1D, 2D and 3D triangulations
 - :math:`\mathbb{P}_k`-Lagrange for :math:`k = 0,1,2` and surface :math:`\mathbb{RT}_0`
 
-Although **BEMTool** can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all :math:`N^2` coefficients of the matrix. Thus, we have to rely on a *matrix compression* technique. To do so, **FreeFEM** relies on the **Hierarchical Matrix**, or **H-Matrix** format.
-
 .. _BEMTool: https://github.com/xclaeys/BemTool
 
 Hierarchical matrices
 ~~~~~~~~~~~~~~~~~~~~~
+
+Although **BEMTool** can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all :math:`N^2` coefficients of the matrix. Thus, we have to rely on a *matrix compression* technique. To do so, **FreeFEM** relies on the **Hierarchical Matrix**, or **H-Matrix** format.
 
 Low-rank approximation
 **********************
@@ -182,3 +182,14 @@ We can then build the *H-Matrix* by taking the following steps:
 .. figure:: images/BEM_fighmatrix.svg
     :name: BEMfighmatrix
     :width: 80%
+
+The Htool library
+*****************
+
+the H-Matrix format is implemented in the C++ library `Htool`_. **Htool** is a parallel header-only library written by Pierre Marchand and Pierre-Henri Tournier. It is interfaced with **FreeFEM** and provides routines to build hierarchical matrix structures (cluster trees, block trees, low-rank matrices, block matrices) as well as efficient parallel matrix-vector and matrix-matrix product using MPI and OpenMP. **Htool** is interfaced with **BemTool** to allow the compression of BEM matrices using the H-Matrix format in **FreeFEM**.
+
+.. figure:: images/BEM_fighmatrixpara.svg
+    :name: BEMfighmatrixpara
+    :width: 45%
+
+.. _Htool: https://github.com/htool-ddm/htool
