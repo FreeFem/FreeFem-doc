@@ -9,6 +9,8 @@ The Boundary Element Method
 Introduction to the Boundary Element Method (BEM)
 -------------------------------------------------
 
+.. _BEMintromodel:
+
 Model problem
 ~~~~~~~~~~~~~
 
@@ -412,7 +414,7 @@ Generally, the right-hand-side of the linear system is built as the discretizati
 .. code-block:: freefem
   :linenos:
 
-  Uh<complex> b;
+  Uh<complex> p, b;
   varf vrhs(u,v) = -int2d(ThS)(uinc*v);
   b[] = vrhs(0,Uh);
 
@@ -460,3 +462,51 @@ Computing :math:`u` on :freefem:`UhOut` is then just a matter of performing the 
   UhOut<complex> u;
   u[] = HP*p[];
   plot(u);
+
+2D example script
+-----------------
+
+Let us summarize what we have learned with a 2D version of our :ref:`model problem <BEMintromodel>` where we study the scattering of a plane wave by a disc:
+
+.. code-block:: freefem
+  :linenos:
+
+  load "bem"
+
+  real k = 10;
+
+  int n = 100;
+
+  border circle(t = 0, 2*pi){x=cos(t); y=sin(t);}
+  meshL ThL = buildmeshL(circle(n));
+
+  varf vbem(u,v) = int1dx1d(ThL)(ThL)(BEM(BemKernel("SL",k=k),u,v));
+
+  fespace Uh(ThL,P1);
+  HMatrix<complex> H = vbem(Uh,Uh);
+
+  func uinc = exp(1i*k*x);
+  Uh<complex> p, b;
+  varf vrhs(u,v) = -int1d(ThL)(uinc*v);
+  b[] = vrhs(0,Uh);
+
+  p[] = H^-1*b[];
+
+  varf vpot(u,v) = int1d(ThL)(POT(BemPotential("SL",k=k),u,v));
+
+  int np = 200;
+  int R = 4;
+  border b1(t=-R, R){x=t; y=-R;}
+  border b2(t=-R, R){x=R; y=t;}
+  border b3(t=-R, R){x=-t; y=R;}
+  border b4(t=-R, R){x=-R; y=-t;}
+  mesh ThOut = buildmesh(b1(np)+b2(np)+b3(np)+b4(np)+circle(-n));
+
+  fespace UhOut(ThOut,P1);
+  HMatrix<complex> HP = vpot(Uh,UhOut);
+
+  UhOut<complex> u, utot;
+  u[] = HP*p[];
+
+  utot = u + uinc;
+  plot(utot,fill=1,value=1);
