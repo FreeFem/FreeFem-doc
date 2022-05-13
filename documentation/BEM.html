@@ -1945,7 +1945,8 @@ u &amp;= - u_\text{inc}  \;\; &amp;\text{on} \;\; &amp;\Gamma\\
 <p>An interesting property of <span class="math notranslate nohighlight">\(\text{SL}\)</span> is that it produces solutions of the PDE at hand in <span class="math notranslate nohighlight">\(\mathbb{R}^3 \backslash \Gamma\)</span> which satisfy the necessary conditions at infinity (here the Helmholtz equation and the Sommerfeld radiation condition).</p>
 <p>Thus, we now need to find a so-called <em>ansatz</em> <span class="math notranslate nohighlight">\(p \in H^{-1/2}(\Gamma)\)</span> such that <span class="math notranslate nohighlight">\(\forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Omega\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eq-pv">
-<span class="eqno">()<a class="headerlink" href="#equation-eq-pv" title="Permalink to this equation"></a></span>\[u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\]</div>
+<span class="eqno">()<a class="headerlink" href="#equation-eq-pv" title="Permalink to this equation"></a></span>\[u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}),\]</div>
+<p>where <span class="math notranslate nohighlight">\(u\)</span> also verifies the Dirichlet boundary condition <span class="math notranslate nohighlight">\(u = - u_\text{inc}\)</span> on <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
 <p>In order to find <span class="math notranslate nohighlight">\(p\)</span>, we define a variational problem by multiplying <a class="reference internal" href="#equation-eq-pv">()</a> by a test function <cite>q</cite> and integrating over <span class="math notranslate nohighlight">\(\Gamma\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\int_{\Gamma} u(\boldsymbol{x}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x}) =
@@ -1959,7 +1960,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </section>
 <section id="boundary-integral-operators">
 <span id="bemintrobio"></span><h3>Boundary Integral Operators<a class="headerlink" href="#boundary-integral-operators" title="Permalink to this headline"></a></h3>
-<p>In order to solve our model Dirichlet problem, we have used the <strong>Single Layer Potential</strong> <span class="math notranslate nohighlight">\(\operatorname{SL}\)</span>:</p>
+<p>In order to formulate our model Dirichlet problem, we have used the <strong>Single Layer Potential</strong> <span class="math notranslate nohighlight">\(\operatorname{SL}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[q \mapsto \operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\]</div>
 <p>Depending on the choice of the boundary integral formulation or boundary condition, the <strong>Double Layer Potential</strong> <span class="math notranslate nohighlight">\(\operatorname{DL}\)</span> can also be of use:</p>
@@ -2176,9 +2177,28 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </pre></div>
 </div>
 <p>You can also set the default parameters globally in the script by changing the value of the global variables <code class="code freefem docutils literal notranslate"><span class="pre">htoolEta</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">htoolEpsilon</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">htoolMinclustersize</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">htoolMaxblocksize</span></code>.</p>
+<p>Once assembled, the H-Matrix can also be plotted with</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">display</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="kp">wait</span><span class="o">=</span><span class="kr">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>FreeFEM</strong> can also output some information and statistics about the assembly of <code class="code freefem docutils literal notranslate"><span class="pre">H</span></code>:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">if</span> <span class="p">(</span><span class="kr">mpirank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="n">H</span><span class="p">.</span><span class="n">infos</span> <span class="o">&lt;&lt;</span> <span class="kr">endl</span><span class="p">;</span>
+</pre></div>
+</div>
 </section>
 <section id="solve-the-linear-system">
 <h3>Solve the linear system<a class="headerlink" href="#solve-the-linear-system" title="Permalink to this headline"></a></h3>
+<p>Generally, the right-hand-side of the linear system is built as the discretization of a standard linear form:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">Uh</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">;</span>
+<span class="lineno">2 </span><span class="kt">varf</span> <span class="nf">vrhs</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="nf">int2d</span><span class="p">(</span><span class="n">ThS</span><span class="p">)(</span><span class="n">uinc</span><span class="o">*</span><span class="n">v</span><span class="p">);</span>
+<span class="lineno">3 </span><span class="n">b</span><span class="p">[]</span> <span class="o">=</span> <span class="n">vrhs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">Uh</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>We can then solve the linear system to obtain <span class="math notranslate nohighlight">\(p\)</span>, with the standard syntax:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">p</span><span class="p">[]</span> <span class="o">=</span> <span class="n">H</span><span class="o">^-</span><span class="mi">1</span><span class="o">*</span><span class="n">b</span><span class="p">[];</span>
+</pre></div>
+</div>
+<p>Under the hood, <strong>FreeFEM</strong> solves the linear system with GMRES with a Jacobi (diagonal) preconditioner.</p>
 </section>
 </section>
 </section>

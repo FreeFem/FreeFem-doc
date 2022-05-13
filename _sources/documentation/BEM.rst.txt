@@ -57,7 +57,9 @@ Thus, we now need to find a so-called *ansatz* :math:`p \in H^{-1/2}(\Gamma)` su
 .. math::
   :label: eq_pv
 
-  u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}).
+  u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}),
+
+where :math:`u` also verifies the Dirichlet boundary condition :math:`u = - u_\text{inc}` on :math:`\Gamma`.  
 
 In order to find :math:`p`, we define a variational problem by multiplying :eq:`eq_pv` by a test function `q` and integrating over :math:`\Gamma`:
 
@@ -82,9 +84,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 Boundary Integral Operators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-In order to solve our model Dirichlet problem, we have used the **Single Layer Potential** :math:`\operatorname{SL}`:
+In order to formulate our model Dirichlet problem, we have used the **Single Layer Potential** :math:`\operatorname{SL}`:
 
 .. math::
   q \mapsto \operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).
@@ -386,7 +386,39 @@ You can specify the different **Htool** parameters as below. These are the defau
     maxblocksize = 1000000,    // maximum n*m block size
     commworld = mpiCommWorld); // MPI communicator
 
-You can also set the default parameters globally in the script by changing the value of the global variables :freefem:`htoolEta`, :freefem:`htoolEpsilon`, :freefem:`htoolMinclustersize` and :freefem:`htoolMaxblocksize`.
+You can also set the default parameters globally in the script by changing the value of the global variables :freefem:`htoolEta`, :freefem:`htoolEpsilon`, :freefem:`htoolMinclustersize` and :freefem:`htoolMaxblocksize`.  
+
+Once assembled, the H-Matrix can also be plotted with
+
+.. code-block:: freefem
+  :linenos:
+
+  display(H, wait=true);
+
+**FreeFEM** can also output some information and statistics about the assembly of :freefem:`H`:
+
+.. code-block:: freefem
+  :linenos:
+
+  if (mpirank == 0) cout << H.infos << endl;
 
 Solve the linear system
 ~~~~~~~~~~~~~~~~~~~~~~~
+
+Generally, the right-hand-side of the linear system is built as the discretization of a standard linear form:
+
+.. code-block:: freefem
+  :linenos:
+
+  Uh<complex> b;
+  varf vrhs(u,v) = -int2d(ThS)(uinc*v);
+  b[] = vrhs(0,Uh);
+
+We can then solve the linear system to obtain :math:`p`, with the standard syntax:
+
+.. code-block:: freefem
+  :linenos:
+
+  p[] = H^-1*b[];
+
+Under the hood, **FreeFEM** solves the linear system with GMRES with a Jacobi (diagonal) preconditioner.
