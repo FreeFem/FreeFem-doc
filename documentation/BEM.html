@@ -1923,8 +1923,8 @@
 <figure class="align-default" id="bemfigdomainbem">
 <a class="reference internal image-reference" href="../_images/BEM_figdomainbem.png"><img alt="../_images/BEM_figdomainbem.png" src="../_images/BEM_figdomainbem.png" style="width: 30%;" /></a>
 </figure>
-<div class="math notranslate nohighlight">
-\[\begin{split}\left \{
+<div class="math notranslate nohighlight" id="equation-eq-modelpb">
+<span class="eqno">()<a class="headerlink" href="#equation-eq-modelpb" title="Permalink to this equation"></a></span>\[\begin{split}\left \{
 \begin{aligned}
 - \Delta u - k^2 u &amp;= 0 \;\; &amp;\text{in} \;\; &amp;\mathbb{R}^3 \backslash \Omega \\
 u &amp;= - u_\text{inc}  \;\; &amp;\text{on} \;\; &amp;\Gamma\\
@@ -2200,6 +2200,29 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </div>
 <p>Under the hood, <strong>FreeFEM</strong> solves the linear system with GMRES with a Jacobi (diagonal) preconditioner.</p>
 </section>
+<section id="compute-the-solution">
+<h3>Compute the solution<a class="headerlink" href="#compute-the-solution" title="Permalink to this headline"></a></h3>
+<p>Finally, knowing <span class="math notranslate nohighlight">\(p\)</span>, we can compute the solution <span class="math notranslate nohighlight">\(u\)</span> of our initial problem <a class="reference internal" href="#equation-eq-modelpb">()</a> using the Potential as in <a class="reference internal" href="#equation-eq-pv">()</a>. As for the <code class="code freefem docutils literal notranslate"><span class="pre">BemKernel</span></code>, the information about the type of potential can be specified by defining a variable of type <code class="code freefem docutils literal notranslate"><span class="pre">BemPotential</span></code>:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">BemPotential</span> <span class="nf">Pot</span><span class="p">(</span><span class="s">&quot;SL&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In order to benefit from low-rank compression, instead of using <a class="reference internal" href="#equation-eq-pv">()</a> to sequentially compute the value <span class="math notranslate nohighlight">\(u(\boldsymbol{x})\)</span> at each point of interest <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, we can compute the discretization of the Potential on a target finite element space <code class="code freefem docutils literal notranslate"><span class="pre">UhOut</span></code> defined on an output mesh <code class="code freefem docutils literal notranslate"><span class="pre">ThOut</span></code> with an H-Matrix.</p>
+<p>First, let us define the variational form corresponding to the potential that we want to use to reconstruct our solution. Similarly to the kernel case, the <code class="code freefem docutils literal notranslate"><span class="pre">POT</span></code> keyword takes the potential as argument. Note that we have a single integral, and that <code class="code freefem docutils literal notranslate"><span class="pre">v</span></code> plays the role of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>.</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">varf</span> <span class="nf">vpot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">ThS</span><span class="p">)(</span><span class="n">POT</span><span class="p">(</span><span class="n">Pot</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>We can then assemble the rectangular H-Matrix from the potential variational form:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">UhOut</span><span class="p">(</span><span class="n">ThOut</span><span class="p">,</span><span class="nc">P1</span><span class="p">);</span>
+<span class="lineno">2 </span><span class="n">HMatrix</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">HP</span> <span class="o">=</span> <span class="n">vpot</span><span class="p">(</span><span class="n">Uh</span><span class="p">,</span><span class="n">UhOut</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Computing <span class="math notranslate nohighlight">\(u\)</span> on <code class="code freefem docutils literal notranslate"><span class="pre">UhOut</span></code> is then just a matter of performing the matrix-vector product of <code class="code freefem docutils literal notranslate"><span class="pre">HP</span></code> with <code class="code freefem docutils literal notranslate"><span class="pre">p</span></code>:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">UhOut</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">u</span><span class="p">;</span>
+<span class="lineno">2 </span><span class="n">u</span><span class="p">[]</span> <span class="o">=</span> <span class="n">HP</span><span class="o">*</span><span class="n">p</span><span class="p">[];</span>
+<span class="lineno">3 </span><span class="nf">plot</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -2235,6 +2258,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <li><a class="reference internal" href="#define-the-variational-problem">Define the variational problem</a></li>
 <li><a class="reference internal" href="#assemble-the-h-matrix">Assemble the H-Matrix</a></li>
 <li><a class="reference internal" href="#solve-the-linear-system">Solve the linear system</a></li>
+<li><a class="reference internal" href="#compute-the-solution">Compute the solution</a></li>
 </ul>
 </li>
 </ul>

@@ -19,6 +19,8 @@ The model problem we consider here is the scattering of an incoming acoustic wav
     :width: 30%
 
 .. math::
+  :label: eq_modelpb
+
   \left \{
   \begin{aligned}
   - \Delta u - k^2 u &= 0 \;\; &\text{in} \;\; &\mathbb{R}^3 \backslash \Omega \\
@@ -422,3 +424,39 @@ We can then solve the linear system to obtain :math:`p`, with the standard synta
   p[] = H^-1*b[];
 
 Under the hood, **FreeFEM** solves the linear system with GMRES with a Jacobi (diagonal) preconditioner.
+
+Compute the solution
+~~~~~~~~~~~~~~~~~~~~
+
+Finally, knowing :math:`p`, we can compute the solution :math:`u` of our initial problem :eq:`eq_modelpb` using the Potential as in :eq:`eq_pv`. As for the :freefem:`BemKernel`, the information about the type of potential can be specified by defining a variable of type :freefem:`BemPotential`:
+
+.. code-block:: freefem
+  :linenos:
+
+  BemPotential Pot("SL", k=2*pi);
+
+In order to benefit from low-rank compression, instead of using :eq:`eq_pv` to sequentially compute the value :math:`u(\boldsymbol{x})` at each point of interest :math:`\boldsymbol{x}`, we can compute the discretization of the Potential on a target finite element space :freefem:`UhOut` defined on an output mesh :freefem:`ThOut` with an H-Matrix.  
+
+First, let us define the variational form corresponding to the potential that we want to use to reconstruct our solution. Similarly to the kernel case, the :freefem:`POT` keyword takes the potential as argument. Note that we have a single integral, and that :freefem:`v` plays the role of :math:`\boldsymbol{x}`.
+
+.. code-block:: freefem
+  :linenos:
+
+  varf vpot(u,v) = int2d(ThS)(POT(Pot,u,v));
+
+We can then assemble the rectangular H-Matrix from the potential variational form:
+
+.. code-block:: freefem
+  :linenos:
+
+  fespace UhOut(ThOut,P1);
+  HMatrix<complex> HP = vpot(Uh,UhOut);
+
+Computing :math:`u` on :freefem:`UhOut` is then just a matter of performing the matrix-vector product of :freefem:`HP` with :freefem:`p`:
+
+.. code-block:: freefem
+  :linenos:
+
+  UhOut<complex> u;
+  u[] = HP*p[];
+  plot(u);
