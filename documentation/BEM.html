@@ -1918,7 +1918,7 @@
 <section id="introduction-to-the-boundary-element-method-bem">
 <h2>Introduction to the Boundary Element Method (BEM)<a class="headerlink" href="#introduction-to-the-boundary-element-method-bem" title="Permalink to this headline"></a></h2>
 <section id="model-problem">
-<h3>Model problem<a class="headerlink" href="#model-problem" title="Permalink to this headline"></a></h3>
+<span id="bemintromodel"></span><h3>Model problem<a class="headerlink" href="#model-problem" title="Permalink to this headline"></a></h3>
 <p>The model problem we consider here is the scattering of an incoming acoustic wave <span class="math notranslate nohighlight">\(u_\text{inc}\)</span> by an obstacle <span class="math notranslate nohighlight">\(\Omega\)</span>. Thus, we want to solve the following homogeneous Helmholtz equation written in terms of the scattered field <span class="math notranslate nohighlight">\(u\)</span>:</p>
 <figure class="align-default" id="bemfigdomainbem">
 <a class="reference internal image-reference" href="../_images/BEM_figdomainbem.png"><img alt="../_images/BEM_figdomainbem.png" src="../_images/BEM_figdomainbem.png" style="width: 30%;" /></a>
@@ -2189,7 +2189,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <section id="solve-the-linear-system">
 <h3>Solve the linear system<a class="headerlink" href="#solve-the-linear-system" title="Permalink to this headline"></a></h3>
 <p>Generally, the right-hand-side of the linear system is built as the discretization of a standard linear form:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">Uh</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">Uh</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kt">varf</span> <span class="nf">vrhs</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="nf">int2d</span><span class="p">(</span><span class="n">ThS</span><span class="p">)(</span><span class="n">uinc</span><span class="o">*</span><span class="n">v</span><span class="p">);</span>
 <span class="lineno">3 </span><span class="n">b</span><span class="p">[]</span> <span class="o">=</span> <span class="n">vrhs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">Uh</span><span class="p">);</span>
 </pre></div>
@@ -2223,6 +2223,51 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </pre></div>
 </div>
 </section>
+</section>
+<section id="d-example-script">
+<h2>2D example script<a class="headerlink" href="#d-example-script" title="Permalink to this headline"></a></h2>
+<p>Let us summarize what we have learned with a 2D version of our <a class="reference internal" href="#bemintromodel"><span class="std std-ref">model problem</span></a> where we study the scattering of a plane wave by a disc:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;bem&quot;</span>
+<span class="lineno"> 2 </span>
+<span class="lineno"> 3 </span><span class="kt">real</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="lineno"> 4 </span>
+<span class="lineno"> 5 </span><span class="kt">int</span> <span class="kr">n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="lineno"> 6 </span>
+<span class="lineno"> 7 </span><span class="kt">border</span> <span class="nf">circle</span><span class="p">(</span><span class="kp">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="nf">cos</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span> <span class="kr">y</span><span class="o">=</span><span class="nf">sin</span><span class="p">(</span><span class="kp">t</span><span class="p">);}</span>
+<span class="lineno"> 8 </span><span class="kt">meshL</span> <span class="n">ThL</span> <span class="o">=</span> <span class="n">buildmeshL</span><span class="p">(</span><span class="n">circle</span><span class="p">(</span><span class="kr">n</span><span class="p">));</span>
+<span class="lineno"> 9 </span>
+<span class="lineno">10 </span><span class="kt">varf</span> <span class="nf">vbem</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="n">int1dx1d</span><span class="p">(</span><span class="n">ThL</span><span class="p">)(</span><span class="n">ThL</span><span class="p">)(</span><span class="n">BEM</span><span class="p">(</span><span class="n">BemKernel</span><span class="p">(</span><span class="s">&quot;SL&quot;</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">),</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">));</span>
+<span class="lineno">11 </span>
+<span class="lineno">12 </span><span class="kt">fespace</span> <span class="nf">Uh</span><span class="p">(</span><span class="n">ThL</span><span class="p">,</span><span class="nc">P1</span><span class="p">);</span>
+<span class="lineno">13 </span><span class="n">HMatrix</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">H</span> <span class="o">=</span> <span class="n">vbem</span><span class="p">(</span><span class="n">Uh</span><span class="p">,</span><span class="n">Uh</span><span class="p">);</span>
+<span class="lineno">14 </span>
+<span class="lineno">15 </span><span class="kt">func</span> <span class="n">uinc</span> <span class="o">=</span> <span class="nf">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">i</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="kr">x</span><span class="p">);</span>
+<span class="lineno">16 </span><span class="n">Uh</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+<span class="lineno">17 </span><span class="kt">varf</span> <span class="nf">vrhs</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="nf">int1d</span><span class="p">(</span><span class="n">ThL</span><span class="p">)(</span><span class="n">uinc</span><span class="o">*</span><span class="n">v</span><span class="p">);</span>
+<span class="lineno">18 </span><span class="n">b</span><span class="p">[]</span> <span class="o">=</span> <span class="n">vrhs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">Uh</span><span class="p">);</span>
+<span class="lineno">19 </span>
+<span class="lineno">20 </span><span class="n">p</span><span class="p">[]</span> <span class="o">=</span> <span class="n">H</span><span class="o">^-</span><span class="mi">1</span><span class="o">*</span><span class="n">b</span><span class="p">[];</span>
+<span class="lineno">21 </span>
+<span class="lineno">22 </span><span class="kt">varf</span> <span class="nf">vpot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="nf">int1d</span><span class="p">(</span><span class="n">ThL</span><span class="p">)(</span><span class="n">POT</span><span class="p">(</span><span class="n">BemPotential</span><span class="p">(</span><span class="s">&quot;SL&quot;</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">),</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">));</span>
+<span class="lineno">23 </span>
+<span class="lineno">24 </span><span class="kt">int</span> <span class="n">np</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+<span class="lineno">25 </span><span class="kt">int</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="lineno">26 </span><span class="kt">border</span> <span class="nf">b1</span><span class="p">(</span><span class="kp">t</span><span class="o">=-</span><span class="n">R</span><span class="p">,</span> <span class="n">R</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="kp">t</span><span class="p">;</span> <span class="kr">y</span><span class="o">=-</span><span class="n">R</span><span class="p">;}</span>
+<span class="lineno">27 </span><span class="kt">border</span> <span class="nf">b2</span><span class="p">(</span><span class="kp">t</span><span class="o">=-</span><span class="n">R</span><span class="p">,</span> <span class="n">R</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="n">R</span><span class="p">;</span> <span class="kr">y</span><span class="o">=</span><span class="kp">t</span><span class="p">;}</span>
+<span class="lineno">28 </span><span class="kt">border</span> <span class="nf">b3</span><span class="p">(</span><span class="kp">t</span><span class="o">=-</span><span class="n">R</span><span class="p">,</span> <span class="n">R</span><span class="p">){</span><span class="kr">x</span><span class="o">=-</span><span class="kp">t</span><span class="p">;</span> <span class="kr">y</span><span class="o">=</span><span class="n">R</span><span class="p">;}</span>
+<span class="lineno">29 </span><span class="kt">border</span> <span class="nf">b4</span><span class="p">(</span><span class="kp">t</span><span class="o">=-</span><span class="n">R</span><span class="p">,</span> <span class="n">R</span><span class="p">){</span><span class="kr">x</span><span class="o">=-</span><span class="n">R</span><span class="p">;</span> <span class="kr">y</span><span class="o">=-</span><span class="kp">t</span><span class="p">;}</span>
+<span class="lineno">30 </span><span class="kt">mesh</span> <span class="n">ThOut</span> <span class="o">=</span> <span class="nf">buildmesh</span><span class="p">(</span><span class="n">b1</span><span class="p">(</span><span class="n">np</span><span class="p">)</span><span class="o">+</span><span class="n">b2</span><span class="p">(</span><span class="n">np</span><span class="p">)</span><span class="o">+</span><span class="n">b3</span><span class="p">(</span><span class="n">np</span><span class="p">)</span><span class="o">+</span><span class="n">b4</span><span class="p">(</span><span class="n">np</span><span class="p">)</span><span class="o">+</span><span class="n">circle</span><span class="p">(</span><span class="o">-</span><span class="kr">n</span><span class="p">));</span>
+<span class="lineno">31 </span>
+<span class="lineno">32 </span><span class="kt">fespace</span> <span class="nf">UhOut</span><span class="p">(</span><span class="n">ThOut</span><span class="p">,</span><span class="nc">P1</span><span class="p">);</span>
+<span class="lineno">33 </span><span class="n">HMatrix</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">HP</span> <span class="o">=</span> <span class="n">vpot</span><span class="p">(</span><span class="n">Uh</span><span class="p">,</span><span class="n">UhOut</span><span class="p">);</span>
+<span class="lineno">34 </span>
+<span class="lineno">35 </span><span class="n">UhOut</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">u</span><span class="p">,</span> <span class="n">utot</span><span class="p">;</span>
+<span class="lineno">36 </span><span class="n">u</span><span class="p">[]</span> <span class="o">=</span> <span class="n">HP</span><span class="o">*</span><span class="n">p</span><span class="p">[];</span>
+<span class="lineno">37 </span>
+<span class="lineno">38 </span><span class="n">utot</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">uinc</span><span class="p">;</span>
+<span class="lineno">39 </span><span class="nf">plot</span><span class="p">(</span><span class="n">utot</span><span class="p">,</span><span class="kp">fill</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="kp">value</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -2261,6 +2306,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <li><a class="reference internal" href="#compute-the-solution">Compute the solution</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#d-example-script">2D example script</a></li>
 </ul>
 </li>
 </ul>
