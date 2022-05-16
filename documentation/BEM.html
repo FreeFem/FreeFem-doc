@@ -1967,7 +1967,7 @@
 <section id="model-problem">
 <span id="bemintromodel"></span><h3>Model problem<a class="headerlink" href="#model-problem" title="Permalink to this headline"></a></h3>
 <p>The model problem we consider here is the scattering of an incoming acoustic wave <span class="math notranslate nohighlight">\(u_\text{inc}\)</span> by an obstacle <span class="math notranslate nohighlight">\(\Omega\)</span>. Thus, we want to solve the following homogeneous Helmholtz equation written in terms of the scattered field <span class="math notranslate nohighlight">\(u\)</span>:</p>
-<figure class="align-default" id="bemfigdomainbem">
+<figure class="align-center" id="bemfigdomainbem">
 <a class="reference internal image-reference" href="../_images/BEM_figdomainbem.png"><img alt="../_images/BEM_figdomainbem.png" src="../_images/BEM_figdomainbem.png" style="width: 30%;" /></a>
 </figure>
 <div class="math notranslate nohighlight" id="equation-eq-modelpb">
@@ -2057,7 +2057,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <section id="hierarchical-block-structure">
 <h4>Hierarchical block structure<a class="headerlink" href="#hierarchical-block-structure" title="Permalink to this headline"></a></h4>
 <p>Unfortunately, BEM matrices generally do not have fast decreasing singular values. However, they can exhibit sub-blocks with rapidly decreasing singular values, thanks to the asymptotically smooth nature of the BEM kernel. Let us look for example at the absolute value of the matrix coefficients in the 2D (circle) case below:</p>
-<figure class="align-default" id="bemfigyumatrix">
+<figure class="align-center" id="bemfigyumatrix">
 <a class="reference internal image-reference" href="../_images/BEM_figyumatrix.png"><img alt="../_images/BEM_figyumatrix.png" src="../_images/BEM_figyumatrix.png" style="width: 40%;" /></a>
 </figure>
 <ul class="simple">
@@ -2074,14 +2074,14 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <li><p>from this hierarchical clustering, define and traverse the <strong>block cluster tree</strong> representation of the matrix structure, identifying the compressible blocks using admissibility condition <a class="reference internal" href="#equation-eq-ac">(44)</a></p></li>
 <li><p>compute the low-rank approximation of the identified compressible blocks using e.g. <em>partial ACA</em> ; the remaining leaves corresponding to <em>near-field</em> interactions are computed as dense blocks.</p></li>
 </ol>
-<figure class="align-default" id="bemfighmatrix">
+<figure class="align-center" id="bemfighmatrix">
 <a class="reference internal image-reference" href="../_images/BEM_fighmatrix.svg"><img alt="../_images/BEM_fighmatrix.svg" src="../_images/BEM_fighmatrix.svg" width="80%" /></a>
 </figure>
 </section>
 <section id="the-htool-library">
 <h4>The Htool library<a class="headerlink" href="#the-htool-library" title="Permalink to this headline"></a></h4>
 <p>the H-Matrix format is implemented in the C++ library <a class="reference external" href="https://github.com/htool-ddm/htool">Htool</a>. <strong>Htool</strong> is a parallel header-only library written by Pierre Marchand and Pierre-Henri Tournier. It is interfaced with <strong>FreeFEM</strong> and provides routines to build hierarchical matrix structures (cluster trees, block trees, low-rank matrices, block matrices) as well as efficient parallel matrix-vector and matrix-matrix product using MPI and OpenMP. <strong>Htool</strong> is interfaced with <strong>BemTool</strong> to allow the compression of BEM matrices using the H-Matrix format in <strong>FreeFEM</strong>.</p>
-<figure class="align-default" id="bemfighmatrixpara">
+<figure class="align-center" id="bemfighmatrixpara">
 <a class="reference internal image-reference" href="../_images/BEM_fighmatrixpara.svg"><img alt="../_images/BEM_fighmatrixpara.svg" src="../_images/BEM_fighmatrixpara.svg" width="45%" /></a>
 </figure>
 </section>
@@ -2126,7 +2126,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <span class="lineno">7 </span><span class="kt">meshS</span> <span class="n">ThS</span> <span class="o">=</span> <span class="nf">square3</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,[</span><span class="n">torex</span><span class="p">,</span><span class="n">torey</span><span class="p">,</span><span class="n">torez</span><span class="p">],</span><span class="kp">removeduplicate</span><span class="o">=</span><span class="kr">true</span><span class="p">);</span>
 </pre></div>
 </div>
-<figure class="align-default" id="bemfigtorus">
+<figure class="align-center" id="bemfigtorus">
 <a class="reference internal image-reference" href="../_images/BEM_figtorus.png"><img alt="../_images/BEM_figtorus.png" src="../_images/BEM_figtorus.png" style="width: 30%;" /></a>
 </figure>
 <p>or from a 2D <code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code> using the <code class="code freefem docutils literal notranslate"><span class="pre">movemesh23</span></code> keyword:</p>
@@ -2315,7 +2315,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <span class="lineno">39 </span><span class="nf">plot</span><span class="p">(</span><span class="n">utot</span><span class="p">,</span><span class="kp">fill</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="kp">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="kp">cmm</span><span class="o">=</span><span class="s">&quot;u_total&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<figure class="align-default" id="bemfigcircle">
+<figure class="align-center" id="bemfigcircle">
 <a class="reference internal image-reference" href="../_images/BEM_figcircle.png"><img alt="../_images/BEM_figcircle.png" src="../_images/BEM_figcircle.png" style="width: 80%;" /></a>
 </figure>
 </section>
