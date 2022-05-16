@@ -7,7 +7,7 @@ pip install -U Sphinx
 ## Extensions
 
 ```
-pip install sphinxcontrib-inlinesyntaxhighlight sphinx-sitemap
+pip install sphinxcontrib-inlinesyntaxhighlight sphinx-sitemap sphinxcontrib-svg2pdfconverter[CairoSVG]
 ```
 
 ## Usage

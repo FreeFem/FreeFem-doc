@@ -187,7 +187,7 @@ We can then build the *H-Matrix* by taking the following steps:
 2. from this hierarchical clustering, define and traverse the **block cluster tree** representation of the matrix structure, identifying the compressible blocks using admissibility condition :eq:`eq_ac`
 3. compute the low-rank approximation of the identified compressible blocks using e.g. *partial ACA* ; the remaining leaves corresponding to *near-field* interactions are computed as dense blocks.
 
-.. figure:: images/BEM_fighmatrix.svg
+.. figure:: images/BEM_fighmatrix.*
     :name: BEMfighmatrix
     :width: 80%
 
@@ -196,7 +196,7 @@ The Htool library
 
 the H-Matrix format is implemented in the C++ library `Htool`_. **Htool** is a parallel header-only library written by Pierre Marchand and Pierre-Henri Tournier. It is interfaced with **FreeFEM** and provides routines to build hierarchical matrix structures (cluster trees, block trees, low-rank matrices, block matrices) as well as efficient parallel matrix-vector and matrix-matrix product using MPI and OpenMP. **Htool** is interfaced with **BemTool** to allow the compression of BEM matrices using the H-Matrix format in **FreeFEM**.
 
-.. figure:: images/BEM_fighmatrixpara.svg
+.. figure:: images/BEM_fighmatrixpara.*
     :name: BEMfighmatrixpara
     :width: 45%
 
