@@ -9,6 +9,8 @@ The Boundary Element Method
 Introduction to the Boundary Element Method (BEM)
 -------------------------------------------------
 
+This is a short overview of the Boundary Element Method, introduced through a simple model example. For a thorough mathematical description of the Boundary Element Method you can refer to the `PhD thesis of Pierre Marchand <https://hal.archives-ouvertes.fr/tel-02922455/file/thesis.pdf>`__. Some figures used in this documentation are taken from the manuscript.
+
 .. _BEMintromodel:
 
 Model problem
