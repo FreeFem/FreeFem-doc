@@ -78,9 +78,9 @@ Using the Dirichlet boundary condition :math:`u = - u_\text{inc}` on :math:`\Gam
 
   \int_{\Gamma \times \Gamma} \frac{\exp(\imath k |\boldsymbol{x}-\boldsymbol{y}|)}{4 \pi |\boldsymbol{x}-\boldsymbol{y}|} p(\boldsymbol{y}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x,y}) = - \int_{\Gamma} u_\text{inc}(\boldsymbol{x}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x}) \quad \forall q : \Gamma \rightarrow \mathbb{C}.
 
-Note that knowing :math:`p` on :math:`\Gamma`, we can indeed compute :math:`u` anywhere using the *potential* formulation :eq:`eq_pv`. Thus, we essentially gained one space dimension, as we only have to solve for :math:`p : \Gamma \rightarrow \mathbb{C}` in :eq:`eq_bem`.
+Note that knowing :math:`p` on :math:`\Gamma`, we can indeed compute :math:`u` anywhere using the *potential* formulation :eq:`eq_pv`. Thus, we essentially gained one space dimension, as we only have to solve for :math:`p : \Gamma \rightarrow \mathbb{C}` in :eq:`eq_bem`. Another advantage of the boundary element method is that for a given mesh size, it is usually more accurate than the finite element method.
 
-Of course, this inherent benefit of the boundary element method comes with a drawback: after discretization of :eq:`eq_bem`, for example with piecewise linear continuous (P1) functions on :math:`\Gamma`, we end up with a linear system whose matrix is **full**: because :math:`\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})` never vanishes, every interaction coefficient is nonzero. Thus, the matrix :math:`A` of the linear system can be very costly to store (:math:`N^2` coefficients) and invert (factorization in :math:`\mathcal{O}(N^3)`) (:math:`N` is the size of the linear system).  
+Of course, these benefits of the boundary element method come with a drawback: after discretization of :eq:`eq_bem`, for example with piecewise linear continuous (P1) functions on :math:`\Gamma`, we end up with a linear system whose matrix is **full**: because :math:`\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})` never vanishes, every interaction coefficient is nonzero. Thus, the matrix :math:`A` of the linear system can be very costly to store (:math:`N^2` coefficients) and invert (factorization in :math:`\mathcal{O}(N^3)`) (:math:`N` is the size of the linear system).  
 Moreover, compared to the finite element method, the matrix coefficients are much more expensive to compute because of the double integral and the evaluation of the Green function :math:`\mathcal{G}`. Plus, the choice of the quadrature formulas has to be made with extra care because of the singularity of :math:`\mathcal{G}`.
 
 .. _BEMintroBIO:
@@ -509,4 +509,8 @@ Let us summarize what we have learned with a 2D version of our :ref:`model probl
   u[] = HP*p[];
 
   utot = u + uinc;
-  plot(utot,fill=1,value=1);
+  plot(utot,fill=1,value=1,cmm="u_total");
+
+.. figure:: images/BEM_figcircle.png
+  :name: BEMfigcircle
+  :width: 80%
