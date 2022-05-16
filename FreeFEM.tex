@@ -136,7 +136,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{May 13, 2022}
+\date{May 16, 2022}
 \release{4.8}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -23490,6 +23490,596 @@ Source code
 \end{tabulary}
 \par
 \sphinxattableend\end{savenotes}
+
+\sphinxstepscope
+
+
+\section{The Boundary Element Method}
+\label{\detokenize{documentation/BEM:the-boundary-element-method}}\label{\detokenize{documentation/BEM:bem}}\label{\detokenize{documentation/BEM::doc}}
+
+\subsection{Introduction to the Boundary Element Method (BEM)}
+\label{\detokenize{documentation/BEM:introduction-to-the-boundary-element-method-bem}}
+
+\subsubsection{Model problem}
+\label{\detokenize{documentation/BEM:model-problem}}\label{\detokenize{documentation/BEM:bemintromodel}}
+\sphinxAtStartPar
+The model problem we consider here is the scattering of an incoming acoustic wave \(u_\text{inc}\) by an obstacle \(\Omega\). Thus, we want to solve the following homogeneous Helmholtz equation written in terms of the scattered field \(u\):
+
+\begin{figure}[htbp]
+\centering
+
+\noindent\sphinxincludegraphics[width=0.300\linewidth]{{BEM_figdomainbem}.png}
+\end{figure}
+\begin{equation}\label{equation:documentation/BEM:eq_modelpb}
+\begin{split}\left \{
+\begin{aligned}
+- \Delta u - k^2 u &= 0 \;\; &\text{in} \;\; &\mathbb{R}^3 \backslash \Omega \\
+u &= - u_\text{inc}  \;\; &\text{on} \;\; &\Gamma\\
+&\text{+ radiation condition}\hspace{-2.8cm}
+\end{aligned}
+\right .\end{split}
+\end{equation}
+\sphinxAtStartPar
+with the Sommerfeld radiation condition at infinity, which states that there can be only outgoing waves at infinity:
+\begin{equation*}
+\begin{split}\lim_{|\boldsymbol{x}| \rightarrow \infty} |\boldsymbol{x}| \left( \frac{\partial}{\partial |\boldsymbol{x}|} - \imath k \right) u(\boldsymbol{x}) = 0\end{split}
+\end{equation*}
+\sphinxAtStartPar
+and where the total field \(u_\text{tot} = u_\text{inc} + u\).
+
+\sphinxAtStartPar
+If the wavenumber \(k\) is \sphinxstylestrong{constant} in \(\mathbb{R}^3 \backslash \Omega\), the boundary element method can be applied. It consists in reformulating the problem in terms of unknowns on the boundary \(\Gamma\) of \(\Omega\).
+
+\sphinxAtStartPar
+First, let us introduce the \sphinxstyleemphasis{Green kernel} \(\mathcal{G}\), which for the helmholtz equation in 3D is
+\begin{equation}\label{equation:documentation/BEM:eq_p}
+\begin{split}\mathcal{G}(\boldsymbol{x}) = \exp(\imath k |\boldsymbol{x}|) / (4 \pi |\boldsymbol{x}|).\end{split}
+\end{equation}
+\sphinxAtStartPar
+Let us also introduce the \sphinxstyleemphasis{Single Layer Potential} \(\operatorname{SL}\), which for any \(q \in H^{-1/2}(\Gamma)\) is defined as
+\begin{equation}\label{equation:documentation/BEM:eq_sl}
+\begin{split}\operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}), \quad \forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Gamma.\end{split}
+\end{equation}
+\sphinxAtStartPar
+An interesting property of \(\text{SL}\) is that it produces solutions of the PDE at hand in \(\mathbb{R}^3 \backslash \Gamma\) which satisfy the necessary conditions at infinity (here the Helmholtz equation and the Sommerfeld radiation condition).
+
+\sphinxAtStartPar
+Thus, we now need to find a so\sphinxhyphen{}called \sphinxstyleemphasis{ansatz} \(p \in H^{-1/2}(\Gamma)\) such that \(\forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Omega\)
+\begin{equation}\label{equation:documentation/BEM:eq_pv}
+\begin{split}u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}),\end{split}
+\end{equation}
+\sphinxAtStartPar
+where \(u\) also verifies the Dirichlet boundary condition \(u = - u_\text{inc}\) on \(\Gamma\).
+
+\sphinxAtStartPar
+In order to find \(p\), we define a variational problem by multiplying \eqref{equation:documentation/BEM:eq_pv} by a test function \sphinxtitleref{q} and integrating over \(\Gamma\):
+\begin{equation*}
+\begin{split}\int_{\Gamma} u(\boldsymbol{x}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x}) =
+\int_{\Gamma \times \Gamma} \frac{\exp(\imath k |\boldsymbol{x}-\boldsymbol{y}|)}{4 \pi |\boldsymbol{x}-\boldsymbol{y}|} p(\boldsymbol{y}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x,y}) \quad \forall q : \Gamma \rightarrow \mathbb{C}.\end{split}
+\end{equation*}
+\sphinxAtStartPar
+Using the Dirichlet boundary condition \(u = - u_\text{inc}\) on \(\Gamma\), we end up with the following variational problem to solve: find \(p : \Gamma \rightarrow \mathbb{C}\) such that
+\begin{equation}\label{equation:documentation/BEM:eq_bem}
+\begin{split}\int_{\Gamma \times \Gamma} \frac{\exp(\imath k |\boldsymbol{x}-\boldsymbol{y}|)}{4 \pi |\boldsymbol{x}-\boldsymbol{y}|} p(\boldsymbol{y}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x,y}) = - \int_{\Gamma} u_\text{inc}(\boldsymbol{x}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x}) \quad \forall q : \Gamma \rightarrow \mathbb{C}.\end{split}
+\end{equation}
+\sphinxAtStartPar
+Note that knowing \(p\) on \(\Gamma\), we can indeed compute \(u\) anywhere using the \sphinxstyleemphasis{potential} formulation \eqref{equation:documentation/BEM:eq_pv}. Thus, we essentially gained one space dimension, as we only have to solve for \(p : \Gamma \rightarrow \mathbb{C}\) in \eqref{equation:documentation/BEM:eq_bem}. Another advantage of the boundary element method is that for a given mesh size, it is usually more accurate than the finite element method.
+
+\sphinxAtStartPar
+Of course, these benefits of the boundary element method come with a drawback: after discretization of \eqref{equation:documentation/BEM:eq_bem}, for example with piecewise linear continuous (P1) functions on \(\Gamma\), we end up with a linear system whose matrix is \sphinxstylestrong{full}: because \(\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})\) never vanishes, every interaction coefficient is nonzero. Thus, the matrix \(A\) of the linear system can be very costly to store (\(N^2\) coefficients) and invert (factorization in \(\mathcal{O}(N^3)\)) (\(N\) is the size of the linear system).
+Moreover, compared to the finite element method, the matrix coefficients are much more expensive to compute because of the double integral and the evaluation of the Green function \(\mathcal{G}\). Plus, the choice of the quadrature formulas has to be made with extra care because of the singularity of \(\mathcal{G}\).
+
+
+\subsubsection{Boundary Integral Operators}
+\label{\detokenize{documentation/BEM:boundary-integral-operators}}\label{\detokenize{documentation/BEM:bemintrobio}}
+\sphinxAtStartPar
+In order to formulate our model Dirichlet problem, we have used the \sphinxstylestrong{Single Layer Potential} \(\operatorname{SL}\):
+\begin{equation*}
+\begin{split}q \mapsto \operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\end{split}
+\end{equation*}
+\sphinxAtStartPar
+Depending on the choice of the boundary integral formulation or boundary condition, the \sphinxstylestrong{Double Layer Potential} \(\operatorname{DL}\) can also be of use:
+\begin{equation*}
+\begin{split}q \mapsto \operatorname{DL}(q)(\boldsymbol{x}) = \int_{\Gamma} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\end{split}
+\end{equation*}
+\sphinxAtStartPar
+Similarly, we have used the \sphinxstylestrong{Single Layer Operator} \(\mathcal{SL}\) in our variational problem
+\begin{equation*}
+\begin{split}p, q \mapsto \mathcal{SL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y}).\end{split}
+\end{equation*}
+\sphinxAtStartPar
+There are three other building blocks that can be of use in the boundary element method, and depending on the problem and the choice of the formulation a boundary integral method makes use of one or a combination of these building blocks:
+
+\sphinxAtStartPar
+the \sphinxstylestrong{Double Layer Operator} \(\mathcal{DL}\):
+\begin{equation*}
+\begin{split}p, q \mapsto \mathcal{DL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\end{split}
+\end{equation*}
+\sphinxAtStartPar
+the \sphinxstylestrong{Transpose Double Layer Operator} \(\mathcal{TDL}\):
+\begin{equation*}
+\begin{split}p, q \mapsto \mathcal{TDL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\end{split}
+\end{equation*}
+\sphinxAtStartPar
+the \sphinxstylestrong{Hypersingular Operator} \(\mathcal{HS}\):
+\begin{equation*}
+\begin{split}p, q \mapsto \mathcal{HS}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y})  \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\end{split}
+\end{equation*}
+
+\subsubsection{the BEMTool library}
+\label{\detokenize{documentation/BEM:the-bemtool-library}}
+\sphinxAtStartPar
+In order to compute the coefficients of the BEM matrix, \sphinxstylestrong{FreeFEM} is interfaced with the boundary element library \sphinxhref{https://github.com/xclaeys/BemTool}{BEMTool}. \sphinxstylestrong{BEMTool} is a general purpose header\sphinxhyphen{}only C++ library written by Xavier Claeys, which handles
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+BEM Potentials and Operators for Laplace, Yukawa, Helmholtz and Maxwell equations
+
+\item {} 
+\sphinxAtStartPar
+both in 2D and in 3D
+
+\item {} 
+\sphinxAtStartPar
+1D, 2D and 3D triangulations
+
+\item {} 
+\sphinxAtStartPar
+\(\mathbb{P}_k\)\sphinxhyphen{}Lagrange for \(k = 0,1,2\) and surface \(\mathbb{RT}_0\)
+
+\end{itemize}
+
+
+\subsubsection{Hierarchical matrices}
+\label{\detokenize{documentation/BEM:hierarchical-matrices}}
+\sphinxAtStartPar
+Although \sphinxstylestrong{BEMTool} can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all \(N^2\) coefficients of the matrix. Thus, we have to rely on a \sphinxstyleemphasis{matrix compression} technique. To do so, \sphinxstylestrong{FreeFEM} relies on the \sphinxstylestrong{Hierarchical Matrix}, or \sphinxstylestrong{H\sphinxhyphen{}Matrix} format.
+
+
+\paragraph{Low\sphinxhyphen{}rank approximation}
+\label{\detokenize{documentation/BEM:low-rank-approximation}}
+\sphinxAtStartPar
+Let \(\textbf{B} \in \mathbb{C}^{N \times N}\) be a dense matrix. Assume that \(\textbf{B}\) can be written as follows:
+\begin{equation*}
+\begin{split}\textbf{B} = \sum_{j=1}^r \textbf{u}_j \textbf{v}_j^T\end{split}
+\end{equation*}
+\sphinxAtStartPar
+where \(r \leq N, \textbf{u}_j \in \mathbb{C}^{N}, \textbf{v}_j \in \mathbb{C}^{N}.\)
+
+\sphinxAtStartPar
+If \(r < \frac{N^2}{2 N}\), the computing and storage cost is reduced to \(\mathcal{O}(r N) < \mathcal{O}(N^2)\). We say that \(\textbf{B}\) is \sphinxstylestrong{low rank}.
+
+\sphinxAtStartPar
+Usually, the matrices we are interested in are not low\sphinxhyphen{}rank, but they may be well\sphinxhyphen{}approximated by low\sphinxhyphen{}rank matrices. We may start by writing their Singular Value Decomposition (SVD):
+\begin{equation*}
+\begin{split}\textbf{B} = \sum_{j=1}^N \sigma_j \textbf{u}_j \textbf{v}_j^T\end{split}
+\end{equation*}
+\sphinxAtStartPar
+where \((\sigma_j)_{j=1}^N\) are the \sphinxstyleemphasis{singular values} of \(\textbf{B}\) in decreasing order, and \((\textbf{u}_j)_{j=1}^N\) and \((\textbf{v}_j)_{j=1}^N\) its \sphinxstyleemphasis{left and right singular vectors} respectively.
+
+\sphinxAtStartPar
+Indeed, if \(\textbf{B}\) has fast decreasing singular values \(\sigma_j\), we can obtain a good approximation of \(\textbf{B}\) by truncating the SVD sum, keeping only the first \(r\) terms. Although the truncated SVD is actually the best low\sphinxhyphen{}rank approximation possible (Eckart\sphinxhyphen{}Young\sphinxhyphen{}Mirsky theorem), computing the SVD is costly (\(\mathcal{O}(N^3)\)) and requires computing all \(N^2\) coefficients of the matrix, which we want to avoid.
+
+\sphinxAtStartPar
+Thankfully, there exist several techniques to approximate a truncated SVD by computing only some coefficients of the initial matrix, such as randomized SVD, or \sphinxstylestrong{Partially pivoted Adaptive Cross Approximation (partial ACA)}, which requires only \(2 r N\) coefficients.
+
+
+\paragraph{Hierarchical block structure}
+\label{\detokenize{documentation/BEM:hierarchical-block-structure}}
+\sphinxAtStartPar
+Unfortunately, BEM matrices generally do not have fast decreasing singular values. However, they can exhibit sub\sphinxhyphen{}blocks with rapidly decreasing singular values, thanks to the asymptotically smooth nature of the BEM kernel. Let us look for example at the absolute value of the matrix coefficients in the 2D (circle) case below:
+
+\begin{figure}[htbp]
+\centering
+
+\noindent\sphinxincludegraphics[width=0.400\linewidth]{{BEM_figyumatrix}.png}
+\end{figure}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+blocks \sphinxstyleemphasis{near} the diagonal contain information about the \sphinxstyleemphasis{near\sphinxhyphen{}field interactions}, which are not low\sphinxhyphen{}rank in nature
+
+\item {} 
+\sphinxAtStartPar
+blocks \sphinxstyleemphasis{away} from the diagonal corresponding to the interaction between two clusters of geometric points \(X\) and \(Y\) satisfying the so\sphinxhyphen{}called \sphinxstylestrong{admissibility condition}
+
+\end{itemize}
+\begin{equation}\label{equation:documentation/BEM:eq_ac}
+\begin{split}\max(\text{diam}(X),\text{diam}(Y)) \leq \eta \text{ dist}(X,Y)\end{split}
+\end{equation}
+\sphinxAtStartPar
+are \sphinxstyleemphasis{far\sphinxhyphen{}field interactions} and have exponentially decreasing singular values. Thus, they can be well\sphinxhyphen{}approximated by low\sphinxhyphen{}rank matrices.
+
+\sphinxAtStartPar
+The idea is then to build a \sphinxstylestrong{hierarchical representation} of the blocks of the matrix, then identify and compress admissible blocks using low\sphinxhyphen{}rank approximation.
+
+\sphinxAtStartPar
+We can then build the \sphinxstyleemphasis{H\sphinxhyphen{}Matrix} by taking the following steps:
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+build a \sphinxstyleemphasis{hierarchical partition} of the geometry, leading to a \sphinxstylestrong{cluster tree} of the unknowns. It can for example be defined using bisection and principal component analysis.
+
+\item {} 
+\sphinxAtStartPar
+from this hierarchical clustering, define and traverse the \sphinxstylestrong{block cluster tree} representation of the matrix structure, identifying the compressible blocks using admissibility condition \eqref{equation:documentation/BEM:eq_ac}
+
+\item {} 
+\sphinxAtStartPar
+compute the low\sphinxhyphen{}rank approximation of the identified compressible blocks using e.g. \sphinxstyleemphasis{partial ACA} ; the remaining leaves corresponding to \sphinxstyleemphasis{near\sphinxhyphen{}field} interactions are computed as dense blocks.
+
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+
+\noindent\sphinxincludegraphics[width=0.800\linewidth]{{BEM_fighmatrix}.pdf}
+\end{figure}
+
+
+\paragraph{The Htool library}
+\label{\detokenize{documentation/BEM:the-htool-library}}
+\sphinxAtStartPar
+the H\sphinxhyphen{}Matrix format is implemented in the C++ library \sphinxhref{https://github.com/htool-ddm/htool}{Htool}. \sphinxstylestrong{Htool} is a parallel header\sphinxhyphen{}only library written by Pierre Marchand and Pierre\sphinxhyphen{}Henri Tournier. It is interfaced with \sphinxstylestrong{FreeFEM} and provides routines to build hierarchical matrix structures (cluster trees, block trees, low\sphinxhyphen{}rank matrices, block matrices) as well as efficient parallel matrix\sphinxhyphen{}vector and matrix\sphinxhyphen{}matrix product using MPI and OpenMP. \sphinxstylestrong{Htool} is interfaced with \sphinxstylestrong{BemTool} to allow the compression of BEM matrices using the H\sphinxhyphen{}Matrix format in \sphinxstylestrong{FreeFEM}.
+
+\begin{figure}[htbp]
+\centering
+
+\noindent\sphinxincludegraphics[width=0.450\linewidth]{{BEM_fighmatrixpara}.pdf}
+\end{figure}
+
+
+\subsection{Solve a BEM problem with FreeFEM}
+\label{\detokenize{documentation/BEM:solve-a-bem-problem-with-freefem}}
+
+\subsubsection{Build the geometry}
+\label{\detokenize{documentation/BEM:build-the-geometry}}
+\sphinxAtStartPar
+The geometry of the problem (i.e. the boundary \(\Gamma\)) can be discretized by a line (2D) or surface (3D) mesh:
+
+
+\paragraph{2D}
+\label{\detokenize{documentation/BEM:d}}
+\sphinxAtStartPar
+In 2D, the geometry of the boundary can be defined with the \sphinxcode{\sphinxupquote{border}} keyword and discretized by constructing a \sphinxstyleemphasis{line} or \sphinxstyleemphasis{curve} mesh of type \sphinxcode{\sphinxupquote{meshL}} using \sphinxcode{\sphinxupquote{buildmeshL}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{border} \PYG{n+nf}{b}\PYG{p}{(}\PYG{k+kp}{t} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;} \PYG{k+kr}{y}\PYG{o}{=}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{meshL} \PYG{n}{ThL} \PYG{o}{=} \PYG{n}{buildmeshL}\PYG{p}{(}\PYG{n}{b}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+With the \sphinxcode{\sphinxupquote{extract}} keyword, we can also extract the boundary of a 2D \sphinxcode{\sphinxupquote{mesh}} (need to \sphinxcode{\sphinxupquote{load "msh3"}}):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+cp}{load} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
+\PYG{k+kt}{mesh} \PYG{n}{Th} \PYG{o}{=} \PYG{n+nf}{square}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{meshL} \PYG{n}{ThL} \PYG{o}{=} \PYG{n+nf}{extract}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+or of a \sphinxcode{\sphinxupquote{meshS}} ; we can also specify the boundary labels we want to extract:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+cp}{load} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
+\PYG{k+kt}{meshS} \PYG{n}{ThS} \PYG{o}{=} \PYG{n+nf}{square3}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{int}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]} \PYG{n}{labs} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{;}
+\PYG{k+kt}{meshL} \PYG{n}{ThL} \PYG{o}{=} \PYG{n+nf}{extract}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{,} \PYG{k+kr}{label}\PYG{o}{=}\PYG{n}{labs}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+You can find much more information about curve mesh generation {\hyperref[\detokenize{documentation/mesh-generation:meshltype}]{\sphinxcrossref{\DUrole{std,std-ref}{here}}}}.
+
+
+\paragraph{3D}
+\label{\detokenize{documentation/BEM:id3}}
+\sphinxAtStartPar
+In 3D, the geometry of the boundary surface can be discretized with a surface mesh of type \sphinxcode{\sphinxupquote{meshS}}, which can be built by several ways, for example using the \sphinxcode{\sphinxupquote{square3}} constructor:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+cp}{load} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
+\PYG{k+kt}{real} \PYG{n}{R} \PYG{o}{=} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{n}{r}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{h}\PYG{o}{=}\PYG{l+m+mf}{0.2}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{nx} \PYG{o}{=} \PYG{n}{R}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{/}\PYG{n}{h}\PYG{p}{,} \PYG{n}{ny} \PYG{o}{=} \PYG{n}{r}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{/}\PYG{n}{h}\PYG{p}{;}
+\PYG{k+kt}{func} \PYG{n}{torex} \PYG{o}{=} \PYG{p}{(}\PYG{n}{R}\PYG{o}{+}\PYG{n}{r}\PYG{o}{*}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{func} \PYG{n}{tore} \PYG{k+kr}{y}\PYG{o}{=} \PYG{p}{(}\PYG{n}{R}\PYG{o}{+}\PYG{n}{r}\PYG{o}{*}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{func} \PYG{n}{torez} \PYG{o}{=} \PYG{n}{r}\PYG{o}{*}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{meshS} \PYG{n}{ThS} \PYG{o}{=} \PYG{n+nf}{square3}\PYG{p}{(}\PYG{n}{nx}\PYG{p}{,}\PYG{n}{ny}\PYG{p}{,}\PYG{p}{[}\PYG{n}{torex}\PYG{p}{,}\PYG{n}{torey}\PYG{p}{,}\PYG{n}{torez}\PYG{p}{]}\PYG{p}{,}\PYG{k+kp}{removeduplicate}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{figure}[htbp]
+\centering
+
+\noindent\sphinxincludegraphics[width=0.300\linewidth]{{BEM_figtorus}.png}
+\end{figure}
+
+\sphinxAtStartPar
+or from a 2D \sphinxcode{\sphinxupquote{mesh}} using the \sphinxcode{\sphinxupquote{movemesh23}} keyword:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+cp}{load} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
+\PYG{k+kt}{mesh} \PYG{n}{Th} \PYG{o}{=} \PYG{n+nf}{square}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{meshS} \PYG{n}{ThS} \PYG{o}{=} \PYG{n+nf}{movemesh23}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,} \PYG{k+kp}{transfo}\PYG{o}{=}\PYG{p}{[}\PYG{k+kr}{x}\PYG{p}{,}\PYG{k+kr}{y}\PYG{p}{,}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{x}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{y}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+We can also extract the boundary of a \sphinxcode{\sphinxupquote{mesh3}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+cp}{load} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
+\PYG{k+kt}{mesh3} \PYG{n}{Th3} \PYG{o}{=} \PYG{n+nf}{cube}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{int}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]} \PYG{n}{labs} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{;}
+\PYG{k+kt}{meshS} \PYG{n}{ThS} \PYG{o}{=} \PYG{n+nf}{extract}\PYG{p}{(}\PYG{n}{Th3}\PYG{p}{,} \PYG{k+kr}{label}\PYG{o}{=}\PYG{n}{labs}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+You can find much more information about surface mesh generation {\hyperref[\detokenize{documentation/mesh-generation:meshstype}]{\sphinxcrossref{\DUrole{std,std-ref}{here}}}}.
+
+
+\subsubsection{Define the type of operator}
+\label{\detokenize{documentation/BEM:define-the-type-of-operator}}
+\sphinxAtStartPar
+For now, FreeFEM allows to solve the following PDE with the boundary element method:
+\begin{equation*}
+\begin{split}-\Delta u - k^2 u = 0, \quad k \in \mathbb{C},\end{split}
+\end{equation*}
+\sphinxAtStartPar
+with
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\(k = 0\) (Laplace)
+
+\item {} 
+\sphinxAtStartPar
+\(k \in \mathbb{R}^*_+\) (Helmholtz)
+
+\item {} 
+\sphinxAtStartPar
+\(k \in \imath \mathbb{R}^*_+\) (Yukawa)
+
+\end{itemize}
+
+\sphinxAtStartPar
+First, the BEM plugin needs to be loaded:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+cp}{load} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{bem}\PYG{l+s}{\PYGZdq{}}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The information about the type of operator and the PDE can be specified by defining a variable of type \sphinxcode{\sphinxupquote{BemKernel}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{BemKernel} \PYG{n+nf}{Ker}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{SL}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+You can choose the type of operator depending on your formulation (see {\hyperref[\detokenize{documentation/BEM:bemintrobio}]{\sphinxcrossref{\DUrole{std,std-ref}{Boundary Integral Operators}}}}):
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{"SL"}}: \sphinxstylestrong{Single Layer Operator} \(\mathcal{SL}\)
+
+\item {} 
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{"DL"}}: \sphinxstylestrong{Double Layer Operator} \(\mathcal{DL}\)
+
+\item {} 
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{"TDL"}}: \sphinxstylestrong{Transpose Double Layer Operator} \(\mathcal{TDL}\)
+
+\item {} 
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{"HS"}}: \sphinxstylestrong{Hyper Singular Operator} \(\mathcal{HS}\)
+
+\end{itemize}
+
+
+\subsubsection{Define the variational problem}
+\label{\detokenize{documentation/BEM:define-the-variational-problem}}
+\sphinxAtStartPar
+We can then define the variational form of the BEM problem. The double BEM integral is represented by the \sphinxcode{\sphinxupquote{int1dx1d}} keyword in the 2D case, and by \sphinxcode{\sphinxupquote{int2dx2d}} for a 3D problem. The \sphinxcode{\sphinxupquote{BEM}} keyword inside the integral takes the BEM kernel operator as argument:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{BemKernel} \PYG{n+nf}{Ker}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{SL}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{varf} \PYG{n+nf}{vbem}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o}{=} \PYG{n}{int2dx2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{BEM}\PYG{p}{(}\PYG{n}{Ker}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+You can also specify the BEM kernel directly inside the integral:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{varf} \PYG{n+nf}{vbem}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o}{=} \PYG{n}{int2dx2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{BEM}\PYG{p}{(}\PYG{n}{BemKernel}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{SL}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Depending on the choice of the BEM formulation, there can be additional terms in the variational form. For example, \sphinxstylestrong{Second kind formulations} have an additional mass term:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{BemKernel} \PYG{n+nf}{Ker}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{HS}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{varf} \PYG{n+nf}{vbem}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o}{=} \PYG{n}{int2dx2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{BEM}\PYG{p}{(}\PYG{n}{Ker}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{u}\PYG{o}{*}\PYG{n}{v}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+We can also define a linear combination of two BEM kernels, which is useful for \sphinxstylestrong{Combined formulations}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{complex} \PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{;}
+\PYG{n}{BemKernel} \PYG{n+nf}{Ker1}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{HS}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{k}\PYG{o}{=}\PYG{n}{k}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{BemKernel} \PYG{n+nf}{Ker2}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{DL}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{k}\PYG{o}{=}\PYG{n}{k}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{BemKernel} \PYG{n}{Ker} \PYG{o}{=} \PYG{l+m+mf}{1.}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{n}{i}\PYG{o}{*}\PYG{n}{k}\PYG{p}{)} \PYG{o}{*} \PYG{n}{Ker1} \PYG{o}{+} \PYG{n}{Ker2}\PYG{p}{;}
+\PYG{k+kt}{varf} \PYG{n+nf}{vbem}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o}{=} \PYG{n}{int2dx2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{BEM}\PYG{p}{(}\PYG{n}{Ker}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{u}\PYG{o}{*}\PYG{n}{v}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+As a starting point, you can find how to solve a 2D scattering problem by a disk using a \sphinxstylestrong{First kind}, \sphinxstylestrong{Second kind} and \sphinxstylestrong{Combined} formulation, for a Dirichlet (\sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples/mpi/Helmholtz\_circle\_Dirichlet.edp}{here}) and Neumann (\sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples/mpi/Helmholtz\_circle\_Neumann.edp}{here}) boundary condition.
+
+
+\subsubsection{Assemble the H\sphinxhyphen{}Matrix}
+\label{\detokenize{documentation/BEM:assemble-the-h-matrix}}
+\sphinxAtStartPar
+Assembling the matrix corresponding to the discretization of the variational form on an \sphinxcode{\sphinxupquote{fespace}} \sphinxcode{\sphinxupquote{Uh}} is similar to the finite element case, except that we end up with an \sphinxcode{\sphinxupquote{HMatrix}} instead of a sparse \sphinxcode{\sphinxupquote{matrix}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{fespace} \PYG{n+nf}{Uh}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{HMatrix}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}} \PYG{n}{H} \PYG{o}{=} \PYG{n}{vbem}\PYG{p}{(}\PYG{n}{Uh}\PYG{p}{,}\PYG{n}{Uh}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Behind the scenes, \sphinxstylestrong{FreeFEM} is using \sphinxstylestrong{Htool} and \sphinxstylestrong{BEMTool} to assemble the H\sphinxhyphen{}Matrix.
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+Since \sphinxstylestrong{Htool} is a parallel library, you need to use \sphinxcode{\sphinxupquote{FreeFem++\sphinxhyphen{}mpi}} or \sphinxcode{\sphinxupquote{ff\sphinxhyphen{}mpirun}} to be able to run your BEM script. The MPI parallelism is transparent to the user. You can speed up the computation by using multiple cores:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{ff}\PYG{o}{\PYGZhy{}}\PYG{n}{mpirun} \PYG{o}{\PYGZhy{}}\PYG{n}{np} \PYG{l+m+mi}{4} \PYG{n}{script}\PYG{p}{.}\PYG{n}{edp} \PYG{o}{\PYGZhy{}}\PYG{n}{wg}
+\end{sphinxVerbatim}
+\end{sphinxadmonition}
+
+\sphinxAtStartPar
+You can specify the different \sphinxstylestrong{Htool} parameters as below. These are the default values:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{HMatrix}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}} \PYG{n}{H} \PYG{o}{=} \PYG{n}{vbem}\PYG{p}{(}\PYG{n}{Uh}\PYG{p}{,}\PYG{n}{Uh}\PYG{p}{,}
+  \PYG{n}{compressor} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{partialACA}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{c+c1}{// or \PYGZdq{}fullACA\PYGZdq{}, \PYGZdq{}SVD\PYGZdq{}}
+  \PYG{n}{eta} \PYG{o}{=} \PYG{l+m+mf}{10.}\PYG{p}{,}                 \PYG{c+c1}{// parameter for the admissibility condition}
+  \PYG{k+kp}{eps} \PYG{o}{=} \PYG{l+m+mf}{1e\PYGZhy{}3}\PYG{p}{,}                \PYG{c+c1}{// target compression error for each block}
+  \PYG{n}{minclustersize} \PYG{o}{=} \PYG{l+m+mi}{10}\PYG{p}{,}       \PYG{c+c1}{// minimum block side size min(n,m)}
+  \PYG{n}{maxblocksize} \PYG{o}{=} \PYG{l+m+mi}{1000000}\PYG{p}{,}    \PYG{c+c1}{// maximum n*m block size}
+  \PYG{n}{commworld} \PYG{o}{=} \PYG{k+kr}{mpiCommWorld}\PYG{p}{)}\PYG{p}{;} \PYG{c+c1}{// MPI communicator}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+You can also set the default parameters globally in the script by changing the value of the global variables \sphinxcode{\sphinxupquote{htoolEta}}, \sphinxcode{\sphinxupquote{htoolEpsilon}}, \sphinxcode{\sphinxupquote{htoolMinclustersize}} and \sphinxcode{\sphinxupquote{htoolMaxblocksize}}.
+
+\sphinxAtStartPar
+Once assembled, the H\sphinxhyphen{}Matrix can also be plotted with
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{display}\PYG{p}{(}\PYG{n}{H}\PYG{p}{,} \PYG{k+kp}{wait}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\sphinxstylestrong{FreeFEM} can also output some information and statistics about the assembly of \sphinxcode{\sphinxupquote{H}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k}{if} \PYG{p}{(}\PYG{k+kr}{mpirank} \PYG{o}{=}\PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{k+kr}{cout} \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}} \PYG{n}{H}\PYG{p}{.}\PYG{n}{infos} \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}} \PYG{k+kr}{endl}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+
+\subsubsection{Solve the linear system}
+\label{\detokenize{documentation/BEM:solve-the-linear-system}}
+\sphinxAtStartPar
+Generally, the right\sphinxhyphen{}hand\sphinxhyphen{}side of the linear system is built as the discretization of a standard linear form:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{Uh}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}} \PYG{n}{p}\PYG{p}{,} \PYG{n}{b}\PYG{p}{;}
+\PYG{k+kt}{varf} \PYG{n+nf}{vrhs}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{uinc}\PYG{o}{*}\PYG{n}{v}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{b}\PYG{p}{[}\PYG{p}{]} \PYG{o}{=} \PYG{n}{vrhs}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{Uh}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+We can then solve the linear system to obtain \(p\), with the standard syntax:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{p}\PYG{p}{[}\PYG{p}{]} \PYG{o}{=} \PYG{n}{H}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{*}\PYG{n}{b}\PYG{p}{[}\PYG{p}{]}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Under the hood, \sphinxstylestrong{FreeFEM} solves the linear system with GMRES with a Jacobi (diagonal) preconditioner.
+
+
+\subsubsection{Compute the solution}
+\label{\detokenize{documentation/BEM:compute-the-solution}}
+\sphinxAtStartPar
+Finally, knowing \(p\), we can compute the solution \(u\) of our initial problem \eqref{equation:documentation/BEM:eq_modelpb} using the Potential as in \eqref{equation:documentation/BEM:eq_pv}. As for the \sphinxcode{\sphinxupquote{BemKernel}}, the information about the type of potential can be specified by defining a variable of type \sphinxcode{\sphinxupquote{BemPotential}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{BemPotential} \PYG{n+nf}{Pot}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{SL}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+In order to benefit from low\sphinxhyphen{}rank compression, instead of using \eqref{equation:documentation/BEM:eq_pv} to sequentially compute the value \(u(\boldsymbol{x})\) at each point of interest \(\boldsymbol{x}\), we can compute the discretization of the Potential on a target finite element space \sphinxcode{\sphinxupquote{UhOut}} defined on an output mesh \sphinxcode{\sphinxupquote{ThOut}} with an H\sphinxhyphen{}Matrix.
+
+\sphinxAtStartPar
+First, let us define the variational form corresponding to the potential that we want to use to reconstruct our solution. Similarly to the kernel case, the \sphinxcode{\sphinxupquote{POT}} keyword takes the potential as argument. Note that we have a single integral, and that \sphinxcode{\sphinxupquote{v}} plays the role of \(\boldsymbol{x}\).
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{varf} \PYG{n+nf}{vpot}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o}{=} \PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{POT}\PYG{p}{(}\PYG{n}{Pot}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+We can then assemble the rectangular H\sphinxhyphen{}Matrix from the potential variational form:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{fespace} \PYG{n+nf}{UhOut}\PYG{p}{(}\PYG{n}{ThOut}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{HMatrix}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}} \PYG{n}{HP} \PYG{o}{=} \PYG{n}{vpot}\PYG{p}{(}\PYG{n}{Uh}\PYG{p}{,}\PYG{n}{UhOut}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Computing \(u\) on \sphinxcode{\sphinxupquote{UhOut}} is then just a matter of performing the matrix\sphinxhyphen{}vector product of \sphinxcode{\sphinxupquote{HP}} with \sphinxcode{\sphinxupquote{p}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{UhOut}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}} \PYG{n}{u}\PYG{p}{;}
+\PYG{n}{u}\PYG{p}{[}\PYG{p}{]} \PYG{o}{=} \PYG{n}{HP}\PYG{o}{*}\PYG{n}{p}\PYG{p}{[}\PYG{p}{]}\PYG{p}{;}
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+
+\subsection{2D example script}
+\label{\detokenize{documentation/BEM:d-example-script}}
+\sphinxAtStartPar
+Let us summarize what we have learned with a 2D version of our {\hyperref[\detokenize{documentation/BEM:bemintromodel}]{\sphinxcrossref{\DUrole{std,std-ref}{model problem}}}} where we study the scattering of a plane wave by a disc:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+cp}{load} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{bem}\PYG{l+s}{\PYGZdq{}}
+
+\PYG{k+kt}{real} \PYG{n}{k} \PYG{o}{=} \PYG{l+m+mi}{10}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{k+kr}{n} \PYG{o}{=} \PYG{l+m+mi}{100}\PYG{p}{;}
+
+\PYG{k+kt}{border} \PYG{n+nf}{circle}\PYG{p}{(}\PYG{k+kp}{t} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;} \PYG{k+kr}{y}\PYG{o}{=}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{meshL} \PYG{n}{ThL} \PYG{o}{=} \PYG{n}{buildmeshL}\PYG{p}{(}\PYG{n}{circle}\PYG{p}{(}\PYG{k+kr}{n}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k+kt}{varf} \PYG{n+nf}{vbem}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o}{=} \PYG{n}{int1dx1d}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{)}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{)}\PYG{p}{(}\PYG{n}{BEM}\PYG{p}{(}\PYG{n}{BemKernel}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{SL}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{k}\PYG{o}{=}\PYG{n}{k}\PYG{p}{)}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k+kt}{fespace} \PYG{n+nf}{Uh}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{HMatrix}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}} \PYG{n}{H} \PYG{o}{=} \PYG{n}{vbem}\PYG{p}{(}\PYG{n}{Uh}\PYG{p}{,}\PYG{n}{Uh}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k+kt}{func} \PYG{n}{uinc} \PYG{o}{=} \PYG{n+nf}{exp}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{n}{i}\PYG{o}{*}\PYG{n}{k}\PYG{o}{*}\PYG{k+kr}{x}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{Uh}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}} \PYG{n}{p}\PYG{p}{,} \PYG{n}{b}\PYG{p}{;}
+\PYG{k+kt}{varf} \PYG{n+nf}{vrhs}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n+nf}{int1d}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{)}\PYG{p}{(}\PYG{n}{uinc}\PYG{o}{*}\PYG{n}{v}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{b}\PYG{p}{[}\PYG{p}{]} \PYG{o}{=} \PYG{n}{vrhs}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{Uh}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{n}{p}\PYG{p}{[}\PYG{p}{]} \PYG{o}{=} \PYG{n}{H}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{*}\PYG{n}{b}\PYG{p}{[}\PYG{p}{]}\PYG{p}{;}
+
+\PYG{k+kt}{varf} \PYG{n+nf}{vpot}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)} \PYG{o}{=} \PYG{n+nf}{int1d}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{)}\PYG{p}{(}\PYG{n}{POT}\PYG{p}{(}\PYG{n}{BemPotential}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{SL}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{k}\PYG{o}{=}\PYG{n}{k}\PYG{p}{)}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k+kt}{int} \PYG{n}{np} \PYG{o}{=} \PYG{l+m+mi}{200}\PYG{p}{;}
+\PYG{k+kt}{int} \PYG{n}{R} \PYG{o}{=} \PYG{l+m+mi}{4}\PYG{p}{;}
+\PYG{k+kt}{border} \PYG{n+nf}{b1}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{n}{R}\PYG{p}{,} \PYG{n}{R}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{k+kp}{t}\PYG{p}{;} \PYG{k+kr}{y}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{n}{R}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border} \PYG{n+nf}{b2}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{n}{R}\PYG{p}{,} \PYG{n}{R}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{n}{R}\PYG{p}{;} \PYG{k+kr}{y}\PYG{o}{=}\PYG{k+kp}{t}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border} \PYG{n+nf}{b3}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{n}{R}\PYG{p}{,} \PYG{n}{R}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{t}\PYG{p}{;} \PYG{k+kr}{y}\PYG{o}{=}\PYG{n}{R}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border} \PYG{n+nf}{b4}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{n}{R}\PYG{p}{,} \PYG{n}{R}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{n}{R}\PYG{p}{;} \PYG{k+kr}{y}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{t}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{mesh} \PYG{n}{ThOut} \PYG{o}{=} \PYG{n+nf}{buildmesh}\PYG{p}{(}\PYG{n}{b1}\PYG{p}{(}\PYG{n}{np}\PYG{p}{)}\PYG{o}{+}\PYG{n}{b2}\PYG{p}{(}\PYG{n}{np}\PYG{p}{)}\PYG{o}{+}\PYG{n}{b3}\PYG{p}{(}\PYG{n}{np}\PYG{p}{)}\PYG{o}{+}\PYG{n}{b4}\PYG{p}{(}\PYG{n}{np}\PYG{p}{)}\PYG{o}{+}\PYG{n}{circle}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{k+kr}{n}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k+kt}{fespace} \PYG{n+nf}{UhOut}\PYG{p}{(}\PYG{n}{ThOut}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{HMatrix}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}} \PYG{n}{HP} \PYG{o}{=} \PYG{n}{vpot}\PYG{p}{(}\PYG{n}{Uh}\PYG{p}{,}\PYG{n}{UhOut}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{n}{UhOut}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}} \PYG{n}{u}\PYG{p}{,} \PYG{n}{utot}\PYG{p}{;}
+\PYG{n}{u}\PYG{p}{[}\PYG{p}{]} \PYG{o}{=} \PYG{n}{HP}\PYG{o}{*}\PYG{n}{p}\PYG{p}{[}\PYG{p}{]}\PYG{p}{;}
+
+\PYG{n}{utot} \PYG{o}{=} \PYG{n}{u} \PYG{o}{+} \PYG{n}{uinc}\PYG{p}{;}
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{utot}\PYG{p}{,}\PYG{k+kp}{fill}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{k+kp}{value}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{k+kp}{cmm}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{u\PYGZus{}total}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{figure}[htbp]
+\centering
+
+\noindent\sphinxincludegraphics[width=0.800\linewidth]{{BEM_figcircle}.png}
+\end{figure}
 
 \sphinxstepscope
 
