@@ -21,7 +21,6 @@ jobs:
           pip install Sphinx
           pip install sphinxcontrib-inlinesyntaxhighlight
           pip install sphinx-sitemap
-          pip install sphinxcontrib-svg2pdfconverter[CairoSVG]
           git clone https://github.com/FreeFem/FreeFem-parser-pygments.git ~/pygments
           sudo cp ~/pygments/freefem.py /usr/lib/python3/dist-packages/pygments/lexers/
           (cd /usr/lib/python3/dist-packages/pygments/lexers/ && sudo python _mapping.py)
