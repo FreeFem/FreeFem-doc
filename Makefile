@@ -6,11 +6,6 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
-IMAGEDIRS     = documentation/images
-
-# SVG to PDF conversion
-SVG2PDF       = CairoSVG
-SVG2PDF_FLAGS =
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -18,21 +13,10 @@ help:
 
 .PHONY: help Makefile
 
-# Pattern rule for converting SVG to PDF
-%.pdf : %.svg
-	$(SVG2PDF) $< -o $@
-
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%: Makefile $(PDFs)
+%: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-
-# Build a list of SVG files to convert to PDFs
-PDFs := $(foreach dir, $(IMAGEDIRS), $(patsubst %.svg,%.pdf,$(wildcard $(SOURCEDIR)/$(dir)/*.svg)))
-
-# Make a rule to build the PDFs
-images: $(PDFs)
-	
 
 html: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
