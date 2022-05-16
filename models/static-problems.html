@@ -404,6 +404,35 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/BEM.html">The Boundary Element Method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/BEM.html#introduction-to-the-boundary-element-method-bem">Introduction to the Boundary Element Method (BEM)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#model-problem">Model problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#boundary-integral-operators">Boundary Integral Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#the-bemtool-library">the BEMTool library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#hierarchical-matrices">Hierarchical matrices</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../documentation/BEM.html#low-rank-approximation">Low-rank approximation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../documentation/BEM.html#hierarchical-block-structure">Hierarchical block structure</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../documentation/BEM.html#the-htool-library">The Htool library</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/BEM.html#solve-a-bem-problem-with-freefem">Solve a BEM problem with FreeFEM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#build-the-geometry">Build the geometry</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../documentation/BEM.html#d">2D</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../documentation/BEM.html#id3">3D</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#define-the-type-of-operator">Define the type of operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#define-the-variational-problem">Define the variational problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#assemble-the-h-matrix">Assemble the H-Matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#solve-the-linear-system">Solve the linear system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#compute-the-solution">Compute the solution</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/BEM.html#d-example-script">2D example script</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/plugins.html">Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/plugins.html#gsl">gsl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/plugins.html#ffrandom">ffrandom</a></li>
@@ -2065,12 +2094,12 @@ So the numerical solution is improved by adaptation of mesh.</p>
 <p>We assume that there is no current and a time independent charge distribution.
 Then the electric field <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> satisfies:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-maxwell">
-<span class="eqno">(42)<a class="headerlink" href="#equation-eqn-maxwell" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(48)<a class="headerlink" href="#equation-eqn-maxwell" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     \mathrm{div}\mathbf{E} &amp;=&amp; \rho/\epsilon\\
     \mathrm{curl}\mathbf{E} &amp;=&amp; 0
 \end{array}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\rho\)</span> is the charge density and <span class="math notranslate nohighlight">\(\epsilon\)</span> is called the permittivity of free space.</p>
-<p>From the equation <a class="reference internal" href="#equation-eqn-maxwell">(42)</a> We can introduce the electrostatic potential such that <span class="math notranslate nohighlight">\(\mathbf{E}=-\nabla \phi\)</span>.
+<p>From the equation <a class="reference internal" href="#equation-eqn-maxwell">(48)</a> We can introduce the electrostatic potential such that <span class="math notranslate nohighlight">\(\mathbf{E}=-\nabla \phi\)</span>.
 Then we have Poisson’s equation <span class="math notranslate nohighlight">\(-\Delta \phi=f\)</span>, <span class="math notranslate nohighlight">\(f=-\rho/\epsilon\)</span>.</p>
 <p>We now obtain the equipotential line which is the level curve of <span class="math notranslate nohighlight">\(\phi\)</span>, when there are no charges except conductors <span class="math notranslate nohighlight">\(\{C_i\}_{1,\cdots,K}\)</span>.
 Let us assume <span class="math notranslate nohighlight">\(K\)</span> conductors <span class="math notranslate nohighlight">\(C_1,\cdots,C_K\)</span> within an enclosure <span class="math notranslate nohighlight">\(C_0\)</span>.</p>
@@ -2135,16 +2164,16 @@ Note that <span class="math notranslate nohighlight">\(C_0\)</span> is described
 Infinity will be represented by a large circle <span class="math notranslate nohighlight">\(\Gamma_{\infty}\)</span>.
 As previously, we must solve:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-naca-5-5">
-<span class="eqno">(43)<a class="headerlink" href="#equation-eqn-naca-5-5" title="Permalink to this equation"></a></span>\[\Delta \varphi=0\quad\textrm{in }\Omega,
+<span class="eqno">(49)<a class="headerlink" href="#equation-eqn-naca-5-5" title="Permalink to this equation"></a></span>\[\Delta \varphi=0\quad\textrm{in }\Omega,
 \quad \varphi|_S=c,\quad
 \varphi|_{\Gamma_{\infty}}=u_{\infty 1x}-u_{\infty2x}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Omega\)</span> is the area occupied by the fluid, <span class="math notranslate nohighlight">\(u_{\infty}\)</span> is the air speed at infinity, <span class="math notranslate nohighlight">\(c\)</span> is a constant to be determined so that <span class="math notranslate nohighlight">\(\p_n\varphi\)</span> is continuous at the trailing edge <span class="math notranslate nohighlight">\(P\)</span> of <span class="math notranslate nohighlight">\(S\)</span> (so-called Kutta-Joukowski condition).
 Lift is proportional to <span class="math notranslate nohighlight">\(c\)</span>.</p>
 <p>To find <span class="math notranslate nohighlight">\(c\)</span> we use a superposition method.
-As all equations in <a class="reference internal" href="#equation-eqn-naca-5-5">(43)</a> are linear, the solution <span class="math notranslate nohighlight">\(\varphi_c\)</span> is a linear function of <span class="math notranslate nohighlight">\(c\)</span></p>
+As all equations in <a class="reference internal" href="#equation-eqn-naca-5-5">(49)</a> are linear, the solution <span class="math notranslate nohighlight">\(\varphi_c\)</span> is a linear function of <span class="math notranslate nohighlight">\(c\)</span></p>
 <div class="math notranslate nohighlight">
 \[\varphi_c = \varphi_0 + c\varphi_1\]</div>
-<p>where <span class="math notranslate nohighlight">\(\varphi_0\)</span> is a solution of <a class="reference internal" href="#equation-eqn-naca-5-5">(43)</a> with <span class="math notranslate nohighlight">\(c = 0\)</span> and <span class="math notranslate nohighlight">\(\varphi_1\)</span> is a solution with <span class="math notranslate nohighlight">\(c = 1\)</span> and zero speed at infinity.</p>
+<p>where <span class="math notranslate nohighlight">\(\varphi_0\)</span> is a solution of <a class="reference internal" href="#equation-eqn-naca-5-5">(49)</a> with <span class="math notranslate nohighlight">\(c = 0\)</span> and <span class="math notranslate nohighlight">\(\varphi_1\)</span> is a solution with <span class="math notranslate nohighlight">\(c = 1\)</span> and zero speed at infinity.</p>
 <p>With these two fields computed, we shall determine <span class="math notranslate nohighlight">\(c\)</span> by requiring the continuity of <span class="math notranslate nohighlight">\(\p \varphi /\p n\)</span> at the trailing edge.
 An equation for the upper surface of a NACA0012 (this is a classical wing profile in aerodynamics; the rear of the wing is called the trailing edge) is:</p>
 <div class="math notranslate nohighlight">
@@ -2248,14 +2277,14 @@ Thus the jump of <span class="math notranslate nohighlight">\(\p_n\varphi\)</spa
 <p>There are famous estimation between the numerical result <span class="math notranslate nohighlight">\(u_h\)</span> and the exact solution <span class="math notranslate nohighlight">\(u\)</span> of the <a class="reference internal" href="../tutorials/poisson.html#tutorialpoisson"><span class="std std-ref">Poisson’s problem</span></a>:</p>
 <p>If triangulations <span class="math notranslate nohighlight">\(\{\mathcal{T}_h\}_{h\downarrow 0}\)</span> is regular (see <a class="reference internal" href="../documentation/mesh-generation.html#meshregulartriangulation"><span class="std std-ref">Regular Triangulation</span></a>), then we have the estimates:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-errorestimatation">
-<span class="eqno">(44)<a class="headerlink" href="#equation-eqn-errorestimatation" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(50)<a class="headerlink" href="#equation-eqn-errorestimatation" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     |\nabla u - \nabla u_h|_{0,\Omega} &amp;\le&amp; C_1h \\
     \|u - u_h\|_{0,\Omega} &amp;\le&amp; C_2h^2
 \end{array}\end{split}\]</div>
 <p>with constants <span class="math notranslate nohighlight">\(C_1,\, C_2\)</span> independent of <span class="math notranslate nohighlight">\(h\)</span>, if <span class="math notranslate nohighlight">\(u\)</span> is in <span class="math notranslate nohighlight">\(H^2(\Omega)\)</span>.
 It is known that <span class="math notranslate nohighlight">\(u\in H^2(\Omega)\)</span> if <span class="math notranslate nohighlight">\(\Omega\)</span> is convex.</p>
-<p>In this section we check <a class="reference internal" href="#equation-eqn-errorestimatation">(44)</a>.
-We will pick up numericall error if we use the numerical derivative, so we will use the following for <a class="reference internal" href="#equation-eqn-errorestimatation">(44)</a>.</p>
+<p>In this section we check <a class="reference internal" href="#equation-eqn-errorestimatation">(50)</a>.
+We will pick up numericall error if we use the numerical derivative, so we will use the following for <a class="reference internal" href="#equation-eqn-errorestimatation">(50)</a>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
     \int_{\Omega}|\nabla u - \nabla u_h|^2\, \d x\d y &amp;=&amp;\int_{\Omega}\nabla u\cdot \nabla(u - 2u_h)\, \d x\d y+ \int_{\Omega}\nabla u_h\cdot \nabla u_h\, \d x\d y\\

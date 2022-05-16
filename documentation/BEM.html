@@ -43,7 +43,7 @@
 	
 	<nav id="nav">
 	<div style="display: none;">
-		<ul>
+		<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html"><strong>Introduction</strong></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../introduction/new-features.html">Version 4.5: new features</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../introduction/new-features.html#release-binaries-packages">Release, binaries packages</a></li>
@@ -168,7 +168,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="notations.html">Notations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="notations.html#generalities">Generalities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="notations.html#sets-mappings-matrices-vectors">Sets, Mappings, Matrices, Vectors</a></li>
@@ -402,6 +402,35 @@
 <li class="toctree-l4"><a class="reference internal" href="petsc/examples.html#reproducible-science">Reproducible science</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The Boundary Element Method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-to-the-boundary-element-method-bem">Introduction to the Boundary Element Method (BEM)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#model-problem">Model problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boundary-integral-operators">Boundary Integral Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-bemtool-library">the BEMTool library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hierarchical-matrices">Hierarchical matrices</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#low-rank-approximation">Low-rank approximation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#hierarchical-block-structure">Hierarchical block structure</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#the-htool-library">The Htool library</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#solve-a-bem-problem-with-freefem">Solve a BEM problem with FreeFEM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build-the-geometry">Build the geometry</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#d">2D</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">3D</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#define-the-type-of-operator">Define the type of operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#define-the-variational-problem">Define the variational problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assemble-the-h-matrix">Assemble the H-Matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solve-the-linear-system">Solve the linear system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compute-the-solution">Compute the solution</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#d-example-script">2D example script</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="plugins.html">Plugins</a><ul>
@@ -1898,10 +1927,28 @@
 
 	<div id="subnav">
 	<div style="display: none">
-		<ul>
+		<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html"><strong>Introduction</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Learning by Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="notations.html">Notations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh-generation.html">Mesh Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finite-element.html">Finite element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms-and-optimization.html">Algorithms &amp; Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallelization.html">Parallelization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="petsc/index.html">PETSc and SLEPc</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">The Boundary Element Method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-to-the-boundary-element-method-bem">Introduction to the Boundary Element Method (BEM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solve-a-bem-problem-with-freefem">Solve a BEM problem with FreeFEM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-example-script">2D example script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugins.html">Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ffddm/index.html">ffddm</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../references/index.html">Language references</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../models/index.html">Mathematical Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
@@ -1924,7 +1971,7 @@
 <a class="reference internal image-reference" href="../_images/BEM_figdomainbem.png"><img alt="../_images/BEM_figdomainbem.png" src="../_images/BEM_figdomainbem.png" style="width: 30%;" /></a>
 </figure>
 <div class="math notranslate nohighlight" id="equation-eq-modelpb">
-<span class="eqno">()<a class="headerlink" href="#equation-eq-modelpb" title="Permalink to this equation"></a></span>\[\begin{split}\left \{
+<span class="eqno">(39)<a class="headerlink" href="#equation-eq-modelpb" title="Permalink to this equation"></a></span>\[\begin{split}\left \{
 \begin{aligned}
 - \Delta u - k^2 u &amp;= 0 \;\; &amp;\text{in} \;\; &amp;\mathbb{R}^3 \backslash \Omega \\
 u &amp;= - u_\text{inc}  \;\; &amp;\text{on} \;\; &amp;\Gamma\\
@@ -1938,24 +1985,24 @@ u &amp;= - u_\text{inc}  \;\; &amp;\text{on} \;\; &amp;\Gamma\\
 <p>If the wavenumber <span class="math notranslate nohighlight">\(k\)</span> is <strong>constant</strong> in <span class="math notranslate nohighlight">\(\mathbb{R}^3 \backslash \Omega\)</span>, the boundary element method can be applied. It consists in reformulating the problem in terms of unknowns on the boundary <span class="math notranslate nohighlight">\(\Gamma\)</span> of <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
 <p>First, let us introduce the <em>Green kernel</em> <span class="math notranslate nohighlight">\(\mathcal{G}\)</span>, which for the helmholtz equation in 3D is</p>
 <div class="math notranslate nohighlight" id="equation-eq-p">
-<span class="eqno">()<a class="headerlink" href="#equation-eq-p" title="Permalink to this equation"></a></span>\[\mathcal{G}(\boldsymbol{x}) = \exp(\imath k |\boldsymbol{x}|) / (4 \pi |\boldsymbol{x}|).\]</div>
+<span class="eqno">(40)<a class="headerlink" href="#equation-eq-p" title="Permalink to this equation"></a></span>\[\mathcal{G}(\boldsymbol{x}) = \exp(\imath k |\boldsymbol{x}|) / (4 \pi |\boldsymbol{x}|).\]</div>
 <p>Let us also introduce the <em>Single Layer Potential</em> <span class="math notranslate nohighlight">\(\operatorname{SL}\)</span>, which for any <span class="math notranslate nohighlight">\(q \in H^{-1/2}(\Gamma)\)</span> is defined as</p>
 <div class="math notranslate nohighlight" id="equation-eq-sl">
-<span class="eqno">()<a class="headerlink" href="#equation-eq-sl" title="Permalink to this equation"></a></span>\[\operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}), \quad \forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Gamma.\]</div>
+<span class="eqno">(41)<a class="headerlink" href="#equation-eq-sl" title="Permalink to this equation"></a></span>\[\operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}), \quad \forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Gamma.\]</div>
 <p>An interesting property of <span class="math notranslate nohighlight">\(\text{SL}\)</span> is that it produces solutions of the PDE at hand in <span class="math notranslate nohighlight">\(\mathbb{R}^3 \backslash \Gamma\)</span> which satisfy the necessary conditions at infinity (here the Helmholtz equation and the Sommerfeld radiation condition).</p>
 <p>Thus, we now need to find a so-called <em>ansatz</em> <span class="math notranslate nohighlight">\(p \in H^{-1/2}(\Gamma)\)</span> such that <span class="math notranslate nohighlight">\(\forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Omega\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eq-pv">
-<span class="eqno">()<a class="headerlink" href="#equation-eq-pv" title="Permalink to this equation"></a></span>\[u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}),\]</div>
+<span class="eqno">(42)<a class="headerlink" href="#equation-eq-pv" title="Permalink to this equation"></a></span>\[u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}),\]</div>
 <p>where <span class="math notranslate nohighlight">\(u\)</span> also verifies the Dirichlet boundary condition <span class="math notranslate nohighlight">\(u = - u_\text{inc}\)</span> on <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
-<p>In order to find <span class="math notranslate nohighlight">\(p\)</span>, we define a variational problem by multiplying <a class="reference internal" href="#equation-eq-pv">()</a> by a test function <cite>q</cite> and integrating over <span class="math notranslate nohighlight">\(\Gamma\)</span>:</p>
+<p>In order to find <span class="math notranslate nohighlight">\(p\)</span>, we define a variational problem by multiplying <a class="reference internal" href="#equation-eq-pv">(42)</a> by a test function <cite>q</cite> and integrating over <span class="math notranslate nohighlight">\(\Gamma\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\int_{\Gamma} u(\boldsymbol{x}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x}) =
 \int_{\Gamma \times \Gamma} \frac{\exp(\imath k |\boldsymbol{x}-\boldsymbol{y}|)}{4 \pi |\boldsymbol{x}-\boldsymbol{y}|} p(\boldsymbol{y}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x,y}) \quad \forall q : \Gamma \rightarrow \mathbb{C}.\]</div>
 <p>Using the Dirichlet boundary condition <span class="math notranslate nohighlight">\(u = - u_\text{inc}\)</span> on <span class="math notranslate nohighlight">\(\Gamma\)</span>, we end up with the following variational problem to solve: find <span class="math notranslate nohighlight">\(p : \Gamma \rightarrow \mathbb{C}\)</span> such that</p>
 <div class="math notranslate nohighlight" id="equation-eq-bem">
-<span class="eqno">()<a class="headerlink" href="#equation-eq-bem" title="Permalink to this equation"></a></span>\[\int_{\Gamma \times \Gamma} \frac{\exp(\imath k |\boldsymbol{x}-\boldsymbol{y}|)}{4 \pi |\boldsymbol{x}-\boldsymbol{y}|} p(\boldsymbol{y}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x,y}) = - \int_{\Gamma} u_\text{inc}(\boldsymbol{x}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x}) \quad \forall q : \Gamma \rightarrow \mathbb{C}.\]</div>
-<p>Note that knowing <span class="math notranslate nohighlight">\(p\)</span> on <span class="math notranslate nohighlight">\(\Gamma\)</span>, we can indeed compute <span class="math notranslate nohighlight">\(u\)</span> anywhere using the <em>potential</em> formulation <a class="reference internal" href="#equation-eq-pv">()</a>. Thus, we essentially gained one space dimension, as we only have to solve for <span class="math notranslate nohighlight">\(p : \Gamma \rightarrow \mathbb{C}\)</span> in <a class="reference internal" href="#equation-eq-bem">()</a>.</p>
-<p>Of course, this inherent benefit of the boundary element method comes with a drawback: after discretization of <a class="reference internal" href="#equation-eq-bem">()</a>, for example with piecewise linear continuous (P1) functions on <span class="math notranslate nohighlight">\(\Gamma\)</span>, we end up with a linear system whose matrix is <strong>full</strong>: because <span class="math notranslate nohighlight">\(\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})\)</span> never vanishes, every interaction coefficient is nonzero. Thus, the matrix <span class="math notranslate nohighlight">\(A\)</span> of the linear system can be very costly to store (<span class="math notranslate nohighlight">\(N^2\)</span> coefficients) and invert (factorization in <span class="math notranslate nohighlight">\(\mathcal{O}(N^3)\)</span>) (<span class="math notranslate nohighlight">\(N\)</span> is the size of the linear system).
+<span class="eqno">(43)<a class="headerlink" href="#equation-eq-bem" title="Permalink to this equation"></a></span>\[\int_{\Gamma \times \Gamma} \frac{\exp(\imath k |\boldsymbol{x}-\boldsymbol{y}|)}{4 \pi |\boldsymbol{x}-\boldsymbol{y}|} p(\boldsymbol{y}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x,y}) = - \int_{\Gamma} u_\text{inc}(\boldsymbol{x}) q(\boldsymbol{x}) d\sigma(\boldsymbol{x}) \quad \forall q : \Gamma \rightarrow \mathbb{C}.\]</div>
+<p>Note that knowing <span class="math notranslate nohighlight">\(p\)</span> on <span class="math notranslate nohighlight">\(\Gamma\)</span>, we can indeed compute <span class="math notranslate nohighlight">\(u\)</span> anywhere using the <em>potential</em> formulation <a class="reference internal" href="#equation-eq-pv">(42)</a>. Thus, we essentially gained one space dimension, as we only have to solve for <span class="math notranslate nohighlight">\(p : \Gamma \rightarrow \mathbb{C}\)</span> in <a class="reference internal" href="#equation-eq-bem">(43)</a>. Another advantage of the boundary element method is that for a given mesh size, it is usually more accurate than the finite element method.</p>
+<p>Of course, these benefits of the boundary element method come with a drawback: after discretization of <a class="reference internal" href="#equation-eq-bem">(43)</a>, for example with piecewise linear continuous (P1) functions on <span class="math notranslate nohighlight">\(\Gamma\)</span>, we end up with a linear system whose matrix is <strong>full</strong>: because <span class="math notranslate nohighlight">\(\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})\)</span> never vanishes, every interaction coefficient is nonzero. Thus, the matrix <span class="math notranslate nohighlight">\(A\)</span> of the linear system can be very costly to store (<span class="math notranslate nohighlight">\(N^2\)</span> coefficients) and invert (factorization in <span class="math notranslate nohighlight">\(\mathcal{O}(N^3)\)</span>) (<span class="math notranslate nohighlight">\(N\)</span> is the size of the linear system).
 Moreover, compared to the finite element method, the matrix coefficients are much more expensive to compute because of the double integral and the evaluation of the Green function <span class="math notranslate nohighlight">\(\mathcal{G}\)</span>. Plus, the choice of the quadrature formulas has to be made with extra care because of the singularity of <span class="math notranslate nohighlight">\(\mathcal{G}\)</span>.</p>
 </section>
 <section id="boundary-integral-operators">
@@ -2018,13 +2065,13 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <li><p>blocks <em>away</em> from the diagonal corresponding to the interaction between two clusters of geometric points <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> satisfying the so-called <strong>admissibility condition</strong></p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-eq-ac">
-<span class="eqno">()<a class="headerlink" href="#equation-eq-ac" title="Permalink to this equation"></a></span>\[\max(\text{diam}(X),\text{diam}(Y)) \leq \eta \text{ dist}(X,Y)\]</div>
+<span class="eqno">(44)<a class="headerlink" href="#equation-eq-ac" title="Permalink to this equation"></a></span>\[\max(\text{diam}(X),\text{diam}(Y)) \leq \eta \text{ dist}(X,Y)\]</div>
 <p>are <em>far-field interactions</em> and have exponentially decreasing singular values. Thus, they can be well-approximated by low-rank matrices.</p>
 <p>The idea is then to build a <strong>hierarchical representation</strong> of the blocks of the matrix, then identify and compress admissible blocks using low-rank approximation.</p>
 <p>We can then build the <em>H-Matrix</em> by taking the following steps:</p>
 <ol class="arabic simple">
 <li><p>build a <em>hierarchical partition</em> of the geometry, leading to a <strong>cluster tree</strong> of the unknowns. It can for example be defined using bisection and principal component analysis.</p></li>
-<li><p>from this hierarchical clustering, define and traverse the <strong>block cluster tree</strong> representation of the matrix structure, identifying the compressible blocks using admissibility condition <a class="reference internal" href="#equation-eq-ac">()</a></p></li>
+<li><p>from this hierarchical clustering, define and traverse the <strong>block cluster tree</strong> representation of the matrix structure, identifying the compressible blocks using admissibility condition <a class="reference internal" href="#equation-eq-ac">(44)</a></p></li>
 <li><p>compute the low-rank approximation of the identified compressible blocks using e.g. <em>partial ACA</em> ; the remaining leaves corresponding to <em>near-field</em> interactions are computed as dense blocks.</p></li>
 </ol>
 <figure class="align-default" id="bemfighmatrix">
@@ -2067,8 +2114,8 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </div>
 <p>You can find much more information about curve mesh generation <a class="reference internal" href="mesh-generation.html#meshltype"><span class="std std-ref">here</span></a>.</p>
 </section>
-<section id="id1">
-<h4>3D<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h4>
+<section id="id3">
+<h4>3D<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
 <p>In 3D, the geometry of the boundary surface can be discretized with a surface mesh of type <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code>, which can be built by several ways, for example using the <code class="code freefem docutils literal notranslate"><span class="pre">square3</span></code> constructor:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
 <span class="lineno">2 </span><span class="kt">real</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.2</span><span class="p">;</span>
@@ -2202,11 +2249,11 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </section>
 <section id="compute-the-solution">
 <h3>Compute the solution<a class="headerlink" href="#compute-the-solution" title="Permalink to this headline"></a></h3>
-<p>Finally, knowing <span class="math notranslate nohighlight">\(p\)</span>, we can compute the solution <span class="math notranslate nohighlight">\(u\)</span> of our initial problem <a class="reference internal" href="#equation-eq-modelpb">()</a> using the Potential as in <a class="reference internal" href="#equation-eq-pv">()</a>. As for the <code class="code freefem docutils literal notranslate"><span class="pre">BemKernel</span></code>, the information about the type of potential can be specified by defining a variable of type <code class="code freefem docutils literal notranslate"><span class="pre">BemPotential</span></code>:</p>
+<p>Finally, knowing <span class="math notranslate nohighlight">\(p\)</span>, we can compute the solution <span class="math notranslate nohighlight">\(u\)</span> of our initial problem <a class="reference internal" href="#equation-eq-modelpb">(39)</a> using the Potential as in <a class="reference internal" href="#equation-eq-pv">(42)</a>. As for the <code class="code freefem docutils literal notranslate"><span class="pre">BemKernel</span></code>, the information about the type of potential can be specified by defining a variable of type <code class="code freefem docutils literal notranslate"><span class="pre">BemPotential</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">BemPotential</span> <span class="nf">Pot</span><span class="p">(</span><span class="s">&quot;SL&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In order to benefit from low-rank compression, instead of using <a class="reference internal" href="#equation-eq-pv">()</a> to sequentially compute the value <span class="math notranslate nohighlight">\(u(\boldsymbol{x})\)</span> at each point of interest <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, we can compute the discretization of the Potential on a target finite element space <code class="code freefem docutils literal notranslate"><span class="pre">UhOut</span></code> defined on an output mesh <code class="code freefem docutils literal notranslate"><span class="pre">ThOut</span></code> with an H-Matrix.</p>
+<p>In order to benefit from low-rank compression, instead of using <a class="reference internal" href="#equation-eq-pv">(42)</a> to sequentially compute the value <span class="math notranslate nohighlight">\(u(\boldsymbol{x})\)</span> at each point of interest <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, we can compute the discretization of the Potential on a target finite element space <code class="code freefem docutils literal notranslate"><span class="pre">UhOut</span></code> defined on an output mesh <code class="code freefem docutils literal notranslate"><span class="pre">ThOut</span></code> with an H-Matrix.</p>
 <p>First, let us define the variational form corresponding to the potential that we want to use to reconstruct our solution. Similarly to the kernel case, the <code class="code freefem docutils literal notranslate"><span class="pre">POT</span></code> keyword takes the potential as argument. Note that we have a single integral, and that <code class="code freefem docutils literal notranslate"><span class="pre">v</span></code> plays the role of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">varf</span> <span class="nf">vpot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">ThS</span><span class="p">)(</span><span class="n">POT</span><span class="p">(</span><span class="n">Pot</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">));</span>
 </pre></div>
@@ -2265,14 +2312,19 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <span class="lineno">36 </span><span class="n">u</span><span class="p">[]</span> <span class="o">=</span> <span class="n">HP</span><span class="o">*</span><span class="n">p</span><span class="p">[];</span>
 <span class="lineno">37 </span>
 <span class="lineno">38 </span><span class="n">utot</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">uinc</span><span class="p">;</span>
-<span class="lineno">39 </span><span class="nf">plot</span><span class="p">(</span><span class="n">utot</span><span class="p">,</span><span class="kp">fill</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="kp">value</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+<span class="lineno">39 </span><span class="nf">plot</span><span class="p">(</span><span class="n">utot</span><span class="p">,</span><span class="kp">fill</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="kp">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="kp">cmm</span><span class="o">=</span><span class="s">&quot;u_total&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
+<figure class="align-default" id="bemfigcircle">
+<a class="reference internal image-reference" href="../_images/BEM_figcircle.png"><img alt="../_images/BEM_figcircle.png" src="../_images/BEM_figcircle.png" style="width: 80%;" /></a>
+</figure>
 </section>
 </section>
 
 
 		<div class="content-nav-buttons" role="navigation">
+			<a href="petsc/examples.html" class="btn-neutral" title="previous topic" rel="previous"><span class="fa fa-arrow-circle-left"></span> Previous topic: Examples</a>
+			<a href="plugins.html" class="btn-neutral" title="next topic" rel="next">Next topic: Plugins <span class="fa fa-arrow-circle-right"></span></a>
 		</div>
 	</div>
 	
@@ -2296,7 +2348,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <li><a class="reference internal" href="#solve-a-bem-problem-with-freefem">Solve a BEM problem with FreeFEM</a><ul>
 <li><a class="reference internal" href="#build-the-geometry">Build the geometry</a><ul>
 <li><a class="reference internal" href="#d">2D</a></li>
-<li><a class="reference internal" href="#id1">3D</a></li>
+<li><a class="reference internal" href="#id3">3D</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#define-the-type-of-operator">Define the type of operator</a></li>
