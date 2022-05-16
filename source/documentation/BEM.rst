@@ -18,6 +18,7 @@ The model problem we consider here is the scattering of an incoming acoustic wav
 
 .. figure:: images/BEM_figdomainbem.png
     :name: BEMfigdomainbem
+    :align: center
     :width: 30%
 
 .. math::
@@ -167,6 +168,7 @@ Unfortunately, BEM matrices generally do not have fast decreasing singular value
 
 .. figure:: images/BEM_figyumatrix.png
     :name: BEMfigyumatrix
+    :align: center
     :width: 40%
 
 - blocks *near* the diagonal contain information about the *near-field interactions*, which are not low-rank in nature
@@ -191,12 +193,14 @@ We can then build the *H-Matrix* by taking the following steps:
 
   .. figure:: images/BEM_fighmatrix.svg
     :name: BEMfighmatrix
+    :align: center
     :width: 80%
 
 .. only:: latex
 
   .. figure:: images/BEM_fighmatrix.pdf
     :name: BEMfighmatrix
+    :align: center
     :width: 80%
 
 The Htool library
@@ -208,12 +212,14 @@ the H-Matrix format is implemented in the C++ library `Htool`_. **Htool** is a p
 
   .. figure:: images/BEM_fighmatrixpara.svg
     :name: BEMfighmatrixpara
+    :align: center
     :width: 45%
 
 .. only:: latex
 
   .. figure:: images/BEM_fighmatrixpara.pdf
     :name: BEMfighmatrixpara
+    :align: center
     :width: 45%
 
 
@@ -277,6 +283,7 @@ In 3D, the geometry of the boundary surface can be discretized with a surface me
 
 .. figure:: images/BEM_figtorus.png
     :name: BEMfigtorus
+    :align: center
     :width: 30%
 
 or from a 2D :freefem:`mesh` using the :freefem:`movemesh23` keyword:
@@ -530,4 +537,5 @@ Let us summarize what we have learned with a 2D version of our :ref:`model probl
 
 .. figure:: images/BEM_figcircle.png
   :name: BEMfigcircle
+  :align: center
   :width: 80%
