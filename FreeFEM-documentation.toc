@@ -257,17 +257,17 @@
 \contentsline {paragraph}{The Htool library}{310}{paragraph*.332}%
 \contentsline {subsection}{\numberline {3.8.2}Solve a BEM problem with FreeFEM}{310}{subsection.3.8.2}%
 \contentsline {subsubsection}{Build the geometry}{310}{subsubsection*.333}%
-\contentsline {paragraph}{2D}{311}{paragraph*.334}%
+\contentsline {paragraph}{2D}{310}{paragraph*.334}%
 \contentsline {paragraph}{3D}{311}{paragraph*.335}%
-\contentsline {subsubsection}{Define the type of operator}{312}{subsubsection*.336}%
+\contentsline {subsubsection}{Define the type of operator}{311}{subsubsection*.336}%
 \contentsline {subsubsection}{Define the variational problem}{312}{subsubsection*.337}%
-\contentsline {subsubsection}{Assemble the H\sphinxhyphen {}Matrix}{313}{subsubsection*.338}%
-\contentsline {subsubsection}{Solve the linear system}{314}{subsubsection*.339}%
-\contentsline {subsubsection}{Compute the solution}{314}{subsubsection*.340}%
+\contentsline {subsubsection}{Assemble the H\sphinxhyphen {}Matrix}{312}{subsubsection*.338}%
+\contentsline {subsubsection}{Solve the linear system}{313}{subsubsection*.339}%
+\contentsline {subsubsection}{Compute the solution}{313}{subsubsection*.340}%
 \contentsline {subsection}{\numberline {3.8.3}2D example script}{314}{subsection.3.8.3}%
 \contentsline {section}{\numberline {3.9}Plugins}{315}{section.3.9}%
 \contentsline {subsection}{\numberline {3.9.1}gsl}{315}{subsection.3.9.1}%
-\contentsline {subsection}{\numberline {3.9.2}ffrandom}{317}{subsection.3.9.2}%
+\contentsline {subsection}{\numberline {3.9.2}ffrandom}{316}{subsection.3.9.2}%
 \contentsline {subsection}{\numberline {3.9.3}mmap / semaphore}{317}{subsection.3.9.3}%
 \contentsline {section}{\numberline {3.10}Developers}{322}{section.3.10}%
 \contentsline {subsection}{\numberline {3.10.1}File formats}{322}{subsection.3.10.1}%

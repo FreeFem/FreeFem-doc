@@ -23505,11 +23505,7 @@ Source code
 \sphinxAtStartPar
 The model problem we consider here is the scattering of an incoming acoustic wave \(u_\text{inc}\) by an obstacle \(\Omega\). Thus, we want to solve the following homogeneous Helmholtz equation written in terms of the scattered field \(u\):
 
-\begin{figure}[htbp]
-\centering
-
-\noindent\sphinxincludegraphics[width=0.300\linewidth]{{BEM_figdomainbem}.png}
-\end{figure}
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.300\linewidth]{{BEM_figdomainbem}.png}\hspace*{\fill}}
 \begin{equation}\label{equation:documentation/BEM:eq_modelpb}
 \begin{split}\left \{
 \begin{aligned}
@@ -23669,11 +23665,7 @@ Thankfully, there exist several techniques to approximate a truncated SVD by com
 \sphinxAtStartPar
 Unfortunately, BEM matrices generally do not have fast decreasing singular values. However, they can exhibit sub\sphinxhyphen{}blocks with rapidly decreasing singular values, thanks to the asymptotically smooth nature of the BEM kernel. Let us look for example at the absolute value of the matrix coefficients in the 2D (circle) case below:
 
-\begin{figure}[htbp]
-\centering
-
-\noindent\sphinxincludegraphics[width=0.400\linewidth]{{BEM_figyumatrix}.png}
-\end{figure}
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.400\linewidth]{{BEM_figyumatrix}.png}\hspace*{\fill}}
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -23711,11 +23703,7 @@ compute the low\sphinxhyphen{}rank approximation of the identified compressible 
 
 \end{enumerate}
 
-\begin{figure}[htbp]
-\centering
-
-\noindent\sphinxincludegraphics[width=0.800\linewidth]{{BEM_fighmatrix}.pdf}
-\end{figure}
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.800\linewidth]{{BEM_fighmatrix}.pdf}\hspace*{\fill}}
 
 
 \paragraph{The Htool library}
@@ -23723,11 +23711,7 @@ compute the low\sphinxhyphen{}rank approximation of the identified compressible 
 \sphinxAtStartPar
 the H\sphinxhyphen{}Matrix format is implemented in the C++ library \sphinxhref{https://github.com/htool-ddm/htool}{Htool}. \sphinxstylestrong{Htool} is a parallel header\sphinxhyphen{}only library written by Pierre Marchand and Pierre\sphinxhyphen{}Henri Tournier. It is interfaced with \sphinxstylestrong{FreeFEM} and provides routines to build hierarchical matrix structures (cluster trees, block trees, low\sphinxhyphen{}rank matrices, block matrices) as well as efficient parallel matrix\sphinxhyphen{}vector and matrix\sphinxhyphen{}matrix product using MPI and OpenMP. \sphinxstylestrong{Htool} is interfaced with \sphinxstylestrong{BemTool} to allow the compression of BEM matrices using the H\sphinxhyphen{}Matrix format in \sphinxstylestrong{FreeFEM}.
 
-\begin{figure}[htbp]
-\centering
-
-\noindent\sphinxincludegraphics[width=0.450\linewidth]{{BEM_fighmatrixpara}.pdf}
-\end{figure}
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.450\linewidth]{{BEM_fighmatrixpara}.pdf}\hspace*{\fill}}
 
 
 \subsection{Solve a BEM problem with FreeFEM}
@@ -23787,11 +23771,7 @@ In 3D, the geometry of the boundary surface can be discretized with a surface me
 \PYG{k+kt}{meshS} \PYG{n}{ThS} \PYG{o}{=} \PYG{n+nf}{square3}\PYG{p}{(}\PYG{n}{nx}\PYG{p}{,}\PYG{n}{ny}\PYG{p}{,}\PYG{p}{[}\PYG{n}{torex}\PYG{p}{,}\PYG{n}{torey}\PYG{p}{,}\PYG{n}{torez}\PYG{p}{]}\PYG{p}{,}\PYG{k+kp}{removeduplicate}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
-\begin{figure}[htbp]
-\centering
-
-\noindent\sphinxincludegraphics[width=0.300\linewidth]{{BEM_figtorus}.png}
-\end{figure}
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.300\linewidth]{{BEM_figtorus}.png}\hspace*{\fill}}
 
 \sphinxAtStartPar
 or from a 2D \sphinxcode{\sphinxupquote{mesh}} using the \sphinxcode{\sphinxupquote{movemesh23}} keyword:
@@ -24075,11 +24055,7 @@ Let us summarize what we have learned with a 2D version of our {\hyperref[\detok
 \PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{utot}\PYG{p}{,}\PYG{k+kp}{fill}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{k+kp}{value}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{k+kp}{cmm}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{u\PYGZus{}total}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
-\begin{figure}[htbp]
-\centering
-
-\noindent\sphinxincludegraphics[width=0.800\linewidth]{{BEM_figcircle}.png}
-\end{figure}
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.800\linewidth]{{BEM_figcircle}.png}\hspace*{\fill}}
 
 \sphinxstepscope
 
