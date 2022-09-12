@@ -184,8 +184,9 @@ latex_elements = {
 \\def\\bS{{\\bf S}}
 \\def\\bT{{\\bf T}}
 \\def\\bsig{{\\bf \\sigma}}
-\\def\\T{{\mathbb{T}}}
-\\def\\d{{text{d}}}
+\\def\\T{{\\mathbb{T}}}
+\\def\\d{{\\text{d}}}
+\\def\\spxentry{{}}
     """,
     # Latex figure (float) alignment
     #
