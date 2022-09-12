@@ -78,7 +78,9 @@ const readHtml = (root, file) => {
   const toctree = document.querySelector('.toctree-wrapper')
   document.removeChild(toctree)
 
-  const body = document.querySelector('#content').text
+  let body = document.querySelector('#content').text
+  body = body.replaceAll('\\(', '').replaceAll('\\)', '').replaceAll('\\', '')
+  body = body.replaceAll(/<\/?span[^>]*>/g, '')
 
   // Return
   return {
@@ -146,7 +148,9 @@ const readSingleHtml = (root, file) => {
 
     const title = titles[0].text
 
-    const body = section.text
+    let body = section.text
+    body = body.replaceAll('\\(', '').replaceAll('\\)', '').replaceAll('\\', '')
+    body = body.replaceAll(/<\/?span[^>]*>/g, '')
 
     return {
       id: index,
