@@ -49,7 +49,7 @@ master_doc = 'index'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 html_extra_path = ['html']
 
@@ -187,7 +187,6 @@ latex_elements = {
 \\def\\T{{\mathbb{T}}}
 \\def\\d{{text{d}}}
     """,
-
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
@@ -198,33 +197,35 @@ latex_elements = {
         \vfill
         \begin{minipage}{.49\linewidth}
             \centering
-            \sphinxincludegraphics[width=.8\linewidth]{logo_LJLL.png}
+            \sphinxincludegraphics[width=.4\linewidth]{logo_LJLL.png}
         \end{minipage}
         \hfill
         \begin{minipage}{.49\linewidth}
             \centering
-            \sphinxincludegraphics[width=.8\linewidth]{logo_UPMC.png}
+            \sphinxincludegraphics[width=.4\linewidth]{logo_UPMC.png}
         \end{minipage}
         \vfill
         \begin{minipage}{.49\linewidth}
             \centering
-            \sphinxincludegraphics[width=.8\linewidth]{logo_Sorbonne.png}
+            \sphinxincludegraphics[width=.4\linewidth]{logo_Sorbonne.png}
         \end{minipage}
         \hfill
         \begin{minipage}{.49\linewidth}
             \centering
-            \sphinxincludegraphics[width=.8\linewidth]{logo_ANR.png}
+            \sphinxincludegraphics[width=.4\linewidth]{logo_ANR.png}
         \end{minipage}
         \vfill
         \begin{minipage}{.49\linewidth}
             \centering
-            \sphinxincludegraphics[width=.8\linewidth]{logo_INRIA.png}
+            \sphinxincludegraphics[width=.4\linewidth]{logo_INRIA.png}
         \end{minipage}
         \hfill
         \begin{minipage}{.49\linewidth}
             \centering
-            \sphinxincludegraphics[width=.8\linewidth]{logo_CNRS.png}
+            \sphinxincludegraphics[width=.4\linewidth]{logo_CNRS.png}
         \end{minipage}
+        \vfill
+        \vfill
     '''
 }
 
@@ -235,7 +236,6 @@ latex_documents = [
     (master_doc, 'FreeFEM.tex', 'FreeFEM Documentation',
      'Frederic Hecht', 'manual'),
 ]
-
 
 # -- Options for manual page output ------------------------------------------
 
