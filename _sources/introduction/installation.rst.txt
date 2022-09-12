@@ -177,7 +177,7 @@ Compilation on OSX (>=10.13)
    .. code-block:: bash
       :linenos:
 
-       brew cask install gfortran
+       brew --cask install gfortran
        
 .. note:: If you have installed gcc via brew, gfortran comes with it and you do not need this line       
 
@@ -191,25 +191,25 @@ Compilation on OSX (>=10.13)
        tar xf openmpi-4.0.1
        cd openmpi-4.0.1/
        # to install mpich
-       curl -L http://www.mpich.org/static/downloads/3.3.2/mpich-3.3.2.tar.gz --output mpich-3.3.2.tar.gz
-       tar xf mpich-3.3.2
-       cd mpich-3.3.2
+       curl -L https://www.mpich.org/static/downloads/4.0.2/mpich-4.0.2.tar.gz --output mpich-4.0.2.tar.gz
+       tar xf mpich-4.0.2.tar.gz
+       cd mpich-4.0.2
 	   
    .. code-block:: bash
       :lineno-start: 4
 	  
        # with brew gcc gfortran compilers
-       ./configure CC=clang CXX=clang++ FC=gfortran-9 F77=gfortran-9 --prefix=/where/you/want/to/have/files/installed
+       FFLAGS=-fallow-argument-mismatch FCFLAGS=-fallow-argument-mismatch ./configure CC=clang CXX=clang++ FC=gfortran-11 F77=gfortran-11 --prefix=/where/you/want/to/have/files/installed
     
        # with LLVM gcc and brew gfortran compilers
-       ./configure CC=gcc-9 CXX=g++-9 FC=gfortran-9 F77=gfortran-9 --prefix=/where/you/want/to/have/files/installed
+       FFLAGS=-fallow-argument-mismatch FCFLAGS=-fallow-argument-mismatch ./configure CC=gcc-11 CXX=g++-11 FC=gfortran-11 F77=gfortran-11 --prefix=/where/you/want/to/have/files/installed
    
 
    .. code-block:: bash
       :lineno-start: 5
 
        make -j<nbProcs>
-       make -j<nbProcs> install
+       make install
 
 4. Install the minimal libraries for **FreeFEM**
 
@@ -237,12 +237,12 @@ Compilation on OSX (>=10.13)
    .. code-block:: bash
       :linenos:
 
-      curl -O http://mirror.cyberbits.eu/gnu/gsl/gsl-2.5.tar.gz
-      tar zxvf gsl-2.5.tar.gz
-      cd gsl-2.5
+      curl -O https://mirror.ibcp.fr/pub/gnu/gsl/gsl-2.7.tar.gz
+      tar zxvf gsl-2.7.tar.gz
+      cd gsl-2.7
       ./configure
       make -j<nbProcs>
-      make -j<nbProcs> install --prefix=/where/you/want/to/have/files/installed
+      make install --prefix=/where/you/want/to/have/files/installed
 
 8. Download the latest Git for Mac installer `git <https://git-scm.com/download/mac>`__ and the **FreeFEM** source from the repository
 
@@ -266,14 +266,12 @@ Compilation on OSX (>=10.13)
       :lineno-start: 3
       
       // with brew gcc gfortran compilers 
-      ./configure --enable-download CC=clang CXX=clang++ F77=gfortran-9 
-	  FC=gfortran-9 --prefix=/where/you/want/to/have/files/installed
+      ./configure --enable-download -enable-optim CC=clang CXX=clang++ F77=gfortran-11 
+	  FC=gfortran-11 --prefix=/where/you/want/to/have/files/installed
 	  
       // with LLVM gcc and brew gfortran compilers 
-      ./configure --enable-download CC=clang CXX=clang++ F77=gfortran-9 
-	  FC=gfortran-9 --prefix=/where/you/want/to/have/files/installed
-
-   
+      ./configure --enable-download -enable-optim CC=gcc CXX=g++ F77=gfortran-11 
+	  FC=gfortran-11 --prefix=/where/you/want/to/have/files/installed
 
 10. Download the 3rd party packages to use FreeFEM plugins
 

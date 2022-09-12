@@ -1960,33 +1960,33 @@
 	<div id="content">
 		
    <section id="parallelization">
-<h1>Parallelization<a class="headerlink" href="#parallelization" title="Permalink to this headline"></a></h1>
+<h1>Parallelization<a class="headerlink" href="#parallelization" title="Permalink to this heading"></a></h1>
 <p>A first attempt of parallelization of <strong>FreeFEM</strong> is made here with <strong>MPI</strong>.
 An extended interface with MPI has been added to <strong>FreeFEM</strong> version 3.5, (see the <a class="reference external" href="https://www.mpi-forum.org/docs/">MPI documentation</a> for the functionality of the language).</p>
 <section id="mpi">
-<h2>MPI<a class="headerlink" href="#mpi" title="Permalink to this headline"></a></h2>
+<h2>MPI<a class="headerlink" href="#mpi" title="Permalink to this heading"></a></h2>
 <section id="mpi-keywords">
-<h3>MPI Keywords<a class="headerlink" href="#mpi-keywords" title="Permalink to this headline"></a></h3>
+<h3>MPI Keywords<a class="headerlink" href="#mpi-keywords" title="Permalink to this heading"></a></h3>
 <p>The following keywords and concepts are used:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">mpiComm</span></code> to defined a <em>communication world</em></p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">mpiGroup</span></code> to defined a group of <em>processors</em> in the communication world</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">mpiRequest</span></code> to defined a request to wait for the end of the communication</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mpiComm</span></code> to defined a <em>communication world</em></p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mpiGroup</span></code> to defined a group of <em>processors</em> in the communication world</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mpiRequest</span></code> to defined a request to wait for the end of the communication</p></li>
 </ul>
 </section>
 <section id="mpi-constants">
-<h3>MPI Constants<a class="headerlink" href="#mpi-constants" title="Permalink to this headline"></a></h3>
+<h3>MPI Constants<a class="headerlink" href="#mpi-constants" title="Permalink to this heading"></a></h3>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">mpisize</span></code> The total number of <em>processes</em>,</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">mpirank</span></code> the id-number of my current process in <code class="docutils literal notranslate"><span class="pre">{0,</span> <span class="pre">...,</span> <span class="pre">mpisize-1}</span></code>,</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">mpiUndefined</span></code> The <code class="code cpp docutils literal notranslate"><span class="pre">MPI_Undefined</span></code> constant,</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">mpiAnySource</span></code> The <code class="code cpp docutils literal notranslate"><span class="pre">MPI_ANY_SOURCE</span></code> constant,</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">mpiCommWorld</span></code> The <code class="code cpp docutils literal notranslate"><span class="pre">MPI_COMM_WORLD</span></code> constant,</p></li>
-<li><p>[ … ] and all the keywords of <code class="code freefem docutils literal notranslate"><span class="pre">MPI_Op</span></code> for the <em>reduce</em> operator: <code class="code freefem docutils literal notranslate"><span class="pre">mpiMAX</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiMIN</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiSUM</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiPROD</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiLAND</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiLOR</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiLXOR</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiBAND</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiBXOR</span></code>.</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpisize</span></code> The total number of <em>processes</em>,</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpirank</span></code> the id-number of my current process in <code class="docutils literal notranslate"><span class="pre">{0,</span> <span class="pre">...,</span> <span class="pre">mpisize-1}</span></code>,</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiUndefined</span></code> The <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">MPI_Undefined</span></code> constant,</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiAnySource</span></code> The <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">MPI_ANY_SOURCE</span></code> constant,</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiCommWorld</span></code> The <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">MPI_COMM_WORLD</span></code> constant,</p></li>
+<li><p>[ … ] and all the keywords of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">MPI_Op</span></code> for the <em>reduce</em> operator: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiMAX</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiMIN</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiSUM</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiPROD</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiLAND</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiLOR</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiLXOR</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiBAND</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiBXOR</span></code>.</p></li>
 </ul>
 </section>
 <section id="mpi-constructor">
-<h3>MPI Constructor<a class="headerlink" href="#mpi-constructor" title="Permalink to this headline"></a></h3>
+<h3>MPI Constructor<a class="headerlink" href="#mpi-constructor" title="Permalink to this heading"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Parameters</span>
 <span class="lineno"> 2 </span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">proc1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">proc2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 <span class="lineno"> 3 </span><span class="kt">int</span> <span class="n">color</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -2011,7 +2011,7 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 </div>
 </section>
 <section id="mpi-functions">
-<h3>MPI Functions<a class="headerlink" href="#mpi-functions" title="Permalink to this headline"></a></h3>
+<h3>MPI Functions<a class="headerlink" href="#mpi-functions" title="Permalink to this heading"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">mpiComm</span> <span class="nf">Comm</span><span class="p">(</span><span class="kr">mpiCommWorld</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="lineno"> 2 </span>
 <span class="lineno"> 3 </span><span class="kt">int</span> <span class="n">MPICommSize</span> <span class="o">=</span> <span class="nf">mpiSize</span><span class="p">(</span><span class="n">Comm</span><span class="p">);</span>
@@ -2051,10 +2051,10 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 <span class="lineno">37 </span><span class="kt">real</span> <span class="n">tick</span> <span class="o">=</span> <span class="nf">mpiWtick</span><span class="p">();</span> <span class="c1">//return MPIWTick in second</span>
 </pre></div>
 </div>
-<p>where a <code class="code freefem docutils literal notranslate"><span class="pre">processor</span></code> is just a integer rank, pointer to a <code class="code cpp docutils literal notranslate"><span class="pre">MPI_comm</span></code> and pointer to a <code class="code cpp docutils literal notranslate"><span class="pre">MPI_Request</span></code>, and <code class="code freefem docutils literal notranslate"><span class="pre">processorblock</span></code> with a special <code class="code cpp docutils literal notranslate"><span class="pre">MPI_Request</span></code>.</p>
+<p>where a <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processor</span></code> is just a integer rank, pointer to a <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">MPI_comm</span></code> and pointer to a <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">MPI_Request</span></code>, and <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processorblock</span></code> with a special <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">MPI_Request</span></code>.</p>
 </section>
 <section id="mpi-communicator-operator">
-<h3>MPI Communicator operator<a class="headerlink" href="#mpi-communicator-operator" title="Permalink to this headline"></a></h3>
+<h3>MPI Communicator operator<a class="headerlink" href="#mpi-communicator-operator" title="Permalink to this heading"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">int</span> <span class="n">status</span><span class="p">;</span> <span class="c1">//to get the MPI status of send / recv</span>
 <span class="lineno"> 2 </span><span class="kt">real</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
 <span class="lineno"> 3 </span>
@@ -2083,14 +2083,14 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 <span class="lineno">26 </span><span class="c1">// status = Irecv(processor(10), a);</span>
 </pre></div>
 </div>
-<p>where the data type of <code class="code freefem docutils literal notranslate"><span class="pre">a</span></code> can be of type of <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">int[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">int[int,int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">double[int,int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex[int,int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mesh[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mesh3[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">matrix</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">matrix&lt;complex&gt;</span></code></p>
+<p>where the data type of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">a</span></code> can be of type of <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">double</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh3</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh3</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">matrix</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">matrix</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span></code></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="c1">//send asynchronously to the process 10 the data a with request</span>
 <span class="lineno">2 </span><span class="nf">processor</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="p">;</span>
 <span class="lineno">3 </span><span class="c1">//receive asynchronously from the process 10 the data a with request</span>
 <span class="lineno">4 </span><span class="nf">processor</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="p">;</span>
 </pre></div>
 </div>
-<p>If <code class="code freefem docutils literal notranslate"><span class="pre">a,</span> <span class="pre">b</span></code> are arrays or full matrices of <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, or <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, we can use the following MPI functions:</p>
+<p>If <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">a</span><span class="p">,</span> <span class="n">b</span></code> are arrays or full matrices of <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span></code>, or <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span></code>, we can use the following MPI functions:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">mpiAlltoall</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="p">[</span><span class="n">comm</span><span class="p">]);</span>
 <span class="lineno">2 </span><span class="nf">mpiAllgather</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="p">[</span><span class="n">comm</span><span class="p">]);</span>
 <span class="lineno">3 </span><span class="nf">mpiGather</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="nf">processor</span><span class="p">(..)</span> <span class="p">);</span>
@@ -2102,7 +2102,7 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 <p>Thank you to Guy-Antoine Atenekeng Kahou for his help to code this interface.</p>
 </section>
 <section id="schwarz-example-in-parallel">
-<h3>Schwarz example in parallel<a class="headerlink" href="#schwarz-example-in-parallel" title="Permalink to this headline"></a></h3>
+<h3>Schwarz example in parallel<a class="headerlink" href="#schwarz-example-in-parallel" title="Permalink to this heading"></a></h3>
 <p>This example is a rewritting of example <a class="reference internal" href="../models/domain-decomposition.html#domaindecompositionschwarzoverlapping"><span class="std std-ref">Schwarz overlapping</span></a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>ff-mpirun -np <span class="m">2</span> SchwarzParallel.edp
 <span class="lineno">2 </span><span class="c1"># OR</span>
@@ -2186,7 +2186,7 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 <p>script freeze in the loop</p>
 </div>
 <section id="true-parallel-schwarz-example">
-<h4>True parallel Schwarz example<a class="headerlink" href="#true-parallel-schwarz-example" title="Permalink to this headline"></a></h4>
+<h4>True parallel Schwarz example<a class="headerlink" href="#true-parallel-schwarz-example" title="Permalink to this heading"></a></h4>
 <p><em>Thank you to F. Nataf</em></p>
 <p>This is a explanation of the two examples <a class="reference internal" href="../examples/parallelization.html#examplempigmres2d"><span class="std std-ref">MPI-GMRES 2D</span></a> and <a class="reference internal" href="../examples/parallelization.html#examplempigmres3d"><span class="std std-ref">MPI-GMRES 3D</span></a>, a Schwarz parallel with a complexity almost independent of the number of process (with a coarse grid preconditioner).</p>
 <p>To solve the following Poisson problem on domain <span class="math notranslate nohighlight">\(\Omega\)</span> with boundary <span class="math notranslate nohighlight">\(\Gamma\)</span> in <span class="math notranslate nohighlight">\(L^2(\Omega)\)</span> :</p>
@@ -2219,7 +2219,7 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 <li><p><span class="math notranslate nohighlight">\({\mathcal{N}^{\Gamma_i}_{hi}}\)</span> is the set of the degree of freedom of <span class="math notranslate nohighlight">\({V_h}_i\)</span> on the boundary <span class="math notranslate nohighlight">\(\Gamma_i\)</span> of <span class="math notranslate nohighlight">\(\Omega_i\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(\sigma_i^k({v_h})\)</span> is the value the degree of freedom <span class="math notranslate nohighlight">\(k\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\({V_{0h}}_i= \{ {v_h} \in {V_h}_i :\forall k \in {\mathcal{N}^{\Gamma_i}_{hi}}, \quad \sigma_i^k({v_h})=0 \}\)</span>,</p></li>
-<li><p>The conditional expression <span class="math notranslate nohighlight">\(a\;?\;b:c\)</span> is defined like in :c`C` of <code class="code cpp docutils literal notranslate"><span class="pre">C++</span></code> language by</p>
+<li><p>The conditional expression <span class="math notranslate nohighlight">\(a\;?\;b:c\)</span> is defined like in :c`C` of <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">C</span><span class="o">++</span></code> language by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}a?b: c \equiv
 \left\{
@@ -2241,7 +2241,7 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 \int_{\Omega_i} \nabla {v_h}_i \cdot \nabla {u_h}^{\ell}_{i}
 = \int_{\Omega_i} f {v_h}_i ,\quad \forall k \in {\mathcal{N}^{\Gamma_i}_{hi}}\;:\; \sigma_i^k({u_h}^\ell_i) = (k\in \Gamma) \; ? \; g_i^k : \sigma_i^k({u_h}^{\ell}_{|i})\]</div>
 <p>where <span class="math notranslate nohighlight">\(g_i^k\)</span> is the value of <span class="math notranslate nohighlight">\(g\)</span> associated to the degree of freedom <span class="math notranslate nohighlight">\(k\in {\mathcal{N}^{\Gamma_i}_{hi}}\)</span>.</p>
-<p>In <strong>FreeFEM</strong>, it can be written has with <code class="code freefem docutils literal notranslate"><span class="pre">U</span></code> is the vector corresponding to <span class="math notranslate nohighlight">\({u_h^{\ell}}_{|i}\)</span> and the vector <code class="code freefem docutils literal notranslate"><span class="pre">U1</span></code> is the vector corresponding to <span class="math notranslate nohighlight">\({u_h^{\ell}}_{i}\)</span> is the solution of:</p>
+<p>In <strong>FreeFEM</strong>, it can be written has with <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">U</span></code> is the vector corresponding to <span class="math notranslate nohighlight">\({u_h^{\ell}}_{|i}\)</span> and the vector <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">U1</span></code> is the vector corresponding to <span class="math notranslate nohighlight">\({u_h^{\ell}}_{i}\)</span> is the solution of:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">U1</span><span class="p">(</span><span class="n">Ui</span><span class="p">.</span><span class="kr">n</span><span class="p">);</span>
 <span class="lineno">2 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">b</span> <span class="o">=</span> <span class="n">onG</span> <span class="p">.</span><span class="o">*</span> <span class="n">U</span><span class="p">;</span>
 <span class="lineno">3 </span><span class="n">b</span> <span class="o">=</span> <span class="n">onG</span> <span class="o">?</span> <span class="nl">b</span> <span class="o">:</span> <span class="n">Bi</span> <span class="p">;</span>
@@ -2272,8 +2272,8 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 </pre></div>
 </div>
 <p>where the <strong>FreeFEM</strong> label of <span class="math notranslate nohighlight">\(\Gamma\)</span> is 1 and the label of <span class="math notranslate nohighlight">\(\Gamma_i\setminus \Gamma\)</span> is <span class="math notranslate nohighlight">\(10\)</span>.</p>
-<p>To build the transfer/update part corresponding to <a class="reference internal" href="#equation-eq-pu1">(38)</a> equation on process <span class="math notranslate nohighlight">\(i\)</span>, let us call <code class="code freefem docutils literal notranslate"><span class="pre">njpart</span></code> the number the neighborhood of domain of <span class="math notranslate nohighlight">\(\Omega_i\)</span> (i.e: <span class="math notranslate nohighlight">\(\pi_j\)</span> is none <span class="math notranslate nohighlight">\(0\)</span> of <span class="math notranslate nohighlight">\(\Omega_i\)</span>), we store in an array <code class="code freefem docutils literal notranslate"><span class="pre">jpart</span></code> of size <code class="code freefem docutils literal notranslate"><span class="pre">njpart</span></code> all this neighborhood.</p>
-<p>Let us introduce two array of matrix, <code class="code freefem docutils literal notranslate"><span class="pre">Smj[j]</span></code> to defined the vector to send from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span> a neighborhood process, and the matrix <span class="math notranslate nohighlight">\(rMj[j]\)</span> to after to reduce owith neighborhood <span class="math notranslate nohighlight">\(j\)</span> domain.</p>
+<p>To build the transfer/update part corresponding to <a class="reference internal" href="#equation-eq-pu1">(38)</a> equation on process <span class="math notranslate nohighlight">\(i\)</span>, let us call <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">njpart</span></code> the number the neighborhood of domain of <span class="math notranslate nohighlight">\(\Omega_i\)</span> (i.e: <span class="math notranslate nohighlight">\(\pi_j\)</span> is none <span class="math notranslate nohighlight">\(0\)</span> of <span class="math notranslate nohighlight">\(\Omega_i\)</span>), we store in an array <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">jpart</span></code> of size <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">njpart</span></code> all this neighborhood.</p>
+<p>Let us introduce two array of matrix, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Smj</span><span class="p">[</span><span class="n">j</span><span class="p">]</span></code> to defined the vector to send from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span> a neighborhood process, and the matrix <span class="math notranslate nohighlight">\(rMj[j]\)</span> to after to reduce owith neighborhood <span class="math notranslate nohighlight">\(j\)</span> domain.</p>
 <p>So the tranfert and update part compute <span class="math notranslate nohighlight">\(v_i= \pi_i u_i + \sum_{j\in J_i} \pi_j u_j\)</span> and can be write the <strong>FreeFEM</strong> function Update:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">func</span> <span class="kt">bool</span> <span class="nf">Update</span> <span class="p">(</span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="o">&amp;</span><span class="n">ui</span><span class="p">,</span> <span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="o">&amp;</span><span class="n">vi</span><span class="p">){</span>
 <span class="lineno"> 2 </span>    <span class="kt">int</span> <span class="kr">n</span> <span class="o">=</span> <span class="n">jpart</span><span class="p">.</span><span class="kr">n</span><span class="p">;</span>
@@ -2309,7 +2309,7 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 <span class="lineno">8 </span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Where the parallel <code class="code freefem docutils literal notranslate"><span class="pre">MPIGMRES</span></code> or <code class="code freefem docutils literal notranslate"><span class="pre">MPICG</span></code> algorithm is just a simple way to solve in parallel the following <span class="math notranslate nohighlight">\(A_i x_i = b_i, i = 1, .., N_p\)</span> by just changing the dot product by reduce the local dot product of all process with the following MPI code:</p>
+<p>Where the parallel <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">MPIGMRES</span></code> or <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">MPICG</span></code> algorithm is just a simple way to solve in parallel the following <span class="math notranslate nohighlight">\(A_i x_i = b_i, i = 1, .., N_p\)</span> by just changing the dot product by reduce the local dot product of all process with the following MPI code:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">R</span><span class="o">&gt;</span> <span class="n">R</span> <span class="n">ReduceSum1</span><span class="p">(</span><span class="n">R</span> <span class="n">s</span><span class="p">,</span> <span class="n">MPI_Comm</span> <span class="o">*</span><span class="n">comm</span><span class="p">){</span>
 <span class="lineno">2 </span>    <span class="n">R</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="lineno">3 </span>    <span class="n">MPI_Allreduce</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">MPI_TYPE</span><span class="o">&lt;</span><span class="n">R</span><span class="o">&gt;::</span><span class="n">TYPE</span><span class="p">(),</span> <span class="n">MPI_SUM</span><span class="p">,</span> <span class="o">*</span><span class="n">comm</span> <span class="p">);</span>
@@ -2317,7 +2317,7 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 <span class="lineno">5 </span><span class="p">}</span>
 </pre></div>
 </div>
-<p>This is done in <code class="code freefem docutils literal notranslate"><span class="pre">MPIGC</span></code> dynamics library tool.</p>
+<p>This is done in <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">MPIGC</span></code> dynamics library tool.</p>
 <p><em>Second GMRES algorithm:</em> Use scharwz algorithm as a preconditioner of basic GMRES method to solving the parallel problem.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">func</span> <span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">DJ</span> <span class="p">(</span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="o">&amp;</span> <span class="n">U</span><span class="p">){</span> <span class="c1">//the original problem</span>
 <span class="lineno"> 2 </span>    <span class="o">++</span><span class="n">kiter</span><span class="p">;</span>
@@ -2401,15 +2401,15 @@ An extended interface with MPI has been added to <strong>FreeFEM</strong> versio
 </div>
 <p>We have all ingredient to solve in parallel if we have et the partitions of the unity.
 To build this partition we do:</p>
-<p>The initial step on process <span class="math notranslate nohighlight">\(1\)</span> to build a coarse mesh, <span class="math notranslate nohighlight">\({\mathcal{T}_h}^*\)</span> of the full domain, and build the partition <span class="math notranslate nohighlight">\(\pi\)</span> function constant equal to <span class="math notranslate nohighlight">\(i\)</span> on each sub domain <span class="math notranslate nohighlight">\(\mathcal{O}_i, i =1 ,.., N_p\)</span>, of the grid with the <code class="code freefem docutils literal notranslate"><span class="pre">metis</span></code> graph partitioner <a class="reference internal" href="../bibliography.html#karypis1995" id="id2"><span>[KARYPIS1995]</span></a> and on each process <span class="math notranslate nohighlight">\(i\)</span> in <span class="math notranslate nohighlight">\(1..,N_p\)</span> do</p>
+<p>The initial step on process <span class="math notranslate nohighlight">\(1\)</span> to build a coarse mesh, <span class="math notranslate nohighlight">\({\mathcal{T}_h}^*\)</span> of the full domain, and build the partition <span class="math notranslate nohighlight">\(\pi\)</span> function constant equal to <span class="math notranslate nohighlight">\(i\)</span> on each sub domain <span class="math notranslate nohighlight">\(\mathcal{O}_i, i =1 ,.., N_p\)</span>, of the grid with the <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">metis</span></code> graph partitioner <a class="reference internal" href="../bibliography.html#karypis1995" id="id2"><span>[KARYPIS1995]</span></a> and on each process <span class="math notranslate nohighlight">\(i\)</span> in <span class="math notranslate nohighlight">\(1..,N_p\)</span> do</p>
 <ol class="arabic">
-<li><p>Broadcast from process <span class="math notranslate nohighlight">\(1\)</span>, the mesh <span class="math notranslate nohighlight">\({\mathcal{T}_h}^*\)</span> (call <code class="code freefem docutils literal notranslate"><span class="pre">Thii</span></code> in <strong>FreeFEM</strong> script), and <span class="math notranslate nohighlight">\(\pi\)</span> function,</p></li>
+<li><p>Broadcast from process <span class="math notranslate nohighlight">\(1\)</span>, the mesh <span class="math notranslate nohighlight">\({\mathcal{T}_h}^*\)</span> (call <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Thii</span></code> in <strong>FreeFEM</strong> script), and <span class="math notranslate nohighlight">\(\pi\)</span> function,</p></li>
 <li><p>remark that the characteristic function <span class="math notranslate nohighlight">\(\mathrm{1\!\!I}_{\mathcal{O}_i}\)</span> of domain <span class="math notranslate nohighlight">\(\mathcal{O}_i\)</span>, is defined by <span class="math notranslate nohighlight">\((\pi=i)?1:0\)</span>,</p></li>
-<li><p>Let us call <span class="math notranslate nohighlight">\(\Pi^2_P\)</span> (resp. <span class="math notranslate nohighlight">\(\Pi^2_V\)</span>) the <span class="math notranslate nohighlight">\(L^2\)</span> on <span class="math notranslate nohighlight">\(P_h^*\)</span> the space of the constant finite element function per element on <span class="math notranslate nohighlight">\({\mathcal{T}_h}^*\)</span> (resp. <span class="math notranslate nohighlight">\(V_h^*\)</span> the space of the affine continuous finite element per element on <span class="math notranslate nohighlight">\({\mathcal{T}_h}^*\)</span>) and build in parallel the <span class="math notranslate nohighlight">\(\pi_i\)</span> and <span class="math notranslate nohighlight">\(\Omega_i\)</span>, such that <span class="math notranslate nohighlight">\(\mathcal{O}_i\ \subset \Omega_i\)</span> where <span class="math notranslate nohighlight">\(\mathcal{O}_i= supp ((\Pi^2_V \Pi^2_C)^m \mathrm{1\!\!I}_{O_i})\)</span>, and <span class="math notranslate nohighlight">\(m\)</span> is a the overlaps size on the coarse mesh (generally one), (this is done in function <code class="code freefem docutils literal notranslate"><span class="pre">AddLayers(Thii,suppii[],nlayer,phii[]);</span></code> We choose a function <span class="math notranslate nohighlight">\(\pi^*_i = (\Pi^2_1 \Pi^2_0)^m \mathrm{1\!\!I}_{\mathcal{O}_i}\)</span> so the partition of the unity is simply defined by</p>
+<li><p>Let us call <span class="math notranslate nohighlight">\(\Pi^2_P\)</span> (resp. <span class="math notranslate nohighlight">\(\Pi^2_V\)</span>) the <span class="math notranslate nohighlight">\(L^2\)</span> on <span class="math notranslate nohighlight">\(P_h^*\)</span> the space of the constant finite element function per element on <span class="math notranslate nohighlight">\({\mathcal{T}_h}^*\)</span> (resp. <span class="math notranslate nohighlight">\(V_h^*\)</span> the space of the affine continuous finite element per element on <span class="math notranslate nohighlight">\({\mathcal{T}_h}^*\)</span>) and build in parallel the <span class="math notranslate nohighlight">\(\pi_i\)</span> and <span class="math notranslate nohighlight">\(\Omega_i\)</span>, such that <span class="math notranslate nohighlight">\(\mathcal{O}_i\ \subset \Omega_i\)</span> where <span class="math notranslate nohighlight">\(\mathcal{O}_i= supp ((\Pi^2_V \Pi^2_C)^m \mathrm{1\!\!I}_{O_i})\)</span>, and <span class="math notranslate nohighlight">\(m\)</span> is a the overlaps size on the coarse mesh (generally one), (this is done in function <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">AddLayers</span><span class="p">(</span><span class="n">Thii</span><span class="p">,</span><span class="n">suppii</span><span class="p">[],</span><span class="n">nlayer</span><span class="p">,</span><span class="n">phii</span><span class="p">[]);</span></code> We choose a function <span class="math notranslate nohighlight">\(\pi^*_i = (\Pi^2_1 \Pi^2_0)^m \mathrm{1\!\!I}_{\mathcal{O}_i}\)</span> so the partition of the unity is simply defined by</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[\pi_i = \frac{\pi_i^*}{\sum_{j=1}^{N_p} \pi_j^*}\]</div>
-<p>The set <span class="math notranslate nohighlight">\(J_i\)</span> of neighborhood of the domain <span class="math notranslate nohighlight">\(\Omega_i\)</span>, and the local version on <span class="math notranslate nohighlight">\(V_{hi}\)</span> can be defined the array <code class="code freefem docutils literal notranslate"><span class="pre">jpart</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">njpart</span></code> with:</p>
+<p>The set <span class="math notranslate nohighlight">\(J_i\)</span> of neighborhood of the domain <span class="math notranslate nohighlight">\(\Omega_i\)</span>, and the local version on <span class="math notranslate nohighlight">\(V_{hi}\)</span> can be defined the array <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">jpart</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">njpart</span></code> with:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="n">Vhi</span> <span class="n">pii</span> <span class="o">=</span> <span class="n">piistar</span><span class="p">;</span>
 <span class="lineno"> 2 </span><span class="n">Vhi</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">pij</span><span class="p">(</span><span class="n">npij</span><span class="p">);</span> <span class="c1">//local partition of 1 = pii + sum_j pij[j]</span>
 <span class="lineno"> 3 </span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">jpart</span><span class="p">(</span><span class="n">npart</span><span class="p">);</span>
@@ -2432,7 +2432,7 @@ To build this partition we do:</p>
 </div></blockquote>
 </li>
 <li><p>We call <span class="math notranslate nohighlight">\({\mathcal{T}_h}^*_{ij}\)</span> the sub mesh part of <span class="math notranslate nohighlight">\({\mathcal{T}_h}_i\)</span> where <span class="math notranslate nohighlight">\(\pi_j\)</span> are none zero.
-And thanks to the function <code class="code freefem docutils literal notranslate"><span class="pre">trunc</span></code> to build this array,</p>
+And thanks to the function <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">trunc</span></code> to build this array,</p>
 <blockquote>
 <div><div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">jp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">jp</span> <span class="o">&lt;</span> <span class="n">njpart</span><span class="p">;</span> <span class="o">++</span><span class="n">jp</span><span class="p">)</span>
 <span class="lineno">2 </span>    <span class="n">aThij</span><span class="p">[</span><span class="n">jp</span><span class="p">]</span> <span class="o">=</span> <span class="nf">trunc</span><span class="p">(</span><span class="n">Thi</span><span class="p">,</span> <span class="n">pij</span><span class="p">[</span><span class="n">jp</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">1e-10</span><span class="p">,</span> <span class="kr">label</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
@@ -2440,8 +2440,8 @@ And thanks to the function <code class="code freefem docutils literal notranslat
 </div>
 </div></blockquote>
 </li>
-<li><p>At this step we have all on the coarse mesh, so we can build the fine final mesh by splitting all meshes: <code class="code freefem docutils literal notranslate"><span class="pre">Thi,</span> <span class="pre">Thij[j],</span> <span class="pre">Thij[j]</span></code> with <strong>FreeFEM</strong> <code class="code freefem docutils literal notranslate"><span class="pre">trunc</span></code> mesh function which do restriction and slipping.</p></li>
-<li><p>The construction of the send/recv matrices <code class="code freefem docutils literal notranslate"><span class="pre">sMj</span></code> and <cite>freefem:`rMj</cite>: can done with this code:</p>
+<li><p>At this step we have all on the coarse mesh, so we can build the fine final mesh by splitting all meshes: <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Thi</span><span class="p">,</span> <span class="n">Thij</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">Thij</span><span class="p">[</span><span class="n">j</span><span class="p">]</span></code> with <strong>FreeFEM</strong> <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">trunc</span></code> mesh function which do restriction and slipping.</p></li>
+<li><p>The construction of the send/recv matrices <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">sMj</span></code> and <cite>freefem:`rMj</cite>: can done with this code:</p>
 <blockquote>
 <div><div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">mesh3</span> <span class="n">Thij</span> <span class="o">=</span> <span class="n">Thi</span><span class="p">;</span>
 <span class="lineno"> 2 </span><span class="kt">fespace</span> <span class="nf">Whij</span><span class="p">(</span><span class="n">Thij</span><span class="p">,</span> <span class="n">Pk</span><span class="p">);</span>
@@ -2481,48 +2481,43 @@ And thanks to the function <code class="code freefem docutils literal notranslat
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="code freefem docutils literal notranslate"><span class="pre">cmm=cm,</span> <span class="pre">...</span></code> in the macro argument is a way to quote macro argument so the argument is <code class="code freefem docutils literal notranslate"><span class="pre">cmm=cm,</span> <span class="pre">...</span></code>.</p>
+<p>The <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">cmm</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="p">...</span></code> in the macro argument is a way to quote macro argument so the argument is <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">cmm</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="p">...</span></code>.</p>
 </div>
 </section>
 </section>
 </section>
 <section id="parallel-sparse-solvers">
-<span id="parallelsparsesolvers"></span><h2>Parallel sparse solvers<a class="headerlink" href="#parallel-sparse-solvers" title="Permalink to this headline"></a></h2>
+<span id="parallelsparsesolvers"></span><h2>Parallel sparse solvers<a class="headerlink" href="#parallel-sparse-solvers" title="Permalink to this heading"></a></h2>
 <p>Parallel sparse solvers use several processors to solve linear systems of equation. Like sequential, parallel linear solvers can be direct or iterative. In <strong>FreeFEM</strong> both are available.</p>
 <section id="using-parallel-sparse-solvers-in-freefem">
-<h3>Using parallel sparse solvers in <strong>FreeFEM</strong><a class="headerlink" href="#using-parallel-sparse-solvers-in-freefem" title="Permalink to this headline"></a></h3>
-<p>We recall that the <code class="code freefem docutils literal notranslate"><span class="pre">solver</span></code> parameters are defined in the following commands: <code class="code freefem docutils literal notranslate"><span class="pre">solve</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">problem</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">set</span></code> (setting parameter of a matrix) and in the construction of the matrix corresponding to a bilinear form.
-In these commands, the parameter <code class="code freefem docutils literal notranslate"><span class="pre">solver</span></code> must be set to <code class="code freefem docutils literal notranslate"><span class="pre">sparsesolver</span></code> for parallel sparse solver.
+<h3>Using parallel sparse solvers in <strong>FreeFEM</strong><a class="headerlink" href="#using-parallel-sparse-solvers-in-freefem" title="Permalink to this heading"></a></h3>
+<p>We recall that the <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">solver</span></code> parameters are defined in the following commands: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">solve</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">problem</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">set</span></code> (setting parameter of a matrix) and in the construction of the matrix corresponding to a bilinear form.
+In these commands, the parameter <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">solver</span></code> must be set to <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">sparsesolver</span></code> for parallel sparse solver.
 We have added specify parameters to these command lines for parallel sparse solvers.
 These are:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">lparams</span></code> : vector of integer parameters (<code class="docutils literal notranslate"><span class="pre">l</span></code> is for the <code class="docutils literal notranslate"><span class="pre">C++</span></code> type <code class="code cpp docutils literal notranslate"><span class="pre">long</span></code>)</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">dparams</span></code> : vector of real parameters</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">sparams</span></code> : string parameters</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">datafilename</span></code> : name of the file which contains solver parameters</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span></code> : vector of integer parameters (<code class="docutils literal notranslate"><span class="pre">l</span></code> is for the <code class="docutils literal notranslate"><span class="pre">C++</span></code> type <code class="code cpp docutils literal highlight highlight-cpp"><span class="kt">long</span></code>)</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dparams</span></code> : vector of real parameters</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">sparams</span></code> : string parameters</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">datafilename</span></code> : name of the file which contains solver parameters</p></li>
 </ul>
 <p>The following four parameters are only for direct solvers and are vectors.
 These parameters allow the user to preprocess the matrix (see the section on <a class="reference external" href="#sparse-direct-solver">sparse direct solver</a> for more information).</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">permr</span></code> : row permutation (integer vector)</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">permc</span></code> : column permutation or inverse row permutation (integer vector)</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">scaler</span></code> : row scaling (real vector)</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">scalec</span></code> : column scaling (real vector)</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="n">permr</span></code> : row permutation (integer vector)</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="n">permc</span></code> : column permutation or inverse row permutation (integer vector)</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="n">scaler</span></code> : row scaling (real vector)</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="n">scalec</span></code> : column scaling (real vector)</p></li>
 </ul>
 <p>There are two possibilities to control solver parameters.
-The first method defines parameters with <code class="code freefem docutils literal notranslate"><span class="pre">lparams</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">dparams</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">sparams</span></code> in <code class="docutils literal notranslate"><span class="pre">.edp</span></code> file.</p>
-<p>The second one reads the solver parameters from a data file. The name of this file is specified by <code class="code freefem docutils literal notranslate"><span class="pre">datafilename</span></code>.
-If <code class="code freefem docutils literal notranslate"><span class="pre">lparams</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">dparams</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">sparams</span></code> or <code class="code freefem docutils literal notranslate"><span class="pre">datafilename</span></code> is not provided by the user, the solver’s default values are used.</p>
+The first method defines parameters with <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dparams</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">sparams</span></code> in <code class="docutils literal notranslate"><span class="pre">.edp</span></code> file.</p>
+<p>The second one reads the solver parameters from a data file. The name of this file is specified by <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">datafilename</span></code>.
+If <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dparams</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">sparams</span></code> or <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">datafilename</span></code> is not provided by the user, the solver’s default values are used.</p>
 <p>To use parallel solver in <strong>FreeFEM</strong>, we need to load the dynamic library corresponding to this solver.
-For example to use <a class="reference external" href="http://mumps.enseeiht.fr/">MUMPS</a> solver as parallel solver in <strong>FreeFEM</strong>, write in the <code class="docutils literal notranslate"><span class="pre">.edp</span></code> file <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;MUMPS_FreeFem&quot;</span></code>.</p>
-<p>If the libraries are not loaded, the default sparse solver will be loaded (default sparse solver is <code class="code freefem docutils literal notranslate"><span class="pre">UMFPACK</span></code>). The <a class="reference internal" href="#tabparallelizationsparsesolver"><span class="std std-numref">Table 2</span></a> gives this new value for the different libraries.</p>
+For example to use <a class="reference external" href="http://mumps.enseeiht.fr/">MUMPS</a> solver as parallel solver in <strong>FreeFEM</strong>, write in the <code class="docutils literal notranslate"><span class="pre">.edp</span></code> file <code class="code freefem docutils literal highlight highlight-freefem"><span class="cp">load</span> <span class="s">&quot;MUMPS_FreeFem&quot;</span></code>.</p>
+<p>If the libraries are not loaded, the default sparse solver will be loaded (default sparse solver is <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">UMFPACK</span></code>). The <a class="reference internal" href="#tabparallelizationsparsesolver"><span class="std std-numref">Table 2</span></a> gives this new value for the different libraries.</p>
 <table class="docutils align-default" id="tabparallelizationsparsesolver">
 <caption><span class="caption-number">Table 2 </span><span class="caption-text">Default sparse solver for real and complex arithmetics when we load a parallel sparse solver library</span><a class="headerlink" href="#tabparallelizationsparsesolver" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 47%" />
-<col style="width: 27%" />
-<col style="width: 27%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Libraries</p></th>
 <th class="head" colspan="2"><p>Default sparse solver</p></th>
@@ -2572,11 +2567,6 @@ To use these functions, we need to load the library corresponding to the solver.
 An example of using different parallel sparse solvers for the same problem is given in <a class="reference internal" href="../examples/parallelization.html#exampledirectsolvers"><span class="std std-ref">Direct solvers example</span></a>.</p>
 <table class="docutils align-default" id="tabparallelizationfunction">
 <caption><span class="caption-number">Table 3 </span><span class="caption-text">Functions that allow to change the default sparse solver for real and complex arithmetics and the result of these functions</span><a class="headerlink" href="#tabparallelizationfunction" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 48%" />
-<col style="width: 26%" />
-<col style="width: 26%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Function</p></th>
 <th class="head" colspan="2"><p>default sparse solver</p></th>
@@ -2719,10 +2709,10 @@ An example of using different parallel sparse solvers for the same problem is gi
 </div>
 </section>
 <section id="sparse-direct-solver">
-<h3>Sparse direct solver<a class="headerlink" href="#sparse-direct-solver" title="Permalink to this headline"></a></h3>
+<h3>Sparse direct solver<a class="headerlink" href="#sparse-direct-solver" title="Permalink to this heading"></a></h3>
 <p>In this section, we present the sparse direct solvers interfaced with <strong>FreeFEM</strong>.</p>
 <section id="mumps-solver">
-<h4>MUMPS solver<a class="headerlink" href="#mumps-solver" title="Permalink to this headline"></a></h4>
+<h4>MUMPS solver<a class="headerlink" href="#mumps-solver" title="Permalink to this heading"></a></h4>
 <p>MUltifrontal Massively Parallel Solver (<a class="reference external" href="http://mumps.enseeiht.fr/">MUMPS</a>) is an open-source library.</p>
 <p>This package solves linear system of the form <span class="math notranslate nohighlight">\(A \: x = b\)</span> where <span class="math notranslate nohighlight">\(A\)</span> is a square sparse matrix with a direct method.
 The square matrix considered in MUMPS can be either unsymmetric, symmetric positive definite or general symmetric.</p>
@@ -2742,13 +2732,13 @@ It constructs a direct factorization <span class="math notranslate nohighlight">
 </div>
 <p><strong>MUMPS parameters:</strong></p>
 <p>There are four input parameters in <a class="reference external" href="http://mumps.enseeiht.fr/index.php?page=doc">MUMPS</a>.
-Two integers <code class="code cpp docutils literal notranslate"><span class="pre">SYM</span></code> and <code class="code cpp docutils literal notranslate"><span class="pre">PAR</span></code>, a vector of integer of size 40 <code class="code cpp docutils literal notranslate"><span class="pre">INCTL</span></code> and a vector of real of size 15 <code class="code cpp docutils literal notranslate"><span class="pre">CNTL</span></code>.</p>
+Two integers <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">SYM</span></code> and <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">PAR</span></code>, a vector of integer of size 40 <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">INCTL</span></code> and a vector of real of size 15 <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">CNTL</span></code>.</p>
 <p>The first parameter gives the type of the matrix: 0 for unsymmetric matrix, 1 for symmetric positive matrix and 2 for general symmetric.</p>
-<p>The second parameter defined if the host processor work during the factorization and solves steps : <code class="code cpp docutils literal notranslate"><span class="pre">PAR=1</span></code> host processor working and <code class="code cpp docutils literal notranslate"><span class="pre">PAR=0</span></code> host processor not working.</p>
-<p>The parameter <code class="code cpp docutils literal notranslate"><span class="pre">INCTL</span></code> and <code class="code cpp docutils literal notranslate"><span class="pre">CNTL</span></code> is the control parameter of MUMPS.
-The vectors <code class="code cpp docutils literal notranslate"><span class="pre">ICNTL</span></code> and <code class="code cpp docutils literal notranslate"><span class="pre">CNTL</span></code> in MUMPS becomes with index 1 like vector in <code class="docutils literal notranslate"><span class="pre">Fortran</span></code>.
+<p>The second parameter defined if the host processor work during the factorization and solves steps : <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">PAR</span><span class="o">=</span><span class="mi">1</span></code> host processor working and <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">PAR</span><span class="o">=</span><span class="mi">0</span></code> host processor not working.</p>
+<p>The parameter <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">INCTL</span></code> and <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">CNTL</span></code> is the control parameter of MUMPS.
+The vectors <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">ICNTL</span></code> and <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">CNTL</span></code> in MUMPS becomes with index 1 like vector in <code class="docutils literal notranslate"><span class="pre">Fortran</span></code>.
 For more details see the <a class="reference external" href="http://mumps.enseeiht.fr/index.php?page=doc">MUMPS user’s guide</a>.</p>
-<p>We describe now some elements of the main parameters of <code class="code cpp docutils literal notranslate"><span class="pre">ICNTL</span></code> for MUMPS.</p>
+<p>We describe now some elements of the main parameters of <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">ICNTL</span></code> for MUMPS.</p>
 <ul>
 <li><dl>
 <dt><strong>Input matrix parameter</strong> The input matrix is controlled by parameters <code class="docutils literal notranslate"><span class="pre">ICNTL(5)</span></code> and <code class="docutils literal notranslate"><span class="pre">ICNTL(18)</span></code>.</dt><dd><p>The matrix format (resp. matrix pattern and matrix entries) are controlled by <code class="docutils literal notranslate"><span class="pre">INCTL(5)</span></code> (resp. <code class="docutils literal notranslate"><span class="pre">INCTL(18)</span></code>).</p>
@@ -2771,21 +2761,21 @@ These values can be used also in <strong>FreeFEM</strong>.</p>
 The permutation of zero free diagonal <span class="math notranslate nohighlight">\(Q_c\)</span> is controlled by parameter <code class="docutils literal notranslate"><span class="pre">ICNTL(6)</span></code>.
 The row and column scaling is controlled by parameter <code class="docutils literal notranslate"><span class="pre">ICNTL(18)</span></code>.
 These option are connected and also strongly related with <code class="docutils literal notranslate"><span class="pre">ICNTL(12)</span></code> (see the <a class="reference external" href="http://mumps.enseeiht.fr/index.php?page=doc">MUMPS user’s guide</a> for more details).</p>
-<p>The parameters <code class="code freefem docutils literal notranslate"><span class="pre">permr</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">scaler</span></code>, and <code class="code freefem docutils literal notranslate"><span class="pre">scalec</span></code> in <strong>FreeFEM</strong> allow to give permutation matrix(<span class="math notranslate nohighlight">\(P\)</span>), row scaling (<span class="math notranslate nohighlight">\(D_r\)</span>) and column scaling (<span class="math notranslate nohighlight">\(D_c\)</span>) of the user respectively.</p>
+<p>The parameters <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">permr</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">scaler</span></code>, and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">scalec</span></code> in <strong>FreeFEM</strong> allow to give permutation matrix(<span class="math notranslate nohighlight">\(P\)</span>), row scaling (<span class="math notranslate nohighlight">\(D_r\)</span>) and column scaling (<span class="math notranslate nohighlight">\(D_c\)</span>) of the user respectively.</p>
 </div></blockquote>
 </li>
 </ul>
 <p><strong>Calling MUMPS in FreeFEM</strong></p>
 <p>To call MUMPS in <strong>FreeFEM</strong>, we need to load the dynamic library <code class="docutils literal notranslate"><span class="pre">MUMPS_freefem.dylib</span></code> (MacOSX), <code class="docutils literal notranslate"><span class="pre">MUMPS_freefem.so</span></code> (Unix) or <code class="docutils literal notranslate"><span class="pre">MUMPS_freefem.dll</span></code> (Windows).</p>
-<p>This is done in typing <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;MUMPS_FreeFem&quot;</span></code> in the <code class="docutils literal notranslate"><span class="pre">.edp</span></code> file. We give now the two methods to give the option of MUMPS solver in <strong>FreeFEM</strong>.</p>
+<p>This is done in typing <code class="code freefem docutils literal highlight highlight-freefem"><span class="cp">load</span> <span class="s">&quot;MUMPS_FreeFem&quot;</span></code> in the <code class="docutils literal notranslate"><span class="pre">.edp</span></code> file. We give now the two methods to give the option of MUMPS solver in <strong>FreeFEM</strong>.</p>
 <ul>
 <li><dl>
-<dt><strong>Solver parameters is defined in .edp file:</strong> In this method, we need to give the parameters <code class="code freefem docutils literal notranslate"><span class="pre">lparams</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">dparams</span></code>.</dt><dd><p>These parameters are defined for MUMPS by :</p>
+<dt><strong>Solver parameters is defined in .edp file:</strong> In this method, we need to give the parameters <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dparams</span></code>.</dt><dd><p>These parameters are defined for MUMPS by :</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">lparams[0]</span> <span class="pre">=</span> <span class="pre">SYM</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">lparams[1]</span> <span class="pre">=</span> <span class="pre">PAR</span></code>,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\forall i\)</span> = 1,…,40, <code class="code freefem docutils literal notranslate"><span class="pre">lparams[i+1]</span> <span class="pre">=</span> <span class="pre">ICNTL(i)</span></code></p></li>
-<li><p><span class="math notranslate nohighlight">\(\forall i\)</span> = 1,…,15, <code class="code freefem docutils literal notranslate"><span class="pre">dparams[i-1]</span> <span class="pre">=</span> <span class="pre">CNTL(i)</span></code></p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">SYM</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">PAR</span></code>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall i\)</span> = 1,…,40, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">ICNTL</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></p></li>
+<li><p><span class="math notranslate nohighlight">\(\forall i\)</span> = 1,…,15, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dparams</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">CNTL</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></code></p></li>
 </ul>
 </div></blockquote>
 </dd>
@@ -2794,7 +2784,7 @@ These option are connected and also strongly related with <code class="docutils 
 <li><p><strong>Reading solver parameters on a file:</strong></p>
 <blockquote>
 <div><p>The structure of data file for MUMPS in <strong>FreeFEM</strong> is : first line parameter <code class="docutils literal notranslate"><span class="pre">SYM</span></code> and second line parameter <code class="docutils literal notranslate"><span class="pre">PAR</span></code> and in the following line the different value of vectors <code class="docutils literal notranslate"><span class="pre">ICNTL</span></code> and <code class="docutils literal notranslate"><span class="pre">CNTL</span></code>.
-An example of this parameter file is given in <code class="code freefem docutils literal notranslate"><span class="pre">ffmumpsfileparam.txt</span></code>.</p>
+An example of this parameter file is given in <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">ffmumpsfileparam</span><span class="p">.</span><span class="n">txt</span></code>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="mi">0</span> <span class="cm">/* SYM :: 0 for non symmetric matrix, 1 for symmetric definite positive matrix and 2 general symmetric matrix*/</span>
 <span class="lineno"> 2 </span><span class="mi">1</span> <span class="cm">/* PAR :: 0 host not working during factorization and solves steps, 1 host working during factorization and solves steps*/</span>
 <span class="lineno"> 3 </span><span class="o">-</span><span class="mi">1</span> <span class="cm">/* ICNTL(1) :: output stream for error message */</span>
@@ -2865,7 +2855,7 @@ An example of this parameter file is given in <code class="code freefem docutils
 </div>
 </section>
 <section id="superlu-distributed-solver">
-<h4>SuperLU distributed solver<a class="headerlink" href="#superlu-distributed-solver" title="Permalink to this headline"></a></h4>
+<h4>SuperLU distributed solver<a class="headerlink" href="#superlu-distributed-solver" title="Permalink to this heading"></a></h4>
 <p>The package <a class="reference external" href="http://crd-legacy.lbl.gov/~xiaoye/SuperLU/">SuperLU_DIST</a> solves linear systems using LU factorization.
 It is a free scientific library</p>
 <p>This library provides functions to handle square or rectangular matrix in real and complex arithmetics.
@@ -2876,12 +2866,12 @@ This scientific library is written in C and MPI for communications.</p>
 <p>We describe now some parameters of SuperLU_DIST.
 The SuperLU_DIST library use a 2D-logical process group.
 This process grid is specified by <span class="math notranslate nohighlight">\(nprow\)</span> (process row) and <span class="math notranslate nohighlight">\(npcol\)</span> (process column) such that <span class="math notranslate nohighlight">\(N_{p} = nprow \: npcol\)</span> where <span class="math notranslate nohighlight">\(N_{p}\)</span> is the number of all process allocated for SuperLU_DIST.</p>
-<p>The input matrix parameters is controlled by “matrix=” in <code class="code freefem docutils literal notranslate"><span class="pre">sparams</span></code> for internal parameter or in the third line of parameters file.
+<p>The input matrix parameters is controlled by “matrix=” in <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">sparams</span></code> for internal parameter or in the third line of parameters file.
 The different value are</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">matrix=assembled</span></code> global matrix are available on all process</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">matrix=distributedglobal</span></code> The global matrix is distributed among all the process</p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">matrix=distributed</span></code> The input matrix is distributed (not yet implemented)</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">matrix</span><span class="o">=</span><span class="n">assembled</span></code> global matrix are available on all process</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">matrix</span><span class="o">=</span><span class="n">distributedglobal</span></code> The global matrix is distributed among all the process</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">matrix</span><span class="o">=</span><span class="n">distributed</span></code> The input matrix is distributed (not yet implemented)</p></li>
 </ul>
 <p>The option arguments of SuperLU_DIST are described in the section Users-callable routine of the <a class="reference external" href="http://crd-legacy.lbl.gov/~xiaoye/SuperLU/ug.pdf">SuperLU users’ guide</a>.</p>
 <p>The parameter <code class="docutils literal notranslate"><span class="pre">Fact</span></code> and <code class="docutils literal notranslate"><span class="pre">TRANS</span></code> are specified in <strong>FreeFEM</strong> interfaces to SuperLU_DIST during the different steps.
@@ -2892,13 +2882,13 @@ For this reason, the value given by the user for this option is not considered.<
 <p>where <span class="math notranslate nohighlight">\(P_c\)</span> and <span class="math notranslate nohighlight">\(P_r\)</span> is the row and column permutation matrix respectively, <span class="math notranslate nohighlight">\(D_r\)</span> and <span class="math notranslate nohighlight">\(D_c\)</span> are diagonal matrix for respectively row and column scaling.</p>
 <p>The option argument <code class="docutils literal notranslate"><span class="pre">RowPerm</span></code> (resp. <code class="docutils literal notranslate"><span class="pre">ColPerm</span></code>) control the row (resp. column) permutation matrix.
 <span class="math notranslate nohighlight">\(D_r\)</span> and <span class="math notranslate nohighlight">\(D_c\)</span> is controlled by the parameter <code class="docutils literal notranslate"><span class="pre">DiagScale</span></code>.</p>
-<p>The parameter <code class="code freefem docutils literal notranslate"><span class="pre">permr</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">permc</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">scaler</span></code>, and <code class="code freefem docutils literal notranslate"><span class="pre">scalec</span></code> in <strong>FreeFEM</strong> is provided to give row permutation, column permutation, row scaling and column scaling of the user respectively.</p>
+<p>The parameter <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">permr</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">permc</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">scaler</span></code>, and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">scalec</span></code> in <strong>FreeFEM</strong> is provided to give row permutation, column permutation, row scaling and column scaling of the user respectively.</p>
 <p>The other parameters for LU factorization are <code class="docutils literal notranslate"><span class="pre">ParSymFact</span></code> and <code class="docutils literal notranslate"><span class="pre">ReplaceTinyPivot</span></code>.
 The parallel symbolic factorization works only on a power of two processes and need the <code class="docutils literal notranslate"><span class="pre">ParMetis</span></code> ordering.
 The default option argument of SuperLU_DIST are given in the file <code class="docutils literal notranslate"><span class="pre">ffsuperlu_dist_fileparam.txt</span></code>.</p>
 <p><strong>Calling SuperLU_DIST in FreeFEM</strong></p>
 <p>To call SuperLU_DIST in <strong>FreeFEM</strong>, we need to load the library dynamic correspond to interface.
-This done by the following line <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;real_superlu</span> <span class="pre">_DIST_FreeFem&quot;</span></code> (resp. <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;complex_superlu_DIST_FreeFem&quot;</span></code>) for real (resp. complex) arithmetics in the file <code class="docutils literal notranslate"><span class="pre">.edp</span></code>.</p>
+This done by the following line <code class="code freefem docutils literal highlight highlight-freefem"><span class="cp">load</span> <span class="s">&quot;real_superlu _DIST_FreeFem&quot;</span></code> (resp. <code class="code freefem docutils literal highlight highlight-freefem"><span class="cp">load</span> <span class="s">&quot;complex_superlu_DIST_FreeFem&quot;</span></code>) for real (resp. complex) arithmetics in the file <code class="docutils literal notranslate"><span class="pre">.edp</span></code>.</p>
 <p><strong>Solver parameters is defined in .edp file:</strong></p>
 <p>To call SuperLU_DIST with internal parameter, we used the parameters <code class="docutils literal notranslate"><span class="pre">sparams</span></code>.
 The value of parameters of SuperLU_DIST in <code class="docutils literal notranslate"><span class="pre">sparams</span></code> are defined by :</p>
@@ -2947,23 +2937,23 @@ If one parameter is not specified by the user, we take the default value of Supe
 </div>
 </section>
 <section id="pastix-solver">
-<h4>PaStiX solver<a class="headerlink" href="#pastix-solver" title="Permalink to this headline"></a></h4>
+<h4>PaStiX solver<a class="headerlink" href="#pastix-solver" title="Permalink to this heading"></a></h4>
 <p><a class="reference external" href="http://pastix.gforge.inria.fr/files/README-txt.html">PaStiX</a> (Parallel Sparse matrix package) is a free scientific library under CECILL-C license.
 This package solves sparse linear system with a direct and block ILU(k) iterative methods.
 his solver can be applied to a real or complex matrix with a symmetric pattern.</p>
 <p><strong>PaStiX parameters:</strong></p>
-<p>The input <code class="code freefem docutils literal notranslate"><span class="pre">matrix</span></code> parameter of <strong>FreeFEM</strong> depend on PaStiX interface.
-<code class="code freefem docutils literal notranslate"><span class="pre">matrix</span> <span class="pre">=</span> <span class="pre">assembled</span></code> for non distributed matrix.
+<p>The input <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">matrix</span></code> parameter of <strong>FreeFEM</strong> depend on PaStiX interface.
+<code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">matrix</span> <span class="o">=</span> <span class="n">assembled</span></code> for non distributed matrix.
 It is the same parameter for SuperLU_DIST.</p>
 <p>There are four parameters in PaStiX : <code class="docutils literal notranslate"><span class="pre">iparm</span></code>, <code class="docutils literal notranslate"><span class="pre">dparm</span></code>, <code class="docutils literal notranslate"><span class="pre">perm</span></code> and <code class="docutils literal notranslate"><span class="pre">invp</span></code>.
 These parameters are respectively the integer parameters (vector of size 64), real parameters (vector of size 64), permutation matrix and inverse permutation matrix respectively.
 <code class="docutils literal notranslate"><span class="pre">iparm</span></code> and <code class="docutils literal notranslate"><span class="pre">dparm</span></code> vectors are described in <a class="reference external" href="https://gforge.inria.fr/docman/?group_id=186&amp;view=listfile&amp;dirid=246">PaStiX RefCard</a>.</p>
-<p>The parameters <code class="code freefem docutils literal notranslate"><span class="pre">permr</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">permc</span></code> in <strong>FreeFEM</strong> are provided to give permutation matrix and inverse permutation matrix of the user respectively.</p>
+<p>The parameters <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">permr</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">permc</span></code> in <strong>FreeFEM</strong> are provided to give permutation matrix and inverse permutation matrix of the user respectively.</p>
 <p><strong>Solver parameters defined in .edp file:</strong></p>
-<p>To call PaStiX in <strong>FreeFEM</strong> in this case, we need to specify the parameters <code class="code freefem docutils literal notranslate"><span class="pre">lparams</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">dparams</span></code>.
+<p>To call PaStiX in <strong>FreeFEM</strong> in this case, we need to specify the parameters <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dparams</span></code>.
 These parameters are defined by :</p>
-<p><span class="math notranslate nohighlight">\(\forall i\)</span> = 0,… ,63, <code class="code freefem docutils literal notranslate"><span class="pre">lparams[i]</span> <span class="pre">=</span> <span class="pre">iparm[i]</span></code>.</p>
-<p><span class="math notranslate nohighlight">\(\forall i\)</span> = 0,… ,63, <code class="code freefem docutils literal notranslate"><span class="pre">dparams[i]</span> <span class="pre">=</span> <span class="pre">dparm[i]</span></code>.</p>
+<p><span class="math notranslate nohighlight">\(\forall i\)</span> = 0,… ,63, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">iparm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code>.</p>
+<p><span class="math notranslate nohighlight">\(\forall i\)</span> = 0,… ,63, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dparams</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dparm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code>.</p>
 <p><strong>Reading solver parameters on a file:</strong></p>
 <p>The structure of data file for PaStiX parameters in <strong>FreeFEM</strong> is: first line structure parameters of the matrix and in the following line the value of vectors <code class="docutils literal notranslate"><span class="pre">iparm</span></code> and <code class="docutils literal notranslate"><span class="pre">dparm</span></code> in this order.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="n">assembled</span> <span class="cm">/* matrix input :: assembled, distributed global and distributed */</span>
@@ -2989,15 +2979,6 @@ This file is obtained with the example file <code class="docutils literal notran
 <p>In <a class="reference internal" href="#tabparallelizationdirectsolver"><span class="std std-numref">Table 4</span></a>, we recall the different matrix considering in the different direct solvers.</p>
 <table class="docutils align-default" id="tabparallelizationdirectsolver">
 <caption><span class="caption-number">Table 4 </span><span class="caption-text">Type of matrix used by the different direct sparse solver</span><a class="headerlink" href="#tabparallelizationdirectsolver" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 8%" />
-<col style="width: 20%" />
-<col style="width: 11%" />
-<col style="width: 8%" />
-<col style="width: 20%" />
-<col style="width: 11%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>direct solver</p></th>
 <th class="head" colspan="3"><p>square matrix</p></th>
@@ -3042,7 +3023,7 @@ This file is obtained with the example file <code class="docutils literal notran
 </section>
 </section>
 <section id="parallel-sparse-iterative-solver">
-<h3>Parallel sparse iterative solver<a class="headerlink" href="#parallel-sparse-iterative-solver" title="Permalink to this headline"></a></h3>
+<h3>Parallel sparse iterative solver<a class="headerlink" href="#parallel-sparse-iterative-solver" title="Permalink to this heading"></a></h3>
 <p>Concerning iterative solvers, we have chosen <a class="reference external" href="https://www-users.cs.umn.edu/~saad/software/pARMS/">pARMS</a>, <a class="reference external" href="http://hips.gforge.inria.fr/">HIPS</a> and <a class="reference external" href="https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods">Hypre</a>.</p>
 <p>Each software implements a different type of parallel preconditioner.</p>
 <p>So, pARMS implements algebraic domain decomposition preconditioner type such as additive Schwartz <a class="reference internal" href="../bibliography.html#cai1989" id="id3"><span>[CAI1989]</span></a> and interface method; while HIPS implement hierarchical incomplete factorization and finally HYPRE implements multilevel preconditioner are AMG(Algebraic MultiGrid) and parallel approximated inverse.</p>
@@ -3054,7 +3035,7 @@ It is also necessary to install the MPI communication library which is essential
 You just have to load the solver and then specify the parameters to apply to the specific solvers.
 In the rest of this chapter, when we talk about Krylov subspace methods we mean one among GMRES, CG and BICGSTAB.</p>
 <section id="parms-solver">
-<h4>pARMS solver<a class="headerlink" href="#parms-solver" title="Permalink to this headline"></a></h4>
+<h4>pARMS solver<a class="headerlink" href="#parms-solver" title="Permalink to this heading"></a></h4>
 <p><a class="reference external" href="https://www-users.cs.umn.edu/~saad/software/pARMS/">pARMS</a> (parallel Algebraic Multilevel Solver) is a software developed by Youssef Saad and al at University of Minnesota.</p>
 <p>This software is specialized in the resolution of large sparse non symmetric linear systems of equation.
 Solvers developed in pARMS are of type “Krylov’s subspace”.</p>
@@ -3174,20 +3155,13 @@ Parameters of solver is specified by user.</p>
 </pre></div>
 </div>
 <p>We need two vectors to specify the parameters of the linear solver.
-In line 5-6 of the example, we have declared these vectors(<code class="code freefem docutils literal notranslate"><span class="pre">int[int]</span> <span class="pre">iparm(16);</span> <span class="pre">real[int]</span> <span class="pre">dparm(6);</span></code>).
+In line 5-6 of the example, we have declared these vectors(<code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">iparm</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span> <span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">dparm</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span></code>).
 In line 7-10 we have initialized these vectors by negative values.</p>
 <p>We do this because all parameters values in pARMS are positive and if you do not change the negative values of one entry of this vector, the default value will be set.</p>
 <p>In <a class="reference internal" href="#tabparallelizationlparams"><span class="std std-numref">Table 7</span></a> and <a class="reference internal" href="#tabparallelizationdparams"><span class="std std-numref">Table 8</span></a>, we have the meaning of different entries of these vectors.</p>
 <p>We run this example on a cluster paradent of Grid5000 and report results in <a class="reference internal" href="#tabparallelizationconvergencetime"><span class="std std-numref">Table 5</span></a>.</p>
 <table class="docutils align-default" id="tabparallelizationconvergencetime">
 <caption><span class="caption-number">Table 5 </span><span class="caption-text">Convergence and time for solving linear system</span><a class="headerlink" href="#tabparallelizationconvergencetime" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 17%" />
-<col style="width: 27%" />
-<col style="width: 17%" />
-<col style="width: 27%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="5"><p><span class="math notranslate nohighlight">\(n=471281\)</span>
 <span class="math notranslate nohighlight">\(nnz=13\times10^6\)</span>
@@ -3233,10 +3207,6 @@ In line 7-10 we have initialized these vectors by negative values.</p>
 </table>
 <table class="docutils align-default" id="tabparallelizationlegend">
 <caption><span class="caption-number">Table 6 </span><span class="caption-text">Legend of <a class="reference internal" href="#tabparallelizationconvergencetime"><span class="std std-numref">Table 5</span></a></span><a class="headerlink" href="#tabparallelizationlegend" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 82%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">n</span></code></p></th>
 <th class="head"><p>matrix size</p></th>
@@ -3265,13 +3235,9 @@ We saw that, when the number of processors increases, the time for solving the l
 This proves that, using pARMS as solver of linear systems coming from discretization of partial differential equation in <strong>FreeFEM</strong> can decrease drastically the total time of simulation.</p>
 </div>
 <table class="docutils align-default" id="tabparallelizationlparams">
-<caption><span class="caption-number">Table 7 </span><span class="caption-text">Meaning of <code class="code freefem docutils literal notranslate"><span class="pre">lparams</span></code> corresponding variables</span><a class="headerlink" href="#tabparallelizationlparams" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">Meaning of <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span></code> corresponding variables</span><a class="headerlink" href="#tabparallelizationlparams" title="Permalink to this table"></a></caption>
 <thead>
-<tr class="row-odd"><th class="head"><p>Entries of <code class="code freefem docutils literal notranslate"><span class="pre">iparm</span></code></p></th>
+<tr class="row-odd"><th class="head"><p>Entries of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">iparm</span></code></p></th>
 <th class="head"><p>Significations of each entries</p></th>
 </tr>
 </thead>
@@ -3343,13 +3309,9 @@ This proves that, using pARMS as solver of linear systems coming from discretiza
 </tbody>
 </table>
 <table class="docutils align-default" id="tabparallelizationdparams">
-<caption><span class="caption-number">Table 8 </span><span class="caption-text">Significations of <code class="code freefem docutils literal notranslate"><span class="pre">dparams</span></code> corresponding variables</span><a class="headerlink" href="#tabparallelizationdparams" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 70%" />
-</colgroup>
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">Significations of <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dparams</span></code> corresponding variables</span><a class="headerlink" href="#tabparallelizationdparams" title="Permalink to this table"></a></caption>
 <thead>
-<tr class="row-odd"><th class="head"><p>Entries of <code class="code freefem docutils literal notranslate"><span class="pre">dparm</span></code></p></th>
+<tr class="row-odd"><th class="head"><p>Entries of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">dparm</span></code></p></th>
 <th class="head"><p>Significations of each entries</p></th>
 </tr>
 </thead>
@@ -3376,10 +3338,6 @@ This proves that, using pARMS as solver of linear systems coming from discretiza
 </table>
 <table class="docutils align-default" id="tabparallelizationparmskrylov">
 <caption><span class="caption-number">Table 9 </span><span class="caption-text">Krylov Solvers in pARMS</span><a class="headerlink" href="#tabparallelizationparmskrylov" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 49%" />
-<col style="width: 51%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Values of <code class="docutils literal notranslate"><span class="pre">iparm[0]</span></code></p></th>
 <th class="head"><p>Krylov subspace methods</p></th>
@@ -3399,10 +3357,6 @@ This proves that, using pARMS as solver of linear systems coming from discretiza
 </table>
 <table class="docutils align-default" id="tabparallelizationparmsprecon">
 <caption><span class="caption-number">Table 10 </span><span class="caption-text">Preconditionners in pARMS</span><a class="headerlink" href="#tabparallelizationparmsprecon" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Values of <code class="docutils literal notranslate"><span class="pre">iparm[1]</span></code></p></th>
 <th class="head"><p>Preconditionners type</p></th>
@@ -3455,7 +3409,7 @@ This proves that, using pARMS as solver of linear systems coming from discretiza
 </table>
 </section>
 <section id="interfacing-with-hips">
-<h4>Interfacing with HIPS<a class="headerlink" href="#interfacing-with-hips" title="Permalink to this headline"></a></h4>
+<h4>Interfacing with HIPS<a class="headerlink" href="#interfacing-with-hips" title="Permalink to this heading"></a></h4>
 <p><a class="reference external" href="http://hips.gforge.inria.fr/">HIPS</a> (<em>Hierarchical Iterative Parallel Solver</em>) is a scientific library that provides an efficient parallel iterative solver for very large sparse linear systems.
 HIPS is available as free software under the CeCILL-C licence.</p>
 <p>HIPS implements two solver classes which are the iteratives class (GMRES, PCG) and the Direct class.
@@ -3560,11 +3514,6 @@ We can see in this running example the efficiency of parallelism.</p>
 </div>
 <table class="docutils align-default" id="tabparallelizationconvergencetimehips">
 <caption><span class="caption-number">Table 11 </span><span class="caption-text">Legend of this table are give in <a class="reference internal" href="#tabparallelizationlegend"><span class="std std-numref">Table 6</span></a></span><a class="headerlink" href="#tabparallelizationconvergencetimehips" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 33%" />
-<col style="width: 37%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p><span class="math notranslate nohighlight">\(n=4\times 10^6\)</span>
 <span class="math notranslate nohighlight">\(nnz=118 \times 10^6\)</span>
@@ -3598,11 +3547,7 @@ We can see in this running example the efficiency of parallelism.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <table class="docutils align-default" id="tabparallelizationhipsinterface">
-<caption><span class="caption-number">Table 12 </span><span class="caption-text">Significations of <code class="code freefem docutils literal notranslate"><span class="pre">lparams</span></code> corresponding to HIPS interface</span><a class="headerlink" href="#tabparallelizationhipsinterface" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 76%" />
-</colgroup>
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">Significations of <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span></code> corresponding to HIPS interface</span><a class="headerlink" href="#tabparallelizationhipsinterface" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Entries of <code class="docutils literal notranslate"><span class="pre">iparm</span></code></p></th>
 <th class="head"><p>Significations of each entries</p></th>
@@ -3671,11 +3616,7 @@ We can see in this running example the efficiency of parallelism.</p>
 </tbody>
 </table>
 <table class="docutils align-default" id="tabparallelizationhipsdparms">
-<caption><span class="caption-number">Table 13 </span><span class="caption-text">Significations of <code class="code freefem docutils literal notranslate"><span class="pre">dparams</span></code> corresponding to HIPS interface</span><a class="headerlink" href="#tabparallelizationhipsdparms" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 84%" />
-</colgroup>
+<caption><span class="caption-number">Table 13 </span><span class="caption-text">Significations of <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dparams</span></code> corresponding to HIPS interface</span><a class="headerlink" href="#tabparallelizationhipsdparms" title="Permalink to this table"></a></caption>
 <tbody>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dparm[0]</span></code></p></td>
 <td><p>HIPS_PREC: Relative residual norm: Default=1e-9</p></td>
@@ -3710,7 +3651,7 @@ We can see in this running example the efficiency of parallelism.</p>
 </div>
 </section>
 <section id="interfacing-with-hypre">
-<h4>Interfacing with HYPRE<a class="headerlink" href="#interfacing-with-hypre" title="Permalink to this headline"></a></h4>
+<h4>Interfacing with HYPRE<a class="headerlink" href="#interfacing-with-hypre" title="Permalink to this heading"></a></h4>
 <p><a class="reference external" href="https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods">Hypre</a> (High Level Preconditioner) is a suite of parallel preconditioner developed at Lawrence Livermore National Lab.</p>
 <p>There are two main classes of preconditioners developed in HYPRE: AMG (Algebraic MultiGrid) and Parasails (Parallel Sparse Approximate Inverse).</p>
 <p>Now, suppose we want to solve <span class="math notranslate nohighlight">\(Ax=b\)</span>.</p>
@@ -3733,7 +3674,7 @@ This is the same example as Hips one, so we just show here the lines where we se
 <p>We first load the Hypre solver at line 2.
 From line 6 to 18 we specifies the parameters to set to Hypre solver and in line 22 we set parameters to Hypre solver.</p>
 <p>It should be noted that the meaning of the entries of these vectors is different from those of Hips.
-In the case of HYPRE, the meaning of differents entries of vectors <code class="code freefem docutils literal notranslate"><span class="pre">iparm</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">dparm</span></code> are given in <a class="reference internal" href="#tabparallelizationiparmsdparmshypre"><span class="std std-numref">Table 14</span></a> to <a class="reference internal" href="#tabparallelizationiparmsdparmsschwartz"><span class="std std-numref">Table 18</span></a>.</p>
+In the case of HYPRE, the meaning of differents entries of vectors <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">iparm</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">dparm</span></code> are given in <a class="reference internal" href="#tabparallelizationiparmsdparmshypre"><span class="std std-numref">Table 14</span></a> to <a class="reference internal" href="#tabparallelizationiparmsdparmsschwartz"><span class="std std-numref">Table 18</span></a>.</p>
 <p>In <a class="reference internal" href="#tabparallelizationconvergencetimehypre"><span class="std std-numref">Table 19</span></a> the results of running on Cluster Paradent of Grid5000 are reported.
 We can see in this running example the efficiency of parallelism, in particular when AMG are use as preconditioner.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
@@ -3764,11 +3705,7 @@ We can see in this running example the efficiency of parallelism, in particular 
 </div>
 </div>
 <table class="docutils align-default" id="tabparallelizationiparmsdparmshypre">
-<caption><span class="caption-number">Table 14 </span><span class="caption-text">Definitions of common entries of <code class="code freefem docutils literal notranslate"><span class="pre">iparms</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">dparms</span></code> vectors for every preconditioner in HYPRE</span><a class="headerlink" href="#tabparallelizationiparmsdparmshypre" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 81%" />
-</colgroup>
+<caption><span class="caption-number">Table 14 </span><span class="caption-text">Definitions of common entries of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">iparms</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">dparms</span></code> vectors for every preconditioner in HYPRE</span><a class="headerlink" href="#tabparallelizationiparmsdparmshypre" title="Permalink to this table"></a></caption>
 <tbody>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iparms[0]</span></code></p></td>
 <td><p>Solver identification:</p>
@@ -3801,11 +3738,7 @@ We can see in this running example the efficiency of parallelism, in particular 
 </tbody>
 </table>
 <table class="docutils align-default" id="tabparallelizationiparmsdparmsboomer">
-<caption><span class="caption-number">Table 15 </span><span class="caption-text">Definitions of other entries of <code class="code freefem docutils literal notranslate"><span class="pre">iparms</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">dparms</span></code> if preconditioner is BOOMER AMG</span><a class="headerlink" href="#tabparallelizationiparmsdparmsboomer" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 84%" />
-</colgroup>
+<caption><span class="caption-number">Table 15 </span><span class="caption-text">Definitions of other entries of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">iparms</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">dparms</span></code> if preconditioner is BOOMER AMG</span><a class="headerlink" href="#tabparallelizationiparmsdparmsboomer" title="Permalink to this table"></a></caption>
 <tbody>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iparms[7]</span></code></p></td>
 <td><p>AMG interpolation type: Default=6</p></td>
@@ -3875,11 +3808,7 @@ We can see in this running example the efficiency of parallelism, in particular 
 </tbody>
 </table>
 <table class="docutils align-default" id="id10">
-<caption><span class="caption-number">Table 16 </span><span class="caption-text">Definitions of other entries of <code class="code freefem docutils literal notranslate"><span class="pre">iparms</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">dparms</span></code> if preconditioner is PILUT</span><a class="headerlink" href="#id10" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 77%" />
-</colgroup>
+<caption><span class="caption-number">Table 16 </span><span class="caption-text">Definitions of other entries of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">iparms</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">dparms</span></code> if preconditioner is PILUT</span><a class="headerlink" href="#id10" title="Permalink to this table"></a></caption>
 <tbody>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iparms[7]</span></code></p></td>
 <td><p>Row size in Parallel ILUT: Default=1000</p></td>
@@ -3893,11 +3822,7 @@ We can see in this running example the efficiency of parallelism, in particular 
 </tbody>
 </table>
 <table class="docutils align-default" id="id11">
-<caption><span class="caption-number">Table 17 </span><span class="caption-text">Definitions of other entries of <code class="code freefem docutils literal notranslate"><span class="pre">iparms</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">dparms</span></code> if preconditioner is ParaSails</span><a class="headerlink" href="#id11" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 86%" />
-</colgroup>
+<caption><span class="caption-number">Table 17 </span><span class="caption-text">Definitions of other entries of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">iparms</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">dparms</span></code> if preconditioner is ParaSails</span><a class="headerlink" href="#id11" title="Permalink to this table"></a></caption>
 <tbody>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iparms[7]</span></code></p></td>
 <td><p>Number of levels in Parallel Sparse Approximate inverse: Default=1</p></td>
@@ -3921,11 +3846,7 @@ We can see in this running example the efficiency of parallelism, in particular 
 </tbody>
 </table>
 <table class="docutils align-default" id="tabparallelizationiparmsdparmsschwartz">
-<caption><span class="caption-number">Table 18 </span><span class="caption-text">Definitions of other entries of <code class="code freefem docutils literal notranslate"><span class="pre">iparms</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">dparms</span></code> if preconditionner is Schwartz</span><a class="headerlink" href="#tabparallelizationiparmsdparmsschwartz" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
+<caption><span class="caption-number">Table 18 </span><span class="caption-text">Definitions of other entries of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">iparms</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">dparms</span></code> if preconditionner is Schwartz</span><a class="headerlink" href="#tabparallelizationiparmsdparmsschwartz" title="Permalink to this table"></a></caption>
 <tbody>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iparms[7]</span></code></p></td>
 <td><p>Defines which variant of the Schwartz method isused:</p>
@@ -3950,12 +3871,6 @@ We can see in this running example the efficiency of parallelism, in particular 
 </table>
 <table class="docutils align-default" id="tabparallelizationconvergencetimehypre">
 <caption><span class="caption-number">Table 19 </span><span class="caption-text">Convergence and time for solving linear system</span><a class="headerlink" href="#tabparallelizationconvergencetimehypre" title="Permalink to this table"></a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 10%" />
-<col style="width: 26%" />
-<col style="width: 30%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(n=4\times10^6\)</span></p></th>
 <th class="head" colspan="2"><p><span class="math notranslate nohighlight">\(nnz=13\times10^6\)</span></p></th>
@@ -3990,7 +3905,7 @@ We can see in this running example the efficiency of parallelism, in particular 
 </table>
 </section>
 <section id="conclusion">
-<h4>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline"></a></h4>
+<h4>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a></h4>
 <p>With the different runs presented here, we wanted to illustrate the gain in time when we increase the number of processors used for the simulations.
 We saw that in every case the time for the construction of the finite element matrix is constant.
 This is normal because until now this phase is sequential in <strong>FreeFEM</strong>.
@@ -4009,7 +3924,7 @@ For this reason we advise the user to pay attention to the meaning of the parame
 </section>
 </section>
 <section id="domain-decomposition">
-<h3>Domain decomposition<a class="headerlink" href="#domain-decomposition" title="Permalink to this headline"></a></h3>
+<h3>Domain decomposition<a class="headerlink" href="#domain-decomposition" title="Permalink to this heading"></a></h3>
 <p>In the previous section, we saw that the phases to construct a matrix are sequential.
 One strategy to construct the matrix in parallel is to divide geometrically the domain into subdomains.
 In every subdomain we construct a local submatrix and after that we assemble every submatrix to form the global matrix.</p>
@@ -4019,21 +3934,21 @@ After this, you solve equation in every subdomains and define a strategy to obta
 <p>In terms of parallel programming for <strong>FreeFEM</strong>, with MPI, this means that the user must be able to divide processors avaible for computation into subgroups of processors and also must be able to realize different type of communications in <strong>FreeFEM</strong> script.
 Here is a wrapper of some MPI functions.</p>
 <section id="communicators-and-groups">
-<h4>Communicators and groups<a class="headerlink" href="#communicators-and-groups" title="Permalink to this headline"></a></h4>
+<h4>Communicators and groups<a class="headerlink" href="#communicators-and-groups" title="Permalink to this heading"></a></h4>
 <p><strong>Groups</strong></p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">mpiGroup</span> <span class="pre">grpe(mpiGroup</span> <span class="pre">gp,</span> <span class="pre">KN_&lt;long&gt;)</span></code>: Create MPI_Group from existing group <code class="code freefem docutils literal notranslate"><span class="pre">gp</span></code> by given vector.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mpiGroup</span> <span class="n">grpe</span><span class="p">(</span><span class="kt">mpiGroup</span> <span class="n">gp</span><span class="p">,</span> <span class="n">KN_</span><span class="o">&lt;</span><span class="kt">long</span><span class="o">&gt;</span><span class="p">)</span></code>: Create MPI_Group from existing group <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">gp</span></code> by given vector.</p>
 <p><strong>Communicators</strong></p>
 <p>Communicators is an abstract MPI object which allows MPI user to communicate across group of processors.
 Communicators can be Intra-communicators(involves a single group) or Inter-communicators (involves two groups).
 When we not specify type of communicator it will be Intra-communicators</p>
 <p><strong>mpiComm cc(mpiComm comm, mpiGroup gp):</strong> Creates a new communicator.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">comm</span></code> communicator(handle), <code class="code freefem docutils literal notranslate"><span class="pre">gp</span></code> group which is a subset of the group of <code class="code freefem docutils literal notranslate"><span class="pre">comm</span></code> (handle).
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="n">comm</span></code> communicator(handle), <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">gp</span></code> group which is a subset of the group of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">comm</span></code> (handle).
 Return new communicator</p>
-<p><strong>mpiComm cc(mpiGroup gp)</strong>: Same as previous constructor but default <code class="code freefem docutils literal notranslate"><span class="pre">comm</span></code> here is <code class="docutils literal notranslate"><span class="pre">MPI_COMM_WORLD</span></code>.</p>
-<p><strong>mpiComm cc(mpiComm comm, int color, int key):</strong> Creates new communicators based on <code class="code freefem docutils literal notranslate"><span class="pre">colors</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">key</span></code>.
+<p><strong>mpiComm cc(mpiGroup gp)</strong>: Same as previous constructor but default <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">comm</span></code> here is <code class="docutils literal notranslate"><span class="pre">MPI_COMM_WORLD</span></code>.</p>
+<p><strong>mpiComm cc(mpiComm comm, int color, int key):</strong> Creates new communicators based on <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">colors</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">key</span></code>.
 This constructor is based on MPI_Comm_split routine of MPI.</p>
 <p><strong>mpiComm cc(MPIrank p, int key):</strong> Same constructor than the last one.</p>
-<p>Here <code class="code freefem docutils literal notranslate"><span class="pre">colors</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">comm</span></code> is defined in <code class="code freefem docutils literal notranslate"><span class="pre">MPIrank</span></code>.
+<p>Here <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">colors</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">comm</span></code> is defined in <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">MPIrank</span></code>.
 This constructor is based on <code class="docutils literal notranslate"><span class="pre">MPI_Comm_split</span></code> routine of MPI.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -4046,12 +3961,12 @@ This constructor is based on <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 </div>
-<p><strong>mpiComm cc(mpiComm comm, int high):</strong> Creates an intracommunicator from an intercommunicator. <code class="code freefem docutils literal notranslate"><span class="pre">comm</span></code> intercommunicator, <code class="code freefem docutils literal notranslate"><span class="pre">high</span></code>.</p>
-<p>Used to order the groups within <code class="code freefem docutils literal notranslate"><span class="pre">comm</span></code> (logical) when creating the new communicator.
+<p><strong>mpiComm cc(mpiComm comm, int high):</strong> Creates an intracommunicator from an intercommunicator. <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">comm</span></code> intercommunicator, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">high</span></code>.</p>
+<p>Used to order the groups within <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">comm</span></code> (logical) when creating the new communicator.
 This constructor is based on <code class="docutils literal notranslate"><span class="pre">MPI_Intercomm_merge</span></code> routine of MPI.</p>
 <p><strong>mpiComm cc(MPIrank p1, MPIrank p2, int tag):</strong> This constructor creates an intercommuncator from two intracommunicators.
-<code class="code freefem docutils literal notranslate"><span class="pre">p1</span></code> defined local (intra)communicator and rank in <code class="docutils literal notranslate"><span class="pre">local_comm</span></code> of leader (often 0) while <code class="code freefem docutils literal notranslate"><span class="pre">p2</span></code> defined remote communicator and rank in <code class="docutils literal notranslate"><span class="pre">peer_comm</span></code> of remote leader (often 0).
-<code class="code freefem docutils literal notranslate"><span class="pre">tag</span></code> Message tag to use in constructing intercommunicator.
+<code class="code freefem docutils literal highlight highlight-freefem"><span class="n">p1</span></code> defined local (intra)communicator and rank in <code class="docutils literal notranslate"><span class="pre">local_comm</span></code> of leader (often 0) while <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">p2</span></code> defined remote communicator and rank in <code class="docutils literal notranslate"><span class="pre">peer_comm</span></code> of remote leader (often 0).
+<code class="code freefem docutils literal highlight highlight-freefem"><span class="n">tag</span></code> Message tag to use in constructing intercommunicator.
 This constructor is based on <code class="docutils literal notranslate"><span class="pre">MPI_Intercomm_create</span></code>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -4075,52 +3990,52 @@ This constructor is based on <code class="docutils literal notranslate"><span cl
 </div>
 </section>
 <section id="process">
-<h4>Process<a class="headerlink" href="#process" title="Permalink to this headline"></a></h4>
-<p>In <strong>FreeFEM</strong> we wrap MPI process by function call <code class="code freefem docutils literal notranslate"><span class="pre">processor</span></code> which create internal <strong>FreeFEM</strong> object call <code class="code freefem docutils literal notranslate"><span class="pre">MPIrank</span></code>.
-This mean that do not use <code class="code freefem docutils literal notranslate"><span class="pre">MPIrank</span></code> in <strong>FreeFEM</strong> script.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">processor(int</span> <span class="pre">rk)</span></code>: Keep process rank inside object <code class="code freefem docutils literal notranslate"><span class="pre">MPIrank</span></code>.
+<h4>Process<a class="headerlink" href="#process" title="Permalink to this heading"></a></h4>
+<p>In <strong>FreeFEM</strong> we wrap MPI process by function call <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processor</span></code> which create internal <strong>FreeFEM</strong> object call <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">MPIrank</span></code>.
+This mean that do not use <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">MPIrank</span></code> in <strong>FreeFEM</strong> script.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">)</span></code>: Keep process rank inside object <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">MPIrank</span></code>.
 Rank is inside <code class="docutils literal notranslate"><span class="pre">MPI_COMM_WORLD</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">processor(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc)</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">processor(mpiComm</span> <span class="pre">cc,</span> <span class="pre">int</span> <span class="pre">rk)</span></code> process rank inside communicator cc.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">processor(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc)</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">processor(mpiComm</span> <span class="pre">cc,</span> <span class="pre">int</span> <span class="pre">rk)</span></code> process rank inside communicator cc.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">processorblock(int</span> <span class="pre">rk)</span></code>: This function is exactlly the same than <code class="code freefem docutils literal notranslate"><span class="pre">processor(int</span> <span class="pre">rk)</span></code> but is use in case of blocking communication.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">processorblock(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc)</span></code>: This function is exactly the same as <code class="code freefem docutils literal notranslate"><span class="pre">processor(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc)</span></code> but uses a synchronization point.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">)</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processor</span><span class="p">(</span><span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rk</span><span class="p">)</span></code> process rank inside communicator cc.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">)</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processor</span><span class="p">(</span><span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rk</span><span class="p">)</span></code> process rank inside communicator cc.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processorblock</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">)</span></code>: This function is exactlly the same than <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">)</span></code> but is use in case of blocking communication.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processorblock</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">)</span></code>: This function is exactly the same as <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">)</span></code> but uses a synchronization point.</p>
 </section>
 <section id="points-to-points-communicators">
-<h4>Points to Points communicators<a class="headerlink" href="#points-to-points-communicators" title="Permalink to this headline"></a></h4>
+<h4>Points to Points communicators<a class="headerlink" href="#points-to-points-communicators" title="Permalink to this heading"></a></h4>
 <p>In <strong>FreeFEM</strong> you can call MPI points to points communications functions.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">Send(processor(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc),</span> <span class="pre">Data</span> <span class="pre">D)</span></code> : Blocking send of <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">D</span></code> to processor of <code class="code freefem docutils literal notranslate"><span class="pre">rank</span> <span class="pre">rk</span></code> inside communicator <code class="code freefem docutils literal notranslate"><span class="pre">cc</span></code>.
-Note that <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">D</span></code> can be: <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">int[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Mesh</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Mesh3</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Matrix</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">Recv(processor(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc),</span> <span class="pre">Data</span> <span class="pre">D)</span></code>: Receive <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">D</span></code> from process of rank <code class="code freefem docutils literal notranslate"><span class="pre">rk</span></code> in communicator <code class="code freefem docutils literal notranslate"><span class="pre">cc</span></code>.</p>
-<p>Note that <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">D</span></code> can be: <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">int[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Mesh</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Mesh3</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Matrix</span></code> and should be the same type than corresponding send.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">Isend(processor(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc),</span> <span class="pre">Data</span> <span class="pre">D)</span></code> : Non blocking send of <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">D</span></code> to processor of <code class="code freefem docutils literal notranslate"><span class="pre">rank</span> <span class="pre">rk</span></code> inside communicator <code class="code freefem docutils literal notranslate"><span class="pre">cc</span></code>.</p>
-<p>Note that <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">D</span></code> can be: <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">int[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">matrix</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">Recv(processor(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc),</span> <span class="pre">Data</span> <span class="pre">D)</span></code>: Receive corresponding to send.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Send</span><span class="p">(</span><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">),</span> <span class="n">Data</span> <span class="n">D</span><span class="p">)</span></code> : Blocking send of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">D</span></code> to processor of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">rank</span> <span class="n">rk</span></code> inside communicator <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">cc</span></code>.
+Note that <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">D</span></code> can be: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Mesh</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Mesh3</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Matrix</span></code>.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">Recv</span><span class="p">(</span><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">),</span> <span class="n">Data</span> <span class="n">D</span><span class="p">)</span></code>: Receive <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">D</span></code> from process of rank <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">rk</span></code> in communicator <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">cc</span></code>.</p>
+<p>Note that <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">D</span></code> can be: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Mesh</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Mesh3</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Matrix</span></code> and should be the same type than corresponding send.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">Isend</span><span class="p">(</span><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">),</span> <span class="n">Data</span> <span class="n">D</span><span class="p">)</span></code> : Non blocking send of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">D</span></code> to processor of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">rank</span> <span class="n">rk</span></code> inside communicator <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">cc</span></code>.</p>
+<p>Note that <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">D</span></code> can be: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh3</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">matrix</span></code>.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">Recv</span><span class="p">(</span><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">),</span> <span class="n">Data</span> <span class="n">D</span><span class="p">)</span></code>: Receive corresponding to send.</p>
 </section>
 <section id="global-operations">
-<h4>Global operations<a class="headerlink" href="#global-operations" title="Permalink to this headline"></a></h4>
+<h4>Global operations<a class="headerlink" href="#global-operations" title="Permalink to this heading"></a></h4>
 <p>In <strong>FreeFEM</strong> you can call MPI global communication functions.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">broadcast(processor(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc),</span> <span class="pre">Data</span> <span class="pre">D)</span></code>: Process <code class="code freefem docutils literal notranslate"><span class="pre">rk</span></code> Broadcast <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">D</span></code> to all process inside <code class="code freefem docutils literal notranslate"><span class="pre">communicator</span> <span class="pre">cc</span></code>.
-Note that <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">D</span></code> can be: <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">int[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Mesh</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Mesh3</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Matrix</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">broadcast(processor(int</span> <span class="pre">rk),</span> <span class="pre">Data</span> <span class="pre">D)</span></code>: Process <code class="code freefem docutils literal notranslate"><span class="pre">rk</span></code> Broadcast <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">D</span></code> to all process inside <code class="docutils literal notranslate"><span class="pre">MPI_COMM_WORLD</span></code>.
-Note that <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">D</span></code> can be: <code class="code freefem docutils literal notranslate"><span class="pre">int</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">int[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">real[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">complex[int]</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Mesh</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Mesh3</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">Matrix</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">mpiAlltoall(Data</span> <span class="pre">a,</span> <span class="pre">Data</span> <span class="pre">b)</span></code>: Sends <code class="code freefem docutils literal notranslate"><span class="pre">data</span> <span class="pre">a</span></code> from all to all processes.
-Receive buffer is <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">b</span></code>.
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">broadcast</span><span class="p">(</span><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">),</span> <span class="n">Data</span> <span class="n">D</span><span class="p">)</span></code>: Process <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">rk</span></code> Broadcast <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">D</span></code> to all process inside <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">communicator</span> <span class="n">cc</span></code>.
+Note that <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">D</span></code> can be: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Mesh</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Mesh3</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Matrix</span></code>.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">broadcast</span><span class="p">(</span><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">),</span> <span class="n">Data</span> <span class="n">D</span><span class="p">)</span></code>: Process <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">rk</span></code> Broadcast <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">D</span></code> to all process inside <code class="docutils literal notranslate"><span class="pre">MPI_COMM_WORLD</span></code>.
+Note that <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">D</span></code> can be: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">complex</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Mesh</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Mesh3</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Matrix</span></code>.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="n">mpiAlltoall</span><span class="p">(</span><span class="n">Data</span> <span class="n">a</span><span class="p">,</span> <span class="n">Data</span> <span class="n">b</span><span class="p">)</span></code>: Sends <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">data</span> <span class="n">a</span></code> from all to all processes.
+Receive buffer is <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">b</span></code>.
 This is done inside communicator <code class="docutils literal notranslate"><span class="pre">MPI_COMM_WORLD</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">mpiAlltoall(Data</span> <span class="pre">a,</span> <span class="pre">Data</span> <span class="pre">b,</span> <span class="pre">mpiComm</span> <span class="pre">cc)</span></code>: Sends <code class="code freefem docutils literal notranslate"><span class="pre">data</span> <span class="pre">a</span></code> from all to all processes. Receive buffer is <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">b</span></code>.
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="n">mpiAlltoall</span><span class="p">(</span><span class="n">Data</span> <span class="n">a</span><span class="p">,</span> <span class="n">Data</span> <span class="n">b</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">)</span></code>: Sends <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">data</span> <span class="n">a</span></code> from all to all processes. Receive buffer is <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">b</span></code>.
 This is done inside communicator <code class="docutils literal notranslate"><span class="pre">cc</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">mpiGather(Data</span> <span class="pre">a,</span> <span class="pre">Data</span> <span class="pre">b,</span> <span class="pre">processor(mpiComm,</span> <span class="pre">int</span> <span class="pre">rk)</span></code>: Gathers together values <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">a</span></code> from a group of processes.
-Process of rank <code class="code freefem docutils literal notranslate"><span class="pre">rk</span></code> get data on communicator <code class="code freefem docutils literal notranslate"><span class="pre">rk</span></code>.
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">mpiGather</span><span class="p">(</span><span class="n">Data</span> <span class="n">a</span><span class="p">,</span> <span class="n">Data</span> <span class="n">b</span><span class="p">,</span> <span class="nf">processor</span><span class="p">(</span><span class="kt">mpiComm</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rk</span><span class="p">)</span></code>: Gathers together values <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">a</span></code> from a group of processes.
+Process of rank <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">rk</span></code> get data on communicator <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">rk</span></code>.
 This function is like <code class="docutils literal notranslate"><span class="pre">MPI_Gather</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">mpiAllgather(Data</span> <span class="pre">a,</span> <span class="pre">Data</span> <span class="pre">b)</span></code>: Gathers <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">a</span></code> from all processes and distribute it to all in <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">b</span></code>.
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">mpiAllgather</span><span class="p">(</span><span class="n">Data</span> <span class="n">a</span><span class="p">,</span> <span class="n">Data</span> <span class="n">b</span><span class="p">)</span></code>: Gathers <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">a</span></code> from all processes and distribute it to all in <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">b</span></code>.
 This is done inside communicator <code class="docutils literal notranslate"><span class="pre">MPI_COMM_WORLD</span></code>.
 This function is like <code class="docutils literal notranslate"><span class="pre">MPI_Allgather</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">mpiAllgather(Data</span> <span class="pre">a,</span> <span class="pre">Data</span> <span class="pre">b,</span> <span class="pre">mpiComm</span> <span class="pre">cc)</span></code>: Gathers <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">a</span></code> from all processes and distribute it to all in <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">b</span></code>.
-This is done inside <code class="code freefem docutils literal notranslate"><span class="pre">communicator</span> <span class="pre">cc</span></code>.
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">mpiAllgather</span><span class="p">(</span><span class="n">Data</span> <span class="n">a</span><span class="p">,</span> <span class="n">Data</span> <span class="n">b</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">)</span></code>: Gathers <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">a</span></code> from all processes and distribute it to all in <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">b</span></code>.
+This is done inside <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">communicator</span> <span class="n">cc</span></code>.
 This function is like <code class="docutils literal notranslate"><span class="pre">MPI_Allgather</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">mpiScatter(Data</span> <span class="pre">a,Data</span> <span class="pre">b,processor(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc))</span></code>: Sends <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">a</span></code> from one process whith rank <code class="code freefem docutils literal notranslate"><span class="pre">rk</span></code> to all other processes in group represented by communicator <code class="code freefem docutils literal notranslate"><span class="pre">mpiComm</span> <span class="pre">cc</span></code>.</p>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">mpiReduce(Data</span> <span class="pre">a,</span> <span class="pre">Data</span> <span class="pre">b,</span> <span class="pre">processor(int</span> <span class="pre">rk,</span> <span class="pre">mpiComm</span> <span class="pre">cc),</span> <span class="pre">MPI_Op</span> <span class="pre">op)</span></code> Reduces values <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">a</span></code> on all processes to a single value <code class="code freefem docutils literal notranslate"><span class="pre">Data</span> <span class="pre">b</span></code> on process of rank <code class="code freefem docutils literal notranslate"><span class="pre">rk</span></code> and communicator <code class="code freefem docutils literal notranslate"><span class="pre">cc</span></code>.</p>
-<p>Operation use in reduce is: <code class="code freefem docutils literal notranslate"><span class="pre">MPI_Op</span> <span class="pre">op</span></code> which can be: <code class="code freefem docutils literal notranslate"><span class="pre">mpiMAX</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiMIN</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiSUM</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiPROD</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiLAND</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiLOR</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiLXOR</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiBAND</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiBXOR</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiMAXLOC</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">mpiMINLOC</span></code>.</p>
-<p>Note that, for all global operations, only <code class="code freefem docutils literal notranslate"><span class="pre">int[int]</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">real[int]</span></code> are data type take in account in <strong>FreeFEM</strong>.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">mpiScatter</span><span class="p">(</span><span class="n">Data</span> <span class="n">a</span><span class="p">,</span><span class="n">Data</span> <span class="n">b</span><span class="p">,</span><span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">))</span></code>: Sends <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">a</span></code> from one process whith rank <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">rk</span></code> to all other processes in group represented by communicator <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mpiComm</span> <span class="n">cc</span></code>.</p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">mpiReduce</span><span class="p">(</span><span class="n">Data</span> <span class="n">a</span><span class="p">,</span> <span class="n">Data</span> <span class="n">b</span><span class="p">,</span> <span class="nf">processor</span><span class="p">(</span><span class="kt">int</span> <span class="n">rk</span><span class="p">,</span> <span class="kt">mpiComm</span> <span class="n">cc</span><span class="p">),</span> <span class="n">MPI_Op</span> <span class="kp">op</span><span class="p">)</span></code> Reduces values <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">a</span></code> on all processes to a single value <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Data</span> <span class="n">b</span></code> on process of rank <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">rk</span></code> and communicator <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">cc</span></code>.</p>
+<p>Operation use in reduce is: <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">MPI_Op</span> <span class="kp">op</span></code> which can be: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiMAX</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiMIN</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiSUM</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiPROD</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiLAND</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiLOR</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiLXOR</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiBAND</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">mpiBXOR</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">mpiMAXLOC</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">mpiMINLOC</span></code>.</p>
+<p>Note that, for all global operations, only <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code> are data type take in account in <strong>FreeFEM</strong>.</p>
 </section>
 </section>
 </section>

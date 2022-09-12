@@ -1970,9 +1970,9 @@
 	<div id="content">
 		
    <section id="static-problems">
-<h1>Static problems<a class="headerlink" href="#static-problems" title="Permalink to this headline"></a></h1>
+<h1>Static problems<a class="headerlink" href="#static-problems" title="Permalink to this heading"></a></h1>
 <section id="soap-film">
-<span id="modelstatissoap"></span><h2>Soap Film<a class="headerlink" href="#soap-film" title="Permalink to this headline"></a></h2>
+<span id="modelstatissoap"></span><h2>Soap Film<a class="headerlink" href="#soap-film" title="Permalink to this heading"></a></h2>
 <p>Our starting point here will be the mathematical model to find the shape of <strong>soap film</strong> which is glued to the ring on the <span class="math notranslate nohighlight">\(xy-\)</span>plane:</p>
 <div class="math notranslate nohighlight">
 \[C=\{(x,y);\;x=\cos t,\,y=\sin t,\,0\leq t\leq 2\pi \}\]</div>
@@ -2090,7 +2090,7 @@ The results are <span class="math notranslate nohighlight">\(\|u_h - u_e\|_{0,\O
 So the numerical solution is improved by adaptation of mesh.</p>
 </section>
 <section id="electrostatics">
-<h2>Electrostatics<a class="headerlink" href="#electrostatics" title="Permalink to this headline"></a></h2>
+<h2>Electrostatics<a class="headerlink" href="#electrostatics" title="Permalink to this heading"></a></h2>
 <p>We assume that there is no current and a time independent charge distribution.
 Then the electric field <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> satisfies:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-maxwell">
@@ -2159,7 +2159,7 @@ Note that <span class="math notranslate nohighlight">\(C_0\)</span> is described
 </figure>
 </div></section>
 <section id="aerodynamics">
-<span id="DiskWithHoles"></span><h2>Aerodynamics<a class="headerlink" href="#aerodynamics" title="Permalink to this headline"></a></h2>
+<span id="DiskWithHoles"></span><h2>Aerodynamics<a class="headerlink" href="#aerodynamics" title="Permalink to this heading"></a></h2>
 <p>Let us consider a wing profile <span class="math notranslate nohighlight">\(S\)</span> in a uniform flow.
 Infinity will be represented by a large circle <span class="math notranslate nohighlight">\(\Gamma_{\infty}\)</span>.
 As previously, we must solve:</p>
@@ -2273,7 +2273,7 @@ Thus the jump of <span class="math notranslate nohighlight">\(\p_n\varphi\)</spa
 </figure>
 </div></section>
 <section id="error-estimation">
-<span id="IsovalueOfCp"></span><h2>Error estimation<a class="headerlink" href="#error-estimation" title="Permalink to this headline"></a></h2>
+<span id="IsovalueOfCp"></span><h2>Error estimation<a class="headerlink" href="#error-estimation" title="Permalink to this heading"></a></h2>
 <p>There are famous estimation between the numerical result <span class="math notranslate nohighlight">\(u_h\)</span> and the exact solution <span class="math notranslate nohighlight">\(u\)</span> of the <a class="reference internal" href="../tutorials/poisson.html#tutorialpoisson"><span class="std std-ref">Poisson’s problem</span></a>:</p>
 <p>If triangulations <span class="math notranslate nohighlight">\(\{\mathcal{T}_h\}_{h\downarrow 0}\)</span> is regular (see <a class="reference internal" href="../documentation/mesh-generation.html#meshregulartriangulation"><span class="std std-ref">Regular Triangulation</span></a>), then we have the estimates:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-errorestimatation">
@@ -2354,7 +2354,7 @@ Instead of the exact solution, here we use the approximate solution <span class=
 <p>We can guess that <span class="math notranslate nohighlight">\(C_1=0.0179253(0.0173266)\)</span> and <span class="math notranslate nohighlight">\(C_2=0.0729566(0.0707543)\)</span>, where the numbers inside the parentheses are minimum in calculation.</p>
 </section>
 <section id="periodic-boundary-conditions">
-<h2>Periodic Boundary Conditions<a class="headerlink" href="#periodic-boundary-conditions" title="Permalink to this headline"></a></h2>
+<h2>Periodic Boundary Conditions<a class="headerlink" href="#periodic-boundary-conditions" title="Permalink to this heading"></a></h2>
 <p>We now solve the Poisson equation:</p>
 <div class="math notranslate nohighlight">
 \[-\Delta u = sin(x+\pi/4.)*cos(y+\pi/4.)\]</div>
@@ -2615,7 +2615,7 @@ The following example give such example.</p>
 </div></div>
 </section>
 <section id="poisson-problems-with-mixed-boundary-condition">
-<span id="modelstaticpoissonwithmixedboundarycondition"></span><span id="CubeBalloon"></span><h2>Poisson Problems with mixed boundary condition<a class="headerlink" href="#poisson-problems-with-mixed-boundary-condition" title="Permalink to this headline"></a></h2>
+<span id="modelstaticpoissonwithmixedboundarycondition"></span><span id="CubeBalloon"></span><h2>Poisson Problems with mixed boundary condition<a class="headerlink" href="#poisson-problems-with-mixed-boundary-condition" title="Permalink to this heading"></a></h2>
 <p>Here we consider the Poisson equation with mixed boundary conditions:</p>
 <p>For given functions <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span>, find <span class="math notranslate nohighlight">\(u\)</span> such that:</p>
 <div class="math notranslate nohighlight">
@@ -2631,7 +2631,7 @@ The following example give such example.</p>
 \[u=K_iu_S + u_R,\, u_R\in H^2(\textrm{near }\gamma_i),\, i=1,2\]</div>
 <p>with a constants <span class="math notranslate nohighlight">\(K_i\)</span>.</p>
 <p>Here <span class="math notranslate nohighlight">\(u_S = r_j^{1/2}\sin(\theta_j/2)\)</span> by the local polar coordinate <span class="math notranslate nohighlight">\((r_j,\theta_j\)</span> at <span class="math notranslate nohighlight">\(\gamma_j\)</span> such that <span class="math notranslate nohighlight">\((r_1,\theta_1)=(r,\theta)\)</span>.</p>
-<p>Instead of polar coordinate system <span class="math notranslate nohighlight">\((r,\theta)\)</span>, we use that <span class="math notranslate nohighlight">\(r\)</span> = <code class="code freefem docutils literal notranslate"><span class="pre">sqrt</span></code> (<span class="math notranslate nohighlight">\(x^2+y^2\)</span>) and <span class="math notranslate nohighlight">\(\theta\)</span> = <code class="code freefem docutils literal notranslate"><span class="pre">atan2</span></code> (<span class="math notranslate nohighlight">\(y,x\)</span>) in <strong>FreeFEM</strong>.</p>
+<p>Instead of polar coordinate system <span class="math notranslate nohighlight">\((r,\theta)\)</span>, we use that <span class="math notranslate nohighlight">\(r\)</span> = <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">sqrt</span></code> (<span class="math notranslate nohighlight">\(x^2+y^2\)</span>) and <span class="math notranslate nohighlight">\(\theta\)</span> = <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">atan2</span></code> (<span class="math notranslate nohighlight">\(y,x\)</span>) in <strong>FreeFEM</strong>.</p>
 <p>Assume that <span class="math notranslate nohighlight">\(f=-2\times 30(x^2+y^2)\)</span> and <span class="math notranslate nohighlight">\(g=u_e=10(x^2+y^2)^{1/4}\sin\left([\tan^{-1}(y/x)]/2\right)+30(x^2y^2)\)</span>, where <span class="math notranslate nohighlight">\(u_e\)</span>S is the exact solution.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Parameters</span>
 <span class="lineno"> 2 </span><span class="kt">func</span> <span class="n">f</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="mi">30</span><span class="o">*</span><span class="p">(</span><span class="kr">x</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="kr">y</span><span class="o">^</span><span class="mi">2</span><span class="p">);</span> <span class="c1">//given function</span>
@@ -2703,17 +2703,17 @@ The following example give such example.</p>
 </pre></div>
 </div>
 <p>From line 35 to 37, mesh adaptations are done using the base of singular term.</p>
-<p>In line 61, <code class="code freefem docutils literal notranslate"><span class="pre">H1e</span></code> = <span class="math notranslate nohighlight">\(|u_e|_{1,\Omega}\)</span> is calculated.</p>
+<p>In line 61, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">H1e</span></code> = <span class="math notranslate nohighlight">\(|u_e|_{1,\Omega}\)</span> is calculated.</p>
 <p>In lines 64 and 65, the relative errors are calculated, that is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
     \|u^0_h-u_e\|_{1,\Omega}/H1e&amp;=&amp;0.120421\\
     \|u^a_h-u_e\|_{1,\Omega}/H1e&amp;=&amp;0.0150581
 \end{array}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(u^0_h\)</span> is the numerical solution in <code class="code freefem docutils literal notranslate"><span class="pre">T0h</span></code> and <span class="math notranslate nohighlight">\(u^a_h\)</span> is <code class="code freefem docutils literal notranslate"><span class="pre">u</span></code> in this program.</p>
+<p>where <span class="math notranslate nohighlight">\(u^0_h\)</span> is the numerical solution in <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">T0h</span></code> and <span class="math notranslate nohighlight">\(u^a_h\)</span> is <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">u</span></code> in this program.</p>
 </section>
 <section id="poisson-with-mixed-finite-element">
-<h2>Poisson with mixed finite element<a class="headerlink" href="#poisson-with-mixed-finite-element" title="Permalink to this headline"></a></h2>
+<h2>Poisson with mixed finite element<a class="headerlink" href="#poisson-with-mixed-finite-element" title="Permalink to this heading"></a></h2>
 <p>Here we consider the Poisson equation with mixed boundary value problems:</p>
 <p>For given functions <span class="math notranslate nohighlight">\(f\)</span> , <span class="math notranslate nohighlight">\(g_d\)</span>, <span class="math notranslate nohighlight">\(g_n\)</span>, find <span class="math notranslate nohighlight">\(p\)</span> such that</p>
 <div class="math notranslate nohighlight">
@@ -2747,7 +2747,7 @@ The following example give such example.</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{V}_0 = \{\mathbf{v}\in \mathbb{V};\quad\mathbf{v}. n = 0 \quad\mathrm{on }\;\;\Gamma_N\}\]</div>
 <p>To write the <strong>FreeFEM</strong> example, we have just to choose the finites elements spaces.</p>
-<p>Here <span class="math notranslate nohighlight">\(\mathbb{V}\)</span> space is discretize with Raviart-Thomas finite element <code class="code freefem docutils literal notranslate"><span class="pre">RT0</span></code> and <span class="math notranslate nohighlight">\(\mathbb{P}\)</span> is discretize by constant finite element <code class="code freefem docutils literal notranslate"><span class="pre">P0</span></code>.</p>
+<p>Here <span class="math notranslate nohighlight">\(\mathbb{V}\)</span> space is discretize with Raviart-Thomas finite element <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">RT0</span></code> and <span class="math notranslate nohighlight">\(\mathbb{P}\)</span> is discretize by constant finite element <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P0</span></code>.</p>
 <p><strong>Example 9.10</strong> LaplaceRT.edp</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Parameters</span>
 <span class="lineno"> 2 </span><span class="kt">func</span> <span class="n">gd</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">;</span>
@@ -2794,7 +2794,7 @@ The following example give such example.</p>
 </div>
 </section>
 <section id="metric-adaptation-and-residual-error-indicator">
-<h2>Metric Adaptation and residual error indicator<a class="headerlink" href="#metric-adaptation-and-residual-error-indicator" title="Permalink to this headline"></a></h2>
+<h2>Metric Adaptation and residual error indicator<a class="headerlink" href="#metric-adaptation-and-residual-error-indicator" title="Permalink to this heading"></a></h2>
 <p>We do metric mesh adaption and compute the classical residual error indicator <span class="math notranslate nohighlight">\(\eta_{T}\)</span> on the element <span class="math notranslate nohighlight">\(T\)</span> for the Poisson problem.</p>
 <p>First, we solve the same problem as in a previous example.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// Parameters</span>
@@ -2887,13 +2887,13 @@ The following example give such example.</p>
 </figure>
 </div></section>
 <section id="adaptation-using-residual-error-indicator">
-<span id="modelstaticproblemadaptationusingresidualerrorindicator"></span><span id="DensityError"></span><h2>Adaptation using residual error indicator<a class="headerlink" href="#adaptation-using-residual-error-indicator" title="Permalink to this headline"></a></h2>
+<span id="modelstaticproblemadaptationusingresidualerrorindicator"></span><span id="DensityError"></span><h2>Adaptation using residual error indicator<a class="headerlink" href="#adaptation-using-residual-error-indicator" title="Permalink to this heading"></a></h2>
 <p>In the previous example we compute the error indicator, now we use it, to adapt the mesh.
 The new mesh size is given by the following formulae:</p>
 <div class="math notranslate nohighlight">
 \[h_{n+1}(x) = \frac{h_{n}(x)}{f_{n}(\eta_K(x))}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\eta_n(x)\)</span> is the level of error at point <span class="math notranslate nohighlight">\(x\)</span> given by the local error indicator, <span class="math notranslate nohighlight">\(h_n\)</span> is the previous “mesh size” field, and <span class="math notranslate nohighlight">\(f_n\)</span> is a user function define by <span class="math notranslate nohighlight">\(f_n = min(3,max(1/3,\eta_n / \eta_n^* ))\)</span> where <span class="math notranslate nohighlight">\(\eta_n^* = mean(\eta_n) c\)</span>, and <span class="math notranslate nohighlight">\(c\)</span> is an user coefficient generally close to one.</p>
-<p>First a macro <code class="code freefem docutils literal notranslate"><span class="pre">MeshSizecomputation</span></code> is defined to get a <span class="math notranslate nohighlight">\(P_1\)</span> mesh size as the average of edge length.</p>
+<p>First a macro <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">MeshSizecomputation</span></code> is defined to get a <span class="math notranslate nohighlight">\(P_1\)</span> mesh size as the average of edge length.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="c1">// macro the get the current mesh size parameter</span>
 <span class="lineno"> 2 </span><span class="c1">// in:</span>
 <span class="lineno"> 3 </span><span class="c1">// Th the mesh</span>

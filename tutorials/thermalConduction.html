@@ -1969,7 +1969,7 @@
 	<div id="content">
 		
    <section id="thermal-conduction">
-<span id="thermalconduction"></span><h1>Thermal Conduction<a class="headerlink" href="#thermal-conduction" title="Permalink to this headline"></a></h1>
+<span id="thermalconduction"></span><h1>Thermal Conduction<a class="headerlink" href="#thermal-conduction" title="Permalink to this heading"></a></h1>
 <p><strong>Summary :</strong>
 <em>Here we shall learn how to deal with a time dependent parabolic problem.
 We shall also show how to treat an axisymmetric problem and show also how to deal with a nonlinear problem</em></p>
@@ -2064,7 +2064,7 @@ Should a one dimensional plot be required (you can use gnuplot tools), the same 
 </figure>
 <p><span class="caption-text">Thermal conduction</span></p>
 </div><section id="axisymmetry-3d-rod-with-circular-section">
-<span id="ThermalConduction"></span><h2>Axisymmetry: 3D Rod with circular section<a class="headerlink" href="#axisymmetry-3d-rod-with-circular-section" title="Permalink to this headline"></a></h2>
+<span id="ThermalConduction"></span><h2>Axisymmetry: 3D Rod with circular section<a class="headerlink" href="#axisymmetry-3d-rod-with-circular-section" title="Permalink to this heading"></a></h2>
 <p>Let us now deal with a cylindrical rod instead of a flat plate.
 For simplicity we take <span class="math notranslate nohighlight">\(\kappa=1\)</span>.</p>
 <p>In cylindrical coordinates, the Laplace operator becomes (<span class="math notranslate nohighlight">\(r\)</span> is the distance to the axis, <span class="math notranslate nohighlight">\(z\)</span> is the distance along the axis, <span class="math notranslate nohighlight">\(\theta\)</span> polar angle in a fixed plane perpendicular to the axis):</p>
@@ -2072,7 +2072,7 @@ For simplicity we take <span class="math notranslate nohighlight">\(\kappa=1\)</
 \[\Delta u = {1\over r}\partial _r(r\partial _r u) + {1\over r^2}\partial ^2_{\theta\theta} u
  + \partial ^2_{z z}.\]</div>
 <p>Symmetry implies that we loose the dependence with respect to <span class="math notranslate nohighlight">\(\theta\)</span>; so the domain <span class="math notranslate nohighlight">\(\Omega\)</span> is again a rectangle <span class="math notranslate nohighlight">\(]0,R[\times]0,|[\)</span> .
-We take the convention of numbering of the edges as in <code class="code freefem docutils literal notranslate"><span class="pre">square()</span></code> (1 for the bottom horizontal …); the problem is now:</p>
+We take the convention of numbering of the edges as in <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">square</span><span class="p">()</span></code> (1 for the bottom horizontal …); the problem is now:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
     r\partial_t u-\partial _r(r\partial _r u) - \partial _z(r\partial _z u) &amp;= 0 &amp;\hbox{ in } \Omega\\
@@ -2106,7 +2106,7 @@ Still one can prove existence and uniqueness for <span class="math notranslate n
 </div>
 </section>
 <section id="a-nonlinear-problem-radiation">
-<h2>A Nonlinear Problem : Radiation<a class="headerlink" href="#a-nonlinear-problem-radiation" title="Permalink to this headline"></a></h2>
+<h2>A Nonlinear Problem : Radiation<a class="headerlink" href="#a-nonlinear-problem-radiation" title="Permalink to this heading"></a></h2>
 <p>Heat loss through radiation is a loss proportional to the absolute temperature to the fourth power (Stefan’s Law).
 This adds to the loss by convection and gives the following boundary condition:</p>
 <div class="math notranslate nohighlight">

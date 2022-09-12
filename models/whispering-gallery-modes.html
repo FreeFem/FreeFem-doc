@@ -1964,7 +1964,7 @@
 	<div id="content">
 		
    <section id="whispering-gallery-modes">
-<h1>Whispering gallery modes<a class="headerlink" href="#whispering-gallery-modes" title="Permalink to this headline"></a></h1>
+<h1>Whispering gallery modes<a class="headerlink" href="#whispering-gallery-modes" title="Permalink to this heading"></a></h1>
 <p>Author: <a class="reference external" href="http://linkeding.com/in/grudinin">I. S. Grudinin</a></p>
 <p>In whispering gallery mode (WGM) resonators, which are typically spheres or disks, electromagnetic field is trapped by total internal reflections from the boundary.
 Modes of such resonators are distinguished by compact volume and record high quality factors (Q) in a broad range of frequencies.</p>
@@ -1975,7 +1975,7 @@ It’s possible to solve the vectorial wave equation by reducing it to a two dim
 <p>Such reduction leads to a system of 3 equations to be solved in a 2D “<span class="math notranslate nohighlight">\(\rho-z\)</span>” section of a resonator.
 Please refer to <a class="reference internal" href="../bibliography.html#oxborrow2007" id="id1"><span>[OXBORROW2007]</span></a> for a detailed derivation and to <a class="reference internal" href="../bibliography.html#grudinin2012" id="id2"><span>[GRUDININ2012]</span></a> for an example of using <strong>FreeFEM</strong> to compute WGMs.</p>
 <section id="wave-equation-for-the-wgms">
-<h2>Wave equation for the WGMs<a class="headerlink" href="#wave-equation-for-the-wgms" title="Permalink to this headline"></a></h2>
+<h2>Wave equation for the WGMs<a class="headerlink" href="#wave-equation-for-the-wgms" title="Permalink to this heading"></a></h2>
 <p>Since electric field is discontinuous on the surface of a dielectric and magnetic field is typically not, we derive our equations for the magnetic field.
 The electric field can be easily derived at a later stage from <span class="math notranslate nohighlight">\(\vec{E}=\frac{i}{\omega\epsilon_0}\hat{\epsilon}^{-1}\nabla\times\vec{H}\)</span>.
 Following a standard procedure starting with Maxwell equations we derive a wave equation in a single-axis anisotropic medium such as an optical crystal:</p>
@@ -1996,7 +1996,7 @@ For anisotropic single-axis medium with <span class="math notranslate nohighligh
 <p>The numerical solutions of these equations and boundary conditions can be found with <strong>FreeFEM</strong> if we write the system in the weak, or integral form.</p>
 </section>
 <section id="weak-formulation">
-<h2>Weak formulation<a class="headerlink" href="#weak-formulation" title="Permalink to this headline"></a></h2>
+<h2>Weak formulation<a class="headerlink" href="#weak-formulation" title="Permalink to this heading"></a></h2>
 <p>In general, to obtain the integral or “weak” statements equivalent to system <a class="reference internal" href="#equation-eqn-system">(67)</a> and boundary conditions we form a scalar dot product between an arbitrary magnetic field test function <span class="math notranslate nohighlight">\(\mathbf{H}^t=\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}\)</span> and the components of our vectorial equation <span class="math notranslate nohighlight">\(A_1,A_2,A_3\)</span>, and integrate over the resonator’s cross section domain <span class="math notranslate nohighlight">\(\Omega\)</span> (and its boundary for the boundary conditions):</p>
 <div class="math notranslate nohighlight">
 \[\int\limits_{\Omega}(H^t_{\rho}A_1+H^t_{\phi}A_2+H^t_{z}A_3)d\Omega\]</div>
@@ -2008,7 +2008,7 @@ For example:</p>
 <p>Thus converting equations <a class="reference internal" href="#equation-eqn-system">(67)</a> we obtain a large expression for the weak form.</p>
 </section>
 <section id="a-dielectric-sphere-example-with-freefem">
-<h2>A dielectric sphere example with FreeFEM<a class="headerlink" href="#a-dielectric-sphere-example-with-freefem" title="Permalink to this headline"></a></h2>
+<h2>A dielectric sphere example with FreeFEM<a class="headerlink" href="#a-dielectric-sphere-example-with-freefem" title="Permalink to this heading"></a></h2>
 <p>We now compute the fundamental mode frequency for a fused silica sphere.
 The sphere is 36 micrometer in diameter, the refractive index is 1.46, the boundary condition is the magnetic wall (which can actually be omitted as it holds automatically).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">  1 </span><span class="c1">// Parameters</span>

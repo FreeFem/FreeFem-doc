@@ -1959,7 +1959,7 @@
 	<div id="content">
 		
    <section id="transmission-problem">
-<h1>Transmission problem<a class="headerlink" href="#transmission-problem" title="Permalink to this headline"></a></h1>
+<h1>Transmission problem<a class="headerlink" href="#transmission-problem" title="Permalink to this heading"></a></h1>
 <p>Consider an elastic plate whose displacement change vertically, which is made up of three plates of different materials, welded on each other.</p>
 <p>Let <span class="math notranslate nohighlight">\(\Omega_i\)</span>, <span class="math notranslate nohighlight">\(i=1,2,3\)</span> be the domain occupied by <span class="math notranslate nohighlight">\(i\)</span>-th material with tension <span class="math notranslate nohighlight">\(\mu_i\)</span> (see <a class="reference internal" href="static-problems.html#modelstatissoap"><span class="std std-ref">Soap film</span></a>).</p>
 <p>The computational domain <span class="math notranslate nohighlight">\(\Omega\)</span> is the interior of <span class="math notranslate nohighlight">\(\overline{\Omega_1}\cup \overline{\Omega_2}\cup \overline{\Omega_3}\)</span>.
@@ -2012,12 +2012,12 @@ Consider this L-shaped domain with 3 diagonals as internal boundaries, defining 
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/TransmissionProblem_Region.png"><img alt="TransmissionProblem_Region" src="../_images/TransmissionProblem_Region.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 174 </span><span class="caption-text">The function <code class="code freefem docutils literal notranslate"><span class="pre">reg</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 174 </span><span class="caption-text">The function <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">reg</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<p><code class="code freefem docutils literal notranslate"><span class="pre">region</span></code> is a keyword of <strong>FreeFEM</strong> which is in fact a variable depending of the current position (is not a function today, use <code class="code freefem docutils literal notranslate"><span class="pre">Ph</span> <span class="pre">reg=region;</span></code> to set a function).
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">region</span></code> is a keyword of <strong>FreeFEM</strong> which is in fact a variable depending of the current position (is not a function today, use <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Ph</span> <span class="n">reg</span><span class="o">=</span><span class="kr">region</span><span class="p">;</span></code> to set a function).
 This variable value returned is the number of the sub-domain of the current position.
-This number is defined by <code class="code freefem docutils literal notranslate"><span class="pre">buildmesh</span></code> which scans while building the mesh all its connected component.</p>
+This number is defined by <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">buildmesh</span></code> which scans while building the mesh all its connected component.</p>
 <p>So to get the number of a region containing a particular point one does:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="c1">// Characteristic function</span>
 <span class="lineno">2 </span><span class="kt">int</span> <span class="n">nupper</span> <span class="o">=</span> <span class="n">reg</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">);</span> <span class="c1">//get the region number of point (0.4,0.9)</span>
@@ -2032,7 +2032,7 @@ This number is defined by <code class="code freefem docutils literal notranslate
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/TransmissionProblem_Nu.png"><img alt="TransmissionProblem_Nu" src="../_images/TransmissionProblem_Nu.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 175 </span><span class="caption-text">The function <code class="code freefem docutils literal notranslate"><span class="pre">nu</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 175 </span><span class="caption-text">The function <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">nu</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>This is particularly useful to define discontinuous functions such as might occur when one part of the domain is copper and the other one is iron, for example.</p>

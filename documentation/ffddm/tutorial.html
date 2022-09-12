@@ -1963,11 +1963,11 @@
 	<div id="content">
 		
    <section id="tutorial">
-<span id="ffddmtutorial"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline"></a></h1>
+<span id="ffddmtutorial"></span><h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading"></a></h1>
 <p>Authors: Pierre-Henri Tournier - Frédéric Nataf - Pierre Jolivet</p>
 <p><strong>We recommend checking the</strong> <a class="reference external" href="../../_static/html/tutorial-slides.html">slides</a> <strong>version of this tutorial.</strong></p>
 <section id="what-is-ffddm">
-<h2>What is <strong>ffddm</strong> ?<a class="headerlink" href="#what-is-ffddm" title="Permalink to this headline"></a></h2>
+<h2>What is <strong>ffddm</strong> ?<a class="headerlink" href="#what-is-ffddm" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><strong>ffddm</strong> implements a class of parallel solvers in <em>FreeFEM</em>: <em>overlapping Schwarz domain decomposition methods</em></p></li>
 <li><dl class="simple">
@@ -1993,18 +1993,14 @@
 </ul>
 </section>
 <section id="why-domain-decomposition-methods">
-<h2>Why Domain Decomposition Methods ?<a class="headerlink" href="#why-domain-decomposition-methods" title="Permalink to this headline"></a></h2>
+<h2>Why Domain Decomposition Methods ?<a class="headerlink" href="#why-domain-decomposition-methods" title="Permalink to this heading"></a></h2>
 <p>How can we solve a large sparse linear system <span class="math notranslate nohighlight">\(A u = b \in \mathbb{R}^n\)</span> ?</p>
 <a class="reference internal image-reference" href="../../_images/Methods_Solves_1.png"><img alt="../../_images/Methods_Solves_1.png" src="../../_images/Methods_Solves_1.png" style="width: 100%;" /></a>
 <section id="step-1-decompose-the-mesh">
-<h3>Step 1: Decompose the mesh<a class="headerlink" href="#step-1-decompose-the-mesh" title="Permalink to this headline"></a></h3>
+<h3>Step 1: Decompose the mesh<a class="headerlink" href="#step-1-decompose-the-mesh" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationoverlappingmeshdecomposition"><span class="std std-ref">documentation</span></a></p>
 <p>Build a collection of <span class="math notranslate nohighlight">\(N\)</span> overlapping sub-meshes <span class="math notranslate nohighlight">\((Th_{i})_{i=1}^N\)</span> from the global mesh <span class="math notranslate nohighlight">\(Th\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../_images/domain1.png"><img alt="Domain1" src="../../_images/domain1.png" style="width: 100%;" /></a></p></td>
 <td><p><a class="reference internal" href="../../_images/domain2.png"><img alt="Domain2" src="../../_images/domain2.png" style="width: 100%;" /></a></p></td>
@@ -2038,7 +2034,7 @@
 </div>
 </section>
 <section id="step-2-define-your-finite-element">
-<h3>Step 2: Define your finite element<a class="headerlink" href="#step-2-define-your-finite-element" title="Permalink to this headline"></a></h3>
+<h3>Step 2: Define your finite element<a class="headerlink" href="#step-2-define-your-finite-element" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationlocalfiniteelementspaces"><span class="std std-ref">documentation</span></a></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmbuildDfespace</span><span class="p">(</span> <span class="n">prfe</span> <span class="p">,</span> <span class="n">prmesh</span> <span class="p">,</span> <span class="n">scalar</span> <span class="p">,</span> <span class="n">def</span> <span class="p">,</span> <span class="kp">init</span> <span class="p">,</span> <span class="n">Pk</span> <span class="p">)</span>
 </pre></div>
@@ -2065,7 +2061,7 @@
 </pre></div>
 </div>
 <section id="distributed-vectors-and-restriction-operators">
-<h4>Distributed vectors and restriction operators<a class="headerlink" href="#distributed-vectors-and-restriction-operators" title="Permalink to this headline"></a></h4>
+<h4>Distributed vectors and restriction operators<a class="headerlink" href="#distributed-vectors-and-restriction-operators" title="Permalink to this heading"></a></h4>
 <a class="reference internal image-reference" href="../../_images/domain2.png"><img alt="../../_images/domain2.png" class="align-center" src="../../_images/domain2.png" style="width: 50%;" /></a>
 <p>Natural decomposition of the set of d.o.f.’s <span class="math notranslate nohighlight">\({\mathcal N}\)</span> of <span class="math notranslate nohighlight">\(Vh\)</span> into the <span class="math notranslate nohighlight">\(N\)</span> subsets of d.o.f.’s <span class="math notranslate nohighlight">\(({\mathcal N}_i)_{i=1}^N\)</span> each associated with the local FE space <span class="math notranslate nohighlight">\(Vh_i\)</span></p>
 <div class="math notranslate nohighlight">
@@ -2079,7 +2075,7 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 <p><strong>Remark</strong> <span class="math notranslate nohighlight">\(R_i^T\)</span> is the <em>extension operator</em>: extension by <span class="math notranslate nohighlight">\(0\)</span> from <span class="math notranslate nohighlight">\({\mathcal N}_i\)</span> into <span class="math notranslate nohighlight">\({\mathcal N}\)</span></p>
 </section>
 <section id="partition-of-unity">
-<h4>Partition of unity<a class="headerlink" href="#partition-of-unity" title="Permalink to this headline"></a></h4>
+<h4>Partition of unity<a class="headerlink" href="#partition-of-unity" title="Permalink to this heading"></a></h4>
 <a class="reference internal image-reference" href="../../_images/domain3.png"><img alt="../../_images/domain3.png" class="align-center" src="../../_images/domain3.png" style="width: 75%;" /></a>
 <p>Duplicated unknowns coupled via a <em>partition of unity</em>:</p>
 <div class="math notranslate nohighlight">
@@ -2089,7 +2085,7 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 \[{\mathbf V} = \sum_{i = 1}^N R_i^T D_i R_i {\mathbf V} = \sum_{i = 1}^N R_i^T D_i {\mathbf V_i}\]</div>
 </section>
 <section id="data-exchange-between-neighbors">
-<h4>Data exchange between neighbors<a class="headerlink" href="#data-exchange-between-neighbors" title="Permalink to this headline"></a></h4>
+<h4>Data exchange between neighbors<a class="headerlink" href="#data-exchange-between-neighbors" title="Permalink to this heading"></a></h4>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">func</span> <span class="n">prfe</span><span class="o">#</span><span class="n">update</span><span class="p">(</span><span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">vi</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">scale</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2138,7 +2134,7 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 </section>
 </section>
 <section id="step-3-define-your-problem">
-<span id="ffddmtutorialdefineyourproblem"></span><h3>Step 3: Define your problem<a class="headerlink" href="#step-3-define-your-problem" title="Permalink to this headline"></a></h3>
+<span id="ffddmtutorialdefineyourproblem"></span><h3>Step 3: Define your problem<a class="headerlink" href="#step-3-define-your-problem" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationdefineproblemtosolve"><span class="std std-ref">documentation</span></a></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmsetupOperator</span><span class="p">(</span> <span class="n">pr</span> <span class="p">,</span> <span class="n">prfe</span> <span class="p">,</span> <span class="n">Varf</span> <span class="p">)</span>
 </pre></div>
@@ -2190,9 +2186,9 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 </section>
 </section>
 <section id="summary-so-far-translating-your-sequential-freefem-script">
-<h2>Summary so far: translating your sequential <em>FreeFEM</em> script<a class="headerlink" href="#summary-so-far-translating-your-sequential-freefem-script" title="Permalink to this headline"></a></h2>
+<h2>Summary so far: translating your sequential <em>FreeFEM</em> script<a class="headerlink" href="#summary-so-far-translating-your-sequential-freefem-script" title="Permalink to this heading"></a></h2>
 <section id="id1">
-<h3>Step 1: Decompose the mesh<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<h3>Step 1: Decompose the mesh<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationoverlappingmeshdecomposition"><span class="std std-ref">documentation</span></a></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
 </pre></div>
@@ -2224,7 +2220,7 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 </div>
 </section>
 <section id="solve-the-linear-system">
-<h3>Solve the linear system<a class="headerlink" href="#solve-the-linear-system" title="Permalink to this headline"></a></h3>
+<h3>Solve the linear system<a class="headerlink" href="#solve-the-linear-system" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationdefineproblemtosolve"><span class="std std-ref">documentation</span></a></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">u</span><span class="p">[]</span> <span class="o">=</span> <span class="kp">A</span><span class="o">^-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">b</span><span class="p">[];</span>
 </pre></div>
@@ -2234,7 +2230,7 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 </div>
 </section>
 <section id="solve-the-linear-system-with-the-parallel-direct-solver-mumps">
-<h3>Solve the linear system with the parallel direct solver <em>MUMPS</em><a class="headerlink" href="#solve-the-linear-system-with-the-parallel-direct-solver-mumps" title="Permalink to this headline"></a></h3>
+<h3>Solve the linear system with the parallel direct solver <em>MUMPS</em><a class="headerlink" href="#solve-the-linear-system-with-the-parallel-direct-solver-mumps" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationdefineproblemtosolve"><span class="std std-ref">documentation</span></a></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">func</span> <span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">pr</span><span class="o">#</span><span class="n">directsolve</span><span class="p">(</span><span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="o">&amp;</span> <span class="n">bi</span><span class="p">)</span>
 </pre></div>
@@ -2247,7 +2243,7 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 </div>
 </section>
 <section id="step-4-define-the-one-level-dd-preconditioner">
-<h3>Step 4: Define the one level DD preconditioner<a class="headerlink" href="#step-4-define-the-one-level-dd-preconditioner" title="Permalink to this headline"></a></h3>
+<h3>Step 4: Define the one level DD preconditioner<a class="headerlink" href="#step-4-define-the-one-level-dd-preconditioner" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationonelevelpreconditioners"><span class="std std-ref">documentation</span></a></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmsetupPrecond</span><span class="p">(</span> <span class="n">pr</span> <span class="p">,</span> <span class="n">VarfPrec</span> <span class="p">)</span>
 </pre></div>
@@ -2261,7 +2257,7 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 <p><span class="math notranslate nohighlight">\(\Rightarrow\)</span> apply <span class="math notranslate nohighlight">\(A_i^{-1}\)</span> (forward/backward substitutions) + <cite>prfe#update</cite></p>
 </section>
 <section id="step-5-solve-the-linear-system-with-preconditioned-gmres">
-<h3>Step 5: Solve the linear system with preconditioned GMRES<a class="headerlink" href="#step-5-solve-the-linear-system-with-preconditioned-gmres" title="Permalink to this headline"></a></h3>
+<h3>Step 5: Solve the linear system with preconditioned GMRES<a class="headerlink" href="#step-5-solve-the-linear-system-with-preconditioned-gmres" title="Permalink to this heading"></a></h3>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationsolvinglinearsystem"><span class="std std-ref">documentation</span></a></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">func</span> <span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">pr</span><span class="o">#</span><span class="n">fGMRES</span><span class="p">(</span><span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="o">&amp;</span> <span class="n">x0i</span><span class="p">,</span> <span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="o">&amp;</span> <span class="n">bi</span><span class="p">,</span> <span class="kt">real</span> <span class="kp">eps</span><span class="p">,</span> <span class="kt">int</span> <span class="n">itmax</span><span class="p">,</span> <span class="kt">string</span> <span class="n">sp</span><span class="p">)</span>
 </pre></div>
@@ -2313,7 +2309,7 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 </section>
 </section>
 <section id="define-a-two-level-dd-preconditioner">
-<h2>Define a two level DD preconditioner<a class="headerlink" href="#define-a-two-level-dd-preconditioner" title="Permalink to this headline"></a></h2>
+<h2>Define a two level DD preconditioner<a class="headerlink" href="#define-a-two-level-dd-preconditioner" title="Permalink to this heading"></a></h2>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationtwolevelpreconditioners"><span class="std std-ref">documentation</span></a></p>
 <p><strong>Goal</strong> improve scalability of the one level method</p>
 <p><span class="math notranslate nohighlight">\(\Rightarrow\)</span> enrich the one level preconditioner with a <em>coarse problem</em> coupling all subdomains</p>
@@ -2326,7 +2322,7 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 <p>How to choose <span class="math notranslate nohighlight">\(\color{red}{Z}\)</span> ?</p>
 </section>
 <section id="build-the-geneo-coarse-space">
-<h2>Build the GenEO coarse space<a class="headerlink" href="#build-the-geneo-coarse-space" title="Permalink to this headline"></a></h2>
+<h2>Build the GenEO coarse space<a class="headerlink" href="#build-the-geneo-coarse-space" title="Permalink to this heading"></a></h2>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationbuildinggeneocoarsespace"><span class="std std-ref">documentation</span></a></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmgeneosetup</span><span class="p">(</span> <span class="n">pr</span> <span class="p">,</span> <span class="n">Varf</span> <span class="p">)</span>
 </pre></div>
@@ -2377,7 +2373,7 @@ where <span class="math notranslate nohighlight">\(k_0 - 1\)</span> is the # of 
 </div>
 </section>
 <section id="build-the-coarse-space-from-a-coarse-mesh">
-<h2>Build the coarse space from a coarse mesh<a class="headerlink" href="#build-the-coarse-space-from-a-coarse-mesh" title="Permalink to this headline"></a></h2>
+<h2>Build the coarse space from a coarse mesh<a class="headerlink" href="#build-the-coarse-space-from-a-coarse-mesh" title="Permalink to this heading"></a></h2>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationbuildingcoarsespacefromcoarsemesh"><span class="std std-ref">documentation</span></a></p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmcoarsemeshsetup</span><span class="p">(</span> <span class="n">pr</span> <span class="p">,</span> <span class="n">Thc</span> <span class="p">,</span> <span class="n">VarfEprec</span> <span class="p">,</span> <span class="n">VarfAprec</span> <span class="p">)</span>
 </pre></div>
@@ -2423,7 +2419,7 @@ where <span class="math notranslate nohighlight">\(k_0 - 1\)</span> is the # of 
 </div>
 </section>
 <section id="use-hpddm-within-ffddm">
-<h2>Use <strong>HPDDM</strong> within <strong>ffddm</strong><a class="headerlink" href="#use-hpddm-within-ffddm" title="Permalink to this headline"></a></h2>
+<h2>Use <strong>HPDDM</strong> within <strong>ffddm</strong><a class="headerlink" href="#use-hpddm-within-ffddm" title="Permalink to this heading"></a></h2>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationhpddmffddm"><span class="std std-ref">documentation</span></a></p>
 <p><strong>ffddm</strong> allows you to use <strong>HPDDM</strong> to solve your problem, effectively replacing the <strong>ffddm</strong> implementation of all parallel linear algebra computations</p>
 <p><span class="math notranslate nohighlight">\(\Rightarrow\)</span> define your problem with <strong>ffddm</strong>, solve it with <strong>HPDDM</strong></p>
@@ -2440,18 +2436,14 @@ with command-line arguments or directly to the underlying <strong>HPDDM</strong>
 <p>Example <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Helmholtz-2d-HPDDM-BGMRES.edp">here</a>: Helmholtz problem with multiple rhs solved with Block GMRES</p>
 </section>
 <section id="some-results-heterogeneous-3d-elasticity-with-geneo">
-<h2>Some results: Heterogeneous 3D elasticity with GenEO<a class="headerlink" href="#some-results-heterogeneous-3d-elasticity-with-geneo" title="Permalink to this headline"></a></h2>
+<h2>Some results: Heterogeneous 3D elasticity with GenEO<a class="headerlink" href="#some-results-heterogeneous-3d-elasticity-with-geneo" title="Permalink to this heading"></a></h2>
 <p>Heterogeneous 3D linear elasticity equation discretized with P2 FE solved on 4096 MPI processes <span class="math notranslate nohighlight">\(n\approx\)</span> 262 million</p>
 <a class="reference internal image-reference" href="../../_images/comparisonAMG.png"><img alt="../../_images/comparisonAMG.png" src="../../_images/comparisonAMG.png" style="width: 75%;" /></a>
 </section>
 <section id="some-results-2-level-dd-for-maxwell-equations-scattering-from-the-cobra-cavity">
-<h2>Some results: 2-level DD for Maxwell equations, scattering from the COBRA cavity<a class="headerlink" href="#some-results-2-level-dd-for-maxwell-equations-scattering-from-the-cobra-cavity" title="Permalink to this headline"></a></h2>
+<h2>Some results: 2-level DD for Maxwell equations, scattering from the COBRA cavity<a class="headerlink" href="#some-results-2-level-dd-for-maxwell-equations-scattering-from-the-cobra-cavity" title="Permalink to this heading"></a></h2>
 <p>f = 10 GHz</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 57%" />
-<col style="width: 43%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="../../_images/10GHz_borders_new_v2.png"><img alt="10GhzBorders" src="../../_images/10GHz_borders_new_v2.png" style="width: 75%;" /></a></p></td>
 <td><p><a class="reference internal" href="../../_images/10GHz_new.png"><img alt="10GhzNew" src="../../_images/10GHz_new.png" style="width: 100%;" /></a></p></td>
@@ -2462,7 +2454,7 @@ with command-line arguments or directly to the underlying <strong>HPDDM</strong>
 <a class="reference internal image-reference" href="../../_images/16GHz_new.png"><img alt="../../_images/16GHz_new.png" class="align-center" src="../../_images/16GHz_new.png" style="width: 50%;" /></a>
 </section>
 <section id="id2">
-<h2>Some results: 2-level DD for Maxwell equations, scattering from the COBRA cavity<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<h2>Some results: 2-level DD for Maxwell equations, scattering from the COBRA cavity<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <ul>
 <li><p>order 2 Nedelec edge FE</p></li>
 <li><p>fine mesh: 10 points per wavelength</p></li>

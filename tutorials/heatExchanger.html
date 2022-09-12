@@ -1965,7 +1965,7 @@
 	<div id="content">
 		
    <section id="heat-exchanger">
-<h1>Heat Exchanger<a class="headerlink" href="#heat-exchanger" title="Permalink to this headline"></a></h1>
+<h1>Heat Exchanger<a class="headerlink" href="#heat-exchanger" title="Permalink to this heading"></a></h1>
 <p><strong>Summary:</strong>
 <em>Here we shall learn more about geometry input and triangulation files, as well as read and write operations.</em></p>
 <p><strong>The problem</strong> Let <span class="math notranslate nohighlight">\(\{C_{i}\}_{1,2}\)</span>, be 2 thermal conductors within an enclosure <span class="math notranslate nohighlight">\(C_0\)</span> (see <a class="reference internal" href="#figheatgeo"><span class="std std-numref">Fig. 8</span></a>).</p>
@@ -2042,10 +2042,10 @@
 <p>Note the following:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">C0</span></code> is oriented counterclockwise by <span class="math notranslate nohighlight">\(t\)</span>, while <code class="docutils literal notranslate"><span class="pre">C1</span></code> is oriented clockwise and <code class="docutils literal notranslate"><span class="pre">C2</span></code> is oriented counterclockwise.
-This is why <code class="docutils literal notranslate"><span class="pre">C1</span></code> is viewed as a hole by <code class="code freefem docutils literal notranslate"><span class="pre">buildmesh</span></code>.</p></li>
+This is why <code class="docutils literal notranslate"><span class="pre">C1</span></code> is viewed as a hole by <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">buildmesh</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">C1</span></code> and <code class="docutils literal notranslate"><span class="pre">C2</span></code> are built by joining pieces of straight lines.
 To group them in the same logical unit to input the boundary conditions in a readable way we assigned a label on the boundaries.
-As said earlier, borders have an internal number corresponding to their order in the program (check it by adding a <code class="code freefem docutils literal notranslate"><span class="pre">cout</span> <span class="pre">&lt;&lt;</span> <span class="pre">C22;</span></code> above).
+As said earlier, borders have an internal number corresponding to their order in the program (check it by adding a <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="n">C22</span><span class="p">;</span></code> above).
 This is essential to understand how a mesh can be output to a file and re-read (see below).</p></li>
 <li><p>As usual the mesh density is controlled by the number of vertices assigned to each boundary.
 It is not possible to change the (uniform) distribution of vertices but a piece of boundary can always be cut in two or more parts, for instance <code class="docutils literal notranslate"><span class="pre">C12</span></code> could be replaced by <code class="docutils literal notranslate"><span class="pre">C121+C122</span></code>:</p></li>

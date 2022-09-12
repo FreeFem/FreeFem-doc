@@ -1959,7 +1959,7 @@
 	<div id="content">
 		
    <section id="non-linear-elasticity">
-<h1>Non-linear elasticity<a class="headerlink" href="#non-linear-elasticity" title="Permalink to this headline"></a></h1>
+<h1>Non-linear elasticity<a class="headerlink" href="#non-linear-elasticity" title="Permalink to this heading"></a></h1>
 <p>The nonlinear elasticity problem is: find the displacement <span class="math notranslate nohighlight">\((u_{1},u_{2})\)</span> minimizing <span class="math notranslate nohighlight">\(J\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\min J(u_{1},u_{2}) = \int_{\Omega} f(F2) - \int_{\Gamma_{p}} P_{a} \, u_{2}\]</div>
@@ -2023,7 +2023,7 @@ So, the differential of <span class="math notranslate nohighlight">\(J\)</span> 
 </li>
 </ul>
 <p>The way to implement this algorithm in <strong>FreeFEM</strong> is use a macro tool to implement <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(F2\)</span>, <span class="math notranslate nohighlight">\(f\)</span>, <span class="math notranslate nohighlight">\(f'\)</span>,<span class="math notranslate nohighlight">\(f''\)</span>.</p>
-<p>A macro is like in <code class="code cpp docutils literal notranslate"><span class="pre">ccp</span></code> preprocessor of C++, but this begin by <code class="code freefem docutils literal notranslate"><span class="pre">macro</span></code> and the end of the macro definition is before the comment <code class="code freefem docutils literal notranslate"><span class="pre">//</span></code>.
+<p>A macro is like in <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">ccp</span></code> preprocessor of C++, but this begin by <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">macro</span></code> and the end of the macro definition is before the comment <code class="code freefem docutils literal highlight highlight-freefem"><span class="c1">//</span></code>.
 In this case the macro is very useful because the type of parameter can be change.
 And it is easy to make automatic differentiation.</p>
 <figure class="align-default" id="id1">

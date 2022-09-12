@@ -1965,7 +1965,7 @@
 	<div id="content">
 		
    <section id="learning-by-examples">
-<span id="tutorial"></span><h1>Learning by Examples<a class="headerlink" href="#learning-by-examples" title="Permalink to this headline"></a></h1>
+<span id="tutorial"></span><h1>Learning by Examples<a class="headerlink" href="#learning-by-examples" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
@@ -1973,7 +1973,7 @@
 <p>The <strong>FreeFEM</strong> language is <a class="reference internal" href="../references/types.html#referencetypes"><span class="std std-ref">typed</span></a>, polymorphic and reentrant with <a class="reference internal" href="../references/types.html#typemacrodesign"><span class="std std-ref">macro generation</span></a>.</p>
 <p>Every variable must be typed and declared in a statement, that is separated from the next by a semicolon <code class="docutils literal notranslate"><span class="pre">;</span></code>.</p>
 <p>The <strong>FreeFEM</strong> language is a C++ idiom with something that is more akin to LaTeX.</p>
-<p>For the specialist, one key guideline is that <strong>FreeFEM</strong> rarely generates an internal finite element array, this was adopted for speed and consequently <strong>FreeFEM</strong> could be hard to beat in terms of execution speed, except for the time lost in the interpretation of the language (which can be reduced by a systematic usage of <code class="code freefem docutils literal notranslate"><span class="pre">varf</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">matrix</span></code> instead of <code class="code freefem docutils literal notranslate"><span class="pre">problem</span></code>).</p>
+<p>For the specialist, one key guideline is that <strong>FreeFEM</strong> rarely generates an internal finite element array, this was adopted for speed and consequently <strong>FreeFEM</strong> could be hard to beat in terms of execution speed, except for the time lost in the interpretation of the language (which can be reduced by a systematic usage of <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">varf</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">matrix</span></code> instead of <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">problem</span></code>).</p>
 <p class="fake-title">The Development Cycle: Edit–Run/Visualize–Revise</p>
 <p>Many examples and tutorials are given there after and in the <a class="reference internal" href="../examples/index.html#examples"><span class="std std-ref">examples section</span></a>.
 It is better to study them and learn by example.</p>
@@ -1986,9 +1986,9 @@ That can also be done in terminal mode by :</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>FreeFem++ mycode.edp
 </pre></div>
 </div>
-<p><strong>Visualization:</strong> Use the keyword <code class="code freefem docutils literal notranslate"><span class="pre">plot</span></code> directly in <code class="docutils literal notranslate"><span class="pre">mycode.edp</span></code> to display functions while <strong>FreeFEM</strong> is running.
-Use the plot-parameter <code class="code freefem docutils literal notranslate"><span class="pre">wait=1</span></code> to stop the program at each plot.</p>
-<p><strong>Debugging:</strong> A global variable <code class="docutils literal notranslate"><span class="pre">debug</span></code> (for example) can help as in <code class="code freefem docutils literal notranslate"><span class="pre">wait=true</span></code> to <code class="code freefem docutils literal notranslate"><span class="pre">wait=false</span></code>.</p>
+<p><strong>Visualization:</strong> Use the keyword <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">plot</span></code> directly in <code class="docutils literal notranslate"><span class="pre">mycode.edp</span></code> to display functions while <strong>FreeFEM</strong> is running.
+Use the plot-parameter <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">wait</span><span class="o">=</span><span class="mi">1</span></code> to stop the program at each plot.</p>
+<p><strong>Debugging:</strong> A global variable <code class="docutils literal notranslate"><span class="pre">debug</span></code> (for example) can help as in <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">wait</span><span class="o">=</span><span class="kr">true</span></code> to <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">wait</span><span class="o">=</span><span class="kr">false</span></code>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">bool</span> <span class="n">debug</span> <span class="o">=</span> <span class="kr">true</span><span class="p">;</span>
 <span class="lineno"> 2 </span>
 <span class="lineno"> 3 </span><span class="kt">border</span> <span class="nf">a</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.</span><span class="o">*</span><span class="kr">pi</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="nf">cos</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span> <span class="kr">y</span><span class="o">=</span><span class="nf">sin</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span> <span class="kr">label</span><span class="o">=</span><span class="mi">1</span><span class="p">;};</span>
@@ -2046,7 +2046,7 @@ For example, if you forget parenthesis as in:</p>
 <span class="lineno">3 </span>      the new  <span class="nb">type</span> is &lt;Pd&gt;
 </pre></div>
 </div>
-<p>If you find that the program isn’t doing what you want you may also use <code class="code freefem docutils literal notranslate"><span class="pre">cout</span></code> to display in text format on the console window the value of variables, just as you would do in C++.</p>
+<p>If you find that the program isn’t doing what you want you may also use <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">cout</span></code> to display in text format on the console window the value of variables, just as you would do in C++.</p>
 <p>The following example works:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="p">...</span>
 <span class="lineno">2 </span><span class="kt">fespace</span> <span class="n">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P1</span><span class="p">);</span>
@@ -2056,7 +2056,7 @@ For example, if you forget parenthesis as in:</p>
 <span class="lineno">6 </span><span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="kp">A</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Another trick is to <em>comment in and out</em> by using <code class="code freefem docutils literal notranslate"><span class="pre">//</span></code> as in C++.
+<p>Another trick is to <em>comment in and out</em> by using <code class="code freefem docutils literal highlight highlight-freefem"><span class="c1">//</span></code> as in C++.
 For example:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">aaa</span> <span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="c1">// real aaa;</span>

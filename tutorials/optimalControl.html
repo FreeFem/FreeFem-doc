@@ -1965,8 +1965,8 @@
 	<div id="content">
 		
    <section id="optimal-control">
-<h1>Optimal Control<a class="headerlink" href="#optimal-control" title="Permalink to this headline"></a></h1>
-<p>Thanks to the function <code class="code freefem docutils literal notranslate"><span class="pre">BFGS</span></code> it is possible to solve complex nonlinear optimization problem within <strong>FreeFEM</strong>.
+<h1>Optimal Control<a class="headerlink" href="#optimal-control" title="Permalink to this heading"></a></h1>
+<p>Thanks to the function <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">BFGS</span></code> it is possible to solve complex nonlinear optimization problem within <strong>FreeFEM</strong>.
 For example consider the following inverse problem</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
@@ -2111,7 +2111,7 @@ Define <span class="math notranslate nohighlight">\(p\)</span> by:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As BFGS stores an <span class="math notranslate nohighlight">\(M\times M\)</span> matrix where <span class="math notranslate nohighlight">\(M\)</span> is the number of unknowns, it is dangerously expensive to use this method when the unknown <span class="math notranslate nohighlight">\(x\)</span> is a Finite Element Function.
-One should use another optimizer such as the NonLinear Conjugate Gradient <code class="code freefem docutils literal notranslate"><span class="pre">NLCG</span></code> (also a key word of <strong>FreeFEM</strong>).</p>
+One should use another optimizer such as the NonLinear Conjugate Gradient <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">NLCG</span></code> (also a key word of <strong>FreeFEM</strong>).</p>
 </div>
 </section>
 

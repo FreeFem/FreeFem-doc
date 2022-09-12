@@ -17,6 +17,8 @@ const search = (event) => {
 
   const text = event.target.value
 
+  console.log(text)
+
   if (text === '') return
   else searchLunr(text)
 }

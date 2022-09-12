@@ -1969,7 +1969,7 @@
 	<div id="content">
 		
    <section id="pure-convection-the-rotating-hill">
-<h1>Pure Convection : The Rotating Hill<a class="headerlink" href="#pure-convection-the-rotating-hill" title="Permalink to this headline"></a></h1>
+<h1>Pure Convection : The Rotating Hill<a class="headerlink" href="#pure-convection-the-rotating-hill" title="Permalink to this heading"></a></h1>
 <p><strong>Summary:</strong>
 <em>Here we will present two methods for upwinding for the simplest convection problem.
 We will learn about Characteristics-Galerkin and Discontinuous-Galerkin Finite Element Methods.</em></p>
@@ -1993,8 +1993,8 @@ We will learn about Characteristics-Galerkin and Discontinuous-Galerkin Finite E
 \[c(x,t)=c^0(x_{-t},0)\]</div>
 <p>The game consists in solving the equation until <span class="math notranslate nohighlight">\(T=2\pi\)</span>, that is for a full revolution and to compare the final solution with the initial one; they should be equal.</p>
 <section id="solution-by-a-characteristics-galerkin-method">
-<h2>Solution by a Characteristics-Galerkin Method<a class="headerlink" href="#solution-by-a-characteristics-galerkin-method" title="Permalink to this headline"></a></h2>
-<p>In <strong>FreeFEM</strong> there is an operator called <code class="code freefem docutils literal notranslate"><span class="pre">convect([u1,u2],</span> <span class="pre">dt,</span> <span class="pre">c)</span></code> which compute <span class="math notranslate nohighlight">\(c\circ X\)</span> with <span class="math notranslate nohighlight">\(X\)</span> is the convect field defined by <span class="math notranslate nohighlight">\(X(x)= x_{dt}\)</span> and where <span class="math notranslate nohighlight">\(x_\tau\)</span> is particule path in the steady state velocity field <span class="math notranslate nohighlight">\(\mathbf{u}=[u1,u2]\)</span> starting at point <span class="math notranslate nohighlight">\(x\)</span> at time <span class="math notranslate nohighlight">\(\tau=0\)</span>, so <span class="math notranslate nohighlight">\(x_\tau\)</span> is solution of the following ODE:</p>
+<h2>Solution by a Characteristics-Galerkin Method<a class="headerlink" href="#solution-by-a-characteristics-galerkin-method" title="Permalink to this heading"></a></h2>
+<p>In <strong>FreeFEM</strong> there is an operator called <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">convect</span><span class="p">([</span><span class="n">u1</span><span class="p">,</span><span class="n">u2</span><span class="p">],</span> <span class="n">dt</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span></code> which compute <span class="math notranslate nohighlight">\(c\circ X\)</span> with <span class="math notranslate nohighlight">\(X\)</span> is the convect field defined by <span class="math notranslate nohighlight">\(X(x)= x_{dt}\)</span> and where <span class="math notranslate nohighlight">\(x_\tau\)</span> is particule path in the steady state velocity field <span class="math notranslate nohighlight">\(\mathbf{u}=[u1,u2]\)</span> starting at point <span class="math notranslate nohighlight">\(x\)</span> at time <span class="math notranslate nohighlight">\(\tau=0\)</span>, so <span class="math notranslate nohighlight">\(x_\tau\)</span> is solution of the following ODE:</p>
 <div class="math notranslate nohighlight">
 \[\dot{x}_\tau = u(x_\tau), {x}_{\tau=0}=x.\]</div>
 <p>When <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> is piecewise constant; this is possible because <span class="math notranslate nohighlight">\(x_\tau\)</span> is then a polygonal curve which can be computed exactly and the solution exists always when <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> is divergence free; convect returns <span class="math notranslate nohighlight">\(c(x_{df})=C\circ X\)</span>.</p>
@@ -2022,7 +2022,7 @@ We will learn about Characteristics-Galerkin and Discontinuous-Galerkin Finite E
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>3D plots can be done by adding the qualifyer <code class="code freefem docutils literal notranslate"><span class="pre">dim=3</span></code> to the plot instruction.</p>
+<p>3D plots can be done by adding the qualifyer <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dim</span><span class="o">=</span><span class="mi">3</span></code> to the plot instruction.</p>
 </div>
 <p>The method is very powerful but has two limitations:</p>
 <ul class="simple">
@@ -2031,7 +2031,7 @@ We will learn about Characteristics-Galerkin and Discontinuous-Galerkin Finite E
 </ul>
 </section>
 <section id="solution-by-discontinuous-galerkin-fem">
-<h2>Solution by Discontinuous-Galerkin FEM<a class="headerlink" href="#solution-by-discontinuous-galerkin-fem" title="Permalink to this headline"></a></h2>
+<h2>Solution by Discontinuous-Galerkin FEM<a class="headerlink" href="#solution-by-discontinuous-galerkin-fem" title="Permalink to this heading"></a></h2>
 <p>Discontinuous Galerkin methods take advantage of the discontinuities of <span class="math notranslate nohighlight">\(c\)</span> at the edges to build upwinding.
 There are may formulations possible.
 We shall implement here the so-called dual-<span class="math notranslate nohighlight">\(P_1^{DC}\)</span> formulation (see <a class="reference internal" href="../bibliography.html#ern2006" id="id1"><span>[ERN2006]</span></a>):</p>
@@ -2084,14 +2084,14 @@ Finally <span class="math notranslate nohighlight">\([c]\)</span> is the jump of
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>New keywords: <code class="code freefem docutils literal notranslate"><span class="pre">intalledges</span></code> to integrate on all edges of all triangles</p>
+<p>New keywords: <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">intalledges</span></code> to integrate on all edges of all triangles</p>
 <div class="math notranslate nohighlight">
 \[\mathtt{intalledges}(\mathtt{Th}) \equiv \sum_{T\in\mathtt{Th}}\int_{\partial T }\]</div>
 </div>
-<p>(so all internal edges are see two times), nTonEdge which is one if the triangle has a boundary edge and two otherwise, <code class="code freefem docutils literal notranslate"><span class="pre">jump</span></code> to implement <span class="math notranslate nohighlight">\([c]\)</span>.</p>
+<p>(so all internal edges are see two times), nTonEdge which is one if the triangle has a boundary edge and two otherwise, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">jump</span></code> to implement <span class="math notranslate nohighlight">\([c]\)</span>.</p>
 <p>Results of both methods are shown on <a class="reference internal" href="#figrotatingcg"><span class="std std-numref">Fig. 17</span></a> nad <a class="reference internal" href="#figrotatingdg"><span class="std std-numref">Fig. 18</span></a> with identical levels for the level line; this is done with the plot-modifier viso.</p>
-<p>Notice also the macro where the parameter <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> is not used (but the syntax needs one) and which ends with a <code class="code freefem docutils literal notranslate"><span class="pre">//</span></code>; it simply replaces the name <code class="code freefem docutils literal notranslate"><span class="pre">n</span></code> by <code class="code freefem docutils literal notranslate"><span class="pre">(N.x*v1+N.y*v2)</span></code>.
-As easily guessed <code class="code freefem docutils literal notranslate"><span class="pre">N.x,N.y</span></code> is the normal to the edge.</p>
+<p>Notice also the macro where the parameter <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> is not used (but the syntax needs one) and which ends with a <code class="code freefem docutils literal highlight highlight-freefem"><span class="c1">//</span></code>; it simply replaces the name <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">n</span></code> by <code class="code freefem docutils literal highlight highlight-freefem"><span class="p">(</span><span class="kr">N</span><span class="p">.</span><span class="kr">x</span><span class="o">*</span><span class="n">v1</span><span class="o">+</span><span class="kr">N</span><span class="p">.</span><span class="kr">y</span><span class="o">*</span><span class="n">v2</span><span class="p">)</span></code>.
+As easily guessed <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">N</span><span class="p">.</span><span class="kr">x</span><span class="p">,</span><span class="kr">N</span><span class="p">.</span><span class="kr">y</span></code> is the normal to the edge.</p>
 <div class="figure compound align-center" id="RotatingHill">
 <figure class="align-default" id="id2">
 <span id="figrotatingcg"></span><a class="reference internal image-reference" href="../_images/convectCG.png"><img alt="convectCG" src="../_images/convectCG.png" style="width: 90%;" /></a>

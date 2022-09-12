@@ -1964,32 +1964,32 @@
 	<div id="content">
 		
    <section id="version-4-5-new-features">
-<h1>Version 4.5: new features<a class="headerlink" href="#version-4-5-new-features" title="Permalink to this headline"></a></h1>
+<h1>Version 4.5: new features<a class="headerlink" href="#version-4-5-new-features" title="Permalink to this heading"></a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 <div class="line"><br /></div>
 </div>
 <section id="release-binaries-packages">
-<h2>Release, binaries packages<a class="headerlink" href="#release-binaries-packages" title="Permalink to this headline"></a></h2>
+<h2>Release, binaries packages<a class="headerlink" href="#release-binaries-packages" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p>Since the version 4.5, the FreeFEM binary packages provides with a compiled PETSc library.</p></li>
 <li><p>FreeFEM is now interfaced with ParMmg.</p></li>
 </ul>
 </section>
 <section id="new-meshes-and-fem-border">
-<h2>New meshes and FEM border<a class="headerlink" href="#new-meshes-and-fem-border" title="Permalink to this headline"></a></h2>
-<p>After Surface FEM, Line FEM is possible with a new mesh type <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">P0</span></code> <code class="code freefem docutils literal notranslate"><span class="pre">P1</span></code> <code class="code freefem docutils literal notranslate"><span class="pre">P2</span></code> <code class="code freefem docutils literal notranslate"><span class="pre">P1dc</span></code> FE, basic FEM, mesh generation.
+<h2>New meshes and FEM border<a class="headerlink" href="#new-meshes-and-fem-border" title="Permalink to this heading"></a></h2>
+<p>After Surface FEM, Line FEM is possible with a new mesh type <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshL</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P0</span></code> <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P1</span></code> <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P2</span></code> <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P1dc</span></code> FE, basic FEM, mesh generation.
 This new development allows to treat a 1d problem, such as a problem described on a 3d curve.</p>
 <hr class="docutils" />
 <p>Abstract about Line FEM in FreeFEM.</p>
 <ul>
 <li><p>new <strong>meshL</strong> type, refer to the section <a class="reference internal" href="../documentation/mesh-generation.html#meshstype"><span class="std std-ref">The type meshL in 3 dimension</span></a></p>
 <ul>
-<li><p>new type of surface mesh: <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code></p></li>
-<li><p>the functionalities on the <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code> type, it is necessary to load the plugin ”msh3”.</p></li>
-<li><p>generator of meshL <code class="code freefem docutils literal notranslate"><span class="pre">segment</span></code>, define multi <code class="code freefem docutils literal notranslate"><span class="pre">border</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">buildmesh</span></code> function.</p></li>
-<li><p>basic transformation are avalaible: <code class="code freefem docutils literal notranslate"><span class="pre">movemesh</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">trunc</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">extract</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">checkmesh</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">change</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">AddLayers</span></code>, glue of <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code>.</p>
-<p>It is possible to build the underlying <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code> from a <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> with the function <code class="code freefem docutils literal notranslate"><span class="pre">buildBdMesh</span></code>: <code class="code freefem docutils literal notranslate"><span class="pre">ThS=buildBdMesh(ThS)</span></code> builds the boundary domain associated to the <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> ThS and extract it by the command <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code> ThL=ThS. <code class="code freefem docutils literal notranslate"><span class="pre">Gamma</span></code>.</p>
+<li><p>new type of surface mesh: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshL</span></code></p></li>
+<li><p>the functionalities on the <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshL</span></code> type, it is necessary to load the plugin ”msh3”.</p></li>
+<li><p>generator of meshL <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">segment</span></code>, define multi <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">border</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">buildmesh</span></code> function.</p></li>
+<li><p>basic transformation are avalaible: <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">movemesh</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">trunc</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">extract</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">checkmesh</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">change</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">AddLayers</span></code>, glue of <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshL</span></code>.</p>
+<p>It is possible to build the underlying <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshL</span></code> from a <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshS</span></code> with the function <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">buildBdMesh</span></code>: <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">ThS</span><span class="o">=</span><span class="nf">buildBdMesh</span><span class="p">(</span><span class="n">ThS</span><span class="p">)</span></code> builds the boundary domain associated to the <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshS</span></code> ThS and extract it by the command <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshL</span></code> ThL=ThS. <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">Gamma</span></code>.</p>
 </li>
 </ul>
 </li>
@@ -1997,20 +1997,20 @@ This new development allows to treat a 1d problem, such as a problem described o
 </ul>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">FESpace</span></code> <code class="code freefem docutils literal notranslate"><span class="pre">P0</span></code> <code class="code freefem docutils literal notranslate"><span class="pre">P1</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">P2</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">P1dc</span></code> Lagrange finite elements and possible to add a custumed finite element with the classical method (like a plugin).</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="n">FESpace</span></code> <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P0</span></code> <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P1</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P2</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P1dc</span></code> Lagrange finite elements and possible to add a custumed finite element with the classical method (like a plugin).</p></li>
 </ul>
 </div></blockquote>
 <ul class="simple">
 <li><p>as in the standard 2d, 3d, surface 3d case, the variational problem associated to surface PDE can be defined by using the keywords</p>
 <ul>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">problem</span></code></p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">varf</span></code> to access to matrix and RHS vector</p></li>
-<li><p>available operators are <code class="code freefem docutils literal notranslate"><span class="pre">int1d</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">on</span></code> and the operator <code class="code freefem docutils literal notranslate"><span class="pre">int0d</span></code> to define a Neumann boundary condition</p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">problem</span></code></p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">varf</span></code> to access to matrix and RHS vector</p></li>
+<li><p>available operators are <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">int1d</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">on</span></code> and the operator <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">int0d</span></code> to define a Neumann boundary condition</p></li>
 </ul>
 </li>
 <li><p>visualisation tools</p>
 <ul>
-<li><p>plot with <code class="code freefem docutils literal notranslate"><span class="pre">plot</span></code> of ffglut, <code class="code freefem docutils literal notranslate"><span class="pre">medit</span></code> meshes meshL and solutions</p></li>
+<li><p>plot with <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">plot</span></code> of ffglut, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">medit</span></code> meshes meshL and solutions</p></li>
 <li><p>2d or 3d view, with in 3d the option to visualize the elememt Normals at element (touch ‘T’) and the deformed domain according to it (touch ‘2’).</p></li>
 <li><p>loading, saving of meshes and solution at FreeFEM’s format</p>
 <ul>
@@ -2026,13 +2026,13 @@ This new development allows to treat a 1d problem, such as a problem described o
 </section>
 <hr class="docutils" />
 <section id="boundary-element-method">
-<h2>Boundary Element Method<a class="headerlink" href="#boundary-element-method" title="Permalink to this headline"></a></h2>
+<h2>Boundary Element Method<a class="headerlink" href="#boundary-element-method" title="Permalink to this heading"></a></h2>
 <p>Allows to define and solve a 2d/3d BEM formulation and rebuild the associated potential.
 The document is in construction.</p>
 </section>
 </section>
 <section id="version-4-6-new-features">
-<h1>Version 4.6: new features<a class="headerlink" href="#version-4-6-new-features" title="Permalink to this headline"></a></h1>
+<h1>Version 4.6: new features<a class="headerlink" href="#version-4-6-new-features" title="Permalink to this heading"></a></h1>
 <ul>
 <li><p>Added
 - new search algorithm for the element containing a point (more safe) in mesh of type mesh3, meshS, or meshL.
@@ -2071,7 +2071,7 @@ The document is in construction.</p>
 </ul>
 </section>
 <section id="version-4-7-new-features">
-<h1>Version 4.7: new features<a class="headerlink" href="#version-4-7-new-features" title="Permalink to this headline"></a></h1>
+<h1>Version 4.7: new features<a class="headerlink" href="#version-4-7-new-features" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p>Added</p>
 <ul>
@@ -2120,7 +2120,7 @@ The document is in construction.</p>
 </ul>
 </section>
 <section id="version-4-7-1-new-features">
-<h1>Version [4.7-1]: new features<a class="headerlink" href="#version-4-7-1-new-features" title="Permalink to this headline"></a></h1>
+<h1>Version [4.7-1]: new features<a class="headerlink" href="#version-4-7-1-new-features" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p>Changed
 - change the language definition to use type as a construction function with named arguments for bem plugin
@@ -2135,7 +2135,7 @@ The document is in construction.</p>
 </ul>
 </section>
 <section id="version-4-8-new-features">
-<h1>Version 4.8: new features<a class="headerlink" href="#version-4-8-new-features" title="Permalink to this headline"></a></h1>
+<h1>Version 4.8: new features<a class="headerlink" href="#version-4-8-new-features" title="Permalink to this heading"></a></h1>
 <ul>
 <li><p>Added
 - Bilaplacian example using Morley FE with PETSc, see <cite>examples/hpddm/bilaplacian-2d-PETSc.edp</cite>
@@ -2173,7 +2173,7 @@ meshS Th=square3(10,10,[x*2*pi,y*2*pi]); fespace Vh2(Th,P1,periodic=[[1,x],[3,x]
 </ul>
 </section>
 <section id="version-4-9-new-features">
-<h1>Version 4.9: new features<a class="headerlink" href="#version-4-9-new-features" title="Permalink to this headline"></a></h1>
+<h1>Version 4.9: new features<a class="headerlink" href="#version-4-9-new-features" title="Permalink to this heading"></a></h1>
 <ul>
 <li><p>Added
 - add P3 lagrange finite element on meshS and meshS
@@ -2232,7 +2232,7 @@ correct <a href="#id3"><span class="problematic" id="id4">`</span></a>3dCurve/ba
 </ul>
 </section>
 <section id="version-4-10-new-features">
-<h1>Version 4.10: new features<a class="headerlink" href="#version-4-10-new-features" title="Permalink to this headline"></a></h1>
+<h1>Version 4.10: new features<a class="headerlink" href="#version-4-10-new-features" title="Permalink to this heading"></a></h1>
 <ul>
 <li><p>Added
 - ridgeangle named parameter in ExtractMeshL in msh3 plugin
@@ -2263,7 +2263,7 @@ add code to use jump, mean of test functuon on MeshL case. ( not in mesh3 ) to c
 </ul>
 </section>
 <section id="version-4-11-new-features-4-apr-2022">
-<h1>Version 4.11: new features (4 apr 2022)<a class="headerlink" href="#version-4-11-new-features-4-apr-2022" title="Permalink to this headline"></a></h1>
+<h1>Version 4.11: new features (4 apr 2022)<a class="headerlink" href="#version-4-11-new-features-4-apr-2022" title="Permalink to this heading"></a></h1>
 <ul>
 <li><p>Added
 - add computation scalar product of R3 example :  ( N’<a href="#id5"><span class="problematic" id="id6">*</span></a>Tl)

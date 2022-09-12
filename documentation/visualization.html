@@ -1963,23 +1963,23 @@
 	<div id="content">
 		
    <section id="visualization">
-<span id="id1"></span><h1>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline"></a></h1>
+<span id="id1"></span><h1>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading"></a></h1>
 <p>Results created by the finite element method can be a huge set of data, so it is very important to render them easy to grasp.</p>
 <p>There are two ways of visualization in <strong>FreeFEM</strong>:</p>
 <ul class="simple">
-<li><p>One, the default view, which supports the drawing of meshes, isovalues of real FE-functions, and of vector fields, all by the command <code class="code freefem docutils literal notranslate"><span class="pre">plot</span></code> (see <a class="reference internal" href="#plot"><span class="std std-ref">Plot section</span></a> below).
+<li><p>One, the default view, which supports the drawing of meshes, isovalues of real FE-functions, and of vector fields, all by the command <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">plot</span></code> (see <a class="reference internal" href="#plot"><span class="std std-ref">Plot section</span></a> below).
 For publishing purpose, <strong>FreeFEM</strong> can store these plots as postscript files.</p></li>
-<li><p>Another method is to use external tools, for example, gnuplot (see <a class="reference internal" href="#gnuplot"><span class="std std-ref">Gnuplot section</span></a>, <a class="reference internal" href="#medit"><span class="std std-ref">medit section</span></a>, <a class="reference internal" href="#paraview"><span class="std std-ref">Paraview section</span></a>, <a class="reference internal" href="#matlab"><span class="std std-ref">Matlab/Octave section</span></a>) using the command <code class="code freefem docutils literal notranslate"><span class="pre">system</span></code> to launch them and/or to save the data in text files.</p></li>
+<li><p>Another method is to use external tools, for example, gnuplot (see <a class="reference internal" href="#gnuplot"><span class="std std-ref">Gnuplot section</span></a>, <a class="reference internal" href="#medit"><span class="std std-ref">medit section</span></a>, <a class="reference internal" href="#paraview"><span class="std std-ref">Paraview section</span></a>, <a class="reference internal" href="#matlab"><span class="std std-ref">Matlab/Octave section</span></a>) using the command <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">system</span></code> to launch them and/or to save the data in text files.</p></li>
 </ul>
 <section id="plot">
-<span id="id2"></span><h2>Plot<a class="headerlink" href="#plot" title="Permalink to this headline"></a></h2>
-<p>With the command <code class="code freefem docutils literal notranslate"><span class="pre">plot</span></code>, meshes, isovalues of scalar functions, and vector fields can be displayed.</p>
+<span id="id2"></span><h2>Plot<a class="headerlink" href="#plot" title="Permalink to this heading"></a></h2>
+<p>With the command <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">plot</span></code>, meshes, isovalues of scalar functions, and vector fields can be displayed.</p>
 <p>The parameters of the plot command can be meshes, real FE functions, arrays of 2 real FE functions, arrays of two double arrays, to plot respectively a mesh, a function, a vector field, or a curve defined by the two double arrays.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The length of an arrow is always bound to be in [5‰, 5%] of the screen size in order to see something.</p>
 </div>
-<p>The <code class="code freefem docutils literal notranslate"><span class="pre">plot</span></code> command parameters are listed in the <a class="reference internal" href="../references/functions.html#referenceplot"><span class="std std-ref">Reference part</span></a>.</p>
+<p>The <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">plot</span></code> command parameters are listed in the <a class="reference internal" href="../references/functions.html#referenceplot"><span class="std std-ref">Reference part</span></a>.</p>
 <p>The keyboard shortcuts are:</p>
 <ul class="simple">
 <li><p><strong>enter</strong> tries to show plot</p></li>
@@ -2059,7 +2059,7 @@ For publishing purpose, <strong>FreeFEM</strong> can store these plots as postsc
 <figure class="align-default" id="id5">
 <span id="figvisucut"></span><a class="reference internal image-reference" href="../_images/Visualization_Plot_Gnuplot.png"><img alt="Visualization_Plot_Gnuplot" src="../_images/Visualization_Plot_Gnuplot.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Plots a cut of <code class="code freefem docutils literal notranslate"><span class="pre">uh</span></code>. Note that a refinement of the same can be obtained in combination with gnuplot</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Plots a cut of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">uh</span></code>. Note that a refinement of the same can be obtained in combination with gnuplot</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Plot</span></p>
@@ -2115,7 +2115,7 @@ For publishing purpose, <strong>FreeFEM</strong> can store these plots as postsc
 </div>
 </section>
 <section id="link-with-gnuplot">
-<span id="gnuplot"></span><h2>Link with gnuplot<a class="headerlink" href="#link-with-gnuplot" title="Permalink to this headline"></a></h2>
+<span id="gnuplot"></span><h2>Link with gnuplot<a class="headerlink" href="#link-with-gnuplot" title="Permalink to this heading"></a></h2>
 <p>Example <a class="reference internal" href="../tutorials/membrane.html#tutorialmembrane"><span class="std std-ref">Membrane</span></a> shows how to generate a gnuplot from a <strong>FreeFEM</strong> file.
 Here is another technique which has the advantage of being online, i.e. one doesn’t need to quit <strong>FreeFEM</strong> to generate a gnuplot.</p>
 <p>However, this works only if <a class="reference external" href="http://www.gnuplot.info">gnuplot</a> is installed, and only on an Unix-like computer.</p>
@@ -2143,10 +2143,10 @@ Here is another technique which has the advantage of being online, i.e. one doe
 </div>
 </section>
 <section id="link-with-medit">
-<span id="medit"></span><h2>Link with medit<a class="headerlink" href="#link-with-medit" title="Permalink to this headline"></a></h2>
+<span id="medit"></span><h2>Link with medit<a class="headerlink" href="#link-with-medit" title="Permalink to this heading"></a></h2>
 <p>As said above, <code class="docutils literal notranslate"><span class="pre">medit</span></code> is a freeware display package by Pascal Frey using OpenGL. Then you may run the following example.</p>
 <p>Now <code class="docutils literal notranslate"><span class="pre">medit</span></code> software is included in <strong>FreeFEM</strong> under <code class="docutils literal notranslate"><span class="pre">ffmedit</span></code> name.</p>
-<p>The <code class="code freefem docutils literal notranslate"><span class="pre">medit</span></code> command parameters are listed in the <a class="reference internal" href="../references/external-libraries.html#referencemedit"><span class="std std-ref">Reference part</span></a>.</p>
+<p>The <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">medit</span></code> command parameters are listed in the <a class="reference internal" href="../references/external-libraries.html#referencemedit"><span class="std std-ref">Reference part</span></a>.</p>
 <figure class="align-default" id="figvisumedit">
 <a class="reference internal image-reference" href="../_images/Visualization_Medit.png"><img alt="../_images/Visualization_Medit.png" src="../_images/Visualization_Medit.png" style="width: 50%;" /></a>
 <figcaption>
@@ -2190,7 +2190,7 @@ Here is another technique which has the advantage of being online, i.e. one doe
 </div>
 </section>
 <section id="link-with-paraview">
-<span id="paraview"></span><h2>Link with Paraview<a class="headerlink" href="#link-with-paraview" title="Permalink to this headline"></a></h2>
+<span id="paraview"></span><h2>Link with Paraview<a class="headerlink" href="#link-with-paraview" title="Permalink to this heading"></a></h2>
 <p>One can also export mesh or results in the <code class="docutils literal notranslate"><span class="pre">.vtk</span></code> format in order to post-process data using <a class="reference external" href="https://www.paraview.org/">Paraview</a>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;iovtk&quot;</span>
 <span class="lineno"> 2 </span>
@@ -2220,7 +2220,7 @@ Here is another technique which has the advantage of being online, i.e. one doe
 </div>
 </section>
 <section id="link-with-matlab-and-octave">
-<span id="matlab"></span><h2>Link with Matlab© and Octave<a class="headerlink" href="#link-with-matlab-and-octave" title="Permalink to this headline"></a></h2>
+<span id="matlab"></span><h2>Link with Matlab© and Octave<a class="headerlink" href="#link-with-matlab-and-octave" title="Permalink to this heading"></a></h2>
 <p>In order to create a plot from a <strong>FreeFEM</strong> simulation in <a class="reference external" href="https://www.gnu.org/software/octave/">Octave</a> and <a class="reference external" href="https://www.mathworks.com/">Matlab</a> the mesh, the finite element space connectivity and the simulation data must be written to files:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">include</span> <span class="s">&quot;ffmatlib.idp&quot;</span>
 <span class="lineno">2 </span>

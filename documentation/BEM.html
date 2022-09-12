@@ -1961,12 +1961,12 @@
 	<div id="content">
 		
    <section id="the-boundary-element-method">
-<span id="bem"></span><h1>The Boundary Element Method<a class="headerlink" href="#the-boundary-element-method" title="Permalink to this headline"></a></h1>
+<span id="bem"></span><h1>The Boundary Element Method<a class="headerlink" href="#the-boundary-element-method" title="Permalink to this heading"></a></h1>
 <section id="introduction-to-the-boundary-element-method-bem">
-<h2>Introduction to the Boundary Element Method (BEM)<a class="headerlink" href="#introduction-to-the-boundary-element-method-bem" title="Permalink to this headline"></a></h2>
+<h2>Introduction to the Boundary Element Method (BEM)<a class="headerlink" href="#introduction-to-the-boundary-element-method-bem" title="Permalink to this heading"></a></h2>
 <p>This is a short overview of the Boundary Element Method, introduced through a simple model example. For a thorough mathematical description of the Boundary Element Method you can refer to the <a class="reference external" href="https://hal.archives-ouvertes.fr/tel-02922455">PhD thesis of Pierre Marchand</a>. Some figures used in this documentation are taken from the manuscript.</p>
 <section id="model-problem">
-<span id="bemintromodel"></span><h3>Model problem<a class="headerlink" href="#model-problem" title="Permalink to this headline"></a></h3>
+<span id="bemintromodel"></span><h3>Model problem<a class="headerlink" href="#model-problem" title="Permalink to this heading"></a></h3>
 <p>The model problem we consider here is the scattering of an incoming acoustic wave <span class="math notranslate nohighlight">\(u_\text{inc}\)</span> by an obstacle <span class="math notranslate nohighlight">\(\Omega\)</span>. Thus, we want to solve the following homogeneous Helmholtz equation written in terms of the scattered field <span class="math notranslate nohighlight">\(u\)</span>:</p>
 <a class="reference internal image-reference" href="../_images/BEM_figdomainbem.png" id="bemfigdomainbem"><img alt="../_images/BEM_figdomainbem.png" class="align-center" id="bemfigdomainbem" src="../_images/BEM_figdomainbem.png" style="width: 30%;" /></a>
 <div class="math notranslate nohighlight" id="equation-eq-modelpb">
@@ -2005,7 +2005,7 @@ u &amp;= - u_\text{inc}  \;\; &amp;\text{on} \;\; &amp;\Gamma\\
 Moreover, compared to the finite element method, the matrix coefficients are much more expensive to compute because of the double integral and the evaluation of the Green function <span class="math notranslate nohighlight">\(\mathcal{G}\)</span>. Plus, the choice of the quadrature formulas has to be made with extra care because of the singularity of <span class="math notranslate nohighlight">\(\mathcal{G}\)</span>.</p>
 </section>
 <section id="boundary-integral-operators">
-<span id="bemintrobio"></span><h3>Boundary Integral Operators<a class="headerlink" href="#boundary-integral-operators" title="Permalink to this headline"></a></h3>
+<span id="bemintrobio"></span><h3>Boundary Integral Operators<a class="headerlink" href="#boundary-integral-operators" title="Permalink to this heading"></a></h3>
 <p>In order to formulate our model Dirichlet problem, we have used the <strong>Single Layer Potential</strong> <span class="math notranslate nohighlight">\(\operatorname{SL}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[q \mapsto \operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\]</div>
@@ -2027,7 +2027,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 \[p, q \mapsto \mathcal{HS}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y})  \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\]</div>
 </section>
 <section id="the-bemtool-library">
-<h3>the BEMTool library<a class="headerlink" href="#the-bemtool-library" title="Permalink to this headline"></a></h3>
+<h3>the BEMTool library<a class="headerlink" href="#the-bemtool-library" title="Permalink to this heading"></a></h3>
 <p>In order to compute the coefficients of the BEM matrix, <strong>FreeFEM</strong> is interfaced with the boundary element library <a class="reference external" href="https://github.com/xclaeys/BemTool">BEMTool</a>. <strong>BEMTool</strong> is a general purpose header-only C++ library written by Xavier Claeys, which handles</p>
 <ul class="simple">
 <li><p>BEM Potentials and Operators for Laplace, Yukawa, Helmholtz and Maxwell equations</p></li>
@@ -2037,10 +2037,10 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </ul>
 </section>
 <section id="hierarchical-matrices">
-<h3>Hierarchical matrices<a class="headerlink" href="#hierarchical-matrices" title="Permalink to this headline"></a></h3>
+<h3>Hierarchical matrices<a class="headerlink" href="#hierarchical-matrices" title="Permalink to this heading"></a></h3>
 <p>Although <strong>BEMTool</strong> can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all <span class="math notranslate nohighlight">\(N^2\)</span> coefficients of the matrix. Thus, we have to rely on a <em>matrix compression</em> technique. To do so, <strong>FreeFEM</strong> relies on the <strong>Hierarchical Matrix</strong>, or <strong>H-Matrix</strong> format.</p>
 <section id="low-rank-approximation">
-<h4>Low-rank approximation<a class="headerlink" href="#low-rank-approximation" title="Permalink to this headline"></a></h4>
+<h4>Low-rank approximation<a class="headerlink" href="#low-rank-approximation" title="Permalink to this heading"></a></h4>
 <p>Let <span class="math notranslate nohighlight">\(\textbf{B} \in \mathbb{C}^{N \times N}\)</span> be a dense matrix. Assume that <span class="math notranslate nohighlight">\(\textbf{B}\)</span> can be written as follows:</p>
 <div class="math notranslate nohighlight">
 \[\textbf{B} = \sum_{j=1}^r \textbf{u}_j \textbf{v}_j^T\]</div>
@@ -2054,7 +2054,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <p>Thankfully, there exist several techniques to approximate a truncated SVD by computing only some coefficients of the initial matrix, such as randomized SVD, or <strong>Partially pivoted Adaptive Cross Approximation (partial ACA)</strong>, which requires only <span class="math notranslate nohighlight">\(2 r N\)</span> coefficients.</p>
 </section>
 <section id="hierarchical-block-structure">
-<h4>Hierarchical block structure<a class="headerlink" href="#hierarchical-block-structure" title="Permalink to this headline"></a></h4>
+<h4>Hierarchical block structure<a class="headerlink" href="#hierarchical-block-structure" title="Permalink to this heading"></a></h4>
 <p>Unfortunately, BEM matrices generally do not have fast decreasing singular values. However, they can exhibit sub-blocks with rapidly decreasing singular values, thanks to the asymptotically smooth nature of the BEM kernel. Let us look for example at the absolute value of the matrix coefficients in the 2D (circle) case below:</p>
 <a class="reference internal image-reference" href="../_images/BEM_figyumatrix.png" id="bemfigyumatrix"><img alt="../_images/BEM_figyumatrix.png" class="align-center" id="bemfigyumatrix" src="../_images/BEM_figyumatrix.png" style="width: 40%;" /></a>
 <ul class="simple">
@@ -2074,31 +2074,31 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <a class="reference internal image-reference" href="../_images/BEM_fighmatrix.svg" id="bemfighmatrix"><img alt="../_images/BEM_fighmatrix.svg" class="align-center" id="bemfighmatrix" src="../_images/BEM_fighmatrix.svg" width="80%" /></a>
 </section>
 <section id="the-htool-library">
-<h4>The Htool library<a class="headerlink" href="#the-htool-library" title="Permalink to this headline"></a></h4>
+<h4>The Htool library<a class="headerlink" href="#the-htool-library" title="Permalink to this heading"></a></h4>
 <p>the H-Matrix format is implemented in the C++ library <a class="reference external" href="https://github.com/htool-ddm/htool">Htool</a>. <strong>Htool</strong> is a parallel header-only library written by Pierre Marchand and Pierre-Henri Tournier. It is interfaced with <strong>FreeFEM</strong> and provides routines to build hierarchical matrix structures (cluster trees, block trees, low-rank matrices, block matrices) as well as efficient parallel matrix-vector and matrix-matrix product using MPI and OpenMP. <strong>Htool</strong> is interfaced with <strong>BemTool</strong> to allow the compression of BEM matrices using the H-Matrix format in <strong>FreeFEM</strong>.</p>
 <a class="reference internal image-reference" href="../_images/BEM_fighmatrixpara.svg" id="bemfighmatrixpara"><img alt="../_images/BEM_fighmatrixpara.svg" class="align-center" id="bemfighmatrixpara" src="../_images/BEM_fighmatrixpara.svg" width="45%" /></a>
 </section>
 </section>
 </section>
 <section id="solve-a-bem-problem-with-freefem">
-<h2>Solve a BEM problem with FreeFEM<a class="headerlink" href="#solve-a-bem-problem-with-freefem" title="Permalink to this headline"></a></h2>
+<h2>Solve a BEM problem with FreeFEM<a class="headerlink" href="#solve-a-bem-problem-with-freefem" title="Permalink to this heading"></a></h2>
 <section id="build-the-geometry">
-<h3>Build the geometry<a class="headerlink" href="#build-the-geometry" title="Permalink to this headline"></a></h3>
+<h3>Build the geometry<a class="headerlink" href="#build-the-geometry" title="Permalink to this heading"></a></h3>
 <p>The geometry of the problem (i.e. the boundary <span class="math notranslate nohighlight">\(\Gamma\)</span>) can be discretized by a line (2D) or surface (3D) mesh:</p>
 <section id="d">
-<h4>2D<a class="headerlink" href="#d" title="Permalink to this headline"></a></h4>
-<p>In 2D, the geometry of the boundary can be defined with the <code class="code freefem docutils literal notranslate"><span class="pre">border</span></code> keyword and discretized by constructing a <em>line</em> or <em>curve</em> mesh of type <code class="code freefem docutils literal notranslate"><span class="pre">meshL</span></code> using <code class="code freefem docutils literal notranslate"><span class="pre">buildmeshL</span></code>:</p>
+<h4>2D<a class="headerlink" href="#d" title="Permalink to this heading"></a></h4>
+<p>In 2D, the geometry of the boundary can be defined with the <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">border</span></code> keyword and discretized by constructing a <em>line</em> or <em>curve</em> mesh of type <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshL</span></code> using <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">buildmeshL</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">border</span> <span class="nf">b</span><span class="p">(</span><span class="kp">t</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="nf">cos</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span> <span class="kr">y</span><span class="o">=</span><span class="nf">sin</span><span class="p">(</span><span class="kp">t</span><span class="p">);}</span>
 <span class="lineno">2 </span><span class="kt">meshL</span> <span class="n">ThL</span> <span class="o">=</span> <span class="n">buildmeshL</span><span class="p">(</span><span class="n">b</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>With the <code class="code freefem docutils literal notranslate"><span class="pre">extract</span></code> keyword, we can also extract the boundary of a 2D <code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code> (need to <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;msh3&quot;</span></code>):</p>
+<p>With the <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">extract</span></code> keyword, we can also extract the boundary of a 2D <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh</span></code> (need to <code class="code freefem docutils literal highlight highlight-freefem"><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span></code>):</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
 <span class="lineno">2 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
 <span class="lineno">3 </span><span class="kt">meshL</span> <span class="n">ThL</span> <span class="o">=</span> <span class="nf">extract</span><span class="p">(</span><span class="n">Th</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>or of a <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code> ; we can also specify the boundary labels we want to extract:</p>
+<p>or of a <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshS</span></code> ; we can also specify the boundary labels we want to extract:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
 <span class="lineno">2 </span><span class="kt">meshS</span> <span class="n">ThS</span> <span class="o">=</span> <span class="nf">square3</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
 <span class="lineno">3 </span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">labs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">];</span>
@@ -2108,8 +2108,8 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <p>You can find much more information about curve mesh generation <a class="reference internal" href="mesh-generation.html#meshltype"><span class="std std-ref">here</span></a>.</p>
 </section>
 <section id="id3">
-<h4>3D<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
-<p>In 3D, the geometry of the boundary surface can be discretized with a surface mesh of type <code class="code freefem docutils literal notranslate"><span class="pre">meshS</span></code>, which can be built by several ways, for example using the <code class="code freefem docutils literal notranslate"><span class="pre">square3</span></code> constructor:</p>
+<h4>3D<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<p>In 3D, the geometry of the boundary surface can be discretized with a surface mesh of type <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshS</span></code>, which can be built by several ways, for example using the <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">square3</span></code> constructor:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
 <span class="lineno">2 </span><span class="kt">real</span> <span class="n">R</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.2</span><span class="p">;</span>
 <span class="lineno">3 </span><span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="o">/</span><span class="n">h</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="o">/</span><span class="n">h</span><span class="p">;</span>
@@ -2120,13 +2120,13 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/BEM_figtorus.png" id="bemfigtorus"><img alt="../_images/BEM_figtorus.png" class="align-center" id="bemfigtorus" src="../_images/BEM_figtorus.png" style="width: 30%;" /></a>
-<p>or from a 2D <code class="code freefem docutils literal notranslate"><span class="pre">mesh</span></code> using the <code class="code freefem docutils literal notranslate"><span class="pre">movemesh23</span></code> keyword:</p>
+<p>or from a 2D <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh</span></code> using the <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">movemesh23</span></code> keyword:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
 <span class="lineno">2 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
 <span class="lineno">3 </span><span class="kt">meshS</span> <span class="n">ThS</span> <span class="o">=</span> <span class="nf">movemesh23</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="kp">transfo</span><span class="o">=</span><span class="p">[</span><span class="kr">x</span><span class="p">,</span><span class="kr">y</span><span class="p">,</span><span class="nf">cos</span><span class="p">(</span><span class="kr">x</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="nf">sin</span><span class="p">(</span><span class="kr">y</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">]);</span>
 </pre></div>
 </div>
-<p>We can also extract the boundary of a <code class="code freefem docutils literal notranslate"><span class="pre">mesh3</span></code>:</p>
+<p>We can also extract the boundary of a <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh3</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
 <span class="lineno">2 </span><span class="kt">mesh3</span> <span class="n">Th3</span> <span class="o">=</span> <span class="nf">cube</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
 <span class="lineno">3 </span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">labs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">];</span>
@@ -2137,7 +2137,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </section>
 </section>
 <section id="define-the-type-of-operator">
-<h3>Define the type of operator<a class="headerlink" href="#define-the-type-of-operator" title="Permalink to this headline"></a></h3>
+<h3>Define the type of operator<a class="headerlink" href="#define-the-type-of-operator" title="Permalink to this heading"></a></h3>
 <p>For now, FreeFEM allows to solve the following PDE with the boundary element method:</p>
 <div class="math notranslate nohighlight">
 \[-\Delta u - k^2 u = 0, \quad k \in \mathbb{C},\]</div>
@@ -2151,21 +2151,21 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;bem&quot;</span>
 </pre></div>
 </div>
-<p>The information about the type of operator and the PDE can be specified by defining a variable of type <code class="code freefem docutils literal notranslate"><span class="pre">BemKernel</span></code>:</p>
+<p>The information about the type of operator and the PDE can be specified by defining a variable of type <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">BemKernel</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">BemKernel</span> <span class="nf">Ker</span><span class="p">(</span><span class="s">&quot;SL&quot;</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>You can choose the type of operator depending on your formulation (see <a class="reference internal" href="#bemintrobio"><span class="std std-ref">Boundary Integral Operators</span></a>):</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">&quot;SL&quot;</span></code>: <strong>Single Layer Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{SL}\)</span></p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">&quot;DL&quot;</span></code>: <strong>Double Layer Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{DL}\)</span></p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">&quot;TDL&quot;</span></code>: <strong>Transpose Double Layer Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{TDL}\)</span></p></li>
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">&quot;HS&quot;</span></code>: <strong>Hyper Singular Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{HS}\)</span></p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="s">&quot;SL&quot;</span></code>: <strong>Single Layer Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{SL}\)</span></p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="s">&quot;DL&quot;</span></code>: <strong>Double Layer Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{DL}\)</span></p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="s">&quot;TDL&quot;</span></code>: <strong>Transpose Double Layer Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{TDL}\)</span></p></li>
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="s">&quot;HS&quot;</span></code>: <strong>Hyper Singular Operator</strong> <span class="math notranslate nohighlight">\(\mathcal{HS}\)</span></p></li>
 </ul>
 </section>
 <section id="define-the-variational-problem">
-<h3>Define the variational problem<a class="headerlink" href="#define-the-variational-problem" title="Permalink to this headline"></a></h3>
-<p>We can then define the variational form of the BEM problem. The double BEM integral is represented by the <code class="code freefem docutils literal notranslate"><span class="pre">int1dx1d</span></code> keyword in the 2D case, and by <code class="code freefem docutils literal notranslate"><span class="pre">int2dx2d</span></code> for a 3D problem. The <code class="code freefem docutils literal notranslate"><span class="pre">BEM</span></code> keyword inside the integral takes the BEM kernel operator as argument:</p>
+<h3>Define the variational problem<a class="headerlink" href="#define-the-variational-problem" title="Permalink to this heading"></a></h3>
+<p>We can then define the variational form of the BEM problem. The double BEM integral is represented by the <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">int1dx1d</span></code> keyword in the 2D case, and by <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">int2dx2d</span></code> for a 3D problem. The <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">BEM</span></code> keyword inside the integral takes the BEM kernel operator as argument:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">BemKernel</span> <span class="nf">Ker</span><span class="p">(</span><span class="s">&quot;SL&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">);</span>
 <span class="lineno">2 </span><span class="kt">varf</span> <span class="nf">vbem</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="n">int2dx2d</span><span class="p">(</span><span class="n">ThS</span><span class="p">)(</span><span class="n">ThS</span><span class="p">)(</span><span class="n">BEM</span><span class="p">(</span><span class="n">Ker</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">));</span>
 </pre></div>
@@ -2190,8 +2190,8 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <p>As a starting point, you can find how to solve a 2D scattering problem by a disk using a <strong>First kind</strong>, <strong>Second kind</strong> and <strong>Combined</strong> formulation, for a Dirichlet (<a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples/mpi/Helmholtz_circle_Dirichlet.edp">here</a>) and Neumann (<a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples/mpi/Helmholtz_circle_Neumann.edp">here</a>) boundary condition.</p>
 </section>
 <section id="assemble-the-h-matrix">
-<h3>Assemble the H-Matrix<a class="headerlink" href="#assemble-the-h-matrix" title="Permalink to this headline"></a></h3>
-<p>Assembling the matrix corresponding to the discretization of the variational form on an <code class="code freefem docutils literal notranslate"><span class="pre">fespace</span></code> <code class="code freefem docutils literal notranslate"><span class="pre">Uh</span></code> is similar to the finite element case, except that we end up with an <code class="code freefem docutils literal notranslate"><span class="pre">HMatrix</span></code> instead of a sparse <code class="code freefem docutils literal notranslate"><span class="pre">matrix</span></code>:</p>
+<h3>Assemble the H-Matrix<a class="headerlink" href="#assemble-the-h-matrix" title="Permalink to this heading"></a></h3>
+<p>Assembling the matrix corresponding to the discretization of the variational form on an <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">fespace</span></code> <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Uh</span></code> is similar to the finite element case, except that we end up with an <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">HMatrix</span></code> instead of a sparse <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">matrix</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Uh</span><span class="p">(</span><span class="n">ThS</span><span class="p">,</span><span class="nc">P1</span><span class="p">);</span>
 <span class="lineno">2 </span><span class="n">HMatrix</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">H</span> <span class="o">=</span> <span class="n">vbem</span><span class="p">(</span><span class="n">Uh</span><span class="p">,</span><span class="n">Uh</span><span class="p">);</span>
 </pre></div>
@@ -2214,18 +2214,18 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <span class="lineno">7 </span>  <span class="n">commworld</span> <span class="o">=</span> <span class="kr">mpiCommWorld</span><span class="p">);</span> <span class="c1">// MPI communicator</span>
 </pre></div>
 </div>
-<p>You can also set the default parameters globally in the script by changing the value of the global variables <code class="code freefem docutils literal notranslate"><span class="pre">htoolEta</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">htoolEpsilon</span></code>, <code class="code freefem docutils literal notranslate"><span class="pre">htoolMinclustersize</span></code> and <code class="code freefem docutils literal notranslate"><span class="pre">htoolMaxblocksize</span></code>.</p>
+<p>You can also set the default parameters globally in the script by changing the value of the global variables <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">htoolEta</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">htoolEpsilon</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">htoolMinclustersize</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">htoolMaxblocksize</span></code>.</p>
 <p>Once assembled, the H-Matrix can also be plotted with</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">display</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="kp">wait</span><span class="o">=</span><span class="kr">true</span><span class="p">);</span>
 </pre></div>
 </div>
-<p><strong>FreeFEM</strong> can also output some information and statistics about the assembly of <code class="code freefem docutils literal notranslate"><span class="pre">H</span></code>:</p>
+<p><strong>FreeFEM</strong> can also output some information and statistics about the assembly of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">H</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">if</span> <span class="p">(</span><span class="kr">mpirank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="n">H</span><span class="p">.</span><span class="n">infos</span> <span class="o">&lt;&lt;</span> <span class="kr">endl</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="solve-the-linear-system">
-<h3>Solve the linear system<a class="headerlink" href="#solve-the-linear-system" title="Permalink to this headline"></a></h3>
+<h3>Solve the linear system<a class="headerlink" href="#solve-the-linear-system" title="Permalink to this heading"></a></h3>
 <p>Generally, the right-hand-side of the linear system is built as the discretization of a standard linear form:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">Uh</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="kt">varf</span> <span class="nf">vrhs</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="nf">int2d</span><span class="p">(</span><span class="n">ThS</span><span class="p">)(</span><span class="n">uinc</span><span class="o">*</span><span class="n">v</span><span class="p">);</span>
@@ -2239,13 +2239,13 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <p>Under the hood, <strong>FreeFEM</strong> solves the linear system with GMRES with a Jacobi (diagonal) preconditioner.</p>
 </section>
 <section id="compute-the-solution">
-<h3>Compute the solution<a class="headerlink" href="#compute-the-solution" title="Permalink to this headline"></a></h3>
-<p>Finally, knowing <span class="math notranslate nohighlight">\(p\)</span>, we can compute the solution <span class="math notranslate nohighlight">\(u\)</span> of our initial problem <a class="reference internal" href="#equation-eq-modelpb">(39)</a> using the Potential as in <a class="reference internal" href="#equation-eq-pv">(42)</a>. As for the <code class="code freefem docutils literal notranslate"><span class="pre">BemKernel</span></code>, the information about the type of potential can be specified by defining a variable of type <code class="code freefem docutils literal notranslate"><span class="pre">BemPotential</span></code>:</p>
+<h3>Compute the solution<a class="headerlink" href="#compute-the-solution" title="Permalink to this heading"></a></h3>
+<p>Finally, knowing <span class="math notranslate nohighlight">\(p\)</span>, we can compute the solution <span class="math notranslate nohighlight">\(u\)</span> of our initial problem <a class="reference internal" href="#equation-eq-modelpb">(39)</a> using the Potential as in <a class="reference internal" href="#equation-eq-pv">(42)</a>. As for the <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">BemKernel</span></code>, the information about the type of potential can be specified by defining a variable of type <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">BemPotential</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">BemPotential</span> <span class="nf">Pot</span><span class="p">(</span><span class="s">&quot;SL&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>In order to benefit from low-rank compression, instead of using <a class="reference internal" href="#equation-eq-pv">(42)</a> to sequentially compute the value <span class="math notranslate nohighlight">\(u(\boldsymbol{x})\)</span> at each point of interest <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, we can compute the discretization of the Potential on a target finite element space <code class="code freefem docutils literal notranslate"><span class="pre">UhOut</span></code> defined on an output mesh <code class="code freefem docutils literal notranslate"><span class="pre">ThOut</span></code> with an H-Matrix.</p>
-<p>First, let us define the variational form corresponding to the potential that we want to use to reconstruct our solution. Similarly to the kernel case, the <code class="code freefem docutils literal notranslate"><span class="pre">POT</span></code> keyword takes the potential as argument. Note that we have a single integral, and that <code class="code freefem docutils literal notranslate"><span class="pre">v</span></code> plays the role of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>.</p>
+<p>In order to benefit from low-rank compression, instead of using <a class="reference internal" href="#equation-eq-pv">(42)</a> to sequentially compute the value <span class="math notranslate nohighlight">\(u(\boldsymbol{x})\)</span> at each point of interest <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, we can compute the discretization of the Potential on a target finite element space <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">UhOut</span></code> defined on an output mesh <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">ThOut</span></code> with an H-Matrix.</p>
+<p>First, let us define the variational form corresponding to the potential that we want to use to reconstruct our solution. Similarly to the kernel case, the <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">POT</span></code> keyword takes the potential as argument. Note that we have a single integral, and that <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">v</span></code> plays the role of <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">varf</span> <span class="nf">vpot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">ThS</span><span class="p">)(</span><span class="n">POT</span><span class="p">(</span><span class="n">Pot</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -2254,7 +2254,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <span class="lineno">2 </span><span class="n">HMatrix</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">HP</span> <span class="o">=</span> <span class="n">vpot</span><span class="p">(</span><span class="n">Uh</span><span class="p">,</span><span class="n">UhOut</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Computing <span class="math notranslate nohighlight">\(u\)</span> on <code class="code freefem docutils literal notranslate"><span class="pre">UhOut</span></code> is then just a matter of performing the matrix-vector product of <code class="code freefem docutils literal notranslate"><span class="pre">HP</span></code> with <code class="code freefem docutils literal notranslate"><span class="pre">p</span></code>:</p>
+<p>Computing <span class="math notranslate nohighlight">\(u\)</span> on <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">UhOut</span></code> is then just a matter of performing the matrix-vector product of <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">HP</span></code> with <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">p</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">UhOut</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span> <span class="n">u</span><span class="p">;</span>
 <span class="lineno">2 </span><span class="n">u</span><span class="p">[]</span> <span class="o">=</span> <span class="n">HP</span><span class="o">*</span><span class="n">p</span><span class="p">[];</span>
 <span class="lineno">3 </span><span class="nf">plot</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
@@ -2263,7 +2263,7 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </section>
 </section>
 <section id="d-example-script">
-<h2>2D example script<a class="headerlink" href="#d-example-script" title="Permalink to this headline"></a></h2>
+<h2>2D example script<a class="headerlink" href="#d-example-script" title="Permalink to this heading"></a></h2>
 <p>Let us summarize what we have learned with a 2D version of our <a class="reference internal" href="#bemintromodel"><span class="std std-ref">model problem</span></a> where we study the scattering of a plane wave by a disc:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">load</span> <span class="s">&quot;bem&quot;</span>
 <span class="lineno"> 2 </span>

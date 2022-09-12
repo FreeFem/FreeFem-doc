@@ -1968,7 +1968,7 @@
 	<div id="content">
 		
    <section id="irrotational-fan-blade-flow-and-thermal-effects">
-<h1>Irrotational Fan Blade Flow and Thermal effects<a class="headerlink" href="#irrotational-fan-blade-flow-and-thermal-effects" title="Permalink to this headline"></a></h1>
+<h1>Irrotational Fan Blade Flow and Thermal effects<a class="headerlink" href="#irrotational-fan-blade-flow-and-thermal-effects" title="Permalink to this heading"></a></h1>
 <p><strong>Summary :</strong>
 <em>Here we will learn how to deal with a multi-physics system of PDEs on a complex geometry, with multiple meshes within one problem.
 We also learn how to manipulate the region indicator and see how smooth is the projection operator from one mesh to another.</em></p>
@@ -2041,7 +2041,7 @@ To obtain such a plot use the interactive graphic command: “+” and p.</span>
 </figure>
 <p><span class="caption-text">The NACA0012 Airfoil</span></p>
 </div><section id="heat-convection-around-the-airfoil">
-<span id="Potential"></span><h2>Heat Convection around the airfoil<a class="headerlink" href="#heat-convection-around-the-airfoil" title="Permalink to this headline"></a></h2>
+<span id="Potential"></span><h2>Heat Convection around the airfoil<a class="headerlink" href="#heat-convection-around-the-airfoil" title="Permalink to this heading"></a></h2>
 <p>Now let us assume that the airfoil is hot and that air is there to cool it.
 Much like in the previous section the heat equation for the temperature <span class="math notranslate nohighlight">\(v\)</span> is</p>
 <div class="math notranslate nohighlight">
@@ -2112,10 +2112,10 @@ Furthermore there is convection of heat by the flow, hence the term <span class=
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We use the change function to put label 10 on inflow boundary, remark the trick to chanhe only label C <code class="code freefem docutils literal notranslate"><span class="pre">flabel</span> <span class="pre">=</span> <span class="pre">(label</span> <span class="pre">==</span> <span class="pre">C</span> <span class="pre">&amp;&amp;</span>&#160; <span class="pre">[u1,u2]'*N&lt;0)</span> <span class="pre">?</span> <span class="pre">10</span> <span class="pre">:</span> <span class="pre">label</span></code></p>
+<p>We use the change function to put label 10 on inflow boundary, remark the trick to chanhe only label C <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">flabel</span> <span class="o">=</span> <span class="p">(</span><span class="kr">label</span> <span class="o">==</span> <span class="n">C</span> <span class="o">&amp;&amp;</span>  <span class="p">[</span><span class="n">u1</span><span class="p">,</span><span class="n">u2</span><span class="p">]</span><span class="o">&#39;*</span><span class="kr">N</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="mi">10</span> <span class="o">:</span> <span class="kr">label</span></code></p>
 <p>How the convection terms are added without upwinding.
 Upwinding is necessary when the Pecley number <span class="math notranslate nohighlight">\(|u|L/\kappa\)</span> is large (here is a typical length scale), The factor 10 in front of the convection terms is a quick way of multiplying the velocity by 10 (else it is too slow to see something).</p>
-<p>The solver is Gauss’ LU factorization and when <code class="code freefem docutils literal notranslate"><span class="pre">init</span></code> <span class="math notranslate nohighlight">\(\neq 0\)</span> the LU decomposition is reused so it is much faster after the first iteration.</p>
+<p>The solver is Gauss’ LU factorization and when <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">init</span></code> <span class="math notranslate nohighlight">\(\neq 0\)</span> the LU decomposition is reused so it is much faster after the first iteration.</p>
 </div>
 </section>
 </section>

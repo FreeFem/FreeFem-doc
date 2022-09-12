@@ -1961,11 +1961,11 @@
 	<div id="content">
 		
    <section id="developers">
-<h1>Developers<a class="headerlink" href="#developers" title="Permalink to this headline"></a></h1>
+<h1>Developers<a class="headerlink" href="#developers" title="Permalink to this heading"></a></h1>
 <section id="file-formats">
-<h2>File formats<a class="headerlink" href="#file-formats" title="Permalink to this headline"></a></h2>
+<h2>File formats<a class="headerlink" href="#file-formats" title="Permalink to this heading"></a></h2>
 <section id="mesh-file-data-structure">
-<span id="meshfiledatastructure"></span><h3>Mesh file data structure<a class="headerlink" href="#mesh-file-data-structure" title="Permalink to this headline"></a></h3>
+<span id="meshfiledatastructure"></span><h3>Mesh file data structure<a class="headerlink" href="#mesh-file-data-structure" title="Permalink to this heading"></a></h3>
 <p>The mesh data structure, output of a mesh generation algorithm, refers to the geometric data structure and in some case to another mesh data structure.</p>
 <p>In this case, the fields are</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="n">MeshVersionFormatted</span> <span class="mi">0</span>
@@ -2058,7 +2058,7 @@
 </ul>
 </section>
 <section id="bb-file-type-to-store-solutions">
-<h3>bb file type to Store Solutions<a class="headerlink" href="#bb-file-type-to-store-solutions" title="Permalink to this headline"></a></h3>
+<h3>bb file type to Store Solutions<a class="headerlink" href="#bb-file-type-to-store-solutions" title="Permalink to this heading"></a></h3>
 <p>The file is formatted such that:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="mi">2</span> <span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">solutions</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">vertices</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="mi">2</span>
 <span class="lineno">2 </span>
@@ -2074,7 +2074,7 @@
 </ul>
 </section>
 <section id="id1">
-<h3>BB file type to store solutions<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<h3>BB file type to store solutions<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>The file is formatted such that:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="mi">2</span> <span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">solutions</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="p">[</span><span class="n">Type</span> <span class="mi">1</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="p">...</span> <span class="p">[</span><span class="n">Type</span> <span class="n">ns</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">vertices</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="mi">2</span>
 <span class="lineno"> 2 </span>
@@ -2105,7 +2105,7 @@
 </ul>
 </section>
 <section id="metric-file">
-<h3>Metric file<a class="headerlink" href="#metric-file" title="Permalink to this headline"></a></h3>
+<h3>Metric file<a class="headerlink" href="#metric-file" title="Permalink to this heading"></a></h3>
 <p>A metric file can be of two types, isotropic or anisotropic.</p>
 <p>The isotropic file is such that</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">vertices</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="mi">1</span>
@@ -2132,7 +2132,7 @@
 </ul>
 </section>
 <section id="list-of-am-fmt-amdba-meshes">
-<h3>List of AM_FMT, AMDBA Meshes<a class="headerlink" href="#list-of-am-fmt-amdba-meshes" title="Permalink to this headline"></a></h3>
+<h3>List of AM_FMT, AMDBA Meshes<a class="headerlink" href="#list-of-am-fmt-amdba-meshes" title="Permalink to this heading"></a></h3>
 <p>The mesh is only composed of triangles and can be defined with the help of the following two integers and four arrays:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">nbt</span></code> the number of triangles</p></li>
@@ -2201,9 +2201,9 @@
 <p>where if <code class="docutils literal notranslate"><span class="pre">k(j)</span> <span class="pre">=</span> <span class="pre">3</span></code> when the element <code class="docutils literal notranslate"><span class="pre">j</span></code> is a triangle and <code class="docutils literal notranslate"><span class="pre">k(j)</span> <span class="pre">=</span> <span class="pre">4</span></code> when the the element <code class="docutils literal notranslate"><span class="pre">j</span></code> is a quadrilateral.</p>
 </section>
 <section id="sol-and-solb-files">
-<h3>sol and solb files<a class="headerlink" href="#sol-and-solb-files" title="Permalink to this headline"></a></h3>
-<p>With the keyword <code class="code freefem docutils literal notranslate"><span class="pre">savesol</span></code>, we can store a scalar functions, a scalar finite element functions, a vector fields, a vector finite element fields, a symmetric tensor and a symmetric finite element tensor.</p>
-<p>Such format is used in <code class="code freefem docutils literal notranslate"><span class="pre">medit</span></code>.</p>
+<h3>sol and solb files<a class="headerlink" href="#sol-and-solb-files" title="Permalink to this heading"></a></h3>
+<p>With the keyword <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">savesol</span></code>, we can store a scalar functions, a scalar finite element functions, a vector fields, a vector finite element fields, a symmetric tensor and a symmetric finite element tensor.</p>
+<p>Such format is used in <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">medit</span></code>.</p>
 <p><strong>Extension file .sol</strong></p>
 <p>The first two lines of the file are :</p>
 <ul class="simple">
@@ -2215,7 +2215,7 @@
 <code class="docutils literal notranslate"><span class="pre">SolAtTriangles</span></code>, <code class="docutils literal notranslate"><span class="pre">SolAtQuadrilaterals</span></code>,
 <code class="docutils literal notranslate"><span class="pre">SolAtTetrahedra</span></code>, <code class="docutils literal notranslate"><span class="pre">SolAtPentahedra</span></code>,
 <code class="docutils literal notranslate"><span class="pre">SolAtHexahedra</span></code>.</p>
-<p>In each field, we give then in the next line the number of elements in the solutions (<code class="code freefem docutils literal notranslate"><span class="pre">SolAtVertices</span></code>: number of vertices, <code class="code freefem docutils literal notranslate"><span class="pre">SolAtTriangles</span></code>: number of triangles, …).
+<p>In each field, we give then in the next line the number of elements in the solutions (<code class="code freefem docutils literal highlight highlight-freefem"><span class="n">SolAtVertices</span></code>: number of vertices, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">SolAtTriangles</span></code>: number of triangles, …).
 In other lines, we give the number of solutions, the type of solution (1: scalar, 2: vector, 3: symmetric tensor).
 And finally, we give the values of the solutions on the elements.</p>
 <p>The file must be ended with the keyword End.</p>
@@ -2235,8 +2235,8 @@ ST^{2d}= \left(
    ST_{yx}^{2d} &amp; ST_{yy}^{2d}
 \end{array}
 \right)\end{split}\]</div>
-<p>stored in the extension <code class="code freefem docutils literal notranslate"><span class="pre">.sol</span></code> are respectively <span class="math notranslate nohighlight">\(ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}\)</span> and <span class="math notranslate nohighlight">\(ST_{xx}^{2d}, ST_{yx}^{2d}, ST_{yy}^{2d}\)</span></p>
-<p>An example of field with the keyword <code class="code freefem docutils literal notranslate"><span class="pre">SolAtTetrahedra</span></code>:</p>
+<p>stored in the extension <code class="code freefem docutils literal highlight highlight-freefem"><span class="p">.</span><span class="n">sol</span></code> are respectively <span class="math notranslate nohighlight">\(ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}\)</span> and <span class="math notranslate nohighlight">\(ST_{xx}^{2d}, ST_{yx}^{2d}, ST_{yy}^{2d}\)</span></p>
+<p>An example of field with the keyword <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">SolAtTetrahedra</span></code>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="n">SolAtTetrahedra</span>
 <span class="lineno"> 2 </span><span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">tetrahedra</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span>
 <span class="lineno"> 3 </span><span class="p">[</span><span class="n">Number</span> <span class="n">of</span> <span class="n">solutions</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="p">[</span><span class="n">Type</span> <span class="n">of</span> <span class="n">solution</span> <span class="mi">1</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span> <span class="p">...</span> <span class="p">[</span><span class="n">Type</span> <span class="n">of</span> <span class="n">soution</span> <span class="n">nt</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span>
@@ -2270,31 +2270,31 @@ ST^{2d}= \left(
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">U_i_j_^k</span></code> is a real equal to the value of the component <code class="docutils literal notranslate"><span class="pre">i</span></code> of the solution <code class="docutils literal notranslate"><span class="pre">k</span></code> at tetrahedron <code class="docutils literal notranslate"><span class="pre">j</span></code> on the associated mesh</p></li>
 </ul>
-<p>The format <code class="code freefem docutils literal notranslate"><span class="pre">.solb</span></code> is the same as format <code class="code freefem docutils literal notranslate"><span class="pre">.sol</span></code> but in binary (read/write is faster, storage is less).</p>
-<p>A real scalar functions <span class="math notranslate nohighlight">\(f1\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Phi} = [\Phi1, \Phi2, \Phi3]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{3d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(45)</a> at the vertices of the three dimensional mesh <code class="code freefem docutils literal notranslate"><span class="pre">Th3</span></code> is stored in the file <code class="code freefem docutils literal notranslate"><span class="pre">f1PhiTh3.sol</span></code> using :</p>
+<p>The format <code class="code freefem docutils literal highlight highlight-freefem"><span class="p">.</span><span class="n">solb</span></code> is the same as format <code class="code freefem docutils literal highlight highlight-freefem"><span class="p">.</span><span class="n">sol</span></code> but in binary (read/write is faster, storage is less).</p>
+<p>A real scalar functions <span class="math notranslate nohighlight">\(f1\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Phi} = [\Phi1, \Phi2, \Phi3]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{3d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(45)</a> at the vertices of the three dimensional mesh <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Th3</span></code> is stored in the file <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">f1PhiTh3</span><span class="p">.</span><span class="n">sol</span></code> using :</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">savesol</span><span class="p">(</span><span class="s">&quot;f1PhiST3dTh3.sol&quot;</span><span class="p">,</span> <span class="n">Th3</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="p">[</span><span class="n">Phi</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">Phi</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">Phi</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span> <span class="n">VV3</span><span class="p">,</span> <span class="kp">order</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>where <span class="math notranslate nohighlight">\(VV3 = [ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}]\)</span>.</p>
-<p>For a two dimensional mesh <code class="code freefem docutils literal notranslate"><span class="pre">Th</span></code>, A real scalar functions <span class="math notranslate nohighlight">\(f2\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Psi} = [\Psi1, \Psi2]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{2d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(45)</a> at triangles is stored in the file <code class="code freefem docutils literal notranslate"><span class="pre">f2PsiST2dTh3.solb</span></code> using :</p>
+<p>For a two dimensional mesh <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Th</span></code>, A real scalar functions <span class="math notranslate nohighlight">\(f2\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Psi} = [\Psi1, \Psi2]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{2d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(45)</a> at triangles is stored in the file <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">f2PsiST2dTh3</span><span class="p">.</span><span class="n">solb</span></code> using :</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">savesol</span><span class="p">(</span><span class="s">&quot;f2PsiST2dTh3.solb&quot;</span><span class="p">,</span> <span class="n">Th</span><span class="p">,</span> <span class="n">f2</span><span class="p">,</span> <span class="p">[</span><span class="n">Psi</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">Psi</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span> <span class="n">VV2</span><span class="p">,</span> <span class="kp">order</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>where <span class="math notranslate nohighlight">\(VV2 = [ST_{xx}^{2d}, ST_{yx}^{2d}, ST_{yy}^{2d}]\)</span></p>
-<p>The arguments of <code class="code freefem docutils literal notranslate"><span class="pre">savesol</span></code> functions are the name of a file, a mesh and solutions.
+<p>The arguments of <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">savesol</span></code> functions are the name of a file, a mesh and solutions.
 These arguments must be given in this order.</p>
 <p>The parameters of this keyword are :</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal notranslate"><span class="pre">order</span> <span class="pre">=</span></code> 0 is the solution is given at the center of gravity of elements.
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">order</span> <span class="o">=</span></code> 0 is the solution is given at the center of gravity of elements.
 1 is the solution is given at the vertices of elements.</p></li>
 </ul>
 <p>In the file, solutions are stored in this order : scalar solutions, vector solutions and finally symmetric tensor solutions.</p>
 </section>
 </section>
 <section id="adding-a-new-finite-element">
-<span id="developersaddingfiniteelement"></span><h2>Adding a new finite element<a class="headerlink" href="#adding-a-new-finite-element" title="Permalink to this headline"></a></h2>
+<span id="developersaddingfiniteelement"></span><h2>Adding a new finite element<a class="headerlink" href="#adding-a-new-finite-element" title="Permalink to this heading"></a></h2>
 <section id="some-notations">
-<h3>Some notations<a class="headerlink" href="#some-notations" title="Permalink to this headline"></a></h3>
+<h3>Some notations<a class="headerlink" href="#some-notations" title="Permalink to this heading"></a></h3>
 <p>For a function <span class="math notranslate nohighlight">\(\boldsymbol{f}\)</span> taking value in <span class="math notranslate nohighlight">\(\mathbb{R}^{N},\, N=1,2,\cdots\)</span>, we define the finite element approximation <span class="math notranslate nohighlight">\(\Pi_h\boldsymbol{f}\)</span> of <span class="math notranslate nohighlight">\(\boldsymbol{f}\)</span>.</p>
 <p>Let us denote the number of the degrees of freedom of the finite element by <span class="math notranslate nohighlight">\(NbDoF\)</span>.
 Then the <span class="math notranslate nohighlight">\(i\)</span>-th base <span class="math notranslate nohighlight">\(\boldsymbol{\omega}^{K}_{i}\)</span> (<span class="math notranslate nohighlight">\(i=0,\cdots,NbDoF-1\)</span>) of the finite element space has the <span class="math notranslate nohighlight">\(j\)</span>-th component <span class="math notranslate nohighlight">\(\mathbf{\omega}^{K}_{ij}\)</span> for <span class="math notranslate nohighlight">\(j=0,\cdots,N-1\)</span>.</p>
@@ -2350,7 +2350,7 @@ a length equal to the side of the edge or equal to <span class="math notranslate
 </div>
 </section>
 <section id="which-class-to-add">
-<h3>Which class to add?<a class="headerlink" href="#which-class-to-add" title="Permalink to this headline"></a></h3>
+<h3>Which class to add?<a class="headerlink" href="#which-class-to-add" title="Permalink to this heading"></a></h3>
 <p>Add file <code class="docutils literal notranslate"><span class="pre">FE_ADD.cpp</span></code> in directory <code class="docutils literal notranslate"><span class="pre">FreeFem-sources/src/femlib</span></code> for
 example first to initialize :</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">#include</span> <span class="cpf">&quot;error.hpp&quot;</span><span class="cp"></span>
@@ -2505,7 +2505,7 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 </div>
 <p>Now , we just need to add a new key work in <strong>FreeFEM</strong>.</p>
 <p>Two way, with static or dynamic link so at the end of the file, we add:</p>
-<p><strong>With dynamic link</strong> it is very simple (see section <a class="reference internal" href="#developersdynamicallink"><span class="std std-ref">Dynamical link</span></a>), just add before the end of <code class="code cpp docutils literal notranslate"><span class="pre">FEM2d</span> <span class="pre">namespace</span></code>:</p>
+<p><strong>With dynamic link</strong> it is very simple (see section <a class="reference internal" href="#developersdynamicallink"><span class="std std-ref">Dynamical link</span></a>), just add before the end of <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">FEM2d</span> <span class="k">namespace</span></code>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>   <span class="k">static</span> <span class="n">TypeOfFE_RTortho</span> <span class="n">The_TypeOfFE_RTortho</span><span class="p">;</span>
 <span class="lineno">2 </span>   <span class="k">static</span> <span class="nf">AddNewFE</span><span class="p">(</span><span class="s">&quot;RT0Ortho&quot;</span><span class="p">,</span> <span class="n">The_TypeOfFE_RTortho</span><span class="p">);</span>
 <span class="lineno">3 </span><span class="p">}</span> <span class="c1">//FEM2d namespace</span>
@@ -2566,7 +2566,7 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 </section>
 </section>
 <section id="dynamical-link">
-<span id="developersdynamicallink"></span><h2>Dynamical link<a class="headerlink" href="#dynamical-link" title="Permalink to this headline"></a></h2>
+<span id="developersdynamicallink"></span><h2>Dynamical link<a class="headerlink" href="#dynamical-link" title="Permalink to this heading"></a></h2>
 <p>Now, it’s possible to add built-in functionnalites in <strong>FreeFEM</strong> under the three environnents Linux, Windows and MacOS X 10.3 or newer.</p>
 <p>It is agood idea to first try the example <code class="docutils literal notranslate"><span class="pre">load.edp</span></code> in directory <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">example++-load</a>.</p>
 <p>You will need to install a <code class="docutils literal notranslate"><span class="pre">compiler</span></code> (generally <code class="docutils literal notranslate"><span class="pre">g++/gcc</span></code> compiler) to compile your function.</p>
@@ -2582,7 +2582,7 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you try to load dynamically a file with command <code class="code freefem docutils literal notranslate"><span class="pre">load</span> <span class="pre">&quot;xxx&quot;</span></code>
+<p>If you try to load dynamically a file with command <code class="code freefem docutils literal highlight highlight-freefem"><span class="cp">load</span> <span class="s">&quot;xxx&quot;</span></code>
 - Under Unix (Linux or MacOs), the file <code class="docutils literal notranslate"><span class="pre">xxx.so</span></code> will be loaded so it must be either in the search directory of routine <code class="docutils literal notranslate"><span class="pre">dlopen</span></code> (see the environment variable <cite>$LD_LIBRARY_PATH</cite>) or in the current directory, and the suffix <code class="docutils literal notranslate"><span class="pre">&quot;.so&quot;</span></code> or the prefix <code class="docutils literal notranslate"><span class="pre">&quot;./&quot;</span></code> is automatically added.</p>
 <ul class="simple">
 <li><p>Under Windows, the file <cite>xxx.dll</cite> will be loaded so it must be in the <cite>loadLibary</cite> search directory which includes the directory of the application,</p></li>
@@ -2591,7 +2591,7 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 <p><strong>Compilation of your module:</strong></p>
 <p>The script <code class="docutils literal notranslate"><span class="pre">ff-c++</span></code> compiles and makes the link with <strong>FreeFEM</strong>, but be careful, the script has no way to known if you try to compile for a pure Windows environment or for a cygwin environment so to build the load module under cygwin you must add the <code class="docutils literal notranslate"><span class="pre">-cygwin</span></code> parameter.</p>
 <section id="a-first-example-myfunction-cpp">
-<h3>A first example myfunction.cpp<a class="headerlink" href="#a-first-example-myfunction-cpp" title="Permalink to this headline"></a></h3>
+<h3>A first example myfunction.cpp<a class="headerlink" href="#a-first-example-myfunction-cpp" title="Permalink to this heading"></a></h3>
 <p>The following defines a new function call <code class="docutils literal notranslate"><span class="pre">myfunction</span></code> with no parameter, but using the <span class="math notranslate nohighlight">\(x,y\)</span> current value.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 <span class="lineno"> 2 </span><span class="cp">#include</span> <span class="cpf">&lt;cfloat&gt;</span><span class="cp"></span>
@@ -2694,7 +2694,7 @@ By default this expression does not depend of the mesh position, but if they der
 <p>Under Windows, launch <strong>FreeFEM</strong> with the mouse (or ctrl O) on the example.</p>
 </section>
 <section id="example-discrete-fast-fourier-transform">
-<h3>Example: Discrete Fast Fourier Transform<a class="headerlink" href="#example-discrete-fast-fourier-transform" title="Permalink to this headline"></a></h3>
+<h3>Example: Discrete Fast Fourier Transform<a class="headerlink" href="#example-discrete-fast-fourier-transform" title="Permalink to this heading"></a></h3>
 <p>This will add FFT to <strong>FreeFEM</strong>, taken from <a class="reference external" href="http://www.fftw.org/">FFTW</a>. To download and install under <code class="docutils literal notranslate"><span class="pre">download/include</span></code> just go in <code class="docutils literal notranslate"><span class="pre">download/fftw</span></code> and try <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
 <p>The 1D dfft (fast discret fourier transform) for a simple array <span class="math notranslate nohighlight">\(f\)</span> of size <span class="math notranslate nohighlight">\(n\)</span> is defined by the following formula:</p>
 <div class="math notranslate nohighlight">
@@ -2733,17 +2733,17 @@ By default this expression does not depend of the mesh position, but if they der
 <p>To test, try <a class="reference internal" href="../examples/developers.html#examplefft"><span class="std std-ref">FFT example</span></a>.</p>
 </section>
 <section id="load-module-for-dervieux-p0-p1-finite-volume-method">
-<h3>Load Module for Dervieux P0-P1 Finite Volume Method<a class="headerlink" href="#load-module-for-dervieux-p0-p1-finite-volume-method" title="Permalink to this headline"></a></h3>
+<h3>Load Module for Dervieux P0-P1 Finite Volume Method<a class="headerlink" href="#load-module-for-dervieux-p0-p1-finite-volume-method" title="Permalink to this heading"></a></h3>
 <p>The associed edp file is
 <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/convect_dervieux.edp">examples++-load/convect_dervieux.edp</a>.</p>
 <p>See
 <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/mat_dervieux.cpp">mat_dervieux.cpp</a>.</p>
 </section>
 <section id="more-on-adding-a-new-finite-element">
-<h3>More on Adding a new finite element<a class="headerlink" href="#more-on-adding-a-new-finite-element" title="Permalink to this headline"></a></h3>
+<h3>More on Adding a new finite element<a class="headerlink" href="#more-on-adding-a-new-finite-element" title="Permalink to this heading"></a></h3>
 <p>First read the <a class="reference internal" href="#developersaddingfiniteelement"><span class="std std-ref">Adding a new finite element section</span></a>, we add two new finite elements examples in the directory <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">examples++-load</a>.</p>
 <section id="the-bernardi-raugel-element">
-<h4>The Bernardi-Raugel Element<a class="headerlink" href="#the-bernardi-raugel-element" title="Permalink to this headline"></a></h4>
+<h4>The Bernardi-Raugel Element<a class="headerlink" href="#the-bernardi-raugel-element" title="Permalink to this heading"></a></h4>
 <p>The Bernardi-Raugel finite element is meant to solve the Navier Stokes equations in <span class="math notranslate nohighlight">\(u,p\)</span> formulation; the velocity space <span class="math notranslate nohighlight">\(P^{br}_K\)</span> is minimal to prove the inf-sup condition with piecewise constant pressure by triangle.</p>
 <p>The finite element space <span class="math notranslate nohighlight">\(V_h\)</span> is</p>
 <div class="math notranslate nohighlight">
@@ -2813,7 +2813,7 @@ By default this expression does not depend of the mesh position, but if they der
 <p>And the plot instruction is also changed because the pressure is constant, and we cannot plot isovalues of peacewise constant functions.</p>
 </section>
 <section id="the-morley-element">
-<h4>The Morley Element<a class="headerlink" href="#the-morley-element" title="Permalink to this headline"></a></h4>
+<h4>The Morley Element<a class="headerlink" href="#the-morley-element" title="Permalink to this heading"></a></h4>
 <p>See the example
 <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/bilapMorley.edp">bilapMorley.edp</a>.</p>
 </section>
