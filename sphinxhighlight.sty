@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesPackage{sphinxhighlight}[2016/05/29 stylesheet for highlighting with pygments]
+\ProvidesPackage{sphinxhighlight}[2022/06/30 stylesheet for highlighting with pygments]
 % Its contents depend on pygments_style configuration variable.
 
 
@@ -103,12 +103,35 @@
 \def\PYGZrb{]}
 \makeatother
 
-\renewcommand\PYGZsq{\textquotesingle}
+% Sphinx redefinitions
+% Originally to obtain a straight single quote via package textcomp, then
+% to fix problems for the 5.0.0 inline code highlighting (captions!).
+% The \text is from amstext, a dependency of sphinx.sty.  It is here only
+% to avoid build errors if for some reason expansion is in math mode.
+\def\PYGZbs{\text\textbackslash}
+\def\PYGZus{\_}
+\def\PYGZob{\{}
+\def\PYGZcb{\}}
+\def\PYGZca{\text\textasciicircum}
+\def\PYGZam{\&}
+\def\PYGZlt{\text\textless}
+\def\PYGZgt{\text\textgreater}
+\def\PYGZsh{\#}
+\def\PYGZpc{\%}
+\def\PYGZdl{\$}
+\def\PYGZhy{\sphinxhyphen}% defined in sphinxlatexstyletext.sty
+\def\PYGZsq{\text\textquotesingle}
+\def\PYGZdq{"}
+\def\PYGZti{\text\textasciitilde}
+\makeatletter
+% use \protected to allow syntax highlighting in captions
+\protected\def\PYG#1#2{\PYG@reset\PYG@toks#1+\relax+{\PYG@do{#2}}}
+\makeatother
 
 \makeatletter
 % fix for Pygments <= 2.7.4
 \let\spx@original@fcolorbox\fcolorbox
 \def\spx@fixpyg@fcolorbox{\fboxsep-\fboxrule\spx@original@fcolorbox}
-\def\PYG#1#2{\PYG@reset\PYG@toks#1+\relax+%
+\protected\def\PYG#1#2{\PYG@reset\PYG@toks#1+\relax+%
              {\let\fcolorbox\spx@fixpyg@fcolorbox\PYG@do{#2}}}
 \makeatother
