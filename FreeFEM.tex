@@ -137,7 +137,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Sep 12, 2022}
+\date{Sep 21, 2022}
 \release{4.8}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -571,46 +571,159 @@ The document is in construction.
 \item {} 
 \sphinxAtStartPar
 Added
-\sphinxhyphen{} new search algorithm for the element containing a point (more safe) in mesh of type mesh3, meshS, or meshL.
-\sphinxhyphen{} new function \sphinxtitleref{hasType} to know if a PETSc component has been installed, e.g., \sphinxtitleref{hasType(“PC”, “hypre”)}
-\sphinxhyphen{} eigenvalue problems on linear elements, cf. \sphinxtitleref{examples/eigen/LapEigen1DBeltrami.edp} or \sphinxtitleref{examples/hpddm/laplace\sphinxhyphen{}beltrami\sphinxhyphen{}3d\sphinxhyphen{}line\sphinxhyphen{}SLEPc.edp}
-\sphinxhyphen{} \sphinxtitleref{\textendash{}download\sphinxhyphen{}cmake} in PETSc configure if there is no CMake available
-\sphinxhyphen{} flags \sphinxtitleref{\textendash{}with\sphinxhyphen{}{[}slepc|slepccomplex{]}\sphinxhyphen{}include} and \sphinxtitleref{\textendash{}with\sphinxhyphen{}{[}slepc|slepccomplex{]}\sphinxhyphen{}ldflags} for when SLEPc has been built outside of FreeFEM or PETSc
-\sphinxhyphen{} interface to \sphinxtitleref{KSPSetResidualHistory} and \sphinxtitleref{KSPGetIterationNumber}
-\sphinxhyphen{} interface to \sphinxtitleref{mpiWaitAll}
-\sphinxhyphen{} new function extract, allows to build a curve mesh from a 2d mesh (can extract a labeled boundary, apply a geometric transformation)
-\sphinxhyphen{} ffglut can plot a vectorial FE function in surface 3d
-\sphinxhyphen{} distributed ParMmg interface, cf. \sphinxtitleref{examples/hpddm/distributed\sphinxhyphen{}parmmg.edp} or \sphinxtitleref{examples/hpddm/laplace\sphinxhyphen{}adapt\sphinxhyphen{}dist\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-\sphinxhyphen{} new parallel interpolator on non\sphinxhyphen{}matching meshes, cf. \sphinxtitleref{examples/hpddm/transfer.edp}
-\sphinxhyphen{} ability to solve problems in single precision or with 64 bit integers
-\sphinxhyphen{} tool to read data form vtk file only in 3d (cf. plugin iovtk a first example \sphinxtitleref{examples/plugin/iovtk.edp})
-\sphinxhyphen{} tool to read/wrile ply file of meshL, mesh3, MeshS : Polygon File Format / Stanford Triangle Format do  \sphinxtitleref{load “ioply”}
-\begin{quote}
-
+\begin{itemize}
+\item {} 
 \sphinxAtStartPar
-see \sphinxtitleref{examples//3dSurf/operatorsOnMeshS.edp}
-\end{quote}
+new search algorithm for the element containing a point (more safe) in mesh of type \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{mesh3}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{meshS}%
+}}, or \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{meshL}%
+}}.
+
+\item {} 
+\sphinxAtStartPar
+new function \sphinxcode{\sphinxupquote{%
+\PYG{n}{hasType}%
+}} to know if a PETSc component has been installed, e.g., \sphinxcode{\sphinxupquote{%
+\PYG{n}{hasType}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{PC}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}}\PYG{l+s}{hypre}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+eigenvalue problems on linear elements, cf. \sphinxcode{\sphinxupquote{%
+\PYG{n}{examples}\PYG{o}{/}\PYG{n}{eigen}\PYG{o}{/}\PYG{n}{LapEigen1DBeltrami}\PYG{p}{.}\PYG{n}{edp}%
+}} or \sphinxcode{\sphinxupquote{%
+\PYG{n}{examples}\PYG{o}{/}\PYG{n}{hpddm}\PYG{o}{/}\PYG{n}{laplace}\PYG{o}{\PYGZhy{}}\PYG{n}{beltrami}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{n+nf}{d}\PYG{o}{\PYGZhy{}}\PYG{n}{line}\PYG{o}{\PYGZhy{}}\PYG{n}{SLEPc}\PYG{p}{.}\PYG{n}{edp}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+\sphinxtitleref{\textendash{}download\sphinxhyphen{}cmake} in PETSc configure if there is no CMake available
+
+\item {} 
+\sphinxAtStartPar
+flags \sphinxtitleref{\textendash{}with\sphinxhyphen{}{[}slepc|slepccomplex{]}\sphinxhyphen{}include} and \sphinxtitleref{\textendash{}with\sphinxhyphen{}{[}slepc|slepccomplex{]}\sphinxhyphen{}ldflags} for when SLEPc has been built outside of FreeFEM or PETSc
+
+\item {} 
+\sphinxAtStartPar
+interface to \sphinxtitleref{KSPSetResidualHistory} and \sphinxtitleref{KSPGetIterationNumber}
+
+\item {} 
+\sphinxAtStartPar
+interface to \sphinxtitleref{mpiWaitAll}
+
+\item {} 
+\sphinxAtStartPar
+new function extract, allows to build a curve mesh from a 2d mesh (can extract a labeled boundary, apply a geometric transformation)
+
+\item {} 
+\sphinxAtStartPar
+ffglut can plot a vectorial FE function in surface 3d
+
+\item {} 
+\sphinxAtStartPar
+distributed ParMmg interface, cf. \sphinxcode{\sphinxupquote{%
+\PYG{n}{examples}\PYG{o}{/}\PYG{n}{hpddm}\PYG{o}{/}\PYG{n}{distributed}\PYG{o}{\PYGZhy{}}\PYG{n}{parmmg}\PYG{p}{.}\PYG{n}{edp}%
+}} or \sphinxcode{\sphinxupquote{%
+\PYG{n}{examples}\PYG{o}{/}\PYG{n}{hpddm}\PYG{o}{/}\PYG{n}{laplace}\PYG{o}{\PYGZhy{}}\PYG{n}{adapt}\PYG{o}{\PYGZhy{}}\PYG{n+nf}{dist}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{n+nf}{d}\PYG{o}{\PYGZhy{}}\PYG{n}{PETSc}\PYG{p}{.}\PYG{n}{edp}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+new parallel interpolator on non\sphinxhyphen{}matching meshes, cf. \sphinxcode{\sphinxupquote{%
+\PYG{n}{examples}\PYG{o}{/}\PYG{n}{hpddm}\PYG{o}{/}\PYG{n}{transfer}\PYG{p}{.}\PYG{n}{edp}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+ability to solve problems in single precision or with 64 bit integers
+
+\item {} 
+\sphinxAtStartPar
+tool to read data form vtk file only in 3d (cf. plugin iovtk a first example \sphinxtitleref{examples/plugin/iovtk.edp})
+
+\item {} \begin{description}
+\sphinxlineitem{tool to read/wrile ply file of meshL, mesh3, MeshS}{[}Polygon File Format / Stanford Triangle Format do  \sphinxtitleref{load “ioply”}{]}
+\sphinxAtStartPar
+see \sphinxcode{\sphinxupquote{%
+\PYG{n}{examples}\PYG{c+c1}{//3dSurf/operatorsOnMeshS.edp}%
+}}
+
+\end{description}
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Changed
-\sphinxhyphen{} new \sphinxtitleref{tgv} values: \sphinxhyphen{}10 =\textgreater{} zero row, \sphinxhyphen{}20 =\textgreater{} zero row/column
-\sphinxhyphen{} Windows binary now shipped with PETSc/SLEPc
-\sphinxhyphen{} BEM examples are now in \sphinxtitleref{examples/mpi}
-\sphinxhyphen{} plot border type is now in 3d (border 2d and 3d)
-\sphinxhyphen{} PETSc version 3.13.0
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+new \sphinxcode{\sphinxupquote{%
+\PYG{k+kp}{tgv}%
+}} values: \sphinxhyphen{}10 =\textgreater{} zero row, \sphinxhyphen{}20 =\textgreater{} zero row/column
+
+\item {} 
+\sphinxAtStartPar
+Windows binary now shipped with PETSc/SLEPc
+
+\item {} 
+\sphinxAtStartPar
+BEM examples are now in \sphinxtitleref{examples/mpi}
+
+\item {} 
+\sphinxAtStartPar
+plot border type is now in 3d (border 2d and 3d)
+
+\item {} 
+\sphinxAtStartPar
+PETSc version 3.13.0
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Fixed
-\sphinxhyphen{} \sphinxtitleref{\textendash{}enable\sphinxhyphen{}download\_package} may now be used to download a single package, e.g., \sphinxtitleref{\textendash{}enable\sphinxhyphen{}download\_metis}
-\sphinxhyphen{} compilation of PETSc under Windows
-\sphinxhyphen{} compilation of plugins when using static libraries
-\sphinxhyphen{} correct detection problem in FE type when use a vectorial FE
-\sphinxhyphen{} macro concatenation with spaces in arguments
-\sphinxhyphen{} correct bug in \sphinxtitleref{plugin/seq/Schur\sphinxhyphen{}Complement.cpp}
-\sphinxhyphen{} correct ambiguity bug in \sphinxtitleref{plugin/seq/bfstream.cpp} (reading real or integer)
-\sphinxhyphen{} compilation of plugin libff\sphinxhyphen{}mmap\sphinxhyphen{}semaphore.c under windows
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxtitleref{\textendash{}enable\sphinxhyphen{}download\_package} may now be used to download a single package, e.g., \sphinxtitleref{\textendash{}enable\sphinxhyphen{}download\_metis}
+
+\item {} 
+\sphinxAtStartPar
+compilation of PETSc under Windows
+
+\item {} 
+\sphinxAtStartPar
+compilation of plugins when using static libraries
+
+\item {} 
+\sphinxAtStartPar
+correct detection problem in FE type when use a vectorial FE
+
+\item {} 
+\sphinxAtStartPar
+macro concatenation with spaces in arguments
+
+\item {} 
+\sphinxAtStartPar
+correct bug in \sphinxcode{\sphinxupquote{%
+\PYG{n}{plugin}\PYG{o}{/}\PYG{n}{seq}\PYG{o}{/}\PYG{n}{Schur}\PYG{o}{\PYGZhy{}}\PYG{n}{Complement}\PYG{p}{.}\PYG{n}{cpp}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+correct ambiguity bug in \sphinxcode{\sphinxupquote{%
+\PYG{n}{plugin}\PYG{o}{/}\PYG{n}{seq}\PYG{o}{/}\PYG{n}{bfstream}\PYG{p}{.}\PYG{n}{cpp}%
+}} (reading real or integer)
+
+\item {} 
+\sphinxAtStartPar
+compilation of plugin libff\sphinxhyphen{}mmap\sphinxhyphen{}semaphore.c under windows
+
+\end{itemize}
 
 \end{itemize}
 
@@ -627,11 +740,15 @@ new way to build matrix between 2d Finite element 2d and Curve finite element to
 
 \item {} 
 \sphinxAtStartPar
-add \sphinxtitleref{Ns} normal vector  in R\textasciicircum{}3 on meshS (normal of the surface) of current point (to day Ns of {[}x,y,0{]} plan  is {[}0,0,\sphinxhyphen{}1{]})  no be compatible to exterior normal.
+add \sphinxcode{\sphinxupquote{%
+\PYG{n}{Ns}%
+}} normal vector  in R\textasciicircum{}3 on meshS (normal of the surface) of current point (to day Ns of {[}x,y,0{]} plan  is {[}0,0,\sphinxhyphen{}1{]})  no be compatible to exterior normal.
 
 \item {} 
 \sphinxAtStartPar
-add \sphinxtitleref{Tl} tangent vector in R\textasciicircum{}3 on meshL (tangent vector of the line/curve) of current point
+add \sphinxcode{\sphinxupquote{%
+\PYG{n}{Tl}%
+}} tangent vector in R\textasciicircum{}3 on meshL (tangent vector of the line/curve) of current point
 
 \item {} 
 \sphinxAtStartPar
@@ -694,61 +811,153 @@ possibility to assemble a symmetric \sphinxtitleref{HMatrix\textless{}complex\te
 \item {} 
 \sphinxAtStartPar
 Changed
-\sphinxhyphen{} moved Htool to its new GitHub location
-\sphinxhyphen{} ScaLAPACK and MUMPS are not compiled by PETSc anymore if there is no Fortran compiler
-\sphinxhyphen{} MPICH is compiled by PETSc if no MPI is detected during configure, see \sphinxurl{https://community.freefem.org/t/feature-request-use-download-mpich-on-ubuntu/407}
-\sphinxhyphen{} PETSc version 3.13.5
-\sphinxhyphen{} force \sphinxtitleref{\textendash{}with\sphinxhyphen{}cudac=0} in \sphinxtitleref{make petsc\sphinxhyphen{}slepc}, see \sphinxurl{https://github.com/FreeFem/FreeFem-sources/issues/141}
-\sphinxhyphen{} change DSL keyword P1dc3dL\sphinxhyphen{}\textgreater{}P1dcL and P1dc3dS\sphinxhyphen{}\textgreater{}P1dcS
-\sphinxhyphen{} rename \sphinxtitleref{view}, \sphinxtitleref{hasType}, \sphinxtitleref{changeSchur} to respectively \sphinxtitleref{ObjectView}, \sphinxtitleref{HasType}, and \sphinxtitleref{ChangeSchur}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+moved Htool to its new GitHub location
+
+\item {} 
+\sphinxAtStartPar
+ScaLAPACK and MUMPS are not compiled by PETSc anymore if there is no Fortran compiler
+
+\item {} 
+\sphinxAtStartPar
+MPICH is compiled by PETSc if no MPI is detected during configure, see \sphinxurl{https://community.freefem.org/t/feature-request-use-download-mpich-on-ubuntu/407}
+
+\item {} 
+\sphinxAtStartPar
+PETSc version 3.13.5
+
+\item {} 
+\sphinxAtStartPar
+force \sphinxtitleref{\textendash{}with\sphinxhyphen{}cudac=0} in \sphinxtitleref{make petsc\sphinxhyphen{}slepc}, see \sphinxurl{https://github.com/FreeFem/FreeFem-sources/issues/141}
+
+\item {} 
+\sphinxAtStartPar
+change DSL keyword P1dc3dL\sphinxhyphen{}\textgreater{}P1dcL and P1dc3dS\sphinxhyphen{}\textgreater{}P1dcS
+
+\item {} 
+\sphinxAtStartPar
+rename \sphinxtitleref{view}, \sphinxtitleref{hasType}, \sphinxtitleref{changeSchur} to respectively \sphinxtitleref{ObjectView}, \sphinxtitleref{HasType}, and \sphinxtitleref{ChangeSchur}
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Deprecated
-\sphinxhyphen{} rename \sphinxtitleref{changeNumbering}, \sphinxtitleref{globalNumbering}, \sphinxtitleref{originalNumbering}, \sphinxtitleref{changeOperator}, \sphinxtitleref{destroyRecycling}, and \sphinxtitleref{attachCoarseOperator} to respectively \sphinxtitleref{ChangeNumbering}, \sphinxtitleref{GlobalNumbering}, \sphinxtitleref{OriginalNumbering}, \sphinxtitleref{ChangeOperator}, \sphinxtitleref{DestroyRecycling}, and \sphinxtitleref{AttachCoarseOperator}
-\sphinxhyphen{} \sphinxtitleref{Nt} the normal vector of the current (wrong on meshL) use \sphinxtitleref{Ns} or \sphinxtitleref{Tl}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+rename \sphinxtitleref{changeNumbering}, \sphinxtitleref{globalNumbering}, \sphinxtitleref{originalNumbering}, \sphinxtitleref{changeOperator}, \sphinxtitleref{destroyRecycling}, and \sphinxtitleref{attachCoarseOperator} to respectively \sphinxtitleref{ChangeNumbering}, \sphinxtitleref{GlobalNumbering}, \sphinxtitleref{OriginalNumbering}, \sphinxtitleref{ChangeOperator}, \sphinxtitleref{DestroyRecycling}, and \sphinxtitleref{AttachCoarseOperator}
+
+\item {} 
+\sphinxAtStartPar
+\sphinxtitleref{Nt} the normal vector of the current (wrong on meshL) use \sphinxtitleref{Ns} or \sphinxtitleref{Tl}
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Removed
-\sphinxhyphen{} \sphinxtitleref{augmentation} routine from the PETSc plugin
-\sphinxhyphen{} \sphinxtitleref{MPIF77} variable
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxtitleref{augmentation} routine from the PETSc plugin
+
+\item {} 
+\sphinxAtStartPar
+\sphinxtitleref{MPIF77} variable
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Fixed
-\sphinxhyphen{} lot of mistake in MeshL element add a example o check lot of thing \sphinxtitleref{tutomesh1d.edp}
-\sphinxhyphen{} fixed problem of change of mesh when rebuild 2d mesh with buildmesh, …. (Thank to P. Jovilet to points this problem)
-\sphinxhyphen{} missing METIS library when using SuiteSparse compiled by PETSc
-\sphinxhyphen{} missing \sphinxtitleref{\sphinxhyphen{}fno\sphinxhyphen{}stack\sphinxhyphen{}protector} when building PETSc on Windows, see \sphinxurl{https://community.freefem.org/t/error-loading-complex-petsc-slepc-library/370}
-\sphinxhyphen{} fixed ffglut for the plotting of FE array solution
-\sphinxhyphen{} fixed  ffglut bug on MacOS Catalina , draw inn only half windows screen (Apple Bug ???)
-\sphinxhyphen{} correct P0VF  finite element
-\sphinxhyphen{} \sphinxtitleref{abs} function of array
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+lot of mistake in MeshL element add a example o check lot of thing \sphinxtitleref{tutomesh1d.edp}
+
+\item {} 
+\sphinxAtStartPar
+fixed problem of change of mesh when rebuild 2d mesh with buildmesh, …. (Thank to P. Jovilet to points this problem)
+
+\item {} 
+\sphinxAtStartPar
+missing METIS library when using SuiteSparse compiled by PETSc
+
+\item {} 
+\sphinxAtStartPar
+missing \sphinxtitleref{\sphinxhyphen{}fno\sphinxhyphen{}stack\sphinxhyphen{}protector} when building PETSc on Windows, see \sphinxurl{https://community.freefem.org/t/error-loading-complex-petsc-slepc-library/370}
+
+\item {} 
+\sphinxAtStartPar
+fixed ffglut for the plotting of FE array solution
+
+\item {} 
+\sphinxAtStartPar
+fixed  ffglut bug on MacOS Catalina , draw inn only half windows screen (Apple Bug ???)
+
+\item {} 
+\sphinxAtStartPar
+correct P0VF  finite element
+
+\item {} 
+\sphinxAtStartPar
+\sphinxtitleref{abs} function of array
+
+\end{itemize}
 
 \end{itemize}
 
 
-\section{Version {[}4.7\sphinxhyphen{}1{]}: new features}
+\section{Version 4.7\sphinxhyphen{}1: new features}
 \label{\detokenize{introduction/new-features:version-4-7-1-new-features}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Changed
-\sphinxhyphen{} change the language definition to use type as a construction function with named arguments for bem plugin
-\sphinxhyphen{} PETSc version 3.14.0
-\sphinxhyphen{} ARPACK compiled by SLEPc
-\sphinxhyphen{} Mmg version 5.5.0
-\sphinxhyphen{} \sphinxhyphen{}std=c++14 instead of \sphinxhyphen{}std=c++11 when possible
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+change the language definition to use type as a construction function with named arguments for bem plugin
+
+\item {} 
+\sphinxAtStartPar
+PETSc version 3.14.0
+
+\item {} 
+\sphinxAtStartPar
+ARPACK compiled by SLEPc
+
+\item {} 
+\sphinxAtStartPar
+Mmg version 5.5.0
+
+\item {} 
+\sphinxAtStartPar
+\sphinxhyphen{}std=c++14 instead of \sphinxhyphen{}std=c++11 when possible
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Removed
-\sphinxhyphen{} plugins thresholdings, symmetrizeCSR, and fflapack and associed example
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+plugins thresholdings, symmetrizeCSR, and fflapack and associed example
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Fixed
-\sphinxhyphen{} problem compilation with gfortran\sphinxhyphen{}10 of arpack and mumps (add \sphinxhyphen{}fallow\sphinxhyphen{}argument\sphinxhyphen{}mismatch flags)
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+problem compilation with gfortran\sphinxhyphen{}10 of arpack and mumps (add \sphinxhyphen{}fallow\sphinxhyphen{}argument\sphinxhyphen{}mismatch flags)
+
+\end{itemize}
 
 \end{itemize}
 
@@ -758,29 +967,48 @@ Fixed
 \item {} 
 \sphinxAtStartPar
 Added
-\sphinxhyphen{} Bilaplacian example using Morley FE with PETSc, see \sphinxtitleref{examples/hpddm/bilaplacian\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-\sphinxhyphen{} Oseen problem preconditioned by PCD, see \sphinxtitleref{examples/hpddm/oseen\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-\sphinxhyphen{} SLEPc polynomial eigenvalue solver \sphinxtitleref{PEPSolve()}
-\sphinxhyphen{} add trivial example to check periodic boundary condition on meshS , meshL  , mesh3
-\begin{quote}
-
+\begin{itemize}
+\item {} 
 \sphinxAtStartPar
+Bilaplacian example using Morley FE with PETSc, see \sphinxcode{\sphinxupquote{%
+\PYG{n}{examples}\PYG{o}{/}\PYG{n}{hpddm}\PYG{o}{/}\PYG{n}{bilaplacian}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{n+nf}{d}\PYG{o}{\PYGZhy{}}\PYG{n}{PETSc}\PYG{p}{.}\PYG{n}{edp}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+Oseen problem preconditioned by PCD, see \sphinxcode{\sphinxupquote{%
+\PYG{n}{examples}\PYG{o}{/}\PYG{n}{hpddm}\PYG{o}{/}\PYG{n}{oseen}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{n+nf}{d}\PYG{o}{\PYGZhy{}}\PYG{n}{PETSc}\PYG{p}{.}\PYG{n}{edp}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+SLEPc polynomial eigenvalue solver \sphinxtitleref{PEPSolve()}
+
+\item {} 
+\sphinxAtStartPar
+add trivial example to check periodic boundary condition on meshS , meshL  , mesh3
 examples/3d/periodic3.edp   examples/3dSurf/periodicS.edp
 examples/3dCurve/periodicL.edp
-\end{quote}
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Changed
-\sphinxhyphen{} PETSc version 3.14.2
-\sphinxhyphen{} Mmg version 5.5.2
-\sphinxhyphen{} link of ffglut so change in configure.ac and Makefile.am  LIBS \sphinxhyphen{}\textgreater{} FF\_LIBS and LIBS become empty
-\begin{quote}
-
-\sphinxAtStartPar
-to remove default libs
-\end{quote}
 \begin{itemize}
+\item {} 
+\sphinxAtStartPar
+PETSc version 3.14.2
+
+\item {} 
+\sphinxAtStartPar
+Mmg version 5.5.2
+
+\item {} 
+\sphinxAtStartPar
+link of ffglut so change in configure.ac and Makefile.am  LIBS \sphinxhyphen{}\textgreater{} FF\_LIBS and LIBS become empty
+to remove default libs
+
 \item {} 
 \sphinxAtStartPar
 change number of save plot in ffglut from 10 to 20 for O. Pironneau
@@ -790,16 +1018,20 @@ change number of save plot in ffglut from 10 to 20 for O. Pironneau
 \item {} 
 \sphinxAtStartPar
 Fixed
-\sphinxhyphen{} some memory leaks
-\sphinxhyphen{} the periodic boundary condition have wrong before first a sementic level of MeshS and MeshL case.
-\begin{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+some memory leaks
 
+\item {} \begin{description}
+\sphinxlineitem{the periodic boundary condition have wrong before first a sementic level of MeshS and MeshL case.}
 \sphinxAtStartPar
 the new syntexe is for example:
 meshL Tl=segment(10);   fespace Vl(Tl,P1,periodic={[}{[}1{]},{[}2{]}{]});
 meshS Th=square3(10,10,{[}x*2*pi,y*2*pi{]}); fespace Vh2(Th,P1,periodic={[}{[}1,x{]},{[}3,x{]},{[}2,y{]},{[}4,y{]}{]});
-\end{quote}
-\begin{itemize}
+
+\end{description}
+
 \item {} 
 \sphinxAtStartPar
 fixed ‘*’ keyboard trick,  to keep  the viewpoint in ffglut or not.
@@ -814,17 +1046,23 @@ fixed ‘*’ keyboard trick,  to keep  the viewpoint in ffglut or not.
 \item {} 
 \sphinxAtStartPar
 Added
-\sphinxhyphen{} add P3 lagrange finite element on meshS and meshS
-\sphinxhyphen{} add new plugin {\color{red}\bfseries{}\textasciigrave{}}meshtool\textasciigrave{}to add tool to compute the number of connected components of a all kind of mesh
-\begin{quote}
-
-\sphinxAtStartPar
-(mesh,mesh3,meshS,meshL) with 2 kind of connected components ones on interior part of the mesh (default) ans
-secondly on the closure of the mesh (see \sphinxtitleref{examples/hpddm/bConnectedComponents.edp} )
-add functions  int{[}int{]} In=iminP1K(Th,u) or int{[}int{]} Ix=imaxP1K(Th,u)  get the array min/max of value u{[}i{]}
-where i is vertex number on  each element k, so we have  u{[}Im{[}k{]}{]} = min u{[}i{]}/ i in k;
-\end{quote}
 \begin{itemize}
+\item {} 
+\sphinxAtStartPar
+add P3 lagrange finite element on meshS and meshS
+
+\item {} 
+\sphinxAtStartPar
+add new plugin \sphinxcode{\sphinxupquote{%
+meshtool`to add tool to compute the number of connected components of a all kind of mesh
+(mesh,mesh3,meshS,meshL) with 2 kind of connected components ones on interior part of the mesh (default) ans
+secondly on the closure of the mesh (see :freefem:`examples/hpddm/bConnectedComponents.edp%
+}} )
+add functions  int{[}int{]} In=iminP1K(Th,u) or int{[}int{]} Ix=imaxP1K(Th,u)  get the array min/max of value u{[}i{]}
+where i is vertex number on  each element k, so we have  \sphinxcode{\sphinxupquote{%
+\PYG{n}{u}\PYG{p}{[}\PYG{n}{Im}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}\PYG{p}{]} \PYG{o}{=} \PYG{k+kr}{min} \PYG{n}{u}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{/} \PYG{n}{i} \PYG{n}{in} \PYG{n}{k}\PYG{p}{;}%
+}}
+
 \item {} 
 \sphinxAtStartPar
 add in plugin \sphinxtitleref{bfstream} to to read binary int (4 bytes) to read fortran file and try to pull tools to share the endiannes
@@ -836,11 +1074,15 @@ add gluemesh of array of MeshL and MeshS type
 
 \item {} 
 \sphinxAtStartPar
-interface to \sphinxtitleref{PC\_MG\_GALERKIN\_BOTH}
+interface to \sphinxcode{\sphinxupquote{%
+\PYG{n}{PC\PYGZus{}MG\PYGZus{}GALERKIN\PYGZus{}BOTH}%
+}}
 
 \item {} 
 \sphinxAtStartPar
-Kronecker product of two sparse matrices \sphinxtitleref{matrix C = kron(A, B)}
+Kronecker product of two sparse matrices \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix} \PYG{n}{C} \PYG{o}{=} \PYG{n}{kron}\PYG{p}{(}\PYG{k+kp}{A}\PYG{p}{,} \PYG{k+kp}{B}\PYG{p}{)}%
+}}
 
 \item {} 
 \sphinxAtStartPar
@@ -872,13 +1114,12 @@ add buildmesh functon to build a 2d mesh from a meshL (same as buildmesh see exa
 \item {} 
 \sphinxAtStartPar
 Changed
-\sphinxhyphen{} Now the order to find MPI in configure is first if you have PETSC then take MPI from PETSc
-\begin{quote}
-
-\sphinxAtStartPar
-otherwise use previous method
-\end{quote}
 \begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Now the order to find MPI in configure is first if you have PETSC then take MPI from PETSc
+otherwise use previous method
+
 \item {} 
 \sphinxAtStartPar
 on MeshL defined with buildmeshL now the default label are 2*k\sphinxhyphen{}1  (resp. 2*k)  for the begin (resp. end) of curve
@@ -895,23 +1136,28 @@ PETSc 3.15.0
 \item {} 
 \sphinxAtStartPar
 Fixed
-\sphinxhyphen{} bug in Find triangle contening point in 2d (border case),
-\begin{quote}
-
-\sphinxAtStartPar
-\sphinxtitleref{int Mesh::DataFindBoundary::Find(R2 PP,R *l,int \& outside) const}
-the parameter l not correclty return due to local variable.
-\end{quote}
 \begin{itemize}
+\item {} 
+\sphinxAtStartPar
+bug in Find triangle contening point in 2d (border case),
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int} \PYG{n}{Mesh}\PYG{o}{:}\PYG{o}{:}\PYG{n}{DataFindBoundary}\PYG{o}{:}\PYG{o}{:}\PYG{n}{Find}\PYG{p}{(}\PYG{n}{R2} \PYG{n}{PP}\PYG{p}{,}\PYG{n}{R} \PYG{o}{*}\PYG{n}{l}\PYG{p}{,}\PYG{k+kt}{int} \PYG{o}{\PYGZam{}} \PYG{n}{outside}\PYG{p}{)} \PYG{k}{const}%
+}}
+the parameter l not correclty return due to local variable.
+
 \item {} 
 \sphinxAtStartPar
 set CFLAGS=\sphinxhyphen{}Wno\sphinxhyphen{}implicit\sphinxhyphen{}function\sphinxhyphen{}declaration to complie with Apple clang version 12.0.0 (clang\sphinxhyphen{}1200.0.32.29)
 to remove following error: implicit declaration of function
-correct {\color{red}\bfseries{}\textasciigrave{}}3dCurve/basicGlue.edp\textasciigrave{}and add missing test
+correct :freefem:{\color{red}\bfseries{}\textasciigrave{}}3dCurve/basicGlue.edp\textasciigrave{}and add missing test
 
 \item {} 
 \sphinxAtStartPar
-bugs in SLEPc \sphinxtitleref{SVDSolve()} with a rectangular \sphinxtitleref{Mat}
+bugs in SLEPc \sphinxcode{\sphinxupquote{%
+\PYG{n}{SVDSolve}\PYG{p}{(}\PYG{p}{)}%
+}} with a rectangular \sphinxcode{\sphinxupquote{%
+\PYG{n}{Mat}%
+}}
 
 \item {} 
 \sphinxAtStartPar
@@ -927,47 +1173,98 @@ bugs in nElementonB for DG 3d formulation.
 \item {} 
 \sphinxAtStartPar
 Added
-\sphinxhyphen{} ridgeangle named parameter in ExtractMeshL in msh3 plugin
-\sphinxhyphen{} DG formulation in 1d :
-\begin{quote}
-
-\sphinxAtStartPar
-add integral of all border of element : \sphinxtitleref{intallBE(ThL)} and unified the notation by adding
-\sphinxtitleref{intallBE(ThS)} , \sphinxtitleref{intallBE(Th2)}, \sphinxtitleref{intallBE(Th3)}
-\sphinxtitleref{nuVertex} of now the vertex number of element in intallBE0d integral
-\sphinxtitleref{BoundaryBE}, \sphinxtitleref{InternalBE} to know if border element (BE) is on true boundary of not.
-update \sphinxtitleref{nElementonB} in case on no manifold data (value greater \textgreater{} 2) in meshL, MeshS case ..
-add code to use jump, mean of test functuon on MeshL case. ( not in mesh3 ) to compute RHS.
-\end{quote}
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-add getcwd() function in shell plugin to get the current working dir
+ridgeangle named parameter in ExtractMeshL in msh3 plugin
 
 \item {} 
 \sphinxAtStartPar
-add nuVertex to get the vextex on element in some int?
+DG formulation in 1d :
+add integral of all border of element : \sphinxcode{\sphinxupquote{%
+\PYG{n}{intallBE}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{)}%
+}} and unified the notation by adding
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{intallBE}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}%
+}} , \sphinxcode{\sphinxupquote{%
+\PYG{n}{intallBE}\PYG{p}{(}\PYG{n}{Th2}\PYG{p}{)}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{n}{intallBE}\PYG{p}{(}\PYG{n}{Th3}\PYG{p}{)}%
+}}
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{nuVertex}%
+}} of now the vertex number of element in \sphinxcode{\sphinxupquote{%
+\PYG{n}{intallBE0d}%
+}} integral
+\sphinxtitleref{BoundaryBE}, \sphinxtitleref{InternalBE} to know if border element (BE) is on true boundary of not.
+update \sphinxcode{\sphinxupquote{%
+\PYG{n}{nElementonB}%
+}} in case on no manifold data (value greater \textgreater{} 2) in meshL, MeshS case ..
+add code to use jump, mean of test functuon on MeshL case. ( not in mesh3 ) to compute RHS.
+
+\item {} 
+\sphinxAtStartPar
+add \sphinxcode{\sphinxupquote{%
+\PYG{n}{getcwd}\PYG{p}{(}\PYG{p}{)}%
+}} function in shell plugin to get the current working dir
+
+\item {} 
+\sphinxAtStartPar
+add \sphinxcode{\sphinxupquote{%
+\PYG{n}{nuVertex}%
+}} to get the vextex on element in some int?
 
 \end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Changed
-\sphinxhyphen{} PETSc 3.16.1
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+PETSc 3.16.1
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Deprecated
-\sphinxhyphen{} SLEPc and SLEPc\sphinxhyphen{}complex have been part of PETSc and PETSc\sphinxhyphen{}complex for multiple releases and are now deprecated
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+SLEPc and SLEPc\sphinxhyphen{}complex have been part of PETSc and PETSc\sphinxhyphen{}complex for multiple releases and are now deprecated
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Fixed
-\sphinxhyphen{} examples/potential.edp correct problem in times loops and BC
-\sphinxhyphen{} tutorial/mortar\sphinxhyphen{}DN\sphinxhyphen{}4.edp correct problem of region number in meshL
-\sphinxhyphen{} fix problem in Curve mesh and intallBE , vertex number is wrong
-\sphinxhyphen{} portability issue on arm64\sphinxhyphen{}apple with \sphinxtitleref{make petsc\sphinxhyphen{}slepc}
-\sphinxhyphen{} fix assertion failure with \sphinxtitleref{transfer} and \sphinxtitleref{transferMat} with some finite elements
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{examples}\PYG{o}{/}\PYG{n}{potential}\PYG{p}{.}\PYG{n}{edp}%
+}} correct problem in times loops and BC
+
+\item {} 
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{tutorial}\PYG{o}{/}\PYG{n}{mortar}\PYG{o}{\PYGZhy{}}\PYG{n}{DN}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{4.}\PYG{n}{edp}%
+}} correct problem of region number in meshL
+
+\item {} 
+\sphinxAtStartPar
+fix problem in Curve mesh and intallBE , vertex number is wrong
+
+\item {} 
+\sphinxAtStartPar
+portability issue on arm64\sphinxhyphen{}apple with \sphinxtitleref{make petsc\sphinxhyphen{}slepc}
+
+\item {} 
+\sphinxAtStartPar
+fix assertion failure with \sphinxtitleref{transfer} and \sphinxtitleref{transferMat} with some finite elements
+
+\end{itemize}
 
 \end{itemize}
 
@@ -977,18 +1274,45 @@ Fixed
 \item {} 
 \sphinxAtStartPar
 Added
-\sphinxhyphen{} add computation scalar product of R3 example :  ( N’{\color{red}\bfseries{}*}Tl)
-\sphinxhyphen{} add tools to do compution with R3 vector see tutorial/calculus.edp
-\sphinxhyphen{} add an example tutorial/tgv\sphinxhyphen{}test.edp see see what tgv do on matrix build.
-\sphinxhyphen{} add R3 Th.be(k).N to  get the normal of boundary element (in all mesh type)
-\sphinxhyphen{} add R3 Th.be(k){[}i{]}.P  to  get the point (R3)  of boundary vertices
-\sphinxhyphen{} add R3 Th.be(k).measure to  get the measure of the boundary elment
-\sphinxhyphen{} add projection  function to a mesh , meshL, MeshS or  mesh3 with return a R3 point
-\sphinxhyphen{} see new example dist\sphinxhyphen{}projection.edp example in exemples
-\sphinxhyphen{} add dxx, dyy, dzz, dxy,  .. on P2L finite element
-\sphinxhyphen{} add tools to compute solid angle :  let R3 O; a given point, Th3 a mesh3 and ThS a meshS.
-\begin{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+add computation scalar product of R3 example :  ( N’{\color{red}\bfseries{}*}Tl)
 
+\item {} 
+\sphinxAtStartPar
+add tools to do compution with R3 vector see tutorial/calculus.edp
+
+\item {} 
+\sphinxAtStartPar
+add an example tutorial/tgv\sphinxhyphen{}test.edp see see what tgv do on matrix build.
+
+\item {} 
+\sphinxAtStartPar
+add R3 Th.be(k).N to  get the normal of boundary element (in all mesh type)
+
+\item {} 
+\sphinxAtStartPar
+add R3 Th.be(k){[}i{]}.P  to  get the point (R3)  of boundary vertices
+
+\item {} 
+\sphinxAtStartPar
+add R3 Th.be(k).measure to  get the measure of the boundary elment
+
+\item {} 
+\sphinxAtStartPar
+add projection  function to a mesh , meshL, MeshS or  mesh3 with return a R3 point
+
+\item {} 
+\sphinxAtStartPar
+see new example dist\sphinxhyphen{}projection.edp example in exemples
+
+\item {} 
+\sphinxAtStartPar
+add dxx, dyy, dzz, dxy,  .. on P2L finite element
+
+\item {} \begin{description}
+\sphinxlineitem{add tools to compute solid angle}{[}let R3 O; a given point, Th3 a mesh3 and ThS a meshS.{]}
 \sphinxAtStartPar
 solidangle(O,Th3.be(ke)) // triangular face is the boundary face
 solidangle(O,Th3{[}k{]},nuface) // triangular face is face nuface of tet Th3{[}k{]}
@@ -998,8 +1322,9 @@ Volume(O,Th3.be(ke)) // O, triangular face is the boundary face
 Volume(O,Th3{[}k{]},nuface) // O, triangular face is face nuface of tet Th3{[}k{]}
 Volume(O,ThS{[}k{]}) // O, triangular face is ThS{[}k{]}
 Volume(O,A,B,C) // (O,A,B,C) tet ..
-\end{quote}
-\begin{itemize}
+
+\end{description}
+
 \item {} 
 \sphinxAtStartPar
 in bem pluging add array of HMatrix
@@ -1065,22 +1390,49 @@ examples/3d/Elasticity\sphinxhyphen{}simple\sphinxhyphen{}support\sphinxhyphen{}
 \item {} 
 \sphinxAtStartPar
 Changed
-\sphinxhyphen{} the beaviour of linear solver UMFPACK, CHOLMOD in case of error , now FreeFEm exit on ExecError like in MUMPS
-\sphinxhyphen{} PETSc 3.17.0
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+the beaviour of linear solver UMFPACK, CHOLMOD in case of error , now FreeFEm exit on ExecError like in MUMPS
+
+\item {} 
+\sphinxAtStartPar
+PETSc 3.17.0
+
+\end{itemize}
 
 \item {} 
 \sphinxAtStartPar
 Removed
+
+\sphinxAtStartPar
 \sphinxhyphen{}map function  in plugin dfft
 
 \item {} 
 \sphinxAtStartPar
 Fixed
-\sphinxhyphen{} pow(int,int) now call int version not complex version..
-\sphinxhyphen{} correct the normal the N implicite variable   on meshL case
-\sphinxhyphen{} correct version dump in banner FreeFem++ \sphinxhyphen{} version 4.10 (V …
-\sphinxhyphen{} correct  in CPU time on big mesh due to do bad HCode in HashTable.hpp
-\sphinxhyphen{} bug in array of finite element on meshhS, meshL (ie.  \sphinxtitleref{fespace Vh(ThS,{[}P1,P1{]});} )
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+pow(int,int) now call int version not complex version..
+
+\item {} 
+\sphinxAtStartPar
+correct the normal the N implicite variable   on meshL case
+
+\item {} 
+\sphinxAtStartPar
+correct version dump in banner FreeFem++ \sphinxhyphen{} version 4.10 (V …
+
+\item {} 
+\sphinxAtStartPar
+correct  in CPU time on big mesh due to do bad HCode in HashTable.hpp
+
+\item {} 
+\sphinxAtStartPar
+bug in array of finite element on meshhS, meshL (ie.  \sphinxtitleref{fespace Vh(ThS,{[}P1,P1{]});} )
+
+\end{itemize}
 
 \end{itemize}
 
@@ -7690,19 +8042,19 @@ FreeFEM type for mesh variable:
 \sphinxAtStartPar
 1D mesh: \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{meshL}%
-}}
+}} \index{meshL@\spxentry{meshL}}meshL
 
 \item {} 
 \sphinxAtStartPar
 2D mesh: \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{mesh}%
-}}
+}} \index{mesh@\spxentry{mesh}}mesh
 
 \item {} 
 \sphinxAtStartPar
 3D volume mesh: \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{mesh3}%
-}}
+}} \index{mesh3@\spxentry{mesh3}}mesh3
 
 \item {} \begin{description}
 \sphinxlineitem{3D border meshes}\begin{itemize}
@@ -7710,13 +8062,13 @@ FreeFEM type for mesh variable:
 \sphinxAtStartPar
 3D surface \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{meshS}%
-}}
+}} \index{meshS@\spxentry{meshS}}meshS
 
 \item {} 
 \sphinxAtStartPar
 3D curve \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{meshL}%
-}}
+}} \index{meshL@\spxentry{meshL}}meshL
 
 \end{itemize}
 
