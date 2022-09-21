@@ -11,12 +11,12 @@ In this section, operators and tools on meshes are presented.
 
 FreeFEM type for mesh variable:
 
- - 1D mesh: :freefem:`meshL` :index:`meshL` 
- - 2D mesh: :freefem:`mesh` :index:`mesh` 
- - 3D volume mesh: :freefem:`mesh3` :index:`mesh3` 
+ - 1D mesh: :freefem: :index: `meshL` 
+ - 2D mesh: :index: :freefem:`mesh`
+ - 3D volume mesh: :freefem:`mesh3` 
  - 3D border meshes
- 	- 3D surface :freefem:`meshS` :index:`meshS` 
-	- 3D curve :freefem:`meshL` :index:`meshL` 
+ 	- 3D surface :freefem:`meshS`
+	- 3D curve :freefem:`meshL`  
 	
 Through this presentation, the principal commands for the mesh generation and links between :freefem:`mesh` - :freefem:`mesh3` - :freefem:`meshS` - :freefem:`meshL` are described.
 
