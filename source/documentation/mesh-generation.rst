@@ -11,12 +11,14 @@ In this section, operators and tools on meshes are presented.
 
 FreeFEM type for mesh variable:
 
- - 1D mesh: :freefem: :index: `meshL` 
- - 2D mesh: :index: :freefem:`mesh`
- - 3D volume mesh: :freefem:`mesh3` 
- - 3D border meshes
- 	- 3D surface :freefem:`meshS`
-	- 3D curve :freefem:`meshL`  
+- 1D mesh: :freefem:`meshL`
+.. index:: meshL
+- 2D mesh: :freefem:`mesh`
+.. index:: mesh
+- 3D volume mesh: :freefem:`mesh3`
+- 3D border meshes
+    - 3D surface :freefem:`meshS`
+    - 3D curve :freefem:`meshL`
 	
 Through this presentation, the principal commands for the mesh generation and links between :freefem:`mesh` - :freefem:`mesh3` - :freefem:`meshS` - :freefem:`meshL` are described.
 
@@ -38,7 +40,7 @@ The command *square*
 
 The command :freefem:`square` triangulates the unit square.
 
-The following generates a :math:`4 \times 5` grid in the unit square :math:`[0,1]^2`. The labels of the boundaries are shown in :numref:`figBoundaryLabels`.
+The following generates a :math:`4\times 5` grid in the unit square :math:`[0,1]^2`. The labels of the boundaries are shown in :numref:`figBoundaryLabels`.
 
 .. code-block:: freefem
   :linenos:
