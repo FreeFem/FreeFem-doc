@@ -68,37 +68,40 @@ Version 4.6: new features
 =========================
 
 * Added
-  - new search algorithm for the element containing a point (more safe) in mesh of type mesh3, meshS, or meshL.
-  - new function `hasType` to know if a PETSc component has been installed, e.g., `hasType("PC", "hypre")`
-  - eigenvalue problems on linear elements, cf. `examples/eigen/LapEigen1DBeltrami.edp` or `examples/hpddm/laplace-beltrami-3d-line-SLEPc.edp`
+
+  - new search algorithm for the element containing a point (more safe) in mesh of type :freefem:`mesh3`, :freefem:`meshS`, or :freefem:`meshL`.
+  - new function :freefem:`hasType` to know if a PETSc component has been installed, e.g., :freefem:`hasType("PC", "hypre")`
+  - eigenvalue problems on linear elements, cf. :freefem:`examples/eigen/LapEigen1DBeltrami.edp` or :freefem:`examples/hpddm/laplace-beltrami-3d-line-SLEPc.edp`
   - `--download-cmake` in PETSc configure if there is no CMake available
   - flags `--with-[slepc|slepccomplex]-include` and `--with-[slepc|slepccomplex]-ldflags` for when SLEPc has been built outside of FreeFEM or PETSc
   - interface to `KSPSetResidualHistory` and `KSPGetIterationNumber`
   - interface to `mpiWaitAll`
   - new function extract, allows to build a curve mesh from a 2d mesh (can extract a labeled boundary, apply a geometric transformation)
   - ffglut can plot a vectorial FE function in surface 3d
-  - distributed ParMmg interface, cf. `examples/hpddm/distributed-parmmg.edp` or `examples/hpddm/laplace-adapt-dist-3d-PETSc.edp`
-  - new parallel interpolator on non-matching meshes, cf. `examples/hpddm/transfer.edp`
+  - distributed ParMmg interface, cf. :freefem:`examples/hpddm/distributed-parmmg.edp` or :freefem:`examples/hpddm/laplace-adapt-dist-3d-PETSc.edp`
+  - new parallel interpolator on non-matching meshes, cf. :freefem:`examples/hpddm/transfer.edp`
   - ability to solve problems in single precision or with 64 bit integers
   - tool to read data form vtk file only in 3d (cf. plugin iovtk a first example `examples/plugin/iovtk.edp`)
   - tool to read/wrile ply file of meshL, mesh3, MeshS : Polygon File Format / Stanford Triangle Format do  `load "ioply"`
-     see `examples//3dSurf/operatorsOnMeshS.edp`
+     see :freefem:`examples//3dSurf/operatorsOnMeshS.edp`
 
 * Changed
-  - new `tgv` values: -10 => zero row, -20 => zero row/column
+
+  - new :freefem:`tgv` values: -10 => zero row, -20 => zero row/column
   - Windows binary now shipped with PETSc/SLEPc
   - BEM examples are now in `examples/mpi`
   - plot border type is now in 3d (border 2d and 3d)
   - PETSc version 3.13.0
 
 * Fixed
+
   - `--enable-download_package` may now be used to download a single package, e.g., `--enable-download_metis`
   - compilation of PETSc under Windows
   - compilation of plugins when using static libraries
   - correct detection problem in FE type when use a vectorial FE
   - macro concatenation with spaces in arguments
-  - correct bug in `plugin/seq/Schur-Complement.cpp`
-  - correct ambiguity bug in `plugin/seq/bfstream.cpp` (reading real or integer)
+  - correct bug in :freefem:`plugin/seq/Schur-Complement.cpp`
+  - correct ambiguity bug in :freefem:`plugin/seq/bfstream.cpp` (reading real or integer)
   - compilation of plugin libff-mmap-semaphore.c under windows
 
 Version 4.7: new features
@@ -107,8 +110,8 @@ Version 4.7: new features
 * Added
 
   - new way to build matrix between 2d Finite element 2d and Curve finite element to do mortar (Thank to Axel ) , see first example `examples/tutorial/mortar-DN-4-v4.5.edp`
-  - add `Ns` normal vector  in R^3 on meshS (normal of the surface) of current point (to day Ns of [x,y,0] plan  is [0,0,-1])  no be compatible to exterior normal.
-  - add `Tl` tangent vector in R^3 on meshL (tangent vector of the line/curve) of current point
+  - add :freefem:`Ns` normal vector  in R^3 on meshS (normal of the surface) of current point (to day Ns of [x,y,0] plan  is [0,0,-1])  no be compatible to exterior normal.
+  - add :freefem:`Tl` tangent vector in R^3 on meshL (tangent vector of the line/curve) of current point
   - compile ffmaster / ffslave example under windows (thanks to johann@ifado.de)
   - Boolean parameter `spiltpbedge` in `buildmesh` to split in to edge with two boundary vertices
   - interface to PETSc DMPlex, see `examples/hpddm/DMPlex-PETSc.edp`
@@ -125,6 +128,7 @@ Version 4.7: new features
   - possibility to assemble a symmetric `HMatrix<complex>` and to densify a `HMatrix<complex>` into a `Mat<complex>`
 
 * Changed
+
   - moved Htool to its new GitHub location
   - ScaLAPACK and MUMPS are not compiled by PETSc anymore if there is no Fortran compiler
   - MPICH is compiled by PETSc if no MPI is detected during configure, see https://community.freefem.org/t/feature-request-use-download-mpich-on-ubuntu/407
@@ -134,13 +138,16 @@ Version 4.7: new features
   - rename `view`, `hasType`, `changeSchur` to respectively `ObjectView`, `HasType`, and `ChangeSchur`
 
 * Deprecated
+
   - rename `changeNumbering`, `globalNumbering`, `originalNumbering`, `changeOperator`, `destroyRecycling`, and `attachCoarseOperator` to respectively `ChangeNumbering`, `GlobalNumbering`, `OriginalNumbering`, `ChangeOperator`, `DestroyRecycling`, and `AttachCoarseOperator`
   - `Nt` the normal vector of the current (wrong on meshL) use `Ns` or `Tl`
 * Removed 
+
   - `augmentation` routine from the PETSc plugin
   - `MPIF77` variable
 
 * Fixed
+
   - lot of mistake in MeshL element add a example o check lot of thing `tutomesh1d.edp`
   - fixed problem of change of mesh when rebuild 2d mesh with buildmesh, .... (Thank to P. Jovilet to points this problem)
   - missing METIS library when using SuiteSparse compiled by PETSc
@@ -150,10 +157,11 @@ Version 4.7: new features
   - correct P0VF  finite element
   - `abs` function of array
 
-Version [4.7-1]: new features
+Version 4.7-1: new features
 =========================
 
 * Changed
+
   - change the language definition to use type as a construction function with named arguments for bem plugin
   - PETSc version 3.14.0
   - ARPACK compiled by SLEPc
@@ -161,9 +169,11 @@ Version [4.7-1]: new features
   - -std=c++14 instead of -std=c++11 when possible
 
 * Removed
+
   - plugins thresholdings, symmetrizeCSR, and fflapack and associed example
 
 * Fixed
+
   - problem compilation with gfortran-10 of arpack and mumps (add -fallow-argument-mismatch flags)
 
 
@@ -171,14 +181,16 @@ Version 4.8: new features
 =========================
 
 * Added
-  - Bilaplacian example using Morley FE with PETSc, see `examples/hpddm/bilaplacian-2d-PETSc.edp`
-  - Oseen problem preconditioned by PCD, see `examples/hpddm/oseen-2d-PETSc.edp`
+
+  - Bilaplacian example using Morley FE with PETSc, see :freefem:`examples/hpddm/bilaplacian-2d-PETSc.edp`
+  - Oseen problem preconditioned by PCD, see :freefem:`examples/hpddm/oseen-2d-PETSc.edp`
   - SLEPc polynomial eigenvalue solver `PEPSolve()`
   - add trivial example to check periodic boundary condition on meshS , meshL  , mesh3
     examples/3d/periodic3.edp	examples/3dSurf/periodicS.edp
     examples/3dCurve/periodicL.edp
 
 * Changed
+
   - PETSc version 3.14.2
   - Mmg version 5.5.2
   - link of ffglut so change in configure.ac and Makefile.am  LIBS -> FF_LIBS and LIBS become empty
@@ -186,6 +198,7 @@ Version 4.8: new features
   - change number of save plot in ffglut from 10 to 20 for O. Pironneau
 
 * Fixed
+
   - some memory leaks
   - the periodic boundary condition have wrong before first a sementic level of MeshS and MeshL case.
      the new syntexe is for example:
@@ -197,17 +210,18 @@ Version 4.9: new features
 =========================
 
 * Added
+
   - add P3 lagrange finite element on meshS and meshS
-  - add new plugin `meshtool`to add tool to compute the number of connected components of a all kind of mesh
+  - add new plugin :freefem:`meshtool`to add tool to compute the number of connected components of a all kind of mesh
     (mesh,mesh3,meshS,meshL) with 2 kind of connected components ones on interior part of the mesh (default) ans
-    secondly on the closure of the mesh (see `examples/hpddm/bConnectedComponents.edp` )
+    secondly on the closure of the mesh (see :freefem:`examples/hpddm/bConnectedComponents.edp` )
     add functions  int[int] In=iminP1K(Th,u) or int[int] Ix=imaxP1K(Th,u)  get the array min/max of value u[i]  
-    where i is vertex number on  each element k, so we have  u[Im[k]] = min u[i]/ i in k;
+    where i is vertex number on  each element k, so we have  :freefem:`u[Im[k]] = min u[i]/ i in k;`
   - add in plugin `bfstream` to to read binary int (4 bytes) to read fortran file and try to pull tools to share the endiannes
     in progress
   - add gluemesh of array of MeshL and MeshS type
-  - interface to `PC_MG_GALERKIN_BOTH`
-  - Kronecker product of two sparse matrices `matrix C = kron(A, B)`
+  - interface to :freefem:`PC_MG_GALERKIN_BOTH`
+  - Kronecker product of two sparse matrices :freefem:`matrix C = kron(A, B)`
   - add lot of finite element on Mesh3, MeshS, MeshL of Discontinous Galerling Element
     in 3d       : P1dc3d, P2dc3d, P3dc3d, P4dc3d , P0edge3d ,P0edgedc3d ,  P0face3d ,P0facedc3d , P0VF3d ,P0VFdc3d ,
     on Surface  : P1dcS, P2dcS, P3dcS, P4dcS , P0edgeS ,P0edgedcS , P0VFS ,P0VFdcS,
@@ -220,6 +234,7 @@ Version 4.9: new features
   - add buildmesh functon to build a 2d mesh from a meshL (same as buildmesh see examples/3dCurve/border.edp)
  
 * Changed
+
   - Now the order to find MPI in configure is first if you have PETSC then take MPI from PETSc
     otherwise use previous method
   - on MeshL defined with buildmeshL now the default label are 2*k-1  (resp. 2*k)  for the begin (resp. end) of curve
@@ -230,39 +245,44 @@ Version 4.9: new features
 
 
 * Fixed
+
   - bug in Find triangle contening point in 2d (border case),
-    `int Mesh::DataFindBoundary::Find(R2 PP,R *l,int & outside) const`
+    :freefem:`int Mesh::DataFindBoundary::Find(R2 PP,R *l,int & outside) const`
     the parameter l not correclty return due to local variable.
   - set CFLAGS=-Wno-implicit-function-declaration to complie with Apple clang version 12.0.0 (clang-1200.0.32.29)
     to remove following error: implicit declaration of function
-    correct `3dCurve/basicGlue.edp`and add missing test
-  - bugs in SLEPc `SVDSolve()` with a rectangular `Mat`
+    correct :freefem:`3dCurve/basicGlue.edp`and add missing test
+  - bugs in SLEPc :freefem:`SVDSolve()` with a rectangular :freefem:`Mat`
   - bugs in nElementonB for DG 3d formulation.
 
 Version 4.10: new features
 =========================
 
 * Added
+
   - ridgeangle named parameter in ExtractMeshL in msh3 plugin
   - DG formulation in 1d :
-    add integral of all border of element : `intallBE(ThL)` and unified the notation by adding
-    `intallBE(ThS)` , `intallBE(Th2)`, `intallBE(Th3)`
-    `nuVertex` of now the vertex number of element in intallBE0d integral
+    add integral of all border of element : :freefem:`intallBE(ThL)` and unified the notation by adding
+    :freefem:`intallBE(ThS)` , :freefem:`intallBE(Th2)`, :freefem:`intallBE(Th3)`
+    :freefem:`nuVertex` of now the vertex number of element in :freefem:`intallBE0d` integral
     `BoundaryBE`, `InternalBE` to know if border element (BE) is on true boundary of not.
-    update `nElementonB` in case on no manifold data (value greater > 2) in meshL, MeshS case ..
+    update :freefem:`nElementonB` in case on no manifold data (value greater > 2) in meshL, MeshS case ..
     add code to use jump, mean of test functuon on MeshL case. ( not in mesh3 ) to compute RHS.
-  - add getcwd() function in shell plugin to get the current working dir
-  - add nuVertex to get the vextex on element in some int?
+  - add :freefem:`getcwd()` function in shell plugin to get the current working dir
+  - add :freefem:`nuVertex` to get the vextex on element in some int?
 
 * Changed
+
   - PETSc 3.16.1
 
 * Deprecated
+
   - SLEPc and SLEPc-complex have been part of PETSc and PETSc-complex for multiple releases and are now deprecated
 
 * Fixed
-  - examples/potential.edp correct problem in times loops and BC
-  - tutorial/mortar-DN-4.edp correct problem of region number in meshL
+
+  - :freefem:`examples/potential.edp` correct problem in times loops and BC
+  - :freefem:`tutorial/mortar-DN-4.edp` correct problem of region number in meshL
   - fix problem in Curve mesh and intallBE , vertex number is wrong 
   - portability issue on arm64-apple with `make petsc-slepc`
   - fix assertion failure with `transfer` and `transferMat` with some finite elements
@@ -272,6 +292,7 @@ Version 4.11: new features (4 apr 2022)
 =========================
 
 * Added
+
   - add computation scalar product of R3 example :  ( N'*Tl)
   - add tools to do compution with R3 vector see tutorial/calculus.edp
   - add an example tutorial/tgv-test.edp see see what tgv do on matrix build. 
@@ -313,14 +334,17 @@ Version 4.11: new features (4 apr 2022)
         examples/3d/Elasticity-simple-support-BC.edp
   
 * Changed
+
   - the beaviour of linear solver UMFPACK, CHOLMOD in case of error , now FreeFEm exit on ExecError like in MUMPS
   - PETSc 3.17.0
 
 
 * Removed
+
   -map function  in plugin dfft 
 
 * Fixed
+
   - pow(int,int) now call int version not complex version..
   - correct the normal the N implicite variable   on meshL case 
   - correct version dump in banner FreeFem++ - version 4.10 (V ...
