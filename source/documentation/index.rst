@@ -1,15 +1,15 @@
 Documentation
 =============
 
-The fruit of a long maturing process, **freefem**, in its last avatar, **FreeFEM** , is a high level integrated development environment (IDE) for numerically solving partial differential equations (PDE) in dimension 1,2 3 and surface and line 3D.
-It is the ideal tool for teaching the finite element method but it is also perfect for research to quickly test new ideas or multi-physics and complex applications.
+The fruit of a long maturing process, **freefem**, in its last avatar, **FreeFEM** , is a high level integrated development environment (IDE) to solve numerically systems of partial differential equations (PDE) in dimension 1,2 3 and surfaces embedded in a 3D domain and lines embedded in a 2D or 3D.
+It is the ideal tool for teaching the finite element method but it is also perfect for research to quickly prototype and test new algorithmic ideas or solve multi-physics complex applications.
 
-**FreeFEM** has an advanced automatic mesh generator, capable of a posteriori mesh adaptation; it has a general purpose elliptic solver interfaced with fast algorithms, such as the multi-frontal method UMFPACK, SuperLU, MUMPS.
+**FreeFEM** has an advanced automatic mesh generator, capable of a posteriori mesh adaptivity; it has a general purpose elliptic solver interfaced with fast algorithms, such as the multi-frontal method UMFPACK, SuperLU, MUMPS etc.
 Hyperbolic and parabolic problems are solved by iterative algorithms prescribed by the user with the high level language of **FreeFEM**.
-It has several triangular finite elements, including discontinuous elements.
-Everything is there in **FreeFEM** to prepare research quality reports with online color display, zooming and other features as well as postscript printouts.
+It has several triangular or tetraedral finite elements, including discontinuous elements.
+Everything is there in **FreeFEM** to prepare research quality reports with online color display, zooming and other features as well as postscript printouts, from within or using an external application like paraview.
 
-This manual is meant for students at a Masters level, for researchers at any level, and for engineers (including financial engineering) with some understanding of variational methods for partial differential equations.
+This manual is meant for students at a Masters level or more, for researchers at any level, and for engineers (including financial engineering) with some understanding of variational methods for partial differential equations.
 
 .. rst-class:: fake-title
 
@@ -18,21 +18,21 @@ This manual is meant for students at a Masters level, for researchers at any lev
 A partial differential equation is a relation between a function of several variables and its (partial) derivatives.
 Many problems in physics, engineering, mathematics and even banking are modeled by one or several partial differential equations.
 
-**FreeFEM** is a software to solve these equations numerically.
-As its name implies, it is a free software (see the copyrights for full detail) based on the Finite Element Method; it is not a package, it is an integrated product with its own high level programming language.
-This software runs on all UNIX OS (with g++ 3.3 or later, and OpenGL), on Window XP, Vista and 7, 8, 10 and on MacOS 10 intel.
+**FreeFEM** is a software to solve these equations numerically, based on the Finite Element Method.
+As its name implies, it is a free software (see the copyrights for full detail)  it is not a package, it is an integrated product with its own high level programming language, referred below as a :index `freefem script`.
+This software runs on all UNIX OS (with g++ 3.3 or later, and OpenGL), on Window XP, Vista and 7, 8, 10 and 11 and on MacOS 10 intel and arm.
 
 Moreover **FreeFEM** is highly adaptive.
-Many phenomena involve several coupled systems.
-Fluid-structure interactions, Lorentz forces for aluminum casting and ocean-atmosphere problems are three such systems.
+Many phenomena involve several coupled systems, such as:
+Fluid-structure interactions, Lorentz forces for aluminum casting and ocean-atmosphere problems, etc.
 These require different finite element approximations and polynomial degrees, possibly on different meshes.
 Some algorithms like the Schwarz’ domain decomposition method also requires data interpolation on multiple meshes within one program.
-**FreeFEM** can handle these difficulties, i.e. arbitrary finite element spaces on arbitrary unstructured and adapted bi-dimensional meshes.
+**FreeFEM** can handle these difficulties, i.e. arbitrary finite element spaces on arbitrary unstructured and adapted bi and three dimensional meshes.
 
 The characteristics of **FreeFEM** are:
 
 -  Problem description (real or complex valued) by their variational formulations, with access to the internal vectors and matrices if needed.
--  Multi-variables, multi-equations, bi-dimensional and three-dimensional static or time dependent, linear or nonlinear coupled systems; however the user is required to describe the iterative procedures which reduce the problem to a set of linear problems.
+-  Multi-variables, multi-equations, bi and three-dimensional static or time dependent, linear or nonlinear coupled systems; however the user is required to describe the iterative procedures which reduce the problem to a set of linear problems.
 -  Easy geometric input by analytic description of boundaries by pieces; however this part is not a CAD system; for instance when two boundaries intersect, the user must specify the intersection points.
 -  Automatic mesh generator, based on the Delaunay-Voronoi algorithm; the inner point density is proportional to the density of points on the boundaries [GEORGE1996]_.
 -  Metric-based anisotropic mesh adaptation.
