@@ -1972,10 +1972,13 @@
 <span id="meshgeneration"></span><h1>Mesh Generation<a class="headerlink" href="#mesh-generation" title="Permalink to this heading"></a></h1>
 <p>In this section, operators and tools on meshes are presented.</p>
 <p>FreeFEM type for mesh variable:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>1D mesh: :freefem: :index: <cite>meshL</cite></p></li>
-<li><p>2D mesh: :index: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh</span></code></p></li>
+<ul class="simple">
+<li><p>1D mesh: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshL</span></code></p></li>
+</ul>
+<ul class="simple" id="index-0">
+<li><p>2D mesh: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh</span></code></p></li>
+</ul>
+<ul class="simple" id="index-1">
 <li><p>3D volume mesh: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh3</span></code></p></li>
 <li><dl class="simple">
 <dt>3D border meshes</dt><dd><ul>
@@ -1986,7 +1989,6 @@
 </dl>
 </li>
 </ul>
-</div></blockquote>
 <p>Through this presentation, the principal commands for the mesh generation and links between <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh</span></code> - <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh3</span></code> - <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshS</span></code> - <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">meshL</span></code> are described.</p>
 <section id="the-type-mesh-in-2-dimension">
 <span id="mesh2d"></span><h2><strong>The type mesh in 2 dimension</strong><a class="headerlink" href="#the-type-mesh-in-2-dimension" title="Permalink to this heading"></a></h2>
@@ -1996,7 +1998,7 @@
 <section id="the-command-square">
 <span id="meshsquare"></span><h4>The command <em>square</em><a class="headerlink" href="#the-command-square" title="Permalink to this heading"></a></h4>
 <p>The command <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">square</span></code> triangulates the unit square.</p>
-<p>The following generates a <span class="math notranslate nohighlight">\(4 \times 5\)</span> grid in the unit square <span class="math notranslate nohighlight">\([0,1]^2\)</span>. The labels of the boundaries are shown in <a class="reference internal" href="#figboundarylabels"><span class="std std-numref">Fig. 57</span></a>.</p>
+<p>The following generates a <span class="math notranslate nohighlight">\(4\times 5\)</span> grid in the unit square <span class="math notranslate nohighlight">\([0,1]^2\)</span>. The labels of the boundaries are shown in <a class="reference internal" href="#figboundarylabels"><span class="std std-numref">Fig. 57</span></a>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">mesh</span> <span class="n">Th</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
