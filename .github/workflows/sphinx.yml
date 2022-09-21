@@ -28,7 +28,7 @@ jobs:
       - name: Build PDF
         run: |
           make latex
-          (cd build/latex && pdflatex -halt-on-error -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && pdflatex -halt-on-error -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex)
+          (cd build/latex && pdflatex -halt-on-error -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex && makeindex FreeFEM-documentation.idx && pdflatex -halt-on-error -interaction=nonstopmode -jobname FreeFEM-documentation FreeFEM.tex)
           (cd build/latex && md5sum FreeFEM-documentation.pdf >> FreeFEM-documentation.pdf.md5)
 
       - name: Build HTML
