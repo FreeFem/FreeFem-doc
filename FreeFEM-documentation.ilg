@@ -1,6 +1,4 @@
 This is makeindex, version 2.15 [TeX Live 2019] (kpathsea + Thai support).
-Scanning input file FreeFEM-documentation.idx....done (5 entries accepted, 0 rejected).
-Sorting entries....done (12 comparisons).
-Generating output file FreeFEM-documentation.ind....done (8 lines written, 0 warnings).
-Output written in FreeFEM-documentation.ind.
+Scanning input file FreeFEM-documentation.idx...done (0 entries accepted, 0 rejected).
+Nothing written in FreeFEM-documentation.ind.
 Transcript written in FreeFEM-documentation.ilg.

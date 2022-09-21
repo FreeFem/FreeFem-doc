@@ -7600,17 +7600,17 @@ Contour (isovalue) and quiver (vector field) plot:
 \chapter{Documentation}
 \label{\detokenize{documentation/index:documentation}}\label{\detokenize{documentation/index::doc}}
 \sphinxAtStartPar
-The fruit of a long maturing process, \sphinxstylestrong{freefem}, in its last avatar, \sphinxstylestrong{FreeFEM} , is a high level integrated development environment (IDE) for numerically solving partial differential equations (PDE) in dimension 1,2 3 and surface and line 3D.
-It is the ideal tool for teaching the finite element method but it is also perfect for research to quickly test new ideas or multi\sphinxhyphen{}physics and complex applications.
+The fruit of a long maturing process, \sphinxstylestrong{freefem}, in its last avatar, \sphinxstylestrong{FreeFEM} , is a high level integrated development environment (IDE) to solve numerically systems of partial differential equations (PDE) in dimension 1,2 3 and surfaces embedded in a 3D domain and lines embedded in a 2D or 3D.
+It is the ideal tool for teaching the finite element method but it is also perfect for research to quickly prototype and test new algorithmic ideas or solve multi\sphinxhyphen{}physics complex applications.
 
 \sphinxAtStartPar
-\sphinxstylestrong{FreeFEM} has an advanced automatic mesh generator, capable of a posteriori mesh adaptation; it has a general purpose elliptic solver interfaced with fast algorithms, such as the multi\sphinxhyphen{}frontal method UMFPACK, SuperLU, MUMPS.
+\sphinxstylestrong{FreeFEM} has an advanced automatic mesh generator, capable of a posteriori mesh adaptivity; it has a general purpose elliptic solver interfaced with fast algorithms, such as the multi\sphinxhyphen{}frontal method UMFPACK, SuperLU, MUMPS etc.
 Hyperbolic and parabolic problems are solved by iterative algorithms prescribed by the user with the high level language of \sphinxstylestrong{FreeFEM}.
-It has several triangular finite elements, including discontinuous elements.
-Everything is there in \sphinxstylestrong{FreeFEM} to prepare research quality reports with online color display, zooming and other features as well as postscript printouts.
+It has several triangular or tetraedral finite elements, including discontinuous elements.
+Everything is there in \sphinxstylestrong{FreeFEM} to prepare research quality reports with online color display, zooming and other features as well as postscript printouts, from within or using an external application like paraview.
 
 \sphinxAtStartPar
-This manual is meant for students at a Masters level, for researchers at any level, and for engineers (including financial engineering) with some understanding of variational methods for partial differential equations.
+This manual is meant for students at a Masters level or more, for researchers at any level, and for engineers (including financial engineering) with some understanding of variational methods for partial differential equations.
 
 \sphinxAtStartPar
 Introduction
@@ -7620,17 +7620,17 @@ A partial differential equation is a relation between a function of several vari
 Many problems in physics, engineering, mathematics and even banking are modeled by one or several partial differential equations.
 
 \sphinxAtStartPar
-\sphinxstylestrong{FreeFEM} is a software to solve these equations numerically.
-As its name implies, it is a free software (see the copyrights for full detail) based on the Finite Element Method; it is not a package, it is an integrated product with its own high level programming language.
-This software runs on all UNIX OS (with g++ 3.3 or later, and OpenGL), on Window XP, Vista and 7, 8, 10 and on MacOS 10 intel.
+\sphinxstylestrong{FreeFEM} is a software to solve these equations numerically, based on the Finite Element Method.
+As its name implies, it is a free software (see the copyrights for full detail)  it is not a package, it is an integrated product with its own high level programming language, referred below as a :index \sphinxtitleref{freefem script}.
+This software runs on all UNIX OS (with g++ 3.3 or later, and OpenGL), on Window XP, Vista and 7, 8, 10 and 11 and on MacOS 10 intel and arm.
 
 \sphinxAtStartPar
 Moreover \sphinxstylestrong{FreeFEM} is highly adaptive.
-Many phenomena involve several coupled systems.
-Fluid\sphinxhyphen{}structure interactions, Lorentz forces for aluminum casting and ocean\sphinxhyphen{}atmosphere problems are three such systems.
+Many phenomena involve several coupled systems, such as:
+Fluid\sphinxhyphen{}structure interactions, Lorentz forces for aluminum casting and ocean\sphinxhyphen{}atmosphere problems, etc.
 These require different finite element approximations and polynomial degrees, possibly on different meshes.
 Some algorithms like the Schwarz’ domain decomposition method also requires data interpolation on multiple meshes within one program.
-\sphinxstylestrong{FreeFEM} can handle these difficulties, i.e. arbitrary finite element spaces on arbitrary unstructured and adapted bi\sphinxhyphen{}dimensional meshes.
+\sphinxstylestrong{FreeFEM} can handle these difficulties, i.e. arbitrary finite element spaces on arbitrary unstructured and adapted bi and three dimensional meshes.
 
 \sphinxAtStartPar
 The characteristics of \sphinxstylestrong{FreeFEM} are:
@@ -7641,7 +7641,7 @@ Problem description (real or complex valued) by their variational formulations, 
 
 \item {} 
 \sphinxAtStartPar
-Multi\sphinxhyphen{}variables, multi\sphinxhyphen{}equations, bi\sphinxhyphen{}dimensional and three\sphinxhyphen{}dimensional static or time dependent, linear or nonlinear coupled systems; however the user is required to describe the iterative procedures which reduce the problem to a set of linear problems.
+Multi\sphinxhyphen{}variables, multi\sphinxhyphen{}equations, bi and three\sphinxhyphen{}dimensional static or time dependent, linear or nonlinear coupled systems; however the user is required to describe the iterative procedures which reduce the problem to a set of linear problems.
 
 \item {} 
 \sphinxAtStartPar
@@ -8040,21 +8040,19 @@ FreeFEM type for mesh variable:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-1D mesh: \sphinxcode{\sphinxupquote{%
-\PYG{k+kt}{meshL}%
-}} \index{meshL@\spxentry{meshL}}meshL
+1D mesh: :freefem: :index: \sphinxtitleref{meshL}
 
 \item {} 
 \sphinxAtStartPar
-2D mesh: \sphinxcode{\sphinxupquote{%
+2D mesh: :index: \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{mesh}%
-}} \index{mesh@\spxentry{mesh}}mesh
+}}
 
 \item {} 
 \sphinxAtStartPar
 3D volume mesh: \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{mesh3}%
-}} \index{mesh3@\spxentry{mesh3}}mesh3
+}}
 
 \item {} \begin{description}
 \sphinxlineitem{3D border meshes}\begin{itemize}
@@ -8062,13 +8060,13 @@ FreeFEM type for mesh variable:
 \sphinxAtStartPar
 3D surface \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{meshS}%
-}} \index{meshS@\spxentry{meshS}}meshS
+}}
 
 \item {} 
 \sphinxAtStartPar
 3D curve \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{meshL}%
-}} \index{meshL@\spxentry{meshL}}meshL
+}}
 
 \end{itemize}
 
