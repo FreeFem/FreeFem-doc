@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.9.21)  21 SEP 2022 11:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.9.21)  21 SEP 2022 11:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3770,10 +3770,12 @@ Underfull \vbox (badness 10000) detected at line 55480
 
 ] [727
 
-] [728]
-No file FreeFEM-documentation.ind.
+] [728] (./FreeFEM-documentation.ind [729]
+[730
+
+
+])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 55712.
-[729]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 55712.
  (./FreeFEM-documentation.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 55712.
@@ -3790,8 +3792,8 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 55712.
  ) 
 Here is how much of TeX's memory you used:
- 23657 strings out of 483183
- 441827 string characters out of 5966292
+ 23660 strings out of 483183
+ 441887 string characters out of 5966292
  1131827 words of memory out of 5000000
  35348 multiletter control sequences out of 15000+600000
  631986 words of font info for 119 fonts, out of 8000000 for 9000
@@ -3838,10 +3840,10 @@ lic/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfont
 s/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on FreeFEM-documentation.pdf (735 pages, 35204872 bytes).
+Output written on FreeFEM-documentation.pdf (736 pages, 35205441 bytes).
 PDF statistics:
- 11461 PDF objects out of 12825 (max. 8388607)
- 10006 compressed objects within 101 object streams
- 2621 named destinations out of 2984 (max. 500000)
+ 11469 PDF objects out of 12825 (max. 8388607)
+ 10013 compressed objects within 101 object streams
+ 2622 named destinations out of 2984 (max. 500000)
  12026 words of extra memory for PDF output out of 14400 (max. 10000000)
 
