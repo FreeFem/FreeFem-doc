@@ -2012,13 +2012,13 @@ Install MSMPI for parallel version under window64 MS MPI V10.1.2, and install bo
 <ul class="simple">
 <li><p>To launch sequential version:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>C:<span class="se">\&gt;</span><span class="s2">&quot;Program Files (x86)\FreeFem++\FreeFem++.exe&quot;</span> &lt;mySequentialScript.edp&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>C:<span class="se">\&gt;</span><span class="s2">&quot;Program Files (x86)\FreeFem++\FreeFem++.exe&quot;</span> &lt;mySequentialScript.edp&gt;
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>To launch parallel version:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>C:<span class="se">\&gt;</span><span class="s2">&quot;Program Files\Microsoft MPI\Bin\mpiexec.exe&quot;</span> -n &lt;nbProcs&gt; C:<span class="se">\&gt;</span><span class="s2">&quot;Program Files (x86)\FreeFem++\FreeFem++-mpi.exe&quot;</span> &lt;myParallelScript.edp&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>C:<span class="se">\&gt;</span><span class="s2">&quot;Program Files\Microsoft MPI\Bin\mpiexec.exe&quot;</span> -n &lt;nbProcs&gt; C:<span class="se">\&gt;</span><span class="s2">&quot;Program Files (x86)\FreeFem++\FreeFem++-mpi.exe&quot;</span> &lt;myParallelScript.edp&gt;
 </pre></div>
 </div>
 </li>
@@ -2036,12 +2036,12 @@ Install MSMPI for parallel version under window64 MS MPI V10.1.2, and install bo
 <p>The Debian package is built for Ubuntu 16.04</p>
 </div>
 <p>Beforehand, install the following dependances libraries using the apt tool:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>sudo apt-get install libgsl-dev libhdf5-dev
-<span class="lineno">2 </span>             liblapack-dev libopenmpi-dev freeglut3-dev
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo apt-get install libgsl-dev libhdf5-dev
+<span class="linenos">2</span>             liblapack-dev libopenmpi-dev freeglut3-dev
 </pre></div>
 </div>
 <p>Download the package FreeFEM .deb, install it by the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>dpkg -i FreeFEM_VERSION_Ubuntu_withPETSc_amd64.deb
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>dpkg -i FreeFEM_VERSION_Ubuntu_withPETSc_amd64.deb
 </pre></div>
 </div>
 <p>FreeFEM is directly available in your terminal by the command “FreeFem++”.</p>
@@ -2050,9 +2050,9 @@ Install MSMPI for parallel version under window64 MS MPI V10.1.2, and install bo
 <h3>Arch AUR package<a class="headerlink" href="#arch-aur-package" title="Permalink to this heading"></a></h3>
 <p>An up-to-date package of <strong>FreeFEM</strong> for Arch is available on the <a class="reference external" href="https://aur.archlinux.org/packages/freefem%2B%2B-git/">Archlinux user repository</a>.</p>
 <p>To install it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>git clone https://aur.archlinux.org/freefem++-git.git
-<span class="lineno">2 </span><span class="nb">cd</span> freefem++-git
-<span class="lineno">3 </span>makepkg -si
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>git clone https://aur.archlinux.org/freefem++-git.git
+<span class="linenos">2</span><span class="nb">cd</span> freefem++-git
+<span class="linenos">3</span>makepkg -si
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2069,21 +2069,21 @@ and they are managed by the
 The packages are usually recent builds, but may not be the latest released version.</p>
 <p>You can install them using the dnf tool, for both the serial and parallel (MPI)
 versions. :</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>sudo dnf install freefem++
-<span class="lineno">2 </span>sudo dnf install freefem++-openmpi
-<span class="lineno">3 </span>sudo dnf install freefem++-mpich
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo dnf install freefem++
+<span class="linenos">2</span>sudo dnf install freefem++-openmpi
+<span class="linenos">3</span>sudo dnf install freefem++-mpich
 </pre></div>
 </div>
 <p>FreeFEM is directly available in your terminal by the command “FreeFem++”.
 To use the OpenMPI version, in your terminal first load the OpenMPI module,
 for example using</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>module load mpi/openmpi-x86_64
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>module load mpi/openmpi-x86_64
 </pre></div>
 </div>
 <p>and then the command “FreeFem++-mpi_openmpi” will be available in your
 terminal. To use the MPICH version, in your terminal first load the MPICH
 module using</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>module load mpi/mpich-x86_64
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>module load mpi/mpich-x86_64
 </pre></div>
 </div>
 <p>and then the command “FreeFem++-mpi_mpich” will be available in your
@@ -2110,7 +2110,7 @@ terminal.</p>
 <ol class="arabic">
 <li><p>Install Xcode, Xcode Command Line tools and Xcode Additional Tools from the <a class="reference external" href="https://developer.apple.com/download/more/">Apple website</a></p></li>
 <li><p>Install gfortran from Homebrew</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> brew --cask install gfortran
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> brew --cask install gfortran
 </pre></div>
 </div>
 </li>
@@ -2121,61 +2121,61 @@ terminal.</p>
 </div>
 <ol class="arabic" start="3">
 <li><p>To use <strong>FreeFEM</strong> parallel version, install <a class="reference external" href="https://www.open-mpi.org/software/ompi/v4.0/">openmpi</a>  or  <a class="reference external" href="http://www.mpich.org/downloads/">mpich</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="c1"># to install openmpi</span>
-<span class="lineno">2 </span> curl -L https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.1.tar.gz --output openmpi-4.0.1.tar.gz
-<span class="lineno">3 </span> tar xf openmpi-4.0.1
-<span class="lineno">4 </span> <span class="nb">cd</span> openmpi-4.0.1/
-<span class="lineno">5 </span> <span class="c1"># to install mpich</span>
-<span class="lineno">6 </span> curl -L https://www.mpich.org/static/downloads/4.0.2/mpich-4.0.2.tar.gz --output mpich-4.0.2.tar.gz
-<span class="lineno">7 </span> tar xf mpich-4.0.2.tar.gz
-<span class="lineno">8 </span> <span class="nb">cd</span> mpich-4.0.2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="c1"># to install openmpi</span>
+<span class="linenos">2</span> curl -L https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.1.tar.gz --output openmpi-4.0.1.tar.gz
+<span class="linenos">3</span> tar xf openmpi-4.0.1
+<span class="linenos">4</span> <span class="nb">cd</span> openmpi-4.0.1/
+<span class="linenos">5</span> <span class="c1"># to install mpich</span>
+<span class="linenos">6</span> curl -L https://www.mpich.org/static/downloads/4.0.2/mpich-4.0.2.tar.gz --output mpich-4.0.2.tar.gz
+<span class="linenos">7</span> tar xf mpich-4.0.2.tar.gz
+<span class="linenos">8</span> <span class="nb">cd</span> mpich-4.0.2
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">4 </span> <span class="c1"># with brew gcc gfortran compilers</span>
-<span class="lineno">5 </span> <span class="nv">FFLAGS</span><span class="o">=</span>-fallow-argument-mismatch <span class="nv">FCFLAGS</span><span class="o">=</span>-fallow-argument-mismatch ./configure <span class="nv">CC</span><span class="o">=</span>clang <span class="nv">CXX</span><span class="o">=</span>clang++ <span class="nv">FC</span><span class="o">=</span>gfortran-11 <span class="nv">F77</span><span class="o">=</span>gfortran-11 --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
-<span class="lineno">6 </span>
-<span class="lineno">7 </span> <span class="c1"># with LLVM gcc and brew gfortran compilers</span>
-<span class="lineno">8 </span> <span class="nv">FFLAGS</span><span class="o">=</span>-fallow-argument-mismatch <span class="nv">FCFLAGS</span><span class="o">=</span>-fallow-argument-mismatch ./configure <span class="nv">CC</span><span class="o">=</span>gcc-11 <span class="nv">CXX</span><span class="o">=</span>g++-11 <span class="nv">FC</span><span class="o">=</span>gfortran-11 <span class="nv">F77</span><span class="o">=</span>gfortran-11 --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">4</span> <span class="c1"># with brew gcc gfortran compilers</span>
+<span class="linenos">5</span> <span class="nv">FFLAGS</span><span class="o">=</span>-fallow-argument-mismatch <span class="nv">FCFLAGS</span><span class="o">=</span>-fallow-argument-mismatch ./configure <span class="nv">CC</span><span class="o">=</span>clang <span class="nv">CXX</span><span class="o">=</span>clang++ <span class="nv">FC</span><span class="o">=</span>gfortran-11 <span class="nv">F77</span><span class="o">=</span>gfortran-11 --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
+<span class="linenos">6</span>
+<span class="linenos">7</span> <span class="c1"># with LLVM gcc and brew gfortran compilers</span>
+<span class="linenos">8</span> <span class="nv">FFLAGS</span><span class="o">=</span>-fallow-argument-mismatch <span class="nv">FCFLAGS</span><span class="o">=</span>-fallow-argument-mismatch ./configure <span class="nv">CC</span><span class="o">=</span>gcc-11 <span class="nv">CXX</span><span class="o">=</span>g++-11 <span class="nv">FC</span><span class="o">=</span>gfortran-11 <span class="nv">F77</span><span class="o">=</span>gfortran-11 --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">5 </span> make -j&lt;nbProcs&gt;
-<span class="lineno">6 </span> make install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">5</span> make -j&lt;nbProcs&gt;
+<span class="linenos">6</span> make install
 </pre></div>
 </div>
 </li>
 <li><p>Install the minimal libraries for <strong>FreeFEM</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>brew install m4 git flex bison
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>brew install m4 git flex bison
 </pre></div>
 </div>
 </li>
 <li><p>If you want build your own configure according your system, install autoconf and automake from Homebrew (optional, see note in step 10)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>brew install autoconf automake
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>brew install autoconf automake
 </pre></div>
 </div>
 </li>
 <li><p>To use <strong>FreeFEM</strong> with its plugins, install from Homebrew suitesparse, hdf5, cmake, wget</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>brew install suitesparse hdf5 cmake wget
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>brew install suitesparse hdf5 cmake wget
 </pre></div>
 </div>
 </li>
 <li><p>Install <a class="reference external" href="https://www.gnu.org/software/gsl">gsl</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>curl -O https://mirror.ibcp.fr/pub/gnu/gsl/gsl-2.7.tar.gz
-<span class="lineno">2 </span>tar zxvf gsl-2.7.tar.gz
-<span class="lineno">3 </span><span class="nb">cd</span> gsl-2.7
-<span class="lineno">4 </span>./configure
-<span class="lineno">5 </span>make -j&lt;nbProcs&gt;
-<span class="lineno">6 </span>make install --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>curl -O https://mirror.ibcp.fr/pub/gnu/gsl/gsl-2.7.tar.gz
+<span class="linenos">2</span>tar zxvf gsl-2.7.tar.gz
+<span class="linenos">3</span><span class="nb">cd</span> gsl-2.7
+<span class="linenos">4</span>./configure
+<span class="linenos">5</span>make -j&lt;nbProcs&gt;
+<span class="linenos">6</span>make install --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
 </pre></div>
 </div>
 </li>
 <li><p>Download the latest Git for Mac installer <a class="reference external" href="https://git-scm.com/download/mac">git</a> and the <strong>FreeFEM</strong> source from the repository</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>git clone https://github.com/FreeFem/FreeFem-sources.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>git clone https://github.com/FreeFem/FreeFem-sources.git
 </pre></div>
 </div>
 </li>
 <li><p>Configure your source code</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span> <span class="nb">cd</span> FreeFem-sources
-<span class="lineno">2 </span> autoreconf -i
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> <span class="nb">cd</span> FreeFem-sources
+<span class="linenos">2</span> autoreconf -i
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2185,20 +2185,20 @@ terminal.</p>
 <ul class="simple">
 <li><p>following your compilers</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">3 </span>// with brew gcc gfortran compilers
-<span class="lineno">4 </span>./configure --enable-download -enable-optim <span class="nv">CC</span><span class="o">=</span>clang <span class="nv">CXX</span><span class="o">=</span>clang++ <span class="nv">F77</span><span class="o">=</span>gfortran-11
-<span class="lineno">5 </span>    <span class="nv">FC</span><span class="o">=</span>gfortran-11 --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
-<span class="lineno">6 </span>
-<span class="lineno">7 </span>// with LLVM gcc and brew gfortran compilers
-<span class="lineno">8 </span>./configure --enable-download -enable-optim <span class="nv">CC</span><span class="o">=</span>gcc <span class="nv">CXX</span><span class="o">=</span>g++ <span class="nv">F77</span><span class="o">=</span>gfortran-11
-<span class="lineno">9 </span>    <span class="nv">FC</span><span class="o">=</span>gfortran-11 --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">3</span>// with brew gcc gfortran compilers
+<span class="linenos">4</span>./configure --enable-download -enable-optim <span class="nv">CC</span><span class="o">=</span>clang <span class="nv">CXX</span><span class="o">=</span>clang++ <span class="nv">F77</span><span class="o">=</span>gfortran-11
+<span class="linenos">5</span>    <span class="nv">FC</span><span class="o">=</span>gfortran-11 --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
+<span class="linenos">6</span>
+<span class="linenos">7</span>// with LLVM gcc and brew gfortran compilers
+<span class="linenos">8</span>./configure --enable-download -enable-optim <span class="nv">CC</span><span class="o">=</span>gcc <span class="nv">CXX</span><span class="o">=</span>g++ <span class="nv">F77</span><span class="o">=</span>gfortran-11
+<span class="linenos">9</span>    <span class="nv">FC</span><span class="o">=</span>gfortran-11 --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
 </pre></div>
 </div>
 </li>
 <li><p>Download the 3rd party packages to use FreeFEM plugins</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>./3rdparty/getall -a
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>./3rdparty/getall -a
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2210,10 +2210,10 @@ terminal.</p>
 <li><p>If you want use PETSc/SLEPc and <a class="reference external" href="https://github.com/hpddm/hpddm">HPDDM</a> (High Performance Domain Decomposition Methods)</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nb">cd</span> 3rdparty/ff-petsc
-<span class="lineno">2 </span>make petsc-slepc // add <span class="nv">SUDO</span><span class="o">=</span>sudo <span class="k">if</span> your installation directory is the default /usr/local
-<span class="lineno">3 </span><span class="nb">cd</span> -
-<span class="lineno">4 </span>./reconfigure
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> 3rdparty/ff-petsc
+<span class="linenos">2</span>make petsc-slepc // add <span class="nv">SUDO</span><span class="o">=</span>sudo <span class="k">if</span> your installation directory is the default /usr/local
+<span class="linenos">3</span><span class="nb">cd</span> -
+<span class="linenos">4</span>./reconfigure
 </pre></div>
 </div>
 </div></blockquote>
@@ -2221,8 +2221,8 @@ terminal.</p>
 <li><p>Build your <strong>FreeFEM</strong> library and executable</p></li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>make -j&lt;nbProcs&gt;
-<span class="lineno">2 </span>make -j&lt;nbProcs&gt; check
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>make -j&lt;nbProcs&gt;
+<span class="linenos">2</span>make -j&lt;nbProcs&gt; check
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2248,14 +2248,14 @@ terminal.</p>
 <h3>Compilation on Ubuntu<a class="headerlink" href="#compilation-on-ubuntu" title="Permalink to this heading"></a></h3>
 <ol class="arabic">
 <li><p>Install the following packages on your system</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
-<span class="lineno">2 </span>sudo apt-get install cpp freeglut3-dev g++ gcc gfortran <span class="se">\</span>
-<span class="lineno">3 </span>    m4 make patch pkg-config wget python unzip <span class="se">\</span>
-<span class="lineno">4 </span>    liblapack-dev libhdf5-dev libgsl-dev <span class="se">\</span>
-<span class="lineno">5 </span>    autoconf automake autotools-dev bison flex gdb git cmake
-<span class="lineno">6 </span>
-<span class="lineno">7 </span><span class="c1"># mpich is required for the FreeFEM parallel computing version</span>
-<span class="lineno">8 </span>sudo apt-get install mpich
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade
+<span class="linenos">2</span>sudo apt-get install cpp freeglut3-dev g++ gcc gfortran <span class="se">\</span>
+<span class="linenos">3</span>    m4 make patch pkg-config wget python unzip <span class="se">\</span>
+<span class="linenos">4</span>    liblapack-dev libhdf5-dev libgsl-dev <span class="se">\</span>
+<span class="linenos">5</span>    autoconf automake autotools-dev bison flex gdb git cmake
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="c1"># mpich is required for the FreeFEM parallel computing version</span>
+<span class="linenos">8</span>sudo apt-get install mpich
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -2264,13 +2264,13 @@ terminal.</p>
 </div>
 </li>
 <li><p>Download <strong>FreeFEM</strong> source from the repository</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>git clone https://github.com/FreeFem/FreeFem-sources.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>git clone https://github.com/FreeFem/FreeFem-sources.git
 </pre></div>
 </div>
 </li>
 <li><p>Autoconf</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nb">cd</span> FreeFem-sources
-<span class="lineno">2 </span>autoreconf -i
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> FreeFem-sources
+<span class="linenos">2</span>autoreconf -i
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2279,8 +2279,8 @@ terminal.</p>
 </div>
 </li>
 <li><p>Configure</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>./configure --enable-download --enable-optim
-<span class="lineno">2 </span>    --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>./configure --enable-download --enable-optim
+<span class="linenos">2</span>    --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2289,7 +2289,7 @@ terminal.</p>
 </div>
 </li>
 <li><p>Download the 3rd party packages</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>./3rdparty/getall -a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>./3rdparty/getall -a
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2298,16 +2298,16 @@ terminal.</p>
 </div>
 </li>
 <li><p>If you want use PETSc/SLEPc and <a class="reference external" href="https://github.com/hpddm/hpddm">HPDDM</a> (High Performance Domain Decomposition Methods) for massively parallel computing</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nb">cd</span> 3rdparty/ff-petsc
-<span class="lineno">2 </span>make petsc-slepc // add <span class="nv">SUDO</span><span class="o">=</span>sudo <span class="k">if</span> your installation directory is the default /usr/local
-<span class="lineno">3 </span><span class="nb">cd</span> -
-<span class="lineno">4 </span>./reconfigure
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> 3rdparty/ff-petsc
+<span class="linenos">2</span>make petsc-slepc // add <span class="nv">SUDO</span><span class="o">=</span>sudo <span class="k">if</span> your installation directory is the default /usr/local
+<span class="linenos">3</span><span class="nb">cd</span> -
+<span class="linenos">4</span>./reconfigure
 </pre></div>
 </div>
 </li>
 <li><p>Build your <strong>FreeFEM</strong> library and executable</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>make -j&lt;nbProcs&gt;
-<span class="lineno">2 </span>make -j&lt;nbProcs&gt; check
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>make -j&lt;nbProcs&gt;
+<span class="linenos">2</span>make -j&lt;nbProcs&gt; check
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2316,7 +2316,7 @@ terminal.</p>
 </div>
 </li>
 <li><p>Install the executable</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>make install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>make install
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2338,28 +2338,28 @@ terminal.</p>
 </div>
 <ol class="arabic">
 <li><p>Install the following dependencies:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>pacman -Syu
-<span class="lineno">2 </span>pacman -S git openmpi gcc-fortran wget python
-<span class="lineno">3 </span>    freeglut m4 make patch gmm
-<span class="lineno">4 </span>    blas lapack hdf5 gsl fftw arpack suitesparse
-<span class="lineno">5 </span>    gnuplot autoconf automake bison flex gdb
-<span class="lineno">6 </span>    valgrind cmake texlive-most
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pacman -Syu
+<span class="linenos">2</span>pacman -S git openmpi gcc-fortran wget python
+<span class="linenos">3</span>    freeglut m4 make patch gmm
+<span class="linenos">4</span>    blas lapack hdf5 gsl fftw arpack suitesparse
+<span class="linenos">5</span>    gnuplot autoconf automake bison flex gdb
+<span class="linenos">6</span>    valgrind cmake texlive-most
 </pre></div>
 </div>
 </li>
 <li><p>Download the <strong>FreeFEM</strong> source from the repository</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>git clone https://github.com/FreeFem/FreeFem-sources.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>git clone https://github.com/FreeFem/FreeFem-sources.git
 </pre></div>
 </div>
 </li>
 <li><p>Autoconf</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nb">cd</span> FreeFem-sources
-<span class="lineno">2 </span>autoreconf -i
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> FreeFem-sources
+<span class="linenos">2</span>autoreconf -i
 </pre></div>
 </div>
 </li>
 <li><p>Configure</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>./configure --enable-download --enable-optim
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>./configure --enable-download --enable-optim
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2368,7 +2368,7 @@ terminal.</p>
 </div>
 </li>
 <li><p>Download the packages</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>./3rdparty/getall -a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>./3rdparty/getall -a
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2377,15 +2377,15 @@ terminal.</p>
 </div>
 </li>
 <li><p>If you want use <a class="reference external" href="https://github.com/hpddm/hpddm">HPDDM</a> (High Performance Domain Decomposition Methods) for massively parallel computing, install PETSc/SLEPc</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nb">cd</span> 3rdparty/ff-petsc
-<span class="lineno">2 </span>make petsc-slepc <span class="nv">SUDO</span><span class="o">=</span>sudo
-<span class="lineno">3 </span><span class="nb">cd</span> -
-<span class="lineno">4 </span>./reconfigure
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> 3rdparty/ff-petsc
+<span class="linenos">2</span>make petsc-slepc <span class="nv">SUDO</span><span class="o">=</span>sudo
+<span class="linenos">3</span><span class="nb">cd</span> -
+<span class="linenos">4</span>./reconfigure
 </pre></div>
 </div>
 </li>
 <li><p>Compile the <strong>FreeFEM</strong> source</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>make
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>make
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2398,7 +2398,7 @@ terminal.</p>
 </div>
 </li>
 <li><p>Install the <strong>FreeFEM</strong> application</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>sudo make install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo make install
 </pre></div>
 </div>
 </li>
@@ -2408,31 +2408,31 @@ terminal.</p>
 <h3>Compilation on Fedora<a class="headerlink" href="#compilation-on-fedora" title="Permalink to this heading"></a></h3>
 <ol class="arabic">
 <li><p>Install the following packages on your system</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span>sudo dnf update
-<span class="lineno"> 2 </span>sudo dnf install freeglut-devel gcc-gfortran gcc-c++ gcc <span class="se">\</span>
-<span class="lineno"> 3 </span>                  m4 make wget python2 python3 unzip <span class="se">\</span>
-<span class="lineno"> 4 </span>                  lapack-devel hdf5-devel gsl gsl-devel <span class="se">\</span>
-<span class="lineno"> 5 </span>                  autoconf automake bison flex gdb git cmake
-<span class="lineno"> 6 </span>
-<span class="lineno"> 7 </span><span class="c1"># MPICH or OpenMPI is required for the FreeFEM parallel computing version</span>
-<span class="lineno"> 8 </span>sudo dnf install mpich-devel
-<span class="lineno"> 9 </span>sudo dnf install openmpi-devel
-<span class="lineno">10 </span>
-<span class="lineno">11 </span><span class="c1"># Then load one of the modules, for example</span>
-<span class="lineno">12 </span>module load mpi/mpich-x86_64
-<span class="lineno">13 </span><span class="c1"># or</span>
-<span class="lineno">14 </span>module load mpi/openmpi-x86_64
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>sudo dnf update
+<span class="linenos"> 2</span>sudo dnf install freeglut-devel gcc-gfortran gcc-c++ gcc <span class="se">\</span>
+<span class="linenos"> 3</span>                  m4 make wget python2 python3 unzip <span class="se">\</span>
+<span class="linenos"> 4</span>                  lapack-devel hdf5-devel gsl gsl-devel <span class="se">\</span>
+<span class="linenos"> 5</span>                  autoconf automake bison flex gdb git cmake
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1"># MPICH or OpenMPI is required for the FreeFEM parallel computing version</span>
+<span class="linenos"> 8</span>sudo dnf install mpich-devel
+<span class="linenos"> 9</span>sudo dnf install openmpi-devel
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1"># Then load one of the modules, for example</span>
+<span class="linenos">12</span>module load mpi/mpich-x86_64
+<span class="linenos">13</span><span class="c1"># or</span>
+<span class="linenos">14</span>module load mpi/openmpi-x86_64
 </pre></div>
 </div>
 </li>
 <li><p>Download <strong>FreeFEM</strong> source from the repository</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>git clone https://github.com/FreeFem/FreeFem-sources.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>git clone https://github.com/FreeFem/FreeFem-sources.git
 </pre></div>
 </div>
 </li>
 <li><p>Autoconf</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nb">cd</span> FreeFem-sources
-<span class="lineno">2 </span>autoreconf -i
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> FreeFem-sources
+<span class="linenos">2</span>autoreconf -i
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2441,8 +2441,8 @@ terminal.</p>
 </div>
 </li>
 <li><p>Configure</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>./configure --enable-download --enable-optim
-<span class="lineno">2 </span>    --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>./configure --enable-download --enable-optim
+<span class="linenos">2</span>    --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2451,7 +2451,7 @@ terminal.</p>
 </div>
 </li>
 <li><p>Download the 3rd party packages</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>./3rdparty/getall -a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>./3rdparty/getall -a
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2460,16 +2460,16 @@ terminal.</p>
 </div>
 </li>
 <li><p>If you want use PETSc/SLEPc and <a class="reference external" href="https://github.com/hpddm/hpddm">HPDDM</a> (High Performance Domain Decomposition Methods) for massively parallel computing</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nb">cd</span> 3rdparty/ff-petsc
-<span class="lineno">2 </span>make petsc-slepc // add <span class="nv">SUDO</span><span class="o">=</span>sudo <span class="k">if</span> your installation directory is the default /usr/local
-<span class="lineno">3 </span><span class="nb">cd</span> -
-<span class="lineno">4 </span>./reconfigure
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> 3rdparty/ff-petsc
+<span class="linenos">2</span>make petsc-slepc // add <span class="nv">SUDO</span><span class="o">=</span>sudo <span class="k">if</span> your installation directory is the default /usr/local
+<span class="linenos">3</span><span class="nb">cd</span> -
+<span class="linenos">4</span>./reconfigure
 </pre></div>
 </div>
 </li>
 <li><p>Build your <strong>FreeFEM</strong> library and executable</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>make -j&lt;nbProcs&gt;
-<span class="lineno">2 </span>make -j&lt;nbProcs&gt; check
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>make -j&lt;nbProcs&gt;
+<span class="linenos">2</span>make -j&lt;nbProcs&gt; check
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2478,7 +2478,7 @@ terminal.</p>
 </div>
 </li>
 <li><p>Install the executable</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>make install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>make install
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2507,7 +2507,7 @@ We assume your development machine is 64-bit, and you want your compiler to targ
 <p>4. In the MSYS2 shell, execute the following.
 Hint: if you right click the title bar, go to Options -&gt; Keys and tick “Ctrl+Shift+letter shortcuts” you can use Ctrl+Shift+V to paste in the MSYS shell.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>pacman -Syuu
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pacman -Syuu
 </pre></div>
 </div>
 </div></blockquote>
@@ -2516,7 +2516,7 @@ They can respectively be launched from C:devmsys64msys2.exe, C:devmsys64mingw32.
 Reopen MSYS2 (doesn’t matter which version, since we’re merely installing packages).
 Repeatedly run the following command until it says there are no further updates. You might have to restart your shell again.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>pacman -Syuu
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pacman -Syuu
 </pre></div>
 </div>
 </div></blockquote>
@@ -2525,54 +2525,54 @@ Repeatedly run the following command until it says there are no further updates.
 <ul class="simple">
 <li><p>for 64 bit systems:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>pacman -S autoconf make automake-wrapper bison git <span class="se">\</span>
-<span class="lineno">2 </span>  mingw-w64-x86_64-freeglut mingw-w64-x86_64-toolchain <span class="se">\</span>
-<span class="lineno">3 </span>  mingw-w64-x86_64-openblas patch python perl pkg-config pkgfile <span class="se">\</span>
-<span class="lineno">4 </span>  rebase tar <span class="nb">time</span> tzcode unzip which mingw-w64-x86_64-libmicroutils <span class="se">\</span>
-<span class="lineno">5 </span>  --ignore mingw-w64-x86_64-gcc-ada --ignore mingw-w64-x86_64-gcc-objc <span class="se">\</span>
-<span class="lineno">6 </span>  --ignore mingw-w64-x86_64-gdb mingw-w64-x86_64-cmake --noconfirm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pacman -S autoconf make automake-wrapper bison git <span class="se">\</span>
+<span class="linenos">2</span>  mingw-w64-x86_64-freeglut mingw-w64-x86_64-toolchain <span class="se">\</span>
+<span class="linenos">3</span>  mingw-w64-x86_64-openblas patch python perl pkg-config pkgfile <span class="se">\</span>
+<span class="linenos">4</span>  rebase tar <span class="nb">time</span> tzcode unzip which mingw-w64-x86_64-libmicroutils <span class="se">\</span>
+<span class="linenos">5</span>  --ignore mingw-w64-x86_64-gcc-ada --ignore mingw-w64-x86_64-gcc-objc <span class="se">\</span>
+<span class="linenos">6</span>  --ignore mingw-w64-x86_64-gdb mingw-w64-x86_64-cmake --noconfirm
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>for 32 bit systems (<strong>FreeFEM</strong> lower than version 4):</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>pacman -S autoconf automake-wrapper bash bash-completion <span class="se">\</span>
-<span class="lineno">2 </span>  bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem <span class="se">\</span>
-<span class="lineno">3 </span>  findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils <span class="se">\</span>
-<span class="lineno">4 </span>  info less lndir make man-db git mingw-w64-i686-freeglut <span class="se">\</span>
-<span class="lineno">5 </span>  mingw-w64-i686-toolchain mingw-w64-i686-gsl mingw-w64-i686-hdf5 <span class="se">\</span>
-<span class="lineno">6 </span>  mingw-w64-i686-openblas mintty msys2-keyring msys2-launcher-git <span class="se">\</span>
-<span class="lineno">7 </span>  msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git <span class="se">\</span>
-<span class="lineno">8 </span>  perl pkg-config pkgfile rebase sed tar tftp-hpa <span class="nb">time</span> tzcode unzip <span class="se">\</span>
-<span class="lineno">9 </span>  util-linux which
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pacman -S autoconf automake-wrapper bash bash-completion <span class="se">\</span>
+<span class="linenos">2</span>  bison bsdcpio bsdtar bzip2 coreutils curl dash file filesystem <span class="se">\</span>
+<span class="linenos">3</span>  findutils flex gawk gcc gcc-fortran gcc-libs grep gzip inetutils <span class="se">\</span>
+<span class="linenos">4</span>  info less lndir make man-db git mingw-w64-i686-freeglut <span class="se">\</span>
+<span class="linenos">5</span>  mingw-w64-i686-toolchain mingw-w64-i686-gsl mingw-w64-i686-hdf5 <span class="se">\</span>
+<span class="linenos">6</span>  mingw-w64-i686-openblas mintty msys2-keyring msys2-launcher-git <span class="se">\</span>
+<span class="linenos">7</span>  msys2-runtime ncurses pacman pacman-mirrors pactoys-git patch pax-git <span class="se">\</span>
+<span class="linenos">8</span>  perl pkg-config pkgfile rebase sed tar tftp-hpa <span class="nb">time</span> tzcode unzip <span class="se">\</span>
+<span class="linenos">9</span>  util-linux which
 </pre></div>
 </div>
 </li>
 <li><p>Open a <code class="docutils literal notranslate"><span class="pre">MingW64</span> <span class="pre">terminal</span></code> (or <code class="docutils literal notranslate"><span class="pre">MingW32</span></code> for old 32 bit <strong>FreeFEM</strong> version) and compile the <strong>FreeFEM</strong> source</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>git clone https://github.com/FreeFem/FreeFem-sources
-<span class="lineno">2 </span><span class="nb">cd</span> FreeFem-sources
-<span class="lineno">3 </span>autoreconf -i
-<span class="lineno">4 </span>./configure --enable-generic --enable-optim <span class="se">\</span>
-<span class="lineno">5 </span>  --enable-download --enable-maintainer-mode <span class="se">\</span>
-<span class="lineno">6 </span>  <span class="nv">CXXFLAGS</span><span class="o">=</span>-mtune<span class="o">=</span>generic <span class="nv">CFLAGS</span><span class="o">=</span>-mtune<span class="o">=</span>generic <span class="se">\</span>
-<span class="lineno">7 </span>  <span class="nv">FFLAGS</span><span class="o">=</span>-mtune<span class="o">=</span>generic --enable-download --disable-hips
-<span class="lineno">8 </span>          --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>git clone https://github.com/FreeFem/FreeFem-sources
+<span class="linenos">2</span><span class="nb">cd</span> FreeFem-sources
+<span class="linenos">3</span>autoreconf -i
+<span class="linenos">4</span>./configure --enable-generic --enable-optim <span class="se">\</span>
+<span class="linenos">5</span>  --enable-download --enable-maintainer-mode <span class="se">\</span>
+<span class="linenos">6</span>  <span class="nv">CXXFLAGS</span><span class="o">=</span>-mtune<span class="o">=</span>generic <span class="nv">CFLAGS</span><span class="o">=</span>-mtune<span class="o">=</span>generic <span class="se">\</span>
+<span class="linenos">7</span>  <span class="nv">FFLAGS</span><span class="o">=</span>-mtune<span class="o">=</span>generic --enable-download --disable-hips
+<span class="linenos">8</span>          --prefix<span class="o">=</span>/where/you/want/to/have/files/installed
 </pre></div>
 </div>
 </li>
 <li><p>If you want use <a class="reference external" href="https://github.com/hpddm/hpddm">HPDDM</a> (High Performance Domain Decomposition Methods) for massively parallel computing, install PETSc/SLEPc</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nb">cd</span> 3rdparty/ff-petsc
-<span class="lineno">2 </span>make petsc-slepc <span class="nv">SUDO</span><span class="o">=</span>sudo
-<span class="lineno">3 </span><span class="nb">cd</span> -
-<span class="lineno">4 </span>./reconfigure
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">cd</span> 3rdparty/ff-petsc
+<span class="linenos">2</span>make petsc-slepc <span class="nv">SUDO</span><span class="o">=</span>sudo
+<span class="linenos">3</span><span class="nb">cd</span> -
+<span class="linenos">4</span>./reconfigure
 </pre></div>
 </div>
 </li>
 <li><p>Download the 3rd party packages and build your <strong>FreeFEM</strong> library and executable</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>./3rdparty/getall -a
-<span class="lineno">2 </span>make
-<span class="lineno">3 </span>make check
-<span class="lineno">4 </span>make install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>./3rdparty/getall -a
+<span class="linenos">2</span>make
+<span class="linenos">3</span>make check
+<span class="linenos">4</span>make install
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2627,43 +2627,43 @@ openmpi and PETSc/SLEPc</p></td>
 </section>
 <section id="environment-variables-and-init-file">
 <h2>Environment variables and init file<a class="headerlink" href="#environment-variables-and-init-file" title="Permalink to this heading"></a></h2>
-<p><strong>FreeFEM</strong> reads a user’s init file named <code class="docutils literal notranslate"><span class="pre">freefem++.pref</span></code> to initialize global variables: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">verbosity</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">includepath</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">loadpath</span></code>.</p>
+<p><strong>FreeFEM</strong> reads a user’s init file named <code class="docutils literal notranslate"><span class="pre">freefem++.pref</span></code> to initialize global variables: <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">verbosity</span><span class="w"></span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">includepath</span><span class="w"></span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">loadpath</span><span class="w"></span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The variable <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">verbosity</span></code> changes the level of internal printing (0: nothing unless there are syntax errors, 1: few, 10: lots, etc. …), the default value is 2.</p>
-<p>The included files are found in the <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">includepath</span></code> list and the load files are found in the <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">loadpath</span></code> list.</p>
+<p>The variable <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">verbosity</span><span class="w"></span></code> changes the level of internal printing (0: nothing unless there are syntax errors, 1: few, 10: lots, etc. …), the default value is 2.</p>
+<p>The included files are found in the <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">includepath</span><span class="w"></span></code> list and the load files are found in the <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">loadpath</span><span class="w"></span></code> list.</p>
 </div>
 <p>The syntax of the file is:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nv">verbosity</span> <span class="o">=</span> <span class="m">5</span>
-<span class="lineno">2 </span><span class="nv">loadpath</span> <span class="o">+=</span> <span class="s2">&quot;/Library/FreeFem++/lib&quot;</span>
-<span class="lineno">3 </span><span class="nv">loadpath</span> <span class="o">+=</span> <span class="s2">&quot;/Users/hecht/Library/FreeFem++/lib&quot;</span>
-<span class="lineno">4 </span><span class="nv">includepath</span> <span class="o">+=</span> <span class="s2">&quot;/Library/FreeFem++/edp&quot;</span>
-<span class="lineno">5 </span><span class="nv">includepath</span> <span class="o">+=</span> <span class="s2">&quot;/Users/hecht/Library/FreeFem++/edp&quot;</span>
-<span class="lineno">6 </span><span class="c1"># This is a comment</span>
-<span class="lineno">7 </span><span class="nv">load</span> <span class="o">+=</span> <span class="s2">&quot;funcTemplate&quot;</span>
-<span class="lineno">8 </span><span class="nv">load</span> <span class="o">+=</span> <span class="s2">&quot;myfunction&quot;</span>
-<span class="lineno">9 </span><span class="nv">load</span> <span class="o">+=</span> <span class="s2">&quot;MUMPS_seq&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nv">verbosity</span> <span class="o">=</span> <span class="m">5</span>
+<span class="linenos">2</span><span class="nv">loadpath</span> <span class="o">+=</span> <span class="s2">&quot;/Library/FreeFem++/lib&quot;</span>
+<span class="linenos">3</span><span class="nv">loadpath</span> <span class="o">+=</span> <span class="s2">&quot;/Users/hecht/Library/FreeFem++/lib&quot;</span>
+<span class="linenos">4</span><span class="nv">includepath</span> <span class="o">+=</span> <span class="s2">&quot;/Library/FreeFem++/edp&quot;</span>
+<span class="linenos">5</span><span class="nv">includepath</span> <span class="o">+=</span> <span class="s2">&quot;/Users/hecht/Library/FreeFem++/edp&quot;</span>
+<span class="linenos">6</span><span class="c1"># This is a comment</span>
+<span class="linenos">7</span><span class="nv">load</span> <span class="o">+=</span> <span class="s2">&quot;funcTemplate&quot;</span>
+<span class="linenos">8</span><span class="nv">load</span> <span class="o">+=</span> <span class="s2">&quot;myfunction&quot;</span>
+<span class="linenos">9</span><span class="nv">load</span> <span class="o">+=</span> <span class="s2">&quot;MUMPS_seq&quot;</span>
 </pre></div>
 </div>
 <p>The possible paths for this file are</p>
 <ul class="simple">
 <li><p>under Unix and MacOs</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>/etc/freefem++.pref
-<span class="lineno">2 </span><span class="k">$(</span>HOME<span class="k">)</span>/.freefem++.pref
-<span class="lineno">3 </span>freefem++.pref
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>/etc/freefem++.pref
+<span class="linenos">2</span><span class="k">$(</span>HOME<span class="k">)</span>/.freefem++.pref
+<span class="linenos">3</span>freefem++.pref
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>under windows</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>freefem++.pref
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>freefem++.pref
 </pre></div>
 </div>
 <p>We can also use shell environment variables to change verbosity and the search rule before the init files.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nb">export</span> <span class="nv">FF_VERBOSITY</span><span class="o">=</span><span class="m">50</span>
-<span class="lineno">2 </span><span class="nb">export</span> <span class="nv">FF_INCLUDEPATH</span><span class="o">=</span><span class="s2">&quot;dir;;dir2&quot;</span>
-<span class="lineno">3 </span><span class="nb">export</span> <span class="nv">FF_LOADPATH</span><span class="o">=</span><span class="s2">&quot;dir;;dir3&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">export</span> <span class="nv">FF_VERBOSITY</span><span class="o">=</span><span class="m">50</span>
+<span class="linenos">2</span><span class="nb">export</span> <span class="nv">FF_INCLUDEPATH</span><span class="o">=</span><span class="s2">&quot;dir;;dir2&quot;</span>
+<span class="linenos">3</span><span class="nb">export</span> <span class="nv">FF_LOADPATH</span><span class="o">=</span><span class="s2">&quot;dir;;dir3&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -2673,8 +2673,8 @@ openmpi and PETSc/SLEPc</p></td>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To show the list of init of <strong>FreeFEM</strong> , do</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nb">export</span> <span class="nv">FF_VERBOSITY</span><span class="o">=</span><span class="m">100</span><span class="p">;</span>
-<span class="lineno">2 </span>./FreeFem++-nw
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">export</span> <span class="nv">FF_VERBOSITY</span><span class="o">=</span><span class="m">100</span><span class="p">;</span>
+<span class="linenos">2</span>./FreeFem++-nw
 </pre></div>
 </div>
 </div>
@@ -2690,14 +2690,14 @@ openmpi and PETSc/SLEPc</p></td>
 <p>In order to get the syntax highlighting in <a class="reference external" href="https://atom.io/">Atom</a>, you have to install the <a class="reference external" href="https://atom.io/packages/language-freefem-official">FreeFEM language support</a>.</p>
 <p>You can do it directly in Atom: Edit -&gt; Preferences -&gt; Install, and search for <code class="docutils literal notranslate"><span class="pre">language-freefem-offical</span></code>.</p>
 <p>To launch scripts directly from Atom, you have to install the <code class="docutils literal notranslate"><span class="pre">atom-runner</span></code> package. Once installed, modify the Atom configuration file (Edit -&gt; Config…) to have something like that:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="s2">&quot;*&quot;</span>:
-<span class="lineno">2 </span>   ...
-<span class="lineno">3 </span>
-<span class="lineno">4 </span>   runner:
-<span class="lineno">5 </span>      extensions:
-<span class="lineno">6 </span>         edp: <span class="s2">&quot;FreeFem++&quot;</span>
-<span class="lineno">7 </span>      scopes:
-<span class="lineno">8 </span>         <span class="s2">&quot;Freefem++&quot;</span>: <span class="s2">&quot;FreeFem++&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="s2">&quot;*&quot;</span>:
+<span class="linenos">2</span>   ...
+<span class="linenos">3</span>
+<span class="linenos">4</span>   runner:
+<span class="linenos">5</span>      extensions:
+<span class="linenos">6</span>         edp: <span class="s2">&quot;FreeFem++&quot;</span>
+<span class="linenos">7</span>      scopes:
+<span class="linenos">8</span>         <span class="s2">&quot;Freefem++&quot;</span>: <span class="s2">&quot;FreeFem++&quot;</span>
 </pre></div>
 </div>
 <p>Reboot Atom, and use Alt+R to run a FreeFem++ script.</p>

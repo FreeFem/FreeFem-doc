@@ -1966,47 +1966,47 @@
 <span id="ffddmdocumentation"></span><h1>ffddm documentation<a class="headerlink" href="#ffddm-documentation" title="Permalink to this heading"></a></h1>
 <section id="minimal-example">
 <h2>Minimal example<a class="headerlink" href="#minimal-example" title="Permalink to this heading"></a></h2>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">macro</span> <span class="n">dimension</span> <span class="mi">3</span><span class="c1">// EOM            // 2D or 3D</span>
-<span class="lineno"> 2 </span>
-<span class="lineno"> 3 </span><span class="cp">include</span> <span class="s">&quot;ffddm.idp&quot;</span>
-<span class="lineno"> 4 </span>
-<span class="lineno"> 5 </span><span class="cp">load</span> <span class="s">&quot;msh3&quot;</span>
-<span class="lineno"> 6 </span>
-<span class="lineno"> 7 </span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">LL</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">];</span>
-<span class="lineno"> 8 </span><span class="kt">mesh3</span> <span class="n">ThGlobal</span> <span class="o">=</span> <span class="nf">cube</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="kr">x</span><span class="p">,</span> <span class="kr">y</span><span class="p">,</span> <span class="kr">z</span><span class="p">],</span> <span class="kr">label</span> <span class="o">=</span> <span class="n">LL</span><span class="p">);</span>      <span class="c1">// global mesh</span>
-<span class="lineno"> 9 </span>
-<span class="lineno">10 </span><span class="kt">macro</span> <span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="p">[</span><span class="nf">dx</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="nf">dz</span><span class="p">(</span><span class="n">u</span><span class="p">)]</span><span class="c1">// EOM    // three-dimensional gradient</span>
-<span class="lineno">11 </span>
-<span class="lineno">12 </span><span class="kt">macro</span> <span class="n">Varf</span><span class="p">(</span><span class="n">varfName</span><span class="p">,</span> <span class="n">meshName</span><span class="p">,</span> <span class="n">VhName</span><span class="p">)</span>
-<span class="lineno">13 </span>    <span class="kt">varf</span> <span class="n">varfName</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="nf">int3d</span><span class="p">(</span><span class="n">meshName</span><span class="p">)(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">&#39;*</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">+</span> <span class="nf">int3d</span><span class="p">(</span><span class="n">meshName</span><span class="p">)(</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="nf">on</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
-<span class="lineno">14 </span><span class="c1">// EOM</span>
-<span class="lineno">15 </span>
-<span class="lineno">16 </span><span class="c1">// Domain decomposition</span>
-<span class="lineno">17 </span><span class="n">ffddmbuildDmesh</span><span class="p">(</span> <span class="n">LapMesh</span> <span class="p">,</span> <span class="n">ThGlobal</span> <span class="p">,</span> <span class="kr">mpiCommWorld</span> <span class="p">)</span>
-<span class="lineno">18 </span>
-<span class="lineno">19 </span><span class="kt">macro</span> <span class="n">def</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="n">i</span><span class="c1">// EOM                         // scalar field definition</span>
-<span class="lineno">20 </span><span class="kt">macro</span> <span class="kp">init</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="n">i</span><span class="c1">// EOM                        // scalar field initialization</span>
-<span class="lineno">21 </span><span class="n">ffddmbuildDfespace</span><span class="p">(</span> <span class="n">LapFE</span> <span class="p">,</span> <span class="n">LapMesh</span> <span class="p">,</span> <span class="kt">real</span> <span class="p">,</span> <span class="n">def</span> <span class="p">,</span> <span class="kp">init</span> <span class="p">,</span> <span class="nc">P1</span> <span class="p">)</span>
-<span class="lineno">22 </span>
-<span class="lineno">23 </span><span class="n">ffddmsetupOperator</span><span class="p">(</span> <span class="n">Lap</span> <span class="p">,</span> <span class="n">LapFE</span> <span class="p">,</span> <span class="n">Varf</span> <span class="p">)</span>
-<span class="lineno">24 </span>
-<span class="lineno">25 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">rhsi</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="lineno">26 </span><span class="n">ffddmbuildrhs</span><span class="p">(</span> <span class="n">Lap</span> <span class="p">,</span> <span class="n">Varf</span> <span class="p">,</span> <span class="n">rhsi</span> <span class="p">)</span>
-<span class="lineno">27 </span>
-<span class="lineno">28 </span><span class="n">LapFEVhi</span> <span class="n">def</span><span class="p">(</span><span class="n">ui</span><span class="p">);</span>
-<span class="lineno">29 </span>
-<span class="lineno">30 </span><span class="c1">//Direct solve</span>
-<span class="lineno">31 </span><span class="n">ui</span><span class="p">[]</span> <span class="o">=</span> <span class="n">Lapdirectsolve</span><span class="p">(</span><span class="n">rhsi</span><span class="p">);</span>
-<span class="lineno">32 </span>
-<span class="lineno">33 </span><span class="n">Lapwritesummary</span>
-<span class="lineno">34 </span>
-<span class="lineno">35 </span><span class="nf">ffddmplot</span><span class="p">(</span><span class="n">LapFE</span><span class="p">,</span><span class="n">ui</span><span class="p">,</span><span class="s">&quot;u&quot;</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">macro</span><span class="w"> </span><span class="n">dimension</span><span class="w"> </span><span class="mi">3</span><span class="c1">// EOM            // 2D or 3D</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="cp">include</span><span class="w"> </span><span class="s">&quot;ffddm.idp&quot;</span><span class="w"></span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="cp">load</span><span class="w"> </span><span class="s">&quot;msh3&quot;</span><span class="w"></span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">LL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="kt">mesh3</span><span class="w"> </span><span class="n">ThGlobal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cube</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="kr">x</span><span class="p">,</span><span class="w"> </span><span class="kr">y</span><span class="p">,</span><span class="w"> </span><span class="kr">z</span><span class="p">],</span><span class="w"> </span><span class="kr">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LL</span><span class="p">);</span><span class="w">      </span><span class="c1">// global mesh</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="kt">macro</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="nf">dx</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="w"> </span><span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="w"> </span><span class="nf">dz</span><span class="p">(</span><span class="n">u</span><span class="p">)]</span><span class="c1">// EOM    // three-dimensional gradient</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="kt">macro</span><span class="w"> </span><span class="n">Varf</span><span class="p">(</span><span class="n">varfName</span><span class="p">,</span><span class="w"> </span><span class="n">meshName</span><span class="p">,</span><span class="w"> </span><span class="n">VhName</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">13</span><span class="w">    </span><span class="kt">varf</span><span class="w"> </span><span class="n">varfName</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int3d</span><span class="p">(</span><span class="n">meshName</span><span class="p">)(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">&#39;*</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">int3d</span><span class="p">(</span><span class="n">meshName</span><span class="p">)(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">on</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">14</span><span class="c1">// EOM</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1">// Domain decomposition</span>
+<span class="linenos">17</span><span class="n">ffddmbuildDmesh</span><span class="p">(</span><span class="w"> </span><span class="n">LapMesh</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">ThGlobal</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="kr">mpiCommWorld</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="kt">macro</span><span class="w"> </span><span class="n">def</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="n">i</span><span class="c1">// EOM                         // scalar field definition</span>
+<span class="linenos">20</span><span class="kt">macro</span><span class="w"> </span><span class="kp">init</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="n">i</span><span class="c1">// EOM                        // scalar field initialization</span>
+<span class="linenos">21</span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="w"> </span><span class="n">LapFE</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">LapMesh</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="kt">real</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">def</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="kp">init</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nc">P1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="w"> </span><span class="n">Lap</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">LapFE</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">Varf</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="linenos">24</span>
+<span class="linenos">25</span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">rhsi</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">26</span><span class="n">ffddmbuildrhs</span><span class="p">(</span><span class="w"> </span><span class="n">Lap</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">Varf</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">rhsi</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="n">LapFEVhi</span><span class="w"> </span><span class="n">def</span><span class="p">(</span><span class="n">ui</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="c1">//Direct solve</span>
+<span class="linenos">31</span><span class="n">ui</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Lapdirectsolve</span><span class="p">(</span><span class="n">rhsi</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="n">Lapwritesummary</span><span class="w"></span>
+<span class="linenos">34</span>
+<span class="linenos">35</span><span class="n">ffddmplot</span><span class="p">(</span><span class="n">LapFE</span><span class="p">,</span><span class="n">ui</span><span class="p">,</span><span class="s">&quot;u&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="overlapping-mesh-decomposition">
 <span id="ffddmdocumentationoverlappingmeshdecomposition"></span><h2>Overlapping mesh decomposition<a class="headerlink" href="#overlapping-mesh-decomposition" title="Permalink to this heading"></a></h2>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmbuildDmesh</span><span class="p">(</span><span class="n">prmesh</span><span class="p">,</span><span class="n">Th</span><span class="p">,</span><span class="n">comm</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ffddmbuildDmesh</span><span class="p">(</span><span class="n">prmesh</span><span class="p">,</span><span class="n">Th</span><span class="p">,</span><span class="n">comm</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>decomposes the mesh <strong>Th</strong> into overlapping submeshes.
@@ -2073,7 +2073,7 @@ NewMacro prmesh#mpicomm()comm EndMacro
 --></section>
 <section id="local-finite-element-spaces">
 <span id="ffddmdocumentationlocalfiniteelementspaces"></span><h2>Local finite element spaces<a class="headerlink" href="#local-finite-element-spaces" title="Permalink to this heading"></a></h2>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">prfe</span><span class="p">,</span><span class="n">prmesh</span><span class="p">,</span><span class="n">scalar</span><span class="p">,</span><span class="n">def</span><span class="p">,</span><span class="kp">init</span><span class="p">,</span><span class="n">Pk</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">prfe</span><span class="p">,</span><span class="n">prmesh</span><span class="p">,</span><span class="n">scalar</span><span class="p">,</span><span class="n">def</span><span class="p">,</span><span class="kp">init</span><span class="p">,</span><span class="n">Pk</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>builds the local finite element spaces and associated distributed operators on top of the mesh decomposition <strong>prmesh</strong>.
@@ -2083,15 +2083,15 @@ It is assumed that <a class="reference internal" href="#ffddmdocumentationoverla
 <p><strong>scalar</strong> determines the type of data for this finite element: <em>real</em> or <em>complex</em>.</p>
 <p>Two macros, <strong>def</strong> and <strong>init</strong>, are needed: <strong>def</strong> specifies how to define a finite element function in the finite element space <strong>Pk</strong>, and <strong>init</strong> specifies how to interpolate a scalar function onto the (possibly multiple) components of <strong>Pk</strong>. Two examples are given below:</p>
 <p>For scalar P2 finite elements and complex-valued problems:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">macro</span> <span class="n">def</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="n">u</span><span class="c1">// EOM</span>
-<span class="lineno">2 </span><span class="kt">macro</span> <span class="kp">init</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="n">u</span><span class="c1">// EOM</span>
-<span class="lineno">3 </span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">myFEprefix</span><span class="p">,</span><span class="n">mymeshprefix</span><span class="p">,</span><span class="kt">complex</span><span class="p">,</span><span class="n">def</span><span class="p">,</span><span class="kp">init</span><span class="p">,</span><span class="nc">P2</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">macro</span><span class="w"> </span><span class="n">def</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="n">u</span><span class="c1">// EOM</span>
+<span class="linenos">2</span><span class="kt">macro</span><span class="w"> </span><span class="kp">init</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="n">u</span><span class="c1">// EOM</span>
+<span class="linenos">3</span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">myFEprefix</span><span class="p">,</span><span class="n">mymeshprefix</span><span class="p">,</span><span class="kt">complex</span><span class="p">,</span><span class="n">def</span><span class="p">,</span><span class="kp">init</span><span class="p">,</span><span class="nc">P2</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>For vectorial [P2,P2,P1] finite elements and real-valued problems:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">macro</span> <span class="n">def</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="o">#</span><span class="kp">B</span><span class="p">,</span> <span class="n">u</span><span class="o">#</span><span class="n">C</span><span class="p">]</span><span class="c1">// EOM</span>
-<span class="lineno">2 </span><span class="kt">macro</span> <span class="kp">init</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">]</span><span class="c1">// EOM</span>
-<span class="lineno">3 </span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">myFEprefix</span><span class="p">,</span><span class="n">mymeshprefix</span><span class="p">,</span><span class="kt">real</span><span class="p">,</span><span class="n">def</span><span class="p">,</span><span class="kp">init</span><span class="p">,[</span><span class="nc">P2</span><span class="p">,</span><span class="nc">P2</span><span class="p">,</span><span class="nc">P1</span><span class="p">])</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>macro def(u) [u, u#B, u#C]// EOM
+<span class="linenos">2</span>macro init(u) [u, u, u]// EOM
+<span class="linenos">3</span>ffddmbuildDfespace(myFEprefix,mymeshprefix,real,def,init,[P2,P2,P1])
 </pre></div>
 </div>
 <p>In practice, this builds the necessary distributed operators associated to the finite element space: the local partition of unity functions <span class="math notranslate nohighlight">\((D_i)_{i=1,...,N}\)</span> (see <code class="docutils literal notranslate"><span class="pre">prfe#Dk</span></code> and <code class="docutils literal notranslate"><span class="pre">prfe#Dih</span></code> below) as well as the function <code class="docutils literal notranslate"><span class="pre">prfe#update</span></code> (see below) which synchronizes local vectors <span class="math notranslate nohighlight">\((u_i)_{i=1,...,N}\)</span> between neighboring subdomains, performing the equivalent of <span class="math notranslate nohighlight">\(u_i = R_i (\sum_{j=1}^N R_j^T u_j)\)</span> or <span class="math notranslate nohighlight">\(u_i = R_i (\sum_{j=1}^N R_j^T D_j u_j)\)</span> in a distributed parallel environment.</p>
@@ -2148,7 +2148,7 @@ prfe#K[int][int] prfe#snd(0);
 --></section>
 <section id="define-the-problem-to-solve">
 <span id="ffddmdocumentationdefineproblemtosolve"></span><h2>Define the problem to solve<a class="headerlink" href="#define-the-problem-to-solve" title="Permalink to this heading"></a></h2>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">prfe</span><span class="p">,</span><span class="n">Varf</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">prfe</span><span class="p">,</span><span class="n">Varf</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>builds the distributed operator associated to the variational problem given by <strong>Varf</strong>, on top of the distributed finite element space <strong>prfe</strong>.
@@ -2162,11 +2162,11 @@ See <a class="reference internal" href="#ffddmdocumentationbuildrhs"><span class
 <p>The macro <strong>Varf</strong> is required to have three parameters: the name of the variational form, the mesh, and the finite element space.
 The variational form given in this ‘abstract’ format will then be used by <em>ffddm</em> to assemble the discrete operators by setting the appropriate mesh and finite element space as parameters.
 An example is given below:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">macro</span> <span class="nf">myVarf</span><span class="p">(</span><span class="n">varfName</span><span class="p">,</span> <span class="n">meshName</span><span class="p">,</span> <span class="n">VhName</span><span class="p">)</span>
-<span class="lineno">2 </span>    <span class="kt">varf</span> <span class="n">varfName</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="nf">int3d</span><span class="p">(</span><span class="n">meshName</span><span class="p">)(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">&#39;&#39;*</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">+</span> <span class="nf">on</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
-<span class="lineno">3 </span><span class="c1">// EOM</span>
-<span class="lineno">4 </span>
-<span class="lineno">5 </span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">myprefix</span><span class="p">,</span><span class="n">myFEprefix</span><span class="p">,</span><span class="n">myVarf</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">macro</span><span class="w"> </span><span class="n">myVarf</span><span class="p">(</span><span class="n">varfName</span><span class="p">,</span><span class="w"> </span><span class="n">meshName</span><span class="p">,</span><span class="w"> </span><span class="n">VhName</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="kt">varf</span><span class="w"> </span><span class="n">varfName</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int3d</span><span class="p">(</span><span class="n">meshName</span><span class="p">)(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">&#39;&#39;*</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">on</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">3</span><span class="c1">// EOM</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">myprefix</span><span class="p">,</span><span class="n">myFEprefix</span><span class="p">,</span><span class="n">myVarf</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p><strong>Remark</strong> In this simple example, the third parameter <em>VhName</em> is not used.
@@ -2192,11 +2192,11 @@ The input <em>rhsi</em> is given as a distributed vector (<em>rhsi</em> is the r
 </ul>
 <p><strong>Remark: rectangular operators</strong></p>
 <p>It is possible to define a non-square distributed operator where the variational form takes two different finite element spaces of unknown and test functions. This is done through macro <strong>ffddmsetupOperatorRect</strong> which takes two FE prefixes (which must be defined on the same mesh prefix), see below:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">macro</span> <span class="nf">myVarf</span><span class="p">(</span><span class="n">varfName</span><span class="p">,</span> <span class="n">meshName</span><span class="p">,</span> <span class="n">VhName</span><span class="p">)</span>
-<span class="lineno">2 </span>    <span class="kt">varf</span> <span class="n">varfName</span><span class="p">([</span><span class="n">u</span><span class="p">,</span> <span class="n">uB</span><span class="p">,</span> <span class="n">uC</span><span class="p">],</span> <span class="p">[</span><span class="n">q</span><span class="p">])</span> <span class="o">=</span> <span class="nf">int3d</span><span class="p">(</span><span class="n">meshName</span><span class="p">)(</span><span class="n">div</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">*</span> <span class="n">q</span><span class="p">);</span>
-<span class="lineno">3 </span><span class="c1">// EOM</span>
-<span class="lineno">4 </span>
-<span class="lineno">5 </span><span class="n">ffddmsetupOperatorRect</span><span class="p">(</span><span class="n">myprefix</span><span class="p">,</span><span class="n">myFEprefixV</span><span class="p">,</span><span class="n">myFEprefixP</span><span class="p">,</span><span class="n">myVarf</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">macro</span><span class="w"> </span><span class="nf">myVarf</span><span class="p">(</span><span class="n">varfName</span><span class="p">,</span><span class="w"> </span><span class="n">meshName</span><span class="p">,</span><span class="w"> </span><span class="n">VhName</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="kt">varf</span><span class="w"> </span><span class="n">varfName</span><span class="p">([</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">uB</span><span class="p">,</span><span class="w"> </span><span class="n">uC</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="n">q</span><span class="p">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int3d</span><span class="p">(</span><span class="n">meshName</span><span class="p">)(</span><span class="n">div</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">3</span><span class="c1">// EOM</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">ffddmsetupOperatorRect</span><span class="p">(</span><span class="n">myprefix</span><span class="p">,</span><span class="n">myFEprefixV</span><span class="p">,</span><span class="n">myFEprefixP</span><span class="p">,</span><span class="n">myVarf</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <!--
@@ -2210,7 +2210,7 @@ NewMacro pr#fromVhi(ui,VhName,res)
 
 - [ffddmverbosity](parameters.md#global-parameters)
 --><hr class="docutils" />
-<div class="highlight-freefem notranslate" id="ffddmdocumentationbuildrhs"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmbuildrhs</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">Varfrhs</span><span class="p">,</span><span class="n">rhs</span><span class="p">)</span>
+<div class="highlight-freefem notranslate" id="ffddmdocumentationbuildrhs"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ffddmbuildrhs</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">Varfrhs</span><span class="p">,</span><span class="n">rhs</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>builds the right-hand side associated to the variational form given by <strong>Varfrhs</strong> for the problem corresponding to prefix <strong>pr</strong>.
@@ -2218,18 +2218,18 @@ The resulting right-hand side vector <strong>rhs</strong> corresponds to the dis
 <p>The input vector <strong>rhs</strong> is resized and contains the resulting local right-hand side <span class="math notranslate nohighlight">\(R_i b\)</span>, the restriction of the global right-hand side <span class="math notranslate nohighlight">\(b\)</span> to the subdomain of this mpi rank.
 In the sequential case, the global right-hand side vector <span class="math notranslate nohighlight">\(b\)</span> is assembled instead.</p>
 <p>An example is given below:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">macro</span> <span class="nf">myVarfrhs</span><span class="p">(</span><span class="n">varfName</span><span class="p">,</span> <span class="n">meshName</span><span class="p">,</span> <span class="n">VhName</span><span class="p">)</span>
-<span class="lineno">2 </span>    <span class="kt">varf</span> <span class="n">varfName</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="o">=</span> <span class="n">intN</span><span class="p">(</span><span class="n">meshName</span><span class="p">)(</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="nf">on</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
-<span class="lineno">3 </span><span class="c1">// EOM</span>
-<span class="lineno">4 </span>
-<span class="lineno">5 </span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">rhsi</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="lineno">6 </span><span class="n">ffddmbuildrhs</span><span class="p">(</span><span class="n">myprefix</span><span class="p">,</span><span class="n">myVarfrhs</span><span class="p">,</span><span class="n">rhsi</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">macro</span><span class="w"> </span><span class="nf">myVarfrhs</span><span class="p">(</span><span class="n">varfName</span><span class="p">,</span><span class="w"> </span><span class="n">meshName</span><span class="p">,</span><span class="w"> </span><span class="n">VhName</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="kt">varf</span><span class="w"> </span><span class="n">varfName</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">intN</span><span class="p">(</span><span class="n">meshName</span><span class="p">)(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">on</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">3</span><span class="c1">// EOM</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">rhsi</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">6</span><span class="n">ffddmbuildrhs</span><span class="p">(</span><span class="n">myprefix</span><span class="p">,</span><span class="n">myVarfrhs</span><span class="p">,</span><span class="n">rhsi</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="one-level-preconditioners">
 <span id="ffddmdocumentationonelevelpreconditioners"></span><h2>One level preconditioners<a class="headerlink" href="#one-level-preconditioners" title="Permalink to this heading"></a></h2>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmsetupPrecond</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">VarfPrec</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ffddmsetupPrecond</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">VarfPrec</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>builds the one level preconditioner for problem <strong>pr</strong>.
@@ -2321,7 +2321,7 @@ The two level preconditioner depends on the choice of the coarse correction form
 int pr#bCM = 0;
 --><section id="building-the-geneo-coarse-space">
 <span id="ffddmdocumentationbuildinggeneocoarsespace"></span><h3>Building the GenEO coarse space<a class="headerlink" href="#building-the-geneo-coarse-space" title="Permalink to this heading"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmgeneosetup</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">Varf</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ffddmgeneosetup</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">Varf</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This builds the GenEO coarse space for problem <strong>pr</strong>.
@@ -2361,7 +2361,7 @@ matrix<pr#prfe#K> pr#matN;
 --></section>
 <section id="building-the-coarse-space-from-a-coarse-mesh">
 <span id="ffddmdocumentationbuildingcoarsespacefromcoarsemesh"></span><h3>Building the coarse space from a coarse mesh<a class="headerlink" href="#building-the-coarse-space-from-a-coarse-mesh" title="Permalink to this heading"></a></h3>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmcoarsemeshsetup</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">Thc</span><span class="p">,</span><span class="n">VarfEprec</span><span class="p">,</span><span class="n">VarfAprec</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ffddmcoarsemeshsetup</span><span class="p">(</span><span class="n">pr</span><span class="p">,</span><span class="n">Thc</span><span class="p">,</span><span class="n">VarfEprec</span><span class="p">,</span><span class="n">VarfAprec</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>builds the coarse space for problem <strong>pr</strong> from a coarse problem which corresponds to the discretization of a variational form on a coarser mesh <strong>Thc</strong> of <span class="math notranslate nohighlight">\(\Omega\)</span>.
@@ -2401,7 +2401,7 @@ These parameters are set by <a class="reference internal" href="parameters.html#
 </section>
 <section id="solving-the-linear-system">
 <span id="ffddmdocumentationsolvinglinearsystem"></span><h2>Solving the linear system<a class="headerlink" href="#solving-the-linear-system" title="Permalink to this heading"></a></h2>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">func</span> <span class="n">pr</span><span class="o">#</span><span class="n">prfe</span><span class="o">#</span><span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span> <span class="n">pr</span><span class="o">#</span><span class="n">fGMRES</span><span class="p">(</span><span class="n">pr</span><span class="o">#</span><span class="n">prfe</span><span class="o">#</span><span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="o">&amp;</span> <span class="n">x0i</span><span class="p">,</span> <span class="n">pr</span><span class="o">#</span><span class="n">prfe</span><span class="o">#</span><span class="n">K</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="o">&amp;</span> <span class="n">bi</span><span class="p">,</span> <span class="kt">real</span> <span class="kp">eps</span><span class="p">,</span> <span class="kt">int</span> <span class="n">itmax</span><span class="p">,</span> <span class="kt">string</span> <span class="n">sp</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>func pr#prfe#K[int] pr#fGMRES(pr#prfe#K[int]&amp; x0i, pr#prfe#K[int]&amp; bi, real eps, int itmax, string sp)
 </pre></div>
 </div>
 <p>solves the linear system for problem <strong>pr</strong> using the flexible GMRES algorithm with preconditioner <span class="math notranslate nohighlight">\(M^{-1}\)</span> (corresponding to <code class="docutils literal notranslate"><span class="pre">pr#PREC</span></code>).
@@ -2419,19 +2419,19 @@ If <strong>eps</strong> <span class="math notranslate nohighlight">\(&lt; 0\)</s
 <p>You can use <strong>HPDDM</strong> features unavailable in <strong>ffddm</strong> such as advanced Krylov subspace methods implementing block and recycling techniques.</p>
 <p>To switch to <strong>HPDDM</strong>, simply define the macro <code class="docutils literal notranslate"><span class="pre">pr#withhpddm</span></code> before using <a class="reference internal" href="#ffddmdocumentationdefineproblemtosolve"><span class="std std-ref">ffddmsetupOperator</span></a>. You can then pass <strong>HPDDM</strong> options
 with command-line arguments or directly to the underlying <strong>HPDDM</strong> operator <code class="docutils literal notranslate"><span class="pre">pr#hpddmOP</span></code>. Options need to be prefixed by the operator prefix:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">macro</span> <span class="nf">PBwithhpddm</span><span class="p">()</span><span class="mi">1</span> <span class="c1">// EOM</span>
-<span class="lineno">2 </span><span class="n">ffddmsetupOperator</span><span class="p">(</span> <span class="n">PB</span> <span class="p">,</span> <span class="n">FE</span> <span class="p">,</span> <span class="n">Varf</span> <span class="p">)</span>
-<span class="lineno">3 </span><span class="nf">set</span><span class="p">(</span><span class="n">PBhpddmOP</span><span class="p">,</span><span class="kp">sparams</span><span class="o">=</span><span class="s">&quot;-hpddm_PB_krylov_method gcrodr -hpddm_PB_recycle 10&quot;</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">macro</span><span class="w"> </span><span class="n">PBwithhpddm</span><span class="p">()</span><span class="mi">1</span><span class="w"> </span><span class="c1">// EOM</span>
+<span class="linenos">2</span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="w"> </span><span class="n">PB</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">FE</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">Varf</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="linenos">3</span><span class="nf">set</span><span class="p">(</span><span class="n">PBhpddmOP</span><span class="p">,</span><span class="kp">sparams</span><span class="o">=</span><span class="s">&quot;-hpddm_PB_krylov_method gcrodr -hpddm_PB_recycle 10&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>You can also choose to replace only the Krylov solver, by defining the macro <code class="docutils literal notranslate"><span class="pre">pr#withhpddmkrylov</span></code> before using <a class="reference internal" href="#ffddmdocumentationdefineproblemtosolve"><span class="std std-ref">ffddmsetupOperator</span></a>.
 Doing so, a call to <code class="docutils literal notranslate"><span class="pre">pr#fGMRES</span></code> will call the <strong>HPDDM</strong> Krylov solver, with <strong>ffddm</strong> providing the operator and preconditioner through <code class="docutils literal notranslate"><span class="pre">pr#A</span></code> and <code class="docutils literal notranslate"><span class="pre">pr#PREC</span></code>. You can then pass <strong>HPDDM</strong> options to the Krylov solver through command-line arguments:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">macro</span> <span class="n">PBwithhpddmkrylov</span><span class="p">()</span><span class="mi">1</span> <span class="c1">// EOM</span>
-<span class="lineno">2 </span><span class="n">ffddmsetupOperator</span><span class="p">(</span> <span class="n">PB</span> <span class="p">,</span> <span class="n">FE</span> <span class="p">,</span> <span class="n">Varf</span> <span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">macro</span><span class="w"> </span><span class="n">PBwithhpddmkrylov</span><span class="p">()</span><span class="mi">1</span><span class="w"> </span><span class="c1">// EOM</span>
+<span class="linenos">2</span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="w"> </span><span class="n">PB</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">FE</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">Varf</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>For example, using restarted GCRO-DR(40) and recycling 10 Ritz vectors at each restart:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span>ff-mpirun -np <span class="m">4</span> test.edp -wg -hpddm_krylov_method gcrodr -hpddm_recycle <span class="m">10</span> -ffddm_gmres_restart <span class="m">40</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>ff-mpirun -np <span class="m">4</span> test.edp -wg -hpddm_krylov_method gcrodr -hpddm_recycle <span class="m">10</span> -ffddm_gmres_restart <span class="m">40</span>
 </pre></div>
 </div>
 <p>An example can be found in <strong>Helmholtz-2d-HPDDM-BGMRES.edp</strong>, see the <a class="reference internal" href="examples.html#ffddmexamples"><span class="std std-ref">Examples</span></a> section.</p>
@@ -2456,37 +2456,37 @@ ffddmbuildDmeshAug(pr,Th,comm)
 --><section id="interpolation-between-two-distributed-finite-element-spaces">
 <span id="ffddmdocumentationinterpolation"></span><h3>Interpolation between two distributed finite element spaces<a class="headerlink" href="#interpolation-between-two-distributed-finite-element-spaces" title="Permalink to this heading"></a></h3>
 <p>The parallel interpolation of a distributed finite element function to another distributed finite element space can be computed using the <code class="docutils literal notranslate"><span class="pre">prfe#transferfromVhi</span></code> macro. Internally, it uses the <code class="docutils literal notranslate"><span class="pre">transfer</span></code> macro from the <code class="docutils literal notranslate"><span class="pre">macro_ddm.idp</span></code> script. The macro is prefixed by the source finite element prefix <strong>prfe</strong> and is used a follows:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">prfe</span><span class="o">#</span><span class="n">transferfromVhi</span><span class="p">(</span><span class="n">us</span><span class="p">,</span><span class="n">Vht</span><span class="p">,</span><span class="n">Pkt</span><span class="p">,</span><span class="n">rest</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>prfe#transferfromVhi(us,Vht,Pkt,rest)
 </pre></div>
 </div>
 <p>where <strong>us</strong> is distributed source FE function defined on <code class="docutils literal notranslate"><span class="pre">prfe#Vhi</span></code>, <strong>Vht</strong> is the target local finite element space, <strong>Pkt</strong> is the approximation space corresponding to <strong>Vht</strong> and <strong>rest</strong> is the target local FE function defined on <strong>Vht</strong>. You can find an example below:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="kt">macro</span> <span class="nf">dimension</span><span class="p">()</span><span class="mi">2</span><span class="c1">//</span>
-<span class="lineno"> 2 </span>
-<span class="lineno"> 3 </span><span class="cp">include</span> <span class="s">&quot;ffddm.idp&quot;</span>
-<span class="lineno"> 4 </span>
-<span class="lineno"> 5 </span><span class="kt">mesh</span> <span class="n">Ths</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
-<span class="lineno"> 6 </span>
-<span class="lineno"> 7 </span><span class="kt">mesh</span> <span class="n">Tht</span> <span class="o">=</span> <span class="nf">square</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
-<span class="lineno"> 8 </span>
-<span class="lineno"> 9 </span><span class="n">ffddmbuildDmesh</span><span class="p">(</span><span class="n">Ms</span><span class="p">,</span><span class="n">Ths</span><span class="p">,</span><span class="kr">mpiCommWorld</span><span class="p">)</span>
-<span class="lineno">10 </span>
-<span class="lineno">11 </span><span class="n">ffddmbuildDmesh</span><span class="p">(</span><span class="n">Mt</span><span class="p">,</span><span class="n">Tht</span><span class="p">,</span><span class="kr">mpiCommWorld</span><span class="p">)</span>
-<span class="lineno">12 </span>
-<span class="lineno">13 </span><span class="kt">func</span> <span class="n">Pk</span> <span class="o">=</span> <span class="p">[</span><span class="nc">P2</span><span class="p">,</span><span class="nc">P2</span><span class="p">];</span>
-<span class="lineno">14 </span>
-<span class="lineno">15 </span><span class="kt">macro</span> <span class="nf">def</span><span class="p">(</span><span class="n">u</span><span class="p">)[</span><span class="n">u</span><span class="p">,</span><span class="n">u</span><span class="o">#</span><span class="mi">2</span><span class="p">]</span><span class="c1">//</span>
-<span class="lineno">16 </span><span class="kt">macro</span> <span class="kp">init</span><span class="p">(</span><span class="n">u</span><span class="p">)[</span><span class="n">u</span><span class="p">,</span><span class="n">u</span><span class="p">]</span><span class="c1">//</span>
-<span class="lineno">17 </span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">FEs</span><span class="p">,</span><span class="n">Ms</span><span class="p">,</span><span class="kt">real</span><span class="p">,</span><span class="n">def</span><span class="p">,</span><span class="kp">init</span><span class="p">,</span><span class="n">Pk</span><span class="p">)</span>
-<span class="lineno">18 </span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">FEt</span><span class="p">,</span><span class="n">Mt</span><span class="p">,</span><span class="kt">real</span><span class="p">,</span><span class="n">def</span><span class="p">,</span><span class="kp">init</span><span class="p">,</span><span class="n">Pk</span><span class="p">)</span>
-<span class="lineno">19 </span>
-<span class="lineno">20 </span><span class="n">FEsVhi</span> <span class="n">def</span><span class="p">(</span><span class="n">us</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="nf">cos</span><span class="p">(</span><span class="kr">x</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="kr">y</span><span class="p">),</span><span class="nf">sin</span><span class="p">(</span><span class="kr">x</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="kr">y</span><span class="p">)];</span>
-<span class="lineno">21 </span>
-<span class="lineno">22 </span><span class="n">FEtVhi</span> <span class="nf">def</span><span class="p">(</span><span class="n">ut</span><span class="p">);</span>
-<span class="lineno">23 </span>
-<span class="lineno">24 </span><span class="n">FEstransferfromVhi</span><span class="p">(</span><span class="n">us</span><span class="p">,</span><span class="n">FEtVhi</span><span class="p">,</span><span class="n">Pk</span><span class="p">,</span><span class="n">ut</span><span class="p">)</span>
-<span class="lineno">25 </span>
-<span class="lineno">26 </span><span class="n">ffddmplot</span><span class="p">(</span><span class="n">FEs</span><span class="p">,</span><span class="n">us</span><span class="p">,</span><span class="s">&quot;u source&quot;</span><span class="p">);</span>
-<span class="lineno">27 </span><span class="n">ffddmplot</span><span class="p">(</span><span class="n">FEt</span><span class="p">,</span><span class="n">ut</span><span class="p">,</span><span class="s">&quot;u target&quot;</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>macro dimension()2//
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>include &quot;ffddm.idp&quot;
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>mesh Ths = square(10,10);
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>mesh Tht = square(30,20);
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>ffddmbuildDmesh(Ms,Ths,mpiCommWorld)
+<span class="linenos">10</span>
+<span class="linenos">11</span>ffddmbuildDmesh(Mt,Tht,mpiCommWorld)
+<span class="linenos">12</span>
+<span class="linenos">13</span>func Pk = [P2,P2];
+<span class="linenos">14</span>
+<span class="linenos">15</span>macro def(u)[u,u#2]//
+<span class="linenos">16</span>macro init(u)[u,u]//
+<span class="linenos">17</span>ffddmbuildDfespace(FEs,Ms,real,def,init,Pk)
+<span class="linenos">18</span>ffddmbuildDfespace(FEt,Mt,real,def,init,Pk)
+<span class="linenos">19</span>
+<span class="linenos">20</span>FEsVhi def(us) = [cos(x^2+y),sin(x^2+y)];
+<span class="linenos">21</span>
+<span class="linenos">22</span>FEtVhi def(ut);
+<span class="linenos">23</span>
+<span class="linenos">24</span>FEstransferfromVhi(us,FEtVhi,Pk,ut)
+<span class="linenos">25</span>
+<span class="linenos">26</span>ffddmplot(FEs,us,&quot;u source&quot;);
+<span class="linenos">27</span>ffddmplot(FEt,ut,&quot;u target&quot;);
 </pre></div>
 </div>
 </section>
@@ -2497,7 +2497,7 @@ For non Lagrange finite element spaces, such as Raviart–Thomas or Nédélec ed
 The idea is then to use a “pseudo” finite element <strong>Pkpart</strong> derived from <strong>Pk</strong> which is suitable for interpolating the P1 partition of unity, in the sense that it will produce a partition of unity for <strong>Pk</strong>.</p>
 <p>For example, for first-order Nédélec edge elements (<em>Edge03d</em>), whose degrees of freedom are the circulations along the edges, we define the “pseudo” finite element <em>Edge03ds0</em> which can be seen as a scalar Lagrange counterpart: the numbering of the degrees of freedom is the same, but they correspond to the value at the edge midpoints.</p>
 <p>For Lagrange finite elements, the distributed finite element spaces are built using <a class="reference internal" href="#ffddmdocumentationlocalfiniteelementspaces"><span class="std std-ref">ffddmbuildDfespace</span></a>. Here you must use <strong>ffddmbuildDfespaceEdge</strong>, which builds the distributed finite element space using a “pseudo” finite element to build the partition of unity:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmbuildDfespaceEdge</span><span class="p">(</span><span class="n">prfe</span><span class="p">,</span><span class="n">prmesh</span><span class="p">,</span><span class="n">scalar</span><span class="p">,</span><span class="n">def</span><span class="p">,</span><span class="kp">init</span><span class="p">,</span><span class="n">Pk</span><span class="p">,</span><span class="n">defpart</span><span class="p">,</span><span class="n">initpart</span><span class="p">,</span><span class="n">Pkpart</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ffddmbuildDfespaceEdge</span><span class="p">(</span><span class="n">prfe</span><span class="p">,</span><span class="n">prmesh</span><span class="p">,</span><span class="n">scalar</span><span class="p">,</span><span class="n">def</span><span class="p">,</span><span class="kp">init</span><span class="p">,</span><span class="n">Pk</span><span class="p">,</span><span class="n">defpart</span><span class="p">,</span><span class="n">initpart</span><span class="p">,</span><span class="n">Pkpart</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>where macros <strong>defpart</strong> and <strong>initpart</strong> specify how to define and interpolate a function in the ‘pseudo’ finite element space <strong>Pkpart</strong>, similar to <strong>def</strong> and <strong>init</strong> for <strong>Pk</strong>.</p>
@@ -2522,33 +2522,33 @@ This natural choice offers interesting benefits:</p>
 <li><p>The assembly and the application of the interpolation operator <span class="math notranslate nohighlight">\(Z\)</span> (and <span class="math notranslate nohighlight">\(Z^T\)</span>) between the fine and the coarse spaces can be computed locally in each subdomain and require no communication.</p></li>
 </ul>
 <p>In <strong>ffddm</strong>, the first step is to build the two nested mesh decompositions using <strong>ffddmbuildDmeshNested</strong>:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="n">ffddmbuildDmeshNested</span><span class="p">(</span><span class="n">prmesh</span><span class="p">,</span><span class="n">Thc</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">comm</span><span class="p">)</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ffddmbuildDmeshNested</span><span class="p">(</span><span class="n">prmesh</span><span class="p">,</span><span class="n">Thc</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">comm</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>decomposes the coarse mesh <strong>Thc</strong> into overlapping submeshes and creates the fine decomposition by locally refining submeshes by a factor of <strong>s</strong>, i.e. splitting each mesh element into <span class="math notranslate nohighlight">\(s^d\)</span> elements, <span class="math notranslate nohighlight">\(s \geq 1\)</span>.
 This will create and expose variables corresponding to both decompositions, prefixed by <strong>prmesh</strong> for the fine mesh and by <strong>prmesh#Coarse</strong> for the coarse mesh (see <a class="reference internal" href="#ffddmdocumentationoverlappingmeshdecomposition"><span class="std std-ref">ffddmbuildDmesh</span></a>).
 It also sets the integer variable <code class="docutils literal notranslate"><span class="pre">prmesh#binexactCS</span></code> to 1, which specifies that any two level method defined on mesh prefix <strong>prmesh</strong> will use inexact coarse solves.</p>
 <p>The distributed finite element spaces, operators and preconditioners can then be defined for both decompositions. Here is an example where the coarse problem is solved using a one level method:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="n">ffddmbuildDmeshNested</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">Thc</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kr">mpiCommWorld</span><span class="p">)</span>
-<span class="lineno"> 2 </span>
-<span class="lineno"> 3 </span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">FE</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="kt">real</span><span class="p">,</span> <span class="n">def</span><span class="p">,</span> <span class="kp">init</span><span class="p">,</span> <span class="n">Pk</span><span class="p">)</span>
-<span class="lineno"> 4 </span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">FECoarse</span><span class="p">,</span> <span class="n">MCoarse</span><span class="p">,</span> <span class="kt">real</span><span class="p">,</span> <span class="n">def</span><span class="p">,</span> <span class="kp">init</span><span class="p">,</span> <span class="n">Pk</span><span class="p">)</span>
-<span class="lineno"> 5 </span>
-<span class="lineno"> 6 </span><span class="c1">// coarse operator (Varf of E):</span>
-<span class="lineno"> 7 </span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">PBCoarse</span><span class="p">,</span> <span class="n">FECoarse</span><span class="p">,</span> <span class="n">VarfEprec</span><span class="p">)</span>
-<span class="lineno"> 8 </span><span class="c1">// one level preconditioner for the coarse problem:</span>
-<span class="lineno"> 9 </span><span class="n">ffddmsetupPrecond</span><span class="p">(</span><span class="n">PBCoarse</span><span class="p">,</span> <span class="n">VarfPrecC</span><span class="p">)</span>
-<span class="lineno">10 </span>
-<span class="lineno">11 </span><span class="c1">// operator for the fine problem:</span>
-<span class="lineno">12 </span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">PB</span><span class="p">,</span> <span class="n">FE</span><span class="p">,</span> <span class="n">Varf</span><span class="p">)</span>
-<span class="lineno">13 </span><span class="c1">// one level preconditioner for the fine problem:</span>
-<span class="lineno">14 </span><span class="n">ffddmsetupPrecond</span><span class="p">(</span><span class="n">PB</span><span class="p">,</span> <span class="n">VarfPrec</span><span class="p">)</span>
-<span class="lineno">15 </span>
-<span class="lineno">16 </span><span class="c1">// add the second level:</span>
-<span class="lineno">17 </span><span class="n">ffddmcoarsemeshsetup</span><span class="p">(</span><span class="n">PB</span><span class="p">,</span> <span class="n">Thc</span><span class="p">,</span> <span class="n">VarfEprec</span><span class="p">,</span> <span class="n">null</span><span class="p">)</span>
-<span class="lineno">18 </span>
-<span class="lineno">19 </span><span class="p">[...]</span>
-<span class="lineno">20 </span><span class="n">u</span><span class="p">[]</span> <span class="o">=</span> <span class="n">PBfGMRES</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="mf">1.e-6</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="s">&quot;right&quot;</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">ffddmbuildDmeshNested</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">Thc</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="kr">mpiCommWorld</span><span class="p">)</span><span class="w"></span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">FE</span><span class="p">,</span><span class="w"> </span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="n">def</span><span class="p">,</span><span class="w"> </span><span class="kp">init</span><span class="p">,</span><span class="w"> </span><span class="n">Pk</span><span class="p">)</span><span class="w"></span>
+<span class="linenos"> 4</span><span class="n">ffddmbuildDfespace</span><span class="p">(</span><span class="n">FECoarse</span><span class="p">,</span><span class="w"> </span><span class="n">MCoarse</span><span class="p">,</span><span class="w"> </span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="n">def</span><span class="p">,</span><span class="w"> </span><span class="kp">init</span><span class="p">,</span><span class="w"> </span><span class="n">Pk</span><span class="p">)</span><span class="w"></span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1">// coarse operator (Varf of E):</span>
+<span class="linenos"> 7</span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">PBCoarse</span><span class="p">,</span><span class="w"> </span><span class="n">FECoarse</span><span class="p">,</span><span class="w"> </span><span class="n">VarfEprec</span><span class="p">)</span><span class="w"></span>
+<span class="linenos"> 8</span><span class="c1">// one level preconditioner for the coarse problem:</span>
+<span class="linenos"> 9</span><span class="n">ffddmsetupPrecond</span><span class="p">(</span><span class="n">PBCoarse</span><span class="p">,</span><span class="w"> </span><span class="n">VarfPrecC</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1">// operator for the fine problem:</span>
+<span class="linenos">12</span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">PB</span><span class="p">,</span><span class="w"> </span><span class="n">FE</span><span class="p">,</span><span class="w"> </span><span class="n">Varf</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">13</span><span class="c1">// one level preconditioner for the fine problem:</span>
+<span class="linenos">14</span><span class="n">ffddmsetupPrecond</span><span class="p">(</span><span class="n">PB</span><span class="p">,</span><span class="w"> </span><span class="n">VarfPrec</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1">// add the second level:</span>
+<span class="linenos">17</span><span class="n">ffddmcoarsemeshsetup</span><span class="p">(</span><span class="n">PB</span><span class="p">,</span><span class="w"> </span><span class="n">Thc</span><span class="p">,</span><span class="w"> </span><span class="n">VarfEprec</span><span class="p">,</span><span class="w"> </span><span class="n">null</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="p">[...]</span><span class="w"></span>
+<span class="linenos">20</span><span class="n">u</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PBfGMRES</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span><span class="p">,</span><span class="w"> </span><span class="mf">1.</span><span class="n">e</span><span class="mi">-6</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;right&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p><strong>Remarks</strong>:</p>

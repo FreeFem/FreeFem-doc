@@ -1990,16 +1990,16 @@
 <section id="area">
 <h2>area<a class="headerlink" href="#area" title="Permalink to this heading"></a></h2>
 <p>Area of the current triangle.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Vh0</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P0</span><span class="p">);</span>
-<span class="lineno">2 </span><span class="n">Vh0</span> <span class="kp">A</span> <span class="o">=</span> <span class="kr">area</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">fespace</span><span class="w"> </span><span class="nf">Vh0</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="nc">P0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">2</span><span class="n">Vh0</span><span class="w"> </span><span class="kp">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">area</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="argv">
 <h2>ARGV<a class="headerlink" href="#argv" title="Permalink to this heading"></a></h2>
 <p>Array that contains all the command line arguments.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="kr">ARGV</span><span class="p">.</span><span class="kr">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-<span class="lineno">2 </span>    <span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="kr">ARGV</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="kr">endl</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kr">ARGV</span><span class="p">.</span><span class="kr">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"></span>
+<span class="linenos">2</span><span class="w">    </span><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="kr">ARGV</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="kr">endl</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="../examples/developers.html#examplecommandlinearguments"><span class="std std-ref">Command line arguments example</span></a> for a complete example.</p>
@@ -2007,7 +2007,7 @@
 <section id="boundaryedge">
 <h2>BoundaryEdge<a class="headerlink" href="#boundaryedge" title="Permalink to this heading"></a></h2>
 <p>Return 1 if the current edge is on a boundary, 0 otherwise.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="kp">B</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">BoundaryEdge</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="kp">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">BoundaryEdge</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -2015,15 +2015,15 @@
 <h2>CG<a class="headerlink" href="#cg" title="Permalink to this heading"></a></h2>
 <p>Conjugate gradient solver.</p>
 <p>Usable in <a class="reference internal" href="types.html#typeproblem"><span class="std std-ref">problem</span></a> and <a class="reference internal" href="types.html#typesolve"><span class="std std-ref">solve</span></a> definition</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">problem</span> <span class="n">Laplacian</span> <span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="kp">solver</span><span class="o">=</span><span class="kr">CG</span><span class="p">)</span> <span class="o">=</span> <span class="p">...</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">problem</span><span class="w"> </span><span class="n">Laplacian</span><span class="w"> </span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="kp">solver</span><span class="o">=</span><span class="kr">CG</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Or in <a class="reference internal" href="types.html#typematrix"><span class="std std-ref">matrix</span></a> construction</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">matrix</span> <span class="kp">A</span> <span class="o">=</span> <span class="n">vLaplacian</span><span class="p">(</span><span class="n">Uh</span><span class="p">,</span> <span class="n">Uh</span><span class="p">,</span> <span class="kp">solver</span><span class="o">=</span><span class="kr">CG</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">matrix</span><span class="w"> </span><span class="kp">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vLaplacian</span><span class="p">(</span><span class="n">Uh</span><span class="p">,</span><span class="w"> </span><span class="n">Uh</span><span class="p">,</span><span class="w"> </span><span class="kp">solver</span><span class="o">=</span><span class="kr">CG</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Or in <a class="reference internal" href="functions.html#functionset"><span class="std std-ref">set function</span></a></p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="nf">set</span><span class="p">(</span><span class="kp">A</span><span class="p">,</span> <span class="kp">solver</span><span class="o">=</span><span class="kr">CG</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nf">set</span><span class="p">(</span><span class="kp">A</span><span class="p">,</span><span class="w"> </span><span class="kp">solver</span><span class="o">=</span><span class="kr">CG</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -2038,14 +2038,14 @@
 <section id="edgeorientation">
 <h2>edgeOrientation<a class="headerlink" href="#edgeorientation" title="Permalink to this heading"></a></h2>
 <p>Sign of <span class="math notranslate nohighlight">\(i-j\)</span> if the current edge is <span class="math notranslate nohighlight">\([q_i, q_j]\)</span>.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">S</span> <span class="o">=</span> <span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="mi">1</span><span class="p">)(</span><span class="kr">edgeOrientation</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)(</span><span class="kr">edgeOrientation</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="false">
 <h2>false<a class="headerlink" href="#false" title="Permalink to this heading"></a></h2>
 <p>False boolean value.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">bool</span> <span class="n">b</span> <span class="o">=</span> <span class="kr">false</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">bool</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">false</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -2056,29 +2056,29 @@
 <section id="htriangle">
 <h2>hTriangle<a class="headerlink" href="#htriangle" title="Permalink to this heading"></a></h2>
 <p>Size of the current triangle.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P0</span><span class="p">);</span>
-<span class="lineno">2 </span><span class="n">Vh</span> <span class="n">h</span> <span class="o">=</span> <span class="kr">hTriangle</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">fespace</span><span class="w"> </span><span class="nf">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="nc">P0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">2</span><span class="n">Vh</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">hTriangle</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="include">
 <h2>include<a class="headerlink" href="#include" title="Permalink to this heading"></a></h2>
 <p>Include an <a class="reference internal" href="external-libraries.html#externallibraries"><span class="std std-ref">external library</span></a>.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">include</span> <span class="s">&quot;iovtk&quot;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">include</span><span class="w"> </span><span class="s">&quot;iovtk&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="internaledge">
 <h2>InternalEdge<a class="headerlink" href="#internaledge" title="Permalink to this heading"></a></h2>
 <p>Return 0 if the current edge is on a boundary, 1 otherwise.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">I</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">InternalEdge</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">InternalEdge</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="label">
 <h2>label<a class="headerlink" href="#label" title="Permalink to this heading"></a></h2>
 <p>Label number of a boundary if the current point is on a boundary, 0 otherwise.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">L</span> <span class="o">=</span> <span class="n">Th</span><span class="p">(</span><span class="n">xB</span><span class="p">,</span> <span class="n">yB</span><span class="p">).</span><span class="kr">label</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Th</span><span class="p">(</span><span class="n">xB</span><span class="p">,</span><span class="w"> </span><span class="n">yB</span><span class="p">).</span><span class="kr">label</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -2086,14 +2086,14 @@
 <h2>lenEdge<a class="headerlink" href="#lenedge" title="Permalink to this heading"></a></h2>
 <p>Length of the current edge.</p>
 <p>For an edge <span class="math notranslate nohighlight">\([q_i, g_j]\)</span>, return <span class="math notranslate nohighlight">\(|q_i-q_j|\)</span>.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">L</span> <span class="o">=</span> <span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="mi">1</span><span class="p">)(</span><span class="kr">lenEdge</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int1d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)(</span><span class="kr">lenEdge</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="load">
 <h2>load<a class="headerlink" href="#load" title="Permalink to this heading"></a></h2>
 <p>Load a script.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="cp">load</span> <span class="s">&quot;Element_P3&quot;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">load</span><span class="w"> </span><span class="s">&quot;Element_P3&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -2104,56 +2104,56 @@
 <section id="n">
 <h2>N<a class="headerlink" href="#n" title="Permalink to this heading"></a></h2>
 <p>Outward unit normal at the current point if it is on a curve defined by a border.
-<code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">N</span><span class="p">.</span><span class="kr">x</span><span class="p">,</span> <span class="kr">N</span><span class="p">.</span><span class="kr">y</span><span class="p">,</span> <span class="kr">N</span><span class="p">.</span><span class="kr">z</span></code> are respectively the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> components of the normal.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">func</span> <span class="n">Nx</span> <span class="o">=</span> <span class="kr">N</span><span class="p">.</span><span class="kr">x</span><span class="p">;</span>
-<span class="lineno">2 </span><span class="kt">func</span> <span class="n">Ny</span> <span class="o">=</span> <span class="kr">N</span><span class="p">.</span><span class="kr">y</span><span class="p">;</span>
-<span class="lineno">3 </span><span class="kt">func</span> <span class="n">Nz</span> <span class="o">=</span> <span class="kr">N</span><span class="p">.</span><span class="kr">z</span><span class="p">;</span>
+<code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">N</span><span class="p">.</span><span class="kr">x</span><span class="p">,</span><span class="w"> </span><span class="kr">N</span><span class="p">.</span><span class="kr">y</span><span class="p">,</span><span class="w"> </span><span class="kr">N</span><span class="p">.</span><span class="kr">z</span><span class="w"></span></code> are respectively the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> components of the normal.</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">func</span><span class="w"> </span><span class="n">Nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">N</span><span class="p">.</span><span class="kr">x</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">2</span><span class="kt">func</span><span class="w"> </span><span class="n">Ny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">N</span><span class="p">.</span><span class="kr">y</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">3</span><span class="kt">func</span><span class="w"> </span><span class="n">Nz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">N</span><span class="p">.</span><span class="kr">z</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="ntonedge">
 <h2>nTonEdge<a class="headerlink" href="#ntonedge" title="Permalink to this heading"></a></h2>
 <p>Number of adjacent triangles of the current edge.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">nTE</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">nTonEdge</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">nTE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">nTonEdge</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="nuedge">
 <h2>nuEdge<a class="headerlink" href="#nuedge" title="Permalink to this heading"></a></h2>
 <p>Index of the current edge in the triangle.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">nE</span> <span class="o">=</span> <span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">nuEdge</span><span class="p">);</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">nE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="kr">nuEdge</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="nutriangle">
 <h2>nuTriangle<a class="headerlink" href="#nutriangle" title="Permalink to this heading"></a></h2>
 <p>Index of the current triangle.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P0</span><span class="p">);</span>
-<span class="lineno">2 </span><span class="n">Vh</span> <span class="kr">n</span> <span class="o">=</span> <span class="kr">nuTriangle</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">fespace</span><span class="w"> </span><span class="nf">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="nc">P0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">2</span><span class="n">Vh</span><span class="w"> </span><span class="kr">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">nuTriangle</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="p">
 <h2>P<a class="headerlink" href="#p" title="Permalink to this heading"></a></h2>
 <p>Current point.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">cx</span> <span class="o">=</span> <span class="kr">P</span><span class="p">.</span><span class="kr">x</span><span class="p">;</span>
-<span class="lineno">2 </span><span class="kt">real</span> <span class="n">cy</span> <span class="o">=</span> <span class="kr">P</span><span class="p">.</span><span class="kr">y</span><span class="p">;</span>
-<span class="lineno">3 </span><span class="kt">real</span> <span class="n">cz</span> <span class="o">=</span> <span class="kr">P</span><span class="p">.</span><span class="kr">z</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">cx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">P</span><span class="p">.</span><span class="kr">x</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">2</span><span class="kt">real</span><span class="w"> </span><span class="n">cy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">P</span><span class="p">.</span><span class="kr">y</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">3</span><span class="kt">real</span><span class="w"> </span><span class="n">cz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">P</span><span class="p">.</span><span class="kr">z</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="pi">
 <h2>pi<a class="headerlink" href="#pi" title="Permalink to this heading"></a></h2>
 <p>Pi = 3.14159.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">Pi</span> <span class="o">=</span> <span class="kr">pi</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">Pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">pi</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This is a real value.</p>
 </section>
 <section id="region">
 <h2>region<a class="headerlink" href="#region" title="Permalink to this heading"></a></h2>
-<p>Region number of the current point. If the point is outside, then <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">region</span> <span class="o">==</span> <span class="kr">notaregion</span></code> where <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">notaregion</span></code> is a <strong>FreeFEM</strong> integer constant.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">R</span> <span class="o">=</span> <span class="n">Th</span><span class="p">(</span><span class="n">xR</span><span class="p">,</span> <span class="n">yR</span><span class="p">).</span><span class="kr">region</span><span class="p">;</span>
+<p>Region number of the current point. If the point is outside, then <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">region</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kr">notaregion</span><span class="w"></span></code> where <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">notaregion</span><span class="w"></span></code> is a <strong>FreeFEM</strong> integer constant.</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Th</span><span class="p">(</span><span class="n">xR</span><span class="p">,</span><span class="w"> </span><span class="n">yR</span><span class="p">).</span><span class="kr">region</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -2164,15 +2164,15 @@
 <section id="true">
 <h2>true<a class="headerlink" href="#true" title="Permalink to this heading"></a></h2>
 <p>True boolean value.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">bool</span> <span class="n">b</span> <span class="o">=</span> <span class="kr">true</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">bool</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">true</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="verbosity">
 <h2>verbosity<a class="headerlink" href="#verbosity" title="Permalink to this heading"></a></h2>
 <p>Verbosity level.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">int</span> <span class="n">Verbosity</span> <span class="o">=</span> <span class="kr">verbosity</span><span class="p">;</span>
-<span class="lineno">2 </span><span class="kr">verbosity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">Verbosity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">verbosity</span><span class="p">;</span><span class="w"></span>
+<span class="linenos">2</span><span class="kr">verbosity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>0 = nothing, 1 = little information, 10 = a lot of information, …</p>
@@ -2181,22 +2181,22 @@
 <section id="version">
 <h2>version<a class="headerlink" href="#version" title="Permalink to this heading"></a></h2>
 <p><strong>FreeFEM</strong> version.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kr">cout</span> <span class="o">&lt;&lt;</span> <span class="kr">version</span> <span class="o">&lt;&lt;</span> <span class="kr">endl</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="kr">version</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="kr">endl</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="volume">
 <h2>volume<a class="headerlink" href="#volume" title="Permalink to this heading"></a></h2>
 <p>Volume of the current tetrahedra.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">fespace</span> <span class="nf">Vh0</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span> <span class="nc">P0</span><span class="p">);</span>
-<span class="lineno">2 </span><span class="n">Vh0</span> <span class="n">V</span> <span class="o">=</span> <span class="kr">volume</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">fespace</span><span class="w"> </span><span class="nf">Vh0</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="nc">P0</span><span class="p">);</span><span class="w"></span>
+<span class="linenos">2</span><span class="n">Vh0</span><span class="w"> </span><span class="n">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">volume</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="x">
 <h2>x<a class="headerlink" href="#x" title="Permalink to this heading"></a></h2>
 <p>The <span class="math notranslate nohighlight">\(x\)</span> coordinate at the current point.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">CurrentX</span> <span class="o">=</span> <span class="kr">x</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">CurrentX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">x</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This is a real value.</p>
@@ -2204,7 +2204,7 @@
 <section id="y">
 <h2>y<a class="headerlink" href="#y" title="Permalink to this heading"></a></h2>
 <p>The <span class="math notranslate nohighlight">\(y\)</span> coordinate at the current point.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">CurrentY</span> <span class="o">=</span> <span class="kr">y</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">CurrentY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">y</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This is a real value.</p>
@@ -2212,7 +2212,7 @@
 <section id="z">
 <h2>z<a class="headerlink" href="#z" title="Permalink to this heading"></a></h2>
 <p>The <span class="math notranslate nohighlight">\(z\)</span> coordinate at the current point.</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="lineno">1 </span><span class="kt">real</span> <span class="n">CurrentZ</span> <span class="o">=</span> <span class="kr">z</span><span class="p">;</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">CurrentZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kr">z</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This is a real value.</p>
