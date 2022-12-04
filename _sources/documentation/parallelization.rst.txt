@@ -649,7 +649,7 @@ The second one reads the solver parameters from a data file. The name of this fi
 If :freefem:`lparams`, :freefem:`dparams`, :freefem:`sparams` or :freefem:`datafilename` is not provided by the user, the solver’s default values are used.
 
 To use parallel solver in **FreeFEM**, we need to load the dynamic library corresponding to this solver.
-For example to use `MUMPS <http://mumps.enseeiht.fr/>`__ solver as parallel solver in **FreeFEM**, write in the ``.edp`` file :freefem:`load "MUMPS_FreeFem"`.
+For example to use `MUMPS <http://mumps-solver.org/>`__ solver as parallel solver in **FreeFEM**, write in the ``.edp`` file :freefem:`load "MUMPS_FreeFem"`.
 
 If the libraries are not loaded, the default sparse solver will be loaded (default sparse solver is :freefem:`UMFPACK`). The :numref:`tabParallelizationSparseSolver` gives this new value for the different libraries.
 
@@ -813,7 +813,7 @@ In this section, we present the sparse direct solvers interfaced with **FreeFEM*
 MUMPS solver
 ^^^^^^^^^^^^
 
-MUltifrontal Massively Parallel Solver (`MUMPS <http://mumps.enseeiht.fr/>`__) is an open-source library.
+MUltifrontal Massively Parallel Solver (`MUMPS <http://mumps-solver.org/>`__) is an open-source library.
 
 This package solves linear system of the form :math:`A \: x = b` where :math:`A` is a square sparse matrix with a direct method.
 The square matrix considered in MUMPS can be either unsymmetric, symmetric positive definite or general symmetric.
@@ -830,7 +830,7 @@ MUMPS uses the following libraries :
 
 **MUMPS parameters:**
 
-There are four input parameters in `MUMPS <http://mumps.enseeiht.fr/index.php?page=doc>`__.
+There are four input parameters in `MUMPS <http://mumps-solver.org/index.php?page=doc>`__.
 Two integers :cpp:`SYM` and :cpp:`PAR`, a vector of integer of size 40 :cpp:`INCTL` and a vector of real of size 15 :cpp:`CNTL`.
 
 The first parameter gives the type of the matrix: 0 for unsymmetric matrix, 1 for symmetric positive matrix and 2 for general symmetric.
@@ -839,7 +839,7 @@ The second parameter defined if the host processor work during the factorization
 
 The parameter :cpp:`INCTL` and :cpp:`CNTL` is the control parameter of MUMPS.
 The vectors :cpp:`ICNTL` and :cpp:`CNTL` in MUMPS becomes with index 1 like vector in ``Fortran``.
-For more details see the `MUMPS user’s guide <http://mumps.enseeiht.fr/index.php?page=doc>`__.
+For more details see the `MUMPS user’s guide <http://mumps-solver.org/index.php?page=doc>`__.
 
 We describe now some elements of the main parameters of :cpp:`ICNTL` for MUMPS.
 
@@ -851,7 +851,7 @@ We describe now some elements of the main parameters of :cpp:`ICNTL` for MUMPS.
     Therefore, ``INCTL(5)`` is treated as 0 value.
 
     The main option for ``ICNTL(18)``: ``INCLTL(18)=0`` centrally on the host processor, ``ICNTL(18)=3`` distributed the input matrix pattern and the entries (recommended option for distributed matrix by developer of MUMPS).
-    For other values of ``ICNTL(18)`` see the `MUMPS user’s guide <http://mumps.enseeiht.fr/index.php?page=doc>`__.
+    For other values of ``ICNTL(18)`` see the `MUMPS user’s guide <http://mumps-solver.org/index.php?page=doc>`__.
     These values can be used also in **FreeFEM**.
 
     The default option implemented in **FreeFEM** are ``ICNTL(5)=0`` and ``ICNTL(18)=0``.
@@ -867,7 +867,7 @@ We describe now some elements of the main parameters of :cpp:`ICNTL` for MUMPS.
     The ordering strategy to obtain :math:`P` is controlled by parameter ``ICNTL(7)``.
     The permutation of zero free diagonal :math:`Q_c` is controlled by parameter ``ICNTL(6)``.
     The row and column scaling is controlled by parameter ``ICNTL(18)``.
-    These option are connected and also strongly related with ``ICNTL(12)`` (see the `MUMPS user’s guide <http://mumps.enseeiht.fr/index.php?page=doc>`__ for more details).
+    These option are connected and also strongly related with ``ICNTL(12)`` (see the `MUMPS user’s guide <http://mumps-solver.org/index.php?page=doc>`__ for more details).
 
     The parameters :freefem:`permr`, :freefem:`scaler`, and :freefem:`scalec` in **FreeFEM** allow to give permutation matrix(\ :math:`P`), row scaling (:math:`D_r`) and column scaling (:math:`D_c`) of the user respectively.
 

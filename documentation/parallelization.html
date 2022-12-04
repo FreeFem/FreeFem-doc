@@ -2514,7 +2514,7 @@ The first method defines parameters with <code class="code freefem docutils lite
 <p>The second one reads the solver parameters from a data file. The name of this file is specified by <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">datafilename</span><span class="w"></span></code>.
 If <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">lparams</span><span class="w"></span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">dparams</span><span class="w"></span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">sparams</span><span class="w"></span></code> or <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">datafilename</span><span class="w"></span></code> is not provided by the user, the solver’s default values are used.</p>
 <p>To use parallel solver in <strong>FreeFEM</strong>, we need to load the dynamic library corresponding to this solver.
-For example to use <a class="reference external" href="http://mumps.enseeiht.fr/">MUMPS</a> solver as parallel solver in <strong>FreeFEM</strong>, write in the <code class="docutils literal notranslate"><span class="pre">.edp</span></code> file <code class="code freefem docutils literal highlight highlight-freefem"><span class="cp">load</span><span class="w"> </span><span class="s">&quot;MUMPS_FreeFem&quot;</span><span class="w"></span></code>.</p>
+For example to use <a class="reference external" href="http://mumps-solver.org/">MUMPS</a> solver as parallel solver in <strong>FreeFEM</strong>, write in the <code class="docutils literal notranslate"><span class="pre">.edp</span></code> file <code class="code freefem docutils literal highlight highlight-freefem"><span class="cp">load</span><span class="w"> </span><span class="s">&quot;MUMPS_FreeFem&quot;</span><span class="w"></span></code>.</p>
 <p>If the libraries are not loaded, the default sparse solver will be loaded (default sparse solver is <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">UMFPACK</span><span class="w"></span></code>). The <a class="reference internal" href="#tabparallelizationsparsesolver"><span class="std std-numref">Table 2</span></a> gives this new value for the different libraries.</p>
 <table class="docutils align-default" id="tabparallelizationsparsesolver">
 <caption><span class="caption-number">Table 2 </span><span class="caption-text">Default sparse solver for real and complex arithmetics when we load a parallel sparse solver library</span><a class="headerlink" href="#tabparallelizationsparsesolver" title="Permalink to this table"></a></caption>
@@ -2713,7 +2713,7 @@ An example of using different parallel sparse solvers for the same problem is gi
 <p>In this section, we present the sparse direct solvers interfaced with <strong>FreeFEM</strong>.</p>
 <section id="mumps-solver">
 <h4>MUMPS solver<a class="headerlink" href="#mumps-solver" title="Permalink to this heading"></a></h4>
-<p>MUltifrontal Massively Parallel Solver (<a class="reference external" href="http://mumps.enseeiht.fr/">MUMPS</a>) is an open-source library.</p>
+<p>MUltifrontal Massively Parallel Solver (<a class="reference external" href="http://mumps-solver.org/">MUMPS</a>) is an open-source library.</p>
 <p>This package solves linear system of the form <span class="math notranslate nohighlight">\(A \: x = b\)</span> where <span class="math notranslate nohighlight">\(A\)</span> is a square sparse matrix with a direct method.
 The square matrix considered in MUMPS can be either unsymmetric, symmetric positive definite or general symmetric.</p>
 <p>The method implemented in MUMPS is a direct method based on a multifrontal approach.
@@ -2731,13 +2731,13 @@ It constructs a direct factorization <span class="math notranslate nohighlight">
 <p>MUMPS does not solve linear system with a rectangular matrix.</p>
 </div>
 <p><strong>MUMPS parameters:</strong></p>
-<p>There are four input parameters in <a class="reference external" href="http://mumps.enseeiht.fr/index.php?page=doc">MUMPS</a>.
+<p>There are four input parameters in <a class="reference external" href="http://mumps-solver.org/index.php?page=doc">MUMPS</a>.
 Two integers <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">SYM</span><span class="w"></span></code> and <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">PAR</span><span class="w"></span></code>, a vector of integer of size 40 <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">INCTL</span><span class="w"></span></code> and a vector of real of size 15 <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">CNTL</span><span class="w"></span></code>.</p>
 <p>The first parameter gives the type of the matrix: 0 for unsymmetric matrix, 1 for symmetric positive matrix and 2 for general symmetric.</p>
 <p>The second parameter defined if the host processor work during the factorization and solves steps : <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">PAR</span><span class="o">=</span><span class="mi">1</span><span class="w"></span></code> host processor working and <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">PAR</span><span class="o">=</span><span class="mi">0</span><span class="w"></span></code> host processor not working.</p>
 <p>The parameter <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">INCTL</span><span class="w"></span></code> and <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">CNTL</span><span class="w"></span></code> is the control parameter of MUMPS.
 The vectors <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">ICNTL</span><span class="w"></span></code> and <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">CNTL</span><span class="w"></span></code> in MUMPS becomes with index 1 like vector in <code class="docutils literal notranslate"><span class="pre">Fortran</span></code>.
-For more details see the <a class="reference external" href="http://mumps.enseeiht.fr/index.php?page=doc">MUMPS user’s guide</a>.</p>
+For more details see the <a class="reference external" href="http://mumps-solver.org/index.php?page=doc">MUMPS user’s guide</a>.</p>
 <p>We describe now some elements of the main parameters of <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">ICNTL</span><span class="w"></span></code> for MUMPS.</p>
 <ul>
 <li><dl>
@@ -2746,7 +2746,7 @@ For more details see the <a class="reference external" href="http://mumps.enseei
 In the current release of <strong>FreeFEM</strong>, we consider that FE matrix or matrix is storage in assembled format.
 Therefore, <code class="docutils literal notranslate"><span class="pre">INCTL(5)</span></code> is treated as 0 value.</p>
 <p>The main option for <code class="docutils literal notranslate"><span class="pre">ICNTL(18)</span></code>: <code class="docutils literal notranslate"><span class="pre">INCLTL(18)=0</span></code> centrally on the host processor, <code class="docutils literal notranslate"><span class="pre">ICNTL(18)=3</span></code> distributed the input matrix pattern and the entries (recommended option for distributed matrix by developer of MUMPS).
-For other values of <code class="docutils literal notranslate"><span class="pre">ICNTL(18)</span></code> see the <a class="reference external" href="http://mumps.enseeiht.fr/index.php?page=doc">MUMPS user’s guide</a>.
+For other values of <code class="docutils literal notranslate"><span class="pre">ICNTL(18)</span></code> see the <a class="reference external" href="http://mumps-solver.org/index.php?page=doc">MUMPS user’s guide</a>.
 These values can be used also in <strong>FreeFEM</strong>.</p>
 <p>The default option implemented in <strong>FreeFEM</strong> are <code class="docutils literal notranslate"><span class="pre">ICNTL(5)=0</span></code> and <code class="docutils literal notranslate"><span class="pre">ICNTL(18)=0</span></code>.</p>
 </dd>
@@ -2760,7 +2760,7 @@ These values can be used also in <strong>FreeFEM</strong>.</p>
 <p>The ordering strategy to obtain <span class="math notranslate nohighlight">\(P\)</span> is controlled by parameter <code class="docutils literal notranslate"><span class="pre">ICNTL(7)</span></code>.
 The permutation of zero free diagonal <span class="math notranslate nohighlight">\(Q_c\)</span> is controlled by parameter <code class="docutils literal notranslate"><span class="pre">ICNTL(6)</span></code>.
 The row and column scaling is controlled by parameter <code class="docutils literal notranslate"><span class="pre">ICNTL(18)</span></code>.
-These option are connected and also strongly related with <code class="docutils literal notranslate"><span class="pre">ICNTL(12)</span></code> (see the <a class="reference external" href="http://mumps.enseeiht.fr/index.php?page=doc">MUMPS user’s guide</a> for more details).</p>
+These option are connected and also strongly related with <code class="docutils literal notranslate"><span class="pre">ICNTL(12)</span></code> (see the <a class="reference external" href="http://mumps-solver.org/index.php?page=doc">MUMPS user’s guide</a> for more details).</p>
 <p>The parameters <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">permr</span><span class="w"></span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">scaler</span><span class="w"></span></code>, and <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">scalec</span><span class="w"></span></code> in <strong>FreeFEM</strong> allow to give permutation matrix(<span class="math notranslate nohighlight">\(P\)</span>), row scaling (<span class="math notranslate nohighlight">\(D_r\)</span>) and column scaling (<span class="math notranslate nohighlight">\(D_c\)</span>) of the user respectively.</p>
 </div></blockquote>
 </li>

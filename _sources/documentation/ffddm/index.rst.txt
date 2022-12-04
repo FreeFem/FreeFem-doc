@@ -14,7 +14,7 @@ It implies a huge effort in algorithmic development.
 Thanks to ``ffddm``, FreeFEM users have access to high-level functionalities for specifying and solving their finite element problems in parallel.
 The first task handled by ``ffddm`` is the data distribution among the processors.
 This is done via an overlapping domain decomposition and a related distributed linear algebra.
-Then, solving a linear system is possible either via an interface to the parallel `MUMPS <http://mumps.enseeiht.fr/>`__ solver or by using domain decomposition methods as preconditioners to the GMRES Krylov method.
+Then, solving a linear system is possible either via an interface to the parallel `MUMPS <http://mumps-solver.org/>`__ solver or by using domain decomposition methods as preconditioners to the GMRES Krylov method.
 The ``ffddm`` framework makes it easy to use scalable Schwarz methods enhanced by a coarse space correction built either from a coarse mesh or a `GenEO <https://link.springer.com/article/10.1007%2Fs00211-013-0576-y>`__ (Generalized Eigenvalue in the Overlap) coarse space, see also the book `An Introduction to Domain Decomposition Methods: algorithms, theory, and parallel implementation <http://bookstore.siam.org/ot144/>`__.
 State-of-the-art three level methods are also implemented in ``ffddm``.
 
