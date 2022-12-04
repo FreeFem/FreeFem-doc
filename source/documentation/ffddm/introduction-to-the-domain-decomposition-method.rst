@@ -118,7 +118,7 @@ A frontal solver builds a :math:`LU` or Cholesky decomposition of a sparse matri
 This subset is called the *front* and it is essentially the transition region between the part of the system already finished and the part not touched yet.
 These methods are basically sequential since the unknowns are processed the one after another or one front after another.
 In order to benefit from multicore processors, a `multifrontal solver <https://en.wikipedia.org/wiki/Multifrontal_method>`__ is an improvement of the frontal solver that uses several independent fronts at the same time.
-The fronts can be worked on by different processors, which enables parallel computing. ``ffddm`` provides an interface to the parallel sparse direct solver `MUMPS <http://mumps.enseeiht.fr/>`__. These methods have the advantage to be very robust and to have a predictable cost. The main drawback is the memory requirement which can be prohibitive especially for three-dimensional problems. 
+The fronts can be worked on by different processors, which enables parallel computing. ``ffddm`` provides an interface to the parallel sparse direct solver `MUMPS <http://mumps-solver.org/>`__. These methods have the advantage to be very robust and to have a predictable cost. The main drawback is the memory requirement which can be prohibitive especially for three-dimensional problems. 
 
 .. _ffddmIntroductionSchwarzMethods:
 

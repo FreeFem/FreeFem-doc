@@ -85,14 +85,14 @@ Problems involving partial differential equations from several branches of physi
     * `ParMETIS <http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview>`_
     * `Mmg <https://www.mmgtools.org/>`_
     * `mshmet <https://www.ljll.math.upmc.fr/frey/software.html>`_
-    * `MUMPS <http://mumps.enseeiht.fr/>`_
+    * `MUMPS <http://mumps-solver.org/>`_
     * `NLopt 2.2.4 <http://ab-initio.mit.edu/wiki/index.php/NLopt>`_
     * `ScaLAPACK <http://www.netlib.org/scalapack/>`_
     * `Scotch <https://gforge.inria.fr/projects/scotch/>`_
     * `SuiteSparse <http://faculty.cse.tamu.edu/davis/suitesparse.html>`_
     * `SuperLU <http://crd-legacy.lbl.gov/~xiaoye/SuperLU/>`_
     * `TetGen <http://www.tetgen.org/>`_
-    * `PETSc <https://www.mcs.anl.gov/petsc/>`_
+    * `PETSc <https://petsc.org/>`_
     * `HTool <https://pierremarchand.netlify.com/project/htool/>`_
     * `HPDDM <https://github.com/hpddm/hpddm>`_
     * `BemTool <https://github.com/PierreMarchand20/BemTool>`_
