@@ -138,8 +138,8 @@
     
 
 \title{FreeFEM Documentation}
-\date{Nov 07, 2022}
-\release{4.8}
+\date{Dec 04, 2022}
+\release{4.12}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
 \renewcommand{\releasename}{Release}
@@ -287,7 +287,7 @@ Problems involving partial differential equations from several branches of physi
 
 \item {} 
 \sphinxAtStartPar
-\sphinxhref{http://mumps.enseeiht.fr/}{MUMPS}
+\sphinxhref{http://mumps-solver.org/}{MUMPS}
 
 \item {} 
 \sphinxAtStartPar
@@ -315,7 +315,7 @@ Problems involving partial differential equations from several branches of physi
 
 \item {} 
 \sphinxAtStartPar
-\sphinxhref{https://www.mcs.anl.gov/petsc/}{PETSc}
+\sphinxhref{https://petsc.org/}{PETSc}
 
 \item {} 
 \sphinxAtStartPar
@@ -22816,7 +22816,7 @@ If \sphinxcode{\sphinxupquote{%
 
 \sphinxAtStartPar
 To use parallel solver in \sphinxstylestrong{FreeFEM}, we need to load the dynamic library corresponding to this solver.
-For example to use \sphinxhref{http://mumps.enseeiht.fr/}{MUMPS} solver as parallel solver in \sphinxstylestrong{FreeFEM}, write in the \sphinxcode{\sphinxupquote{.edp}} file \sphinxcode{\sphinxupquote{%
+For example to use \sphinxhref{http://mumps-solver.org/}{MUMPS} solver as parallel solver in \sphinxstylestrong{FreeFEM}, write in the \sphinxcode{\sphinxupquote{.edp}} file \sphinxcode{\sphinxupquote{%
 \PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{MUMPS\PYGZus{}FreeFem}\PYG{l+s}{\PYGZdq{}}%
 }}.
 
@@ -23166,7 +23166,7 @@ In this section, we present the sparse direct solvers interfaced with \sphinxsty
 \paragraph{MUMPS solver}
 \label{\detokenize{documentation/parallelization:mumps-solver}}
 \sphinxAtStartPar
-MUltifrontal Massively Parallel Solver (\sphinxhref{http://mumps.enseeiht.fr/}{MUMPS}) is an open\sphinxhyphen{}source library.
+MUltifrontal Massively Parallel Solver (\sphinxhref{http://mumps-solver.org/}{MUMPS}) is an open\sphinxhyphen{}source library.
 
 \sphinxAtStartPar
 This package solves linear system of the form \(A \: x = b\) where \(A\) is a square sparse matrix with a direct method.
@@ -23202,7 +23202,7 @@ MUMPS does not solve linear system with a rectangular matrix.
 \sphinxstylestrong{MUMPS parameters:}
 
 \sphinxAtStartPar
-There are four input parameters in \sphinxhref{http://mumps.enseeiht.fr/index.php?page=doc}{MUMPS}.
+There are four input parameters in \sphinxhref{http://mumps-solver.org/index.php?page=doc}{MUMPS}.
 Two integers \sphinxcode{\sphinxupquote{%
 \PYG{n}{SYM}%
 }} and \sphinxcode{\sphinxupquote{%
@@ -23234,7 +23234,7 @@ The vectors \sphinxcode{\sphinxupquote{%
 }} and \sphinxcode{\sphinxupquote{%
 \PYG{n}{CNTL}%
 }} in MUMPS becomes with index 1 like vector in \sphinxcode{\sphinxupquote{Fortran}}.
-For more details see the \sphinxhref{http://mumps.enseeiht.fr/index.php?page=doc}{MUMPS user’s guide}.
+For more details see the \sphinxhref{http://mumps-solver.org/index.php?page=doc}{MUMPS user’s guide}.
 
 \sphinxAtStartPar
 We describe now some elements of the main parameters of \sphinxcode{\sphinxupquote{%
@@ -23253,7 +23253,7 @@ Therefore, \sphinxcode{\sphinxupquote{INCTL(5)}} is treated as 0 value.
 
 \sphinxAtStartPar
 The main option for \sphinxcode{\sphinxupquote{ICNTL(18)}}: \sphinxcode{\sphinxupquote{INCLTL(18)=0}} centrally on the host processor, \sphinxcode{\sphinxupquote{ICNTL(18)=3}} distributed the input matrix pattern and the entries (recommended option for distributed matrix by developer of MUMPS).
-For other values of \sphinxcode{\sphinxupquote{ICNTL(18)}} see the \sphinxhref{http://mumps.enseeiht.fr/index.php?page=doc}{MUMPS user’s guide}.
+For other values of \sphinxcode{\sphinxupquote{ICNTL(18)}} see the \sphinxhref{http://mumps-solver.org/index.php?page=doc}{MUMPS user’s guide}.
 These values can be used also in \sphinxstylestrong{FreeFEM}.
 
 \sphinxAtStartPar
@@ -23275,7 +23275,7 @@ where \(P\) is the permutation matrix, \(Q_c\) is the column permutation, \(D_r\
 The ordering strategy to obtain \(P\) is controlled by parameter \sphinxcode{\sphinxupquote{ICNTL(7)}}.
 The permutation of zero free diagonal \(Q_c\) is controlled by parameter \sphinxcode{\sphinxupquote{ICNTL(6)}}.
 The row and column scaling is controlled by parameter \sphinxcode{\sphinxupquote{ICNTL(18)}}.
-These option are connected and also strongly related with \sphinxcode{\sphinxupquote{ICNTL(12)}} (see the \sphinxhref{http://mumps.enseeiht.fr/index.php?page=doc}{MUMPS user’s guide} for more details).
+These option are connected and also strongly related with \sphinxcode{\sphinxupquote{ICNTL(12)}} (see the \sphinxhref{http://mumps-solver.org/index.php?page=doc}{MUMPS user’s guide} for more details).
 
 \sphinxAtStartPar
 The parameters \sphinxcode{\sphinxupquote{%
@@ -26134,7 +26134,7 @@ Note that, for all global operations, only \sphinxcode{\sphinxupquote{%
 \section{PETSc and SLEPc}
 \label{\detokenize{documentation/petsc/index:petsc-and-slepc}}\label{\detokenize{documentation/petsc/index::doc}}
 \sphinxAtStartPar
-FreeFEM is interfaced with \sphinxhref{https://www.mcs.anl.gov/petsc/}{PETSc} and \sphinxhref{http://slepc.upv.es/}{SLEPc} which offer a wide range of sequential or parallel linear or nonlinear solvers, time steppers, optimizers, and eigensolvers. In particular, it gives access transparently (without much changes to user code) to: distributed and multithreaded direct solvers (\sphinxhref{https://software.intel.com/en-us/mkl-developer-reference-fortran-intel-mkl-pardiso-parallel-direct-sparse-solver-interface}{PARDISO}, \sphinxhref{http://mumps.enseeiht.fr/}{MUMPS}, \sphinxhref{https://crd.lbl.gov/departments/applied-mathematics/scalable-solvers/research-areas/superlu-dist/}{SuperLU}), multigrid solvers (\sphinxhref{https://hypre.readthedocs.io/en/latest/}{hypre}, GAMG), domain decomposition methods (block Jacobi, ASM, \sphinxhref{https://github.com/hpddm/hpddm/}{HPDDM}). For a detailed introduction to these tools, interested readers are referred to the tutorial \sphinxhref{http://jolivet.perso.enseeiht.fr/FreeFem-tutorial/}{Introduction to FreeFEM with an emphasis on parallel computing}.
+FreeFEM is interfaced with \sphinxhref{https://petsc.org/}{PETSc} and \sphinxhref{http://slepc.upv.es/}{SLEPc} which offer a wide range of sequential or parallel linear or nonlinear solvers, time steppers, optimizers, and eigensolvers. In particular, it gives access transparently (without much changes to user code) to: distributed and multithreaded direct solvers (\sphinxhref{https://software.intel.com/en-us/mkl-developer-reference-fortran-intel-mkl-pardiso-parallel-direct-sparse-solver-interface}{PARDISO}, \sphinxhref{http://mumps-solver.org/}{MUMPS}, \sphinxhref{https://crd.lbl.gov/departments/applied-mathematics/scalable-solvers/research-areas/superlu-dist/}{SuperLU}), multigrid solvers (\sphinxhref{https://hypre.readthedocs.io/en/latest/}{hypre}, GAMG), domain decomposition methods (block Jacobi, ASM, \sphinxhref{https://github.com/hpddm/hpddm/}{HPDDM}). For a detailed introduction to these tools, interested readers are referred to the tutorial \sphinxhref{https://joliv.et/FreeFem-tutorial/}{Introduction to FreeFEM with an emphasis on parallel computing}.
 \begin{description}
 \sphinxlineitem{In most of the scripts listed below, the following standard procedure is used.}\begin{itemize}
 \item {} 
@@ -29348,7 +29348,7 @@ It implies a huge effort in algorithmic development.
 Thanks to \sphinxcode{\sphinxupquote{ffddm}}, FreeFEM users have access to high\sphinxhyphen{}level functionalities for specifying and solving their finite element problems in parallel.
 The first task handled by \sphinxcode{\sphinxupquote{ffddm}} is the data distribution among the processors.
 This is done via an overlapping domain decomposition and a related distributed linear algebra.
-Then, solving a linear system is possible either via an interface to the parallel \sphinxhref{http://mumps.enseeiht.fr/}{MUMPS} solver or by using domain decomposition methods as preconditioners to the GMRES Krylov method.
+Then, solving a linear system is possible either via an interface to the parallel \sphinxhref{http://mumps-solver.org/}{MUMPS} solver or by using domain decomposition methods as preconditioners to the GMRES Krylov method.
 The \sphinxcode{\sphinxupquote{ffddm}} framework makes it easy to use scalable Schwarz methods enhanced by a coarse space correction built either from a coarse mesh or a \sphinxhref{https://link.springer.com/article/10.1007\%2Fs00211-013-0576-y}{GenEO} (Generalized Eigenvalue in the Overlap) coarse space, see also the book \sphinxhref{http://bookstore.siam.org/ot144/}{An Introduction to Domain Decomposition Methods: algorithms, theory, and parallel implementation}.
 State\sphinxhyphen{}of\sphinxhyphen{}the\sphinxhyphen{}art three level methods are also implemented in \sphinxcode{\sphinxupquote{ffddm}}.
 
@@ -29543,7 +29543,7 @@ A frontal solver builds a \(LU\) or Cholesky decomposition of a sparse matrix gi
 This subset is called the \sphinxstyleemphasis{front} and it is essentially the transition region between the part of the system already finished and the part not touched yet.
 These methods are basically sequential since the unknowns are processed the one after another or one front after another.
 In order to benefit from multicore processors, a \sphinxhref{https://en.wikipedia.org/wiki/Multifrontal\_method}{multifrontal solver} is an improvement of the frontal solver that uses several independent fronts at the same time.
-The fronts can be worked on by different processors, which enables parallel computing. \sphinxcode{\sphinxupquote{ffddm}} provides an interface to the parallel sparse direct solver \sphinxhref{http://mumps.enseeiht.fr/}{MUMPS}. These methods have the advantage to be very robust and to have a predictable cost. The main drawback is the memory requirement which can be prohibitive especially for three\sphinxhyphen{}dimensional problems.
+The fronts can be worked on by different processors, which enables parallel computing. \sphinxcode{\sphinxupquote{ffddm}} provides an interface to the parallel sparse direct solver \sphinxhref{http://mumps-solver.org/}{MUMPS}. These methods have the advantage to be very robust and to have a predictable cost. The main drawback is the memory requirement which can be prohibitive especially for three\sphinxhyphen{}dimensional problems.
 
 
 \paragraph{Schwarz methods}

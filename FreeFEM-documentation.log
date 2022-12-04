@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.11.7)  7 NOV 2022 07:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.12.4)  4 DEC 2022 15:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3801,7 +3801,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 55813.
 Here is how much of TeX's memory you used:
  23832 strings out of 483183
  445429 string characters out of 5966292
- 1189860 words of memory out of 5000000
+ 1189861 words of memory out of 5000000
  35516 multiletter control sequences out of 15000+600000
  631986 words of font info for 119 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
@@ -3847,7 +3847,7 @@ lic/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfont
 s/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on FreeFEM-documentation.pdf (736 pages, 35231045 bytes).
+Output written on FreeFEM-documentation.pdf (736 pages, 35231264 bytes).
 PDF statistics:
  11467 PDF objects out of 12825 (max. 8388607)
  10011 compressed objects within 101 object streams
