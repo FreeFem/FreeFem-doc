@@ -1,4 +1,4 @@
-\babel@toc {english}{}
+\babel@toc {english}{}\relax 
 \contentsline {chapter}{\numberline {1}\sphinxstylestrong {Introduction}}{3}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Version 4.5: new features}{5}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Release, binaries packages}{5}{subsection.1.1.1}%
@@ -48,6 +48,8 @@
 \contentsline {subsubsection}{Concerning the \sphinxstylestrong {FreeFEM} documentation}{29}{subsubsection*.23}%
 \contentsline {subsubsection}{Concerning the \sphinxstylestrong {FreeFEM} compilation or usage}{29}{subsubsection*.24}%
 \contentsline {subsection}{\numberline {1.14.2}Improve content}{29}{subsection.1.14.2}%
+\contentsline {section}{\numberline {1.15}Git \& Github usage}{29}{section.1.15}%
+\contentsline {subsection}{\numberline {1.15.1}Contribution timeline}{29}{subsection.1.15.1}%
 \contentsline {chapter}{\numberline {2}Learning by Examples}{31}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Getting started}{33}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Classification of partial differential equations}{38}{section.2.2}%

@@ -138,7 +138,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Dec 04, 2022}
+\date{Dec 09, 2022}
 \release{4.12}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -3200,6 +3200,98 @@ Open an \sphinxhref{https://github.com/FreeFem/FreeFem-sources/issues}{Issue} on
 \label{\detokenize{introduction/contributing:improve-content}}
 \sphinxAtStartPar
 Ask one of the contributors for Collaborator Access or make a \sphinxhref{https://github.com/FreeFem/FreeFem-doc/pulls}{Pull Request}.
+
+\sphinxstepscope
+
+
+\section{Git \& Github usage}
+\label{\detokenize{introduction/git-github:git-github-usage}}\label{\detokenize{introduction/git-github::doc}}
+\sphinxAtStartPar
+FreeFEM sources are publicly available on \sphinxurl{https://github.com/FreeFem/FreeFem-sources}.
+
+\sphinxAtStartPar
+In order to contribute, you need to know how to use git (\sphinxcode{\sphinxupquote{add}}, \sphinxcode{\sphinxupquote{commit}}, \sphinxcode{\sphinxupquote{push}}) and Github (Fork, Pull Requests).
+
+\sphinxAtStartPar
+The FreeFEM source code is organized in branches:
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{master}}. The master branch, represent the current stable version, used to build a new release
+
+\item {} \begin{description}
+\sphinxlineitem{\sphinxcode{\sphinxupquote{develop}}. The developement branch, where all modifications take place}
+\sphinxAtStartPar
+Should be almost always usable
+
+\end{description}
+
+\item {} \begin{description}
+\sphinxlineitem{features branches, where specific long\sphinxhyphen{}term developments take place}
+\sphinxAtStartPar
+Do not use one of this branch
+
+\end{description}
+
+\end{itemize}
+
+
+\subsection{Contribution timeline}
+\label{\detokenize{introduction/git-github:contribution-timeline}}\begin{itemize}
+\item {} \begin{description}
+\sphinxlineitem{Create a fork of the FreeFem\sphinxhyphen{}sources repository on your Github account}
+\sphinxAtStartPar
+Doc: 
+
+\sphinxAtStartPar
+Direct fork link: 
+
+\end{description}
+
+\item {} \begin{description}
+\sphinxlineitem{Clone the fork (the FreeFem\sphinxhyphen{}sources repository on your account) on your computer.}
+\sphinxAtStartPar
+Change the branch to \sphinxcode{\sphinxupquote{develop}}
+
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{git checkout develop}}
+
+\end{description}
+
+\item {} \begin{description}
+\sphinxlineitem{Modify the code and use git commands to push your modifications to the fork, i.e.:}
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{git add somefile.cpp}}
+
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{git commit \sphinxhyphen{}m"my modification"}}
+
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{git push}}
+
+\sphinxAtStartPar
+Please, provide commit descriptions correctly describe your modifications
+
+\end{description}
+
+\item {} \begin{description}
+\sphinxlineitem{Create a pull request on FreeFem/FreeFem\sphinxhyphen{}sources, describing your modifications}
+\sphinxAtStartPar
+Doc: 
+
+\end{description}
+
+\end{itemize}
+
+\begin{sphinxadmonition}{warning}{Warning:}
+\sphinxAtStartPar
+All code modifications, even in a pull request, must be done in the \sphinxtitleref{develop} branch
+\end{sphinxadmonition}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+Please make sure your code modification is well writen and formatted (you can use clang\sphinxhyphen{}format if necessary)
+\end{sphinxadmonition}
 
 \sphinxstepscope
 
