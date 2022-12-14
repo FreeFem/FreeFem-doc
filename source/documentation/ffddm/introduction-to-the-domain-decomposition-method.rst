@@ -153,7 +153,7 @@ The RAS preconditioner reads:
 .. math::
    M^{-1}_{RAS} := \sum_{j=1}^N R_j^T D_j (R_j\, A\,R_j^T)^{-1} R_j\,,
 
-where for each subdomain :math:`j` the restriction matrix :math:`R_j` and  the partition of unity matrix :math:`D_j`have been introduced above. Note that in the original ASM (additive Schwarz method) preconditioner the partition of unity is dropped. The application of the operator :math:`M^{-1}_{RAS}` to a global right hand side :math:`\mathbf{RHS}` is detailed below. Recall that this global vector is distributed among processes via the local vectors :math:`(\mathbf{RHS}_i)_{i=1}^N`. Let :math:`A_{j}` denote the local matrix :math:`(R_j\, A\,R_j^T)`. The local vector in subdomain :math:`i` resulting from the matrix vector product :math:`M^{-1}_{RAS}\, \mathbf{RHS}` consists in computing:
+where for each subdomain :math:`j` the restriction matrix :math:`R_j` and  the partition of unity matrix :math:`D_j` have been introduced above. Note that in the original ASM (additive Schwarz method) preconditioner the partition of unity is dropped. The application of the operator :math:`M^{-1}_{RAS}` to a global right hand side :math:`\mathbf{RHS}` is detailed below. Recall that this global vector is distributed among processes via the local vectors :math:`(\mathbf{RHS}_i)_{i=1}^N`. Let :math:`A_{j}` denote the local matrix :math:`(R_j\, A\,R_j^T)`. The local vector in subdomain :math:`i` resulting from the matrix vector product :math:`M^{-1}_{RAS}\, \mathbf{RHS}` consists in computing:
 
 .. math::
    R_i\, \sum_{j=1}^N R_j^T\,D_j\, A_{j}^{-1}\,\, \mathbf{ RHS}_j

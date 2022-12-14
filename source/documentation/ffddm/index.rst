@@ -66,6 +66,21 @@ To try this example, just copy and paste the script above in a file â€˜test.edpâ
 
    ff-mpirun -np 2 test.edp -wg
 
+.. rst-class:: fake-title
+
+   Citing ffddm
+
+When citing fdddm in a publication, please cite the following:
+
+.. code:: bibtex
+
+   @misc{FFD:Tournier:2019,
+        author = {Tournier, Pierre-Henri and Jolivet, Pierre and Nataf, Fr{\'e}d{\'e}ric},
+        howpublished = {{https://doc.freefem.org/documentation/ffddm/index.html}},
+        title = {{FFDDM}: FreeFem Domain Decomposition Method},
+        year = {2019}}
+
+
 .. toctree::
 
   introduction-to-the-domain-decomposition-method
