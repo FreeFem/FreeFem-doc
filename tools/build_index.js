@@ -168,6 +168,10 @@ const readSingleHtml = (root, file) => {
  */
 const buildIndex = (docs) => {
   return lunr(function () {
+    this.pipeline.remove(lunr.stemmer)
+    this.searchPipeline.remove(lunr.stemmer)
+    this.pipeline.remove(lunr.stopWordFilter)
+    this.searchPipeline.remove(lunr.stopWordFilter)
     SEARCH_FIELDS.forEach((field) => {
       this.field(field)
     })
