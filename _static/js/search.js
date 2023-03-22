@@ -15,7 +15,7 @@ const search = (event) => {
 
   if (!event.target.value) return
 
-  const text = event.target.value
+  const text = event.target.value.toLowerCase()
 
   console.log(text)
 
@@ -28,14 +28,44 @@ const searchClean = () => {
 }
 
 const searchLunr = (text) => {
-  const results = index.search(text)
+  var results = index.query(function (q) {
+    // look for an exact match and apply a large positive boost
+    text.split(lunr.tokenizer.separator).forEach(function (term) {
+      q.term(term, { usePipeline: true, boost: 10000 })
+
+      // look for terms that match the beginning of this queryTerm and apply a medium boost
+      q.term(term, {
+              wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING,
+              usePipeline: false,
+              boost: 100 }
+            );
+
+      // look for terms that match with an edit distance of 2 and apply a small boost
+      q.term(term, { usePipeline: false, editDistance: 2, boost: 1 })
+    })
+  })
+  results = results.slice(0,20)
 
   // Search in page data
   const results_i = []
   results.map((result) => {
     const ref = result.ref
     const index_i = lunr.Index.load(LUNR_PAGEDATA[ref])
-    results_i[ref] = index_i.search(text)
+    results_i[ref] = index_i.query(function (q) {
+      text.split(lunr.tokenizer.separator).forEach(function (term) {
+        q.term(term, { usePipeline: true, boost: 10000 })
+
+        // look for terms that match the beginning of this queryTerm and apply a medium boost
+        q.term(term, {
+                wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING,
+                usePipeline: false,
+                boost: 100 }
+              );
+
+        // look for terms that match with an edit distance of 2 and apply a small boost
+        q.term(term, { usePipeline: false, editDistance: 2, boost: 1 })
+      })
+    })
   })
 
   const resultsHTML = parseLunrResults(results, results_i, text)
@@ -51,7 +81,7 @@ const searchLunr = (text) => {
       title.href = result.link
       div.appendChild(title)
 
-      for (let i = 0; i < result.titles.length; i++) {
+      for (let i = 0; i < Math.min(30,result.titles.length); i++) {
         const subdiv = document.createElement('div')
         subdiv.className = 'search-result-sub'
 
@@ -87,7 +117,6 @@ const searchLunr = (text) => {
 
 function parseLunrResults(results, results_i, text) {
   const html = []
-
   results.forEach((result) => {
     const ref = result.ref
     const item = PREVIEW_DATA[ref]
