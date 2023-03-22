@@ -6,7 +6,7 @@
 %
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesPackage{sphinx}[2022/08/15 v5.3.0 LaTeX package (Sphinx markup)]
+\ProvidesPackage{sphinx}[2023/01/06 v6.1.2 LaTeX package (Sphinx markup)]
 
 % provides \ltx@ifundefined
 % (many packages load ltxcmds: graphicx does for pdftex and lualatex but
@@ -234,8 +234,8 @@ will be set to white}%
 \sphinxDeclareColorOption{TitleColor}{{rgb}{0.126,0.263,0.361}}
 \sphinxDeclareColorOption{InnerLinkColor}{{rgb}{0.208,0.374,0.486}}
 \sphinxDeclareColorOption{OuterLinkColor}{{rgb}{0.216,0.439,0.388}}
-\sphinxDeclareColorOption{VerbatimColor}{{rgb}{1,1,1}}
-\sphinxDeclareColorOption{VerbatimBorderColor}{{rgb}{0,0,0}}
+\sphinxDeclareColorOption{VerbatimColor}{{gray}{0.95}}
+\sphinxDeclareColorOption{VerbatimBorderColor}{{RGB}{32,32,32}}
 % all other colours will be named with a "sphinx" prefix
 \newcommand*{\sphinxDeclareSphinxColorOption}[2]{%
    % set the initial default; only \definecolor syntax for defaults!
@@ -321,7 +321,8 @@ will be set to white}%
 \let\spx@pre@border@left  \spx@pre@border@top
 \expandafter\let\expandafter\KV@sphinx@verbatimborder
                             \csname KV@sphinx@pre_border-width\endcsname
-\newif\ifspx@pre@border@open % defaults to false (at least for 5.x series)
+\newif\ifspx@pre@border@open
+\spx@pre@border@opentrue    % 6.0.0 (i.e. "slice")
 \define@key{sphinx}{pre_box-decoration-break}%
            {\begingroup\edef\spx@tempa{#1}\expandafter\endgroup
             \ifx\spx@tempa\spxstring@clone
@@ -361,10 +362,10 @@ will be set to white}%
 }
 % MEMO: keep in mind in using these macros in code elsewhere that they can
 % thus be dimen registers or simply dimensional specs such as 3pt
-\let\spx@pre@radius@topleft    \z@
-\let\spx@pre@radius@topright   \z@
-\let\spx@pre@radius@bottomright\z@
-\let\spx@pre@radius@bottomleft \z@
+\def\spx@pre@radius@topleft   {3pt}%
+\let\spx@pre@radius@topright   \spx@pre@radius@topleft
+\let\spx@pre@radius@bottomright\spx@pre@radius@topleft
+\let\spx@pre@radius@bottomleft \spx@pre@radius@topleft
 \AtBeginDocument{\if1\ifdim\spx@pre@radius@topleft>\z@0\fi
                      \ifdim\spx@pre@radius@topright>\z@0\fi
                      \ifdim\spx@pre@radius@bottomright>\z@0\fi
@@ -395,6 +396,7 @@ will be set to white}%
 \spx@pre@box@shadow@setter none {} {} \@nnil
 %
 \newif\ifspx@pre@withbordercolor
+\spx@pre@withbordercolortrue        % 6.0.0
 \define@key{sphinx}{pre_border-TeXcolor}{%
     \spx@pre@withbordercolortrue
     \spx@defineorletcolor{VerbatimBorderColor}#1\relax
@@ -402,6 +404,7 @@ will be set to white}%
 \expandafter\let\expandafter\KV@sphinx@VerbatimBorderColor
                             \csname KV@sphinx@pre_border-TeXcolor\endcsname
 \newif\ifspx@pre@withbackgroundcolor
+\spx@pre@withbackgroundcolortrue    % 6.0.0
 \define@key{sphinx}{pre_background-TeXcolor}{%
     \spx@pre@withbackgroundcolortrue
     \spx@defineorletcolor{VerbatimColor}#1\relax
@@ -433,7 +436,7 @@ will be set to white}%
 \let\spx@topic@border@bottom\spx@topic@border@top
 \let\spx@topic@border@left  \spx@topic@border@top
 \expandafter\let\expandafter\KV@sphinx@shadowrule
-                            \csname KV@sphinx@topic_border-width\endcsname
+                            \csname KV@sphinx@div.topic_border-width\endcsname
 \newif\ifspx@topic@border@open % defaults to false (legacy)
 \define@key{sphinx}{div.topic_box-decoration-break}%
            {\begingroup\edef\spx@tempa{#1}\expandafter\endgroup
@@ -442,11 +445,13 @@ will be set to white}%
             \else\spx@topic@border@opentrue\fi}%
 %
 % MEMO: \sphinxshadowsep not used anywhere anymore in code base and to be removed
-\define@key{sphinx}{topic_padding-top}{\def\spx@topic@padding@top{#1}}
-\define@key{sphinx}{topic_padding-right}{\def\spx@topic@padding@right{#1}}
-\define@key{sphinx}{topic_padding-bottom}{\def\spx@topic@padding@bottom{#1}}
-\define@key{sphinx}{topic_padding-left}{\def\spx@topic@padding@left{#1}}
-\define@key{sphinx}{topic_padding}{%
+% Sadly the 5.1.0 definitions forgot the "div." part of the key names
+% Fixed at 6.1.2
+\define@key{sphinx}{div.topic_padding-top}{\def\spx@topic@padding@top{#1}}
+\define@key{sphinx}{div.topic_padding-right}{\def\spx@topic@padding@right{#1}}
+\define@key{sphinx}{div.topic_padding-bottom}{\def\spx@topic@padding@bottom{#1}}
+\define@key{sphinx}{div.topic_padding-left}{\def\spx@topic@padding@left{#1}}
+\define@key{sphinx}{div.topic_padding}{%
    \def\spx@topic@padding@top   {#1}%
    \let\spx@topic@padding@right \spx@topic@padding@top
    \let\spx@topic@padding@bottom\spx@topic@padding@top
@@ -457,7 +462,7 @@ will be set to white}%
 \let\spx@topic@padding@bottom\spx@topic@padding@top
 \let\spx@topic@padding@left  \spx@topic@padding@top
 \expandafter\let\expandafter\KV@sphinx@shadowsep
-                            \csname KV@sphinx@topic_padding\endcsname
+                            \csname KV@sphinx@div.topic_padding\endcsname
 %
 \define@key{sphinx}{div.topic_border-top-left-radius}{\def\spx@topic@radius@topleft{#1}}
 \define@key{sphinx}{div.topic_border-top-right-radius}{\def\spx@topic@radius@topright{#1}}
@@ -501,14 +506,15 @@ will be set to white}%
 \spx@topic@box@shadow@setter 4pt 4pt {} \@nnil
 % Suport for legacy shadowsize, the \sphinxshadowsize \dimen register
 % is not used anymore and should not even be allocated in future
+% This definition was broken at 5.1.0 and fixed at 6.1.2
 \define@key{sphinx}{shadowsize}{%
   \edef\spx@topic@shadow@xoffset{\number\dimexpr#1\relax sp}%
   \let\spx@topic@shadow@yoffset\spx@topic@shadow@xoffset
   \ifdim\spx@topic@shadow@xoffset=\z@
-      \spx@topic@box@withshadowtrue
+      \spx@topic@withshadowfalse
   \else
-      \spx@topic@box@withshadowfalse
-      \spx@topic@box@shadow@insetfalse
+      \spx@topic@withshadowtrue
+      \spx@topic@insetshadowfalse
   \fi
 }%
 \definecolor{sphinxTopicBorderColor}{rgb}{0,0,0}
