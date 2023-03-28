@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.3.23)  23 MAR 2023 16:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.3.28)  28 MAR 2023 10:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3842,7 +3842,7 @@ lic/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfont
 s/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on FreeFEM-documentation.pdf (736 pages, 35302171 bytes).
+Output written on FreeFEM-documentation.pdf (736 pages, 35302200 bytes).
 PDF statistics:
  11486 PDF objects out of 12825 (max. 8388607)
  10021 compressed objects within 101 object streams
