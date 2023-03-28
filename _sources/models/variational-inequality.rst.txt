@@ -43,7 +43,7 @@ This saddle point problem is equivalent to find :math:`u, \lambda` such that:
         \displaystyle \int_\Omega \mu (u-g)^+ = 0 , & \forall \mu \in L^2(\Omega) , \mu \geq 0, \lambda \geq 0,
     \end{array}\right.
 
-An algorithm to solve the previous problem is:
+The primal-dual active set algorithm to solve the previous problem is:
 
 1. k=0, and choose :math:`\lambda_0` belong :math:`H^{-1}(\Omega)`
 
