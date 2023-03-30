@@ -614,7 +614,7 @@ Repeatedly run the following command until it says there are no further updates.
       pacman -S autoconf make automake-wrapper bison git \
         mingw-w64-x86_64-freeglut mingw-w64-x86_64-toolchain \
         mingw-w64-x86_64-openblas patch python perl pkg-config pkgfile \
-        rebase tar time tzcode unzip which mingw-w64-x86_64-libmicroutils \
+        rebase tar time tzcode unzip which  \
         --ignore mingw-w64-x86_64-gcc-ada --ignore mingw-w64-x86_64-gcc-objc \
         --ignore mingw-w64-x86_64-gdb mingw-w64-x86_64-cmake --noconfirm
 
