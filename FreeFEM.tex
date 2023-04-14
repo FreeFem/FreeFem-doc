@@ -140,7 +140,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Mar 30, 2023}
+\date{Apr 14, 2023}
 \release{4.12}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -27275,6 +27275,32 @@ We can also extract the boundary of a \sphinxcode{\sphinxupquote{%
 You can find much more information about surface mesh generation {\hyperref[\detokenize{documentation/mesh-generation:meshstype}]{\sphinxcrossref{\DUrole{std,std-ref}{here}}}}.
 
 
+\paragraph{Orientation of normal vector}
+\label{\detokenize{documentation/BEM:orientation-of-normal-vector}}
+\sphinxAtStartPar
+Depending on whether your problem is posed on a bounded or unbounded domain, you may have to set the orientation of the outward normal vector \(\boldsymbol{n}\) to the boundary. You can use the \sphinxcode{\sphinxupquote{%
+\PYG{n}{OrientNormal}%
+}} function with the parameter \sphinxcode{\sphinxupquote{%
+\PYG{n}{unbounded}%
+}} set to \sphinxcode{\sphinxupquote{%
+\PYG{l+m+mi}{0}%
+}} or \sphinxcode{\sphinxupquote{%
+\PYG{l+m+mi}{1}%
+}} (the normal vector \(\boldsymbol{n}\) will then point to the exterior of the domain you are interested in):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{b}\PYG{p}{(}\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{n}{meshL}\PYG{+w}{ }\PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{buildmeshL}\PYG{p}{(}\PYG{n}{b}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{OrientNormal}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{,}\PYG{n}{unbounded}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{,}\PYG{k+kp}{dim}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+You can use \sphinxcode{\sphinxupquote{shift + t}} on a plot of a boundary mesh to display the outward normal vector \(\boldsymbol{n}\):
+
+\noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.250\linewidth]{{BEM_fignormals}.png}\hspace*{\fill}}
+
+
 \subsubsection{Define the type of operator}
 \label{\detokenize{documentation/BEM:define-the-type-of-operator}}
 \sphinxAtStartPar
@@ -27553,6 +27579,7 @@ Let us summarize what we have learned with a 2D version of our {\hyperref[\detok
 
 \PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{circle}\PYG{p}{(}\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
 \PYG{n}{meshL}\PYG{+w}{ }\PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{buildmeshL}\PYG{p}{(}\PYG{n}{circle}\PYG{p}{(}\PYG{k+kr}{n}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{OrientNormal}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{,}\PYG{n}{unbounded}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
 
 \PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n}{vbem}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{int1dx1d}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{)}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{)}\PYG{p}{(}\PYG{n}{BEM}\PYG{p}{(}\PYG{n}{BemKernel}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{SL}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{k}\PYG{o}{=}\PYG{n}{k}\PYG{p}{)}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
 
