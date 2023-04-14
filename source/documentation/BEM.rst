@@ -309,6 +309,26 @@ We can also extract the boundary of a :freefem:`mesh3`:
 
 You can find much more information about surface mesh generation :ref:`here <meshStype>`.
 
+Orientation of normal vector
+****************************
+
+Depending on whether your problem is posed on a bounded or unbounded domain, you may have to set the orientation of the outward normal vector :math:`\boldsymbol{n}` to the boundary. You can use the :freefem:`OrientNormal` function with the parameter :freefem:`unbounded` set to :freefem:`0` or :freefem:`1` (the normal vector :math:`\boldsymbol{n}` will then point to the exterior of the domain you are interested in):
+
+.. code-block:: freefem
+  :linenos:
+
+  border b(t = 0, 2*pi){x=cos(t); y=sin(t);}
+  meshL ThL = buildmeshL(b(100));
+  ThL = OrientNormal(ThL,unbounded=1);
+  plot(ThL,dim=2);
+
+You can use ``shift + t`` on a plot of a boundary mesh to display the outward normal vector :math:`\boldsymbol{n}`:
+
+.. image:: images/BEM_fignormals.png
+  :name: BEMfigcircle
+  :align: center
+  :width: 25%
+
 Define the type of operator
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -505,6 +525,7 @@ Let us summarize what we have learned with a 2D version of our :ref:`model probl
 
   border circle(t = 0, 2*pi){x=cos(t); y=sin(t);}
   meshL ThL = buildmeshL(circle(n));
+  ThL = OrientNormal(ThL,unbounded=1);
 
   varf vbem(u,v) = int1dx1d(ThL)(ThL)(BEM(BemKernel("SL",k=k),u,v));
 
