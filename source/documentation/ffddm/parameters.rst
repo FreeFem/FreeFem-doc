@@ -33,8 +33,8 @@ Global parameters
    -  N=0: user-defined partition through the definition of a macro, see :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>`
    -  N=1: use the automatic graph partitioner *metis* (default)
    -  N=2: use the automatic graph partitioner *scotch*
--  ``ffddmoverlap`` initialized by command-line argument **-ffddm_overlap N**, specifies the number of layers of mesh elements in the overlap region between subdomains N >= 1 (default 1).
-   **Remark** The actual width of the overlap region between subdomains is 2N, since each subdomain is extended by N layers of elements in a symmetric way.
+-  ``ffddmoverlap`` initialized by command-line argument **-ffddm_overlap N**, specifies the number of layers of mesh elements in the overlap region between subdomains ; N >= 0 (default 1).
+   **Remark** The actual width of the overlap region between subdomains is 2N, since each subdomain is extended by N layers of elements in a symmetric way.  **Remark 2** if :ref:`ffddmoverlap <ffddmParametersGlobal>` = 0, the construction is a bit different, since only interface unknowns are shared. In that case, the user is required to define the macro ``prmesh#mminoverlap`` to 1 before calling :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>`. It can be done e.g. on the command line: ``-ffddm_overlap 0 -DMESHmminoverlap=1``, where ``MESH`` is your distributed mesh prefix.
 -  ``ffddminterfacelabel`` the label of the new border of the subdomain meshes (the interface between the subdomains) (default 10).
    Used for imposing problem-dependent boundary conditions at the interface between subdomains for the preconditioner, for example optimized Robin boundary conditions (see ORAS).
 -  ``ffddmpCS`` initialized by command-line argument **-ffddm_master_p N**, number of mpi processes used for the assembly and resolution of the coarse problem for two level preconditioners (default 1).
