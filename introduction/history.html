@@ -1965,19 +1965,19 @@
 	<div id="content">
 		
    <section id="history">
-<h1>History<a class="headerlink" href="#history" title="Permalink to this heading"></a></h1>
+<h1>History<a class="headerlink" href="#history" title="Link to this heading"></a></h1>
 <blockquote>
 <div><p>The project has evolved from MacFem, PCfem, written in Pascal.
-The first C version lead to <code class="docutils literal notranslate"><span class="pre">freefem</span> <span class="pre">3.4</span></code>; it offered mesh adaptivity on a single mesh only.</p>
-<p>A thorough rewriting in <code class="docutils literal notranslate"><span class="pre">C++</span></code> led to <code class="docutils literal notranslate"><span class="pre">freefem+</span></code> (<code class="docutils literal notranslate"><span class="pre">freefem+</span></code> 1.2.10 was its last release), which included interpolation over multiple meshes (functions defined on one mesh can be used on any other mesh); this software is no longer maintained but is still in use because it handles a problem description using the strong form of the PDEs.
+The first C version lead to <code class="docutils literal highlight highlight-python"><span></span><span class="n">freefem</span> <span class="mf">3.4</span></code>; it offered mesh adaptivity on a single mesh only.</p>
+<p>A thorough rewriting in <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span><span class="o">++</span></code> led to <code class="docutils literal highlight highlight-python"><span></span><span class="n">freefem</span><span class="o">+</span></code> (<code class="docutils literal highlight highlight-python"><span></span><span class="n">freefem</span><span class="o">+</span></code> 1.2.10 was its last release), which included interpolation over multiple meshes (functions defined on one mesh can be used on any other mesh); this software is no longer maintained but is still in use because it handles a problem description using the strong form of the PDEs.
 Implementing the interpolation from one unstructured mesh to another was not easy because it had to be fast and non-diffusive; for each point, one had to find the containing triangle.
 This is one of the basic problems of computational geometry (see <a class="reference internal" href="../bibliography.html#preparata1985" id="id1"><span>[PREPARATA1985]</span></a> for example).
 Doing it in a minimum number of operations was the challenge.
 Our implementation is <span class="math notranslate nohighlight">\(\mathcal{O}(n log n)\)</span> and based on a quadtree.
-This version also grew out of hand because of the evolution of the template syntax in <code class="docutils literal notranslate"><span class="pre">C++</span></code>.</p>
-<p>We have been working for a few years now on <strong>FreeFEM</strong> , entirely re-written again in <code class="docutils literal notranslate"><span class="pre">C++</span></code> with a thorough usage of template and generic programming for coupled systems of unknown size at compile time.
-Like all versions of <code class="docutils literal notranslate"><span class="pre">freefem</span></code>, it has a high level user friendly input language which is not too far from the mathematical writing of the problems.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">freefem</span></code> language allows for a quick specification of any partial differential system of equations.
+This version also grew out of hand because of the evolution of the template syntax in <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span><span class="o">++</span></code>.</p>
+<p>We have been working for a few years now on <strong>FreeFEM</strong> , entirely re-written again in <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span><span class="o">++</span></code> with a thorough usage of template and generic programming for coupled systems of unknown size at compile time.
+Like all versions of <code class="docutils literal highlight highlight-python"><span></span><span class="n">freefem</span></code>, it has a high level user friendly input language which is not too far from the mathematical writing of the problems.</p>
+<p>The <code class="docutils literal highlight highlight-python"><span></span><span class="n">freefem</span></code> language allows for a quick specification of any partial differential system of equations.
 The language syntax of <strong>FreeFEM</strong> is the result of a new design which makes use of the STL <a class="reference internal" href="../bibliography.html#stroustrup2000" id="id2"><span>[STROUSTRUP2000]</span></a>, templates, and bison for its implementation; more details can be found in <a class="reference internal" href="../bibliography.html#hecht2002" id="id3"><span>[HECHT2002]</span></a>.
 The outcome is a versatile software in which any new finite elements can be included in a few hours; but a recompilation is then necessary.
 Therefore the library of finite elements available in <strong>FreeFEM</strong> will grow with the version number and with the number of users who program more new elements.

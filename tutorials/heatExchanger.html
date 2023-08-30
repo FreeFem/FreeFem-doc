@@ -1970,14 +1970,14 @@
 	<div id="content">
 		
    <section id="heat-exchanger">
-<h1>Heat Exchanger<a class="headerlink" href="#heat-exchanger" title="Permalink to this heading"></a></h1>
+<h1>Heat Exchanger<a class="headerlink" href="#heat-exchanger" title="Link to this heading"></a></h1>
 <p><strong>Summary:</strong>
 <em>Here we shall learn more about geometry input and triangulation files, as well as read and write operations.</em></p>
 <p><strong>The problem</strong> Let <span class="math notranslate nohighlight">\(\{C_{i}\}_{1,2}\)</span>, be 2 thermal conductors within an enclosure <span class="math notranslate nohighlight">\(C_0\)</span> (see <a class="reference internal" href="#figheatgeo"><span class="std std-numref">Fig. 8</span></a>).</p>
 <figure class="align-default" id="figheatgeo">
 <a class="reference internal image-reference" href="../_images/heat_exchangerGeo.png"><img alt="HeatExchangerGeo" src="../_images/heat_exchangerGeo.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Heat exchanger geometry</span><a class="headerlink" href="#figheatgeo" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Heat exchanger geometry</span><a class="headerlink" href="#figheatgeo" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>The first one is held at a constant temperature <span class="math notranslate nohighlight">\({u} _{1}\)</span> the other one has a given thermal conductivity <span class="math notranslate nohighlight">\(\kappa_2\)</span> 3 times larger than the one of <span class="math notranslate nohighlight">\(C_0\)</span>.</p>
@@ -2046,14 +2046,14 @@
 </div>
 <p>Note the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">C0</span></code> is oriented counterclockwise by <span class="math notranslate nohighlight">\(t\)</span>, while <code class="docutils literal notranslate"><span class="pre">C1</span></code> is oriented clockwise and <code class="docutils literal notranslate"><span class="pre">C2</span></code> is oriented counterclockwise.
-This is why <code class="docutils literal notranslate"><span class="pre">C1</span></code> is viewed as a hole by <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">buildmesh</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">C1</span></code> and <code class="docutils literal notranslate"><span class="pre">C2</span></code> are built by joining pieces of straight lines.
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">C0</span></code> is oriented counterclockwise by <span class="math notranslate nohighlight">\(t\)</span>, while <code class="docutils literal highlight highlight-python"><span></span><span class="n">C1</span></code> is oriented clockwise and <code class="docutils literal highlight highlight-python"><span></span><span class="n">C2</span></code> is oriented counterclockwise.
+This is why <code class="docutils literal highlight highlight-python"><span></span><span class="n">C1</span></code> is viewed as a hole by <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">buildmesh</span></code>.</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">C1</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">C2</span></code> are built by joining pieces of straight lines.
 To group them in the same logical unit to input the boundary conditions in a readable way we assigned a label on the boundaries.
-As said earlier, borders have an internal number corresponding to their order in the program (check it by adding a <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">C22</span><span class="p">;</span></code> above).
+As said earlier, borders have an internal number corresponding to their order in the program (check it by adding a <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">C22</span><span class="p">;</span></code> above).
 This is essential to understand how a mesh can be output to a file and re-read (see below).</p></li>
 <li><p>As usual the mesh density is controlled by the number of vertices assigned to each boundary.
-It is not possible to change the (uniform) distribution of vertices but a piece of boundary can always be cut in two or more parts, for instance <code class="docutils literal notranslate"><span class="pre">C12</span></code> could be replaced by <code class="docutils literal notranslate"><span class="pre">C121+C122</span></code>:</p></li>
+It is not possible to change the (uniform) distribution of vertices but a piece of boundary can always be cut in two or more parts, for instance <code class="docutils literal highlight highlight-python"><span></span><span class="n">C12</span></code> could be replaced by <code class="docutils literal highlight highlight-python"><span></span><span class="n">C121</span><span class="o">+</span><span class="n">C122</span></code>:</p></li>
 </ul>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">// border C12(t=0.,1.){x=2.; y=3.-6.*t; label=C1;}</span>
 <span class="linenos">2</span><span class="kt">border</span><span class="w"> </span><span class="nf">C121</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.7</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="mf">2.</span><span class="p">;</span><span class="w"> </span><span class="kr">y</span><span class="o">=</span><span class="mf">3.-6.</span><span class="o">*</span><span class="kp">t</span><span class="p">;</span><span class="w"> </span><span class="kr">label</span><span class="o">=</span><span class="n">C1</span><span class="p">;}</span>
@@ -2066,13 +2066,13 @@ It is not possible to change the (uniform) distribution of vertices but a piece 
 <figure class="align-default" id="id1">
 <span id="figheatmesh"></span><a class="reference internal image-reference" href="../_images/heat_exchangerTh.png"><img alt="HeatExchangerTh" src="../_images/heat_exchangerTh.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Heat exchanger mesh</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Heat exchanger mesh</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <span id="figheatsolution"></span><a class="reference internal image-reference" href="../_images/heat_exchanger.png"><img alt="HeatExchanger" src="../_images/heat_exchanger.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Heat exchanger solution</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Heat exchanger solution</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Heat exchanger</span></p>
@@ -2110,7 +2110,7 @@ Then this is how the condenser should be computed:</p>
 <span class="linenos">20</span><span class="nf">plot</span><span class="p">(</span><span class="n">us</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Note that the names of the boundaries are lost but either their internal number (in the case of <code class="docutils literal notranslate"><span class="pre">C0</span></code>) or their label number (for <code class="docutils literal notranslate"><span class="pre">C1</span></code> and <code class="docutils literal notranslate"><span class="pre">C2</span></code>) are kept.</p>
+<p>Note that the names of the boundaries are lost but either their internal number (in the case of <code class="docutils literal highlight highlight-python"><span></span><span class="n">C0</span></code>) or their label number (for <code class="docutils literal highlight highlight-python"><span></span><span class="n">C1</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">C2</span></code>) are kept.</p>
 </section>
 
 

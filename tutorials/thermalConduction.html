@@ -1974,7 +1974,7 @@
 	<div id="content">
 		
    <section id="thermal-conduction">
-<span id="thermalconduction"></span><h1>Thermal Conduction<a class="headerlink" href="#thermal-conduction" title="Permalink to this heading"></a></h1>
+<span id="thermalconduction"></span><h1>Thermal Conduction<a class="headerlink" href="#thermal-conduction" title="Link to this heading"></a></h1>
 <p><strong>Summary :</strong>
 <em>Here we shall learn how to deal with a time dependent parabolic problem.
 We shall also show how to treat an axisymmetric problem and show also how to deal with a nonlinear problem</em></p>
@@ -2046,7 +2046,7 @@ Mathematically this boundary condition is of Fourier (or Robin, or mixed) type.<
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The way we store the temperature at point (3, 0.5) for all times in file <code class="docutils literal notranslate"><span class="pre">thermic.dat</span></code>.
+<p>The way we store the temperature at point (3, 0.5) for all times in file <code class="docutils literal highlight highlight-python"><span></span><span class="n">thermic</span><span class="o">.</span><span class="n">dat</span></code>.
 Should a one dimensional plot be required (you can use gnuplot tools), the same procedure can be used. For instance to print <span class="math notranslate nohighlight">\(x\mapsto \frac{\partial u}{\partial y}(x,0.9)\)</span> one would do:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="linenos">2</span><span class="w">   </span><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">)(</span><span class="mf">6.0</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="mf">20.0</span><span class="p">,</span><span class="mf">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="kr">endl</span><span class="p">;</span>
@@ -2058,18 +2058,18 @@ Should a one dimensional plot be required (you can use gnuplot tools), the same 
 <figure class="align-default" id="id1">
 <span id="figthermalt"></span><a class="reference internal image-reference" href="../_images/thermic.png"><img alt="Thermic" src="../_images/thermic.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Temperature at <span class="math notranslate nohighlight">\(t=4.9\)</span>.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Temperature at <span class="math notranslate nohighlight">\(t=4.9\)</span>.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <span id="figthermalcurve"></span><a class="reference internal image-reference" href="../_images/thermicvst.png"><img alt="ThermicVST" src="../_images/thermicvst.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Decay of temperature versus time at <span class="math notranslate nohighlight">\(x=3, y=0.5\)</span></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Decay of temperature versus time at <span class="math notranslate nohighlight">\(x=3, y=0.5\)</span></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Thermal conduction</span></p>
 </div><section id="axisymmetry-3d-rod-with-circular-section">
-<span id="ThermalConduction"></span><h2>Axisymmetry: 3D Rod with circular section<a class="headerlink" href="#axisymmetry-3d-rod-with-circular-section" title="Permalink to this heading"></a></h2>
+<span id="ThermalConduction"></span><h2>Axisymmetry: 3D Rod with circular section<a class="headerlink" href="#axisymmetry-3d-rod-with-circular-section" title="Link to this heading"></a></h2>
 <p>Let us now deal with a cylindrical rod instead of a flat plate.
 For simplicity we take <span class="math notranslate nohighlight">\(\kappa=1\)</span>.</p>
 <p>In cylindrical coordinates, the Laplace operator becomes (<span class="math notranslate nohighlight">\(r\)</span> is the distance to the axis, <span class="math notranslate nohighlight">\(z\)</span> is the distance along the axis, <span class="math notranslate nohighlight">\(\theta\)</span> polar angle in a fixed plane perpendicular to the axis):</p>
@@ -2077,7 +2077,7 @@ For simplicity we take <span class="math notranslate nohighlight">\(\kappa=1\)</
 \[\Delta u = {1\over r}\partial _r(r\partial _r u) + {1\over r^2}\partial ^2_{\theta\theta} u
  + \partial ^2_{z z}.\]</div>
 <p>Symmetry implies that we loose the dependence with respect to <span class="math notranslate nohighlight">\(\theta\)</span>; so the domain <span class="math notranslate nohighlight">\(\Omega\)</span> is again a rectangle <span class="math notranslate nohighlight">\(]0,R[\times]0,|[\)</span> .
-We take the convention of numbering of the edges as in <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">square</span><span class="p">()</span></code> (1 for the bottom horizontal …); the problem is now:</p>
+We take the convention of numbering of the edges as in <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">square</span><span class="p">()</span></code> (1 for the bottom horizontal …); the problem is now:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
     r\partial_t u-\partial _r(r\partial _r u) - \partial _z(r\partial _z u) &amp;= 0 &amp;\hbox{ in } \Omega\\
@@ -2087,7 +2087,7 @@ We take the convention of numbering of the edges as in <code class="code freefem
     \alpha(u-u_e) + {\partial u\over \partial\boldsymbol{n}} |_{\Gamma_1\cup\Gamma_3} &amp;= 0&amp;
 \end{array}\end{split}\]</div>
 <p>Note that the PDE has been multiplied by <span class="math notranslate nohighlight">\(r\)</span>.</p>
-<p>After discretization in time with an implicit scheme, with time steps <code class="docutils literal notranslate"><span class="pre">dt</span></code>, in the <strong>FreeFEM</strong> syntax <span class="math notranslate nohighlight">\(r\)</span> becomes <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(z\)</span> becomes <span class="math notranslate nohighlight">\(y\)</span> and the problem is:</p>
+<p>After discretization in time with an implicit scheme, with time steps <code class="docutils literal highlight highlight-python"><span></span><span class="n">dt</span></code>, in the <strong>FreeFEM</strong> syntax <span class="math notranslate nohighlight">\(r\)</span> becomes <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(z\)</span> becomes <span class="math notranslate nohighlight">\(y\)</span> and the problem is:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">problem</span><span class="w"> </span><span class="n">thermaxi</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
 <span class="linenos"> 2</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span>
 <span class="linenos"> 3</span><span class="w">          </span><span class="p">(</span><span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">/</span><span class="n">dt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">dx</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="nf">dx</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="nf">dy</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="o">*</span><span class="kr">x</span>
@@ -2111,7 +2111,7 @@ Still one can prove existence and uniqueness for <span class="math notranslate n
 </div>
 </section>
 <section id="a-nonlinear-problem-radiation">
-<h2>A Nonlinear Problem : Radiation<a class="headerlink" href="#a-nonlinear-problem-radiation" title="Permalink to this heading"></a></h2>
+<h2>A Nonlinear Problem : Radiation<a class="headerlink" href="#a-nonlinear-problem-radiation" title="Link to this heading"></a></h2>
 <p>Heat loss through radiation is a loss proportional to the absolute temperature to the fourth power (Stefan’s Law).
 This adds to the loss by convection and gives the following boundary condition:</p>
 <div class="math notranslate nohighlight">

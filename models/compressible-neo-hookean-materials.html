@@ -1970,10 +1970,10 @@
 	<div id="content">
 		
    <section id="compressible-neo-hookean-materials">
-<h1>Compressible Neo-Hookean materials<a class="headerlink" href="#compressible-neo-hookean-materials" title="Permalink to this heading"></a></h1>
+<h1>Compressible Neo-Hookean materials<a class="headerlink" href="#compressible-neo-hookean-materials" title="Link to this heading"></a></h1>
 <p>Author: <em>Alex Sadovsky</em></p>
 <section id="notation">
-<h2>Notation<a class="headerlink" href="#notation" title="Permalink to this heading"></a></h2>
+<h2>Notation<a class="headerlink" href="#notation" title="Link to this heading"></a></h2>
 <p>In what follows, the symbols <span class="math notranslate nohighlight">\(\mathbf{u}, \bF, \bB, \bC, \stress\)</span> denote, respectively, the displacement field, the deformation gradient, the left Cauchy-Green strain tensor <span class="math notranslate nohighlight">\(\bB = \bF \bF^T\)</span>, the right Cauchy-Green strain tensor <span class="math notranslate nohighlight">\(\bC =\bF^T \bF\)</span>, and the Cauchy stress tensor.</p>
 <p>We also introduce the symbols <span class="math notranslate nohighlight">\(I_1 := \tr \bC\)</span> and <span class="math notranslate nohighlight">\(J := \det\bF\)</span>.
 Use will be made of the identity:</p>
@@ -1987,12 +1987,12 @@ The unit volume in the reference (resp., deformed) configuration is denoted <spa
 <p>which allows an integral over <span class="math notranslate nohighlight">\(\Omega\)</span> involving the Cauchy stress <span class="math notranslate nohighlight">\(\bT\)</span> to be rewritten as an integral of the Kirchhoff stress <span class="math notranslate nohighlight">\(\kappa = J \bT\)</span> over <span class="math notranslate nohighlight">\(\Omega_{0}\)</span>.</p>
 </section>
 <section id="recommended-references">
-<h2>Recommended References<a class="headerlink" href="#recommended-references" title="Permalink to this heading"></a></h2>
+<h2>Recommended References<a class="headerlink" href="#recommended-references" title="Link to this heading"></a></h2>
 <p>For an exposition of nonlinear elasticity and of the underlying linear and tensor algebra, see <a class="reference internal" href="../bibliography.html#ogden1984" id="id1"><span>[OGDEN1984]</span></a>.
 For an advanced mathematical analysis of the Finite Element Method, see <a class="reference internal" href="../bibliography.html#raviart1998" id="id2"><span>[RAVIART1998]</span></a>.</p>
 </section>
 <section id="a-neo-hookean-compressible-material">
-<h2>A Neo-Hookean Compressible Material<a class="headerlink" href="#a-neo-hookean-compressible-material" title="Permalink to this heading"></a></h2>
+<h2>A Neo-Hookean Compressible Material<a class="headerlink" href="#a-neo-hookean-compressible-material" title="Link to this heading"></a></h2>
 <p><em>Constitutive Theory and Tangent Stress Measures</em></p>
 <p>The strain energy density function is given by:</p>
 <div class="math notranslate nohighlight">
@@ -2069,7 +2069,7 @@ The role of a variational virtual displacement here is played by <span class="ma
 </div>
 </section>
 <section id="an-approach-to-implementation-in-freefem">
-<h2>An Approach to Implementation in FreeFEM<a class="headerlink" href="#an-approach-to-implementation-in-freefem" title="Permalink to this heading"></a></h2>
+<h2>An Approach to Implementation in FreeFEM<a class="headerlink" href="#an-approach-to-implementation-in-freefem" title="Link to this heading"></a></h2>
 <p>Introducing the code-like notation, where a string in <span class="math notranslate nohighlight">\(&lt; &gt;\)</span>’s is to be read as one symbol, the individual components of the tensor:</p>
 <div class="math notranslate nohighlight">
 \[&lt;TanK&gt;

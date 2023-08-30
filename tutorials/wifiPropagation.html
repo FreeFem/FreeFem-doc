@@ -1975,22 +1975,22 @@
 	<div id="content">
 		
    <section id="wifi-propagation">
-<h1>Wifi Propagation<a class="headerlink" href="#wifi-propagation" title="Permalink to this heading"></a></h1>
+<h1>Wifi Propagation<a class="headerlink" href="#wifi-propagation" title="Link to this heading"></a></h1>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading"></a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
 <p>In this tutorial, we will study the wifi signal power in a flat.
 An awesome flat is especially designed for the experiment, with <strong>2</strong> walls:</p>
 <figure class="align-default" id="id1">
 <img alt="../_images/house.png" src="../_images/house.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Flat</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Flat</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Even if the flat seems small enough to be covered by wifi everywhere, it is still interesting to study where the signal’s power is the lowest.
 We will study where to put the hotspot to get the best coverage, and as we’re a bit lazy we will only put it next to the left wall.</p>
 </section>
 <section id="physics">
-<h2>Physics<a class="headerlink" href="#physics" title="Permalink to this heading"></a></h2>
+<h2>Physics<a class="headerlink" href="#physics" title="Link to this heading"></a></h2>
 <p>In a nutshell, the Wifi is a electromagnetic wave that contains a signal : Internet data.
 Electromagnetic waves are well know by physicists and are ruled by the <strong>4 Maxwell equations</strong> which give you the solution for <em>E</em>, the electrical field, and <em>B</em>, the magnetic field, in space but also in time.</p>
 <p>We don’t care about the time here, because the signal period is really short so our internet quality will not change with time.
@@ -2007,10 +2007,10 @@ In walls, the refractive index is a complex number in which the two parts have a
 <p>The wifi hotspot (simulated by a simple circle) will be the boundary condition, with a non null value for our electrical field.</p>
 </section>
 <section id="coding">
-<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this heading"></a></h2>
+<h2>Coding<a class="headerlink" href="#coding" title="Link to this heading"></a></h2>
 <section id="the-domain">
-<h3>The domain<a class="headerlink" href="#the-domain" title="Permalink to this heading"></a></h3>
-<p>In order to create the domain of experimentation, we need to create <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">border</span></code> objects, like this :</p>
+<h3>The domain<a class="headerlink" href="#the-domain" title="Link to this heading"></a></h3>
+<p>In order to create the domain of experimentation, we need to create <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">border</span></code> objects, like this :</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">real</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">;</span>
 <span class="linenos"> 2</span><span class="kt">border</span><span class="w"> </span><span class="nf">a00</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="kr">x</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="kp">t</span><span class="p">;</span><span class="w"> </span><span class="kr">y</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="kr">label</span><span class="o">=</span><span class="mi">1</span><span class="p">;}</span>
 <span class="linenos"> 3</span><span class="kt">border</span><span class="w"> </span><span class="nf">a10</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="kr">x</span><span class="o">=</span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="kr">y</span><span class="o">=</span><span class="n">b</span><span class="o">*</span><span class="kp">t</span><span class="p">;</span><span class="w"> </span><span class="kr">label</span><span class="o">=</span><span class="mi">1</span><span class="p">;}</span>
@@ -2036,7 +2036,7 @@ In walls, the refractive index is a complex number in which the two parts have a
 </div>
 </section>
 <section id="lets-create-a-mesh">
-<h3>Let’s create a mesh<a class="headerlink" href="#lets-create-a-mesh" title="Permalink to this heading"></a></h3>
+<h3>Let’s create a mesh<a class="headerlink" href="#lets-create-a-mesh" title="Link to this heading"></a></h3>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="kr">n</span><span class="o">=</span><span class="mi">13</span><span class="p">;</span>
 <span class="linenos">2</span><span class="kt">mesh</span><span class="w"> </span><span class="n">Sh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">buildmesh</span><span class="p">(</span><span class="n">a00</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a10</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a20</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a30</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span>
 <span class="linenos">3</span><span class="w">    </span><span class="o">+</span><span class="w"> </span><span class="n">a01</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a11</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a21</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a31</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span>
@@ -2045,14 +2045,14 @@ In walls, the refractive index is a complex number in which the two parts have a
 <span class="linenos">6</span><span class="nf">plot</span><span class="p">(</span><span class="n">Sh</span><span class="p">,</span><span class="w"> </span><span class="kp">wait</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>So we are creating a <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh</span></code>, and plotting it :</p>
+<p>So we are creating a <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">mesh</span></code>, and plotting it :</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/mesh.png"><img alt="WifiPropagationMesh" src="../_images/mesh.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Mesh</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Mesh</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<p>There is currently no wifi hotspot, and as we want to resolve the equation for a multiple number of position next to the left wall, let’s do a <code class="code freefem docutils literal highlight highlight-freefem"><span class="k">for</span></code> loop:</p>
+<p>There is currently no wifi hotspot, and as we want to resolve the equation for a multiple number of position next to the left wall, let’s do a <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="k">for</span></code> loop:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">bx</span><span class="p">;</span>
 <span class="linenos">2</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">bx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">bx</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span><span class="w"> </span><span class="n">bx</span><span class="o">++</span><span class="p">){</span>
 <span class="linenos">3</span><span class="w">    </span><span class="kt">border</span><span class="w"> </span><span class="nf">C</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="mi">2</span><span class="o">+</span><span class="nf">cos</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span><span class="w"> </span><span class="kr">y</span><span class="o">=</span><span class="n">bx</span><span class="o">*</span><span class="mi">5</span><span class="o">+</span><span class="nf">sin</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span><span class="w"> </span><span class="kr">label</span><span class="o">=</span><span class="mi">2</span><span class="p">;}</span>
@@ -2063,8 +2063,8 @@ In walls, the refractive index is a complex number in which the two parts have a
 <span class="linenos">8</span><span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">c00</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c10</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c20</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="kr">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c30</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="kr">n</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>The border <code class="docutils literal notranslate"><span class="pre">C</span></code> is our hotspot and as you can see a simple circle.
-<code class="docutils literal notranslate"><span class="pre">Th</span></code> is our final mesh, with all borders and the hotspot.
+<p>The border <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span></code> is our hotspot and as you can see a simple circle.
+<code class="docutils literal highlight highlight-python"><span></span><span class="n">Th</span></code> is our final mesh, with all borders and the hotspot.
 Let’s resolve this equation !</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">fespace</span><span class="w"> </span><span class="nf">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="nc">P1</span><span class="p">);</span>
 <span class="linenos"> 2</span><span class="kt">func</span><span class="w"> </span><span class="kt">real</span><span class="w"> </span><span class="n">wall</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -2098,16 +2098,16 @@ Let’s resolve this equation !</p>
 </div>
 <p>A bit of understanding here :</p>
 <ul class="simple">
-<li><p>The <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">fespace</span></code> keyword defines a finite elements space, no need to know more here.</p></li>
-<li><p>The function <code class="docutils literal notranslate"><span class="pre">wall</span></code> return 0 if in air and 1 if in a wall (x and y are global variables).</p></li>
+<li><p>The <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">fespace</span></code> keyword defines a finite elements space, no need to know more here.</p></li>
+<li><p>The function <code class="docutils literal highlight highlight-python"><span></span><span class="n">wall</span></code> return 0 if in air and 1 if in a wall (x and y are global variables).</p></li>
 <li><p>For this example, random numbers are used for the reflexion and the absorption.</p></li>
-<li><p>The problem is defined with <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">problem</span></code> and we solve it by calling it.</p></li>
+<li><p>The problem is defined with <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">problem</span></code> and we solve it by calling it.</p></li>
 </ul>
-<p>Finally, I plotted the <span class="math notranslate nohighlight">\(\log\)</span> of the module of the solution <code class="docutils literal notranslate"><span class="pre">v</span></code> to see the signal’s power, and here we are :</p>
+<p>Finally, I plotted the <span class="math notranslate nohighlight">\(\log\)</span> of the module of the solution <code class="docutils literal highlight highlight-python"><span></span><span class="n">v</span></code> to see the signal’s power, and here we are :</p>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/point1.png"><img alt="Point1" src="../_images/point1.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Solution</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Solution</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Beautiful isn’t it ? This is the first position for the hotspot, but there are 6 others, and the electrical field is evolving depending on the position.
@@ -2116,37 +2116,37 @@ You can see the other positions here :</p>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/point2.png"><img alt="Point2" src="../_images/point2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Point 2</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Point 2</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../_images/point3.png"><img alt="Point3" src="../_images/point3.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Point 3</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Point 3</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../_images/point4.png"><img alt="Point4" src="../_images/point4.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Point 4</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Point 4</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../_images/point5.png"><img alt="Point5" src="../_images/point5.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Point 5</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Point 5</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="reference internal image-reference" href="../_images/point6.png"><img alt="Point6" src="../_images/point6.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Point 6</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Point 6</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/point7.png"><img alt="Point7" src="../_images/point7.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Point 7</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Point 7</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Wifi propagation</span></p>

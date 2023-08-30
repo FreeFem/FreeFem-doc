@@ -1966,11 +1966,11 @@
 	<div id="content">
 		
    <section id="developers">
-<h1>Developers<a class="headerlink" href="#developers" title="Permalink to this heading"></a></h1>
+<h1>Developers<a class="headerlink" href="#developers" title="Link to this heading"></a></h1>
 <section id="file-formats">
-<h2>File formats<a class="headerlink" href="#file-formats" title="Permalink to this heading"></a></h2>
+<h2>File formats<a class="headerlink" href="#file-formats" title="Link to this heading"></a></h2>
 <section id="mesh-file-data-structure">
-<span id="meshfiledatastructure"></span><h3>Mesh file data structure<a class="headerlink" href="#mesh-file-data-structure" title="Permalink to this heading"></a></h3>
+<span id="meshfiledatastructure"></span><h3>Mesh file data structure<a class="headerlink" href="#mesh-file-data-structure" title="Link to this heading"></a></h3>
 <p>The mesh data structure, output of a mesh generation algorithm, refers to the geometric data structure and in some case to another mesh data structure.</p>
 <p>In this case, the fields are</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">MeshVersionFormatted</span><span class="w"> </span><span class="mi">0</span>
@@ -2053,17 +2053,17 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">nv</span></code> means the number of vertices</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ne</span></code> means the number of edges</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nt</span></code> means the number of triangles</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nq</span></code> means the number of quadrilaterals</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nvg</span></code> means the number of vertex on geometric vertex</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">neg</span></code> means the number of edges on geometric edge</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nce</span></code> means the number of cracked edges</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nv</span></code> means the number of vertices</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">ne</span></code> means the number of edges</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nt</span></code> means the number of triangles</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nq</span></code> means the number of quadrilaterals</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nvg</span></code> means the number of vertex on geometric vertex</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">neg</span></code> means the number of edges on geometric edge</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nce</span></code> means the number of cracked edges</p></li>
 </ul>
 </section>
 <section id="bb-file-type-to-store-solutions">
-<h3>bb file type to Store Solutions<a class="headerlink" href="#bb-file-type-to-store-solutions" title="Permalink to this heading"></a></h3>
+<h3>bb file type to Store Solutions<a class="headerlink" href="#bb-file-type-to-store-solutions" title="Link to this heading"></a></h3>
 <p>The file is formatted such that:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="mi">2</span><span class="w"> </span><span class="p">[</span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">solutions</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">vertices</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="mi">2</span>
 <span class="linenos">2</span>
@@ -2073,13 +2073,13 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ns</span></code> means the number of solutions</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nv</span></code> means the number of vertices</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">U_i_j</span></code> is the solution component <code class="docutils literal notranslate"><span class="pre">i</span></code> at the vertex <code class="docutils literal notranslate"><span class="pre">j</span></code> on the associated mesh.</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">ns</span></code> means the number of solutions</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nv</span></code> means the number of vertices</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">U_i_j</span></code> is the solution component <code class="docutils literal highlight highlight-python"><span></span><span class="n">i</span></code> at the vertex <code class="docutils literal highlight highlight-python"><span></span><span class="n">j</span></code> on the associated mesh.</p></li>
 </ul>
 </section>
 <section id="id1">
-<h3>BB file type to store solutions<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>BB file type to store solutions<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>The file is formatted such that:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="mi">2</span><span class="w"> </span><span class="p">[</span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">solutions</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">Type</span><span class="w"> </span><span class="mi">1</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">[</span><span class="n">Type</span><span class="w"> </span><span class="n">ns</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">vertices</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="mi">2</span>
 <span class="linenos"> 2</span>
@@ -2095,8 +2095,8 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ns</span></code> means the number of solutions</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">type_k</span></code> mean the type of solution <code class="docutils literal notranslate"><span class="pre">k</span></code>:</p>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">ns</span></code> means the number of solutions</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">type_k</span></code> mean the type of solution <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code>:</p>
 <ul>
 <li><p>1: the solution is scalar (1 value per vertex)</p></li>
 <li><p>2: the solution is vectorial (2 values per vertex)</p></li>
@@ -2104,13 +2104,13 @@
 <li><p>4: the solution is a <span class="math notranslate nohighlight">\(2\times 2\)</span> matrix (4 values per vertex)</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nbv</span></code> means the number of vertices</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">U_i_j_k</span></code> is the value of the component <code class="docutils literal notranslate"><span class="pre">i</span></code> of the solution
-<code class="docutils literal notranslate"><span class="pre">k</span></code> at vertex <code class="docutils literal notranslate"><span class="pre">j</span></code> on the associated mesh</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nbv</span></code> means the number of vertices</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">U_i_j_k</span></code> is the value of the component <code class="docutils literal highlight highlight-python"><span></span><span class="n">i</span></code> of the solution
+<code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code> at vertex <code class="docutils literal highlight highlight-python"><span></span><span class="n">j</span></code> on the associated mesh</p></li>
 </ul>
 </section>
 <section id="metric-file">
-<h3>Metric file<a class="headerlink" href="#metric-file" title="Permalink to this heading"></a></h3>
+<h3>Metric file<a class="headerlink" href="#metric-file" title="Link to this heading"></a></h3>
 <p>A metric file can be of two types, isotropic or anisotropic.</p>
 <p>The isotropic file is such that</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">vertices</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="mi">1</span>
@@ -2120,8 +2120,8 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">nv</span></code> is the number of vertices</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">h_i</span></code> is the wanted mesh size near the vertex <code class="docutils literal notranslate"><span class="pre">i</span></code> on associated mesh.</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nv</span></code> is the number of vertices</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">h_i</span></code> is the wanted mesh size near the vertex <code class="docutils literal highlight highlight-python"><span></span><span class="n">i</span></code> on associated mesh.</p></li>
 </ul>
 <p>The metric is <span class="math notranslate nohighlight">\(\mathcal{M}_i = h_i^{-2}I\)</span> where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix.</p>
 <p>The anisotropic file is such that</p>
@@ -2132,23 +2132,23 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">nv</span></code> is the number of vertices</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">a11_i</span></code>, <code class="docutils literal notranslate"><span class="pre">a21_i</span></code> and <code class="docutils literal notranslate"><span class="pre">a22_i</span></code> represent metric <span class="math notranslate nohighlight">\(\mathcal{M}_i = \left(\begin{array}{cc}a_{11,i} &amp; a_{12,i}\\a{12}_i &amp; a_{22,i}\end{array}\right)\)</span> which define the wanted size in a vicinity of the vertex <code class="docutils literal notranslate"><span class="pre">i</span></code> such that <span class="math notranslate nohighlight">\(h\)</span> in direction <span class="math notranslate nohighlight">\(u \in \mathbb{R}^2\)</span> is equal to <span class="math notranslate nohighlight">\(|u|/\sqrt{u\cdot\mathcal{M}_i\, u}\)</span>, where <span class="math notranslate nohighlight">\(\cdot\)</span> is the dot product in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>, and <span class="math notranslate nohighlight">\(|\cdot|\)</span> is the classical norm.</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nv</span></code> is the number of vertices</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">a11_i</span></code>, <code class="docutils literal highlight highlight-python"><span></span><span class="n">a21_i</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">a22_i</span></code> represent metric <span class="math notranslate nohighlight">\(\mathcal{M}_i = \left(\begin{array}{cc}a_{11,i} &amp; a_{12,i}\\a{12}_i &amp; a_{22,i}\end{array}\right)\)</span> which define the wanted size in a vicinity of the vertex <code class="docutils literal highlight highlight-python"><span></span><span class="n">i</span></code> such that <span class="math notranslate nohighlight">\(h\)</span> in direction <span class="math notranslate nohighlight">\(u \in \mathbb{R}^2\)</span> is equal to <span class="math notranslate nohighlight">\(|u|/\sqrt{u\cdot\mathcal{M}_i\, u}\)</span>, where <span class="math notranslate nohighlight">\(\cdot\)</span> is the dot product in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>, and <span class="math notranslate nohighlight">\(|\cdot|\)</span> is the classical norm.</p></li>
 </ul>
 </section>
 <section id="list-of-am-fmt-amdba-meshes">
-<h3>List of AM_FMT, AMDBA Meshes<a class="headerlink" href="#list-of-am-fmt-amdba-meshes" title="Permalink to this heading"></a></h3>
+<h3>List of AM_FMT, AMDBA Meshes<a class="headerlink" href="#list-of-am-fmt-amdba-meshes" title="Link to this heading"></a></h3>
 <p>The mesh is only composed of triangles and can be defined with the help of the following two integers and four arrays:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">nbt</span></code> the number of triangles</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nbv</span></code> the number of vertices</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nu(1:3,</span> <span class="pre">1:nbt)</span></code> an integer array giving the three vertex numbers counterclockwise for each triangle</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">c(1:2,</span> <span class="pre">1:nbv)</span></code> a real array giving tje two coordinates of each vertex</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">refs(1:nbv)</span></code> an integer array giving the reference numbers of the vertices</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">reft(1:nbt)</span></code> an integer array giving the reference numbers of the triangles</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nbt</span></code> the number of triangles</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nbv</span></code> the number of vertices</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nu</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">nbt</span><span class="p">)</span></code> an integer array giving the three vertex numbers counterclockwise for each triangle</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">c</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">nbv</span><span class="p">)</span></code> a real array giving tje two coordinates of each vertex</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">refs</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nbv</span><span class="p">)</span></code> an integer array giving the reference numbers of the vertices</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">reft</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nbt</span><span class="p">)</span></code> an integer array giving the reference numbers of the triangles</p></li>
 </ul>
 <p><strong>AM_FMT Files</strong></p>
-<p>In <code class="docutils literal notranslate"><span class="pre">Fortran</span></code> the <code class="docutils literal notranslate"><span class="pre">am_fmt</span></code> files are read as follows:</p>
+<p>In <code class="docutils literal highlight highlight-python"><span></span><span class="n">Fortran</span></code> the <code class="docutils literal highlight highlight-python"><span></span><span class="n">am_fmt</span></code> files are read as follows:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">open</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;xxx.am_fmt&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="o">=</span><span class="s1">&#39;formatted&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;old&#39;</span><span class="p">)</span>
 <span class="linenos">2</span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">nbv</span><span class="p">,</span><span class="w"> </span><span class="n">nbt</span>
 <span class="linenos">3</span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="n">nu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nbt</span><span class="p">)</span>
@@ -2159,7 +2159,7 @@
 </pre></div>
 </div>
 <p><strong>AM Files</strong></p>
-<p>In <code class="docutils literal notranslate"><span class="pre">Fortran</span></code> the <code class="docutils literal notranslate"><span class="pre">am</span></code> files are read as follows:</p>
+<p>In <code class="docutils literal highlight highlight-python"><span></span><span class="n">Fortran</span></code> the <code class="docutils literal highlight highlight-python"><span></span><span class="n">am</span></code> files are read as follows:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">open</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;xxx.am&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="o">=</span><span class="s1">&#39;unformatted&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;old&#39;</span><span class="p">)</span>
 <span class="linenos">2</span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">nbv</span><span class="p">,</span><span class="w"> </span><span class="n">nbt</span>
 <span class="linenos">3</span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="n">nu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nbt</span><span class="p">),</span>
@@ -2170,7 +2170,7 @@
 </pre></div>
 </div>
 <p><strong>AMDBA Files</strong></p>
-<p>In <code class="docutils literal notranslate"><span class="pre">Fortran</span></code> the <code class="docutils literal notranslate"><span class="pre">amdba</span></code> files are read as follows:</p>
+<p>In <code class="docutils literal highlight highlight-python"><span></span><span class="n">Fortran</span></code> the <code class="docutils literal highlight highlight-python"><span></span><span class="n">amdba</span></code> files are read as follows:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">open</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;xxx.amdba&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="o">=</span><span class="s1">&#39;formatted&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;old&#39;</span><span class="p">)</span>
 <span class="linenos">2</span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">nbv</span><span class="p">,</span><span class="w"> </span><span class="n">nbt</span>
 <span class="linenos">3</span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">c</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">refs</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nbv</span><span class="p">)</span>
@@ -2181,11 +2181,11 @@
 <p><strong>msh Files</strong></p>
 <p>First, we add the notions of boundary edges</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">nbbe</span></code> the number of boundary edge</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nube(1:2,</span> <span class="pre">1:nbbe)</span></code> an integer array giving the two vertex numbers of boundary edges</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">refbe(1:nbbe)</span></code> an integer array giving the reference numbers of boundary edges</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nbbe</span></code> the number of boundary edge</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nube</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">nbbe</span><span class="p">)</span></code> an integer array giving the two vertex numbers of boundary edges</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">refbe</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nbbe</span><span class="p">)</span></code> an integer array giving the reference numbers of boundary edges</p></li>
 </ul>
-<p>In <code class="docutils literal notranslate"><span class="pre">Fortran</span></code> the <code class="docutils literal notranslate"><span class="pre">msh</span></code> files are read as follows:</p>
+<p>In <code class="docutils literal highlight highlight-python"><span></span><span class="n">Fortran</span></code> the <code class="docutils literal highlight highlight-python"><span></span><span class="n">msh</span></code> files are read as follows:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">open</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;xxx.msh&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">form</span><span class="o">=</span><span class="s1">&#39;formatted&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;old&#39;</span><span class="p">)</span>
 <span class="linenos">2</span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">nbv</span><span class="p">,</span><span class="w"> </span><span class="n">nbt</span><span class="p">,</span><span class="w"> </span><span class="n">nbbe</span>
 <span class="linenos">3</span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">((</span><span class="n">c</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">),</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">refs</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nbv</span><span class="p">)</span>
@@ -2195,7 +2195,7 @@
 </pre></div>
 </div>
 <p><strong>ftq Files</strong></p>
-<p>In <code class="docutils literal notranslate"><span class="pre">Fortran</span></code> the <code class="docutils literal notranslate"><span class="pre">ftq</span></code> files are read as follows:</p>
+<p>In <code class="docutils literal highlight highlight-python"><span></span><span class="n">Fortran</span></code> the <code class="docutils literal highlight highlight-python"><span></span><span class="n">ftq</span></code> files are read as follows:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">open</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="k">file</span><span class="o">=</span><span class="s1">&#39;xxx.ftq&#39;</span><span class="p">,</span><span class="n">form</span><span class="o">=</span><span class="s1">&#39;formatted&#39;</span><span class="p">,</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;old&#39;</span><span class="p">)</span>
 <span class="linenos">2</span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">nbv</span><span class="p">,</span><span class="n">nbe</span><span class="p">,</span><span class="n">nbt</span><span class="p">,</span><span class="n">nbq</span>
 <span class="linenos">3</span><span class="k">read</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">k</span><span class="p">(</span><span class="n">j</span><span class="p">),(</span><span class="n">nu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">(</span><span class="n">j</span><span class="p">)),</span><span class="n">reft</span><span class="p">(</span><span class="n">j</span><span class="p">),</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nbe</span><span class="p">)</span>
@@ -2203,30 +2203,30 @@
 <span class="linenos">5</span><span class="k">close</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>where if <code class="docutils literal notranslate"><span class="pre">k(j)</span> <span class="pre">=</span> <span class="pre">3</span></code> when the element <code class="docutils literal notranslate"><span class="pre">j</span></code> is a triangle and <code class="docutils literal notranslate"><span class="pre">k(j)</span> <span class="pre">=</span> <span class="pre">4</span></code> when the the element <code class="docutils literal notranslate"><span class="pre">j</span></code> is a quadrilateral.</p>
+<p>where if <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span></code> when the element <code class="docutils literal highlight highlight-python"><span></span><span class="n">j</span></code> is a triangle and <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="mi">4</span></code> when the the element <code class="docutils literal highlight highlight-python"><span></span><span class="n">j</span></code> is a quadrilateral.</p>
 </section>
 <section id="sol-and-solb-files">
-<h3>sol and solb files<a class="headerlink" href="#sol-and-solb-files" title="Permalink to this heading"></a></h3>
-<p>With the keyword <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">savesol</span></code>, we can store a scalar functions, a scalar finite element functions, a vector fields, a vector finite element fields, a symmetric tensor and a symmetric finite element tensor.</p>
-<p>Such format is used in <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">medit</span></code>.</p>
+<h3>sol and solb files<a class="headerlink" href="#sol-and-solb-files" title="Link to this heading"></a></h3>
+<p>With the keyword <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">savesol</span></code>, we can store a scalar functions, a scalar finite element functions, a vector fields, a vector finite element fields, a symmetric tensor and a symmetric finite element tensor.</p>
+<p>Such format is used in <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">medit</span></code>.</p>
 <p><strong>Extension file .sol</strong></p>
 <p>The first two lines of the file are :</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">MeshVersionFormatted</span> <span class="pre">0</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Dimension</span> <span class="pre">[DIM](int)</span></code></p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">MeshVersionFormatted</span> <span class="mi">0</span></code></p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Dimension</span> <span class="p">[</span><span class="n">DIM</span><span class="p">](</span><span class="nb">int</span><span class="p">)</span></code></p></li>
 </ul>
 <p>The following fields begin with one of the following keyword:
-<code class="docutils literal notranslate"><span class="pre">SolAtVertices</span></code>, <code class="docutils literal notranslate"><span class="pre">SolAtEdges</span></code>,
-<code class="docutils literal notranslate"><span class="pre">SolAtTriangles</span></code>, <code class="docutils literal notranslate"><span class="pre">SolAtQuadrilaterals</span></code>,
-<code class="docutils literal notranslate"><span class="pre">SolAtTetrahedra</span></code>, <code class="docutils literal notranslate"><span class="pre">SolAtPentahedra</span></code>,
-<code class="docutils literal notranslate"><span class="pre">SolAtHexahedra</span></code>.</p>
-<p>In each field, we give then in the next line the number of elements in the solutions (<code class="code freefem docutils literal highlight highlight-freefem"><span class="n">SolAtVertices</span></code>: number of vertices, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">SolAtTriangles</span></code>: number of triangles, …).
+<code class="docutils literal highlight highlight-python"><span></span><span class="n">SolAtVertices</span></code>, <code class="docutils literal highlight highlight-python"><span></span><span class="n">SolAtEdges</span></code>,
+<code class="docutils literal highlight highlight-python"><span></span><span class="n">SolAtTriangles</span></code>, <code class="docutils literal highlight highlight-python"><span></span><span class="n">SolAtQuadrilaterals</span></code>,
+<code class="docutils literal highlight highlight-python"><span></span><span class="n">SolAtTetrahedra</span></code>, <code class="docutils literal highlight highlight-python"><span></span><span class="n">SolAtPentahedra</span></code>,
+<code class="docutils literal highlight highlight-python"><span></span><span class="n">SolAtHexahedra</span></code>.</p>
+<p>In each field, we give then in the next line the number of elements in the solutions (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">SolAtVertices</span></code>: number of vertices, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">SolAtTriangles</span></code>: number of triangles, …).
 In other lines, we give the number of solutions, the type of solution (1: scalar, 2: vector, 3: symmetric tensor).
 And finally, we give the values of the solutions on the elements.</p>
 <p>The file must be ended with the keyword End.</p>
 <p>The real element of symmetric tensor :</p>
 <div class="math notranslate nohighlight" id="equation-savesol-def-symtensor">
-<span class="eqno">(45)<a class="headerlink" href="#equation-savesol-def-symtensor" title="Permalink to this equation"></a></span>\[\begin{split}ST^{3d}=\left(
+<span class="eqno">(45)<a class="headerlink" href="#equation-savesol-def-symtensor" title="Link to this equation"></a></span>\[\begin{split}ST^{3d}=\left(
 \begin{array}{ccc}
    ST_{xx}^{3d} &amp; ST_{xy}^{3d} &amp; ST_{xz}^{3d}\\
    ST_{yx}^{3d} &amp; ST_{yy}^{3d} &amp; ST_{yz}^{3d} \\
@@ -2240,8 +2240,8 @@ ST^{2d}= \left(
    ST_{yx}^{2d} &amp; ST_{yy}^{2d}
 \end{array}
 \right)\end{split}\]</div>
-<p>stored in the extension <code class="code freefem docutils literal highlight highlight-freefem"><span class="p">.</span><span class="n">sol</span></code> are respectively <span class="math notranslate nohighlight">\(ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}\)</span> and <span class="math notranslate nohighlight">\(ST_{xx}^{2d}, ST_{yx}^{2d}, ST_{yy}^{2d}\)</span></p>
-<p>An example of field with the keyword <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">SolAtTetrahedra</span></code>:</p>
+<p>stored in the extension <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="p">.</span><span class="n">sol</span></code> are respectively <span class="math notranslate nohighlight">\(ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}\)</span> and <span class="math notranslate nohighlight">\(ST_{xx}^{2d}, ST_{yx}^{2d}, ST_{yy}^{2d}\)</span></p>
+<p>An example of field with the keyword <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">SolAtTetrahedra</span></code>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">SolAtTetrahedra</span>
 <span class="linenos"> 2</span><span class="p">[</span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">tetrahedra</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span>
 <span class="linenos"> 3</span><span class="p">[</span><span class="n">Number</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">solutions</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">Type</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">solution</span><span class="w"> </span><span class="mi">1</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">[</span><span class="n">Type</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">soution</span><span class="w"> </span><span class="n">nt</span><span class="p">](</span><span class="kt">int</span><span class="p">)</span>
@@ -2258,48 +2258,48 @@ ST^{2d}= \left(
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">ns</span></code> is the number of solutions</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">typesol_k</span></code>, type of the solution number <code class="docutils literal notranslate"><span class="pre">k</span></code></p>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">ns</span></code> is the number of solutions</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">typesol_k</span></code>, type of the solution number <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">typesol_k</span> <span class="pre">=</span> <span class="pre">1</span></code> the solution <code class="docutils literal notranslate"><span class="pre">k</span></code> is scalar</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">typesol_k</span> <span class="pre">=</span> <span class="pre">2</span></code> the solution <code class="docutils literal notranslate"><span class="pre">k</span></code> is vectorial</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">typesol_k</span> <span class="pre">=</span> <span class="pre">3</span></code> the solution <code class="docutils literal notranslate"><span class="pre">k</span></code> is a symmetric tensor or symmetric matrix</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">typesol_k</span> <span class="o">=</span> <span class="mi">1</span></code> the solution <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code> is scalar</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">typesol_k</span> <span class="o">=</span> <span class="mi">2</span></code> the solution <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code> is vectorial</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">typesol_k</span> <span class="o">=</span> <span class="mi">3</span></code> the solution <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code> is a symmetric tensor or symmetric matrix</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nrs_k</span></code> is the number of real to describe solution <code class="docutils literal notranslate"><span class="pre">k</span></code></p>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nrs_k</span></code> is the number of real to describe solution <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code></p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">nrs_k</span> <span class="pre">=</span> <span class="pre">1</span></code> if the solution <code class="docutils literal notranslate"><span class="pre">k</span></code> is scalar</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nrs_k</span> <span class="pre">=</span> <span class="pre">dim</span></code> if the solution <code class="docutils literal notranslate"><span class="pre">k</span></code> is vectorial (<code class="docutils literal notranslate"><span class="pre">dim</span></code> is the dimension of the solution)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">nrs_k</span> <span class="pre">=</span> <span class="pre">dim*(dim+1)/2</span></code> if the solution k is a symmetric tensor or symmetric matrix</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nrs_k</span> <span class="o">=</span> <span class="mi">1</span></code> if the solution <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code> is scalar</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nrs_k</span> <span class="o">=</span> <span class="n">dim</span></code> if the solution <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code> is vectorial (<code class="docutils literal highlight highlight-python"><span></span><span class="n">dim</span></code> is the dimension of the solution)</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nrs_k</span> <span class="o">=</span> <span class="n">dim</span><span class="o">*</span><span class="p">(</span><span class="n">dim</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span></code> if the solution k is a symmetric tensor or symmetric matrix</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">U_i_j_^k</span></code> is a real equal to the value of the component <code class="docutils literal notranslate"><span class="pre">i</span></code> of the solution <code class="docutils literal notranslate"><span class="pre">k</span></code> at tetrahedron <code class="docutils literal notranslate"><span class="pre">j</span></code> on the associated mesh</p></li>
+<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">U_i_j_</span><span class="o">^</span><span class="n">k</span></code> is a real equal to the value of the component <code class="docutils literal highlight highlight-python"><span></span><span class="n">i</span></code> of the solution <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code> at tetrahedron <code class="docutils literal highlight highlight-python"><span></span><span class="n">j</span></code> on the associated mesh</p></li>
 </ul>
-<p>The format <code class="code freefem docutils literal highlight highlight-freefem"><span class="p">.</span><span class="n">solb</span></code> is the same as format <code class="code freefem docutils literal highlight highlight-freefem"><span class="p">.</span><span class="n">sol</span></code> but in binary (read/write is faster, storage is less).</p>
-<p>A real scalar functions <span class="math notranslate nohighlight">\(f1\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Phi} = [\Phi1, \Phi2, \Phi3]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{3d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(45)</a> at the vertices of the three dimensional mesh <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Th3</span></code> is stored in the file <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">f1PhiTh3</span><span class="p">.</span><span class="n">sol</span></code> using :</p>
+<p>The format <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="p">.</span><span class="n">solb</span></code> is the same as format <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="p">.</span><span class="n">sol</span></code> but in binary (read/write is faster, storage is less).</p>
+<p>A real scalar functions <span class="math notranslate nohighlight">\(f1\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Phi} = [\Phi1, \Phi2, \Phi3]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{3d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(45)</a> at the vertices of the three dimensional mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Th3</span></code> is stored in the file <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">f1PhiTh3</span><span class="p">.</span><span class="n">sol</span></code> using :</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nf">savesol</span><span class="p">(</span><span class="s">&quot;f1PhiST3dTh3.sol&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Th3</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">Phi</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">Phi</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">Phi</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span><span class="w"> </span><span class="n">VV3</span><span class="p">,</span><span class="w"> </span><span class="kp">order</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>where <span class="math notranslate nohighlight">\(VV3 = [ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}]\)</span>.</p>
-<p>For a two dimensional mesh <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Th</span></code>, A real scalar functions <span class="math notranslate nohighlight">\(f2\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Psi} = [\Psi1, \Psi2]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{2d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(45)</a> at triangles is stored in the file <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">f2PsiST2dTh3</span><span class="p">.</span><span class="n">solb</span></code> using :</p>
+<p>For a two dimensional mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Th</span></code>, A real scalar functions <span class="math notranslate nohighlight">\(f2\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Psi} = [\Psi1, \Psi2]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{2d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(45)</a> at triangles is stored in the file <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">f2PsiST2dTh3</span><span class="p">.</span><span class="n">solb</span></code> using :</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nf">savesol</span><span class="p">(</span><span class="s">&quot;f2PsiST2dTh3.solb&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">Psi</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">Psi</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span><span class="w"> </span><span class="n">VV2</span><span class="p">,</span><span class="w"> </span><span class="kp">order</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>where <span class="math notranslate nohighlight">\(VV2 = [ST_{xx}^{2d}, ST_{yx}^{2d}, ST_{yy}^{2d}]\)</span></p>
-<p>The arguments of <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">savesol</span></code> functions are the name of a file, a mesh and solutions.
+<p>The arguments of <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">savesol</span></code> functions are the name of a file, a mesh and solutions.
 These arguments must be given in this order.</p>
 <p>The parameters of this keyword are :</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">order</span><span class="w"> </span><span class="o">=</span></code> 0 is the solution is given at the center of gravity of elements.
+<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">order</span><span class="w"> </span><span class="o">=</span></code> 0 is the solution is given at the center of gravity of elements.
 1 is the solution is given at the vertices of elements.</p></li>
 </ul>
 <p>In the file, solutions are stored in this order : scalar solutions, vector solutions and finally symmetric tensor solutions.</p>
 </section>
 </section>
 <section id="adding-a-new-finite-element">
-<span id="developersaddingfiniteelement"></span><h2>Adding a new finite element<a class="headerlink" href="#adding-a-new-finite-element" title="Permalink to this heading"></a></h2>
+<span id="developersaddingfiniteelement"></span><h2>Adding a new finite element<a class="headerlink" href="#adding-a-new-finite-element" title="Link to this heading"></a></h2>
 <section id="some-notations">
-<h3>Some notations<a class="headerlink" href="#some-notations" title="Permalink to this heading"></a></h3>
+<h3>Some notations<a class="headerlink" href="#some-notations" title="Link to this heading"></a></h3>
 <p>For a function <span class="math notranslate nohighlight">\(\boldsymbol{f}\)</span> taking value in <span class="math notranslate nohighlight">\(\mathbb{R}^{N},\, N=1,2,\cdots\)</span>, we define the finite element approximation <span class="math notranslate nohighlight">\(\Pi_h\boldsymbol{f}\)</span> of <span class="math notranslate nohighlight">\(\boldsymbol{f}\)</span>.</p>
 <p>Let us denote the number of the degrees of freedom of the finite element by <span class="math notranslate nohighlight">\(NbDoF\)</span>.
 Then the <span class="math notranslate nohighlight">\(i\)</span>-th base <span class="math notranslate nohighlight">\(\boldsymbol{\omega}^{K}_{i}\)</span> (<span class="math notranslate nohighlight">\(i=0,\cdots,NbDoF-1\)</span>) of the finite element space has the <span class="math notranslate nohighlight">\(j\)</span>-th component <span class="math notranslate nohighlight">\(\mathbf{\omega}^{K}_{ij}\)</span> for <span class="math notranslate nohighlight">\(j=0,\cdots,N-1\)</span>.</p>
@@ -2307,7 +2307,7 @@ Then the <span class="math notranslate nohighlight">\(i\)</span>-th base <span c
 <p>We have the identity <span class="math notranslate nohighlight">\(\boldsymbol{\omega}^{K}_{i} = \Pi_{h} \boldsymbol{\omega}^{K}_{i}\)</span>.</p>
 <p>Formally, the interpolator <span class="math notranslate nohighlight">\(\Pi_{h}\)</span> is constructed by the following formula:</p>
 <div class="math notranslate nohighlight" id="equation-eq-interpo">
-<span class="eqno">(46)<a class="headerlink" href="#equation-eq-interpo" title="Permalink to this equation"></a></span>\[\Pi_{h} \boldsymbol{f} = \sum_{k=0}^{\mathtt{kPi}-1} \alpha_k \boldsymbol{f}_{j_{k}}(P_{p_{k}}) \boldsymbol{\omega}^{K}_{i_{k}}\]</div>
+<span class="eqno">(46)<a class="headerlink" href="#equation-eq-interpo" title="Link to this equation"></a></span>\[\Pi_{h} \boldsymbol{f} = \sum_{k=0}^{\mathtt{kPi}-1} \alpha_k \boldsymbol{f}_{j_{k}}(P_{p_{k}}) \boldsymbol{\omega}^{K}_{i_{k}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(P_{p}\)</span> is a set of <span class="math notranslate nohighlight">\(npPi\)</span> points,</p>
 <p>In the formula <a class="reference internal" href="#equation-eq-interpo">(46)</a>, the list <span class="math notranslate nohighlight">\(p_{k},\, j_{k},\, i_{k}\)</span> depend just on the type of finite element (not on the element), but the coefficient <span class="math notranslate nohighlight">\(\alpha_{k}\)</span> can be depending on the element.</p>
 <div class="admonition tip">
@@ -2325,7 +2325,7 @@ Then the <span class="math notranslate nohighlight">\(i\)</span>-th base <span c
 <p class="admonition-title">Tip</p>
 <p>The Raviart-Thomas finite element</p>
 <div class="math notranslate nohighlight" id="equation-eq-rt0-fe">
-<span class="eqno">(47)<a class="headerlink" href="#equation-eq-rt0-fe" title="Permalink to this equation"></a></span>\[RT0_{h} = \{ \mathbf{v} \in H(div) / \forall K \in
+<span class="eqno">(47)<a class="headerlink" href="#equation-eq-rt0-fe" title="Link to this equation"></a></span>\[RT0_{h} = \{ \mathbf{v} \in H(div) / \forall K \in
 \mathcal{T}_{h} \quad \mathbf{v}_{|K}(x,y) =
 \vecttwo{\alpha_{K}}{\beta_{K}} + \gamma_{K}\vecttwo{x}{y} \}\]</div>
 <p>The degrees of freedom are the flux through an edge <span class="math notranslate nohighlight">\(e\)</span> of the mesh, where the flux of the function <span class="math notranslate nohighlight">\(\mathbf{f} : \mathbb{R}^2 \longrightarrow \mathbb{R}^2\)</span> is <span class="math notranslate nohighlight">\(\int_{e} \mathbf{f}.n_{e}\)</span>, <span class="math notranslate nohighlight">\(n_{e}\)</span> is the unit normal of edge <span class="math notranslate nohighlight">\(e\)</span> (this implies a orientation of all the edges of the mesh, for example we can use the global numbering of the edge vertices and we just go to small to large number).</p>
@@ -2355,8 +2355,8 @@ a length equal to the side of the edge or equal to <span class="math notranslate
 </div>
 </section>
 <section id="which-class-to-add">
-<h3>Which class to add?<a class="headerlink" href="#which-class-to-add" title="Permalink to this heading"></a></h3>
-<p>Add file <code class="docutils literal notranslate"><span class="pre">FE_ADD.cpp</span></code> in directory <code class="docutils literal notranslate"><span class="pre">FreeFem-sources/src/femlib</span></code> for
+<h3>Which class to add?<a class="headerlink" href="#which-class-to-add" title="Link to this heading"></a></h3>
+<p>Add file <code class="docutils literal highlight highlight-python"><span></span><span class="n">FE_ADD</span><span class="o">.</span><span class="n">cpp</span></code> in directory <code class="docutils literal highlight highlight-python"><span></span><span class="n">FreeFem</span><span class="o">-</span><span class="n">sources</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">femlib</span></code> for
 example first to initialize :</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;error.hpp&quot;</span>
 <span class="linenos">2</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rgraph.hpp&quot;</span>
@@ -2369,7 +2369,7 @@ example first to initialize :</p>
 <span class="linenos">9</span><span class="k">namespace</span><span class="w"> </span><span class="nn">Fem2D</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Then add a class which derive for <code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">TypeOfFE</span></code> like:</p>
+<p>Then add a class which derive for <code class="docutils literal highlight highlight-python"><span></span><span class="n">public</span> <span class="n">TypeOfFE</span></code> like:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span><span class="w"> </span><span class="nc">TypeOfFE_RTortho</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">TypeOfFE</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">public</span><span class="o">:</span>
 <span class="linenos"> 2</span><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Data</span><span class="p">[];</span><span class="w"> </span><span class="c1">//some numbers</span>
 <span class="linenos"> 3</span><span class="w">    </span><span class="n">TypeOfFE_RTortho</span><span class="p">()</span><span class="o">:</span>
@@ -2403,7 +2403,7 @@ example first to initialize :</p>
 </pre></div>
 </div>
 <p>where the array data is formed with the concatenation of five array of
-size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></code> and one array of size <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+size <code class="docutils literal highlight highlight-python"><span></span><span class="n">NbDoF</span></code> and one array of size <code class="docutils literal highlight highlight-python"><span></span><span class="n">N</span></code>.</p>
 <p>This array is:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">TypeOfFE_RTortho</span><span class="o">::</span><span class="n">Data</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos">2</span><span class="w">    </span><span class="c1">//for each df 0, 1, 3:</span>
@@ -2418,7 +2418,7 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 </div>
 <p>where the support is a number <span class="math notranslate nohighlight">\(0,1,2\)</span> for vertex support, <span class="math notranslate nohighlight">\(3,4,5\)</span> for edge support, and finally <span class="math notranslate nohighlight">\(6\)</span> for element support.</p>
 <p>The function to defined the function
-<span class="math notranslate nohighlight">\(\boldsymbol{\omega}^{K}_{i}\)</span>, this function return the value of all the basics function or this derivatives in array <code class="docutils literal notranslate"><span class="pre">val</span></code>, computed at point <code class="docutils literal notranslate"><span class="pre">Phat</span></code> on the reference triangle corresponding to point <code class="docutils literal notranslate"><span class="pre">R2</span> <span class="pre">P=K(Phat);</span></code> on the current triangle <code class="docutils literal notranslate"><span class="pre">K</span></code>.</p>
+<span class="math notranslate nohighlight">\(\boldsymbol{\omega}^{K}_{i}\)</span>, this function return the value of all the basics function or this derivatives in array <code class="docutils literal highlight highlight-python"><span></span><span class="n">val</span></code>, computed at point <code class="docutils literal highlight highlight-python"><span></span><span class="n">Phat</span></code> on the reference triangle corresponding to point <code class="docutils literal highlight highlight-python"><span></span><span class="n">R2</span> <span class="n">P</span><span class="o">=</span><span class="n">K</span><span class="p">(</span><span class="n">Phat</span><span class="p">);</span></code> on the current triangle <code class="docutils literal highlight highlight-python"><span></span><span class="n">K</span></code>.</p>
 <p>The index <span class="math notranslate nohighlight">\(i,j,k\)</span> of the array <span class="math notranslate nohighlight">\(val(i,j,k)\)</span> correspond to:</p>
 <ul>
 <li><p><span class="math notranslate nohighlight">\(i\)</span> is the basic function number on finite element
@@ -2428,7 +2428,7 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 <span class="math notranslate nohighlight">\(f(P),dx(f)(P), dy(f)(P), ...\ i \in [0,\mathtt{last\_operatortype}[\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For optimization, this value is computed only if <code class="docutils literal notranslate"><span class="pre">whatd[k]</span></code> is true, and the numbering is defined with</p>
+<p>For optimization, this value is computed only if <code class="docutils literal highlight highlight-python"><span></span><span class="n">whatd</span><span class="p">[</span><span class="n">k</span><span class="p">]</span></code> is true, and the numbering is defined with</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">enum</span><span class="w"> </span><span class="nc">operatortype</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos"> 2</span><span class="n">op_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
 <span class="linenos"> 3</span><span class="n">op_dx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">op_dy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
@@ -2510,13 +2510,13 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 </div>
 <p>Now , we just need to add a new key work in <strong>FreeFEM</strong>.</p>
 <p>Two way, with static or dynamic link so at the end of the file, we add:</p>
-<p><strong>With dynamic link</strong> it is very simple (see section <a class="reference internal" href="#developersdynamicallink"><span class="std std-ref">Dynamical link</span></a>), just add before the end of <code class="code cpp docutils literal highlight highlight-cpp"><span class="n">FEM2d</span><span class="w"> </span><span class="k">namespace</span></code>:</p>
+<p><strong>With dynamic link</strong> it is very simple (see section <a class="reference internal" href="#developersdynamicallink"><span class="std std-ref">Dynamical link</span></a>), just add before the end of <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="n">FEM2d</span><span class="w"> </span><span class="k">namespace</span></code>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w">   </span><span class="k">static</span><span class="w"> </span><span class="n">TypeOfFE_RTortho</span><span class="w"> </span><span class="n">The_TypeOfFE_RTortho</span><span class="p">;</span>
 <span class="linenos">2</span><span class="w">   </span><span class="k">static</span><span class="w"> </span><span class="n">AddNewFE</span><span class="p">(</span><span class="s">&quot;RT0Ortho&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">The_TypeOfFE_RTortho</span><span class="p">);</span>
 <span class="linenos">3</span><span class="p">}</span><span class="w"> </span><span class="c1">//FEM2d namespace</span>
 </pre></div>
 </div>
-<p>Try with <code class="docutils literal notranslate"><span class="pre">./load.link</span></code> command in <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">examples++-load/</a> and see <code class="docutils literal notranslate"><span class="pre">BernardiRaugel.cpp</span></code> or <code class="docutils literal notranslate"><span class="pre">Morley.cpp</span></code> new finite element examples.</p>
+<p>Try with <code class="docutils literal highlight highlight-python"><span></span><span class="o">./</span><span class="n">load</span><span class="o">.</span><span class="n">link</span></code> command in <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">examples++-load/</a> and see <code class="docutils literal highlight highlight-python"><span></span><span class="n">BernardiRaugel</span><span class="o">.</span><span class="n">cpp</span></code> or <code class="docutils literal highlight highlight-python"><span></span><span class="n">Morley</span><span class="o">.</span><span class="n">cpp</span></code> new finite element examples.</p>
 <p><strong>Otherwise with static link</strong> (for expert only), add</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//let the 2 globals variables</span>
 <span class="linenos"> 2</span><span class="k">static</span><span class="w"> </span><span class="n">TypeOfFE_RTortho</span><span class="w"> </span><span class="n">The_TypeOfFE_RTortho</span><span class="p">;</span>
@@ -2531,7 +2531,7 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 <span class="linenos">11</span><span class="p">}</span><span class="w"> </span><span class="c1">//FEM2d namespace</span>
 </pre></div>
 </div>
-<p>To inforce in loading of this new finite element, we have to add the two new lines close to the end of files <code class="docutils literal notranslate"><span class="pre">src/femlib/FESpace.cpp</span></code> like:</p>
+<p>To inforce in loading of this new finite element, we have to add the two new lines close to the end of files <code class="docutils literal highlight highlight-python"><span></span><span class="n">src</span><span class="o">/</span><span class="n">femlib</span><span class="o">/</span><span class="n">FESpace</span><span class="o">.</span><span class="n">cpp</span></code> like:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">//correct problem of static library link with new make file</span>
 <span class="linenos">2</span><span class="kt">void</span><span class="w"> </span><span class="nf">init_static_FE</span><span class="p">()</span>
 <span class="linenos">3</span><span class="p">{</span><span class="w"> </span><span class="c1">//list of other FE file.o</span>
@@ -2543,7 +2543,7 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 </pre></div>
 </div>
 <p>and now you have to change the makefile.</p>
-<p>First, create a file <code class="docutils literal notranslate"><span class="pre">FE_ADD.cpp</span></code> contening all this code, like in file <code class="docutils literal notranslate"><span class="pre">src/femlib/Element_P2h.cpp</span></code>, after modify the <code class="docutils literal notranslate"><span class="pre">Makefile.am</span></code> by adding the name of your file to the variable <code class="docutils literal notranslate"><span class="pre">EXTRA_DIST</span></code> like:</p>
+<p>First, create a file <code class="docutils literal highlight highlight-python"><span></span><span class="n">FE_ADD</span><span class="o">.</span><span class="n">cpp</span></code> contening all this code, like in file <code class="docutils literal highlight highlight-python"><span></span><span class="n">src</span><span class="o">/</span><span class="n">femlib</span><span class="o">/</span><span class="n">Element_P2h</span><span class="o">.</span><span class="n">cpp</span></code>, after modify the <code class="docutils literal highlight highlight-python"><span></span><span class="n">Makefile</span><span class="o">.</span><span class="n">am</span></code> by adding the name of your file to the variable <code class="docutils literal highlight highlight-python"><span></span><span class="n">EXTRA_DIST</span></code> like:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp"># Makefile using Automake + Autoconf</span>
 <span class="linenos"> 2</span><span class="cp"># ----------------------------------</span>
 <span class="linenos"> 3</span><span class="cp"># Id</span>
@@ -2571,33 +2571,33 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 </section>
 </section>
 <section id="dynamical-link">
-<span id="developersdynamicallink"></span><h2>Dynamical link<a class="headerlink" href="#dynamical-link" title="Permalink to this heading"></a></h2>
+<span id="developersdynamicallink"></span><h2>Dynamical link<a class="headerlink" href="#dynamical-link" title="Link to this heading"></a></h2>
 <p>Now, it’s possible to add built-in functionnalites in <strong>FreeFEM</strong> under the three environnents Linux, Windows and MacOS X 10.3 or newer.</p>
-<p>It is agood idea to first try the example <code class="docutils literal notranslate"><span class="pre">load.edp</span></code> in directory <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">example++-load</a>.</p>
-<p>You will need to install a <code class="docutils literal notranslate"><span class="pre">compiler</span></code> (generally <code class="docutils literal notranslate"><span class="pre">g++/gcc</span></code> compiler) to compile your function.</p>
+<p>It is agood idea to first try the example <code class="docutils literal highlight highlight-python"><span></span><span class="n">load</span><span class="o">.</span><span class="n">edp</span></code> in directory <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">example++-load</a>.</p>
+<p>You will need to install a <code class="docutils literal highlight highlight-python"><span></span><span class="n">compiler</span></code> (generally <code class="docutils literal highlight highlight-python"><span></span><span class="n">g</span><span class="o">++/</span><span class="n">gcc</span></code> compiler) to compile your function.</p>
 <ul class="simple">
-<li><p>Windows Install the <code class="docutils literal notranslate"><span class="pre">cygwin</span></code> environnent or the <code class="docutils literal notranslate"><span class="pre">mingw</span></code> one</p></li>
-<li><p>MacOs Install the developer tools <code class="docutils literal notranslate"><span class="pre">Xcode</span></code> on the apple DVD</p></li>
-<li><p>Linux/Unix Install the correct compiler (<code class="docutils literal notranslate"><span class="pre">gcc</span></code> for instance)</p></li>
+<li><p>Windows Install the <code class="docutils literal highlight highlight-python"><span></span><span class="n">cygwin</span></code> environnent or the <code class="docutils literal highlight highlight-python"><span></span><span class="n">mingw</span></code> one</p></li>
+<li><p>MacOs Install the developer tools <code class="docutils literal highlight highlight-python"><span></span><span class="n">Xcode</span></code> on the apple DVD</p></li>
+<li><p>Linux/Unix Install the correct compiler (<code class="docutils literal highlight highlight-python"><span></span><span class="n">gcc</span></code> for instance)</p></li>
 </ul>
-<p>Now, assume that you are in a shell window (a <code class="docutils literal notranslate"><span class="pre">cygwin</span></code> window under Windows) in the directory <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">example++-load</a>.</p>
+<p>Now, assume that you are in a shell window (a <code class="docutils literal highlight highlight-python"><span></span><span class="n">cygwin</span></code> window under Windows) in the directory <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">example++-load</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In the sub directory <code class="docutils literal notranslate"><span class="pre">include</span></code>, they are all the <strong>FreeFEM</strong> include file to make the link with <strong>FreeFEM</strong>.</p>
+<p>In the sub directory <code class="docutils literal highlight highlight-python"><span></span><span class="n">include</span></code>, they are all the <strong>FreeFEM</strong> include file to make the link with <strong>FreeFEM</strong>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you try to load dynamically a file with command <code class="code freefem docutils literal highlight highlight-freefem"><span class="cp">load</span><span class="w"> </span><span class="s">&quot;xxx&quot;</span></code>
-- Under Unix (Linux or MacOs), the file <code class="docutils literal notranslate"><span class="pre">xxx.so</span></code> will be loaded so it must be either in the search directory of routine <code class="docutils literal notranslate"><span class="pre">dlopen</span></code> (see the environment variable <cite>$LD_LIBRARY_PATH</cite>) or in the current directory, and the suffix <code class="docutils literal notranslate"><span class="pre">&quot;.so&quot;</span></code> or the prefix <code class="docutils literal notranslate"><span class="pre">&quot;./&quot;</span></code> is automatically added.</p>
+<p>If you try to load dynamically a file with command <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="cp">load</span><span class="w"> </span><span class="s">&quot;xxx&quot;</span></code>
+- Under Unix (Linux or MacOs), the file <code class="docutils literal highlight highlight-python"><span></span><span class="n">xxx</span><span class="o">.</span><span class="n">so</span></code> will be loaded so it must be either in the search directory of routine <code class="docutils literal highlight highlight-python"><span></span><span class="n">dlopen</span></code> (see the environment variable <cite>$LD_LIBRARY_PATH</cite>) or in the current directory, and the suffix <code class="docutils literal highlight highlight-python"><span></span><span class="s2">&quot;.so&quot;</span></code> or the prefix <code class="docutils literal highlight highlight-python"><span></span><span class="s2">&quot;./&quot;</span></code> is automatically added.</p>
 <ul class="simple">
 <li><p>Under Windows, the file <cite>xxx.dll</cite> will be loaded so it must be in the <cite>loadLibary</cite> search directory which includes the directory of the application,</p></li>
 </ul>
 </div>
 <p><strong>Compilation of your module:</strong></p>
-<p>The script <code class="docutils literal notranslate"><span class="pre">ff-c++</span></code> compiles and makes the link with <strong>FreeFEM</strong>, but be careful, the script has no way to known if you try to compile for a pure Windows environment or for a cygwin environment so to build the load module under cygwin you must add the <code class="docutils literal notranslate"><span class="pre">-cygwin</span></code> parameter.</p>
+<p>The script <code class="docutils literal highlight highlight-python"><span></span><span class="n">ff</span><span class="o">-</span><span class="n">c</span><span class="o">++</span></code> compiles and makes the link with <strong>FreeFEM</strong>, but be careful, the script has no way to known if you try to compile for a pure Windows environment or for a cygwin environment so to build the load module under cygwin you must add the <code class="docutils literal highlight highlight-python"><span></span><span class="o">-</span><span class="n">cygwin</span></code> parameter.</p>
 <section id="a-first-example-myfunction-cpp">
-<h3>A first example myfunction.cpp<a class="headerlink" href="#a-first-example-myfunction-cpp" title="Permalink to this heading"></a></h3>
-<p>The following defines a new function call <code class="docutils literal notranslate"><span class="pre">myfunction</span></code> with no parameter, but using the <span class="math notranslate nohighlight">\(x,y\)</span> current value.</p>
+<h3>A first example myfunction.cpp<a class="headerlink" href="#a-first-example-myfunction-cpp" title="Link to this heading"></a></h3>
+<p>The following defines a new function call <code class="docutils literal highlight highlight-python"><span></span><span class="n">myfunction</span></code> with no parameter, but using the <span class="math notranslate nohighlight">\(x,y\)</span> current value.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="linenos"> 2</span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cfloat&gt;</span>
 <span class="linenos"> 3</span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
@@ -2620,9 +2620,9 @@ size <code class="docutils literal notranslate"><span class="pre">NbDoF</span></
 <span class="linenos">20</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Now the Problem is to build the link with <strong>FreeFEM</strong>, to do that we need two classes, one to call the function <code class="docutils literal notranslate"><span class="pre">myfunction</span></code>.</p>
-<p>All <strong>FreeFEM</strong> evaluable expression must be a <code class="docutils literal notranslate"><span class="pre">C++</span></code> <code class="docutils literal notranslate"><span class="pre">struct</span></code>/<code class="docutils literal notranslate"><span class="pre">class</span></code> which derivate from <code class="docutils literal notranslate"><span class="pre">E_F0</span></code>.
-By default this expression does not depend of the mesh position, but if they derivate from <code class="docutils literal notranslate"><span class="pre">E_F0mps</span></code> the expression depends of the mesh position, and for more details see <a class="reference internal" href="../bibliography.html#hecht2002" id="id2"><span>[HECHT2002]</span></a>.</p>
+<p>Now the Problem is to build the link with <strong>FreeFEM</strong>, to do that we need two classes, one to call the function <code class="docutils literal highlight highlight-python"><span></span><span class="n">myfunction</span></code>.</p>
+<p>All <strong>FreeFEM</strong> evaluable expression must be a <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span><span class="o">++</span></code> <code class="docutils literal highlight highlight-python"><span></span><span class="n">struct</span></code>/<code class="docutils literal highlight highlight-python"><span></span><span class="k">class</span></code> which derivate from <code class="docutils literal highlight highlight-python"><span></span><span class="n">E_F0</span></code>.
+By default this expression does not depend of the mesh position, but if they derivate from <code class="docutils literal highlight highlight-python"><span></span><span class="n">E_F0mps</span></code> the expression depends of the mesh position, and for more details see <a class="reference internal" href="../bibliography.html#hecht2002" id="id2"><span>[HECHT2002]</span></a>.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">//A class build the link with FreeFEM</span>
 <span class="linenos"> 2</span><span class="c1">//generaly this class are already in AFunction.hpp</span>
 <span class="linenos"> 3</span><span class="c1">//but unfortunatly, I have no simple function with no parameter</span>
@@ -2659,13 +2659,13 @@ By default this expression does not depend of the mesh position, but if they der
 </pre></div>
 </div>
 <p>It will be called automatically at load module time.</p>
-<p>To compile and link, use the <code class="docutils literal notranslate"><span class="pre">ff-c++</span></code> script :</p>
+<p>To compile and link, use the <code class="docutils literal highlight highlight-python"><span></span><span class="n">ff</span><span class="o">-</span><span class="n">c</span><span class="o">++</span></code> script :</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ff</span><span class="o">-</span><span class="n">c</span><span class="o">++</span><span class="w"> </span><span class="n">myfunction</span><span class="p">.</span><span class="n">cpp</span>
 <span class="linenos">2</span><span class="n">g</span><span class="o">++</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="o">-</span><span class="n">Iinclude</span><span class="w"> </span><span class="n">myfunction</span><span class="p">.</span><span class="n">cpp</span>
 <span class="linenos">3</span><span class="n">g</span><span class="o">++</span><span class="w"> </span><span class="o">-</span><span class="n">bundle</span><span class="w"> </span><span class="o">-</span><span class="n">undefined</span><span class="w"> </span><span class="n">dynamic_lookup</span><span class="w"> </span><span class="o">-</span><span class="n">g</span><span class="w"> </span><span class="n">myfunction</span><span class="p">.</span><span class="n">o</span><span class="w"> </span><span class="o">-</span><span class="n">o</span><span class="w"> </span><span class="p">.</span><span class="o">/</span><span class="n">myfunction</span><span class="p">.</span><span class="n">dylib</span>
 </pre></div>
 </div>
-<p>To try the simple example under Linux or MacOS, do <code class="docutils literal notranslate"><span class="pre">FreeFem++-nw</span> <span class="pre">load.edp</span></code></p>
+<p>To try the simple example under Linux or MacOS, do <code class="docutils literal highlight highlight-python"><span></span><span class="n">FreeFem</span><span class="o">++-</span><span class="n">nw</span> <span class="n">load</span><span class="o">.</span><span class="n">edp</span></code></p>
 <p>The output must be:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>--<span class="w"> </span>FreeFem++<span class="w"> </span>v<span class="w">  </span>*.******<span class="w"> </span><span class="o">(</span>date<span class="w"> </span>***<span class="w"> </span>**<span class="w"> </span>***<span class="w"> </span>****,<span class="w"> </span>**:**:**<span class="w"> </span><span class="o">(</span>UTC+0*00<span class="o">))</span>
 <span class="linenos"> 2</span><span class="w"> </span>Load:<span class="w"> </span>lg_fem<span class="w"> </span>lg_mesh<span class="w"> </span>lg_mesh3<span class="w"> </span>eigenvalue
@@ -2699,8 +2699,8 @@ By default this expression does not depend of the mesh position, but if they der
 <p>Under Windows, launch <strong>FreeFEM</strong> with the mouse (or ctrl O) on the example.</p>
 </section>
 <section id="example-discrete-fast-fourier-transform">
-<h3>Example: Discrete Fast Fourier Transform<a class="headerlink" href="#example-discrete-fast-fourier-transform" title="Permalink to this heading"></a></h3>
-<p>This will add FFT to <strong>FreeFEM</strong>, taken from <a class="reference external" href="http://www.fftw.org/">FFTW</a>. To download and install under <code class="docutils literal notranslate"><span class="pre">download/include</span></code> just go in <code class="docutils literal notranslate"><span class="pre">download/fftw</span></code> and try <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+<h3>Example: Discrete Fast Fourier Transform<a class="headerlink" href="#example-discrete-fast-fourier-transform" title="Link to this heading"></a></h3>
+<p>This will add FFT to <strong>FreeFEM</strong>, taken from <a class="reference external" href="http://www.fftw.org/">FFTW</a>. To download and install under <code class="docutils literal highlight highlight-python"><span></span><span class="n">download</span><span class="o">/</span><span class="n">include</span></code> just go in <code class="docutils literal highlight highlight-python"><span></span><span class="n">download</span><span class="o">/</span><span class="n">fftw</span></code> and try <code class="docutils literal highlight highlight-python"><span></span><span class="n">make</span></code>.</p>
 <p>The 1D dfft (fast discret fourier transform) for a simple array <span class="math notranslate nohighlight">\(f\)</span> of size <span class="math notranslate nohighlight">\(n\)</span> is defined by the following formula:</p>
 <div class="math notranslate nohighlight">
 \[\mathtt{dfft}(f,\varepsilon)_{k} = \sum_{j=0}^{n-1} f_i e^{\varepsilon 2\pi i kj/n}\]</div>
@@ -2738,17 +2738,17 @@ By default this expression does not depend of the mesh position, but if they der
 <p>To test, try <a class="reference internal" href="../examples/developers.html#examplefft"><span class="std std-ref">FFT example</span></a>.</p>
 </section>
 <section id="load-module-for-dervieux-p0-p1-finite-volume-method">
-<h3>Load Module for Dervieux P0-P1 Finite Volume Method<a class="headerlink" href="#load-module-for-dervieux-p0-p1-finite-volume-method" title="Permalink to this heading"></a></h3>
+<h3>Load Module for Dervieux P0-P1 Finite Volume Method<a class="headerlink" href="#load-module-for-dervieux-p0-p1-finite-volume-method" title="Link to this heading"></a></h3>
 <p>The associed edp file is
 <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/convect_dervieux.edp">examples++-load/convect_dervieux.edp</a>.</p>
 <p>See
 <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/mat_dervieux.cpp">mat_dervieux.cpp</a>.</p>
 </section>
 <section id="more-on-adding-a-new-finite-element">
-<h3>More on Adding a new finite element<a class="headerlink" href="#more-on-adding-a-new-finite-element" title="Permalink to this heading"></a></h3>
+<h3>More on Adding a new finite element<a class="headerlink" href="#more-on-adding-a-new-finite-element" title="Link to this heading"></a></h3>
 <p>First read the <a class="reference internal" href="#developersaddingfiniteelement"><span class="std std-ref">Adding a new finite element section</span></a>, we add two new finite elements examples in the directory <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples%2B%2B-load">examples++-load</a>.</p>
 <section id="the-bernardi-raugel-element">
-<h4>The Bernardi-Raugel Element<a class="headerlink" href="#the-bernardi-raugel-element" title="Permalink to this heading"></a></h4>
+<h4>The Bernardi-Raugel Element<a class="headerlink" href="#the-bernardi-raugel-element" title="Link to this heading"></a></h4>
 <p>The Bernardi-Raugel finite element is meant to solve the Navier Stokes equations in <span class="math notranslate nohighlight">\(u,p\)</span> formulation; the velocity space <span class="math notranslate nohighlight">\(P^{br}_K\)</span> is minimal to prove the inf-sup condition with piecewise constant pressure by triangle.</p>
 <p>The finite element space <span class="math notranslate nohighlight">\(V_h\)</span> is</p>
 <div class="math notranslate nohighlight">
@@ -2818,7 +2818,7 @@ By default this expression does not depend of the mesh position, but if they der
 <p>And the plot instruction is also changed because the pressure is constant, and we cannot plot isovalues of peacewise constant functions.</p>
 </section>
 <section id="the-morley-element">
-<h4>The Morley Element<a class="headerlink" href="#the-morley-element" title="Permalink to this heading"></a></h4>
+<h4>The Morley Element<a class="headerlink" href="#the-morley-element" title="Link to this heading"></a></h4>
 <p>See the example
 <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/master/examples%2B%2B-load/bilapMorley.edp">bilapMorley.edp</a>.</p>
 </section>

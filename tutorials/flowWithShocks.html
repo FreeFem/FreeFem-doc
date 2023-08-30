@@ -1970,18 +1970,18 @@
 	<div id="content">
 		
    <section id="a-flow-with-shocks">
-<h1>A Flow with Shocks<a class="headerlink" href="#a-flow-with-shocks" title="Permalink to this heading"></a></h1>
+<h1>A Flow with Shocks<a class="headerlink" href="#a-flow-with-shocks" title="Link to this heading"></a></h1>
 <p>Compressible Euler equations should be discretized with Finite Volumes or FEM with flux up-winding scheme but these are not implemented in <strong>FreeFEM</strong>.
 Nevertheless acceptable results can be obtained with the method of characteristics provided that the mean values <span class="math notranslate nohighlight">\(\displaystyle \bar f=\frac12\left(f^++f^-\right)\)</span> are used at shocks in the scheme, and finally mesh adaptation.</p>
 <div class="math notranslate nohighlight" id="equation-euler">
-<span class="eqno">(6)<a class="headerlink" href="#equation-euler" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(6)<a class="headerlink" href="#equation-euler" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     \partial_t\rho+\bar u\nabla\rho + \bar\rho\nabla\cdot u &amp;=&amp; 0\nonumber\\
     \bar\rho( \partial_t u+\frac{\overline{\rho u}}{\bar\rho}\nabla u +\nabla p &amp;=&amp; 0\nonumber\\
     \partial_t p + \bar u\nabla p +(\gamma-1)\bar p\nabla\cdot u &amp;=&amp; 0\\
 \end{array}\end{split}\]</div>
 <p>One possibility is to couple <span class="math notranslate nohighlight">\(u,p\)</span> and then update <span class="math notranslate nohighlight">\(\rho\)</span>, i.e.:</p>
 <div class="math notranslate nohighlight" id="equation-eulalgo">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eulalgo" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(7)<a class="headerlink" href="#equation-eulalgo" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     \frac 1{(\gamma-1)\delta t\bar p^m} (p^{m+1}-p^m \circ X^m) + \nabla\cdot u^{m+1} &amp;=&amp; 0\nonumber\\
     \frac{\bar\rho^m}{\delta t}(u^{m+1}-u^m \circ {\tilde X}^m ) +\nabla p^{m+1} &amp;=&amp; 0\nonumber\\
     \rho^{m+1} = \rho^m \circ X^m + \frac{\bar\rho^m}{(\gamma-1)\bar p^m}(p^{m+1} &amp;-&amp; p^m \circ X^m)
@@ -2101,7 +2101,7 @@ Nevertheless acceptable results can be obtained with the method of characteristi
 <figure class="align-default" id="figflowmach">
 <a class="reference internal image-reference" href="../_images/mach_2r.png"><img alt="../_images/mach_2r.png" src="../_images/mach_2r.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Pressure for a Euler flow around a disk at Mach 2 computed by <a class="reference internal" href="#equation-eulalgo">(7)</a></span><a class="headerlink" href="#figflowmach" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Pressure for a Euler flow around a disk at Mach 2 computed by <a class="reference internal" href="#equation-eulalgo">(7)</a></span><a class="headerlink" href="#figflowmach" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>

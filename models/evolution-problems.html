@@ -1969,10 +1969,10 @@
 	<div id="content">
 		
    <section id="evolution-problems">
-<h1>Evolution problems<a class="headerlink" href="#evolution-problems" title="Permalink to this heading"></a></h1>
+<h1>Evolution problems<a class="headerlink" href="#evolution-problems" title="Link to this heading"></a></h1>
 <p><strong>FreeFEM</strong> also solves evolution problems such as the heat equation:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-heatequation">
-<span class="eqno">(53)<a class="headerlink" href="#equation-eqn-heatequation" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcll}
+<span class="eqno">(53)<a class="headerlink" href="#equation-eqn-heatequation" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcll}
     \frac{\p u}{\p t}-\mu\Delta u &amp;=&amp; f &amp; \textrm{ in }\Omega\times ]0,T[\\
     u(\mathbf{x},0) &amp;=&amp; u_0(\mathbf{x}) &amp; \textrm{ in }\Omega\\
     \left(\p u/\p n\right)(\mathbf{x},t) &amp;=&amp; 0 &amp; \textrm{ on }\p\Omega\times ]0,T[
@@ -2003,7 +2003,7 @@
 =\int_{\Omega }\{u^mv+\tau f^{m+1}v\}\]</div>
 <p>By the boundary condition <span class="math notranslate nohighlight">\(\p u^{m+1}/\p n=0\)</span>, it follows that:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-heatequationbwe">
-<span class="eqno">(54)<a class="headerlink" href="#equation-eqn-heatequationbwe" title="Permalink to this equation"></a></span>\[\int_{\Omega} \{u^{m+1}v+\tau \nabla u^{m+1}\cdot \nabla v\}
+<span class="eqno">(54)<a class="headerlink" href="#equation-eqn-heatequationbwe" title="Link to this equation"></a></span>\[\int_{\Omega} \{u^{m+1}v+\tau \nabla u^{m+1}\cdot \nabla v\}
 -\int_{\Omega }\{u^mv+\tau f^{m+1}v\}
 =0\]</div>
 <p>Using the identity just above, we can calculate the finite element approximation <span class="math notranslate nohighlight">\(u_h^m\)</span> of <span class="math notranslate nohighlight">\(u^m\)</span> in a step-by-step manner with respect to <span class="math notranslate nohighlight">\(t\)</span>.</p>
@@ -2069,7 +2069,7 @@
 </div>
 </div>
 <section id="mathematical-theory-on-time-difference-approximations">
-<h2>Mathematical Theory on Time Difference Approximations.<a class="headerlink" href="#mathematical-theory-on-time-difference-approximations" title="Permalink to this heading"></a></h2>
+<h2>Mathematical Theory on Time Difference Approximations.<a class="headerlink" href="#mathematical-theory-on-time-difference-approximations" title="Link to this heading"></a></h2>
 <p>In this section, we show the advantage of implicit schemes.
 Let <span class="math notranslate nohighlight">\(V, H\)</span> be separable Hilbert space and <span class="math notranslate nohighlight">\(V\)</span> is dense in <span class="math notranslate nohighlight">\(H\)</span>.
 Let <span class="math notranslate nohighlight">\(a\)</span> be a continuous bilinear form over <span class="math notranslate nohighlight">\(V \times V\)</span> with coercivity and symmetry.</p>
@@ -2085,7 +2085,7 @@ Let <span class="math notranslate nohighlight">\(a\)</span> be a continuous bili
 <p>Let us denote the time step by <span class="math notranslate nohighlight">\(\tau&gt;0\)</span>, <span class="math notranslate nohighlight">\(N_T=[T/\tau]\)</span>.
 For the discretization, we put <span class="math notranslate nohighlight">\(u^n = u(n\tau)\)</span> and consider the time difference for each <span class="math notranslate nohighlight">\(\theta\in [0,1]\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eqn-t-method">
-<span class="eqno">(55)<a class="headerlink" href="#equation-eqn-t-method" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(55)<a class="headerlink" href="#equation-eqn-t-method" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     \frac{1}{\tau}\left( u_h^{n+1}-u_h^n,\phi_i\right) +a\left( u_h^{n+\theta},\phi_i\right)&amp;=&amp;\langle f^{n+\theta},\phi_i\rangle\\
     i=1,&amp;\cdots&amp;, m,\quad n=0,\cdots, N_T\nonumber\\
     u_h^{n+\theta}&amp;=&amp;\theta u_h^{n+1}+(1-\theta)u_h^n,\\
@@ -2097,7 +2097,7 @@ For the discretization, we put <span class="math notranslate nohighlight">\(u^n 
 \[u_h^n(x)=u^n_1\phi_1(x)+\cdots+u^n_m\phi_m(x),\quad u^n_1,\cdots,u^n_m\in \R\]</div>
 <p>are obtained from solving the matrix</p>
 <div class="math notranslate nohighlight" id="equation-eqn-evolution-1">
-<span class="eqno">(56)<a class="headerlink" href="#equation-eqn-evolution-1" title="Permalink to this equation"></a></span>\[\begin{split}(M+\theta\tau A)u^{n+1}=\{M-(1-\theta)\tau A\}u^n
+<span class="eqno">(56)<a class="headerlink" href="#equation-eqn-evolution-1" title="Link to this equation"></a></span>\[\begin{split}(M+\theta\tau A)u^{n+1}=\{M-(1-\theta)\tau A\}u^n
 +\tau\left\{\theta f^{n+1}+(1-\theta)f^n\right\}\\
 M=(m_{ij}),\quad m_{ij}=(\phi_j,\phi_i),\qquad
 A=(a_{ij}),\quad a_{ij}=a(\phi_j,\phi_i)\nonumber\end{split}\]</div>
@@ -2202,21 +2202,21 @@ Then there is a number <span class="math notranslate nohighlight">\(c_0&gt;0\)</
 <figure class="align-default" id="figevolutiontimediff">
 <img alt="../_images/EvolutionProblems_TimeDifference.png" src="../_images/EvolutionProblems_TimeDifference.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 159 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\max_{x\in\Omega}\vert u_h^n(\theta)-u_{ex}(n\tau)\vert\max_{x\in\Omega}\vert u_{ex}(n\tau)\vert at n=0,1,\cdots,29\)</span></span><a class="headerlink" href="#figevolutiontimediff" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 159 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\max_{x\in\Omega}\vert u_h^n(\theta)-u_{ex}(n\tau)\vert\max_{x\in\Omega}\vert u_{ex}(n\tau)\vert at n=0,1,\cdots,29\)</span></span><a class="headerlink" href="#figevolutiontimediff" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>We can see in <a class="reference internal" href="#figevolutiontimediff"><span class="std std-numref">Fig. 159</span></a> that <span class="math notranslate nohighlight">\(u_h^n(\theta)\)</span> become unstable at <span class="math notranslate nohighlight">\(\theta=0.4\)</span>, and figures are omitted in the case <span class="math notranslate nohighlight">\(\theta&lt;0.4\)</span>.</p>
 </div>
 </section>
 <section id="convection">
-<h2>Convection<a class="headerlink" href="#convection" title="Permalink to this heading"></a></h2>
+<h2>Convection<a class="headerlink" href="#convection" title="Link to this heading"></a></h2>
 <p>The hyperbolic equation</p>
 <div class="math notranslate nohighlight" id="equation-eqn-conv">
-<span class="eqno">(57)<a class="headerlink" href="#equation-eqn-conv" title="Permalink to this equation"></a></span>\[\p_t u +\mathbf{\alpha} \cdot \nabla u=f;\ \textrm{ for a vector-valued function }\mathbf{\alpha}\]</div>
+<span class="eqno">(57)<a class="headerlink" href="#equation-eqn-conv" title="Link to this equation"></a></span>\[\p_t u +\mathbf{\alpha} \cdot \nabla u=f;\ \textrm{ for a vector-valued function }\mathbf{\alpha}\]</div>
 <p>appears frequently in scientific problems, for example in the Navier-Stokes equations, in the Convection-Diffusion equation, etc.</p>
 <p>In the case of 1-dimensional space, we can easily find the general solution <span class="math notranslate nohighlight">\((x,t)\mapsto u(x,t)=u^0(x-\alpha t)\)</span> of the following equation, if <span class="math notranslate nohighlight">\(\alpha\)</span> is constant,</p>
 <div class="math notranslate nohighlight" id="equation-eqn-conv0">
-<span class="eqno">(58)<a class="headerlink" href="#equation-eqn-conv0" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(58)<a class="headerlink" href="#equation-eqn-conv0" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     \p_t u +\alpha\p_x u &amp;=&amp; 0\\
     u(x,0) &amp;=&amp; u^0(x),
 \end{array}\end{split}\]</div>
@@ -2243,14 +2243,14 @@ Recall that the equation <a class="reference internal" href="#equation-eqn-conv"
 <p>where <span class="math notranslate nohighlight">\(D\)</span> is the total derivative operator.
 So a good scheme is one step of backward convection by the method of Characteristics-Galerkin</p>
 <div class="math notranslate nohighlight" id="equation-eqn-charac">
-<span class="eqno">(59)<a class="headerlink" href="#equation-eqn-charac" title="Permalink to this equation"></a></span>\[\frac{1}{{\tau }}\left(u^{m + 1}(x) - u^m(X^m(x))\right) = f^m (x)\]</div>
+<span class="eqno">(59)<a class="headerlink" href="#equation-eqn-charac" title="Link to this equation"></a></span>\[\frac{1}{{\tau }}\left(u^{m + 1}(x) - u^m(X^m(x))\right) = f^m (x)\]</div>
 <p>where <span class="math notranslate nohighlight">\(X^m (x)\)</span> is an approximation of the solution at <span class="math notranslate nohighlight">\(t = m\tau\)</span> of the ordinary differential equation</p>
 <div class="math notranslate nohighlight">
 \[\frac{d\mathbf{X}}{dt}(t) = \mathbf{\alpha}^m(\mathbf{X}(t)), \mathbf{X}((m + 1)\tau) = x.\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{\alpha}^m(x)=(\alpha_1(x,m\tau ),\alpha_2(x,m\tau))\)</span>.
 Because, by Taylor’s expansion, we have</p>
 <div class="math notranslate nohighlight" id="equation-eqn-conv1">
-<span class="eqno">(60)<a class="headerlink" href="#equation-eqn-conv1" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(60)<a class="headerlink" href="#equation-eqn-conv1" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     u^m(\mathbf{X}(m\tau ))&amp;=&amp;
     u^m(\mathbf{X}((m+1)\tau )) -
     \tau \sum_{i=1}^d \frac{\p u^m}{\p x_i}(\mathbf{X}((m+1)\tau ))
@@ -2266,13 +2266,13 @@ From <a class="reference internal" href="#equation-eqn-conv1">(60)</a>, it follo
 <div class="math notranslate nohighlight">
 \[u^m(x-\mathbf{\alpha}\tau )=u^m(x)-\tau \mathbf{\alpha}^m(x)\cdot \nabla u^m(x)+o(\tau ).\]</div>
 <p>Putting</p>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">convect</span></code><span class="math notranslate nohighlight">\(\left( {\mathbf{\alpha},-\tau ,u^m } \right)\approx u^m \left(x - \mathbf{\alpha}^m\tau \right)\)</span></p>
+<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">convect</span></code><span class="math notranslate nohighlight">\(\left( {\mathbf{\alpha},-\tau ,u^m } \right)\approx u^m \left(x - \mathbf{\alpha}^m\tau \right)\)</span></p>
 <p>we can get the approximation</p>
-<p><span class="math notranslate nohighlight">\(u^m \left( {X^m( x )} \right) \approx\)</span> <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">convect</span></code> <span class="math notranslate nohighlight">\(\left( {[a_1^m ,a_2^m],-\tau ,u^m } \right)\)</span> by <span class="math notranslate nohighlight">\(X^m \approx x \mapsto x- \tau [a_1^m(x) ,a_2^m(x)]\)</span></p>
+<p><span class="math notranslate nohighlight">\(u^m \left( {X^m( x )} \right) \approx\)</span> <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">convect</span></code> <span class="math notranslate nohighlight">\(\left( {[a_1^m ,a_2^m],-\tau ,u^m } \right)\)</span> by <span class="math notranslate nohighlight">\(X^m \approx x \mapsto x- \tau [a_1^m(x) ,a_2^m(x)]\)</span></p>
 <p>A classical convection problem is that of the “rotating bell” (quoted from <a class="reference internal" href="../bibliography.html#lucquin1998" id="id3"><span>[LUCQUIN1998]</span></a>, p.16).</p>
 <p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> be the unit disk centered at 0, with its center rotating with speed <span class="math notranslate nohighlight">\(\alpha_1 = y,\, \alpha_2 = -x\)</span>.
 We consider the problem <a class="reference internal" href="#equation-eqn-conv">(57)</a> with <span class="math notranslate nohighlight">\(f=0\)</span> and the initial condition <span class="math notranslate nohighlight">\(u(x,0)=u^0(x)\)</span>, that is, from <a class="reference internal" href="#equation-eqn-charac">(59)</a></p>
-<p><span class="math notranslate nohighlight">\(u^{m + 1}(x) = u^m(X^m(x))\approx\)</span> <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">convect</span></code><span class="math notranslate nohighlight">\((\mathbf{\alpha},-\tau ,u^m)\)</span></p>
+<p><span class="math notranslate nohighlight">\(u^{m + 1}(x) = u^m(X^m(x))\approx\)</span> <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">convect</span></code><span class="math notranslate nohighlight">\((\mathbf{\alpha},-\tau ,u^m)\)</span></p>
 <p>The exact solution is <span class="math notranslate nohighlight">\(u(x, t) = u(\mathbf{X}(t))\)</span> where <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> equals <span class="math notranslate nohighlight">\(x\)</span> rotated around the origin by an angle <span class="math notranslate nohighlight">\(\theta = -t\)</span> (rotate in clockwise).
 So, if <span class="math notranslate nohighlight">\(u^0\)</span> in a 3D perspective looks like a bell, then <span class="math notranslate nohighlight">\(u\)</span> will have exactly the same shape, but rotated by the same amount.
 The program consists in solving the equation until <span class="math notranslate nohighlight">\(T = 2\pi\)</span>, that is for a full revolution and to compare the final solution with the initial one; they should be equal.</p>
@@ -2312,25 +2312,25 @@ The program consists in solving the equation until <span class="math notranslate
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The scheme <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">convect</span></code> is unconditionally stable, then the bell become lower and lower (the maximum of <span class="math notranslate nohighlight">\(u^{37}\)</span> is <span class="math notranslate nohighlight">\(0.406\)</span> as shown in <a class="reference internal" href="#figevolutionconvect"><span class="std std-numref">Fig. 160</span></a>.</p>
+<p>The scheme <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">convect</span></code> is unconditionally stable, then the bell become lower and lower (the maximum of <span class="math notranslate nohighlight">\(u^{37}\)</span> is <span class="math notranslate nohighlight">\(0.406\)</span> as shown in <a class="reference internal" href="#figevolutionconvect"><span class="std std-numref">Fig. 160</span></a>.</p>
 </div>
 <div class="figure compound align-center" id="EvolutionProblem_Convect">
 <figure class="align-default" id="id6">
 <span id="figevolutionconvect"></span><a class="reference internal image-reference" href="../_images/EvolutionProblem_Convect.png"><img alt="EvolutionProblem_Convect" src="../_images/EvolutionProblem_Convect.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 160 </span><span class="caption-text"><span class="math notranslate nohighlight">\(u^0=e^{-10((x-0.3)^2 +(y-0.3)^2)}\)</span></span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 160 </span><span class="caption-text"><span class="math notranslate nohighlight">\(u^0=e^{-10((x-0.3)^2 +(y-0.3)^2)}\)</span></span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <span id="figevolutionconvect2"></span><a class="reference internal image-reference" href="../_images/EvolutionProblem_Convect2.png"><img alt="EvolutionProblem_Convect2" src="../_images/EvolutionProblem_Convect2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 161 </span><span class="caption-text">The bell at <span class="math notranslate nohighlight">\(t=6.29\)</span></span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 161 </span><span class="caption-text">The bell at <span class="math notranslate nohighlight">\(t=6.29\)</span></span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></div>
 </section>
 <section id="d-black-scholes-equation-for-an-european-put-option">
-<span id="EvolutionProblem_Convect"></span><h2>2D Black-Scholes equation for an European Put option<a class="headerlink" href="#d-black-scholes-equation-for-an-european-put-option" title="Permalink to this heading"></a></h2>
+<span id="EvolutionProblem_Convect"></span><h2>2D Black-Scholes equation for an European Put option<a class="headerlink" href="#d-black-scholes-equation-for-an-european-put-option" title="Link to this heading"></a></h2>
 <p>In mathematical finance, an option on two assets is modeled by a Black-Scholes equations in two space variables, (see for example <a class="reference internal" href="../bibliography.html#wilmott1995" id="id4"><span>[WILMOTT1995]</span></a> or <a class="reference internal" href="../bibliography.html#achdou2005" id="id5"><span>[ACHDOU2005]</span></a>).</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
@@ -2409,13 +2409,13 @@ To have an unconditionally stable scheme, the first order terms are treated by t
 <figure class="align-default" id="id8">
 <span id="figevolutionblacksholes1"></span><a class="reference internal image-reference" href="../_images/EvolutionProblems_BlackSholes.png"><img alt="EvolutionProblems_BlackSholes" src="../_images/EvolutionProblems_BlackSholes.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 162 </span><span class="caption-text">The adapted triangulation</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 162 </span><span class="caption-text">The adapted triangulation</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id9">
 <span id="figevolutionblacksholes2"></span><a class="reference internal image-reference" href="../_images/EvolutionProblems_BlackSholes2.png"><img alt="EvolutionProblems_BlackSholes2" src="../_images/EvolutionProblems_BlackSholes2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 163 </span><span class="caption-text">The level line of the European basquet put option</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 163 </span><span class="caption-text">The level line of the European basquet put option</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <span class="target" id="EvolutionProblems_BlackSholes"></span></div></div>

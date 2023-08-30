@@ -1970,10 +1970,10 @@
 	<div id="content">
 		
    <section id="getting-started">
-<span id="tutorialpoisson"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h1>
+<span id="tutorialpoisson"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
 <p>For a given function <span class="math notranslate nohighlight">\(f(x,y)\)</span>, find a function <span class="math notranslate nohighlight">\(u(x,y)\)</span> satisfying :</p>
 <div class="math notranslate nohighlight" id="equation-eqn-poisson">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eqn-poisson" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(1)<a class="headerlink" href="#equation-eqn-poisson" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     -\Delta u(x,y) &amp;= f(x,y) &amp; \mbox{ for all }(x,y)\mbox{ in }\Omega\\
     u(x,y) &amp;= 0 &amp; \mbox{ for all }(x,y)\mbox{ on }\partial\Omega
 \end{array}\end{split}\]</div>
@@ -2020,25 +2020,25 @@
 <span class="linenos">32</span><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;CPU time = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="nf">clock</span><span class="p">()</span><span class="o">-</span><span class="n">cpu</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="kr">endl</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>As illustrated in <a class="reference internal" href="#figpoissonu"><span class="std std-numref">Fig. 2</span></a>, we can see the isovalue of <span class="math notranslate nohighlight">\(u\)</span> by using <strong>FreeFEM</strong> <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">plot</span></code> command (see line 29 above).</p>
+<p>As illustrated in <a class="reference internal" href="#figpoissonu"><span class="std std-numref">Fig. 2</span></a>, we can see the isovalue of <span class="math notranslate nohighlight">\(u\)</span> by using <strong>FreeFEM</strong> <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">plot</span></code> command (see line 29 above).</p>
 <div class="figure compound align-center" id="Poisson">
 <figure class="align-default" id="id1">
 <span id="figpoissonmesh"></span><a class="reference internal image-reference" href="../_images/firstTh.png"><img alt="firstTh" src="../_images/firstTh.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Mesh Th by <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">buildmesh</span><span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Mesh Th by <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">buildmesh</span><span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span></code></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <span id="figpoissonu"></span><a class="reference internal image-reference" href="../_images/firstU.png"><img alt="firstU" src="../_images/firstU.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Isovalue by <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">plot</span><span class="p">(</span><span class="n">u</span><span class="p">)</span></code></span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Isovalue by <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">u</span><span class="p">)</span></code></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Poisson’s equation</span></p>
 </div><div class="admonition note" id="Poisson">
 <p class="admonition-title">Note</p>
-<p>The qualifier <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">solver</span><span class="o">=</span><span class="kr">LU</span></code> (line 18) is not required and by default a multi-frontal <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">LU</span></code> is used.</p>
-<p>The lines containing <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">clock</span></code> are equally not required.</p>
+<p>The qualifier <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">solver</span><span class="o">=</span><span class="kr">LU</span></code> (line 18) is not required and by default a multi-frontal <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">LU</span></code> is used.</p>
+<p>The lines containing <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">clock</span></code> are equally not required.</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -2055,22 +2055,22 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Change <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P1</span></code> into <code class="code freefem docutils literal highlight highlight-freefem"><span class="nc">P2</span></code> and run the program.</p>
+<p>Change <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1</span></code> into <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P2</span></code> and run the program.</p>
 </div>
 <p>This first example shows how <strong>FreeFEM</strong> executes with no effort all the usual steps required by the finite element method (FEM).
 Let’s go through them one by one.</p>
 <p><strong>On the line 2</strong>:</p>
 <p>The boundary <span class="math notranslate nohighlight">\(\Gamma\)</span> is described analytically by a parametric equation for <span class="math notranslate nohighlight">\(x\)</span> and for <span class="math notranslate nohighlight">\(y\)</span>.
 When <span class="math notranslate nohighlight">\(\Gamma=\sum_{j=0}^J \Gamma_j\)</span> then each curve <span class="math notranslate nohighlight">\(\Gamma_j\)</span> must be specified and crossings of <span class="math notranslate nohighlight">\(\Gamma_j\)</span> are not allowed except at end points.</p>
-<p>The keyword <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">label</span></code> can be added to define a group of boundaries for later use (boundary conditions for instance).
+<p>The keyword <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">label</span></code> can be added to define a group of boundaries for later use (boundary conditions for instance).
 Hence the circle could also have been described as two half circle with the same label:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">border</span><span class="w"> </span><span class="nf">Gamma1</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="kr">pi</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="nf">cos</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span><span class="w"> </span><span class="kr">y</span><span class="o">=</span><span class="nf">sin</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span><span class="w"> </span><span class="kr">label</span><span class="o">=</span><span class="n">C</span><span class="p">};</span>
 <span class="linenos">2</span><span class="kt">border</span><span class="w"> </span><span class="nf">Gamma2</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="kr">pi</span><span class="p">,</span><span class="w"> </span><span class="mf">2.</span><span class="o">*</span><span class="kr">pi</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="nf">cos</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span><span class="w"> </span><span class="kr">y</span><span class="o">=</span><span class="nf">sin</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span><span class="w"> </span><span class="kr">label</span><span class="o">=</span><span class="n">C</span><span class="p">};</span>
 </pre></div>
 </div>
-<p>Boundaries can be referred to either by name (<code class="docutils literal notranslate"><span class="pre">Gamma1</span></code> for example) or by label (<code class="docutils literal notranslate"><span class="pre">C</span></code> here) or even by its internal number here 1 for the first half circle and 2 for the second (more examples are in <a class="reference internal" href="../examples/mesh-generation.html#examplemeshgeneration"><span class="std std-ref">Meshing Examples</span></a>).</p>
+<p>Boundaries can be referred to either by name (<code class="docutils literal highlight highlight-python"><span></span><span class="n">Gamma1</span></code> for example) or by label (<code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span></code> here) or even by its internal number here 1 for the first half circle and 2 for the second (more examples are in <a class="reference internal" href="../examples/mesh-generation.html#examplemeshgeneration"><span class="std std-ref">Meshing Examples</span></a>).</p>
 <p><strong>On the line 5</strong></p>
-<p>The triangulation <span class="math notranslate nohighlight">\(\mathcal{T}_h\)</span> of <span class="math notranslate nohighlight">\(\Omega\)</span> is automatically generated by <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">buildmesh</span><span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span></code> using 50 points on <code class="docutils literal notranslate"><span class="pre">C</span></code> as in <a class="reference internal" href="#figpoissonmesh"><span class="std std-numref">Fig. 1</span></a>.</p>
+<p>The triangulation <span class="math notranslate nohighlight">\(\mathcal{T}_h\)</span> of <span class="math notranslate nohighlight">\(\Omega\)</span> is automatically generated by <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">buildmesh</span><span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span></code> using 50 points on <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span></code> as in <a class="reference internal" href="#figpoissonmesh"><span class="std std-numref">Fig. 1</span></a>.</p>
 <p>The domain is assumed to be on the left side of the boundary which is implicitly oriented by the parametrization. So an elliptic hole can be added by typing:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">border</span><span class="w"> </span><span class="nf">C</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mf">2.</span><span class="o">*</span><span class="kr">pi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="mf">0.1</span><span class="o">+</span><span class="mf">0.3</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="kp">t</span><span class="p">);</span><span class="w"> </span><span class="kr">y</span><span class="o">=</span><span class="mf">0.5</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="kp">t</span><span class="p">);};</span>
 </pre></div>
@@ -2083,28 +2083,28 @@ Hence the circle could also have been described as two half circle with the same
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Automatic mesh generation is based on the Delaunay-Voronoi algorithm.
-Refinement of the mesh are done by increasing the number of points on <span class="math notranslate nohighlight">\(\Gamma\)</span>, for example <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">buildmesh</span><span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span></code>, because inner vertices are determined by the density of points on the boundary.</p>
-<p>Mesh adaptation can be performed also against a given function <cite>f</cite> by calling <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">adaptmesh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="n">f</span><span class="p">)</span></code>.</p>
+Refinement of the mesh are done by increasing the number of points on <span class="math notranslate nohighlight">\(\Gamma\)</span>, for example <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">buildmesh</span><span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span></code>, because inner vertices are determined by the density of points on the boundary.</p>
+<p>Mesh adaptation can be performed also against a given function <cite>f</cite> by calling <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">adaptmesh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="n">f</span><span class="p">)</span></code>.</p>
 </div>
-<p>Now the name <span class="math notranslate nohighlight">\(\mathcal{T}_h\)</span> (<code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Th</span></code> in <strong>FreeFEM</strong>) refers to the family <span class="math notranslate nohighlight">\(\{T_k\}_{k=1,\cdots,n_t}\)</span> of triangles shown in <a class="reference internal" href="#figpoissonmesh"><span class="std std-numref">Fig. 1</span></a>.</p>
+<p>Now the name <span class="math notranslate nohighlight">\(\mathcal{T}_h\)</span> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Th</span></code> in <strong>FreeFEM</strong>) refers to the family <span class="math notranslate nohighlight">\(\{T_k\}_{k=1,\cdots,n_t}\)</span> of triangles shown in <a class="reference internal" href="#figpoissonmesh"><span class="std std-numref">Fig. 1</span></a>.</p>
 <p>Traditionally <span class="math notranslate nohighlight">\(h\)</span> refers to the mesh size, <span class="math notranslate nohighlight">\(n_t\)</span> to the number of triangles in <span class="math notranslate nohighlight">\(\mathcal{T}_h\)</span> and <span class="math notranslate nohighlight">\(n_v\)</span> to the number of vertices, but it is seldom that we will have to use them explicitly.</p>
 <p>If <span class="math notranslate nohighlight">\(\Omega\)</span> is not a polygonal domain, a “skin” remains between the exact domain <span class="math notranslate nohighlight">\(\Omega\)</span> and its approximation <span class="math notranslate nohighlight">\(\Omega_h=\cup_{k=1}^{n_t}T_k\)</span>.
 However, we notice that all corners of <span class="math notranslate nohighlight">\(\Gamma_h = \partial\Omega_h\)</span> are on <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
 <p><strong>On line 8:</strong></p>
-<p>A finite element space is, usually, a space of polynomial functions on elements, triangles here only, with certain matching properties at edges, vertices etc. Here <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">fespace</span><span class="w"> </span><span class="n">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="nc">P1</span><span class="p">)</span></code> defines <span class="math notranslate nohighlight">\(V_h\)</span> to be the space of continuous functions which are affine in <span class="math notranslate nohighlight">\(x,y\)</span> on each triangle of <span class="math notranslate nohighlight">\(T_h\)</span>.</p>
+<p>A finite element space is, usually, a space of polynomial functions on elements, triangles here only, with certain matching properties at edges, vertices etc. Here <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">fespace</span><span class="w"> </span><span class="n">Vh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="nc">P1</span><span class="p">)</span></code> defines <span class="math notranslate nohighlight">\(V_h\)</span> to be the space of continuous functions which are affine in <span class="math notranslate nohighlight">\(x,y\)</span> on each triangle of <span class="math notranslate nohighlight">\(T_h\)</span>.</p>
 <p>As it is a linear vector space of finite dimension, basis can be found.
 The canonical basis is made of functions, called the <em>hat function</em> <span class="math notranslate nohighlight">\(\phi_k\)</span>, which are continuous piecewise affine and are equal to 1 on one vertex and 0 on all others. A typical hat function is shown on <a class="reference internal" href="#figpoissonhat"><span class="std std-numref">Fig. 4</span></a>.</p>
 <div class="figure compound align-center" id="HatFunctions">
 <figure class="align-default" id="id3">
 <span id="figpoissonmesh2"></span><a class="reference internal image-reference" href="../_images/meshTh_2.png"><img alt="meshTh2" src="../_images/meshTh_2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text"><code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">mesh</span><span class="w"> </span><span class="n">Th</span></code></span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text"><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">mesh</span><span class="w"> </span><span class="n">Th</span></code></span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <span id="figpoissonhat"></span><a class="reference internal image-reference" href="../_images/hat_functions.png"><img alt="HatFunctions" src="../_images/hat_functions.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Graph of <span class="math notranslate nohighlight">\(\phi_1\)</span> (left) and <span class="math notranslate nohighlight">\(\phi_6\)</span> (right)</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Graph of <span class="math notranslate nohighlight">\(\phi_1\)</span> (left) and <span class="math notranslate nohighlight">\(\phi_6\)</span> (right)</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Hat functions</span></p>
@@ -2115,15 +2115,15 @@ Then it is easy to see that the restriction of <span class="math notranslate noh
 </div>
 <p>Then:</p>
 <div class="math notranslate nohighlight" id="equation-equation3">
-<span class="eqno">(2)<a class="headerlink" href="#equation-equation3" title="Permalink to this equation"></a></span>\[V_h(\mathcal{T}_h,P_1)=\left\{w(x,y)\left|\; w(x,y)=\sum_{k=1}^{M}w_k\phi_k(x,y),\, w_k\textrm{ are real numbers}\right.\right\}\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-equation3" title="Link to this equation"></a></span>\[V_h(\mathcal{T}_h,P_1)=\left\{w(x,y)\left|\; w(x,y)=\sum_{k=1}^{M}w_k\phi_k(x,y),\, w_k\textrm{ are real numbers}\right.\right\}\]</div>
 <p>where <span class="math notranslate nohighlight">\(M\)</span> is the dimension of <span class="math notranslate nohighlight">\(V_h\)</span>, i.e. the number of vertices.
 The <span class="math notranslate nohighlight">\(w_k\)</span> are called the <em>degrees of freedom</em> of <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(M\)</span> the number of degree of freedom.</p>
 <p>It is said also that the <em>nodes</em> of this finite element method are the vertices.</p>
 <p><strong>Setting the problem</strong></p>
-<p>On line 9, <code class="code freefem docutils literal highlight highlight-freefem"><span class="n">Vh</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span></code> declares that <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> are approximated as above, namely:</p>
+<p>On line 9, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Vh</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span></code> declares that <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span> are approximated as above, namely:</p>
 <div class="math notranslate nohighlight" id="equation-defu">
-<span class="eqno">(3)<a class="headerlink" href="#equation-defu" title="Permalink to this equation"></a></span>\[u(x,y)\simeq u_h(x,y)=\sum_{k=0}^{M-1} u_k\phi_k(x,y)\]</div>
-<p>On the line 12, the right hand side <code class="docutils literal notranslate"><span class="pre">f</span></code> is defined analytically using the keyword <code class="code freefem docutils literal highlight highlight-freefem"><span class="kt">func</span></code>.</p>
+<span class="eqno">(3)<a class="headerlink" href="#equation-defu" title="Link to this equation"></a></span>\[u(x,y)\simeq u_h(x,y)=\sum_{k=0}^{M-1} u_k\phi_k(x,y)\]</div>
+<p>On the line 12, the right hand side <code class="docutils literal highlight highlight-python"><span></span><span class="n">f</span></code> is defined analytically using the keyword <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">func</span></code>.</p>
 <p>Line 18 to 26 define the bilinear form of equation <a class="reference internal" href="#equation-eqn-poisson">(1)</a> and its Dirichlet boundary conditions.</p>
 <p>This <em>variational formulation</em> is derived by multiplying <a class="reference internal" href="#equation-eqn-poisson">(1)</a> by <span class="math notranslate nohighlight">\(v(x,y)\)</span> and integrating the result over <span class="math notranslate nohighlight">\(\Omega\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -2133,7 +2133,7 @@ The <span class="math notranslate nohighlight">\(w_k\)</span> are called the <em
 \[a(u,v) - \ell(f,v) = 0 \quad \forall v \mbox{ satisfying }v=0\mbox{ on }\partial\Omega.\]</div>
 <p>with:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-weakform">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-weakform" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-weakform" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     a(u,v) &amp;=&amp; \int_{\Omega}\nabla u\cdot \nabla v \,\text{d} x\text{d} y\\
     \ell(f,v) &amp;=&amp; \int_{\Omega}fv\, \text{d} x\text{d} y
 \end{array}\end{split}\]</div>
@@ -2149,17 +2149,17 @@ The <span class="math notranslate nohighlight">\(w_k\)</span> are called the <em
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">Vh</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="kt">solve</span><span class="w"> </span><span class="n">Poisson</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
 </pre></div>
 </div>
-<p>and <a class="reference internal" href="#equation-eqn-weakform">(4)</a> is written with <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">dx</span><span class="p">(</span><span class="n">u</span><span class="p">)</span></code> <span class="math notranslate nohighlight">\(=\partial u/\partial x\)</span>, <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">)</span></code> <span class="math notranslate nohighlight">\(=\partial u/\partial y\)</span> and:</p>
+<p>and <a class="reference internal" href="#equation-eqn-weakform">(4)</a> is written with <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">dx</span><span class="p">(</span><span class="n">u</span><span class="p">)</span></code> <span class="math notranslate nohighlight">\(=\partial u/\partial x\)</span>, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">)</span></code> <span class="math notranslate nohighlight">\(=\partial u/\partial y\)</span> and:</p>
 <p><span class="math notranslate nohighlight">\(\displaystyle{\int_{\Omega}\nabla u\cdot \nabla v\, \text{d} x\text{d} y \longrightarrow}\)</span>
-<code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="w"> </span><span class="nf">dx</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="nf">dx</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="nf">dy</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">)</span></code></p>
+<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="w"> </span><span class="nf">dx</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="nf">dx</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="nf">dy</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">)</span></code></p>
 <p><span class="math notranslate nohighlight">\(\displaystyle{\int_{\Omega}fv\, \text{d} x\text{d} y \longrightarrow}\)</span>
-<code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="w"> </span><span class="n">f</span><span class="o">*</span><span class="n">v</span><span class="w"> </span><span class="p">)</span></code> (Notice here, <span class="math notranslate nohighlight">\(u\)</span> is unused)</p>
+<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span><span class="w"> </span><span class="n">f</span><span class="o">*</span><span class="n">v</span><span class="w"> </span><span class="p">)</span></code> (Notice here, <span class="math notranslate nohighlight">\(u\)</span> is unused)</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>In <strong>FreeFEM</strong> <strong>bilinear terms and linear terms should not be under the same integral</strong> indeed to construct the linear systems <strong>FreeFEM</strong> finds out which integral contributes to the bilinear form by checking if both terms, the unknown (here <code class="docutils literal notranslate"><span class="pre">u</span></code>) and test functions (here <code class="docutils literal notranslate"><span class="pre">v</span></code>) are present.</p>
+<p>In <strong>FreeFEM</strong> <strong>bilinear terms and linear terms should not be under the same integral</strong> indeed to construct the linear systems <strong>FreeFEM</strong> finds out which integral contributes to the bilinear form by checking if both terms, the unknown (here <code class="docutils literal highlight highlight-python"><span></span><span class="n">u</span></code>) and test functions (here <code class="docutils literal highlight highlight-python"><span></span><span class="n">v</span></code>) are present.</p>
 </div>
 <p><strong>Solution and visualization</strong></p>
-<p>On line 15, the current time in seconds is stored into the real-valued variable <code class="docutils literal notranslate"><span class="pre">cpu</span></code>.</p>
+<p>On line 15, the current time in seconds is stored into the real-valued variable <code class="docutils literal highlight highlight-python"><span></span><span class="n">cpu</span></code>.</p>
 <p>Line 18, the problem is solved.</p>
 <p>Line 29, the visualization is done as illustrated in <a class="reference internal" href="#figpoissonu"><span class="std std-numref">Fig. 2</span></a>.</p>
 <p><strong>(see</strong> <a class="reference internal" href="../documentation/visualization.html#plot"><span class="std std-ref">Plot</span></a> <strong>for zoom, postscript and other commands).</strong></p>
@@ -2167,13 +2167,13 @@ The <span class="math notranslate nohighlight">\(w_k\)</span> are called the <em
 <p><strong>Access to matrices and vectors</strong></p>
 <p>Internally <strong>FreeFEM</strong> will solve a linear system of the type</p>
 <div class="math notranslate nohighlight" id="equation-eqn-equation">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eqn-equation" title="Permalink to this equation"></a></span>\[\sum_{j=0}^{M-1} A_{ij}u_j - F_i=0 ,\quad i=0,\cdots,M-1;\qquad
+<span class="eqno">(5)<a class="headerlink" href="#equation-eqn-equation" title="Link to this equation"></a></span>\[\sum_{j=0}^{M-1} A_{ij}u_j - F_i=0 ,\quad i=0,\cdots,M-1;\qquad
 F_i=\int_{\Omega}f\phi_i\, \text{d} x\text{d} y\]</div>
 <p>which is found by using <a class="reference internal" href="#equation-defu">(3)</a> and replacing <span class="math notranslate nohighlight">\(v\)</span> by <span class="math notranslate nohighlight">\(\phi_i\)</span> in <a class="reference internal" href="#equation-eqn-weakform">(4)</a>.
 The Dirichlet conditions are implemented by penalty, namely by setting <span class="math notranslate nohighlight">\(A_{ii}=10^{30}\)</span> and <span class="math notranslate nohighlight">\(F_i=10^{30}*0\)</span> if <span class="math notranslate nohighlight">\(i\)</span> is a boundary degree of freedom.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The number <span class="math notranslate nohighlight">\(10^{30}\)</span> is called <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">tgv</span></code> (<em>très grande valeur</em> or <em>very high value</em> in english) and it is generally possible to change this value, see the item :freefem`solve, tgv=`</p>
+<p>The number <span class="math notranslate nohighlight">\(10^{30}\)</span> is called <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">tgv</span></code> (<em>très grande valeur</em> or <em>very high value</em> in english) and it is generally possible to change this value, see the item :freefem`solve, tgv=`</p>
 </div>
 <p>The matrix <span class="math notranslate nohighlight">\(A=(A_{ij})\)</span> is called <em>stiffness matrix</em>.
 If the user wants to access <span class="math notranslate nohighlight">\(A\)</span> directly he can do so by using (see section <a class="reference internal" href="../documentation/finite-element.html#variationalformsparsematrixpde"><span class="std std-ref">Variational form, Sparse matrix, PDE data vector</span></a> for details).</p>
@@ -2204,19 +2204,19 @@ If the user wants to access <span class="math notranslate nohighlight">\(A\)</sp
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Here <code class="docutils literal notranslate"><span class="pre">u</span></code> and <code class="docutils literal notranslate"><span class="pre">F</span></code> are finite element function, and <code class="docutils literal notranslate"><span class="pre">u[]</span></code> and <code class="docutils literal notranslate"><span class="pre">F[]</span></code> give the array of value associated (<code class="docutils literal notranslate"><span class="pre">u[]</span></code> <span class="math notranslate nohighlight">\(\equiv (u_i)_{i=0,\dots,M-1}\)</span> and <code class="docutils literal notranslate"><span class="pre">F[]</span></code> <span class="math notranslate nohighlight">\(\equiv (F_i)_{i=0,\dots,M-1}\)</span>).</p>
+<p>Here <code class="docutils literal highlight highlight-python"><span></span><span class="n">u</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">F</span></code> are finite element function, and <code class="docutils literal highlight highlight-python"><span></span><span class="n">u</span><span class="p">[]</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">F</span><span class="p">[]</span></code> give the array of value associated (<code class="docutils literal highlight highlight-python"><span></span><span class="n">u</span><span class="p">[]</span></code> <span class="math notranslate nohighlight">\(\equiv (u_i)_{i=0,\dots,M-1}\)</span> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">F</span><span class="p">[]</span></code> <span class="math notranslate nohighlight">\(\equiv (F_i)_{i=0,\dots,M-1}\)</span>).</p>
 <p>So we have:</p>
 <div class="math notranslate nohighlight">
 \[\mathtt{u}(x,y) = \sum_{i=0}^{M-1} \mathtt{u[][}i\mathtt{]} \phi_i(x,y) ,
 \qquad \mathtt{F}(x,y) = \sum_{i=0}^{M-1} \mathtt{F[][}i\mathtt{]} \phi_i(x,y)\]</div>
 <p>where <span class="math notranslate nohighlight">\(\phi_i, i=0...,,M-1\)</span> are the basis functions of <cite>Vh</cite> like in equation :eq: <cite>equation3</cite>, and <span class="math notranslate nohighlight">\(M = \mathtt{Vh.ndof}\)</span> is the number of degree of freedom (i.e. the dimension of the space <cite>Vh</cite>).</p>
 </div>
-<p>The linear system <a class="reference internal" href="#equation-eqn-equation">(5)</a> is solved by <code class="code freefem docutils literal highlight highlight-freefem"><span class="kr">UMFPACK</span></code> unless another option is mentioned specifically as in:</p>
+<p>The linear system <a class="reference internal" href="#equation-eqn-equation">(5)</a> is solved by <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">UMFPACK</span></code> unless another option is mentioned specifically as in:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">Vh</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
 <span class="linenos">2</span><span class="kt">problem</span><span class="w"> </span><span class="n">Poisson</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kp">solver</span><span class="o">=</span><span class="kr">CG</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int2d</span><span class="p">(...</span>
 </pre></div>
 </div>
-<p>meaning that <code class="docutils literal notranslate"><span class="pre">Poisson</span></code> is declared only here and when it is called (by simply writing <code class="docutils literal notranslate"><span class="pre">Poisson;</span></code>) then <a class="reference internal" href="#equation-eqn-equation">(5)</a> will be solved by the Conjugate Gradient method.</p>
+<p>meaning that <code class="docutils literal highlight highlight-python"><span></span><span class="n">Poisson</span></code> is declared only here and when it is called (by simply writing <code class="docutils literal highlight highlight-python"><span></span><span class="n">Poisson</span><span class="p">;</span></code>) then <a class="reference internal" href="#equation-eqn-equation">(5)</a> will be solved by the Conjugate Gradient method.</p>
 </section>
 
 

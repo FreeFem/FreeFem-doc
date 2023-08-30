@@ -1968,10 +1968,10 @@
 	<div id="content">
 		
    <section id="navier-stokes-equations">
-<h1>Navier-Stokes equations<a class="headerlink" href="#navier-stokes-equations" title="Permalink to this heading"></a></h1>
+<h1>Navier-Stokes equations<a class="headerlink" href="#navier-stokes-equations" title="Link to this heading"></a></h1>
 <p>The Stokes equations are: for a given <span class="math notranslate nohighlight">\(\mathbf{f}\in L^2(\Omega)^2\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-stokes">
-<span class="eqno">(61)<a class="headerlink" href="#equation-eqn-stokes" title="Permalink to this equation"></a></span>\[\begin{split}\left.\begin{array}{cl}
+<span class="eqno">(61)<a class="headerlink" href="#equation-eqn-stokes" title="Link to this equation"></a></span>\[\begin{split}\left.\begin{array}{cl}
     -\Delta \mathbf{u}+\nabla p &amp; =\mathbf{f} \\
     \nabla\cdot \mathbf{u} &amp;=0
 \end{array}\right\}\quad \hbox{ in }\Omega\end{split}\]</div>
@@ -2022,7 +2022,7 @@ W=\left\{q\in L^2(\Omega)\left|\; \int_{\Omega}q=0\right.\right\}\]</div>
 \end{array}\end{split}\]</div>
 <p>The discrete weak form is: Find <span class="math notranslate nohighlight">\((\mathbf{u}_{h},p_{h}) \in \mathbf{V}_{h} \times W_{h}\)</span> such that:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-vfstokes">
-<span class="eqno">(62)<a class="headerlink" href="#equation-eqn-vfstokes" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{cll}
+<span class="eqno">(62)<a class="headerlink" href="#equation-eqn-vfstokes" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{cll}
     a(\mathbf{u}_h,\mathbf{v}_h)+b(\mathbf{v}_h,p) &amp;= (\mathbf{f},\mathbf{v}_h) ,
     &amp;\forall \mathbf{v}_{h} \in \mathbf{V}_{h} \\
     b(\mathbf{u}_h,q_h)&amp;= 0,
@@ -2120,7 +2120,7 @@ By^T
 <p><strong>Penalty method:</strong> This method consists of replacing <a class="reference internal" href="#equation-eqn-vfstokes">(62)</a> by a more regular problem:</p>
 <p>Find <span class="math notranslate nohighlight">\((\mathbf{v}_h^{\epsilon},p_h^{\epsilon})\in \mathbf{V}_h\times \tilde{W}_{h}\)</span> satisfying:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-pvfstokes">
-<span class="eqno">(63)<a class="headerlink" href="#equation-eqn-pvfstokes" title="Permalink to this equation"></a></span>\[\begin{split}\begin{array}{cll}
+<span class="eqno">(63)<a class="headerlink" href="#equation-eqn-pvfstokes" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{cll}
     a(\mathbf{u}_h^\epsilon,\mathbf{v}_h)+b(\mathbf{v}_h,p_h^{\epsilon}) &amp;= (\mathbf{f},\mathbf{v}_h) ,
     &amp;\forall \mathbf{v}_{h} \in \mathbf{V}_{h} \\
     b(\mathbf{u}_h^{\epsilon},q_h)-\epsilon(p_h^{\epsilon},q_h)&amp;= 0,
@@ -2155,7 +2155,7 @@ B&amp;-\epsilon I
 <p class="admonition-title">Note</p>
 <p>We can eliminate <span class="math notranslate nohighlight">\(p_h^\epsilon=(1/\epsilon)BU_h^{\epsilon}\)</span> to obtain:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-stiffpvfstokes">
-<span class="eqno">(64)<a class="headerlink" href="#equation-eqn-stiffpvfstokes" title="Permalink to this equation"></a></span>\[(A+(1/\epsilon)B^*B)\mathbf{U}_h^{\epsilon}=\mathbf{F}_h^{\epsilon}\]</div>
+<span class="eqno">(64)<a class="headerlink" href="#equation-eqn-stiffpvfstokes" title="Link to this equation"></a></span>\[(A+(1/\epsilon)B^*B)\mathbf{U}_h^{\epsilon}=\mathbf{F}_h^{\epsilon}\]</div>
 <p>Since the matrix <span class="math notranslate nohighlight">\(A+(1/\epsilon)B^*B\)</span> is symmetric, positive-definite, and sparse, <a class="reference internal" href="#equation-eqn-stiffpvfstokes">(64)</a> can be solved by known technique.
 There is a constant <span class="math notranslate nohighlight">\(C&gt;0\)</span> independent of <span class="math notranslate nohighlight">\(\epsilon\)</span> such that:</p>
 <div class="math notranslate nohighlight">
@@ -2229,13 +2229,13 @@ The test function for the velocity is <span class="math notranslate nohighlight"
 <div class="math notranslate nohighlight">
 \[{\p {u}\over\p t} +u\cdot\nabla u-\nu \Delta u+\nabla p=0, \nabla\cdot u=0\]</div>
 <p>with the same boundary conditions and with initial conditions <span class="math notranslate nohighlight">\(u=0\)</span>.</p>
-<p>This is implemented by using the convection operator <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">convect</span></code> for the term <span class="math notranslate nohighlight">\({\p u\over\p t} +u\cdot\nabla u\)</span>, giving a discretization in time</p>
+<p>This is implemented by using the convection operator <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">convect</span></code> for the term <span class="math notranslate nohighlight">\({\p u\over\p t} +u\cdot\nabla u\)</span>, giving a discretization in time</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{cl}
     \frac{1}{\tau } (u^{n+1}-u^n\circ X^n) -\nu\Delta u^{n+1} + \nabla p^{n+1} &amp;=0,\\
     \nabla\cdot u^{n+1} &amp;= 0
 \end{array}\end{split}\]</div>
-<p>The term <span class="math notranslate nohighlight">\(u^n\circ X^n(x)\approx u^n(x-u^n(x)\tau )\)</span> will be computed by the operator <code class="code freefem docutils literal highlight highlight-freefem"><span class="nf">convect</span></code>, so we obtain:</p>
+<p>The term <span class="math notranslate nohighlight">\(u^n\circ X^n(x)\approx u^n(x-u^n(x)\tau )\)</span> will be computed by the operator <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">convect</span></code>, so we obtain:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos"> 2</span><span class="kt">real</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">dt</span><span class="p">;</span>
 <span class="linenos"> 3</span><span class="kt">problem</span><span class="w"> </span><span class="nf">NS</span><span class="w"> </span><span class="p">(</span><span class="n">u1</span><span class="p">,</span><span class="w"> </span><span class="n">u2</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="kp">solver</span><span class="o">=</span><span class="kr">Crout</span><span class="p">,</span><span class="w"> </span><span class="kp">init</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
@@ -2272,11 +2272,11 @@ The test function for the velocity is <span class="math notranslate nohighlight"
 <span class="linenos">34</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Notice that the stiffness matrices are reused (keyword <code class="code freefem docutils literal highlight highlight-freefem"><span class="kp">init</span><span class="o">=</span><span class="n">i</span></code>)</p>
+<p>Notice that the stiffness matrices are reused (keyword <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">init</span><span class="o">=</span><span class="n">i</span></code>)</p>
 <p>The complete script is available in <a class="reference internal" href="../examples/misc.html#examplecavity"><span class="std std-ref">cavity example</span></a>.</p>
 </div>
 <section id="uzawa-algorithm-and-conjugate-gradients">
-<span id="navierstokesuzawaconjugategradients"></span><h2>Uzawa Algorithm and Conjugate Gradients<a class="headerlink" href="#uzawa-algorithm-and-conjugate-gradients" title="Permalink to this heading"></a></h2>
+<span id="navierstokesuzawaconjugategradients"></span><h2>Uzawa Algorithm and Conjugate Gradients<a class="headerlink" href="#uzawa-algorithm-and-conjugate-gradients" title="Link to this heading"></a></h2>
 <p>We solve Stokes problem without penalty.
 The classical iterative method of Uzawa is described by the algorithm (see e.g. <a class="reference internal" href="../bibliography.html#roberts1993" id="id4"><span>[ROBERTS1993]</span></a>, 17.3, <a class="reference internal" href="../bibliography.html#glowinski1979" id="id5"><span>[GLOWINSKI1979]</span></a>, 13 or <a class="reference internal" href="../bibliography.html#glowinski1985" id="id6"><span>[GLOWINSKI1985]</span></a>, 13):</p>
 <ul>
@@ -2365,7 +2365,7 @@ So <span class="math notranslate nohighlight">\(X_{h}\)</span> is the velocity s
 </div>
 </section>
 <section id="nsuzawacahouetchabart-edp">
-<h2>NSUzawaCahouetChabart.edp<a class="headerlink" href="#nsuzawacahouetchabart-edp" title="Permalink to this heading"></a></h2>
+<h2>NSUzawaCahouetChabart.edp<a class="headerlink" href="#nsuzawacahouetchabart-edp" title="Link to this heading"></a></h2>
 <p>In this example we solve the Navier-Stokes equation past a cylinder with the Uzawa algorithm preconditioned by the Cahouet-Chabart method (see <a class="reference internal" href="../bibliography.html#glowinski2003" id="id7"><span>[GLOWINSKI2003]</span></a> for all the details).</p>
 <p>The idea of the preconditioner is that in a periodic domain, all differential operators commute and the Uzawa algorithm comes to solving the linear operator <span class="math notranslate nohighlight">\(\nabla. ( (\alpha Id + \nu \Delta)^{-1} \nabla\)</span>, where <span class="math notranslate nohighlight">\(Id\)</span> is the identity operator.
 So the preconditioner suggested is <span class="math notranslate nohighlight">\(\alpha \Delta^{-1} + \nu Id\)</span>.</p>
@@ -2535,7 +2535,7 @@ So the preconditioner suggested is <span class="math notranslate nohighlight">\(
 <figure class="align-default" id="id8">
 <img alt="navierStokesEquations" src="../_images/NavierStokesEquations.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 164 </span><span class="caption-text">The vorticity at Reynolds number 100 a time 2s with the Cahouet-Chabart method.</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 164 </span><span class="caption-text">The vorticity at Reynolds number 100 a time 2s with the Cahouet-Chabart method.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div>
