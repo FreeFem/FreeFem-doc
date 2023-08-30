@@ -52,22 +52,22 @@
 \contentsline {subsection}{\numberline {1.15.1}Contribution timeline}{30}{subsection.1.15.1}%
 \contentsline {chapter}{\numberline {2}Learning by Examples}{31}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Getting started}{33}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Classification of partial differential equations}{39}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Classification of partial differential equations}{38}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Membrane}{41}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Heat Exchanger}{46}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Acoustics}{50}{section.2.5}%
+\contentsline {section}{\numberline {2.5}Acoustics}{49}{section.2.5}%
 \contentsline {section}{\numberline {2.6}Thermal Conduction}{51}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Axisymmetry: 3D Rod with circular section}{53}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}A Nonlinear Problem : Radiation}{55}{subsection.2.6.2}%
-\contentsline {section}{\numberline {2.7}Irrotational Fan Blade Flow and Thermal effects}{56}{section.2.7}%
+\contentsline {subsection}{\numberline {2.6.1}Axisymmetry: 3D Rod with circular section}{54}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}A Nonlinear Problem : Radiation}{54}{subsection.2.6.2}%
+\contentsline {section}{\numberline {2.7}Irrotational Fan Blade Flow and Thermal effects}{55}{section.2.7}%
 \contentsline {subsection}{\numberline {2.7.1}Heat Convection around the airfoil}{57}{subsection.2.7.1}%
 \contentsline {section}{\numberline {2.8}Pure Convection : The Rotating Hill}{59}{section.2.8}%
 \contentsline {subsection}{\numberline {2.8.1}Solution by a Characteristics\sphinxhyphen {}Galerkin Method}{59}{subsection.2.8.1}%
 \contentsline {subsection}{\numberline {2.8.2}Solution by Discontinuous\sphinxhyphen {}Galerkin FEM}{60}{subsection.2.8.2}%
-\contentsline {section}{\numberline {2.9}The System of elasticity}{63}{section.2.9}%
+\contentsline {section}{\numberline {2.9}The System of elasticity}{62}{section.2.9}%
 \contentsline {section}{\numberline {2.10}The System of Stokes for Fluids}{65}{section.2.10}%
 \contentsline {section}{\numberline {2.11}A projection algorithm for the Navier\sphinxhyphen {}Stokes equations}{66}{section.2.11}%
-\contentsline {section}{\numberline {2.12}Newton Method for the Steady Navier\sphinxhyphen {}Stokes equations}{70}{section.2.12}%
+\contentsline {section}{\numberline {2.12}Newton Method for the Steady Navier\sphinxhyphen {}Stokes equations}{71}{section.2.12}%
 \contentsline {section}{\numberline {2.13}A Large Fluid Problem}{74}{section.2.13}%
 \contentsline {section}{\numberline {2.14}An Example with Complex Numbers}{79}{section.2.14}%
 \contentsline {section}{\numberline {2.15}Optimal Control}{83}{section.2.15}%
@@ -336,7 +336,7 @@
 \contentsline {paragraph}{Step 3: Define your problem}{369}{paragraph*.395}%
 \contentsline {subsubsection}{Summary so far: translating your sequential \sphinxstyleemphasis {FreeFEM} script}{370}{subsubsection*.396}%
 \contentsline {paragraph}{Step 1: Decompose the mesh}{370}{paragraph*.397}%
-\contentsline {paragraph}{Solve the linear system}{371}{paragraph*.398}%
+\contentsline {paragraph}{Solve the linear system}{370}{paragraph*.398}%
 \contentsline {paragraph}{Solve the linear system with the parallel direct solver \sphinxstyleemphasis {MUMPS}}{371}{paragraph*.399}%
 \contentsline {paragraph}{Step 4: Define the one level DD preconditioner}{371}{paragraph*.400}%
 \contentsline {paragraph}{Step 5: Solve the linear system with preconditioned GMRES}{371}{paragraph*.401}%
@@ -1261,9 +1261,9 @@
 \contentsline {section}{\numberline {5.3}Non\sphinxhyphen {}linear static problems}{576}{section.5.3}%
 \contentsline {subsection}{\numberline {5.3.1}Newton\sphinxhyphen {}Raphson algorithm}{576}{subsection.5.3.1}%
 \contentsline {section}{\numberline {5.4}Eigen value problems}{578}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Evolution problems}{582}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Mathematical Theory on Time Difference Approximations.}{584}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Convection}{587}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.5}Evolution problems}{581}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Mathematical Theory on Time Difference Approximations.}{583}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Convection}{586}{subsection.5.5.2}%
 \contentsline {subsection}{\numberline {5.5.3}2D Black\sphinxhyphen {}Scholes equation for an European Put option}{589}{subsection.5.5.3}%
 \contentsline {section}{\numberline {5.6}Navier\sphinxhyphen {}Stokes equations}{591}{section.5.6}%
 \contentsline {subsection}{\numberline {5.6.1}Uzawa Algorithm and Conjugate Gradients}{595}{subsection.5.6.1}%
@@ -1310,8 +1310,8 @@
 \contentsline {subsection}{\numberline {6.3.2}Lagrange multipliers}{661}{subsection.6.3.2}%
 \contentsline {section}{\numberline {6.4}Visualization}{663}{section.6.4}%
 \contentsline {subsection}{\numberline {6.4.1}Plot}{663}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}HSV}{665}{subsection.6.4.2}%
-\contentsline {subsection}{\numberline {6.4.3}Medit}{666}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.2}HSV}{664}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}Medit}{665}{subsection.6.4.3}%
 \contentsline {subsection}{\numberline {6.4.4}Paraview}{666}{subsection.6.4.4}%
 \contentsline {section}{\numberline {6.5}Algorithms \& Optimizations}{667}{section.6.5}%
 \contentsline {subsection}{\numberline {6.5.1}Algorithms}{667}{subsection.6.5.1}%

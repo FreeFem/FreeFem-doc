@@ -140,7 +140,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Apr 14, 2023}
+\date{Aug 30, 2023}
 \release{4.12}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -1057,9 +1057,9 @@ add P3 lagrange finite element on meshS and meshS
 \item {} 
 \sphinxAtStartPar
 add new plugin \sphinxcode{\sphinxupquote{%
-meshtool`to add tool to compute the number of connected components of a all kind of mesh
-(mesh,mesh3,meshS,meshL) with 2 kind of connected components ones on interior part of the mesh (default) ans
-secondly on the closure of the mesh (see :freefem:`examples/hpddm/bConnectedComponents.edp%
+\PYG{n}{meshtool}\PYG{err}{`}\PYG{n}{to}\PYG{+w}{ }\PYG{n}{add}\PYG{+w}{ }\PYG{n}{tool}\PYG{+w}{ }\PYG{n}{to}\PYG{+w}{ }\PYG{n}{compute}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{number}\PYG{+w}{ }\PYG{n}{of}\PYG{+w}{ }\PYG{n}{connected}\PYG{+w}{ }\PYG{n}{components}\PYG{+w}{ }\PYG{n}{of}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{all}\PYG{+w}{ }\PYG{n}{kind}\PYG{+w}{ }\PYG{n}{of}\PYG{+w}{ }\PYG{k+kt}{mesh}
+\PYG{p}{(}\PYG{k+kt}{mesh}\PYG{p}{,}\PYG{k+kt}{mesh3}\PYG{p}{,}\PYG{n}{meshS}\PYG{p}{,}\PYG{n}{meshL}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{with}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{n}{kind}\PYG{+w}{ }\PYG{n}{of}\PYG{+w}{ }\PYG{n}{connected}\PYG{+w}{ }\PYG{n}{components}\PYG{+w}{ }\PYG{n}{ones}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{+w}{ }\PYG{n}{interior}\PYG{+w}{ }\PYG{n}{part}\PYG{+w}{ }\PYG{n}{of}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kr}{default}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{ans}
+\PYG{n}{secondly}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{closure}\PYG{+w}{ }\PYG{n}{of}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{see}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{freefem}\PYG{o}{:}\PYG{err}{`}\PYG{n}{examples}\PYG{o}{/}\PYG{n}{hpddm}\PYG{o}{/}\PYG{n}{bConnectedComponents}\PYG{p}{.}\PYG{n}{edp}%
 }} )
 add functions  int{[}int{]} In=iminP1K(Th,u) or int{[}int{]} Ix=imaxP1K(Th,u)  get the array min/max of value u{[}i{]}
 where i is vertex number on  each element k, so we have  \sphinxcode{\sphinxupquote{%
@@ -6183,217 +6183,217 @@ We use a time discretization which preserves positivity and uses the method of c
 In variational form and with appropriated boundary conditions the problem is :
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-load \PYGZdq{}iovtk\PYGZdq{}
+\PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{iovtk}\PYG{l+s}{\PYGZdq{}}
 
-verbosity=0;
+\PYG{k+kr}{verbosity}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}
 
-// Parameters
-int nn = 15;
-int nnPlus = 5;
-real l = 1.;
-real L = 15.;
-real hSlope = 0.1;
-real H = 6.;
-real h = 0.5;
+\PYG{c+c1}{// Parameters}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nn}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{15}\PYG{p}{;}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nnPlus}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{l}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{L}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{15.}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{hSlope}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{H}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{6.}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{h}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{;}
 
-real reylnods =500;
-real beta = 0.01;
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{reylnods}\PYG{+w}{ }\PYG{o}{=}\PYG{l+m+mi}{500}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{beta}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.01}\PYG{p}{;}
 
-real eps = 9.81/303.;
-real nu = 1;
-real numu = nu/sqrt(0.09);
-real nuep = pow(nu,1.5)/4.1;
-real dt = 0.;
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{k+kp}{eps}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{9.81}\PYG{o}{/}\PYG{l+m+mf}{303.}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{nu}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{numu}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{nu}\PYG{o}{/}\PYG{n+nf}{sqrt}\PYG{p}{(}\PYG{l+m+mf}{0.09}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{nuep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{pow}\PYG{p}{(}\PYG{n}{nu}\PYG{p}{,}\PYG{l+m+mf}{1.5}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mf}{4.1}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.}\PYG{p}{;}
 
-real Penalty = 1.e\PYGZhy{}6;
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{Penalty}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.}\PYG{n}{e}\PYG{l+m+mi}{\PYGZhy{}6}\PYG{p}{;}
 
-// Mesh
-border b1(t=0, l)\PYGZob{}x=t; y=0;\PYGZcb{}
-border b2(t=0, L\PYGZhy{}l)\PYGZob{}x=1.+t; y=\PYGZhy{}hSlope*t;\PYGZcb{}
-border b3(t=\PYGZhy{}hSlope*(L\PYGZhy{}l), H)\PYGZob{}x=L; y=t;\PYGZcb{}
-border b4(t=L, 0)\PYGZob{}x=t; y=H;\PYGZcb{}
-border b5(t=H, h)\PYGZob{}x=0; y=t;\PYGZcb{}
-border b6(t=h, 0)\PYGZob{}x=0; y=t;\PYGZcb{}
+\PYG{c+c1}{// Mesh}
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{b1}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{l}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{k+kp}{t}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{b2}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{L}\PYG{o}{\PYGZhy{}}\PYG{n}{l}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{l+m+mf}{1.}\PYG{o}{+}\PYG{k+kp}{t}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{n}{hSlope}\PYG{o}{*}\PYG{k+kp}{t}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{b3}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{n}{hSlope}\PYG{o}{*}\PYG{p}{(}\PYG{n}{L}\PYG{o}{\PYGZhy{}}\PYG{n}{l}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{H}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{n}{L}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{k+kp}{t}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{b4}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{n}{L}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{k+kp}{t}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{n}{H}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{b5}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{n}{H}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{h}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{k+kp}{t}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{b6}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{n}{h}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{k+kp}{t}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
 
-mesh Th=buildmesh(b1(nnPlus*nn*l) + b2(nn*sqrt((L\PYGZhy{}l)\PYGZca{}2+(hSlope*(L\PYGZhy{}l))\PYGZca{}2)) + b3(nn*(H + hSlope*(L\PYGZhy{}l))) + b4(nn*L) + b5(nn*(H\PYGZhy{}h)) + b6(nnPlus*nn*h));
-plot(Th);
+\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{Th}\PYG{o}{=}\PYG{n+nf}{buildmesh}\PYG{p}{(}\PYG{n}{b1}\PYG{p}{(}\PYG{n}{nnPlus}\PYG{o}{*}\PYG{n}{nn}\PYG{o}{*}\PYG{n}{l}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{b2}\PYG{p}{(}\PYG{n}{nn}\PYG{o}{*}\PYG{n+nf}{sqrt}\PYG{p}{(}\PYG{p}{(}\PYG{n}{L}\PYG{o}{\PYGZhy{}}\PYG{n}{l}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{p}{(}\PYG{n}{hSlope}\PYG{o}{*}\PYG{p}{(}\PYG{n}{L}\PYG{o}{\PYGZhy{}}\PYG{n}{l}\PYG{p}{)}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{b3}\PYG{p}{(}\PYG{n}{nn}\PYG{o}{*}\PYG{p}{(}\PYG{n}{H}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{hSlope}\PYG{o}{*}\PYG{p}{(}\PYG{n}{L}\PYG{o}{\PYGZhy{}}\PYG{n}{l}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{b4}\PYG{p}{(}\PYG{n}{nn}\PYG{o}{*}\PYG{n}{L}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{b5}\PYG{p}{(}\PYG{n}{nn}\PYG{o}{*}\PYG{p}{(}\PYG{n}{H}\PYG{o}{\PYGZhy{}}\PYG{n}{h}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{b6}\PYG{p}{(}\PYG{n}{nnPlus}\PYG{o}{*}\PYG{n}{nn}\PYG{o}{*}\PYG{n}{h}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{;}
 
-// Fespaces
-fespace Vh2(Th, P1b);
-Vh2 Ux, Uy;
-Vh2 Vx, Vy;
-Vh2 Upx, Upy;
+\PYG{c+c1}{// Fespaces}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Vh2}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nc}{P1b}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{Vh2}\PYG{+w}{ }\PYG{n}{Ux}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{p}{;}
+\PYG{n}{Vh2}\PYG{+w}{ }\PYG{n}{Vx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Vy}\PYG{p}{;}
+\PYG{n}{Vh2}\PYG{+w}{ }\PYG{n}{Upx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Upy}\PYG{p}{;}
 
-fespace Vh(Th,P1);
-Vh p=0, q;
-Vh Tp, T=35;
-Vh k=0.0001, kp=k;
-Vh ep=0.0001, epp=ep;
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Vh}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{Vh}\PYG{+w}{ }\PYG{n}{p}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q}\PYG{p}{;}
+\PYG{n}{Vh}\PYG{+w}{ }\PYG{n}{Tp}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{T}\PYG{o}{=}\PYG{l+m+mi}{35}\PYG{p}{;}
+\PYG{n}{Vh}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{=}\PYG{l+m+mf}{0.0001}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{kp}\PYG{o}{=}\PYG{n}{k}\PYG{p}{;}
+\PYG{n}{Vh}\PYG{+w}{ }\PYG{n}{ep}\PYG{o}{=}\PYG{l+m+mf}{0.0001}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{epp}\PYG{o}{=}\PYG{n}{ep}\PYG{p}{;}
 
-fespace V0h(Th,P0);
-V0h muT=1;
-V0h prodk, prode;
-Vh kappa=0.25e\PYGZhy{}4, stress;
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{V0h}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{n+nc}{P0}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{V0h}\PYG{+w}{ }\PYG{n}{muT}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{n}{V0h}\PYG{+w}{ }\PYG{n}{prodk}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prode}\PYG{p}{;}
+\PYG{n}{Vh}\PYG{+w}{ }\PYG{n}{kappa}\PYG{o}{=}\PYG{l+m+mf}{0.25e\PYGZhy{}4}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{stress}\PYG{p}{;}
 
-// Macro
-macro grad(u) [dx(u), dy(u)] //
-macro Grad(U) [grad(U\PYGZsh{}x), grad(U\PYGZsh{}y)] //
-macro Div(U) (dx(U\PYGZsh{}x) + dy(U\PYGZsh{}y)) //
+\PYG{c+c1}{// Macro}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{U}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{grad}\PYG{p}{(}\PYG{n}{U}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{x}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{U}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{Div}\PYG{p}{(}\PYG{n}{U}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{U}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{x}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{U}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{//}
 
-// Functions
-func g = (x) * (1\PYGZhy{}x) * 4;
+\PYG{c+c1}{// Functions}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{g}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kr}{x}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{k+kr}{x}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}
 
-// Problem
-real alpha = 0.;
+\PYG{c+c1}{// Problem}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{alpha}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.}\PYG{p}{;}
 
-problem Temperature(T, q)
-   = int2d(Th)(
-        alpha * T * q
-      + kappa* grad(T)\PYGZsq{} * grad(q)
-   )
-   + int2d(Th)(
-      \PYGZhy{} alpha*convect([Upx, Upy], \PYGZhy{}dt, Tp)*q
-   )
-   + on(b6, T=25)
-   + on(b1, b2, T=30)
-   ;
+\PYG{k+kt}{problem}\PYG{+w}{ }\PYG{n}{Temperature}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{alpha}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{T}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q}
+\PYG{+w}{      }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{kappa}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{T}\PYG{p}{)}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{q}\PYG{p}{)}
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{      }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{alpha}\PYG{o}{*}\PYG{n+nf}{convect}\PYG{p}{(}\PYG{p}{[}\PYG{n}{Upx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Upy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{dt}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Tp}\PYG{p}{)}\PYG{o}{*}\PYG{n}{q}
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b6}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{T}\PYG{o}{=}\PYG{l+m+mi}{25}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{T}\PYG{o}{=}\PYG{l+m+mi}{30}\PYG{p}{)}
+\PYG{+w}{   }\PYG{p}{;}
 
-problem KineticTurbulence(k, q)
-   = int2d(Th)(
-        (epp/kp + alpha) * k * q
-      + muT* grad(k)\PYGZsq{} * grad(q)
-   )
-   + int2d(Th)(
-        prodk * q
-      \PYGZhy{} alpha*convect([Upx, Upy], \PYGZhy{}dt, kp)*q
-   )
-   + on(b5, b6, k=0.00001)
-   + on(b1, b2, k=beta*numu*stress)
-   ;
+\PYG{k+kt}{problem}\PYG{+w}{ }\PYG{n}{KineticTurbulence}\PYG{p}{(}\PYG{n}{k}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{(}\PYG{n}{epp}\PYG{o}{/}\PYG{n}{kp}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{alpha}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q}
+\PYG{+w}{      }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{muT}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{k}\PYG{p}{)}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{q}\PYG{p}{)}
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{prodk}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q}
+\PYG{+w}{      }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{alpha}\PYG{o}{*}\PYG{n+nf}{convect}\PYG{p}{(}\PYG{p}{[}\PYG{n}{Upx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Upy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{dt}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{kp}\PYG{p}{)}\PYG{o}{*}\PYG{n}{q}
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b5}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b6}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{=}\PYG{l+m+mf}{0.00001}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{=}\PYG{n}{beta}\PYG{o}{*}\PYG{n}{numu}\PYG{o}{*}\PYG{n}{stress}\PYG{p}{)}
+\PYG{+w}{   }\PYG{p}{;}
 
-problem ViscosityTurbulence(ep, q)
-   = int2d(Th)(
-        (1.92*epp/kp + alpha) * ep * q
-      + muT * grad(ep)\PYGZsq{} * grad(q)
-   )
-   + int1d(Th, b1, b2)(
-        T * q * 0.001
-   )
-   + int2d(Th)(
-        prode * q
-      \PYGZhy{} alpha*convect([Upx, Upy], \PYGZhy{}dt, epp)*q
-   )
-   + on(b5, b6, ep=0.00001)
-   + on(b1, b2, ep=beta*nuep*pow(stress,1.5))
-   ;
+\PYG{k+kt}{problem}\PYG{+w}{ }\PYG{n}{ViscosityTurbulence}\PYG{p}{(}\PYG{n}{ep}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{(}\PYG{l+m+mf}{1.92}\PYG{o}{*}\PYG{n}{epp}\PYG{o}{/}\PYG{n}{kp}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{alpha}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{ep}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q}
+\PYG{+w}{      }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{muT}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{ep}\PYG{p}{)}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{q}\PYG{p}{)}
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int1d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b2}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{T}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m+mf}{0.001}
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{prode}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q}
+\PYG{+w}{      }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{alpha}\PYG{o}{*}\PYG{n+nf}{convect}\PYG{p}{(}\PYG{p}{[}\PYG{n}{Upx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Upy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{dt}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{epp}\PYG{p}{)}\PYG{o}{*}\PYG{n}{q}
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b5}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b6}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ep}\PYG{o}{=}\PYG{l+m+mf}{0.00001}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ep}\PYG{o}{=}\PYG{n}{beta}\PYG{o}{*}\PYG{n}{nuep}\PYG{o}{*}\PYG{n+nf}{pow}\PYG{p}{(}\PYG{n}{stress}\PYG{p}{,}\PYG{l+m+mf}{1.5}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{   }\PYG{p}{;}
 
-// Initialization with stationary solution
-solve NavierStokes ([Ux, Uy, p], [Vx, Vy, q])
-   = int2d(Th)(
-        alpha * [Ux, Uy]\PYGZsq{} * [Vx, Vy]
-      + muT * (Grad(U) : Grad(V))
-      + p * q * Penalty
-      \PYGZhy{} p * Div(V)
-      \PYGZhy{} Div(U) * q
-   )
-   + int1d(Th, b1, b2, b4)(
-        Ux * Vx * 0.1
-   )
-   + int2d(Th)(
-        eps * (T\PYGZhy{}35) * Vx
-      \PYGZhy{} alpha*convect([Upx, Upy], \PYGZhy{}dt, Upx)*Vx
-      \PYGZhy{} alpha*convect([Upx, Upy], \PYGZhy{}dt, Upy)*Vy
-   )
-   + on(b6, Ux=3, Uy=0)
-   + on(b5, Ux=0, Uy=0)
-   + on(b1, b4, Uy=0)
-   + on(b2, Uy=\PYGZhy{}Upx*N.x/N.y)
-   + on(b3, Uy=0)
-   ;
+\PYG{c+c1}{// Initialization with stationary solution}
+\PYG{k+kt}{solve}\PYG{+w}{ }\PYG{n}{NavierStokes}\PYG{+w}{ }\PYG{p}{(}\PYG{p}{[}\PYG{n}{Ux}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{Vx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Vy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q}\PYG{p}{]}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{alpha}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{Ux}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{p}{]}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{Vx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Vy}\PYG{p}{]}
+\PYG{+w}{      }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{muT}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{U}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{V}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{      }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{p}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{Penalty}
+\PYG{+w}{      }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{p}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{Div}\PYG{p}{(}\PYG{n}{V}\PYG{p}{)}
+\PYG{+w}{      }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{Div}\PYG{p}{(}\PYG{n}{U}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{q}
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int1d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b4}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{Ux}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{Vx}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m+mf}{0.1}
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{k+kp}{eps}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{T}\PYG{l+m+mi}{\PYGZhy{}35}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{Vx}
+\PYG{+w}{      }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{alpha}\PYG{o}{*}\PYG{n+nf}{convect}\PYG{p}{(}\PYG{p}{[}\PYG{n}{Upx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Upy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{dt}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Upx}\PYG{p}{)}\PYG{o}{*}\PYG{n}{Vx}
+\PYG{+w}{      }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{alpha}\PYG{o}{*}\PYG{n+nf}{convect}\PYG{p}{(}\PYG{p}{[}\PYG{n}{Upx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Upy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{dt}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Upy}\PYG{p}{)}\PYG{o}{*}\PYG{n}{Vy}
+\PYG{+w}{   }\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b6}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Ux}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b5}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Ux}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b4}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{o}{=}\PYG{o}{\PYGZhy{}}\PYG{n}{Upx}\PYG{o}{*}\PYG{k+kr}{N}\PYG{p}{.}\PYG{k+kr}{x}\PYG{o}{/}\PYG{k+kr}{N}\PYG{p}{.}\PYG{k+kr}{y}\PYG{p}{)}
+\PYG{+w}{   }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{b3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{   }\PYG{p}{;}
 
-plot([Ux, Uy], p, value=true, coef=0.2, cmm=\PYGZdq{}[Ux, Uy] \PYGZhy{} p\PYGZdq{});
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{p}{[}\PYG{n}{Ux}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{value}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{coef}\PYG{o}{=}\PYG{l+m+mf}{0.2}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{cmm}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{[Ux, Uy] \PYGZhy{} p}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
 
-\PYGZob{}
-   real[int] xx(21), yy(21), pp(21);
-   for (int i = 0 ; i \PYGZlt{} 21; i++)\PYGZob{}
-      yy[i] = i/20.;
-      xx[i] = Ux(0.5,i/20.);
-      pp[i] = p(i/20.,0.999);
-   \PYGZcb{}
-   cout \PYGZlt{}\PYGZlt{} \PYGZdq{} \PYGZdq{} \PYGZlt{}\PYGZlt{} yy \PYGZlt{}\PYGZlt{} endl;
-   plot([xx, yy], wait=true, cmm=\PYGZdq{}Ux x=0.5 cup\PYGZdq{});
-   plot([yy, pp], wait=true, cmm=\PYGZdq{}p y=0.999 cup\PYGZdq{});
-\PYGZcb{}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{   }\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{xx}\PYG{p}{(}\PYG{l+m+mi}{21}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{yy}\PYG{p}{(}\PYG{l+m+mi}{21}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pp}\PYG{p}{(}\PYG{l+m+mi}{21}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{   }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{21}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{+}\PYG{o}{+}\PYG{p}{)}\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{n}{yy}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{/}\PYG{l+m+mf}{20.}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{xx}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Ux}\PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{n}{i}\PYG{o}{/}\PYG{l+m+mf}{20.}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{pp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{(}\PYG{n}{i}\PYG{o}{/}\PYG{l+m+mf}{20.}\PYG{p}{,}\PYG{l+m+mf}{0.999}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{   }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{   }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{yy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{+w}{   }\PYG{n+nf}{plot}\PYG{p}{(}\PYG{p}{[}\PYG{n}{xx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{yy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{wait}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{cmm}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Ux x=0.5 cup}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{   }\PYG{n+nf}{plot}\PYG{p}{(}\PYG{p}{[}\PYG{n}{yy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pp}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{wait}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{cmm}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{p y=0.999 cup}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
 
-// Initialization
-dt = 0.1; //probably too big
-int nbiter = 3;
-real coefdt = 0.25\PYGZca{}(1./nbiter);
-real coefcut = 0.25\PYGZca{}(1./nbiter);
-real cut = 0.01;
-real tol = 0.5;
-real coeftol = 0.5\PYGZca{}(1./nbiter);
-nu = 1./reylnods;
+\PYG{c+c1}{// Initialization}
+\PYG{n}{dt}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//probably too big}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{k+kp}{nbiter}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{coefdt}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.25}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{l+m+mf}{1.}\PYG{o}{/}\PYG{k+kp}{nbiter}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{coefcut}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.25}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{l+m+mf}{1.}\PYG{o}{/}\PYG{k+kp}{nbiter}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{cut}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.01}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{k+kp}{tol}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{coeftol}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.5}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{l+m+mf}{1.}\PYG{o}{/}\PYG{k+kp}{nbiter}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{nu}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.}\PYG{o}{/}\PYG{n}{reylnods}\PYG{p}{;}
 
-T = T \PYGZhy{} 10*((x\PYGZlt{}1)*(y\PYGZlt{}0.5) + (x\PYGZgt{}=1)*(y+0.1*(x\PYGZhy{}1)\PYGZlt{}0.5));
+\PYG{n}{T}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{T}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{o}{*}\PYG{p}{(}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{\PYGZlt{}}\PYG{l+m+mf}{0.5}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{\PYGZgt{}}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{+}\PYG{l+m+mf}{0.1}\PYG{o}{*}\PYG{p}{(}\PYG{k+kr}{x}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{)}\PYG{o}{\PYGZlt{}}\PYG{l+m+mf}{0.5}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
 
-// Convergence loop
-real T0 = clock();
-for (int iter = 1; iter \PYGZlt{}= nbiter; iter++)\PYGZob{}
-   cout \PYGZlt{}\PYGZlt{} \PYGZdq{}Iteration \PYGZdq{} \PYGZlt{}\PYGZlt{} iter \PYGZlt{}\PYGZlt{} \PYGZdq{} \PYGZhy{} dt = \PYGZdq{} \PYGZlt{}\PYGZlt{} dt \PYGZlt{}\PYGZlt{} endl;
-   alpha = 1/dt;
+\PYG{c+c1}{// Convergence loop}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{T0}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{clock}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{iter}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{iter}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{=}\PYG{+w}{ }\PYG{k+kp}{nbiter}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{iter}\PYG{o}{+}\PYG{o}{+}\PYG{p}{)}\PYG{p}{\PYGZob{}}
+\PYG{+w}{   }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Iteration }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{iter}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ \PYGZhy{} dt = }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{+w}{   }\PYG{n}{alpha}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{;}
 
-   // Time loop
-   real t = 0.;
-   for (int i = 0; i \PYGZlt{}= 500; i++)\PYGZob{}
-      t += dt;
-      cout \PYGZlt{}\PYGZlt{} \PYGZdq{}Time step \PYGZdq{} \PYGZlt{}\PYGZlt{} i \PYGZlt{}\PYGZlt{} \PYGZdq{} \PYGZhy{} t = \PYGZdq{} \PYGZlt{}\PYGZlt{} t \PYGZlt{}\PYGZlt{} endl;
+\PYG{+w}{   }\PYG{c+c1}{// Time loop}
+\PYG{+w}{   }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.}\PYG{p}{;}
+\PYG{+w}{   }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{500}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{+}\PYG{o}{+}\PYG{p}{)}\PYG{p}{\PYGZob{}}
+\PYG{+w}{      }\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{+}\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dt}\PYG{p}{;}
+\PYG{+w}{      }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Time step }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ \PYGZhy{} t = }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
 
-      // Update
-      Upx = Ux;
-      Upy = Uy;
-      kp = k;
-      epp = ep;
-      Tp = max(T, 25); //for beauty only should be removed
-      Tp = min(Tp, 35); //for security only should be removed
-      kp = max(k, 0.0001); epp = max(ep, 0.0001); // to be secure: should not be active
-      muT = 0.09*kp*kp/epp;
+\PYG{+w}{      }\PYG{c+c1}{// Update}
+\PYG{+w}{      }\PYG{n}{Upx}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Ux}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{Upy}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Uy}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{kp}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{epp}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ep}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{Tp}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kr}{max}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{25}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//for beauty only should be removed}
+\PYG{+w}{      }\PYG{n}{Tp}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kr}{min}\PYG{p}{(}\PYG{n}{Tp}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{35}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//for security only should be removed}
+\PYG{+w}{      }\PYG{n}{kp}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kr}{max}\PYG{p}{(}\PYG{n}{k}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0001}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{epp}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kr}{max}\PYG{p}{(}\PYG{n}{ep}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0.0001}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// to be secure: should not be active}
+\PYG{+w}{      }\PYG{n}{muT}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.09}\PYG{o}{*}\PYG{n}{kp}\PYG{o}{*}\PYG{n}{kp}\PYG{o}{/}\PYG{n}{epp}\PYG{p}{;}
 
-      // Solve NS
-      NavierStokes;
+\PYG{+w}{      }\PYG{c+c1}{// Solve NS}
+\PYG{+w}{      }\PYG{n}{NavierStokes}\PYG{p}{;}
 
-      // Update
-      prode = \PYGZhy{}0.126*kp*(pow(2*dx(Ux),2)+pow(2*dy(Uy),2)+2*pow(dx(Uy)+dy(Ux),2))/2;
-      prodk = \PYGZhy{}prode*kp/epp*0.09/0.126;
-      kappa = muT/0.41;
-      stress = abs(dy(Ux));
+\PYG{+w}{      }\PYG{c+c1}{// Update}
+\PYG{+w}{      }\PYG{n}{prode}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{\PYGZhy{}0.126}\PYG{o}{*}\PYG{n}{kp}\PYG{o}{*}\PYG{p}{(}\PYG{n+nf}{pow}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{Ux}\PYG{p}{)}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{+}\PYG{n+nf}{pow}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{Uy}\PYG{p}{)}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nf}{pow}\PYG{p}{(}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{Uy}\PYG{p}{)}\PYG{o}{+}\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{Ux}\PYG{p}{)}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{prodk}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{prode}\PYG{o}{*}\PYG{n}{kp}\PYG{o}{/}\PYG{n}{epp}\PYG{o}{*}\PYG{l+m+mf}{0.09}\PYG{o}{/}\PYG{l+m+mf}{0.126}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{kappa}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{muT}\PYG{o}{/}\PYG{l+m+mf}{0.41}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{stress}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{Ux}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
 
-      // Solve k\PYGZhy{}eps\PYGZhy{}T
-      KineticTurbulence;
-      ViscosityTurbulence;
-      Temperature;
+\PYG{+w}{      }\PYG{c+c1}{// Solve k\PYGZhy{}eps\PYGZhy{}T}
+\PYG{+w}{      }\PYG{n}{KineticTurbulence}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{ViscosityTurbulence}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n}{Temperature}\PYG{p}{;}
 
-      // Plot
-      plot(T, value=true, fill=true);
-      plot([Ux, Uy], p, coef=0.2, cmm=\PYGZdq{} [Ux, Uy] \PYGZhy{} p\PYGZdq{}, WindowIndex=1);
+\PYG{+w}{      }\PYG{c+c1}{// Plot}
+\PYG{+w}{      }\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{T}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{value}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{fill}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{      }\PYG{n+nf}{plot}\PYG{p}{(}\PYG{p}{[}\PYG{n}{Ux}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{coef}\PYG{o}{=}\PYG{l+m+mf}{0.2}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{cmm}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ [Ux, Uy] \PYGZhy{} p}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{WindowIndex}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
 
-      // Time
-      cout \PYGZlt{}\PYGZlt{} \PYGZdq{}\PYGZbs{}tTime = \PYGZdq{} \PYGZlt{}\PYGZlt{} clock()\PYGZhy{}T0 \PYGZlt{}\PYGZlt{} endl;
-   \PYGZcb{}
+\PYG{+w}{      }\PYG{c+c1}{// Time}
+\PYG{+w}{      }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s}{Time = }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{clock}\PYG{p}{(}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{T0}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{+w}{   }\PYG{p}{\PYGZcb{}}
 
-   // Check
-   if (iter \PYGZgt{}= nbiter) break;
+\PYG{+w}{   }\PYG{c+c1}{// Check}
+\PYG{+w}{   }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{iter}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{o}{=}\PYG{+w}{ }\PYG{k+kp}{nbiter}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{break}\PYG{p}{;}
 
-   // Adaptmesh
-   Th = adaptmesh(Th, [dx(Ux), dy(Ux), dx(Ux), dy(Uy)], splitpbedge=1, abserror=0, cutoff=cut, err=tol, inquire=0, ratio=1.5, hmin=1./1000);
-   plot(Th);
+\PYG{+w}{   }\PYG{c+c1}{// Adaptmesh}
+\PYG{+w}{   }\PYG{n}{Th}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{adaptmesh}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{Ux}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{Ux}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{Ux}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{Uy}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{splitpbedge}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{abserror}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{cutoff}\PYG{o}{=}\PYG{n}{cut}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{err}\PYG{o}{=}\PYG{k+kp}{tol}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{inquire}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{ratio}\PYG{o}{=}\PYG{l+m+mf}{1.5}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{hmin}\PYG{o}{=}\PYG{l+m+mf}{1.}\PYG{o}{/}\PYG{l+m+mi}{1000}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{   }\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{;}
 
-   // Update
-   dt = dt * coefdt;
-   tol = tol * coeftol;
-   cut = cut * coefcut;
-\PYGZcb{}
-cout \PYGZlt{}\PYGZlt{} \PYGZdq{}Total Time = \PYGZdq{} \PYGZlt{}\PYGZlt{} clock()\PYGZhy{}T0 \PYGZlt{}\PYGZlt{} endl;
+\PYG{+w}{   }\PYG{c+c1}{// Update}
+\PYG{+w}{   }\PYG{n}{dt}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{coefdt}\PYG{p}{;}
+\PYG{+w}{   }\PYG{k+kp}{tol}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kp}{tol}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{coeftol}\PYG{p}{;}
+\PYG{+w}{   }\PYG{n}{cut}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{cut}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{coefcut}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Total Time = }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{clock}\PYG{p}{(}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{T0}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 \begin{figure}
@@ -15026,7 +15026,7 @@ where \sphinxcode{\sphinxupquote{%
 }} \sphinxcode{\sphinxupquote{%
 \PYG{n}{IDmesh3}%
 }} \sphinxcode{\sphinxupquote{%
-IDmeshS `is respectly the name of the associated :freefem:`mesh%
+\PYG{n}{IDmeshS}\PYG{+w}{ }\PYG{err}{`}\PYG{n}{is}\PYG{+w}{ }\PYG{n}{respectly}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{name}\PYG{+w}{ }\PYG{n}{of}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{associated}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{freefem}\PYG{o}{:}\PYG{err}{`}\PYG{k+kt}{mesh}%
 }}, \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{mesh3}%
 }}, \sphinxcode{\sphinxupquote{%
@@ -17553,20 +17553,20 @@ An “on” vectorial form (for Dirichlet):   \sphinxcode{\sphinxupquote{%
 
 \sphinxAtStartPar
 if the value is equal to \sphinxhyphen{}2 (i.e \sphinxcode{\sphinxupquote{%
-tgv == \PYGZhy{}2 `) then   we put to :math:`0%
+\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}2}\PYG{+w}{ }\PYG{err}{`}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{then}\PYG{+w}{   }\PYG{n}{we}\PYG{+w}{ }\PYG{n}{put}\PYG{+w}{ }\PYG{n}{to}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{math}\PYG{o}{:}\PYG{err}{`}\PYG{l+m+mi}{0}%
 }} all term of the line and colomn  \(i\) in the matrix, except diagonal term \(a_{ii}=1\), and \(b[i] = "(\Pi_h g)[i]"\)
 else if the value is equal to  \sphinxhyphen{}20 (i.e \sphinxcode{\sphinxupquote{%
-tgv == \PYGZhy{}20 `) then   we put to :math:`0%
+\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}20}\PYG{+w}{ }\PYG{err}{`}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{then}\PYG{+w}{   }\PYG{n}{we}\PYG{+w}{ }\PYG{n}{put}\PYG{+w}{ }\PYG{n}{to}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{math}\PYG{o}{:}\PYG{err}{`}\PYG{l+m+mi}{0}%
 }} all term of the line and colomn  \(i\) in the matrix, and \(b[i] = "(\Pi_h g)[i]"\)
 
 \sphinxAtStartPar
 else if the value is equal to \sphinxhyphen{}10 (i.e \sphinxcode{\sphinxupquote{%
-tgv == \PYGZhy{}10 `) then   we put to :math:`0%
+\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}10}\PYG{+w}{ }\PYG{err}{`}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{then}\PYG{+w}{   }\PYG{n}{we}\PYG{+w}{ }\PYG{n}{put}\PYG{+w}{ }\PYG{n}{to}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{math}\PYG{o}{:}\PYG{err}{`}\PYG{l+m+mi}{0}%
 }} all term of the line the matrix, and \(b[i] = "(\Pi_h g)[i]"\)
 
 \sphinxAtStartPar
 else  (i.e \sphinxcode{\sphinxupquote{%
-tgv == \PYGZhy{}1 `) we put to :math:`0%
+\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}1}\PYG{+w}{ }\PYG{err}{`}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{we}\PYG{+w}{ }\PYG{n}{put}\PYG{+w}{ }\PYG{n}{to}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{math}\PYG{o}{:}\PYG{err}{`}\PYG{l+m+mi}{0}%
 }} all term of the line \(i\) in the matrix, except diagonal term \(a_{ii}=1\), and \(b[i] = "(\Pi_h g)[i]"\).
 \end{quote}
 \begin{itemize}
@@ -22856,7 +22856,7 @@ These are:
 
 \sphinxAtStartPar
 The following four parameters are only for direct solvers and are vectors.
-These parameters allow the user to preprocess the matrix (see the section on {\hyperref[\detokenize{documentation/parallelization:sparse-direct-solver}]{\emph{sparse direct solver}}} for more information).
+These parameters allow the user to preprocess the matrix (see the section on {\hyperref[\detokenize{documentation/parallelization:sparse-direct-solver}]{\sphinxsamedocref{sparse direct solver}}} for more information).
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -26262,7 +26262,11 @@ Combining the power and flexibility of PETSc with the ease\sphinxhyphen{}of\sphi
 \begin{savenotes}
 \sphinxatlongtablestart
 \sphinxthistablewithglobalstyle
-\begin{longtable}[c]{ll}
+\makeatletter
+  \LTleft \@totalleftmargin plus1fill
+  \LTright\dimexpr\columnwidth-\@totalleftmargin-\linewidth\relax plus1fill
+\makeatother
+\begin{longtable}{ll}
 \sphinxtoprule
 \sphinxstyletheadfamily 
 \sphinxAtStartPar
@@ -29985,9 +29989,9 @@ For scalar P2 finite elements and complex\sphinxhyphen{}valued problems:
 For vectorial {[}P2,P2,P1{]} finite elements and real\sphinxhyphen{}valued problems:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-macro def(u) [u, u\PYGZsh{}B, u\PYGZsh{}C]// EOM
-macro init(u) [u, u, u]// EOM
-ffddmbuildDfespace(myFEprefix,mymeshprefix,real,def,init,[P2,P2,P1])
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{def}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{err}{\PYGZsh{}}\PYG{k+kp}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{err}{\PYGZsh{}}\PYG{n}{C}\PYG{p}{]}\PYG{c+c1}{// EOM}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{k+kp}{init}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{]}\PYG{c+c1}{// EOM}
+\PYG{n}{ffddmbuildDfespace}\PYG{p}{(}\PYG{n}{myFEprefix}\PYG{p}{,}\PYG{n}{mymeshprefix}\PYG{p}{,}\PYG{k+kt}{real}\PYG{p}{,}\PYG{n}{def}\PYG{p}{,}\PYG{k+kp}{init}\PYG{p}{,}\PYG{p}{[}\PYG{n+nc}{P2}\PYG{p}{,}\PYG{n+nc}{P2}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{]}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -30462,7 +30466,7 @@ These parameters are set by {\hyperref[\detokenize{documentation/ffddm/parameter
 \subsubsection{Solving the linear system}
 \label{\detokenize{documentation/ffddm/documentation:solving-the-linear-system}}\label{\detokenize{documentation/ffddm/documentation:ffddmdocumentationsolvinglinearsystem}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-func pr\PYGZsh{}prfe\PYGZsh{}K[int] pr\PYGZsh{}fGMRES(pr\PYGZsh{}prfe\PYGZsh{}K[int]\PYGZam{} x0i, pr\PYGZsh{}prfe\PYGZsh{}K[int]\PYGZam{} bi, real eps, int itmax, string sp)
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{fGMRES}\PYG{p}{(}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{x0i}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{bi}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{k+kp}{eps}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{itmax}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{sp}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -30525,40 +30529,40 @@ An example can be found in \sphinxstylestrong{Helmholtz\sphinxhyphen{}2d\sphinxh
 The parallel interpolation of a distributed finite element function to another distributed finite element space can be computed using the \sphinxcode{\sphinxupquote{prfe\#transferfromVhi}} macro. Internally, it uses the \sphinxcode{\sphinxupquote{transfer}} macro from the \sphinxcode{\sphinxupquote{macro\_ddm.idp}} script. The macro is prefixed by the source finite element prefix \sphinxstylestrong{prfe} and is used a follows:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-prfe\PYGZsh{}transferfromVhi(us,Vht,Pkt,rest)
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{transferfromVhi}\PYG{p}{(}\PYG{n}{us}\PYG{p}{,}\PYG{n}{Vht}\PYG{p}{,}\PYG{n}{Pkt}\PYG{p}{,}\PYG{n}{rest}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
 where \sphinxstylestrong{us} is distributed source FE function defined on \sphinxcode{\sphinxupquote{prfe\#Vhi}}, \sphinxstylestrong{Vht} is the target local finite element space, \sphinxstylestrong{Pkt} is the approximation space corresponding to \sphinxstylestrong{Vht} and \sphinxstylestrong{rest} is the target local FE function defined on \sphinxstylestrong{Vht}. You can find an example below:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-macro dimension()2//
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{dimension}\PYG{p}{(}\PYG{p}{)}\PYG{l+m+mi}{2}\PYG{c+c1}{//}
 
-include \PYGZdq{}ffddm.idp\PYGZdq{}
+\PYG{c+cp}{include}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ffddm.idp}\PYG{l+s}{\PYGZdq{}}
 
-mesh Ths = square(10,10);
+\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{Ths}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{square}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}
 
-mesh Tht = square(30,20);
+\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{Tht}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{square}\PYG{p}{(}\PYG{l+m+mi}{30}\PYG{p}{,}\PYG{l+m+mi}{20}\PYG{p}{)}\PYG{p}{;}
 
-ffddmbuildDmesh(Ms,Ths,mpiCommWorld)
+\PYG{n}{ffddmbuildDmesh}\PYG{p}{(}\PYG{n}{Ms}\PYG{p}{,}\PYG{n}{Ths}\PYG{p}{,}\PYG{k+kr}{mpiCommWorld}\PYG{p}{)}
 
-ffddmbuildDmesh(Mt,Tht,mpiCommWorld)
+\PYG{n}{ffddmbuildDmesh}\PYG{p}{(}\PYG{n}{Mt}\PYG{p}{,}\PYG{n}{Tht}\PYG{p}{,}\PYG{k+kr}{mpiCommWorld}\PYG{p}{)}
 
-func Pk = [P2,P2];
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{Pk}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nc}{P2}\PYG{p}{,}\PYG{n+nc}{P2}\PYG{p}{]}\PYG{p}{;}
 
-macro def(u)[u,u\PYGZsh{}2]//
-macro init(u)[u,u]//
-ffddmbuildDfespace(FEs,Ms,real,def,init,Pk)
-ffddmbuildDfespace(FEt,Mt,real,def,init,Pk)
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{def}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{[}\PYG{n}{u}\PYG{p}{,}\PYG{n}{u}\PYG{err}{\PYGZsh{}}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{c+c1}{//}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{k+kp}{init}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{[}\PYG{n}{u}\PYG{p}{,}\PYG{n}{u}\PYG{p}{]}\PYG{c+c1}{//}
+\PYG{n}{ffddmbuildDfespace}\PYG{p}{(}\PYG{n}{FEs}\PYG{p}{,}\PYG{n}{Ms}\PYG{p}{,}\PYG{k+kt}{real}\PYG{p}{,}\PYG{n}{def}\PYG{p}{,}\PYG{k+kp}{init}\PYG{p}{,}\PYG{n}{Pk}\PYG{p}{)}
+\PYG{n}{ffddmbuildDfespace}\PYG{p}{(}\PYG{n}{FEt}\PYG{p}{,}\PYG{n}{Mt}\PYG{p}{,}\PYG{k+kt}{real}\PYG{p}{,}\PYG{n}{def}\PYG{p}{,}\PYG{k+kp}{init}\PYG{p}{,}\PYG{n}{Pk}\PYG{p}{)}
 
-FEsVhi def(us) = [cos(x\PYGZca{}2+y),sin(x\PYGZca{}2+y)];
+\PYG{n}{FEsVhi}\PYG{+w}{ }\PYG{n}{def}\PYG{p}{(}\PYG{n}{us}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{,}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{]}\PYG{p}{;}
 
-FEtVhi def(ut);
+\PYG{n}{FEtVhi}\PYG{+w}{ }\PYG{n+nf}{def}\PYG{p}{(}\PYG{n}{ut}\PYG{p}{)}\PYG{p}{;}
 
-FEstransferfromVhi(us,FEtVhi,Pk,ut)
+\PYG{n}{FEstransferfromVhi}\PYG{p}{(}\PYG{n}{us}\PYG{p}{,}\PYG{n}{FEtVhi}\PYG{p}{,}\PYG{n}{Pk}\PYG{p}{,}\PYG{n}{ut}\PYG{p}{)}
 
-ffddmplot(FEs,us,\PYGZdq{}u source\PYGZdq{});
-ffddmplot(FEt,ut,\PYGZdq{}u target\PYGZdq{});
+\PYG{n}{ffddmplot}\PYG{p}{(}\PYG{n}{FEs}\PYG{p}{,}\PYG{n}{us}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{u source}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{ffddmplot}\PYG{p}{(}\PYG{n}{FEt}\PYG{p}{,}\PYG{n}{ut}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{u target}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 
@@ -30778,8 +30782,8 @@ N=2: use the automatic graph partitioner \sphinxstyleemphasis{scotch}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmoverlap}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_overlap N}, specifies the number of layers of mesh elements in the overlap region between subdomains N \textgreater{}= 1 (default 1).
-\sphinxstylestrong{Remark} The actual width of the overlap region between subdomains is 2N, since each subdomain is extended by N layers of elements in a symmetric way.
+\sphinxcode{\sphinxupquote{ffddmoverlap}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_overlap N}, specifies the number of layers of mesh elements in the overlap region between subdomains ; N \textgreater{}= 0 (default 1).
+\sphinxstylestrong{Remark} The actual width of the overlap region between subdomains is 2N, since each subdomain is extended by N layers of elements in a symmetric way.  \sphinxstylestrong{Remark 2} if {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmoverlap}}}} = 0, the construction is a bit different, since only interface unknowns are shared. In that case, the user is required to define the macro \sphinxcode{\sphinxupquote{prmesh\#mminoverlap}} to 1 before calling {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}}. It can be done e.g. on the command line: \sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_overlap 0 \sphinxhyphen{}DMESHmminoverlap=1}}, where \sphinxcode{\sphinxupquote{MESH}} is your distributed mesh prefix.
 
 \item {} 
 \sphinxAtStartPar
@@ -31005,10 +31009,10 @@ Example for P2 \sphinxstyleemphasis{complex}:
 Example for {[}P2,P2,P1{]} \sphinxstyleemphasis{real}:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-macro def(u)  [u, u\PYGZsh{}B, u\PYGZsh{}C] // EOM
-macro init(u) [u, u, u]     // EOM
-ffddmbuildDfespace( FE, M, real, def,
-                    init, [P2,P2,P1] )
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{def}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{  }\PYG{p}{[}\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{err}{\PYGZsh{}}\PYG{k+kp}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{err}{\PYGZsh{}}\PYG{n}{C}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{// EOM}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{k+kp}{init}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{]}\PYG{+w}{     }\PYG{c+c1}{// EOM}
+\PYG{n}{ffddmbuildDfespace}\PYG{p}{(}\PYG{+w}{ }\PYG{n}{FE}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{M}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{real}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{def}\PYG{p}{,}
+\PYG{+w}{                    }\PYG{k+kp}{init}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nc}{P2}\PYG{p}{,}\PYG{n+nc}{P2}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{)}
 \end{sphinxVerbatim}
 
 
@@ -31055,7 +31059,7 @@ Duplicated unknowns coupled via a \sphinxstyleemphasis{partition of unity}:
 \subparagraph{Data exchange between neighbors}
 \label{\detokenize{documentation/ffddm/tutorial:data-exchange-between-neighbors}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-func prfe\PYGZsh{}update(K[int] vi, bool scale)
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{update}\PYG{p}{(}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{vi}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{scale}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -31246,7 +31250,7 @@ See {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationd
 See {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationdefineproblemtosolve}]{\sphinxcrossref{\DUrole{std,std-ref}{documentation}}}}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-func K[int] pr\PYGZsh{}directsolve(K[int]\PYGZam{} bi)
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{directsolve}\PYG{p}{(}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{bi}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -31292,7 +31296,7 @@ By default it is the \sphinxstyleemphasis{Restricted Additive Schwarz (RAS)} pre
 See {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationsolvinglinearsystem}]{\sphinxcrossref{\DUrole{std,std-ref}{documentation}}}}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-func K[int] pr\PYGZsh{}fGMRES(K[int]\PYGZam{} x0i, K[int]\PYGZam{} bi, real eps, int itmax, string sp)
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{fGMRES}\PYG{p}{(}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{x0i}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{bi}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{k+kp}{eps}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{itmax}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{sp}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -32503,7 +32507,7 @@ You can use the C concatenation operator \sphinxcode{\sphinxupquote{%
 If \sphinxtitleref{Ux} and \sphinxtitleref{Uy} are defined as finite element function, you can define:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-macro Grad(U) [grad(U\PYGZsh{}x), grad(U\PYGZsh{}y)] // End of macro
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{U}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{grad}\PYG{p}{(}\PYG{n}{U}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{x}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{U}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{// End of macro}
 \end{sphinxVerbatim}
 \end{sphinxadmonition}
 
@@ -37243,7 +37247,7 @@ Parameters:
 }},  \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{mesh3}%
 }} ,  \sphinxcode{\sphinxupquote{%
-meshS`or :freefem:`meshL%
+\PYG{n}{meshS}\PYG{err}{`}\PYG{k}{or}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{freefem}\PYG{o}{:}\PYG{err}{`}\PYG{n}{meshL}%
 }}) Mesh where the integral is calculated
 
 \item {} 
@@ -38133,7 +38137,7 @@ Set label to tetrahedra
 }}) \sphinxstyleemphasis{{[}Optional{]}} \sphinxstylestrong{3D only}
 
 \sphinxAtStartPar
-Set label of faces (see {\hyperref[\detokenize{references/functions:change}]{\emph{change}}} for more information)
+Set label of faces (see {\hyperref[\detokenize{references/functions:change}]{\sphinxsamedocref{change}}} for more information)
 
 \item {} 
 \sphinxAtStartPar
@@ -46229,65 +46233,65 @@ An other example with no equal border, just to see if the code works.
 Periodic boundary conditions \sphinxhyphen{} non\sphinxhyphen{}equal border
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-// Macro
-//irregular boundary condition to build border AB
-macro LINEBORDER(A, B, lab)
-    border A\PYGZsh{}B(t=0,1)\PYGZob{} real t1=1.\PYGZhy{}t;
-    x=A\PYGZsh{}x*t1+B\PYGZsh{}x*t;
-    y=A\PYGZsh{}y*t1+B\PYGZsh{}y*t;
-    label=lab; \PYGZcb{} //EOM
-// compute \PYGZbs{}||AB|\PYGZbs{}| A=(ax,ay) et B =(bx,by)
-macro dist(ax, ay, bx, by)
-    sqrt(square((ax)\PYGZhy{}(bx)) + square((ay)\PYGZhy{}(by))) //EOM
-macro Grad(u) [dx(u), dy(u)] //EOM
+\PYG{c+c1}{// Macro}
+\PYG{c+c1}{//irregular boundary condition to build border AB}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n+nf}{LINEBORDER}\PYG{p}{(}\PYG{k+kp}{A}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{B}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lab}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k+kt}{border}\PYG{+w}{ }\PYG{k+kp}{A}\PYG{err}{\PYGZsh{}}\PYG{k+kp}{B}\PYG{p}{(}\PYG{k+kp}{t}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{=}\PYG{l+m+mf}{1.}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{t}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kr}{x}\PYG{o}{=}\PYG{k+kp}{A}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{x}\PYG{o}{*}\PYG{n}{t1}\PYG{o}{+}\PYG{k+kp}{B}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{x}\PYG{o}{*}\PYG{k+kp}{t}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kr}{y}\PYG{o}{=}\PYG{k+kp}{A}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{y}\PYG{o}{*}\PYG{n}{t1}\PYG{o}{+}\PYG{k+kp}{B}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{y}\PYG{o}{*}\PYG{k+kp}{t}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kr}{label}\PYG{o}{=}\PYG{n}{lab}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{c+c1}{//EOM}
+\PYG{c+c1}{// compute \PYGZbs{}||AB|\PYGZbs{}| A=(ax,ay) et B =(bx,by)}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{ax}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ay}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{bx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{by}\PYG{p}{)}
+\PYG{+w}{    }\PYG{n+nf}{sqrt}\PYG{p}{(}\PYG{n+nf}{square}\PYG{p}{(}\PYG{p}{(}\PYG{n}{ax}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{bx}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{square}\PYG{p}{(}\PYG{p}{(}\PYG{n}{ay}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{n}{by}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{//EOM}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//EOM}
 
-// Parameters
-int n = 10;
-real Ax = 0.9, Ay = 1;
-real Bx = 2, By = 1;
-real Cx = 2.5, Cy = 2.5;
-real Dx = 1, Dy = 2;
-real gx = (Ax+Bx+Cx+Dx)/4.;
-real gy = (Ay+By+Cy+Dy)/4.;
+\PYG{c+c1}{// Parameters}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{k+kr}{n}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{Ax}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.9}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Ay}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{Bx}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{By}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{Cx}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{2.5}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Cy}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{2.5}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{Dx}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Dy}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{gx}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{Ax}\PYG{o}{+}\PYG{n}{Bx}\PYG{o}{+}\PYG{n}{Cx}\PYG{o}{+}\PYG{n}{Dx}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mf}{4.}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{gy}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{Ay}\PYG{o}{+}\PYG{n}{By}\PYG{o}{+}\PYG{n}{Cy}\PYG{o}{+}\PYG{n}{Dy}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mf}{4.}\PYG{p}{;}
 
-// Mesh
-LINEBORDER(A,B,1)
-LINEBORDER(B,C,2)
-LINEBORDER(C,D,3)
-LINEBORDER(D,A,4)
-mesh Th=buildmesh(AB(n)+BC(n)+CD(n)+DA(n),fixedborder=1);
+\PYG{c+c1}{// Mesh}
+\PYG{n}{LINEBORDER}\PYG{p}{(}\PYG{k+kp}{A}\PYG{p}{,}\PYG{k+kp}{B}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{LINEBORDER}\PYG{p}{(}\PYG{k+kp}{B}\PYG{p}{,}\PYG{n}{C}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}
+\PYG{n}{LINEBORDER}\PYG{p}{(}\PYG{n}{C}\PYG{p}{,}\PYG{n}{D}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{LINEBORDER}\PYG{p}{(}\PYG{n}{D}\PYG{p}{,}\PYG{k+kp}{A}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{Th}\PYG{o}{=}\PYG{n+nf}{buildmesh}\PYG{p}{(}\PYG{n}{AB}\PYG{p}{(}\PYG{k+kr}{n}\PYG{p}{)}\PYG{o}{+}\PYG{n}{BC}\PYG{p}{(}\PYG{k+kr}{n}\PYG{p}{)}\PYG{o}{+}\PYG{n}{CD}\PYG{p}{(}\PYG{k+kr}{n}\PYG{p}{)}\PYG{o}{+}\PYG{n}{DA}\PYG{p}{(}\PYG{k+kr}{n}\PYG{p}{)}\PYG{p}{,}\PYG{k+kp}{fixedborder}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
 
-// Fespace
-real l1 = dist(Ax,Ay,Bx,By);
-real l2 = dist(Bx,By,Cx,Cy);
-real l3 = dist(Cx,Cy,Dx,Dy);
-real l4 = dist(Dx,Dy,Ax,Ay);
-func s1 = dist(Ax,Ay,x,y)/l1; //absisse on AB = ||AX||/||AB||
-func s2 = dist(Bx,By,x,y)/l2; //absisse on BC = ||BX||/||BC||
-func s3 = dist(Cx,Cy,x,y)/l3; //absisse on CD = ||CX||/||CD||
-func s4 = dist(Dx,Dy,x,y)/l4; //absisse on DA = ||DX||/||DA||
-verbosity = 6; //to see the abscisse value of the periodic condition
-fespace Vh(Th, P1, periodic=[[1, s1], [3, s3], [2, s2], [4, s4]]);
-verbosity = 1; //reset verbosity
-Vh u, v;
+\PYG{c+c1}{// Fespace}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{k+kr}{l1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{Ax}\PYG{p}{,}\PYG{n}{Ay}\PYG{p}{,}\PYG{n}{Bx}\PYG{p}{,}\PYG{n}{By}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{k+kr}{l2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{Bx}\PYG{p}{,}\PYG{n}{By}\PYG{p}{,}\PYG{n}{Cx}\PYG{p}{,}\PYG{n}{Cy}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{l3}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{Cx}\PYG{p}{,}\PYG{n}{Cy}\PYG{p}{,}\PYG{n}{Dx}\PYG{p}{,}\PYG{n}{Dy}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{l4}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{Dx}\PYG{p}{,}\PYG{n}{Dy}\PYG{p}{,}\PYG{n}{Ax}\PYG{p}{,}\PYG{n}{Ay}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{s1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{Ax}\PYG{p}{,}\PYG{n}{Ay}\PYG{p}{,}\PYG{k+kr}{x}\PYG{p}{,}\PYG{k+kr}{y}\PYG{p}{)}\PYG{o}{/}\PYG{k+kr}{l1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//absisse on AB = ||AX||/||AB||}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{s2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{Bx}\PYG{p}{,}\PYG{n}{By}\PYG{p}{,}\PYG{k+kr}{x}\PYG{p}{,}\PYG{k+kr}{y}\PYG{p}{)}\PYG{o}{/}\PYG{k+kr}{l2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//absisse on BC = ||BX||/||BC||}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{s3}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{Cx}\PYG{p}{,}\PYG{n}{Cy}\PYG{p}{,}\PYG{k+kr}{x}\PYG{p}{,}\PYG{k+kr}{y}\PYG{p}{)}\PYG{o}{/}\PYG{n}{l3}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//absisse on CD = ||CX||/||CD||}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{s4}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{dist}\PYG{p}{(}\PYG{n}{Dx}\PYG{p}{,}\PYG{n}{Dy}\PYG{p}{,}\PYG{k+kr}{x}\PYG{p}{,}\PYG{k+kr}{y}\PYG{p}{)}\PYG{o}{/}\PYG{n}{l4}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//absisse on DA = ||DX||/||DA||}
+\PYG{k+kr}{verbosity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//to see the abscisse value of the periodic condition}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Vh}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nc}{P1}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{periodic}\PYG{o}{=}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{s1}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{s3}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{s2}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{s4}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kr}{verbosity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{//reset verbosity}
+\PYG{n}{Vh}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{;}
 
-real cc = 0;
-cc = int2d(Th)((x\PYGZhy{}gx)*(y\PYGZhy{}gy)\PYGZhy{}cc)/Th.area;
-cout \PYGZlt{}\PYGZlt{} \PYGZdq{}compatibility = \PYGZdq{} \PYGZlt{}\PYGZlt{} int2d(Th)((x\PYGZhy{}gx)*(y\PYGZhy{}gy)\PYGZhy{}cc) \PYGZlt{}\PYGZlt{}endl;
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{cc}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{n}{cc}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{gx}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{\PYGZhy{}}\PYG{n}{gy}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{cc}\PYG{p}{)}\PYG{o}{/}\PYG{n}{Th}\PYG{p}{.}\PYG{k+kr}{area}\PYG{p}{;}
+\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{compatibility = }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{gx}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{\PYGZhy{}}\PYG{n}{gy}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{cc}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{k+kr}{endl}\PYG{p}{;}
 
-// Problem
-solve Poisson (u, v)
-    = int2d(Th)(
-        Grad(u)\PYGZsq{}*Grad(v)
-        + 1e\PYGZhy{}10*u*v
-    )
-    \PYGZhy{}int2d(Th)(
-        10*v*((x\PYGZhy{}gx)*(y\PYGZhy{}gy)\PYGZhy{}cc)
-    )
-    ;
+\PYG{c+c1}{// Problem}
+\PYG{k+kt}{solve}\PYG{+w}{ }\PYG{n}{Poisson}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{)}
+\PYG{+w}{    }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{o}{\PYGZsq{}}\PYG{o}{*}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
+\PYG{+w}{        }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mf}{1e\PYGZhy{}10}\PYG{o}{*}\PYG{n}{u}\PYG{o}{*}\PYG{n}{v}
+\PYG{+w}{    }\PYG{p}{)}
+\PYG{+w}{    }\PYG{o}{\PYGZhy{}}\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{        }\PYG{l+m+mi}{10}\PYG{o}{*}\PYG{n}{v}\PYG{o}{*}\PYG{p}{(}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{\PYGZhy{}}\PYG{n}{gx}\PYG{p}{)}\PYG{o}{*}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{\PYGZhy{}}\PYG{n}{gy}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{cc}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{;}
 
-// Plot
-plot(u, value=true);
+\PYG{c+c1}{// Plot}
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{value}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 \end{sphinxadmonition}
 
@@ -51852,82 +51856,82 @@ The sphere is 36 micrometer in diameter, the refractive index is 1.46, the bound
 \subsection{Cavity}
 \label{\detokenize{examples/misc:cavity}}\label{\detokenize{examples/misc:examplecavity}}\label{\detokenize{examples/misc:Stokes3d}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-//Parameters
-int m = 300;
-real L = 1;
-real rho = 500.;
-real mu = 0.1;
+\PYG{c+c1}{//Parameters}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{k+kr}{m}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{300}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{L}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{rho}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{500.}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{mu}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}
 
-real uin = 1;
-func fx = 0;
-func fy = 0;
-int[int] noslip = [1, 2, 4];
-int[int] inflow = [3];
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{uin}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{fx}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{fy}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k+kt}{int}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{noslip}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{;}
+\PYG{k+kt}{int}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{inflow}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{;}
 
-real dt = 0.1;
-real T = 50;
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{dt}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0.1}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{T}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{50}\PYG{p}{;}
 
-real eps = 1e\PYGZhy{}3;
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{k+kp}{eps}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{1e\PYGZhy{}3}\PYG{p}{;}
 
-//Macros
-macro div(u) (dx(u\PYGZsh{}x) + dy(u\PYGZsh{}y))//
-macro grad(u) [dx(u), dy(u)]//
-macro Grad(u) [grad(u\PYGZsh{}x), grad(u\PYGZsh{}y)]//
+\PYG{c+c1}{//Macros}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{div}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{u}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{x}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{u}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{)}\PYG{c+c1}{//}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{]}\PYG{c+c1}{//}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{grad}\PYG{p}{(}\PYG{n}{u}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{x}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{u}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{]}\PYG{c+c1}{//}
 
-//Time
-real cpu;
-real tabcpu;
+\PYG{c+c1}{//Time}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{cpu}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{tabcpu}\PYG{p}{;}
 
-//mesh
-border C1(t = 0, L)\PYGZob{} x = t; y = 0; label = 1; \PYGZcb{}
-border C2(t = 0, L)\PYGZob{} x = L; y = t; label = 2; \PYGZcb{}
-border C3(t = 0, L)\PYGZob{} x = L\PYGZhy{}t; y = L; label = 3; \PYGZcb{}
-border C4(t = 0, L)\PYGZob{} x = 0; y = L\PYGZhy{}t; label = 4; \PYGZcb{}
-mesh th = buildmesh( C1(m) + C2(m) + C3(m) + C4(m) );
+\PYG{c+c1}{//mesh}
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{C1}\PYG{p}{(}\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{L}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k+kr}{x}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kp}{t}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{C2}\PYG{p}{(}\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{L}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k+kr}{x}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{L}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kp}{t}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{C3}\PYG{p}{(}\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{L}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k+kr}{x}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{L}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{t}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{L}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{C4}\PYG{p}{(}\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{L}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k+kr}{x}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{L}\PYG{o}{\PYGZhy{}}\PYG{k+kp}{t}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{label}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{th}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{buildmesh}\PYG{p}{(}\PYG{+w}{ }\PYG{n}{C1}\PYG{p}{(}\PYG{k+kr}{m}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{C2}\PYG{p}{(}\PYG{k+kr}{m}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{C3}\PYG{p}{(}\PYG{k+kr}{m}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{C4}\PYG{p}{(}\PYG{k+kr}{m}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{)}\PYG{p}{;}
 
-fespace UPh(th, [P2,P2,P1]);
-UPh [ux, uy, p];
-UPh [uhx, uhy, ph];
-UPh [upx, upy, pp];
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{UPh}\PYG{p}{(}\PYG{n}{th}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nc}{P2}\PYG{p}{,}\PYG{n+nc}{P2}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{UPh}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{ux}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{]}\PYG{p}{;}
+\PYG{n}{UPh}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{uhx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uhy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ph}\PYG{p}{]}\PYG{p}{;}
+\PYG{n}{UPh}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{upx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{upy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pp}\PYG{p}{]}\PYG{p}{;}
 
-//Solve
-varf navierstokes([ux, uy, p], [uhx, uhy, ph])
-  = int2d(th)(
-      rho/dt* [ux, uy]\PYGZsq{}* [uhx, uhy]
-    + mu* (Grad(u):Grad(uh))
-    \PYGZhy{} p* div(uh)
-    \PYGZhy{} ph* div(u)
-    \PYGZhy{} 1e\PYGZhy{}10 *p*ph
-    )
+\PYG{c+c1}{//Solve}
+\PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n}{navierstokes}\PYG{p}{(}\PYG{p}{[}\PYG{n}{ux}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{uhx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uhy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ph}\PYG{p}{]}\PYG{p}{)}
+\PYG{+w}{  }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{th}\PYG{p}{)}\PYG{p}{(}
+\PYG{+w}{      }\PYG{n}{rho}\PYG{o}{/}\PYG{n}{dt}\PYG{o}{*}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{ux}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uy}\PYG{p}{]}\PYG{o}{\PYGZsq{}}\PYG{o}{*}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{uhx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uhy}\PYG{p}{]}
+\PYG{+w}{    }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{mu}\PYG{o}{*}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{o}{:}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{uh}\PYG{p}{)}\PYG{p}{)}
+\PYG{+w}{    }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{p}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{div}\PYG{p}{(}\PYG{n}{uh}\PYG{p}{)}
+\PYG{+w}{    }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{ph}\PYG{o}{*}\PYG{+w}{ }\PYG{n}{div}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
+\PYG{+w}{    }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m+mf}{1e\PYGZhy{}10}\PYG{+w}{ }\PYG{o}{*}\PYG{n}{p}\PYG{o}{*}\PYG{n}{ph}
+\PYG{+w}{    }\PYG{p}{)}
 
-  + int2d(th) (
-      [fx, fy]\PYGZsq{} * [uhx, uhy]
-    + rho/dt* [convect([upx, upy], \PYGZhy{}dt, upx), convect([upx, upy], \PYGZhy{}dt, upy)]\PYGZsq{}* [uhx, uhy]
-    )
+\PYG{+w}{  }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{th}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{      }\PYG{p}{[}\PYG{n}{fx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{fy}\PYG{p}{]}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{uhx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uhy}\PYG{p}{]}
+\PYG{+w}{    }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{rho}\PYG{o}{/}\PYG{n}{dt}\PYG{o}{*}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nf}{convect}\PYG{p}{(}\PYG{p}{[}\PYG{n}{upx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{upy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{dt}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{upx}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{convect}\PYG{p}{(}\PYG{p}{[}\PYG{n}{upx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{upy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{dt}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{upy}\PYG{p}{)}\PYG{p}{]}\PYG{o}{\PYGZsq{}}\PYG{o}{*}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{uhx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uhy}\PYG{p}{]}
+\PYG{+w}{    }\PYG{p}{)}
 
-  + on(noslip, ux=0, uy=0)
-  + on(inflow, ux=uin, uy=0)
-  ;
+\PYG{+w}{  }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{noslip}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ux}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uy}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{  }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{n}{inflow}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ux}\PYG{o}{=}\PYG{n}{uin}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uy}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{)}
+\PYG{+w}{  }\PYG{p}{;}
 
-//Initialization
-[ux, uy, p]=[0, 0, 0];
+\PYG{c+c1}{//Initialization}
+\PYG{p}{[}\PYG{n}{ux}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{]}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{;}
 
-matrix\PYGZlt{}real\PYGZgt{} NS = navierstokes(UPh, UPh, solver=sparsesolver);
-real[int] NSrhs = navierstokes(0, UPh);
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{real}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{NS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{navierstokes}\PYG{p}{(}\PYG{n}{UPh}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{UPh}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{solver}\PYG{o}{=}\PYG{k+kr}{sparsesolver}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{NSrhs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{navierstokes}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{UPh}\PYG{p}{)}\PYG{p}{;}
 
-//Time loop
-for(int j = 0; j \PYGZlt{} T/dt; j++)\PYGZob{}
-  [upx, upy, pp]=[ux, uy, p];
+\PYG{c+c1}{//Time loop}
+\PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{T}\PYG{o}{/}\PYG{n}{dt}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{j}\PYG{o}{+}\PYG{o}{+}\PYG{p}{)}\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{p}{[}\PYG{n}{upx}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{upy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pp}\PYG{p}{]}\PYG{o}{=}\PYG{p}{[}\PYG{n}{ux}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uy}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{]}\PYG{p}{;}
 
-  NSrhs = navierstokes(0, UPh);
-  ux[] = NS\PYGZca{}\PYGZhy{}1 * NSrhs;
+\PYG{+w}{  }\PYG{n}{NSrhs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{navierstokes}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{UPh}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{  }\PYG{n}{ux}\PYG{p}{[}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{NS}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{NSrhs}\PYG{p}{;}
 
-  plot( [ux,uy], p, wait=0, cmm=j);
-\PYGZcb{}
+\PYG{+w}{  }\PYG{n+nf}{plot}\PYG{p}{(}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{ux}\PYG{p}{,}\PYG{n}{uy}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{wait}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{cmm}\PYG{o}{=}\PYG{n}{j}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
 
-//CPU
-cout \PYGZlt{}\PYGZlt{} \PYGZdq{} CPU = \PYGZdq{} \PYGZlt{}\PYGZlt{} clock()\PYGZhy{}cpu \PYGZlt{}\PYGZlt{} endl ;
-tabcpu = clock()\PYGZhy{}cpu;
+\PYG{c+c1}{//CPU}
+\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ CPU = }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{clock}\PYG{p}{(}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{cpu}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{+w}{ }\PYG{p}{;}
+\PYG{n}{tabcpu}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{clock}\PYG{p}{(}\PYG{p}{)}\PYG{o}{\PYGZhy{}}\PYG{n}{cpu}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 \sphinxstepscope
@@ -55563,163 +55567,163 @@ The arguments can be used in the script with:
 \subsection{Macro}
 \label{\detokenize{examples/developers:macro}}\label{\detokenize{examples/developers:examplemacro}}
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-// Macro without parameters
-macro xxx() \PYGZob{}
-    real i = 0;
-    int j = 0;
-    cout \PYGZlt{}\PYGZlt{} i \PYGZlt{}\PYGZlt{} \PYGZdq{} \PYGZdq{} \PYGZlt{}\PYGZlt{} j \PYGZlt{}\PYGZlt{} endl;
-\PYGZcb{}//
+\PYG{c+c1}{// Macro without parameters}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n+nf}{xxx}\PYG{p}{(}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}\PYG{c+c1}{//}
 
-xxx
+\PYG{n}{xxx}
 
-// Macro with parameters
-macro toto(i) i //
+\PYG{c+c1}{// Macro with parameters}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{toto}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{c+c1}{//}
 
-toto(\PYGZob{}real i = 0; int j = 0; cout \PYGZlt{}\PYGZlt{} i \PYGZlt{}\PYGZlt{} \PYGZdq{} \PYGZdq{} \PYGZlt{}\PYGZlt{} j \PYGZlt{}\PYGZlt{} endl;\PYGZcb{})
+\PYG{n}{toto}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}\PYG{p}{\PYGZcb{}}\PYG{p}{)}
 
-// Macro as parameter of a macro
-real[int,int] CC(7, 7), EE(6, 3), EEps(4, 4);
+\PYG{c+c1}{// Macro as parameter of a macro}
+\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{,}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{7}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EEps}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{;}
 
-macro VIL6(v, i) [v(1,i), v(2,i), v(4,i), v(5,i), v(6,i)] //
-macro VIL3(v, i) [v(1,i), v(2,i)] //
-macro VV6(v, vv) [
-    v(vv,1), v(vv,2),
-    v(vv,4), v(vv,5),
-    v(vv,6)] //
-macro VV3(v, vv) [v(vv,1), v(vv,2)] //
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{VIL6}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{VIL3}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{VV6}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{vv}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}
+\PYG{+w}{    }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{VV3}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{vv}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
 
-func C5x5 = VV6(VIL6, CC);
-func E5x2 = VV6(VIL3, EE);
-func Eps = VV3(VIL3, EEps);
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{C5x5}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{VV6}\PYG{p}{(}\PYG{n}{VIL6}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{E5x2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{VV6}\PYG{p}{(}\PYG{n}{VIL3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EE}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{Eps}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{VV3}\PYG{p}{(}\PYG{n}{VIL3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EEps}\PYG{p}{)}\PYG{p}{;}
 
-// Macro concatenation
-mesh Th = square(2, 2);
-fespace Vh(Th, P1);
-Vh Ux=x, Uy=y;
+\PYG{c+c1}{// Macro concatenation}
+\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{Th}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{square}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Vh}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{Vh}\PYG{+w}{ }\PYG{n}{Ux}\PYG{o}{=}\PYG{k+kr}{x}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{o}{=}\PYG{k+kr}{y}\PYG{p}{;}
 
-macro div(V) (dx(V\PYGZsh{}x) + dy(V\PYGZsh{}y)) //
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{div}\PYG{p}{(}\PYG{n}{V}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{V}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{x}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{V}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{//}
 
-cout \PYGZlt{}\PYGZlt{} int2d(Th)(div(U)) \PYGZlt{}\PYGZlt{} endl;
+\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}\PYG{n}{div}\PYG{p}{(}\PYG{n}{U}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
 
-// Verify the quoting
-macro foo(i, j, k) i j k //
-foo(, , )
-foo(\PYGZob{}int[\PYGZcb{}, \PYGZob{}int] a(10\PYGZcb{}, \PYGZob{});\PYGZcb{})
+\PYG{c+c1}{// Verify the quoting}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{foo}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{j}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{k}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{n}{foo}\PYG{p}{(}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{ }\PYG{p}{)}
+\PYG{n}{foo}\PYG{p}{(}\PYG{p}{\PYGZob{}}\PYG{k+kt}{int}\PYG{p}{[}\PYG{p}{\PYGZcb{}}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{\PYGZcb{}}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{p}{)}\PYG{p}{;}\PYG{p}{\PYGZcb{}}\PYG{p}{)}
 
-//NewMacro \PYGZhy{} EndMacro
-NewMacro grad(u) [dx(u), dy(u)] EndMacro
-cout \PYGZlt{}\PYGZlt{} int2d(Th)(grad(Ux)\PYGZsq{} * grad(Uy)) \PYGZlt{}\PYGZlt{} endl;
+\PYG{c+c1}{//NewMacro \PYGZhy{} EndMacro}
+\PYG{k+kt}{NewMacro}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{k+kt}{EndMacro}
+\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}\PYG{n}{grad}\PYG{p}{(}\PYG{n}{Ux}\PYG{p}{)}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{Uy}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
 
-// IFMACRO \PYGZhy{} ENDIFMACRO
-macro AA CAS1 //
+\PYG{c+c1}{// IFMACRO \PYGZhy{} ENDIFMACRO}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{AA}\PYG{+w}{ }\PYG{n}{CAS1}\PYG{+w}{ }\PYG{c+c1}{//}
 
-IFMACRO(AA,CAS1 )
-cout \PYGZlt{}\PYGZlt{} \PYGZdq{}AA = \PYGZdq{} \PYGZlt{}\PYGZlt{} Stringification(AA) \PYGZlt{}\PYGZlt{} endl;
-macro CASE file1.edp//
-ENDIFMACRO
-IFMACRO(AA, CAS2)
-macro CASE file2.edp//
-ENDIFMACRO
+\PYG{c+cp}{IFMACRO}\PYG{p}{(}\PYG{n}{AA}\PYG{p}{,}\PYG{n}{CAS1}\PYG{+w}{ }\PYG{p}{)}
+\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{AA = }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{Stringification}\PYG{p}{(}\PYG{n}{AA}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{CASE}\PYG{+w}{ }\PYG{n}{file1}\PYG{p}{.}\PYG{n}{edp}\PYG{c+c1}{//}
+\PYG{c+cp}{ENDIFMACRO}
+\PYG{c+cp}{IFMACRO}\PYG{p}{(}\PYG{n}{AA}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{CAS2}\PYG{p}{)}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{CASE}\PYG{+w}{ }\PYG{n}{file2}\PYG{p}{.}\PYG{n}{edp}\PYG{c+c1}{//}
+\PYG{c+cp}{ENDIFMACRO}
 
-cout \PYGZlt{}\PYGZlt{} \PYGZdq{}CASE = \PYGZdq{} \PYGZlt{}\PYGZlt{} Stringification(CASE) \PYGZlt{}\PYGZlt{} endl;
+\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{CASE = }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{Stringification}\PYG{p}{(}\PYG{n}{CASE}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
 
-IFMACRO(CASE)
-include Stringification(CASE)
-ENDIFMACRO
+\PYG{c+cp}{IFMACRO}\PYG{p}{(}\PYG{n}{CASE}\PYG{p}{)}
+\PYG{c+cp}{include}\PYG{+w}{ }\PYG{n+nf}{Stringification}\PYG{p}{(}\PYG{n}{CASE}\PYG{p}{)}
+\PYG{c+cp}{ENDIFMACRO}
 
-// FILE \PYGZhy{} LINE
-cout \PYGZlt{}\PYGZlt{} \PYGZdq{}In \PYGZdq{} \PYGZlt{}\PYGZlt{} FILE \PYGZlt{}\PYGZlt{} \PYGZdq{}, line \PYGZdq{} \PYGZlt{}\PYGZlt{} LINE \PYGZlt{}\PYGZlt{} endl;
+\PYG{c+c1}{// FILE \PYGZhy{} LINE}
+\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{In }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{FILE}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{, line }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{LINE}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
 The output script generated with macros is:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-1 : // Macro without parameters
-2 :  macro xxx \PYGZob{}
-3 :     real i = 0;
-4 :     int j = 0;
-5 :     cout \PYGZlt{}\PYGZlt{} i \PYGZlt{}\PYGZlt{} \PYGZdq{} \PYGZdq{} \PYGZlt{}\PYGZlt{} j \PYGZlt{}\PYGZlt{} endl;
-6 : \PYGZcb{}//
-7 :
-8 :
-1 :
-2 :
-3 :
-4 :  \PYGZob{}
-1 :     real i = 0;
-2 :     int j = 0;
-3 :     cout \PYGZlt{}\PYGZlt{} i \PYGZlt{}\PYGZlt{} \PYGZdq{} \PYGZdq{} \PYGZlt{}\PYGZlt{} j \PYGZlt{}\PYGZlt{} endl;
-4 : \PYGZcb{}
-9 :
-10 : // Macro with parameters
-11 :  macro toto(i )   i //
-12 :
-13 :                    real i = 0; int j = 0; cout \PYGZlt{}\PYGZlt{} i \PYGZlt{}\PYGZlt{} \PYGZdq{} \PYGZdq{} \PYGZlt{}\PYGZlt{} j \PYGZlt{}\PYGZlt{} endl;
-14 :
-15 : // Macro as parameter of a macro
-16 : real[int,int] CC(7, 7), EE(6, 3), EEps(4, 4);
-17 :
-18 :   macro VIL6(v,i )   [v(1,i), v(2,i), v(4,i), v(5,i), v(6,i)] //
-19 :   macro VIL3(v,i )   [v(1,i), v(2,i)] //
-20 :   macro VV6(v,vv )   [
-21 :    v(vv,1), v(vv,2),
-22 :    v(vv,4), v(vv,5),
-23 :    v(vv,6)] //
-24 :   macro VV3(v,vv )   [v(vv,1), v(vv,2)] //
-25 :
-26 : func C5x5 =
-1 :
-2 :
-3 :       [
-1 :             [ CC(1,1),  CC(2,1),  CC(4,1),  CC(5,1),  CC(6,1)] ,         [ CC(1,2),  CC(2,2),  CC(4,2),  CC(5,2),  CC(6,2)] ,
-2 :             [ CC(1,4),  CC(2,4),  CC(4,4),  CC(5,4),  CC(6,4)] ,         [ CC(1,5),  CC(2,5),  CC(4,5),  CC(5,5),  CC(6,5)] ,
-3 :             [ CC(1,6),  CC(2,6),  CC(4,6),  CC(5,6),  CC(6,6)] ] ;
-27 : func E5x2 =
-1 :
-2 :
-3 :       [
-1 :          [ EE(1,1),  EE(2,1)] ,      [ EE(1,2),  EE(2,2)] ,
-2 :          [ EE(1,4),  EE(2,4)] ,      [ EE(1,5),  EE(2,5)] ,
-3 :          [ EE(1,6),  EE(2,6)] ] ;
-28 : func Eps =      [     [ EEps(1,1),  EEps(2,1)] ,      [ EEps(1,2),  EEps(2,2)] ] ;
-29 :
-30 : // Macro concatenation
-31 : mesh Th = square(2, 2);
-32 : fespace Vh(Th, P1);
-33 : Vh Ux=x, Uy=y;
-34 :
-35 :  macro div(V )   (dx(V\PYGZsh{}x) + dy(V\PYGZsh{}y)) //
-36 :
-37 : cout \PYGZlt{}\PYGZlt{} int2d(Th)(     (dx(Ux) + dy(Uy)) ) \PYGZlt{}\PYGZlt{} endl;
-38 :
-39 : // Verify the quoting
-40 :    macro foo(i,j,k )   i j k //
-41 :
-42 :         int[ int] a(10 );
-43 :
-44 : //NewMacro \PYGZhy{} EndMacro
-45 :  macro grad(u )   [dx(u), dy(u)]
-46 : cout \PYGZlt{}\PYGZlt{} int2d(Th)(    [dx(Ux), dy(Ux)] \PYGZsq{} *     [dx(Uy), dy(Uy)] ) \PYGZlt{}\PYGZlt{} endl;
-47 :
-48 : // IFMACRO \PYGZhy{} ENDIFMACRO
-49 :   macro AACAS1 //
-50 :
-51 :
-1 : cout \PYGZlt{}\PYGZlt{} \PYGZdq{}AA = \PYGZdq{} \PYGZlt{}\PYGZlt{} Stringification( CAS1 ) \PYGZlt{}\PYGZlt{} endl;
-2 :   macro CASEfile1.edp//
-3 :
-52 :
-53 :
-54 : cout \PYGZlt{}\PYGZlt{} \PYGZdq{}CASE = \PYGZdq{} \PYGZlt{}\PYGZlt{} Stringification(file1.edp) \PYGZlt{}\PYGZlt{} endl;
-55 :
-56 :
-1 : include Stringification(file1.edp)cout \PYGZlt{}\PYGZlt{} \PYGZdq{}This is the file 1\PYGZdq{} \PYGZlt{}\PYGZlt{} endl;
-2 :
-2 :
-57 :
-58 : // FILE \PYGZhy{} LINE
-59 : cout \PYGZlt{}\PYGZlt{} \PYGZdq{}In \PYGZdq{} \PYGZlt{}\PYGZlt{} FILE \PYGZlt{}\PYGZlt{} \PYGZdq{}, line \PYGZdq{} \PYGZlt{}\PYGZlt{} LINE \PYGZlt{}\PYGZlt{} endl;
+\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{c+c1}{// Macro without parameters}
+\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{  }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{xxx}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{     }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{l+m+mi}{4}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{     }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{l+m+mi}{5}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{     }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{l+m+mi}{6}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{c+c1}{//}
+\PYG{l+m+mi}{7}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{8}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{4}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{  }\PYG{p}{\PYGZob{}}
+\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{     }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{     }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{     }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{l+m+mi}{4}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{l+m+mi}{9}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{10}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{c+c1}{// Macro with parameters}
+\PYG{l+m+mi}{11}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{  }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{toto}\PYG{p}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{   }\PYG{n}{i}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{l+m+mi}{12}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{13}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{                    }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{l+m+mi}{14}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{15}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{c+c1}{// Macro as parameter of a macro}
+\PYG{l+m+mi}{16}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{,}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{7}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{EEps}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m+mi}{17}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{18}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{   }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{VIL6}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{n}{i}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{   }\PYG{p}{[}\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{l+m+mi}{19}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{   }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{VIL3}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{n}{i}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{   }\PYG{p}{[}\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{n}{i}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{l+m+mi}{20}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{   }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{VV6}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{n}{vv}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{   }\PYG{p}{[}
+\PYG{l+m+mi}{21}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{    }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}
+\PYG{l+m+mi}{22}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{    }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{,}
+\PYG{l+m+mi}{23}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{    }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{l+m+mi}{24}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{   }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{VV3}\PYG{p}{(}\PYG{n}{v}\PYG{p}{,}\PYG{n}{vv}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{   }\PYG{p}{[}\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{(}\PYG{n}{vv}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{l+m+mi}{25}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{26}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{C5x5}\PYG{+w}{ }\PYG{o}{=}
+\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{       }\PYG{p}{[}
+\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{             }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{         }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{,}
+\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{             }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{         }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{,}
+\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{             }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{CC}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{]}\PYG{+w}{ }\PYG{p}{;}
+\PYG{l+m+mi}{27}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{E5x2}\PYG{+w}{ }\PYG{o}{=}
+\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{       }\PYG{p}{[}
+\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{          }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{      }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{,}
+\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{          }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{      }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{,}
+\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{          }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{EE}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{]}\PYG{+w}{ }\PYG{p}{;}
+\PYG{l+m+mi}{28}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{Eps}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{      }\PYG{p}{[}\PYG{+w}{     }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{EEps}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{EEps}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{,}\PYG{+w}{      }\PYG{p}{[}\PYG{+w}{ }\PYG{n}{EEps}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{  }\PYG{n}{EEps}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{]}\PYG{+w}{ }\PYG{p}{;}
+\PYG{l+m+mi}{29}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{30}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{c+c1}{// Macro concatenation}
+\PYG{l+m+mi}{31}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{Th}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{square}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m+mi}{32}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{Vh}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m+mi}{33}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{Vh}\PYG{+w}{ }\PYG{n}{Ux}\PYG{o}{=}\PYG{k+kr}{x}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Uy}\PYG{o}{=}\PYG{k+kr}{y}\PYG{p}{;}
+\PYG{l+m+mi}{34}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{35}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{  }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{div}\PYG{p}{(}\PYG{n}{V}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{   }\PYG{p}{(}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{V}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{x}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{V}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{l+m+mi}{36}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{37}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}\PYG{+w}{     }\PYG{p}{(}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{Ux}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{Uy}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{l+m+mi}{38}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{39}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{c+c1}{// Verify the quoting}
+\PYG{l+m+mi}{40}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{    }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{foo}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{,}\PYG{n}{k}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{   }\PYG{n}{i}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{l+m+mi}{41}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{42}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{         }\PYG{k+kt}{int}\PYG{p}{[}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{+w}{ }\PYG{p}{)}\PYG{p}{;}
+\PYG{l+m+mi}{43}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{44}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{c+c1}{//NewMacro \PYGZhy{} EndMacro}
+\PYG{l+m+mi}{45}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{  }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{u}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{   }\PYG{p}{[}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{]}
+\PYG{l+m+mi}{46}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}\PYG{+w}{    }\PYG{p}{[}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{Ux}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{Ux}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{     }\PYG{p}{[}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{Uy}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{Uy}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{l+m+mi}{47}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{48}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{c+c1}{// IFMACRO \PYGZhy{} ENDIFMACRO}
+\PYG{l+m+mi}{49}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{   }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{AACAS1}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{l+m+mi}{50}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{51}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{AA = }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{Stringification}\PYG{p}{(}\PYG{+w}{ }\PYG{n}{CAS1}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{   }\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{CASEfile1}\PYG{p}{.}\PYG{n}{edp}\PYG{c+c1}{//}
+\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{52}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{53}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{54}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{CASE = }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nf}{Stringification}\PYG{p}{(}\PYG{n}{file1}\PYG{p}{.}\PYG{n}{edp}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{l+m+mi}{55}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{56}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{c+cp}{include}\PYG{+w}{ }\PYG{n+nf}{Stringification}\PYG{p}{(}\PYG{n}{file1}\PYG{p}{.}\PYG{n}{edp}\PYG{p}{)}\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{This is the file 1}\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{2}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{57}\PYG{+w}{ }\PYG{o}{:}
+\PYG{l+m+mi}{58}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{c+c1}{// FILE \PYGZhy{} LINE}
+\PYG{l+m+mi}{59}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{In }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{FILE}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{, line }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{LINE}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
