@@ -26956,7 +26956,7 @@ Source code
 \subsection{Introduction to the Boundary Element Method (BEM)}
 \label{\detokenize{documentation/BEM:introduction-to-the-boundary-element-method-bem}}
 \sphinxAtStartPar
-This is a short overview of the Boundary Element Method, introduced through a simple model example. For a thorough mathematical description of the Boundary Element Method you can refer to the \sphinxhref{https://hal.archives-ouvertes.fr/tel-02922455}{PhD thesis of Pierre Marchand}. Some figures used in this documentation are taken from the manuscript.
+This is a short overview of the Boundary Element Method, introduced through a simple model example. For a thorough mathematical description of the Boundary Element Method you can refer to the \sphinxhref{https://hal.archives-ouvertes.fr/tel-02922455}{PhD thesis of Pierre Marchand}. Some figures used in this documentation are taken from the manuscript. All BEM examples in \sphinxstylestrong{FreeFEM} can be found in the \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/master/examples/bem}{examples/bem} subdirectory.
 
 
 \subsubsection{Model problem}
@@ -26986,14 +26986,14 @@ and where the total field \(u_\text{tot} = u_\text{inc} + u\).
 If the wavenumber \(k\) is \sphinxstylestrong{constant} in \(\mathbb{R}^3 \backslash \Omega\), the boundary element method can be applied. It consists in reformulating the problem in terms of unknowns on the boundary \(\Gamma\) of \(\Omega\).
 
 \sphinxAtStartPar
-First, let us introduce the \sphinxstyleemphasis{Green kernel} \(\mathcal{G}\), which for the helmholtz equation in 3D is
+First, let us introduce the \sphinxstyleemphasis{Green kernel} \(\mathcal{G}_{k}\), which for the helmholtz equation in 3D is
 \begin{equation}\label{equation:documentation/BEM:eq_p}
-\begin{split}\mathcal{G}(\boldsymbol{x}) = \exp(\imath k |\boldsymbol{x}|) / (4 \pi |\boldsymbol{x}|).\end{split}
+\begin{split}\mathcal{G}_{k}(\boldsymbol{x}) = \exp(\imath k |\boldsymbol{x}|) / (4 \pi |\boldsymbol{x}|).\end{split}
 \end{equation}
 \sphinxAtStartPar
 Let us also introduce the \sphinxstyleemphasis{Single Layer Potential} \(\operatorname{SL}\), which for any \(q \in H^{-1/2}(\Gamma)\) is defined as
 \begin{equation}\label{equation:documentation/BEM:eq_sl}
-\begin{split}\operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}), \quad \forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Gamma.\end{split}
+\begin{split}\operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}_{k}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}), \quad \forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Gamma.\end{split}
 \end{equation}
 \sphinxAtStartPar
 An interesting property of \(\text{SL}\) is that it produces solutions of the PDE at hand in \(\mathbb{R}^3 \backslash \Gamma\) which satisfy the necessary conditions at infinity (here the Helmholtz equation and the Sommerfeld radiation condition).
@@ -27001,7 +27001,7 @@ An interesting property of \(\text{SL}\) is that it produces solutions of the PD
 \sphinxAtStartPar
 Thus, we now need to find a so\sphinxhyphen{}called \sphinxstyleemphasis{ansatz} \(p \in H^{-1/2}(\Gamma)\) such that \(\forall \boldsymbol{x} \in \mathbb{R}^3 \backslash \Omega\)
 \begin{equation}\label{equation:documentation/BEM:eq_pv}
-\begin{split}u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}),\end{split}
+\begin{split}u(\boldsymbol{x}) = \operatorname{SL}(p)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}_{k}(\boldsymbol{x}-\boldsymbol{y}) p(\boldsymbol{y}) d\sigma(\boldsymbol{y}),\end{split}
 \end{equation}
 \sphinxAtStartPar
 where \(u\) also verifies the Dirichlet boundary condition \(u = - u_\text{inc}\) on \(\Gamma\).
@@ -27021,8 +27021,8 @@ Using the Dirichlet boundary condition \(u = - u_\text{inc}\) on \(\Gamma\), we 
 Note that knowing \(p\) on \(\Gamma\), we can indeed compute \(u\) anywhere using the \sphinxstyleemphasis{potential} formulation \eqref{equation:documentation/BEM:eq_pv}. Thus, we essentially gained one space dimension, as we only have to solve for \(p : \Gamma \rightarrow \mathbb{C}\) in \eqref{equation:documentation/BEM:eq_bem}. Another advantage of the boundary element method is that for a given mesh size, it is usually more accurate than the finite element method.
 
 \sphinxAtStartPar
-Of course, these benefits of the boundary element method come with a drawback: after discretization of \eqref{equation:documentation/BEM:eq_bem}, for example with piecewise linear continuous (P1) functions on \(\Gamma\), we end up with a linear system whose matrix is \sphinxstylestrong{full}: because \(\mathcal{G}(\boldsymbol{x}-\boldsymbol{y})\) never vanishes, every interaction coefficient is nonzero. Thus, the matrix \(A\) of the linear system can be very costly to store (\(N^2\) coefficients) and invert (factorization in \(\mathcal{O}(N^3)\)) (\(N\) is the size of the linear system).
-Moreover, compared to the finite element method, the matrix coefficients are much more expensive to compute because of the double integral and the evaluation of the Green function \(\mathcal{G}\). Plus, the choice of the quadrature formulas has to be made with extra care because of the singularity of \(\mathcal{G}\).
+Of course, these benefits of the boundary element method come with a drawback: after discretization of \eqref{equation:documentation/BEM:eq_bem}, for example with piecewise linear continuous (P1) functions on \(\Gamma\), we end up with a linear system whose matrix is \sphinxstylestrong{full}: because \(\mathcal{G}_{k}(\boldsymbol{x}-\boldsymbol{y})\) never vanishes, every interaction coefficient is nonzero. Thus, the matrix \(A\) of the linear system can be very costly to store (\(N^2\) coefficients) and invert (factorization in \(\mathcal{O}(N^3)\)) (\(N\) is the size of the linear system).
+Moreover, compared to the finite element method, the matrix coefficients are much more expensive to compute because of the double integral and the evaluation of the Green function \(\mathcal{G}_{k}\). Plus, the choice of the quadrature formulas has to be made with extra care because of the singularity of \(\mathcal{G}_{k}\).
 
 
 \subsubsection{Boundary Integral Operators}
@@ -27030,17 +27030,17 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 \sphinxAtStartPar
 In order to formulate our model Dirichlet problem, we have used the \sphinxstylestrong{Single Layer Potential} \(\operatorname{SL}\):
 \begin{equation*}
-\begin{split}q \mapsto \operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\end{split}
+\begin{split}q \mapsto \operatorname{SL}(q)(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}_{k}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\end{split}
 \end{equation*}
 \sphinxAtStartPar
 Depending on the choice of the boundary integral formulation or boundary condition, the \sphinxstylestrong{Double Layer Potential} \(\operatorname{DL}\) can also be of use:
 \begin{equation*}
-\begin{split}q \mapsto \operatorname{DL}(q)(\boldsymbol{x}) = \int_{\Gamma} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\end{split}
+\begin{split}q \mapsto \operatorname{DL}(q)(\boldsymbol{x}) = \int_{\Gamma} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}_{k}(\boldsymbol{x}-\boldsymbol{y}) q(\boldsymbol{y}) d\sigma(\boldsymbol{y}).\end{split}
 \end{equation*}
 \sphinxAtStartPar
 Similarly, we have used the \sphinxstylestrong{Single Layer Operator} \(\mathcal{SL}\) in our variational problem
 \begin{equation*}
-\begin{split}p, q \mapsto \mathcal{SL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y}).\end{split}
+\begin{split}p, q \mapsto \mathcal{SL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \mathcal{G}_{k}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y}).\end{split}
 \end{equation*}
 \sphinxAtStartPar
 There are three other building blocks that can be of use in the boundary element method, and depending on the problem and the choice of the formulation a boundary integral method makes use of one or a combination of these building blocks:
@@ -27048,17 +27048,17 @@ There are three other building blocks that can be of use in the boundary element
 \sphinxAtStartPar
 the \sphinxstylestrong{Double Layer Operator} \(\mathcal{DL}\):
 \begin{equation*}
-\begin{split}p, q \mapsto \mathcal{DL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\end{split}
+\begin{split}p, q \mapsto \mathcal{DL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}_{k}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\end{split}
 \end{equation*}
 \sphinxAtStartPar
 the \sphinxstylestrong{Transpose Double Layer Operator} \(\mathcal{TDL}\):
 \begin{equation*}
-\begin{split}p, q \mapsto \mathcal{TDL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\end{split}
+\begin{split}p, q \mapsto \mathcal{TDL}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y}) \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \mathcal{G}_{k}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\end{split}
 \end{equation*}
 \sphinxAtStartPar
 the \sphinxstylestrong{Hypersingular Operator} \(\mathcal{HS}\):
 \begin{equation*}
-\begin{split}p, q \mapsto \mathcal{HS}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y})  \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\end{split}
+\begin{split}p, q \mapsto \mathcal{HS}(p,q) = \int_{\Gamma \times \Gamma} p(\boldsymbol{x}) q(\boldsymbol{y})  \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{x})} \frac{\partial}{\partial \boldsymbol{n} (\boldsymbol{y})} \mathcal{G}_{k}(\boldsymbol{x - y}) d \sigma(\boldsymbol{x,y})\end{split}
 \end{equation*}
 
 \subsubsection{the BEMTool library}
@@ -27086,7 +27086,7 @@ both in 2D and in 3D
 
 
 \subsubsection{Hierarchical matrices}
-\label{\detokenize{documentation/BEM:hierarchical-matrices}}
+\label{\detokenize{documentation/BEM:hierarchical-matrices}}\label{\detokenize{documentation/BEM:bemintrohmatrices}}
 \sphinxAtStartPar
 Although \sphinxstylestrong{BEMTool} can compute the BEM matrix coefficients by accurately and efficiently evaluating the boundary integral operator, it is very costly and often prohibitive to compute and store all \(N^2\) coefficients of the matrix. Thus, we have to rely on a \sphinxstyleemphasis{matrix compression} technique. To do so, \sphinxstylestrong{FreeFEM} relies on the \sphinxstylestrong{Hierarchical Matrix}, or \sphinxstylestrong{H\sphinxhyphen{}Matrix} format.
 
@@ -27243,7 +27243,7 @@ In 3D, the geometry of the boundary surface can be discretized with a surface me
 \PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{R}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{r}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{h}\PYG{o}{=}\PYG{l+m+mf}{0.2}\PYG{p}{;}
 \PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nx}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{R}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{/}\PYG{n}{h}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ny}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{r}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{/}\PYG{n}{h}\PYG{p}{;}
 \PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{torex}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{R}\PYG{o}{+}\PYG{n}{r}\PYG{o}{*}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
-\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{tore}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{R}\PYG{o}{+}\PYG{n}{r}\PYG{o}{*}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{torey}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{R}\PYG{o}{+}\PYG{n}{r}\PYG{o}{*}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
 \PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{torez}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{r}\PYG{o}{*}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
 \PYG{n}{meshS}\PYG{+w}{ }\PYG{n}{ThS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{square3}\PYG{p}{(}\PYG{n}{nx}\PYG{p}{,}\PYG{n}{ny}\PYG{p}{,}\PYG{p}{[}\PYG{n}{torex}\PYG{p}{,}\PYG{n}{torey}\PYG{p}{,}\PYG{n}{torez}\PYG{p}{]}\PYG{p}{,}\PYG{n}{removeduplicate}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
@@ -27328,6 +27328,9 @@ with
 \(k \in \imath \mathbb{R}^*_+\) (Yukawa)
 
 \end{itemize}
+
+\sphinxAtStartPar
+FreeFEM can also solve Maxwell’s equations with the Electric Field Integral Equation (EFIE) formulation. More details are given in the section {\hyperref[\detokenize{documentation/BEM:bemmaxwell}]{\sphinxcrossref{\DUrole{std,std-ref}{BEM for Maxwell’s equations}}}}.
 
 \sphinxAtStartPar
 First, the BEM plugin needs to be loaded:
@@ -27418,7 +27421,7 @@ We can also define a linear combination of two BEM kernels, which is useful for 
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-As a starting point, you can find how to solve a 2D scattering problem by a disk using a \sphinxstylestrong{First kind}, \sphinxstylestrong{Second kind} and \sphinxstylestrong{Combined} formulation, for a Dirichlet (\sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples/mpi/Helmholtz\_circle\_Dirichlet.edp}{here}) and Neumann (\sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples/mpi/Helmholtz\_circle\_Neumann.edp}{here}) boundary condition.
+As a starting point, you can find how to solve a 2D scattering problem by a disk using a \sphinxstylestrong{First kind}, \sphinxstylestrong{Second kind} and \sphinxstylestrong{Combined} formulation, for a Dirichlet (\sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples/bem/Helmholtz\_circle\_Dirichlet\_all\_direct.edp}{here}) and Neumann (\sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples/bem/Helmholtz\_circle\_Neumann\_all\_direct.edp}{here}) boundary condition.
 
 
 \subsubsection{Assemble the H\sphinxhyphen{}Matrix}
@@ -27515,7 +27518,7 @@ Under the hood, \sphinxstylestrong{FreeFEM} solves the linear system with GMRES 
 
 
 \subsubsection{Compute the solution}
-\label{\detokenize{documentation/BEM:compute-the-solution}}
+\label{\detokenize{documentation/BEM:compute-the-solution}}\label{\detokenize{documentation/BEM:bemcomputesolution}}
 \sphinxAtStartPar
 Finally, knowing \(p\), we can compute the solution \(u\) of our initial problem \eqref{equation:documentation/BEM:eq_modelpb} using the Potential as in \eqref{equation:documentation/BEM:eq_pv}. As for the \sphinxcode{\sphinxupquote{%
 \PYG{n}{BemKernel}%
@@ -27576,6 +27579,7 @@ Let us summarize what we have learned with a 2D version of our {\hyperref[\detok
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{bem}\PYG{l+s}{\PYGZdq{}}
+\PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
 
 \PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}
 
@@ -27618,6 +27622,277 @@ Let us summarize what we have learned with a 2D version of our {\hyperref[\detok
 \end{sphinxVerbatim}
 
 \noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.800\linewidth]{{BEM_figcircle}.png}\hspace*{\fill}}
+
+
+\subsection{BEM for Maxwell’s equations}
+\label{\detokenize{documentation/BEM:bem-for-maxwell-s-equations}}\label{\detokenize{documentation/BEM:bemmaxwell}}
+\sphinxAtStartPar
+We can also use the boundary element method to solve the time\sphinxhyphen{}harmonic Maxwell’s equations of electromagnetism through the Electric Field Integral Equation (EFIE) formulation. Here again, we present the equations in the context of a scattering problem. We use \sphinxstylestrong{BemTool} notations for the EFIE.
+
+
+\subsubsection{EFIE for the scattering problem}
+\label{\detokenize{documentation/BEM:efie-for-the-scattering-problem}}\label{\detokenize{documentation/BEM:bemmodelmaxwell}}
+\sphinxAtStartPar
+We consider the time convention \(\exp (- \imath \omega t )\). The choice of the time convention as an impact on the formulation.
+
+\sphinxAtStartPar
+The problem we consider here is the scattering of an incoming field \((\boldsymbol{E}_{\text{inc}}, \boldsymbol{H}_{\text{inc}})\) by an obstacle \(\Omega\) of boundary \(\Gamma\). Thus, we want to solve the following homogeneous time\sphinxhyphen{}harmonic Maxwell’s equations written in terms of the scattered field \((\boldsymbol{E},\boldsymbol{H})\). The obstacle is a perfect electric conductor (PEC) object. The exterior domain corresponds to vacuum space.
+\begin{equation}\label{equation:documentation/BEM:eq_time_harmo_Maxwell}
+\begin{split}\left \{
+\begin{aligned}
+\mathrm{curl} \boldsymbol{E} - \imath \omega \mu_{0} \boldsymbol{H} &= 0, \quad  \text{in} \:\mathbb{R}^3 \backslash \Omega \\
+\mathrm{curl} \boldsymbol{H} + \imath \omega \epsilon_{0} \boldsymbol{E} &= 0, \quad \text{in} \: \mathbb{R}^3 \backslash \Omega \\
+\boldsymbol{E} \wedge \boldsymbol{n} &= - \boldsymbol{E}_{inc} \wedge  \boldsymbol{n}, \quad \text{on} \: \Gamma\\
+\lim_{r \rightarrow +\infty} r \left \|  \sqrt{\epsilon_{0}} \boldsymbol{E} - \sqrt{\mu_{0}}  \boldsymbol{H} \wedge \frac{\boldsymbol{r}}{|\boldsymbol{r}|} \right \| &= 0,
+\end{aligned}
+\right.\end{split}
+\end{equation}
+\sphinxAtStartPar
+where \(\boldsymbol{E}\) is the scattered electric field, \(\boldsymbol{H}\) is the scattered magnetic field, \(\omega\) is the angular frequency, \(\epsilon_{0}\) is the vacuum permittivity and \(\mu_{0}\) is the vacuum magnetic permeability. The angular frequency verifies \(\omega = 2 \pi f\) where \(f\) is the frequency.
+
+\sphinxAtStartPar
+The total electric and magnetic fields are given by
+\begin{equation}\label{equation:documentation/BEM:eq_total_E_H_Field}
+\begin{split}\left \{
+\begin{aligned}
+\boldsymbol{E}_{\text{total}} &=  \boldsymbol{E}_{\text{inc}} + \boldsymbol{E} \\
+\boldsymbol{H}_{\text{total}} &=  \boldsymbol{H}_{\text{inc}} + \boldsymbol{H}.
+\end{aligned}
+\right.\end{split}
+\end{equation}
+\sphinxAtStartPar
+We introduce the total magnetic current \(\boldsymbol{j}\) defined on the surface \(\Gamma\):
+\begin{equation*}
+\begin{split}\boldsymbol{j} = \imath \: \kappa \: Z_{0} \: \boldsymbol{n} \wedge  \left ( H + H_{\text{inc}} \right),\end{split}
+\end{equation*}
+\sphinxAtStartPar
+where \(Z_{0}=\sqrt{\frac{\mu_{0}}{\epsilon_{0}}}\) is the vacuum impedance and \(\kappa= \frac{\omega}{c}\) is the wave number, with \(c=\frac{1}{\sqrt{\mu_{0} \epsilon_{0}}}\) the speed of light.
+
+\sphinxAtStartPar
+The current \(\boldsymbol{j}\) verifies the Electric Field Integral Equation (EFIE):
+\begin{equation}\label{equation:documentation/BEM:eq_EFIE}
+\begin{split}\int_{\Gamma \times \Gamma} \mathcal{G}_{\kappa}(\boldsymbol{x}-\boldsymbol{y}) \big ( \boldsymbol{j} (\boldsymbol{x})\cdot \boldsymbol{v}(\boldsymbol{y})
+-\frac{1}{\kappa^2} \: \mathrm{div}_{\Gamma}\boldsymbol{j}(\boldsymbol{x}) \: \mathrm{div}_{\Gamma}\boldsymbol{v}(\boldsymbol{y}) \big) \: d\sigma(\boldsymbol{x}) \:  d\sigma(\boldsymbol{y}) \\
+= - \int_{\Gamma} \boldsymbol{E}_{inc}(\boldsymbol{x}) \cdot \boldsymbol{v}(\boldsymbol{x}) \: d\sigma(\boldsymbol{x}) \quad \forall \boldsymbol{v} : \Gamma \rightarrow \mathbb{C}^3,\end{split}
+\end{equation}
+\sphinxAtStartPar
+where \(\mathcal{G}_{\kappa}\) is the Green kernel defined in \eqref{equation:documentation/BEM:eq_p}.
+
+\sphinxAtStartPar
+Note that knowing \(\boldsymbol{j}\), we can compute the scattered field \((\boldsymbol{E},\boldsymbol{H})\) with the Stratton\sphinxhyphen{}Chu formula:
+\begin{equation}\label{equation:documentation/BEM:eq_Stratton_Chu}
+\begin{split}\begin{aligned}
+  \boldsymbol{E}(\boldsymbol{y}) &= \int_{\Gamma} \mathcal{G}_{\kappa}(|\boldsymbol{y}-\boldsymbol{x}|) \boldsymbol{j}(\boldsymbol{x}) d\sigma(\boldsymbol{x}) + \frac{1}{\kappa^2} \nabla_{y} \left( \int_{\Gamma}  \mathcal{G}_{\kappa}(|\boldsymbol{y}-\boldsymbol{x}|) \: \mathrm{div}_{\Gamma}\boldsymbol{j}(\boldsymbol{x}) \: d\sigma(\boldsymbol{x}) \right),\\
+  \boldsymbol{H}(\boldsymbol{y}) &=\frac{i}{\kappa Z_{0}} \mathrm{curl} \left( \int_{\Gamma} \mathcal{G}_{\kappa}(|\boldsymbol{y}-\boldsymbol{x}|) \: \boldsymbol{j}(\boldsymbol{x}) \: d\sigma(\boldsymbol{x}) \right).
+\end{aligned}\end{split}
+\end{equation}
+\sphinxAtStartPar
+The computation of the Stratton\sphinxhyphen{}Chu formula is implemented in the \sphinxstylestrong{BemTool} library.
+
+\sphinxAtStartPar
+To summarize, the solution of our {\hyperref[\detokenize{documentation/BEM:bemmodelmaxwell}]{\sphinxcrossref{\DUrole{std,std-ref}{Maxwell problem}}}} can be obtained with the following steps:
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+Solve for the magnetic current \(\boldsymbol{j}\) with \eqref{equation:documentation/BEM:eq_EFIE}.
+
+\item {} 
+\sphinxAtStartPar
+Compute the scattered field \((\boldsymbol{E},\boldsymbol{H})\) with \eqref{equation:documentation/BEM:eq_Stratton_Chu}.
+
+\item {} 
+\sphinxAtStartPar
+Recover the total electric and magnetic fields with \eqref{equation:documentation/BEM:eq_total_E_H_Field}.
+
+\end{enumerate}
+
+\sphinxAtStartPar
+Similarly to the scalar case, here we make use of the Maxwell \sphinxstylestrong{Single Layer Operator} \(\mathcal{SL}_\text{MA}\) in Step 1
+\begin{equation*}
+\begin{split}\boldsymbol{p},\boldsymbol{q} \mapsto \mathcal{SL}_\text{MA}(\boldsymbol{p},\boldsymbol{q}) = \int_{\Gamma \times \Gamma} \mathcal{G}_{\kappa}(\boldsymbol{x}-\boldsymbol{y}) \big ( \boldsymbol{p} (\boldsymbol{x})\cdot \boldsymbol{q}(\boldsymbol{y})
+- \frac{1}{\kappa^2} \: \mathrm{div}_{\Gamma}\boldsymbol{p}(\boldsymbol{x}) \: \mathrm{div}_{\Gamma}\boldsymbol{q}(\boldsymbol{y}) \big) \: d\sigma(\boldsymbol{x}) \:  d\sigma(\boldsymbol{y})\end{split}
+\end{equation*}
+\sphinxAtStartPar
+and the Maxwell \sphinxstylestrong{Single Layer Potential} \(\operatorname{SL}_\text{MA}\) in Step 2
+\begin{equation*}
+\begin{split}\boldsymbol{q} \mapsto \operatorname{SL}_\text{MA}(\boldsymbol{q})(\boldsymbol{x}) = \int_{\Gamma} \mathcal{G}_{\kappa}(|\boldsymbol{x}-\boldsymbol{y}|) \: \boldsymbol{q}(\boldsymbol{y}) d\sigma(\boldsymbol{y})
++ \frac{1}{\kappa^2} \nabla_{x} \left( \int_{\Gamma}  \mathcal{G}_{\kappa}(|\boldsymbol{x}-\boldsymbol{y}|) \: \mathrm{div}_{\Gamma} \: \boldsymbol{q}(\boldsymbol{y}) \: d\sigma(\boldsymbol{y}) \right).\end{split}
+\end{equation*}
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+The EFIE formulation in \sphinxstylestrong{FreeFEM} is valid only for a closed boundary \(\Gamma\).
+\end{sphinxadmonition}
+
+
+\subsubsection{Maxwell BEM problem in FreeFEM}
+\label{\detokenize{documentation/BEM:maxwell-bem-problem-in-freefem}}
+\sphinxAtStartPar
+Our Maxwell model problem consists in the electromagnetic scattering of a plane wave at frequency 600 Mhz by a sphere \(\Gamma\) of radius 1. Here we highlight the differences with the {\hyperref[\detokenize{documentation/BEM:bemintromodel}]{\sphinxcrossref{\DUrole{std,std-ref}{scalar case}}}} in the \sphinxstylestrong{FreeFEM} script. You can find the full script \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples/bem/Maxwell\_EFIE\_sphere.edp}{here}.
+
+\sphinxAtStartPar
+The sphere \(\Gamma\) is a \sphinxcode{\sphinxupquote{%
+\PYG{n}{meshS}%
+}}. We can build the surface mesh with:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{+w}{  }\PYG{c+c1}{// definition of the surface mesh}
+\PYG{+w}{  }\PYG{c+cp}{include}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{MeshSurface.idp}\PYG{l+s}{\PYGZdq{}}
+\PYG{+w}{  }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{radius}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{  }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nlambda}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}\PYG{+w}{                }\PYG{c+c1}{// number of points per wavelength}
+\PYG{+w}{  }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{hs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{lambda}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mf}{1.0}\PYG{o}{*}\PYG{n}{nlambda}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mesh size of the sphere}
+\PYG{+w}{  }\PYG{n}{meshS}\PYG{+w}{ }\PYG{n}{ThS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Sphere}\PYG{p}{(}\PYG{n}{radius}\PYG{p}{,}\PYG{n}{hs}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+For the discretization of the EFIE, we use the surface Raviart\sphinxhyphen{}Thomas Element of order 0 \sphinxcode{\sphinxupquote{%
+\PYG{n}{RT0S}%
+}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+c1}{// fespace for the EFIE}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Uh3}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{,}\PYG{n}{RT0S}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+It is a vector finite element space of size 3. The magnetic current \(\boldsymbol{j}\) belongs to this space:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{Uh3}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{mcx}\PYG{p}{,}\PYG{n}{mcy}\PYG{p}{,}\PYG{n}{mcz}\PYG{p}{]}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// FE function for the magnetic current}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The \sphinxstylestrong{Single Layer Operator} \(\mathcal{SL}_\text{MA}\) involved in the EFIE \eqref{equation:documentation/BEM:eq_EFIE} is defined as a \sphinxcode{\sphinxupquote{%
+\PYG{n}{BemKernel}%
+}} with the string \sphinxcode{\sphinxupquote{%
+\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{MA\PYGZus{}SL}\PYG{l+s}{\PYGZdq{}}%
+}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{BemKernel}\PYG{+w}{ }\PYG{n}{KerMA}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{MA\PYGZus{}SL}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{k}\PYG{o}{=}\PYG{n}{k}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+We are working in a vector space with 3 components. Hence, the BEM variational form is:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+c1}{// definition of the variational form for the EFIE operator}
+\PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n+nf}{vEFIE}\PYG{p}{(}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{,}\PYG{n}{u3}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{v3}\PYG{p}{]}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}
+\PYG{+w}{    }\PYG{n}{int2dx2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{BEM}\PYG{p}{(}\PYG{n}{KerMA}\PYG{p}{,}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{,}\PYG{n}{u3}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{v3}\PYG{p}{]}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+As before, we can use low\sphinxhyphen{}rank compression to build a H\sphinxhyphen{}Matrix approximation of the discrete bilinear form (see {\hyperref[\detokenize{documentation/BEM:bemintrohmatrices}]{\sphinxcrossref{\DUrole{std,std-ref}{Hierarchical matrices}}}}):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+c1}{// construction of the H\PYGZhy{}matrix for the EFIE operator}
+\PYG{n}{HMatrix}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{H}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{vEFIE}\PYG{p}{(}\PYG{n}{Uh3}\PYG{p}{,}\PYG{n}{Uh3}\PYG{p}{,}\PYG{n}{eta}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{k+kp}{eps}\PYG{o}{=}\PYG{l+m+mf}{1e\PYGZhy{}3}\PYG{p}{,}
+\PYG{+w}{                      }\PYG{n}{minclustersize}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{n}{maxblocksize}\PYG{o}{=}\PYG{l+m+mi}{1000000}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The right\sphinxhyphen{}hand side of equation \eqref{equation:documentation/BEM:eq_EFIE} can be computed as
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+c1}{// computation of the rhs of the EFIE}
+\PYG{n}{Uh3}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{rhsx}\PYG{p}{,}\PYG{n}{rhsy}\PYG{p}{,}\PYG{n}{rhsz}\PYG{p}{]}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// FE function for rhs}
+\PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n}{vrhs}\PYG{p}{(}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{,}\PYG{n}{u3}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{v3}\PYG{p}{]}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{v3}\PYG{p}{]}\PYG{o}{\PYGZsq{}}\PYG{o}{*}\PYG{p}{[}\PYG{n}{fincx}\PYG{p}{,}\PYG{n}{fincy}\PYG{p}{,}\PYG{n}{fincz}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+\PYG{n}{rhsx}\PYG{p}{[}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{vrhs}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{Uh3}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+where \sphinxcode{\sphinxupquote{%
+\PYG{p}{[}\PYG{n}{fincx}\PYG{p}{,}\PYG{n}{fincy}\PYG{p}{,}\PYG{n}{fincz}\PYG{p}{]}%
+}} is the incoming plane wave \(\boldsymbol{E}_{inc}\).
+
+\sphinxAtStartPar
+We can then solve the linear system to obtain the magnetic current \(\boldsymbol{j}\):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+c1}{// solve for the magnetic current}
+\PYG{n}{mcx}\PYG{p}{[}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{H}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{o}{*}\PYG{n}{rhsx}\PYG{p}{[}\PYG{p}{]}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Following the same steps as in the section {\hyperref[\detokenize{documentation/BEM:bemcomputesolution}]{\sphinxcrossref{\DUrole{std,std-ref}{Compute the solution}}}}, we can reconstruct the scattered electric field \(\boldsymbol{E}\) using the \sphinxstylestrong{Single Layer Potential} \(\operatorname{SL}_\text{MA}\):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+c1}{// Maxwell potential for the electric field}
+\PYG{n}{BemPotential}\PYG{+w}{ }\PYG{n}{PotMA}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{MA\PYGZus{}SL}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{=}\PYG{n}{k}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The variational form for the potential is:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n+nf}{vMApot}\PYG{p}{(}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{,}\PYG{n}{u3}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{v3}\PYG{p}{]}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}
+\PYG{+w}{        }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{POT}\PYG{p}{(}\PYG{n}{PotMA}\PYG{p}{,}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{,}\PYG{n}{u3}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{v3}\PYG{p}{]}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+where \([v1,v2,v3]\) plays the role of the scattered electric field \(\boldsymbol{E}\) that we want to reconstruct at a set of points \([x,y,z]\).
+
+\sphinxAtStartPar
+We consider an output mesh \sphinxcode{\sphinxupquote{%
+\PYG{n}{ThOut}%
+}} on which we want to reconstruct a P1 approximation of the three components of \(\boldsymbol{E}\):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{UhOutV}\PYG{p}{(}\PYG{n}{ThOut}\PYG{p}{,}\PYG{p}{[}\PYG{n+nc}{P1}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+\PYG{c+c1}{// FE function of the scattered field E}
+\PYG{n}{UhOutV}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{Ex}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Ey}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{Ez}\PYG{p}{]}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+We can build the rectangular H\sphinxhyphen{}Matrix corresponding to the variational form for the potential:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{HMatrix}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{HpotMA}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{vpotMA}\PYG{p}{(}\PYG{n}{Uh3}\PYG{p}{,}\PYG{n}{UhOutV}\PYG{p}{,}\PYG{n}{eta}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{k+kp}{eps}\PYG{o}{=}\PYG{l+m+mf}{1e\PYGZhy{}3}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{n}{minclustersize}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{n}{maxblocksize}\PYG{o}{=}\PYG{l+m+mi}{1000000}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Finally, the scattered electric field \(\boldsymbol{E}\) can be obtained by performing a matrix\sphinxhyphen{}vector product with the potential H\sphinxhyphen{}Matrix \sphinxcode{\sphinxupquote{%
+\PYG{n}{HpotMA}%
+}} and the discrete magnetic current \sphinxcode{\sphinxupquote{%
+\PYG{p}{[}\PYG{n}{mcx}\PYG{p}{,}\PYG{n}{mcy}\PYG{p}{,}\PYG{n}{mcz}\PYG{p}{]}%
+}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+c1}{// compute the scattered electric field}
+\PYG{n}{Ex}\PYG{p}{[}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{HpotMA}\PYG{o}{*}\PYG{n}{mcx}\PYG{p}{[}\PYG{p}{]}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+We can plot the real part of the total electric field with:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+c1}{// compute the real part of the total electric field}
+\PYG{n}{UhOutV}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{Etotx}\PYG{p}{,}\PYG{n}{Etoty}\PYG{p}{,}\PYG{n}{Etotz}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{k+kt}{real}\PYG{p}{(}\PYG{n}{Ex}\PYG{o}{+}\PYG{n}{fincx}\PYG{p}{)}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{k+kt}{real}\PYG{p}{(}\PYG{n}{Ey}\PYG{o}{+}\PYG{n}{fincy}\PYG{p}{)}\PYG{p}{,}
+\PYG{+w}{                              }\PYG{k+kt}{real}\PYG{p}{(}\PYG{n}{Ez}\PYG{o}{+}\PYG{n}{fincz}\PYG{p}{)}\PYG{p}{]}\PYG{p}{;}
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{p}{[}\PYG{n}{Etotx}\PYG{p}{,}\PYG{n}{Etoty}\PYG{p}{,}\PYG{n}{Etotz}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\begin{figure}
+\centering
+\capstart
+\begin{subfigure}[t]{0.49\linewidth}
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[width=0.900\linewidth]{{BEM_figmaxwellEx}.png}
+\caption{real part of the x component of the total electric field}\label{\detokenize{documentation/BEM:id5}}\end{subfigure}
+\begin{subfigure}[t]{0.49\linewidth}
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[width=0.900\linewidth]{{BEM_figmaxwellEy}.png}
+\caption{real part of the y component of the total electric field}\label{\detokenize{documentation/BEM:id6}}\end{subfigure}
+\phantomsection\label{\detokenize{documentation/BEM:BEMfigmaxwellE}}
+
+\end{figure}
+
 
 \sphinxstepscope
 
