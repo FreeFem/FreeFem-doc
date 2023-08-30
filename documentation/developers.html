@@ -436,6 +436,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="BEM.html#d-example-script">2D example script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BEM.html#bem-for-maxwell-s-equations">BEM for Maxwell’s equations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="BEM.html#efie-for-the-scattering-problem">EFIE for the scattering problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="BEM.html#maxwell-bem-problem-in-freefem">Maxwell BEM problem in FreeFEM</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="plugins.html">Plugins</a><ul>
@@ -2226,7 +2231,7 @@ And finally, we give the values of the solutions on the elements.</p>
 <p>The file must be ended with the keyword End.</p>
 <p>The real element of symmetric tensor :</p>
 <div class="math notranslate nohighlight" id="equation-savesol-def-symtensor">
-<span class="eqno">(45)<a class="headerlink" href="#equation-savesol-def-symtensor" title="Link to this equation"></a></span>\[\begin{split}ST^{3d}=\left(
+<span class="eqno">(49)<a class="headerlink" href="#equation-savesol-def-symtensor" title="Link to this equation"></a></span>\[\begin{split}ST^{3d}=\left(
 \begin{array}{ccc}
    ST_{xx}^{3d} &amp; ST_{xy}^{3d} &amp; ST_{xz}^{3d}\\
    ST_{yx}^{3d} &amp; ST_{yy}^{3d} &amp; ST_{yz}^{3d} \\
@@ -2276,12 +2281,12 @@ ST^{2d}= \left(
 <li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">U_i_j_</span><span class="o">^</span><span class="n">k</span></code> is a real equal to the value of the component <code class="docutils literal highlight highlight-python"><span></span><span class="n">i</span></code> of the solution <code class="docutils literal highlight highlight-python"><span></span><span class="n">k</span></code> at tetrahedron <code class="docutils literal highlight highlight-python"><span></span><span class="n">j</span></code> on the associated mesh</p></li>
 </ul>
 <p>The format <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="p">.</span><span class="n">solb</span></code> is the same as format <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="p">.</span><span class="n">sol</span></code> but in binary (read/write is faster, storage is less).</p>
-<p>A real scalar functions <span class="math notranslate nohighlight">\(f1\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Phi} = [\Phi1, \Phi2, \Phi3]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{3d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(45)</a> at the vertices of the three dimensional mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Th3</span></code> is stored in the file <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">f1PhiTh3</span><span class="p">.</span><span class="n">sol</span></code> using :</p>
+<p>A real scalar functions <span class="math notranslate nohighlight">\(f1\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Phi} = [\Phi1, \Phi2, \Phi3]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{3d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(49)</a> at the vertices of the three dimensional mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Th3</span></code> is stored in the file <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">f1PhiTh3</span><span class="p">.</span><span class="n">sol</span></code> using :</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nf">savesol</span><span class="p">(</span><span class="s">&quot;f1PhiST3dTh3.sol&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Th3</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">Phi</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">Phi</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">Phi</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span><span class="w"> </span><span class="n">VV3</span><span class="p">,</span><span class="w"> </span><span class="kp">order</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>where <span class="math notranslate nohighlight">\(VV3 = [ST_{xx}^{3d}, ST_{yx}^{3d}, ST_{yy}^{3d}, ST_{zx}^{3d}, ST_{zy}^{3d}, ST_{zz}^{3d}]\)</span>.</p>
-<p>For a two dimensional mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Th</span></code>, A real scalar functions <span class="math notranslate nohighlight">\(f2\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Psi} = [\Psi1, \Psi2]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{2d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(45)</a> at triangles is stored in the file <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">f2PsiST2dTh3</span><span class="p">.</span><span class="n">solb</span></code> using :</p>
+<p>For a two dimensional mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Th</span></code>, A real scalar functions <span class="math notranslate nohighlight">\(f2\)</span>, a vector fields <span class="math notranslate nohighlight">\(\mathbf{\Psi} = [\Psi1, \Psi2]\)</span> and a symmetric tensor <span class="math notranslate nohighlight">\(ST^{2d}\)</span> <a class="reference internal" href="#equation-savesol-def-symtensor">(49)</a> at triangles is stored in the file <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">f2PsiST2dTh3</span><span class="p">.</span><span class="n">solb</span></code> using :</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nf">savesol</span><span class="p">(</span><span class="s">&quot;f2PsiST2dTh3.solb&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">Psi</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">Psi</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span><span class="w"> </span><span class="n">VV2</span><span class="p">,</span><span class="w"> </span><span class="kp">order</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -2307,9 +2312,9 @@ Then the <span class="math notranslate nohighlight">\(i\)</span>-th base <span c
 <p>We have the identity <span class="math notranslate nohighlight">\(\boldsymbol{\omega}^{K}_{i} = \Pi_{h} \boldsymbol{\omega}^{K}_{i}\)</span>.</p>
 <p>Formally, the interpolator <span class="math notranslate nohighlight">\(\Pi_{h}\)</span> is constructed by the following formula:</p>
 <div class="math notranslate nohighlight" id="equation-eq-interpo">
-<span class="eqno">(46)<a class="headerlink" href="#equation-eq-interpo" title="Link to this equation"></a></span>\[\Pi_{h} \boldsymbol{f} = \sum_{k=0}^{\mathtt{kPi}-1} \alpha_k \boldsymbol{f}_{j_{k}}(P_{p_{k}}) \boldsymbol{\omega}^{K}_{i_{k}}\]</div>
+<span class="eqno">(50)<a class="headerlink" href="#equation-eq-interpo" title="Link to this equation"></a></span>\[\Pi_{h} \boldsymbol{f} = \sum_{k=0}^{\mathtt{kPi}-1} \alpha_k \boldsymbol{f}_{j_{k}}(P_{p_{k}}) \boldsymbol{\omega}^{K}_{i_{k}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(P_{p}\)</span> is a set of <span class="math notranslate nohighlight">\(npPi\)</span> points,</p>
-<p>In the formula <a class="reference internal" href="#equation-eq-interpo">(46)</a>, the list <span class="math notranslate nohighlight">\(p_{k},\, j_{k},\, i_{k}\)</span> depend just on the type of finite element (not on the element), but the coefficient <span class="math notranslate nohighlight">\(\alpha_{k}\)</span> can be depending on the element.</p>
+<p>In the formula <a class="reference internal" href="#equation-eq-interpo">(50)</a>, the list <span class="math notranslate nohighlight">\(p_{k},\, j_{k},\, i_{k}\)</span> depend just on the type of finite element (not on the element), but the coefficient <span class="math notranslate nohighlight">\(\alpha_{k}\)</span> can be depending on the element.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Classical scalar Lagrange finite element</p>
@@ -2325,7 +2330,7 @@ Then the <span class="math notranslate nohighlight">\(i\)</span>-th base <span c
 <p class="admonition-title">Tip</p>
 <p>The Raviart-Thomas finite element</p>
 <div class="math notranslate nohighlight" id="equation-eq-rt0-fe">
-<span class="eqno">(47)<a class="headerlink" href="#equation-eq-rt0-fe" title="Link to this equation"></a></span>\[RT0_{h} = \{ \mathbf{v} \in H(div) / \forall K \in
+<span class="eqno">(51)<a class="headerlink" href="#equation-eq-rt0-fe" title="Link to this equation"></a></span>\[RT0_{h} = \{ \mathbf{v} \in H(div) / \forall K \in
 \mathcal{T}_{h} \quad \mathbf{v}_{|K}(x,y) =
 \vecttwo{\alpha_{K}}{\beta_{K}} + \gamma_{K}\vecttwo{x}{y} \}\]</div>
 <p>The degrees of freedom are the flux through an edge <span class="math notranslate nohighlight">\(e\)</span> of the mesh, where the flux of the function <span class="math notranslate nohighlight">\(\mathbf{f} : \mathbb{R}^2 \longrightarrow \mathbb{R}^2\)</span> is <span class="math notranslate nohighlight">\(\int_{e} \mathbf{f}.n_{e}\)</span>, <span class="math notranslate nohighlight">\(n_{e}\)</span> is the unit normal of edge <span class="math notranslate nohighlight">\(e\)</span> (this implies a orientation of all the edges of the mesh, for example we can use the global numbering of the edge vertices and we just go to small to large number).</p>

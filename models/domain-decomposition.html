@@ -436,6 +436,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/BEM.html#d-example-script">2D example script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/BEM.html#bem-for-maxwell-s-equations">BEM for Maxwell’s equations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#efie-for-the-scattering-problem">EFIE for the scattering problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#maxwell-bem-problem-in-freefem">Maxwell BEM problem in FreeFEM</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/plugins.html">Plugins</a><ul>
@@ -1989,7 +1994,7 @@
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz1.png"><img alt="figDomain1" src="../_images/DomainDecomposition_Schwarz1.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 165 </span><span class="caption-text">The 2 overlapping mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">TH</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">th</span></code></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 167 </span><span class="caption-text">The 2 overlapping mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">TH</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">th</span></code></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -2059,13 +2064,13 @@
 <figure class="align-default" id="id2">
 <span id="figdomaindecomposition-schwarz2"></span><a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz2.png"><img alt="DomainDecomposition_Schwarz2" src="../_images/DomainDecomposition_Schwarz2.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 166 </span><span class="caption-text">Isovalues of the solution at iteration 0</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 168 </span><span class="caption-text">Isovalues of the solution at iteration 0</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
 <span id="figdomaindecomposition-schwarz3"></span><a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz3.png"><img alt="DomainDecomposition_Schwarz3" src="../_images/DomainDecomposition_Schwarz3.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 167 </span><span class="caption-text">Isovalues of the solution at iteration 0</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Isovalues of the solution at iteration 0</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Schwarz overlapping</span></p>
@@ -2080,7 +2085,7 @@
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz4.png"><img alt="figDomain4" src="../_images/DomainDecomposition_Schwarz4.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 168 </span><span class="caption-text">The two none overlapping mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">TH</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">th</span></code></span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 170 </span><span class="caption-text">The two none overlapping mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">TH</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">th</span></code></span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Let introduce <span class="math notranslate nohighlight">\(\Gamma_i\)</span> is common the boundary of <span class="math notranslate nohighlight">\(\Omega_1\)</span> and <span class="math notranslate nohighlight">\(\Omega_2\)</span> and <span class="math notranslate nohighlight">\(\Gamma_e^i= \partial \Omega_i \setminus \Gamma_i\)</span>.</p>
@@ -2166,13 +2171,13 @@ u_i|_{\Gamma_e^i} = 0\]</div>
 <figure class="align-default" id="id5">
 <span id="figdomaindecomposition-schwarz5"></span><a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz5.png"><img alt="DomainDecomposition_Schwarz5" src="../_images/DomainDecomposition_Schwarz5.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 169 </span><span class="caption-text">Isovalues of the solution at iteration 0 without overlapping</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 171 </span><span class="caption-text">Isovalues of the solution at iteration 0 without overlapping</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <span id="figdomaindecomposition-schwarz6"></span><a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz6.png"><img alt="DomainDecomposition_Schwarz6" src="../_images/DomainDecomposition_Schwarz6.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 170 </span><span class="caption-text">Isovalues of the solution at iteration 9 without overlapping</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 172 </span><span class="caption-text">Isovalues of the solution at iteration 9 without overlapping</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </div></div>

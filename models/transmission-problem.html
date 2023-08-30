@@ -436,6 +436,11 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/BEM.html#d-example-script">2D example script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/BEM.html#bem-for-maxwell-s-equations">BEM for Maxwell’s equations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#efie-for-the-scattering-problem">EFIE for the scattering problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/BEM.html#maxwell-bem-problem-in-freefem">Maxwell BEM problem in FreeFEM</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/plugins.html">Plugins</a><ul>
@@ -1970,7 +1975,7 @@
 <p>The computational domain <span class="math notranslate nohighlight">\(\Omega\)</span> is the interior of <span class="math notranslate nohighlight">\(\overline{\Omega_1}\cup \overline{\Omega_2}\cup \overline{\Omega_3}\)</span>.
 The vertical displacement <span class="math notranslate nohighlight">\(u(x,y)\)</span> is obtained from:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-transm">
-<span class="eqno">(65)<a class="headerlink" href="#equation-eqn-transm" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcll}
+<span class="eqno">(69)<a class="headerlink" href="#equation-eqn-transm" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcll}
     -\mu_i\Delta u &amp;=&amp; f &amp; \textrm{ in }\Omega_i\\
     \mu_i\p_n u|_{\Gamma_{i}} &amp;=&amp; -\mu_j\p_n u|_{\Gamma_{j}} &amp; \textrm{ on }\overline{\Omega_{i}}\cap\overline{\Omega_{j}} \textrm{ if }1\le i&lt; j\le 3
 \end{array}\end{split}\]</div>
@@ -1979,7 +1984,7 @@ The vertical displacement <span class="math notranslate nohighlight">\(u(x,y)\)<
 <div class="math notranslate nohighlight">
 \[\chi_i(x)=1\ \textrm{ if }x\in\Omega_i;\
 \chi_i(x)=0\ \textrm{ if }x\not\in\Omega_i\]</div>
-<p>we can easily rewrite <a class="reference internal" href="#equation-eqn-transm">(65)</a> to the weak form.
+<p>we can easily rewrite <a class="reference internal" href="#equation-eqn-transm">(69)</a> to the weak form.
 Here we assume that <span class="math notranslate nohighlight">\(u=0\)</span> on <span class="math notranslate nohighlight">\(\Gamma=\p\Omega\)</span>.</p>
 <p>Transmission problem: For a given function <span class="math notranslate nohighlight">\(f\)</span>, find <span class="math notranslate nohighlight">\(u\)</span> such that:</p>
 <div class="math notranslate nohighlight">
@@ -2017,7 +2022,7 @@ Consider this L-shaped domain with 3 diagonals as internal boundaries, defining 
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/TransmissionProblem_Region.png"><img alt="TransmissionProblem_Region" src="../_images/TransmissionProblem_Region.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 174 </span><span class="caption-text">The function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">reg</span></code></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 176 </span><span class="caption-text">The function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">reg</span></code></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">region</span></code> is a keyword of <strong>FreeFEM</strong> which is in fact a variable depending of the current position (is not a function today, use <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Ph</span><span class="w"> </span><span class="n">reg</span><span class="o">=</span><span class="kr">region</span><span class="p">;</span></code> to set a function).
@@ -2037,7 +2042,7 @@ This number is defined by <code class="code freefem docutils literal highlight h
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/TransmissionProblem_Nu.png"><img alt="TransmissionProblem_Nu" src="../_images/TransmissionProblem_Nu.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 175 </span><span class="caption-text">The function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">nu</span></code></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 177 </span><span class="caption-text">The function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">nu</span></code></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>This is particularly useful to define discontinuous functions such as might occur when one part of the domain is copper and the other one is iron, for example.</p>
@@ -2060,7 +2065,7 @@ This number is defined by <code class="code freefem docutils literal highlight h
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/TransmissionProblem_U.png"><img alt="TransmissionProblem_U" src="../_images/TransmissionProblem_U.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 176 </span><span class="caption-text">The isovalue of the solution <span class="math notranslate nohighlight">\(u\)</span></span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 178 </span><span class="caption-text">The isovalue of the solution <span class="math notranslate nohighlight">\(u\)</span></span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
