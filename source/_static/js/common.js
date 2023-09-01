@@ -12,8 +12,12 @@ window.onclick = function (e) {
 // Copy/paste button in code
 function copy(event) {
   const table = event.parentNode.parentNode
-  const codeContainer = table.querySelector('td.code pre')
-  const code = codeContainer.textContent
+  const codeContainer = table.querySelector('pre')
+
+  const clone = codeContainer.cloneNode(true);
+  clone.querySelectorAll('.linenos').forEach(node => node.remove());
+  clone.querySelectorAll('.copy-button').forEach(node => node.remove());
+  const code = clone.textContent
 
   const textarea = document.createElement('textarea')
   textarea.value = code
@@ -27,7 +31,7 @@ function copy(event) {
 }
 
 function addCopyPaste() {
-  const codeTables = document.getElementsByClassName('highlighttable')
+  const codeTables = document.querySelectorAll("div.highlight pre")
 
   for (let i = 0; i < codeTables.length; i++) {
     const button = document.createElement('button')

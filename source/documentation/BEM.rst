@@ -1,6 +1,9 @@
 .. role:: freefem(code)
   :language: freefem
 
+.. highlight:: freefem
+  :linenothreshold: 1
+
 .. _BEM:
 
 The Boundary Element Method
@@ -243,7 +246,7 @@ The geometry of the problem (i.e. the boundary :math:`\Gamma`) can be discretize
 In 2D, the geometry of the boundary can be defined with the :freefem:`border` keyword and discretized by constructing a *line* or *curve* mesh of type :freefem:`meshL` using :freefem:`buildmeshL`:
 
 .. code-block:: freefem
-  :linenos:
+  :emphasize-lines: 2
 
   border b(t = 0, 2*pi){x=cos(t); y=sin(t);}
   meshL ThL = buildmeshL(b(100));
@@ -251,7 +254,7 @@ In 2D, the geometry of the boundary can be defined with the :freefem:`border` ke
 With the :freefem:`extract` keyword, we can also extract the boundary of a 2D :freefem:`mesh` (need to :freefem:`load "msh3"`):
 
 .. code-block:: freefem
-  :linenos:
+  :emphasize-lines: 3
 
   load "msh3"
   mesh Th = square(10,10);
@@ -260,7 +263,7 @@ With the :freefem:`extract` keyword, we can also extract the boundary of a 2D :f
 or of a :freefem:`meshS` ; we can also specify the boundary labels we want to extract:
 
 .. code-block:: freefem
-  :linenos:
+  :emphasize-lines: 3,4
 
   load "msh3"
   meshS ThS = square3(10,10);
@@ -275,7 +278,7 @@ You can find much more information about curve mesh generation :ref:`here <meshL
 In 3D, the geometry of the boundary surface can be discretized with a surface mesh of type :freefem:`meshS`, which can be built by several ways, for example using the :freefem:`square3` constructor:
 
 .. code-block:: freefem
-  :linenos:
+  :emphasize-lines: 7
 
   load "msh3"
   real R = 3, r=1, h=0.2;
@@ -293,7 +296,7 @@ In 3D, the geometry of the boundary surface can be discretized with a surface me
 or from a 2D :freefem:`mesh` using the :freefem:`movemesh23` keyword:
 
 .. code-block:: freefem
-  :linenos:
+  :emphasize-lines: 3
 
   load "msh3"
   mesh Th = square(10,10);
@@ -302,7 +305,7 @@ or from a 2D :freefem:`mesh` using the :freefem:`movemesh23` keyword:
 We can also extract the boundary of a :freefem:`mesh3`:
 
 .. code-block:: freefem
-  :linenos:
+  :emphasize-lines: 3,4
 
   load "msh3"
   mesh3 Th3 = cube(10,10,10);
@@ -317,7 +320,7 @@ Orientation of normal vector
 Depending on whether your problem is posed on a bounded or unbounded domain, you may have to set the orientation of the outward normal vector :math:`\boldsymbol{n}` to the boundary. You can use the :freefem:`OrientNormal` function with the parameter :freefem:`unbounded` set to :freefem:`0` or :freefem:`1` (the normal vector :math:`\boldsymbol{n}` will then point to the exterior of the domain you are interested in):
 
 .. code-block:: freefem
-  :linenos:
+  :emphasize-lines: 3
 
   border b(t = 0, 2*pi){x=cos(t); y=sin(t);}
   meshL ThL = buildmeshL(b(100));
@@ -350,14 +353,12 @@ FreeFEM can also solve Maxwell's equations with the Electric Field Integral Equa
 First, the BEM plugin needs to be loaded:
 
 .. code-block:: freefem
-  :linenos:
 
   load "bem"
 
 The information about the type of operator and the PDE can be specified by defining a variable of type :freefem:`BemKernel`:
 
 .. code-block:: freefem
-  :linenos:
 
   BemKernel Ker("SL",k=2*pi);
 
@@ -374,7 +375,6 @@ Define the variational problem
 We can then define the variational form of the BEM problem. The double BEM integral is represented by the :freefem:`int1dx1d` keyword in the 2D case, and by :freefem:`int2dx2d` for a 3D problem. The :freefem:`BEM` keyword inside the integral takes the BEM kernel operator as argument: 
 
 .. code-block:: freefem
-  :linenos:
 
   BemKernel Ker("SL", k=2*pi);
   varf vbem(u,v) = int2dx2d(ThS)(ThS)(BEM(Ker,u,v));
@@ -382,14 +382,12 @@ We can then define the variational form of the BEM problem. The double BEM integ
 You can also specify the BEM kernel directly inside the integral:
 
 .. code-block:: freefem
-  :linenos:
 
   varf vbem(u,v) = int2dx2d(ThS)(ThS)(BEM(BemKernel("SL",k=2*pi),u,v));
 
 Depending on the choice of the BEM formulation, there can be additional terms in the variational form. For example, **Second kind formulations** have an additional mass term:
 
 .. code-block:: freefem
-  :linenos:
 
   BemKernel Ker("HS", k=2*pi);
   varf vbem(u,v) = int2dx2d(ThS)(ThS)(BEM(Ker,u,v)) - int2d(ThS)(0.5*u*v);
@@ -397,7 +395,7 @@ Depending on the choice of the BEM formulation, there can be additional terms in
 We can also define a linear combination of two BEM kernels, which is useful for **Combined formulations**:
 
 .. code-block:: freefem
-  :linenos:
+  :emphasize-lines: 4
 
   complex k=2*pi;
   BemKernel Ker1("HS", k=k);
@@ -413,7 +411,7 @@ Assemble the H-Matrix
 Assembling the matrix corresponding to the discretization of the variational form on an :freefem:`fespace` :freefem:`Uh` is similar to the finite element case, except that we end up with an :freefem:`HMatrix` instead of a sparse :freefem:`matrix`:
 
 .. code-block:: freefem
-  :linenos:
+  :emphasize-lines: 2
 
   fespace Uh(ThS,P1);
   HMatrix<complex> H = vbem(Uh,Uh);
@@ -423,14 +421,12 @@ Behind the scenes, **FreeFEM** is using **Htool** and **BEMTool** to assemble th
 .. note:: Since **Htool** is a parallel library, you need to use ``FreeFem++-mpi`` or ``ff-mpirun`` to be able to run your BEM script. The MPI parallelism is transparent to the user. You can speed up the computation by using multiple cores:
 
   .. code-block:: freefem
-    :linenos:
 
     ff-mpirun -np 4 script.edp -wg
 
 You can specify the different **Htool** parameters as below. These are the default values:
 
 .. code-block:: freefem
-  :linenos:
 
   HMatrix<complex> H = vbem(Uh,Uh,
     compressor = "partialACA", // or "fullACA", "SVD"
@@ -445,14 +441,12 @@ You can also set the default parameters globally in the script by changing the v
 Once assembled, the H-Matrix can also be plotted with
 
 .. code-block:: freefem
-  :linenos:
 
   display(H, wait=true);
 
 **FreeFEM** can also output some information and statistics about the assembly of :freefem:`H`:
 
 .. code-block:: freefem
-  :linenos:
 
   if (mpirank == 0) cout << H.infos << endl;
 
@@ -462,7 +456,6 @@ Solve the linear system
 Generally, the right-hand-side of the linear system is built as the discretization of a standard linear form:
 
 .. code-block:: freefem
-  :linenos:
 
   Uh<complex> p, b;
   varf vrhs(u,v) = -int2d(ThS)(uinc*v);
@@ -471,7 +464,6 @@ Generally, the right-hand-side of the linear system is built as the discretizati
 We can then solve the linear system to obtain :math:`p`, with the standard syntax:
 
 .. code-block:: freefem
-  :linenos:
 
   p[] = H^-1*b[];
 
@@ -485,7 +477,6 @@ Compute the solution
 Finally, knowing :math:`p`, we can compute the solution :math:`u` of our initial problem :eq:`eq_modelpb` using the Potential as in :eq:`eq_pv`. As for the :freefem:`BemKernel`, the information about the type of potential can be specified by defining a variable of type :freefem:`BemPotential`:
 
 .. code-block:: freefem
-  :linenos:
 
   BemPotential Pot("SL", k=2*pi);
 
@@ -494,14 +485,12 @@ In order to benefit from low-rank compression, instead of using :eq:`eq_pv` to s
 First, let us define the variational form corresponding to the potential that we want to use to reconstruct our solution. Similarly to the kernel case, the :freefem:`POT` keyword takes the potential as argument. Note that we have a single integral, and that :freefem:`v` plays the role of :math:`\boldsymbol{x}`.
 
 .. code-block:: freefem
-  :linenos:
 
   varf vpot(u,v) = int2d(ThS)(POT(Pot,u,v));
 
 We can then assemble the rectangular H-Matrix from the potential variational form:
 
 .. code-block:: freefem
-  :linenos:
 
   fespace UhOut(ThOut,P1);
   HMatrix<complex> HP = vpot(Uh,UhOut);
@@ -509,7 +498,7 @@ We can then assemble the rectangular H-Matrix from the potential variational for
 Computing :math:`u` on :freefem:`UhOut` is then just a matter of performing the matrix-vector product of :freefem:`HP` with :freefem:`p`:
 
 .. code-block:: freefem
-  :linenos:
+  :emphasize-lines: 2
 
   UhOut<complex> u;
   u[] = HP*p[];
@@ -521,7 +510,6 @@ Computing :math:`u` on :freefem:`UhOut` is then just a matter of performing the 
 Let us summarize what we have learned with a 2D version of our :ref:`model problem <BEMintromodel>` where we study the scattering of a plane wave by a disc:
 
 .. code-block:: freefem
-  :linenos:
 
   load "bem"
   load "msh3"
@@ -693,7 +681,7 @@ Our Maxwell model problem consists in the electromagnetic scattering of a plane 
 The sphere :math:`\Gamma` is a :freefem:`meshS`. We can build the surface mesh with:
 
 .. code-block:: freefem
-  :linenos:
+    :emphasize-lines: 6
 
     // definition of the surface mesh
     include "MeshSurface.idp"
@@ -705,7 +693,6 @@ The sphere :math:`\Gamma` is a :freefem:`meshS`. We can build the surface mesh w
 For the discretization of the EFIE, we use the surface Raviart-Thomas Element of order 0 :freefem:`RT0S`:
 
 .. code-block:: freefem
-  :linenos:
 
   // fespace for the EFIE
   fespace Uh3(ThS,RT0S);
@@ -713,21 +700,18 @@ For the discretization of the EFIE, we use the surface Raviart-Thomas Element of
 It is a vector finite element space of size 3. The magnetic current :math:`\boldsymbol{j}` belongs to this space:
 
 .. code-block:: freefem
-  :linenos:
 
   Uh3<complex> [mcx,mcy,mcz]; // FE function for the magnetic current
 
 The **Single Layer Operator** :math:`\mathcal{SL}_\text{MA}` involved in the EFIE :eq:`eq_EFIE` is defined as a :freefem:`BemKernel` with the string :freefem:`"MA_SL"`:
 
 .. code-block:: freefem
-  :linenos:
 
   BemKernel KerMA("MA_SL",k=k);
 
 We are working in a vector space with 3 components. Hence, the BEM variational form is:
 
 .. code-block:: freefem
-  :linenos:
 
   // definition of the variational form for the EFIE operator
   varf vEFIE([u1,u2,u3],[v1,v2,v3]) =
@@ -736,7 +720,6 @@ We are working in a vector space with 3 components. Hence, the BEM variational f
 As before, we can use low-rank compression to build a H-Matrix approximation of the discrete bilinear form (see :ref:`Hierarchical matrices <BEMintroHMatrices>`):
 
 .. code-block:: freefem
-  :linenos:
 
   // construction of the H-matrix for the EFIE operator
   HMatrix<complex> H = vEFIE(Uh3,Uh3,eta=10,eps=1e-3,
@@ -745,7 +728,6 @@ As before, we can use low-rank compression to build a H-Matrix approximation of 
 The right-hand side of equation :eq:`eq_EFIE` can be computed as
 
 .. code-block:: freefem
-  :linenos:
 
   // computation of the rhs of the EFIE
   Uh3<complex> [rhsx,rhsy,rhsz]; // FE function for rhs
@@ -757,7 +739,6 @@ where :freefem:`[fincx,fincy,fincz]` is the incoming plane wave :math:`\boldsymb
 We can then solve the linear system to obtain the magnetic current :math:`\boldsymbol{j}`:
 
 .. code-block:: freefem
-  :linenos:
 
   // solve for the magnetic current
   mcx[] = H^-1*rhsx[];
@@ -765,7 +746,6 @@ We can then solve the linear system to obtain the magnetic current :math:`\bolds
 Following the same steps as in the section :ref:`Compute the solution <BEMcomputeSolution>`, we can reconstruct the scattered electric field :math:`\boldsymbol{E}` using the **Single Layer Potential** :math:`\operatorname{SL}_\text{MA}`:
 
 .. code-block:: freefem
-  :linenos:
 
   // Maxwell potential for the electric field
   BemPotential PotMA("MA_SL", k=k);
@@ -773,17 +753,15 @@ Following the same steps as in the section :ref:`Compute the solution <BEMcomput
 The variational form for the potential is:
 
 .. code-block:: freefem
-  :linenos:
 
   varf vMApot([u1,u2,u3],[v1,v2,v3]) =
           int2d(ThS)(POT(PotMA,[u1,u2,u3],[v1,v2,v3]));
 
-where :math:`[v1,v2,v3]` plays the role of the scattered electric field :math:`\boldsymbol{E}` that we want to reconstruct at a set of points :math:`[x,y,z]`.
+where :freefem:`[v1,v2,v3]` plays the role of the scattered electric field :math:`\boldsymbol{E}` that we want to reconstruct at a set of points :math:`[x,y,z]`.
 
 We consider an output mesh :freefem:`ThOut` on which we want to reconstruct a P1 approximation of the three components of :math:`\boldsymbol{E}`:
 
 .. code-block:: freefem
-  :linenos:
 
   fespace UhOutV(ThOut,[P1,P1,P1]);
   // FE function of the scattered field E
@@ -792,7 +770,6 @@ We consider an output mesh :freefem:`ThOut` on which we want to reconstruct a P1
 We can build the rectangular H-Matrix corresponding to the variational form for the potential:
 
 .. code-block:: freefem
-  :linenos:
 
   HMatrix<complex> HpotMA = vpotMA(Uh3,UhOutV,eta=10,eps=1e-3,
                                 minclustersize=10,maxblocksize=1000000);
@@ -800,7 +777,6 @@ We can build the rectangular H-Matrix corresponding to the variational form for 
 Finally, the scattered electric field :math:`\boldsymbol{E}` can be obtained by performing a matrix-vector product with the potential H-Matrix :freefem:`HpotMA` and the discrete magnetic current :freefem:`[mcx,mcy,mcz]`:
 
 .. code-block:: freefem
-  :linenos:
 
   // compute the scattered electric field
   Ex[] = HpotMA*mcx[];
@@ -808,7 +784,6 @@ Finally, the scattered electric field :math:`\boldsymbol{E}` can be obtained by 
 We can plot the real part of the total electric field with:
 
 .. code-block:: freefem
-  :linenos:
 
   // compute the real part of the total electric field
   UhOutV [Etotx,Etoty,Etotz] = [real(Ex+fincx),
