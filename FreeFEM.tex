@@ -26238,7 +26238,7 @@ Note that, for all global operations, only \sphinxcode{\sphinxupquote{%
 
 
 \section{PETSc and SLEPc}
-\label{\detokenize{documentation/petsc/index:petsc-and-slepc}}\label{\detokenize{documentation/petsc/index::doc}}
+\label{\detokenize{documentation/petsc/index:petsc-and-slepc}}\label{\detokenize{documentation/petsc/index:petscslepc}}\label{\detokenize{documentation/petsc/index::doc}}
 \sphinxAtStartPar
 FreeFEM is interfaced with \sphinxhref{https://petsc.org/}{PETSc} and \sphinxhref{http://slepc.upv.es/}{SLEPc} which offer a wide range of sequential or parallel linear or nonlinear solvers, time steppers, optimizers, and eigensolvers. In particular, it gives access transparently (without much changes to user code) to: distributed and multithreaded direct solvers (\sphinxhref{https://software.intel.com/en-us/mkl-developer-reference-fortran-intel-mkl-pardiso-parallel-direct-sparse-solver-interface}{PARDISO}, \sphinxhref{http://mumps-solver.org/}{MUMPS}, \sphinxhref{https://crd.lbl.gov/departments/applied-mathematics/scalable-solvers/research-areas/superlu-dist/}{SuperLU}), multigrid solvers (\sphinxhref{https://hypre.readthedocs.io/en/latest/}{hypre}, GAMG), domain decomposition methods (block Jacobi, ASM, \sphinxhref{https://github.com/hpddm/hpddm/}{HPDDM}). For a detailed introduction to these tools, interested readers are referred to the tutorial \sphinxhref{https://joliv.et/FreeFem-tutorial/}{Introduction to FreeFEM with an emphasis on parallel computing}.
 \begin{description}
@@ -27480,7 +27480,7 @@ Behind the scenes, \sphinxstylestrong{FreeFEM} is using \sphinxstylestrong{Htool
 Since \sphinxstylestrong{Htool} is a parallel library, you need to use \sphinxcode{\sphinxupquote{FreeFem++\sphinxhyphen{}mpi}} or \sphinxcode{\sphinxupquote{ff\sphinxhyphen{}mpirun}} to be able to run your BEM script. The MPI parallelism is transparent to the user. You can speed up the computation by using multiple cores:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n}{ff}\PYG{o}{\PYGZhy{}}\PYG{n}{mpirun}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{np}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{+w}{ }\PYG{n}{script}\PYG{p}{.}\PYG{n}{edp}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{wg}
+\PYG{g+go}{ff\PYGZhy{}mpirun \PYGZhy{}np 4 script.edp \PYGZhy{}wg}
 \end{sphinxVerbatim}
 \end{sphinxadmonition}
 
@@ -27929,6 +27929,507 @@ We can plot the real part of the total electric field with:
 
 \end{figure}
 
+
+\sphinxstepscope
+
+
+
+
+\section{Composite finite element spaces NEW!}
+\label{\detokenize{documentation/composite:composite-finite-element-spaces-new}}\label{\detokenize{documentation/composite:composite}}\label{\detokenize{documentation/composite::doc}}
+\sphinxAtStartPar
+As of \sphinxhref{https://github.com/FreeFem/FreeFem-sources/releases/tag/v4.13}{FreeFEM v4.13}, we introduce the notion of \sphinxstyleemphasis{composite} finite element spaces in the language in order to generalize the definition of a variational form for coupled problems. This means that coupled variables are allowed to be defined on different meshes or even mesh types. This can be useful for example for domain coupling, surface\sphinxhyphen{}volume coupling, FEM\sphinxhyphen{}BEM coupling, etc.
+
+
+\subsection{Limitations of the current syntax}
+\label{\detokenize{documentation/composite:limitations-of-the-current-syntax}}\label{\detokenize{documentation/composite:basefespaces}}
+\sphinxAtStartPar
+In Freefem, you can define scalar and vector finite element spaces:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Vh}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// scalar space}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Uh}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nc}{P2}\PYG{p}{,}\PYG{n+nc}{P2}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{periodic}\PYG{o}{=}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{k+kr}{y}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{k+kr}{y}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// vector space}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The current definition of FE spaces and variational problems with multiple variables or components is subject to two limitations:
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+When defining periodic vector spaces, all components are considered periodic (see \sphinxcode{\sphinxupquote{%
+\PYG{n}{Uh}%
+}} above)
+
+\item {} 
+\sphinxAtStartPar
+All variables/components have to be defined on the same mesh
+
+\end{itemize}
+
+\sphinxAtStartPar
+The introduction of composite spaces aims at lifting these limitations and facilitates the definition of coupled problems, allowing to easily define and solve more general problems mixing different meshes or mesh types.
+
+
+\subsection{Definition of composite spaces}
+\label{\detokenize{documentation/composite:definition-of-composite-spaces}}
+\sphinxAtStartPar
+A composite FE space is defined as a cartesian product of two or more “standard” FE spaces:
+\begin{equation}\label{equation:documentation/composite:eq_def_FEcomposite}
+\begin{split}X_{h} = U_{h}^{1}(T_{h}^{1}, {FE}^{1})  \times U_{h}^{2} (T_{h}^{2}, {FE}^{2}) \times \cdots \times U_{h}^{n} (T_{h}^{n}, {FE}^{n}),\end{split}
+\end{equation}
+\sphinxAtStartPar
+where \(T_{h}^{i}\) is the mesh of the \(i\text{th}\) FE space and \({FE}^{i}\) is the type of finite element:
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+scalar FE element \sphinxcode{\sphinxupquote{%
+\PYG{n+nc}{P1}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{n+nc}{P2}%
+}} \(\dots\)
+
+\item {} 
+\sphinxAtStartPar
+vector FE element \sphinxcode{\sphinxupquote{%
+\PYG{p}{[}\PYG{n+nc}{P1}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{]}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{n+nc}{RT0}%
+}} \(\dots\)
+
+\item {} 
+\sphinxAtStartPar
+FE element with periodic boundary \sphinxcode{\sphinxupquote{%
+\PYG{n+nc}{P1}\PYG{p}{,}\PYG{k+kp}{periodic}\PYG{o}{=}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{k+kr}{y}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{k+kr}{y}\PYG{p}{]}\PYG{p}{]}%
+}}
+
+\end{itemize}
+
+\sphinxAtStartPar
+Each FE space \(U_{h}^{i}\) can be defined on a different mesh \(T_{h}^{i}\) ; meshes \(\left( T_{h}^{i} \right)_{i=1,n}\) can even be of different types (\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{mesh}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{mesh3}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{n}{meshL}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{n}{meshS}%
+}}).
+
+
+\subsubsection{First examples}
+\label{\detokenize{documentation/composite:first-examples}}
+\sphinxAtStartPar
+Defining a composite space as a product of FE spaces can be done by writing the product directly with \sphinxcode{\sphinxupquote{%
+\PYG{o}{*}%
+}} or by using the angular bracket syntax \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZlt{}}%
+}} and \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZgt{}}%
+}}. For example:
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+vector FE space with a periodic component in one direction:
+
+\end{itemize}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Uh1}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{n+nc}{P2}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Uh2}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{n+nc}{P2}\PYG{p}{,}\PYG{k+kp}{periodic}\PYG{o}{=}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{k+kr}{x}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{k+kr}{x}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Ph}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{c+c1}{// definition of the composite space Xh = Uh1 X Uh2 X Ph}
+\PYG{c+c1}{// any of the three following lines works:}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Xh}\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{n}{Uh1}\PYG{p}{,}\PYG{n}{Uh2}\PYG{p}{,}\PYG{n}{Ph}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Xh}\PYG{p}{(}\PYG{n}{Uh1}\PYG{o}{*}\PYG{n}{Uh2}\PYG{o}{*}\PYG{n}{Ph}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{Xh}\PYG{o}{=}\PYG{n}{Uh1}\PYG{o}{*}\PYG{n}{Uh2}\PYG{o}{*}\PYG{n}{Ph}\PYG{p}{;}
+\end{sphinxVerbatim}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+composite space with the first component defined on a triangular 2D mesh \sphinxcode{\sphinxupquote{%
+\PYG{n}{Th}%
+}} and the second component defined on a curve mesh \sphinxcode{\sphinxupquote{%
+\PYG{n}{ThL}%
+}} (here \sphinxcode{\sphinxupquote{%
+\PYG{n}{ThL}%
+}} is the boundary of \sphinxcode{\sphinxupquote{%
+\PYG{n}{Th}%
+}}). This can be useful for example for volume\sphinxhyphen{}surface coupling or FEM\sphinxhyphen{}BEM coupling:
+
+\end{itemize}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
+\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{Th}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{square}\PYG{p}{(}\PYG{l+m+mi}{50}\PYG{p}{,}\PYG{l+m+mi}{50}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Th is a 2d volume mesh}
+\PYG{n}{meshL}\PYG{+w}{ }\PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{extract}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// ThL is a 1d curve mesh}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Uh}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{UhL}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{c+c1}{// definition of the composite space Xh = Uh X UhL}
+\PYG{c+c1}{// any of the three following lines works:}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Xh}\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{n}{Uh}\PYG{p}{,}\PYG{n}{UhL}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Xh}\PYG{p}{(}\PYG{n}{Uh}\PYG{o}{*}\PYG{n}{UhL}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{Xh}\PYG{o}{=}\PYG{n}{Uh}\PYG{o}{*}\PYG{n}{UhL}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+
+\subsection{Stokes with P2\sphinxhyphen{}iso\sphinxhyphen{}P1 elements}
+\label{\detokenize{documentation/composite:stokes-with-p2-iso-p1-elements}}
+\sphinxAtStartPar
+Let us illustrate the use of composite spaces with the following 2D Stokes problem:
+\begin{equation}\label{equation:documentation/composite:eq_stokes_2d_BEM}
+\begin{split}\left \{
+\begin{array}{rcl}
+    -\Delta \mathbf{u} + \nabla p &=& \mathbf{f} \quad \text{in} \quad \Omega, \\
+    \nabla \cdot \mathbf{u} &=& 0 \quad \text{in} \quad \Omega, \\
+    \mathbf{u} &=& g \quad \text{on} \quad \Gamma,
+\end{array}
+\right .\end{split}
+\end{equation}
+\sphinxAtStartPar
+where \(\mathbf{u}=(u_1,u_2)\) is the fluid velocity and \(p\) the pressure.
+
+\sphinxAtStartPar
+In order to define the variational form, we multiply the first equation (resp. the second equation) of \eqref{equation:documentation/composite:eq_stokes_2d_BEM} by a test function \(\mathbf{v}\) (resp. \(q\)) and integrate on \(\Omega\):
+\begin{equation*}
+\begin{split}\forall (\mathbf{v}, \: q ), \quad \left \{
+\begin{aligned}
+\int_{\Omega} \nabla \mathbf{u} . \nabla \mathbf{v} \: d\boldsymbol{x} + \int_{\Omega} \nabla p \cdot \mathbf{v} d\boldsymbol{x} &= \int_{\Omega} \mathbf{f} \cdot \mathbf{v} \: d\boldsymbol{x}, \\
+- \int_{\Omega} div(\mathbf{u}) q d\boldsymbol{x} &= 0.
+\end{aligned}
+\right .\end{split}
+\end{equation*}
+\sphinxAtStartPar
+Using Green’s formula in the second integral, we obtain:
+\begin{equation}\label{equation:documentation/composite:eq_varf_stokes_2d_BEM_dTh}
+\begin{split}\forall (\mathbf{v}, \: q ), \left \{
+\begin{aligned}
+\int_{\Omega} \nabla \mathbf{u} . \nabla \mathbf{v} \:  d\boldsymbol{x} - \int_{\Omega} p div(\mathbf{v})  d\boldsymbol{x}  &= \int_{\Omega} \mathbf{f} \cdot \mathbf{v} \: d\boldsymbol{x}, \\
+- \int_{\Omega} div(\mathbf{u}) q  d\boldsymbol{x} \color{blue}{-\int_{\Omega} \epsilon p q d\boldsymbol{x}} &= 0.
+\end{aligned}
+\right .\end{split}
+\end{equation}
+\sphinxAtStartPar
+The stabilization term in blue is added to the variational form to fix the constant for the pressure (we take for example \(\epsilon=10^{-10}\)).
+
+\sphinxAtStartPar
+We choose the \sphinxstylestrong{P2\sphinxhyphen{}iso\sphinxhyphen{}P1} finite element for the velocity and pressure. This element requires two different meshes: a coarser mesh for pressure and a finer mesh for velocity obtained by splitting each triangle of the pressure mesh into four triangles.
+
+
+\subsubsection{using \sphinxstyleemphasis{solve} or \sphinxstyleemphasis{problem}}
+\label{\detokenize{documentation/composite:using-solve-or-problem}}
+\sphinxAtStartPar
+In order to solve this problem, we can make use of the new composite spaces as in the script below:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nn}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{30}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// number of edges in each direction}
+\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{ThP}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{square}\PYG{p}{(}\PYG{n}{nn}\PYG{p}{,}\PYG{n}{nn}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{k+kr}{x}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{k+kr}{y}\PYG{p}{]}\PYG{p}{,}\PYG{k+kp}{flags}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Pressure mesh}
+\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{ThU}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{trunc}\PYG{p}{(}\PYG{n}{ThP}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{k+kp}{split}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{  }\PYG{c+c1}{// Velocity mesh}
+
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Uh}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{,}\PYG{p}{[}\PYG{n+nc}{P1}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Velocity space}
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Ph}\PYG{p}{(}\PYG{n}{ThP}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{      }\PYG{c+c1}{// Pressure space}
+
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{,}\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{grad}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{grad}\PYG{p}{(}\PYG{n}{u2}\PYG{p}{)}\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{//}
+\PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{div}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{)}\PYG{o}{+}\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{u2}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{//}
+
+\PYG{c+c1}{// definition of the boundary condition}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{g1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{x}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{g2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{x}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{c+c1}{// definition of the right\PYGZhy{}hand side}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{f1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{f2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}4}\PYG{o}{*}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{x}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{y}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{n}{Uh}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{;}
+\PYG{n}{Ph}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{,}\PYG{n}{q}\PYG{p}{;}
+
+\PYG{k+kt}{solve}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{p}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{q}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{p}{(}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{)}\PYG{o}{:}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{div}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{q}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{div}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{p}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThP}\PYG{p}{)}\PYG{p}{(}\PYG{l+m+mf}{\PYGZhy{}1e\PYGZhy{}10}\PYG{o}{*}\PYG{n}{p}\PYG{o}{*}\PYG{n}{q}\PYG{p}{)}
+\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{p}{[}\PYG{n}{f1}\PYG{p}{,}\PYG{n}{f2}\PYG{p}{]}\PYG{o}{\PYGZsq{}}\PYG{o}{*}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{=}\PYG{n}{g1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u2}\PYG{o}{=}\PYG{n}{g2}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{cmm}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{u}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{cmm}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{p}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+You can also find this example in the \sphinxstylestrong{FreeFEM} distribution \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples/examples/stokes\_composite.edp}{here}.
+
+\sphinxAtStartPar
+Note that with the \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{problem}%
+}} or \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{solve}%
+}} syntax, the composite nature of the FE space has to be indicated directly in the \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{problem}\PYG{o}{/}\PYG{k+kt}{solve}%
+}} instruction using angular brackets \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZlt{}}%
+}} and \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZgt{}}%
+}}:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{solve}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{p}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{q}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The explicit definition of the composite \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{Xh}\PYG{o}{=}\PYG{n}{Uh}\PYG{o}{*}\PYG{n}{Ph}%
+}} is optional.
+
+\sphinxAtStartPar
+Remark that if you omit to indicate the composite nature of the problem with \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZlt{}}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZgt{}}%
+}} and write
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{solve}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{+w}{ }\PYG{p}{(}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{,}\PYG{n}{p}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{q}\PYG{p}{]}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\sphinxstylestrong{FreeFEM} falls back to the “standard” evaluation of the variational form and outputs the following error message: \sphinxcode{\sphinxupquote{%
+\PYG{g+go}{Exec error : all the finite element spaces must be defined on the same mesh in solve}%
+}}.
+
+
+\subsubsection{using \sphinxstyleemphasis{varf} and \sphinxstyleemphasis{matrix}}
+\label{\detokenize{documentation/composite:using-varf-and-matrix}}
+\sphinxAtStartPar
+Composite FE spaces can also be used with the \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{varf}%
+}}/\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}%
+}} syntax. We can replace the \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{solve}%
+}} instruction
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{solve}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{p}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{q}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{p}{(}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{)}\PYG{o}{:}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{div}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{q}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{div}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{p}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThP}\PYG{p}{)}\PYG{p}{(}\PYG{l+m+mf}{\PYGZhy{}1e\PYGZhy{}10}\PYG{o}{*}\PYG{n}{p}\PYG{o}{*}\PYG{n}{q}\PYG{p}{)}
+\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{p}{[}\PYG{n}{f1}\PYG{p}{,}\PYG{n}{f2}\PYG{p}{]}\PYG{o}{\PYGZsq{}}\PYG{o}{*}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{=}\PYG{n}{g1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u2}\PYG{o}{=}\PYG{n}{g2}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+by
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{Xh}\PYG{o}{=}\PYG{n}{Uh}\PYG{o}{*}\PYG{n}{Ph}\PYG{p}{;}
+
+\PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{p}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{q}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{p}{(}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{)}\PYG{o}{:}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{div}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{q}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{div}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{p}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThP}\PYG{p}{)}\PYG{p}{(}\PYG{l+m+mf}{\PYGZhy{}1e\PYGZhy{}10}\PYG{o}{*}\PYG{n}{p}\PYG{o}{*}\PYG{n}{q}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{p}{[}\PYG{n}{f1}\PYG{p}{,}\PYG{n}{f2}\PYG{p}{]}\PYG{o}{\PYGZsq{}}\PYG{o}{*}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{=}\PYG{n}{g1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u2}\PYG{o}{=}\PYG{n}{g2}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{k+kt}{matrix}\PYG{+w}{ }\PYG{n}{M}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{p}{(}\PYG{n}{Xh}\PYG{p}{,}\PYG{n}{Xh}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{Xh}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{sol}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{M}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{o}{*}\PYG{n}{b}\PYG{p}{;}
+
+\PYG{p}{[}\PYG{n}{u1}\PYG{p}{[}\PYG{p}{]}\PYG{p}{,}\PYG{n}{p}\PYG{p}{[}\PYG{p}{]}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{sol}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dispatch the solution}
+\end{sphinxVerbatim}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+The sign of the linear form is flipped because with the \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{varf}%
+}}/\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}%
+}} syntax we are solving \(M x = b\) whereas with \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{problem}%
+}} or \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{solve}%
+}} we are solving \(M x - b = 0\).
+\end{sphinxadmonition}
+
+\sphinxAtStartPar
+Note that in this case the explicit definition of the composite \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{Xh}\PYG{o}{=}\PYG{n}{Uh}\PYG{o}{*}\PYG{n}{Ph}%
+}} is mandatory, as it is used in the instantiation of the variational form in \sphinxcode{\sphinxupquote{%
+\PYG{n}{Stokes}\PYG{p}{(}\PYG{n}{Xh}\PYG{p}{,}\PYG{n}{Xh}\PYG{p}{)}%
+}}. However, this time the \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZlt{}}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZgt{}}%
+}} notation in the \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{varf}%
+}} is optional: we can also write
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{+w}{ }\PYG{p}{(}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{,}\PYG{n}{p}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{q}\PYG{p}{]}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+In the last instruction, the solution vector obtained when solving the linear system is dispatched to the velocity and pressure FE functions:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{p}{[}\PYG{n}{u1}\PYG{p}{[}\PYG{p}{]}\PYG{p}{,}\PYG{n}{p}\PYG{p}{[}\PYG{p}{]}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{sol}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dispatch the solution}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Under the hood, the matrix and right\sphinxhyphen{}hand side of a composite problem are assembled in a contiguous way with respect to the different components. This means that the linear system we are solving has the expected structure
+\begin{equation*}
+\begin{split}\left(
+\begin{array}{cc}
+\mathbf{A}&-B^T\\
+-B&-\epsilon I
+\end{array}
+\right)
+\left(
+\begin{array}{cc}
+\mathbf{u}\\
+p
+\end{array}
+\right)
+=
+\left(
+\begin{array}{cc}
+\mathbf{f}\\
+0
+\end{array}
+\right)\end{split}
+\end{equation*}
+
+\subsection{Parallel assembly and solution}
+\label{\detokenize{documentation/composite:parallel-assembly-and-solution}}
+\sphinxAtStartPar
+With the definition of composite problems, we also introduce a way to parallelize the assembly and solution of the linear system in a transparent way. There are two ways to make use of this functionality: with the parallel direct solver \sphinxstyleemphasis{MUMPS} and with \sphinxstyleemphasis{PETSc}.
+
+
+\subsubsection{with \sphinxstyleemphasis{MUMPS}}
+\label{\detokenize{documentation/composite:with-mumps}}
+\sphinxAtStartPar
+With minimal changes in the script, we can parallelize the assembly of the linear system on multiple MPI processes and solve it in parallel using the \sphinxstyleemphasis{MUMPS} solver.
+
+\sphinxAtStartPar
+First, we need to load the \sphinxcode{\sphinxupquote{%
+\PYG{n}{MUMPS}%
+}} and \sphinxcode{\sphinxupquote{%
+\PYG{n}{bem}%
+}} plugins (this functionality is implemented in the \sphinxcode{\sphinxupquote{%
+\PYG{n}{bem}%
+}} plugin for now but this will be changed in future releases):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{MUMPS}\PYG{l+s}{\PYGZdq{}}
+\PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{bem}\PYG{l+s}{\PYGZdq{}}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Now we just need to specify that we want to solve the problem with a sparse direct solver (\sphinxstyleemphasis{MUMPS}), with the linear system being distributed over all MPI processes (with \sphinxcode{\sphinxupquote{%
+\PYG{n}{master}\PYG{o}{=}\PYG{l+m+mi}{\PYGZhy{}1}%
+}}):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{solve}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{p}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{q}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{solver}\PYG{o}{=}\PYG{k+kr}{sparsesolver}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{master}\PYG{o}{=}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+It works the same way when using the \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{varf}%
+}}/\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}%
+}} syntax:
+
+\fvset{hllines={, 5,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{Xh}\PYG{o}{=}\PYG{n}{Uh}\PYG{o}{*}\PYG{n}{Ph}\PYG{p}{;}
+
+\PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n+nf}{Stokes}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{p}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{q}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{.}\PYG{p}{.}\PYG{p}{.}
+
+\PYG{k+kt}{matrix}\PYG{+w}{ }\PYG{n}{M}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{p}{(}\PYG{n}{Xh}\PYG{p}{,}\PYG{n}{Xh}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{solver}\PYG{o}{=}\PYG{k+kr}{sparsesolver}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{master}\PYG{o}{=}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{Xh}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{sol}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{M}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{o}{*}\PYG{n}{b}\PYG{p}{;}
+
+\PYG{p}{[}\PYG{n}{u1}\PYG{p}{[}\PYG{p}{]}\PYG{p}{,}\PYG{n}{p}\PYG{p}{[}\PYG{p}{]}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{sol}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dispatch the solution}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+At the end of the solution phase, all MPI processes hold the global solution of the problem in (\sphinxcode{\sphinxupquote{%
+\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{,}\PYG{n}{p}%
+}}).
+
+\sphinxAtStartPar
+In order to use multiple MPI processes, we run the script in parallel on e.g. 4 computing cores with
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{g+go}{ff\PYGZhy{}mpirun \PYGZhy{}np 4 script.edp \PYGZhy{}wg}
+\end{sphinxVerbatim}
+
+
+\subsubsection{with \sphinxstyleemphasis{PETSc}}
+\label{\detokenize{documentation/composite:with-petsc}}
+\sphinxAtStartPar
+Alternatively, we can use the \sphinxstyleemphasis{PETSc} library (see {\hyperref[\detokenize{documentation/petsc/index:petscslepc}]{\sphinxcrossref{\DUrole{std,std-ref}{PETSc and SLEPc}}}}) to solve the linear system. In contrast to the usual fully distributed \sphinxstyleemphasis{PETSc} framework (see {\hyperref[\detokenize{documentation/petsc/examples:petscexamples}]{\sphinxcrossref{\DUrole{std,std-ref}{PETSc examples}}}}), with the composite syntax the parallel data distribution is hidden to the user and the solution output is given in the global space. This is part of the continuous efforts to hide the difficulties associated with the parallelization of a user script, making it more transparent to the user.
+
+\sphinxAtStartPar
+In order to use \sphinxstyleemphasis{PETSc} as a solver, we simply load the \sphinxcode{\sphinxupquote{%
+\PYG{n}{PETSc}%
+}} plugin and define a \sphinxstyleemphasis{PETSc} \sphinxcode{\sphinxupquote{%
+\PYG{n}{Mat}%
+}} instead of a \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}%
+}} for the linear system matrix:
+
+\fvset{hllines={, 1, 12,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{PETSc}\PYG{l+s}{\PYGZdq{}}
+\PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{bem}\PYG{l+s}{\PYGZdq{}}
+
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{Xh}\PYG{o}{=}\PYG{n}{Uh}\PYG{o}{*}\PYG{n}{Ph}\PYG{p}{;}
+
+\PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{+w}{ }\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{p}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{q}\PYG{p}{]}\PYG{o}{\PYGZgt{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{p}{(}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{)}\PYG{o}{:}\PYG{n}{Grad}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{)}\PYG{p}{)}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{div}\PYG{p}{(}\PYG{n}{u1}\PYG{p}{,}\PYG{n}{u2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{q}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{div}\PYG{p}{(}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{)}\PYG{o}{*}\PYG{n}{p}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThP}\PYG{p}{)}\PYG{p}{(}\PYG{l+m+mf}{\PYGZhy{}1e\PYGZhy{}10}\PYG{o}{*}\PYG{n}{p}\PYG{o}{*}\PYG{n}{q}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThU}\PYG{p}{)}\PYG{p}{(}\PYG{p}{[}\PYG{n}{f1}\PYG{p}{,}\PYG{n}{f2}\PYG{p}{]}\PYG{o}{\PYGZsq{}}\PYG{o}{*}\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{]}\PYG{p}{)}
+\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{on}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{=}\PYG{n}{g1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u2}\PYG{o}{=}\PYG{n}{g2}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{n}{Mat}\PYG{+w}{ }\PYG{n}{M}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{p}{(}\PYG{n}{Xh}\PYG{p}{,}\PYG{n}{Xh}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{b}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{Xh}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{sol}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{M}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{o}{*}\PYG{n}{b}\PYG{p}{;}
+
+\PYG{p}{[}\PYG{n}{u1}\PYG{p}{[}\PYG{p}{]}\PYG{p}{,}\PYG{n}{p}\PYG{p}{[}\PYG{p}{]}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{sol}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// dispatch the solution}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+We can then indicate what type of \sphinxstyleemphasis{PETSc} solver we want to use with \sphinxstyleemphasis{PETSc}\sphinxhyphen{}specific command\sphinxhyphen{}line arguments. We can start by using a simple distributed LU solver:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{g+go}{ff\PYGZhy{}mpirun \PYGZhy{}np 4 script.edp \PYGZhy{}wg \PYGZhy{}pc\PYGZus{}type lu}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+We can also specify the solver by putting the corresponding \sphinxstyleemphasis{PETSc} flags directly in the script, with the \sphinxcode{\sphinxupquote{%
+\PYG{n+nf}{set}\PYG{p}{(}\PYG{p}{)}%
+}} instruction:
+
+\fvset{hllines={, 2,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{Mat}\PYG{+w}{ }\PYG{n}{M}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{p}{(}\PYG{n}{Xh}\PYG{p}{,}\PYG{n}{Xh}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nf}{set}\PYG{p}{(}\PYG{n}{M}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{sparams}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{\PYGZhy{}pc\PYGZus{}type lu}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
+
+\sphinxAtStartPar
+An interesting feature of using \sphinxstyleemphasis{PETSc} to solve a composite problem is that we can easily define a \sphinxstyleemphasis{fieldsplit} preconditioner combining separate preconditioners defined for each variable of the composite space, as the underlying composite \sphinxstyleemphasis{PETSc} operator already carries the block structure corresponding to the different variables.
+
+\sphinxAtStartPar
+This means that we can reference each variable \textendash{} or \sphinxstyleemphasis{split} \textendash{} right out of the box in order to define our fieldsplit preconditioner. They come in the same order as in the definition of the composite space ; in our Stokes example, the velocity space is split 0 and the pressure space is split 1. As an illustration, we can use the Schur complement method to solve our Stokes problem, using a multigrid \sphinxstyleemphasis{HYPRE} preconditioner for the velocity block:
+
+\fvset{hllines={, 2,}}%
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{n}{Mat}\PYG{+w}{ }\PYG{n}{M}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Stokes}\PYG{p}{(}\PYG{n}{Xh}\PYG{p}{,}\PYG{n}{Xh}\PYG{p}{)}\PYG{p}{;}
+\PYG{n+nf}{set}\PYG{p}{(}\PYG{n}{M}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{sparams}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{\PYGZhy{}pc\PYGZus{}type fieldsplit \PYGZhy{}pc\PYGZus{}fieldsplit\PYGZus{}type schur \PYGZhy{}fieldsplit\PYGZus{}0\PYGZus{}pc\PYGZus{}type hypre}\PYG{l+s}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxstepscope
 
