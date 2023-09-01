@@ -67,7 +67,7 @@ p {
 
 /** CODE TABLES **/
 .linenos {
-	background-color: #E0E0E5;
+	background-color: #EFEFEF;
 	color: rgba(0,0,0,.26);
 	border-radius: .125rem 0 0 .125rem;
 	padding: 0 .75rem !important;
@@ -78,7 +78,7 @@ p {
 	margin: 0;
 }
 
-table.highlighttable {
+div.highlight {
 	display: block;
 	background-color: #EFEFEF !important;
 	border-radius: .125rem;
@@ -87,21 +87,21 @@ table.highlighttable {
 	position: relative;
 }
 
-table.highlighttable tbody {
+div.highlight tbody {
 	display: block;
 }
 
-table.highlighttable tr {
+div.highlight tr {
 	display: flex;
 }
 
-table.highlighttable .code {
+div.highlight .code {
 	flex: 1;
 	overflow: hidden;
 	padding: 0 .55rem;
 }
 
-table.highlighttable pre {
+div.highlight pre {
 	display: block;
 	margin: 0;
 	overflow: auto;
@@ -110,9 +110,17 @@ table.highlighttable pre {
 	padding: .55rem 0;
 }
 
+div.highlight td.linenos,
+span.linenos,
+div.doctest > div.highlight span.gp {  /* gp: Generic.Prompt */
+    user-select: none;
+}
+
 .highlight {
 	background-color: #EFEFEF !important;
 	margin: 0;
+	overflow-x: auto;
+	vertical-align:top;
 }
 
 .highlight .nf {
@@ -151,7 +159,7 @@ table.highlighttable pre {
     position: absolute;
     top: .01rem;
     right: 2.1rem;
-		padding: .375rem .625rem;
+    padding: .375rem .625rem;
     -webkit-transform: translateX(.8rem);
     transform: translateX(.8rem);
     transition: opacity .175s,-webkit-transform .25s cubic-bezier(.9,.1,.9,0);
