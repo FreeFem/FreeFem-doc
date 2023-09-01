@@ -443,6 +443,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../composite.html">Composite finite element spaces <span class="red">NEW!</span></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../composite.html#limitations-of-the-current-syntax">Limitations of the current syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../composite.html#definition-of-composite-spaces">Definition of composite spaces</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../composite.html#first-examples">First examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../composite.html#stokes-with-p2-iso-p1-elements">Stokes with P2-iso-P1 elements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../composite.html#using-solve-or-problem">using <em>solve</em> or <em>problem</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../composite.html#using-varf-and-matrix">using <em>varf</em> and <em>matrix</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../composite.html#parallel-assembly-and-solution">Parallel assembly and solution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../composite.html#with-mumps">with <em>MUMPS</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../composite.html#with-petsc">with <em>PETSc</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins.html">Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../plugins.html#gsl">gsl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../plugins.html#ffrandom">ffrandom</a></li>
@@ -1952,6 +1970,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../BEM.html">The Boundary Element Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../composite.html">Composite finite element spaces <span class="red">NEW!</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../plugins.html">Plugins</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../developers.html">Developers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ffddm/index.html">ffddm</a></li>
@@ -1969,7 +1988,7 @@
 	<div id="content">
 		
    <section id="petsc-and-slepc">
-<h1>PETSc and SLEPc<a class="headerlink" href="#petsc-and-slepc" title="Link to this heading"></a></h1>
+<span id="petscslepc"></span><h1>PETSc and SLEPc<a class="headerlink" href="#petsc-and-slepc" title="Link to this heading"></a></h1>
 <p>FreeFEM is interfaced with <a class="reference external" href="https://petsc.org/">PETSc</a> and <a class="reference external" href="http://slepc.upv.es/">SLEPc</a> which offer a wide range of sequential or parallel linear or nonlinear solvers, time steppers, optimizers, and eigensolvers. In particular, it gives access transparently (without much changes to user code) to: distributed and multithreaded direct solvers (<a class="reference external" href="https://software.intel.com/en-us/mkl-developer-reference-fortran-intel-mkl-pardiso-parallel-direct-sparse-solver-interface">PARDISO</a>, <a class="reference external" href="http://mumps-solver.org/">MUMPS</a>, <a class="reference external" href="https://crd.lbl.gov/departments/applied-mathematics/scalable-solvers/research-areas/superlu-dist/">SuperLU</a>), multigrid solvers (<a class="reference external" href="https://hypre.readthedocs.io/en/latest/">hypre</a>, GAMG), domain decomposition methods (block Jacobi, ASM, <a class="reference external" href="https://github.com/hpddm/hpddm/">HPDDM</a>). For a detailed introduction to these tools, interested readers are referred to the tutorial <a class="reference external" href="https://joliv.et/FreeFem-tutorial/">Introduction to FreeFEM with an emphasis on parallel computing</a>.</p>
 <dl class="simple">
 <dt>In most of the scripts listed below, the following standard procedure is used.</dt><dd><ul class="simple">

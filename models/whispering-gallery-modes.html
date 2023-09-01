@@ -443,6 +443,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/composite.html">Composite finite element spaces <span class="red">NEW!</span></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#limitations-of-the-current-syntax">Limitations of the current syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#definition-of-composite-spaces">Definition of composite spaces</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#first-examples">First examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#stokes-with-p2-iso-p1-elements">Stokes with P2-iso-P1 elements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#using-solve-or-problem">using <em>solve</em> or <em>problem</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#using-varf-and-matrix">using <em>varf</em> and <em>matrix</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#parallel-assembly-and-solution">Parallel assembly and solution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#with-mumps">with <em>MUMPS</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#with-petsc">with <em>PETSc</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/plugins.html">Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/plugins.html#gsl">gsl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/plugins.html#ffrandom">ffrandom</a></li>
@@ -1990,15 +2008,15 @@ Please refer to <a class="reference internal" href="../bibliography.html#oxborro
 The electric field can be easily derived at a later stage from <span class="math notranslate nohighlight">\(\vec{E}=\frac{i}{\omega\epsilon_0}\hat{\epsilon}^{-1}\nabla\times\vec{H}\)</span>.
 Following a standard procedure starting with Maxwell equations we derive a wave equation in a single-axis anisotropic medium such as an optical crystal:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-wave">
-<span class="eqno">(70)<a class="headerlink" href="#equation-eqn-wave" title="Link to this equation"></a></span>\[\nabla\times\left(\hat{\epsilon}^{-1}\nabla\times\vec{H}\right)-k_0^2\vec{H}-\alpha\nabla\left(\nabla\cdot\vec{H}\right)=0\]</div>
+<span class="eqno">(73)<a class="headerlink" href="#equation-eqn-wave" title="Link to this equation"></a></span>\[\nabla\times\left(\hat{\epsilon}^{-1}\nabla\times\vec{H}\right)-k_0^2\vec{H}-\alpha\nabla\left(\nabla\cdot\vec{H}\right)=0\]</div>
 <p>Here <span class="math notranslate nohighlight">\(k_0=\omega/c\)</span> is the wavenumber, <span class="math notranslate nohighlight">\(\alpha\)</span> is the penalty term added to fight spurious FEM solutions.
 For anisotropic single-axis medium with <span class="math notranslate nohighlight">\(\partial\hat{\epsilon}/\partial\phi=0\)</span> in cylindrical system of coordinates we have:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\hat{\epsilon}=\begin{pmatrix} \epsilon_{\rho} &amp; 0 &amp; 0 \\ 0 &amp; \epsilon_{\rho} &amp; 0 \\ 0 &amp; 0 &amp; \epsilon_z \end{pmatrix}. \nonumber\end{split}\]</div>
 <p>We now assume axial symmetry of our electromagnetic fields and insert an imaginary unity in front of the <span class="math notranslate nohighlight">\(H_{\phi}\)</span> to allow all field components to be real numbers and also to account for the phase shift of this component <span class="math notranslate nohighlight">\(\vec{H}(\rho,\phi,z)=\left\{H_{\rho}(\rho,z),iH_{\phi}(\rho,z),H_z(\rho,z)\right\}\times e^{im\phi}\)</span>.</p>
-<p>We write the wave equation <a class="reference internal" href="#equation-eqn-wave">(70)</a> explicitly in cylindrical coordinates, thus obtaining a set of three differential equations for the domain <span class="math notranslate nohighlight">\(\Omega\)</span> given by the resonator’s cross section and some space outside:</p>
+<p>We write the wave equation <a class="reference internal" href="#equation-eqn-wave">(73)</a> explicitly in cylindrical coordinates, thus obtaining a set of three differential equations for the domain <span class="math notranslate nohighlight">\(\Omega\)</span> given by the resonator’s cross section and some space outside:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-system">
-<span class="eqno">(71)<a class="headerlink" href="#equation-eqn-system" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(74)<a class="headerlink" href="#equation-eqn-system" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     A_1\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}&amp;=&amp;0\\ \nonumber
     A_2\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}&amp;=&amp;0\\ \nonumber
     A_3\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}&amp;=&amp;0
@@ -2007,7 +2025,7 @@ For anisotropic single-axis medium with <span class="math notranslate nohighligh
 </section>
 <section id="weak-formulation">
 <h2>Weak formulation<a class="headerlink" href="#weak-formulation" title="Link to this heading"></a></h2>
-<p>In general, to obtain the integral or “weak” statements equivalent to system <a class="reference internal" href="#equation-eqn-system">(71)</a> and boundary conditions we form a scalar dot product between an arbitrary magnetic field test function <span class="math notranslate nohighlight">\(\mathbf{H}^t=\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}\)</span> and the components of our vectorial equation <span class="math notranslate nohighlight">\(A_1,A_2,A_3\)</span>, and integrate over the resonator’s cross section domain <span class="math notranslate nohighlight">\(\Omega\)</span> (and its boundary for the boundary conditions):</p>
+<p>In general, to obtain the integral or “weak” statements equivalent to system <a class="reference internal" href="#equation-eqn-system">(74)</a> and boundary conditions we form a scalar dot product between an arbitrary magnetic field test function <span class="math notranslate nohighlight">\(\mathbf{H}^t=\{{H}_{\rho}^t,{H}_{\phi}^t,{H}_{z}^t\}\)</span> and the components of our vectorial equation <span class="math notranslate nohighlight">\(A_1,A_2,A_3\)</span>, and integrate over the resonator’s cross section domain <span class="math notranslate nohighlight">\(\Omega\)</span> (and its boundary for the boundary conditions):</p>
 <div class="math notranslate nohighlight">
 \[\int\limits_{\Omega}(H^t_{\rho}A_1+H^t_{\phi}A_2+H^t_{z}A_3)d\Omega\]</div>
 <p>We can reduce the order of partial derivatives in this integral by using the Green’s formula for integration by parts.
@@ -2015,7 +2033,7 @@ For example:</p>
 <div class="math notranslate nohighlight">
 \[\int\limits_{\Omega}H_z^t \frac{\partial^2 H_z}{\partial \rho^2 }d\Omega=
 -\int\limits_{\Omega}\frac{\partial H_z^t}{\partial \rho}\frac{\partial H_z}{\partial \rho }d\Omega+\oint H_z^t\frac{\partial H_z}{\partial \rho}n_{\rho}d\Gamma\]</div>
-<p>Thus converting equations <a class="reference internal" href="#equation-eqn-system">(71)</a> we obtain a large expression for the weak form.</p>
+<p>Thus converting equations <a class="reference internal" href="#equation-eqn-system">(74)</a> we obtain a large expression for the weak form.</p>
 </section>
 <section id="a-dielectric-sphere-example-with-freefem">
 <h2>A dielectric sphere example with FreeFEM<a class="headerlink" href="#a-dielectric-sphere-example-with-freefem" title="Link to this heading"></a></h2>

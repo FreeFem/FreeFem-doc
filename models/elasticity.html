@@ -443,6 +443,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/composite.html">Composite finite element spaces <span class="red">NEW!</span></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#limitations-of-the-current-syntax">Limitations of the current syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#definition-of-composite-spaces">Definition of composite spaces</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#first-examples">First examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#stokes-with-p2-iso-p1-elements">Stokes with P2-iso-P1 elements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#using-solve-or-problem">using <em>solve</em> or <em>problem</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#using-varf-and-matrix">using <em>varf</em> and <em>matrix</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#parallel-assembly-and-solution">Parallel assembly and solution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#with-mumps">with <em>MUMPS</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#with-petsc">with <em>PETSc</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/plugins.html">Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/plugins.html#gsl">gsl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/plugins.html#ffrandom">ffrandom</a></li>
@@ -2013,7 +2031,7 @@ In homogeneous isotropic case, there is <em>Lamé constants</em> <span class="ma
 <p>We assume that the elastic plate is fixed on <span class="math notranslate nohighlight">\(\Gamma_D\times ]-h,h[,\, \Gamma_D\subset \partial\Omega\)</span>.
 If the body force <span class="math notranslate nohighlight">\(\mathbf{f}=(f_1,f_2,f_3)\)</span> is given in <span class="math notranslate nohighlight">\(\Omega\times]-h,h[\)</span> and surface force <span class="math notranslate nohighlight">\(\mathbf{g}\)</span> is given in <span class="math notranslate nohighlight">\(\Gamma_N\times]-h,h[, \Gamma_N=\partial\Omega\setminus\overline{\Gamma_D}\)</span>, then the equation of equilibrium is given as follows:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-elasticity">
-<span class="eqno">(55)<a class="headerlink" href="#equation-eqn-elasticity" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(58)<a class="headerlink" href="#equation-eqn-elasticity" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     -\partial_j \sigma_{ij}&amp;=&amp;f_i~~\textrm{in }\Omega\times ]-h,h[,\quad
     i=1,2,3\\
     \sigma_{ij}n_j&amp;=&amp;g_i~~\textrm{on }\Gamma_N\times ]-h,h[,\quad
@@ -2041,7 +2059,7 @@ Similarly we define the mean values <span class="math notranslate nohighlight">\
 </li>
 </ul>
 <p>In what follows we omit the overlines of <span class="math notranslate nohighlight">\(\overline{u}, \overline{f},\overline{g}, \overline{\varepsilon}_{ij}\)</span> and <span class="math notranslate nohighlight">\(\overline{\varepsilon}_{ij}\)</span>.
-Then we obtain similar equation of equilibrium given in <a class="reference internal" href="#equation-eqn-elasticity">(55)</a> replacing <span class="math notranslate nohighlight">\(\Omega\times ]-h,h[\)</span> with <span class="math notranslate nohighlight">\(\Omega\)</span> and changing <span class="math notranslate nohighlight">\(i=1,2\)</span>.
+Then we obtain similar equation of equilibrium given in <a class="reference internal" href="#equation-eqn-elasticity">(58)</a> replacing <span class="math notranslate nohighlight">\(\Omega\times ]-h,h[\)</span> with <span class="math notranslate nohighlight">\(\Omega\)</span> and changing <span class="math notranslate nohighlight">\(i=1,2\)</span>.
 In the case of plane stress, <span class="math notranslate nohighlight">\(\sigma_{ij}=\lambda^* \delta_{ij}\textrm{div}u+2\mu\varepsilon_{ij}, \lambda^*=(2\lambda \mu)/(\lambda+\mu)\)</span>.</p>
 <p>The equations of elasticity are naturally written in variational form for the displacement vector <span class="math notranslate nohighlight">\(\mathbf{u}(\mathbf{x})\in V\)</span> as:</p>
 <div class="math notranslate nohighlight">
@@ -2195,7 +2213,7 @@ Here <span class="math notranslate nohighlight">\(\Omega\)</span> stands for the
 \qquad (C_{ijkl}:\quad \hbox{Hooke's tensor}).\]</div>
 <p>If the elasticity is homogeneous isotropic, then the displacement <span class="math notranslate nohighlight">\(\mathbf{u}(x)\)</span> is decomposed in an open neighborhood <span class="math notranslate nohighlight">\(U_k\)</span> of <span class="math notranslate nohighlight">\(\gamma_k\)</span> as in (see e.g. <a class="reference internal" href="../bibliography.html#ohtsuka2000" id="id3"><span>[OHTSUKA2000]</span></a>)</p>
 <div class="math notranslate nohighlight" id="equation-eqn-sif">
-<span class="eqno">(56)<a class="headerlink" href="#equation-eqn-sif" title="Link to this equation"></a></span>\[\mathbf{u}(x) =
+<span class="eqno">(59)<a class="headerlink" href="#equation-eqn-sif" title="Link to this equation"></a></span>\[\mathbf{u}(x) =
 \sum_{l=1}^2 K_l(\gamma_k) r_k^{1/2} S^C_{kl}(\theta_k)
 + \mathbf{u}_{k,R}(x)
 \quad \mbox{for }x\in \Omega_{\Sigma}\cap U_k,\, k=1,2\]</div>
@@ -2234,7 +2252,7 @@ The undeformed crack <span class="math notranslate nohighlight">\(\Sigma\)</span
 </pre></div>
 </div>
 </li>
-<li><p>Adaptivity is an important technique here, because a large singularity occurs at <span class="math notranslate nohighlight">\(\gamma\)</span> as shown in <a class="reference internal" href="#equation-eqn-sif">(56)</a>.</p></li>
+<li><p>Adaptivity is an important technique here, because a large singularity occurs at <span class="math notranslate nohighlight">\(\gamma\)</span> as shown in <a class="reference internal" href="#equation-eqn-sif">(59)</a>.</p></li>
 </ul>
 <p>The first example creates mode I deformation by the opposed surface force on <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">B</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">T</span></code> in the vertical direction of <span class="math notranslate nohighlight">\(\Sigma\)</span>, and the displacement is fixed on <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">R</span></code>.</p>
 <p>In a laboratory, fracture engineers use photoelasticity to make stress field visible, which shows the principal stress difference</p>

@@ -443,6 +443,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/composite.html">Composite finite element spaces <span class="red">NEW!</span></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#limitations-of-the-current-syntax">Limitations of the current syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#definition-of-composite-spaces">Definition of composite spaces</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#first-examples">First examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#stokes-with-p2-iso-p1-elements">Stokes with P2-iso-P1 elements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#using-solve-or-problem">using <em>solve</em> or <em>problem</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#using-varf-and-matrix">using <em>varf</em> and <em>matrix</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#parallel-assembly-and-solution">Parallel assembly and solution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#with-mumps">with <em>MUMPS</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#with-petsc">with <em>PETSc</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/plugins.html">Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/plugins.html#gsl">gsl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/plugins.html#ffrandom">ffrandom</a></li>
@@ -1976,13 +1994,13 @@
 <h1>Navier-Stokes equations<a class="headerlink" href="#navier-stokes-equations" title="Link to this heading"></a></h1>
 <p>The Stokes equations are: for a given <span class="math notranslate nohighlight">\(\mathbf{f}\in L^2(\Omega)^2\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-stokes">
-<span class="eqno">(65)<a class="headerlink" href="#equation-eqn-stokes" title="Link to this equation"></a></span>\[\begin{split}\left.\begin{array}{cl}
+<span class="eqno">(68)<a class="headerlink" href="#equation-eqn-stokes" title="Link to this equation"></a></span>\[\begin{split}\left.\begin{array}{cl}
     -\Delta \mathbf{u}+\nabla p &amp; =\mathbf{f} \\
     \nabla\cdot \mathbf{u} &amp;=0
 \end{array}\right\}\quad \hbox{ in }\Omega\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{u}=(u_1,u_2)\)</span> is the velocity vector and <span class="math notranslate nohighlight">\(p\)</span> the pressure.
 For simplicity, let us choose Dirichlet boundary conditions on the velocity, <span class="math notranslate nohighlight">\(\mathbf{u}=\mathbf{u}_{\Gamma}\)</span> on <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
-<p>In <a class="reference internal" href="../bibliography.html#temam1977" id="id1"><span>[TEMAM1977]</span></a>, Theorem 2.2, there is a weak form of <a class="reference internal" href="#equation-eqn-stokes">(65)</a>:</p>
+<p>In <a class="reference internal" href="../bibliography.html#temam1977" id="id1"><span>[TEMAM1977]</span></a>, Theorem 2.2, there is a weak form of <a class="reference internal" href="#equation-eqn-stokes">(68)</a>:</p>
 <p>Find <span class="math notranslate nohighlight">\(\mathbf{v}=(v_1,v_2)\in \mathbf{V}(\Omega)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{V}(\Omega)=\{\mathbf{w}\in H^1_0(\Omega)^2|\; \textrm{div}\mathbf{w}=0\}\]</div>
@@ -1997,14 +2015,14 @@ For simplicity, let us choose Dirichlet boundary conditions on the velocity, <sp
 <div class="math notranslate nohighlight">
 \[\mathbf{V}=H^1_0(\Omega)^2;\quad
 W=\left\{q\in L^2(\Omega)\left|\; \int_{\Omega}q=0\right.\right\}\]</div>
-<p>By multiplying the first equation in <a class="reference internal" href="#equation-eqn-stokes">(65)</a> with <span class="math notranslate nohighlight">\(v\in V\)</span> and the second with <span class="math notranslate nohighlight">\(q\in W\)</span>, subsequent integration over <span class="math notranslate nohighlight">\(\Omega\)</span>, and an application of Green’s formula, we have:</p>
+<p>By multiplying the first equation in <a class="reference internal" href="#equation-eqn-stokes">(68)</a> with <span class="math notranslate nohighlight">\(v\in V\)</span> and the second with <span class="math notranslate nohighlight">\(q\in W\)</span>, subsequent integration over <span class="math notranslate nohighlight">\(\Omega\)</span>, and an application of Green’s formula, we have:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
     \int_{\Omega}\nabla\mathbf{u}\cdot \nabla\mathbf{v}-\int_{\Omega}\textrm{div}\mathbf{v}\, p
     &amp;=&amp;\int_{\Omega}\mathbf{f}\cdot\mathbf{v}\\
     \int_{\Omega}\textrm{div}\mathbf{u}\, q&amp;=&amp;0
 \end{array}\end{split}\]</div>
-<p>This yields the weak form of <a class="reference internal" href="#equation-eqn-stokes">(65)</a>:</p>
+<p>This yields the weak form of <a class="reference internal" href="#equation-eqn-stokes">(68)</a>:</p>
 <p>Find <span class="math notranslate nohighlight">\((\mathbf{u},p)\in \mathbf{V}\times W\)</span> such that:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
@@ -2027,7 +2045,7 @@ W=\left\{q\in L^2(\Omega)\left|\; \int_{\Omega}q=0\right.\right\}\]</div>
 \end{array}\end{split}\]</div>
 <p>The discrete weak form is: Find <span class="math notranslate nohighlight">\((\mathbf{u}_{h},p_{h}) \in \mathbf{V}_{h} \times W_{h}\)</span> such that:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-vfstokes">
-<span class="eqno">(66)<a class="headerlink" href="#equation-eqn-vfstokes" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{cll}
+<span class="eqno">(69)<a class="headerlink" href="#equation-eqn-vfstokes" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{cll}
     a(\mathbf{u}_h,\mathbf{v}_h)+b(\mathbf{v}_h,p) &amp;= (\mathbf{f},\mathbf{v}_h) ,
     &amp;\forall \mathbf{v}_{h} \in \mathbf{V}_{h} \\
     b(\mathbf{u}_h,q_h)&amp;= 0,
@@ -2051,7 +2069,7 @@ W=\left\{q\in L^2(\Omega)\left|\; \int_{\Omega}q=0\right.\right\}\]</div>
 <div><div class="math notranslate nohighlight">
 \[\sup_{\mathbf{v}_h\in \mathbf{V}_h}\frac{b(\mathbf{v}_h,q_h)}{\| \mathbf{v}_h\|_{1,\Omega}}
 \ge \beta_h\| q_h\|_{0,\Omega}\quad \textrm{for all }q_h\in W_h\]</div>
-<p>Then we have an unique solution <span class="math notranslate nohighlight">\((\mathbf{u}_h,p_h)\)</span> of <a class="reference internal" href="#equation-eqn-vfstokes">(66)</a> satisfying:</p>
+<p>Then we have an unique solution <span class="math notranslate nohighlight">\((\mathbf{u}_h,p_h)\)</span> of <a class="reference internal" href="#equation-eqn-vfstokes">(69)</a> satisfying:</p>
 <div class="math notranslate nohighlight">
 \[\| \mathbf{u}-\mathbf{u}_h\|_{1,\Omega}+\| p-p_h\|_{0,\Omega}
 \le C\left(
@@ -2072,7 +2090,7 @@ W=\left\{q\in L^2(\Omega)\left|\; \int_{\Omega}q=0\right.\right\}\]</div>
     By_{ij}=-\int_{\Omega}\p \phi_j/\p y\, \varphi_i\nonumber\\
     &amp;&amp;\qquad i=1,\cdots,M_W;j=1,\cdots,M_V\nonumber
 \end{array}\end{split}\]</div>
-<p>then <a class="reference internal" href="#equation-eqn-vfstokes">(66)</a> is written by:</p>
+<p>then <a class="reference internal" href="#equation-eqn-vfstokes">(69)</a> is written by:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\left(
 \begin{array}{cc}
@@ -2122,10 +2140,10 @@ By^T
 \{\textstyle{\int_{\Omega}f_2\phi_i}\}
 \end{array}
 \right\}\end{split}\]</div>
-<p><strong>Penalty method:</strong> This method consists of replacing <a class="reference internal" href="#equation-eqn-vfstokes">(66)</a> by a more regular problem:</p>
+<p><strong>Penalty method:</strong> This method consists of replacing <a class="reference internal" href="#equation-eqn-vfstokes">(69)</a> by a more regular problem:</p>
 <p>Find <span class="math notranslate nohighlight">\((\mathbf{v}_h^{\epsilon},p_h^{\epsilon})\in \mathbf{V}_h\times \tilde{W}_{h}\)</span> satisfying:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-pvfstokes">
-<span class="eqno">(67)<a class="headerlink" href="#equation-eqn-pvfstokes" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{cll}
+<span class="eqno">(70)<a class="headerlink" href="#equation-eqn-pvfstokes" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{cll}
     a(\mathbf{u}_h^\epsilon,\mathbf{v}_h)+b(\mathbf{v}_h,p_h^{\epsilon}) &amp;= (\mathbf{f},\mathbf{v}_h) ,
     &amp;\forall \mathbf{v}_{h} \in \mathbf{V}_{h} \\
     b(\mathbf{u}_h^{\epsilon},q_h)-\epsilon(p_h^{\epsilon},q_h)&amp;= 0,
@@ -2160,8 +2178,8 @@ B&amp;-\epsilon I
 <p class="admonition-title">Note</p>
 <p>We can eliminate <span class="math notranslate nohighlight">\(p_h^\epsilon=(1/\epsilon)BU_h^{\epsilon}\)</span> to obtain:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-stiffpvfstokes">
-<span class="eqno">(68)<a class="headerlink" href="#equation-eqn-stiffpvfstokes" title="Link to this equation"></a></span>\[(A+(1/\epsilon)B^*B)\mathbf{U}_h^{\epsilon}=\mathbf{F}_h^{\epsilon}\]</div>
-<p>Since the matrix <span class="math notranslate nohighlight">\(A+(1/\epsilon)B^*B\)</span> is symmetric, positive-definite, and sparse, <a class="reference internal" href="#equation-eqn-stiffpvfstokes">(68)</a> can be solved by known technique.
+<span class="eqno">(71)<a class="headerlink" href="#equation-eqn-stiffpvfstokes" title="Link to this equation"></a></span>\[(A+(1/\epsilon)B^*B)\mathbf{U}_h^{\epsilon}=\mathbf{F}_h^{\epsilon}\]</div>
+<p>Since the matrix <span class="math notranslate nohighlight">\(A+(1/\epsilon)B^*B\)</span> is symmetric, positive-definite, and sparse, <a class="reference internal" href="#equation-eqn-stiffpvfstokes">(71)</a> can be solved by known technique.
 There is a constant <span class="math notranslate nohighlight">\(C&gt;0\)</span> independent of <span class="math notranslate nohighlight">\(\epsilon\)</span> such that:</p>
 <div class="math notranslate nohighlight">
 \[\|\mathbf{u}_h-\mathbf{u}_h^\epsilon\|_{1,\Omega}+
@@ -2173,7 +2191,7 @@ There is a constant <span class="math notranslate nohighlight">\(C&gt;0\)</span>
 <p>Cavity</p>
 <p>The driven cavity flow problem is solved first at zero Reynolds number (Stokes flow) and then at Reynolds 100.
 The velocity pressure formulation is used first and then the calculation is repeated with the stream function vorticity formulation.</p>
-<p>We solve the driven cavity problem by the penalty method <a class="reference internal" href="#equation-eqn-pvfstokes">(67)</a> where <span class="math notranslate nohighlight">\(\mathbf{u}_{\Gamma}\cdot \mathbf{n}=0\)</span> and <span class="math notranslate nohighlight">\(\mathbf{u}_{\Gamma}\cdot \mathbf{s}=1\)</span> on the top boundary and zero elsewhere (<span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is the unit normal to <span class="math notranslate nohighlight">\(\Gamma\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{s}\)</span> the unit tangent to <span class="math notranslate nohighlight">\(\Gamma\)</span>).</p>
+<p>We solve the driven cavity problem by the penalty method <a class="reference internal" href="#equation-eqn-pvfstokes">(70)</a> where <span class="math notranslate nohighlight">\(\mathbf{u}_{\Gamma}\cdot \mathbf{n}=0\)</span> and <span class="math notranslate nohighlight">\(\mathbf{u}_{\Gamma}\cdot \mathbf{s}=1\)</span> on the top boundary and zero elsewhere (<span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is the unit normal to <span class="math notranslate nohighlight">\(\Gamma\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{s}\)</span> the unit tangent to <span class="math notranslate nohighlight">\(\Gamma\)</span>).</p>
 <p>The mesh is constructed by:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">mesh</span><span class="w"> </span><span class="n">Th</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
 </pre></div>
@@ -2194,7 +2212,7 @@ The velocity pressure formulation is used first and then the calculation is repe
 </pre></div>
 </div>
 <p>The Stokes operator is implemented as a system-solve for the velocity <span class="math notranslate nohighlight">\((u1,u2)\)</span> and the pressure <span class="math notranslate nohighlight">\(p\)</span>.
-The test function for the velocity is <span class="math notranslate nohighlight">\((v1,v2)\)</span> and <span class="math notranslate nohighlight">\(q\)</span> for the pressure, so the variational form <a class="reference internal" href="#equation-eqn-vfstokes">(66)</a> in freefem language is:</p>
+The test function for the velocity is <span class="math notranslate nohighlight">\((v1,v2)\)</span> and <span class="math notranslate nohighlight">\(q\)</span> for the pressure, so the variational form <a class="reference internal" href="#equation-eqn-vfstokes">(69)</a> in freefem language is:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">solve</span><span class="w"> </span><span class="nf">Stokes</span><span class="w"> </span><span class="p">(</span><span class="n">u1</span><span class="p">,</span><span class="w"> </span><span class="n">u2</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="kp">solver</span><span class="o">=</span><span class="kr">Crout</span><span class="p">)</span>
 <span class="linenos"> 2</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span>
 <span class="linenos"> 3</span><span class="w">        </span><span class="p">(</span>

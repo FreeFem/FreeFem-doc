@@ -443,6 +443,24 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../documentation/composite.html">Composite finite element spaces <span class="red">NEW!</span></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#limitations-of-the-current-syntax">Limitations of the current syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#definition-of-composite-spaces">Definition of composite spaces</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#first-examples">First examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#stokes-with-p2-iso-p1-elements">Stokes with P2-iso-P1 elements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#using-solve-or-problem">using <em>solve</em> or <em>problem</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#using-varf-and-matrix">using <em>varf</em> and <em>matrix</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../documentation/composite.html#parallel-assembly-and-solution">Parallel assembly and solution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#with-mumps">with <em>MUMPS</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../documentation/composite.html#with-petsc">with <em>PETSc</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../documentation/plugins.html">Plugins</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/plugins.html#gsl">gsl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../documentation/plugins.html#ffrandom">ffrandom</a></li>
@@ -1977,27 +1995,27 @@
 <h1>Evolution problems<a class="headerlink" href="#evolution-problems" title="Link to this heading"></a></h1>
 <p><strong>FreeFEM</strong> also solves evolution problems such as the heat equation:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-heatequation">
-<span class="eqno">(57)<a class="headerlink" href="#equation-eqn-heatequation" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcll}
+<span class="eqno">(60)<a class="headerlink" href="#equation-eqn-heatequation" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcll}
     \frac{\p u}{\p t}-\mu\Delta u &amp;=&amp; f &amp; \textrm{ in }\Omega\times ]0,T[\\
     u(\mathbf{x},0) &amp;=&amp; u_0(\mathbf{x}) &amp; \textrm{ in }\Omega\\
     \left(\p u/\p n\right)(\mathbf{x},t) &amp;=&amp; 0 &amp; \textrm{ on }\p\Omega\times ]0,T[
 \end{array}\end{split}\]</div>
 <p>with a positive viscosity coefficient <span class="math notranslate nohighlight">\(\mu\)</span> and homogeneous Neumann boundary conditions.</p>
-<p>We solve <a class="reference internal" href="#equation-eqn-heatequation">(57)</a> by FEM in space and finite differences in time.</p>
+<p>We solve <a class="reference internal" href="#equation-eqn-heatequation">(60)</a> by FEM in space and finite differences in time.</p>
 <p>We use the definition of the partial derivative of the solution in the time derivative:</p>
 <div class="math notranslate nohighlight">
 \[\frac{\p u}{\p t}(x,y,t) = \lim_{\tau \to 0}\frac{u(x,y,t)-u(x,y,t-\tau )}{\tau }\]</div>
 <p>which indicates that <span class="math notranslate nohighlight">\(u^m(x,y)=u(x,y,m\tau )\)</span> will satisfy approximatively:</p>
 <div class="math notranslate nohighlight">
 \[\frac{\p u}{\p t}(x,y,m\tau )\simeq \frac{u^m(x,y)-u^{m-1}(x,y)}{\tau }\]</div>
-<p>The time discretization of heat equation <a class="reference internal" href="#equation-eqn-heatequation">(57)</a> is as follows, <span class="math notranslate nohighlight">\(\forall m=0,\cdots,[T/\tau ]\)</span>:</p>
+<p>The time discretization of heat equation <a class="reference internal" href="#equation-eqn-heatequation">(60)</a> is as follows, <span class="math notranslate nohighlight">\(\forall m=0,\cdots,[T/\tau ]\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcll}
     \frac{u^{m+1}-u^{m}}{\tau }-\mu\Delta u^{m+1} &amp;=&amp; f^{m+1} &amp; \textrm{ in }\Omega\\
     u^0(\mathbf{x}) &amp;=&amp; u_0(\mathbf{x}) &amp; \textrm{ in }\Omega\\
     \p u^{m+1}/\p n(\mathbf{x}) &amp;=&amp; 0 &amp; \textrm{ on }\p\Omega
 \end{array}\end{split}\]</div>
-<p>which is so-called <em>backward Euler method</em> for <a class="reference internal" href="#equation-eqn-heatequation">(57)</a>.</p>
+<p>which is so-called <em>backward Euler method</em> for <a class="reference internal" href="#equation-eqn-heatequation">(60)</a>.</p>
 <p>To obtain the variational formulation, multiply with the test function <span class="math notranslate nohighlight">\(v\)</span> both sides of the equation:</p>
 <div class="math notranslate nohighlight">
 \[\int_{\Omega}\{u^{m+1}v-\tau \Delta u^{m+1}v\}=\int_{\Omega}\{u^m+\tau f^{m+1}\}v\]</div>
@@ -2008,7 +2026,7 @@
 =\int_{\Omega }\{u^mv+\tau f^{m+1}v\}\]</div>
 <p>By the boundary condition <span class="math notranslate nohighlight">\(\p u^{m+1}/\p n=0\)</span>, it follows that:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-heatequationbwe">
-<span class="eqno">(58)<a class="headerlink" href="#equation-eqn-heatequationbwe" title="Link to this equation"></a></span>\[\int_{\Omega} \{u^{m+1}v+\tau \nabla u^{m+1}\cdot \nabla v\}
+<span class="eqno">(61)<a class="headerlink" href="#equation-eqn-heatequationbwe" title="Link to this equation"></a></span>\[\int_{\Omega} \{u^{m+1}v+\tau \nabla u^{m+1}\cdot \nabla v\}
 -\int_{\Omega }\{u^mv+\tau f^{m+1}v\}
 =0\]</div>
 <p>Using the identity just above, we can calculate the finite element approximation <span class="math notranslate nohighlight">\(u_h^m\)</span> of <span class="math notranslate nohighlight">\(u^m\)</span> in a step-by-step manner with respect to <span class="math notranslate nohighlight">\(t\)</span>.</p>
@@ -2066,7 +2084,7 @@
 </pre></div>
 </div>
 <p>In the last statement, the <span class="math notranslate nohighlight">\(L^2\)</span>-error <span class="math notranslate nohighlight">\(\left(\int_{\Omega}\left| u-tx^4\right|^2\right)^{1/2}\)</span> is calculated at <span class="math notranslate nohighlight">\(t=m\tau, \tau =0.1\)</span>. At <span class="math notranslate nohighlight">\(t=0.1\)</span>, the error is 0.000213269. The errors increase with <span class="math notranslate nohighlight">\(m\)</span> and 0.00628589 at <span class="math notranslate nohighlight">\(t=3\)</span>.</p>
-<p>The iteration of the backward Euler <a class="reference internal" href="#equation-eqn-heatequationbwe">(58)</a> is made by <a class="reference internal" href="../references/loops.html#loopfor"><span class="std std-ref">for loop</span></a>.</p>
+<p>The iteration of the backward Euler <a class="reference internal" href="#equation-eqn-heatequationbwe">(61)</a> is made by <a class="reference internal" href="../references/loops.html#loopfor"><span class="std std-ref">for loop</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The stiffness matrix in the loop is used over and over again.
@@ -2090,23 +2108,23 @@ Let <span class="math notranslate nohighlight">\(a\)</span> be a continuous bili
 <p>Let us denote the time step by <span class="math notranslate nohighlight">\(\tau&gt;0\)</span>, <span class="math notranslate nohighlight">\(N_T=[T/\tau]\)</span>.
 For the discretization, we put <span class="math notranslate nohighlight">\(u^n = u(n\tau)\)</span> and consider the time difference for each <span class="math notranslate nohighlight">\(\theta\in [0,1]\)</span></p>
 <div class="math notranslate nohighlight" id="equation-eqn-t-method">
-<span class="eqno">(59)<a class="headerlink" href="#equation-eqn-t-method" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(62)<a class="headerlink" href="#equation-eqn-t-method" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     \frac{1}{\tau}\left( u_h^{n+1}-u_h^n,\phi_i\right) +a\left( u_h^{n+\theta},\phi_i\right)&amp;=&amp;\langle f^{n+\theta},\phi_i\rangle\\
     i=1,&amp;\cdots&amp;, m,\quad n=0,\cdots, N_T\nonumber\\
     u_h^{n+\theta}&amp;=&amp;\theta u_h^{n+1}+(1-\theta)u_h^n,\\
     f^{n+\theta}&amp;=&amp;\theta f^{n+1}+(1-\theta)f^n\nonumber
 \end{array}\end{split}\]</div>
-<p>Formula <a class="reference internal" href="#equation-eqn-t-method">(59)</a> is the <em>forward Euler scheme</em> if <span class="math notranslate nohighlight">\(\theta=0\)</span>, <em>Crank-Nicolson scheme</em> if <span class="math notranslate nohighlight">\(\theta=1/2\)</span>, the <em>backward Euler scheme</em> if <span class="math notranslate nohighlight">\(\theta=1\)</span>.</p>
+<p>Formula <a class="reference internal" href="#equation-eqn-t-method">(62)</a> is the <em>forward Euler scheme</em> if <span class="math notranslate nohighlight">\(\theta=0\)</span>, <em>Crank-Nicolson scheme</em> if <span class="math notranslate nohighlight">\(\theta=1/2\)</span>, the <em>backward Euler scheme</em> if <span class="math notranslate nohighlight">\(\theta=1\)</span>.</p>
 <p>Unknown vectors <span class="math notranslate nohighlight">\(u^n=(u_h^1,\cdots,u_h^M)^T\)</span> in</p>
 <div class="math notranslate nohighlight">
 \[u_h^n(x)=u^n_1\phi_1(x)+\cdots+u^n_m\phi_m(x),\quad u^n_1,\cdots,u^n_m\in \R\]</div>
 <p>are obtained from solving the matrix</p>
 <div class="math notranslate nohighlight" id="equation-eqn-evolution-1">
-<span class="eqno">(60)<a class="headerlink" href="#equation-eqn-evolution-1" title="Link to this equation"></a></span>\[\begin{split}(M+\theta\tau A)u^{n+1}=\{M-(1-\theta)\tau A\}u^n
+<span class="eqno">(63)<a class="headerlink" href="#equation-eqn-evolution-1" title="Link to this equation"></a></span>\[\begin{split}(M+\theta\tau A)u^{n+1}=\{M-(1-\theta)\tau A\}u^n
 +\tau\left\{\theta f^{n+1}+(1-\theta)f^n\right\}\\
 M=(m_{ij}),\quad m_{ij}=(\phi_j,\phi_i),\qquad
 A=(a_{ij}),\quad a_{ij}=a(\phi_j,\phi_i)\nonumber\end{split}\]</div>
-<p>Refer <a class="reference internal" href="../bibliography.html#tabata1994" id="id1"><span>[TABATA1994]</span></a>, pp.70–75 for solvability of <a class="reference internal" href="#equation-eqn-evolution-1">(60)</a>. The stability of <a class="reference internal" href="#equation-eqn-evolution-1">(60)</a> is in <a class="reference internal" href="../bibliography.html#tabata1994" id="id2"><span>[TABATA1994]</span></a>, Theorem 2.13:</p>
+<p>Refer <a class="reference internal" href="../bibliography.html#tabata1994" id="id1"><span>[TABATA1994]</span></a>, pp.70–75 for solvability of <a class="reference internal" href="#equation-eqn-evolution-1">(63)</a>. The stability of <a class="reference internal" href="#equation-eqn-evolution-1">(63)</a> is in <a class="reference internal" href="../bibliography.html#tabata1994" id="id2"><span>[TABATA1994]</span></a>, Theorem 2.13:</p>
 <p>Let <span class="math notranslate nohighlight">\(\{\mathcal{T}_h\}_{h\downarrow 0}\)</span> be regular triangulations (see <a class="reference internal" href="../documentation/mesh-generation.html#meshregulartriangulation"><span class="std std-ref">Regular Triangulation</span></a>).
 Then there is a number <span class="math notranslate nohighlight">\(c_0&gt;0\)</span> independent of <span class="math notranslate nohighlight">\(h\)</span> such that,</p>
 <div class="math notranslate nohighlight">
@@ -2217,11 +2235,11 @@ Then there is a number <span class="math notranslate nohighlight">\(c_0&gt;0\)</
 <h2>Convection<a class="headerlink" href="#convection" title="Link to this heading"></a></h2>
 <p>The hyperbolic equation</p>
 <div class="math notranslate nohighlight" id="equation-eqn-conv">
-<span class="eqno">(61)<a class="headerlink" href="#equation-eqn-conv" title="Link to this equation"></a></span>\[\p_t u +\mathbf{\alpha} \cdot \nabla u=f;\ \textrm{ for a vector-valued function }\mathbf{\alpha}\]</div>
+<span class="eqno">(64)<a class="headerlink" href="#equation-eqn-conv" title="Link to this equation"></a></span>\[\p_t u +\mathbf{\alpha} \cdot \nabla u=f;\ \textrm{ for a vector-valued function }\mathbf{\alpha}\]</div>
 <p>appears frequently in scientific problems, for example in the Navier-Stokes equations, in the Convection-Diffusion equation, etc.</p>
 <p>In the case of 1-dimensional space, we can easily find the general solution <span class="math notranslate nohighlight">\((x,t)\mapsto u(x,t)=u^0(x-\alpha t)\)</span> of the following equation, if <span class="math notranslate nohighlight">\(\alpha\)</span> is constant,</p>
 <div class="math notranslate nohighlight" id="equation-eqn-conv0">
-<span class="eqno">(62)<a class="headerlink" href="#equation-eqn-conv0" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(65)<a class="headerlink" href="#equation-eqn-conv0" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     \p_t u +\alpha\p_x u &amp;=&amp; 0\\
     u(x,0) &amp;=&amp; u^0(x),
 \end{array}\end{split}\]</div>
@@ -2236,26 +2254,26 @@ Then it is noticed that <span class="math notranslate nohighlight">\((x,t)\right
 \[\p _{t}v+\alpha\p _{x}v=\p _{t}X\dot{v}+a\p _{x}X\dot{v}%
 =0\]</div>
 <p>and by the definition <span class="math notranslate nohighlight">\(\p _{t}X=\dot{X}=+\alpha\)</span> and <span class="math notranslate nohighlight">\(\p_{x}X=\p _{x}x\)</span> in <span class="math notranslate nohighlight">\(\tau=t\)</span>, because if <span class="math notranslate nohighlight">\(\tau =t\)</span> we have <span class="math notranslate nohighlight">\(X(\tau )=x\)</span>.</p>
-<p>The general solution of <a class="reference internal" href="#equation-eqn-conv0">(62)</a> is thus the value of the boundary condition in <span class="math notranslate nohighlight">\(X_{x, t}(0)\)</span>, that is to say <span class="math notranslate nohighlight">\(u(x,t)=u^{0}(X_{x,t}(0))\)</span> where <span class="math notranslate nohighlight">\(X_{x,t}(0)\)</span> is on the <span class="math notranslate nohighlight">\(x\)</span> axis, <span class="math notranslate nohighlight">\(u(x,t)=u^{0}(X_{x,t}(0))\)</span> if <span class="math notranslate nohighlight">\(X_{x,t}(0)\)</span> is on the axis of <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>The general solution of <a class="reference internal" href="#equation-eqn-conv0">(65)</a> is thus the value of the boundary condition in <span class="math notranslate nohighlight">\(X_{x, t}(0)\)</span>, that is to say <span class="math notranslate nohighlight">\(u(x,t)=u^{0}(X_{x,t}(0))\)</span> where <span class="math notranslate nohighlight">\(X_{x,t}(0)\)</span> is on the <span class="math notranslate nohighlight">\(x\)</span> axis, <span class="math notranslate nohighlight">\(u(x,t)=u^{0}(X_{x,t}(0))\)</span> if <span class="math notranslate nohighlight">\(X_{x,t}(0)\)</span> is on the axis of <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>In higher dimension <span class="math notranslate nohighlight">\(\Omega \subset R^{d},~d=2,3\)</span>, the equation for the convection is written</p>
 <div class="math notranslate nohighlight">
 \[\p _{t}u+\mathbf{\alpha}\cdot \nabla u=0\hbox{ in }\Omega \times (0,T)\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{a}(x,t)\in \R^{d}\)</span>.</p>
 <p><strong>FreeFEM</strong> implements the Characteristic-Galerkin method for convection operators.
-Recall that the equation <a class="reference internal" href="#equation-eqn-conv">(61)</a> can be discretized as</p>
+Recall that the equation <a class="reference internal" href="#equation-eqn-conv">(64)</a> can be discretized as</p>
 <div class="math notranslate nohighlight">
 \[\frac{Du}{Dt} = f\;\;\textrm{i.e. }\frac{du}{dt}\left( {X(t),t} \right) = f\left(X( t ),t \right)\textrm{ where }\frac{dX}{dt}( t ) = \mathbf{\alpha}( {X(t),t})\]</div>
 <p>where <span class="math notranslate nohighlight">\(D\)</span> is the total derivative operator.
 So a good scheme is one step of backward convection by the method of Characteristics-Galerkin</p>
 <div class="math notranslate nohighlight" id="equation-eqn-charac">
-<span class="eqno">(63)<a class="headerlink" href="#equation-eqn-charac" title="Link to this equation"></a></span>\[\frac{1}{{\tau }}\left(u^{m + 1}(x) - u^m(X^m(x))\right) = f^m (x)\]</div>
+<span class="eqno">(66)<a class="headerlink" href="#equation-eqn-charac" title="Link to this equation"></a></span>\[\frac{1}{{\tau }}\left(u^{m + 1}(x) - u^m(X^m(x))\right) = f^m (x)\]</div>
 <p>where <span class="math notranslate nohighlight">\(X^m (x)\)</span> is an approximation of the solution at <span class="math notranslate nohighlight">\(t = m\tau\)</span> of the ordinary differential equation</p>
 <div class="math notranslate nohighlight">
 \[\frac{d\mathbf{X}}{dt}(t) = \mathbf{\alpha}^m(\mathbf{X}(t)), \mathbf{X}((m + 1)\tau) = x.\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{\alpha}^m(x)=(\alpha_1(x,m\tau ),\alpha_2(x,m\tau))\)</span>.
 Because, by Taylor’s expansion, we have</p>
 <div class="math notranslate nohighlight" id="equation-eqn-conv1">
-<span class="eqno">(64)<a class="headerlink" href="#equation-eqn-conv1" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
+<span class="eqno">(67)<a class="headerlink" href="#equation-eqn-conv1" title="Link to this equation"></a></span>\[\begin{split}\begin{array}{rcl}
     u^m(\mathbf{X}(m\tau ))&amp;=&amp;
     u^m(\mathbf{X}((m+1)\tau )) -
     \tau \sum_{i=1}^d \frac{\p u^m}{\p x_i}(\mathbf{X}((m+1)\tau ))
@@ -2264,7 +2282,7 @@ Because, by Taylor’s expansion, we have</p>
     &amp;=&amp;u^m(x)-\tau \mathbf{\alpha}^m(x)\cdot \nabla u^m(x)+o(\tau )
 \end{array}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(X_i(t)\)</span> are the i-th component of <span class="math notranslate nohighlight">\(\mathbf{X}(t)\)</span>, <span class="math notranslate nohighlight">\(u^m(x)=u(x,m\tau )\)</span> and we used the chain rule and <span class="math notranslate nohighlight">\(x=\mathbf{X}((m+1)\tau )\)</span>.
-From <a class="reference internal" href="#equation-eqn-conv1">(64)</a>, it follows that</p>
+From <a class="reference internal" href="#equation-eqn-conv1">(67)</a>, it follows that</p>
 <div class="math notranslate nohighlight">
 \[u^m(X^m(x))=u^m(x)-\tau \mathbf{\alpha}^m(x)\cdot \nabla u^m(x)+o(\tau )\]</div>
 <p>Also we apply Taylor’s expansion for <span class="math notranslate nohighlight">\(t \rightarrow u^m(x-\mathbf{\alpha}^m(x)t),0\le t\le \tau\)</span>, then</p>
@@ -2276,7 +2294,7 @@ From <a class="reference internal" href="#equation-eqn-conv1">(64)</a>, it follo
 <p><span class="math notranslate nohighlight">\(u^m \left( {X^m( x )} \right) \approx\)</span> <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">convect</span></code> <span class="math notranslate nohighlight">\(\left( {[a_1^m ,a_2^m],-\tau ,u^m } \right)\)</span> by <span class="math notranslate nohighlight">\(X^m \approx x \mapsto x- \tau [a_1^m(x) ,a_2^m(x)]\)</span></p>
 <p>A classical convection problem is that of the “rotating bell” (quoted from <a class="reference internal" href="../bibliography.html#lucquin1998" id="id3"><span>[LUCQUIN1998]</span></a>, p.16).</p>
 <p>Let <span class="math notranslate nohighlight">\(\Omega\)</span> be the unit disk centered at 0, with its center rotating with speed <span class="math notranslate nohighlight">\(\alpha_1 = y,\, \alpha_2 = -x\)</span>.
-We consider the problem <a class="reference internal" href="#equation-eqn-conv">(61)</a> with <span class="math notranslate nohighlight">\(f=0\)</span> and the initial condition <span class="math notranslate nohighlight">\(u(x,0)=u^0(x)\)</span>, that is, from <a class="reference internal" href="#equation-eqn-charac">(63)</a></p>
+We consider the problem <a class="reference internal" href="#equation-eqn-conv">(64)</a> with <span class="math notranslate nohighlight">\(f=0\)</span> and the initial condition <span class="math notranslate nohighlight">\(u(x,0)=u^0(x)\)</span>, that is, from <a class="reference internal" href="#equation-eqn-charac">(66)</a></p>
 <p><span class="math notranslate nohighlight">\(u^{m + 1}(x) = u^m(X^m(x))\approx\)</span> <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">convect</span></code><span class="math notranslate nohighlight">\((\mathbf{\alpha},-\tau ,u^m)\)</span></p>
 <p>The exact solution is <span class="math notranslate nohighlight">\(u(x, t) = u(\mathbf{X}(t))\)</span> where <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> equals <span class="math notranslate nohighlight">\(x\)</span> rotated around the origin by an angle <span class="math notranslate nohighlight">\(\theta = -t\)</span> (rotate in clockwise).
 So, if <span class="math notranslate nohighlight">\(u^0\)</span> in a 3D perspective looks like a bell, then <span class="math notranslate nohighlight">\(u\)</span> will have exactly the same shape, but rotated by the same amount.
