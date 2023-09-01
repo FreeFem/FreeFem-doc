@@ -35,6 +35,7 @@ jobs:
 
       - name: Build HTML
         run: |
+          make clean
           make html
           echo "doc.freefem.org" > build/html/CNAME
           echo "TODO: Remove the PDF from the website repository at the next FreeFem-source release"
