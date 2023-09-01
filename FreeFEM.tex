@@ -140,7 +140,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Aug 30, 2023}
+\date{Sep 01, 2023}
 \release{4.12}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -27205,10 +27205,12 @@ In 2D, the geometry of the boundary can be defined with the \sphinxcode{\sphinxu
 \PYG{n}{buildmeshL}%
 }}:
 
+\fvset{hllines={, 2,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{b}\PYG{p}{(}\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
 \PYG{n}{meshL}\PYG{+w}{ }\PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{buildmeshL}\PYG{p}{(}\PYG{n}{b}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxAtStartPar
 With the \sphinxcode{\sphinxupquote{%
@@ -27219,23 +27221,27 @@ With the \sphinxcode{\sphinxupquote{%
 \PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}%
 }}):
 
+\fvset{hllines={, 3,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
 \PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{Th}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{square}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}
 \PYG{n}{meshL}\PYG{+w}{ }\PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{extract}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxAtStartPar
 or of a \sphinxcode{\sphinxupquote{%
 \PYG{n}{meshS}%
 }} ; we can also specify the boundary labels we want to extract:
 
+\fvset{hllines={, 3, 4,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
 \PYG{n}{meshS}\PYG{+w}{ }\PYG{n}{ThS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{square3}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}
 \PYG{k+kt}{int}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{labs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{;}
 \PYG{n}{meshL}\PYG{+w}{ }\PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{extract}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kr}{label}\PYG{o}{=}\PYG{n}{labs}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxAtStartPar
 You can find much more information about curve mesh generation {\hyperref[\detokenize{documentation/mesh-generation:meshltype}]{\sphinxcrossref{\DUrole{std,std-ref}{here}}}}.
@@ -27250,6 +27256,7 @@ In 3D, the geometry of the boundary surface can be discretized with a surface me
 \PYG{n}{square3}%
 }} constructor:
 
+\fvset{hllines={, 7,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
 \PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{R}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{r}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{h}\PYG{o}{=}\PYG{l+m+mf}{0.2}\PYG{p}{;}
@@ -27259,6 +27266,7 @@ In 3D, the geometry of the boundary surface can be discretized with a surface me
 \PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{torez}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{r}\PYG{o}{*}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{y}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
 \PYG{n}{meshS}\PYG{+w}{ }\PYG{n}{ThS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{square3}\PYG{p}{(}\PYG{n}{nx}\PYG{p}{,}\PYG{n}{ny}\PYG{p}{,}\PYG{p}{[}\PYG{n}{torex}\PYG{p}{,}\PYG{n}{torey}\PYG{p}{,}\PYG{n}{torez}\PYG{p}{]}\PYG{p}{,}\PYG{n}{removeduplicate}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.300\linewidth]{{BEM_figtorus}.png}\hspace*{\fill}}
 
@@ -27269,23 +27277,27 @@ or from a 2D \sphinxcode{\sphinxupquote{%
 \PYG{n+nf}{movemesh23}%
 }} keyword:
 
+\fvset{hllines={, 3,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
 \PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{Th}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{square}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}
 \PYG{n}{meshS}\PYG{+w}{ }\PYG{n}{ThS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{movemesh23}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{transfo}\PYG{o}{=}\PYG{p}{[}\PYG{k+kr}{x}\PYG{p}{,}\PYG{k+kr}{y}\PYG{p}{,}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kr}{x}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{o}{+}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{y}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxAtStartPar
 We can also extract the boundary of a \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{mesh3}%
 }}:
 
+\fvset{hllines={, 3, 4,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}
 \PYG{k+kt}{mesh3}\PYG{+w}{ }\PYG{n}{Th3}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{cube}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}
 \PYG{k+kt}{int}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{labs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{;}
 \PYG{n}{meshS}\PYG{+w}{ }\PYG{n}{ThS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{extract}\PYG{p}{(}\PYG{n}{Th3}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kr}{label}\PYG{o}{=}\PYG{n}{labs}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxAtStartPar
 You can find much more information about surface mesh generation {\hyperref[\detokenize{documentation/mesh-generation:meshstype}]{\sphinxcrossref{\DUrole{std,std-ref}{here}}}}.
@@ -27304,12 +27316,14 @@ Depending on whether your problem is posed on a bounded or unbounded domain, you
 \PYG{l+m+mi}{1}%
 }} (the normal vector \(\boldsymbol{n}\) will then point to the exterior of the domain you are interested in):
 
+\fvset{hllines={, 3,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{k+kt}{border}\PYG{+w}{ }\PYG{n+nf}{b}\PYG{p}{(}\PYG{k+kp}{t}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{)}\PYG{p}{\PYGZob{}}\PYG{k+kr}{x}\PYG{o}{=}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kr}{y}\PYG{o}{=}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kp}{t}\PYG{p}{)}\PYG{p}{;}\PYG{p}{\PYGZcb{}}
 \PYG{n}{meshL}\PYG{+w}{ }\PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{buildmeshL}\PYG{p}{(}\PYG{n}{b}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
 \PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{OrientNormal}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{,}\PYG{n}{unbounded}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
 \PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{,}\PYG{k+kp}{dim}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxAtStartPar
 You can use \sphinxcode{\sphinxupquote{shift + t}} on a plot of a boundary mesh to display the outward normal vector \(\boldsymbol{n}\):
@@ -27424,6 +27438,7 @@ Depending on the choice of the BEM formulation, there can be additional terms in
 \sphinxAtStartPar
 We can also define a linear combination of two BEM kernels, which is useful for \sphinxstylestrong{Combined formulations}:
 
+\fvset{hllines={, 4,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{k+kt}{complex}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{p}{;}
 \PYG{n}{BemKernel}\PYG{+w}{ }\PYG{n}{Ker1}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{HS}\PYG{l+s}{\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{k}\PYG{o}{=}\PYG{n}{k}\PYG{p}{)}\PYG{p}{;}
@@ -27431,6 +27446,7 @@ We can also define a linear combination of two BEM kernels, which is useful for 
 \PYG{n}{BemKernel}\PYG{+w}{ }\PYG{n}{Ker}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{1.}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{n}{i}\PYG{o}{*}\PYG{n}{k}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{Ker1}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{Ker2}\PYG{p}{;}
 \PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n+nf}{vbem}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{int2dx2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{n}{BEM}\PYG{p}{(}\PYG{n}{Ker}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{)}\PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{o}{*}\PYG{n}{u}\PYG{o}{*}\PYG{n}{v}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxAtStartPar
 As a starting point, you can find how to solve a 2D scattering problem by a disk using a \sphinxstylestrong{First kind}, \sphinxstylestrong{Second kind} and \sphinxstylestrong{Combined} formulation, for a Dirichlet (\sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples/bem/Helmholtz\_circle\_Dirichlet\_all\_direct.edp}{here}) and Neumann (\sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/master/examples/bem/Helmholtz\_circle\_Neumann\_all\_direct.edp}{here}) boundary condition.
@@ -27449,10 +27465,12 @@ Assembling the matrix corresponding to the discretization of the variational for
 \PYG{k+kt}{matrix}%
 }}:
 
+\fvset{hllines={, 2,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{Uh}\PYG{p}{(}\PYG{n}{ThS}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}
 \PYG{n}{HMatrix}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{H}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{vbem}\PYG{p}{(}\PYG{n}{Uh}\PYG{p}{,}\PYG{n}{Uh}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxAtStartPar
 Behind the scenes, \sphinxstylestrong{FreeFEM} is using \sphinxstylestrong{Htool} and \sphinxstylestrong{BEMTool} to assemble the H\sphinxhyphen{}Matrix.
@@ -27577,11 +27595,13 @@ Computing \(u\) on \sphinxcode{\sphinxupquote{%
 \PYG{n}{p}%
 }}:
 
+\fvset{hllines={, 2,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{n}{UhOut}\PYG{o}{\PYGZlt{}}\PYG{k+kt}{complex}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{;}
 \PYG{n}{u}\PYG{p}{[}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{HP}\PYG{o}{*}\PYG{n}{p}\PYG{p}{[}\PYG{p}{]}\PYG{p}{;}
 \PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 
 \subsection{2D example script}
@@ -27747,14 +27767,16 @@ The sphere \(\Gamma\) is a \sphinxcode{\sphinxupquote{%
 \PYG{n}{meshS}%
 }}. We can build the surface mesh with:
 
+\fvset{hllines={, 6,}}%
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{+w}{  }\PYG{c+c1}{// definition of the surface mesh}
-\PYG{+w}{  }\PYG{c+cp}{include}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{MeshSurface.idp}\PYG{l+s}{\PYGZdq{}}
-\PYG{+w}{  }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{radius}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
-\PYG{+w}{  }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nlambda}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}\PYG{+w}{                }\PYG{c+c1}{// number of points per wavelength}
-\PYG{+w}{  }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{hs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{lambda}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mf}{1.0}\PYG{o}{*}\PYG{n}{nlambda}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mesh size of the sphere}
-\PYG{+w}{  }\PYG{n}{meshS}\PYG{+w}{ }\PYG{n}{ThS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Sphere}\PYG{p}{(}\PYG{n}{radius}\PYG{p}{,}\PYG{n}{hs}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
+\PYG{c+c1}{// definition of the surface mesh}
+\PYG{c+cp}{include}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{MeshSurface.idp}\PYG{l+s}{\PYGZdq{}}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{radius}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{nlambda}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}\PYG{+w}{                }\PYG{c+c1}{// number of points per wavelength}
+\PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{hs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{lambda}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mf}{1.0}\PYG{o}{*}\PYG{n}{nlambda}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// mesh size of the sphere}
+\PYG{n}{meshS}\PYG{+w}{ }\PYG{n}{ThS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Sphere}\PYG{p}{(}\PYG{n}{radius}\PYG{p}{,}\PYG{n}{hs}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
+\sphinxresetverbatimhllines
 
 \sphinxAtStartPar
 For the discretization of the EFIE, we use the surface Raviart\sphinxhyphen{}Thomas Element of order 0 \sphinxcode{\sphinxupquote{%
@@ -27842,7 +27864,9 @@ The variational form for the potential is:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-where \([v1,v2,v3]\) plays the role of the scattered electric field \(\boldsymbol{E}\) that we want to reconstruct at a set of points \([x,y,z]\).
+where \sphinxcode{\sphinxupquote{%
+\PYG{p}{[}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{v3}\PYG{p}{]}%
+}} plays the role of the scattered electric field \(\boldsymbol{E}\) that we want to reconstruct at a set of points \([x,y,z]\).
 
 \sphinxAtStartPar
 We consider an output mesh \sphinxcode{\sphinxupquote{%
