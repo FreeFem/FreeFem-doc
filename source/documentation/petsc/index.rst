@@ -1,3 +1,5 @@
+.. _petscslepc:
+
 PETSc and SLEPc
 ===============
 

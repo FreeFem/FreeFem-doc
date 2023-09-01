@@ -1,6 +1,9 @@
 .. role:: freefem(code)
   :language: freefem
 
+.. role:: console(code)
+  :language: console
+
 .. highlight:: freefem
   :linenothreshold: 1
 
@@ -420,7 +423,7 @@ Behind the scenes, **FreeFEM** is using **Htool** and **BEMTool** to assemble th
 
 .. note:: Since **Htool** is a parallel library, you need to use ``FreeFem++-mpi`` or ``ff-mpirun`` to be able to run your BEM script. The MPI parallelism is transparent to the user. You can speed up the computation by using multiple cores:
 
-  .. code-block:: freefem
+  .. code-block:: console
 
     ff-mpirun -np 4 script.edp -wg
 

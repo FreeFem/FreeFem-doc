@@ -58,6 +58,7 @@ The characteristics of **FreeFEM** are:
    parallelization
    petsc/index
    BEM
+   composite
    plugins
    developers
    ffddm/index
