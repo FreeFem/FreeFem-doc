@@ -66,14 +66,14 @@ For two global vectors :math:`{\mathbf U}` and :math:`{\mathbf V}` of size :math
 
 Local scalar products are performed concurrently.
 Thus, the implementation is parallel except for the sum which corresponds to a MPI_Reduce call across the :math:`N` MPI processes.
-Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFEM syntax is ``dscalprod(Di,u,v)`` or equivalently ``myFEprefix#scalprod(u,v)`` where ``myFEprefix`` is a user defined prefix for the finite element space decomposition, see the :ref:`ffddm documentation <ffddmDocumentationLocalFiniteElementSpaces>`.
+Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFEM syntax is :freefem:`dscalprod(Di,u,v)` or equivalently :freefem:`myFEprefix#scalprod(u,v)` where :freefem:`myFEprefix` is a user defined prefix for the finite element space decomposition, see the :ref:`ffddm documentation <ffddmDocumentationLocalFiniteElementSpaces>`.
 
 .. _ffddmDocumentationUpdate:
 
 Update
 ~~~~~~
 
-From a collection of local vectors :math:`({\mathbf U}_i)_{1\le i \le N}`, it is possible ensure consistency of the duplicated data by modifying the distributed vector :math:`({\mathbf U}_i)_{1\le i \le N}` by calling the function ``myFEprefix#update(Ui, TRUE)`` where ``myFEprefix`` is the user defined prefix that refers to the finite element space decomposition.
+From a collection of local vectors :math:`({\mathbf U}_i)_{1\le i \le N}`, it is possible ensure consistency of the duplicated data by modifying the distributed vector :math:`({\mathbf U}_i)_{1\le i \le N}` by calling the function :freefem:`myFEprefix#update(Ui, true)` where :freefem:`myFEprefix` is the user defined prefix that refers to the finite element space decomposition.
 This function performs the following operation for all :math:`1\le i \le N`:
 
 .. math::
@@ -96,7 +96,7 @@ Distributed Matrix and Vector resulting from a variational formulation
 
 The discretization of a variational formulation on the global mesh :math:`Th` yields a global matrix :math:`A` and a global right hand side :math:`\mathbf{RHS}`.
 Thanks to the sparsity of finite element matrices for partial differential equations and thanks to the overlap between subdomains, the knowledge of the local matrix :math:`R_i A R_i^T` on each subdomain :math:`1\le i\le N` is sufficient to perform the matrix-vector product :math:`A\times \mathbf{U}` for any global vector :math:`\mathbf{U}`.
-Once the problem has been set up by a call to ``ffddmsetupOperator(myprefix, myFEprefix, myVarf)``, the matrix-vector product is performed by calling the function ``myprefix#A(Ui)`` where ``myprefix`` is a user defined prefix that refers to the problem at hand which itself implicitly refers to the triplet (domain decomposition, finite element, variational formulation).
+Once the problem has been set up by a call to :freefem:`ffddmsetupOperator(myprefix, myFEprefix, myVarf)`, the matrix-vector product is performed by calling the function :freefem:`myprefix#A(Ui)` where :freefem:`myprefix` is a user defined prefix that refers to the problem at hand which itself implicitly refers to the triplet (domain decomposition, finite element, variational formulation).
 See more on problem definition in this :ref:`documentation <ffddmDocumentationDefineProblemToSolve>` and more on distributed linear algebra in chapter 8 of `"An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation" SIAM 2015 <http://bookstore.siam.org/ot144/>`__.
 
 Distributed Linear Solvers

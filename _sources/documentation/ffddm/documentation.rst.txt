@@ -60,7 +60,7 @@ Overlapping mesh decomposition
 
 decomposes the mesh **Th** into overlapping submeshes.
 The mesh will be distributed over the mpi ranks of communicator **comm**.
-This will create and expose variables whose names will be prefixed by **prmesh**, see below (# is the concatenation operator).
+This will create and expose variables whose names will be prefixed by **prmesh**, see below (:freefem:`#` is the concatenation operator).
 The way the initial mesh **Th** is partitioned depends on the value of :ref:`ffddmpartitioner <ffddmParametersGlobal>`.
 
 The size of the overlap between subdomains (its width in terms of number of mesh elements) is given by :ref:`ffddmoverlap <ffddmParametersGlobal>`.
@@ -73,20 +73,20 @@ The label of the new border of the submeshes (the interface between the subdomai
 
 **defines**:
 
--  ``int prmesh#npart`` number of subdomains for this decomposition; should be equal to mpiSize(\ **comm**) - :ref:`ffddmexclude <ffddmParametersGlobal>` * :ref:`ffddmpCS <ffddmParametersGlobal>`
--  ``int prmesh#pCS`` equal to :ref:`ffddmpCS <ffddmParametersGlobal>`
--  ``int prmesh#exclude`` equal to :ref:`ffddmexclude <ffddmParametersGlobal>`
--  ``int prmesh#excluded`` *true* if :ref:`ffddmexclude <ffddmParametersGlobal>` is *true* (:math:`\neq 0`) and mpiRank(\ **comm**) < ``prmesh#pCS``.
+-  :freefem:`int prmesh#npart` number of subdomains for this decomposition; should be equal to mpiSize(\ **comm**) - :ref:`ffddmexclude <ffddmParametersGlobal>` * :ref:`ffddmpCS <ffddmParametersGlobal>`
+-  :freefem:`int prmesh#pCS` equal to :ref:`ffddmpCS <ffddmParametersGlobal>`
+-  :freefem:`int prmesh#exclude` equal to :ref:`ffddmexclude <ffddmParametersGlobal>`
+-  :freefem:`int prmesh#excluded` *true* if :ref:`ffddmexclude <ffddmParametersGlobal>` is *true* (:math:`\neq 0`) and mpiRank(\ **comm**) < :freefem:`prmesh#pCS`.
    In this case, this mpi rank will be excluded from the spatial domain decomposition and will only work on the coarse problem.
--  ``mpiComm prmesh#commddm`` mpi communicator for ranks participating in the spatial domain decomposition (ranks 0 to ``prmesh#npart``-1 in **comm** if ``prmesh#exclude`` is *false*, ranks ``prmesh#pCS`` to ``prmesh#pCS``\ +\ ``prmesh#npart``-1 otherwise)
--  ``mpiComm prmesh#commCS`` mpi communicator for ranks participating in the assembly and resolution of the coarse problem for two-level preconditioners (ranks 0 to ``prmesh#pCS`` - 1 in **comm**)
--  ``mpiComm prmesh#commself`` self mpi communicator (this mpi rank only), used for factorizing local matrices
--  ``meshN[int] prmesh#aTh`` array (size ``prmesh#npart``) of local meshes of the subdomains.
-   In the standard parallel case, only the local mesh for this mpi rank ``prmesh#aTh[mpiRank(prmesh#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i.e. ``prmesh#excluded`` = 1, see below).
+-  :freefem:`mpiComm prmesh#commddm` mpi communicator for ranks participating in the spatial domain decomposition (ranks 0 to :freefem:`prmesh#npart` - 1 in **comm** if :freefem:`prmesh#exclude` is *false*, ranks :freefem:`prmesh#pCS` to :freefem:`prmesh#pCS`\ +\ :freefem:`prmesh#npart` - 1 otherwise)
+-  :freefem:`mpiComm prmesh#commCS` mpi communicator for ranks participating in the assembly and resolution of the coarse problem for two-level preconditioners (ranks 0 to :freefem:`prmesh#pCS` - 1 in **comm**)
+-  :freefem:`mpiComm prmesh#commself` self mpi communicator (this mpi rank only), used for factorizing local matrices
+-  :freefem:`meshN[int] prmesh#aTh` array (size :freefem:`prmesh#npart`) of local meshes of the subdomains.
+   In the standard parallel case, only the local mesh for this mpi rank :freefem:`prmesh#aTh[mpiRank(prmesh#commddm)]` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i.e. :freefem:`prmesh#excluded` = 1, see below).
    In the sequential case, all local meshes are defined.
--  ``meshN prmesh#Thi`` the local mesh of the subdomain for this mpi rank, i. e. ``prmesh#aTh[mpiRank(prmesh#commddm)]`` in the parallel case
--  ``int prmesh#numberIntersection`` the number of neighbors for this mpi rank
--  ``int[int] prmesh#arrayIntersection`` the list of neighbor ranks in ``prmesh#commddm`` for this mpi rank
+-  :freefem:`meshN prmesh#Thi` the local mesh of the subdomain for this mpi rank, i. e. :freefem:`prmesh#aTh[mpiRank(prmesh#commddm)]` in the parallel case
+-  :freefem:`int prmesh#numberIntersection` the number of neighbors for this mpi rank
+-  :freefem:`int[int] prmesh#arrayIntersection` the list of neighbor ranks in :freefem:`prmesh#commddm` for this mpi rank
 
 .. raw:: html
 
@@ -100,7 +100,7 @@ The label of the new border of the submeshes (the interface between the subdomai
    -->
 
 **Remark for sequential use** (see :ref:`-seqddm <ffddmParametersCommandLine>`):
-    - ``meshN[int] prmesh#aTh`` array (size ``prmesh#npart``) of local meshes of the subdomains
+    - :freefem:`meshN[int] prmesh#aTh` array (size :freefem:`prmesh#npart`) of local meshes of the subdomains
 
 .. raw:: html
 
@@ -167,35 +167,35 @@ For vectorial [P2,P2,P1] finite elements and real-valued problems:
    macro init(u) [u, u, u]// EOM
    ffddmbuildDfespace(myFEprefix,mymeshprefix,real,def,init,[P2,P2,P1])
 
-In practice, this builds the necessary distributed operators associated to the finite element space: the local partition of unity functions :math:`(D_i)_{i=1,...,N}` (see ``prfe#Dk`` and ``prfe#Dih`` below) as well as the function ``prfe#update`` (see below) which synchronizes local vectors :math:`(u_i)_{i=1,...,N}` between neighboring subdomains, performing the equivalent of :math:`u_i = R_i (\sum_{j=1}^N R_j^T u_j)` or :math:`u_i = R_i (\sum_{j=1}^N R_j^T D_j u_j)` in a distributed parallel environment.
+In practice, this builds the necessary distributed operators associated to the finite element space: the local partition of unity functions :math:`(D_i)_{i=1,...,N}` (see :freefem:`prfe#Dk` and :freefem:`prfe#Dih` below) as well as the function :freefem:`prfe#update` (see below) which synchronizes local vectors :math:`(u_i)_{i=1,...,N}` between neighboring subdomains, performing the equivalent of :math:`u_i = R_i (\sum_{j=1}^N R_j^T u_j)` or :math:`u_i = R_i (\sum_{j=1}^N R_j^T D_j u_j)` in a distributed parallel environment.
 
-``prfe#scalprod`` (see below) performs the parallel scalar product for vectors defined on this finite element.
+:freefem:`prfe#scalprod` (see below) performs the parallel scalar product for vectors defined on this finite element.
 
 **defines**:
 
--  ``prfe#prmesh`` macro, saves the parent prefix **prmesh** of the mesh decomposition
--  ``prfe#K`` macro, saves the type of data **scalar** for this finite element space (*real* or *complex*)
--  ``func prfe#fPk`` saves the type of finite element **Pk**, e.g. \ *P1, [P2,P2,P1], …*
--  ``fespace prfe#Vhi`` the local finite element space for this mpi rank, defined on the local mesh ``prmesh#Thi``
--  ``int prfe#Ndofglobal`` the total number of degrees of freedom :math:`n` for this finite element discretization
--  ``prfe#mdef`` macro, saves the macro **def** giving the definition of a finite element function in the finite element space **Pk**
--  ``prfe#minit`` macro, saves the macro **init** specifying how to interpolate a scalar function onto the (possibly multiple) components of a finite element function of **Pk**.
-   This is used to create the local partition of unity function in ``prfe#Vhi``, by interpolating the local P1 partition of unity function onto the components of ``prfe#Vhi``.
+-  :freefem:`prfe#prmesh` macro, saves the parent prefix **prmesh** of the mesh decomposition
+-  :freefem:`prfe#K` macro, saves the type of data **scalar** for this finite element space (*real* or *complex*)
+-  :freefem:`func prfe#fPk` saves the type of finite element **Pk**, e.g. \ *P1, [P2,P2,P1], …*
+-  :freefem:`fespace prfe#Vhi` the local finite element space for this mpi rank, defined on the local mesh :freefem:`prmesh#Thi`
+-  :freefem:`int prfe#Ndofglobal` the total number of degrees of freedom :math:`n` for this finite element discretization
+-  :freefem:`prfe#mdef` macro, saves the macro **def** giving the definition of a finite element function in the finite element space **Pk**
+-  :freefem:`prfe#minit` macro, saves the macro **init** specifying how to interpolate a scalar function onto the (possibly multiple) components of a finite element function of **Pk**.
+   This is used to create the local partition of unity function in :freefem:`prfe#Vhi`, by interpolating the local P1 partition of unity function onto the components of :freefem:`prfe#Vhi`.
    For non Lagrange finite element spaces (e.g. *RT0*, *Edge03d*, …), see :ref:`ffddmbuildDfespaceEdge <ffddmDocumentationPartitionUnityEdge>`.
--  ``prfe#K[int][int] prfe#Dk`` array (size ``prmesh#npart``) of local partition of unity vectors in the subdomains, equivalent to :math:`(D_i)_{i=1,...,N}`.
-   In the standard parallel case, only the local partition of unity vector for this mpi rank ``prfe#Dk[mpiRank(prmesh#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. ``prmesh#excluded`` = 1).
+-  :freefem:`prfe#K[int][int] prfe#Dk` array (size :freefem:`prmesh#npart`) of local partition of unity vectors in the subdomains, equivalent to :math:`(D_i)_{i=1,...,N}`.
+   In the standard parallel case, only the local partition of unity vector for this mpi rank :freefem:`prfe#Dk[mpiRank(prmesh#commddm)]` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. :freefem:`prmesh#excluded` = 1).
    In the sequential case, all local partition of unity vectors are defined.
--  ``matrix<prfe#K>[int] prfe#Dih`` array (size ``prmesh#npart``) similar to ``prfe#Dk`` but in *matrix* form, allowing for easier *matrix*-*matrix* multiplications.
-   ``prfe#Dih[i]`` is a diagonal matrix, with the diagonal equal to ``prfe#Dk[i]``.
--  ``fespace prfe#Vhglob`` the global finite element space defined on the global mesh ``prmesh#Thglob``.
+-  :freefem:`matrix<prfe#K>[int] prfe#Dih` array (size :freefem:`prmesh#npart`) similar to :freefem:`prfe#Dk` but in *matrix* form, allowing for easier *matrix*-*matrix* multiplications.
+   :freefem:`prfe#Dih[i]` is a diagonal matrix, with the diagonal equal to :freefem:`prfe#Dk[i]`.
+-  :freefem:`fespace prfe#Vhglob` the global finite element space defined on the global mesh :freefem:`prmesh#Thglob`.
    Defined only if :ref:`-noGlob <ffddmParametersCommandLine>` is not used.
--  ``matrix<prfe#K>[int] prfe#Rih`` array (size ``prmesh#npart``) of restriction matrices from the global finite element space to the local finite element spaces on the local submeshes of the subdomains.
-   In the standard parallel case, only the restriction matrix for this mpi rank ``prfe#Rih[mpiRank(prmesh#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. ``prmesh#excluded`` = 1).
-   In the sequential case, all restriction matrices are defined. The restriction matrices ``prfe#Rih`` are defined only if :ref:`-noGlob <ffddmParametersCommandLine>` is not used.
--  ``func int prfe#update(scalar[int] ui, bool scale)`` The function ``prfe#update`` synchronizes the local vector *ui* between subdomains by exchanging the values of *ui* shared with neighboring subdomains (in the overlap region) using point-to-point MPI communications.
+-  :freefem:`matrix<prfe#K>[int] prfe#Rih` array (size :freefem:`prmesh#npart`) of restriction matrices from the global finite element space to the local finite element spaces on the local submeshes of the subdomains.
+   In the standard parallel case, only the restriction matrix for this mpi rank :freefem:`prfe#Rih[mpiRank(prmesh#commddm)]` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. :freefem:`prmesh#excluded` = 1).
+   In the sequential case, all restriction matrices are defined. The restriction matrices :freefem:`prfe#Rih` are defined only if :ref:`-noGlob <ffddmParametersCommandLine>` is not used.
+-  :freefem:`func int prfe#update(scalar[int] ui, bool scale)` The function :freefem:`prfe#update` synchronizes the local vector *ui* between subdomains by exchanging the values of *ui* shared with neighboring subdomains (in the overlap region) using point-to-point MPI communications.
    If *scale* is *true*, *ui* is multiplied by the local partition of unity beforehand.
    This is equivalent to :math:`u_i = R_i (\sum_{j=1}^N R_j^T u_j)` when *scale* is *false* and :math:`u_i = R_i (\sum_{j=1}^N R_j^T D_j u_j)` when *scale* is *true*.
--  ``func scalar prfe#scalprod(scalar[int] ai, scalar[int] bi)`` The function ``prfe#scalprod`` computes the global scalar product of two vectors whose local restriction to the subdomain of this mpi rank are *ai* and *bi*.
+-  :freefem:`func scalar prfe#scalprod(scalar[int] ai, scalar[int] bi)` The function :freefem:`prfe#scalprod` computes the global scalar product of two vectors whose local restriction to the subdomain of this mpi rank are *ai* and *bi*.
    The result is computed as :math:`\sum_{j=1}^N (D_j a_j, b_j)`.
 
 .. raw:: html
@@ -238,11 +238,11 @@ builds the distributed operator associated to the variational problem given by *
 This will create and expose variables whose names will be prefixed by **pr**, see below.
 It is assumed that :ref:`ffddmbuildDfespace <ffddmDocumentationLocalFiniteElementSpaces>` has already been called with prefix **prfe** in order to define the distributed finite element space.
 
-In practice, this builds the so-called local ‘Dirichlet’ matrices :math:`A_i = R_i A R_i^T`, the restrictions of the global operator :math:`A` to the subdomains (see ``pr#aRd``\ below).
+In practice, this builds the so-called local ‘Dirichlet’ matrices :math:`A_i = R_i A R_i^T`, the restrictions of the global operator :math:`A` to the subdomains (see :freefem:`pr#aRd`\ below).
 The matrices correspond to the discretization of the bilinear form given by the macro **Varf**, which represents the abstract variational form of the problem.
-These matrices are then used to implement the action of the global operator :math:`A` on a local vector (the parallel matrix-vector product with :math:`A`), see ``pr#A`` below.
+These matrices are then used to implement the action of the global operator :math:`A` on a local vector (the parallel matrix-vector product with :math:`A`), see :freefem:`pr#A` below.
 
-At this point, we already have the necessary data to be able to solve the problem with a parallel direct solver (*MUMPS*), which is the purpose of the function ``pr#directsolve`` (see below).
+At this point, we already have the necessary data to be able to solve the problem with a parallel direct solver (*MUMPS*), which is the purpose of the function :freefem:`pr#directsolve` (see below).
 See :ref:`ffddmbuildrhs <ffddmDocumentationBuildRhs>` for building the right-hand side.
 
 The macro **Varf** is required to have three parameters: the name of the variational form, the mesh, and the finite element space.
@@ -264,20 +264,20 @@ See for example TODO
 
 **defines**:
 
--  ``pr#prfe`` macro, saves the parent prefix **prfe** of the finite element space
--  ``int pr#verbosity`` the level of verbosity for this problem, initialized with the value of :ref:`ffddmverbosity <ffddmParametersGlobal>`
--  ``pr#writesummary`` macro, prints a summary of timings for this problem, such as the time spent to assemble local matrices or solve the linear system.
--  ``matrix<prfe#K> pr#Aglobal`` the global matrix :math:`A` corresponding to the discretization of the variational form given by the macro **Varf** on the global finite element space ``prfe#Vhglob``.
+-  :freefem:`pr#prfe` macro, saves the parent prefix **prfe** of the finite element space
+-  :freefem:`int pr#verbosity` the level of verbosity for this problem, initialized with the value of :ref:`ffddmverbosity <ffddmParametersGlobal>`
+-  :freefem:`pr#writesummary` macro, prints a summary of timings for this problem, such as the time spent to assemble local matrices or solve the linear system.
+-  :freefem:`matrix<prfe#K> pr#Aglobal` the global matrix :math:`A` corresponding to the discretization of the variational form given by the macro **Varf** on the global finite element space :freefem:`prfe#Vhglob`.
    Defined only in the sequential case.
--  ``matrix<prfe#K>[int] pr#aRd`` array (size ``prfe#prmesh#npart``) of so-called local ‘Dirichlet’ matrices in the subdomains; these are the restrictions of the global operator to the subdomains, equivalent to :math:`A_i = R_i A R_i^T` with :math:`A` the global matrix corresponding to the discretization of the variational form given by the macro **Varf** on the global finite element space.
-   In the standard parallel case, only the local matrix for this mpi rank ``pr#aRd[mpiRank(prmesh#commddm)]`` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. ``prmesh#excluded`` = 1).
+-  :freefem:`matrix<prfe#K>[int] pr#aRd` array (size :freefem:`prfe#prmesh#npart`) of so-called local ‘Dirichlet’ matrices in the subdomains; these are the restrictions of the global operator to the subdomains, equivalent to :math:`A_i = R_i A R_i^T` with :math:`A` the global matrix corresponding to the discretization of the variational form given by the macro **Varf** on the global finite element space.
+   In the standard parallel case, only the local matrix for this mpi rank :freefem:`pr#aRd[mpiRank(prmesh#commddm)]` is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. :freefem:`prmesh#excluded` = 1).
    In the sequential case, all local matrices are defined.
--  ``func prfe#K[int] pr#A(prfe#K[int] &ui)`` The function ``pr#A`` computes the parallel matrix-vector product, i.e. the action of the global operator :math:`A` on the local vector :math:`u_i`.
-   The computation is equivalent to :math:`R_i (\sum_{j=1}^N R_j^T D_j A_j u_j)` and is performed in parallel using local matrices ``pr#aRd`` and the function ``prfe#update``.
-   In the sequential case, the global matrix ``pr#Aglobal`` is used instead.
--  ``func prfe#K[int] pr#AT(prfe#K[int] &ui)`` Similarly to ``pr#A``, The function ``pr#AT`` computes the action of :math:`A^T`, the transpose of the global operator :math:`A`, on :math:`u_i`.
--  ``func prfe#K[int] pr#directsolve(prfe#K[int]& rhsi)`` The function ``pr#directsolve`` allows to solve the linear system :math:`A x = b` in parallel using the parallel direct solver *MUMPS*.
-   The matrix is given to *MUMPS* in distributed form through the local matrices ``pr#aRd``.
+-  :freefem:`func prfe#K[int] pr#A(prfe#K[int] &ui)` The function :freefem:`pr#A` computes the parallel matrix-vector product, i.e. the action of the global operator :math:`A` on the local vector :math:`u_i`.
+   The computation is equivalent to :math:`R_i (\sum_{j=1}^N R_j^T D_j A_j u_j)` and is performed in parallel using local matrices :freefem:`pr#aRd` and the function :freefem:`prfe#update`.
+   In the sequential case, the global matrix :freefem:`pr#Aglobal` is used instead.
+-  :freefem:`func prfe#K[int] pr#AT(prfe#K[int] &ui)` Similarly to :freefem:`pr#A`, The function :freefem:`pr#AT` computes the action of :math:`A^T`, the transpose of the global operator :math:`A`, on :math:`u_i`.
+-  :freefem:`func prfe#K[int] pr#directsolve(prfe#K[int]& rhsi)` The function :freefem:`pr#directsolve` allows to solve the linear system :math:`A x = b` in parallel using the parallel direct solver *MUMPS*.
+   The matrix is given to *MUMPS* in distributed form through the local matrices :freefem:`pr#aRd`.
    The input *rhsi* is given as a distributed vector (*rhsi* is the restriction of the global right-hand side :math:`b` to the subdomain of this mpi rank, see :ref:`ffddmbuildrhs <ffddmDocumentationBuildRhs>`) and the returned vector is local as well.
 
 **Remark: rectangular operators**
@@ -349,32 +349,32 @@ This will create and expose variables whose names will be prefixed by **pr**, se
 It is assumed that :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>` has already been called with prefix **pr** in order to define the problem to solve.
 
 In practice, this builds and performs the factorization of the local matrices used in the one level preconditioner.
-The local matrices depend on the choice of :ref:`ffddmprecond <ffddmParametersGlobal>` and **VarfPrec**, see ``pr#aR``\ below.
+The local matrices depend on the choice of :ref:`ffddmprecond <ffddmParametersGlobal>` and **VarfPrec**, see :freefem:`pr#aR`\ below.
 
 **defines**:
 
--  ``string pr#prec`` equal to :ref:`ffddmprecond <ffddmParametersGlobal>`.
+-  :freefem:`string pr#prec` equal to :ref:`ffddmprecond <ffddmParametersGlobal>`.
    Sets the type of one level preconditioner :math:`M^{-1}_1` to be used: “asm” (*Additive Schwarz*), “ras” (*Restricted Additive Schwarz*), “oras” (*Optimized Restricted Additive Schwarz*), “soras” (*Symmetric Optimized Restricted Additive Schwarz*) or “none” (no preconditioner).
--  ``matrix<pr#prfe#K>[int] pr#aR`` array (size ``prfe#prmesh#npart``) of local matrices used for the one level preconditioner.
+-  :freefem:`matrix<pr#prfe#K>[int] pr#aR` array (size :freefem:`prfe#prmesh#npart`) of local matrices used for the one level preconditioner.
    Each mpi rank of the spatial domain decomposition performs the :math:`LU` (or :math:`LDL^T`) factorization of the local matrix corresponding to its subdomain using the direct solver *MUMPS*.
 
-   -  If **VarfPrec** is not a previously defined macro (just put *null* for example), the matrices ``pr#aR`` are set to be equal to the so-called local ‘Dirichlet’ matrices ``pr#aRd`` (see :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>`).
+   -  If **VarfPrec** is not a previously defined macro (just put :freefem:`null` for example), the matrices :freefem:`pr#aR` are set to be equal to the so-called local ‘Dirichlet’ matrices :freefem:`pr#aRd` (see :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>`).
       This is for the classical ASM preconditioner :math:`M^{-1}_1 = M^{-1}_{\text{ASM}} = \sum_{i=1}^N R_i^T A_i^{-1} R_i` or classical RAS preconditioner :math:`M^{-1}_1 = M^{-1}_{\text{RAS}} = \sum_{i=1}^N R_i^T D_i A_i^{-1} R_i` (it is assumed that :ref:`ffddmprecond <ffddmParametersGlobal>` is equal to “asm” or “ras”).
    -  If **VarfPrec** is a macro, it is assumed that **VarfPrec** defines an abstract bilinear form (see :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>` for more details on how to define the abstract variational form as a macro).
 
-      -  If :ref:`ffddmprecond <ffddmParametersGlobal>` is equal to “asm” or “ras”, the matrices ``pr#aR`` will be assembled as local ‘Dirichlet’ matrices in the same manner as ``pr#aRd``, but using the bilinear form defined by **VarfPrec** instead.
+      -  If :ref:`ffddmprecond <ffddmParametersGlobal>` is equal to “asm” or “ras”, the matrices :freefem:`pr#aR` will be assembled as local ‘Dirichlet’ matrices in the same manner as :freefem:`pr#aRd`, but using the bilinear form defined by **VarfPrec** instead.
          This defines the ASM preconditioner as :math:`M^{-1}_1 = M^{-1}_{\text{ASM}} = \sum_{i=1}^N R_i^T {(A_i^{\text{Prec}})}^{-1} R_i` and the RAS preconditioner as :math:`M^{-1}_1 = M^{-1}_{\text{RAS}} = \sum_{i=1}^N R_i^T D_i {(A_i^{\text{Prec}})}^{-1} R_i`, where :math:`A_i^{\text{Prec}} = R_i A^{\text{Prec}} R_i^T`.
-      -  If :ref:`ffddmprecond <ffddmParametersGlobal>` is equal to “oras” or “soras”, the matrices ``pr#aR`` will correspond to the discretization of the variational form **VarfPrec** in the subdomains :math:`\Omega_i`.
+      -  If :ref:`ffddmprecond <ffddmParametersGlobal>` is equal to “oras” or “soras”, the matrices :freefem:`pr#aR` will correspond to the discretization of the variational form **VarfPrec** in the subdomains :math:`\Omega_i`.
          In particular, various boundary conditions can be imposed at the interface between subdomains (corresponding to mesh boundary of label :ref:`ffddminterfacelabel <ffddmParametersGlobal>` set by the parent call to :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>`), such as Optimized Robin boundary conditions.
          We note the ORAS preconditioner as :math:`M^{-1}_1 = M^{-1}_{\text{ORAS}} = \sum_{i=1}^N R_i^T D_i {(B_i^{\text{Prec}})}^{-1} R_i` and the SORAS preconditioner as :math:`M^{-1}_1 = M^{-1}_{\text{SORAS}} = \sum_{i=1}^N R_i^T D_i {(B_i^{\text{Prec}})}^{-1} D_i R_i`.
--  ``func pr#prfe#K[int] pr#PREC1(pr#prfe#K[int] &ui)`` The function ``pr#PREC1`` computes the parallel application of the one level preconditioner :math:`M^{-1}_1`, i.e. the action of :math:`M^{-1}_1` on the local vector :math:`u_i`.
+-  :freefem:`func pr#prfe#K[int] pr#PREC1(pr#prfe#K[int] &ui)` The function :freefem:`pr#PREC1` computes the parallel application of the one level preconditioner :math:`M^{-1}_1`, i.e. the action of :math:`M^{-1}_1` on the local vector :math:`u_i`.
    In the sequential case, it computes the action of :math:`M^{-1}_1` on a global vector.
-   The action of the inverse of local matrices ``pr#aRd`` is computed by forward-backward substitution using their :math:`LU` (or :math:`LDL^T`) decomposition.
--  ``func pr#prfe#K[int] pr#PREC(pr#prfe#K[int] &ui)`` The function ``pr#PREC`` corresponds to the action of the preconditioner :math:`M^{-1}` for problem **pr**.
-   It coincides with the one level preconditioner ``pr#PREC1`` after the call to :ref:`ffddmsetupPrecond <ffddmDocumentationOneLevelPreconditioners>`.
-   If a second level is subsequently added (see the next section about :ref:`Two level preconditioners <ffddmDocumentationTwoLevelPreconditioners>`), it will then coincide with the two level preconditioner :math:`M^{-1}_2` (see ``pr#PREC2level``).
--  ``func pr#prfe#K[int] pr#fGMRES(pr#prfe#K[int]& x0i, pr#prfe#K[int]& bi, real eps, int nbiter, string sprec)`` The function ``pr#fGMRES`` allows to solve the linear system :math:`A x = b` in parallel using the flexible GMRES method preconditioned by :math:`M^{-1}`.
-   The action of the global operator :math:`A` is given by ``pr#A``, the action of the preconditioner :math:`M^{-1}` is given by ``pr#PREC`` and the scalar products are computed by ``pr#scalprod``.
+   The action of the inverse of local matrices :freefem:`pr#aRd` is computed by forward-backward substitution using their :math:`LU` (or :math:`LDL^T`) decomposition.
+-  :freefem:`func pr#prfe#K[int] pr#PREC(pr#prfe#K[int] &ui)` The function :freefem:`pr#PREC` corresponds to the action of the preconditioner :math:`M^{-1}` for problem **pr**.
+   It coincides with the one level preconditioner :freefem:`pr#PREC1` after the call to :ref:`ffddmsetupPrecond <ffddmDocumentationOneLevelPreconditioners>`.
+   If a second level is subsequently added (see the next section about :ref:`Two level preconditioners <ffddmDocumentationTwoLevelPreconditioners>`), it will then coincide with the two level preconditioner :math:`M^{-1}_2` (see :freefem:`pr#PREC2level`).
+-  :freefem:`func pr#prfe#K[int] pr#fGMRES(pr#prfe#K[int]& x0i, pr#prfe#K[int]& bi, real eps, int nbiter, string sprec)` The function :freefem:`pr#fGMRES` allows to solve the linear system :math:`A x = b` in parallel using the flexible GMRES method preconditioned by :math:`M^{-1}`.
+   The action of the global operator :math:`A` is given by :freefem:`pr#A`, the action of the preconditioner :math:`M^{-1}` is given by :freefem:`pr#PREC` and the scalar products are computed by :freefem:`pr#scalprod`.
    More details are given in the section :ref:`Solving the linear system <ffddmDocumentationSolvingLinearSystem>`.
 
 .. raw:: html
@@ -400,15 +400,15 @@ The main ingredient of a two level preconditioner is the so-called ‘coarse spa
 :math:`Z` is used to build the ‘coarse space operator’ :math:`E = Z^T A Z`, a square matrix of size :math:`n_c \times n_c`.
 We can then define the ‘coarse space correction operator’ :math:`Q = Z E^{-1} Z^T = Z (Z^T A Z)^{-1} Z^T`, which can then be used to enrich the one level preconditioner through a correction formula.
 The simplest one is the *additive* coarse correction: :math:`M^{-1}_2 = M^{-1}_1 + Q`.
-See ``pr#corr`` below for all other available correction formulas.
+See :freefem:`pr#corr` below for all other available correction formulas.
 
 There are multiple ways to define a relevant coarse space :math:`Z` for different classes of problems.
 :ref:`ffddmgeneosetup <ffddmDocumentationBuildingGeneoCoarseSpace>` defines a coarse space correction operator by building the GenEO coarse space, while :ref:`ffddmcoarsemeshsetup <ffddmDocumentationBuildingCoarseSpaceFromCoarseMesh>` builds the coarse space using a coarse mesh.
 
 After a call to either :ref:`ffddmgeneosetup <ffddmDocumentationBuildingGeneoCoarseSpace>` or :ref:`ffddmcoarsemeshsetup <ffddmDocumentationBuildingCoarseSpaceFromCoarseMesh>`, the following variables and functions are set up:
 
--  ``int pr#ncoarsespace`` the size of the coarse space :math:`n_c`.
--  ``string pr#corr`` initialized with the value of :ref:`ffddmcorrection <ffddmParametersGlobal>`.
+-  :freefem:`int pr#ncoarsespace` the size of the coarse space :math:`n_c`.
+-  :freefem:`string pr#corr` initialized with the value of :ref:`ffddmcorrection <ffddmParametersGlobal>`.
    Specifies the type of coarse correction formula to use for the two level preconditioner.
    The possible values are:
 
@@ -426,14 +426,14 @@ After a call to either :ref:`ffddmgeneosetup <ffddmDocumentationBuildingGeneoCoa
 
 -  Note that *AD*, *ADEF1* and *RBNN2* only require one application of :math:`Q`, while *BNN*, *ADEF2* and *RBNN1* require two.
    The default coarse correction is *ADEF1*, which is cheaper and generally as robust as *BNN* or *ADEF2*.
--  ``func pr#prfe#K[int] pr#Q(pr#prfe#K[int] &ui)`` The function ``pr#Q`` computes the parallel application of the coarse correction operator :math:`Q`, i.e. the action of :math:`Q = Z E^{-1} Z^T` on the local vector :math:`u_i`.
+-  :freefem:`func pr#prfe#K[int] pr#Q(pr#prfe#K[int] &ui)` The function :freefem:`pr#Q` computes the parallel application of the coarse correction operator :math:`Q`, i.e. the action of :math:`Q = Z E^{-1} Z^T` on the local vector :math:`u_i`.
    In the sequential case, it computes the action of :math:`Q` on a global vector.
    The implementation differs depending on the method used to build the coarse space (with GenEO or using a coarse mesh), but the idea is the same: the action of the transpose of the distributed operator :math:`Z` on the distributed vector :math:`u_i` is computed in parallel, with the contribution of all subdomains being gathered in a vector of size :math:`n_c` in the mpi process of rank 0.
-   The action of the inverse of the coarse space operator :math:`E` is then computed by forward-backward substitution using its :math:`LU` (or :math:`LDL^T`) decomposition previously computed by the first ``pr#prfe#prmesh#pCS`` ranks of the mpi communicator.
+   The action of the inverse of the coarse space operator :math:`E` is then computed by forward-backward substitution using its :math:`LU` (or :math:`LDL^T`) decomposition previously computed by the first :freefem:`pr#prfe#prmesh#pCS` ranks of the mpi communicator.
    The result is then sent back to all subdomains to perform the last application of :math:`Z` and obtain the resulting local vector in each subdomain.
--  ``func pr#prfe#K[int] pr#PREC2level(pr#prfe#K[int] &ui)`` The function ``pr#PREC2level`` computes the parallel application of the two level preconditioner :math:`M^{-1}_2`, i.e. the action of :math:`M^{-1}_2` on the local vector :math:`u_i`.
+-  :freefem:`func pr#prfe#K[int] pr#PREC2level(pr#prfe#K[int] &ui)` The function :freefem:`pr#PREC2level` computes the parallel application of the two level preconditioner :math:`M^{-1}_2`, i.e. the action of :math:`M^{-1}_2` on the local vector :math:`u_i`.
    In the sequential case, it computes the action of :math:`M^{-1}_2` on a global vector.
-   The two level preconditioner depends on the choice of the coarse correction formula which is determined by ``pr#corr``, see above.
+   The two level preconditioner depends on the choice of the coarse correction formula which is determined by :freefem:`pr#corr`, see above.
 
 .. raw:: html
 
@@ -464,20 +464,20 @@ where :math:`A_i^{\text{Neu}}` is the local Neumann matrix of subdomain :math:`i
 
 In practice, this builds and factorizes the local Neumann matrices :math:`A_i^{\text{Neu}}` corresponding to the abstract bilinear form given by the macro **Varf** (see :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>` for more details on how to define the abstract variational form as a macro).
 In the GenEO method, the abstract bilinear form **Varf** is assumed to be the same as the one used to define the problem **pr** through the previous call to :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>`.
-The local generalized eigenvalue problem is then solved in each subdomain to find the eigenvectors :math:`V_{i,k}` corresponding to the largest eigenvalues :math:`\lambda_{i,k}` (see ``pr#Z`` below).
+The local generalized eigenvalue problem is then solved in each subdomain to find the eigenvectors :math:`V_{i,k}` corresponding to the largest eigenvalues :math:`\lambda_{i,k}` (see :freefem:`pr#Z` below).
 The number of computed eigenvectors :math:`\nu` is given by :ref:`ffddmnu <ffddmParametersGlobal>`.
 The eigenvectors selected to enter :math:`Z` correspond to eigenvalues :math:`\lambda_{i,k}` larger than :math:`\tau`, where the threshold parameter :math:`\tau` is given by :ref:`ffddmtau <ffddmParametersGlobal>`.
 If :ref:`ffddmtau <ffddmParametersGlobal>` :math:`= 0`, all :ref:`ffddmnu <ffddmParametersGlobal>` eigenvectors are selected.
-Finally, the coarse space operator :math:`E = Z^T A Z` is assembled and factorized (see ``pr#E`` below).
+Finally, the coarse space operator :math:`E = Z^T A Z` is assembled and factorized (see :freefem:`pr#E` below).
 
 **defines**:
 
--  ``pr#prfe#K[int][int] pr#Z`` array of local eigenvectors :math:`Z_{i,k} = D_i V_{i,k}` obtained by solving the local generalized eigenvalue problem above in the subdomain of this mpi rank using *Arpack*.
+-  :freefem:`pr#prfe#K[int][int] pr#Z` array of local eigenvectors :math:`Z_{i,k} = D_i V_{i,k}` obtained by solving the local generalized eigenvalue problem above in the subdomain of this mpi rank using *Arpack*.
    The number of computed eigenvectors :math:`\nu` is given by :ref:`ffddmnu <ffddmParametersGlobal>`.
    The eigenvectors selected to enter :math:`Z` correspond to eigenvalues :math:`\lambda_{i,k}` larger than :math:`\tau`, where the threshold parameter :math:`\tau` is given by :ref:`ffddmtau <ffddmParametersGlobal>`.
    If :ref:`ffddmtau <ffddmParametersGlobal>` :math:`= 0`, all :ref:`ffddmnu <ffddmParametersGlobal>` eigenvectors are selected.
--  ``matrix<pr#prfe#K> pr#E`` the coarse space operator :math:`E = Z^T A Z`.
-   The matrix ``pr#E`` is assembled in parallel and is factorized by the parallel direct solver *MUMPS* using the first ``pr#prfe#prmesh#pCS`` ranks of the mpi communicator, with mpi rank 0 as the master process.
+-  :freefem:`matrix<pr#prfe#K> pr#E` the coarse space operator :math:`E = Z^T A Z`.
+   The matrix :freefem:`pr#E` is assembled in parallel and is factorized by the parallel direct solver *MUMPS* using the first :freefem:`pr#prfe#prmesh#pCS` ranks of the mpi communicator, with mpi rank 0 as the master process.
    The number of mpi processes dedicated to the coarse problem is set by the underlying mesh decomposition of problem **pr**, which also specifies if these mpi ranks are excluded from the spatial decomposition or not.
    These parameters are set by :ref:`ffddmpCS <ffddmParametersGlobal>` and :ref:`ffddmexclude <ffddmParametersGlobal>` when calling :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>` (see :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>` for more details).
 
@@ -520,24 +520,24 @@ For example, :math:`M^{-1}_{2,\text{ADEF1}} = M^{-1}_1 (I - A^{\text{Aprec}} Q) 
 
 **defines**:
 
--  ``meshN pr#ThCoarse`` the coarse mesh **Thc**
--  ``fespace pr#VhCoarse`` the coarse finite element space of type ``pr#prfe#fPk`` defined on the coarse mesh ``pr#ThCoarse``
--  ``matrix<pr#prfe#K> pr#AglobEprec`` the global matrix :math:`A^{\text{Aprec}}` corresponding to the discretization of the variational form given by the macro **VarfAprec** on the global finite element space ``pr#prfe#Vhglob``.
+-  :freefem:`meshN pr#ThCoarse` the coarse mesh **Thc**
+-  :freefem:`fespace pr#VhCoarse` the coarse finite element space of type :freefem:`pr#prfe#fPk` defined on the coarse mesh :freefem:`pr#ThCoarse`
+-  :freefem:`matrix<pr#prfe#K> pr#AglobEprec` the global matrix :math:`A^{\text{Aprec}}` corresponding to the discretization of the variational form given by the macro **VarfAprec** on the global finite element space :freefem:`pr#prfe#Vhglob`.
    Defined only in the sequential case.
-   ``pr#AglobEprec`` is equal to ``pr#Aglobal`` if **VarfAprec** is not a valid macro.
--  ``matrix<pr#prfe#K> pr#aRdEprec`` the local ‘Dirichlet’ matrix corresponding to **VarfAprec**; it is the local restriction of the global operator :math:`A^{\text{Aprec}}` to the subdomain, equivalent to :math:`A^{\text{Aprec}}_i = R_i A^{\text{Aprec}} R_i^T` with :math:`A^{\text{Aprec}}` the global matrix corresponding to the discretization of the variational form given by the macro **VarfAprec** on the global finite element space.
-   Defined only if this mpi rank is not excluded from the spatial domain decomposition, i. e. ``prmesh#excluded`` = 0.
-   ``pr#aRdEprec`` is equal to ``pr#aRd[mpiRank(prmesh#commddm)]`` if **VarfAprec** is not a valid macro.
--  ``func pr#prfe#K[int] pr#AEprec(pr#prfe#K[int] &ui)`` The function ``pr#AEprec`` computes the parallel matrix-vector product, i.e. the action of the global operator :math:`A^{\text{Aprec}}` on the local vector :math:`u_i`.
-   The computation is equivalent to :math:`R_i (\sum_{j=1}^N R_j^T D_j A^{\text{Aprec}}_j u_j)` and is performed in parallel using local matrices ``pr#aRdEprec`` and the function ``pr#prfe#update``.
-   In the sequential case, the global matrix ``pr#AglobEprec`` is used instead.
--  ``matrix<pr#prfe#K> pr#ZCM`` the interpolation operator :math:`Z` from the coarse finite element space ``pr#VhCoarse`` to the global finite element space ``pr#prfe#Vhglob``.
+   :freefem:`pr#AglobEprec` is equal to :freefem:`pr#Aglobal` if **VarfAprec** is not a valid macro.
+-  :freefem:`matrix<pr#prfe#K> pr#aRdEprec` the local ‘Dirichlet’ matrix corresponding to **VarfAprec**; it is the local restriction of the global operator :math:`A^{\text{Aprec}}` to the subdomain, equivalent to :math:`A^{\text{Aprec}}_i = R_i A^{\text{Aprec}} R_i^T` with :math:`A^{\text{Aprec}}` the global matrix corresponding to the discretization of the variational form given by the macro **VarfAprec** on the global finite element space.
+   Defined only if this mpi rank is not excluded from the spatial domain decomposition, i. e. :freefem:`prmesh#excluded` = 0.
+   :freefem:`pr#aRdEprec` is equal to :freefem:`pr#aRd[mpiRank(prmesh#commddm)]` if **VarfAprec** is not a valid macro.
+-  :freefem:`func pr#prfe#K[int] pr#AEprec(pr#prfe#K[int] &ui)` The function :freefem:`pr#AEprec` computes the parallel matrix-vector product, i.e. the action of the global operator :math:`A^{\text{Aprec}}` on the local vector :math:`u_i`.
+   The computation is equivalent to :math:`R_i (\sum_{j=1}^N R_j^T D_j A^{\text{Aprec}}_j u_j)` and is performed in parallel using local matrices :freefem:`pr#aRdEprec` and the function :freefem:`pr#prfe#update`.
+   In the sequential case, the global matrix :freefem:`pr#AglobEprec` is used instead.
+-  :freefem:`matrix<pr#prfe#K> pr#ZCM` the interpolation operator :math:`Z` from the coarse finite element space :freefem:`pr#VhCoarse` to the global finite element space :freefem:`pr#prfe#Vhglob`.
    Defined only in the sequential case.
--  ``matrix<pr#prfe#K> pr#ZCMi`` the local interpolation operator :math:`Z_i` from the coarse finite element space ``pr#VhCoarse`` to the local finite element space ``pr#prfe#Vhi``.
-   Defined only if this mpi rank is not excluded from the spatial domain decomposition, i. e. ``prmesh#excluded`` = 0.
-   ``pr#ZCMi`` is used for the parallel application of :math:`Z` and :math:`Z^T`.
--  ``matrix<pr#prfe#K> pr#ECM`` the coarse space operator :math:`E = Z^T A^{\text{Eprec}} Z`.
-   The matrix ``pr#ECM`` is assembled by discretizing the variational form given by **VarfEprec** on the coarse mesh and factorized by the parallel direct solver *MUMPS* using the first ``pr#prfe#prmesh#pCS`` ranks of the mpi communicator, with mpi rank 0 as the master process.
+-  :freefem:`matrix<pr#prfe#K> pr#ZCMi` the local interpolation operator :math:`Z_i` from the coarse finite element space :freefem:`pr#VhCoarse` to the local finite element space :freefem:`pr#prfe#Vhi`.
+   Defined only if this mpi rank is not excluded from the spatial domain decomposition, i. e. :freefem:`prmesh#excluded` = 0.
+   :freefem:`pr#ZCMi` is used for the parallel application of :math:`Z` and :math:`Z^T`.
+-  :freefem:`matrix<pr#prfe#K> pr#ECM` the coarse space operator :math:`E = Z^T A^{\text{Eprec}} Z`.
+   The matrix :freefem:`pr#ECM` is assembled by discretizing the variational form given by **VarfEprec** on the coarse mesh and factorized by the parallel direct solver *MUMPS* using the first :freefem:`pr#prfe#prmesh#pCS` ranks of the mpi communicator, with mpi rank 0 as the master process.
    The number of mpi processes dedicated to the coarse problem is set by the underlying mesh decomposition of problem **pr**, which also specifies if these mpi ranks are excluded from the spatial decomposition or not.
    These parameters are set by :ref:`ffddmpCS <ffddmParametersGlobal>` and :ref:`ffddmexclude <ffddmParametersGlobal>` when calling :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>` (see :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>` for more details).
 
@@ -551,13 +551,13 @@ Solving the linear system
 
    func pr#prfe#K[int] pr#fGMRES(pr#prfe#K[int]& x0i, pr#prfe#K[int]& bi, real eps, int itmax, string sp)
 
-solves the linear system for problem **pr** using the flexible GMRES algorithm with preconditioner :math:`M^{-1}` (corresponding to ``pr#PREC``).
-Returns the local vector corresponding to the restriction of the solution to ``pr#prfe#Vhi``.
+solves the linear system for problem **pr** using the flexible GMRES algorithm with preconditioner :math:`M^{-1}` (corresponding to :freefem:`pr#PREC`).
+Returns the local vector corresponding to the restriction of the solution to :freefem:`pr#prfe#Vhi`.
 **x0i** and **bi** are local distributed vectors corresponding respectively to the initial guess and the right-hand side (see :ref:`ffddmbuildrhs <ffddmDocumentationBuildRhs>`).
 **eps** is the stopping criterion in terms of the relative decrease in residual norm.
 If **eps** :math:`< 0`, the residual norm itself is used instead.
 **itmax** sets the maximum number of iterations.
-**sp** selects between the ``"left"`` or ``"right"`` preconditioning variants: *left* preconditioned GMRES solves :math:`M^{-1} A x = M^{-1} b`, while *right* preconditioned GMRES solves :math:`A M^{-1} y = b` for :math:`y`, with :math:`x = M^{-1} y`.
+**sp** selects between the :freefem:`"left"` or :freefem:`"right"` preconditioning variants: *left* preconditioned GMRES solves :math:`M^{-1} A x = M^{-1} b`, while *right* preconditioned GMRES solves :math:`A M^{-1} y = b` for :math:`y`, with :math:`x = M^{-1} y`.
 
 .. _ffddmDocumentationHPDDMffddm:
 
@@ -569,8 +569,8 @@ Using *HPDDM* within *ffddm*
 
 You can use **HPDDM** features unavailable in **ffddm** such as advanced Krylov subspace methods implementing block and recycling techniques.
 
-To switch to **HPDDM**, simply define the macro ``pr#withhpddm`` before using :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>`. You can then pass **HPDDM** options
-with command-line arguments or directly to the underlying **HPDDM** operator ``pr#hpddmOP``. Options need to be prefixed by the operator prefix:
+To switch to **HPDDM**, simply define the macro :freefem:`pr#withhpddm` before using :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>`. You can then pass **HPDDM** options
+with command-line arguments or directly to the underlying **HPDDM** operator :freefem:`pr#hpddmOP`. Options need to be prefixed by the operator prefix:
 
 .. code-block:: freefem
   :linenos:
@@ -579,8 +579,8 @@ with command-line arguments or directly to the underlying **HPDDM** operator ``p
   ffddmsetupOperator( PB , FE , Varf )
   set(PBhpddmOP,sparams="-hpddm_PB_krylov_method gcrodr -hpddm_PB_recycle 10");
 
-You can also choose to replace only the Krylov solver, by defining the macro ``pr#withhpddmkrylov`` before using :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>`.
-Doing so, a call to ``pr#fGMRES`` will call the **HPDDM** Krylov solver, with **ffddm** providing the operator and preconditioner through ``pr#A`` and ``pr#PREC``. You can then pass **HPDDM** options to the Krylov solver through command-line arguments:
+You can also choose to replace only the Krylov solver, by defining the macro :freefem:`pr#withhpddmkrylov` before using :ref:`ffddmsetupOperator <ffddmDocumentationDefineProblemToSolve>`.
+Doing so, a call to :freefem:`pr#fGMRES` will call the **HPDDM** Krylov solver, with **ffddm** providing the operator and preconditioner through :freefem:`pr#A` and :freefem:`pr#PREC`. You can then pass **HPDDM** options to the Krylov solver through command-line arguments:
 
 .. code-block:: freefem
   :linenos:
@@ -626,14 +626,14 @@ Advanced use
 Interpolation between two distributed finite element spaces
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The parallel interpolation of a distributed finite element function to another distributed finite element space can be computed using the ``prfe#transferfromVhi`` macro. Internally, it uses the ``transfer`` macro from the ``macro_ddm.idp`` script. The macro is prefixed by the source finite element prefix **prfe** and is used a follows:
+The parallel interpolation of a distributed finite element function to another distributed finite element space can be computed using the :freefem:`prfe#transferfromVhi` macro. Internally, it uses the :freefem:`transfer` macro from the :freefem:`macro_ddm.idp` script. The macro is prefixed by the source finite element prefix **prfe** and is used a follows:
 
 .. code-block:: freefem
    :linenos:
 
    prfe#transferfromVhi(us,Vht,Pkt,rest)
 
-where **us** is distributed source FE function defined on ``prfe#Vhi``, **Vht** is the target local finite element space, **Pkt** is the approximation space corresponding to **Vht** and **rest** is the target local FE function defined on **Vht**. You can find an example below:
+where **us** is distributed source FE function defined on :freefem:`prfe#Vhi`, **Vht** is the target local finite element space, **Pkt** is the approximation space corresponding to **Vht** and **rest** is the target local FE function defined on **Vht**. You can find an example below:
 
 .. code-block:: freefem
    :linenos:
@@ -671,7 +671,7 @@ where **us** is distributed source FE function defined on ``prfe#Vhi``, **Vht** 
 Local finite element spaces for non Lagrange finite elements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For Lagrange finite elements, the partition of unity :math:`(D_i)_{i=1,...,N}` (see ``prfe#Dk`` and ``prfe#Dih``) is built by interpolating the local P1 partition of unity function onto the components of the **Pk** finite element space ``prfe#Vhi``.
+For Lagrange finite elements, the partition of unity :math:`(D_i)_{i=1,...,N}` (see :freefem:`prfe#Dk` and :freefem:`prfe#Dih`) is built by interpolating the local P1 partition of unity function onto the components of the **Pk** finite element space :freefem:`prfe#Vhi`.
 For non Lagrange finite element spaces, such as Raviart–Thomas or Nédélec edge elements, the definition of the degrees of freedom can be more involved, and interpolating the P1 partition of unity functions directly is inappropriate.
 The idea is then to use a "pseudo" finite element **Pkpart** derived from **Pk** which is suitable for interpolating the P1 partition of unity, in the sense that it will produce a partition of unity for **Pk**.
 
@@ -724,7 +724,7 @@ In **ffddm**, the first step is to build the two nested mesh decompositions usin
 
 decomposes the coarse mesh **Thc** into overlapping submeshes and creates the fine decomposition by locally refining submeshes by a factor of **s**, i.e. splitting each mesh element into :math:`s^d` elements, :math:`s \geq 1`.
 This will create and expose variables corresponding to both decompositions, prefixed by **prmesh** for the fine mesh and by **prmesh#Coarse** for the coarse mesh (see :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>`).
-It also sets the integer variable ``prmesh#binexactCS`` to 1, which specifies that any two level method defined on mesh prefix **prmesh** will use inexact coarse solves.
+It also sets the integer variable :freefem:`prmesh#binexactCS` to 1, which specifies that any two level method defined on mesh prefix **prmesh** will use inexact coarse solves.
 
 The distributed finite element spaces, operators and preconditioners can then be defined for both decompositions. Here is an example where the coarse problem is solved using a one level method:
 
@@ -754,9 +754,9 @@ The distributed finite element spaces, operators and preconditioners can then be
 
 **Remarks**:
 
-- Note that the different prefixes need to match: prefixes for the coarse decomposition have to be those of the fine decomposition, appended with ``Coarse``.
-- The operator and preconditioner for the coarse problem have to be defined before those of the fine problem, because the ``pr#Q`` function is actually defined by ``ffddmsetupPrecond`` and involves a call to ``pr#CoarsefGMRES`` (which is defined by ``ffddmsetupPrecond`` for the coarse problem) for the iterative solution of the coarse problem if ``pr#prfe#prmesh#binexactCS`` :math:`\neq 0`.
-- In this case, ``ffddmcoarsemeshsetup`` does not use **Thc** or **VarfEprec** and only builds the local interpolation matrices between fine and coarse local finite element spaces ``pr#prfe#Vhi`` and ``pr#prfe#CoarseVhi`` to be able to apply :math:`Z` and :math:`Z^T`.
+- Note that the different prefixes need to match: prefixes for the coarse decomposition have to be those of the fine decomposition, appended with :freefem:`Coarse`.
+- The operator and preconditioner for the coarse problem have to be defined before those of the fine problem, because the :freefem:`pr#Q` function is actually defined by :freefem:`ffddmsetupPrecond` and involves a call to :freefem:`pr#CoarsefGMRES` (which is defined by :freefem:`ffddmsetupPrecond` for the coarse problem) for the iterative solution of the coarse problem if :freefem:`pr#prfe#prmesh#binexactCS` :math:`\neq 0`.
+- In this case, :freefem:`ffddmcoarsemeshsetup` does not use **Thc** or **VarfEprec** and only builds the local interpolation matrices between fine and coarse local finite element spaces :freefem:`pr#prfe#Vhi` and :freefem:`pr#prfe#CoarseVhi` to be able to apply :math:`Z` and :math:`Z^T`.
 - The GMRES tolerance for the inner solution of the coarse problem is set by :ref:`ffddminexactCStol <ffddmParametersGlobal>` and is equal to 0.1 by default.
 
 In practice, these methods can give good results for wave propagation problems, where the addition of artificial absorption in the preconditioner helps with the convergence of the one level method for the inner solution of the coarse problem.
