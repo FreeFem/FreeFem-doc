@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.5)  5 SEP 2023 10:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.5)  5 SEP 2023 11:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2488,17 +2488,17 @@ Overfull \vbox (1.8739pt too high) detected at line 30348
 
 [351] [352] [353] [354] [355] [356] [357] [358] [359] [360] [361]
 Underfull \hbox (badness 10000) in paragraph at lines 31051--31057
-[]\T1/txtt/m/n/10 meshN[] []prmesh[][][]Thi \T1/qtm/m/n/10 the lo-cal mesh of t
-he sub-do-main for this mpi rank, i. e.
+[]\T1/txtt/m/n/10 meshN[] []prmesh[]#[]Thi \T1/qtm/m/n/10 the lo-cal mesh of th
+e sub-do-main for this mpi rank, i. e.
  []
 
 [362] [363] [364] [365] [366]
 Underfull \hbox (badness 10000) in paragraph at lines 31548--31562
-[][]\T1/txtt/bx/n/10 func[][] []\T1/txtt/m/n/10 pr[][][]prfe[][][]K[[]\T1/txtt/
-bx/n/10 int[]\T1/txtt/m/n/10 ][] []pr[][][]fGMRES(pr[][][]prfe[][][]K[[]\T1/txt
-t/bx/n/10 int[]\T1/txtt/m/n/10 ][]&[][] []x0i,[] []pr[][][]prfe[][][]K[[]\T1/tx
-tt/bx/n/10 int[]\T1/txtt/m/n/10 ][]&[][] []bi,[] [][]\T1/txtt/bx/n/10 real[][] 
-[][]eps[]\T1/txtt/m/n/10 ,[] [][]\T1/txtt/bx/n/10 int[][]
+[][]\T1/txtt/bx/n/10 func[][] []\T1/txtt/m/n/10 pr[]#[]prfe[]#[]K[[]\T1/txtt/bx
+/n/10 int[]\T1/txtt/m/n/10 ][] []pr[]#[]fGMRES(pr[]#[]prfe[]#[]K[[]\T1/txtt/bx/
+n/10 int[]\T1/txtt/m/n/10 ][]&[][] []x0i,[] []pr[]#[]prfe[]#[]K[[]\T1/txtt/bx/n
+/10 int[]\T1/txtt/m/n/10 ][]&[][] []bi,[] [][]\T1/txtt/bx/n/10 real[][] [][]eps
+[]\T1/txtt/m/n/10 ,[] [][]\T1/txtt/bx/n/10 int[][]
  []
 
 [367] [368] [369] [370] [371] [372] [373] [374]
@@ -3910,7 +3910,7 @@ lic/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfont
 s/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on FreeFEM-documentation.pdf (746 pages, 35468411 bytes).
+Output written on FreeFEM-documentation.pdf (746 pages, 35452769 bytes).
 PDF statistics:
  11648 PDF objects out of 12825 (max. 8388607)
  10166 compressed objects within 102 object streams
