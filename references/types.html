@@ -2236,9 +2236,9 @@ a/b<span class="w"> </span><span class="o">=</span><span class="w"> </span><span
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Macro concatenation</p>
-<p>You can use the C concatenation operator <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="cp">##</span></code> inside a macro using <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="cp">#</span></code>.</p>
+<p>You can use the C concatenation operator <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="cp">##</span></code> inside a macro using <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="o">#</span></code>.</p>
 <p>If <cite>Ux</cite> and <cite>Uy</cite> are defined as finite element function, you can define:</p>
-<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">macro</span><span class="w"> </span><span class="n">Grad</span><span class="p">(</span><span class="n">U</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">grad</span><span class="p">(</span><span class="n">U</span><span class="err">#</span><span class="kr">x</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">U</span><span class="err">#</span><span class="kr">y</span><span class="p">)]</span><span class="w"> </span><span class="c1">// End of macro</span>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">macro</span><span class="w"> </span><span class="n">Grad</span><span class="p">(</span><span class="n">U</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">grad</span><span class="p">(</span><span class="n">U</span><span class="o">#</span><span class="kr">x</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">U</span><span class="o">#</span><span class="kr">y</span><span class="p">)]</span><span class="w"> </span><span class="c1">// End of macro</span>
 </pre></div>
 </div>
 </div>
