@@ -140,7 +140,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Sep 04, 2023}
+\date{Sep 05, 2023}
 \release{4.13}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -30689,13 +30689,23 @@ For two global vectors \({\mathbf U}\) and \({\mathbf V}\) of size \(\#{\mathcal
 \sphinxAtStartPar
 Local scalar products are performed concurrently.
 Thus, the implementation is parallel except for the sum which corresponds to a MPI\_Reduce call across the \(N\) MPI processes.
-Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFEM syntax is \sphinxcode{\sphinxupquote{dscalprod(Di,u,v)}} or equivalently \sphinxcode{\sphinxupquote{myFEprefix\#scalprod(u,v)}} where \sphinxcode{\sphinxupquote{myFEprefix}} is a user defined prefix for the finite element space decomposition, see the {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationlocalfiniteelementspaces}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddm documentation}}}}.
+Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFEM syntax is \sphinxcode{\sphinxupquote{%
+\PYG{n}{dscalprod}\PYG{p}{(}\PYG{n}{Di}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}%
+}} or equivalently \sphinxcode{\sphinxupquote{%
+\PYG{n}{myFEprefix}\PYG{err}{\PYGZsh{}}\PYG{n}{scalprod}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{)}%
+}} where \sphinxcode{\sphinxupquote{%
+\PYG{n}{myFEprefix}%
+}} is a user defined prefix for the finite element space decomposition, see the {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationlocalfiniteelementspaces}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddm documentation}}}}.
 
 
 \paragraph{Update}
 \label{\detokenize{documentation/ffddm/introduction-to-the-domain-decomposition-method:update}}\label{\detokenize{documentation/ffddm/introduction-to-the-domain-decomposition-method:ffddmdocumentationupdate}}
 \sphinxAtStartPar
-From a collection of local vectors \(({\mathbf U}_i)_{1\le i \le N}\), it is possible ensure consistency of the duplicated data by modifying the distributed vector \(({\mathbf U}_i)_{1\le i \le N}\) by calling the function \sphinxcode{\sphinxupquote{myFEprefix\#update(Ui, TRUE)}} where \sphinxcode{\sphinxupquote{myFEprefix}} is the user defined prefix that refers to the finite element space decomposition.
+From a collection of local vectors \(({\mathbf U}_i)_{1\le i \le N}\), it is possible ensure consistency of the duplicated data by modifying the distributed vector \(({\mathbf U}_i)_{1\le i \le N}\) by calling the function \sphinxcode{\sphinxupquote{%
+\PYG{n}{myFEprefix}\PYG{err}{\PYGZsh{}}\PYG{n}{update}\PYG{p}{(}\PYG{n}{Ui}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kr}{true}\PYG{p}{)}%
+}} where \sphinxcode{\sphinxupquote{%
+\PYG{n}{myFEprefix}%
+}} is the user defined prefix that refers to the finite element space decomposition.
 This function performs the following operation for all \(1\le i \le N\):
 \begin{equation*}
 \begin{split}{\mathbf U}_i \leftarrow R_i\, \sum_{j=1}^N R_j^T D_j {\mathbf U}_j\end{split}
@@ -30731,7 +30741,13 @@ concurrent sum of neighbor contributions.
 \sphinxAtStartPar
 The discretization of a variational formulation on the global mesh \(Th\) yields a global matrix \(A\) and a global right hand side \(\mathbf{RHS}\).
 Thanks to the sparsity of finite element matrices for partial differential equations and thanks to the overlap between subdomains, the knowledge of the local matrix \(R_i A R_i^T\) on each subdomain \(1\le i\le N\) is sufficient to perform the matrix\sphinxhyphen{}vector product \(A\times \mathbf{U}\) for any global vector \(\mathbf{U}\).
-Once the problem has been set up by a call to \sphinxcode{\sphinxupquote{ffddmsetupOperator(myprefix, myFEprefix, myVarf)}}, the matrix\sphinxhyphen{}vector product is performed by calling the function \sphinxcode{\sphinxupquote{myprefix\#A(Ui)}} where \sphinxcode{\sphinxupquote{myprefix}} is a user defined prefix that refers to the problem at hand which itself implicitly refers to the triplet (domain decomposition, finite element, variational formulation).
+Once the problem has been set up by a call to \sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmsetupOperator}\PYG{p}{(}\PYG{n}{myprefix}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{myFEprefix}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{myVarf}\PYG{p}{)}%
+}}, the matrix\sphinxhyphen{}vector product is performed by calling the function \sphinxcode{\sphinxupquote{%
+\PYG{n}{myprefix}\PYG{err}{\PYGZsh{}}\PYG{k+kp}{A}\PYG{p}{(}\PYG{n}{Ui}\PYG{p}{)}%
+}} where \sphinxcode{\sphinxupquote{%
+\PYG{n}{myprefix}%
+}} is a user defined prefix that refers to the problem at hand which itself implicitly refers to the triplet (domain decomposition, finite element, variational formulation).
 See more on problem definition in this {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationdefineproblemtosolve}]{\sphinxcrossref{\DUrole{std,std-ref}{documentation}}}} and more on distributed linear algebra in chapter 8 of \sphinxhref{http://bookstore.siam.org/ot144/}{“An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation” SIAM 2015}.
 
 
@@ -30940,7 +30956,9 @@ This is a way to interpret the above generalized eigenvalue problem which contro
 \sphinxAtStartPar
 decomposes the mesh \sphinxstylestrong{Th} into overlapping submeshes.
 The mesh will be distributed over the mpi ranks of communicator \sphinxstylestrong{comm}.
-This will create and expose variables whose names will be prefixed by \sphinxstylestrong{prmesh}, see below (\# is the concatenation operator).
+This will create and expose variables whose names will be prefixed by \sphinxstylestrong{prmesh}, see below (\sphinxcode{\sphinxupquote{%
+\PYG{c+cp}{\PYGZsh{}}%
+}} is the concatenation operator).
 The way the initial mesh \sphinxstylestrong{Th} is partitioned depends on the value of {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpartitioner}}}}.
 
 \sphinxAtStartPar
@@ -30960,50 +30978,96 @@ The label of the new border of the submeshes (the interface between the subdomai
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{int prmesh\#npart}} number of subdomains for this decomposition; should be equal to mpiSize(\sphinxstylestrong{comm}) \sphinxhyphen{} {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmexclude}}}} * {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpCS}}}}
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{npart}%
+}} number of subdomains for this decomposition; should be equal to mpiSize(\sphinxstylestrong{comm}) \sphinxhyphen{} {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmexclude}}}} * {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpCS}}}}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{int prmesh\#pCS}} equal to {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpCS}}}}
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{pCS}%
+}} equal to {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpCS}}}}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{int prmesh\#exclude}} equal to {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmexclude}}}}
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{exclude}%
+}} equal to {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmexclude}}}}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{int prmesh\#excluded}} \sphinxstyleemphasis{true} if {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmexclude}}}} is \sphinxstyleemphasis{true} (\(\neq 0\)) and mpiRank(\sphinxstylestrong{comm}) \textless{} \sphinxcode{\sphinxupquote{prmesh\#pCS}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{excluded}%
+}} \sphinxstyleemphasis{true} if {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmexclude}}}} is \sphinxstyleemphasis{true} (\(\neq 0\)) and mpiRank(\sphinxstylestrong{comm}) \textless{} \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{pCS}%
+}}.
 In this case, this mpi rank will be excluded from the spatial domain decomposition and will only work on the coarse problem.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{mpiComm prmesh\#commddm}} mpi communicator for ranks participating in the spatial domain decomposition (ranks 0 to \sphinxcode{\sphinxupquote{prmesh\#npart}}\sphinxhyphen{}1 in \sphinxstylestrong{comm} if \sphinxcode{\sphinxupquote{prmesh\#exclude}} is \sphinxstyleemphasis{false}, ranks \sphinxcode{\sphinxupquote{prmesh\#pCS}} to \sphinxcode{\sphinxupquote{prmesh\#pCS}}+\sphinxcode{\sphinxupquote{prmesh\#npart}}\sphinxhyphen{}1 otherwise)
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{mpiComm}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{commddm}%
+}} mpi communicator for ranks participating in the spatial domain decomposition (ranks 0 to \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{npart}%
+}} \sphinxhyphen{} 1 in \sphinxstylestrong{comm} if \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{exclude}%
+}} is \sphinxstyleemphasis{false}, ranks \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{pCS}%
+}} to \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{pCS}%
+}}+\sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{npart}%
+}} \sphinxhyphen{} 1 otherwise)
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{mpiComm prmesh\#commCS}} mpi communicator for ranks participating in the assembly and resolution of the coarse problem for two\sphinxhyphen{}level preconditioners (ranks 0 to \sphinxcode{\sphinxupquote{prmesh\#pCS}} \sphinxhyphen{} 1 in \sphinxstylestrong{comm})
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{mpiComm}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{commCS}%
+}} mpi communicator for ranks participating in the assembly and resolution of the coarse problem for two\sphinxhyphen{}level preconditioners (ranks 0 to \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{pCS}%
+}} \sphinxhyphen{} 1 in \sphinxstylestrong{comm})
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{mpiComm prmesh\#commself}} self mpi communicator (this mpi rank only), used for factorizing local matrices
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{mpiComm}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{commself}%
+}} self mpi communicator (this mpi rank only), used for factorizing local matrices
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{meshN{[}int{]} prmesh\#aTh}} array (size \sphinxcode{\sphinxupquote{prmesh\#npart}}) of local meshes of the subdomains.
-In the standard parallel case, only the local mesh for this mpi rank \sphinxcode{\sphinxupquote{prmesh\#aTh{[}mpiRank(prmesh\#commddm){]}}} is defined (unless this mpi rank is excluded from the spatial domain decomposition, i.e. \sphinxcode{\sphinxupquote{prmesh\#excluded}} = 1, see below).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{meshN}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{aTh}%
+}} array (size \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{npart}%
+}}) of local meshes of the subdomains.
+In the standard parallel case, only the local mesh for this mpi rank \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{aTh}\PYG{p}{[}\PYG{n+nf}{mpiRank}\PYG{p}{(}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{commddm}\PYG{p}{)}\PYG{p}{]}%
+}} is defined (unless this mpi rank is excluded from the spatial domain decomposition, i.e. \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{excluded}%
+}} = 1, see below).
 In the sequential case, all local meshes are defined.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{meshN prmesh\#Thi}} the local mesh of the subdomain for this mpi rank, i. e. \sphinxcode{\sphinxupquote{prmesh\#aTh{[}mpiRank(prmesh\#commddm){]}}} in the parallel case
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{meshN}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{Thi}%
+}} the local mesh of the subdomain for this mpi rank, i. e. \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{aTh}\PYG{p}{[}\PYG{n+nf}{mpiRank}\PYG{p}{(}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{commddm}\PYG{p}{)}\PYG{p}{]}%
+}} in the parallel case
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{int prmesh\#numberIntersection}} the number of neighbors for this mpi rank
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{numberIntersection}%
+}} the number of neighbors for this mpi rank
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{int{[}int{]} prmesh\#arrayIntersection}} the list of neighbor ranks in \sphinxcode{\sphinxupquote{prmesh\#commddm}} for this mpi rank
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{arrayIntersection}%
+}} the list of neighbor ranks in \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{commddm}%
+}} for this mpi rank
 
 \end{itemize}
 
@@ -31012,7 +31076,11 @@ In the sequential case, all local meshes are defined.
 \sphinxlineitem{\sphinxstylestrong{Remark for sequential use} (see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparameterscommandline}]{\sphinxcrossref{\DUrole{std,std-ref}{\sphinxhyphen{}seqddm}}}}):}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{meshN{[}int{]} prmesh\#aTh}} array (size \sphinxcode{\sphinxupquote{prmesh\#npart}}) of local meshes of the subdomains
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{meshN}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{aTh}%
+}} array (size \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{npart}%
+}}) of local meshes of the subdomains
 
 \end{itemize}
 
@@ -31060,75 +31128,143 @@ For vectorial {[}P2,P2,P1{]} finite elements and real\sphinxhyphen{}valued probl
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-In practice, this builds the necessary distributed operators associated to the finite element space: the local partition of unity functions \((D_i)_{i=1,...,N}\) (see \sphinxcode{\sphinxupquote{prfe\#Dk}} and \sphinxcode{\sphinxupquote{prfe\#Dih}} below) as well as the function \sphinxcode{\sphinxupquote{prfe\#update}} (see below) which synchronizes local vectors \((u_i)_{i=1,...,N}\) between neighboring subdomains, performing the equivalent of \(u_i = R_i (\sum_{j=1}^N R_j^T u_j)\) or \(u_i = R_i (\sum_{j=1}^N R_j^T D_j u_j)\) in a distributed parallel environment.
+In practice, this builds the necessary distributed operators associated to the finite element space: the local partition of unity functions \((D_i)_{i=1,...,N}\) (see \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Dk}%
+}} and \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Dih}%
+}} below) as well as the function \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{update}%
+}} (see below) which synchronizes local vectors \((u_i)_{i=1,...,N}\) between neighboring subdomains, performing the equivalent of \(u_i = R_i (\sum_{j=1}^N R_j^T u_j)\) or \(u_i = R_i (\sum_{j=1}^N R_j^T D_j u_j)\) in a distributed parallel environment.
 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{prfe\#scalprod}} (see below) performs the parallel scalar product for vectors defined on this finite element.
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{scalprod}%
+}} (see below) performs the parallel scalar product for vectors defined on this finite element.
 
 \sphinxAtStartPar
 \sphinxstylestrong{defines}:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{prfe\#prmesh}} macro, saves the parent prefix \sphinxstylestrong{prmesh} of the mesh decomposition
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{prmesh}%
+}} macro, saves the parent prefix \sphinxstylestrong{prmesh} of the mesh decomposition
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{prfe\#K}} macro, saves the type of data \sphinxstylestrong{scalar} for this finite element space (\sphinxstyleemphasis{real} or \sphinxstyleemphasis{complex})
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}%
+}} macro, saves the type of data \sphinxstylestrong{scalar} for this finite element space (\sphinxstyleemphasis{real} or \sphinxstyleemphasis{complex})
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func prfe\#fPk}} saves the type of finite element \sphinxstylestrong{Pk}, e.g. \sphinxstyleemphasis{P1, {[}P2,P2,P1{]}, …}
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{fPk}%
+}} saves the type of finite element \sphinxstylestrong{Pk}, e.g. \sphinxstyleemphasis{P1, {[}P2,P2,P1{]}, …}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{fespace prfe\#Vhi}} the local finite element space for this mpi rank, defined on the local mesh \sphinxcode{\sphinxupquote{prmesh\#Thi}}
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhi}%
+}} the local finite element space for this mpi rank, defined on the local mesh \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{Thi}%
+}}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{int prfe\#Ndofglobal}} the total number of degrees of freedom \(n\) for this finite element discretization
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Ndofglobal}%
+}} the total number of degrees of freedom \(n\) for this finite element discretization
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{prfe\#mdef}} macro, saves the macro \sphinxstylestrong{def} giving the definition of a finite element function in the finite element space \sphinxstylestrong{Pk}
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{mdef}%
+}} macro, saves the macro \sphinxstylestrong{def} giving the definition of a finite element function in the finite element space \sphinxstylestrong{Pk}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{prfe\#minit}} macro, saves the macro \sphinxstylestrong{init} specifying how to interpolate a scalar function onto the (possibly multiple) components of a finite element function of \sphinxstylestrong{Pk}.
-This is used to create the local partition of unity function in \sphinxcode{\sphinxupquote{prfe\#Vhi}}, by interpolating the local P1 partition of unity function onto the components of \sphinxcode{\sphinxupquote{prfe\#Vhi}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{minit}%
+}} macro, saves the macro \sphinxstylestrong{init} specifying how to interpolate a scalar function onto the (possibly multiple) components of a finite element function of \sphinxstylestrong{Pk}.
+This is used to create the local partition of unity function in \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhi}%
+}}, by interpolating the local P1 partition of unity function onto the components of \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhi}%
+}}.
 For non Lagrange finite element spaces (e.g. \sphinxstyleemphasis{RT0}, \sphinxstyleemphasis{Edge03d}, …), see {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationpartitionunityedge}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDfespaceEdge}}}}.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{prfe\#K{[}int{]}{[}int{]} prfe\#Dk}} array (size \sphinxcode{\sphinxupquote{prmesh\#npart}}) of local partition of unity vectors in the subdomains, equivalent to \((D_i)_{i=1,...,N}\).
-In the standard parallel case, only the local partition of unity vector for this mpi rank \sphinxcode{\sphinxupquote{prfe\#Dk{[}mpiRank(prmesh\#commddm){]}}} is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. \sphinxcode{\sphinxupquote{prmesh\#excluded}} = 1).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Dk}%
+}} array (size \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{npart}%
+}}) of local partition of unity vectors in the subdomains, equivalent to \((D_i)_{i=1,...,N}\).
+In the standard parallel case, only the local partition of unity vector for this mpi rank \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Dk}\PYG{p}{[}\PYG{n+nf}{mpiRank}\PYG{p}{(}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{commddm}\PYG{p}{)}\PYG{p}{]}%
+}} is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{excluded}%
+}} = 1).
 In the sequential case, all local partition of unity vectors are defined.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}prfe\#K\textgreater{}{[}int{]} prfe\#Dih}} array (size \sphinxcode{\sphinxupquote{prmesh\#npart}}) similar to \sphinxcode{\sphinxupquote{prfe\#Dk}} but in \sphinxstyleemphasis{matrix} form, allowing for easier \sphinxstyleemphasis{matrix}\sphinxhyphen{}\sphinxstyleemphasis{matrix} multiplications.
-\sphinxcode{\sphinxupquote{prfe\#Dih{[}i{]}}} is a diagonal matrix, with the diagonal equal to \sphinxcode{\sphinxupquote{prfe\#Dk{[}i{]}}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Dih}%
+}} array (size \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{npart}%
+}}) similar to \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Dk}%
+}} but in \sphinxstyleemphasis{matrix} form, allowing for easier \sphinxstyleemphasis{matrix}\sphinxhyphen{}\sphinxstyleemphasis{matrix} multiplications.
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Dih}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}%
+}} is a diagonal matrix, with the diagonal equal to \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Dk}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}%
+}}.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{fespace prfe\#Vhglob}} the global finite element space defined on the global mesh \sphinxcode{\sphinxupquote{prmesh\#Thglob}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhglob}%
+}} the global finite element space defined on the global mesh \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{Thglob}%
+}}.
 Defined only if {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparameterscommandline}]{\sphinxcrossref{\DUrole{std,std-ref}{\sphinxhyphen{}noGlob}}}} is not used.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}prfe\#K\textgreater{}{[}int{]} prfe\#Rih}} array (size \sphinxcode{\sphinxupquote{prmesh\#npart}}) of restriction matrices from the global finite element space to the local finite element spaces on the local submeshes of the subdomains.
-In the standard parallel case, only the restriction matrix for this mpi rank \sphinxcode{\sphinxupquote{prfe\#Rih{[}mpiRank(prmesh\#commddm){]}}} is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. \sphinxcode{\sphinxupquote{prmesh\#excluded}} = 1).
-In the sequential case, all restriction matrices are defined. The restriction matrices \sphinxcode{\sphinxupquote{prfe\#Rih}} are defined only if {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparameterscommandline}]{\sphinxcrossref{\DUrole{std,std-ref}{\sphinxhyphen{}noGlob}}}} is not used.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Rih}%
+}} array (size \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{npart}%
+}}) of restriction matrices from the global finite element space to the local finite element spaces on the local submeshes of the subdomains.
+In the standard parallel case, only the restriction matrix for this mpi rank \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Rih}\PYG{p}{[}\PYG{n+nf}{mpiRank}\PYG{p}{(}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{commddm}\PYG{p}{)}\PYG{p}{]}%
+}} is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{excluded}%
+}} = 1).
+In the sequential case, all restriction matrices are defined. The restriction matrices \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Rih}%
+}} are defined only if {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparameterscommandline}]{\sphinxcrossref{\DUrole{std,std-ref}{\sphinxhyphen{}noGlob}}}} is not used.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func int prfe\#update(scalar{[}int{]} ui, bool scale)}} The function \sphinxcode{\sphinxupquote{prfe\#update}} synchronizes the local vector \sphinxstyleemphasis{ui} between subdomains by exchanging the values of \sphinxstyleemphasis{ui} shared with neighboring subdomains (in the overlap region) using point\sphinxhyphen{}to\sphinxhyphen{}point MPI communications.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{update}\PYG{p}{(}\PYG{n}{scalar}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{ui}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{bool}\PYG{+w}{ }\PYG{n}{scale}\PYG{p}{)}%
+}} The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{update}%
+}} synchronizes the local vector \sphinxstyleemphasis{ui} between subdomains by exchanging the values of \sphinxstyleemphasis{ui} shared with neighboring subdomains (in the overlap region) using point\sphinxhyphen{}to\sphinxhyphen{}point MPI communications.
 If \sphinxstyleemphasis{scale} is \sphinxstyleemphasis{true}, \sphinxstyleemphasis{ui} is multiplied by the local partition of unity beforehand.
 This is equivalent to \(u_i = R_i (\sum_{j=1}^N R_j^T u_j)\) when \sphinxstyleemphasis{scale} is \sphinxstyleemphasis{false} and \(u_i = R_i (\sum_{j=1}^N R_j^T D_j u_j)\) when \sphinxstyleemphasis{scale} is \sphinxstyleemphasis{true}.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func scalar prfe\#scalprod(scalar{[}int{]} ai, scalar{[}int{]} bi)}} The function \sphinxcode{\sphinxupquote{prfe\#scalprod}} computes the global scalar product of two vectors whose local restriction to the subdomain of this mpi rank are \sphinxstyleemphasis{ai} and \sphinxstyleemphasis{bi}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{scalar}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{scalprod}\PYG{p}{(}\PYG{n}{scalar}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{ai}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{scalar}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{bi}\PYG{p}{)}%
+}} The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{scalprod}%
+}} computes the global scalar product of two vectors whose local restriction to the subdomain of this mpi rank are \sphinxstyleemphasis{ai} and \sphinxstyleemphasis{bi}.
 The result is computed as \(\sum_{j=1}^N (D_j a_j, b_j)\).
 
 \end{itemize}
@@ -31148,12 +31284,18 @@ This will create and expose variables whose names will be prefixed by \sphinxsty
 It is assumed that {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationlocalfiniteelementspaces}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDfespace}}}} has already been called with prefix \sphinxstylestrong{prfe} in order to define the distributed finite element space.
 
 \sphinxAtStartPar
-In practice, this builds the so\sphinxhyphen{}called local ‘Dirichlet’ matrices \(A_i = R_i A R_i^T\), the restrictions of the global operator \(A\) to the subdomains (see \sphinxcode{\sphinxupquote{pr\#aRd}}below).
+In practice, this builds the so\sphinxhyphen{}called local ‘Dirichlet’ matrices \(A_i = R_i A R_i^T\), the restrictions of the global operator \(A\) to the subdomains (see \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRd}%
+}}below).
 The matrices correspond to the discretization of the bilinear form given by the macro \sphinxstylestrong{Varf}, which represents the abstract variational form of the problem.
-These matrices are then used to implement the action of the global operator \(A\) on a local vector (the parallel matrix\sphinxhyphen{}vector product with \(A\)), see \sphinxcode{\sphinxupquote{pr\#A}} below.
+These matrices are then used to implement the action of the global operator \(A\) on a local vector (the parallel matrix\sphinxhyphen{}vector product with \(A\)), see \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{k+kp}{A}%
+}} below.
 
 \sphinxAtStartPar
-At this point, we already have the necessary data to be able to solve the problem with a parallel direct solver (\sphinxstyleemphasis{MUMPS}), which is the purpose of the function \sphinxcode{\sphinxupquote{pr\#directsolve}} (see below).
+At this point, we already have the necessary data to be able to solve the problem with a parallel direct solver (\sphinxstyleemphasis{MUMPS}), which is the purpose of the function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{directsolve}%
+}} (see below).
 See {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationbuildrhs}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildrhs}}}} for building the right\sphinxhyphen{}hand side.
 
 \sphinxAtStartPar
@@ -31179,41 +31321,81 @@ See for example TODO
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{pr\#prfe}} macro, saves the parent prefix \sphinxstylestrong{prfe} of the finite element space
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}%
+}} macro, saves the parent prefix \sphinxstylestrong{prfe} of the finite element space
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{int pr\#verbosity}} the level of verbosity for this problem, initialized with the value of {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmverbosity}}}}
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{k+kr}{verbosity}%
+}} the level of verbosity for this problem, initialized with the value of {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmverbosity}}}}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{pr\#writesummary}} macro, prints a summary of timings for this problem, such as the time spent to assemble local matrices or solve the linear system.
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{writesummary}%
+}} macro, prints a summary of timings for this problem, such as the time spent to assemble local matrices or solve the linear system.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}prfe\#K\textgreater{} pr\#Aglobal}} the global matrix \(A\) corresponding to the discretization of the variational form given by the macro \sphinxstylestrong{Varf} on the global finite element space \sphinxcode{\sphinxupquote{prfe\#Vhglob}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{Aglobal}%
+}} the global matrix \(A\) corresponding to the discretization of the variational form given by the macro \sphinxstylestrong{Varf} on the global finite element space \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhglob}%
+}}.
 Defined only in the sequential case.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}prfe\#K\textgreater{}{[}int{]} pr\#aRd}} array (size \sphinxcode{\sphinxupquote{prfe\#prmesh\#npart}}) of so\sphinxhyphen{}called local ‘Dirichlet’ matrices in the subdomains; these are the restrictions of the global operator to the subdomains, equivalent to \(A_i = R_i A R_i^T\) with \(A\) the global matrix corresponding to the discretization of the variational form given by the macro \sphinxstylestrong{Varf} on the global finite element space.
-In the standard parallel case, only the local matrix for this mpi rank \sphinxcode{\sphinxupquote{pr\#aRd{[}mpiRank(prmesh\#commddm){]}}} is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. \sphinxcode{\sphinxupquote{prmesh\#excluded}} = 1).
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRd}%
+}} array (size \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{npart}%
+}}) of so\sphinxhyphen{}called local ‘Dirichlet’ matrices in the subdomains; these are the restrictions of the global operator to the subdomains, equivalent to \(A_i = R_i A R_i^T\) with \(A\) the global matrix corresponding to the discretization of the variational form given by the macro \sphinxstylestrong{Varf} on the global finite element space.
+In the standard parallel case, only the local matrix for this mpi rank \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRd}\PYG{p}{[}\PYG{n+nf}{mpiRank}\PYG{p}{(}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{commddm}\PYG{p}{)}\PYG{p}{]}%
+}} is defined (unless this mpi rank is excluded from the spatial domain decomposition, i. e. \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{excluded}%
+}} = 1).
 In the sequential case, all local matrices are defined.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func prfe\#K{[}int{]} pr\#A(prfe\#K{[}int{]} \&ui)}} The function \sphinxcode{\sphinxupquote{pr\#A}} computes the parallel matrix\sphinxhyphen{}vector product, i.e. the action of the global operator \(A\) on the local vector \(u_i\).
-The computation is equivalent to \(R_i (\sum_{j=1}^N R_j^T D_j A_j u_j)\) and is performed in parallel using local matrices \sphinxcode{\sphinxupquote{pr\#aRd}} and the function \sphinxcode{\sphinxupquote{prfe\#update}}.
-In the sequential case, the global matrix \sphinxcode{\sphinxupquote{pr\#Aglobal}} is used instead.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{k+kp}{A}\PYG{p}{(}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{ui}\PYG{p}{)}%
+}} The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{k+kp}{A}%
+}} computes the parallel matrix\sphinxhyphen{}vector product, i.e. the action of the global operator \(A\) on the local vector \(u_i\).
+The computation is equivalent to \(R_i (\sum_{j=1}^N R_j^T D_j A_j u_j)\) and is performed in parallel using local matrices \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRd}%
+}} and the function \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{update}%
+}}.
+In the sequential case, the global matrix \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{Aglobal}%
+}} is used instead.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func prfe\#K{[}int{]} pr\#AT(prfe\#K{[}int{]} \&ui)}} Similarly to \sphinxcode{\sphinxupquote{pr\#A}}, The function \sphinxcode{\sphinxupquote{pr\#AT}} computes the action of \(A^T\), the transpose of the global operator \(A\), on \(u_i\).
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{AT}\PYG{p}{(}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{ui}\PYG{p}{)}%
+}} Similarly to \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{k+kp}{A}%
+}}, The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{AT}%
+}} computes the action of \(A^T\), the transpose of the global operator \(A\), on \(u_i\).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func prfe\#K{[}int{]} pr\#directsolve(prfe\#K{[}int{]}\& rhsi)}} The function \sphinxcode{\sphinxupquote{pr\#directsolve}} allows to solve the linear system \(A x = b\) in parallel using the parallel direct solver \sphinxstyleemphasis{MUMPS}.
-The matrix is given to \sphinxstyleemphasis{MUMPS} in distributed form through the local matrices \sphinxcode{\sphinxupquote{pr\#aRd}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{directsolve}\PYG{p}{(}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{rhsi}\PYG{p}{)}%
+}} The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{directsolve}%
+}} allows to solve the linear system \(A x = b\) in parallel using the parallel direct solver \sphinxstyleemphasis{MUMPS}.
+The matrix is given to \sphinxstyleemphasis{MUMPS} in distributed form through the local matrices \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRd}%
+}}.
 The input \sphinxstyleemphasis{rhsi} is given as a distributed vector (\sphinxstyleemphasis{rhsi} is the restriction of the global right\sphinxhyphen{}hand side \(b\) to the subdomain of this mpi rank, see {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationbuildrhs}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildrhs}}}}) and the returned vector is local as well.
 
 \end{itemize}
@@ -31277,24 +31459,38 @@ It is assumed that {\hyperref[\detokenize{documentation/ffddm/documentation:ffdd
 
 \sphinxAtStartPar
 In practice, this builds and performs the factorization of the local matrices used in the one level preconditioner.
-The local matrices depend on the choice of {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}} and \sphinxstylestrong{VarfPrec}, see \sphinxcode{\sphinxupquote{pr\#aR}}below.
+The local matrices depend on the choice of {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}} and \sphinxstylestrong{VarfPrec}, see \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aR}%
+}}below.
 
 \sphinxAtStartPar
 \sphinxstylestrong{defines}:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{string pr\#prec}} equal to {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prec}%
+}} equal to {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}}.
 Sets the type of one level preconditioner \(M^{-1}_1\) to be used: “asm” (\sphinxstyleemphasis{Additive Schwarz}), “ras” (\sphinxstyleemphasis{Restricted Additive Schwarz}), “oras” (\sphinxstyleemphasis{Optimized Restricted Additive Schwarz}), “soras” (\sphinxstyleemphasis{Symmetric Optimized Restricted Additive Schwarz}) or “none” (no preconditioner).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}pr\#prfe\#K\textgreater{}{[}int{]} pr\#aR}} array (size \sphinxcode{\sphinxupquote{prfe\#prmesh\#npart}}) of local matrices used for the one level preconditioner.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aR}%
+}} array (size \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{npart}%
+}}) of local matrices used for the one level preconditioner.
 Each mpi rank of the spatial domain decomposition performs the \(LU\) (or \(LDL^T\)) factorization of the local matrix corresponding to its subdomain using the direct solver \sphinxstyleemphasis{MUMPS}.
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-If \sphinxstylestrong{VarfPrec} is not a previously defined macro (just put \sphinxstyleemphasis{null} for example), the matrices \sphinxcode{\sphinxupquote{pr\#aR}} are set to be equal to the so\sphinxhyphen{}called local ‘Dirichlet’ matrices \sphinxcode{\sphinxupquote{pr\#aRd}} (see {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationdefineproblemtosolve}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupOperator}}}}).
+If \sphinxstylestrong{VarfPrec} is not a previously defined macro (just put \sphinxcode{\sphinxupquote{%
+\PYG{n}{null}%
+}} for example), the matrices \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aR}%
+}} are set to be equal to the so\sphinxhyphen{}called local ‘Dirichlet’ matrices \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRd}%
+}} (see {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationdefineproblemtosolve}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupOperator}}}}).
 This is for the classical ASM preconditioner \(M^{-1}_1 = M^{-1}_{\text{ASM}} = \sum_{i=1}^N R_i^T A_i^{-1} R_i\) or classical RAS preconditioner \(M^{-1}_1 = M^{-1}_{\text{RAS}} = \sum_{i=1}^N R_i^T D_i A_i^{-1} R_i\) (it is assumed that {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}} is equal to “asm” or “ras”).
 
 \item {} 
@@ -31303,12 +31499,18 @@ If \sphinxstylestrong{VarfPrec} is a macro, it is assumed that \sphinxstylestron
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-If {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}} is equal to “asm” or “ras”, the matrices \sphinxcode{\sphinxupquote{pr\#aR}} will be assembled as local ‘Dirichlet’ matrices in the same manner as \sphinxcode{\sphinxupquote{pr\#aRd}}, but using the bilinear form defined by \sphinxstylestrong{VarfPrec} instead.
+If {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}} is equal to “asm” or “ras”, the matrices \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aR}%
+}} will be assembled as local ‘Dirichlet’ matrices in the same manner as \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRd}%
+}}, but using the bilinear form defined by \sphinxstylestrong{VarfPrec} instead.
 This defines the ASM preconditioner as \(M^{-1}_1 = M^{-1}_{\text{ASM}} = \sum_{i=1}^N R_i^T {(A_i^{\text{Prec}})}^{-1} R_i\) and the RAS preconditioner as \(M^{-1}_1 = M^{-1}_{\text{RAS}} = \sum_{i=1}^N R_i^T D_i {(A_i^{\text{Prec}})}^{-1} R_i\), where \(A_i^{\text{Prec}} = R_i A^{\text{Prec}} R_i^T\).
 
 \item {} 
 \sphinxAtStartPar
-If {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}} is equal to “oras” or “soras”, the matrices \sphinxcode{\sphinxupquote{pr\#aR}} will correspond to the discretization of the variational form \sphinxstylestrong{VarfPrec} in the subdomains \(\Omega_i\).
+If {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}} is equal to “oras” or “soras”, the matrices \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aR}%
+}} will correspond to the discretization of the variational form \sphinxstylestrong{VarfPrec} in the subdomains \(\Omega_i\).
 In particular, various boundary conditions can be imposed at the interface between subdomains (corresponding to mesh boundary of label {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddminterfacelabel}}}} set by the parent call to {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}}), such as Optimized Robin boundary conditions.
 We note the ORAS preconditioner as \(M^{-1}_1 = M^{-1}_{\text{ORAS}} = \sum_{i=1}^N R_i^T D_i {(B_i^{\text{Prec}})}^{-1} R_i\) and the SORAS preconditioner as \(M^{-1}_1 = M^{-1}_{\text{SORAS}} = \sum_{i=1}^N R_i^T D_i {(B_i^{\text{Prec}})}^{-1} D_i R_i\).
 
@@ -31318,20 +31520,44 @@ We note the ORAS preconditioner as \(M^{-1}_1 = M^{-1}_{\text{ORAS}} = \sum_{i=1
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func pr\#prfe\#K{[}int{]} pr\#PREC1(pr\#prfe\#K{[}int{]} \&ui)}} The function \sphinxcode{\sphinxupquote{pr\#PREC1}} computes the parallel application of the one level preconditioner \(M^{-1}_1\), i.e. the action of \(M^{-1}_1\) on the local vector \(u_i\).
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC1}\PYG{p}{(}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{ui}\PYG{p}{)}%
+}} The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC1}%
+}} computes the parallel application of the one level preconditioner \(M^{-1}_1\), i.e. the action of \(M^{-1}_1\) on the local vector \(u_i\).
 In the sequential case, it computes the action of \(M^{-1}_1\) on a global vector.
-The action of the inverse of local matrices \sphinxcode{\sphinxupquote{pr\#aRd}} is computed by forward\sphinxhyphen{}backward substitution using their \(LU\) (or \(LDL^T\)) decomposition.
+The action of the inverse of local matrices \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRd}%
+}} is computed by forward\sphinxhyphen{}backward substitution using their \(LU\) (or \(LDL^T\)) decomposition.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func pr\#prfe\#K{[}int{]} pr\#PREC(pr\#prfe\#K{[}int{]} \&ui)}} The function \sphinxcode{\sphinxupquote{pr\#PREC}} corresponds to the action of the preconditioner \(M^{-1}\) for problem \sphinxstylestrong{pr}.
-It coincides with the one level preconditioner \sphinxcode{\sphinxupquote{pr\#PREC1}} after the call to {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationonelevelpreconditioners}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupPrecond}}}}.
-If a second level is subsequently added (see the next section about {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationtwolevelpreconditioners}]{\sphinxcrossref{\DUrole{std,std-ref}{Two level preconditioners}}}}), it will then coincide with the two level preconditioner \(M^{-1}_2\) (see \sphinxcode{\sphinxupquote{pr\#PREC2level}}).
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC}\PYG{p}{(}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{ui}\PYG{p}{)}%
+}} The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC}%
+}} corresponds to the action of the preconditioner \(M^{-1}\) for problem \sphinxstylestrong{pr}.
+It coincides with the one level preconditioner \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC1}%
+}} after the call to {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationonelevelpreconditioners}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupPrecond}}}}.
+If a second level is subsequently added (see the next section about {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationtwolevelpreconditioners}]{\sphinxcrossref{\DUrole{std,std-ref}{Two level preconditioners}}}}), it will then coincide with the two level preconditioner \(M^{-1}_2\) (see \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC2level}%
+}}).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func pr\#prfe\#K{[}int{]} pr\#fGMRES(pr\#prfe\#K{[}int{]}\& x0i, pr\#prfe\#K{[}int{]}\& bi, real eps, int nbiter, string sprec)}} The function \sphinxcode{\sphinxupquote{pr\#fGMRES}} allows to solve the linear system \(A x = b\) in parallel using the flexible GMRES method preconditioned by \(M^{-1}\).
-The action of the global operator \(A\) is given by \sphinxcode{\sphinxupquote{pr\#A}}, the action of the preconditioner \(M^{-1}\) is given by \sphinxcode{\sphinxupquote{pr\#PREC}} and the scalar products are computed by \sphinxcode{\sphinxupquote{pr\#scalprod}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{fGMRES}\PYG{p}{(}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{x0i}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{bi}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{real}\PYG{+w}{ }\PYG{k+kp}{eps}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{k+kp}{nbiter}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{sprec}\PYG{p}{)}%
+}} The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{fGMRES}%
+}} allows to solve the linear system \(A x = b\) in parallel using the flexible GMRES method preconditioned by \(M^{-1}\).
+The action of the global operator \(A\) is given by \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{k+kp}{A}%
+}}, the action of the preconditioner \(M^{-1}\) is given by \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC}%
+}} and the scalar products are computed by \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{scalprod}%
+}}.
 More details are given in the section {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationsolvinglinearsystem}]{\sphinxcrossref{\DUrole{std,std-ref}{Solving the linear system}}}}.
 
 \end{itemize}
@@ -31351,7 +31577,9 @@ The main ingredient of a two level preconditioner is the so\sphinxhyphen{}called
 \(Z\) is used to build the ‘coarse space operator’ \(E = Z^T A Z\), a square matrix of size \(n_c \times n_c\).
 We can then define the ‘coarse space correction operator’ \(Q = Z E^{-1} Z^T = Z (Z^T A Z)^{-1} Z^T\), which can then be used to enrich the one level preconditioner through a correction formula.
 The simplest one is the \sphinxstyleemphasis{additive} coarse correction: \(M^{-1}_2 = M^{-1}_1 + Q\).
-See \sphinxcode{\sphinxupquote{pr\#corr}} below for all other available correction formulas.
+See \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{corr}%
+}} below for all other available correction formulas.
 
 \sphinxAtStartPar
 There are multiple ways to define a relevant coarse space \(Z\) for different classes of problems.
@@ -31362,11 +31590,15 @@ After a call to either {\hyperref[\detokenize{documentation/ffddm/documentation:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{int pr\#ncoarsespace}} the size of the coarse space \(n_c\).
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{ncoarsespace}%
+}} the size of the coarse space \(n_c\).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{string pr\#corr}} initialized with the value of {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmcorrection}}}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{corr}%
+}} initialized with the value of {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmcorrection}}}}.
 Specifies the type of coarse correction formula to use for the two level preconditioner.
 The possible values are:
 
@@ -31390,17 +31622,29 @@ The default coarse correction is \sphinxstyleemphasis{ADEF1}, which is cheaper a
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func pr\#prfe\#K{[}int{]} pr\#Q(pr\#prfe\#K{[}int{]} \&ui)}} The function \sphinxcode{\sphinxupquote{pr\#Q}} computes the parallel application of the coarse correction operator \(Q\), i.e. the action of \(Q = Z E^{-1} Z^T\) on the local vector \(u_i\).
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{Q}\PYG{p}{(}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{ui}\PYG{p}{)}%
+}} The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{Q}%
+}} computes the parallel application of the coarse correction operator \(Q\), i.e. the action of \(Q = Z E^{-1} Z^T\) on the local vector \(u_i\).
 In the sequential case, it computes the action of \(Q\) on a global vector.
 The implementation differs depending on the method used to build the coarse space (with GenEO or using a coarse mesh), but the idea is the same: the action of the transpose of the distributed operator \(Z\) on the distributed vector \(u_i\) is computed in parallel, with the contribution of all subdomains being gathered in a vector of size \(n_c\) in the mpi process of rank 0.
-The action of the inverse of the coarse space operator \(E\) is then computed by forward\sphinxhyphen{}backward substitution using its \(LU\) (or \(LDL^T\)) decomposition previously computed by the first \sphinxcode{\sphinxupquote{pr\#prfe\#prmesh\#pCS}} ranks of the mpi communicator.
+The action of the inverse of the coarse space operator \(E\) is then computed by forward\sphinxhyphen{}backward substitution using its \(LU\) (or \(LDL^T\)) decomposition previously computed by the first \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{pCS}%
+}} ranks of the mpi communicator.
 The result is then sent back to all subdomains to perform the last application of \(Z\) and obtain the resulting local vector in each subdomain.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func pr\#prfe\#K{[}int{]} pr\#PREC2level(pr\#prfe\#K{[}int{]} \&ui)}} The function \sphinxcode{\sphinxupquote{pr\#PREC2level}} computes the parallel application of the two level preconditioner \(M^{-1}_2\), i.e. the action of \(M^{-1}_2\) on the local vector \(u_i\).
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC2level}\PYG{p}{(}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{ui}\PYG{p}{)}%
+}} The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC2level}%
+}} computes the parallel application of the two level preconditioner \(M^{-1}_2\), i.e. the action of \(M^{-1}_2\) on the local vector \(u_i\).
 In the sequential case, it computes the action of \(M^{-1}_2\) on a global vector.
-The two level preconditioner depends on the choice of the coarse correction formula which is determined by \sphinxcode{\sphinxupquote{pr\#corr}}, see above.
+The two level preconditioner depends on the choice of the coarse correction formula which is determined by \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{corr}%
+}}, see above.
 
 \end{itemize}
 
@@ -31428,26 +31672,38 @@ where \(A_i^{\text{Neu}}\) is the local Neumann matrix of subdomain \(i\) (with 
 \sphinxAtStartPar
 In practice, this builds and factorizes the local Neumann matrices \(A_i^{\text{Neu}}\) corresponding to the abstract bilinear form given by the macro \sphinxstylestrong{Varf} (see {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationdefineproblemtosolve}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupOperator}}}} for more details on how to define the abstract variational form as a macro).
 In the GenEO method, the abstract bilinear form \sphinxstylestrong{Varf} is assumed to be the same as the one used to define the problem \sphinxstylestrong{pr} through the previous call to {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationdefineproblemtosolve}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupOperator}}}}.
-The local generalized eigenvalue problem is then solved in each subdomain to find the eigenvectors \(V_{i,k}\) corresponding to the largest eigenvalues \(\lambda_{i,k}\) (see \sphinxcode{\sphinxupquote{pr\#Z}} below).
+The local generalized eigenvalue problem is then solved in each subdomain to find the eigenvectors \(V_{i,k}\) corresponding to the largest eigenvalues \(\lambda_{i,k}\) (see \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{Z}%
+}} below).
 The number of computed eigenvectors \(\nu\) is given by {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmnu}}}}.
 The eigenvectors selected to enter \(Z\) correspond to eigenvalues \(\lambda_{i,k}\) larger than \(\tau\), where the threshold parameter \(\tau\) is given by {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmtau}}}}.
 If {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmtau}}}} \(= 0\), all {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmnu}}}} eigenvectors are selected.
-Finally, the coarse space operator \(E = Z^T A Z\) is assembled and factorized (see \sphinxcode{\sphinxupquote{pr\#E}} below).
+Finally, the coarse space operator \(E = Z^T A Z\) is assembled and factorized (see \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{E}%
+}} below).
 
 \sphinxAtStartPar
 \sphinxstylestrong{defines}:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{pr\#prfe\#K{[}int{]}{[}int{]} pr\#Z}} array of local eigenvectors \(Z_{i,k} = D_i V_{i,k}\) obtained by solving the local generalized eigenvalue problem above in the subdomain of this mpi rank using \sphinxstyleemphasis{Arpack}.
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{Z}%
+}} array of local eigenvectors \(Z_{i,k} = D_i V_{i,k}\) obtained by solving the local generalized eigenvalue problem above in the subdomain of this mpi rank using \sphinxstyleemphasis{Arpack}.
 The number of computed eigenvectors \(\nu\) is given by {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmnu}}}}.
 The eigenvectors selected to enter \(Z\) correspond to eigenvalues \(\lambda_{i,k}\) larger than \(\tau\), where the threshold parameter \(\tau\) is given by {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmtau}}}}.
 If {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmtau}}}} \(= 0\), all {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmnu}}}} eigenvectors are selected.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}pr\#prfe\#K\textgreater{} pr\#E}} the coarse space operator \(E = Z^T A Z\).
-The matrix \sphinxcode{\sphinxupquote{pr\#E}} is assembled in parallel and is factorized by the parallel direct solver \sphinxstyleemphasis{MUMPS} using the first \sphinxcode{\sphinxupquote{pr\#prfe\#prmesh\#pCS}} ranks of the mpi communicator, with mpi rank 0 as the master process.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{E}%
+}} the coarse space operator \(E = Z^T A Z\).
+The matrix \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{E}%
+}} is assembled in parallel and is factorized by the parallel direct solver \sphinxstyleemphasis{MUMPS} using the first \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{pCS}%
+}} ranks of the mpi communicator, with mpi rank 0 as the master process.
 The number of mpi processes dedicated to the coarse problem is set by the underlying mesh decomposition of problem \sphinxstylestrong{pr}, which also specifies if these mpi ranks are excluded from the spatial decomposition or not.
 These parameters are set by {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpCS}}}} and {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmexclude}}}} when calling {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}} (see {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}} for more details).
 
@@ -31483,45 +31739,101 @@ For example, \(M^{-1}_{2,\text{ADEF1}} = M^{-1}_1 (I - A^{\text{Aprec}} Q) + Q\)
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{meshN pr\#ThCoarse}} the coarse mesh \sphinxstylestrong{Thc}
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{meshN}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{ThCoarse}%
+}} the coarse mesh \sphinxstylestrong{Thc}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{fespace pr\#VhCoarse}} the coarse finite element space of type \sphinxcode{\sphinxupquote{pr\#prfe\#fPk}} defined on the coarse mesh \sphinxcode{\sphinxupquote{pr\#ThCoarse}}
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{VhCoarse}%
+}} the coarse finite element space of type \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{fPk}%
+}} defined on the coarse mesh \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{ThCoarse}%
+}}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}pr\#prfe\#K\textgreater{} pr\#AglobEprec}} the global matrix \(A^{\text{Aprec}}\) corresponding to the discretization of the variational form given by the macro \sphinxstylestrong{VarfAprec} on the global finite element space \sphinxcode{\sphinxupquote{pr\#prfe\#Vhglob}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{AglobEprec}%
+}} the global matrix \(A^{\text{Aprec}}\) corresponding to the discretization of the variational form given by the macro \sphinxstylestrong{VarfAprec} on the global finite element space \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhglob}%
+}}.
 Defined only in the sequential case.
-\sphinxcode{\sphinxupquote{pr\#AglobEprec}} is equal to \sphinxcode{\sphinxupquote{pr\#Aglobal}} if \sphinxstylestrong{VarfAprec} is not a valid macro.
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{AglobEprec}%
+}} is equal to \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{Aglobal}%
+}} if \sphinxstylestrong{VarfAprec} is not a valid macro.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}pr\#prfe\#K\textgreater{} pr\#aRdEprec}} the local ‘Dirichlet’ matrix corresponding to \sphinxstylestrong{VarfAprec}; it is the local restriction of the global operator \(A^{\text{Aprec}}\) to the subdomain, equivalent to \(A^{\text{Aprec}}_i = R_i A^{\text{Aprec}} R_i^T\) with \(A^{\text{Aprec}}\) the global matrix corresponding to the discretization of the variational form given by the macro \sphinxstylestrong{VarfAprec} on the global finite element space.
-Defined only if this mpi rank is not excluded from the spatial domain decomposition, i. e. \sphinxcode{\sphinxupquote{prmesh\#excluded}} = 0.
-\sphinxcode{\sphinxupquote{pr\#aRdEprec}} is equal to \sphinxcode{\sphinxupquote{pr\#aRd{[}mpiRank(prmesh\#commddm){]}}} if \sphinxstylestrong{VarfAprec} is not a valid macro.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRdEprec}%
+}} the local ‘Dirichlet’ matrix corresponding to \sphinxstylestrong{VarfAprec}; it is the local restriction of the global operator \(A^{\text{Aprec}}\) to the subdomain, equivalent to \(A^{\text{Aprec}}_i = R_i A^{\text{Aprec}} R_i^T\) with \(A^{\text{Aprec}}\) the global matrix corresponding to the discretization of the variational form given by the macro \sphinxstylestrong{VarfAprec} on the global finite element space.
+Defined only if this mpi rank is not excluded from the spatial domain decomposition, i. e. \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{excluded}%
+}} = 0.
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRdEprec}%
+}} is equal to \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRd}\PYG{p}{[}\PYG{n+nf}{mpiRank}\PYG{p}{(}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{commddm}\PYG{p}{)}\PYG{p}{]}%
+}} if \sphinxstylestrong{VarfAprec} is not a valid macro.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{func pr\#prfe\#K{[}int{]} pr\#AEprec(pr\#prfe\#K{[}int{]} \&ui)}} The function \sphinxcode{\sphinxupquote{pr\#AEprec}} computes the parallel matrix\sphinxhyphen{}vector product, i.e. the action of the global operator \(A^{\text{Aprec}}\) on the local vector \(u_i\).
-The computation is equivalent to \(R_i (\sum_{j=1}^N R_j^T D_j A^{\text{Aprec}}_j u_j)\) and is performed in parallel using local matrices \sphinxcode{\sphinxupquote{pr\#aRdEprec}} and the function \sphinxcode{\sphinxupquote{pr\#prfe\#update}}.
-In the sequential case, the global matrix \sphinxcode{\sphinxupquote{pr\#AglobEprec}} is used instead.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{func}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{AEprec}\PYG{p}{(}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{n}{ui}\PYG{p}{)}%
+}} The function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{AEprec}%
+}} computes the parallel matrix\sphinxhyphen{}vector product, i.e. the action of the global operator \(A^{\text{Aprec}}\) on the local vector \(u_i\).
+The computation is equivalent to \(R_i (\sum_{j=1}^N R_j^T D_j A^{\text{Aprec}}_j u_j)\) and is performed in parallel using local matrices \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{aRdEprec}%
+}} and the function \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{update}%
+}}.
+In the sequential case, the global matrix \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{AglobEprec}%
+}} is used instead.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}pr\#prfe\#K\textgreater{} pr\#ZCM}} the interpolation operator \(Z\) from the coarse finite element space \sphinxcode{\sphinxupquote{pr\#VhCoarse}} to the global finite element space \sphinxcode{\sphinxupquote{pr\#prfe\#Vhglob}}.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{ZCM}%
+}} the interpolation operator \(Z\) from the coarse finite element space \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{VhCoarse}%
+}} to the global finite element space \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhglob}%
+}}.
 Defined only in the sequential case.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}pr\#prfe\#K\textgreater{} pr\#ZCMi}} the local interpolation operator \(Z_i\) from the coarse finite element space \sphinxcode{\sphinxupquote{pr\#VhCoarse}} to the local finite element space \sphinxcode{\sphinxupquote{pr\#prfe\#Vhi}}.
-Defined only if this mpi rank is not excluded from the spatial domain decomposition, i. e. \sphinxcode{\sphinxupquote{prmesh\#excluded}} = 0.
-\sphinxcode{\sphinxupquote{pr\#ZCMi}} is used for the parallel application of \(Z\) and \(Z^T\).
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{ZCMi}%
+}} the local interpolation operator \(Z_i\) from the coarse finite element space \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{VhCoarse}%
+}} to the local finite element space \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhi}%
+}}.
+Defined only if this mpi rank is not excluded from the spatial domain decomposition, i. e. \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{excluded}%
+}} = 0.
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{ZCMi}%
+}} is used for the parallel application of \(Z\) and \(Z^T\).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{matrix\textless{}pr\#prfe\#K\textgreater{} pr\#ECM}} the coarse space operator \(E = Z^T A^{\text{Eprec}} Z\).
-The matrix \sphinxcode{\sphinxupquote{pr\#ECM}} is assembled by discretizing the variational form given by \sphinxstylestrong{VarfEprec} on the coarse mesh and factorized by the parallel direct solver \sphinxstyleemphasis{MUMPS} using the first \sphinxcode{\sphinxupquote{pr\#prfe\#prmesh\#pCS}} ranks of the mpi communicator, with mpi rank 0 as the master process.
+\sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{matrix}\PYG{o}{\PYGZlt{}}\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{K}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{ECM}%
+}} the coarse space operator \(E = Z^T A^{\text{Eprec}} Z\).
+The matrix \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{ECM}%
+}} is assembled by discretizing the variational form given by \sphinxstylestrong{VarfEprec} on the coarse mesh and factorized by the parallel direct solver \sphinxstyleemphasis{MUMPS} using the first \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{pCS}%
+}} ranks of the mpi communicator, with mpi rank 0 as the master process.
 The number of mpi processes dedicated to the coarse problem is set by the underlying mesh decomposition of problem \sphinxstylestrong{pr}, which also specifies if these mpi ranks are excluded from the spatial decomposition or not.
 These parameters are set by {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpCS}}}} and {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmexclude}}}} when calling {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}} (see {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}} for more details).
 
@@ -31535,13 +31847,21 @@ These parameters are set by {\hyperref[\detokenize{documentation/ffddm/parameter
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-solves the linear system for problem \sphinxstylestrong{pr} using the flexible GMRES algorithm with preconditioner \(M^{-1}\) (corresponding to \sphinxcode{\sphinxupquote{pr\#PREC}}).
-Returns the local vector corresponding to the restriction of the solution to \sphinxcode{\sphinxupquote{pr\#prfe\#Vhi}}.
+solves the linear system for problem \sphinxstylestrong{pr} using the flexible GMRES algorithm with preconditioner \(M^{-1}\) (corresponding to \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC}%
+}}).
+Returns the local vector corresponding to the restriction of the solution to \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhi}%
+}}.
 \sphinxstylestrong{x0i} and \sphinxstylestrong{bi} are local distributed vectors corresponding respectively to the initial guess and the right\sphinxhyphen{}hand side (see {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationbuildrhs}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildrhs}}}}).
 \sphinxstylestrong{eps} is the stopping criterion in terms of the relative decrease in residual norm.
 If \sphinxstylestrong{eps} \(< 0\), the residual norm itself is used instead.
 \sphinxstylestrong{itmax} sets the maximum number of iterations.
-\sphinxstylestrong{sp} selects between the \sphinxcode{\sphinxupquote{"left"}} or \sphinxcode{\sphinxupquote{"right"}} preconditioning variants: \sphinxstyleemphasis{left} preconditioned GMRES solves \(M^{-1} A x = M^{-1} b\), while \sphinxstyleemphasis{right} preconditioned GMRES solves \(A M^{-1} y = b\) for \(y\), with \(x = M^{-1} y\).
+\sphinxstylestrong{sp} selects between the \sphinxcode{\sphinxupquote{%
+\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{left}\PYG{l+s}{\PYGZdq{}}%
+}} or \sphinxcode{\sphinxupquote{%
+\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{right}\PYG{l+s}{\PYGZdq{}}%
+}} preconditioning variants: \sphinxstyleemphasis{left} preconditioned GMRES solves \(M^{-1} A x = M^{-1} b\), while \sphinxstyleemphasis{right} preconditioned GMRES solves \(A M^{-1} y = b\) for \(y\), with \(x = M^{-1} y\).
 
 
 \subsubsection{Using \sphinxstyleemphasis{HPDDM} within \sphinxstyleemphasis{ffddm}}
@@ -31554,8 +31874,12 @@ If \sphinxstylestrong{eps} \(< 0\), the residual norm itself is used instead.
 You can use \sphinxstylestrong{HPDDM} features unavailable in \sphinxstylestrong{ffddm} such as advanced Krylov subspace methods implementing block and recycling techniques.
 
 \sphinxAtStartPar
-To switch to \sphinxstylestrong{HPDDM}, simply define the macro \sphinxcode{\sphinxupquote{pr\#withhpddm}} before using {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationdefineproblemtosolve}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupOperator}}}}. You can then pass \sphinxstylestrong{HPDDM} options
-with command\sphinxhyphen{}line arguments or directly to the underlying \sphinxstylestrong{HPDDM} operator \sphinxcode{\sphinxupquote{pr\#hpddmOP}}. Options need to be prefixed by the operator prefix:
+To switch to \sphinxstylestrong{HPDDM}, simply define the macro \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{withhpddm}%
+}} before using {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationdefineproblemtosolve}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupOperator}}}}. You can then pass \sphinxstylestrong{HPDDM} options
+with command\sphinxhyphen{}line arguments or directly to the underlying \sphinxstylestrong{HPDDM} operator \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{hpddmOP}%
+}}. Options need to be prefixed by the operator prefix:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{PBwithhpddm}\PYG{p}{(}\PYG{p}{)}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{c+c1}{// EOM}
@@ -31564,8 +31888,16 @@ with command\sphinxhyphen{}line arguments or directly to the underlying \sphinxs
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-You can also choose to replace only the Krylov solver, by defining the macro \sphinxcode{\sphinxupquote{pr\#withhpddmkrylov}} before using {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationdefineproblemtosolve}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupOperator}}}}.
-Doing so, a call to \sphinxcode{\sphinxupquote{pr\#fGMRES}} will call the \sphinxstylestrong{HPDDM} Krylov solver, with \sphinxstylestrong{ffddm} providing the operator and preconditioner through \sphinxcode{\sphinxupquote{pr\#A}} and \sphinxcode{\sphinxupquote{pr\#PREC}}. You can then pass \sphinxstylestrong{HPDDM} options to the Krylov solver through command\sphinxhyphen{}line arguments:
+You can also choose to replace only the Krylov solver, by defining the macro \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{withhpddmkrylov}%
+}} before using {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationdefineproblemtosolve}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupOperator}}}}.
+Doing so, a call to \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{fGMRES}%
+}} will call the \sphinxstylestrong{HPDDM} Krylov solver, with \sphinxstylestrong{ffddm} providing the operator and preconditioner through \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{k+kp}{A}%
+}} and \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{PREC}%
+}}. You can then pass \sphinxstylestrong{HPDDM} options to the Krylov solver through command\sphinxhyphen{}line arguments:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{PBwithhpddmkrylov}\PYG{p}{(}\PYG{p}{)}\PYG{l+m+mi}{1}\PYG{+w}{ }\PYG{c+c1}{// EOM}
@@ -31591,14 +31923,22 @@ An example can be found in \sphinxstylestrong{Helmholtz\sphinxhyphen{}2d\sphinxh
 \paragraph{Interpolation between two distributed finite element spaces}
 \label{\detokenize{documentation/ffddm/documentation:interpolation-between-two-distributed-finite-element-spaces}}\label{\detokenize{documentation/ffddm/documentation:ffddmdocumentationinterpolation}}
 \sphinxAtStartPar
-The parallel interpolation of a distributed finite element function to another distributed finite element space can be computed using the \sphinxcode{\sphinxupquote{prfe\#transferfromVhi}} macro. Internally, it uses the \sphinxcode{\sphinxupquote{transfer}} macro from the \sphinxcode{\sphinxupquote{macro\_ddm.idp}} script. The macro is prefixed by the source finite element prefix \sphinxstylestrong{prfe} and is used a follows:
+The parallel interpolation of a distributed finite element function to another distributed finite element space can be computed using the \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{transferfromVhi}%
+}} macro. Internally, it uses the \sphinxcode{\sphinxupquote{%
+\PYG{n}{transfer}%
+}} macro from the \sphinxcode{\sphinxupquote{%
+\PYG{n}{macro\PYGZus{}ddm}\PYG{p}{.}\PYG{n}{idp}%
+}} script. The macro is prefixed by the source finite element prefix \sphinxstylestrong{prfe} and is used a follows:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{transferfromVhi}\PYG{p}{(}\PYG{n}{us}\PYG{p}{,}\PYG{n}{Vht}\PYG{p}{,}\PYG{n}{Pkt}\PYG{p}{,}\PYG{n}{rest}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-where \sphinxstylestrong{us} is distributed source FE function defined on \sphinxcode{\sphinxupquote{prfe\#Vhi}}, \sphinxstylestrong{Vht} is the target local finite element space, \sphinxstylestrong{Pkt} is the approximation space corresponding to \sphinxstylestrong{Vht} and \sphinxstylestrong{rest} is the target local FE function defined on \sphinxstylestrong{Vht}. You can find an example below:
+where \sphinxstylestrong{us} is distributed source FE function defined on \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhi}%
+}}, \sphinxstylestrong{Vht} is the target local finite element space, \sphinxstylestrong{Pkt} is the approximation space corresponding to \sphinxstylestrong{Vht} and \sphinxstylestrong{rest} is the target local FE function defined on \sphinxstylestrong{Vht}. You can find an example below:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
 \PYG{k+kt}{macro}\PYG{+w}{ }\PYG{n}{dimension}\PYG{p}{(}\PYG{p}{)}\PYG{l+m+mi}{2}\PYG{c+c1}{//}
@@ -31634,7 +31974,13 @@ where \sphinxstylestrong{us} is distributed source FE function defined on \sphin
 \paragraph{Local finite element spaces for non Lagrange finite elements}
 \label{\detokenize{documentation/ffddm/documentation:local-finite-element-spaces-for-non-lagrange-finite-elements}}\label{\detokenize{documentation/ffddm/documentation:ffddmdocumentationpartitionunityedge}}
 \sphinxAtStartPar
-For Lagrange finite elements, the partition of unity \((D_i)_{i=1,...,N}\) (see \sphinxcode{\sphinxupquote{prfe\#Dk}} and \sphinxcode{\sphinxupquote{prfe\#Dih}}) is built by interpolating the local P1 partition of unity function onto the components of the \sphinxstylestrong{Pk} finite element space \sphinxcode{\sphinxupquote{prfe\#Vhi}}.
+For Lagrange finite elements, the partition of unity \((D_i)_{i=1,...,N}\) (see \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Dk}%
+}} and \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Dih}%
+}}) is built by interpolating the local P1 partition of unity function onto the components of the \sphinxstylestrong{Pk} finite element space \sphinxcode{\sphinxupquote{%
+\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhi}%
+}}.
 For non Lagrange finite element spaces, such as Raviart\textendash{}Thomas or Nédélec edge elements, the definition of the degrees of freedom can be more involved, and interpolating the P1 partition of unity functions directly is inappropriate.
 The idea is then to use a “pseudo” finite element \sphinxstylestrong{Pkpart} derived from \sphinxstylestrong{Pk} which is suitable for interpolating the P1 partition of unity, in the sense that it will produce a partition of unity for \sphinxstylestrong{Pk}.
 
@@ -31696,7 +32042,9 @@ In \sphinxstylestrong{ffddm}, the first step is to build the two nested mesh dec
 \sphinxAtStartPar
 decomposes the coarse mesh \sphinxstylestrong{Thc} into overlapping submeshes and creates the fine decomposition by locally refining submeshes by a factor of \sphinxstylestrong{s}, i.e. splitting each mesh element into \(s^d\) elements, \(s \geq 1\).
 This will create and expose variables corresponding to both decompositions, prefixed by \sphinxstylestrong{prmesh} for the fine mesh and by \sphinxstylestrong{prmesh\#Coarse} for the coarse mesh (see {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}}).
-It also sets the integer variable \sphinxcode{\sphinxupquote{prmesh\#binexactCS}} to 1, which specifies that any two level method defined on mesh prefix \sphinxstylestrong{prmesh} will use inexact coarse solves.
+It also sets the integer variable \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{binexactCS}%
+}} to 1, which specifies that any two level method defined on mesh prefix \sphinxstylestrong{prmesh} will use inexact coarse solves.
 
 \sphinxAtStartPar
 The distributed finite element spaces, operators and preconditioners can then be defined for both decompositions. Here is an example where the coarse problem is solved using a one level method:
@@ -31729,15 +32077,33 @@ The distributed finite element spaces, operators and preconditioners can then be
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-Note that the different prefixes need to match: prefixes for the coarse decomposition have to be those of the fine decomposition, appended with \sphinxcode{\sphinxupquote{Coarse}}.
+Note that the different prefixes need to match: prefixes for the coarse decomposition have to be those of the fine decomposition, appended with \sphinxcode{\sphinxupquote{%
+\PYG{n}{Coarse}%
+}}.
 
 \item {} 
 \sphinxAtStartPar
-The operator and preconditioner for the coarse problem have to be defined before those of the fine problem, because the \sphinxcode{\sphinxupquote{pr\#Q}} function is actually defined by \sphinxcode{\sphinxupquote{ffddmsetupPrecond}} and involves a call to \sphinxcode{\sphinxupquote{pr\#CoarsefGMRES}} (which is defined by \sphinxcode{\sphinxupquote{ffddmsetupPrecond}} for the coarse problem) for the iterative solution of the coarse problem if \sphinxcode{\sphinxupquote{pr\#prfe\#prmesh\#binexactCS}} \(\neq 0\).
+The operator and preconditioner for the coarse problem have to be defined before those of the fine problem, because the \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{Q}%
+}} function is actually defined by \sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmsetupPrecond}%
+}} and involves a call to \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{CoarsefGMRES}%
+}} (which is defined by \sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmsetupPrecond}%
+}} for the coarse problem) for the iterative solution of the coarse problem if \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{binexactCS}%
+}} \(\neq 0\).
 
 \item {} 
 \sphinxAtStartPar
-In this case, \sphinxcode{\sphinxupquote{ffddmcoarsemeshsetup}} does not use \sphinxstylestrong{Thc} or \sphinxstylestrong{VarfEprec} and only builds the local interpolation matrices between fine and coarse local finite element spaces \sphinxcode{\sphinxupquote{pr\#prfe\#Vhi}} and \sphinxcode{\sphinxupquote{pr\#prfe\#CoarseVhi}} to be able to apply \(Z\) and \(Z^T\).
+In this case, \sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmcoarsemeshsetup}%
+}} does not use \sphinxstylestrong{Thc} or \sphinxstylestrong{VarfEprec} and only builds the local interpolation matrices between fine and coarse local finite element spaces \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{Vhi}%
+}} and \sphinxcode{\sphinxupquote{%
+\PYG{n}{pr}\PYG{err}{\PYGZsh{}}\PYG{n}{prfe}\PYG{err}{\PYGZsh{}}\PYG{n}{CoarseVhi}%
+}} to be able to apply \(Z\) and \(Z^T\).
 
 \item {} 
 \sphinxAtStartPar
@@ -31766,57 +32132,83 @@ M. Bonazzoli, V. Dolean, I. G. Graham, E. A. Spence, P.\sphinxhyphen{}H. Tournie
 \label{\detokenize{documentation/ffddm/parameters:command-line-arguments}}\label{\detokenize{documentation/ffddm/parameters:ffddmparameterscommandline}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_verbosity N}}, the level of verbosity of \sphinxstylestrong{ffddm}, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmverbosity}}}} (default 3).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}verbosity}\PYG{+w}{ }\PYG{k+kr}{N}%
+}}, the level of verbosity of \sphinxstylestrong{ffddm}, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmverbosity}}}} (default 3).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}seqddm N}} use \sphinxstylestrong{ffddm} in sequential mode, with N the number of subdomains.
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{seqddm}\PYG{+w}{ }\PYG{k+kr}{N}%
+}} use \sphinxstylestrong{ffddm} in sequential mode, with N the number of subdomains.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}noGlob}} if present, do not define any global quantity (such as saving the global mesh for plotting or building the global restriction matrices).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{noGlob}%
+}} if present, do not define any global quantity (such as saving the global mesh for plotting or building the global restriction matrices).
 Cannot be used in sequential mode or with plotting.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_partitioner N}} specifies how to partition the initial domain, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpartitioner}}}} (default 1, \sphinxstyleemphasis{metis}).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}partitioner}\PYG{+w}{ }\PYG{k+kr}{N}%
+}} specifies how to partition the initial domain, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpartitioner}}}} (default 1, \sphinxstyleemphasis{metis}).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_overlap N}} specifies the width of the overlap region between subdomains, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmoverlap}}}} (default 1).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}overlap}\PYG{+w}{ }\PYG{k+kr}{N}%
+}} specifies the width of the overlap region between subdomains, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmoverlap}}}} (default 1).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_master\_p N}}, number of master processes for the coarse problem (for two level preconditioners), see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpCS}}}} (default 1).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}master\PYGZus{}p}\PYG{+w}{ }\PYG{k+kr}{N}%
+}}, number of master processes for the coarse problem (for two level preconditioners), see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmpCS}}}} (default 1).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_master\_exclude 0|1}} exclude master processes from the domain decomposition, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmexclude}}}} (default 0).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}master\PYGZus{}exclude}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{o}{|}\PYG{l+m+mi}{1}%
+}} exclude master processes from the domain decomposition, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmexclude}}}} (default 0).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_split N}}, level of refinement of the local submeshes with respect to the initial global mesh, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsplit}}}} (default 1).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}split}\PYG{+w}{ }\PYG{k+kr}{N}%
+}}, level of refinement of the local submeshes with respect to the initial global mesh, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsplit}}}} (default 1).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_schwarz\_method S}}, specifies the type of one level preconditioner \(M^{-1}_1\): “asm” (\sphinxstyleemphasis{Additive Schwarz}), “ras” (\sphinxstyleemphasis{Restricted Additive Schwarz}), “oras” (\sphinxstyleemphasis{Optimized Restricted Additive Schwarz}), “soras” (\sphinxstyleemphasis{Symmetric Optimized Restricted Additive Schwarz}) or “none” (no preconditioner), see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}} (default “ras”).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}schwarz\PYGZus{}method}\PYG{+w}{ }\PYG{n}{S}%
+}}, specifies the type of one level preconditioner \(M^{-1}_1\): “asm” (\sphinxstyleemphasis{Additive Schwarz}), “ras” (\sphinxstyleemphasis{Restricted Additive Schwarz}), “oras” (\sphinxstyleemphasis{Optimized Restricted Additive Schwarz}), “soras” (\sphinxstyleemphasis{Symmetric Optimized Restricted Additive Schwarz}) or “none” (no preconditioner), see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}} (default “ras”).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_geneo\_nu N}}, number of local eigenvectors to compute in each subdomain when solving the local generalized eigenvalue problem for the GenEO method, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmnu}}}} (default 20).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}geneo\PYGZus{}nu}\PYG{+w}{ }\PYG{k+kr}{N}%
+}}, number of local eigenvectors to compute in each subdomain when solving the local generalized eigenvalue problem for the GenEO method, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmnu}}}} (default 20).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_geneo\_threshold R}}, threshold parameter for selecting local eigenvectors when solving the local generalized eigenvalue problems for the GenEO method, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmtau}}}} (default 0.5).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}geneo\PYGZus{}threshold}\PYG{+w}{ }\PYG{n}{R}%
+}}, threshold parameter for selecting local eigenvectors when solving the local generalized eigenvalue problems for the GenEO method, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmtau}}}} (default 0.5).
 If the command\sphinxhyphen{}line parameter \sphinxstylestrong{\sphinxhyphen{}ffddm\_geneo\_nu N} is used, then {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmtau}}}} is initialized to 0.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_schwarz\_coarse\_correction S}}, specifies the coarse correction formula to use for the two level preconditioner: “AD” (\sphinxstyleemphasis{Additive}), “BNN” (\sphinxstyleemphasis{Balancing Neumann\sphinxhyphen{}Neumann}), “ADEF1” (\sphinxstyleemphasis{Adapted Deflation Variant 1}), “ADEF2” (\sphinxstyleemphasis{Adapted Deflation Variant 2}), “RBNN1” (\sphinxstyleemphasis{Reduced Balancing Variant 1}), “RBNN2” (\sphinxstyleemphasis{Reduced Balancing Variant 2}) or “none” (no coarse correction), see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmcorrection}}}} (default “ADEF1”).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}schwarz\PYGZus{}coarse\PYGZus{}correction}\PYG{+w}{ }\PYG{n}{S}%
+}}, specifies the coarse correction formula to use for the two level preconditioner: “AD” (\sphinxstyleemphasis{Additive}), “BNN” (\sphinxstyleemphasis{Balancing Neumann\sphinxhyphen{}Neumann}), “ADEF1” (\sphinxstyleemphasis{Adapted Deflation Variant 1}), “ADEF2” (\sphinxstyleemphasis{Adapted Deflation Variant 2}), “RBNN1” (\sphinxstyleemphasis{Reduced Balancing Variant 1}), “RBNN2” (\sphinxstyleemphasis{Reduced Balancing Variant 2}) or “none” (no coarse correction), see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmcorrection}}}} (default “ADEF1”).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_inexactCS\_tol R}}, specifies the GMRES tolerance for the inner solution of the coarse problem when using a two level method with approximate coarse solves, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddminexactCStol}}}} (default 0.1).
+\sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}inexactCS\PYGZus{}tol}\PYG{+w}{ }\PYG{n}{R}%
+}}, specifies the GMRES tolerance for the inner solution of the coarse problem when using a two level method with approximate coarse solves, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddminexactCStol}}}} (default 0.1).
 
 \end{itemize}
 
@@ -31825,11 +32217,15 @@ If the command\sphinxhyphen{}line parameter \sphinxstylestrong{\sphinxhyphen{}ff
 \label{\detokenize{documentation/ffddm/parameters:global-parameters}}\label{\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmverbosity}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_verbosity N}, specifies the level of verbosity of \sphinxstylestrong{ffddm} (default 3).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmverbosity}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_verbosity N}, specifies the level of verbosity of \sphinxstylestrong{ffddm} (default 3).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmpartitioner}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_partitioner N}, specifies how to partition the initial domain:
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmpartitioner}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_partitioner N}, specifies how to partition the initial domain:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -31847,56 +32243,82 @@ N=2: use the automatic graph partitioner \sphinxstyleemphasis{scotch}
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmoverlap}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_overlap N}, specifies the number of layers of mesh elements in the overlap region between subdomains ; N \textgreater{}= 0 (default 1).
-\sphinxstylestrong{Remark} The actual width of the overlap region between subdomains is 2N, since each subdomain is extended by N layers of elements in a symmetric way.  \sphinxstylestrong{Remark 2} if {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmoverlap}}}} = 0, the construction is a bit different, since only interface unknowns are shared. In that case, the user is required to define the macro \sphinxcode{\sphinxupquote{prmesh\#mminoverlap}} to 1 before calling {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}}. It can be done e.g. on the command line: \sphinxcode{\sphinxupquote{\sphinxhyphen{}ffddm\_overlap 0 \sphinxhyphen{}DMESHmminoverlap=1}}, where \sphinxcode{\sphinxupquote{MESH}} is your distributed mesh prefix.
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmoverlap}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_overlap N}, specifies the number of layers of mesh elements in the overlap region between subdomains ; N \textgreater{}= 0 (default 1).
+\sphinxstylestrong{Remark} The actual width of the overlap region between subdomains is 2N, since each subdomain is extended by N layers of elements in a symmetric way.  \sphinxstylestrong{Remark 2} if {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmoverlap}}}} = 0, the construction is a bit different, since only interface unknowns are shared. In that case, the user is required to define the macro \sphinxcode{\sphinxupquote{%
+\PYG{n}{prmesh}\PYG{err}{\PYGZsh{}}\PYG{n}{mminoverlap}%
+}} to 1 before calling {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}}. It can be done e.g. on the command line: \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}overlap}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n}{DMESHmminoverlap}\PYG{o}{=}\PYG{l+m+mi}{1}%
+}}, where \sphinxcode{\sphinxupquote{%
+\PYG{n}{MESH}%
+}} is your distributed mesh prefix.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddminterfacelabel}} the label of the new border of the subdomain meshes (the interface between the subdomains) (default 10).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddminterfacelabel}%
+}} the label of the new border of the subdomain meshes (the interface between the subdomains) (default 10).
 Used for imposing problem\sphinxhyphen{}dependent boundary conditions at the interface between subdomains for the preconditioner, for example optimized Robin boundary conditions (see ORAS).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmpCS}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_master\_p N}, number of mpi processes used for the assembly and resolution of the coarse problem for two level preconditioners (default 1).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmpCS}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_master\_p N}, number of mpi processes used for the assembly and resolution of the coarse problem for two level preconditioners (default 1).
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmexclude}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_master\_exclude}, 0 or 1 (default 0).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmexclude}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_master\_exclude}, 0 or 1 (default 0).
 If true, mpi ranks participating in the assembly and resolution of the coarse problem for two level preconditioners will be excluded from the spatial domain decomposition and will only work on the coarse problem.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmsplit}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{ffddm\_split N}, level of refinement of the local submeshes with respect to the initial global mesh (default 1).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmsplit}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{ffddm\_split N}, level of refinement of the local submeshes with respect to the initial global mesh (default 1).
 This is useful for large problems, where we want to avoid working with a very large global mesh.
 The idea is to start from a coarser global mesh, and generate finer local meshes in parallel during the mesh decomposition step in order to reach the desired level of refinement for the subdomains.
 For example, calling {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}} with {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsplit}}}} = 3 will generate local submeshes where each mesh element of the initial mesh is split into \(3^d\) elements.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmprecond}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_schwarz\_method S}, specifies the type of one level preconditioner \(M^{-1}_1\) to build when calling {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationonelevelpreconditioners}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupPrecond}}}}: “asm” (\sphinxstyleemphasis{Additive Schwarz}), “ras” (\sphinxstyleemphasis{Restricted Additive Schwarz}), “oras” (\sphinxstyleemphasis{Optimized Restricted Additive Schwarz}), “soras” (\sphinxstyleemphasis{Symmetric Optimized Restricted Additive Schwarz}) or “none” (no preconditioner).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmprecond}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_schwarz\_method S}, specifies the type of one level preconditioner \(M^{-1}_1\) to build when calling {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationonelevelpreconditioners}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupPrecond}}}}: “asm” (\sphinxstyleemphasis{Additive Schwarz}), “ras” (\sphinxstyleemphasis{Restricted Additive Schwarz}), “oras” (\sphinxstyleemphasis{Optimized Restricted Additive Schwarz}), “soras” (\sphinxstyleemphasis{Symmetric Optimized Restricted Additive Schwarz}) or “none” (no preconditioner).
 Default is “ras”.
 See {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationonelevelpreconditioners}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsetupPrecond}}}} for more details.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmnu}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_geneo\_nu N}, number of local eigenvectors to compute in each subdomain when solving the local generalized eigenvalue problem for the GenEO method (default 20).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmnu}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_geneo\_nu N}, number of local eigenvectors to compute in each subdomain when solving the local generalized eigenvalue problem for the GenEO method (default 20).
 See {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationbuildinggeneocoarsespace}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmgeneosetup}}}} for more details.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmtau}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_geneo\_threshold R}, threshold parameter for selecting local eigenvectors when solving the local generalized eigenvalue problems for the GenEO method (default 0.5).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmtau}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_geneo\_threshold R}, threshold parameter for selecting local eigenvectors when solving the local generalized eigenvalue problems for the GenEO method (default 0.5).
 If the command\sphinxhyphen{}line parameter \sphinxstylestrong{\sphinxhyphen{}ffddm\_geneo\_nu N} is used, then {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmtau}}}} is initialized to 0.
 See {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationbuildinggeneocoarsespace}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmgeneosetup}}}} for more details.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddmcorrection}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_schwarz\_coarse\_correction S}, specifies the coarse correction formula to use for the two level preconditioner: “AD” (\sphinxstyleemphasis{Additive}), “BNN” (\sphinxstyleemphasis{Balancing Neumann\sphinxhyphen{}Neumann}), “ADEF1” (\sphinxstyleemphasis{Adapted Deflation Variant 1}), “ADEF2” (\sphinxstyleemphasis{Adapted Deflation Variant 2}), “RBNN1” (\sphinxstyleemphasis{Reduced Balancing Variant 1}), “RBNN2” (\sphinxstyleemphasis{Reduced Balancing Variant 2}) or “none” (no coarse correction).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmcorrection}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_schwarz\_coarse\_correction S}, specifies the coarse correction formula to use for the two level preconditioner: “AD” (\sphinxstyleemphasis{Additive}), “BNN” (\sphinxstyleemphasis{Balancing Neumann\sphinxhyphen{}Neumann}), “ADEF1” (\sphinxstyleemphasis{Adapted Deflation Variant 1}), “ADEF2” (\sphinxstyleemphasis{Adapted Deflation Variant 2}), “RBNN1” (\sphinxstyleemphasis{Reduced Balancing Variant 1}), “RBNN2” (\sphinxstyleemphasis{Reduced Balancing Variant 2}) or “none” (no coarse correction).
 Default is “ADEF1”.
 See the section about {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationtwolevelpreconditioners}]{\sphinxcrossref{\DUrole{std,std-ref}{Two level preconditioners}}}} for more details.
 
 \item {} 
 \sphinxAtStartPar
-\sphinxcode{\sphinxupquote{ffddminexactCStol}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_inexactCS\_tol R}, GMRES tolerance for the inner solution of the coarse problem when using a two level method with approximate coarse solves (default 0.1).
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddminexactCStol}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{\sphinxhyphen{}ffddm\_inexactCS\_tol R}, GMRES tolerance for the inner solution of the coarse problem when using a two level method with approximate coarse solves (default 0.1).
 See the section about \DUrole{xref,std,std-ref}{Approximate coarse solves for two level methods} for more details.
 
 \end{itemize}
