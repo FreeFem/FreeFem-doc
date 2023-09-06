@@ -151,9 +151,9 @@ function parseLunrResults(results, results_i, text) {
         const textIndex2 = lowerCasePreview2.indexOf(lowerCaseText)
         if (textIndex2 != -1) {
           newpreview = newpreview +
-            preview_i.slice(0, textIndex2) +
+            preview_i.slice(0, textIndex2).replace(/</g, "&lt").replace(/>/g, "&gt") +
             '<b>' +
-            preview_i.slice(textIndex2, textIndex2 + term.length) +
+            preview_i.slice(textIndex2, textIndex2 + term.length).replace(/</g, "&lt").replace(/>/g, "&gt") +
             '</b>'
           preview_i = preview_i.slice(textIndex2 + term.length)
         }
