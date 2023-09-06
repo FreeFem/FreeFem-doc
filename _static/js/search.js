@@ -89,6 +89,10 @@ const searchLunr = (text) => {
         subTitle.className = 'search-result-title'
         subTitle.href = result.links[i]
 
+        subTitle.onclick = function (e) {
+          removeOverlay()
+        }
+
         const titleDiv = document.createElement('div')
 
         const titleText = document.createElement('p')
