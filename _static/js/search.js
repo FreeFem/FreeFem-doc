@@ -34,14 +34,14 @@ const searchLunr = (text) => {
       q.term(term, { usePipeline: true, boost: 10000 })
 
       // look for terms that match the beginning of this queryTerm and apply a medium boost
-      q.term(term, {
+      if (text.length > 2) q.term(term, {
               wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING,
               usePipeline: false,
               boost: 100 }
             );
 
       // look for terms that match with an edit distance of 2 and apply a small boost
-      q.term(term, { usePipeline: false, editDistance: 2, boost: 1 })
+      if (text.length > 4) q.term(term, { usePipeline: false, editDistance: 2, boost: 1 })
     })
   })
   results = results.slice(0,20)
@@ -56,14 +56,14 @@ const searchLunr = (text) => {
         q.term(term, { usePipeline: true, boost: 10000 })
 
         // look for terms that match the beginning of this queryTerm and apply a medium boost
-        q.term(term, {
+        if (text.length > 2) q.term(term, {
                 wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING,
                 usePipeline: false,
                 boost: 100 }
               );
 
         // look for terms that match with an edit distance of 2 and apply a small boost
-        q.term(term, { usePipeline: false, editDistance: 2, boost: 1 })
+        if (text.length > 4) q.term(term, { usePipeline: false, editDistance: 2, boost: 1 })
       })
     })
   })
@@ -132,28 +132,35 @@ function parseLunrResults(results, results_i, text) {
       const item_i = PREVIEW_PAGEDATA[ref][ref_i]
       const title_i = item_i.title
       const link_i = item_i.link
-      const preview_i = item_i.preview
+      var preview_i = item_i.preview
+      var newpreview = ""
 
-      const lowerCasePreview = preview_i.toLowerCase()
-      const lowerCaseText = text.toLowerCase()
-      const textIndex = lowerCasePreview.indexOf(lowerCaseText)
+      Object.keys(result_i.matchData.metadata).forEach(function (term, index) {
+        const lowerCaseText = term.toLowerCase()
 
-      const splittedPreview = preview_i.slice(
-        Math.max(0, textIndex - 124),
-        Math.min(textIndex + 124, preview_i.length)
-      )
+        if (index == 0) {
+          const lowerCasePreview = preview_i.toLowerCase()
+          const textIndex = lowerCasePreview.indexOf(lowerCaseText)
+          preview_i = preview_i.slice(
+            Math.max(0, textIndex - 124),
+            Math.min(textIndex + 124, preview_i.length)
+          )
+        }
 
-      const lowerCasePreview2 = splittedPreview.toLowerCase()
-      const textIndex2 = lowerCasePreview2.indexOf(lowerCaseText)
-      const finalPreview =
-        splittedPreview.slice(0, textIndex2) +
-        '<b>' +
-        splittedPreview.slice(textIndex2, textIndex2 + text.length) +
-        '</b>' +
-        splittedPreview.slice(textIndex2 + text.length)
+        const lowerCasePreview2 = preview_i.toLowerCase()
+        const textIndex2 = lowerCasePreview2.indexOf(lowerCaseText)
+        if (textIndex2 != -1) {
+          newpreview = newpreview +
+            preview_i.slice(0, textIndex2) +
+            '<b>' +
+            preview_i.slice(textIndex2, textIndex2 + term.length) +
+            '</b>'
+          preview_i = preview_i.slice(textIndex2 + term.length)
+        }
+      })
 
       titles.push(title_i)
-      previews.push(finalPreview)
+      previews.push(newpreview+preview_i)
       links.push(rootPath + link_i)
     })
 
