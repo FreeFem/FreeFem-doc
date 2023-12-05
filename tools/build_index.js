@@ -12,6 +12,7 @@ const EXCLUDE_FILES = [
   'tutorial-slides.html'
 ]
 const OUTPUT_INDEX = 'lunr_index'
+const OUTPUT_INDEX_EDPS = 'lunr_index_edps'
 
 /**
  * Is HTML
@@ -85,6 +86,31 @@ const readHtml = (root, file) => {
   // Return
   return {
     link: file,
+    title,
+    body
+  }
+}
+
+const readEdp = (all_edps, example) => {
+
+  let edp = all_edps.slice(example.starts,example.ends+1).join("\n")
+
+  // Parse HTML
+  const document = parse(edp, {
+    script: false,
+    noscript: true,
+    style: false,
+    pre: true
+  })
+
+  // Title
+  const title = example.name
+
+  let body = edp
+
+  // Return
+  return {
+    link: title,
     title,
     body
   }
@@ -240,6 +266,35 @@ const main = () => {
       return console.error(err)
     }
     console.info('Index saved as ' + OUTPUT_INDEX)
+  })
+
+  console.info('Building index for all examples:')
+  const edps = []
+
+  const raw_json = fs.readFileSync('../source/_static/json/all_examples.json')
+  all_examples = JSON.parse(raw_json)
+
+  const all_edps = fs.readFileSync("all_examples.edp").toString().split('\n')
+
+  for (let example of all_examples) {
+    edps.push({
+      id: edps.length,
+      ...readEdp(all_edps, example)
+    })
+  }
+
+  const index_edps = buildIndex(edps)
+  const previews_edps = buildPreviews(edps)
+
+  let js_edp = 'const LUNR_DATA_EDPS = ' + JSON.stringify(index_edps) + ';\n'
+
+  js_edp += 'const PREVIEW_DATA_EDPS = ' + JSON.stringify(previews_edps) + ';\n'
+
+  fs.writeFile(OUTPUT_INDEX_EDPS + '.js', js_edp, (err) => {
+    if (err) {
+      return console.error(err)
+    }
+    console.info('Index saved as ' + OUTPUT_INDEX_EDPS)
   })
 }
 

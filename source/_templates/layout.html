@@ -18,14 +18,22 @@
 	{% include "subnav.html" %}
 	{% block document %}
 	<div id="content">
-		{% block body %} {% endblock %}
-		<div class="content-nav-buttons" role="navigation">
-			{%- if prev %}
-			<a href="{{ prev.link|e }}" class="btn-neutral" title="previous topic" rel="previous"><span class="fa fa-arrow-circle-left"></span> Previous topic: {{ prev.title }}</a>
-			{%- endif %}
-			{%- if next %}
-			<a href="{{ next.link|e }}" class="btn-neutral" title="next topic" rel="next">Next topic: {{ next.title }} <span class="fa fa-arrow-circle-right"></span></a>
-			{%- endif %}
+		<div id="content-examples" style="display: none">
+			<div id="exampleCode" spellcheck="false">
+				<h2><div id='ExampleLinkToGitHub'></div> <!-- <span id="exampleSave">Save as EDP</span> --></h2>
+				<textarea id="code"></textarea>
+			</div>
+		</div>
+		<div id="content-doc">
+			{% block body %} {% endblock %}
+			<div class="content-nav-buttons" role="navigation">
+				{%- if prev %}
+				<a href="{{ prev.link|e }}" class="btn-neutral" title="previous topic" rel="previous"><span class="fa fa-arrow-circle-left"></span> Previous topic: {{ prev.title }}</a>
+				{%- endif %}
+				{%- if next %}
+				<a href="{{ next.link|e }}" class="btn-neutral" title="next topic" rel="next">Next topic: {{ next.title }} <span class="fa fa-arrow-circle-right"></span></a>
+				{%- endif %}
+			</div>
 		</div>
 	</div>
 	{% endblock %}
@@ -43,16 +51,25 @@
 	<script async src="{{ pathto('_static/js/subnav.js', 1)}}"></script>
 	<!-- MathJax -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Treejs -->
+	<script src="{{ pathto('_static/js/tree.min.js', 1)}}"></script>
+	<!-- CodeMirror -->
+	<script src="{{ pathto('_static/js/codemirror.js', 1)}}"></script>
+	<script src="{{ pathto('_static/js/runmode.js', 1)}}"></script>
+	<script src="{{ pathto('_static/js/searchcursor.js', 1)}}"></script>
+	<script src="{{ pathto('_static/js/mode/freefem/freefem.js', 1)}}"></script>
+	<!-- Github -->
+	<script async src="{{ pathto('_static/js/github.js', 1) }}"></script>
 	<!-- Search -->
+	<script src="{{ pathto('_static/js/examples.js', 1)}}"></script>
 	<script src="{{ pathto('_static/js/mathjax-config.js', 1) }}"></script>
 	<script src="{{ pathto('_static/js/lunr.js', 1) }}"></script>
 	<script src="{{ pathto('_static/lunr/lunr_index.js', 1) }}"></script>
-	<script src="{{ pathto('_static/js/search.js', 1)}}"></script> 
+	<script src="{{ pathto('_static/lunr/lunr_index_edps.js', 1) }}"></script>
+	<script src="{{ pathto('_static/js/search.js', 1)}}"></script>
 	<script>
 		initSearch('{{pathto("", 1)}}')
 	</script>
-	<!-- Github -->
-	<script async src="{{ pathto('_static/js/github.js', 1) }}"></script>
 </body>
 
 </html>

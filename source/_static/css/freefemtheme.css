@@ -4,9 +4,11 @@
 @import "nav.css";
 @import "search.css";
 @import "subnav.css";
+@import "examples.css";
 @import "toc.css";
 @import "footer.css";
 @import "media.css";
+@import "codemirror.css";
 
 /** HTML **/
 html {
@@ -48,6 +50,7 @@ body {
   grid-column: 2;
   margin: 0 1rem;
   margin-bottom: 65vh;
+  margin-top: 19px;
 }
 
 #content .headerlink {

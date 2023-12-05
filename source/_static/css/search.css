@@ -1,3 +1,18 @@
+.search-toggle {
+  background-color: #fff;
+  color: rgb(255, 0, 0);
+  position: absolute;
+  top: 3rem;
+  margin: 0;
+  height: 19px;
+  min-width: 100%;
+  z-index: 2;
+  border: 1px solid rgb(255, 0, 0);
+  /*overflow: auto;*/
+  /*border-radius: 0 0 .27rem .27rem;*/
+  /*box-shadow: .27rem .55rem 1rem #888888;*/
+}
+
 .search-container {
   width: 100%;
   display: flex;
@@ -57,7 +72,7 @@
   background-color: #fff;
   color: grey;
   position: absolute;
-  top: 3rem;
+  top: 4.5rem;
   margin: 0;
   max-height: 75vh;
   min-width: 100%;

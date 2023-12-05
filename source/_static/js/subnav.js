@@ -37,4 +37,3 @@ const sortItem = (item, level) => {
 // in order to correctly display nav
 const subNav = document.getElementById('subnav')
 sortList(subNav.children[0].children[0])
-subNav.children[0].style.display = 'block'
