@@ -1951,15 +1951,18 @@
 	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
 	<input type="search" placeholder="Type to start searching" id="searchInput">
 	<label id="search-overlay" onclick="removeOverlay()"></label>
+	<div class="search-toggle">
+		<input type="checkbox" id="checkbox-search-toggle"/>
+		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
+	</div>
 	<div id="searchResults"></div>
 </div>
-
 	
 </nav>
 	
 
 	<div id="subnav">
-	<div style="display: none">
+	<div class="subnav-toc", style="display: none">
 		<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction/index.html"><strong>Introduction</strong></a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Learning by Examples</a><ul class="current">
@@ -1993,10 +1996,22 @@
 </ul>
 
 	</div>
+	<div class="tag-tree" style="display: none">
+		<strong> Filter by categories <br> &#9888; Work in progress ! <br> <br> </strong>
+		<div class="tag-tree-container">
+		</div>
+	</div>
 </div>
 	
 	<div id="content">
-		
+		<div id="content-examples" style="display: none">
+			<div id="exampleCode" spellcheck="false">
+				<h2><div id='ExampleLinkToGitHub'></div> <!-- <span id="exampleSave">Save as EDP</span> --></h2>
+				<textarea id="code"></textarea>
+			</div>
+		</div>
+		<div id="content-doc">
+			
    <section id="the-system-of-elasticity">
 <h1>The System of elasticity<a class="headerlink" href="#the-system-of-elasticity" title="Link to this heading"></a></h1>
 <p><strong>Elasticity</strong></p>
@@ -2122,19 +2137,24 @@ The size of the arrow is automatically bound, but the color gives the real lengt
 <span class="target" id="Elasticity"></span></div></section>
 
 
-		<div class="content-nav-buttons" role="navigation">
-			<a href="rotatingHill.html" class="btn-neutral" title="previous topic" rel="previous"><span class="fa fa-arrow-circle-left"></span> Previous topic: Pure Convection : The Rotating Hill</a>
-			<a href="stokes.html" class="btn-neutral" title="next topic" rel="next">Next topic: The System of Stokes for Fluids <span class="fa fa-arrow-circle-right"></span></a>
+			<div class="content-nav-buttons" role="navigation">
+				<a href="rotatingHill.html" class="btn-neutral" title="previous topic" rel="previous"><span class="fa fa-arrow-circle-left"></span> Previous topic: Pure Convection : The Rotating Hill</a>
+				<a href="stokes.html" class="btn-neutral" title="next topic" rel="next">Next topic: The System of Stokes for Fluids <span class="fa fa-arrow-circle-right"></span></a>
+			</div>
 		</div>
 	</div>
 	
 	<div id="toc">
-	<div>
+	<div id="toc-doc">
 		<b>Table of content</b>
 		<ul>
 <li><a class="reference internal" href="#">The System of elasticity</a></li>
 </ul>
 
+	</div>
+	<div id="exampleLinks" style="display: none">
+		<div id="linksContainer">
+		</div>
 	</div>
 </div>
 	<footer>
@@ -2157,16 +2177,25 @@ The size of the arrow is automatically bound, but the color gives the real lengt
 	<script async src="../_static/js/subnav.js"></script>
 	<!-- MathJax -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<!-- Treejs -->
+	<script src="../_static/js/tree.min.js"></script>
+	<!-- CodeMirror -->
+	<script src="../_static/js/codemirror.js"></script>
+	<script src="../_static/js/runmode.js"></script>
+	<script src="../_static/js/searchcursor.js"></script>
+	<script src="../_static/js/mode/freefem/freefem.js"></script>
+	<!-- Github -->
+	<script async src="../_static/js/github.js"></script>
 	<!-- Search -->
+	<script src="../_static/js/examples.js"></script>
 	<script src="../_static/js/mathjax-config.js"></script>
 	<script src="../_static/js/lunr.js"></script>
 	<script src="../_static/lunr/lunr_index.js"></script>
-	<script src="../_static/js/search.js"></script> 
+	<script src="../_static/lunr/lunr_index_edps.js"></script>
+	<script src="../_static/js/search.js"></script>
 	<script>
 		initSearch('../')
 	</script>
-	<!-- Github -->
-	<script async src="../_static/js/github.js"></script>
 </body>
 
 </html>

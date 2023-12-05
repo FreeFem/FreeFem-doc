@@ -1,0 +1,38 @@
+.treejs {
+  margin-left: -20px;
+}
+
+#linksContainer > h3 {
+  margin-top: 1em;
+  margin-bottom: 0.2em;
+}
+
+.highlight-keyword {
+  background-color: yellow;
+}
+
+#exampleCode {
+  background-color: #efefef;
+  /* height: 31.25rem; */
+  overflow-y: auto;
+  min-width: 350px;
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#exampleCode h2 {
+  margin-left: 1rem;
+}
+
+#code {
+  background-color: #efefef;
+  /* height: 31.25rem; */
+  overflow-y: auto;
+  min-width: 350px;
+  font-size: 0.75rem;
+}
+
+#code pre {
+  margin: 0.625rem;
+}
