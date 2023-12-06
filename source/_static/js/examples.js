@@ -1,6 +1,8 @@
 const subnav = document.getElementById('subnav')
 const contentdoc = document.getElementById('content-doc')
 const contentexamples = document.getElementById('content-examples')
+const examplewelcome = document.getElementById('exampleWelcome')
+const examplecode = document.getElementById('exampleCode')
 const examplelinks = document.getElementById('exampleLinks')
 const tocdoc = document.getElementById('toc-doc')
 const searchToggle = document.getElementById('checkbox-search-toggle')
@@ -42,6 +44,8 @@ toggleExamples = (mode) => {
 
 loadExamplefromGitHub = (name, dir, editor) => {
    function load(data) {
+      examplecode.style.display  = 'flex'
+      examplewelcome.style.display  = 'none'
       editor.setValue(data)
       highlightKeyword(editor)
    }
@@ -138,7 +142,6 @@ let treedata =
     }
     ]
   },
-  /*
   { "id": "0-2", "text": "Wave propagation", "children":
     [
     { "id": "0-2-0", "text": "Frequency domain", "children":
@@ -147,13 +150,16 @@ let treedata =
         { "id": "Maxwell", "text": "Maxwell's equations" }
       ]
     },
+    /*
     { "id": "0-2-1", "text": "Time domain"
     }
+    */
     ]
   },
+  /*
   { "id": "diffusion", "text": "Diffusion"
   },
-   */
+  */
   ]
 },
 { "id": "1", "text": "Spatial dimension", "children":
@@ -225,7 +231,7 @@ fetch('/_static/json/all_examples.json')
    updateList(editor)
    let tree = new Tree('.tag-tree-container', {
          data: treedata,
-         closeDepth: 3,
+         closeDepth: 4,
          loaded: function () {
             //this.values = ['0-0-0', '0-1-1'];
             //console.log(this.selectedNodes);

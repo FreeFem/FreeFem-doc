@@ -48,9 +48,8 @@ body {
 #content {
   grid-row: 3;
   grid-column: 2;
-  margin: 0 1rem;
+  margin: 19px 1rem;
   margin-bottom: 65vh;
-  margin-top: 19px;
 }
 
 #content .headerlink {
@@ -113,6 +112,7 @@ body {
 
 .up-button {
   padding: .55rem;
+  margin-top: 19px;
   display: none;
   position: absolute;
   top: 61px;

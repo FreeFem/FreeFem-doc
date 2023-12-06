@@ -21,7 +21,7 @@
     "keywords": "fespace int macro mesh mesh3 real solve P1 include load be cout endl label m max n N nt P re x y z change cube d dx dy dz int3d max medit movemesh movemesh3 on plot sqrt B cmm coef eps label ps sigma t transfo wait",
     "name": "beam-3d.edp",
     "starts": 3828,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "3d",
@@ -125,7 +125,7 @@
     "keywords": "border fespace func int macro matrix mesh mesh3 ofstream real solve varf P2 P23d adj be bordermeasure CG cout endl label linfty m max measure min n N nbe ndof ndofK nt nv P pi re region true whoinElement verbosity version x y z abs adj assert buildmesh change cos d dd dx dy dz int2d int3d max min on plot rint savemesh set sin square A B bb boundary err file fill label order region save solver t value wait",
     "name": "first.edp",
     "starts": 2713,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "3d",
@@ -133,7 +133,7 @@
     "keywords": "fespace func int macro matrix mesh mesh3 real solve varf P1 include load area be cout endl im l1 m measure n N ndof nt P pi re sum verbosity x y z abs assert change cube d dx dy dz int2d int3d medit on plot set sqrt B eps err levelset ps t wait",
     "name": "intlevelset3d.edp",
     "starts": 4814,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "3d",
@@ -189,7 +189,7 @@
     "keywords": "fespace func int macro mesh mesh3 problem real solve varf Edge03d P0 P1 RT0 RT03d include be CG cout endl im m n N nt nuTriangle P re x y z assert cube d dd dimKrylov dx dy dz Gamma int2d int3d on plot sqrt square B boundary dim eps err fill init ps solver t tgv",
     "name": "LaplaceRT-3d.edp",
     "starts": 4000,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "3d",
@@ -221,7 +221,7 @@
     "keywords": "border fespace func int macro mesh mesh3 ofstream problem real solve P2 P23d be CG cout endl label linfty m max measure min n nt P pi re verbosity x y z buildmesh cos d dd dx dy dz int3d max min on plot sin square bb err file label order solver t wait",
     "name": "p.edp",
     "starts": 2570,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "3d",
@@ -261,7 +261,7 @@
     "keywords": "border fespace func int macro mesh mesh3 ofstream problem real solve P2 P23d be CG cout endl label linfty m max measure min n nt P pi re verbosity x y z assert buildmesh cos d dd dx dy dz int3d max min on plot sin square bb err file label order solver t wait",
     "name": "Poisson.edp",
     "starts": 4241,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "3d",
@@ -269,7 +269,7 @@
     "keywords": "border fespace func int macro mesh mesh3 problem real solve P2 P23d load be CG cout endl im label linfty m max measure min n nt P pi re region verbosity x y z adaptmesh assert buildmesh cos d dx dy dz int3d max medit min on plot savemesh savesol sin square tetg tetgtransfo bb cmm err fregion IsMetric label nbofregions order periodic region regionlist save solver t transfo wait",
     "name": "Poisson3d.edp",
     "starts": 3317,
-    "tags": "adaptmesh tetg 2D"
+    "tags": "adaptmesh tetg 3D"
   },
   {
     "dir": "3d",
@@ -301,7 +301,7 @@
     "keywords": "bool fespace func int macro matrix mesh mesh3 real solve varf P0 P1 include load be cout endl im label m max min n N ndof nt P pi re true volume x y z abs assert cube d dd dx dy dz Gamma int3d interpolate max min on plot set sqrt trunc A B cmm dim err fill inside iso label order ps qforder solver split t tgv viso wait",
     "name": "schwarz-nm-3d.edp",
     "starts": 3141,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "3d",
@@ -613,7 +613,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int macro Mat mesh meshL problem real solve varf P0 P1 include load ARGV be cout endl im label m max mpirank n N nt P pi re region sparsesolver x y z BEM buildmesh change cos d dd dist dx dy erf exp extract getARGV int1d int1dx1d int2d max on OrientNormal plot POT round sin system A B cmm dim eta fill iso label master nbiso order region solver t unbounded value wait",
     "name": "Helmholtz-2d-FEM-BEM-coupling-MUMPS-composite.edp",
     "starts": 12145,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "bem",
@@ -621,7 +621,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int macro Mat matrix mesh meshL problem real solve varf P0 P1 include load ARGV be cout endl GMRES im label m max mpirank mpisize n N ndof nt nuTriangle P pi re region sparsesolver x y z BEM buildmesh change cos d dd display dist dx dy erf exp extract getARGV int1d int1dx1d int2d interpolate max on OrientNormal plot POT round set sin A B cmm dim eta fill fregion iso label master nbiso order region solver t unbounded value wait",
     "name": "Helmholtz-2d-FEM-BEM-coupling-MUMPS.edp",
     "starts": 12574,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "bem",
@@ -629,7 +629,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int Mat mesh meshL real varf P1 include load ARGV be cout endl im m max min mpirank n N nt P pi re volume x y z abs BEM buildmesh buildmeshL cos d display dx exp getARGV int1d int1dx1d max min on OrientNormal plot POT sin A B bin cmm dim eps eta fill iso nbiso order ps t unbounded value",
     "name": "Helmholtz_circle_Dirichlet_all_direct.edp",
     "starts": 12883,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "bem",
@@ -637,7 +637,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int Mat matrix mesh meshL real varf P1 include load ARGV be cout endl im m max min mpirank n N nt P pi re volume x y z abs BEM buildmesh buildmeshL cos d display dx exp getARGV int1d int1dx1d max min on OrientNormal plot POT sin A B bin cmm dim eps eta fill iso nbiso order ps t unbounded value",
     "name": "Helmholtz_circle_Dirichlet_all_indirect.edp",
     "starts": 12283,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "bem",
@@ -645,7 +645,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int Mat matrix mesh meshL mpiComm problem real solve varf P1 include load ARGV be cout endl find im l2 m max min mpiCommWorld mpirank mpisize mpiSUM n N ndof nt P pi re volume x y z atan atan2 BEM buildmesh buildmeshL ceil cos d display dx exp getARGV gslsfbesselJn gslsfbesselYn int1d int1dx1d max min mpiReduce on OrientNormal plot POT processor sin sqrt tan A B cmm dim eps err eta fill iso nbiso order ps t unbounded value",
     "name": "Helmholtz_circle_Dirichlet_simple.edp",
     "starts": 13137,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "bem",
@@ -653,7 +653,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int Mat mesh meshL real varf P1 include load ARGV be cout endl im m max min mpirank n N nt P pi re volume x y z abs BEM buildmesh buildmeshL cos d display dx dy exp getARGV int1d int1dx1d max min on OrientNormal plot POT sin A B bin cmm dim eps eta fill iso nbiso order ps t unbounded value",
     "name": "Helmholtz_circle_Neumann_all_direct.edp",
     "starts": 11930,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "bem",
@@ -661,7 +661,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int Mat matrix mesh meshL real varf P1 include load ARGV be cout endl im m max min mpirank n N Nt nt P pi re volume x y z abs BEM buildmesh buildmeshL change cos d display dx dy exp getARGV int1d int1dx1d max min on OrientNormal plot POT sin tan A B bin cmm dim eps eta fill iso nbiso order ps t unbounded value",
     "name": "Helmholtz_circle_Neumann_all_indirect.edp",
     "starts": 12754,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "bem",
@@ -669,7 +669,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int Mat matrix mesh mesh3 meshS real solve varf P1 include load ARGV be CG cout endl im label m max min mpirank n N ndof nt P pi re region x y z BEM buildBdMesh cos d display dist dx exp Gamma getARGV int2d int2dx2d max min on plot POT sin square square3 trunc A B dim eps eta fill iso label nbiso order ps region solver t value width",
     "name": "Helmholtz_Cobracavity.edp",
     "starts": 13023,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "bem",
@@ -677,7 +677,7 @@
     "keywords": "BemKernel BemPotential complex fespace func HMatrix int macro Mat mesh mesh3 meshS real varf P1 RT0 include load ARGV be cout endl im m max mpirank n N nt P pi re x y z abs BEM cos cube d display dx exp extract getARGV int2d int2dx2d max on plot polar POT sin sqrt square square3 trunc A B dim eps eta fill iso nbiso ps t value",
     "name": "Maxwell_cube_EFIE.edp",
     "starts": 12072,
-    "tags": "3D"
+    "tags": "3D Maxwell"
   },
   {
     "dir": "bem",
@@ -685,7 +685,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int Mat matrix mesh mesh3 meshS real string varf P1 RT0 include load ARGV be cout endl im m max min mpirank n N nt nv P pi re x y z abs BEM buildmesh cos cube d display dx exit exp extract getARGV int2d int2dx2d max min movemesh movemesh23 on plot polar POT sin sqrt square square3 trunc A B cmm dim eps err eta fill init iso nbiso nbiter op order ps save t transfo value vector",
     "name": "Maxwell_EFIE_sphere.edp",
     "starts": 12411,
-    "tags": "3D"
+    "tags": "3D Maxwell"
   },
   {
     "dir": "bug",
@@ -1165,7 +1165,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int macro Mat matrix mesh meshL mpiComm problem real solve varf P0 P1 include load be cout diag endl GMRES im label m min mpiCommWorld mpirank mpisize n N ndof nt P pi re region sum true x y z BEM broadcast buildmesh change cos d dd display dx dy erf exp extract int1d int1dx1d int2d interpolate min on OrientNormal plot POT processor round set sin trunc A B bb dim eta fill fregion init iso label nbiso op order precon region t unbounded value",
     "name": "Helmholtz-2d-FEM-BEM-coupling.edp",
     "starts": 20694,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1173,7 +1173,7 @@
     "keywords": "complex fespace func int macro mesh mpiComm real varf P2 include ARGV be cout endl GMRES im m mpiCommWorld mpirank n N ndof nt P pi re sum x y z change d dd dx dy exp getARGV int1d int2d on plot set square A B bin dim eps eta init metric op option precon ps refe sparams sym t tgv",
     "name": "Helmholtz-2d-HPDDM-BGMRES.edp",
     "starts": 22389,
-    "tags": "2D"
+    "tags": "2D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1181,7 +1181,7 @@
     "keywords": "BemKernel complex fespace func int macro matrix mesh meshL mpiComm NewMacro EndMacro real varf P2 include load ARGV be cout endl GMRES im label length m mpiCommWorld mpirank n N ndof nt P pi re region sum true x y z abs BEM d dd dx dy erf exp extract getARGV int1d int1dx1d int2d on OrientNormal plot set square trunc A B bin commworld dim factorize init label metric op option precon region sym t tgv unbounded",
     "name": "Helmholtz-2d-interfaceBCs-comp.edp",
     "starts": 19227,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1189,7 +1189,7 @@
     "keywords": "complex func int macro mesh mpiComm ofstream real varf P2 include load ARGV be cout endl GMRES im m mpiCommWorld mpirank mpisize n N nt P pi re sum version x y z atan change d dd dx dy exec exp getARGV int1d int2d medit on plot savemesh savevtk set square tan trunc A B bin compressor dataname dim eps err eta file init metric op option order precon ps refe save split sym t tgv",
     "name": "Helmholtz-2d-marmousi.edp",
     "starts": 22493,
-    "tags": "2D"
+    "tags": "2D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1197,7 +1197,7 @@
     "keywords": "complex fespace func int macro mesh mpiComm real varf P1 include ARGV be cout endl GMRES im m mpiCommWorld mpirank n N nt P pi re sum x y z abs change d dd dx dy exp getARGV int1d int2d on plot set square trunc A B bin dim eps err eta init metric op option precon ps refe split sym t tgv",
     "name": "Helmholtz-2d-simple.edp",
     "starts": 20981,
-    "tags": "2D"
+    "tags": "2D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1205,7 +1205,7 @@
     "keywords": "complex fespace func int macro mesh meshL mpiComm NewMacro EndMacro real solve varf P2 ENDIFMACRO include IFMACRO load ARGV be cout endl false GMRES im l1 label length m max min mpiCommWorld mpirank mpisize n N ndof nt P pi re sum true x y z abs change cos cube d dd dist dx dy erf exp extract Gamma getARGV int1d int2d max min mpiRank on plot rint set sin square Stringification tan A B bin dim eps eta init label metric op precon ps sigma split sym t tgv",
     "name": "Helmholtz-2d-sweeping.edp",
     "starts": 19464,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1213,7 +1213,7 @@
     "keywords": "complex func int macro mesh mesh3 mpiComm real varf P2 include load ARGV be cout endl GMRES im label length m mpiCommWorld mpirank n N nt P pi re sum x y z cube d dd dx dy dz exp getARGV int2d int3d medit on plot set A B bin dim eps eta init label metric op option precon ps split sym t tgv",
     "name": "Helmholtz-3d-overthrust.edp",
     "starts": 21710,
-    "tags": "2D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1221,7 +1221,7 @@
     "keywords": "complex func int macro mesh mesh3 mpiComm real varf P2 include load ARGV be cout endl GMRES im label m mpiCommWorld mpirank n N nt P pi re sum x y z cube d dd dx dy dz exp getARGV int2d int3d medit on plot set trunc A B bin dim eps eta init label metric op option precon ps split sym t tgv",
     "name": "Helmholtz-3d-simple.edp",
     "starts": 22185,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1229,7 +1229,7 @@
     "keywords": "BemKernel complex fespace func HMatrix int macro Mat matrix mesh meshL mpiComm real solve varf P1 P2 include load ARGV be cin cout endl false im label length m min mpiCommWorld mpirank n ndof nt nv P pi re sparsesolver true x y z adaptmesh BEM change d dd display dx dy erf exp extract Gamma getARGV int1d int1dx1d int2d interpolate min on plot set square A B bin commworld compressor dim factorize init IsMetric label nbvx op solver sparams t tol",
     "name": "Helmholtz-multitrace.edp",
     "starts": 19041,
-    "tags": "adaptmesh 3D"
+    "tags": "adaptmesh 3D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1237,7 +1237,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int macro Mat mesh meshL mpiComm real varf P1 include load ARGV be cout endl GMRES im m mpiCommWorld mpirank n N nt P pi re sum x y z abs BEM buildmesh buildmeshL cos d dd display dx dy exp getARGV int1d int1dx1d on OrientNormal plot POT set sin A B dim fill init iso nbiso order t unbounded value",
     "name": "Helmholtz_circle_BEM.edp",
     "starts": 22287,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1245,7 +1245,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int macro Mat mesh mesh3 meshS mpiComm real varf P1 include load ARGV be cout endl GMRES im label m mpiCommWorld mpirank n N nt P pi re region sum x y z BEM buildBdMesh cos d dd display dist dx exp Gamma getARGV int2d int2dx2d on plot POT set sin square square3 trunc A B dim eta fill init iso label nbiso order region t value width",
     "name": "Helmholtz_Cobracavity_BEM.edp",
     "starts": 21823,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1253,7 +1253,7 @@
     "keywords": "complex fespace func ifstream int macro matrix mesh mesh3 mpiComm real solve varf P1 P2 P3 ENDIFMACRO include IFMACRO load ARGV be cout endl GMRES im label length LINE m max min mpiCommWorld mpirank mpisize n N ndof nt nv P pi re region sum verbosity version x y z abs arg atan cube d dd dist dx dy dz erf exp floor getARGV imag int2d int3d max min mmg3d mpiSize on pow rint savevtk set sin sqrt system tan trunc A B bin close dataname dim eps eta file init label maxit mem memory metric mode omega op order precon ps qfV ratio refe region save sigma solver sparams split stop sym t tgv tol vector",
     "name": "Helmholtz_geophysics.edp",
     "starts": 20194,
-    "tags": "mmg 2D"
+    "tags": "mmg 3D Helmholtz"
   },
   {
     "dir": "ffddm",
@@ -1261,7 +1261,7 @@
     "keywords": "complex fespace func int macro mesh mesh3 mpiComm problem real varf Edge03d include load ARGV be cout endl GMRES im label m mpiCommWorld mpirank n N nt P pi re sum x y z abs cube d dd dx dy dz exp getARGV int2d int3d medit on plot set sqrt A B bin dim eps eta init label metric precon ps split sym t tgv vector",
     "name": "Maxwell-3d-simple.edp",
     "starts": 21379,
-    "tags": "3D"
+    "tags": "3D Maxwell"
   },
   {
     "dir": "ffddm",
@@ -1269,7 +1269,7 @@
     "keywords": "border complex fespace func int macro mesh mesh3 mpiComm problem real varf Edge03d P0 include load ARGV be cout endl GMRES im label m mpiCommWorld mpirank n N nt nv P pi re region sum verbosity volume x y z abs cos d dd dist dx dy dz exp getARGV int2d int3d medit on plot polar round set sin sqrt tan A B bin boundary dim eps eta init label metric op option order precon ps region split sym t tgv width",
     "name": "Maxwell_Cobracavity.edp",
     "starts": 21488,
-    "tags": "3D"
+    "tags": "3D Maxwell"
   },
   {
     "dir": "ffddm",
@@ -1397,7 +1397,7 @@
     "keywords": "fespace func int macro Mat matrix mesh mesh3 real varf P1 include load ARGV be im label m max n N nt P pi re true x y z change cube d dd dx dy dz getARGV int3d max on plot set A B cmm dim err init label sparams split t vector",
     "name": "diffusion-3d-PETSc.edp",
     "starts": 41610,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -1405,7 +1405,7 @@
     "keywords": "bool fespace func int macro Mat matrix mesh mesh3 mpiComm real solve string varf P0 P1 include load ARGV be cout endl false im label m max mpiCommWorld mpirank mpisize n N nt P pi re verbosity x y z cube d dd dx dy dz erf getARGV int2d int3d interpolate log max on plot set splitComm tan A B boundary cmm dim err init label metric op optimize order solver sparams split sym t tgv vector",
     "name": "diffusion-3d.edp",
     "starts": 34450,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -1437,7 +1437,7 @@
     "keywords": "fespace func int macro Mat matrix mesh mesh3 mpiComm real varf P1 include load append ARGV be false im label m mpiCommWorld n N ndof nt P pi re true x y z change cube d dd dx dy dz getARGV int3d on plot savevtk set A B bin cmm dim init label order save sparams split t tgv",
     "name": "diffusion-mg-3d-PETSc.edp",
     "starts": 36126,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -1469,7 +1469,7 @@
     "keywords": "fespace func int macro Mat matrix mesh mesh3 mpiComm real solve varf P1 include load ARGV be im label m mpiCommWorld mpisize n N nt P pi re x y z cube d dd dx dy dz getARGV int3d on plot set A B cmm dim err init label solver sparams split sym t tgv vector",
     "name": "diffusion-simple-3d.edp",
     "starts": 43046,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -1565,7 +1565,7 @@
     "keywords": "fespace func int macro Mat matrix mesh mesh3 real varf P1 include load ARGV be im label m max mpirank n N nt P pi re true x y z change cube d dd dx dy dz getARGV int3d max movemesh movemesh3 on plot set sqrt A B cmm dim eps err init label nev ps sparams split t transfo vector",
     "name": "elasticity-3d-PETSc.edp",
     "starts": 35512,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -1573,7 +1573,7 @@
     "keywords": "bool fespace func int macro Mat matrix mesh mesh3 mpiComm real solve string varf P0 P1 include load ARGV be cout endl im label m max mpiCommWorld mpirank mpisize n N nt P pi re verbosity x y z cube d dd dx dy dz erf getARGV int2d int3d log max movemesh movemesh3 mpiBarrier on plot set splitComm sqrt tan A B boundary cmm dim eps err init label metric op optimize option options order ps solver sparams split sym t tgv transfo vector",
     "name": "elasticity-3d.edp",
     "starts": 37411,
-    "tags": "elasticity 2D"
+    "tags": "elasticity 3D"
   },
   {
     "dir": "hpddm",
@@ -1597,7 +1597,7 @@
     "keywords": "fespace func int macro Mat matrix mesh mesh3 mpiComm real solve varf P1 include load ARGV be im label m mpiCommWorld mpirank mpisize n N nt P pi re x y z cube d dd dx dy dz getARGV int3d movemesh movemesh3 mpiBarrier on plot set sqrt A B cmm dim eps err init label ps solver sparams split sym t tgv transfo vector",
     "name": "elasticity-simple-3d.edp",
     "starts": 41390,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -1605,7 +1605,7 @@
     "keywords": "fespace func int macro Mat mesh mesh3 real varf P1 include load ARGV be im label m max mpirank n N ndof nt nv P pi re true x y z change cube d dd dx dy dz getARGV int3d max movemesh movemesh3 on plot set sqrt A B cmm dim eps init label ps sparams split t tgv transfo vector",
     "name": "elasticity-SNES-3d-PETSc.edp",
     "starts": 40500,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -1645,7 +1645,7 @@
     "keywords": "bool fespace func int macro Mat matrix mesh mesh3 mpiComm real solve string varf P0 P2 include load ARGV be cout endl false im label m max mpiCommWorld mpirank mpisize n N nt P pi re verbosity x y z cube d dd dx dy dz erf getARGV int2d int3d interpolate log max on plot set splitComm tan A B boundary cmm dim init label metric op optimize order precon ratio solver sparams split sym t tgv",
     "name": "heat-3d.edp",
     "starts": 39955,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -1685,7 +1685,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func HMatrix int macro Mat matrix mesh meshL problem real solve varf P0 P1 load be cout endl im label m max mpirank n N nt P pi re region x y z BEM buildmesh change cos d dd dist dx dy erf exp extract int1d int1dx1d int2d max on OrientNormal plot POT round set sin system B cmm dim eta fill iso label nbiso order precon ps region solver sparams split t unbounded value wait",
     "name": "Helmholtz-2d-FEM-BEM-coupling-PETSc-composite.edp",
     "starts": 38265,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "hpddm",
@@ -1693,7 +1693,7 @@
     "keywords": "complex fespace func int macro Mat matrix mesh real varf P0 P1 include load ARGV im m n N ndof nt P pi re x y z d dd dx dy exp getARGV int1d int2d on plot set square A B cmm dim init omega op optimize sparams split t tgv",
     "name": "helmholtz-2d-PETSc-complex.edp",
     "starts": 34364,
-    "tags": "2D"
+    "tags": "2D Helmholtz"
   },
   {
     "dir": "hpddm",
@@ -1701,7 +1701,7 @@
     "keywords": "complex fespace func int macro Mat mesh real varf P0 P1 include load ARGV cout endl im m min mpisize n N ndof nt nv P pi re x y z arg assert d dd dx dy exp getARGV int1d int2d min on sin square A B dim eps init nev omega ps sparams t tgv value vector",
     "name": "helmholtz-2d-SLEPc-complex.edp",
     "starts": 37098,
-    "tags": "2D"
+    "tags": "2D Helmholtz"
   },
   {
     "dir": "hpddm",
@@ -1709,7 +1709,7 @@
     "keywords": "bool complex fespace func int macro Mat matrix mesh mpiComm real solve string varf P0 P1 include load ARGV be cout endl false im m max mpiCommWorld mpirank mpisize n N nt P pi re verbosity x y z d dd dx dy erf exp getARGV int1d int2d interpolate log max on plot splitComm square tan A B boundary cmm dim err init metric omega op optimize order solver split sym t tgv vector",
     "name": "helmholtz-2d.edp",
     "starts": 38406,
-    "tags": "2D"
+    "tags": "2D Helmholtz"
   },
   {
     "dir": "hpddm",
@@ -1717,7 +1717,7 @@
     "keywords": "BemKernel BemPotential bool border complex fespace func int macro Mat matrix mesh meshL real varf P0 P1 include load ARGV be im m n N nt nv P pi re x y z abs BEM buildmesh buildmeshL cos d dd dx exit exp getARGV int1d int1dx1d on OrientNormal plot POT set sin A B cmm dim eps order ps sparams sym t unbounded value",
     "name": "helmholtz-3d-line-PETSc-complex.edp",
     "starts": 37672,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "hpddm",
@@ -1725,7 +1725,7 @@
     "keywords": "BemKernel BemPotential bool complex fespace func int macro Mat matrix mesh mesh3 meshS real varf P0 P1 include load ARGV be im label m n N nt nv P pi re region x y z BEM buildBdMesh cos d dd dist dx exit exp Gamma getARGV int2d int2dx2d on plot POT set sin square square3 trunc A B cmm dim eps eta label ps region sparams t value width",
     "name": "helmholtz-3d-surf-PETSc-complex.edp",
     "starts": 37989,
-    "tags": "2D"
+    "tags": "2D Helmholtz"
   },
   {
     "dir": "hpddm",
@@ -1733,7 +1733,7 @@
     "keywords": "BemKernel border complex fespace func int macro Mat matrix mesh meshL mpiComm real varf P0 P1 include load ARGV be label m max mpiCommWorld mpisize n N ndof nt nv P pi re region x y z abs BEM buildmesh chi change cos d dd dx dy erf exit exp extract int1d int1dx1d int2d interpolate max on OrientNormal plot round set sin trunc A B cmm eps eta fregion label op order ps region sparams split sym t tgv unbounded",
     "name": "helmholtz-coupled-2d-PETSc-complex.edp",
     "starts": 41652,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "hpddm",
@@ -1741,7 +1741,7 @@
     "keywords": "BemKernel BemPotential border complex fespace func int macro Mat mesh meshL real varf P0 P1 include load ARGV be im m n N nt nv P pi re true x y z abs BEM buildmesh buildmeshL change cos d dd dx exit exp getARGV int1d int1dx1d on OrientNormal plot POT set sin A B cmm dim order sparams t unbounded",
     "name": "helmholtz-dense-3d-line-PETSc-complex.edp",
     "starts": 38182,
-    "tags": "3D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "hpddm",
@@ -1749,7 +1749,7 @@
     "keywords": "complex fespace func int macro Mat matrix mesh mpiComm real varf P2 include load ARGV im m max mpiCommWorld n N ndof nt nv P pi re x y z change d dd dx dy exp getARGV int1d int2d max on plot set square A B bin cmm dim eps init ps refe sparams split sym t tgv tol",
     "name": "helmholtz-mg-2d-PETSc-complex.edp",
     "starts": 43717,
-    "tags": "2D"
+    "tags": "2D Helmholtz"
   },
   {
     "dir": "hpddm",
@@ -1757,7 +1757,7 @@
     "keywords": "complex fespace func int macro Mat matrix mesh mpiComm real solve varf P0 P2 include load ARGV be im m max mpiCommWorld mpirank mpisize mpiSUM n N ndof nt P pi re sparsesolver true verbosity x y z change d dd dx dy exit exp getARGV int1d int2d interpolate max mpiAllReduce on plot set square trunc A B bin cmm dim eps init ps ratio refe solver sparams split sym t tol wait",
     "name": "helmholtz-mg-2d.edp",
     "starts": 34716,
-    "tags": "2D"
+    "tags": "2D Helmholtz"
   },
   {
     "dir": "hpddm",
@@ -1837,7 +1837,7 @@
     "keywords": "fespace func int macro Mat mesh mesh3 real varf P0 RT0 RT03d include load ARGV be false im label m mpirank mpiSUM n N nt nv P pi re true x y z abs change cube d dd dx dy dz getARGV int2d int3d medit mpiReduce on Post processor set A B dim init label precon sparams split t tgv tol",
     "name": "laplace-RT-3d-PETSc.edp",
     "starts": 35043,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -1869,7 +1869,7 @@
     "keywords": "fespace func int macro Mat matrix mesh real varf RT0 RT0Ortho include load ARGV be im label m n N ndof nt P pi re x y z abs cube d dd dx dy exp getARGV int2d on plot set square A B cmm dim fill init label sparams t tgv vector wait",
     "name": "maxwell-2d-PETSc.edp",
     "starts": 34587,
-    "tags": "2D"
+    "tags": "2D Maxwell"
   },
   {
     "dir": "hpddm",
@@ -1877,7 +1877,7 @@
     "keywords": "fespace func int macro Mat matrix mesh mesh3 mpiComm real varf Edge03d P1 include load ARGV be im m max mpiCommWorld mpirank mpiSUM n N ndof nt nv P pi re true x y z change cube d dd dx dy dz exp getARGV int3d max medit mpiReduce on processor set A B dim sparams t",
     "name": "maxwell-3d-PETSc.edp",
     "starts": 40757,
-    "tags": "2D"
+    "tags": "3D Maxwell"
   },
   {
     "dir": "hpddm",
@@ -1885,7 +1885,7 @@
     "keywords": "BemKernel BemPotential bool complex fespace func int macro Mat mesh mesh3 meshS mpiComm real string varf P0 P1 RT0 include load ARGV be cout endl im l2 m max mpiCommWorld mpiSUM n N ndof nt nv P pi re true x y z abs BEM change cos cube d dd dx exit exp extract getARGV int2d int2dx2d max mpiAllReduce on plot POT set sin sqrt square square3 trunc A B cmm dim eps eta init ps sparams t vector",
     "name": "maxwell-3d-surf-PETSc-complex.edp",
     "starts": 35368,
-    "tags": "2D"
+    "tags": "2D Maxwell"
   },
   {
     "dir": "hpddm",
@@ -1893,7 +1893,7 @@
     "keywords": "complex fespace func int macro Mat matrix mesh mesh3 mpiComm real solve varf Edge03d include load ARGV be cout endl false GMRES im m max mpiCommWorld mpirank mpisize n N ndof nt P pi re verbosity x y z change cube d dd dx dy dz erf exp getARGV int2d int3d interpolate max medit on set A B bin dim init metric op optimize order solver sparams split t vector",
     "name": "maxwell-3d.edp",
     "starts": 42368,
-    "tags": "2D"
+    "tags": "3D Maxwell"
   },
   {
     "dir": "hpddm",
@@ -1901,7 +1901,7 @@
     "keywords": "complex fespace func int macro Mat matrix mesh mesh3 mpiComm real solve varf Edge03d P1 include load ARGV be im label m max mpiCommWorld n N ndof nt nv P pi re x y z cube d dd dx dy dz exp getARGV imag int2d int3d max on plot savevtk set sqrt A B bin cmm dim init label order ps save solver sparams sym t tol",
     "name": "maxwell-mg-3d-PETSc-complex.edp",
     "starts": 41328,
-    "tags": "2D"
+    "tags": "3D Maxwell"
   },
   {
     "dir": "hpddm",
@@ -2101,7 +2101,7 @@
     "keywords": "fespace func int macro Mat mesh mesh3 real varf P1 P2 include load ARGV be im l2 label m n N nt P pi re x y z buildlayers d dd dx dy dz getARGV int3d movemesh on plot set sqrt square trunc A B cmm dim init label sparams split t tgv vector zbound",
     "name": "stokes-3d-PETSc.edp",
     "starts": 40182,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -2109,7 +2109,7 @@
     "keywords": "bool fespace func int macro Mat matrix mesh mesh3 mpiComm real solve string varf P0 P1 P2 include load ARGV be cout endl false im l2 label m max mpiCommWorld mpirank mpisize n N nt P pi re verbosity x y z buildlayers d dd dx dy dz erf getARGV int2d int3d interpolate log max movemesh on plot set splitComm sqrt square tan trunc A B boundary cmm dim eps init iso label metric op optimize order ps solver sparams split sym t tgv vector zbound",
     "name": "stokes-3d.edp",
     "starts": 36991,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -2149,7 +2149,7 @@
     "keywords": "fespace func int macro Mat mesh mesh3 real solve string varf P1 P2 include load ARGV be im l2 label m max n N nt P pi re x y z buildlayers d dd dx dy dz exit getARGV int3d max movemesh on plot set sqrt square trunc A B cmm dim init label ps solver sparams split t tgv tol vector zbound",
     "name": "stokes-fieldsplit-3d-PETSc.edp",
     "starts": 37593,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -2157,7 +2157,7 @@
     "keywords": "bool fespace func int macro Mat matrix mesh mesh3 mpiComm real solve string varf P0 P1 P2 include load ARGV be cout endl false im l2 label m max mpiCommWorld mpirank mpisize n N nt P pi re verbosity x y z atan buildlayers d dd dx dy dz erf getARGV int2d int3d interpolate log max movemesh on savevtk set splitComm sqrt square tan trunc A B boundary dataname dim eps init iso label metric op optimize order ps save solver sparams split sym t tgv vector zbound",
     "name": "stokes-io-3d.edp",
     "starts": 34951,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "hpddm",
@@ -2517,7 +2517,7 @@
     "keywords": "bool fespace func int macro Mat matrix mesh mesh3 mpiComm problem real solve string varf P1 P2 include load ARGV be CG cout default endl GMRES im l1 LU m max mpiCommWorld mpiMAX mpirank n N nt P pi re searchMethod sparsesolver true verbosity version x y z arg assert cube d dd dx dy dz exp getARGV int3d max medit mpiAllReduce mpiRank mpiWtime on plot set sqrt trunc A B bb cmm dim eps err errg fill init iso nbiso precon ps sigma solver split t tgv value",
     "name": "DDM-Schwarz-Lame-3d.edp",
     "starts": 14920,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "mpi",
@@ -2533,7 +2533,7 @@
     "keywords": "bool fespace func int macro Mat matrix mesh mesh3 mpiComm problem real solve string varf P1 P2 include load ARGV be CG cout default endl GMRES im l1 m max mpiCommWorld mpiMAX mpirank n N nt P pi re searchMethod true verbosity version x y z arg assert cube d dd dx dy dz exp getARGV int3d max medit mpiAllReduce mpiRank mpiWtime on plot set trunc A B bb cmm dim eps err errg fill init iso nbiso precon ps solver split t tgv value",
     "name": "DDM-Schwarz-Lap-3d.edp",
     "starts": 14035,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "mpi",
@@ -2565,7 +2565,7 @@
     "keywords": "fespace func int macro Mat matrix mesh mesh3 problem real solve string varf Edge03d P0 P1 RT0 RT03d include load be CG cout endl im m mpirank mpisize n N nbe nt nuTriangle P pi re sparsesolver x y z assert clock cube d dimKrylov dx dy dz Gamma int2d int3d medit on set sqrt square B dim err init solver sparams t tgv",
     "name": "LaplaceRT-3d-matrix-mumps.edp",
     "starts": 15082,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "mpi",
@@ -2605,7 +2605,7 @@
     "keywords": "bool fespace func int macro matrix mesh mesh3 mpiComm ofstream problem real solve string varf P0 P1 P2 include load append ARGV be CG cout endl find GMRES im l1 label linfty m max measure min mpiCommWorld mpiMAX mpirank mpisize mpiSUM n N nt P pi re searchMethod sparsesolver sum true verbosity version x y z abs AffineGMRES arg assert broadcast cube d dd dimKrylov dx dy dz erf exp getARGV int3d interpolate LinearGMRES max medit min mpiAllReduce mpiRank mpiReduce mpiSize mpiWtime on plot processor Recv set splitmesh trunc A B bb boundary cmm coef dim eps err errg fill init iso label nbiso nbiter precon ps solver split t tgv value veps wait",
     "name": "MPIGMRES3D.edp",
     "starts": 17907,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "mpi",
@@ -2733,7 +2733,7 @@
     "keywords": "fespace int macro Mat matrix mesh mesh3 real solve string varf P1 P2 include load be cout endl im label m max mpirank mpisize n N nt P pi re searchMethod x y z clock cube d dx dy dz int3d max medit movemesh movemesh3 on savemesh set sqrt A B coef eps label mem ps save sigma solver sparams t tgv transfo",
     "name": "VG.edp",
     "starts": 14199,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "plugin",
@@ -3045,7 +3045,7 @@
     "keywords": "complex fespace func int matrix mesh mesh3 real solve P1 include load ARGV be cout endl im length m n N nt nv P pi qfV1 qfV1lump re sparsesolver x y z abs cube d dist dy exp getARGV int3d medit on set sin sqrt trunc A B dim err init mode omega op qfV solver t",
     "name": "Helmholtz_FD.edp",
     "starts": 25573,
-    "tags": "2D"
+    "tags": "3D Helmholtz"
   },
   {
     "dir": "plugin",
@@ -3077,7 +3077,7 @@
     "keywords": "fespace int macro mesh mesh3 real solve P1 include load be cout endl label m max n N nt P re verbosity x y z change cube d dx dy dz int3d max medit movemesh movemesh3 on plot savemesh sqrt B cmm coef eps label ps save sigma t transfo wait",
     "name": "iohd5-beam-3d.edp",
     "starts": 28519,
-    "tags": "2D"
+    "tags": "3D"
   },
   {
     "dir": "plugin",
