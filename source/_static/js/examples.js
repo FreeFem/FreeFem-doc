@@ -50,9 +50,10 @@ loadExamplefromGitHub = (name, dir, editor) => {
       highlightKeyword(editor)
    }
  
-   const url = 'https://raw.githubusercontent.com/FreeFem/FreeFem-sources/master/examples/'+dir+'/'+name
+   const fpath = (dir == 'idp' ? '' : 'examples/') + dir + '/'+name
+   const url = 'https://raw.githubusercontent.com/FreeFem/FreeFem-sources/master/' + fpath
    console.log("load " + dir + "/" + name + "from GitHub");
-   document.getElementById('ExampleLinkToGitHub').innerHTML = "<a href='https://github.com/FreeFem/FreeFem-sources/blob/master/examples/"+dir+"/"+name+"' target='_blank'>"+dir+"/"+name+"</a>";
+   document.getElementById('ExampleLinkToGitHub').innerHTML = "<a href='https://github.com/FreeFem/FreeFem-sources/blob/master/"+fpath+"' target='_blank'>"+dir+"/"+name+"</a>";
    HTTPGet(url, load)
 }
 
