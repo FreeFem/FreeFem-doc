@@ -140,7 +140,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Jan 12, 2024}
+\date{Feb 02, 2024}
 \release{4.13}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -32196,6 +32196,12 @@ Cannot be used in sequential mode or with plotting.
 \item {} 
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}gmres\PYGZus{}restart}\PYG{+w}{ }\PYG{k+kr}{N}%
+}}, restart parameter for GMRES, see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmrestart}}}} (default 200).
+
+\item {} 
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{%
 \PYG{o}{\PYGZhy{}}\PYG{n}{ffddm\PYGZus{}schwarz\PYGZus{}method}\PYG{+w}{ }\PYG{n}{S}%
 }}, specifies the type of one level preconditioner \(M^{-1}_1\): “asm” (\sphinxstyleemphasis{Additive Schwarz}), “ras” (\sphinxstyleemphasis{Restricted Additive Schwarz}), “oras” (\sphinxstyleemphasis{Optimized Restricted Additive Schwarz}), “soras” (\sphinxstyleemphasis{Symmetric Optimized Restricted Additive Schwarz}) or “none” (no preconditioner), see {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmprecond}}}} (default “ras”).
 
@@ -32296,6 +32302,12 @@ If true, mpi ranks participating in the assembly and resolution of the coarse pr
 This is useful for large problems, where we want to avoid working with a very large global mesh.
 The idea is to start from a coarser global mesh, and generate finer local meshes in parallel during the mesh decomposition step in order to reach the desired level of refinement for the subdomains.
 For example, calling {\hyperref[\detokenize{documentation/ffddm/documentation:ffddmdocumentationoverlappingmeshdecomposition}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmbuildDmesh}}}} with {\hyperref[\detokenize{documentation/ffddm/parameters:ffddmparametersglobal}]{\sphinxcrossref{\DUrole{std,std-ref}{ffddmsplit}}}} = 3 will generate local submeshes where each mesh element of the initial mesh is split into \(3^d\) elements.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxcode{\sphinxupquote{%
+\PYG{n}{ffddmrestart}%
+}} initialized by command\sphinxhyphen{}line argument \sphinxstylestrong{ffddm\_gmres\_restart N}, restart parameter for GMRES (maximum dimension of the Krylov subspace). Restarts the method every N inner iterations (default 200).
 
 \item {} 
 \sphinxAtStartPar

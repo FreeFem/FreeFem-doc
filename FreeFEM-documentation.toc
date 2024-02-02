@@ -343,7 +343,7 @@
 \contentsline {subsubsection}{Global parameters}{374}{subsubsection*.401}%
 \contentsline {subsection}{\numberline {3.12.4}Tutorial}{375}{subsection.3.12.4}%
 \contentsline {subsubsection}{What is \sphinxstylestrong {ffddm} ?}{375}{subsubsection*.402}%
-\contentsline {subsubsection}{Why Domain Decomposition Methods ?}{375}{subsubsection*.403}%
+\contentsline {subsubsection}{Why Domain Decomposition Methods ?}{376}{subsubsection*.403}%
 \contentsline {paragraph}{Step 1: Decompose the mesh}{376}{paragraph*.404}%
 \contentsline {paragraph}{Step 2: Define your finite element}{377}{paragraph*.405}%
 \contentsline {subparagraph}{Distributed vectors and restriction operators}{378}{subparagraph*.406}%
