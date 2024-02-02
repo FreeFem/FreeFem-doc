@@ -15,6 +15,7 @@ Command-line arguments
 -  :freefem:`-ffddm_master_p N`, number of master processes for the coarse problem (for two level preconditioners), see :ref:`ffddmpCS <ffddmParametersGlobal>` (default 1).
 -  :freefem:`-ffddm_master_exclude 0|1` exclude master processes from the domain decomposition, see :ref:`ffddmexclude <ffddmParametersGlobal>` (default 0).
 -  :freefem:`-ffddm_split N`, level of refinement of the local submeshes with respect to the initial global mesh, see :ref:`ffddmsplit <ffddmParametersGlobal>` (default 1).
+-  :freefem:`-ffddm_gmres_restart N`, restart parameter for GMRES, see :ref:`ffddmrestart <ffddmParametersGlobal>` (default 200).
 -  :freefem:`-ffddm_schwarz_method S`, specifies the type of one level preconditioner :math:`M^{-1}_1`: “asm” (*Additive Schwarz*), “ras” (*Restricted Additive Schwarz*), “oras” (*Optimized Restricted Additive Schwarz*), “soras” (*Symmetric Optimized Restricted Additive Schwarz*) or “none” (no preconditioner), see :ref:`ffddmprecond <ffddmParametersGlobal>` (default “ras”).
 -  :freefem:`-ffddm_geneo_nu N`, number of local eigenvectors to compute in each subdomain when solving the local generalized eigenvalue problem for the GenEO method, see :ref:`ffddmnu <ffddmParametersGlobal>` (default 20).
 -  :freefem:`-ffddm_geneo_threshold R`, threshold parameter for selecting local eigenvectors when solving the local generalized eigenvalue problems for the GenEO method, see :ref:`ffddmtau <ffddmParametersGlobal>` (default 0.5).
@@ -44,6 +45,7 @@ Global parameters
    This is useful for large problems, where we want to avoid working with a very large global mesh.
    The idea is to start from a coarser global mesh, and generate finer local meshes in parallel during the mesh decomposition step in order to reach the desired level of refinement for the subdomains.
    For example, calling :ref:`ffddmbuildDmesh <ffddmDocumentationOverlappingMeshDecomposition>` with :ref:`ffddmsplit <ffddmParametersGlobal>` = 3 will generate local submeshes where each mesh element of the initial mesh is split into :math:`3^d` elements.
+-  :freefem:`ffddmrestart` initialized by command-line argument **ffddm_gmres_restart N**, restart parameter for GMRES (maximum dimension of the Krylov subspace). Restarts the method every N inner iterations (default 200).
 -  :freefem:`ffddmprecond` initialized by command-line argument **-ffddm_schwarz_method S**, specifies the type of one level preconditioner :math:`M^{-1}_1` to build when calling :ref:`ffddmsetupPrecond <ffddmDocumentationOneLevelPreconditioners>`: “asm” (*Additive Schwarz*), “ras” (*Restricted Additive Schwarz*), “oras” (*Optimized Restricted Additive Schwarz*), “soras” (*Symmetric Optimized Restricted Additive Schwarz*) or “none” (no preconditioner).
    Default is “ras”.
    See :ref:`ffddmsetupPrecond <ffddmDocumentationOneLevelPreconditioners>` for more details.
