@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2847,7 +2854,7 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Due to <code class="docutils literal highlight highlight-python"><span></span><span class="n">Fortran</span></code> indices starting at one, the output of a diagonal matrix <code class="docutils literal highlight highlight-python"><span></span><span class="n">D</span></code> is indexed from 1. but in <strong>FreeFEM</strong>, the indices start from 0.</p>
+<p>Due to <code class="docutils literal notranslate"><span class="pre">Fortran</span></code> indices starting at one, the output of a diagonal matrix <code class="docutils literal notranslate"><span class="pre">D</span></code> is indexed from 1. but in <strong>FreeFEM</strong>, the indices start from 0.</p>
 </div>
 </section>
 <section id="matrix-inversion">
@@ -2911,7 +2918,7 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To compile <code class="docutils literal highlight highlight-python"><span></span><span class="n">lapack</span><span class="o">.</span><span class="n">cpp</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">fflapack</span><span class="o">.</span><span class="n">cpp</span></code>, you must have the <code class="docutils literal highlight highlight-python"><span></span><span class="n">lapack</span></code> library on your system and compile the plugin with the command:</p>
+<p>To compile <code class="docutils literal notranslate"><span class="pre">lapack.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">fflapack.cpp</span></code>, you must have the <code class="docutils literal notranslate"><span class="pre">lapack</span></code> library on your system and compile the plugin with the command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>ff-c++<span class="w"> </span>lapack.cpp<span class="w"> </span>-llapack<span class="w">     </span>ff-c++<span class="w"> </span>fflapack.cpp<span class="w"> </span>-llapack
 </pre></div>
 </div>

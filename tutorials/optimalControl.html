@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2022,7 +2029,7 @@
 			
    <section id="optimal-control">
 <h1>Optimal Control<a class="headerlink" href="#optimal-control" title="Link to this heading"></a></h1>
-<p>Thanks to the function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">BFGS</span></code> it is possible to solve complex nonlinear optimization problem within <strong>FreeFEM</strong>.
+<p>Thanks to the function <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">BFGS</span></code> it is possible to solve complex nonlinear optimization problem within <strong>FreeFEM</strong>.
 For example consider the following inverse problem</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
@@ -2167,7 +2174,7 @@ Define <span class="math notranslate nohighlight">\(p\)</span> by:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>As BFGS stores an <span class="math notranslate nohighlight">\(M\times M\)</span> matrix where <span class="math notranslate nohighlight">\(M\)</span> is the number of unknowns, it is dangerously expensive to use this method when the unknown <span class="math notranslate nohighlight">\(x\)</span> is a Finite Element Function.
-One should use another optimizer such as the NonLinear Conjugate Gradient <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">NLCG</span></code> (also a key word of <strong>FreeFEM</strong>).</p>
+One should use another optimizer such as the NonLinear Conjugate Gradient <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">NLCG</span></code> (also a key word of <strong>FreeFEM</strong>).</p>
 </div>
 </section>
 

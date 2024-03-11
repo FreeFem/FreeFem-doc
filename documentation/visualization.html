@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2024,19 +2031,19 @@
 <p>Results created by the finite element method can be a huge set of data, so it is very important to render them easy to grasp.</p>
 <p>There are two ways of visualization in <strong>FreeFEM</strong>:</p>
 <ul class="simple">
-<li><p>One, the default view, which supports the drawing of meshes, isovalues of real FE-functions, and of vector fields, all by the command <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">plot</span></code> (see <a class="reference internal" href="#plot"><span class="std std-ref">Plot section</span></a> below).
+<li><p>One, the default view, which supports the drawing of meshes, isovalues of real FE-functions, and of vector fields, all by the command <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">plot</span></code> (see <a class="reference internal" href="#plot"><span class="std std-ref">Plot section</span></a> below).
 For publishing purpose, <strong>FreeFEM</strong> can store these plots as postscript files.</p></li>
-<li><p>Another method is to use external tools, for example, gnuplot (see <a class="reference internal" href="#gnuplot"><span class="std std-ref">Gnuplot section</span></a>, <a class="reference internal" href="#medit"><span class="std std-ref">medit section</span></a>, <a class="reference internal" href="#paraview"><span class="std std-ref">Paraview section</span></a>, <a class="reference internal" href="#matlab"><span class="std std-ref">Matlab/Octave section</span></a>) using the command <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">system</span></code> to launch them and/or to save the data in text files.</p></li>
+<li><p>Another method is to use external tools, for example, gnuplot (see <a class="reference internal" href="#gnuplot"><span class="std std-ref">Gnuplot section</span></a>, <a class="reference internal" href="#medit"><span class="std std-ref">medit section</span></a>, <a class="reference internal" href="#paraview"><span class="std std-ref">Paraview section</span></a>, <a class="reference internal" href="#matlab"><span class="std std-ref">Matlab/Octave section</span></a>) using the command <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">system</span></code> to launch them and/or to save the data in text files.</p></li>
 </ul>
 <section id="plot">
 <span id="id2"></span><h2>Plot<a class="headerlink" href="#plot" title="Link to this heading"></a></h2>
-<p>With the command <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">plot</span></code>, meshes, isovalues of scalar functions, and vector fields can be displayed.</p>
+<p>With the command <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">plot</span></code>, meshes, isovalues of scalar functions, and vector fields can be displayed.</p>
 <p>The parameters of the plot command can be meshes, real FE functions, arrays of 2 real FE functions, arrays of two double arrays, to plot respectively a mesh, a function, a vector field, or a curve defined by the two double arrays.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The length of an arrow is always bound to be in [5‰, 5%] of the screen size in order to see something.</p>
 </div>
-<p>The <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">plot</span></code> command parameters are listed in the <a class="reference internal" href="../references/functions.html#referenceplot"><span class="std std-ref">Reference part</span></a>.</p>
+<p>The <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">plot</span></code> command parameters are listed in the <a class="reference internal" href="../references/functions.html#referenceplot"><span class="std std-ref">Reference part</span></a>.</p>
 <p>The keyboard shortcuts are:</p>
 <ul class="simple">
 <li><p><strong>enter</strong> tries to show plot</p></li>
@@ -2116,7 +2123,7 @@ For publishing purpose, <strong>FreeFEM</strong> can store these plots as postsc
 <figure class="align-default" id="id5">
 <span id="figvisucut"></span><a class="reference internal image-reference" href="../_images/Visualization_Plot_Gnuplot.png"><img alt="Visualization_Plot_Gnuplot" src="../_images/Visualization_Plot_Gnuplot.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Plots a cut of <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">uh</span></code>. Note that a refinement of the same can be obtained in combination with gnuplot</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 114 </span><span class="caption-text">Plots a cut of <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">uh</span></code>. Note that a refinement of the same can be obtained in combination with gnuplot</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><span class="caption-text">Plot</span></p>
@@ -2201,9 +2208,9 @@ Here is another technique which has the advantage of being online, i.e. one doe
 </section>
 <section id="link-with-medit">
 <span id="medit"></span><h2>Link with medit<a class="headerlink" href="#link-with-medit" title="Link to this heading"></a></h2>
-<p>As said above, <code class="docutils literal highlight highlight-python"><span></span><span class="n">medit</span></code> is a freeware display package by Pascal Frey using OpenGL. Then you may run the following example.</p>
-<p>Now <code class="docutils literal highlight highlight-python"><span></span><span class="n">medit</span></code> software is included in <strong>FreeFEM</strong> under <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffmedit</span></code> name.</p>
-<p>The <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">medit</span></code> command parameters are listed in the <a class="reference internal" href="../references/external-libraries.html#referencemedit"><span class="std std-ref">Reference part</span></a>.</p>
+<p>As said above, <code class="docutils literal notranslate"><span class="pre">medit</span></code> is a freeware display package by Pascal Frey using OpenGL. Then you may run the following example.</p>
+<p>Now <code class="docutils literal notranslate"><span class="pre">medit</span></code> software is included in <strong>FreeFEM</strong> under <code class="docutils literal notranslate"><span class="pre">ffmedit</span></code> name.</p>
+<p>The <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">medit</span></code> command parameters are listed in the <a class="reference internal" href="../references/external-libraries.html#referencemedit"><span class="std std-ref">Reference part</span></a>.</p>
 <figure class="align-default" id="figvisumedit">
 <a class="reference internal image-reference" href="../_images/Visualization_Medit.png"><img alt="../_images/Visualization_Medit.png" src="../_images/Visualization_Medit.png" style="width: 50%;" /></a>
 <figcaption>
@@ -2248,7 +2255,7 @@ Here is another technique which has the advantage of being online, i.e. one doe
 </section>
 <section id="link-with-paraview">
 <span id="paraview"></span><h2>Link with Paraview<a class="headerlink" href="#link-with-paraview" title="Link to this heading"></a></h2>
-<p>One can also export mesh or results in the <code class="docutils literal highlight highlight-python"><span></span><span class="o">.</span><span class="n">vtk</span></code> format in order to post-process data using <a class="reference external" href="https://www.paraview.org/">Paraview</a>.</p>
+<p>One can also export mesh or results in the <code class="docutils literal notranslate"><span class="pre">.vtk</span></code> format in order to post-process data using <a class="reference external" href="https://www.paraview.org/">Paraview</a>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">load</span><span class="w"> </span><span class="s">&quot;iovtk&quot;</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="kt">mesh</span><span class="w"> </span><span class="n">Th</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="kr">x</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="kr">y</span><span class="mi">-1</span><span class="p">]);</span>

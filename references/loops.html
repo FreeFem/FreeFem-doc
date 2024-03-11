@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2101,12 +2108,12 @@
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span><span class="w"> </span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">ai</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">a</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>If <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code>, then <code class="docutils literal highlight highlight-python"><span></span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">ai</span></code> is a reference to <code class="docutils literal highlight highlight-python"><span></span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></code>.</p>
+<p>If <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code>, then <code class="docutils literal notranslate"><span class="pre">i=0:9</span></code> and <code class="docutils literal notranslate"><span class="pre">ai</span></code> is a reference to <code class="docutils literal notranslate"><span class="pre">a[i]</span></code>.</p>
 <p>Array with two indices or matrix:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span><span class="w"> </span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">aij</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">a</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>If <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">)</span></code>, then <code class="docutils literal highlight highlight-python"><span></span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span></code>, <code class="docutils literal highlight highlight-python"><span></span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">aij</span></code> is a reference to <code class="docutils literal highlight highlight-python"><span></span><span class="n">a</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span></code>.</p>
+<p>If <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">)</span></code>, then <code class="docutils literal notranslate"><span class="pre">i=0:9</span></code>, <code class="docutils literal notranslate"><span class="pre">j=1:10</span></code> and <code class="docutils literal notranslate"><span class="pre">aij</span></code> is a reference to <code class="docutils literal notranslate"><span class="pre">a(i,</span> <span class="pre">j)</span></code>.</p>
 <p>See <a class="reference internal" href="../examples/developers.html#exampleimplicitloop"><span class="std std-ref">Implicit loop example</span></a>.</p>
 </section>
 </section>

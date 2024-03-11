@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2280,13 +2287,13 @@ The test function for the velocity is <span class="math notranslate nohighlight"
 <div class="math notranslate nohighlight">
 \[{\p {u}\over\p t} +u\cdot\nabla u-\nu \Delta u+\nabla p=0, \nabla\cdot u=0\]</div>
 <p>with the same boundary conditions and with initial conditions <span class="math notranslate nohighlight">\(u=0\)</span>.</p>
-<p>This is implemented by using the convection operator <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">convect</span></code> for the term <span class="math notranslate nohighlight">\({\p u\over\p t} +u\cdot\nabla u\)</span>, giving a discretization in time</p>
+<p>This is implemented by using the convection operator <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">convect</span></code> for the term <span class="math notranslate nohighlight">\({\p u\over\p t} +u\cdot\nabla u\)</span>, giving a discretization in time</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{cl}
     \frac{1}{\tau } (u^{n+1}-u^n\circ X^n) -\nu\Delta u^{n+1} + \nabla p^{n+1} &amp;=0,\\
     \nabla\cdot u^{n+1} &amp;= 0
 \end{array}\end{split}\]</div>
-<p>The term <span class="math notranslate nohighlight">\(u^n\circ X^n(x)\approx u^n(x-u^n(x)\tau )\)</span> will be computed by the operator <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">convect</span></code>, so we obtain:</p>
+<p>The term <span class="math notranslate nohighlight">\(u^n\circ X^n(x)\approx u^n(x-u^n(x)\tau )\)</span> will be computed by the operator <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">convect</span></code>, so we obtain:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos"> 2</span><span class="kt">real</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">dt</span><span class="p">;</span>
 <span class="linenos"> 3</span><span class="kt">problem</span><span class="w"> </span><span class="nf">NS</span><span class="w"> </span><span class="p">(</span><span class="n">u1</span><span class="p">,</span><span class="w"> </span><span class="n">u2</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="kp">solver</span><span class="o">=</span><span class="kr">Crout</span><span class="p">,</span><span class="w"> </span><span class="kp">init</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
@@ -2323,7 +2330,7 @@ The test function for the velocity is <span class="math notranslate nohighlight"
 <span class="linenos">34</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>Notice that the stiffness matrices are reused (keyword <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">init</span><span class="o">=</span><span class="n">i</span></code>)</p>
+<p>Notice that the stiffness matrices are reused (keyword <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">init</span><span class="o">=</span><span class="n">i</span></code>)</p>
 <p>The complete script is available in <a class="reference internal" href="../examples/misc.html#examplecavity"><span class="std std-ref">cavity example</span></a>.</p>
 </div>
 <section id="uzawa-algorithm-and-conjugate-gradients">

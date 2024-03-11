@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2097,7 +2104,7 @@ Mathematically this boundary condition is of Fourier (or Robin, or mixed) type.<
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The way we store the temperature at point (3, 0.5) for all times in file <code class="docutils literal highlight highlight-python"><span></span><span class="n">thermic</span><span class="o">.</span><span class="n">dat</span></code>.
+<p>The way we store the temperature at point (3, 0.5) for all times in file <code class="docutils literal notranslate"><span class="pre">thermic.dat</span></code>.
 Should a one dimensional plot be required (you can use gnuplot tools), the same procedure can be used. For instance to print <span class="math notranslate nohighlight">\(x\mapsto \frac{\partial u}{\partial y}(x,0.9)\)</span> one would do:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="linenos">2</span><span class="w">   </span><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">)(</span><span class="mf">6.0</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="mf">20.0</span><span class="p">,</span><span class="mf">0.9</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="kr">endl</span><span class="p">;</span>
@@ -2128,7 +2135,7 @@ For simplicity we take <span class="math notranslate nohighlight">\(\kappa=1\)</
 \[\Delta u = {1\over r}\partial _r(r\partial _r u) + {1\over r^2}\partial ^2_{\theta\theta} u
  + \partial ^2_{z z}.\]</div>
 <p>Symmetry implies that we loose the dependence with respect to <span class="math notranslate nohighlight">\(\theta\)</span>; so the domain <span class="math notranslate nohighlight">\(\Omega\)</span> is again a rectangle <span class="math notranslate nohighlight">\(]0,R[\times]0,|[\)</span> .
-We take the convention of numbering of the edges as in <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">square</span><span class="p">()</span></code> (1 for the bottom horizontal …); the problem is now:</p>
+We take the convention of numbering of the edges as in <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">square</span><span class="p">()</span></code> (1 for the bottom horizontal …); the problem is now:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
     r\partial_t u-\partial _r(r\partial _r u) - \partial _z(r\partial _z u) &amp;= 0 &amp;\hbox{ in } \Omega\\
@@ -2138,7 +2145,7 @@ We take the convention of numbering of the edges as in <code class="code freefem
     \alpha(u-u_e) + {\partial u\over \partial\boldsymbol{n}} |_{\Gamma_1\cup\Gamma_3} &amp;= 0&amp;
 \end{array}\end{split}\]</div>
 <p>Note that the PDE has been multiplied by <span class="math notranslate nohighlight">\(r\)</span>.</p>
-<p>After discretization in time with an implicit scheme, with time steps <code class="docutils literal highlight highlight-python"><span></span><span class="n">dt</span></code>, in the <strong>FreeFEM</strong> syntax <span class="math notranslate nohighlight">\(r\)</span> becomes <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(z\)</span> becomes <span class="math notranslate nohighlight">\(y\)</span> and the problem is:</p>
+<p>After discretization in time with an implicit scheme, with time steps <code class="docutils literal notranslate"><span class="pre">dt</span></code>, in the <strong>FreeFEM</strong> syntax <span class="math notranslate nohighlight">\(r\)</span> becomes <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(z\)</span> becomes <span class="math notranslate nohighlight">\(y\)</span> and the problem is:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kt">problem</span><span class="w"> </span><span class="n">thermaxi</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
 <span class="linenos"> 2</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">)(</span>
 <span class="linenos"> 3</span><span class="w">          </span><span class="p">(</span><span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="o">/</span><span class="n">dt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">dx</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="nf">dx</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">*</span><span class="nf">dy</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="o">*</span><span class="kr">x</span>

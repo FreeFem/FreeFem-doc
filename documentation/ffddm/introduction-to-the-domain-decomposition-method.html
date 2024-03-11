@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2066,11 +2073,11 @@ The matrices <span class="math notranslate nohighlight">\(R_i\)</span> and <span
 =\sum_{i=1}^N\left({\mathbf U}_i, D_i {\mathbf V}_i\right)\,.\]</div>
 <p>Local scalar products are performed concurrently.
 Thus, the implementation is parallel except for the sum which corresponds to a MPI_Reduce call across the <span class="math notranslate nohighlight">\(N\)</span> MPI processes.
-Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFEM syntax is <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">dscalprod</span><span class="p">(</span><span class="n">Di</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span></code> or equivalently <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">myFEprefix</span><span class="o">#</span><span class="n">scalprod</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span></code> where <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">myFEprefix</span></code> is a user defined prefix for the finite element space decomposition, see the <a class="reference internal" href="documentation.html#ffddmdocumentationlocalfiniteelementspaces"><span class="std std-ref">ffddm documentation</span></a>.</p>
+Note also that the implementation relies on the knowledge of a partition of unity so that the FreeFEM syntax is <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">dscalprod</span><span class="p">(</span><span class="n">Di</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span></code> or equivalently <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">myFEprefix</span><span class="o">#</span><span class="n">scalprod</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)</span></code> where <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">myFEprefix</span></code> is a user defined prefix for the finite element space decomposition, see the <a class="reference internal" href="documentation.html#ffddmdocumentationlocalfiniteelementspaces"><span class="std std-ref">ffddm documentation</span></a>.</p>
 </section>
 <section id="update">
 <span id="ffddmdocumentationupdate"></span><h3>Update<a class="headerlink" href="#update" title="Link to this heading"></a></h3>
-<p>From a collection of local vectors <span class="math notranslate nohighlight">\(({\mathbf U}_i)_{1\le i \le N}\)</span>, it is possible ensure consistency of the duplicated data by modifying the distributed vector <span class="math notranslate nohighlight">\(({\mathbf U}_i)_{1\le i \le N}\)</span> by calling the function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">myFEprefix</span><span class="o">#</span><span class="n">update</span><span class="p">(</span><span class="n">Ui</span><span class="p">,</span><span class="w"> </span><span class="kr">true</span><span class="p">)</span></code> where <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">myFEprefix</span></code> is the user defined prefix that refers to the finite element space decomposition.
+<p>From a collection of local vectors <span class="math notranslate nohighlight">\(({\mathbf U}_i)_{1\le i \le N}\)</span>, it is possible ensure consistency of the duplicated data by modifying the distributed vector <span class="math notranslate nohighlight">\(({\mathbf U}_i)_{1\le i \le N}\)</span> by calling the function <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">myFEprefix</span><span class="o">#</span><span class="n">update</span><span class="p">(</span><span class="n">Ui</span><span class="p">,</span><span class="w"> </span><span class="kr">true</span><span class="p">)</span></code> where <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">myFEprefix</span></code> is the user defined prefix that refers to the finite element space decomposition.
 This function performs the following operation for all <span class="math notranslate nohighlight">\(1\le i \le N\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[{\mathbf U}_i \leftarrow R_i\, \sum_{j=1}^N R_j^T D_j {\mathbf U}_j\]</div>
@@ -2093,7 +2100,7 @@ Therefore, the matrix vector product is computed in three steps:</p>
 <h2>Distributed Matrix and Vector resulting from a variational formulation<a class="headerlink" href="#distributed-matrix-and-vector-resulting-from-a-variational-formulation" title="Link to this heading"></a></h2>
 <p>The discretization of a variational formulation on the global mesh <span class="math notranslate nohighlight">\(Th\)</span> yields a global matrix <span class="math notranslate nohighlight">\(A\)</span> and a global right hand side <span class="math notranslate nohighlight">\(\mathbf{RHS}\)</span>.
 Thanks to the sparsity of finite element matrices for partial differential equations and thanks to the overlap between subdomains, the knowledge of the local matrix <span class="math notranslate nohighlight">\(R_i A R_i^T\)</span> on each subdomain <span class="math notranslate nohighlight">\(1\le i\le N\)</span> is sufficient to perform the matrix-vector product <span class="math notranslate nohighlight">\(A\times \mathbf{U}\)</span> for any global vector <span class="math notranslate nohighlight">\(\mathbf{U}\)</span>.
-Once the problem has been set up by a call to <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">myprefix</span><span class="p">,</span><span class="w"> </span><span class="n">myFEprefix</span><span class="p">,</span><span class="w"> </span><span class="n">myVarf</span><span class="p">)</span></code>, the matrix-vector product is performed by calling the function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">myprefix</span><span class="o">#</span><span class="kp">A</span><span class="p">(</span><span class="n">Ui</span><span class="p">)</span></code> where <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">myprefix</span></code> is a user defined prefix that refers to the problem at hand which itself implicitly refers to the triplet (domain decomposition, finite element, variational formulation).
+Once the problem has been set up by a call to <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">ffddmsetupOperator</span><span class="p">(</span><span class="n">myprefix</span><span class="p">,</span><span class="w"> </span><span class="n">myFEprefix</span><span class="p">,</span><span class="w"> </span><span class="n">myVarf</span><span class="p">)</span></code>, the matrix-vector product is performed by calling the function <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">myprefix</span><span class="o">#</span><span class="kp">A</span><span class="p">(</span><span class="n">Ui</span><span class="p">)</span></code> where <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">myprefix</span></code> is a user defined prefix that refers to the problem at hand which itself implicitly refers to the triplet (domain decomposition, finite element, variational formulation).
 See more on problem definition in this <a class="reference internal" href="documentation.html#ffddmdocumentationdefineproblemtosolve"><span class="std std-ref">documentation</span></a> and more on distributed linear algebra in chapter 8 of <a class="reference external" href="http://bookstore.siam.org/ot144/">“An Introduction to Domain Decomposition Methods: algorithms, theory and parallel implementation” SIAM 2015</a>.</p>
 </section>
 <section id="distributed-linear-solvers">
@@ -2101,7 +2108,7 @@ See more on problem definition in this <a class="reference internal" href="docum
 <p>In many cases, we are interested in the solution of the problem in terms of the vector of d.o.f.’s <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> that satisfies:</p>
 <div class="math notranslate nohighlight">
 \[A\, \mathbf{X} = \mathbf{RHS}\,.\]</div>
-<p><code class="docutils literal highlight highlight-python"><span></span><span class="n">ffddm</span></code> offers two parallel solvers: <a class="reference internal" href="#ffddmintroductiondisitributeddirectsolvers"><span class="std std-ref">direct factorization</span></a> and iterative preconditioned solvers via <a class="reference internal" href="#ffddmintroductionschwarzmethods"><span class="std std-ref">Schwarz</span></a> domain decomposition methods.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ffddm</span></code> offers two parallel solvers: <a class="reference internal" href="#ffddmintroductiondisitributeddirectsolvers"><span class="std std-ref">direct factorization</span></a> and iterative preconditioned solvers via <a class="reference internal" href="#ffddmintroductionschwarzmethods"><span class="std std-ref">Schwarz</span></a> domain decomposition methods.</p>
 <section id="distributed-direct-solvers">
 <span id="ffddmintroductiondisitributeddirectsolvers"></span><h3>Distributed Direct Solvers<a class="headerlink" href="#distributed-direct-solvers" title="Link to this heading"></a></h3>
 <p>In order to benefit from the sparsity of the matrix arising from a finite element discretization of a partial differential equation, a variant of Gauss elimination, the frontal method, that automatically avoids a large number of operations involving zero terms was developed.
@@ -2109,7 +2116,7 @@ A frontal solver builds a <span class="math notranslate nohighlight">\(LU\)</spa
 This subset is called the <em>front</em> and it is essentially the transition region between the part of the system already finished and the part not touched yet.
 These methods are basically sequential since the unknowns are processed the one after another or one front after another.
 In order to benefit from multicore processors, a <a class="reference external" href="https://en.wikipedia.org/wiki/Multifrontal_method">multifrontal solver</a> is an improvement of the frontal solver that uses several independent fronts at the same time.
-The fronts can be worked on by different processors, which enables parallel computing. <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffddm</span></code> provides an interface to the parallel sparse direct solver <a class="reference external" href="http://mumps-solver.org/">MUMPS</a>. These methods have the advantage to be very robust and to have a predictable cost. The main drawback is the memory requirement which can be prohibitive especially for three-dimensional problems.</p>
+The fronts can be worked on by different processors, which enables parallel computing. <code class="docutils literal notranslate"><span class="pre">ffddm</span></code> provides an interface to the parallel sparse direct solver <a class="reference external" href="http://mumps-solver.org/">MUMPS</a>. These methods have the advantage to be very robust and to have a predictable cost. The main drawback is the memory requirement which can be prohibitive especially for three-dimensional problems.</p>
 </section>
 <section id="schwarz-methods">
 <span id="ffddmintroductionschwarzmethods"></span><h3>Schwarz methods<a class="headerlink" href="#schwarz-methods" title="Link to this heading"></a></h3>

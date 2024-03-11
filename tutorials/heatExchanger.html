@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2097,14 +2104,14 @@
 </div>
 <p>Note the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">C0</span></code> is oriented counterclockwise by <span class="math notranslate nohighlight">\(t\)</span>, while <code class="docutils literal highlight highlight-python"><span></span><span class="n">C1</span></code> is oriented clockwise and <code class="docutils literal highlight highlight-python"><span></span><span class="n">C2</span></code> is oriented counterclockwise.
-This is why <code class="docutils literal highlight highlight-python"><span></span><span class="n">C1</span></code> is viewed as a hole by <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">buildmesh</span></code>.</p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">C1</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">C2</span></code> are built by joining pieces of straight lines.
+<li><p><code class="docutils literal notranslate"><span class="pre">C0</span></code> is oriented counterclockwise by <span class="math notranslate nohighlight">\(t\)</span>, while <code class="docutils literal notranslate"><span class="pre">C1</span></code> is oriented clockwise and <code class="docutils literal notranslate"><span class="pre">C2</span></code> is oriented counterclockwise.
+This is why <code class="docutils literal notranslate"><span class="pre">C1</span></code> is viewed as a hole by <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">buildmesh</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C1</span></code> and <code class="docutils literal notranslate"><span class="pre">C2</span></code> are built by joining pieces of straight lines.
 To group them in the same logical unit to input the boundary conditions in a readable way we assigned a label on the boundaries.
-As said earlier, borders have an internal number corresponding to their order in the program (check it by adding a <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">C22</span><span class="p">;</span></code> above).
+As said earlier, borders have an internal number corresponding to their order in the program (check it by adding a <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">C22</span><span class="p">;</span></code> above).
 This is essential to understand how a mesh can be output to a file and re-read (see below).</p></li>
 <li><p>As usual the mesh density is controlled by the number of vertices assigned to each boundary.
-It is not possible to change the (uniform) distribution of vertices but a piece of boundary can always be cut in two or more parts, for instance <code class="docutils literal highlight highlight-python"><span></span><span class="n">C12</span></code> could be replaced by <code class="docutils literal highlight highlight-python"><span></span><span class="n">C121</span><span class="o">+</span><span class="n">C122</span></code>:</p></li>
+It is not possible to change the (uniform) distribution of vertices but a piece of boundary can always be cut in two or more parts, for instance <code class="docutils literal notranslate"><span class="pre">C12</span></code> could be replaced by <code class="docutils literal notranslate"><span class="pre">C121+C122</span></code>:</p></li>
 </ul>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">// border C12(t=0.,1.){x=2.; y=3.-6.*t; label=C1;}</span>
 <span class="linenos">2</span><span class="kt">border</span><span class="w"> </span><span class="nf">C121</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.7</span><span class="p">){</span><span class="kr">x</span><span class="o">=</span><span class="mf">2.</span><span class="p">;</span><span class="w"> </span><span class="kr">y</span><span class="o">=</span><span class="mf">3.-6.</span><span class="o">*</span><span class="kp">t</span><span class="p">;</span><span class="w"> </span><span class="kr">label</span><span class="o">=</span><span class="n">C1</span><span class="p">;}</span>
@@ -2161,7 +2168,7 @@ Then this is how the condenser should be computed:</p>
 <span class="linenos">20</span><span class="nf">plot</span><span class="p">(</span><span class="n">us</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Note that the names of the boundaries are lost but either their internal number (in the case of <code class="docutils literal highlight highlight-python"><span></span><span class="n">C0</span></code>) or their label number (for <code class="docutils literal highlight highlight-python"><span></span><span class="n">C1</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">C2</span></code>) are kept.</p>
+<p>Note that the names of the boundaries are lost but either their internal number (in the case of <code class="docutils literal notranslate"><span class="pre">C0</span></code>) or their label number (for <code class="docutils literal notranslate"><span class="pre">C1</span></code> and <code class="docutils literal notranslate"><span class="pre">C2</span></code>) are kept.</p>
 </section>
 
 

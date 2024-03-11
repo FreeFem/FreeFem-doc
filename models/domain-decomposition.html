@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2040,7 +2047,7 @@
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz1.png"><img alt="figDomain1" src="../_images/DomainDecomposition_Schwarz1.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 167 </span><span class="caption-text">The 2 overlapping mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">TH</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">th</span></code></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 167 </span><span class="caption-text">The 2 overlapping mesh <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">TH</span></code> and <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">th</span></code></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -2131,7 +2138,7 @@
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/DomainDecomposition_Schwarz4.png"><img alt="figDomain4" src="../_images/DomainDecomposition_Schwarz4.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 170 </span><span class="caption-text">The two none overlapping mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">TH</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">th</span></code></span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 170 </span><span class="caption-text">The two none overlapping mesh <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">TH</span></code> and <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">th</span></code></span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Let introduce <span class="math notranslate nohighlight">\(\Gamma_i\)</span> is common the boundary of <span class="math notranslate nohighlight">\(\Omega_1\)</span> and <span class="math notranslate nohighlight">\(\Omega_2\)</span> and <span class="math notranslate nohighlight">\(\Gamma_e^i= \partial \Omega_i \setminus \Gamma_i\)</span>.</p>
@@ -2327,7 +2334,7 @@ The problem on the border is solved by a conjugate gradient method.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The difference between the two notations <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">v1</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">v1</span><span class="p">[]</span></code> is: <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">v1</span></code> is the finite element function and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">v1</span><span class="p">[]</span></code> is the vector in the canonical basis of the finite element function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">v1</span></code>.</p>
+<p>The difference between the two notations <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">v1</span></code> and <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">v1</span><span class="p">[]</span></code> is: <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">v1</span></code> is the finite element function and <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">v1</span><span class="p">[]</span></code> is the vector in the canonical basis of the finite element function <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">v1</span></code>.</p>
 </div>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">// Solve</span>
 <span class="linenos">2</span><span class="kt">real</span><span class="w"> </span><span class="n">cpu</span><span class="o">=</span><span class="nf">clock</span><span class="p">();</span>

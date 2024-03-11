@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2046,7 +2053,7 @@ The metric can be computed automatically from the Hessian of any <strong>FreeFEM
 <li><p>A large variety of triangular finite elements: linear, quadratic Lagrangian elements and more, discontinuous P1 and Raviart-Thomas elements, elements of a non-scalar type, the mini-element,… (but no quadrangles).</p></li>
 <li><p>Tools to define discontinuous Galerkin finite element formulations P0, P1dc, P2dc and keywords: jump, mean, intalledges.</p></li>
 <li><p>A large variety of linear direct and iterative solvers (LU, Cholesky, Crout, CG, GMRES, UMFPACK, MUMPS, SuperLU, …) and eigenvalue and eigenvector solvers (ARPARK) .</p></li>
-<li><p>Near optimal execution speed (compared with compiled <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span><span class="o">++</span></code> implementations programmed directly).</p></li>
+<li><p>Near optimal execution speed (compared with compiled <code class="docutils literal notranslate"><span class="pre">C++</span></code> implementations programmed directly).</p></li>
 <li><p>Online graphics, generation of ,.txt,.eps,.gnu, mesh files for further manipulations of input and output data.</p></li>
 <li><p>Many examples and tutorials: elliptic, parabolic and hyperbolic problems, Navier-Stokes flows, elasticity, fluid structure interactions, Schwarz’s domain decomposition method, eigenvalue problem, residual error indicator, …</p></li>
 <li><p>A parallel version using MPI</p></li>

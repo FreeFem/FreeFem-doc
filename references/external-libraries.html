@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2210,13 +2217,13 @@
 </div>
 <p>Parameters:</p>
 <ul class="simple">
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Th</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">mesh</span></code> or <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">mesh3</span></code>)</p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Label</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">int</span></code>) Label of the border to extract</p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Points</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">]</span></code>) Extracted points Must be allocated as <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">Points</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Th</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh</span></code> or <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh3</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Label</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span></code>) Label of the border to extract</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Points</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">]</span></code>) Extracted points Must be allocated as <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">Points</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span></code></p></li>
 </ul>
 <p>Output:</p>
 <ul class="simple">
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Res</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">real</span></code>) Length of the extracted border</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Res</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">real</span></code>) Length of the extracted border</p></li>
 </ul>
 </section>
 <section id="id17">
@@ -2321,9 +2328,9 @@
 </div>
 <p>Parameters:</p>
 <ul class="simple">
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Th</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">mesh</span></code>)</p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">d</span></code></p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">dist</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Th</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dist</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>)</p></li>
 </ul>
 <p>Output:</p>
 <ul class="simple">
@@ -5250,7 +5257,7 @@
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">load</span><span class="w"> </span><span class="s">&quot;gmsh&quot;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal highlight highlight-python"><span></span><span class="n">gmsh</span></code> software is available <a class="reference external" href="http://gmsh.info/">here</a></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">gmsh</span></code> software is available <a class="reference external" href="http://gmsh.info/">here</a></p>
 <section id="gmshload">
 <h3>gmshload<a class="headerlink" href="#gmshload" title="Link to this heading"></a></h3>
 <p>Load a 2D mesh build with Gmsh.</p>
@@ -5259,13 +5266,13 @@
 </div>
 <p>Parameters:</p>
 <ul class="simple">
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">MeshFile</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">string</span></code>) Mesh file name</p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">reftri</span><span class="o">=</span></code> (.. todo:: todo)</p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">renum</span><span class="o">=</span></code> (.. todo:: todo)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MeshFile</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">string</span></code>) Mesh file name</p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">reftri</span><span class="o">=</span></code> (.. todo:: todo)</p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="n">renum</span><span class="o">=</span></code> (.. todo:: todo)</p></li>
 </ul>
 <p>Output:</p>
 <ul class="simple">
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Th</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">mesh</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Th</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh</span></code>)</p></li>
 </ul>
 </section>
 <section id="gmshload3">
@@ -5276,13 +5283,13 @@
 </div>
 <p>Parameters:</p>
 <ul class="simple">
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">MeshFile</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">string</span></code>) Mesh file name</p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">reftet</span><span class="o">=</span></code> (.. todo:: todo)</p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">renum</span><span class="o">=</span></code> (.. todo:: todo)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MeshFile</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">string</span></code>) Mesh file name</p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">reftet</span><span class="o">=</span></code> (.. todo:: todo)</p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="n">renum</span><span class="o">=</span></code> (.. todo:: todo)</p></li>
 </ul>
 <p>Output:</p>
 <ul class="simple">
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Th</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">mesh3</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Th</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh3</span></code>)</p></li>
 </ul>
 </section>
 <section id="savegmsh">
@@ -5410,20 +5417,20 @@
 </div>
 <p>Parameters:</p>
 <ul>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">FileName</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">string</span></code>) File name: <code class="docutils literal highlight highlight-python"><span></span><span class="o">*.</span><span class="n">vtk</span></code> or
-<code class="docutils literal highlight highlight-python"><span></span><span class="o">*.</span><span class="n">vtu</span></code></p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Th</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">mesh</span></code> or <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">mesh3</span></code>)</p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="p">[</span><span class="n">Ux</span><span class="p">,</span> <span class="n">Uy</span><span class="p">,</span> <span class="n">Uz</span><span class="p">],</span> <span class="n">p</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">fespace</span></code> function of vector of <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">fespace</span></code> functions) Solutions to save, as much as wanted</p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">dataname</span><span class="o">=</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">string</span></code>) Name of solutions, seprated by a space</p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">withsurfacemesh</span><span class="o">=</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">bool</span></code>)
+<li><p><code class="docutils literal notranslate"><span class="pre">FileName</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">string</span></code>) File name: <code class="docutils literal notranslate"><span class="pre">*.vtk</span></code> or
+<code class="docutils literal notranslate"><span class="pre">*.vtu</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Th</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh</span></code> or <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh3</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[Ux,</span> <span class="pre">Uy,</span> <span class="pre">Uz],</span> <span class="pre">p</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">fespace</span></code> function of vector of <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">fespace</span></code> functions) Solutions to save, as much as wanted</p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">dataname</span><span class="o">=</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">string</span></code>) Name of solutions, seprated by a space</p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">withsurfacemesh</span><span class="o">=</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">bool</span></code>)
 .. todo:: todo</p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">order</span><span class="o">=</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>) Order of solutions.</p>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">order</span><span class="o">=</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>) Order of solutions.</p>
 <p>Available: 0 or 1</p>
 </li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">floatmesh</span><span class="o">=</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">bool</span></code>) .. todo:: todo</p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">floatsol</span><span class="o">=</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">bool</span></code>) .. todo:: todo</p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">bin</span><span class="o">=</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">bool</span></code>) If true, save file in binary format</p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">swap</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">bool</span></code>) .. todo:: todo</p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">floatmesh</span><span class="o">=</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">bool</span></code>) .. todo:: todo</p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">floatsol</span><span class="o">=</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">bool</span></code>) .. todo:: todo</p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">bin</span><span class="o">=</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">bool</span></code>) If true, save file in binary format</p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">swap</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">bool</span></code>) .. todo:: todo</p></li>
 </ul>
 <p>Output:</p>
 <ul class="simple">
@@ -5761,25 +5768,25 @@
 </div>
 <p>Parameters:</p>
 <ul>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nnX</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">int</span></code>) Number of discretization point along <span class="math notranslate nohighlight">\(x\)</span></p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nnY</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">int</span></code>) Number of discretization point along <span class="math notranslate nohighlight">\(y\)</span></p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">nnZ</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">int</span></code>) Number of discretization point along <span class="math notranslate nohighlight">\(z\)</span></p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">X</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">func</span></code>) <em>[Optional]</em> Affine function of <span class="math notranslate nohighlight">\(x\)</span> to define the length Default: <code class="docutils literal highlight highlight-python"><span></span><span class="n">x</span></code></p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">func</span></code>) <em>[Optional]</em> Affine function of <span class="math notranslate nohighlight">\(y\)</span> to define the width Default: <code class="docutils literal highlight highlight-python"><span></span><span class="n">y</span></code></p></li>
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Z</span><span class="p">(</span><span class="n">z</span><span class="p">)</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">func</span></code>) <em>[Optional]</em> Affine function of <span class="math notranslate nohighlight">\(z\)</span> to define the height Default: <code class="docutils literal highlight highlight-python"><span></span><span class="n">z</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">label</span><span class="o">=</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>) <em>[Optional]</em></p>
-<p>List of surface labels Default: <code class="docutils literal highlight highlight-python"><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">nnX</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span></code>) Number of discretization point along <span class="math notranslate nohighlight">\(x\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nnY</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span></code>) Number of discretization point along <span class="math notranslate nohighlight">\(y\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nnZ</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span></code>) Number of discretization point along <span class="math notranslate nohighlight">\(z\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X(x)</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">func</span></code>) <em>[Optional]</em> Affine function of <span class="math notranslate nohighlight">\(x\)</span> to define the length Default: <code class="docutils literal notranslate"><span class="pre">x</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Y(y)</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">func</span></code>) <em>[Optional]</em> Affine function of <span class="math notranslate nohighlight">\(y\)</span> to define the width Default: <code class="docutils literal notranslate"><span class="pre">y</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Z(z)</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">func</span></code>) <em>[Optional]</em> Affine function of <span class="math notranslate nohighlight">\(z\)</span> to define the height Default: <code class="docutils literal notranslate"><span class="pre">z</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">label</span><span class="o">=</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>) <em>[Optional]</em></p>
+<p>List of surface labels Default: <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6]</span></code></p>
 </li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">flags</span><span class="o">=</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">int</span></code>) <em>[Optional]</em></p>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">flags</span><span class="o">=</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span></code>) <em>[Optional]</em></p>
 <p>Refer to <a class="reference internal" href="functions.html#functionsquare"><span class="std std-ref">square</span></a></p>
 </li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">region</span><span class="o">=</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">int</span></code>) <em>[Optional]</em></p>
-<p>Region number of the cube volume Default: <code class="docutils literal highlight highlight-python"><span></span><span class="mi">0</span></code></p>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">region</span><span class="o">=</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span></code>) <em>[Optional]</em></p>
+<p>Region number of the cube volume Default: <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
 </li>
 </ul>
 <p>Output:</p>
 <ul class="simple">
-<li><p><code class="docutils literal highlight highlight-python"><span></span><span class="n">Th</span></code> (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">mesh3</span></code>) Cube mesh</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Th</span></code> (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh3</span></code>) Cube mesh</p></li>
 </ul>
 </section>
 <section id="trunc">

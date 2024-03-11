@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2024,7 +2031,7 @@
 <h2>Standard types<a class="headerlink" href="#standard-types" title="Link to this heading"></a></h2>
 <section id="int">
 <h3>int<a class="headerlink" href="#int" title="Link to this heading"></a></h3>
-<p>Integer value (equivalent to <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="kt">long</span></code> in <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span><span class="o">++</span></code>).</p>
+<p>Integer value (equivalent to <code class="code highlight cpp docutils literal highlight-cpp"><span class="kt">long</span></code> in <code class="docutils literal notranslate"><span class="pre">C++</span></code>).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -2038,23 +2045,23 @@
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The result of a comparison is a boolean</p>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span></code></p>
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">bool</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span></code></p>
 </div>
 </section>
 <section id="real">
 <h3>real<a class="headerlink" href="#real" title="Link to this heading"></a></h3>
-<p>Real value (equivalent to <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="kt">double</span></code> in <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span><span class="o">++</span></code>).</p>
+<p>Real value (equivalent to <code class="code highlight cpp docutils literal highlight-cpp"><span class="kt">double</span></code> in <code class="docutils literal notranslate"><span class="pre">C++</span></code>).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>
 <section id="complex">
 <h3>complex<a class="headerlink" href="#complex" title="Link to this heading"></a></h3>
-<p>Complex value (equivalent to two <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="kt">double</span></code> or <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="n">complex</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span></code> in <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span><span class="o">++</span></code>).</p>
+<p>Complex value (equivalent to two <code class="code highlight cpp docutils literal highlight-cpp"><span class="kt">double</span></code> or <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">complex</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span></code> in <code class="docutils literal notranslate"><span class="pre">C++</span></code>).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">complex</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="n">i</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>The imaginary number <span class="math notranslate nohighlight">\(i\)</span> is defined as <code class="docutils literal highlight highlight-python"><span></span><span class="mi">1</span><span class="n">i</span></code></p>
+<p>The imaginary number <span class="math notranslate nohighlight">\(i\)</span> is defined as <code class="docutils literal notranslate"><span class="pre">1i</span></code></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Example</p>
@@ -2086,7 +2093,7 @@ a/b<span class="w"> </span><span class="o">=</span><span class="w"> </span><span
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">string</span></code> value is enclosed within double quotes.</p>
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">string</span></code> value is enclosed within double quotes.</p>
 </div>
 <p>Other types can be concatenate to a string, like:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -2133,7 +2140,7 @@ a/b<span class="w"> </span><span class="o">=</span><span class="w"> </span><span
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>From vector</p>
-<p>A border can be defined from two vectors using <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">P</span><span class="p">.</span><span class="kr">x</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">P</span><span class="p">.</span><span class="kr">y</span></code>:</p>
+<p>A border can be defined from two vectors using <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">P</span><span class="p">.</span><span class="kr">x</span></code> and <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">P</span><span class="p">.</span><span class="kr">y</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">border</span><span class="w"> </span><span class="nf">b</span><span class="p">(</span><span class="kp">t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">vectorX</span><span class="p">.</span><span class="kr">n</span><span class="mi">-1</span><span class="p">){</span><span class="kr">P</span><span class="p">.</span><span class="kr">x</span><span class="o">=</span><span class="n">vectorX</span><span class="p">[</span><span class="kp">t</span><span class="p">];</span><span class="w"> </span><span class="kr">P</span><span class="p">.</span><span class="kr">y</span><span class="o">=</span><span class="n">vectorY</span><span class="p">[</span><span class="kp">t</span><span class="p">];}</span>
 </pre></div>
 </div>
@@ -2163,78 +2170,78 @@ a/b<span class="w"> </span><span class="o">=</span><span class="w"> </span><span
 <span class="linenos">2</span><span class="kt">fespace</span><span class="w"> </span><span class="nf">UPh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nc">P2</span><span class="p">,</span><span class="w"> </span><span class="nc">P2</span><span class="p">,</span><span class="w"> </span><span class="nc">P1</span><span class="p">]);</span>
 </pre></div>
 </div>
-<p>A finite element space is based on a mesh (<code class="docutils literal highlight highlight-python"><span></span><span class="n">Th</span></code>) with an element definition, scalar (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1</span></code>) or vector (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="p">[</span><span class="nc">P2</span><span class="p">,</span><span class="w"> </span><span class="nc">P2</span><span class="p">,</span><span class="w"> </span><span class="nc">P1</span><span class="p">]</span></code>).</p>
+<p>A finite element space is based on a mesh (<code class="docutils literal notranslate"><span class="pre">Th</span></code>) with an element definition, scalar (<code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1</span></code>) or vector (<code class="code highlight freefem docutils literal highlight-freefem"><span class="p">[</span><span class="nc">P2</span><span class="p">,</span><span class="w"> </span><span class="nc">P2</span><span class="p">,</span><span class="w"> </span><span class="nc">P1</span><span class="p">]</span></code>).</p>
 <p><strong>Available finite element space:</strong></p>
 <p>Generic:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">P03d</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P0Edge</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">P13d</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1dc</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1b</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">P1b3d</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1bl</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">P1bl3d</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1nc</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">P23d</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P2b</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P2dc</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P2h</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">RT0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">RT03d</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">RT0Ortho</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">Edge03d</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">P03d</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P0Edge</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">P13d</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1dc</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1b</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">P1b3d</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1bl</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">P1bl3d</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1nc</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">P23d</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P2b</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P2dc</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P2h</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">RT0</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nc">RT03d</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">RT0Ortho</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">Edge03d</span></code></p></li>
 </ul>
 <p>Using <em>Element_P3</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P3</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P3</span></code></p></li>
 </ul>
 <p>Using <em>Element_P3dc</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P3dc</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P3dc</span></code></p></li>
 </ul>
 <p>Using <em>Element_P4</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P4</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P4</span></code></p></li>
 </ul>
 <p>Using <em>Element_P4dc</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P4dc</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P4dc</span></code></p></li>
 </ul>
 <p>Using <em>Element_PkEdge</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1Edge</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P2Edge</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P3Edge</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P4Edge</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P5Edge</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1Edge</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P2Edge</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P3Edge</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P4Edge</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P5Edge</span></code></p></li>
 </ul>
 <p>Using <em>Morlay</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P2Morley</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P2Morley</span></code></p></li>
 </ul>
 <p>Using <em>HCT</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">HCT</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">HCT</span></code></p></li>
 </ul>
 <p>Using <em>BernardiRaugel</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P2BR</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P2BR</span></code></p></li>
 </ul>
 <p>Using <em>Element_Mixte</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">RT1</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">RT1Ortho</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">RT2</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">RT2Ortho</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">BDM1</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">BDM1Ortho</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">RT1</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">RT1Ortho</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">RT2</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">RT2Ortho</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">BDM1</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">BDM1Ortho</span></code></p></li>
 </ul>
 <p>Using <em>Element_Mixte3d</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">Edge13d</span></code></p></li>
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">Edge23d</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">Edge13d</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">Edge23d</span></code></p></li>
 </ul>
 <p>Using <em>Element_QF</em>:</p>
 <ul class="simple">
-<li><p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">FEQF</span></code></p></li>
+<li><p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">FEQF</span></code></p></li>
 </ul>
 <p>A finite element function is defined as follow:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">fespace</span><span class="w"> </span><span class="nf">Uh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="w"> </span><span class="nc">P1</span><span class="p">);</span>
@@ -2255,11 +2262,11 @@ a/b<span class="w"> </span><span class="o">=</span><span class="w"> </span><span
 <span class="linenos">2</span><span class="kt">macro</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="nf">dx</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="w"> </span><span class="nf">dy</span><span class="p">(</span><span class="n">u</span><span class="p">)]</span><span class="w"> </span><span class="c1">//</span>
 </pre></div>
 </div>
-<p>Macro ends with <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="c1">//</span></code>.</p>
+<p>Macro ends with <code class="code highlight freefem docutils literal highlight-freefem"><span class="c1">//</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Macro concatenation</p>
-<p>You can use the C concatenation operator <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="cp">##</span></code> inside a macro using <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="o">#</span></code>.</p>
+<p>You can use the C concatenation operator <code class="code highlight cpp docutils literal highlight-cpp"><span class="cp">##</span></code> inside a macro using <code class="code highlight freefem docutils literal highlight-freefem"><span class="o">#</span></code>.</p>
 <p>If <cite>Ux</cite> and <cite>Uy</cite> are defined as finite element function, you can define:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">macro</span><span class="w"> </span><span class="n">Grad</span><span class="p">(</span><span class="n">U</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">grad</span><span class="p">(</span><span class="n">U</span><span class="o">#</span><span class="kr">x</span><span class="p">),</span><span class="w"> </span><span class="n">grad</span><span class="p">(</span><span class="n">U</span><span class="o">#</span><span class="kr">y</span><span class="p">)]</span><span class="w"> </span><span class="c1">// End of macro</span>
 </pre></div>
@@ -2330,13 +2337,13 @@ The derivative of an elementary function is also an elementary function; however
 <p><strong>FreeFEM</strong> includes the <a class="reference external" href="http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html">Mersenne Twister</a> random number generator.
 It is a very fast and accurate random number generator of period <span class="math notranslate nohighlight">\(2^{219937}-1\)</span>.</p>
 <p>See <a class="reference internal" href="functions.html#referencerandint32"><span class="std std-ref">randint32()</span></a>, <a class="reference internal" href="functions.html#referencerandint31"><span class="std std-ref">randint31()</span></a>, <a class="reference internal" href="functions.html#referencerandreal1"><span class="std std-ref">randreal1()</span></a>, <a class="reference internal" href="functions.html#referencerandreal2"><span class="std std-ref">randreal2()</span></a>, <a class="reference internal" href="functions.html#referencerandreal3"><span class="std std-ref">randreal3()</span></a>, <a class="reference internal" href="functions.html#referencerandres53"><span class="std std-ref">randres53()</span></a>, <a class="reference internal" href="functions.html#referencerandinit"><span class="std std-ref">randinit(seed)</span></a>.</p>
-<p>In addition, the <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffrandom</span></code> plugin interface <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">random</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">srandom</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">srandomdev</span></code> functions of the Unix <code class="docutils literal highlight highlight-python"><span></span><span class="n">libc</span></code> library.
+<p>In addition, the <code class="docutils literal notranslate"><span class="pre">ffrandom</span></code> plugin interface <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">random</span></code>, <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">srandom</span></code> and <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">srandomdev</span></code> functions of the Unix <code class="docutils literal notranslate"><span class="pre">libc</span></code> library.
 The range is <span class="math notranslate nohighlight">\(0 -- 2^{31}-1\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">srandomdev</span></code> is not defined, a seed based on the current time is used.</p>
+<p>If <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">srandomdev</span></code> is not defined, a seed based on the current time is used.</p>
 </div>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">gsl</span></code> plugin equally allows usage of all random functions of the <code class="docutils literal highlight highlight-python"><span></span><span class="n">gsllib</span></code>, see <a class="reference internal" href="external-libraries.html#referenceffgslawk"><span class="std std-ref">gsl external library</span></a>.</p>
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="n">gsl</span></code> plugin equally allows usage of all random functions of the <code class="docutils literal notranslate"><span class="pre">gsllib</span></code>, see <a class="reference internal" href="external-libraries.html#referenceffgslawk"><span class="std std-ref">gsl external library</span></a>.</p>
 </section>
 <section id="fe-functions">
 <h3>FE-functions<a class="headerlink" href="#fe-functions" title="Link to this heading"></a></h3>
@@ -2353,10 +2360,10 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 <span class="linenos">6</span><span class="n">Vh</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">zh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zf</span><span class="p">;</span><span class="w"> </span><span class="c1">//zh is the projection of zf to complex value Vh space</span>
 </pre></div>
 </div>
-<p>The construction of <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">fh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span></code> is explained in <a class="reference internal" href="../documentation/finite-element.html#finiteelement"><span class="std std-ref">Finite Element</span></a>.</p>
+<p>The construction of <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">fh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span></code> is explained in <a class="reference internal" href="../documentation/finite-element.html#finiteelement"><span class="std std-ref">Finite Element</span></a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">plot</span></code> command only works for real or complex FE-functions, not for elementary functions.</p>
+<p>The <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">plot</span></code> command only works for real or complex FE-functions, not for elementary functions.</p>
 </div>
 </section>
 </section>
@@ -2380,7 +2387,7 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">problem</span><span class="w"> </span><span class="n">Laplacian</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">uh</span><span class="p">,</span><span class="w"> </span><span class="kp">solver</span><span class="o">=</span><span class="kr">CG</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
 </pre></div>
 </div>
-<p>The default solver is <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">sparsesolver</span></code> or <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">LU</span></code> if any direct sparse solver is available.</p>
+<p>The default solver is <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">sparsesolver</span></code> or <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">LU</span></code> if any direct sparse solver is available.</p>
 <p>Solvers are listed in the <a class="reference internal" href="global-variables.html#globalvariables"><span class="std std-ref">Global variables</span></a> section.</p>
 </div>
 <div class="admonition note">
@@ -2400,8 +2407,8 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Reconstruction</p>
-<p>The keyword <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">init</span></code> controls the reconstruction of the internal problem matrix.</p>
-<p>If <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">init</span></code> is set to <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">false</span></code> or <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="mi">0</span></code>, the matrix is reconstructed et each problem calls (or after a mesh modification), else the previously constructed matrix is used.</p>
+<p>The keyword <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">init</span></code> controls the reconstruction of the internal problem matrix.</p>
+<p>If <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">init</span></code> is set to <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">false</span></code> or <code class="code highlight freefem docutils literal highlight-freefem"><span class="mi">0</span></code>, the matrix is reconstructed et each problem calls (or after a mesh modification), else the previously constructed matrix is used.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">problem</span><span class="w"> </span><span class="n">Laplacian</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">uh</span><span class="p">,</span><span class="w"> </span><span class="kp">init</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
 </pre></div>
 </div>
@@ -2421,7 +2428,7 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>“<em>Très grande valeur</em>”</p>
-<p>The “<em>Très grand valeur</em>” <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">tgv</span></code> (or <em>Terrible giant value</em>) used to implement the Dirichlet conditions can be modified in the problem definition:</p>
+<p>The “<em>Très grand valeur</em>” <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">tgv</span></code> (or <em>Terrible giant value</em>) used to implement the Dirichlet conditions can be modified in the problem definition:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">problem</span><span class="w"> </span><span class="n">Laplacian</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">uh</span><span class="p">,</span><span class="w"> </span><span class="kp">tgv</span><span class="o">=</span><span class="mf">1e30</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
 </pre></div>
 </div>
@@ -2430,15 +2437,15 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Pivot tolerance</p>
-<p>The tolerance of the pivot in <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">UMFPACK</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">LU</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">Crout</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">Cholesky</span></code> factorization can be modified in the problem definition:</p>
+<p>The tolerance of the pivot in <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">UMFPACK</span></code>, <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">LU</span></code>, <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">Crout</span></code>, <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">Cholesky</span></code> factorization can be modified in the problem definition:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">problem</span><span class="w"> </span><span class="n">Laplacian</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">uh</span><span class="p">,</span><span class="w"> </span><span class="kp">solver</span><span class="o">=</span><span class="kr">LU</span><span class="p">,</span><span class="w"> </span><span class="kp">tolpivot</span><span class="o">=</span><span class="mf">1e-20</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">UMFPACK</span></code></p>
-<p>Two specific parameters for the <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">UMFPACK</span></code> can be modifed:</p>
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">UMFPACK</span></code></p>
+<p>Two specific parameters for the <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">UMFPACK</span></code> can be modifed:</p>
 <ul class="simple">
 <li><p>Tolerance of the pivot sym</p></li>
 <li><p>strategy</p></li>
@@ -2450,16 +2457,16 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">dimKrylov</span></code></p>
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">dimKrylov</span></code></p>
 <p>Dimension of the Krylov space</p>
 </div>
-<p>Usage of <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">problem</span></code> is detailled in the <a class="reference internal" href="../tutorials/index.html#tutorial"><span class="std std-ref">tutorials</span></a>.</p>
+<p>Usage of <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">problem</span></code> is detailled in the <a class="reference internal" href="../tutorials/index.html#tutorial"><span class="std std-ref">tutorials</span></a>.</p>
 </section>
 <section id="solve">
 <span id="typesolve"></span><h3>solve<a class="headerlink" href="#solve" title="Link to this heading"></a></h3>
 <p>Solve type.</p>
 <p>Identical to <a class="reference internal" href="#typeproblem"><span class="std std-ref">problem</span></a> but automatically solved.</p>
-<p>Usage of <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">solve</span></code> is detailled in the <a class="reference internal" href="../tutorials/index.html#tutorial"><span class="std std-ref">tutorials</span></a>.</p>
+<p>Usage of <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">solve</span></code> is detailled in the <a class="reference internal" href="../tutorials/index.html#tutorial"><span class="std std-ref">tutorials</span></a>.</p>
 </section>
 <section id="varf">
 <span id="typevarf"></span><h3>varf<a class="headerlink" href="#varf" title="Link to this heading"></a></h3>
@@ -2469,7 +2476,7 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 </div>
 <p>Directly define a variational form.</p>
 <p>This is the other way to define a problem in order to directly manage matrix and right hang side.</p>
-<p>Usage of <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">varf</span></code> is detailed in the <a class="reference internal" href="../tutorials/index.html#tutorial"><span class="std std-ref">tutorial</span></a>.</p>
+<p>Usage of <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">varf</span></code> is detailed in the <a class="reference internal" href="../tutorials/index.html#tutorial"><span class="std std-ref">tutorial</span></a>.</p>
 </section>
 </section>
 <section id="array">
@@ -2479,19 +2486,19 @@ Hence FE-functions are not defined only by their formula but also by the mesh an
 <li><p>the first is similar to vector, i.e. array with integer indices</p></li>
 <li><p>the second is array with string indices</p></li>
 </ul>
-<p>In the first case, the size of the array must be known at execution time, and implementation is done with the <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="n">KN</span><span class="o">&lt;&gt;</span></code> class and all the vector operator of <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="n">KN</span><span class="o">&lt;&gt;</span></code> are implemented.</p>
-<p>Arrays can be set like in Matlab or Scilab with the operator <code class="docutils literal highlight highlight-python"><span></span><span class="p">::</span></code>, the array generator of <code class="docutils literal highlight highlight-python"><span></span><span class="n">a</span><span class="p">:</span><span class="n">c</span></code> is equivalent to <code class="docutils literal highlight highlight-python"><span></span><span class="n">a</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">c</span></code>, and the array set by <code class="docutils literal highlight highlight-python"><span></span><span class="n">a</span><span class="p">:</span><span class="n">b</span><span class="p">:</span><span class="n">c</span></code> is set to size <span class="math notranslate nohighlight">\(\lfloor |(b-a)/c|+1 \rfloor\)</span> and the value <span class="math notranslate nohighlight">\(i\)</span> is set by <span class="math notranslate nohighlight">\(a + i (b-a)/c\)</span>.</p>
-<p>There are <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">int</span><span class="p">,</span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="kt">complex</span></code> array with, in the third case, two operators (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="p">.</span><span class="kr">im</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="p">.</span><span class="kr">re</span></code>) to generate the real and imaginary real array from the complex array (without copy).</p>
+<p>In the first case, the size of the array must be known at execution time, and implementation is done with the <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">KN</span><span class="o">&lt;&gt;</span></code> class and all the vector operator of <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">KN</span><span class="o">&lt;&gt;</span></code> are implemented.</p>
+<p>Arrays can be set like in Matlab or Scilab with the operator <code class="docutils literal notranslate"><span class="pre">::</span></code>, the array generator of <code class="docutils literal notranslate"><span class="pre">a:c</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">a:1:c</span></code>, and the array set by <code class="docutils literal notranslate"><span class="pre">a:b:c</span></code> is set to size <span class="math notranslate nohighlight">\(\lfloor |(b-a)/c|+1 \rfloor\)</span> and the value <span class="math notranslate nohighlight">\(i\)</span> is set by <span class="math notranslate nohighlight">\(a + i (b-a)/c\)</span>.</p>
+<p>There are <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span><span class="p">,</span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="kt">complex</span></code> array with, in the third case, two operators (<code class="code highlight freefem docutils literal highlight-freefem"><span class="p">.</span><span class="kr">im</span></code>, <code class="code highlight freefem docutils literal highlight-freefem"><span class="p">.</span><span class="kr">re</span></code>) to generate the real and imaginary real array from the complex array (without copy).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Quantiles are points taken at regular intervals from the cumulative distribution function of a random variable.
 Here the array values are random.</p>
-<p>This statistical function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">a</span><span class="p">.</span><span class="kr">quantile</span><span class="p">(</span><span class="n">q</span><span class="p">)</span></code> computes <span class="math notranslate nohighlight">\(v\)</span> from an array <span class="math notranslate nohighlight">\(a\)</span> of size <span class="math notranslate nohighlight">\(n\)</span> for a given number <span class="math notranslate nohighlight">\(q\in ]0,1[\)</span> such that:</p>
+<p>This statistical function <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">a</span><span class="p">.</span><span class="kr">quantile</span><span class="p">(</span><span class="n">q</span><span class="p">)</span></code> computes <span class="math notranslate nohighlight">\(v\)</span> from an array <span class="math notranslate nohighlight">\(a\)</span> of size <span class="math notranslate nohighlight">\(n\)</span> for a given number <span class="math notranslate nohighlight">\(q\in ]0,1[\)</span> such that:</p>
 <div class="math notranslate nohighlight">
 \[\#\{ i / a[i] &lt; v \} \sim q*n\]</div>
 <p>it is equivalent to <span class="math notranslate nohighlight">\(v = a[q*n]\)</span> when the array <span class="math notranslate nohighlight">\(a\)</span> is sorted.</p>
 </div>
-<p>For example, to declare, fill and display an array of <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">real</span></code> of size <code class="docutils literal highlight highlight-python"><span></span><span class="n">n</span></code>:</p>
+<p>For example, to declare, fill and display an array of <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">real</span></code> of size <code class="docutils literal notranslate"><span class="pre">n</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="kr">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
 <span class="linenos">2</span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">Ai</span><span class="p">(</span><span class="kr">n</span><span class="p">);</span>
 <span class="linenos">3</span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="kr">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
@@ -2515,7 +2522,7 @@ Here the array values are random.</p>
 </section>
 <section id="array-size">
 <h3>Array size<a class="headerlink" href="#array-size" title="Link to this heading"></a></h3>
-<p>The size of an array is obtained using the keyword <code class="docutils literal highlight highlight-python"><span></span><span class="n">n</span></code>:</p>
+<p>The size of an array is obtained using the keyword <code class="docutils literal notranslate"><span class="pre">n</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">ArraySize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ai</span><span class="p">.</span><span class="kr">n</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -2533,7 +2540,7 @@ Here the array values are random.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">Aii</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]];</span>
 </pre></div>
 </div>
-<p>The two sizes are obtained using the keywords <code class="docutils literal highlight highlight-python"><span></span><span class="n">n</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">m</span></code>:</p>
+<p>The two sizes are obtained using the keywords <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code>:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">ArraySize1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Aii</span><span class="p">.</span><span class="kr">n</span><span class="p">;</span>
 <span class="linenos">2</span><span class="kt">int</span><span class="w"> </span><span class="n">ArraySize2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Aii</span><span class="p">.</span><span class="kr">m</span><span class="p">;</span>
 </pre></div>
@@ -2557,7 +2564,7 @@ Here the array values are random.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">aU</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">U</span><span class="p">[];</span>
 </pre></div>
 </div>
-<p>where <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">U</span></code> is a finite element function.</p>
+<p>where <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">U</span></code> is a finite element function.</p>
 </div>
 </section>
 <section id="array-of-fe-functions">
@@ -2660,12 +2667,12 @@ Here the array values are random.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal highlight highlight-python"><span></span><span class="n">I</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">J</span></code> are <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span></code> is <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>. The matrix is defined as:</p>
+<p><code class="docutils literal notranslate"><span class="pre">I</span></code> and <code class="docutils literal notranslate"><span class="pre">J</span></code> are <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code> and <code class="docutils literal notranslate"><span class="pre">C</span></code> is <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span></code>. The matrix is defined as:</p>
 <div class="math notranslate nohighlight">
 \[A = \sum_k{C[k]M_{I[k], J[k]}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(M_{a, b} = \left(\delta_{ia}\delta_{jb}\right)_{ij}\)</span></p>
 <p><cite>I</cite>, <cite>J</cite> and <cite>C</cite> can be retrieved using <cite>[I, J, C] = A</cite> (arrays are automatically resized).</p>
-<p>The size of the matrix is <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">I</span><span class="p">.</span><span class="kr">max</span><span class="p">;</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">J</span><span class="p">.</span><span class="kr">max</span><span class="p">;</span></code>.</p>
+<p>The size of the matrix is <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">I</span><span class="p">.</span><span class="kr">max</span><span class="p">;</span></code>, <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">J</span><span class="p">.</span><span class="kr">max</span><span class="p">;</span></code>.</p>
 </div>
 <p>Matrices are designed using templates, so they can be real or complex:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">matrix</span><span class="o">&lt;</span><span class="kt">real</span><span class="o">&gt;</span><span class="w"> </span><span class="kp">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
@@ -2688,7 +2695,7 @@ Here the array values are random.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Factorize</p>
-<p>If <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">true</span></code>, the factorization is done for <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">LU</span></code>, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">Cholesky</span></code> or <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">Crout</span></code>.</p>
+<p>If <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">true</span></code>, the factorization is done for <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">LU</span></code>, <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">Cholesky</span></code> or <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">Crout</span></code>.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">matrix</span><span class="w"> </span><span class="kp">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vLaplacian</span><span class="p">(</span><span class="n">Uh</span><span class="p">,</span><span class="w"> </span><span class="n">Uh</span><span class="p">,</span><span class="w"> </span><span class="kp">solver</span><span class="o">=</span><span class="kr">LU</span><span class="p">,</span><span class="w"> </span><span class="kp">factorize</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -2719,12 +2726,12 @@ Here the array values are random.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">UMFPACK</span></code></p>
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">UMFPACK</span></code></p>
 <p>See <a class="reference internal" href="#typeproblem"><span class="std std-ref">problem</span></a>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">dimKrylov</span></code></p>
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">dimKrylov</span></code></p>
 <p>See <a class="reference internal" href="#typeproblem"><span class="std std-ref">problem</span></a>.</p>
 </div>
 <div class="admonition note">
@@ -2734,22 +2741,22 @@ Here the array values are random.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">lparams</span></code></p>
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">lparams</span></code></p>
 <p>Vector of integer parameters for the solver, see <a class="reference internal" href="../documentation/parallelization.html#parallelsparsesolvers"><span class="std std-ref">Parallel sparse solvers</span></a></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">dparams</span></code></p>
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">dparams</span></code></p>
 <p>Vector of real parameters for the solver, see <a class="reference internal" href="../documentation/parallelization.html#parallelsparsesolvers"><span class="std std-ref">Parallel sparse solvers</span></a></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">sparams</span></code></p>
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">sparams</span></code></p>
 <p>String parameters for the solver, see <a class="reference internal" href="../documentation/parallelization.html#parallelsparsesolvers"><span class="std std-ref">Parallel sparse solvers</span></a></p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To modify the <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">solver</span></code>, the stop test,… after the matrix construction, use the <a class="reference internal" href="functions.html#functionset"><span class="std std-ref">set keyword</span></a>.</p>
+<p>To modify the <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">solver</span></code>, the stop test,… after the matrix construction, use the <a class="reference internal" href="functions.html#functionset"><span class="std std-ref">set keyword</span></a>.</p>
 </div>
 <section id="matrix-size">
 <h3>Matrix size<a class="headerlink" href="#matrix-size" title="Link to this heading"></a></h3>
@@ -2788,7 +2795,7 @@ Here the array values are random.</p>
 </section>
 <section id="complex-matrix">
 <h3>Complex matrix<a class="headerlink" href="#complex-matrix" title="Link to this heading"></a></h3>
-<p>Use <code class="docutils literal highlight highlight-python"><span></span><span class="o">.</span><span class="n">im</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="o">.</span><span class="n">re</span></code> to get the imaginary and real part of a complex matrix, respectively:</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">.im</span></code> and <code class="docutils literal notranslate"><span class="pre">.re</span></code> to get the imaginary and real part of a complex matrix, respectively:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">matrix</span><span class="o">&lt;</span><span class="kt">complex</span><span class="o">&gt;</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
 <span class="linenos">2</span><span class="kt">matrix</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="p">.</span><span class="kr">re</span><span class="p">;</span>
 <span class="linenos">3</span><span class="kt">matrix</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="p">.</span><span class="kr">im</span><span class="p">;</span>

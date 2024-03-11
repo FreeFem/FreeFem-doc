@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2168,10 +2175,10 @@ Furthermore there is convection of heat by the flow, hence the term <span class=
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We use the change function to put label 10 on inflow boundary, remark the trick to chanhe only label C <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">flabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kr">label</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w">  </span><span class="p">[</span><span class="n">u1</span><span class="p">,</span><span class="n">u2</span><span class="p">]</span><span class="o">&#39;*</span><span class="kr">N</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">label</span></code></p>
+<p>We use the change function to put label 10 on inflow boundary, remark the trick to chanhe only label C <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">flabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kr">label</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w">  </span><span class="p">[</span><span class="n">u1</span><span class="p">,</span><span class="n">u2</span><span class="p">]</span><span class="o">&#39;*</span><span class="kr">N</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kr">label</span></code></p>
 <p>How the convection terms are added without upwinding.
 Upwinding is necessary when the Pecley number <span class="math notranslate nohighlight">\(|u|L/\kappa\)</span> is large (here is a typical length scale), The factor 10 in front of the convection terms is a quick way of multiplying the velocity by 10 (else it is too slow to see something).</p>
-<p>The solver is Gauss’ LU factorization and when <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">init</span></code> <span class="math notranslate nohighlight">\(\neq 0\)</span> the LU decomposition is reused so it is much faster after the first iteration.</p>
+<p>The solver is Gauss’ LU factorization and when <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">init</span></code> <span class="math notranslate nohighlight">\(\neq 0\)</span> the LU decomposition is reused so it is much faster after the first iteration.</p>
 </div>
 </section>
 </section>

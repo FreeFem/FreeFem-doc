@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2106,12 +2113,12 @@ Programming this case with <strong>FreeFEM</strong> gives:</p>
 <span class="linenos">33</span><span class="nf">savemesh</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="s">&quot;Th.msh&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>A triangulation is built by the keyword <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">buildmesh</span></code>.
+<p>A triangulation is built by the keyword <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">buildmesh</span></code>.
 This keyword calls a triangulation subroutine based on the Delaunay test, which first triangulates with only the boundary points, then adds internal points by subdividing the edges.
 How fine the triangulation becomes is controlled by the size of the closest boundary edges.</p>
 <p>The PDE is then discretized using the triangular second order finite element method on the triangulation; as was briefly indicated in the previous chapter, a linear system is derived from the discrete formulation whose size is the number of vertices plus the number of mid-edges in the triangulation.</p>
-<p>The system is solved by a multi-frontal Gauss LU factorization implemented in the package <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">UMFPACK</span></code>.</p>
-<p>The keyword <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">plot</span></code> will display both <span class="math notranslate nohighlight">\(\T_h\)</span> and <span class="math notranslate nohighlight">\(\varphi\)</span> (remove <code class="docutils literal highlight highlight-python"><span></span><span class="n">Th</span></code> if <span class="math notranslate nohighlight">\(\varphi\)</span> only is desired) and the qualifier <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">fill</span><span class="o">=</span><span class="kr">true</span></code> replaces the default option (colored level lines) by a full color display.</p>
+<p>The system is solved by a multi-frontal Gauss LU factorization implemented in the package <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">UMFPACK</span></code>.</p>
+<p>The keyword <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">plot</span></code> will display both <span class="math notranslate nohighlight">\(\T_h\)</span> and <span class="math notranslate nohighlight">\(\varphi\)</span> (remove <code class="docutils literal notranslate"><span class="pre">Th</span></code> if <span class="math notranslate nohighlight">\(\varphi\)</span> only is desired) and the qualifier <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">fill</span><span class="o">=</span><span class="kr">true</span></code> replaces the default option (colored level lines) by a full color display.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nf">plot</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="kp">wait</span><span class="o">=</span><span class="kr">true</span><span class="p">,</span><span class="kp">fill</span><span class="o">=</span><span class="kr">true</span><span class="p">);</span><span class="w"> </span><span class="c1">//Plot phi with full color display</span>
 </pre></div>
 </div>
@@ -2132,7 +2139,7 @@ How fine the triangulation becomes is controlled by the size of the closest boun
 <p><span class="caption-text">Membrane</span></p>
 </div><p id="Membrane">Next we would like to check the results !</p>
 <p>One simple way is to adjust the parameters so as to know the solutions.
-For instance on the unit circle <code class="docutils literal highlight highlight-python"><span></span><span class="n">a</span><span class="o">=</span><span class="mi">1</span></code>, <span class="math notranslate nohighlight">\(\varphi_e=\sin(x^2+y^2-1)\)</span> solves the problem when:</p>
+For instance on the unit circle <code class="docutils literal notranslate"><span class="pre">a=1</span></code>, <span class="math notranslate nohighlight">\(\varphi_e=\sin(x^2+y^2-1)\)</span> solves the problem when:</p>
 <div class="math notranslate nohighlight">
 \[z=0, f=-4(\cos(x^2+y^2-1)-(x^2+y^2)\sin(x^2+y^2-1))\]</div>
 <p>except that on <span class="math notranslate nohighlight">\(\Gamma_2\)</span> <span class="math notranslate nohighlight">\(\partial_n\varphi=2\)</span> instead of zero.
@@ -2204,7 +2211,7 @@ So we will consider a non-homogeneous Neumann condition and solve:</p>
 </div>
 <p>We find a rate of 1.98 , which is not close enough to the 3 predicted by the theory.</p>
 <p>The Geometry is always a polygon so we lose one order due to the geometry approximation in <span class="math notranslate nohighlight">\(O(h^2)\)</span>.</p>
-<p>Now if you are not satisfied with the <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="p">.</span><span class="kp">eps</span></code> plot generated by <strong>FreeFEM</strong> and you want to use other graphic facilities, then you must store the solution in a file very much like in <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span><span class="o">++</span></code>.
+<p>Now if you are not satisfied with the <code class="code highlight freefem docutils literal highlight-freefem"><span class="p">.</span><span class="kp">eps</span></code> plot generated by <strong>FreeFEM</strong> and you want to use other graphic facilities, then you must store the solution in a file very much like in <code class="docutils literal notranslate"><span class="pre">C++</span></code>.
 It will be useless if you don’t save the triangulation as well, consequently you must do</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">{</span>
 <span class="linenos">2</span><span class="w">    </span><span class="kt">ofstream</span><span class="w"> </span><span class="n">ff</span><span class="p">(</span><span class="s">&quot;phi.txt&quot;</span><span class="p">);</span>
@@ -2217,7 +2224,7 @@ It will be useless if you don’t save the triangulation as well, consequently y
 <figure class="align-default" id="figmembrane">
 <a class="reference internal image-reference" href="../_images/gnumembrane.png"><img alt="../_images/gnumembrane.png" src="../_images/gnumembrane.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">The 3D version drawn by <code class="docutils literal highlight highlight-python"><span></span><span class="n">gnuplot</span></code>  from a file generated by <strong>FreeFEM</strong></span><a class="headerlink" href="#figmembrane" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">The 3D version drawn by <code class="docutils literal notranslate"><span class="pre">gnuplot</span></code>  from a file generated by <strong>FreeFEM</strong></span><a class="headerlink" href="#figmembrane" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>Still that may not take you where you want. Here is an interface with gnuplot (see :   <a class="reference external" href="http://www.gnuplot.info">web site link</a>  ) to produce the <a class="reference internal" href="#figmembrane"><span class="std std-numref">Fig. 7</span></a>.</p>
@@ -2234,13 +2241,13 @@ It will be useless if you don’t save the triangulation as well, consequently y
 <span class="linenos">11</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>We use the finite element numbering, where <code class="docutils literal highlight highlight-python"><span></span><span class="n">Wh</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span></code> is the global index of <span class="math notranslate nohighlight">\(j^{Th}\)</span> degrees of freedom of triangle number <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>Then open <code class="docutils literal highlight highlight-python"><span></span><span class="n">gnuplot</span></code> and do:</p>
+<p>We use the finite element numbering, where <code class="docutils literal notranslate"><span class="pre">Wh(i,j)</span></code> is the global index of <span class="math notranslate nohighlight">\(j^{Th}\)</span> degrees of freedom of triangle number <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Then open <code class="docutils literal notranslate"><span class="pre">gnuplot</span></code> and do:</p>
 <div class="highlight-gnuplot notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">set</span><span class="w"> </span><span class="nb">palette</span><span class="w"> </span><span class="n">rgbformulae</span><span class="w"> </span><span class="mi">30</span><span class="o">,</span><span class="mi">31</span><span class="o">,</span><span class="mi">32</span>
 <span class="linenos">2</span><span class="k">splot</span><span class="w"> </span><span class="s">&quot;graph.txt&quot;</span><span class="w"> </span><span class="nb">w</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="n">pal</span>
 </pre></div>
 </div>
-<p>This works with <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P2</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1</span></code>, but not with <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1nc</span></code> because the three first degrees of freedom of <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1</span></code> or <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P2</span></code> are on vertices and not with <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P1nc</span></code>.</p>
+<p>This works with <code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P2</span></code> and <code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1</span></code>, but not with <code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1nc</span></code> because the three first degrees of freedom of <code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1</span></code> or <code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P2</span></code> are on vertices and not with <code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P1nc</span></code>.</p>
 </section>
 
 

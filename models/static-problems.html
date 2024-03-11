@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2687,7 +2694,7 @@ The following example give such example.</p>
 \[u=K_iu_S + u_R,\, u_R\in H^2(\textrm{near }\gamma_i),\, i=1,2\]</div>
 <p>with a constants <span class="math notranslate nohighlight">\(K_i\)</span>.</p>
 <p>Here <span class="math notranslate nohighlight">\(u_S = r_j^{1/2}\sin(\theta_j/2)\)</span> by the local polar coordinate <span class="math notranslate nohighlight">\((r_j,\theta_j\)</span> at <span class="math notranslate nohighlight">\(\gamma_j\)</span> such that <span class="math notranslate nohighlight">\((r_1,\theta_1)=(r,\theta)\)</span>.</p>
-<p>Instead of polar coordinate system <span class="math notranslate nohighlight">\((r,\theta)\)</span>, we use that <span class="math notranslate nohighlight">\(r\)</span> = <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">sqrt</span></code> (<span class="math notranslate nohighlight">\(x^2+y^2\)</span>) and <span class="math notranslate nohighlight">\(\theta\)</span> = <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">atan2</span></code> (<span class="math notranslate nohighlight">\(y,x\)</span>) in <strong>FreeFEM</strong>.</p>
+<p>Instead of polar coordinate system <span class="math notranslate nohighlight">\((r,\theta)\)</span>, we use that <span class="math notranslate nohighlight">\(r\)</span> = <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">sqrt</span></code> (<span class="math notranslate nohighlight">\(x^2+y^2\)</span>) and <span class="math notranslate nohighlight">\(\theta\)</span> = <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">atan2</span></code> (<span class="math notranslate nohighlight">\(y,x\)</span>) in <strong>FreeFEM</strong>.</p>
 <p>Assume that <span class="math notranslate nohighlight">\(f=-2\times 30(x^2+y^2)\)</span> and <span class="math notranslate nohighlight">\(g=u_e=10(x^2+y^2)^{1/4}\sin\left([\tan^{-1}(y/x)]/2\right)+30(x^2y^2)\)</span>, where <span class="math notranslate nohighlight">\(u_e\)</span>S is the exact solution.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Parameters</span>
 <span class="linenos"> 2</span><span class="kt">func</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-2</span><span class="o">*</span><span class="mi">30</span><span class="o">*</span><span class="p">(</span><span class="kr">x</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="kr">y</span><span class="o">^</span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">//given function</span>
@@ -2759,14 +2766,14 @@ The following example give such example.</p>
 </pre></div>
 </div>
 <p>From line 35 to 37, mesh adaptations are done using the base of singular term.</p>
-<p>In line 61, <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">H1e</span></code> = <span class="math notranslate nohighlight">\(|u_e|_{1,\Omega}\)</span> is calculated.</p>
+<p>In line 61, <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">H1e</span></code> = <span class="math notranslate nohighlight">\(|u_e|_{1,\Omega}\)</span> is calculated.</p>
 <p>In lines 64 and 65, the relative errors are calculated, that is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{array}{rcl}
     \|u^0_h-u_e\|_{1,\Omega}/H1e&amp;=&amp;0.120421\\
     \|u^a_h-u_e\|_{1,\Omega}/H1e&amp;=&amp;0.0150581
 \end{array}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(u^0_h\)</span> is the numerical solution in <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">T0h</span></code> and <span class="math notranslate nohighlight">\(u^a_h\)</span> is <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">u</span></code> in this program.</p>
+<p>where <span class="math notranslate nohighlight">\(u^0_h\)</span> is the numerical solution in <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">T0h</span></code> and <span class="math notranslate nohighlight">\(u^a_h\)</span> is <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">u</span></code> in this program.</p>
 </section>
 <section id="poisson-with-mixed-finite-element">
 <h2>Poisson with mixed finite element<a class="headerlink" href="#poisson-with-mixed-finite-element" title="Link to this heading"></a></h2>
@@ -2803,7 +2810,7 @@ The following example give such example.</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{V}_0 = \{\mathbf{v}\in \mathbb{V};\quad\mathbf{v}. n = 0 \quad\mathrm{on }\;\;\Gamma_N\}\]</div>
 <p>To write the <strong>FreeFEM</strong> example, we have just to choose the finites elements spaces.</p>
-<p>Here <span class="math notranslate nohighlight">\(\mathbb{V}\)</span> space is discretize with Raviart-Thomas finite element <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">RT0</span></code> and <span class="math notranslate nohighlight">\(\mathbb{P}\)</span> is discretize by constant finite element <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nc">P0</span></code>.</p>
+<p>Here <span class="math notranslate nohighlight">\(\mathbb{V}\)</span> space is discretize with Raviart-Thomas finite element <code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">RT0</span></code> and <span class="math notranslate nohighlight">\(\mathbb{P}\)</span> is discretize by constant finite element <code class="code highlight freefem docutils literal highlight-freefem"><span class="nc">P0</span></code>.</p>
 <p><strong>Example 9.10</strong> LaplaceRT.edp</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// Parameters</span>
 <span class="linenos"> 2</span><span class="kt">func</span><span class="w"> </span><span class="n">gd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.</span><span class="p">;</span>
@@ -2949,7 +2956,7 @@ The new mesh size is given by the following formulae:</p>
 <div class="math notranslate nohighlight">
 \[h_{n+1}(x) = \frac{h_{n}(x)}{f_{n}(\eta_K(x))}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\eta_n(x)\)</span> is the level of error at point <span class="math notranslate nohighlight">\(x\)</span> given by the local error indicator, <span class="math notranslate nohighlight">\(h_n\)</span> is the previous “mesh size” field, and <span class="math notranslate nohighlight">\(f_n\)</span> is a user function define by <span class="math notranslate nohighlight">\(f_n = min(3,max(1/3,\eta_n / \eta_n^* ))\)</span> where <span class="math notranslate nohighlight">\(\eta_n^* = mean(\eta_n) c\)</span>, and <span class="math notranslate nohighlight">\(c\)</span> is an user coefficient generally close to one.</p>
-<p>First a macro <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">MeshSizecomputation</span></code> is defined to get a <span class="math notranslate nohighlight">\(P_1\)</span> mesh size as the average of edge length.</p>
+<p>First a macro <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">MeshSizecomputation</span></code> is defined to get a <span class="math notranslate nohighlight">\(P_1\)</span> mesh size as the average of edge length.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">// macro the get the current mesh size parameter</span>
 <span class="linenos"> 2</span><span class="c1">// in:</span>
 <span class="linenos"> 3</span><span class="c1">// Th the mesh</span>

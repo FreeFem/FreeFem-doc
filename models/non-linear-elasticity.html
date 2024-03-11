@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2079,7 +2086,7 @@ So, the differential of <span class="math notranslate nohighlight">\(J\)</span> 
 </li>
 </ul>
 <p>The way to implement this algorithm in <strong>FreeFEM</strong> is use a macro tool to implement <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(F2\)</span>, <span class="math notranslate nohighlight">\(f\)</span>, <span class="math notranslate nohighlight">\(f'\)</span>,<span class="math notranslate nohighlight">\(f''\)</span>.</p>
-<p>A macro is like in <code class="code cpp docutils literal highlight highlight-cpp"><span></span><span class="n">ccp</span></code> preprocessor of C++, but this begin by <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">macro</span></code> and the end of the macro definition is before the comment <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="c1">//</span></code>.
+<p>A macro is like in <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">ccp</span></code> preprocessor of C++, but this begin by <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">macro</span></code> and the end of the macro definition is before the comment <code class="code highlight freefem docutils literal highlight-freefem"><span class="c1">//</span></code>.
 In this case the macro is very useful because the type of parameter can be change.
 And it is easy to make automatic differentiation.</p>
 <figure class="align-default" id="id1">

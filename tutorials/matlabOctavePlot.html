@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2099,7 +2106,7 @@
 </section>
 <section id="exporting-data">
 <h2>Exporting Data<a class="headerlink" href="#exporting-data" title="Link to this heading"></a></h2>
-<p>The mesh is stored with the <strong>FreeFEM</strong> command <a class="reference internal" href="../documentation/mesh-generation.html#meshdatastructurereadwrite"><span class="std std-ref">savemesh()</span></a>, while the connectivity of the finite element space and the simulation data are stored with the macro commands <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffSaveVh</span><span class="p">()</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffSaveData</span><span class="p">()</span></code>. These two commands are located in the <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffmatlib</span><span class="o">.</span><span class="n">idp</span></code> file which is included in the <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffmatlib</span></code>. Therefore, to export the stripline capacitor data the following statement sequence must be added to the <strong>FreeFEM</strong> code:</p>
+<p>The mesh is stored with the <strong>FreeFEM</strong> command <a class="reference internal" href="../documentation/mesh-generation.html#meshdatastructurereadwrite"><span class="std std-ref">savemesh()</span></a>, while the connectivity of the finite element space and the simulation data are stored with the macro commands <code class="docutils literal notranslate"><span class="pre">ffSaveVh()</span></code> and <code class="docutils literal notranslate"><span class="pre">ffSaveData()</span></code>. These two commands are located in the <code class="docutils literal notranslate"><span class="pre">ffmatlib.idp</span></code> file which is included in the <code class="docutils literal notranslate"><span class="pre">ffmatlib</span></code>. Therefore, to export the stripline capacitor data the following statement sequence must be added to the <strong>FreeFEM</strong> code:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">include</span><span class="w"> </span><span class="s">&quot;ffmatlib.idp&quot;</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="c1">//Save mesh</span>
@@ -2115,13 +2122,13 @@
 </section>
 <section id="importing-data">
 <h2>Importing Data<a class="headerlink" href="#importing-data" title="Link to this heading"></a></h2>
-<p>The mesh file can be loaded into the Matlab / Octave workspace using the <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffreadmesh</span><span class="p">()</span></code> command. A mesh file consists of <a class="reference internal" href="../documentation/mesh-generation.html#meshdatastructurereadwrite"><span class="std std-ref">three main sections</span></a>:</p>
+<p>The mesh file can be loaded into the Matlab / Octave workspace using the <code class="docutils literal notranslate"><span class="pre">ffreadmesh()</span></code> command. A mesh file consists of <a class="reference internal" href="../documentation/mesh-generation.html#meshdatastructurereadwrite"><span class="std std-ref">three main sections</span></a>:</p>
 <ol class="arabic simple">
 <li><p>The mesh points as nodal coordinates</p></li>
 <li><p>A list of boundary edges including boundary labels</p></li>
 <li><p>List of triangles defining the mesh in terms of connectivity</p></li>
 </ol>
-<p>The three data sections mentioned are returned in the variables <code class="docutils literal highlight highlight-python"><span></span><span class="n">p</span></code>, <code class="docutils literal highlight highlight-python"><span></span><span class="n">b</span></code> and <code class="docutils literal highlight highlight-python"><span></span><span class="n">t</span></code>. The finite element space connectivity and the simulation data can be loaded using the <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffreaddata</span><span class="p">()</span></code> command. Therefore, to load the example data the following statement sequence must be executed in Matlab / Octave:</p>
+<p>The three data sections mentioned are returned in the variables <code class="docutils literal notranslate"><span class="pre">p</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code>. The finite element space connectivity and the simulation data can be loaded using the <code class="docutils literal notranslate"><span class="pre">ffreaddata()</span></code> command. Therefore, to load the example data the following statement sequence must be executed in Matlab / Octave:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c">%Add ffmatlib to the search path</span>
 <span class="linenos"> 2</span><span class="nb">addpath</span><span class="p">(</span><span class="s">&#39;add here the link to the ffmatlib&#39;</span><span class="p">);</span>
 <span class="linenos"> 3</span><span class="c">%Load the mesh</span>
@@ -2137,11 +2144,11 @@
 </section>
 <section id="d-plot-examples">
 <h2>2D Plot Examples<a class="headerlink" href="#d-plot-examples" title="Link to this heading"></a></h2>
-<p><code class="docutils literal highlight highlight-python"><span></span><span class="n">ffpdeplot</span><span class="p">()</span></code> is a plot solution for creating patch, contour, quiver, mesh, border, and region plots of 2D geometries. The basic syntax is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ffpdeplot()</span></code> is a plot solution for creating patch, contour, quiver, mesh, border, and region plots of 2D geometries. The basic syntax is:</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="p">[</span><span class="n">handles</span><span class="p">,</span><span class="nb">varargout</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">ffpdeplot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="nb">varargin</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal highlight highlight-python"><span></span><span class="n">varargin</span></code> specifies parameter name / value pairs to control the plot behaviour.
+<p><code class="docutils literal notranslate"><span class="pre">varargin</span></code> specifies parameter name / value pairs to control the plot behaviour.
 A table showing all options can be found in the <a class="reference external" href="https://github.com/samplemaker/freefem_matlab_octave_plot">ffmatlib</a> documentation. A small selection of possible plot commands is given as follows:</p>
 <ul class="simple">
 <li><p>Plot of the boundary and the mesh:</p></li>
@@ -2200,12 +2207,12 @@ A table showing all options can be found in the <a class="reference external" hr
 </figcaption>
 </figure>
 <p><strong>Download run through example:</strong></p>
-<p><a class="reference download internal" download="" href="../_downloads/ee14dc6216293f9959614685d09e2523/matlab_octave_2d_examples.m"><tt class="xref download docutils literal">Matlab / Octave file</tt></a></p>
-<p><a class="reference download internal" download="" href="../_downloads/e337dafe6d32061c160c1a5aac9157c5/matlab_octave_2d_examples.edp"><tt class="xref download docutils literal">FreeFEM script</tt></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/ee14dc6216293f9959614685d09e2523/matlab_octave_2d_examples.m"><code class="xref download docutils literal notranslate"><span class="pre">Matlab</span> <span class="pre">/</span> <span class="pre">Octave</span> <span class="pre">file</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/e337dafe6d32061c160c1a5aac9157c5/matlab_octave_2d_examples.edp"><code class="xref download docutils literal notranslate"><span class="pre">FreeFEM</span> <span class="pre">script</span></code></a></p>
 </section>
 <section id="id1">
 <h2>3D Plot Examples<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<p>3D problems are handled by the <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffpdeplot3D</span><span class="p">()</span></code> command, which works similarly to the <code class="docutils literal highlight highlight-python"><span></span><span class="n">ffpdeplot</span><span class="p">()</span></code> command. In particular in three-dimensions cross sections of the solution can be created. The following example shows a cross-sectional problem of a three-dimensional parallel plate capacitor.</p>
+<p>3D problems are handled by the <code class="docutils literal notranslate"><span class="pre">ffpdeplot3D()</span></code> command, which works similarly to the <code class="docutils literal notranslate"><span class="pre">ffpdeplot()</span></code> command. In particular in three-dimensions cross sections of the solution can be created. The following example shows a cross-sectional problem of a three-dimensional parallel plate capacitor.</p>
 <figure class="align-default" id="figmatlabslice">
 <a class="reference internal image-reference" href="../_images/capacitor3d_slice_500x400.png"><img alt="../_images/capacitor3d_slice_500x400.png" src="../_images/capacitor3d_slice_500x400.png" style="width: 50%;" /></a>
 <figcaption>
@@ -2213,8 +2220,8 @@ A table showing all options can be found in the <a class="reference external" hr
 </figcaption>
 </figure>
 <p><strong>Download run through example:</strong></p>
-<p><a class="reference download internal" download="" href="../_downloads/1d06cf77dcecf2b8d89005f227ea21ad/matlab_octave_3d_examples.m"><tt class="xref download docutils literal">Matlab / Octave file</tt></a></p>
-<p><a class="reference download internal" download="" href="../_downloads/df1eac994ce5c82db1bd09d087723570/matlab_octave_3d_examples.edp"><tt class="xref download docutils literal">FreeFEM script</tt></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/1d06cf77dcecf2b8d89005f227ea21ad/matlab_octave_3d_examples.m"><code class="xref download docutils literal notranslate"><span class="pre">Matlab</span> <span class="pre">/</span> <span class="pre">Octave</span> <span class="pre">file</span></code></a></p>
+<p><a class="reference download internal" download="" href="../_downloads/df1eac994ce5c82db1bd09d087723570/matlab_octave_3d_examples.edp"><code class="xref download docutils literal notranslate"><span class="pre">FreeFEM</span> <span class="pre">script</span></code></a></p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>

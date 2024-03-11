@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2103,7 +2110,7 @@
 </pre></div>
 </div>
 <p>Note that the boundary conditions are not specified in <span class="math notranslate nohighlight">\(bb\)</span>.
-Removing the comment <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="c1">//</span></code> would cause the compiler to multiply the diagonal terms corresponding to a Dirichlet degree of freedom by a very large term (<code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">tgv</span></code>); if so <span class="math notranslate nohighlight">\(b\)</span> would not be needed, on the condition that <span class="math notranslate nohighlight">\(uold=1\)</span> on boundary 3 initially.
+Removing the comment <code class="code highlight freefem docutils literal highlight-freefem"><span class="c1">//</span></code> would cause the compiler to multiply the diagonal terms corresponding to a Dirichlet degree of freedom by a very large term (<code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">tgv</span></code>); if so <span class="math notranslate nohighlight">\(b\)</span> would not be needed, on the condition that <span class="math notranslate nohighlight">\(uold=1\)</span> on boundary 3 initially.
 Note also that b has a tgv on the Dirichlet nodes, by construction, and so does A.</p>
 <p>The loop will then be:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">sol</span><span class="p">(</span><span class="n">Xh</span><span class="p">.</span><span class="kr">ndof</span><span class="p">),</span><span class="w"> </span><span class="n">aux</span><span class="p">(</span><span class="n">Xh</span><span class="p">.</span><span class="kr">ndof</span><span class="p">);</span>
@@ -2113,7 +2120,7 @@ Note also that b has a tgv on the Dirichlet nodes, by construction, and so does 
 <span class="linenos">5</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>There is yet a difficulty with the initialization of <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">sol</span></code> and with the solution from <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">sol</span></code>.
+<p>There is yet a difficulty with the initialization of <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">sol</span></code> and with the solution from <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">sol</span></code>.
 For this we need a temporary vector in <span class="math notranslate nohighlight">\(X_h\)</span> and here is a solution:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">Xh</span><span class="w"> </span><span class="p">[</span><span class="n">w1</span><span class="p">,</span><span class="w"> </span><span class="n">w2</span><span class="p">,</span><span class="w"> </span><span class="n">wp</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">uold</span><span class="p">,</span><span class="w"> </span><span class="n">vold</span><span class="p">,</span><span class="w"> </span><span class="n">pp</span><span class="p">];</span>
 <span class="linenos">2</span><span class="n">sol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w1</span><span class="p">[];</span><span class="w"> </span><span class="c1">//cause also the copy of w2 and wp</span>
@@ -2125,9 +2132,9 @@ For this we need a temporary vector in <span class="math notranslate nohighlight
 <span class="linenos">8</span><span class="nf">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">],</span><span class="w"> </span><span class="kp">value</span><span class="o">=</span><span class="kr">true</span><span class="p">,</span><span class="w"> </span><span class="kp">wait</span><span class="o">=</span><span class="kr">true</span><span class="p">,</span><span class="w"> </span><span class="kp">cmm</span><span class="o">=</span><span class="s">&quot;t=&quot;</span><span class="o">+</span><span class="kr">m</span><span class="o">*</span><span class="n">dt</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The freefem team agrees that the line <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">sol</span><span class="o">=</span><span class="n">w1</span><span class="p">[];</span></code> is mysterious as it copies also w2 and wp into sol.
+<p>The freefem team agrees that the line <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">sol</span><span class="o">=</span><span class="n">w1</span><span class="p">[];</span></code> is mysterious as it copies also w2 and wp into sol.
 Structured data such as vectors of <span class="math notranslate nohighlight">\(X_h\)</span> here cannot be written component by component.
-Hence <code class="docutils literal highlight highlight-python"><span></span><span class="n">w1</span><span class="o">=</span><span class="n">u</span></code> is not allowed.</p>
+Hence <code class="docutils literal notranslate"><span class="pre">w1=u</span></code> is not allowed.</p>
 </section>
 
 

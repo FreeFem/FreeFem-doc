@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2014,13 +2021,13 @@
    <section id="git-github-usage">
 <h1>Git &amp; Github usage<a class="headerlink" href="#git-github-usage" title="Link to this heading"></a></h1>
 <p>FreeFEM sources are publicly available on <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources">https://github.com/FreeFem/FreeFem-sources</a>.</p>
-<p>In order to contribute, you need to know how to use git (<code class="code docutils literal highlight highlight-python"><span></span><span class="n">add</span></code>, <code class="code docutils literal highlight highlight-python"><span></span><span class="n">commit</span></code>, <code class="code docutils literal highlight highlight-python"><span></span><span class="n">push</span></code>) and Github (Fork, Pull Requests).</p>
+<p>In order to contribute, you need to know how to use git (<code class="code docutils literal notranslate"><span class="pre">add</span></code>, <code class="code docutils literal notranslate"><span class="pre">commit</span></code>, <code class="code docutils literal notranslate"><span class="pre">push</span></code>) and Github (Fork, Pull Requests).</p>
 <p>The FreeFEM source code is organized in branches:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="code docutils literal highlight highlight-python"><span></span><span class="n">master</span></code>. The master branch, represent the current stable version, used to build a new release</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">master</span></code>. The master branch, represent the current stable version, used to build a new release</p></li>
 <li><dl class="simple">
-<dt><code class="code docutils literal highlight highlight-python"><span></span><span class="n">develop</span></code>. The developement branch, where all modifications take place</dt><dd><p>Should be almost always usable</p>
+<dt><code class="code docutils literal notranslate"><span class="pre">develop</span></code>. The developement branch, where all modifications take place</dt><dd><p>Should be almost always usable</p>
 </dd>
 </dl>
 </li>
@@ -2042,15 +2049,15 @@
 </dl>
 </li>
 <li><dl>
-<dt>Clone the fork (the FreeFem-sources repository on your account) on your computer.</dt><dd><p>Change the branch to <code class="code docutils literal highlight highlight-python"><span></span><span class="n">develop</span></code></p>
-<p><code class="code docutils literal highlight highlight-python"><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">develop</span></code></p>
+<dt>Clone the fork (the FreeFem-sources repository on your account) on your computer.</dt><dd><p>Change the branch to <code class="code docutils literal notranslate"><span class="pre">develop</span></code></p>
+<p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">develop</span></code></p>
 </dd>
 </dl>
 </li>
 <li><dl>
-<dt>Modify the code and use git commands to push your modifications to the fork, i.e.:</dt><dd><p><code class="code docutils literal highlight highlight-python"><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">somefile</span><span class="o">.</span><span class="n">cpp</span></code></p>
-<p><code class="code docutils literal highlight highlight-python"><span></span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span><span class="s2">&quot;my modification&quot;</span></code></p>
-<p><code class="code docutils literal highlight highlight-python"><span></span><span class="n">git</span> <span class="n">push</span></code></p>
+<dt>Modify the code and use git commands to push your modifications to the fork, i.e.:</dt><dd><p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">somefile.cpp</span></code></p>
+<p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m&quot;my</span> <span class="pre">modification&quot;</span></code></p>
+<p><code class="code docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code></p>
 <p>Please, provide commit descriptions correctly describe your modifications</p>
 </dd>
 </dl>

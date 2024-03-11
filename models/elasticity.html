@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2270,10 +2277,10 @@ Unfortunately, <strong>FreeFEM</strong> cannot treat crack, so we use the modifi
 The undeformed crack <span class="math notranslate nohighlight">\(\Sigma\)</span> is approximated by</p>
 <div class="math notranslate nohighlight">
 \[\Sigma_d = \{(x,y):\; -1\le x\le -10*d, -d\le y\le d\} \cup\{(x,y):\; -10*d\le x\le 0, -d+0.1*x\le y\le d-0.1*x\}\]</div>
-<p>and <span class="math notranslate nohighlight">\(\Gamma_D=\)</span><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">R</span></code> in <a class="reference internal" href="../documentation/mesh-generation.html#meshexamples"><span class="std std-ref">U-shape example</span></a>, <a class="reference internal" href="../documentation/mesh-generation.html#ushape"><span class="std std-numref">Fig. 85</span></a>.</p>
+<p>and <span class="math notranslate nohighlight">\(\Gamma_D=\)</span><code class="code highlight freefem docutils literal highlight-freefem"><span class="n">R</span></code> in <a class="reference internal" href="../documentation/mesh-generation.html#meshexamples"><span class="std std-ref">U-shape example</span></a>, <a class="reference internal" href="../documentation/mesh-generation.html#ushape"><span class="std std-numref">Fig. 85</span></a>.</p>
 <p>In this example, we use three technique:</p>
 <ul>
-<li><p>Fast Finite Element Interpolator from the mesh <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Th</span></code> to <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Zoom</span></code> for the scale-up of near <span class="math notranslate nohighlight">\(\gamma\)</span>.</p></li>
+<li><p>Fast Finite Element Interpolator from the mesh <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">Th</span></code> to <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">Zoom</span></code> for the scale-up of near <span class="math notranslate nohighlight">\(\gamma\)</span>.</p></li>
 <li><p>After obtaining the displacement vector <span class="math notranslate nohighlight">\(\mathbf{u}=(u,v)\)</span>, we shall watch the deformation of the crack near <span class="math notranslate nohighlight">\(\gamma\)</span> as follows,</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">mesh</span><span class="w"> </span><span class="n">Plate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">movemesh</span><span class="p">(</span><span class="n">Zoom</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="kr">x</span><span class="o">+</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="kr">y</span><span class="o">+</span><span class="n">v</span><span class="p">]);</span>
 <span class="linenos">2</span><span class="nf">plot</span><span class="p">(</span><span class="n">Plate</span><span class="p">);</span>
@@ -2282,7 +2289,7 @@ The undeformed crack <span class="math notranslate nohighlight">\(\Sigma\)</span
 </li>
 <li><p>Adaptivity is an important technique here, because a large singularity occurs at <span class="math notranslate nohighlight">\(\gamma\)</span> as shown in <a class="reference internal" href="#equation-eqn-sif">(59)</a>.</p></li>
 </ul>
-<p>The first example creates mode I deformation by the opposed surface force on <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">B</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">T</span></code> in the vertical direction of <span class="math notranslate nohighlight">\(\Sigma\)</span>, and the displacement is fixed on <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">R</span></code>.</p>
+<p>The first example creates mode I deformation by the opposed surface force on <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">B</span></code> and <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">T</span></code> in the vertical direction of <span class="math notranslate nohighlight">\(\Sigma\)</span>, and the displacement is fixed on <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">R</span></code>.</p>
 <p>In a laboratory, fracture engineers use photoelasticity to make stress field visible, which shows the principal stress difference</p>
 <div class="math notranslate nohighlight">
 \[\sigma_1-\sigma_2=\sqrt{(\sigma_{11}-\sigma_{22})^2+4\sigma_{12}^2}\]</div>
@@ -2393,7 +2400,7 @@ The undeformed crack <span class="math notranslate nohighlight">\(\Sigma\)</span
 </figcaption>
 </figure>
 </div></div>
-<p id="CrackAndPrincipalStress">It is difficult to create mode II deformation by the opposed shear force on <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kp">B</span></code> and <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">T</span></code> that is observed in a laboratory.
+<p id="CrackAndPrincipalStress">It is difficult to create mode II deformation by the opposed shear force on <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">B</span></code> and <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">T</span></code> that is observed in a laboratory.
 So we use the body shear force along <span class="math notranslate nohighlight">\(\Sigma\)</span>, that is, the <span class="math notranslate nohighlight">\(x\)</span>-component <span class="math notranslate nohighlight">\(f_1\)</span> of the body force <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[f_1(x,y)=H(y-0.001)*H(0.1-y)-H(-y-0.001)*H(y+0.1)\]</div>

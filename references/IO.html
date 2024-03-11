@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2114,7 +2121,7 @@
 </section>
 <section id="output-format">
 <h2>Output format<a class="headerlink" href="#output-format" title="Link to this heading"></a></h2>
-<p>In the descriptions below, <code class="docutils literal highlight highlight-python"><span></span><span class="n">f</span></code> is an output stream, for example <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">cout</span></code> or a <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kt">ofstream</span></code>.</p>
+<p>In the descriptions below, <code class="docutils literal notranslate"><span class="pre">f</span></code> is an output stream, for example <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">cout</span></code> or a <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">ofstream</span></code>.</p>
 <p>All this methods, excepted the first, return a stream, so they can be chained:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kr">cout</span><span class="p">.</span><span class="kr">scientific</span><span class="p">.</span><span class="kr">showpos</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="kr">endl</span><span class="p">;</span>
 </pre></div>
@@ -2124,7 +2131,7 @@
 <p>Set the number of digits printed to the right of the decimal point.
 This applies to all subsequent floating point numbers written to that output stream.
 However, this won’t make floating-point “integers” print with a decimal point.
-It’s necessary to use <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">fixed</span></code> for that effect.</p>
+It’s necessary to use <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">fixed</span></code> for that effect.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">int</span><span class="w"> </span><span class="n">np</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">.</span><span class="kr">precision</span><span class="p">(</span><span class="kr">n</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2146,7 +2153,7 @@ Opposite of scientific.</p>
 </section>
 <section id="showbase">
 <h3>showbase<a class="headerlink" href="#showbase" title="Link to this heading"></a></h3>
-<p>Converts insertions to an external form that can be read according to the <code class="docutils literal highlight highlight-python"><span></span><span class="n">C</span><span class="o">++</span></code> lexical conventions for integral constants.
+<p>Converts insertions to an external form that can be read according to the <code class="docutils literal notranslate"><span class="pre">C++</span></code> lexical conventions for integral constants.
 By default, showbase is not set.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">f</span><span class="p">.</span><span class="kr">showbase</span>
 </pre></div>
@@ -2154,7 +2161,7 @@ By default, showbase is not set.</p>
 </section>
 <section id="noshowbase">
 <h3>noshowbase<a class="headerlink" href="#noshowbase" title="Link to this heading"></a></h3>
-<p>Unset <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">showbase</span></code> flags.</p>
+<p>Unset <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">showbase</span></code> flags.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">f</span><span class="p">.</span><span class="kr">noshowbase</span>
 </pre></div>
 </div>
@@ -2168,7 +2175,7 @@ By default, showbase is not set.</p>
 </section>
 <section id="noshowpos">
 <h3>noshowpos<a class="headerlink" href="#noshowpos" title="Link to this heading"></a></h3>
-<p>Unset <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">showpos</span></code> flags.</p>
+<p>Unset <code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">showpos</span></code> flags.</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">f</span><span class="p">.</span><span class="kr">noshowpos</span>
 </pre></div>
 </div>
@@ -2182,7 +2189,7 @@ By default, showbase is not set.</p>
 </section>
 <section id="setw">
 <h3>setw<a class="headerlink" href="#setw" title="Link to this heading"></a></h3>
-<p>Behaves as if member width were called with <code class="docutils literal highlight highlight-python"><span></span><span class="n">n</span></code> as argument on the stream on which it is inserted as a manipulator (it can be inserted on output streams).</p>
+<p>Behaves as if member width were called with <code class="docutils literal notranslate"><span class="pre">n</span></code> as argument on the stream on which it is inserted as a manipulator (it can be inserted on output streams).</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">f</span><span class="p">.</span><span class="kr">setw</span><span class="p">(</span><span class="kr">n</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -1948,14 +1948,21 @@
 		</div>
 	</div>
 	<div class="search-container">
-	<label id="search-icon" for="searchInput"><i class="fas fa-search"></i></label>
-	<input type="search" placeholder="Type to start searching" id="searchInput">
-	<label id="search-overlay" onclick="removeOverlay()"></label>
-	<div class="search-toggle">
-		<input type="checkbox" id="checkbox-search-toggle"/>
-		<label for="checkbox-search"> search in examples &emsp;&emsp; NEW !! toggle between documentation or examples (or press CTRL key)</label>
-	</div>
-	<div id="searchResults"></div>
+  <label id="search-icon" for="searchInput"
+    ><i class="fas fa-search"></i
+  ></label>
+  <input type="search" placeholder="Type to start searching" id="searchInput" />
+  <label id="search-overlay" onclick="removeOverlay()"></label>
+  <div class="search-toggle">
+    <strong
+      >NEW: Toggle between documentation or examples (or press Alt key)</strong
+    >
+    <div>
+      <input type="checkbox" id="checkbox-search-toggle" />
+      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+    </div>
+  </div>
+  <div id="searchResults"></div>
 </div>
 	
 </nav>
@@ -2068,12 +2075,12 @@ Consider this L-shaped domain with 3 diagonals as internal boundaries, defining 
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/TransmissionProblem_Region.png"><img alt="TransmissionProblem_Region" src="../_images/TransmissionProblem_Region.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 176 </span><span class="caption-text">The function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">reg</span></code></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 176 </span><span class="caption-text">The function <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">reg</span></code></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
 </figcaption>
 </figure>
-<p><code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="kr">region</span></code> is a keyword of <strong>FreeFEM</strong> which is in fact a variable depending of the current position (is not a function today, use <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">Ph</span><span class="w"> </span><span class="n">reg</span><span class="o">=</span><span class="kr">region</span><span class="p">;</span></code> to set a function).
+<p><code class="code highlight freefem docutils literal highlight-freefem"><span class="kr">region</span></code> is a keyword of <strong>FreeFEM</strong> which is in fact a variable depending of the current position (is not a function today, use <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">Ph</span><span class="w"> </span><span class="n">reg</span><span class="o">=</span><span class="kr">region</span><span class="p">;</span></code> to set a function).
 This variable value returned is the number of the sub-domain of the current position.
-This number is defined by <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="nf">buildmesh</span></code> which scans while building the mesh all its connected component.</p>
+This number is defined by <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">buildmesh</span></code> which scans while building the mesh all its connected component.</p>
 <p>So to get the number of a region containing a particular point one does:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">// Characteristic function</span>
 <span class="linenos">2</span><span class="kt">int</span><span class="w"> </span><span class="n">nupper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reg</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">);</span><span class="w"> </span><span class="c1">//get the region number of point (0.4,0.9)</span>
@@ -2088,7 +2095,7 @@ This number is defined by <code class="code freefem docutils literal highlight h
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/TransmissionProblem_Nu.png"><img alt="TransmissionProblem_Nu" src="../_images/TransmissionProblem_Nu.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 177 </span><span class="caption-text">The function <code class="code freefem docutils literal highlight highlight-freefem"><span></span><span class="n">nu</span></code></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+<p><span class="caption-number">Fig. 177 </span><span class="caption-text">The function <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">nu</span></code></span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p>This is particularly useful to define discontinuous functions such as might occur when one part of the domain is copper and the other one is iron, for example.</p>
