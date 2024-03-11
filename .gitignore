@@ -2,4 +2,5 @@ build
 tools/package-lock.json
 tools/node_modules
 tools/lunr_index.js
+tools/lunr_index_edps.js
 source/sphinx-extensions/__pycache__
