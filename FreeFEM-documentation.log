@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.1)  1 MAR 2024 10:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.11)  11 MAR 2024 10:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3861,7 +3861,7 @@ Package rerunfilecheck Info: File `FreeFEM-documentation.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  26230 strings out of 480247
- 525875 string characters out of 5896152
+ 525875 string characters out of 5896151
  1306381 words of memory out of 5000000
  40781 multiletter control sequences out of 15000+600000
  568907 words of font info for 123 fonts, out of 8000000 for 9000
@@ -3908,7 +3908,7 @@ lic/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfont
 s/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on FreeFEM-documentation.pdf (746 pages, 35452885 bytes).
+Output written on FreeFEM-documentation.pdf (746 pages, 35452898 bytes).
 PDF statistics:
  11651 PDF objects out of 12825 (max. 8388607)
  10169 compressed objects within 102 object streams
