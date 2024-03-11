@@ -291,4 +291,4 @@ Then open ``gnuplot`` and do:
    set palette rgbformulae 30,31,32
    splot "graph.txt" w l pal
 
-This works with :freefem:`P2` and :freefem:`P1`, but not with :freefem:`P1nc` because the 3 first degrees of freedom of :freefem:`P2` or :freefem:`P2` are on vertices and not with :freefem:`P1nc`.
+This works with :freefem:`P2` and :freefem:`P1`, but not with :freefem:`P1nc` because the three first degrees of freedom of :freefem:`P1` or :freefem:`P2` are on vertices and not with :freefem:`P1nc`.

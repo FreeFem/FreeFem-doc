@@ -338,7 +338,7 @@ where :math:`D` is the total derivative operator.
 So a good scheme is one step of backward convection by the method of Characteristics-Galerkin
 
 .. math::
-    \frac{1}{{\tau }}\left(u^{m + 1}(x) - u^m(X^m(x))\right) = f^m (x)
+    \frac{1}{{\tau }}\left(u^{m + 1}(x) - u^m(X^m(x))\right) = f^{m+1} (x)
     :label: eqn::Charac
 
 where :math:`X^m (x)` is an approximation of the solution at :math:`t = m\tau` of the ordinary differential equation
