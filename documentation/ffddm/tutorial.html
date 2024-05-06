@@ -2059,7 +2059,8 @@
 <section id="why-domain-decomposition-methods">
 <h2>Why Domain Decomposition Methods ?<a class="headerlink" href="#why-domain-decomposition-methods" title="Link to this heading"></a></h2>
 <p>How can we solve a large sparse linear system <span class="math notranslate nohighlight">\(A u = b \in \mathbb{R}^n\)</span> ?</p>
-<a class="reference internal image-reference" href="../../_images/Methods_Solves_1.png"><img alt="../../_images/Methods_Solves_1.png" src="../../_images/Methods_Solves_1.png" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/Methods_Solves_1.png"><img alt="../../_images/Methods_Solves_1.png" src="../../_images/Methods_Solves_1.png" style="width: 100%;" />
+</a>
 <section id="step-1-decompose-the-mesh">
 <h3>Step 1: Decompose the mesh<a class="headerlink" href="#step-1-decompose-the-mesh" title="Link to this heading"></a></h3>
 <p>See <a class="reference internal" href="documentation.html#ffddmdocumentationoverlappingmeshdecomposition"><span class="std std-ref">documentation</span></a></p>
@@ -2126,7 +2127,8 @@
 </div>
 <section id="distributed-vectors-and-restriction-operators">
 <h4>Distributed vectors and restriction operators<a class="headerlink" href="#distributed-vectors-and-restriction-operators" title="Link to this heading"></a></h4>
-<a class="reference internal image-reference" href="../../_images/domain2.png"><img alt="../../_images/domain2.png" class="align-center" src="../../_images/domain2.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/domain2.png"><img alt="../../_images/domain2.png" class="align-center" src="../../_images/domain2.png" style="width: 50%;" />
+</a>
 <p>Natural decomposition of the set of d.o.f.’s <span class="math notranslate nohighlight">\({\mathcal N}\)</span> of <span class="math notranslate nohighlight">\(Vh\)</span> into the <span class="math notranslate nohighlight">\(N\)</span> subsets of d.o.f.’s <span class="math notranslate nohighlight">\(({\mathcal N}_i)_{i=1}^N\)</span> each associated with the local FE space <span class="math notranslate nohighlight">\(Vh_i\)</span></p>
 <div class="math notranslate nohighlight">
 \[{\mathcal N} = \cup_{i=1}^N {\mathcal N}_i\,,\]</div>
@@ -2140,7 +2142,8 @@ and <span class="math notranslate nohighlight">\(R_i\)</span> is the <em>restric
 </section>
 <section id="partition-of-unity">
 <h4>Partition of unity<a class="headerlink" href="#partition-of-unity" title="Link to this heading"></a></h4>
-<a class="reference internal image-reference" href="../../_images/domain3.png"><img alt="../../_images/domain3.png" class="align-center" src="../../_images/domain3.png" style="width: 75%;" /></a>
+<a class="reference internal image-reference" href="../../_images/domain3.png"><img alt="../../_images/domain3.png" class="align-center" src="../../_images/domain3.png" style="width: 75%;" />
+</a>
 <p>Duplicated unknowns coupled via a <em>partition of unity</em>:</p>
 <div class="math notranslate nohighlight">
 \[I = \sum_{i = 1}^N R_i^T D_i R_i\]</div>
@@ -2502,7 +2505,8 @@ with command-line arguments or directly to the underlying <strong>HPDDM</strong>
 <section id="some-results-heterogeneous-3d-elasticity-with-geneo">
 <h2>Some results: Heterogeneous 3D elasticity with GenEO<a class="headerlink" href="#some-results-heterogeneous-3d-elasticity-with-geneo" title="Link to this heading"></a></h2>
 <p>Heterogeneous 3D linear elasticity equation discretized with P2 FE solved on 4096 MPI processes <span class="math notranslate nohighlight">\(n\approx\)</span> 262 million</p>
-<a class="reference internal image-reference" href="../../_images/comparisonAMG.png"><img alt="../../_images/comparisonAMG.png" src="../../_images/comparisonAMG.png" style="width: 75%;" /></a>
+<a class="reference internal image-reference" href="../../_images/comparisonAMG.png"><img alt="../../_images/comparisonAMG.png" src="../../_images/comparisonAMG.png" style="width: 75%;" />
+</a>
 </section>
 <section id="some-results-2-level-dd-for-maxwell-equations-scattering-from-the-cobra-cavity">
 <h2>Some results: 2-level DD for Maxwell equations, scattering from the COBRA cavity<a class="headerlink" href="#some-results-2-level-dd-for-maxwell-equations-scattering-from-the-cobra-cavity" title="Link to this heading"></a></h2>
@@ -2515,7 +2519,8 @@ with command-line arguments or directly to the underlying <strong>HPDDM</strong>
 </tbody>
 </table>
 <p>f = 16 GHz</p>
-<a class="reference internal image-reference" href="../../_images/16GHz_new.png"><img alt="../../_images/16GHz_new.png" class="align-center" src="../../_images/16GHz_new.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../_images/16GHz_new.png"><img alt="../../_images/16GHz_new.png" class="align-center" src="../../_images/16GHz_new.png" style="width: 50%;" />
+</a>
 </section>
 <section id="id2">
 <h2>Some results: 2-level DD for Maxwell equations, scattering from the COBRA cavity<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
@@ -2532,7 +2537,8 @@ with command-line arguments or directly to the underlying <strong>HPDDM</strong>
 </ul>
 <p><span class="math notranslate nohighlight">\(\rightarrow\)</span> coarse problem too large for a direct solver
 <span class="math notranslate nohighlight">\(\Rightarrow\)</span> inexact coarse solve: GMRES + one level ORAS preconditioner</p>
-<a class="reference internal image-reference" href="../../_images/table.png"><img alt="../../_images/table.png" class="align-center" src="../../_images/table.png" style="width: 75%;" /></a>
+<a class="reference internal image-reference" href="../../_images/table.png"><img alt="../../_images/table.png" class="align-center" src="../../_images/table.png" style="width: 75%;" />
+</a>
 <p>speedup of 1.81 from 1536 to 3072 cores at 10GHz</p>
 <p>1.51 from 3072 to 6144 cores at 16GHz</p>
 <p>You can find the script <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Maxwell_Cobracavity.edp">here</a></p>

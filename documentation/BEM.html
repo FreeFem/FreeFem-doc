@@ -2033,7 +2033,8 @@
 <section id="model-problem">
 <span id="bemintromodel"></span><h3>Model problem<a class="headerlink" href="#model-problem" title="Link to this heading"></a></h3>
 <p>The model problem we consider here is the scattering of an incoming acoustic wave <span class="math notranslate nohighlight">\(u_\text{inc}\)</span> by an obstacle <span class="math notranslate nohighlight">\(\Omega\)</span>. Thus, we want to solve the following homogeneous Helmholtz equation written in terms of the scattered field <span class="math notranslate nohighlight">\(u\)</span>:</p>
-<a class="reference internal image-reference" href="../_images/BEM_figdomainbem.png" id="bemfigdomainbem"><img alt="../_images/BEM_figdomainbem.png" class="align-center" id="bemfigdomainbem" src="../_images/BEM_figdomainbem.png" style="width: 30%;" /></a>
+<a class="reference internal image-reference" href="../_images/BEM_figdomainbem.png" id="bemfigdomainbem"><img alt="../_images/BEM_figdomainbem.png" class="align-center" id="bemfigdomainbem" src="../_images/BEM_figdomainbem.png" style="width: 30%;" />
+</a>
 <div class="math notranslate nohighlight" id="equation-eq-modelpb">
 <span class="eqno">(39)<a class="headerlink" href="#equation-eq-modelpb" title="Link to this equation"></a></span>\[\begin{split}\left \{
 \begin{aligned}
@@ -2121,7 +2122,8 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <section id="hierarchical-block-structure">
 <h4>Hierarchical block structure<a class="headerlink" href="#hierarchical-block-structure" title="Link to this heading"></a></h4>
 <p>Unfortunately, BEM matrices generally do not have fast decreasing singular values. However, they can exhibit sub-blocks with rapidly decreasing singular values, thanks to the asymptotically smooth nature of the BEM kernel. Let us look for example at the absolute value of the matrix coefficients in the 2D (circle) case below:</p>
-<a class="reference internal image-reference" href="../_images/BEM_figyumatrix.png" id="bemfigyumatrix"><img alt="../_images/BEM_figyumatrix.png" class="align-center" id="bemfigyumatrix" src="../_images/BEM_figyumatrix.png" style="width: 40%;" /></a>
+<a class="reference internal image-reference" href="../_images/BEM_figyumatrix.png" id="bemfigyumatrix"><img alt="../_images/BEM_figyumatrix.png" class="align-center" id="bemfigyumatrix" src="../_images/BEM_figyumatrix.png" style="width: 40%;" />
+</a>
 <ul class="simple">
 <li><p>blocks <em>near</em> the diagonal contain information about the <em>near-field interactions</em>, which are not low-rank in nature</p></li>
 <li><p>blocks <em>away</em> from the diagonal corresponding to the interaction between two clusters of geometric points <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> satisfying the so-called <strong>admissibility condition</strong></p></li>
@@ -2184,7 +2186,8 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <span class="hll"><span class="linenos">7</span><span class="kt">meshS</span><span class="w"> </span><span class="n">ThS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">square3</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,[</span><span class="n">torex</span><span class="p">,</span><span class="n">torey</span><span class="p">,</span><span class="n">torez</span><span class="p">],</span><span class="kp">removeduplicate</span><span class="o">=</span><span class="kr">true</span><span class="p">);</span>
 </span></pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/BEM_figtorus.png" id="bemfigtorus"><img alt="../_images/BEM_figtorus.png" class="align-center" id="bemfigtorus" src="../_images/BEM_figtorus.png" style="width: 30%;" /></a>
+<a class="reference internal image-reference" href="../_images/BEM_figtorus.png" id="bemfigtorus"><img alt="../_images/BEM_figtorus.png" class="align-center" id="bemfigtorus" src="../_images/BEM_figtorus.png" style="width: 30%;" />
+</a>
 <p>or from a 2D <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh</span></code> using the <code class="code highlight freefem docutils literal highlight-freefem"><span class="nf">movemesh23</span></code> keyword:</p>
 <div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">load</span><span class="w"> </span><span class="s">&quot;msh3&quot;</span>
 <span class="linenos">2</span><span class="kt">mesh</span><span class="w"> </span><span class="n">Th</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
@@ -2210,7 +2213,8 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </pre></div>
 </div>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">shift</span> <span class="pre">+</span> <span class="pre">t</span></code> on a plot of a boundary mesh to display the outward normal vector <span class="math notranslate nohighlight">\(\boldsymbol{n}\)</span>:</p>
-<a class="reference internal image-reference" href="../_images/BEM_fignormals.png" id="bemfigcircle"><img alt="../_images/BEM_fignormals.png" class="align-center" id="bemfigcircle" src="../_images/BEM_fignormals.png" style="width: 25%;" /></a>
+<a class="reference internal image-reference" href="../_images/BEM_fignormals.png" id="bemfigcircle"><img alt="../_images/BEM_fignormals.png" class="align-center" id="bemfigcircle" src="../_images/BEM_fignormals.png" style="width: 25%;" />
+</a>
 </section>
 </section>
 <section id="define-the-type-of-operator">
@@ -2386,7 +2390,8 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <span class="linenos">41</span><span class="nf">plot</span><span class="p">(</span><span class="n">utot</span><span class="p">,</span><span class="kp">fill</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="kp">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="kp">cmm</span><span class="o">=</span><span class="s">&quot;u_total&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="../_images/BEM_figcircle.png" id="id4"><img alt="../_images/BEM_figcircle.png" class="align-center" id="id4" src="../_images/BEM_figcircle.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../_images/BEM_figcircle.png" id="id4"><img alt="../_images/BEM_figcircle.png" class="align-center" id="id4" src="../_images/BEM_figcircle.png" style="width: 80%;" />
+</a>
 </section>
 <section id="bem-for-maxwell-s-equations">
 <span id="bemmaxwell"></span><h2>BEM for Maxwell’s equations<a class="headerlink" href="#bem-for-maxwell-s-equations" title="Link to this heading"></a></h2>
@@ -2538,13 +2543,15 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 </div>
 <div class="figure compound align-center" id="BEMfigmaxwellE">
 <figure class="align-center" id="id5">
-<a class="reference internal image-reference" href="../_images/BEM_figmaxwellEx.png"><img alt="real part of the x component of the total electric field" src="../_images/BEM_figmaxwellEx.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/BEM_figmaxwellEx.png"><img alt="real part of the x component of the total electric field" src="../_images/BEM_figmaxwellEx.png" style="width: 90%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 123 </span><span class="caption-text">real part of the x component of the total electric field</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id6">
-<a class="reference internal image-reference" href="../_images/BEM_figmaxwellEy.png"><img alt="real part of the y component of the total electric field" src="../_images/BEM_figmaxwellEy.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/BEM_figmaxwellEy.png"><img alt="real part of the y component of the total electric field" src="../_images/BEM_figmaxwellEy.png" style="width: 90%;" />
+</a>
 <figcaption>
 <p><span class="caption-number">Fig. 124 </span><span class="caption-text">real part of the y component of the total electric field</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
 </figcaption>
