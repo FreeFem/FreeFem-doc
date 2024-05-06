@@ -74,9 +74,10 @@ macOS X installation
 ^^^^^^^^^^^^^^^^^^^^
 
 Download the macOS X binary version file, extract all the files by double clicking on the icon of the file, go the the directory and put the ``FreeFem++.app`` application in the ``/Applications`` directory.
-
+And read the README.md file.
 If you want terminal access to **FreeFEM** just copy the file ``FreeFem++`` in a directory of your :bash:`$PATH` shell environment variable.
 
+We make a small move to explain how to by pass the security problem see `FreeFEM install movie  <https://www.ljll.fr/hecht/pkg/Install-FreeFEM-MacOS.mov>``
 
 Ubuntu installation
 ^^^^^^^^^^^^^^^^^^^
