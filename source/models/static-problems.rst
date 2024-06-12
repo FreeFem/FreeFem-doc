@@ -516,7 +516,8 @@ These boundary conditions are achieved from the definition of the periodic finit
     // Problem
     problem laplace (uh, vh)
         = int2d(Th)(
-            dx(uh)*dx(vh)
+            uh*vh*1.0e-10 // to fix the constant
+            + dx(uh)*dx(vh)
             + dy(uh)*dy(vh)
         )
         + int2d(Th)(
@@ -578,7 +579,8 @@ The following example give such example.
         real k =  intf / mTh;
         problem laplace (uh, vh)
             = int2d(Th)(
-                dx(uh)*dx(vh)
+                uh*vh*1.0e-10 // to fix the constant
+                + dx(uh)*dx(vh)
                 + dy(uh)*dy(vh)
             )
             + int2d(Th)(
