@@ -140,7 +140,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{May 06, 2024}
+\date{Jun 12, 2024}
 \release{4.13}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -47650,9 +47650,10 @@ These boundary conditions are achieved from the definition of the periodic finit
 \PYG{n}{Vh}\PYG{+w}{ }\PYG{n}{uh}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{vh}\PYG{p}{;}
 
 \PYG{c+c1}{// Problem}
-\PYG{k+kt}{problem}\PYG{+w}{ }\PYG{n+nf}{laplace}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{uh}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{vh}\PYG{p}{)}
+\PYG{k+kt}{problem}\PYG{+w}{ }\PYG{n}{laplace}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{uh}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{vh}\PYG{p}{)}
 \PYG{+w}{    }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
-\PYG{+w}{        }\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{uh}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{vh}\PYG{p}{)}
+\PYG{+w}{        }\PYG{n}{uh}\PYG{o}{*}\PYG{n}{vh}\PYG{o}{*}\PYG{l+m+mf}{1.0e\PYGZhy{}10}\PYG{+w}{ }\PYG{c+c1}{// to fix the constant}
+\PYG{+w}{        }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{uh}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{vh}\PYG{p}{)}
 \PYG{+w}{        }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{uh}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{vh}\PYG{p}{)}
 \PYG{+w}{    }\PYG{p}{)}
 \PYG{+w}{    }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
@@ -47715,9 +47716,10 @@ Periodic boundary conditions \sphinxhyphen{} non\sphinxhyphen{}parallel boundari
 \PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{intf}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}\PYG{n}{f}\PYG{p}{)}\PYG{p}{;}
 \PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{mTh}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
 \PYG{k+kt}{real}\PYG{+w}{ }\PYG{n}{k}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{  }\PYG{n}{intf}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{mTh}\PYG{p}{;}
-\PYG{k+kt}{problem}\PYG{+w}{ }\PYG{n+nf}{laplace}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{uh}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{vh}\PYG{p}{)}
+\PYG{k+kt}{problem}\PYG{+w}{ }\PYG{n}{laplace}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{uh}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{vh}\PYG{p}{)}
 \PYG{+w}{    }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
-\PYG{+w}{        }\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{uh}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{vh}\PYG{p}{)}
+\PYG{+w}{        }\PYG{n}{uh}\PYG{o}{*}\PYG{n}{vh}\PYG{o}{*}\PYG{l+m+mf}{1.0e\PYGZhy{}10}\PYG{+w}{ }\PYG{c+c1}{// to fix the constant}
+\PYG{+w}{        }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{uh}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{vh}\PYG{p}{)}
 \PYG{+w}{        }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{uh}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{dy}\PYG{p}{(}\PYG{n}{vh}\PYG{p}{)}
 \PYG{+w}{    }\PYG{p}{)}
 \PYG{+w}{    }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}\PYG{p}{(}
