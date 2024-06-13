@@ -1018,7 +1018,7 @@ First, we solve the same problem as in a previous example.
     Nh rho;
 
     // Problem
-    problem Probem1 (u, v, solver=CG, eps=1.0e-6)
+    problem Problem1 (u, v, solver=CG, eps=1.0e-6)
         = int2d(Th, qforder=5)(
             u*v*1.0e-10
             + dx(u)*dx(v)
@@ -1054,7 +1054,7 @@ Of course, we can use a variational form to compute :math:`\eta_{T}^{2}`, with t
     // Mesh adaptation loop
     for (int i = 0; i < 4; i++){
         // Solve
-        Probem1;
+        Problem1;
         cout << u[].min << " " << u[].max << endl;
         plot(u, wait=true);
 
