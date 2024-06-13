@@ -140,7 +140,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Jun 12, 2024}
+\date{Jun 13, 2024}
 \release{4.13}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -48187,7 +48187,7 @@ First, we solve the same problem as in a previous example.
 \PYG{n}{Nh}\PYG{+w}{ }\PYG{n}{rho}\PYG{p}{;}
 
 \PYG{c+c1}{// Problem}
-\PYG{k+kt}{problem}\PYG{+w}{ }\PYG{n+nf}{Probem1}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{solver}\PYG{o}{=}\PYG{k+kr}{CG}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{eps}\PYG{o}{=}\PYG{l+m+mf}{1.0e\PYGZhy{}6}\PYG{p}{)}
+\PYG{k+kt}{problem}\PYG{+w}{ }\PYG{n+nf}{Problem1}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{solver}\PYG{o}{=}\PYG{k+kr}{CG}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{eps}\PYG{o}{=}\PYG{l+m+mf}{1.0e\PYGZhy{}6}\PYG{p}{)}
 \PYG{+w}{    }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{qforder}\PYG{o}{=}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{(}
 \PYG{+w}{        }\PYG{n}{u}\PYG{o}{*}\PYG{n}{v}\PYG{o}{*}\PYG{l+m+mf}{1.0e\PYGZhy{}10}
 \PYG{+w}{        }\PYG{o}{+}\PYG{+w}{ }\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{dx}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
@@ -48224,7 +48224,7 @@ Of course, we can use a variational form to compute \(\eta_{T}^{2}\), with test 
 \PYG{c+c1}{// Mesh adaptation loop}
 \PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{+}\PYG{o}{+}\PYG{p}{)}\PYG{p}{\PYGZob{}}
 \PYG{+w}{    }\PYG{c+c1}{// Solve}
-\PYG{+w}{    }\PYG{n}{Probem1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{Problem1}\PYG{p}{;}
 \PYG{+w}{    }\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{[}\PYG{p}{]}\PYG{p}{.}\PYG{k+kr}{min}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{ }\PYG{l+s}{\PYGZdq{}}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{[}\PYG{p}{]}\PYG{p}{.}\PYG{k+kr}{max}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
 \PYG{+w}{    }\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{u}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kp}{wait}\PYG{o}{=}\PYG{k+kr}{true}\PYG{p}{)}\PYG{p}{;}
 
