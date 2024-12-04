@@ -4643,22 +4643,22 @@ Secondly, we use this idea to build meshes from an image, we use the plugins :fr
     .. _meshGenerationIsoline1:
 
     .. figure:: images/MeshGeneration_Isoline1.jpg
-        :alt: MeshGeneration_Isoline1
-        :width: 90%
+       :alt: MeshGeneration_Isoline1
+       :width: 90%
 
-        The image of the Leman lake meshes
+       The image of the Leman lake meshes
 
     .. _meshGenerationIsoline2:
 
     .. figure:: images/MeshGeneration_Isoline2.png
-        :alt: MeshGeneration_Isoline2
-        :width: 90%
+       :alt: MeshGeneration_Isoline2
+       :width: 90%
 
-        The mesh of the lake
+       The mesh of the lake
 
     .. subfigend::
-        :width: 0.49
-        :alt: Isoline
-        :label: Isoline
+       :width: 0.49
+       :alt: Isoline
+       :label: Isoline
 
-        Isoline
+       Isoline
