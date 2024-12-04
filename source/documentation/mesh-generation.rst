@@ -4638,27 +4638,27 @@ Secondly, we use this idea to build meshes from an image, we use the plugins :fr
         cout << "Th.area = " << Th.area << " Km^2 " << " == " << AreaLac << " Km^2 " << endl;
         plot(Th, wait=true, ps="leman.eps");
 
-    .. subfigstart::
+.. subfigstart::
 
-    .. _meshGenerationIsoline1:
+.. _meshGenerationIsoline1:
 
-    .. figure:: images/MeshGeneration_Isoline1.jpg
-       :alt: MeshGeneration_Isoline1
-       :width: 90%
+.. figure:: images/MeshGeneration_Isoline1.jpg
+    :alt: MeshGeneration_Isoline1
+    :width: 90%
 
-       The image of the Leman lake meshes
+    The image of the Leman lake meshes
 
-    .. _meshGenerationIsoline2:
+.. _meshGenerationIsoline2:
 
-    .. figure:: images/MeshGeneration_Isoline2.png
-       :alt: MeshGeneration_Isoline2
-       :width: 90%
+.. figure:: images/MeshGeneration_Isoline2.png
+    :alt: MeshGeneration_Isoline2
+    :width: 90%
 
-       The mesh of the lake
+    The mesh of the lake
 
-    .. subfigend::
-       :width: 0.49
-       :alt: Isoline
-       :label: Isoline
+.. subfigend::
+    :width: 0.49
+    :alt: Isoline
+    :label: Isoline
 
-       Isoline
+    Isoline
