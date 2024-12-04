@@ -1,5 +1,14 @@
 MathJax.Hub.Config({
-  jax: ['input/TeX', 'output/CommonHTML'],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  },
+  "HTML-CSS": { fonts: ["TeX"] },
+
   TeX: {
     TagSide: 'right',
     TagIndent: '.8em',

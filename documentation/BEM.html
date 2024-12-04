@@ -1954,12 +1954,9 @@
   <input type="search" placeholder="Type to start searching" id="searchInput" />
   <label id="search-overlay" onclick="removeOverlay()"></label>
   <div class="search-toggle">
-    <strong
-      >NEW: Toggle between documentation or examples (or press Alt key)</strong
-    >
     <div>
       <input type="checkbox" id="checkbox-search-toggle" />
-      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+      <label for="checkbox-search">Search in examples (toggle with right Alt key) &emsp;&emsp; </label>
     </div>
   </div>
   <div id="searchResults"></div>
@@ -2019,7 +2016,8 @@
 				</ul>
 			</div>
 			<div id="exampleCode" spellcheck="false" style="display: none">
-				<h2><div id='ExampleLinkToGitHub'></div> <!-- <span id="exampleSave">Save as EDP</span> --></h2>
+				<h2><div id='ExampleLinkToGitHub'></div><div id='markdowntoggle'></div><!-- input type="checkbox" id="checkbox-markdown-toggle"/> <!-- <span id="exampleSave">Save as EDP</span> --></h2>
+				<div id="mdout"></div>
 				<textarea id="code"></textarea>
 			</div>
 		</div>
@@ -2138,12 +2136,14 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 <li><p>from this hierarchical clustering, define and traverse the <strong>block cluster tree</strong> representation of the matrix structure, identifying the compressible blocks using admissibility condition <a class="reference internal" href="#equation-eq-ac">(44)</a></p></li>
 <li><p>compute the low-rank approximation of the identified compressible blocks using e.g. <em>partial ACA</em> ; the remaining leaves corresponding to <em>near-field</em> interactions are computed as dense blocks.</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/BEM_fighmatrix.svg" id="bemfighmatrix"><img alt="../_images/BEM_fighmatrix.svg" class="align-center" id="bemfighmatrix" src="../_images/BEM_fighmatrix.svg" width="80%" /></a>
+<a class="reference internal image-reference" href="../_images/BEM_fighmatrix.svg" id="bemfighmatrix"><img alt="../_images/BEM_fighmatrix.svg" class="align-center" id="bemfighmatrix" src="../_images/BEM_fighmatrix.svg" style="width: 80%;" />
+</a>
 </section>
 <section id="the-htool-library">
 <h4>The Htool library<a class="headerlink" href="#the-htool-library" title="Link to this heading"></a></h4>
 <p>the H-Matrix format is implemented in the C++ library <a class="reference external" href="https://github.com/htool-ddm/htool">Htool</a>. <strong>Htool</strong> is a parallel header-only library written by Pierre Marchand and Pierre-Henri Tournier. It is interfaced with <strong>FreeFEM</strong> and provides routines to build hierarchical matrix structures (cluster trees, block trees, low-rank matrices, block matrices) as well as efficient parallel matrix-vector and matrix-matrix product using MPI and OpenMP. <strong>Htool</strong> is interfaced with <strong>BemTool</strong> to allow the compression of BEM matrices using the H-Matrix format in <strong>FreeFEM</strong>.</p>
-<a class="reference internal image-reference" href="../_images/BEM_fighmatrixpara.svg" id="bemfighmatrixpara"><img alt="../_images/BEM_fighmatrixpara.svg" class="align-center" id="bemfighmatrixpara" src="../_images/BEM_fighmatrixpara.svg" width="45%" /></a>
+<a class="reference internal image-reference" href="../_images/BEM_fighmatrixpara.svg" id="bemfighmatrixpara"><img alt="../_images/BEM_fighmatrixpara.svg" class="align-center" id="bemfighmatrixpara" src="../_images/BEM_fighmatrixpara.svg" style="width: 45%;" />
+</a>
 </section>
 </section>
 </section>
@@ -2642,8 +2642,19 @@ Moreover, compared to the finite element method, the matrix coefficients are muc
 	<script src="../_static/js/runmode.js"></script>
 	<script src="../_static/js/searchcursor.js"></script>
 	<script src="../_static/js/mode/freefem/freefem.js"></script>
+	<!-- Markdown-it -->
+	<script src="https://cdn.jsdelivr.net/markdown-it/8.2.2/markdown-it.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it-mathjax@2.0.0/markdown-it-mathjax.min.js"></script>
+	<script src="../_static/js/markdownit.js"></script>
+	<script type="module">
+	import gerhobbeltmarkdownItFrontMatter from 'https://cdn.jsdelivr.net/npm/@gerhobbelt/markdown-it-front-matter@0.2.3-4/+esm'
+	md.use(gerhobbeltmarkdownItFrontMatter);
+	</script>
+
 	<!-- Github -->
 	<script async src="../_static/js/github.js"></script>
+	<!-- Button Strip -->
+	<script src="../_static/js/buttonstrip.min.js"></script>
 	<!-- Search -->
 	<script src="../_static/js/examples.js"></script>
 	<script src="../_static/js/mathjax-config.js"></script>

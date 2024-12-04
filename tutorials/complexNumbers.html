@@ -1954,12 +1954,9 @@
   <input type="search" placeholder="Type to start searching" id="searchInput" />
   <label id="search-overlay" onclick="removeOverlay()"></label>
   <div class="search-toggle">
-    <strong
-      >NEW: Toggle between documentation or examples (or press Alt key)</strong
-    >
     <div>
       <input type="checkbox" id="checkbox-search-toggle" />
-      <label for="checkbox-search">Search in examples &emsp;&emsp; </label>
+      <label for="checkbox-search">Search in examples (toggle with right Alt key) &emsp;&emsp; </label>
     </div>
   </div>
   <div id="searchResults"></div>
@@ -2021,7 +2018,8 @@
 				</ul>
 			</div>
 			<div id="exampleCode" spellcheck="false" style="display: none">
-				<h2><div id='ExampleLinkToGitHub'></div> <!-- <span id="exampleSave">Save as EDP</span> --></h2>
+				<h2><div id='ExampleLinkToGitHub'></div><div id='markdowntoggle'></div><!-- input type="checkbox" id="checkbox-markdown-toggle"/> <!-- <span id="exampleSave">Save as EDP</span> --></h2>
+				<div id="mdout"></div>
 				<textarea id="code"></textarea>
 			</div>
 		</div>
@@ -2191,8 +2189,19 @@ At equilibrium, one has :</p>
 	<script src="../_static/js/runmode.js"></script>
 	<script src="../_static/js/searchcursor.js"></script>
 	<script src="../_static/js/mode/freefem/freefem.js"></script>
+	<!-- Markdown-it -->
+	<script src="https://cdn.jsdelivr.net/markdown-it/8.2.2/markdown-it.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/markdown-it-mathjax@2.0.0/markdown-it-mathjax.min.js"></script>
+	<script src="../_static/js/markdownit.js"></script>
+	<script type="module">
+	import gerhobbeltmarkdownItFrontMatter from 'https://cdn.jsdelivr.net/npm/@gerhobbelt/markdown-it-front-matter@0.2.3-4/+esm'
+	md.use(gerhobbeltmarkdownItFrontMatter);
+	</script>
+
 	<!-- Github -->
 	<script async src="../_static/js/github.js"></script>
+	<!-- Button Strip -->
+	<script src="../_static/js/buttonstrip.min.js"></script>
 	<!-- Search -->
 	<script src="../_static/js/examples.js"></script>
 	<script src="../_static/js/mathjax-config.js"></script>
