@@ -96,7 +96,7 @@ loadExamplefromGitHub = (name, dir, editor) => {
     showExample(viewMarkdown);
   }
 
-  const fpath = (dir == 'idp' ? 'examples/' : 'examples/') + dir + '/' + name
+  const fpath = (dir == 'idp' ? '' : 'examples/') + dir + '/' + name
   const url = "https://raw.githubusercontent.com/FreeFem/FreeFem-sources/develop/" + fpath
   console.log('load ' + dir + '/' + name + ' from GitHub')
   document.getElementById('ExampleLinkToGitHub').innerHTML =
@@ -108,7 +108,7 @@ loadExamplefromGitHub = (name, dir, editor) => {
     name +
     '</a>'
 
-  if (name.endsWith('.edp'))
+  if (name.endsWith('.edp') || name.endsWith('.idp'))
     HTTPGet(url, loadedp)
   else
     HTTPGet(url, loadmd)
