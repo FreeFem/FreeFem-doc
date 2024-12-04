@@ -9,6 +9,10 @@ const searchToggle = document.getElementById('checkbox-search-toggle')
 
 let searchExamples = false
 
+let viewMarkdown = true
+
+let iscurrentfilemd = false
+
 toggleExamples = (mode) => {
   if (mode) {
     subnav.children[1].style.display = 'block'
@@ -42,26 +46,87 @@ toggleExamples = (mode) => {
 }
 
 loadExamplefromGitHub = (name, dir, editor) => {
-  function load(data) {
+  function loadedp(data) {
+    iscurrentfilemd = false;
+    var byClass = document.getElementsByClassName("strip-button");
+    for (var i = 0; i < byClass.length; i++) {
+      byClass[i].classList.add("disabled-strip-button");
+    }
+    var byClass = document.getElementsByClassName("button-strip");
+    for (var i = 0; i < byClass.length; i++) {
+      byClass[i].classList.add("button-strip-disabled");
+    }
     examplecode.style.display = 'flex'
     examplewelcome.style.display = 'none'
     editor.setValue(data)
     highlightKeyword(editor)
+    showExample(viewMarkdown)
   }
 
-  const fpath = (dir == 'idp' ? '' : 'examples/') + dir + '/' + name
-  const url =
-    'https://raw.githubusercontent.com/FreeFem/FreeFem-sources/master/' + fpath
-  console.log('load ' + dir + '/' + name + 'from GitHub')
+  function loadmd(data) {
+    iscurrentfilemd = true;
+    var byClass = document.getElementsByClassName("strip-button");
+    for (var i = 0; i < byClass.length; i++) {
+      byClass[i].classList.remove("disabled-strip-button");
+    }
+    var byClass = document.getElementsByClassName("button-strip");
+    for (var i = 0; i < byClass.length; i++) {
+      byClass[i].classList.remove("button-strip-disabled");
+    }
+    //markdowntoggle.style.display = 'flex'
+    examplecode.style.display = 'flex'
+    examplewelcome.style.display = 'none'
+    var edpcode = ""
+    data.replace(/(```|~~~)freefem([\s\S]*?)\1/g, (match, p1,p2) => {
+      edpcode += p2;
+      return p2;
+    });
+    edpcode = edpcode.replace(/^\s/, '')
+    editor.getWrapperElement().style.display = 'block'
+    editor.getWrapperElement().style.visibility = 'hidden'
+    editor.setValue(edpcode)
+    highlightKeyword(editor)
+
+    editor.getWrapperElement().style.display = 'none'
+    editor.getWrapperElement().style.visibility = 'hidden'
+    document.getElementById('mdout').innerHTML = md.render(data);
+
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('mdout')]);
+    MathJax.Hub.Configured();
+    showExample(viewMarkdown);
+  }
+
+  const fpath = (dir == 'idp' ? 'examples/' : 'examples/') + dir + '/' + name
+  const url = "https://raw.githubusercontent.com/FreeFem/FreeFem-sources/develop/" + fpath
+  console.log('load ' + dir + '/' + name + ' from GitHub')
   document.getElementById('ExampleLinkToGitHub').innerHTML =
-    "<a href='https://github.com/FreeFem/FreeFem-sources/blob/master/" +
+    "<a href='https://github.com/FreeFem/FreeFem-sources/blob/develop/" +
     fpath +
     "' target='_blank'>" +
     dir +
     '/' +
     name +
     '</a>'
-  HTTPGet(url, load)
+
+  if (name.endsWith('.edp'))
+    HTTPGet(url, loadedp)
+  else
+    HTTPGet(url, loadmd)
+}
+
+showExample = (viewMarkdown) => {
+  if (viewMarkdown && iscurrentfilemd) {
+    editor.getWrapperElement().style.display = 'none'
+    editor.getWrapperElement().style.visibility = 'hidden'
+    document.getElementById('mdout').style.display = 'block'
+    document.getElementById('mdout').style.visibility = 'visible'
+  }
+  else {
+    document.getElementById('mdout').style.display = 'none'
+    document.getElementById('mdout').style.visibility = 'hidden'
+    editor.getWrapperElement().style.display = 'block'
+    editor.getWrapperElement().style.visibility = 'visible'
+  }
 }
 
 FilterbyTag = (focus) => {
@@ -203,10 +268,7 @@ let treedata = [
 document.addEventListener(
   'keydown',
   (event) => {
-    if (event.altKey) {
-      var name = event.key
-      var code = event.code
-
+    if (event.altKey && event.code == "AltRight") {
       searchExamples = !searchExamples
       toggleExamples(searchExamples)
       if (document.getElementById('search-overlay').style.display != 'none')
@@ -268,3 +330,16 @@ fetch('/_static/json/all_examples.json')
       }
     })
   })
+
+var bs1 = new ButtonStrip({
+  id: 'buttonStrip1'
+});
+bs1.addButton('.md', true, 'click', function(){
+  viewMarkdown = true
+  showExample(viewMarkdown)
+});
+bs1.addButton('.edp', false, 'click', function(){
+  viewMarkdown = false
+  showExample(viewMarkdown)
+});
+bs1.append('#markdowntoggle');

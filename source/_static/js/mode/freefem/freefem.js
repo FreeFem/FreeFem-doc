@@ -78,7 +78,7 @@ CodeMirror.defineMode("freefem", function(config, parserConfig) {
       var result = hooks[ch](stream, state);
       if (result !== false) return result;
     }
-    if (ch == '"' || ch == "'") {
+    if (ch == '"') {
       state.tokenize = tokenString(ch);
       return state.tokenize(stream, state);
     }
