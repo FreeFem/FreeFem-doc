@@ -46,7 +46,7 @@ class subfigstart(nodes.General, nodes.Element):
     pass
 
 def visit_subfigstart_tex(self, node):
-    self.body.append('\n\\begin{figure}\n\\centering\n\\capstart\n')
+    self.body.append('\n\\begin{figure}[H]\n\\centering\n\\capstart\n')
 
 def depart_subfigstart_tex(self, node):
     pass
