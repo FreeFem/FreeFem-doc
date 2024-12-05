@@ -13,6 +13,8 @@ let viewMarkdown = true
 
 let iscurrentfilemd = false
 
+let mdsource = ""
+
 toggleExamples = (mode) => {
   if (mode) {
     subnav.children[1].style.display = 'block'
@@ -58,12 +60,13 @@ loadExamplefromGitHub = (name, dir, editor) => {
     }
     examplecode.style.display = 'flex'
     examplewelcome.style.display = 'none'
+    showExample(viewMarkdown)
     editor.setValue(data)
     highlightKeyword(editor)
-    showExample(viewMarkdown)
   }
 
   function loadmd(data) {
+    mdsource = data;
     iscurrentfilemd = true;
     var byClass = document.getElementsByClassName("strip-button");
     for (var i = 0; i < byClass.length; i++) {
@@ -330,6 +333,36 @@ fetch('/_static/json/all_examples.json')
       }
     })
   })
+
+var copybutton = document.createElement('button')
+copybutton.className = 'copy-button'
+copybutton.style.top = '0rem'
+copybutton.innerHTML = '<span class="clipboard-message">.edp copied to clipboard</span><i class="far fa-clone"></i>'
+copybutton.onclick = function (e) {
+  const textarea = document.createElement('textarea')
+  if (iscurrentfilemd && viewMarkdown) {
+    copybutton.innerHTML = '<span class="clipboard-message">.md copied to clipboard</span><i class="far fa-clone"></i>'
+    textarea.value = mdsource
+  }
+  else {
+    copybutton.innerHTML = '<span class="clipboard-message">.edp copied to clipboard</span><i class="far fa-clone"></i>'
+    textarea.value = editor.getValue()
+  }
+  textarea.setAttribute('readonly', '')
+  textarea.style.position = 'absolute'
+  textarea.style.left = '-9999px'
+  document.body.appendChild(textarea)
+  textarea.select()
+  document.execCommand('copy')
+  document.body.removeChild(textarea)
+
+  this.children[0].classList.toggle('clipboard-message--active')
+  setTimeout(() => {
+    this.children[0].classList.remove('clipboard-message--active')
+  }, 2000)
+}
+const examplecopybutton = document.getElementById('ExampleCopyButton')
+examplecopybutton.appendChild(copybutton)
 
 var bs1 = new ButtonStrip({
   id: 'buttonStrip1'
