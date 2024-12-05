@@ -16,6 +16,11 @@
   width:100%;
 }
 
+#ExampleCopyButton {
+  display: inline-block;
+  position: relative;
+}
+
 #checkbox-markdown-toggle {
   margin-right: 2em;
 }
