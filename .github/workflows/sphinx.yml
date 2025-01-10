@@ -23,7 +23,7 @@ jobs:
           pip install sphinx-sitemap
           git clone https://github.com/FreeFem/FreeFem-parser-pygments.git ~/pygments
           sudo cp ~/pygments/freefem.py /usr/lib/python3/dist-packages/pygments/lexers/
-          (cd /home/runner/.local/lib/python3.12/site-packages/pygments/lexers/ && sudo python _mapping.py)
+          (cd /usr/lib/python3/dist-packages/pygments/lexers/ && sudo python _mapping.py)
           sed -i 's/, BaseTranslator//g' /home/runner/.local/lib/python3.12/site-packages/sphinxcontrib/inlinesyntaxhighlight.py
           sed -i "s/self.highlightlang/'python'/g" /home/runner/.local/lib/python3.12/site-packages/sphinxcontrib/inlinesyntaxhighlight.py
 
