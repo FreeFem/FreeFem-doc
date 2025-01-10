@@ -59,7 +59,8 @@
 	<!-- Subnav -->
 	<script async src="{{ pathto('_static/js/subnav.js', 1)}}"></script>
 	<!-- MathJax -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+	<script src="{{ pathto('_static/js/mathjax-config.js', 1) }}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" id="MathJax-script"></script>
 	<!-- Treejs -->
 	<script src="{{ pathto('_static/js/tree.min.js', 1)}}"></script>
 	<!-- CodeMirror -->
@@ -82,7 +83,6 @@
 	<script src="{{ pathto('_static/js/buttonstrip.min.js', 1)}}"></script>
 	<!-- Search -->
 	<script src="{{ pathto('_static/js/examples.js', 1)}}"></script>
-	<script src="{{ pathto('_static/js/mathjax-config.js', 1) }}"></script>
 	<script src="{{ pathto('_static/js/lunr.js', 1) }}"></script>
 	<script src="{{ pathto('_static/lunr/lunr_index.js', 1) }}"></script>
 	<script src="{{ pathto('_static/lunr/lunr_index_edps.js', 1) }}"></script>
