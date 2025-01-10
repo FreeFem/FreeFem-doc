@@ -1,21 +1,12 @@
-MathJax.Hub.Config({
-  extensions: ["tex2jax.js"],
-  jax: ["input/TeX", "output/HTML-CSS"],
-  tex2jax: {
+window.MathJax = {
+  tex: {
     inlineMath: [ ['$','$'], ["\\(","\\)"] ],
     displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
     processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-  },
-  "HTML-CSS": { fonts: ["TeX"] },
-
-  TeX: {
-    TagSide: 'right',
-    TagIndent: '.8em',
-    equationNumbers: {
-      autoNumber: 'AMS'
-    },
-    Macros: {
+    tagSide: 'right',
+    tagIndent: '.8em',
+    tags: 'ams',
+    macros: {
       R: '{\\mathbb R}',
       N: '{\\mathbb N}',
       C: '{\\mathbb C}',
@@ -89,6 +80,19 @@ MathJax.Hub.Config({
       bS: '{\\mathbf S}',
       bT: '{\\mathbf T}',
       bsig: '{\bmathf \\sigma}'
-    }
+    },
+    autoload: {
+      color: [],
+      colorv2: ['color']
+    },
+    packages: {'[+]': ['noerrors']}
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'tex2jax_process'
+  },
+  loader: {
+    load: ['input/asciimath', '[tex]/noerrors']
   }
-})
+};

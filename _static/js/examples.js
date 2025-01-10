@@ -94,8 +94,8 @@ loadExamplefromGitHub = (name, dir, editor) => {
     editor.getWrapperElement().style.visibility = 'hidden'
     document.getElementById('mdout').innerHTML = md.render(data);
 
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('mdout')]);
-    MathJax.Hub.Configured();
+    MathJax.typeset();
+
     showExample(viewMarkdown);
   }
 
