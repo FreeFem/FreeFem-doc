@@ -8,8 +8,112 @@ New features
 
 The notable changes of each **FreeFEM** release are listed below.
 
-Version 4.13 (30 June 2023)
----------------------------
+Version 4.15 (6 December 2024)
+------------------------------
+
+* Added
+
+  - FreeFEM can now run Markdown (.md) files as well as .edp files. Markdown can be used to document your FreeFEM scripts (see for example the .md files in the `examples/examples <https://github.com/FreeFem/FreeFem-sources/tree/master/examples/examples>`__ directory). When running a .md file, FreeFEM will execute the code contained in the FreeFEM code blocks, delimited by
+
+    .. code-block:: markdown
+      :linenos:
+
+      ```freefem
+      [freefem code]
+      ```
+
+    Documented Markdown examples in the distribution can be viewed on the `documentation website <https://doc.freefem.org>`__ (toggle Search in examples). Markdown can be previewed with e.g Visual Studio Code, with the `FreeFEM VS Code extension <https://marketplace.visualstudio.com/items?itemName=Pierre-Marchand.vscode-freefem>`__ providing syntax highlighting for FreeFEM code blocks.
+
+  - add command :console:`md2edp` to extract freefem code form Markdown file.
+
+  - add read binary file with short number in bfstream plugin
+  - add 3d case in ClosePoints plugin : function Voisinage3, ClosePoints3
+
+  - add :freefem:`real[int,int] at=A';`
+
+  - Powell Sabin :freefem:`splitmesh6PowellSabin(Th)`  splitting for Scott–Vogelius lowest Stokes Element in 2D
+    in plugin/seq/splitmesh6.cpp
+
+  - Worsey Farin :freefem:`splitmesh12WorseyFarin(Th3)` splitting for Scott–Vogelius lowest Stokes Element in 3D
+    in  plugin/seq/splitmesh12.cpp
+
+  - functional interface with :freefem:`fgmres` (Linear and affine) in real and complex case
+    see tutorial/algo.edp
+
+* Changed
+
+  - PETSc 3.22.2
+  - move the plugin msh3 in kernel , so remove all :freefem:`load "msh3"` in all examples and .idp files
+
+* Fixed
+
+  - try to fix orientation of internal edges in 2d
+  - fix missing break and continue in :freefem:`for [i,ai:a]` loop
+  - line number in macro error (thanks to P-H Tournier)
+  - fix problem in integration of moving test or unknown function in 2d mesh:
+
+    .. code-block:: freefem
+      :linenos:
+
+      varf ab([u],[v]) = int2d(Th,mapu=[Xo,Yo])(u*v);
+      matrix AB = ab(Zh,Rh);
+
+    we remove a piece of code.
+  - fix problem in mesh of a ring from a square (missing option to remove duplicate vertices)
+    example: :freefem:`mesh Th2=square(19,5,[(1+y)*cos(2*pi*x),(1+y)*sin(x*pi*2)],removeduplicate=1);`
+  - Segmentation fault problem in Write_hdf5 (problem of allocation in the stack not on the heap) if the mesh2 is too large
+  - fix :freefem:`(A'+A)` where func  :freefem:`A =[[0,1],[0,0]];`
+  - correct integer overflow (in rare case) when calling INTER_SEG1d use in interpolation on Th3,ThS,ThL
+    thanks to G. Sadaka for finding the bug
+  - correct hidden faces on surface mesh (ffglut)
+  - remove optimisation flag ppm2rnm.cpp in macOS (load trap)
+  - correct abcisse curviline on reparametrage function (setcurveabcisse) in :freefem:`load "Curvature"`
+  - correct compilation on ARM sonoma xcode 15.2
+  - correct mpi essai.edp MPI_ANY_SOURCE Pb
+
+Version 4.14
+------------
+
+* Added
+
+  - Finite element BDM2 and BDM2ortho in test, Bug in BDM2ortho corrected the 4 sept 2014 in version: v4.13-130-g1af52457
+  - Conversion of matrix or transpose of matrix in :freefem:`int[int][int]` array to get the structure of sparse matrix.
+    see tutorial/sparse-matrix.edp example at end
+
+    .. code-block:: freefem
+      :linenos:
+
+      matrix A = va(Ph,Vh);
+      int[int] a = A, at= A';
+
+  - a meshL finite function can be see as real function with 1, or 2 parameters
+
+    .. code-block:: freefem
+      :linenos:
+
+      meshL ThL = segment(10); fespace VhL(ThL,P1); VhL u= x;
+      cout << u(0.5)   << endl;
+      cout << u(0.5,0) << endl;
+
+  - Exemple to code convolution of 2 functions with one with a small support to be not too expensive
+    see tutorial/Convolution-Sample.edp example
+  - Support for dense blocks in PETSc matrices
+  - GenEO for saddle-point examples with PCHPDDM in PETSc
+  - Distributed ParaView output on :freefem:`meshS`
+  - Interface to :freefem:`mmg2d` for two-dimensional :freefem:`mesh`
+  - Support for Mmg parameters :freefem:`localParameter`, :freefem:`-nosizreq`, :freefem:`-hgradreq`
+
+* Changed
+
+  - PETSc 3.20.2
+
+* Fixed
+
+  - bug in P3pnc3d in vectorial case (thanks to loic.balaziatchynillama@cea.fr)
+  - in segment(10,region=1,label=ll); region is now used..
+
+Version 4.13
+------------
 
 * Added
 

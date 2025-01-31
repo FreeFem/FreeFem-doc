@@ -46,7 +46,9 @@
 		<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html"><strong>Introduction</strong></a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">New features</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#version-4-13-30-june-2023">Version 4.13 (30 June 2023)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#version-4-15-6-december-2024">Version 4.15 (6 December 2024)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#version-4-14">Version 4.14</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#version-4-13">Version 4.13</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#version-4-12">Version 4.12</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#version-4-11">Version 4.11</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#version-4-10">Version 4.10</a></li>
@@ -1970,7 +1972,9 @@
 		<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html"><strong>Introduction</strong></a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">New features</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#version-4-13-30-june-2023">Version 4.13 (30 June 2023)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#version-4-15-6-december-2024">Version 4.15 (6 December 2024)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#version-4-14">Version 4.14</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#version-4-13">Version 4.13</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#version-4-12">Version 4.12</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#version-4-11">Version 4.11</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#version-4-10">Version 4.10</a></li>
@@ -2028,8 +2032,108 @@
    <section id="new-features">
 <span id="id1"></span><h1>New features<a class="headerlink" href="#new-features" title="Link to this heading"></a></h1>
 <p>The notable changes of each <strong>FreeFEM</strong> release are listed below.</p>
-<section id="version-4-13-30-june-2023">
-<h2>Version 4.13 (30 June 2023)<a class="headerlink" href="#version-4-13-30-june-2023" title="Link to this heading"></a></h2>
+<section id="version-4-15-6-december-2024">
+<h2>Version 4.15 (6 December 2024)<a class="headerlink" href="#version-4-15-6-december-2024" title="Link to this heading"></a></h2>
+<ul>
+<li><p>Added</p>
+<ul>
+<li><p>FreeFEM can now run Markdown (.md) files as well as .edp files. Markdown can be used to document your FreeFEM scripts (see for example the .md files in the <a class="reference external" href="https://github.com/FreeFem/FreeFem-sources/tree/master/examples/examples">examples/examples</a> directory). When running a .md file, FreeFEM will execute the code contained in the FreeFEM code blocks, delimited by</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="sb">```freefem</span>
+<span class="linenos">2</span><span class="p">[</span><span class="n">freefem</span><span class="w"> </span><span class="n">code</span><span class="p">]</span>
+<span class="linenos">3</span><span class="sb">```</span>
+</pre></div>
+</div>
+<p>Documented Markdown examples in the distribution can be viewed on the <a class="reference external" href="https://doc.freefem.org">documentation website</a> (toggle Search in examples). Markdown can be previewed with e.g Visual Studio Code, with the <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=Pierre-Marchand.vscode-freefem">FreeFEM VS Code extension</a> providing syntax highlighting for FreeFEM code blocks.</p>
+</li>
+<li><p>add command <code class="code highlight console docutils literal highlight-console"><span class="go">md2edp</span></code> to extract freefem code form Markdown file.</p></li>
+<li><p>add read binary file with short number in bfstream plugin</p></li>
+<li><p>add 3d case in ClosePoints plugin : function Voisinage3, ClosePoints3</p></li>
+<li><p>add <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">real</span><span class="p">[</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">at</span><span class="o">=</span><span class="kp">A</span><span class="o">&#39;</span><span class="p">;</span></code></p></li>
+<li><p>Powell Sabin <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">splitmesh6PowellSabin</span><span class="p">(</span><span class="n">Th</span><span class="p">)</span></code>  splitting for Scott–Vogelius lowest Stokes Element in 2D
+in plugin/seq/splitmesh6.cpp</p></li>
+<li><p>Worsey Farin <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">splitmesh12WorseyFarin</span><span class="p">(</span><span class="n">Th3</span><span class="p">)</span></code> splitting for Scott–Vogelius lowest Stokes Element in 3D
+in  plugin/seq/splitmesh12.cpp</p></li>
+<li><p>functional interface with <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">fgmres</span></code> (Linear and affine) in real and complex case
+see tutorial/algo.edp</p></li>
+</ul>
+</li>
+<li><p>Changed</p>
+<ul class="simple">
+<li><p>PETSc 3.22.2</p></li>
+<li><p>move the plugin msh3 in kernel , so remove all <code class="code highlight freefem docutils literal highlight-freefem"><span class="cp">load</span><span class="w"> </span><span class="s">&quot;msh3&quot;</span></code> in all examples and .idp files</p></li>
+</ul>
+</li>
+<li><p>Fixed</p>
+<ul>
+<li><p>try to fix orientation of internal edges in 2d</p></li>
+<li><p>fix missing break and continue in <code class="code highlight freefem docutils literal highlight-freefem"><span class="k">for</span><span class="w"> </span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">ai</span><span class="o">:</span><span class="n">a</span><span class="p">]</span></code> loop</p></li>
+<li><p>line number in macro error (thanks to P-H Tournier)</p></li>
+<li><p>fix problem in integration of moving test or unknown function in 2d mesh:</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">varf</span><span class="w"> </span><span class="nf">ab</span><span class="p">([</span><span class="n">u</span><span class="p">],[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">int2d</span><span class="p">(</span><span class="n">Th</span><span class="p">,</span><span class="n">mapu</span><span class="o">=</span><span class="p">[</span><span class="n">Xo</span><span class="p">,</span><span class="n">Yo</span><span class="p">])(</span><span class="n">u</span><span class="o">*</span><span class="n">v</span><span class="p">);</span>
+<span class="linenos">2</span><span class="kt">matrix</span><span class="w"> </span><span class="n">AB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ab</span><span class="p">(</span><span class="n">Zh</span><span class="p">,</span><span class="n">Rh</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>we remove a piece of code.</p>
+</li>
+<li><p>fix problem in mesh of a ring from a square (missing option to remove duplicate vertices)
+example: <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh</span><span class="w"> </span><span class="n">Th2</span><span class="o">=</span><span class="nf">square</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span><span class="mi">5</span><span class="p">,[(</span><span class="mi">1</span><span class="o">+</span><span class="kr">y</span><span class="p">)</span><span class="o">*</span><span class="nf">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="kr">pi</span><span class="o">*</span><span class="kr">x</span><span class="p">),(</span><span class="mi">1</span><span class="o">+</span><span class="kr">y</span><span class="p">)</span><span class="o">*</span><span class="nf">sin</span><span class="p">(</span><span class="kr">x</span><span class="o">*</span><span class="kr">pi</span><span class="o">*</span><span class="mi">2</span><span class="p">)],</span><span class="kp">removeduplicate</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span></code></p></li>
+<li><p>Segmentation fault problem in Write_hdf5 (problem of allocation in the stack not on the heap) if the mesh2 is too large</p></li>
+<li><p>fix <code class="code highlight freefem docutils literal highlight-freefem"><span class="p">(</span><span class="kp">A</span><span class="o">&#39;+</span><span class="kp">A</span><span class="p">)</span></code> where func  <code class="code highlight freefem docutils literal highlight-freefem"><span class="kp">A</span><span class="w"> </span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]];</span></code></p></li>
+<li><p>correct integer overflow (in rare case) when calling INTER_SEG1d use in interpolation on Th3,ThS,ThL
+thanks to G. Sadaka for finding the bug</p></li>
+<li><p>correct hidden faces on surface mesh (ffglut)</p></li>
+<li><p>remove optimisation flag ppm2rnm.cpp in macOS (load trap)</p></li>
+<li><p>correct abcisse curviline on reparametrage function (setcurveabcisse) in <code class="code highlight freefem docutils literal highlight-freefem"><span class="cp">load</span><span class="w"> </span><span class="s">&quot;Curvature&quot;</span></code></p></li>
+<li><p>correct compilation on ARM sonoma xcode 15.2</p></li>
+<li><p>correct mpi essai.edp MPI_ANY_SOURCE Pb</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="version-4-14">
+<h2>Version 4.14<a class="headerlink" href="#version-4-14" title="Link to this heading"></a></h2>
+<ul>
+<li><p>Added</p>
+<ul>
+<li><p>Finite element BDM2 and BDM2ortho in test, Bug in BDM2ortho corrected the 4 sept 2014 in version: v4.13-130-g1af52457</p></li>
+<li><p>Conversion of matrix or transpose of matrix in <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">][</span><span class="kt">int</span><span class="p">]</span></code> array to get the structure of sparse matrix.
+see tutorial/sparse-matrix.edp example at end</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">matrix</span><span class="w"> </span><span class="kp">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">va</span><span class="p">(</span><span class="n">Ph</span><span class="p">,</span><span class="n">Vh</span><span class="p">);</span>
+<span class="linenos">2</span><span class="kt">int</span><span class="p">[</span><span class="kt">int</span><span class="p">]</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">A</span><span class="p">,</span><span class="w"> </span><span class="n">at</span><span class="o">=</span><span class="w"> </span><span class="kp">A</span><span class="o">&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>a meshL finite function can be see as real function with 1, or 2 parameters</p>
+<div class="highlight-freefem notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kt">meshL</span><span class="w"> </span><span class="n">ThL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">segment</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="kt">fespace</span><span class="w"> </span><span class="nf">VhL</span><span class="p">(</span><span class="n">ThL</span><span class="p">,</span><span class="nc">P1</span><span class="p">);</span><span class="w"> </span><span class="n">VhL</span><span class="w"> </span><span class="n">u</span><span class="o">=</span><span class="w"> </span><span class="kr">x</span><span class="p">;</span>
+<span class="linenos">2</span><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">u</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="w">   </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="kr">endl</span><span class="p">;</span>
+<span class="linenos">3</span><span class="kr">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">u</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="kr">endl</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Exemple to code convolution of 2 functions with one with a small support to be not too expensive
+see tutorial/Convolution-Sample.edp example</p></li>
+<li><p>Support for dense blocks in PETSc matrices</p></li>
+<li><p>GenEO for saddle-point examples with PCHPDDM in PETSc</p></li>
+<li><p>Distributed ParaView output on <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">meshS</span></code></p></li>
+<li><p>Interface to <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">mmg2d</span></code> for two-dimensional <code class="code highlight freefem docutils literal highlight-freefem"><span class="kt">mesh</span></code></p></li>
+<li><p>Support for Mmg parameters <code class="code highlight freefem docutils literal highlight-freefem"><span class="n">localParameter</span></code>, <code class="code highlight freefem docutils literal highlight-freefem"><span class="o">-</span><span class="n">nosizreq</span></code>, <code class="code highlight freefem docutils literal highlight-freefem"><span class="o">-</span><span class="n">hgradreq</span></code></p></li>
+</ul>
+</li>
+<li><p>Changed</p>
+<ul class="simple">
+<li><p>PETSc 3.20.2</p></li>
+</ul>
+</li>
+<li><p>Fixed</p>
+<ul class="simple">
+<li><p>bug in P3pnc3d in vectorial case (thanks to <a class="reference external" href="mailto:loic&#46;balaziatchynillama&#37;&#52;&#48;cea&#46;fr">loic<span>&#46;</span>balaziatchynillama<span>&#64;</span>cea<span>&#46;</span>fr</a>)</p></li>
+<li><p>in segment(10,region=1,label=ll); region is now used..</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="version-4-13">
+<h2>Version 4.13<a class="headerlink" href="#version-4-13" title="Link to this heading"></a></h2>
 <ul>
 <li><p>Added</p>
 <ul>
@@ -2603,7 +2707,9 @@ The document is in construction.</p>
 		<b>Table of content</b>
 		<ul>
 <li><a class="reference internal" href="#">New features</a><ul>
-<li><a class="reference internal" href="#version-4-13-30-june-2023">Version 4.13 (30 June 2023)</a></li>
+<li><a class="reference internal" href="#version-4-15-6-december-2024">Version 4.15 (6 December 2024)</a></li>
+<li><a class="reference internal" href="#version-4-14">Version 4.14</a></li>
+<li><a class="reference internal" href="#version-4-13">Version 4.13</a></li>
 <li><a class="reference internal" href="#version-4-12">Version 4.12</a></li>
 <li><a class="reference internal" href="#version-4-11">Version 4.11</a></li>
 <li><a class="reference internal" href="#version-4-10">Version 4.10</a></li>
