@@ -140,7 +140,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Jan 28, 2025}
+\date{Jan 31, 2025}
 \release{4.13}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -364,8 +364,265 @@ Problems involving partial differential equations from several branches of physi
 The notable changes of each \sphinxstylestrong{FreeFEM} release are listed below.
 
 
-\subsection{Version 4.13 (30 June 2023)}
-\label{\detokenize{introduction/new-features:version-4-13-30-june-2023}}\begin{itemize}
+\subsection{Version 4.15 (6 December 2024)}
+\label{\detokenize{introduction/new-features:version-4-15-6-december-2024}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Added
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+FreeFEM can now run Markdown (.md) files as well as .edp files. Markdown can be used to document your FreeFEM scripts (see for example the .md files in the \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/master/examples/examples}{examples/examples} directory). When running a .md file, FreeFEM will execute the code contained in the FreeFEM code blocks, delimited by
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{l+s+sb}{```}\PYG{l+s+sb}{freefem}
+\PYG{p}{[}\PYG{n}{freefem}\PYG{+w}{ }\PYG{n}{code}\PYG{p}{]}
+\PYG{l+s+sb}{```}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Documented Markdown examples in the distribution can be viewed on the \sphinxhref{https://doc.freefem.org}{documentation website} (toggle Search in examples). Markdown can be previewed with e.g Visual Studio Code, with the \sphinxhref{https://marketplace.visualstudio.com/items?itemName=Pierre-Marchand.vscode-freefem}{FreeFEM VS Code extension} providing syntax highlighting for FreeFEM code blocks.
+
+\item {} 
+\sphinxAtStartPar
+add command \sphinxcode{\sphinxupquote{%
+\PYG{g+go}{md2edp}%
+}} to extract freefem code form Markdown file.
+
+\item {} 
+\sphinxAtStartPar
+add read binary file with short number in bfstream plugin
+
+\item {} 
+\sphinxAtStartPar
+add 3d case in ClosePoints plugin : function Voisinage3, ClosePoints3
+
+\item {} 
+\sphinxAtStartPar
+add \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{real}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{,}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{at}\PYG{o}{=}\PYG{k+kp}{A}\PYG{o}{\PYGZsq{}}\PYG{p}{;}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+Powell Sabin \sphinxcode{\sphinxupquote{%
+\PYG{n}{splitmesh6PowellSabin}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{)}%
+}}  splitting for Scott\textendash{}Vogelius lowest Stokes Element in 2D
+in plugin/seq/splitmesh6.cpp
+
+\item {} 
+\sphinxAtStartPar
+Worsey Farin \sphinxcode{\sphinxupquote{%
+\PYG{n}{splitmesh12WorseyFarin}\PYG{p}{(}\PYG{n}{Th3}\PYG{p}{)}%
+}} splitting for Scott\textendash{}Vogelius lowest Stokes Element in 3D
+in  plugin/seq/splitmesh12.cpp
+
+\item {} 
+\sphinxAtStartPar
+functional interface with \sphinxcode{\sphinxupquote{%
+\PYG{n}{fgmres}%
+}} (Linear and affine) in real and complex case
+see tutorial/algo.edp
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+Changed
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+PETSc 3.22.2
+
+\item {} 
+\sphinxAtStartPar
+move the plugin msh3 in kernel , so remove all \sphinxcode{\sphinxupquote{%
+\PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{msh3}\PYG{l+s}{\PYGZdq{}}%
+}} in all examples and .idp files
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+Fixed
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+try to fix orientation of internal edges in 2d
+
+\item {} 
+\sphinxAtStartPar
+fix missing break and continue in \sphinxcode{\sphinxupquote{%
+\PYG{k}{for}\PYG{+w}{ }\PYG{p}{[}\PYG{n}{i}\PYG{p}{,}\PYG{n}{ai}\PYG{o}{:}\PYG{n}{a}\PYG{p}{]}%
+}} loop
+
+\item {} 
+\sphinxAtStartPar
+line number in macro error (thanks to P\sphinxhyphen{}H Tournier)
+
+\item {} 
+\sphinxAtStartPar
+fix problem in integration of moving test or unknown function in 2d mesh:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{varf}\PYG{+w}{ }\PYG{n+nf}{ab}\PYG{p}{(}\PYG{p}{[}\PYG{n}{u}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{n}{v}\PYG{p}{]}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{int2d}\PYG{p}{(}\PYG{n}{Th}\PYG{p}{,}\PYG{n}{mapu}\PYG{o}{=}\PYG{p}{[}\PYG{n}{Xo}\PYG{p}{,}\PYG{n}{Yo}\PYG{p}{]}\PYG{p}{)}\PYG{p}{(}\PYG{n}{u}\PYG{o}{*}\PYG{n}{v}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{matrix}\PYG{+w}{ }\PYG{n}{AB}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ab}\PYG{p}{(}\PYG{n}{Zh}\PYG{p}{,}\PYG{n}{Rh}\PYG{p}{)}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+we remove a piece of code.
+
+\item {} 
+\sphinxAtStartPar
+fix problem in mesh of a ring from a square (missing option to remove duplicate vertices)
+example: \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{mesh}\PYG{+w}{ }\PYG{n}{Th2}\PYG{o}{=}\PYG{n+nf}{square}\PYG{p}{(}\PYG{l+m+mi}{19}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{p}{[}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{+}\PYG{k+kr}{y}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{cos}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{k+kr}{x}\PYG{p}{)}\PYG{p}{,}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{+}\PYG{k+kr}{y}\PYG{p}{)}\PYG{o}{*}\PYG{n+nf}{sin}\PYG{p}{(}\PYG{k+kr}{x}\PYG{o}{*}\PYG{k+kr}{pi}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}\PYG{k+kp}{removeduplicate}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+Segmentation fault problem in Write\_hdf5 (problem of allocation in the stack not on the heap) if the mesh2 is too large
+
+\item {} 
+\sphinxAtStartPar
+fix \sphinxcode{\sphinxupquote{%
+\PYG{p}{(}\PYG{k+kp}{A}\PYG{o}{\PYGZsq{}}\PYG{o}{+}\PYG{k+kp}{A}\PYG{p}{)}%
+}} where func  \sphinxcode{\sphinxupquote{%
+\PYG{k+kp}{A}\PYG{+w}{ }\PYG{o}{=}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{]}\PYG{p}{;}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+correct integer overflow (in rare case) when calling INTER\_SEG1d use in interpolation on Th3,ThS,ThL
+thanks to G. Sadaka for finding the bug
+
+\item {} 
+\sphinxAtStartPar
+correct hidden faces on surface mesh (ffglut)
+
+\item {} 
+\sphinxAtStartPar
+remove optimisation flag ppm2rnm.cpp in macOS (load trap)
+
+\item {} 
+\sphinxAtStartPar
+correct abcisse curviline on reparametrage function (setcurveabcisse) in \sphinxcode{\sphinxupquote{%
+\PYG{c+cp}{load}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}}\PYG{l+s}{Curvature}\PYG{l+s}{\PYGZdq{}}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+correct compilation on ARM sonoma xcode 15.2
+
+\item {} 
+\sphinxAtStartPar
+correct mpi essai.edp MPI\_ANY\_SOURCE Pb
+
+\end{itemize}
+
+\end{itemize}
+
+
+\subsection{Version 4.14}
+\label{\detokenize{introduction/new-features:version-4-14}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Added
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Finite element BDM2 and BDM2ortho in test, Bug in BDM2ortho corrected the 4 sept 2014 in version: v4.13\sphinxhyphen{}130\sphinxhyphen{}g1af52457
+
+\item {} 
+\sphinxAtStartPar
+Conversion of matrix or transpose of matrix in \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{int}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}%
+}} array to get the structure of sparse matrix.
+see tutorial/sparse\sphinxhyphen{}matrix.edp example at end
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{matrix}\PYG{+w}{ }\PYG{k+kp}{A}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{va}\PYG{p}{(}\PYG{n}{Ph}\PYG{p}{,}\PYG{n}{Vh}\PYG{p}{)}\PYG{p}{;}
+\PYG{k+kt}{int}\PYG{p}{[}\PYG{k+kt}{int}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kp}{A}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{at}\PYG{o}{=}\PYG{+w}{ }\PYG{k+kp}{A}\PYG{o}{\PYGZsq{}}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\item {} 
+\sphinxAtStartPar
+a meshL finite function can be see as real function with 1, or 2 parameters
+
+\begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PYG{k+kt}{meshL}\PYG{+w}{ }\PYG{n}{ThL}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{segment}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{k+kt}{fespace}\PYG{+w}{ }\PYG{n+nf}{VhL}\PYG{p}{(}\PYG{n}{ThL}\PYG{p}{,}\PYG{n+nc}{P1}\PYG{p}{)}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{VhL}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{=}\PYG{+w}{ }\PYG{k+kr}{x}\PYG{p}{;}
+\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{p}{)}\PYG{+w}{   }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\PYG{k+kr}{cout}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{k+kr}{endl}\PYG{p}{;}
+\end{sphinxVerbatim}
+
+\item {} 
+\sphinxAtStartPar
+Exemple to code convolution of 2 functions with one with a small support to be not too expensive
+see tutorial/Convolution\sphinxhyphen{}Sample.edp example
+
+\item {} 
+\sphinxAtStartPar
+Support for dense blocks in PETSc matrices
+
+\item {} 
+\sphinxAtStartPar
+GenEO for saddle\sphinxhyphen{}point examples with PCHPDDM in PETSc
+
+\item {} 
+\sphinxAtStartPar
+Distributed ParaView output on \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{meshS}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+Interface to \sphinxcode{\sphinxupquote{%
+\PYG{n}{mmg2d}%
+}} for two\sphinxhyphen{}dimensional \sphinxcode{\sphinxupquote{%
+\PYG{k+kt}{mesh}%
+}}
+
+\item {} 
+\sphinxAtStartPar
+Support for Mmg parameters \sphinxcode{\sphinxupquote{%
+\PYG{n}{localParameter}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{nosizreq}%
+}}, \sphinxcode{\sphinxupquote{%
+\PYG{o}{\PYGZhy{}}\PYG{n}{hgradreq}%
+}}
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+Changed
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+PETSc 3.20.2
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+Fixed
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+bug in P3pnc3d in vectorial case (thanks to \sphinxhref{mailto:loic.balaziatchynillama@cea.fr}{loic.balaziatchynillama@cea.fr})
+
+\item {} 
+\sphinxAtStartPar
+in segment(10,region=1,label=ll); region is now used..
+
+\end{itemize}
+
+\end{itemize}
+
+
+\subsection{Version 4.13}
+\label{\detokenize{introduction/new-features:version-4-13}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Added
