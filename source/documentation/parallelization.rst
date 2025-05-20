@@ -120,7 +120,7 @@ MPI Communicator operator
    mpiComm comm(mpiCommWorld, 0, 0);
    mpiRequest req;
 
-   //send a,b asynchronously to the process 1
+   //send a,b synchronously to the process 1
    processor(1) << a << b;
    //receive a,b synchronously from the process 10
    processor(10) >> a >> b;
