@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.1.31)  31 JAN 2025 11:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.23)  23 MAY 2025 14:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -183,7 +183,7 @@ Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
 \c@AlphaCnt=\count276
 \c@AlphaDecCnt=\count277
 ) (./sphinx.sty
-Package: sphinx 2024/10/11 v8.1.1 Sphinx LaTeX package (sphinx-doc)
+Package: sphinx 2024/11/23 v8.2.0 Sphinx LaTeX package (sphinx-doc)
 
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
@@ -560,7 +560,7 @@ Package: titlesec 2023/10/27 v2.16 Sectioning titles
 (./sphinxlatexstyletext.sty
 Package: sphinxlatexstyletext 2024/07/28 v8.1.0 text styling
 ) (./sphinxlatexobjects.sty
-Package: sphinxlatexobjects 2023/07/23 documentation environments
+Package: sphinxlatexobjects 2025/02/11 documentation environments
 \sphinxsignaturesep=\skip81
 \sphinxsignaturelistskip=\skip82
 \py@argswidth=\skip83
@@ -3979,10 +3979,10 @@ Package rerunfilecheck Info: File `FreeFEM-documentation.out' has not changed.
 
  ) 
 Here is how much of TeX's memory you used:
- 27357 strings out of 476182
- 553160 string characters out of 5795595
- 2418975 words of memory out of 5000000
- 46034 multiletter control sequences out of 15000+600000
+ 27355 strings out of 476182
+ 553136 string characters out of 5795595
+ 2419975 words of memory out of 5000000
+ 46032 multiletter control sequences out of 15000+600000
  657717 words of font info for 131 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
  72i,34n,83p,1925b,1431s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -4025,7 +4025,7 @@ fonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xt
 t.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on FreeFEM-documentation.pdf (716 pages, 35498774 bytes).
+Output written on FreeFEM-documentation.pdf (716 pages, 35498765 bytes).
 PDF statistics:
  11794 PDF objects out of 12825 (max. 8388607)
  10338 compressed objects within 104 object streams

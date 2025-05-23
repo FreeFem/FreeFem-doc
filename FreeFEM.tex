@@ -140,7 +140,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Jan 31, 2025}
+\date{May 23, 2025}
 \release{4.13}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -22712,7 +22712,7 @@ where a \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{mpiComm}\PYG{+w}{ }\PYG{n+nf}{comm}\PYG{p}{(}\PYG{k+kr}{mpiCommWorld}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;}
 \PYG{k+kt}{mpiRequest}\PYG{+w}{ }\PYG{n}{req}\PYG{p}{;}
 
-\PYG{c+c1}{//send a,b asynchronously to the process 1}
+\PYG{c+c1}{//send a,b synchronously to the process 1}
 \PYG{n+nf}{processor}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{;}
 \PYG{c+c1}{//receive a,b synchronously from the process 10}
 \PYG{n+nf}{processor}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{;}
