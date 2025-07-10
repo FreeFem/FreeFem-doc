@@ -1594,17 +1594,17 @@ After the "=" sign, one may find sums of:
 
     *  An "on" vectorial form (for Dirichlet):	 :freefem:`on(u=g, tgv= none positive value  )` ,
     
-      if the value is equal to -2 (i.e :freefem:`tgv == -2 `) then   we put to :math:`0` all term of the line and colomn  :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"` 
-      else if the value is equal to  -20 (i.e :freefem:`tgv == -20 `) then   we put to :math:`0` all term of the line and colomn  :math:`i` in the matrix, and :math:`b[i] = "(\Pi_h g)[i]"` 
+      if the value is equal to -2 (i.e :freefem:`tgv == -2`) then   we put to :math:`0` all terms of row and column  :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"`, 
+      else if the value is equal to -20 (i.e :freefem:`tgv == -20`) then   we put to :math:`0` all terms of row and column  :math:`i` in the matrix, and :math:`b[i] = "(\Pi_h g)[i]"` 
   
-      else if the value is equal to -10 (i.e :freefem:`tgv == -10 `) then   we put to :math:`0` all term of the line the matrix, and :math:`b[i] = "(\Pi_h g)[i]"` 
+      else if the value is equal to -10 (i.e :freefem:`tgv == -10`) then   we put to :math:`0` all terms of row :math:`i` in the matrix, and :math:`b[i] = "(\Pi_h g)[i]"` 
     
-      else  (i.e :freefem:`tgv == -1 `) we put to :math:`0` all term of the line :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"`. 
+      else  (i.e :freefem:`tgv == -1`) we put to :math:`0` all terms of row :math:`i` in the matrix, except diagonal term :math:`a_{ii}=1`, and :math:`b[i] = "(\Pi_h g)[i]"`. 
 
     * If needed, the different kind of terms in the sum can appear more than once.
     * The integral mesh and the mesh associated to test functions or unknown functions can be different in the case of :freefem:`varf` form.
     * :freefem:`N.x`, :freefem:`N.y` and :freefem:`N.z` are the normal’s components.
-    * :freefem:`Ns.x`, :freefem:`Ns.y` and :freefem:`Ns.z` are the normal’s components of the suface in case of :freefem:`meshS` integral
+    * :freefem:`Ns.x`, :freefem:`Ns.y` and :freefem:`Ns.z` are the normal’s components of the surface in case of :freefem:`meshS` integral
     * :freefem:`Tl.x`, :freefem:`Tl.y` and :freefem:`Tl.z` are the tangent’s components of the line  in case of :freefem:`meshL` integral
 
 .. warning:: It is not possible to write in the same integral the linear part and the bilinear part such as in :freefem:`int1d(Th)(K*v*w - f*w)`.
