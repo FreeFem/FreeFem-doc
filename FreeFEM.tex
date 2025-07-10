@@ -140,7 +140,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{May 23, 2025}
+\date{Jul 10, 2025}
 \release{4.13}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -18103,21 +18103,21 @@ An “on” vectorial form (for Dirichlet):   \sphinxcode{\sphinxupquote{%
 
 \sphinxAtStartPar
 if the value is equal to \sphinxhyphen{}2 (i.e \sphinxcode{\sphinxupquote{%
-\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}2}\PYG{+w}{ }\PYG{err}{`}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{then}\PYG{+w}{   }\PYG{n}{we}\PYG{+w}{ }\PYG{n}{put}\PYG{+w}{ }\PYG{n}{to}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{math}\PYG{o}{:}\PYG{err}{`}\PYG{l+m+mi}{0}%
-}} all term of the line and colomn  \(i\) in the matrix, except diagonal term \(a_{ii}=1\), and \(b[i] = "(\Pi_h g)[i]"\)
-else if the value is equal to  \sphinxhyphen{}20 (i.e \sphinxcode{\sphinxupquote{%
-\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}20}\PYG{+w}{ }\PYG{err}{`}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{then}\PYG{+w}{   }\PYG{n}{we}\PYG{+w}{ }\PYG{n}{put}\PYG{+w}{ }\PYG{n}{to}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{math}\PYG{o}{:}\PYG{err}{`}\PYG{l+m+mi}{0}%
-}} all term of the line and colomn  \(i\) in the matrix, and \(b[i] = "(\Pi_h g)[i]"\)
+\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}2}%
+}}) then   we put to \(0\) all terms of row and column  \(i\) in the matrix, except diagonal term \(a_{ii}=1\), and \(b[i] = "(\Pi_h g)[i]"\),
+else if the value is equal to \sphinxhyphen{}20 (i.e \sphinxcode{\sphinxupquote{%
+\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}20}%
+}}) then   we put to \(0\) all terms of row and column  \(i\) in the matrix, and \(b[i] = "(\Pi_h g)[i]"\)
 
 \sphinxAtStartPar
 else if the value is equal to \sphinxhyphen{}10 (i.e \sphinxcode{\sphinxupquote{%
-\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}10}\PYG{+w}{ }\PYG{err}{`}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{then}\PYG{+w}{   }\PYG{n}{we}\PYG{+w}{ }\PYG{n}{put}\PYG{+w}{ }\PYG{n}{to}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{math}\PYG{o}{:}\PYG{err}{`}\PYG{l+m+mi}{0}%
-}} all term of the line the matrix, and \(b[i] = "(\Pi_h g)[i]"\)
+\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}10}%
+}}) then   we put to \(0\) all terms of row \(i\) in the matrix, and \(b[i] = "(\Pi_h g)[i]"\)
 
 \sphinxAtStartPar
 else  (i.e \sphinxcode{\sphinxupquote{%
-\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}1}\PYG{+w}{ }\PYG{err}{`}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{we}\PYG{+w}{ }\PYG{n}{put}\PYG{+w}{ }\PYG{n}{to}\PYG{+w}{ }\PYG{o}{:}\PYG{n}{math}\PYG{o}{:}\PYG{err}{`}\PYG{l+m+mi}{0}%
-}} all term of the line \(i\) in the matrix, except diagonal term \(a_{ii}=1\), and \(b[i] = "(\Pi_h g)[i]"\).
+\PYG{k+kp}{tgv}\PYG{+w}{ }\PYG{o}{=}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{\PYGZhy{}1}%
+}}) we put to \(0\) all terms of row \(i\) in the matrix, except diagonal term \(a_{ii}=1\), and \(b[i] = "(\Pi_h g)[i]"\).
 \end{quote}
 \begin{itemize}
 \item {} 
@@ -18148,7 +18148,7 @@ The integral mesh and the mesh associated to test functions or unknown functions
 \PYG{n}{Ns}\PYG{p}{.}\PYG{k+kr}{y}%
 }} and \sphinxcode{\sphinxupquote{%
 \PYG{n}{Ns}\PYG{p}{.}\PYG{k+kr}{z}%
-}} are the normal’s components of the suface in case of \sphinxcode{\sphinxupquote{%
+}} are the normal’s components of the surface in case of \sphinxcode{\sphinxupquote{%
 \PYG{k+kt}{meshS}%
 }} integral
 

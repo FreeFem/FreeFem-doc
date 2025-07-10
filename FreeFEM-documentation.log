@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.23)  23 MAY 2025 14:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.7.10)  10 JUL 2025 14:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3981,7 +3981,7 @@ Package rerunfilecheck Info: File `FreeFEM-documentation.out' has not changed.
 Here is how much of TeX's memory you used:
  27355 strings out of 476182
  553136 string characters out of 5795595
- 2419975 words of memory out of 5000000
+ 2418975 words of memory out of 5000000
  46032 multiletter control sequences out of 15000+600000
  657717 words of font info for 131 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
@@ -4025,7 +4025,7 @@ fonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xt
 t.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on FreeFEM-documentation.pdf (716 pages, 35498765 bytes).
+Output written on FreeFEM-documentation.pdf (716 pages, 35498134 bytes).
 PDF statistics:
  11794 PDF objects out of 12825 (max. 8388607)
  10338 compressed objects within 104 object streams
