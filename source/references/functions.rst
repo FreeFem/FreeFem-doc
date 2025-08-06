@@ -312,6 +312,7 @@ atan2
 
 Parameter:
 
+-  ``y`` (:freefem:`real`)
 -  ``x`` (:freefem:`real`)
 
 Output:
