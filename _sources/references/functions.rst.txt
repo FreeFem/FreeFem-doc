@@ -310,8 +310,9 @@ atan2
 
    real theta = atan2(y, x)
 
-Parameter:
+Parameters:
 
+-  ``y`` (:freefem:`real`)
 -  ``x`` (:freefem:`real`)
 
 Output:
