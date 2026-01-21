@@ -7,6 +7,7 @@
 \ifdefined\pdfimageresolution
     \pdfimageresolution= \numexpr \dimexpr1in\relax/\sphinxpxdimen\relax
 \fi
+\newdimen\sphinxremdimen\sphinxremdimen = 10pt
 %% let collapsible pdf bookmarks panel have high depth per default
 \PassOptionsToPackage{bookmarksdepth=5}{hyperref}
 
@@ -140,7 +141,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Aug 07, 2025}
+\date{Jan 21, 2026}
 \release{4.13}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -3032,123 +3033,195 @@ FreeFEM v4.15 runs under macOS, Ubuntu, and 64\sphinxhyphen{}bit Windows.
 \centering
 \begin{tabulary}{\linewidth}[t]{TTTT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Operating System
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 FreeFEM Version
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Size
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Date
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/releases/download/v4.15/FreeFEM-v4.15-Intel-O.dmg}{macOS Intel}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{4.15}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 273 MB
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 Dec 10, 2024
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/releases/download/v4.15/FreeFEM-v4.15-Apple-Silicon-O-a.dmg}{macOS Apple Silicon}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{4.15}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 238 MB
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 Dec 11, 2024
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/releases/download/v4.15/FreeFEM-4.15-amd64-ubuntu22.04.deb}{Ubuntu 22.04}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{4.15}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 313 MB
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 Dec 11, 2024
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/releases/download/v4.15/FreeFEM-4.15-amd64-ubuntu24.04.deb}{Ubuntu 24.04}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{4.15}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 300 MB
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 Dec 11, 2024
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/releases/download/v4.15/FreeFem++-4.15-win64.exe}{64\sphinxhyphen{}bit Windows}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{4.15}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 187 MB
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 Dec 11, 2024
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxhref{https://hub.docker.com/r/freefem/freefem}{Docker image}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{4.12}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 557 MB
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 Dec 7, 2022
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/archive/refs/tags/v4.15.tar.gz}{Source 4.15}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{4.15}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 12.4 MB
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 Dec 11, 2024
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/releases}{All releases}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{\sphinxhyphen{}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{\sphinxhyphen{}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{\sphinxhyphen{}}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3177,76 +3250,118 @@ The support ended for all releases under Windows 32 bits.
 \centering
 \begin{tabulary}{\linewidth}[t]{TTT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Lexer type
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Version
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Description
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 Emacs
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{0.3}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/freefem-parser-emacs}{freefem\sphinxhyphen{}mode.el}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 Textmate 2
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{1.0}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-parser-textmate}{FreeFem.tmbundle}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 Gedit
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{1.0}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/Freefem-parser-gedit}{ffpp.lang}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 Atom
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{0.3}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-parser-atom}{language\sphinxhyphen{}freefem} or via the Atom package manager
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 Pygments
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{1.0}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-parser-pygments}{freefem.py}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 Vim
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{0.1}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-parser-vim}{edp.vim}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3426,23 +3541,31 @@ Hecht, Frédéric. \PYGZdq{}New development in FreeFem++.\PYGZdq{} Journal of nu
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Frédéric Hecht
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 Professor at \sphinxhref{https://www.ljll.math.upmc.fr/}{Laboratoire Jacques Louis Lions}
 (LJLL), Sorbonne University, Paris
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxhref{mailto:frederic.hecht@sorbonne-universite.fr}{frederic.hecht@sorbonne\sphinxhyphen{}universite.fr}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxurl{https://www.ljll.math.upmc.fr/hecht/}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3455,21 +3578,27 @@ Professor at \sphinxhref{https://www.ljll.math.upmc.fr/}{Laboratoire Jacques Lou
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Sylvain Auliac
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 Former PhD student at LJLL, optimization interface with
 \sphinxhref{https://nlopt.readthedocs.io/en/latest/}{nlopt},
 \sphinxhref{https://projects.coin-or.org/Ipopt}{ipopt},
 \sphinxhref{https://en.wikipedia.org/wiki/CMA-ES}{cmaes}, …
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxurl{https://www.ljll.math.upmc.fr/auliac/}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3482,25 +3611,33 @@ Former PhD student at LJLL, optimization interface with
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Olivier Pironneau
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 Professor of numerical analysis at the Paris VI university and at
 LJLL, numerical methods in fluid
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 Member of the \sphinxhref{http://www.iufrance.fr/}{Institut Universitaire de
 France} and \sphinxhref{http://www.academie-sciences.fr/fr/}{Academie des
 Sciences}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxurl{https://www.ljll.math.upmc.fr/pironneau/}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3513,16 +3650,20 @@ Sciences}
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Jacques Morice
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 Former Post\sphinxhyphen{}Doc at LJLL, three dimensions mesh generation and
 coupling with
 \sphinxhref{https://www.ljll.math.upmc.fr/frey/logiciels/Docmedit.dir/index.html}{medit}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3535,21 +3676,27 @@ coupling with
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Antoine Le Hyaric
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxhref{http://www.cnrs.fr}{CNRS} research engineer at \sphinxhref{https://www.ljll.math.upmc.fr/}{Laboratoire Jacques Louis
 Lions}, expert in
 software engineering for scientific applications, electromagnetics
 simulations, parallel computing and three\sphinxhyphen{}dimensionsal visualization
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxurl{https://www.ljll.math.upmc.fr/lehyaric/}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3562,22 +3709,28 @@ simulations, parallel computing and three\sphinxhyphen{}dimensionsal visualizati
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Kohji Ohtsuka
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 Professor at \sphinxhref{http://www.hkg.ac.jp/html/}{Hiroshima Kokusai Gakuin
 University}, Japan and chairman of the
 \sphinxhref{http://www.wseas.org}{World Scientific and Engineering Academy and
 Society}, Japan. Fracture dynamic, modeling
 and computing
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxurl{https://sites.google.com/a/comfos.org/comfos/}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3590,15 +3743,19 @@ and computing
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Pierre\sphinxhyphen{}Henri Tournier
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxhref{http://www.cnrs.fr}{CNRS} research engineer at \sphinxhref{https://www.ljll.math.upmc.fr/}{Laboratoire Jacques Louis
 Lions} (LJLL), Sorbonne University, Paris
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3611,18 +3768,24 @@ Lions} (LJLL), Sorbonne University, Paris
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Pierre Jolivet
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxhref{http://www.cnrs.fr}{CNRS} researcher, MPI interface with \sphinxhref{https://petsc.org/}{PETSc}, \sphinxhref{https://github.com/hpddm/hpddm}{HPDDM}, …
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxurl{http://joliv.et/}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3635,19 +3798,25 @@ Pierre Jolivet
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Frédéric Nataf
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxhref{http://www.cnrs.fr}{CNRS} senior researcher at \sphinxhref{https://www.ljll.math.upmc.fr/}{Laboratoire Jacques Louis
 Lions} (LJLL), Sorbonne University, Paris
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxurl{https://www.ljll.math.upmc.fr/nataf/}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3660,18 +3829,24 @@ Lions} (LJLL), Sorbonne University, Paris
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Simon Garnotel
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 Reasearch engineer at \sphinxhref{https://www.airthium.com}{Airthium}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxurl{https://github.com/sgarnotel}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3684,18 +3859,24 @@ Reasearch engineer at \sphinxhref{https://www.airthium.com}{Airthium}
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Karla Pérez
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 Developer, \sphinxhref{https://www.airthium.com}{Airthium} internship
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxurl{https://github.com/karlaprzbr}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -3708,18 +3889,24 @@ Developer, \sphinxhref{https://www.airthium.com}{Airthium} internship
 \centering
 \begin{tabulary}{\linewidth}[t]{T}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Loan Cannard
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 Web designer, \sphinxhref{https://www.airthium.com}{Airthium} internship
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{1}}
 \sphinxAtStartPar
 \sphinxurl{https://www.linkedin.com/in/loancannard}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -13537,22 +13724,30 @@ The edge of the 10th side \(L_{10}\) are \(q^{10}, q^6\).
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Content of the file
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Explanation
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 14 16 10
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \(n_v\quad n_t\quad n_e\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}0.309016994375 0.951056516295 1
 
@@ -13564,7 +13759,9 @@ Explanation
 
 \sphinxAtStartPar
 \sphinxhyphen{}0.309016994375 \sphinxhyphen{}0.951056516295 1
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \(q^1_x\quad q^1_y\quad\) boundary label \(=1\)
 
@@ -13576,8 +13773,10 @@ Explanation
 
 \sphinxAtStartPar
 \(q^{14}_x\quad q^{14}_y\quad\) boundary label \(=1\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 9 12 10 0
 
@@ -13589,7 +13788,9 @@ Explanation
 
 \sphinxAtStartPar
 9 10 6 0
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \(1_1\quad 1_2\quad 1_3\quad\) region label \(=0\)
 
@@ -13601,8 +13802,10 @@ Explanation
 
 \sphinxAtStartPar
 \(16_1\quad 16_2\quad 16_3\quad\) region label \(=0\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 6 5 1
 
@@ -13614,7 +13817,9 @@ Explanation
 
 \sphinxAtStartPar
 10 6 1
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \(1_1\quad 1_2\quad\) boundary label \(=1\)
 
@@ -13626,6 +13831,8 @@ Explanation
 
 \sphinxAtStartPar
 \(10_1\quad 10_2\quad\) boundary label \(=1\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -18224,142 +18431,208 @@ where * stands for the name of the quadrature formula or the precision (order) o
 \begin{varwidth}[t]{\sphinxcolwidth{6}{6}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 Quadrature formula on an edge
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \(L\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kp}{qfe}%
 }}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kp}{qforder}%
 }}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Point in \([q^i, q^j]\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \(\omega_\ell\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Exact on \(P_k,\ k=\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(1\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf1pE}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(1/2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(||q^iq^j||\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(1\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf2pE}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(3\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \((1\pm\sqrt{1/3})/2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(||q^iq^j||/2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(3\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(3\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf3pE}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(6\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \((1\pm\sqrt{3/5})/2\)
 
 \sphinxAtStartPar
 \(1/2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \((5/18)||q^iq^j||\)
 
 \sphinxAtStartPar
 \((8/18)||q^iq^j||\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(5\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(4\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf4pE}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(8\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \((1\pm\frac{525+70\sqrt{30}}{35})/2\)
 
 \sphinxAtStartPar
 \((1\pm\frac{525-70\sqrt{30}}{35})/2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(\frac{18-\sqrt{30}}{72}||q^iq^j||\)
 
 \sphinxAtStartPar
 \(\frac{18+\sqrt{30}}{72}||q^iq^j||\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(7\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(5\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf5pE}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(10\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \((1\pm\frac{245+14\sqrt{70}}{21})/2\)
 
@@ -18368,7 +18641,9 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \((1\pm\frac{245-14\sqrt{70}}{21})/2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(\frac{322-13\sqrt{70}}{1800}||q^iq^j||\)
 
@@ -18377,36 +18652,52 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(\frac{322+13\sqrt{70}}{1800}||q^iq^j||\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(9\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf1pElump}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(0\)
 
 \sphinxAtStartPar
 \(1\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(||q^iq^j||/2\)
 
 \sphinxAtStartPar
 \(||q^iq^j||/2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(1\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -18497,67 +18788,97 @@ where * stands for the name of quadrature formula or the order of the Gauss form
 \begin{varwidth}[t]{\sphinxcolwidth{6}{6}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 Quadrature formula on a triangle
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \(L\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kp}{qft}%
 }}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kp}{qforder}%
 }}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Point in \(T_k\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \(\omega_\ell\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Exact on \(P_k,\ k=\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 1
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf1pT}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 2
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(\left(\frac{1}{3},\frac{1}{3}\right)\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(|T_k|\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(1\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 3
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf2pT}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 3
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(\left(\frac{1}{2},\frac{1}{2}\right)\)
 
@@ -18566,7 +18887,9 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(\left(0,\frac{1}{2}\right)\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(|T_k|/3\)
 
@@ -18575,22 +18898,32 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(|T_k|/3\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(2\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 7
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf5pT}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 6
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(\left(\frac{1}{3},\frac{1}{3}\right)\)
 
@@ -18611,7 +18944,9 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(\left(\frac{9-2\sqrt{15}}{21},\frac{6+\sqrt{15}}{21}\right)\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(0.225|T_k|\)
 
@@ -18632,19 +18967,30 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(\frac{(155+\sqrt{15})|T_k|}{1200}\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(5\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 3
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf1pTlump}%
 }}
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(\left(0,0\right)\)
 
@@ -18653,7 +18999,9 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(\left(0,1\right)\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(|T_k|/3\)
 
@@ -18662,19 +19010,30 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(|T_k|/3\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(1\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 9
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf2pT4P1}%
 }}
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(\left(\frac{1}{4},\frac{3}{4}\right)\)
 
@@ -18701,7 +19060,9 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(\left(\frac{1}{2},\frac{1}{4}\right)\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(|T_k|/12\)
 
@@ -18728,45 +19089,75 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(|T_k|/6\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(1\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 15
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf7pT}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 8
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 See \sphinxcite{bibliography:taylor2005} for detail
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 7
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 21
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qf9pT}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 10
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 See \sphinxcite{bibliography:taylor2005} for detail
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 9
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -18800,88 +19191,130 @@ where * stands for the name of quadrature formula or the order of the Gauss form
 \begin{varwidth}[t]{\sphinxcolwidth{6}{6}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 Quadrature formula on a tetrahedron
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \(L\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kp}{qfV}%
 }}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kp}{qforder}%
 }}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Point in \(T_k\in\R^3\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \(\omega_\ell\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Exact on \(P_k,\ k=\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 1
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qfV1}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(2\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(\left(\frac{1}{4},\frac{1}{4},\frac{1}{4}\right)\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(|T_k|\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(1\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 4
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qfV2}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(3\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(G4(0.58\ldots,0.13\ldots,0.13\ldots)\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(|T_k|/4\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(2\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 14
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qfV5}%
 }}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(6\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(G4(0.72\ldots,0.092\ldots,0.092\ldots)\)
 
@@ -18890,7 +19323,9 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(G6(0.45\ldots,0.045\ldots,0.45\ldots)\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(0.073\ldots|T_k|\)
 
@@ -18899,27 +19334,44 @@ Exact on \(P_k,\ k=\)
 
 \sphinxAtStartPar
 \(0.042\ldots|T_k|\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(5\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 4
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{%
 \PYG{k+kr}{qfV1lump}%
 }}
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(G4(1,0,0)\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(|T_k|/4\)
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{6}}
 \sphinxAtStartPar
 \(1\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -21050,54 +21502,89 @@ The \sphinxhref{https://projects.coin-or.org/Ipopt/browser/stable/3.10/Ipopt/doc
 \centering
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Success
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Failures
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 0 \sphinxcode{\sphinxupquote{Solve\_Succeeded}}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 1 \sphinxcode{\sphinxupquote{Solved\_To\_Acceptable\_Level}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}1 \sphinxcode{\sphinxupquote{Maximum\_Iterations\_Exceeded}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 2 \sphinxcode{\sphinxupquote{Infeasible\_Problem\_Detected}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}2 \sphinxcode{\sphinxupquote{Restoration\_Failed}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 3 \sphinxcode{\sphinxupquote{Search\_Direction\_Becomes\_Too\_Small}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}3 \sphinxcode{\sphinxupquote{Error\_In\_Step\_Computation}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 4 \sphinxcode{\sphinxupquote{Diverging\_Iterates}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}4 \sphinxcode{\sphinxupquote{Maximum\_CpuTime\_Exceeded}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 5 \sphinxcode{\sphinxupquote{User\_Requested\_Stop}}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 6 \sphinxcode{\sphinxupquote{Feasible\_Point\_Found}}
-&\\
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
 \sphinxbottomrule
 \end{tabulary}
 \sphinxtableafterendhook\par
@@ -21109,41 +21596,61 @@ Failures
 \centering
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Problem definition issues
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Critical errors
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}10 \sphinxcode{\sphinxupquote{Not\_Enough\_Degrees\_Of\_Freedom}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}100 \sphinxcode{\sphinxupquote{Unrecoverable\_Exception}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}11 \sphinxcode{\sphinxupquote{Invalid\_Problem\_Definition}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}101 \sphinxcode{\sphinxupquote{NonIpopt\_Exception\_Thrown}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}12 \sphinxcode{\sphinxupquote{Invalid\_Option}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}102 \sphinxcode{\sphinxupquote{Insufficient\_Memory}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}13 \sphinxcode{\sphinxupquote{Invalid\_Number\_Detected}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhyphen{}199 \sphinxcode{\sphinxupquote{Internal\_Error}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -23479,104 +23986,161 @@ If the libraries are not loaded, the default sparse solver will be loaded (defau
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TTT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Libraries
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{2}%
 \begin{varwidth}[t]{\sphinxcolwidth{2}{3}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 Default sparse solver
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline\sphinxstyletheadfamily &\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 real
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 complex
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 MUMPS\_FreeFem
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 mumps
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 mumps
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 real\_SuperLU\_DIST\_FreeFem
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 SuperLU\_DIST
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 complex\_SuperLU\_DIST\_FreeFem
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 SuperLU\_DIST
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 real\_pastix\_FreeFem
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 PaStiX
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 complex\_pastix\_FreeFem
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 PaStiX
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 hips\_FreeFem
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 hips
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 hypre\_FreeFem
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 hypre
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 parms\_FreeFem
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 parms
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -23598,104 +24162,161 @@ An example of using different parallel sparse solvers for the same problem is gi
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TTT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Function
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{2}%
 \begin{varwidth}[t]{\sphinxcolwidth{2}{3}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 default sparse solver
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline\sphinxstyletheadfamily &\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 real
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 complex
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 defaulttoMUMPS()
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 mumps
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 mumps
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 realdefaulttoSuperLUdist()
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 SuperLU\_DIST
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 complexdefaulttoSuperLUdist()
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 SuperLU\_DIST
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 realdefaultopastix()
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 pastix
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 complexdefaulttopastix()
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 pastix
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 defaulttohips()
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 hips
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 defaulttohypre()
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 hypre
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 defaulttoparms()
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 parms
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 previous solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -24356,109 +24977,168 @@ In \hyperref[\detokenize{documentation/parallelization:tabparallelizationdirects
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TTTTTTT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 direct solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{3}%
 \begin{varwidth}[t]{\sphinxcolwidth{3}{7}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 square matrix
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 &\sphinxstartmulticolumn{3}%
 \begin{varwidth}[t]{\sphinxcolwidth{3}{7}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 rectangular matrix
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline\sphinxstyletheadfamily &\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
+\sphinxstyletheadfamily \sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 sym
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 sym pattern
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 unsym
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 sym
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 sym pattern
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 unsym
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 SuperLU\_DIST
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 MUMPS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 no
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 no
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 no
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 Pastix
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 yes
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 no
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 no
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 no
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{7}}
 \sphinxAtStartPar
 no
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -24694,105 +25374,158 @@ We run this example on a cluster paradent of Grid5000 and report results in \hyp
 \(n=471281\)
 \(nnz=13\times10^6\)
 \(Te=571.29\)
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 np
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{2}%
 \begin{varwidth}[t]{\sphinxcolwidth{2}{5}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 add(iluk)
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 &\sphinxstartmulticolumn{2}%
 \begin{varwidth}[t]{\sphinxcolwidth{2}{5}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 shur(iluk)
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline\sphinxstyletheadfamily &\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 nit
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 time
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 nit
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 time
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 4
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 230
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 637.57
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 21
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 557.8
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 8
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 240
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 364.12
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 22
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 302.25
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 16
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 247
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 212.07
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 24
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 167.5
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 32
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 261
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 111.16
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 25
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 81.5
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -24809,48 +25542,72 @@ time
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{n}}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 matrix size
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{nnz}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 number of non null entries inside matrix
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{nit}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 number of iteration for convergence
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{time}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Time for convergence
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{Te}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Time for constructing finite element matrix
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{np}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 number of processor
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -24871,143 +25628,213 @@ This proves that, using pARMS as solver of linear systems coming from discretiza
 \sphinxthecaptionisattop
 \sphinxcaption{Meaning of \sphinxstyleliteralintitle{\sphinxupquote{lparams}} corresponding variables}\label{\detokenize{documentation/parallelization:tabparallelizationlparams}}
 \sphinxaftertopcaption
-\begin{tabular}[t]{*{2}{\X{1}{2}}}
+\begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Entries of \sphinxcode{\sphinxupquote{%
 \PYG{n}{iparm}%
 }}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Significations of each entries
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}0{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Krylov subspace methods
 
 \sphinxAtStartPar
 Different values for this parameters are specify on \hyperref[\detokenize{documentation/parallelization:tabparallelizationparmskrylov}]{Table \ref{\detokenize{documentation/parallelization:tabparallelizationparmskrylov}}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}1{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Preconditionner
 
 \sphinxAtStartPar
 Different preconditionners for this parameters are  specify on \hyperref[\detokenize{documentation/parallelization:tabparallelizationparmsprecon}]{Table \ref{\detokenize{documentation/parallelization:tabparallelizationparmsprecon}}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}2{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Krylov subspace dimension in outer iteration: default value 30
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}3{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Maximum of iterations in outer iteration: default value 1000
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}4{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Number of level in arms when used
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}5{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Krylov subspace dimension in inner iteration: default value 3
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}6{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Maximum of iterations in inner iteration: default value 3
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}7{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Symmetric(=1 for symmetric) or unsymmetric matrix:
 
 \sphinxAtStartPar
 default value 0(unsymmetric matrix)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}8{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Overlap size between different subdomain: default value 0(no overlap)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}9{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Scale the input matrix or not: Default value 1 (Matrix should be scaled)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}10{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Block size in arms when used: default value 20
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}11{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 lfil0 (ilut, iluk, and arms) : default value 20
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}12{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 lfil for Schur complement const : default value 20
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}13{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 lfil for Schur complement const : default value 20
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}14{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Multicoloring or not in ILU when used : default value 1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}15{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Inner iteration : default value 0
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}16{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Print message when solving: default 0 (no message print)
 \begin{itemize}
@@ -25028,9 +25855,11 @@ Print message when solving: default 0 (no message print)
 3 : Print all informations
 
 \end{itemize}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
-\end{tabular}
+\end{tabulary}
 \sphinxtableafterendhook\par
 \sphinxattableend\end{savenotes}
 
@@ -25044,57 +25873,85 @@ Print message when solving: default 0 (no message print)
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Entries of \sphinxcode{\sphinxupquote{%
 \PYG{n}{dparm}%
 }}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Significations of each entries
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}0{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 precision for outer iteration : default value 1e\sphinxhyphen{}08
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}1{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 precision for inner iteration: default value 1e\sphinxhyphen{}2
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}2{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 tolerance used for diagonal domain: : default value 0.1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}3{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 drop tolerance droptol0 (ilut, iluk, and arms) : default value 1e\sphinxhyphen{}2
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}4{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 droptol for Schur complement const: default value 1e\sphinxhyphen{}2
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}5{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 droptol for Schur complement const: default value 1e\sphinxhyphen{}2
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -25111,34 +25968,50 @@ droptol for Schur complement const: default value 1e\sphinxhyphen{}2
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Values of \sphinxcode{\sphinxupquote{iparm{[}0{]}}}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Krylov subspace methods
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 0
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 FGMRES (Flexible GMRES)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 1
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 DGMRES (Deflated GMRES)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 2
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 BICGSTAB
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -25155,111 +26028,171 @@ BICGSTAB
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Values of \sphinxcode{\sphinxupquote{iparm{[}1{]}}}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Preconditionners type
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 0
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 additive Schwartz preconditioner with ilu0 as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 1
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 additive Schwartz preconditioner with iluk as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 2
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 additive Schwartz preconditioner with ilut as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 3
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 additive Schwartz preconditioner with arms as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 4
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Left Schur complement preconditioner with ilu0 as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 5
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Left Schur complement preconditioner with ilut as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 6
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Left Schur complement preconditioner with iluk as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 7
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Left Schur complement preconditioner with arms as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 8
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Right Schur complement preconditioner with ilu0 as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 9
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Right Schur complement preconditioner with ilut as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 10
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Right Schur complement preconditioner with iluk as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 11
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Right Schur complement preconditioner with arms as local preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 12
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 sch\_gilu0, Schur complement preconditioner with global ilu0
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 13
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 SchurSymmetric GS preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -25399,60 +26332,90 @@ We can see in this running example the efficiency of parallelism.
 \(n=4\times 10^6\)
 \(nnz=118 \times 10^6\)
 \(Te=221.34\)
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{np}}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{nit}}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{time}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 8
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 190
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 120.34
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 16
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 189
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 61.08
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 32
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 186
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 31.70
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 64
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 183
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
 \sphinxAtStartPar
 23.44
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -25471,139 +26434,203 @@ We can see in this running example the efficiency of parallelism.
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Entries of \sphinxcode{\sphinxupquote{iparm}}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Significations of each entries
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}0{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Strategy use for solving (Iterative=0 or Hybrid=1 or Direct=2).
 
 \sphinxAtStartPar
 Defaults values are : Iterative
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}1{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Krylov methods.
 
 \sphinxAtStartPar
 If iparm{[}0{]}=0, give type of Krylov methods: 0 for GMRES, 1 for PCG
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}2{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Maximum of iterations in outer iteration: default value 1000
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}3{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Krylov subspace dimension in outer iteration: default value 40
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}4{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Symmetric(=0 for symmetric) and 1 for unsymmetricmatrix:
 
 \sphinxAtStartPar
 default value 1 (unsymmetric matrix)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}5{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Pattern of matrix are symmetric or not: default value 0
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}6{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Partition type of input matrix: default value 0
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}7{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Number of level that use the HIPS locally consistentfill\sphinxhyphen{}in:
 
 \sphinxAtStartPar
 Default value 2
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}8{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Numbering in indices array will start at 0 or 1: Default value 0
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}9{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Scale matrix. Default value 1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}10{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Reordering use inside subdomains for reducingfill\sphinxhyphen{}in:
 
 \sphinxAtStartPar
 Only use for iterative. Default value 1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}11{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Number of unknowns per node in the matrix non\sphinxhyphen{}zeropattern graph:
 
 \sphinxAtStartPar
 Default value 1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}12{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 This value is used to set the number of time the
 
 \sphinxAtStartPar
 normalization is applied to the matrix: Default 2.
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}13{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Level of informations printed during solving: Default 5.
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparm{[}14{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 HIPS\_DOMSIZE Subdomain size
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -25620,62 +26647,86 @@ HIPS\_DOMSIZE Subdomain size
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}0{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 HIPS\_PREC: Relative residual norm: Default=1e\sphinxhyphen{}9
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}1{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 HIPS\_DROPTOL0: Numerical threshold in ILUT for interior domain
 
 \sphinxAtStartPar
 (important : set 0.0 in HYBRID: Default=0.005)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}2{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 HIPS\_DROPTOL1 : Numerical threshold in ILUT for Schur preconditioner:
 
 \sphinxAtStartPar
 Default=0.005
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}3{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 HIPS\_DROPTOLE : Numerical threshold for coupling between the interior
 
 \sphinxAtStartPar
 level and Schur: Default 0.005
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}4{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 HIPS\_AMALG : Numerical threshold for coupling between the interior level
 
 \sphinxAtStartPar
 and Schur: Default=0.005
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparm{[}5{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 HIPS\_DROPSCHUR : Numerical threshold for coupling between the interior
 
 \sphinxAtStartPar
 level and Schur: Default=0.005
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -25774,67 +26825,99 @@ We can see in this running example the efficiency of parallelism, in particular 
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}0{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Solver identification:
 
 \sphinxAtStartPar
 0: BiCGStab, 1: GMRES, 2: PCG. Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}1{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Preconditioner identification:
 
 \sphinxAtStartPar
 0: BOOMER AMG, 1: PILUT, 2: Parasails, 3: Schwartz Default=0
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}2{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Maximum of iteration: Default=1000
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}3{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Krylov subspace dim: Default= 40
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}4{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Solver print info level: Default=2
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}5{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Solver log: Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}6{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Solver stopping criteria only for BiCGStab : Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparms{[}0{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Tolerance for convergence: Default=:math:\sphinxtitleref{1.0e\sphinxhyphen{}11}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -25851,76 +26934,114 @@ Tolerance for convergence: Default=:math:\sphinxtitleref{1.0e\sphinxhyphen{}11}
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}7{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 AMG interpolation type: Default=6
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}8{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Specifies the use of GSMG \sphinxhyphen{} geometrically smooth coarsening and
 
 \sphinxAtStartPar
 interpolation: Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}9{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 AMG coarsen type: Default=6
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}10{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Defines whether local or global measures are used: Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}11{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 AMG cycle type: Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}12{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 AMG Smoother type: Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}13{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 AMG number of levels for smoothers: Default=3
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}14{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 AMG number of sweeps for smoothers: Default=2
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}15{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Maximum number of multigrid levels: Default=25
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}16{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Defines which variant of the Schwartz method isused:
 
@@ -25938,25 +27059,37 @@ Defines which variant of the Schwartz method isused:
 
 \sphinxAtStartPar
 Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}17{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Size of the system of PDEs: Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}18{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Overlap for the Schwarz method: Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}19{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Type of domain used for the Schwarz method
 
@@ -25968,37 +27101,55 @@ Type of domain used for the Schwarz method
 
 \sphinxAtStartPar
 2: each domain is generated by agglomeration (default)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparms{[}1{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 AMG strength threshold: Default=0.25
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparms{[}2{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Truncation factor for the interpolation: Default=1e\sphinxhyphen{}2
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparms{[}3{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Sets a parameter to modify the definition of strength for
 
 \sphinxAtStartPar
 diagonal dominant portions of the matrix: Default=0.9
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparms{[}3{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Defines a smoothing parameter for the additive Schwartz method. Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -26015,26 +27166,38 @@ Defines a smoothing parameter for the additive Schwartz method. Default=1
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}7{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Row size in Parallel ILUT: Default=1000
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}8{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Set maximum number of iterations: Default=30
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparms{[}1{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Drop tolerance in Parallel ILUT: Default=1e\sphinxhyphen{}5
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -26051,17 +27214,23 @@ Drop tolerance in Parallel ILUT: Default=1e\sphinxhyphen{}5
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}7{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Number of levels in Parallel Sparse Approximate inverse: Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}8{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Symmetric parameter for the ParaSails preconditioner:
 
@@ -26076,23 +27245,33 @@ Symmetric parameter for the ParaSails preconditioner:
 
 \sphinxAtStartPar
 Default=0
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparms{[}1{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Filters parameters. The filter parameter is used to drop small nonzeros in the preconditioner,
 
 \sphinxAtStartPar
 to reduce the cost of applying the preconditioner: Default=0.1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{dparms{[}2{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Threshold parameter: Default=0.1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -26109,10 +27288,12 @@ Threshold parameter: Default=0.1
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}7{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Defines which variant of the Schwartz method isused:
 
@@ -26130,18 +27311,26 @@ Defines which variant of the Schwartz method isused:
 
 \sphinxAtStartPar
 Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}8{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Overlap for the Schwartz method: Default=1
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxcode{\sphinxupquote{iparms{[}9{]}}}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Type of domain used for the Schwartz method
 
@@ -26153,6 +27342,8 @@ Type of domain used for the Schwartz method
 
 \sphinxAtStartPar
 2: each domain is generated by agglomeration (default)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -26169,97 +27360,124 @@ Type of domain used for the Schwartz method
 \sphinxaftertopcaption
 \begin{tabulary}{\linewidth}[t]{TTTT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \(n=4\times10^6\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{2}%
 \begin{varwidth}[t]{\sphinxcolwidth{2}{4}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 \(nnz=13\times10^6\)
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \(Te = 571.29\)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 np
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{3}%
 \begin{varwidth}[t]{\sphinxcolwidth{3}{4}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 AMG
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline\sphinxstyletheadfamily &\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
+\sphinxstyletheadfamily \sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxtitleref{nit}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{2}%
 \begin{varwidth}[t]{\sphinxcolwidth{2}{4}}
 \sphinxstyletheadfamily \sphinxAtStartPar
 \sphinxtitleref{time}
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 8
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 6
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{2}%
 \begin{varwidth}[t]{\sphinxcolwidth{2}{4}}
 \sphinxAtStartPar
 1491.83
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 16
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 5
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{2}%
 \begin{varwidth}[t]{\sphinxcolwidth{2}{4}}
 \sphinxAtStartPar
 708.49
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 32
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 4
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{2}%
 \begin{varwidth}[t]{\sphinxcolwidth{2}{4}}
 \sphinxAtStartPar
 296.22
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 64
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{4}}
 \sphinxAtStartPar
 4
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 &\sphinxstartmulticolumn{2}%
 \begin{varwidth}[t]{\sphinxcolwidth{2}{4}}
 \sphinxAtStartPar
 145.64
-\par
-\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \sphinxstopmulticolumn
 \\
 \sphinxbottomrule
@@ -26818,12 +28036,16 @@ Combining the power and flexibility of PETSc with the ease\sphinxhyphen{}of\sphi
 \makeatother
 \begin{longtable}{ll}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Filename
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Comments (preconditioners, numerical schemes)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
 \endfirsthead
@@ -26832,12 +28054,16 @@ Comments (preconditioners, numerical schemes)
     \makebox[0pt]{\sphinxtablecontinued{\tablename\ \thetable{} \textendash{} continued from previous page}}%
 }\\
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Filename
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Comments (preconditioners, numerical schemes)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
 \endhead
@@ -26850,238 +28076,382 @@ Comments (preconditioners, numerical schemes)
 
 \endlastfoot
 \sphinxtableatstartofbodyhook
-
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/diffusion-2d-PETSc.edp}{diffusion\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Distributed LU/Cholesky, domain decomposition and multigrid methods
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/diffusion-2d-PETSc-complex.edp}{diffusion\sphinxhyphen{}2d\sphinxhyphen{}PETSc\sphinxhyphen{}complex.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/heat-2d-PETSc.edp}{heat\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Transient diffusion equation, same as above
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/diffusion-periodic-2d-PETSc.edp}{diffusion\sphinxhyphen{}periodic\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Periodic boundary conditions, multigrid methods
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/diffusion-periodic-balanced-2d-PETSc.edp}{diffusion\sphinxhyphen{}periodic\sphinxhyphen{}balanced\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Better load balancing than above example
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/diffusion-substructuring-2d-PETSc.edp}{diffusion\sphinxhyphen{}substructuring\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Balancing Domain Decomposition with Constraints
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/diffusion-3d-PETSc.edp}{diffusion\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Three\sphinxhyphen{}dimensional problem, domain decomposition and multigrid methods
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/diffusion-mg-2d-PETSc.edp}{diffusion\sphinxhyphen{}mg\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Geometric non\sphinxhyphen{}nested multigrid methods
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/diffusion-mg-3d-PETSc.edp}{diffusion\sphinxhyphen{}mg\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Geometric nested multigrid methods
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/helmholtz-2d-PETSc-complex.edp}{helmholtz\sphinxhyphen{}2d\sphinxhyphen{}PETSc\sphinxhyphen{}complex.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Domain decomposition methods with optimized boundary conditions
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/helmholtz-mg-2d-PETSc-complex.edp}{helmholtz\sphinxhyphen{}mg\sphinxhyphen{}2d\sphinxhyphen{}PETSc\sphinxhyphen{}complex.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Geometric multigrid methods
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-RT-2d-PETSc.edp}{laplace\sphinxhyphen{}RT\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Vectorial two\sphinxhyphen{}dimensional problem with a block preconditioner (fieldsplit)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-RT-3d-PETSc.edp}{laplace\sphinxhyphen{}RT\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Vectorial three\sphinxhyphen{}dimensional problem with a block preconditioner (fieldsplit)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-adapt-3d-PETSc.edp}{laplace\sphinxhyphen{}adapt\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Three\sphinxhyphen{}dimensional problem with \sphinxstyleemphasis{h} adaptivity, multigrid methods using Mmg
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-adapt-dist-3d-PETSc.edp}{laplace\sphinxhyphen{}adapt\sphinxhyphen{}dist\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Three\sphinxhyphen{}dimensional problem with fully\sphinxhyphen{}distributed \sphinxstyleemphasis{h} adaptivity using ParMmg
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-lagrange-PETSc.edp}{laplace\sphinxhyphen{}lagrange\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Laplace equation with constraints and a block preconditioner (fieldsplit)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/elasticity-2d-PETSc.edp}{elasticity\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Vectorial problem, domain decomposition (GenEO) and multigrid methods
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/elasticity-3d-PETSc.edp}{elasticity\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/elasticity-block-hpddm-2d-PETSc.edp}{elasticity\sphinxhyphen{}block\sphinxhyphen{}hpddm\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Domain decomposition (GenEO for saddle\sphinxhyphen{}point problems)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/stokes-2d-PETSc.edp}{stokes\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Distributed LU/Cholesky
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/stokes-3d-PETSc.edp}{stokes\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/stokes-block-2d-PETSc.edp}{stokes\sphinxhyphen{}block\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Stokes equation defined as a block system with four matrices (fieldsplit)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/stokes-fieldsplit-2d-PETSc.edp}{stokes\sphinxhyphen{}fieldsplit\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Block preconditioner (fieldsplit)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/stokes-fieldsplit-3d-PETSc.edp}{stokes\sphinxhyphen{}fieldsplit\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/stokes-block-hpddm-2d-PETSc.edp}{stokes\sphinxhyphen{}block\sphinxhyphen{}hpddm\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Domain decomposition (GenEO for saddle\sphinxhyphen{}point problems)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/oseen-2d-PETSc.edp}{oseen\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Oseen problem preconditioned by Pressure Convection\textendash{}Diffusion (PCD)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/maxwell-2d-PETSc.edp}{maxwell\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Direct LU/Cholesky
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/maxwell-3d-PETSc.edp}{maxwell\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Multigrid method
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/maxwell-mg-3d-PETSc-complex.edp}{maxwell\sphinxhyphen{}mg\sphinxhyphen{}3d\sphinxhyphen{}PETSc\sphinxhyphen{}complex.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Two\sphinxhyphen{}grid preconditioner
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/helmholtz-3d-surf-PETSc-complex.edp}{helmholtz\sphinxhyphen{}3d\sphinxhyphen{}surf\sphinxhyphen{}PETSc\sphinxhyphen{}complex.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 BEM with hierarchical matrices from Htool on surfaces
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/helmholtz-3d-line-PETSc-complex.edp}{helmholtz\sphinxhyphen{}3d\sphinxhyphen{}line\sphinxhyphen{}PETSc\sphinxhyphen{}complex.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 BEM with hierarchical matrices from Htool on lines
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/helmholtz-coupled-2d-PETSc-complex.edp}{helmholtz\sphinxhyphen{}coupled\sphinxhyphen{}2d\sphinxhyphen{}PETSc\sphinxhyphen{}complex.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 FEM coupled with BEM in a MatNest using a block preconditioner (fieldsplit)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/PtAP-2d-PETSc.edp}{PtAP\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Parallel interpolation on non\sphinxhyphen{}matching grids + P’ A P operation
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/restriction-2d-PETSc.edp}{restriction\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Coupled problems with one being defined on a restriction of the mesh of the other
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/bilaplace-2d-PETSc.edp}{bilaplace\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Bilaplacian using Morley finite element
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{longtable}
@@ -27098,84 +28468,134 @@ Bilaplacian using Morley finite element
 \centering
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Filename
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Comments (preconditioners, numerical schemes)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/bratu-2d-PETSc.edp}{bratu\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/bratu-hpddm-2d-PETSc.edp}{bratu\sphinxhyphen{}hpddm\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 GenEO with reused coarse spaces
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/newton-2d-PETSc.edp}{newton\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/newton-adaptmesh-2d-PETSc.edp}{newton\sphinxhyphen{}adaptmesh\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Newton method and \sphinxstyleemphasis{h} adaptivity
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/newton-vi-2d-PETSc.edp}{newton\sphinxhyphen{}vi\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Newton method and a variational inequality
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/newton-vi-adaptmesh-2d-PETSc.edp}{newton\sphinxhyphen{}vi\sphinxhyphen{}adaptmesh\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Newton method, \sphinxstyleemphasis{h} adaptivity, and a variational inequality
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/elasticity-SNES-3d-PETSc.edp}{elasticity\sphinxhyphen{}SNES\sphinxhyphen{}3d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Linear elasiticty with a Newton method
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/neo-Hookean-2d-PETSc.edp}{neo\sphinxhyphen{}Hookean\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Nonlinear elasticity
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/navier-stokes-2d-PETSc.edp}{navier\sphinxhyphen{}stokes\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Steady\sphinxhyphen{}state Navier\textendash{}Stokes equation for linear stability analysis
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/natural-convection-fieldsplit-2d-PETSc.edp}{natural\sphinxhyphen{}convection\sphinxhyphen{}fieldsplit\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Newton method and \sphinxstyleemphasis{h} adaptivity
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/vi-2d-PETSc.edp}{vi\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Variational inequalities
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -27191,44 +28611,76 @@ Variational inequalities
 \centering
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Filename
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Comments (preconditioners, numerical schemes)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/advection-TS-2d-PETSc.edp}{advection\sphinxhyphen{}TS\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Implicit and explicit schemes
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/heat-TS-2d-PETSc.edp}{heat\sphinxhyphen{}TS\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/heat-TS-RHS-2d-PETSc.edp}{heat\sphinxhyphen{}TS\sphinxhyphen{}RHS\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/minimal-surface-Tao-2d-PETSc.edp}{minimal\sphinxhyphen{}surface\sphinxhyphen{}Tao\sphinxhyphen{}2d\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Minimal surface problem
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/orego-Tao-PETSc.edp}{orego\sphinxhyphen{}Tao\sphinxhyphen{}PETSc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/toy-Tao-PETSc.edp}{toy\sphinxhyphen{}Tao\sphinxhyphen{}PETSc.edp}
-&\\
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
 \sphinxbottomrule
 \end{tabulary}
 \sphinxtableafterendhook\par
@@ -27243,101 +28695,177 @@ Minimal surface problem
 \centering
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Filename
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Comments (preconditioners, numerical schemes)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-2d-SLEPc.edp}{laplace\sphinxhyphen{}2d\sphinxhyphen{}SLEPc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-spherical-harmonics-2d-SLEPc.edp}{laplace\sphinxhyphen{}spherical\sphinxhyphen{}harmonics\sphinxhyphen{}2d\sphinxhyphen{}SLEPc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-torus-2d-SLEPc.edp}{laplace\sphinxhyphen{}torus\sphinxhyphen{}2d\sphinxhyphen{}SLEPc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/schrodinger-axial-well-2d-SLEPc.edp}{schrodinger\sphinxhyphen{}axial\sphinxhyphen{}well\sphinxhyphen{}2d\sphinxhyphen{}SLEPc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/schrodinger-harmonic-oscillator-1d-SLEPc.edp}{schrodinger\sphinxhyphen{}harmonic\sphinxhyphen{}oscillator\sphinxhyphen{}1d\sphinxhyphen{}SLEPc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/schrodinger-harmonic-oscillator-2d-SLEPc.edp}{schrodinger\sphinxhyphen{}harmonic\sphinxhyphen{}oscillator\sphinxhyphen{}2d\sphinxhyphen{}SLEPc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/schrodinger-square-well-1d-SLEPc.edp}{schrodinger\sphinxhyphen{}square\sphinxhyphen{}well\sphinxhyphen{}1d\sphinxhyphen{}SLEPc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-2d-SLEPc-complex.edp}{laplace\sphinxhyphen{}2d\sphinxhyphen{}SLEPc\sphinxhyphen{}complex.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-beltrami-3d-surf-SLEPc.edp}{laplace\sphinxhyphen{}beltrami\sphinxhyphen{}3d\sphinxhyphen{}surf\sphinxhyphen{}SLEPc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Eigenvalue problem on a surface
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/laplace-beltrami-3d-line-SLEPc.edp}{laplace\sphinxhyphen{}beltrami\sphinxhyphen{}3d\sphinxhyphen{}line\sphinxhyphen{}SLEPc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Eigenvalue problem on a curve
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/navier-stokes-2d-SLEPc-complex.edp}{navier\sphinxhyphen{}stokes\sphinxhyphen{}2d\sphinxhyphen{}SLEPc\sphinxhyphen{}complex.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Linear stability analysis of Navier\textendash{}Stokes equations
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/stokes-2d-SLEPc.edp}{stokes\sphinxhyphen{}2d\sphinxhyphen{}SLEPc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Inf\sphinxhyphen{}sup constant of Stokes equations
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/helmholtz-2d-SLEPc-complex.edp}{helmholtz\sphinxhyphen{}2d\sphinxhyphen{}SLEPc\sphinxhyphen{}complex.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 SVD of the discretized Helmholtz equation
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/mf-2d-SLEPc.edp}{mf\sphinxhyphen{}2d\sphinxhyphen{}SLEPc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Matrix\sphinxhyphen{}free SVD with user\sphinxhyphen{}provided matrix\textendash{}vector and matrix transpose\textendash{}vector multiplications
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/nonlinear-2d-SLEPc-complex.edp}{nonlinear\sphinxhyphen{}2d\sphinxhyphen{}SLEPc\sphinxhyphen{}complex.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Nonlinear eigenvalue problem Ax = sqrt(lambda)x
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/blasius-stability-1d-SLEPc-complex.edp}{blasius\sphinxhyphen{}stability\sphinxhyphen{}1d\sphinxhyphen{}SLEPc\sphinxhyphen{}complex.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Polynomial eigenvalue problem (A2 lambda\textasciicircum{}2 x + A1 lambda + A0)x = 0
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -27353,115 +28881,180 @@ Polynomial eigenvalue problem (A2 lambda\textasciicircum{}2 x + A1 lambda + A0)x
 \centering
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Filename
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Comments (preconditioners, numerical schemes)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/transpose-solve-PETSc.edp}{transpose\sphinxhyphen{}solve\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Solving a transposed system
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/Schur-complement-PETSc.edp}{Schur\sphinxhyphen{}complement\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Computing an exact Schur complement
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/block-PETSc.edp}{block\sphinxhyphen{}PETSc.edp}
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/buildRecursive.edp}{buildRecursive.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Recursive mesh partitioning (for geometric multigrid)
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/withPartitioning.edp}{withPartitioning.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Connectivity construction with a user\sphinxhyphen{}supplied partitioning
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/createPartition.edp}{createPartition.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Creation of different partitions of unity using the same DD
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/save-load-Dmesh.edp}{save\sphinxhyphen{}load\sphinxhyphen{}Dmesh.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Saving and loading a distributed mesh for restarting a computation
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/transfer.edp}{transfer.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Parallel interpolation of finite element functions
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/reconstructDmesh.edp}{reconstructDmesh.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Construction of a distributed mesh from sequential nonoverlapping meshes
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/distributed-parmmg.edp}{distributed\sphinxhyphen{}parmmg.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Distributed ParMmg interface for mesh adaptation
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/redistributeDmesh.edp}{redistributeDmesh.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Gather and scatter a Dmesh on different MPI communicators
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/DMPlex-PETSc.edp}{DMPlex\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Load and partition a mesh using a DM in two and three dimensions
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/function-PETSc.edp}{function\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Custom plugin showing how to directly access PETSc in C++
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/convect.edp}{convect.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Calling the convert FreeFEM function on a distributed mesh
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/tree/develop/examples/hpddm/MatLoad-PETSc.edp}{MatLoad\sphinxhyphen{}PETSc.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 Loading a distributed matrix/vector with various formats
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -27477,34 +29070,50 @@ Loading a distributed matrix/vector with various formats
 \centering
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Article
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 Source code
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://www.sciencedirect.com/science/article/pii/S0045782519301914}{Augmented Lagrangian preconditioner for large\sphinxhyphen{}scale hydrodynamic stability analysis}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/prj-/moulin2019al}{GitHub repository}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://hal.archives-ouvertes.fr/hal-02151184/document}{A multilevel Schwarz preconditioner based on a hierarchy of robust coarse spaces}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/prj-/aldaas2019multi}{GitHub repository}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://www.sciencedirect.com/science/article/pii/S0898122121000055}{KSPHPDDM and PCHPDDM: extending PETSc with advanced Krylov methods and robust multilevel overlapping Schwarz preconditioners}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/prj-/jolivet2020petsc}{GitHub repository}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -32710,12 +34319,16 @@ Build a collection of \(N\) overlapping sub\sphinxhyphen{}meshes \((Th_{i})_{i=1
 \centering
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxincludegraphics[width=1.000\linewidth]{{domain1}.png}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxincludegraphics[width=1.000\linewidth]{{domain2}.png}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -33379,12 +34992,16 @@ f = 10 GHz
 \centering
 \begin{tabulary}{\linewidth}[t]{TT}
 \sphinxtoprule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxincludegraphics[width=0.750\linewidth]{{10GHz_borders_new_v2}.png}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{2}}
 \sphinxAtStartPar
 \sphinxincludegraphics[width=1.000\linewidth]{{10GHz_new}.png}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -33452,230 +35069,462 @@ You can find the script \sphinxhref{https://github.com/FreeFem/FreeFem-sources/b
 \centering
 \begin{tabulary}{\linewidth}[t]{TTTTT}
 \sphinxtoprule
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 File name
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \(M^{-1}_1\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 \(M^{-1}_2\)
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 inexact CS
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxstyletheadfamily \sphinxAtStartPar
 comments
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxmidrule
-\sphinxtableatstartofbodyhook
+\sphinxtableatstartofbodyhook\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/diffusion-3d-minimal-direct.edp}{diffusion\sphinxhyphen{}3d\sphinxhyphen{}minimal\sphinxhyphen{}direct.edp}
-&&&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 direct solver MUMPS
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/diffusion-3d-minimal-ddm.edp}{diffusion\sphinxhyphen{}3d\sphinxhyphen{}minimal\sphinxhyphen{}ddm.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 RAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 GenEO
-&&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/diffusion-3d-simple.edp}{diffusion\sphinxhyphen{}3d\sphinxhyphen{}simple.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 RAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 GenEO
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 comparison with direct solver
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/diffusion-2d-thirdlevelgeneo.edp}{diffusion\sphinxhyphen{}2d\sphinxhyphen{}thirdlevelgeneo.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 RAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 GenEO
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 RAS + GenEO
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/elasticity-3d-simple.edp}{elasticity\sphinxhyphen{}3d\sphinxhyphen{}simple.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 RAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 GenEO
-&&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/elasticity-3d-thirdlevelgeneo.edp}{elasticity\sphinxhyphen{}3d\sphinxhyphen{}thirdlevelgeneo.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 RAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 GenEO
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 RAS + GenEO
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/elasticity\_saddlepoint.edp}{elasticity\_saddlepoint.edp}
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 GenEO\sphinxhyphen{}SP
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 saddle point GenEO solver from \sphinxhref{https://arxiv.org/abs/1911.01858}{here}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Helmholtz-2d-simple.edp}{Helmholtz\sphinxhyphen{}2d\sphinxhyphen{}simple.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 Coarse Mesh / DtN
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 for the DtN coarse space see \sphinxhref{https://doi.org/10.1016/j.cam.2014.03.031}{this paper}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Helmholtz-2d-marmousi.edp}{Helmholtz\sphinxhyphen{}2d\sphinxhyphen{}marmousi.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 Coarse Mesh
-&&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Helmholtz-3d-simple.edp}{Helmholtz\sphinxhyphen{}3d\sphinxhyphen{}simple.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 Coarse Mesh
-&&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Helmholtz-3d-overthrust.edp}{Helmholtz\sphinxhyphen{}3d\sphinxhyphen{}overthrust.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&&&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Helmholtz-2d-HPDDM-BGMRES.edp}{Helmholtz\sphinxhyphen{}2d\sphinxhyphen{}HPDDM\sphinxhyphen{}BGMRES.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 multi\sphinxhyphen{}rhs Block GMRES with HPDDM
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Navier-2d-marmousi2.edp}{Navier\sphinxhyphen{}2d\sphinxhyphen{}marmousi2.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 Coarse Mesh
-&&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Maxwell-3d-simple.edp}{Maxwell\sphinxhyphen{}3d\sphinxhyphen{}simple.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 Coarse Mesh
-&&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Maxwell\_Cobracavity.edp}{Maxwell\_Cobracavity.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 Coarse Mesh
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&\\
-\sphinxhline
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+\\
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/natural\_convection.edp}{natural\_convection.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 Coarse Mesh
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 nonlinear
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/natural\_convection\_3D\_obstacle.edp}{natural\_convection\_3D\_obstacle.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 ORAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 Coarse Mesh
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 nonlinear
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/Richards-2d.edp}{Richards\sphinxhyphen{}2d.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 RAS
-&&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 nonlinear time dependent mesh adaptation
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
-\sphinxhline
+\sphinxhline\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 \sphinxhref{https://github.com/FreeFem/FreeFem-sources/blob/develop/examples/ffddm/heat-torus-3d-surf.edp}{heat\sphinxhyphen{}torus\sphinxhyphen{}3d\sphinxhyphen{}surf.edp}
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 RAS
-&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 GenEO
-&&
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
+\sphinxbeforeendvarwidth
+\end{varwidth}%
+&\begin{varwidth}[t]{\sphinxcolwidth{1}{5}}
 \sphinxAtStartPar
 3d surface time dependent
+\sphinxbeforeendvarwidth
+\end{varwidth}%
 \\
 \sphinxbottomrule
 \end{tabulary}
@@ -44475,7 +46324,7 @@ Link to:
 Link to:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n}{gsl\PYGZus{}sf\PYGZus{}exprel\PYGZus{}n}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}
+\PYG{n}{gsl\PYGZus{}sf\PYGZus{}exprel\PYGZus{}n}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{real}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 
@@ -44505,7 +46354,7 @@ Link to:
 Link to:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n}{gsl\PYGZus{}sf\PYGZus{}expint\PYGZus{}En}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}
+\PYG{n}{gsl\PYGZus{}sf\PYGZus{}expint\PYGZus{}En}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{real}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 
@@ -44535,7 +46384,7 @@ Link to:
 Link to:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n}{gsl\PYGZus{}sf\PYGZus{}expint\PYGZus{}En\PYGZus{}scaled}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}
+\PYG{n}{gsl\PYGZus{}sf\PYGZus{}expint\PYGZus{}En\PYGZus{}scaled}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{,}\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 
@@ -44905,7 +46754,7 @@ Link to:
 Link to:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n}{gsl\PYGZus{}sf\PYGZus{}betaçinc}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{)}
+\PYG{n}{gsl\PYGZus{}sf\PYGZus{}beta\PYGZus{}inc}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 
@@ -44945,7 +46794,7 @@ Link to:
 Link to:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n}{gsl\PYGZus{}sf\PYGZus{}gegenpoly\PYGZus{}n}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{)}
+\PYG{n}{gsl\PYGZus{}sf\PYGZus{}gegenpoly\PYGZus{}n}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{lambda}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 
@@ -44955,7 +46804,7 @@ Link to:
 Link to:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n}{gsl\PYGZus{}sf\PYGZus{}hyperg\PYGZus{}0F1}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{)}
+\PYG{n}{gsl\PYGZus{}sf\PYGZus{}hyperg\PYGZus{}0F1}\PYG{p}{(}\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 
@@ -44965,7 +46814,7 @@ Link to:
 Link to:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n}{gsl\PYGZus{}sf\PYGZus{}hyperg\PYGZus{}1F1\PYGZus{}inc}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{)}
+\PYG{n}{gsl\PYGZus{}sf\PYGZus{}hyperg\PYGZus{}1F1\PYGZus{}inc}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{m}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 
@@ -44975,7 +46824,7 @@ Link to:
 Link to:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n}{gsl\PYGZus{}sf\PYGZus{}hyperg\PYGZus{}1F1}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{)}
+\PYG{n}{gsl\PYGZus{}sf\PYGZus{}hyperg\PYGZus{}1F1}\PYG{p}{(}\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{)}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 
@@ -44995,7 +46844,7 @@ Link to:
 Link to:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
-\PYG{n}{gsl\PYGZus{}sf\PYGZus{}hyperg\PYGZus{}U}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{b}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{c}\PYG{p}{)}
+\PYG{n}{gsl\PYGZus{}sf\PYGZus{}hyperg\PYGZus{}U}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{m}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{double}\PYG{+w}{ }\PYG{n}{x}\PYG{p}{)}
 \end{sphinxVerbatim}
 
 
