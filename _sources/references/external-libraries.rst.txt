@@ -2604,7 +2604,7 @@ Link to:
 .. code-block:: cpp
    :linenos:
 
-   gsl_sf_exprel_n(a, b)
+   gsl_sf_exprel_n(int a, real b)
 
 gslsfexpintE1
 ~~~~~~~~~~~~~
@@ -2634,7 +2634,7 @@ Link to:
 .. code-block:: cpp
    :linenos:
 
-   gsl_sf_expint_En(a, b)
+   gsl_sf_expint_En(int a, real b)
 
 gslsfexpintE1scaled
 ~~~~~~~~~~~~~~~~~~~
@@ -2664,7 +2664,7 @@ Link to:
 .. code-block:: cpp
    :linenos:
 
-   gsl_sf_expint_En_scaled(a, b)
+   gsl_sf_expint_En_scaled(int a,double b)
 
 gslsfexpintEi
 ~~~~~~~~~~~~~
@@ -3034,7 +3034,7 @@ Link to:
 .. code-block:: cpp
    :linenos:
 
-   gsl_sf_betaçinc(a, b, c)
+   gsl_sf_beta_inc(a, b, c)
 
 gslsfgegenpoly1
 ~~~~~~~~~~~~~~~
@@ -3074,7 +3074,7 @@ Link to:
 .. code-block:: cpp
    :linenos:
 
-   gsl_sf_gegenpoly_n(a, b, c)
+   gsl_sf_gegenpoly_n(int n, double lambda, double x)
 
 gslsfhyperg0F1
 ~~~~~~~~~~~~~~
@@ -3084,7 +3084,7 @@ Link to:
 .. code-block:: cpp
    :linenos:
 
-   gsl_sf_hyperg_0F1(a, b)
+   gsl_sf_hyperg_0F1(double c, double x)
 
 gslsfhyperg1F1int
 ~~~~~~~~~~~~~~~~~
@@ -3094,7 +3094,7 @@ Link to:
 .. code-block:: cpp
    :linenos:
 
-   gsl_sf_hyperg_1F1_inc(a, b, c)
+   gsl_sf_hyperg_1F1_inc(int m, int n, double x)
 
 gslsfhyperg1F1
 ~~~~~~~~~~~~~~
@@ -3104,7 +3104,7 @@ Link to:
 .. code-block:: cpp
    :linenos:
 
-   gsl_sf_hyperg_1F1(a, b, c)
+   gsl_sf_hyperg_1F1(double a, double b, double x))
 
 gslsfhypergUint
 ~~~~~~~~~~~~~~~
@@ -3124,7 +3124,7 @@ Link to:
 .. code-block:: cpp
    :linenos:
 
-   gsl_sf_hyperg_U(a, b, c)
+   gsl_sf_hyperg_U(int m, int n, double x)
 
 gslsfhyperg2F0
 ~~~~~~~~~~~~~~
