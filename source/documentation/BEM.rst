@@ -216,7 +216,7 @@ We can then build the *H-Matrix* by taking the following steps:
 The Htool library
 *****************
 
-the H-Matrix format is implemented in the C++ library `Htool`_. **Htool** is a parallel header-only library written by Pierre Marchand and Pierre-Henri Tournier. It is interfaced with **FreeFEM** and provides routines to build hierarchical matrix structures (cluster trees, block trees, low-rank matrices, block matrices) as well as efficient parallel matrix-vector and matrix-matrix product using MPI and OpenMP. **Htool** is interfaced with **BemTool** to allow the compression of BEM matrices using the H-Matrix format in **FreeFEM**.
+the H-Matrix format is implemented in the C++ library `Htool-DDM`_ from `Marchand et al., (2026). Htool-DDM: A C++ library for parallel solvers and compressed linear systems.. Journal of Open Source Software, 11(118), 9279 <https://doi.org/10.21105/joss.09279>`_. **Htool** is a parallel header-only library written by Pierre Marchand and Pierre-Henri Tournier. It is interfaced with **FreeFEM** and provides routines to build hierarchical matrix structures (cluster trees, block trees, low-rank matrices, block matrices). It also provides efficient parallel matrix-vector and matrix-matrix product as well as parallel iterative solvers using MPI and OpenMP. **Htool** is interfaced with **BemTool** to allow the compression of BEM matrices using the H-Matrix format in **FreeFEM**.
 
 .. only:: html
 
@@ -233,7 +233,7 @@ the H-Matrix format is implemented in the C++ library `Htool`_. **Htool** is a p
     :width: 45%
 
 
-.. _Htool: https://github.com/htool-ddm/htool
+.. _Htool-DDM: https://github.com/htool-ddm/htool
 
 Solve a BEM problem with FreeFEM
 --------------------------------
