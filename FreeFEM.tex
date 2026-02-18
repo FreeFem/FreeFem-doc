@@ -141,7 +141,7 @@
     
 
 \title{FreeFEM Documentation}
-\date{Jan 21, 2026}
+\date{Feb 18, 2026}
 \release{4.13}
 \author{Frederic Hecht}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -29341,7 +29341,7 @@ compute the low\sphinxhyphen{}rank approximation of the identified compressible 
 \paragraph{The Htool library}
 \label{\detokenize{documentation/BEM:the-htool-library}}
 \sphinxAtStartPar
-the H\sphinxhyphen{}Matrix format is implemented in the C++ library \sphinxhref{https://github.com/htool-ddm/htool}{Htool}. \sphinxstylestrong{Htool} is a parallel header\sphinxhyphen{}only library written by Pierre Marchand and Pierre\sphinxhyphen{}Henri Tournier. It is interfaced with \sphinxstylestrong{FreeFEM} and provides routines to build hierarchical matrix structures (cluster trees, block trees, low\sphinxhyphen{}rank matrices, block matrices) as well as efficient parallel matrix\sphinxhyphen{}vector and matrix\sphinxhyphen{}matrix product using MPI and OpenMP. \sphinxstylestrong{Htool} is interfaced with \sphinxstylestrong{BemTool} to allow the compression of BEM matrices using the H\sphinxhyphen{}Matrix format in \sphinxstylestrong{FreeFEM}.
+the H\sphinxhyphen{}Matrix format is implemented in the C++ library \sphinxhref{https://github.com/htool-ddm/htool}{Htool\sphinxhyphen{}DDM} from \sphinxhref{https://doi.org/10.21105/joss.09279}{Marchand et al., (2026). Htool\sphinxhyphen{}DDM: A C++ library for parallel solvers and compressed linear systems.. Journal of Open Source Software, 11(118), 9279}. \sphinxstylestrong{Htool} is a parallel header\sphinxhyphen{}only library written by Pierre Marchand and Pierre\sphinxhyphen{}Henri Tournier. It is interfaced with \sphinxstylestrong{FreeFEM} and provides routines to build hierarchical matrix structures (cluster trees, block trees, low\sphinxhyphen{}rank matrices, block matrices). It also provides efficient parallel matrix\sphinxhyphen{}vector and matrix\sphinxhyphen{}matrix product as well as parallel iterative solvers using MPI and OpenMP. \sphinxstylestrong{Htool} is interfaced with \sphinxstylestrong{BemTool} to allow the compression of BEM matrices using the H\sphinxhyphen{}Matrix format in \sphinxstylestrong{FreeFEM}.
 
 \noindent{\hspace*{\fill}\sphinxincludegraphics[width=0.450\linewidth]{{BEM_fighmatrixpara}.pdf}\hspace*{\fill}}
 
